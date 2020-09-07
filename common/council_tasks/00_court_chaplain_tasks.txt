@@ -502,17 +502,6 @@ task_conversion = {
 		if = {
 			limit = {
 				exists = scope:county
-				scope:councillor.faith = { has_doctrine = tenet_hurrian_syncretism }
-				scope:county.faith = { religion_tag = hurrian_religion_group }
-			}
-			add = {
-				value = scope:councillor.conversion_syncretic_with_religion_malus
-				desc = COURT_CHAPLAIN_CONVERSION_SYNCRETIC_WITH_RELIGION_MODIFIER
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:county
 				scope:councillor.faith = { has_doctrine = tenet_hellenic_syncretism }
 				scope:county.faith = { religion_tag = hellenic_religion_group }
 			}
