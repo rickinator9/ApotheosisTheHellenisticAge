@@ -1,0 +1,30 @@
+title_succession_laws = {
+
+	# Democratic
+	democratic_succession_law = {
+		can_have = {
+			has_government = feudal_government
+			highest_held_title_tier >= tier_duchy
+		}
+		can_pass = {
+			can_change_title_law_trigger = yes
+		}
+		can_title_have = {
+			tier >= tier_duchy
+		}
+		succession = {
+			order_of_succession = election
+			election_type = democratic_elective
+		}
+		flag = elective_succession_law
+		modifier = {
+			direct_vassal_opinion = 10
+		}
+		revoke_cost = {
+			prestige = change_title_succession_law_prestige_cost
+		}
+		pass_cost = {
+			prestige = change_title_succession_law_prestige_cost
+		}
+	}
+}
