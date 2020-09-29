@@ -1,4 +1,4 @@
-namespace = debate_scheme
+﻿namespace = debate_scheme
 
 ######################
 # ONGOING MANAGEMENT #
@@ -29,9 +29,314 @@ debate_scheme.0501 = {
     desc = debate_scheme.0501.desc
 
     theme = diplomacy
-    left_portrait = root
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
 
+    immediate = {
+        # Determine the scheme target.
+        every_scheme = {
+            limit = { scheme_type = debate }
+            scheme_target = { save_scope_as = debate_target }
+        }
+
+        # Determine the parent title.
+        if = {
+            limit = { has_character_flag = debating_vassal_of_title }
+            primary_title = { save_scope_as = debate_title }
+        } else = {
+            liege.primary_title = { save_scope_as = debate_title }
+        }
+
+        # Save the holder of the debate title.
+        scope:debate_title.holder = { save_scope_as = debate_title_holder }
+
+        # Save the capital of the debate title.
+        scope:debate_title_holder.capital_province.county = { save_scope_as = debate_title_capital }
+
+        # Determine if there are any enemies close to the title.
+        if = {
+            limit = { scope:debate_title_holder = { is_independent_ruler = yes } }
+
+            # Build a list of potential foreign threats.
+            scope:debate_title_holder = {
+                every_realm_county = {
+                    every_neighboring_county = {
+                        # Make sure that this is not a county in the same realm.
+                        limit = {
+                            NOT = { holder.top_liege = scope:debate_title_holder }
+                        }
+
+                        # Check if the holder can be added to the list of threats.
+                        holder.top_liege = { 
+                            if = {
+                                limit = { max_military_strength > scope:debate_title_holder.max_military_strength }
+                                add_to_temporary_list = potential_foreign_threats
+                            }
+                        }
+
+                        # One more iteration.
+                        every_neighboring_county = {
+                            # Make sure that this is not a county in the same realm.
+                            limit = {
+                                NOT = { holder.top_liege = scope:debate_title_holder }
+                            }
+
+                            # Check if the holder can be added to the list of threats.
+                            holder.top_liege = { 
+                            if = {
+                                limit = { max_military_strength > scope:debate_title_holder.max_military_strength }
+                                    add_to_temporary_list = potential_foreign_threats
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            # Find the strongest threat.
+            ordered_in_list = {
+                list = potential_foreign_threats
+                order_by = {
+                    value = {
+                        add = max_military_strength
+                    }
+                }
+                save_scope_as = debated_threat
+            }
+        }
+    }
+
+    # External threats.
     option = {
         name = debate_scheme.0501.a
+        trigger = {
+            exists = scope:debated_threat
+        }
+
+        # Set a variable to indicate the subject and trigger the intro event.
+        set_variable = {
+            name = debate_subject
+            value = flag:external_threat
+        }
+        trigger_event = {
+            id = debate_scheme.1001
+            days = 3
+        }
+    }
+
+    # On the glory of the war.
+    option = {
+        name = debate_scheme.0501.b
+        trigger = {
+            exists = scope:debate_title_holder
+            scope:debate_title_holder = { is_at_war = yes }
+        }
+    }
+
+    # About declaring peace.
+    option = {
+        name = debate_scheme.0501.c
+        trigger = {
+            exists = scope:debate_title_holder
+            scope:debate_title_holder = { is_at_war = yes }
+        }
+    }
+
+    # About developing the capital.
+    option = {
+        name = debate_scheme.0501.d
+    }
+
+    # On developing the military.
+    option = {
+        name = debate_scheme.0501.e
+    }
+
+    # Attack on the qualifications of the target.
+    option = {
+        name = debate_scheme.0501.f
+        trigger = {
+            scope:debate_target = {
+                OR = {
+                    has_council_position = councillor_chancellor
+                    has_council_position = councillor_steward
+                    has_council_position = councillor_marshal
+                    has_council_position = councillor_spymaster
+                    has_council_position = councillor_court_chaplain
+                }
+            }
+        }
+    }
+
+    # Personal attack on the character.
+    option = {
+        name = debate_scheme.0501.g
     }
 }
+
+#####################
+# PICK INTRODUCTION #
+#####################
+
+# Foreigner threats
+debate_scheme.1001 = {
+    type = character_event
+    title = debate_scheme.1001.title
+    desc = debate_scheme.1001.desc
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    # Appeal to the rationale of the people. http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D1
+    option = {
+        name = debate_scheme.1001.a
+
+        # Set a variable to indicate the subject and trigger the next event.
+        set_variable = {
+            name = debate_intro
+            value = flag:intro_foreign_threat_1
+        }
+        trigger_event = {
+            id = debate_scheme.5001
+            days = 3
+        }
+    }
+
+    # Blame the people of not doing their duty. http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D3
+    option = {
+        name = debate_scheme.1001.b
+    }
+}
+
+##############
+# ARGUMENT 1 #
+##############
+
+####################
+# RESULT - DEBATOR #
+####################
+
+debate_scheme.5001 = {
+    type = character_event
+    title = debate_scheme.5001.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    var:debate_intro = flag:intro_foreign_threat_1
+                }
+				desc = debate_scheme.5001.desc.1
+            }
+        }
+    }
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    option = {
+        name = YES
+    }
+}
+
+# Opponent arguments:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D20
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D21
+#   Intrigue:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D5
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D7
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D9
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D10
+#   Opportunism:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D3
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D23
+#   Aristocratic:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D4
+#   Selfishness:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D8
+#   Arrogant:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D15 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D16
+#   Weak soldiers:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D17 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D18
+#   Lusty and drunk:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D18 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D19
+#   Fortune:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D22
+#   Barbarian:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D16
+
+
+# Target is not as strong as he seems:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D21
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D24
+
+# We need reforms:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D13
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D29 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D30
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D10 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D11
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D19
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D34 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D35
+
+# Allied benefits:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D5
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D7
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D9
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D10
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D12
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D15
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D17 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D18
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D19 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D20
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D25
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D2
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D7
+
+
+# Tough love:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D14
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D16
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D3
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D4
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D24
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D25
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D26
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D27
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D9
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D14
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D18
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D22
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D30
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D32
+
+# Call to action:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D20
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D21
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D33
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D31 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D24 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D25 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D26
+
+# Compliments:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D15
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D23
+
+# Diplomacy:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D12
+
+# Conclusions:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D6
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D27
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D28
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D36
+
+# Incompetence:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D29
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D31
+
+# Development:
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D11
