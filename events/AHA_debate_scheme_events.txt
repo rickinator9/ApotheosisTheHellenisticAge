@@ -197,12 +197,9 @@ debate_scheme.1001 = {
         name = debate_scheme.1001.a
 
         # Set a variable to indicate the subject and trigger the next event.
-        set_variable = {
-            name = debate_intro
-            value = flag:intro_foreign_threat_1
-        }
+        set_debate_intro = { INTRO_KEY = flag:intro_foreign_threat_1 }
         trigger_event = {
-            id = debate_scheme.5001
+            id = debate_scheme.2001
             days = 3
         }
     }
@@ -213,69 +210,9 @@ debate_scheme.1001 = {
     }
 }
 
-##############
-# ARGUMENT 1 #
-##############
-
-####################
-# RESULT - DEBATOR #
-####################
-
-debate_scheme.5001 = {
-    type = character_event
-    title = debate_scheme.5001.title
-    desc = {
-        first_valid = {
-            triggered_desc = {
-                trigger = {
-                    var:debate_intro = flag:intro_foreign_threat_1
-                }
-				desc = debate_scheme.5001.desc.1
-            }
-        }
-    }
-
-    theme = diplomacy
-    left_portrait = {
-        character = root
-        animation = personality_rational
-    }
-
-    option = {
-        name = YES
-    }
-}
-
-# Opponent arguments:
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D20
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D21
-#   Intrigue:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D5
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D7
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D9
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D10
-#   Opportunism:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D3
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D23
-#   Aristocratic:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D4
-#   Selfishness:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D8
-#   Arrogant:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D15 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D16
-#   Weak soldiers:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D17 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D18
-#   Lusty and drunk:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D18 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D19
-#   Fortune:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D22
-#   Barbarian:
-#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D16
-
-
-# Target is not as strong as he seems:
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D21
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D24
+#############
+# ARGUMENTS #
+#############
 
 # We need reforms:
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D13
@@ -313,7 +250,9 @@ debate_scheme.5001 = {
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D18
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D22
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D30
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D32
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D32#   Fortune:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D22
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D23
 
 # Call to action:
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D20
@@ -340,3 +279,198 @@ debate_scheme.5001 = {
 
 # Development:
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D11
+
+# Foreigner arguments
+debate_scheme.2001 = {
+    type = character_event
+    title = debate_scheme.2001.title
+    desc = debate_scheme.2001.desc
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+    
+    # Talk about his character.
+    option = {
+        name = debate_scheme.2001.a
+
+        trigger_event = {
+            id = debate_scheme.2002
+        }
+    }
+}
+
+# Foreigner arguments
+debate_scheme.2002 = {
+    type = character_event
+    title = debate_scheme.2002.title
+    desc = debate_scheme.2002.desc
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    # He is deceitful.
+    option = {
+        name = debate_scheme.2002.a
+        trigger = {
+            NOT = {
+                OR = {
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_2 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_3 }
+                }
+            }
+        }
+
+        hidden_tooltip = {
+            random_list = {
+                1 = { 
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_1 }
+                }
+                1 = { 
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_2 }
+                }
+                1 = { 
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_3 }
+                }
+            }
+        }
+
+        trigger_event = {
+            id = debate_scheme.5001
+            days = 3
+        }
+    }
+
+    # He has an aristocratic government.
+    option = {
+        trigger = {
+            scope:debated_threat = { has_government = feudal_government }
+            NOT = { has_debate_argument = flag:argument_foreign_threat_aristocratic_1 }
+        }
+
+        name = debate_scheme.2002.b
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_aristocratic_1 }
+        trigger_event = {
+            id = debate_scheme.5001
+            days = 3
+        }
+    }
+
+    #   Lusty and drunk:
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D15 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D16
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D18 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D19
+#       - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D8
+    # Disloyal subjects.
+    option = {
+        name = debate_scheme.2002.c
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_subjects_1 }
+        trigger_event = {
+            id = debate_scheme.5001
+            days = 3
+        }
+    }
+
+    # Conclusions:
+    #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D20
+    #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D21
+#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D24
+    # Conclude on the character's properties.
+    option = {
+        name = debate_scheme.2002.d
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_conclusion_1 }
+        trigger_event = {
+            id = debate_scheme.5001
+            days = 3
+        }
+    }
+
+    # Exit
+    option = {
+        name = debate_scheme.2002.e
+    }
+}
+
+####################
+# RESULT - DEBATOR #
+####################
+
+# Intro
+debate_scheme.5001 = {
+    type = character_event
+    title = debate_scheme.title.foreign_threat
+    desc = {
+        desc = debate_scheme.5001.desc
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    var:debate_intro = flag:intro_foreign_threat_1
+                }
+				desc = debate_scheme.5001.desc.1
+            }
+        }
+    }
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    option = {
+        name = YES
+
+        trigger_event = {
+            id = debate_scheme.5002
+        }
+    }
+}
+
+# First argument
+debate_scheme.5002 = {
+    type = character_event
+    title = debate_scheme.title.foreign_threat
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_deceit_1
+                }
+				desc = debate_scheme_argument.foreign_threat_deceit_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_deceit_2
+                }
+				desc = debate_scheme_argument.foreign_threat_deceit_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_deceit_3
+                }
+				desc = debate_scheme_argument.foreign_threat_deceit_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:flag:argument_foreign_threat_aristocratic_1
+                }
+				desc = debate_scheme_argument.foreign_threat_aristocratic_1.desc
+            }
+        }
+    }
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    option = {
+        name = YES
+    }
+}
