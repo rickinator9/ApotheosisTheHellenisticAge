@@ -18,30 +18,188 @@
 
 #Princes (children of Kings/Emperors, sorted by culture)
 
-### Roman ###
+### Greek Group ###
+prince_male_greek_group = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	priority = 40
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_female_greek_group = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	priority = 40
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_male_greek_group_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	priority = 40
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_female_greek_group_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	priority = 40
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	top_liege = no
+}
+queen_mother_greek_group = {
+	type = character
+	gender = female
+	special = queen_mother
+	tier = kingdom
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	priority = 43
+	top_liege = no
+}
+empress_mother_greek_group = {
+	type = character
+	gender = female
+	special = queen_mother
+	tier = empire
+	culture_groups = { greek_group }
+	governments = { feudal_government }
+	priority = 76
+	top_liege = no
+}
+# Doric
+prince_male_doric = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	priority = 41
+	cultures = { acarnanian achaean aetolian argive cephalonian corinthian elean epirote locrian malian megarian messenian phocian spartan boeotian phthiotian thessalian arcadian}
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_male_doric_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	priority = 41
+	cultures = { acarnanian achaean aetolian argive cephalonian corinthian elean epirote locrian malian megarian messenian phocian spartan boeotian phthiotian thessalian arcadian}
+	governments = { feudal_government }
+	top_liege = no
+}
 
-#countling = {
+# Spartan
+prince_male_spartan_d_lakedaimon = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = duchy
+	priority = 34
+	titles = { d_lakedaimon }
+	cultures = { spartan }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_female_spartan_d_lakedaimon = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = duchy
+	priority = 34
+	titles = { d_lakedaimon }
+	cultures = { spartan }
+	governments = { feudal_government }
+	top_liege = no
+}
+queen_mother_spartan_d_lakedaimon = {
+	type = character
+	gender = female
+	special = queen_mother
+	tier = duchy
+	priority = 34
+	titles = { d_lakedaimon }
+	cultures = { spartan }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_female_spartan = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	priority = 41
+	cultures = { spartan }
+	governments = { feudal_government }
+	top_liege = no
+}
+prince_female_spartan_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	priority = 41
+	cultures = { spartan }
+	governments = { feudal_government }
+	top_liege = no
+}
+
+## Cypriot
+#prince_male_cypriot = {
+#	type = character
 #	gender = male
 #	special = ruler_child
-#	tier = county
+#	tier = kingdom
+#	priority = 41
+#	cultures = { cypriot }
 #	governments = { feudal_government }
+#	top_liege = no
 #}
-
-#duckling = {
-#	gender = male
-#	special = ruler_child
-#	tier = duchy
-#	governments = { feudal_government }
-#}
-
-#empress_mutter = {
+#prince_female_cypriot = {
+#	type = character
 #	gender = female
-#	special = queen_mother
-#	tier = empire
-#	
+#	special = ruler_child
+#	tier = kingdom
+#	priority = 41
+#	cultures = { cypriot }
 #	governments = { feudal_government }
-#	culture_groups = { central_germanic_group }
+#	top_liege = no
 #}
+#prince_male_cypriot_empire = {
+#	type = character
+#	gender = male
+#	special = ruler_child
+#	tier = empire
+#	priority = 41
+#	cultures = { cypriot }
+#	governments = { feudal_government }
+#	top_liege = no
+#}
+#prince_female_cypriot_empire = {
+#	type = character
+#	gender = female
+#	special = ruler_child
+#	tier = empire
+#	priority = 41
+#	cultures = { cypriot }
+#	governments = { feudal_government }
+#	top_liege = no
+#}
+
+#Boring Fallbacks, keep at bottom of file!
+
 empress_mother = {
 	type = character
 	gender = female
@@ -51,6 +209,7 @@ empress_mother = {
 	priority = 75
 	top_liege = no
 }
+
 queen_mother = {
 	type = character
 	gender = female
@@ -60,8 +219,6 @@ queen_mother = {
 	priority = 42
 	top_liege = no
 }
-
-#Boring Fallbacks, keep at bottom of file!
 
 prince = {
 	type = character

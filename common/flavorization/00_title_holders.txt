@@ -19,7 +19,6 @@
 
 
 #############################################
-
 # Special Titles
 
 # Religious Titles
@@ -54,33 +53,266 @@ realm_priest_female = {
 	priority = 299
 	council_position = councillor_court_chaplain
 }
+
+title_tagus_male = {
+	type = character
+	gender = male
+	special = holder
+	priority = 47
+	titles = { k_thessalia }
+	culture_groups = { greek_group }
+	top_liege = no
+}
+title_tetrarch_male = {
+	type = character
+	gender = male
+	special = holder
+	priority = 30
+	titles = { d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia }
+	culture_groups = { greek_group }
+	top_liege = no
+}
+title_tetrarchia = { # for some reason affects all other duchy titles controlled by the tetrarch!
+	type = title
+	tier = duchy
+	priority = 30
+	titles = { d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia }
+	culture_groups = { greek_group }
+	top_liege = no
+}
+
+#title_nesiarch_male = {
+#	type = character
+#	gender = male
+#	special = holder
+#	priority = 30
+#	titles = { d_aegean }
+#	culture_groups = { greek_group }
+#	top_liege = no
+#}
+
+title_boetarch_male = {
+	type = character
+	gender = male
+	special = holder
+	priority = 30
+	titles = { d_boiotia }
+	governments = { allied_government }
+	culture_groups = { greek_group }
+	top_liege = no
+}
+
+duke_autocratic_male_d_lakedaimon_spartan = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 40
+	titles = { d_lakedaimon }
+	governments = { feudal_government }
+	cultures = { spartan }
+	only_independent = yes
+}
+duke_autocratic_female_d_lakedaimon_spartan = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 40
+	titles = { d_lakedaimon }
+	governments = { feudal_government }
+	cultures = { spartan }
+	only_independent = yes
+}
+duchy_autocratic_d_lakedaimon_spartan = {
+	type = title
+	tier = duchy
+	priority = 40
+	titles = { d_lakedaimon }
+	governments = { feudal_government }
+	cultures = { spartan }
+	only_independent = yes
+}
+
 ##############################################
-#Theocracy titles, religious (group) localization.
+# Theocracy titles, religious (group) localisation.
 
-# Bon
-# Buddhism
-# Christianity
-# Dualism
-# Germanic
-# Hellenism
-# Hinduism
-# Islam
-# Jainism
-# Judaism
-# Magyarism
-# Paganism
-# Baltic
-# Slavic
-# Finno-Ugric
-# Taoism
-# Tengrism
-# West African
-# West African Bori
-# West African Roog
-# Zoroastrianism
-# Zunism
+# ...
 
-# Bon
+##############################################
+# Cultural titles (sorted by culture group, then government type).
+
+### GREEK GROUP ###
+### Autocratic ###
+# Generic
+baron_autocratic_male_greek_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 7
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+baron_autocratic_female_greek_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 7
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+barony_autocratic_greek_group = {
+	type = title
+	tier = barony
+	priority = 7
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+count_autocratic_male_greek_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+count_autocratic_female_greek_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+county_autocratic_greek_group = {
+	type = title
+	tier = county
+	priority = 18
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+duke_autocratic_male_greek_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+duke_autocratic_female_greek_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 27
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+duchy_autocratic_greek_group = {
+	type = title
+	tier = duchy
+	priority = 27
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+king_autocratic_male_greek_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+king_autocratic_female_greek_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+kingdom_autocratic_greek_group = {
+	type = title
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+emperor_autocratic_male_greek_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+emperor_autocratic_female_greek_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	governments = { feudal_government }
+	culture_groups = { greek_group }
+}
+## Dialect Variants
+# Arco-Cypriot
+king_autocratic_male_arcadocypriot= {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 48
+	governments = { feudal_government }
+	cultures = { arcadian }
+}
+# Doric
+duke_autocratic_male_doric = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 28
+	governments = { feudal_government }
+	cultures = { acarnanian achaean aetolian argive cephalonian corinthian elean epirote locrian malian megarian messenian phocian spartan boeotian phthiotian thessalian arcadian}
+}
+# Ionic
+kingdom_autocratic_ionic = {
+	type = title
+	tier = kingdom
+	priority = 48
+	governments = { feudal_government }
+	cultures = { chalcidean euboean }
+}
+
+## Culture Variants
+# Indo-Greek
+#emperor_autocratic_male_indo_greek = {
+#	type = character
+#	gender = male
+#	special = holder
+#	tier = empire
+#	priority = 104
+#	governments = { feudal_government }
+#	cultures = { indo_greek }
+#}
+#emperor_autocratic_female_indo_greek = {
+#	type = character
+#	gender = female
+#	special = holder
+#	tier = empire
+#	priority = 104
+#	governments = { feudal_government }
+#	cultures = { indo_greek }
+#}
 
  #############################################
  # Default titles by Government. This list should always be below any custom localization that is tied to specific cultures/religion.
