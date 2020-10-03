@@ -4,6 +4,9 @@
 # !!! Remember to add all new effects with a short description here !!!
 
 #has_debate_argument - Checks whether the debate argument has already been used. ARG_KEY is used as the identifier of the argument.
+#has_last_debate_argument - Checks whether the debate argument is the last one. ARG_KEY is used as the identifier of the argument.
+#has_max_arguments - Checks whether the character already has 10 arguments.
+#has_min_arguments - Checks whether the characters has at least one argument.
 
 #####################################################################
 # TRIGGERS
@@ -12,45 +15,203 @@
 # Checks whether the debate argument has already been used. ARG_KEY is used as the identifier of the argument.
 has_debate_argument = {
     OR = {
-        AND = {
-            has_variable = debate_argument_1
-            var:debate_argument_1 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_1
+                trigger_if = {
+                    limit = { var:debate_argument_1 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_2
-            var:debate_argument_2 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_2
+                trigger_if = {
+                    limit = { var:debate_argument_2 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_3
-            var:debate_argument_3 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_3
+                trigger_if = {
+                    limit = { var:debate_argument_3 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_4
-            var:debate_argument_4 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_4
+                trigger_if = {
+                    limit = { var:debate_argument_4 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_5
-            var:debate_argument_5 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_5
+                trigger_if = {
+                    limit = { var:debate_argument_5 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_6
-            var:debate_argument_6 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_6
+                trigger_if = {
+                    limit = { var:debate_argument_6 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_7
-            var:debate_argument_7 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_7
+                trigger_if = {
+                    limit = { var:debate_argument_7 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_8
-            var:debate_argument_8 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_8
+                trigger_if = {
+                    limit = { var:debate_argument_8 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_9
-            var:debate_argument_9 = $ARG_KEY$
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_9
+                trigger_if = {
+                    limit = { var:debate_argument_9 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
         }
-        AND = {
-            has_variable = debate_argument_10
+        trigger_if = {
+            limit = { 
+                has_variable = debate_argument_10
+                trigger_if = {
+                    limit = { var:debate_argument_10 = $ARG_KEY$ }
+                    always = yes
+                }
+                trigger_else = {
+                    always = no
+                }
+            }
+            
+            always = yes
+        }
+        trigger_else = { always = no }
+    }
+}
+
+# Checks whether the debate argument is the last one. ARG_KEY is used as the identifier of the argument.
+has_last_debate_argument = {
+    OR = {
+        trigger_if = {
+            limit = { has_variable = debate_argument_10 }
             var:debate_argument_10 = $ARG_KEY$
         }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_9 }
+            var:debate_argument_9 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_8 }
+            var:debate_argument_8 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_7 }
+            var:debate_argument_7 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_6 }
+            var:debate_argument_6 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_5 }
+            var:debate_argument_5 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_4 }
+            var:debate_argument_4 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_3 }
+            var:debate_argument_3 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_2 }
+            var:debate_argument_2 = $ARG_KEY$
+        }
+        trigger_else_if = {
+            limit = { has_variable = debate_argument_1 }
+            var:debate_argument_1 = $ARG_KEY$
+        }
+        trigger_else = { always = no }
     }
+}
+
+# Checks whether the character already has 10 arguments.
+has_max_arguments = {
+    has_variable = debate_argument_10
+}
+
+# Checks whether the characters has at least one argument.
+has_min_arguments = {
+    has_variable = debate_argument_1
 }
