@@ -563,54 +563,47 @@ GetActualBishopTitle = {
 
 	# Religion-By-Religion Titles for Bishops based on Liege's Tier.
 
-	#Paganism
+	# Olympian
 	text = {
 		trigger = {
 			liege.highest_held_title_tier >= tier_kingdom
+			faith.religion = faith:apollo_faith.religion
 			is_female = no
 		}
-		localization_key = councillor_court_chaplain_generic_kingdom
+		localization_key = councillor_court_chaplain_olympian_kingdom
 	}
 	text = {
 		trigger = {
 			liege.highest_held_title_tier >= tier_kingdom
+			faith.religion = faith:apollo_faith.religion
 			is_female = yes
 		}
-		localization_key = councillor_court_chaplain_generic_kingdom_female
+		localization_key = councillor_court_chaplain_olympian_kingdom_female
 	}
 	text = {
 		trigger = {
-			liege.highest_held_title_tier >= tier_duchy
+			liege.highest_held_title_tier < tier_kingdom
+			faith.religion = faith:apollo_faith.religion
+			is_female = no
 		}
-		localization_key = councillor_court_chaplain_generic_duchy
+		localization_key = councillor_court_chaplain_olympian
 	}
 	text = {
 		trigger = {
-			liege.highest_held_title_tier < tier_duchy
+			liege.highest_held_title_tier < tier_kingdom
+			faith.religion = faith:apollo_faith.religion
+			is_female = yes
 		}
-		localization_key = councillor_court_chaplain_generic_county
+		localization_key = councillor_court_chaplain_olympian_female
 	}
 
 	#Fallback
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = no }
-		localization_key = councillor_court_chaplain_theocrat_empire
+		trigger = { is_female = no }
+		localization_key = priest
 	}
 	text = {
-		trigger = { liege.highest_held_title_tier >= tier_empire is_female = yes }
-		localization_key = councillor_court_chaplain_theocrat_empire_female
-	}
-	text = {
-		trigger = { liege.highest_held_title_tier >= tier_kingdom }
-		localization_key = councillor_court_chaplain_theocrat_kingdom
-	}
-	text = {
-		trigger = { liege.highest_held_title_tier >= tier_duchy }
-		localization_key = councillor_court_chaplain_theocrat_duchy
-	}
-	text = {
-		trigger = { liege.highest_held_title_tier < tier_duchy }
-		localization_key = councillor_court_chaplain_theocrat_county
+		localization_key = priestess
 	}
 }
 
