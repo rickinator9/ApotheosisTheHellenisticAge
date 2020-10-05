@@ -129,17 +129,24 @@ argive00108 = {
 	}
 }
 argive00109 = {
-	name = "Apia" # dedicated an inscription at the Asklepieion ca. 229-225 BC
+	name = "Apia" # probably the same person as Apega, wife of the Spartan tyrant Nabis
 	female = yes
 	dynasty = argivedyn001 # Argeios
 	religion = placeholder
 	culture = argive
+	trait = education_intrigue_3
+	trait = sadistic
+	trait = deceitful
+	trait = greedy
 	father = argive00107 # Aristippos
 	3504.1.1 = { # made up
 		birth = yes # 250 BC
 	}
-	3551.1.1 = { # made up
-		death = yes # 203 BC
+	#3548.1.1 = { # 206 BC, made up
+	#	add_spouse = ... # Nabis
+	#}
+	3570.1.1 = { # made up
+		death = yes # 184 BC
 	}
 }
 
@@ -354,5 +361,30 @@ argive00602 = {
 	}
 	3504.1.1 = { # approximate
 		death = yes # 250 BC
+	}
+}
+
+# Daiphonteus - Argos
+
+argive00701 = {
+	name = "Aristeas" # politician who attempted to take control of Argos with the support of Pyrrhus
+	dynasty = argivedyn007
+	religion = placeholder
+	culture = argive
+	trait = ambitious
+	trait = deceitful
+	3447.1.1 = { # made up
+		birth = yes # 307 BC
+	}
+	3479.1.1 = {
+		effect = {
+			set_relation_rival = character:argive00105	# feud with Aristippos for control over Argos
+		}
+	}
+	3482.1.1 = { # 272 BC, speculative
+		death = { 
+			death_reason = death_execution # unproven, but highly plausible that he would have been executed for betraying Argos to Pyrrhus
+			killer = argive00105
+		}
 	}
 }
