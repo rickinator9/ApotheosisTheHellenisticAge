@@ -209,7 +209,11 @@ NCombatInterface = {
 		125
 		175
 	}
+<<<<<<< HEAD
 	MAX_QUALITY_POWER_MULT = 50	
+=======
+	MAX_QUALITY_POWER_MULT = 50							# When multiplying damage + toughness with itself, we cap it at this value. So damage + toughness of 100 would result in 100 * MAX_QUALITY_POWER_MULT rather than 100^2, while a value of 20 would result in 20*20
+>>>>>>> 42928c011299cfc0298f5e064356c53090686f41
 	MAX_COMBAT_PREDICTION_DISTANCE = 5					# How far along the path of your units should we bother to look? Higher means we can predict combat further away, but the situation is more likely to change before combat occurs
 	BATTLE_EVENT_DURATION = 5.0							# How many seconds do battle events stick around for?
 }

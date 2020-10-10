@@ -238,7 +238,8 @@ epirote00208 = {
 	}
 	3438.1.1 = { # 316 BC
 		death = { 
-			death_reason = death_execution # stoned to death on the orders of Cassander
+			death_reason = death_execution_killer # stoned to death on the orders of Cassander
+			#killer = ...
 		}
 	}
 }
@@ -360,6 +361,7 @@ epirote00214 = {
 epirote00215 = {
 	name = "Pyrrhos" # Pyrrhus of Epirus
 	dynasty = epirotedyn002 # Aiakidas
+	dna = epirote00215_pyrrhos_aietos
 	religion = placeholder
 	culture = epirote
 	diplomacy = 8
@@ -381,8 +383,6 @@ epirote00215 = {
 	father = epirote00213 # Aiakidas
 	mother = thessalian00102 # Phthia
 
-	dna = epirote00215_pyrrhos_aietes # yubkZ1dFZEXQp9CnAZkBmQGFAYUBhwGHAHUAeACNAH4AZwBmAH4AfgFpAYYAbwBvAHEAcQGvAa8BhwGHAbABsABxAHEAYABgAZkBmQB2AHYAeAB4AZgBmAB/AH8BhgGGAasBqwBzAHMAfAB8AaUBpQGHAYcAdQB1AG0AbQB8AHwAIQAhAG0AbQGOAY4BKQEpACgAKAEnABoBJgEmAGwAbAIVAhUACgAKAXABcAABAAEAuAC4AT4BDgH/AFUAfACMAUEBVgEBADMAAQBSAR0BBgFcAVwAUgBSAQYBBgE5ARUAZQERAF4ALQFWASUBfwANACsAMgEqARcBQQEGAHoBAQAUABQAigBLAScBOwGzAW4AaAAHAFYAIgEKAQoBDwERAREBGQALAAsBRgEjAKoACAExAQoEIwFUACgAEwCcAPMASACNAVkAEwATABYBPgHyAAcABwDJAM4AmAARAhQADQLZAdkDfwB/AtcC1wFwAXIAsQGNC0IHDAZlBmUCfQJ9C9EL0QJOAk4AjACMAAIAfQDTAdMAZABkAAAAAAGwAbA=
-
 	3435.1.1 = {
 		birth = yes # 319 BC
 	}
@@ -402,7 +402,7 @@ epirote00215 = {
 	#	remove_spouse = ... # Lanassa leaves Pyrrhus for Demetrius
 	#}
 	3465.1.1 = { # 289 BC
-		give_nickname = nick_aietos # Aietos (the Eagle)
+		give_nickname = nick_aietos # gains the nickname Aietos (the Eagle) following a victory in Thessaly against Pantauchus
 		#add_pressed_claim = ... # Pyrrhus' father-in-law Agathokles dies
 	}
 	#3474.1.1 = { # 280 BC
@@ -425,9 +425,9 @@ epirote00216 = {
 	3434.1.1 = { # approximate
 		birth = yes # 320 BC
 	}
-	#3451.1.1 = { # 303 BC
-	#	add_spouse = ... # Demetrios
-	#}
+	3451.1.1 = { # 303 BC
+		add_spouse = macedonian00102 # Demetrios
+	}
 	3454.1.1 = { # 300 BC
 		trait = ill
 		death = { 
@@ -521,7 +521,7 @@ epirote00222 = {
 		add_spouse = epirote00224 # Alexandros
 	}
 	3520.1.1 = { # 234 BC, approximate
-		trait = depressed
+		trait = depressed_1
 		death = { 
 			death_reason = death_depressed # is said to have died of grief after the death of her sons
 		}
@@ -605,8 +605,8 @@ epirote00227 = {
 		birth = yes # 253 BC
 	}
 	3520.1.1 = { # 234 BC, approximate
+		trait = ill
 		death = { 
-			trait = ill
 			death_reason = death_ill # possibly fell sick and died while on campaign
 		}
 	}
@@ -623,14 +623,13 @@ epirote00228 = {
 		birth = yes # 261 BC
 	}
 	3515.1.1 = { # 239 BC
-		give_nickname = nick_chryseis
-		#add_spouse = ... # Demetrios
+		add_spouse = macedonian00112 # Demetrios
 	}
-	#3527.1.1 = { # 227 BC
-		#add_spouse = ... # Antigonos
-	#}
-	3542.1.1 = { # made up
-		death = yes # 212 BC
+	# 3527.1.1 = { # 227 BC
+	# 	add_spouse = macedonian00113 # Antigonos (but only if Phthia and Chryseis are indeed the same individual)
+	# }
+	3550.1.1 = { # made up
+		death = yes # 204 BC
 	}
 }
 epirote00229 = {

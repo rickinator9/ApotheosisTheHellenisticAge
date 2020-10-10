@@ -1,0 +1,677 @@
+﻿# Maccedonian characters
+
+# Antigonidas - Macedon
+
+macedonian00101 = {
+	name = "Antigonos" # Antigonus I Monophthalmus
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	diplomacy = 8
+	martial = 9
+	stewardship = 6
+	intrigue = 5
+	learning = 6
+	prowess = 5
+	trait = education_martial_3
+	trait = ambitious
+	trait = arrogant
+	trait = calm
+	trait = greedy
+	trait = physique_good_2
+	trait = shrewd
+	trait = family_first
+	#father = ... # Philippos
+	3372.1.1 = {
+		birth = yes # 382 BC
+	}
+	3414.1.1 = { # 340 BC, speculative
+		trait = one_eyed 
+		trait = scarred 
+		give_nickname = nick_monophthalmos # it's likely that he lost his eye during the siege of Perinthos
+	}
+	#3416.1.1 = { # 338 BC, made up
+	#	add_spouse = ... # Stratonike
+	#}
+	3433.1.1 = { # 321 BC
+		effect = {
+			set_relation_best_friend = character:macedonian00102 # was extremely close to Demetrius 
+		}
+		trait = confider
+	}
+	#3449.1.1 = { # 305 BC
+	#	trait = ill # became dangerously ill for a period not long after the death of his son Philip
+	#}
+	#3450.1.1 = { # 304 BC
+	#	remove_trait = ill 
+	#}
+	3453.1.1 = { # 301 BC
+		death = { 
+			death_reason = death_battle # died at the battle of Ipsus
+		}
+	}
+}
+macedonian00102 = {
+	name = "Demetrios" # Demetrius I Poliorcetes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	diplomacy = 9
+	martial = 8
+	stewardship = 4
+	intrigue = 7
+	learning = 3
+	prowess = 3
+	trait = education_martial_3
+	trait = reckless
+	trait = lustful
+	trait = forgiving
+	trait = impatient
+	trait = arrogant
+	trait = beauty_good_1
+	trait = reveler_2
+	sexuality = bisexual
+	father = macedonian00101 # Antigonos
+	#mother = ... # Stratonike
+	3418.1.1 = {
+		birth = yes # 336 BC
+	}
+	3433.1.1 = { # 321 BC
+		effect = {
+			set_relation_best_friend = character:macedonian00101 # was extremely close to his father
+			#set_relation_friend = character:... # was also close to his mother
+		}
+	}
+	#3434.1.1 = { # 314 BC, approximate
+	#	effect = {
+	#		set_relation_rival = character:... # Demetrius and Lysimachus seem to have constantly traded insults
+	#	}
+	#}
+	#3447.1.1 = { # 307 BC
+	#	add_spouse = ... # Eurydike
+	#}
+	#3448.1.1 = { # 306 BC
+	#	effect = {
+	#		set_relation_lover = character:... # begins an affair with the courtesan Lamia
+	#	}
+	#}
+	3449.1.1 = { # 305 BC
+		trait = military_engineer
+		give_nickname = nick_poliorketes
+	}
+	3451.1.1 = { # 303 BC
+		#trait = rakish
+		#trait = profligate # his stay at Athens in the winter of 303 BC was full of excesses
+		add_spouse = epirote00216 # Deidameia
+	}
+	#3452.1.1 = { # 302 BC
+	#	effect = {
+	#		remove_relation_lover = character:... # his relationship with Lamia possibly fizzles out after he leaves Athens
+	#	}
+	#}
+	#3463.1.1 = { # 291 BC
+	#	add_spouse = ... # Lanassa
+	#}
+	#3465.1.1 = { # 289 BC
+	#	trait = ill # Pyrrhus was motivated to invade Macedon at this time because Demetrius was dangerously ill
+	#}
+	#3465.6.1 = { # 289 BC
+	#	remove_trait = ill 
+	#}
+	#3466.1.1 = { # 288 BC
+	#	effect = {
+	#		remove_relation_rival = character:...
+	#		set_relation_nemesis = character:... # Lysimachus invades Macedonia
+	#	}
+	#}
+	#3467.1.1 = { # 287 BC
+	#	add_spouse = ... # Ptolemais
+	#}
+	3470.1.1 = { # 284 BC
+		#remove_trait = rakish
+		#remove_trait = profligate
+		trait = drunkard
+		trait = comfort_eater # he really lets himself go in Seleucid captivity
+	}
+	3471.1.1 = { # 283 BC
+		death = { 
+			death_reason = death_dungeon_passive # died whilst being held captive by Seleucus
+		}
+	}
+}
+macedonian00103 = {
+	name = "Philippos"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = education_martial_2
+	father = macedonian00101 # Antigonos
+	#mother = ... # Stratonike
+	3420.1.1 = { # approximate
+		birth = yes # 334 BC
+	}
+	3448.1.1 = {
+		death = yes # 306 BC
+	}
+}
+macedonian00104 = {
+	name = "Antigonos" # Antigonus II Gonatas
+	dynasty = macedoniandyn001
+	dna = macedonian00104_antigonos_gonatas
+	religion = placeholder
+	culture = macedonian
+	diplomacy = 8
+	martial = 6
+	stewardship = 6
+	intrigue = 7
+	learning = 7
+	prowess = 1
+	trait = education_learning_3
+	trait = gregarious
+	trait = compassionate
+	trait = generous
+	trait = humble
+	trait = reveler_1
+	trait = shrewd
+	father = macedonian00102 # Demetrios
+	#mother = ... # Phila
+	3435.1.1 = {
+		give_nickname = nick_gonatas
+		birth = yes # 319 BC
+	}
+	#3474.1.1 = { # 280 BC
+	#	effect = {
+	#		set_relation_friend = character:... # loyally supported by his half-brother Craterus throughout.
+	#		add_hook = {
+	#			target = character:...
+	#			type = loyalty_hook
+	#		}
+	#	}
+	#}
+	#3478.1.1 = { # 276 BC, approximate
+	#	add_spouse = ... # Phila
+	#}
+	3479.1.1 = { # 275 BC
+		effect = {
+			set_relation_friend = character:euboean00102 # was good friends with the philosopher Menedemos
+		}
+	}
+	3515.1.1 = {
+		death = yes # 239 BC
+	}
+}
+macedonian00105 = {
+	name = "Alexandros"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00102 # Demetrios
+	mother = epirote00216 # Deidameia
+	3452.1.1 = { # approximate
+		birth = yes # 302 BC
+	}
+	3503.1.1 = { # made up
+		death = yes # 251 BC
+	}
+}
+macedonian00106 = {
+	name = "Demetrios" # Demetrius the Fair, king of Cyrene
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = beauty_good_3
+	trait = charming
+	trait = bossy
+	#trait = arrogant
+	#trait = ambitious
+	#trait = lustful
+	disallow_random_traits = yes
+	father = macedonian00102 # Demetrios
+	#mother = ... # Ptolemais
+	3469.1.1 = {
+		birth = yes # 285 BC
+	}
+	3479.1.1 = { # 275 BC
+		give_nickname = nick_ho_kalos # the Fair
+	}
+	3490.1.1 = { # 264 BC, made up
+		add_spouse = thessalian00210 # Olympias
+	}
+	3505.1.1 = { # 249 BC
+		add_spouse = ... # Berenike
+	}
+	#3506.1.1 = { # 248 BC
+	#	effect = {
+	#		set_relation_lover = character:... # begins an affair with his mother-in-law Apame
+	#	}
+	#}
+	3507.1.1 = { # 247 BC
+		death = { 
+			death_reason = death_murder_known # supposedly murdered on the orders of Berenice
+			#killer = ...
+		}
+	}
+}
+macedonian00107 = {
+	name = "Demetrios" # Demetrius the Thin
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = bastard
+	trait = spindly
+	father = macedonian00102 # Demetrios
+	#mother = ... # unnamed Illyrian woman
+	3470.1.1 = { # made up
+		give_nickname = nick_ho_leptos # the Thin
+		birth = yes # 284 BC
+	}
+	3501.1.1 = { # made up
+		death = yes # 253 BC
+	}
+}
+macedonian00108 = {
+	name = "Korrhagos"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00102 # Demetrios
+	#mother = ... # Eurydike
+	3448.1.1 = { # approximate
+		birth = yes # 306 BC
+	}
+	3503.1.1 = { # made up
+		death = yes # 251 BC
+	}
+}
+macedonian00109 = {
+	name = "Stratonike"
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = beauty_good_2
+	trait = content
+	# the following traits are based on a tale by Lucian that is almost certainly apocryphal but will make her a more interesting character
+	trait = stubborn
+	trait = cynical
+	trait = possessed_1 
+	father = macedonian00102 # Demetrios
+	#mother = ... # Phila
+	3437.1.1 = { # approximate
+		birth = yes # 317 BC
+	}
+	#3456.1.1 = { # 298 BC, approximate
+	#	add_spouse = ... # Seleukos
+	#}
+	#3461.1.1 = { # 293 BC, approximate
+	#	remove_spouse = ... # Seleukos
+	#	add_spouse = ... # Antiochos
+	#}
+	3500.9.1 = { # September 254 BC, approximate
+		death = yes
+	}
+}
+macedonian00110 = {
+	name = "Phila"
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = legitimized_bastard
+	father = macedonian00102 # Demetrios
+	#mother = ... # Lamia
+	3451.1.1 = { # approximate
+		birth = yes # 303 BC
+	}
+	3490.1.1 = { # made up
+		death = yes # 264 BC
+	}
+}
+macedonian00111 = {
+	name = "Alkyoneus"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = legitimized_bastard
+	trait = rowdy
+	trait = gregarious
+	trait = compassionate
+	trait = trusting
+	disallow_random_traits = yes
+	father = macedonian00104 # Antigonos
+	#mother = ... # Demo
+	3464.1.1 = { # approximate
+		birth = yes # 290 BC
+	}
+	3489.1.1 = { # 265 BC, speculative
+		death = { 
+			death_reason = death_battle # possibly died in battle against Areus
+		}
+	}
+}
+macedonian00112 = {
+	name = "Demetrios" # Demetrius II Aetolicus
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00104 # Antigonos
+	#mother = ... # Phila
+	3479.1.1 = { # 
+		birth = yes # 275 BC
+	}
+	#3501.1.1 = { # 253 BC, approximate
+	#	add_spouse = ... # Stratonike
+	#}
+	3515.1.1 = { # 239 BC, speculative
+		add_spouse = epirote00228 # Phthia
+		#remove_spouse = ... # Stratonike
+		#effect = {
+		#	set_relation_rival = character:... # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+		#}
+	}
+	3522.1.1 = { # 232 BC, speculative
+		give_nickname = nick_aitolikos # it appears that Demetrius invaded Aetolia around this time, giving a possible date for the adoption of his nickname
+	}
+	3525.1.1 = { # 229 BC
+		trait = wounded_3
+		death = { 
+			death_reason = death_wounds # died from his wounds following a battle against the Dardanians
+		}
+	}
+}
+macedonian00113 = {
+	name = "Antigonos" # Antigonus III Doson
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = education_martial_3
+	trait = cautious_leader
+	trait = fickle
+	trait = content
+	trait = just
+	trait = patient
+	father = macedonian00106 # Demetrios
+	mother = thessalian00210 # Olympias
+	3491.1.1 = { # approximate
+		birth = yes # 263 BC
+	}
+	#3527.1.1 = { # 229 BC, approximate
+	#	add_spouse = ... # Chryseis
+	#}
+	3529.1.1 = { # 229 BC, speculative
+		give_nickname = nick_doson # it's not clear when Antigonus earned his nickname, though Plutarch seems to imply it was around the same time he became King
+	}
+	3533.1.1 = { # 221 BC
+		death = { 
+			death_reason = death_accident # according to Polybius, he burst a blood vessel from shouting mid-battle
+		}
+	}
+}
+macedonian00114 = {
+	name = "Echekrates"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00106 # Demetrios
+	mother = thessalian00210 # Olympias
+	3499.1.1 = { # made up
+		birth = yes # 255 BC
+	}
+	3563.1.1 = { # made up
+		death = yes # 191 BC
+	}
+}
+macedonian00115 = {
+	name = "Apame" # Apame III of Bithynia
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00112 # Demetrios
+	#mother = ... # Stratonike
+	3504.1.1 = { # approximate
+		birth = yes # 250 BC
+	}
+	#3527.1.1 = { # 227 BC, made up
+	#	add_spouse = ... # Prousias
+	#}
+	3562.1.1 = { # made up
+		death = yes # 192 BC
+	}
+}
+macedonian00116 = {
+	name = "Philippos" # Philip V of Macedon
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	diplomacy = 8
+	martial = 7
+	stewardship = 6
+	intrigue = 8
+	learning = 7
+	prowess = 5
+	trait = legitimized_bastard
+	trait = intellect_good_2
+	trait = education_martial_3
+	trait = organizer
+	trait = reckless
+	trait = cynical
+	trait = deceitful
+	trait = ambitious
+	trait = vengeful
+	trait = reveler_1
+	trait = schemer
+	father = macedonian00112 # Demetrios
+	#mother = ... # Chryseis
+	3516.1.1 = {
+		birth = yes # 238 BC
+	}
+	#3539.1.1 = { # 218 BC, approximate
+	#	effect = {
+	#		set_relation_friend = character:... # it appears that he befriended Aratus the Younger at some point - Plutarch says their relationship used to be one of love
+	#	}
+	#}
+	#3539.1.1 = { # 215 BC, approximate
+	#	effect = {
+	#		set_relation_lover = character:... # begins an affair with Polykrateia, the wife of Aratus the Younger
+	#	}
+	#}
+	#3540.1.1 = { # 214 BC, approximate
+	#	effect = {
+	#		remove_relation_friend = character:...
+	#		set_relation_rival = character:... # falling out with Aratus the Younger, who calls him "the most deformed of humankind" following the events in Messene (and assumedly his discovery of the affair)
+	#	}
+	#}
+	3541.1.1 = { # 213 BC
+		trait = murderer # supposedly had both the elder and younger Aratus murdered around this time
+		add_spouse = ... # Polykrateia
+	}
+	3545.1.1 = { # 209 BC
+		trait = rakish # his licentious behaviour at the Argive Nemea is said to have alienated the Achaeans
+	}
+	#3547.1.1 = { # 207 BC
+	#	add_spouse = ... # Apame
+	#}
+	3574.1.1 = { # 280 BC
+		trait = kinslayer_3 # has his son Demetrius murdered
+		trait = depressed_1
+	}
+	3575.11.1 = { # November 279 BC, approximate
+		death = { 
+			death_reason = death_depressed # murdering his son took a huge toll on his health
+		}
+	}
+}
+macedonian00117 = {
+	name = "Antigonos"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00114 # Echekrates
+	trait = just
+	trait = compassionate
+	3540.1.1 = { # made up
+		birth = yes # 214 BC
+	}
+	3574.1.1 = { # 180 BC
+		effect = {
+			set_relation_rival = character:macedonian00118 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+		}
+	}
+	3575.12.1 = { # December 179 BC, approximate
+		death = { 
+			death_reason = death_execution_killer # put to death by Perseus following his seizure of the throne
+			killer = macedonian00118
+		}
+	}
+}
+macedonian00118 = {
+	name = "Perseus" # Perseus of Macedon
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = disputed_heritage
+	trait = education_martial_2
+	trait = deceitful
+	trait = temperate
+	trait = chaste
+	trait = greedy
+	father = macedonian00116 # Philippos
+	#mother = ... # Polykrateia
+	3542.1.1 = {
+		birth = yes # 212 BC
+	}
+	3572.1.1 = { # 182 BC
+		effect = {
+			set_relation_rival = character:macedonian00119 # a rivalry develops between Perseus and Demetrius
+		}
+	}
+	3574.1.1 = { # 180 BC
+		trait = murderer
+		trait = kinslayer_3 # although he didn't order the murder of Demetrius, he was more or less the mastermind of the whole affair
+		effect = {
+			set_relation_rival = character:macedonian00117 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+		}
+	}
+	3575.1.1 = { # 179 BC
+		trait = disinherited # passed over for succession in favour of Antigonus when it is discovered he fabricated the evidence of Demetrius' treason 
+	}
+	#3576.1.1 = { # 178 BC
+	#	add_spouse = ... # Laodike
+	#}
+	3589.1.1 = { # 165 BC
+		trait = inappetetic
+		death = { 
+			death_reason = death_dungeon_passive # died in Roman captivity, either by starving himself or from ill-treatment
+		}
+	}
+}
+macedonian00119 = {
+	name = "Demetrios"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = education_diplomacy_2
+	trait = trusting
+	trait = ambitious
+	trait = arrogant
+	father = macedonian00116 # Philippos
+	#mother = ... # Apame
+	3548.1.1 = { # approximate
+		birth = yes # 206 BC
+	}
+	3572.1.1 = { # 182 BC
+		effect = {
+			set_relation_rival = character:macedonian00118 # a rivalry develops between Perseus and Demetrius
+		}
+	}
+	3574.1.1 = { # 180 BC
+		death = { 
+			death_reason = death_murder_known # poisoned by Didas on the orders of Philip
+			killer = macedonian00116
+		}
+	}
+}
+macedonian00120 = {
+	name = "Apame" # Apame IV of Bithynia
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00116 # Philippos
+	#mother = ... # Apame
+	3558.1.1 = { # approximate
+		birth = yes # 196 BC
+	}
+	#3576.1.1 = { # 178 BC, approximate
+	#	add_spouse = ... # Prousias
+	#}
+	3608.1.1 = { # made up
+		death = yes # 146 BC
+	}
+}
+macedonian00121 = {
+	name = "Phila" # made up name, married the Thracian dynast Teres
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00116 # Philippos
+	#mother = ... # Apame
+	3554.1.1 = { # made up
+		birth = yes # 200 BC
+	}
+	#3569.1.1 = { # 185 BC, speculative
+	#	add_spouse = ... # Teres
+	#}
+	3615.1.1 = { # made up
+		death = yes # 139 BC
+	}
+}
+macedonian00122 = {
+	name = "Philippos" # possibly a son of Philip V who was then adopted by Perseus
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00118 # Perseus
+	3573.1.1 = {
+		birth = yes # 181 BC
+	}
+	3591.1.1 = { # 163 BC
+		death = { 
+			death_reason = death_dungeon_passive # died in Roman captivity, possibly due to ill-treatment
+		}
+	}
+}
+macedonian00123 = {
+	name = "Alexandros"
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	trait = education_stewardship_3
+	father = macedonian00118 # Perseus
+	#mother = ... # Laodike
+	3575.1.1 = { # approximate
+		birth = yes # 177 BC
+	}
+	3632.1.1 = { # made up
+		death = yes # 122 BC
+	}
+}
+macedonian00124 = {
+	name = "Laodike" # made up name
+	female = yes
+	dynasty = macedoniandyn001
+	religion = placeholder
+	culture = macedonian
+	father = macedonian00118 # Perseus
+	#mother = ... # Laodike
+	3579.1.1 = { # made up
+		birth = yes # 175 BC
+	}
+	3591.1.1 = { # 163 BC, approximate
+		death = { 
+			death_reason = death_dungeon_passive # died in Roman captivity, possibly due to ill-treatment
+		}
+	}
+}
