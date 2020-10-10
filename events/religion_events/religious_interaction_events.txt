@@ -907,29 +907,13 @@ religious_interaction.2011 = {
 	#Refuse
 	option = {
 		name = religious_interaction.2011.b
-		if = {
-			limit = {
-				refusing_conversion_is_crime_trigger = {
-					CHARACTER = scope:recipient
-				}
-			}
-			add_opinion = {
-				target = scope:recipient
-				modifier = illegal_resisted_conversion_opinion
-				years = 15
-			}
-		}
-		else = {
-			hidden_effect = {
-				add_opinion = {
-					target = scope:recipient
-					modifier = resisted_conversion_opinion
-					years = 15
-				}
-			}
+		add_opinion = {
+			target = scope:recipient
+			modifier = illegal_resisted_conversion_opinion
+			years = 15
 		}
 		ai_chance = {
-			base = 25
+			base = 10
 			modifier = {
 				add = 100
 				gold < demand_conversion_bribe_size
@@ -1009,30 +993,14 @@ religious_interaction.2012 = {
 	#Refuse
 	option = {
 		name = religious_interaction.2012.b
-		if = {
-			limit = {
-				refusing_conversion_is_crime_trigger = {
-					CHARACTER = scope:recipient
-				}
-			}
-			add_opinion = {
-				target = scope:recipient
-				modifier = illegal_resisted_conversion_opinion
-				years = 15
-			}
-		}
-		else = {
-			hidden_effect = {
-				add_opinion = {
-					target = scope:recipient
-					modifier = resisted_conversion_opinion
-					years = 15
-				}
-			}
+		add_opinion = {
+			target = scope:recipient
+			modifier = illegal_resisted_conversion_opinion
+			years = 15
 		}
 
 		ai_chance = {
-			base = 25
+			base = 10
 		}
 	}
 

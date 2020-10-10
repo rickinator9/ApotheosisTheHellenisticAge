@@ -587,6 +587,13 @@ yearly.5001 = {
 			scope:bickering_winner = {
 				this = scope:bickering_defender
 				can_marry_trigger = yes
+				#To account for a person marrying their concubines/consorts
+				trigger_if = {
+					limit = {
+						is_concubine = yes
+					}
+					is_concubine_of = root
+				}
 			}
 			OR = {
 				AND = {
