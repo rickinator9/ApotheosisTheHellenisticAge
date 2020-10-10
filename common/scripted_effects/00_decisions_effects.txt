@@ -49,7 +49,7 @@ accept_cannibalism_decision_effect = {
 	custom_tooltip = faith_accept_cannibalism
 	root.faith = {
 		set_variable = {
-			name = accepted_cannibalsim
+			name = accepted_cannibalism
 			value = yes
 		}
 	}
@@ -188,7 +188,23 @@ convert_whole_realm_to_feudalism_effect = {
 	hidden_effect = {
 		every_realm_province = {
 			limit = { has_holding_type = tribal_holding }
-			set_holding_type = city_holding
+			set_variable = {
+				name = tribal_to_feudal_building_level
+				value = combined_building_level
+				days = 1
+			}
+			set_holding_type = castle_holding
+			while = {
+				limit = {
+					var:tribal_to_feudal_building_level > 1
+				}
+				generate_building = yes
+				change_variable = {
+					name = tribal_to_feudal_building_level
+					subtract = 1
+				}
+			}
+			remove_variable = tribal_to_feudal_building_level
 		}
 		#Nuke tribal authorities.
 		if = {

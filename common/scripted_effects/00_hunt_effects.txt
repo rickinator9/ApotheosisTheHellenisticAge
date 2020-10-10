@@ -231,7 +231,7 @@ dangerous_animal_effect = {
 				# not in africa
 				modifier = {
 					factor = 0
-					location = { geographical_region = world_africa }
+					scope:target.location = { geographical_region = world_africa }
 				}
 				set_variable = {
 					name = local_animal
@@ -239,6 +239,11 @@ dangerous_animal_effect = {
 				}
 			}
 			10 = {
+				# not in europe
+				modifier = {
+					factor = 0
+					scope:target.location = { geographical_region = world_europe }
+				}
 				set_variable = {
 					name = local_animal
 					value = flag:lion
@@ -248,13 +253,7 @@ dangerous_animal_effect = {
 				# india only
 				modifier = {
 					factor = 0
-					location = { 
-						NOR = { 
-							geographical_region = world_greekaegean
-							geographical_region = world_africa
-							geographical_region = world_levant
-						}
-					}
+					scope:target.location = { NOT = { geographical_region = world_india } }
 				}
 				set_variable = {
 					name = local_animal
