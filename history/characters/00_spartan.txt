@@ -7,9 +7,15 @@ spartan00101 = {
 	#dynasty = ... # Herakleidas
 	religion = placeholder
 	culture = spartan
+	#father = ... # Aristodamos
+	#mother = ... # Argeia
 	2650.1.1 = { # made up
 		birth = yes # 1104 BC
+		trait = twin
 	}
+	#2684.1.1 = { # 1070 BC, made up
+	#	add_spouse = ... # Lathria
+	#}
 	2744.1.1 = { # speculative
 		death = yes # 1010 BC
 	}
@@ -20,6 +26,7 @@ spartan00102 = {
 	religion = placeholder
 	culture = spartan
 	father = spartan00101 # Eurysthenes
+	#mother = ... # Lathria
 	2685.1.1 = { # made up
 		birth = yes # 1069 BC
 	}
@@ -125,6 +132,7 @@ spartan00110 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = possessed_1
 	father = spartan00108 # Irbos
 	2814.1.1 = { # made up
 		birth = yes # 940 BC
@@ -138,6 +146,7 @@ spartan00111 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = possessed_1
 	father = spartan00108 # Irbos
 	2817.1.1 = { # made up
 		birth = yes # 937 BC
@@ -287,7 +296,7 @@ spartan00121 = {
 	}
 }
 spartan00122 = {
-	name = "Anaxandridas" # king Anaxandridas
+	name = "Anaxandridas" # king Anaxandridas II
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
@@ -297,6 +306,9 @@ spartan00122 = {
 	}
 	3200.1.1 = { # 554 BC, made up
 		add_spouse = spartan00128 # Euonyma
+		effect = {
+			set_relation_lover = character:spartan00128 # refused to divorce his first wife because of his love for her
+		}
 	}
 	#3212.1.1 = { # 542 BC, made up # forced by the Ephors to take a second wife due to the lack of an heir
 	#	add_spouse = ... # Gorgo
@@ -324,10 +336,20 @@ spartan00124 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_2
+	trait = ambitious
+	trait = cynical
+	trait = adventurer
+	trait = strong
 	father = spartan00122 # Anaxandridas
 	mother = spartan00128 # Euonyma
-	3216.1.1 = { # approximate
-		birth = yes # 538 BC
+	3214.1.1 = { # approximate
+		birth = yes # 540 BC
+	}
+	3234.1.1 = { # 520 BC, approximate
+		effect = {
+			set_relation_rival = character:spartan00127 # unsuccessfully challenges his half-brother Kleomenes for the throne
+		}
 	}
 	3244.1.1 = { # 510 BC
 		death = { 
@@ -340,10 +362,17 @@ spartan00125 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_3
+	trait = brave
+	trait = stubborn
+	trait = arrogant
+	trait = unyielding_defender
+	trait = strong
 	father = spartan00122 # Anaxandridas
 	mother = spartan00128 # Euonyma
-	3221.1.1 = { # approximate
-		birth = yes # 533 BC
+	3215.1.1 = { # approximate
+		birth = yes # 539 BC
+		trait = twin
 	}
 	3264.1.1 = { # 490 BC, made up
 		add_spouse = spartan00133 # Gorgo
@@ -361,8 +390,9 @@ spartan00126 = {
 	culture = spartan
 	father = spartan00122 # Anaxandridas
 	mother = spartan00128 # Euonyma
-	3221.1.1 = { # appoximate
-		birth = yes # 533 BC
+	3215.1.1 = { # approximate
+		birth = yes # 539 BC
+		trait = twin
 	}
 	3242.1.1 = { # 512 BC, made up
 		add_spouse = spartanlowborn2 # Anchithea
@@ -376,10 +406,22 @@ spartan00127 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_4
+	trait = ambitious
+	trait = cynical
+	trait = callous
+	trait = temperate
+	trait = intellect_good_2
+	trait = lunatic_1
 	father = spartan00122 # Anaxandridas
 	#mother = ... # Gorgo
 	3213.1.1 = { # approximate
 		birth = yes # 541 BC
+	}
+	3234.1.1 = { # 520 BC, approximate
+		effect = {
+			set_relation_rival = character:spartan00124 # is challenged by his half-brother Dorieus for the throne
+		}
 	}
 	3267.1.1 = { # 487 BC
 		death = { 
@@ -393,12 +435,15 @@ spartan00128 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
-	mother = spartan00121 # Timasimbrota
+	mother = spartan00123 # Timasimbrota
 	3183.1.1 = { # made up
 		birth = yes # 571 BC
 	}
 	3200.1.1 = { # 554 BC, made up
 		add_spouse = spartan00122 # Anaxandridas
+		effect = {
+			set_relation_lover = character:spartan00122 # Anaxandridas refused to divorce her despite being under pressure from the ephors
+		}
 	}
 	3252.1.1 = { # made up
 		death = yes # 502 BC
@@ -436,6 +481,11 @@ spartan00131 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_3
+	trait = arrogant
+	trait = arbitrary
+	trait = deceitful
+	trait = ambitious
 	father = spartan00126 # Kleombrotos
 	mother = spartanlowborn2 # Anchithea
 	3243.1.1 = { # approximate
@@ -467,9 +517,13 @@ spartan00133 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_diplomacy_4
+	trait = honest
+	trait = arrogant
+	trait = intellect_good_2
 	father = spartan00127 # Kleomenes
-	3245.1.1 = { # made up
-		birth = yes # 509 BC
+	3246.1.1 = { # made up
+		birth = yes # 508 BC
 	}
 	3264.1.1 = { # 490 BC, made up
 		add_spouse = spartan00125 # Leonidas
@@ -483,6 +537,9 @@ spartan00134 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_intrigue_2
+	trait = greedy
+	trait = deceitful
 	father = spartan00131 # Pausanias
 	3279.1.1 = { # approximate
 		birth = yes # 475 BC
@@ -509,6 +566,7 @@ spartan00136 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = deceitful
 	father = spartan00131 # Pausanias
 	3284.1.1 = { # made up
 		birth = yes # 470 BC
@@ -522,10 +580,16 @@ spartan00137 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_1
+	trait = just
+	trait = forgiving
 	father = spartan00134 # Pleistoanax
 	3308.1.1 = { # approximate
 		birth = yes # 446 BC
 	}
+	#3359.1.1 = { # 395 BC, approximate
+	#	employer = ... # condemned to death but managed to escape to Tegea
+	#}
 	3380.1.1 = { # approximate
 		death = yes # 374 BC
 	}
@@ -548,6 +612,14 @@ spartan00139 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	sexuality = bisexual
+	trait = education_martial_3
+	trait = just
+	trait = calm
+	trait = shy
+	trait = zealous
+	trait = military_engineer
+	trait = shrewd
 	father = spartan00137 # Pausanias
 	3341.1.1 = { # approximate
 		birth = yes # 413 BC
@@ -564,6 +636,7 @@ spartan00140 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_1
 	father = spartan00137 # Pausanias
 	3344.1.1 = { # approximate
 		birth = yes # 410 BC
@@ -606,6 +679,20 @@ spartan00143 = {
 	dna = spartan00143_kleomymos
 	religion = placeholder
 	culture = spartan
+	diplomacy = 7
+	martial = 8
+	stewardship = 4
+	intrigue = 5
+	learning = 2
+	prowess = 6
+	trait = education_martial_3
+	trait = vengeful
+	trait = wrathful
+	trait = lustful
+	trait = patient
+	trait = adventurer
+	trait = diplomat
+	trait = denounced
 	father = spartan00142 # Kleomenes
 	3415.1.1 = { # approximate
 		birth = yes # 339 BC
@@ -622,7 +709,6 @@ spartan00143 = {
 	}
 	#3483.1.1 = { # 271 BC, approximate
 	#	remove_spouse = ... # Chilonis
-	#	employer = ... # appears to have fled
 	#}
 	3484.1.1 = { # 270 BC, approximate
 		death = { 
@@ -635,6 +721,11 @@ spartan00144 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = education_martial_2
+	trait = greedy
+	trait = sadistic
+	trait = deceitful
+	trait = adventurer
 	father = spartan00142 # Kleomenes
 	3402.1.1 = { # approximate
 		birth = yes # 352 BC
@@ -648,6 +739,9 @@ spartan00145 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	trait = shy # traits to explain why he might have slipped through the historical records (assuming he did exist)
+	trait = content
+	trait = reclusive
 	father = spartan00142 # Kleomenes
 	3419.1.1 = { # made up
 		birth = yes # 335 BC
@@ -661,12 +755,26 @@ spartan00146 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	diplomacy = 6
+	martial = 4
+	stewardship = 3
+	intrigue = 9
+	learning = 3
+	prowess = 3
+	trait = education_intrigue_2
+	trait = callous
+	trait = greedy
+	trait = deceitful
+	trait = lazy
 	father = spartan00143 # Kleonymos
 	3438.1.1 = { # approximate
 		birth = yes # 316 BC
 	}
-	#3487.1.1 = { # 267 BC, approximate
-	#	add_spouse = ... # Kratesikleia
+	3479.1.1 = { # 275 BC, made up
+		add_spouse = spartanlowborn3 # Kratesikleia
+	}
+	#3512.1.1 = { # 242 BC, approximate
+	#	employer = ... # briefly exiled to Tegea
 	#}
 	3519.1.1 = { 
 		death = yes # 235 BC
@@ -678,6 +786,16 @@ spartan00147 = {
 	dna = spartan00147_areus
 	religion = placeholder
 	culture = spartan
+	diplomacy = 8
+	martial = 6
+	stewardship = 6
+	intrigue = 3
+	learning = 4
+	prowess = 5
+	trait = education_stewardship_3
+	trait = ambitious
+	trait = greedy
+	trait = cynical
 	father = spartan00144 # Akrotatos
 	3440.1.1 = { # speculative
 		birth = yes # 314 BC
@@ -706,13 +824,31 @@ spartan00149 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
-	father = spartan00146 # Leonidas
-	#mother = ... # Kratesikleia
+	sexuality = bisexual
+	diplomacy = 8
+	martial = 7
+	stewardship = 9
+	intrigue = 4
+	learning = 7
+	prowess = 6
+	trait = education_martial_3
+	trait = temperate
+	trait = ambitious
+	trait = just
+	trait = humble
+	trait = administrator
+	trait = reaver
+	trait = aggressive_attacker
+	father = spartan00146 # Leonidas	
+	mother = spartanlowborn3 # Kratesikleia
 	3490.1.1 = { # approximate
 		birth = yes # 264 BC
 	}
 	#3514.1.1 = { # 240 BC, made up
 	#	add_spouse = ... # Agiatis
+	#}
+	#3532.9.1 = { # September 222 BC, approximate
+	#	employer = ... # flees to the court of Ptolemy III Euergetes
 	#}
 	3535.1.1 = { # 219 BC
 		death = { 
@@ -725,8 +861,8 @@ spartan00150 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
-	father = spartan00146 # Leonidas
-	#mother = ... # Kratesikleia
+	father = spartan00146 # Leonidas	
+	mother = spartanlowborn3 # Kratesikleia
 	3494.1.1 = { # approximate
 		birth = yes # 260 BC
 	}
@@ -742,8 +878,8 @@ spartan00151 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
-	father = spartan00146 # Leonidas
-	#mother = ... # Kratesikleia
+	father = spartan00146 # Leonidas	
+	mother = spartanlowborn3 # Kratesikleia
 	3488.1.1 = { # made up
 		birth = yes # 266 BC
 	}
@@ -759,6 +895,18 @@ spartan00152 = {
 	dynasty = spartandyn001 # Agiadas
 	religion = placeholder
 	culture = spartan
+	diplomacy = 6
+	martial = 7
+	stewardship = 3
+	intrigue = 5
+	learning = 2
+	prowess = 7
+	trait = education_martial_3
+	trait = brave
+	trait = diligent
+	trait = arrogant
+	trait = beauty_good_1
+	trait = rough_terrain_expert
 	father = spartan00147 # Areus
 	3461.1.1 = { # speculative
 		birth = yes # 293 BC
@@ -783,8 +931,8 @@ spartan00153 = {
 	religion = placeholder
 	culture = spartan
 	father = spartan00148 # Kleomenes
-	3477.1.1 = { # made up
-		birth = yes # 277 BC
+	3483.1.1 = { # made up
+		birth = yes # 271 BC
 	}
 	3506.1.1 = { # 248 BC, made up
 		add_spouse = spartan00150 # Chilonis
@@ -865,10 +1013,12 @@ spartan00158 = {
 	3492.1.1 = { 
 		birth = yes # 262 BC
 	}
-	3500.1.1 = { 
-		death = yes # 254 BC
-	}
-}
+	3500.1.1 = { # 254 BC
+		trait = ill
+		death = { 
+			death_reason = death_ill # died of disease according to Pausanias
+		}
+	}}
 spartan00159 = {
 	name = "Hagesipolis" # king Agesipolis III
 	dynasty = spartandyn001 # Agiadas
@@ -882,6 +1032,979 @@ spartan00159 = {
 		death = { 
 			death_reason = death_fight # killed by pirates while travelling to Rome 
 		}
+	}
+}
+spartan00160 = {
+	name = "Leonidas" # commander serving under Perseus in 171 BC, said to be of royal blood
+	dynasty = spartandyn001 # Agiadas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_2
+	trait = fickle
+	father = spartan00157 # Kleomenes, speculative
+	3547.1.1 = { # made up
+		birth = yes # 207 BC
+		give_nickname = nick_lakonikos
+	}
+	3602.1.1 = { # made up
+		death = yes # 152 BC
+	}
+}
+
+# Eurypontidas - Sparta
+
+spartan00201 = {
+	name = "Prokles" # king Procles, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	#father = ... # Aristodamos
+	#mother = ... # Argeia
+	2650.1.1 = { # speculative
+		birth = yes # 1104 BC
+	}
+	2743.1.1 = { # speculative
+		death = yes # 1011 BC
+	}
+}
+spartan00202 = {
+	name = "Soos" # king Soos, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_3
+	trait = calm
+	trait = stubborn
+	father = spartan00201 # Prokles
+	2694.1.1 = { # made up
+		birth = yes # 1060 BC
+	}
+	2762.1.1 = { # made up
+		death = yes # 992 BC
+	}
+}
+spartan00203 = {
+	name = "Euryphon" # king Eurypon, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	father = spartan00202 # Soos
+	2737.1.1 = { # made up
+		birth = yes # 1017 BC
+	}
+	2794.1.1 = { # speculative
+		death = yes # 960 BC
+	}
+}
+spartan00204 = {
+	name = "Prytanis" # king Prytanis, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00203 # Euryphon
+	2772.1.1 = { # made up
+		birth = yes # 982 BC
+	}
+	2843.1.1 = { # speculative
+		death = yes # 911 BC
+	}
+}
+spartan00205 = {
+	name = "Eunomos" # king Eunomus, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00204 # Prytanis
+	2819.1.1 = { # made up
+		birth = yes # 935 BC
+	}
+	2855.1.1 = { # 899 BC, made up
+		add_spouse = spartanlowborn4 # Dionassa
+	}
+	2888.1.1 = { # 866 BC, speculative
+		death = { 
+			death_reason = death_fight # Plutarch says he was stabbed while trying to separate some rioters
+		}
+	}
+}
+spartan00206 = {
+	name = "Polydektas" # king Polydectes, dubious historicity 
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00205 # Eunomos
+	2856.1.1 = { # made up
+		birth = yes # 898 BC
+	}
+	2891.1.1 = { # made up
+		death = yes # 863 BC
+	}
+}
+spartan00207 = {
+	name = "Lykourgos" # Lycurgus the lawgiver, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 9
+	martial = 7
+	stewardship = 13
+	intrigue = 2
+	learning = 11
+	trait = education_stewardship_4
+	trait = temperate
+	trait = just
+	trait = content
+	trait = honest
+	trait = intellect_good_3
+	trait = administrator
+	father = spartan00205 # Eunomos
+	mother = spartanlowborn4 # Dionassa
+	2861.1.1 = { # made up
+		birth = yes # 893 BC
+	}
+	2951.1.1 = { # made up
+		death = yes # 803 BC
+	}
+}
+spartan00208 = {
+	name = "Charillos" # king Charilaus, dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00206 # Polydektas
+	2892.1.1 = { # made up
+		birth = yes # 862 BC
+	}
+	2948.1.1 = { # speculative
+		death = yes # 806 BC
+	}
+}
+spartan00209 = {
+	name = "Eukosmos" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00207 # Lykourgos
+	2894.1.1 = { # made up
+		birth = yes # 860 BC
+	}
+	2959.1.1 = { # made up
+		death = yes # 795 BC
+	}
+}
+spartan00210 = {
+	name = "Antioros" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00207 # Lykourgos
+	2900.1.1 = { # made up
+		birth = yes # 854 BC
+	}
+	2950.1.1 = { # made up
+		death = yes # 804 BC
+	}
+}
+spartan00211 = {
+	name = "Nikandros" # king Nicander
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00208 # Charillos
+	2929.1.1 = { # made up
+		birth = yes # 825 BC
+	}
+	2986.1.1 = { # speculative
+		death = yes # 768 BC
+	}
+}
+spartan00212 = {
+	name = "Theopompos" # king Theopompus
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00211 # Nikandros
+	2961.1.1 = { # made up
+		birth = yes # 793 BC
+	}
+	#2993.1.1 = { # 761 BC, made up
+	#	add_spouse = ... # Chilonis
+	#}
+	3033.1.1 = { # speculative
+		death = yes # 721 BC
+	}
+}
+spartan00213 = {
+	name = "Anaxandridas" # king Anaxandridas I
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00212 # Theopompos
+	2994.1.1 = { # made up
+		birth = yes # 760 BC
+	}
+	3039.1.1 = { # made up
+		death = yes # 715 BC
+	}
+}
+spartan00214 = {
+	name = "Archidamos" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00212 # Theopompos
+	2997.1.1 = { # made up
+		birth = yes # 757 BC
+	}
+	3055.1.1 = { # made up
+		death = yes # 699 BC
+	}
+}
+spartan00215 = {
+	name = "Archidamos" # king Archidamus I
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00213 # Anaxandridas
+	3024.1.1 = { # made up
+		birth = yes # 730 BC
+	}
+	3091.1.1 = { # made up
+		death = yes # 663 BC
+	}
+}
+spartan00216 = {
+	name = "Zeuxidamos" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00214 # Archidamos
+	3028.1.1 = { # made up
+		birth = yes # 726 BC
+	}
+	3066.1.1 = { # made up
+		death = yes # 688 BC
+	}
+}
+spartan00217 = {
+	name = "Anaxilas" # king Anaxilas
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00215 # Archidamos
+	3049.1.1 = { # made up
+		birth = yes # 705 BC
+	}
+	3106.1.1 = { # made up
+		death = yes # 648 BC
+	}
+}
+spartan00218 = {
+	name = "Anaxidamos" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00216 # Zeuxidamos
+	3052.1.1 = { # made up
+		birth = yes # 702 BC
+	}
+	3113.1.1 = { # made up
+		death = yes # 641 BC
+	}
+}
+spartan00219 = {
+	name = "Latychidas" # king Leotychidas I
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00217 # Anaxilas
+	3078.1.1 = { # made up
+		birth = yes # 676 BC
+	}
+	3134.1.1 = { # made up
+		death = yes # 620 BC
+	}
+}
+spartan00220 = {
+	name = "Archidamos" # dubious historicity
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00218 # Anaxidamos
+	3087.1.1 = { # made up
+		birth = yes # 667 BC
+	}
+	3148.1.1 = { # made up
+		death = yes # 606 BC
+	}
+}
+spartan00221 = {
+	name = "Hippokratidas" # king Hippocratidas
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00219 # Latychidas
+	3106.1.1 = { # made up
+		birth = yes # 648 BC
+	}
+	3150.1.1 = { # made up
+		death = yes # 604 BC
+	}
+}
+spartan00222 = {
+	name = "Hagesikles" # king Agesicles
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00220 # Archidamos
+	3124.1.1 = { # made up
+		birth = yes # 630 BC
+	}
+	3192.1.1 = { # made up
+		death = yes # 562 BC
+	}
+}
+spartan00223 = {
+	name = "Hagesilaos"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00221 # Hippokratidas
+	3150.1.1 = { # made up
+		birth = yes # 604 BC
+	}
+	3196.1.1 = { # made up
+		death = yes # 558 BC
+	}
+}
+spartan00224 = {
+	name = "Ariston" # king Ariston
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = deceitful
+	trait = callous
+	trait = infertile
+	father = spartan00222 # Hagesikles
+	3159.1.1 = { # made up
+		birth = yes # 595 BC
+	}
+	#3175.1.1 = { # 579 BC, made up
+	#	effect = {
+	#		add_relation_best_friend = character:... # according to Herodotus he was best friends with Agetus 
+	#	}
+	#}
+	3207.1.1 = { # 547 BC, made up
+		add_spouse = spartanlowborn5 # Oporis (this was actually his third marriage, the previous two failing to produce a son)
+		#effect = {
+		#	remove_relation_best_friend = character:... # stealing someone's spouse *probably* isn't the best way to maintain a friendship 
+		#}
+	}
+	3239.1.1 = { # approximate
+		death = yes # 515 BC
+	}
+}
+spartan00225 = {
+	name = "Menares"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00223 # Hagesilaos
+	3182.1.1 = { # made up
+		birth = yes # 572 BC
+	}
+	3226.1.1 = { # made up
+		death = yes # 528 BC
+	}
+}
+spartan00226 = {
+	name = "Latychidas" # king Leotychidas II
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_2
+	trait = greedy
+	trait = ambitious
+	father = spartan00225 # Menares
+	3210.1.1 = { # approximate
+		birth = yes # 544 BC
+	}
+	#3262.1.1 = { # 492 BC, made up
+	#	add_spouse = ... # Eurydama
+	#}
+	#3278.1.1 = { # 476 BC, approximate
+	#	employer = ... # flees to Tegea after being tried for accepting bribes from the Aleuadae
+	#}
+	3285.1.1 = { 
+		death = yes # 469 BC
+	}
+}
+spartan00227 = {
+	name = "Zeuxidamos" # nicknamed "Kyniskos" (little hound}
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00226 # Latychidas
+	3236.1.1 = { # made up
+		birth = yes # 518 BC
+		give_nickname = nick_kyniskos
+	}
+	3261.1.1 = { # 493 BC, made up
+		trait = ill
+		death = { 
+			death_reason = death_ill # died of disease according to Pausanias
+		}
+	}
+}
+spartan00228 = {
+	name = "Lampito"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00226 # Latychidas
+	#mother = ... # Eurydama
+	3263.1.1 = { # made up
+		birth = yes # 491 BC
+	}
+	3280.1.1 = { # 474 BC, made up
+		add_spouse = spartan00229 # Archidamos
+	}
+	3308.1.1 = { # made up
+		death = yes # 446 BC
+	}
+}
+spartan00229 = {
+	name = "Archidamos" # king Archidamus II
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	trait = calm
+	trait = patient
+	trait = content
+	trait = shrewd
+	father = spartan00227 # Zeuxidamos
+	3258.1.1 = { # approximate
+		birth = yes # 496 BC
+	}
+	3280.1.1 = { # 474 BC, made up
+		add_spouse = spartan00228 # Lampito
+	}
+	#3309.1.1 = { # 445 BC, made up
+	#	add_spouse = ... # Eupolia
+	#}
+	3327.1.1 = { 
+		death = yes # 427 BC
+	}
+}
+spartan00230 = {
+	name = "Agis" # king Agis II
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_3
+	trait = zealous
+	trait = patient
+	trait = forgiving
+	trait = calm
+	trait = flexible_leader
+	father = spartan00229 # Archidamos
+	mother = spartan00228 # Lampito
+	3292.1.1 = { # approximate
+		birth = yes # 462 BC
+	}
+	3329.1.1 = { # 425 BC, made up
+		add_spouse = spartanlowborn6 # Timaia
+	}
+	3354.1.1 = { # 400 BC
+		trait = ill
+		death = { 
+			death_reason = death_ill
+		}
+	}
+}
+spartan00231 = {
+	name = "Hagesilaos" # king Agesilaus II
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	sexuality = homosexual
+	diplomacy = 8
+	martial = 6
+	stewardship = 3
+	intrigue = 1
+	learning = 7
+	prowess = 7
+	trait = education_martial_2
+	trait = brave
+	trait = compassionate
+	trait = calm
+	trait = vengeful
+	trait = clubfooted
+	trait = beauty_bad_1
+	trait = cautious_leader
+	trait = rough_terrain_expert
+	trait = shrewd
+	trait = family_first
+	father = spartan00229 # Archidamos
+	#mother = ... # Eupolia
+	3310.1.1 = { 
+		birth = yes # 444 BC
+	}
+	#3326.1.1 = { # 428 BC, approximate
+	#	effect = {
+	#		set_relation_lover = character:... # begins pederastic relationship with Lysander
+	#	}
+	#}
+	#3343.1.1 = { # 411 BC, made up
+	#	add_spouse = ... # Kleora
+	#	effect = {
+	#		remove_relation_lover = character:... # pederastic relation ends, possibly around the time of his marriage or earlier
+	#		add_relation_friend = character:... # they remain close, evidenced by Lysander securing him the kingship
+	#	}
+	#}
+	#3359.1.1 = { # 395 BC, approximate
+	#	effect = {
+	#		remove_relation_friend = character:...
+	#		add_relation_rival = character:... # Plutarch says that he had a falling out with Lysander, though this isn't apparent in Xenophon
+	#	}
+	#}
+	#3378.1.1 = { # 376 BC
+	#	trait = ill # suffers from a grave, but unspecified illness
+	#}
+	#3383.1.1 = { # 371 BC
+	#	remove_trait = ill 
+	#}
+	3394.1.1 = { 
+		death = yes # 360 BC
+	}
+}
+spartan00232 = {
+	name = "Kyniska"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = ambitious
+	trait = brave
+	trait = diligent
+	father = spartan00229 # Archidamos
+	#mother = ... # Eupolia
+	3314.1.1 = { # approximate
+		birth = yes # 440 BC
+	}
+	3382.1.1 = { # made up
+		death = yes # 372 BC
+	}
+}
+spartan00233 = {
+	name = "Archidamos" # king Archidamus III
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	sexuality = bisexual
+	trait = education_martial_2
+	trait = compassionate
+	trait = brave
+	trait = generous
+	father = spartan00231 # Hagesilaos
+	#mother = ... # Kleora
+	3352.1.1 = { # approximate
+		birth = yes # 402 BC
+	}
+	#3377.1.1 = { # 377 BC, made up
+	#	add_spouse = ... # Deinicha
+	#}
+	3416.8.2 = {  # 2 August 338 BC
+		death = { 
+			death_reason = death_battle # died in Italy the same day as the battle of Chaeronea
+		}
+	}
+}
+spartan00234 = {
+	name = "Eupolia"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00231 # Hagesilaos
+	#mother = ... # Kleora
+	3344.1.1 = { # made up
+		birth = yes # 410 BC
+	}
+	3397.1.1 = { # made up
+		death = yes # 357 BC
+	}
+}
+spartan00235 = {
+	name = "Proauga"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00231 # Hagesilaos
+	#mother = ... # Kleora
+	3349.1.1 = { # made up
+		birth = yes # 405 BC
+	}
+	3392.1.1 = { # made up
+		death = yes # 362 BC
+	}
+}
+spartan00236 = {
+	name = "Eudamidas" # king Eudamidas I
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	trait = calm
+	trait = impatient
+	trait = arrogant
+	father = spartan00233 # Archidamos
+	#mother = ... # Deinicha
+	3384.1.1 = { # approximate
+		birth = yes # 370 BC
+	}
+	3456.1.1 = { # approximate
+		death = yes # 298 BC
+	}
+}
+spartan00237 = {
+	name = "Agis" # king Agis III
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_2
+	trait = brave
+	trait = ambitious
+	trait = just
+	trait = strong
+	trait = unyielding_defender
+	father = spartan00233 # Archidamos
+	#mother = ... # Deinicha
+	3378.1.1 = { # approximate
+		birth = yes # 376 BC
+	}
+	3423.1.1 = { # 331 BC
+		death = { 
+			death_reason = death_battle # died in battle against Antipater
+		}
+	}
+}
+spartan00238 = {
+	name = "Hagesilaos"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_2
+	father = spartan00233 # Archidamos
+	#mother = ... # Deinicha
+	3388.1.1 = { # made up
+		birth = yes # 366 BC
+	}
+	3432.1.1 = { # made up
+		death = yes # 322 BC
+	}
+}
+spartan00239 = {
+	name = "Archidamos" # king Archidamus IV
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_1
+	trait = craven
+	trait = shy
+	trait = content
+	trait = reclusive
+	trait = intellect_bad_1
+	father = spartan00236 # Eudamidas
+	3413.1.1 = { # made up
+		birth = yes # 341 BC
+	}
+	3475.1.1 = { # made up
+		death = yes # 279 BC
+	}
+}
+spartan00240 = {
+	name = "Eudamidas"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00238 # Hagesilaos, speculative
+	3420.1.1 = { # made up
+		birth = yes # 334 BC
+	}
+	3454.1.1 = { # 300 BC, made up
+		add_spouse = spartan00242 # Archidameia
+	}
+	3479.1.1 = { # made up
+		death = yes # 275 BC
+	}
+}
+spartan00241 = {
+	name = "Eudamidas" # king Eudamidas II
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 4
+	martial = 2
+	stewardship = 7
+	intrigue = 5
+	learning = 8
+	prowess = 1
+	trait = education_martial_1
+	trait = lazy
+	trait = shy
+	trait = craven
+	trait = callous
+	trait = reclusive
+	trait = intellect_bad_2
+	trait = physique_bad_1
+	father = spartan00239 # Archidamos
+	3446.1.1 = { # made up
+		birth = yes # 308 BC
+	}
+	3479.1.1 = { # 275 BC, made up
+		add_spouse = spartan00245 # Hagesistrata
+	}
+	3496.1.1 = { # made up
+		death = yes # 258 BC
+	}
+}
+spartan00242 = {
+	name = "Archidameia"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 7
+	martial = 6
+	stewardship = 5
+	intrigue = 1
+	learning = 3
+	prowess = 3
+	trait = education_martial_3
+	trait = brave
+	trait = stubborn
+	trait = diligent
+	trait = trusting
+	father = spartan00239 # Archidamos, speculative
+	3437.1.1 = { # approximate
+		birth = yes # 317 BC
+	}
+	3454.1.1 = { # 300 BC, made up
+		add_spouse = spartan00240 # Eudamidas
+	}
+	3513.1.1 = { # 241 BC
+		death = { 
+			death_reason = death_murder_known # put to death by Amphares, seemingly on his own whim
+			#killer = ... # Amphares
+		}
+	}
+}
+spartan00243 = {
+	name = "Agis" # king Agis IV
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 8
+	martial = 3
+	stewardship = 9
+	intrigue = 4
+	learning = 5
+	prowess = 4
+	trait = education_stewardship_3
+	trait = calm
+	trait = temperate
+	trait = humble
+	trait = just
+	trait = shrewd
+	father = spartan00241 # Eudamidas
+	mother = spartan00245 # Hagesistrata
+	3489.1.1 = { 
+		birth = yes # 265 BC
+	}
+	#3512.1.1 = { # 242 BC, made up
+	#	add_spouse = ... # Agiatis
+	#}
+	3513.1.1 = { # 241 BC
+		death = { 
+			death_reason = death_execution_killer # put to death on the orders of Leonidas II and the ephors
+			killer = spartan00146 # Leonidas
+		}
+	}
+}
+spartan00244 = {
+	name = "Archidamos" # king Archidamus V
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00241 # Eudamidas
+	mother = spartan00245 # Hagesistrata
+	3493.1.1 = { # made up
+		birth = yes # 261 BC
+	}
+	3517.1.1 = { # 237 BC, made up
+		add_spouse = spartan00252 # Hagesistrata
+	}
+	3527.1.1 = { # 227 BC
+		death = { 
+			death_reason = death_murder # possibly murdered by the same assassins that killed Agis IV
+		}
+	}
+}
+spartan00245 = {
+	name = "Hagesistrata"
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_stewardship_2
+	trait = brave
+	trait = stubborn
+	trait = compassionate
+	father = spartan00240 # Eudamidas
+	mother = spartan00242 # Archidameia
+	3463.1.1 = { # approximate
+		birth = yes # 291 BC
+	}
+	3479.1.1 = { # 275 BC, made up
+		add_spouse = spartan00241 # Eudamidas
+	}
+	3513.1.1 = { # 241 BC
+		death = { 
+			death_reason = death_murder_known # put to death by Amphares, seemingly on his own whim
+			#killer = ... # Amphares
+		}
+	}
+}
+spartan00246 = {
+	name = "Agis" # possible regent for Agis IV
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_martial_2
+	father = spartan00240 # Eudamidas, speculative
+	mother = spartan00242 # Archidameia, speculative
+	3454.1.1 = { # made up
+		birth = yes # 300 BC
+	}
+	3503.1.1 = { # 251 BC
+		death = { 
+			death_reason = death_battle # possibly died in battle against Aratus and Podares
+		}
+	}
+}
+spartan00247 = {
+	name = "Hagesilaos"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	diplomacy = 9
+	martial = 2
+	stewardship = 1
+	intrigue = 7
+	learning = 4
+	prowess = 2
+	trait = greedy
+	trait = deceitful
+	trait = gregarious
+	trait = profligate
+	father = spartan00240 # Eudamidas
+	mother = spartan00242 # Archidameia
+	3456.1.1 = { # made up
+		birth = yes # 298 BC
+	}
+	3519.1.1 = { # made up
+		death = yes # 235 BC
+	}
+}
+spartan00248 = {
+	name = "Eudamidas"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00243 # Agis
+	#mother = ... # Agiatis
+	3513.1.1 = { 
+		birth = yes # 241 BC
+	}
+	3526.1.1 = { # 228 BC, approximate
+		death = { 
+			death_reason = death_suspicious # it was alleged, but never proven, that Cleomenes poisoned him
+		}
+	}
+}
+spartan00249 = {
+	name = "Chilon" # unsuccessfully tried to seize the Eurypontid throne ca. 219 BC
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	trait = education_intrigue_2
+	trait = ambitious
+	trait = impatient
+	trait = callous
+	father = spartan00244 # Archidamos, speculative
+	mother = spartan00252 # Hagesistrata, speculative
+	3518.1.1 = { # made up
+		birth = yes # 236 BC
+	}
+	#3535.1.1 = { # 219 BC
+	#	employer = ... # flees to Achaea after his attempted revolution fails
+	#}
+	3589.1.1 = { # made up
+		death = yes # 165 BC
+	}
+}
+spartan00250 = {
+	name = "Agis" # made up name
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00244 # Archidamos
+	mother = spartan00252 # Hagesistrata
+	3523.1.1 = { # made up
+		birth = yes # 231 BC
+	}
+	3572.1.1 = { # made up
+		death = yes # 182 BC
+	}
+}
+spartan00251 = {
+	name = "Hippomedon"
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	#trait = education_martial_3
+	#trait = brave
+	#trait = generous
+	#trait = content
+	father = spartan00247 # Hagesilaos
+	3478.1.1 = { # made up
+		birth = yes # 276 BC
+	}
+	3540.1.1 = { # approximate
+		death = yes # 214 BC
+	}
+}
+spartan00252 = {
+	name = "Hagesistrata" # made up name
+	female = yes
+	dynasty = spartandyn002 # Eurypontidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00251 # Hippomedon
+	3501.1.1 = { # made up
+		birth = yes # 253 BC
+	}
+	3517.1.1 = { # 237 BC, made up
+		add_spouse = spartan00244 # Archidamos
+	}
+	3552.1.1 = { # made up
+		death = yes # 202 BC
 	}
 }
 
@@ -907,10 +2030,99 @@ spartanlowborn2 = {
 	female = yes
 	religion = placeholder
 	culture = spartan
+	trait = brave
+	trait = callous
+	trait = intellect_good_1
 	3224.1.1 = { # made up
 		birth = yes # 530 BC
 	}
 	3296.1.1 = { # made up
 		death = yes # 458 BC
+	}
+}
+spartanlowborn3 = {
+	name = "Kratesikleia"
+	female = yes
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	trait = brave
+	trait = ambitious
+	trait = generous
+	3460.1.1 = { # made up
+		birth = yes # 294 BC
+	}
+	3479.1.1 = { # 275 BC, made up
+		add_spouse = spartan00146 # Leonidas
+	}
+	3535.1.1 = { # 219 BC
+		death = { 
+			death_reason = death_execution_killer # executed by Ptolemy IV Philopator
+			#killer = ... # Ptolemaios 
+		}
+	}
+}
+spartanlowborn4 = {
+	name = "Dionassa"
+	female = yes
+	religion = placeholder
+	culture = spartan
+	2838.1.1 = { # made up
+		birth = yes # 916 BC
+	}
+	2855.1.1 = { # 899 BC, made up
+		add_spouse = spartan00205 # Eunomos
+	}
+	2902.1.1 = { # made up
+		death = yes # 852 BC
+	}
+}
+spartanlowborn5 = {
+	name = "Oporis" # made up name
+	female = yes
+	religion = placeholder
+	culture = spartan
+	3186.1.1 = { # made up
+		birth = yes # 568 BC
+		#trait = beauty_bad_3
+	}
+	3189.1.1 = { # 555 BC, made up
+		#remove_trait = beauty_bad_3
+		trait = beauty_good_3 # Herodotus recounts a story about her appearance being changed by a mysterious woman at the shrine of Helen
+	}
+	#3202.1.1 = { # 552 BC, made up
+	#	add_spouse = ... # Agetos
+	#}
+	3207.1.1 = { # 547 BC, made up
+		#remove_spouse = ... # Agetos
+		add_spouse = spartan00224 # Ariston
+	}
+	3252.1.1 = { # made up
+		death = yes # 502 BC
+	}
+}
+spartanlowborn6 = {
+	name = "Timaia"
+	female = yes
+	religion = placeholder
+	culture = spartan
+	3312.1.1 = { # made up
+		birth = yes # 442 BC
+	}
+	3329.1.1 = { # 425 BC, made up
+		add_spouse = spartan00230 # Agis
+	}
+	#3340.1.1 = { # 414 BC, approximate
+	#	effect = {
+	#		set_relation_lover = character:... # allegedly has a relationship (and child) with Alcibiades
+	#	}
+	#}
+	#3342.1.1 = { # 412 BC, approximate
+	#	effect = {
+	#		remove_relation_lover = character:... # Alcibiades is forced to flee from Sparta
+	#	}
+	#}
+	3367.1.1 = { # made up
+		death = yes # 387 BC
 	}
 }
