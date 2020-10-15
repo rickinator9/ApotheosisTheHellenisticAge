@@ -409,7 +409,7 @@ spartan00127 = {
 	trait = education_martial_4
 	trait = ambitious
 	trait = cynical
-	trait = callous
+	trait = sadistic
 	trait = temperate
 	trait = intellect_good_2
 	trait = lunatic_1
@@ -421,6 +421,11 @@ spartan00127 = {
 	3234.1.1 = { # 520 BC, approximate
 		effect = {
 			set_relation_rival = character:spartan00124 # is challenged by his half-brother Dorieus for the throne
+		}
+	}
+	5249.1.1 = { # 507 BC
+		effect = {
+			set_relation_rival = character:spartan002b01 # he and Demaratus constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
 		}
 	}
 	3267.1.1 = { # 487 BC
@@ -697,19 +702,19 @@ spartan00143 = {
 	3415.1.1 = { # approximate
 		birth = yes # 339 BC
 	}
-	#3478.1.1 = { # 276 BC, approximate
-	#	add_spouse = ... # Chilonis
-	#}
+	3478.1.1 = { # 276 BC, approximate
+		add_spouse = spartan002a04 # Chilonis
+	}
 	3479.1.1 = { # 275 BC, approximate
 		effect = {
 			set_relation_rival = character:spartan00152 # learns that Acrotatus has seduced his wife
-			set_relation_rival = character:spartan00147
-			#set_relation_rival = character:... # Chilonis
+			set_relation_rival = character:spartan00147 # Areus
+			set_relation_rival = character:spartan002a04 # Chilonis
 		}
 	}
-	#3483.1.1 = { # 271 BC, approximate
-	#	remove_spouse = ... # Chilonis
-	#}
+	3483.1.1 = { # 271 BC, approximate
+		remove_spouse = spartan002a04 # Chilonis
+	}
 	3484.1.1 = { # 270 BC, approximate
 		death = { 
 			death_reason = death_battle # possibly died in battle against Antigonus Gonatas
@@ -799,6 +804,11 @@ spartan00147 = {
 	father = spartan00144 # Akrotatos
 	3440.1.1 = { # speculative
 		birth = yes # 314 BC
+	}
+	3479.1.1 = { # 275 BC, approximate
+		effect = {
+			set_relation_rival = character:spartan00143 # rivalry with Cleonymus
+		}
 	}
 	3489.1.1 = { # 265 BC
 		death = { 
@@ -911,14 +921,19 @@ spartan00152 = {
 	3461.1.1 = { # speculative
 		birth = yes # 293 BC
 	}
-	#3478.1.1 = { # 276 BC, approximate
-	#	effect = {
-	#		set_relation_lover = character:... # begins an affair with Chilonis
-	#	}
-	#}
-	#3483.1.1 = { # 271 BC, approximate
-	#	add_spouse = ... # Chilonis
-	#}
+	3478.1.1 = { # 276 BC, approximate
+		effect = {
+			set_relation_lover = character:spartan002a04 # begins an affair with Chilonis
+		}
+	}
+	3479.1.1 = { # 275 BC, approximate
+		effect = {
+			set_relation_rival = character:spartan00143 # Cleonymus learns of the affair
+		}
+	}
+	3483.1.1 = { # 271 BC, approximate
+		add_spouse = spartan002a04 # Chilonis
+	}
 	3492.1.1 = { # 262 BC
 		death = { 
 			death_reason = death_battle # died in battle against Aristodemus the Good
@@ -1009,7 +1024,7 @@ spartan00158 = {
 	religion = placeholder
 	culture = spartan
 	father = spartan00152 # Akrotatos
-	#mother = ... # Chilonis
+	#mother = spartan002a04 # Chilonis
 	3492.1.1 = { 
 		birth = yes # 262 BC
 	}
@@ -1154,7 +1169,7 @@ spartan00207 = {
 	trait = education_stewardship_4
 	trait = temperate
 	trait = just
-	trait = content
+	trait = diligent
 	trait = honest
 	trait = intellect_good_3
 	trait = administrator
@@ -1387,18 +1402,18 @@ spartan00224 = {
 	trait = callous
 	trait = infertile
 	father = spartan00222 # Hagesikles
-	3159.1.1 = { # made up
-		birth = yes # 595 BC
+	3162.1.1 = { # made up
+		birth = yes # 592 BC
 	}
-	#3175.1.1 = { # 579 BC, made up
+	#3178.1.1 = { # 576 BC, made up
 	#	effect = {
 	#		add_relation_best_friend = character:... # according to Herodotus he was best friends with Agetus 
 	#	}
 	#}
-	3207.1.1 = { # 547 BC, made up
+	3219.1.1 = { # 535 BC, made up
 		add_spouse = spartanlowborn5 # Oporis (this was actually his third marriage, the previous two failing to produce a son)
 		#effect = {
-		#	remove_relation_best_friend = character:... # stealing someone's spouse *probably* isn't the best way to maintain a friendship 
+		#	remove_relation_best_friend = character:... # stealing someone's spouse -probably- isn't the best way to maintain a friendship 
 		#}
 	}
 	3239.1.1 = { # approximate
@@ -1411,8 +1426,8 @@ spartan00225 = {
 	religion = placeholder
 	culture = spartan
 	father = spartan00223 # Hagesilaos
-	3182.1.1 = { # made up
-		birth = yes # 572 BC
+	3185.1.1 = { # made up
+		birth = yes # 569 BC
 	}
 	3226.1.1 = { # made up
 		death = yes # 528 BC
@@ -1427,8 +1442,13 @@ spartan00226 = {
 	trait = greedy
 	trait = ambitious
 	father = spartan00225 # Menares
-	3210.1.1 = { # approximate
-		birth = yes # 544 BC
+	3220.1.1 = { # approximate
+		birth = yes # 534 BC
+	}
+	3239.1.1 = { # 515 BC, made up
+		effect = {
+			set_relation_rival = character:spartan002b01 # Demaratus steals and marries the woman Latychidas was betrothed to
+		}
 	}
 	#3262.1.1 = { # 492 BC, made up
 	#	add_spouse = ... # Eurydama
@@ -1786,7 +1806,6 @@ spartan00242 = {
 	learning = 3
 	prowess = 3
 	trait = education_martial_3
-	trait = brave
 	trait = stubborn
 	trait = diligent
 	trait = trusting
@@ -1881,7 +1900,7 @@ spartan00245 = {
 	}
 }
 spartan00246 = {
-	name = "Agis" # possible regent for Agis IV
+	name = "Agis" # possible regent for Agis IV, dubious historicity
 	dynasty = spartandyn002 # Eurypontidas
 	religion = placeholder
 	culture = spartan
@@ -1934,7 +1953,7 @@ spartan00248 = {
 	}
 	3526.1.1 = { # 228 BC, approximate
 		death = { 
-			death_reason = death_suspicious # it was alleged, but never proven, that Cleomenes poisoned him
+			death_reason = death_mysterious # it was alleged, but never proven, that Cleomenes poisoned him
 		}
 	}
 }
@@ -2005,6 +2024,409 @@ spartan00252 = {
 	}
 	3552.1.1 = { # made up
 		death = yes # 202 BC
+	}
+}
+
+# Eurypontidas - Latychidas - Sparta
+
+spartan002a01 = {
+	name = "Latychidas"
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_latychidas # Latychidas
+	religion = placeholder
+	culture = spartan
+	father = spartan00230 # Agis
+	mother = spartanlowborn6 # Timaia
+	3342.1.1 = { # approximate
+		#trait = bastard # Agis considers him to be the bastard child of Alcibiades
+		birth = yes # 412 BC
+	}
+	3354.1.1 = { # 400 BC
+		#remove_trait = bastard
+		trait = legitimized_bastard # Agis legitimizes him on his deathbed
+	}
+	3399.1.1 = { # made up
+		death = yes # 355 BC
+	}
+}
+spartan002a02 = {
+	name = "Agis" # fictional
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_latychidas # Latychidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002a01 # Latychidas
+	3380.1.1 = { # made up
+		birth = yes # 374 BC
+	}
+	3444.1.1 = { # made up
+		death = yes # 310 BC
+	}
+}
+spartan002a03 = {
+	name = "Latychidas"
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_latychidas # Latychidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002a02 # Agis, speculative
+	3416.1.1 = { # made up
+		birth = yes # 338 BC
+	}
+	3478.1.1 = { # made up
+		death = yes # 276 BC
+	}
+}
+spartan002a04 = {
+	name = "Chilonis"
+	female = yes
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_latychidas # Latychidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 7
+	martial = 2
+	stewardship = 5
+	intrigue = 9
+	learning = 5
+	prowess = 4
+	trait = education_intrigue_3
+	trait = ambitious
+	trait = brave
+	trait = impatient
+	trait = beauty_good_2
+	trait = depressed_1
+	father = spartan002a03 # Latychidas
+	3459.1.1 = { # made up
+		birth = yes # 295 BC
+	}
+	3478.1.1 = { # 276 BC, approximate
+		add_spouse = spartan00143 # Kleonymos
+		effect = {
+			set_relation_lover = character:spartan00152 # begins an affair with Acrotatus
+		}
+	}
+	3479.1.1 = { # 275 BC, approximate
+		effect = {
+			set_relation_rival = character:spartan00143
+			add_opinion = {
+				target = character:spartan00143 # according to Plutarch, Chilonis was prepared to die before falling into Cleonymus' hands
+				modifier = hate_opinion
+				opinion = -200
+			}
+		}
+	}
+	3483.1.1 = { # 271 BC, approximate
+		remove_spouse = spartan00143 # Kleonymos
+		add_spouse = spartan00152 # Akrotatos
+	}
+	3515.1.1 = { # made up
+		death = yes # 239 BC
+	}
+}
+
+# Eurypontidas - Damaratidas - Sparta
+
+spartan002b01 = {
+	name = "Damaratos" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	trait = education_intrigue_2
+	trait = deceitful
+	trait = forgiving
+	trait = fickle
+	trait = disputed_heritage
+	father = spartan00224 # Ariston
+	mother = spartanlowborn5 # Oporis
+	3219.1.1 = { # made up
+		birth = yes # 535 BC
+	}
+	3239.1.1 = { # 515 BC, made up
+		#add_spouse = ... # Perkalon
+		effect = {
+			set_relation_rival = character:spartan00226 # Demaratus steals and marries the woman Leotychidas was betrothed to
+		}
+	}
+	5249.1.1 = { # 507 BC
+		effect = {
+			set_relation_rival = character:spartan00127 # he and Cleomenes constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+		}
+	}
+	#3239.1.1 = { # 491 BC
+	#	employer = ... # flees to the court of Xerxes
+	#}
+	3292.1.1 = { # approximate
+		death = yes # 462 BC
+	}
+}
+spartan002b02 = {
+	name = "Ariston" # fictional
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b01 # Damaratos
+	#mother = ... # Perkalon
+	3251.1.1 = { # made up
+		birth = yes # 503 BC
+	}
+	3306.1.1 = { # made up
+		death = yes # 448 BC
+	}
+}
+spartan002b03 = {
+	name = "Damaratos" # fictional
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b02 # Ariston
+	3286.1.1 = { # made up
+		birth = yes # 468 BC
+	}
+	3340.1.1 = { # made up
+		death = yes # 414 BC
+	}
+}
+spartan002b04 = {
+	name = "Prokles" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	trait = generous
+	father = spartan002b03 # Damaratos
+	3318.1.1 = { # made up
+		trait = twin
+		birth = yes # 436 BC
+	}
+	3385.1.1 = { # made up
+		death = yes # 369 BC
+	}
+}
+spartan002b05 = {
+	name = "Eurysthenes" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b03 # Damaratos
+	3318.1.1 = { # made up
+		trait = twin
+		birth = yes # 436 BC
+	}
+	3371.1.1 = { # made up
+		death = yes # 383 BC
+	}
+}
+spartan002b06 = {
+	name = "Damaratos" # fictional
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b04 # Prokles
+	3355.1.1 = { # made up
+		birth = yes # 399 BC
+	}
+	3414.1.1 = { # made up
+		death = yes # 340 BC
+	}
+}
+spartan002b07 = {
+	name = "Prokles" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b06 # Damaratos
+	3393.1.1 = { # made up
+		birth = yes # 361 BC
+	}
+	#3442.1.1 = { # 312 BC, made up
+	#	add_spouse = ... # Pythias
+	#}
+	3459.1.1 = { # made up
+		death = yes # 295 BC
+	}
+}
+spartan002b08 = {
+	name = "Gorgion" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	trait = education_stewardship_2
+	trait = generous
+	trait = zealous
+	father = spartan002b06 # Damaratos
+	3397.1.1 = { # made up
+		birth = yes # 357 BC
+	}
+	3455.1.1 = { # made up
+		death = yes # 299 BC
+	}
+}
+spartan002b09 = {
+	name = "Damaratos" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b07 # Prokles
+	#mother = ... # Pythias
+	3443.1.1 = { # made up
+		birth = yes # 311 BC
+	}
+	3497.1.1 = { # made up
+		death = yes # 257 BC
+	}
+}
+spartan002b10 = {
+	name = "Prokles" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b07 # Prokles
+	#mother = ... # Pythias
+	3447.1.1 = { # made up
+		birth = yes # 307 BC
+	}
+	3489.1.1 = { # made up
+		death = yes # 265 BC
+	}
+}
+spartan002b11 = {
+	name = "Damaratos" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	trait = education_diplomacy_3
+	trait = patient
+	trait = generous
+	father = spartan002b08 # Gorgion
+	3426.1.1 = { # approximate
+		birth = yes # 328 BC
+	}
+	3483.1.1 = { # made up
+		death = yes # 271 BC
+	}
+}
+spartan002b12 = {
+	name = "Gorgion" # fictional
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b11 # Damaratos
+	3453.1.1 = { # made up
+		birth = yes # 301 BC
+	}
+	3504.1.1 = { # made up
+		death = yes # 250 BC
+	}
+}
+spartan002b13 = {
+	name = "Damaratos" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b12 # Gorgion
+	3477.1.1 = { # made up
+		birth = yes # 277 BC
+	}
+	3529.1.1 = { # made up
+		death = yes # 225 BC
+	}
+}
+spartan002b14 = {
+	name = "Nabis" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	diplomacy = 4
+	martial = 7
+	stewardship = 8
+	intrigue = 8
+	learning = 1
+	prowess = 2
+	trait = education_stewardship_4
+	trait = sadistic
+	trait = arbitrary
+	trait = ambitious
+	trait = deceitful
+	trait = shrewd
+	trait = torturer
+	trait = administrator
+	father = spartan002b13 # Damaratos
+	3510.1.1 = { # approximate
+		birth = yes # 244 BC
+	}
+	3529.1.1 = { # 225 BC, approximate
+		add_spouse = argive00109 # Apia
+	}
+	3562.1.1 = { # 192 BC
+		death = { 
+			death_reason = death_murder_known # betrayed and murdered by Alexamenos and the Aetolians
+			#killer = ... # Alexamenos
+		}
+	}
+}
+spartan002b15 = {
+	name = "Armenas" 
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b14 # Nabis
+	mother = argive00109 # Apia
+	3542.1.1 = { # made up
+		birth = yes # 212 BC
+	}
+	3565.1.1 = { # 189 BC, approximate
+		death = { 
+			death_reason = death_ill # died of illness while in Roman custody
+		}
+	}
+}
+spartan002b16 = {
+	name = "Damaratos" # made up name
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b14 # Nabis
+	mother = argive00109 # Apia
+	3548.1.1 = { # made up
+		birth = yes # 206 BC
+	}
+	3595.1.1 = { # made up
+		death = yes # 159 BC
+	}
+}
+spartan002b17 = {
+	name = "Aristonika" # made up name
+	female = yes
+	# dynasty = spartandyn002 # Eurypontidas
+	dynasty_house = house_damaratidas # Damaratidas
+	religion = placeholder
+	culture = spartan
+	father = spartan002b14 # Nabis
+	mother = argive00109 # Apia
+	3540.1.1 = { # made up
+		birth = yes # 214 BC
+	}
+	3557.1.1 = { # 197 BC, made up
+		add_spouse = argive00110 # Pythagoras
+	}
+	3489.1.1 = { # made up
+		death = yes # 265 BC
 	}
 }
 
@@ -2082,23 +2504,23 @@ spartanlowborn5 = {
 	female = yes
 	religion = placeholder
 	culture = spartan
-	3186.1.1 = { # made up
-		birth = yes # 568 BC
+	3196.1.1 = { # made up
+		birth = yes # 558 BC
 		#trait = beauty_bad_3
 	}
-	3189.1.1 = { # 555 BC, made up
+	3199.1.1 = { # 555 BC, made up
 		#remove_trait = beauty_bad_3
 		trait = beauty_good_3 # Herodotus recounts a story about her appearance being changed by a mysterious woman at the shrine of Helen
 	}
-	#3202.1.1 = { # 552 BC, made up
+	#3212.1.1 = { # 542 BC, made up
 	#	add_spouse = ... # Agetos
 	#}
-	3207.1.1 = { # 547 BC, made up
+	3219.1.1 = { # 535 BC, made up
 		#remove_spouse = ... # Agetos
 		add_spouse = spartan00224 # Ariston
 	}
-	3252.1.1 = { # made up
-		death = yes # 502 BC
+	3262.1.1 = { # made up
+		death = yes # 492 BC
 	}
 }
 spartanlowborn6 = {
