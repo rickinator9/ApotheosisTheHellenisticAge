@@ -6,9 +6,41 @@ coa.1 = {
 	type = character_event
 	hidden = yes
 	trigger = {
-		always = no
+		is_ruler = yes
 	}
 	immediate = {
+		trigger_event = coa.2 # Achaean League
+	}
+}
+
+coa.2 = {
+	type = character_event
+	hidden = yes
+	trigger = {
+		any_held_title = { this = title:d_achaia }
+	}
+	immediate = {
+		if = {
+			limit = { 
+				capital_county = { this = title:c_aigeira }
+			}
+			title:d_achaia = { set_coa = d_achaia_aigeira }
+		}
+		else_if = {
+			limit = { 
+				capital_county = { this = title:c_dyme }
+			}
+			title:d_achaia = { set_coa = d_achaia_dyme }
+		}
+		else_if = {
+			limit = { 
+				capital_county = { this = title:c_patrai }
+			}
+			title:d_achaia = { set_coa = d_achaia_patrai }
+		}
+		else = {
+			title:d_achaia = { set_coa = d_achaia }
+		}
 	}
 }
 

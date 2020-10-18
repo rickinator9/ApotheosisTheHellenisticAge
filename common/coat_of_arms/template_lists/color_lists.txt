@@ -1,285 +1,92 @@
 color_lists = {
 	all_color_list = { # PM : basically the average of medieval frequencies in roll of arms (strong bias towards 13th c), with values cut in half
 		30 = "red"
-		12 = "blue"
-		1 = "green"
-		14 = "black"
+		0 = "blue"
+		0 = "green"
+		0 = "black"
 		0 = "purple"
+		0 = "orange"
 		24 = "yellow"
 		26 = "white"
 	}	
 	
 	normal_colors = {
 		30 = "red"
-		12 = "blue"
-		1 = "green"
-		14 = "black"
+		0 = "blue"
+		0 = "green"
+		0 = "black"
 		0 = "purple"
+		0 = "orange"
 		special_selection = {
 			trigger = {
-				always = yes
-			}
-			25 = "red"
-			13 = "blue"
-			5 = "black"			
-			5 = "green"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "red"
-			8 = "blue"
-			7 = "black"			
-			9 = "green"
-			3 = "purple"
-		} 		
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "red"
-			8 = "blue"
-			7 = "black"			
-			9 = "green"
-		} 				
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "red"
-			8 = "blue"
-			16 = "black"
-			9 = "green"
-		}
-		special_selection = {
-			trigger = {
-				always = no
+				coa_classical_greek_trigger = yes
+				culture = { 
+					NOT = { has_graphical_culture = boeotian_coa_gfx }
+				}	
 			}
 			30 = "red"
-			9 = "blue"
-			6 = "black"	
-			2 = "green"			
-		}		
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			12 = "red"
-			28 = "blue"
-			1 = "black"
-			3 = "green"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			27 = "red"
-			10 = "blue"
-			18 = "black"
-			1 = "green"
+			26 = "blue"			
+			6 = "green"
+			0 = "black"
+			0 = "purple"
+			12 = "orange"
 		}
 		special_selection = {
 			trigger = {
-				always = no
+				culture = { 
+					has_graphical_culture = hellenistic_coa_gfx
+					NOT = { has_graphical_culture = epirote_coa_gfx }
+				}	
 			}
-			13 = "red"
-			22 = "blue"
-			11 = "black"
-			1 = "green"
-		}		
+			30 = "red"
+			26 = "blue"			
+			6 = "green"
+			6 = "black"
+			8 = "purple"
+			8 = "orange"
+		}
 		special_selection = {
 			trigger = {
-				always = no
+				culture = { has_graphical_culture = boeotian_coa_gfx }
 			}
-			26 = "red"
-			18 = "blue"
-			9 = "black"	
-			1 = "green"
-		}	
+			24 = "red"
+			12 = "blue"			
+			6 = "green"
+			12 = "black"
+			12 = "purple"
+			6 = "orange"
+		}
 		special_selection = {
 			trigger = {
-				always = no
+				culture = { has_graphical_culture = epirote_coa_gfx }
 			}
-			31 = "red"
-			4 = "blue"
+			30 = "red"
+			12 = "blue"			
+			18 = "green"
+			6 = "black"
+			6 = "purple"
+			10 = "orange"
+		}
+		special_selection = {
+			trigger = {
+				culture = { has_graphical_culture = spartan_coa_gfx }
+			}
+			30 = "red"
+			0 = "blue"			
+			0 = "green"
 			14 = "black"
-			2 = "green"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			34 = "red"
-			11 = "blue"
-			3 = "black"	
-			5 = "green"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			38 = "red"
-			3 = "blue"
-			20 = "black"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			34 = "red"
-			8 = "blue"
-			13 = "black"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			30 = "green"
-			30 = "black"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			18 = "blue"
-			6 = "black"	
-			29 = "green"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			10 = "green"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			10 = "purple"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "red"
-		}		
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			1000 = "red"
-			1000 = "orange"
-			1000 = "blue"
-			1000 = "black"
-			1000 = "purple"
-			1000 = "green"
+			0 = "purple"
+			14 = "orange"
 		}
 	}
+		
 	metal_colors = {
 		24 = "yellow"
 		26 = "white"
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			10 = "white"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			5 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			26 = "yellow"
-			24 = "white"
-		}		
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			16 = "yellow"
-			34 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			26 = "yellow"
-			24 = "white"	
-		}			
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			31 = "yellow"
-			19 = "white"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			14 = "yellow"
-			29 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			8 = "yellow"
-			40 = "white"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			15 = "yellow"
-			26 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "yellow"
-			26 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			20 = "yellow"
-			16 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			37 = "yellow"
-			8 = "white"	
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			15 = "yellow"
-			28 = "white"
-		}
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			9 = "yellow"
-			40 = "white"
-		}	
-		special_selection = {
-			trigger = {
-				always = no
-			}
-			15 = "yellow"
-		}		
 	}
+
+	spartan_colors = {
+		30 = "red"
+		14 = "orange"
+	}	
 }
