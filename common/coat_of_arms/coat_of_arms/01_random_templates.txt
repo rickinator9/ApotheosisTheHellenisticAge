@@ -1,4 +1,4 @@
-template = {	
+﻿template = {	
 
 	# Greek Shield
 	greek_shield_template = {
@@ -74,7 +74,7 @@ template = {
 		color4 = list "normal_colors"		
 		
 		colored_emblem = {
-			texture = list "wreath_list"
+			texture = list "wreath_list_realcolour"
 			color1 = "brown"
 			color2 = "green"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
@@ -116,7 +116,7 @@ template = {
 		color4 = list "normal_colors"		
 		
 		colored_emblem = {
-			texture = list "wreath_list"
+			texture = list "wreath_list_realcolour"
 			color1 = "brown"
 			color2 = "green"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 -1.0 }  }		
@@ -127,6 +127,104 @@ template = {
 			color2 = color3
 			#color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+		}
+	}	
+
+	# Greek Shield Inset
+	greek_shield_inset = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = color2
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color3
+			color2 = color4
+			#color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+		}
+	}
+	greek_shield_inset_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = color3
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color2
+			color2 = color2
+			#color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+		}
+	}
+	greek_shield_inset_wreath = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+			
+		colored_emblem = {
+			texture = list "wreath_list_realcolour"
+			color1 = brown
+			color2 = green
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = color3
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.56 0.56 }  }	
+		}		
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color1
+			color2 = color2
+			#color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.46 0.46 }  }
+		}
+	}		
+	greek_shield_inset_wreath_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"	
+		
+		colored_emblem = {
+			texture = list "wreath_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = color2
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.55 0.55 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color4
+			color2 = color4
+			#color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.45 0.45 }  }	
 		}
 	}	
 	
@@ -171,7 +269,7 @@ template = {
 		colored_emblem = {
 			texture = list "charge"
 			color1 = list "metal_colors"
-			color2 = list "normal_colors"
+			color2 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }			
 		}
 	}	
@@ -215,7 +313,7 @@ template = {
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color1
-			color2 = list "metal_colors"
+			color2 = color1
 			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }			
 		}
 	}	
