@@ -1,0 +1,251 @@
+# Archers, counters lowly armored opponents
+toxotai = {
+	type = archers
+	
+	damage = 13
+	toughness = 10
+	pursuit = 0
+	screen = 0
+	
+	terrain_bonus = {
+        # Heights will allow them to have more range.
+		hills = { damage = 5 }
+		mountains = { damage = 8 }
+		desert_mountains = { damage = 8 }
+
+        # Forests allow less flexibility for projectiles.
+		forest = { damage = -10 toughness = 5 }
+		taiga = { damage = -10 toughness = 5 }
+		jungle = { damage = -10 toughness = 5 }
+	}
+
+	counters = {
+		skirmishers = 1
+		archers = 1
+		slingers = 1
+	}
+
+	buy_cost = { gold = 35 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 0.15 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 150
+	ai_quality = { value = culture_ai_weight_archers }
+	icon = bowmen
+}
+
+# Slingers, counter higher armored opponents.
+sphendonetai = {
+	type = slingers
+	
+	damage = 13
+	toughness = 10
+	pursuit = 0
+	screen = 0
+	
+	terrain_bonus = {
+        # Heights will allow them to have more range.
+		hills = { damage = 5 }
+		mountains = { damage = 8 }
+		desert_mountains = { damage = 8 }
+
+        # Forests allow less flexibility for projectiles.
+		forest = { damage = -10 toughness = 5 }
+		taiga = { damage = -10 toughness = 5 }
+		jungle = { damage = -10 toughness = 5 }
+	}
+
+	counters = {
+		heavy_infantry = 1
+		pikemen = 1
+		phalanx = 1
+	}
+
+	buy_cost = { gold = 35 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 0.15 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 150
+	ai_quality = { value = culture_ai_weight_archers }
+	icon = bowmen
+}
+
+# Macedonian-style Phalanx
+pezhetairoi = {
+	type = phalanx
+
+	damage = 35
+	toughness = 20
+	pursuit = 0
+	screen = 0
+
+	# Macedonian phalanx only really works well in flat terrain due to the tight formation.
+	terrain_bonus = {
+		hills = { damage = -5 }
+		mountains = { damage = -10 }
+		desert_mountains = { damage = -10 }
+		wetlands = { damage = -15 }
+		forest = { damage = -15 }
+		taiga = { damage = -15 }
+		jungle = { damage = -15 }
+	}
+
+	# Due to the lack of flexibility, Phalanxes do not counter any MaA.
+	counters = {
+	}
+
+	buy_cost = { gold = 100 }
+	low_maintenance_cost = { gold = 0.3 }
+	high_maintenance_cost = { gold = 1.2 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 128 # Half the size of a syntagma.
+	ai_quality = { value = culture_ai_weight_pikemen }
+	icon = pikemen
+}
+
+# Traditional hoplite phalanx.
+# Worse overall than Macedonian-style phalanx, but is more compeditive in hills and better armored.
+hoplitai = {
+	type = phalanx
+
+	damage = 25
+	toughness = 25
+	pursuit = 3
+	screen = 0
+
+	terrain_bonus = {
+		mountains = { damage = -5 }
+		desert_mountains = { damage = -5 }
+		wetlands = { damage = -10 }
+		forest = { damage = -10 }
+		taiga = { damage = -10 }
+		jungle = { damage = -10 }
+	}
+
+	# Due to the lack of flexibility, Phalanxes do not counter any MaA.
+	counters = {
+	}
+
+	buy_cost = { gold = 75 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 0.75 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 100
+	ai_quality = { value = culture_ai_weight_pikemen }
+	icon = pikemen
+}
+
+# TODO? Hypaspists?
+
+# Standard greek cavalry.
+hippeis = {
+	type = light_cavalry
+
+	damage = 20
+	toughness = 10
+	pursuit = 30
+	screen = 30
+
+	terrain_bonus = {
+		plains = { damage = 5 pursuit = 10 }
+		drylands = { damage = 5 pursuit = 10 }
+		mountains = { damage = -10 }
+		desert_mountains = { damage = -10 }
+		wetlands = { damage = -20 pursuit = -20 }
+	}
+
+	counters = {
+		skirmishers = 1
+		archers = 1
+		slingers = 1
+	}
+	
+	buy_cost = { gold = 75 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 1 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 50
+	ai_quality = { value = culture_ai_weight_light_cavalry }
+	icon = light_cavalry
+}
+
+# Companion cavalry
+hetairoi = {
+	type = heavy_cavalry
+
+	damage = 35
+	toughness = 20
+	pursuit = 10
+	screen = 20
+
+	terrain_bonus = {
+		plains = { damage = 10 pursuit = 5 }
+		drylands = { damage = 10 pursuit = 5 }
+		mountains = { damage = -10 }
+		desert_mountains = { damage = -10 }
+		wetlands = { damage = -20 pursuit = -20 }
+	}
+
+	counters = {
+		skirmishers = 1
+		heavy_infantry = 1
+		slingers = 1
+		archers = 1
+	}
+
+	buy_cost = { gold = 250 }
+	low_maintenance_cost = { gold = 1 }
+	high_maintenance_cost = { gold = 3.5 }
+	
+	stack = 150
+	ai_quality = { value = culture_ai_weight_heavy_cavalry }
+	icon = heavy_cavalry
+}
+
+# Peltasts
+peltastai = {
+	type = skirmishers
+
+	damage = 15
+	toughness = 15
+	pursuit = 5
+	screen = 15
+
+	terrain_bonus = {
+		hills = { damage = 5 }
+		mountains = { damage = 5 }
+		desert_mountains = { damage = 5 }
+	}
+
+	counters = {
+		heavy_infantry = 1
+		phalanx = 1
+		pikemen = 1
+	}
+
+	buy_cost = { gold = 60 }
+	low_maintenance_cost = { gold = 0.15 }
+	high_maintenance_cost = { gold = 0.6 }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 100
+	ai_quality = { value = culture_ai_weight_skirmishers }
+	icon = skirmishers
+}
