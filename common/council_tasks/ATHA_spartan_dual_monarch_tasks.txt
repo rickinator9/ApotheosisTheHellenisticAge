@@ -1,0 +1,52 @@
+﻿councillor_spartan_dual_monarch_default = {
+	default_task = yes
+	position = councillor_spartan_dual_monarch
+
+	effect_desc = task_spouse_default_effect_desc
+
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+
+	council_owner_modifier = {
+		name = task_spouse_default_diplomacy_modifier
+		diplomacy = 1
+		scale = spouse_default_task_diplomacy_scale
+	}
+
+	council_owner_modifier = {
+		name = task_spouse_default_martial_modifier
+		martial = 1
+		scale = spouse_default_task_martial_scale
+	}
+
+	council_owner_modifier = {
+		name = task_spouse_default_stewardship_modifier
+		stewardship = 1
+		scale = spouse_default_task_stewardship_scale
+	}
+
+	council_owner_modifier = {
+		name = task_spouse_default_intrigue_modifier
+		intrigue = 1
+		scale = spouse_default_task_intrigue_scale
+	}
+
+	council_owner_modifier = {
+		name = task_spouse_default_learning_modifier
+		learning = 1
+		scale = spouse_default_task_learning_scale
+	}
+
+	on_monthly = {
+		scope:councillor_liege = {
+			trigger_event = {
+				on_action = spouse_councillor_default_on_action
+				days = { 0 30 }
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 1 # Always a good backup
+	}
+}
