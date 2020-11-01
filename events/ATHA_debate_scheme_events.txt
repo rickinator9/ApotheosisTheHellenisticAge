@@ -220,21 +220,7 @@ debate_scheme.1001 = {
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D10 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D11
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D19
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D34 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D35
-
-# Allied benefits:
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D5
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D7
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D9
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D10
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D12
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D15
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D17 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D18
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D19 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D20
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D25
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D2%3Asection%3D2
-#   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D7
-
 
 # Tough love:
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D1%3Asection%3D14
@@ -322,9 +308,24 @@ debate_scheme.2001 = {
         name = debate_scheme.2001.c
         trigger = { 
             exists = scope:debated_threat_defender
+            NAND = {
+                NOR = {
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+                }
+                NOR = {
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_2 }
+                }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_wastedopportunity_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_expedition_1 }
+            }
         }
 
-        # TODO:
+        trigger_event = {
+            id = debate_scheme.2003
+        }
     }
 
     # Provide some motivation for an expedition.
@@ -534,6 +535,151 @@ debate_scheme.2002 = {
     }
 }
 
+# Indicate that the opponent's wars are a good opportunity.
+debate_scheme.2003 = {
+    type = character_event
+    title = debate_scheme.2003.title
+    desc = debate_scheme.2003.desc
+
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+
+    # The enemy of the threat is fighting for their survival.
+    # -- INTRO
+    option = {
+        name = debate_scheme.2003.a
+        trigger = {
+            NOR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+        }
+
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # The war is an opportunity we need to take.
+    # -- INTRO
+    option = {
+        name = debate_scheme.2003.b
+        trigger = {
+            NOR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+        }
+
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # The gods have provided us with this opportunity.
+    option = {
+        name = debate_scheme.2003.c
+        trigger = {
+            NOR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+        }
+
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # If the threat is not stopped by the enemy, we will be next.
+    option = {
+        name = debate_scheme.2003.d
+        trigger = {
+            OR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+            NOR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_2 }
+            }
+        }
+
+        random_list = {
+            1 = { add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_1 } }
+            1 = { add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_werenext_2 } }
+        }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # Not acting now would be a huge waste of an opportunity.
+    option = {
+        name = debate_scheme.2003.e
+        trigger = {
+            OR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+            NOT = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_wastedopportunity_1 }
+            }
+        }
+
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_wastedopportunity_1 }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # Elaborate on the aid that should be sent.
+    option = {
+        name = debate_scheme.2003.f
+        trigger = {
+            OR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_intro_3 }
+            }
+            NOT = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_expedition_1 }
+            }
+        }
+
+        add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_allies_expedition_1 }
+        trigger_event = {
+            id = debate_scheme.2003
+            days = 3
+        }
+    }
+
+    # Exit
+    option = {
+        name = debate_scheme.2003.g
+
+        trigger_event = {
+            id = debate_scheme.2001
+        }
+    }
+}
+
 # Compliments:
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D15
 #   - http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0070%3Aspeech%3D3%3Asection%3D23
@@ -651,6 +797,48 @@ debate_scheme.5002 = {
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
             }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_1 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
+            }
         }
     }
 
@@ -748,6 +936,48 @@ debate_scheme.5003 = {
                     var:debate_argument_2 = flag:argument_foreign_threat_ruler_conclusion_3
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_2 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
             }
         }
     }
@@ -847,6 +1077,48 @@ debate_scheme.5004 = {
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
             }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_3 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
+            }
         }
     }
 
@@ -944,6 +1216,48 @@ debate_scheme.5005 = {
                     var:debate_argument_4 = flag:argument_foreign_threat_ruler_conclusion_3
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_4 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
             }
         }
     }
@@ -1043,6 +1357,48 @@ debate_scheme.5006 = {
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
             }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_5 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
+            }
         }
     }
 
@@ -1140,6 +1496,48 @@ debate_scheme.5007 = {
                     var:debate_argument_6 = flag:argument_foreign_threat_ruler_conclusion_3
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_6 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
             }
         }
     }
@@ -1239,6 +1637,48 @@ debate_scheme.5008 = {
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
             }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_7 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
+            }
         }
     }
 
@@ -1336,6 +1776,48 @@ debate_scheme.5009 = {
                     var:debate_argument_8 = flag:argument_foreign_threat_ruler_conclusion_3
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_8 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
             }
         }
     }
@@ -1435,6 +1917,48 @@ debate_scheme.5010 = {
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
             }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_9 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
+            }
         }
     }
 
@@ -1532,6 +2056,48 @@ debate_scheme.5011 = {
                     var:debate_argument_10 = flag:argument_foreign_threat_ruler_conclusion_3
                 }
 				desc = debate_scheme_argument.foreign_threat_ruler_conclusion_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_intro_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_intro_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_intro_3
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_intro_3.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_werenext_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_werenext_2
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_werenext_2.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_wastedopportunity_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_wastedopportunity_1.desc
+            }
+            triggered_desc = {
+                trigger = {
+                    var:debate_argument_10 = flag:argument_foreign_threat_allies_expedition_1
+                }
+				desc = debate_scheme_argument.foreign_threat_allies_expedition_1.desc
             }
         }
     }

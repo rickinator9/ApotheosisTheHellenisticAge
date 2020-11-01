@@ -132,6 +132,13 @@ save_debate_settings = {
             value = scope:debated_threat
         }
     }
+    if = {
+        limit = { exists = scope:debated_threat_defender }
+        set_variable = {
+            name = debated_threat_defender
+            value = scope:debated_threat_defender
+        }
+    }
 }
 
 # To load all of the debate settings from variables.
@@ -144,6 +151,10 @@ load_debate_settings = {
     if = {
         limit = { has_variable = debated_threat }
         var:debated_threat = { save_scope_as = debated_threat }
+    }
+    if = {
+        limit = { has_variable = debated_threat_defender }
+        var:debated_threat_defender = { save_scope_as = debated_threat_defender }
     }
 }
 
