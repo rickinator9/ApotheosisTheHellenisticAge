@@ -3,7 +3,10 @@
 	# Democratic
 	democratic_succession_law = {
 		can_have = {
-			has_government = feudal_government
+			OR = {
+				has_government = feudal_government
+				has_government = city_state_government
+			}
 			highest_held_title_tier >= tier_duchy
 		}
 		can_pass = {
