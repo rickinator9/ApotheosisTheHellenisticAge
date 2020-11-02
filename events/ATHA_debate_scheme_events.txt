@@ -267,7 +267,15 @@ debate_scheme.2001 = {
         name = debate_scheme.2001.a
         trigger = {
             OR = {
-                NOT = { has_min_arguments = yes }
+                NOR = {
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_2 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_3 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_aristocratic_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_subjects_1 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_subjects_2 }
+                    has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_subjects_3 }
+                }
                 has_last_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_1 }
                 has_last_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_2 }
                 has_last_debate_argument = { ARG_KEY = flag:argument_foreign_threat_deceit_3 }
@@ -280,6 +288,7 @@ debate_scheme.2001 = {
                 has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_ruler_conclusion_1 }
                 has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_ruler_conclusion_2 }
                 has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_ruler_conclusion_3 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_aristocratic_1 }
             }
         }
 
@@ -330,6 +339,13 @@ debate_scheme.2001 = {
     # Argue that Athenian power will decline because of their inaction.
     option = {
         name = debate_scheme.2001.e
+        trigger = {
+            NOR = {
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_1 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_2 }
+                has_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_3 }
+            }
+        }
 
         trigger_event = {
             id = debate_scheme.2004
@@ -523,7 +539,7 @@ debate_scheme.2002 = {
 
     # Exit
     option = {
-        name = debate_scheme.2002.e
+        name = debate_scheme.generic.choose_another_argument
 
         trigger_event = {
             id = debate_scheme.2001
@@ -670,7 +686,7 @@ debate_scheme.2003 = {
 
     # Exit
     option = {
-        name = debate_scheme.2003.g
+        name = debate_scheme.generic.choose_another_argument
 
         trigger_event = {
             id = debate_scheme.2001
@@ -710,6 +726,11 @@ debate_scheme.2004 = {
                 }
             }
         }
+
+        trigger_event = {
+            id = debate_scheme.2004
+            days = 3
+        }
     }
 
     # It is their duty to do the right thing.
@@ -722,6 +743,11 @@ debate_scheme.2004 = {
         }
 
         add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_duty_1 }
+
+        trigger_event = {
+            id = debate_scheme.2004
+            days = 3
+        }
     }
 
     # Kick them when they are down.
@@ -740,15 +766,31 @@ debate_scheme.2004 = {
             }
         }
         hidden_effect = {
-            1 = {
-                add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_1 }
+            random_list = {
+                1 = {
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_1 }
+                }
+                1 = {
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_2 }
+                }
+                1 = {
+                    add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_3 }
+                }
             }
-            1 = {
-                add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_2 }
-            }
-            1 = {
-                add_debate_argument = { ARG_KEY = flag:argument_foreign_threat_tough_love_kickdown_3 }
-            }
+        }
+
+        trigger_event = {
+            id = debate_scheme.2001
+            days = 3
+        }
+    }
+
+    # Exit
+    option = {
+        name = debate_scheme.generic.choose_another_argument
+        
+        trigger_event = {
+            id = debate_scheme.2001
         }
     }
 }
