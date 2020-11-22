@@ -196,8 +196,8 @@ macedonian00104 = {
 	#3478.1.1 = { # 276 BC, approximate
 	#	add_spouse = ... # Phila
 	#}
-	3515.1.1 = {
-		death = yes # 239 BC
+	3515.3.1 = {
+		death = yes # spring 239 BC
 	}
 }
 macedonian00105 = {
@@ -369,7 +369,7 @@ macedonian00112 = {
 	#3501.1.1 = { # 253 BC, approximate
 	#	add_spouse = ... # Stratonike
 	#}
-	3518.1.1 = { # 236 BC, speculative
+	3517.1.1 = { # 237 BC, speculative
 		add_spouse = epirote00228 # Phthia
 		#remove_spouse = ... # Stratonike
 		#effect = {
@@ -1229,6 +1229,283 @@ macedonian01101 = {
 	}
 	3508.1.1 = { # made up
 		death = yes # 246 BC
+	}
+}
+
+# Arkynieus - Arkynia
+
+macedonian01201 = {
+	name = "Admetos"
+	dynasty = macedoniandyn012 # Arkynieus
+	religion = soterism_faith
+	culture = macedonian
+	3444.1.1 = { # made up
+		birth = yes # 310 BC
+	}
+	3505.1.1 = { # made up
+		death = yes # 249 BC
+	}
+}
+macedonian01202 = {
+	name = "Alexandros" # officer and philos of Philip V who commanded the Chalkaspides at Sellasia
+	dynasty = macedoniandyn012 # Arkynieus
+	religion = soterism_faith
+	culture = macedonian
+	# trait = education_martial_3
+	father = macedonian01201 # Admetos
+	3479.1.1 = { # made up
+		birth = yes # 275 BC
+	}
+	3562.1.1 = { # made up
+		death = yes # 192 BC
+	}
+}
+macedonian01203 = {
+	name = "Admetos" # nobleman executed for allegedly plotting against Philip V in 183 BC
+	dynasty = macedoniandyn012 # Arkynieus
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01202 # Alexandros
+	3516.1.1 = { # made up
+		birth = yes # 238 BC
+	}
+	3571.1.1 = { # 183 BC
+		death = { 
+			death_reason = death_execution_killer # executed on the orders of Philip V
+			killer = macedonian00116 # Philippos
+		}
+	}
+}
+
+# Edessaios - Edessa
+
+macedonian01301 = {
+	name = "Pyrrhichos"
+	dynasty = macedoniandyn013 # Edessaios
+	religion = soterism_faith
+	culture = macedonian
+	3442.1.1 = { # made up
+		birth = yes # 312 BC
+	}
+	3500.1.1 = { # made up
+		death = yes # 254 BC
+	}
+}
+macedonian01302 = {
+	name = "Chrysogonos" # officer and philos of Philip V who was said to be a good influence on the king
+	dynasty = macedoniandyn013 # Edessaios
+	religion = soterism_faith
+	culture = macedonian
+	# trait = education_martial_2
+	# trait = honest
+	# trait = calm
+	# trait = compassionate
+	father = macedonian01301 # Pyrrhichos
+	3475.1.1 = { # made up
+		birth = yes # 279 BC
+	}
+	3554.1.1 = { # made up
+		death = yes # 200 BC
+	}
+}
+macedonian01303 = {
+	name = "Pyrrhichos" # philos of Philip V who was executed for allegedly plotting against the king in 183 BC
+	dynasty = macedoniandyn013 # Edessaios
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01302 # Chrysogonos
+	3511.1.1 = { # made up
+		birth = yes # 243 BC
+	}
+	3571.1.1 = { # 183 BC
+		death = { 
+			death_reason = death_execution_killer # executed on the orders of Philip V
+			killer = macedonian00116 # Philippos
+		}
+	}
+}
+macedonian01304 = {
+	name = "Samos" # distinguished court poet who fell out of favour with Philip V and was executed
+	dynasty = macedoniandyn013 # Edessaios
+	religion = soterism_faith
+	culture = macedonian
+	# trait = education_diplomacy_2
+	father = macedonian01302 # Chrysogonos
+	3514.1.1 = { # made up
+		birth = yes # 240 BC
+	}
+	3571.1.1 = { # 183 BC
+		death = { 
+			death_reason = death_execution_killer # executed on the orders of Philip V
+			killer = macedonian00116 # Philippos
+		}
+	}
+}
+
+# Letaios - Lete
+
+macedonian01401 = {
+	name = "Melanthios"
+	dynasty = macedoniandyn014 # Letaios
+	religion = soterism_faith
+	culture = macedonian
+	3447.1.1 = { # made up
+		birth = yes # 307 BC
+	}
+	3493.1.1 = { # made up
+		death = yes # 261 BC
+	}
+}
+macedonian01402 = {
+	name = "Argeios" # Delphic theorodokos ca. 230-220 BC
+	dynasty = macedoniandyn014 # Letaios
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01401 # Melanthios
+	3472.1.1 = { # made up
+		birth = yes # 282 BC
+	}
+	3542.1.1 = { # made up
+		death = yes # 212 BC
+	}
+}
+
+# Elimiotis - Elimeia
+
+macedonian01501 = {
+	name = "Polemokrates"
+	dynasty = macedoniandyn015 # Elimiotis
+	religion = macedonian_faith
+	culture = macedonian
+	3352.1.1 = { # made up
+		birth = yes # 402 BC
+	}
+	3411.1.1 = { # made up
+		death = yes # 343 BC
+	}
+}
+macedonian01502 = {
+	name = "Kleandros" # commander of mercenary troops under Alexander
+	dynasty = macedoniandyn015 # Elimiotis
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 7
+	martial = 5
+	stewardship = 2
+	intrigue = 8
+	learning = 2
+	prowess = 6
+	trait = education_martial_2
+	trait = arbitrary
+	trait = arrogant
+	trait = greedy
+	father = macedonian01501 # Polemokrates
+	3381.1.1 = { # made up
+		birth = yes # 373 BC
+	}
+	3430.1.1 = { # 324 BC
+		death = { 
+			death_reason = death_execution_killer # executed by Alexander the Great on charges of maladministration
+			#killer = ... # Alexandros
+		}
+	}
+}
+macedonian01503 = {
+	name = "Koinos" # one of Alexander's most faithful and able generals
+	dynasty = macedoniandyn015 # Elimiotis
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 8
+	martial = 8
+	stewardship = 5
+	intrigue = 6
+	learning = 3
+	prowess = 7
+	trait = education_martial_4
+	trait = stubborn
+	trait = callous
+	trait = brave
+	trait = intellect_good_1
+	father = macedonian01501 # Polemokrates
+	3384.1.1 = { # approximate
+		birth = yes # 370 BC
+	}
+	#3420.1.1 = { # 334 BC, approximate
+	#	add_spouse = ... # d. Parmenion
+	#}
+	3429.1.1 = { # 325 BC
+		trait = ill
+		death = { 
+			death_reason = death_ill # fell ill and died soon after persuading Alexander to turn back from India
+		}
+	}
+}
+macedonian01504 = {
+	name = "Perdikkas" # mentioned in an inscription concerning his inheritance of lands near Olynthos
+	dynasty = macedoniandyn015 # Elimiotis
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01503 # Koinos
+	#mother = ... # d. Parmenion
+	3421.1.1 = { # approximate
+		birth = yes # 333 BC
+	}
+	3484.1.1 = { # made up
+		death = yes # 270 BC
+	}
+}
+
+# Eordaios - Eordaia
+
+macedonian01601 = {
+	name = "Nikanor"
+	dynasty = macedoniandyn016 # Eordaios
+	religion = macedonian_faith
+	culture = macedonian
+	3384.1.1 = { # made up
+		birth = yes # 370 BC
+	}
+	3425.1.1 = { # made up
+		death = yes # 329 BC
+	}
+}
+macedonian01602 = {
+	name = "Menelaos" # Epidaurian theorodokos sometime after 316 BC
+	dynasty = macedoniandyn016 # Eordaios
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01601 # Nikanor
+	3421.1.1 = { # made up
+		birth = yes # 333 BC
+	}
+	3478.1.1 = { # made up
+		death = yes # 276 BC
+	}
+}
+macedonian01603 = {
+	name = "Nikanor" # named on a late-3rd century vase found at Kelle
+	dynasty = macedoniandyn016 # Eordaios
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01602 # Menelaos, speculative
+	3455.1.1 = { # made up
+		birth = yes # 299 BC
+	}
+	3512.1.1 = { # made up
+		death = yes # 242 BC
+	}
+}
+macedonian01604 = {
+	name = "Asklepiodoros" # named on a late-3rd century vase found at Kelle
+	dynasty = macedoniandyn016 # Eordaios
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01603 # Nikanor
+	3493.1.1 = { # made up
+		birth = yes # 261 BC
+	}
+	3555.1.1 = { # made up
+		death = yes # 199 BC
 	}
 }
 
