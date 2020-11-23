@@ -203,6 +203,7 @@ epirote00207 = {
 	culture = epirote
 	trait = education_martial_3
 	trait = ambitious
+	trait = brave
 	father = epirote00205 # Neoptolemos
 	3383.1.1 = { # approximate
 		birth = yes # 371 BC
@@ -222,16 +223,32 @@ epirote00208 = {
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
 	culture = epirote
-	trait = education_intrigue_3
+	diplomacy = 5
+	martial = 6
+	stewardship = 4
+	intrigue = 8
+	learning = 6
+	prowess = 3
+	trait = education_intrigue_4
 	trait = ambitious
 	trait = vengeful
 	trait = callous
+	trait = zealous
 	father = epirote00205 # Neoptolemos
 	3379.1.1 = {
 		birth = yes # 375 BC
 	}
 	#3397.1.1 = { # 357 BC
 	#	add_spouse = ... # Philippos
+	#}
+	3417.1.1 = { # 337 BC, approximate
+		employer = epirote00207 # flees to the court of her brother Alexander
+		#effect = {		
+		#	set_relation_rival = character:... # rivalry with Cleopatra, probably caused by concerns about Alexander's rights of inheritance
+		#}
+	}
+	#3418.1.1 = { # 336 BC, approximate
+	#	employer = ... # returns to Pella
 	#}
 	3437.1.1 = { # 317 BC
 		give_nickname = nick_stratonike
@@ -265,10 +282,16 @@ epirote00210 = {
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
 	culture = epirote
+	diplomacy = 6
+	martial = 5
+	stewardship = 4
+	intrigue = 7
+	learning = 3
+	prowess = 6
 	trait = education_martial_2
-	trait = fickle
-	trait = impatient
 	trait = deceitful
+	trait = brave
+	trait = arrogant
 	trait = strong
 	father = epirote00206 # Arybbas, speculative
 	mother = epirote00209 # Troias, speculative
@@ -287,7 +310,13 @@ epirote00211 = {
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
 	culture = epirote
+	diplomacy = 5
+	martial = 4
+	stewardship = 4
 	intrigue = 2
+	learning = 4
+	prowess = 5
+	trait = education_intrigue_1
 	trait = deceitful
 	trait = arbitrary
 	trait = arrogant
@@ -740,6 +769,40 @@ epirote00232 = {
 	}
 	3322.1.1 = { # made up
 		death = yes # 432 BC
+	}
+}
+epirote00233 = {
+	name = "Leonidas" # tutor of Alexander the Great noted for his austere nature
+	dynasty = epirotedyn002 # Aiakidas
+	religion = epirote_faith
+	culture = epirote
+	trait = education_learning_3
+	trait = temperate
+	trait = stubborn
+	trait = content
+	father = epirote00204 # Alketas
+	3367.1.1 = { # made up
+		birth = yes # 387 BC
+	}
+	3428.1.1 = { # made up
+		death = yes # 326 BC
+	}
+}
+epirote00234 = {
+	name = "Arybbas" # somatophylax under Philip II and Alexander the Great
+	dynasty = epirotedyn002 # Aiakidas
+	religion = epirote_faith
+	culture = epirote
+	trait = education_martial_2
+	father = epirote00233 # Leonidas
+	3393.1.1 = { # made up
+		birth = yes # 361 BC
+	}
+	3423.1.1 = { # 331 BC, approximate
+		trait = ill
+		death = { 
+			death_reason = death_ill # died of illness in Egypt in the winter of 332/1 BC
+		}
 	}
 }
 
