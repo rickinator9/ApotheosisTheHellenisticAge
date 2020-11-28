@@ -6,7 +6,10 @@
 on_faith_created = {
 	effect = {
 		scope:old_faith = {
-			set_variable = { name = has_been_reformed }
+			if = {
+				limit = { has_doctrine_parameter = unreformed }
+				set_variable = { name = has_been_reformed }
+			}
 		
 			root = { play_music_cue = "mx_cue_faith_conversion" }
 		}
@@ -125,7 +128,7 @@ faith_heresy_events_pulse = {
 				value = 70
 			}
 			else_if = {
-				limit = {fervor > 10 }
+				limit = { fervor > 10 }
 				value = 40
 			}
 		}

@@ -1,4 +1,8 @@
 coat_of_arms_template_lists = {
+	# Root may be the set character, if in the ruler designer it will not exist yet but the saved scopes will so use them instead of checking the character
+	# scope:faith is the faith of the character, always set
+	# scope:culture is the culture of the character, always set
+	# scope:title is the primary title of the character, may be unset
 	all = {
 		# Simple catch all
 		
@@ -7,7 +11,7 @@ coat_of_arms_template_lists = {
 
 		special_selection = {
 			trigger = {
-				culture = { has_graphical_culture = greek_group_coa_gfx }
+				scope:culture = { has_graphical_culture = greek_group_coa_gfx }
 			}
 			5000 = greek_shield_inset
 			5000 = greek_shield_inset_inverted
@@ -22,14 +26,14 @@ coat_of_arms_template_lists = {
 		}
 		special_selection = {
 			trigger = {
-				culture = { has_graphical_culture = hellenistic_coa_gfx }
+				scope:culture = { has_graphical_culture = hellenistic_coa_gfx }
 			}
 			40000 = hellenistic_shield_template
 			40000 = hellenistic_shield_template_inverted
 		}
 		special_selection = {
 			trigger = {
-				culture = { has_graphical_culture = spartan_coa_gfx }
+				scope:culture = { has_graphical_culture = spartan_coa_gfx }
 			}
 			10000 = spartan_shield_template
 			10000 = spartan_shield_template_b
