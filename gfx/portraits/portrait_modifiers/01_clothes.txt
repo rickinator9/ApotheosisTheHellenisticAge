@@ -19,10 +19,99 @@ clothes = {
             base = 0
             modifier = {
                 add = 1000
-                should_be_naked_trigger = yes
+                should_be_fully_naked_portrait_trigger = yes
+            }
+            modifier = {
+            	add = -1000
+            	should_show_nudity = no
             }
         }
     }
+
+    nightgown_western = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_sickness
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 1.0
+				template = bust_clothes
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_body_shape
+				value = 1.0
+				template = body_shape_average_clothed
+			}
+		}
+		outfit_tags = { no_clothes }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				should_show_nudity = no
+				should_be_naked_trigger = yes
+			}
+			modifier = {
+            	add = -1000
+            	should_show_nudity = yes
+            }
+            modifier = {
+            	add = -50
+				portrait_byzantine_clothing_trigger = no
+				portrait_northern_clothing_trigger = no
+				portrait_western_clothing_trigger = no
+            }
+		}
+	}
+
+	nightgown_mena = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = mena_sickness
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 1.0
+				template = bust_clothes
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_body_shape
+				value = 1.0
+				template = body_shape_average_clothed
+			}
+		}	
+		outfit_tags = { no_clothes }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				should_show_nudity = no
+				should_be_naked_trigger = yes
+			}
+			modifier = {
+            	add = -1000
+            	should_show_nudity = yes
+            }
+            modifier = {
+            	add = -50
+				portrait_mena_clothing_trigger = no
+				portrait_indian_clothing_trigger = no
+				portrait_steppe_clothing_trigger = no
+				portrait_african_clothing_trigger = no
+            }
+		}
+	}
 
 	default_clothes = {
         dna_modifiers = {
@@ -35,7 +124,37 @@ clothes = {
         }   
         outfit_tags = { no_clothes }
         weight = {
+            base = -100
+        }
+    }
+
+	ruler_designer_clothes = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = clothes
+                template = western_bedchamber
+                range = { 0 1 }
+            }
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 1.0
+				template = bust_clothes
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_body_shape
+				value = 1.0
+				template = body_shape_average_clothed
+			}
+        }   
+        weight = {
             base = 0
+            modifier = {
+            	add = 100
+            	exists = scope:ruler_designer
+            }
         }
     }
 
@@ -401,7 +520,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_western_clothing_trigger = yes
 			}
@@ -432,6 +551,29 @@ clothes = {
 	    outfit_tags = { beggar_rags }
 		weight = {
 			base = 0
+			modifier = {
+				add = 500
+				has_trait = peasant_leader
+				OR = {
+					is_ruler = no
+					is_leading_faction_type = peasant_faction
+					AND = {
+						is_ruler = yes
+						is_landed = no
+						OR = {
+							has_government = feudal_government
+							has_government = clan_government
+						}
+					}
+				}
+				
+				NOR = {
+					portrait_mena_clothing_trigger = yes
+					portrait_indian_clothing_trigger = yes
+					portrait_steppe_clothing_trigger = yes
+					portrait_african_clothing_trigger = yes
+				}
+			}
 			modifier = {
 				add = 120
 				is_imprisoned = yes
@@ -715,7 +857,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 101		# slightly stronger than western war
+				add = 102		# slightly stronger than western war
 				portrait_wear_armor_trigger = yes
 				portrait_dde_hre_clothing_trigger = yes
 			}
@@ -912,7 +1054,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_byzantine_clothing_trigger = yes
 			}
@@ -1108,7 +1250,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_indian_clothing_trigger = yes
 			}
@@ -1340,7 +1482,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_mena_clothing_trigger = yes
 			}
@@ -1370,6 +1512,29 @@ clothes = {
 		}	
 		weight = {
 			base = 0
+			modifier = {
+				add = 500
+				has_trait = peasant_leader
+				OR = {
+					is_ruler = no
+					is_leading_faction_type = peasant_faction
+					AND = {
+						is_ruler = yes
+						is_landed = no
+						OR = {
+							has_government = feudal_government
+							has_government = clan_government
+						}
+					}
+				}
+				
+				OR = {
+					portrait_mena_clothing_trigger = yes
+					portrait_indian_clothing_trigger = yes
+					portrait_steppe_clothing_trigger = yes
+					portrait_african_clothing_trigger = yes
+				}
+			}
 			modifier = {
 				add = 110
 				is_imprisoned = yes
@@ -1650,7 +1815,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 101 # slightly stronger than mena war
+				add = 102 # slightly stronger than mena war
 				portrait_wear_armor_trigger = yes
 				portrait_dde_abbasid_clothing_trigger = yes
 			}
@@ -1846,7 +2011,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_steppe_clothing_trigger = yes
 			}
@@ -2042,7 +2207,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_northern_clothing_trigger = yes
 			}
@@ -2241,7 +2406,7 @@ clothes = {
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 101
 				portrait_wear_armor_trigger = yes
 				portrait_african_clothing_trigger = yes
 			}
