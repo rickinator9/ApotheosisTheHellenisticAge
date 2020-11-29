@@ -18,7 +18,7 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }	
 		}	
 	}
@@ -39,7 +39,7 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }	
 		}
 	}	
@@ -62,7 +62,7 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}	
 	}
@@ -75,15 +75,15 @@
 		
 		colored_emblem = {
 			texture = list "wreath_list_realcolour"
-			color1 = "brown"
-			color2 = "green"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}
 	}	
@@ -104,7 +104,7 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}	
 	}
@@ -117,15 +117,15 @@
 		
 		colored_emblem = {
 			texture = list "wreath_list_realcolour"
-			color1 = "brown"
-			color2 = "green"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 -1.0 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}
 	}	
@@ -148,7 +148,7 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color4
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}
 	}
@@ -169,7 +169,7 @@
 			texture = list "charge"
 			color1 = color2
 			color2 = color2
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
 		}
 	}
@@ -182,8 +182,8 @@
 			
 		colored_emblem = {
 			texture = list "wreath_list_realcolour"
-			color1 = brown
-			color2 = green
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}	
 		colored_emblem = {
@@ -196,7 +196,7 @@
 			texture = list "charge"
 			color1 = color1
 			color2 = color2
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.46 0.46 }  }
 		}
 	}		
@@ -217,14 +217,14 @@
 			texture = list "roundel_list"
 			color1 = color2
 			color2 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.55 0.55 }  }		
+			instance = { position = { 0.5 0.5 } scale = { 0.56 0.56 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color4
 			color2 = color4
-			#color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.45 0.45 }  }	
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.46 0.46 }  }	
 		}
 	}	
 	
@@ -264,6 +264,7 @@
 			texture = list "hellenistic_shield_inner_list"
 			color1 = color4
 			color2 = list "normal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}	
 		colored_emblem = {
@@ -308,6 +309,7 @@
 			texture = list "hellenistic_shield_inner_inverted_list"
 			color1 = color4
 			color2 = color3
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}	
 		colored_emblem = {
@@ -317,6 +319,66 @@
 			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }			
 		}
 	}	
+
+	# Gorgoneion
+	greek_gorgoneion_template = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
+		}			
+		colored_emblem = {
+			texture = list "aegis_list"
+			color1 = color3
+			color2 = color2
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.9 0.9 }  }	
+		}				
+		colored_emblem = {
+			texture = list "gorgon_list"
+			color1 = list "spartan_colors"
+			color2 = list "gorgon_colors"
+			color3 = "pink_skin"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}	
+	}
+	# Gorgoneion Inverted
+	greek_gorgoneion_template_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
+		}			
+		colored_emblem = {
+			texture = list "aegis_list"
+			color1 = list "gorgon_colors"
+			color2 = color2
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.9 0.9 }  }	
+		}				
+		colored_emblem = {
+			texture = list "gorgon_list"
+			color1 = list "spartan_colors"
+			color2 = list "gorgon_colors"
+			color3 = "pink_skin"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}	
+	}
+
 
 	# Spartan		
 	spartan_shield_template = {
@@ -336,7 +398,7 @@
 			texture = list "charge"
 			color1 = list "spartan_colors"
 			color2 = list "metal_colors"
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }		
 		}	
 	}
@@ -357,7 +419,7 @@
 			texture = list "charge"
 			color1 = "black"
 			color2 = list "metal_colors"
-			#color3 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }		
 		}	
 	}	
