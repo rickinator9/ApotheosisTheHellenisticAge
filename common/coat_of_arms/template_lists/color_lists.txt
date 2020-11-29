@@ -2,7 +2,9 @@ color_lists = {
 	all_color_list = { # PM : basically the average of medieval frequencies in roll of arms (strong bias towards 13th c), with values cut in half
 		30 = "red"
 		0 = "blue"
+		0 = "blue_light"
 		0 = "green"
+		0 = "green_light"
 		0 = "black"
 		0 = "purple"
 		0 = "orange"
@@ -21,7 +23,10 @@ color_lists = {
 			trigger = {
 				coa_classical_greek_trigger = yes
 				scope:culture = { 
-					NOT = { has_graphical_culture = boeotian_coa_gfx }
+					NOR = { 
+						has_graphical_culture = boeotian_coa_gfx
+						has_graphical_culture = athenian_coa_gfx
+					}
 				}	
 			}
 			30 = "red"
@@ -58,6 +63,17 @@ color_lists = {
 		}
 		special_selection = {
 			trigger = {
+				scope:culture = { has_graphical_culture = athenian_coa_gfx }
+			}
+			16 = "red"
+			36 = "blue"				
+			6 = "green"
+			0 = "black"
+			0 = "purple"
+			16 = "orange"
+		}
+		special_selection = {
+			trigger = {
 				scope:culture = { has_graphical_culture = epirote_coa_gfx }
 			}
 			30 = "red"
@@ -89,4 +105,19 @@ color_lists = {
 		30 = "red"
 		14 = "orange"
 	}	
+	gorgon_colors = {
+		30 = "blue"
+		20 = "green"
+		20 = "blue_light"
+		10 = "green_light"
+	}		
+	branch_colors = {
+		30 = "brown"
+		10 = "red"
+		5 = "orange"
+	}	
+	leaf_colors = {
+		30 = "green"
+		10 = "green_light"
+	}
 }
