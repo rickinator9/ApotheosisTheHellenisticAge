@@ -369,10 +369,10 @@ k_hellas = {
 
 				province = 24
 
-				cultural_names = {
-				# SPARTAN
-					spartan = cn_pylos_spartan
-				}
+				#cultural_names = {
+				## SPARTAN
+				#	spartan = cn_pylos_spartan # Messenia and Sparta share the same culture, so this distinction won't work under the current setup
+				#}
 			}
 		}
 	}
@@ -505,7 +505,6 @@ k_hellas = {
 				cultural_names = {
 				# IONIC
 					ionian = cn_makistos_ionic
-					euboean = cn_makistos_ionic
 				}
 			}
 		}
@@ -549,7 +548,6 @@ k_hellas = {
 		cultural_names = {
 		# IONIC
 			ionian = cn_achaia_ionic
-			euboean = cn_achaia_ionic
 		}
 
 		c_aigion = {
@@ -1783,7 +1781,7 @@ k_hellas = {
 
 			cultural_names = {
 			# LOCRIAN
-				northwest_doric = cn_opous_aeolic
+				dorian_northwest = cn_opous_aeolic
 			# AEOLIC
 				aeolian = cn_opous_aeolic
 				boeotian = cn_opous_aeolic
@@ -1798,7 +1796,7 @@ k_hellas = {
 
 				cultural_names = {
 				# LOCRIAN
-					northwest_doric = cn_opous_aeolic
+					dorian_northwest = cn_opous_aeolic
 				# AEOLIC
 					aeolian = cn_opous_aeolic
 					boeotian = cn_opous_aeolic
@@ -2534,6 +2532,111 @@ k_thessalia = {
 			}
 		}
 	}
+	d_malis = {
+		color = { 211 85 38 }
+		color2 = { 255 255 255 }
+
+		capital = c_lamia
+
+		cultural_names = {
+		# DORIC
+			achaean = cn_malis_doric
+			dorian = cn_malis_doric
+			dorian_northwest = cn_malis_doric
+			dorian_south = cn_malis_doric
+			epirote = cn_malis_doric
+		# AEOLIC
+			aeolian = cn_malis_doric
+			boeotian = cn_malis_doric
+			thessalian = cn_malis_doric
+		# ARCADO-CYPRIOT
+			arcadian = cn_malis_doric
+		}
+
+		c_lamia = {
+			color = { 211 85 38 }
+			color2 = { 255 255 255 }
+
+			# capital = b_lamia_lamia
+
+			b_lamia_lamia = {
+				color = { 211 85 38 }
+				color2 = { 255 255 255 }
+
+				province = 161
+			}
+			b_phalara_lamia = {
+				color = { 211 85 38 }
+				color2 = { 255 255 255 }
+
+				province = 160
+			}
+		}
+		c_trachis = {
+			color = { 220 255 68 }
+			color2 = { 255 255 255 }
+
+			# capital = b_herakleia_trachinia_trachis
+
+			b_herakleia_trachinia_trachis = {
+				color = { 211 85 38 }
+				color2 = { 255 255 255 }
+
+				province = 162
+			}
+			b_pyra_trachis = {
+				color = { 220 255 68 }
+				color2 = { 255 255 255 }
+
+				province = 493
+
+				cultural_names = {
+				# IONIC
+					ionian = cn_pyra_ionic
+				}
+			}
+		}
+		c_ainis = {
+			color = { 216 171 154 }
+			color2 = { 255 255 255 }
+
+			# capital = b_hypata_ainis
+
+			b_hypata_ainis = {
+				color = { 216 171 154 }
+				color2 = { 255 255 255 }
+
+				province = 163
+
+				cultural_names = {
+				# DORIC
+					achaean = cn_hypata_doric
+					dorian = cn_hypata_doric
+					dorian_northwest = cn_hypata_doric
+					dorian_south = cn_hypata_doric
+					epirote = cn_hypata_doric
+				# AEOLIC
+					aeolian = cn_hypata_doric
+					boeotian = cn_hypata_doric
+					thessalian = cn_hypata_doric
+				# ARCADO-CYPRIOT
+					arcadian = cn_hypata_doric
+				}
+			}
+			b_spercheiai_ainis = {
+				color = { 216 171 154 }
+				color2 = { 255 255 255 }
+
+				province = 164
+			}
+			b_makra_kome_ainis = {
+				color = { 216 171 154 }
+				color2 = { 255 255 255 }
+
+				province = 491
+			}
+		}
+	}
 	d_achaia_phthiotis = {
 		color = { 104 192 110 }
 		color2 = { 255 255 255 }
@@ -2679,17 +2782,17 @@ k_thessalia = {
 
 				province = 192
 			}
-			b_argoura_larissa = {
-				color = { 193 101 34 }
-				color2 = { 255 255 255 }
-
-				province = 210
-			}
 			b_kondaia_larissa = {
 				color = { 193 101 34 }
 				color2 = { 255 255 255 }
 
 				province = 209
+			}
+			b_argoura_larissa = {
+				color = { 193 101 34 }
+				color2 = { 255 255 255 }
+
+				province = 210
 			}
 		}
 		c_pherai_pelasgiotis = {
@@ -3059,112 +3162,13 @@ k_thessalia = {
 				color2 = { 255 255 255 }
 
 				province = 697
-			}
-		}
-	}
-	d_malis = {
-		color = { 211 85 38 }
-		color2 = { 255 255 255 }
-
-		capital = c_lamia
-
-		cultural_names = {
-		# DORIC
-			achaean = cn_malis_doric
-			dorian = cn_malis_doric
-			dorian_northwest = cn_malis_doric
-			dorian_south = cn_malis_doric
-			epirote = cn_malis_doric
-		# AEOLIC
-			aeolian = cn_malis_doric
-			boeotian = cn_malis_doric
-			thessalian = cn_malis_doric
-		# ARCADO-CYPRIOT
-			arcadian = cn_malis_doric
-		}
-
-		c_lamia = {
-			color = { 211 85 38 }
-			color2 = { 255 255 255 }
-
-			# capital = b_lamia_lamia
-
-			b_lamia_lamia = {
-				color = { 211 85 38 }
-				color2 = { 255 255 255 }
-
-				province = 161
-			}
-			b_phalara_lamia = {
-				color = { 211 85 38 }
-				color2 = { 255 255 255 }
-
-				province = 160
-			}
-		}
-		c_trachis = {
-			color = { 220 255 68 }
-			color2 = { 255 255 255 }
-
-			# capital = b_herakleia_trachinia_trachis
-
-			b_herakleia_trachinia_trachis = {
-				color = { 211 85 38 }
-				color2 = { 255 255 255 }
-
-				province = 162
-			}
-			b_pyra_trachis = {
-				color = { 220 255 68 }
-				color2 = { 255 255 255 }
-
-				province = 493
 
 				cultural_names = {
-				# IONIC
-					ionian = cn_pyra_ionic
-					euboean = cn_pyra_ionic
-				}
-			}
-		}
-		c_ainis = {
-			color = { 216 171 154 }
-			color2 = { 255 255 255 }
-
-			# capital = b_hypata_ainis
-
-			b_hypata_ainis = {
-				color = { 216 171 154 }
-				color2 = { 255 255 255 }
-
-				province = 163
-
-				cultural_names = {
-				# DORIC
-					achaean = cn_hypata_doric
-					dorian = cn_hypata_doric
-					dorian_northwest = cn_hypata_doric
-					dorian_south = cn_hypata_doric
-					epirote = cn_hypata_doric
 				# AEOLIC
-					aeolian = cn_hypata_doric
-					boeotian = cn_hypata_doric
-					thessalian = cn_hypata_doric
-				# ARCADO-CYPRIOT
-					arcadian = cn_hypata_doric
-				}
-			}
-			b_spercheiai_ainis = {
-				color = { 216 171 154 }
-				color2 = { 255 255 255 }
-
-				province = 164
-			}
-			b_makra_kome_ainis = {
-				color = { 216 171 154 }
-				color2 = { 255 255 255 }
-
-				province = 491
+					aeolian = cn_pythion_aeolic
+					boeotian = cn_pythion_aeolic
+					thessalian = cn_pythion_aeolic
+				}	
 			}
 		}
 	}
@@ -4945,9 +4949,9 @@ k_krete = {
 			color = { 0 0 0 }
 			color2 = { 255 255 255 }
 
-			# capital = b_hyrkatina_oreia
+			# capital = b_hyrtakina_oreia
 
-			b_hyrkatina_oreia = {
+			b_hyrtakina_oreia = {
 				color = { 0 0 0 }
 				color2 = { 255 255 255 }
 
