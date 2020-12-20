@@ -161,15 +161,147 @@ city_state_role = {
 		}
 		city_state_role_klerouchy = {
 			position = { 0 3 }
+			is_valid = {
+				custom_description = { 	# Custom description nor very intricate triggers are not presented
+										# well in the UI. Therefore, explain the trigger in the desc.
+					scope:vassal = {
+						culture = scope:liege.culture
+						any_held_title = {
+							limit = { tier = tier_county }
+							NOT = { culture = scope:vassal.culture }
+						}
+					}
+				}
+			}
 
 			levies = -0.15
 			tax = 0.15
-			vassal_opinion = 20
+			vassal_opinion = 10
 
-			flag = city_state_encouraged_culture_flipping # TODO: Add logic for this.
+			flag = city_state_encouraged_culture_flipping
 
-			ai_liege_desire = @ai_standard_liege_desire # TODO: Genocidal or proud people may want this.
-			ai_vassal_desire = @ai_standard_vassal_desire
+			ai_liege_desire = {
+				value = 0
+				if = { # If the liege is humble or happy with the situation, he will be less likely to do this.
+					limit = {
+						scope:liege = {
+							OR = {
+								has_trait = humble
+								has_trait = content
+							}
+						}
+					}
+					subtract = 1
+				}
+				if = { # Just lieges will not want to do such an extensive colonisation.
+					limit = {
+						scope:liege = {
+							has_trait = just
+						}
+					}
+					subtract = 2
+				}
+				if = { # Trusting or compassionate lieges sympathize or trust the natives too much.
+					limit = {
+						scope:liege = {
+							OR = {
+								has_trait = trusting
+								has_trait = compassionate
+							}
+						}
+					}
+					subtract = 1
+				}
+				if = { # Wrathful and sadistic lieges love suffering. Paranoid lieges do not trust those of other cultures.
+					limit = {
+						scope:liege = {
+							OR = {
+								has_trait = wrathful
+								has_trait = sadistic
+								has_trait = paranoid
+							}
+						}
+					}
+					add = 1
+				}
+				if = { # Ambitious empire builders want only one ethnicity.
+					limit = {
+						scope:liege = {
+							has_trait = ambitious
+						}
+					}
+					add = 2
+				}
+				if = { # Impatient lieges want everything to be done fast!
+					limit = {
+						scope:liege = {
+							has_trait = impatient
+						}
+					}
+					add = 2
+				}
+			}
+			ai_vassal_desire = {
+				value = 0
+				if = { # If the vassal is humble or happy with the situation, he will be less likely to do this.
+					limit = {
+						scope:vassal = {
+							OR = {
+								has_trait = humble
+								has_trait = content
+							}
+						}
+					}
+					subtract = 1
+				}
+				if = { # Just vassals will not want to do such an extensive colonisation.
+					limit = {
+						scope:vassal = {
+							has_trait = just
+						}
+					}
+					subtract = 2
+				}
+				if = { # Trusting or compassionate vassals sympathize or trust the natives too much.
+					limit = {
+						scope:vassal = {
+							OR = {
+								has_trait = trusting
+								has_trait = compassionate
+							}
+						}
+					}
+					subtract = 1
+				}
+				if = { # Wrathful and sadistic vassals love suffering. Paranoid vassals do not trust those of other cultures.
+					limit = {
+						scope:vassal = {
+							OR = {
+								has_trait = wrathful
+								has_trait = sadistic
+								has_trait = paranoid
+							}
+						}
+					}
+					add = 1
+				}
+				if = { # Ambitious empire builders want only one ethnicity.
+					limit = {
+						scope:vassal = {
+							has_trait = ambitious
+						}
+					}
+					add = 2
+				}
+				if = { # Impatient vassals want everything to be done fast!
+					limit = {
+						scope:vassal = {
+							has_trait = impatient
+						}
+					}
+					add = 2
+				}
+			}
 		}
 	}
 }

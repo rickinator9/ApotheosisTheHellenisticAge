@@ -651,6 +651,19 @@ task_promote_culture = {
 				desc = GAME_RULE_FASTER_REASON
 			}
 		}
+
+		# ATHA Klerouchy
+		if = {
+			limit = {
+				scope:councillor_liege = {
+					vassal_contract_has_flag = city_state_encouraged_culture_flipping
+				}
+			}
+			multiply = {
+				value = klerouchy_culture_conversion_factor
+				desc = KLEROUCHY_CULTURE_CONVERSION_FACTOR_DESC
+			}
+		}
 	}
 
 	potential_county = {
