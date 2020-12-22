@@ -1,0 +1,58 @@
+city_state_gui_tab_displayed = {
+	scope = character
+
+	is_shown = {
+		has_government = city_state_government
+	}
+}
+
+city_state_gui_toggle = {
+	scope = player
+
+	is_shown = {
+		has_variable = city_state_gui_shown
+	}
+
+	effect = {
+		if = {
+			limit = {
+				has_variable = city_state_gui_shown
+			}
+			remove_variable = city_state_gui_shown
+		} else = {
+			set_variable = city_state_gui_shown
+		}
+	}
+}
+
+city_state_gui_is_aristocratic = {
+	scope = player
+
+	is_shown = {
+		primary_title = {
+			always = no # TODO: Add aristocratic
+		}
+	}
+}
+
+city_state_gui_is_democratic = {
+	scope = player
+
+	is_shown = {
+		primary_title = {
+			has_title_law = democratic_succession_law
+		}
+	}
+}
+
+city_state_gui_is_tyrannical = {
+	scope = player
+
+	is_shown = {
+		primary_title = {
+			NOR = {
+				has_title_law = democratic_succession_law
+			}
+		}
+	}
+}

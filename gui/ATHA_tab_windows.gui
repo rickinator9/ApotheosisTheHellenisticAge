@@ -1,0 +1,278 @@
+types ATHA_city_state_windows 
+{
+	type city_state_window = widget {
+		name = "city_state_window"
+		parentanchor = top|right
+		layer = windows_layer
+		
+		using = Window_Size_MainTab
+		
+		datacontext = "[GetScriptedGui('city_state_gui_toggle')]"
+		visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+		
+		state = {
+			name = _show
+			using = Animation_FadeIn_Quick
+			using = Sound_WindowShow_Standard
+			using = Window_Position_MainTab
+			
+			on_start = "[GetVariableSystem.Set( 'right_window_open', 'true' )]"
+		}
+		
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Quick
+			using = Sound_WindowHide_Standard
+			using = Window_Position_MainTab_Hide
+			
+			on_start = "[GetVariableSystem.Clear( 'right_window_open')]"
+		}
+
+		background = {
+			texture = "gfx/interface/component_tiles/tile_window_background_no_edge.dds"
+			spriteType = Corneredtiled
+			spriteborder = { 18 0 }
+			texture_density = 2
+	
+			modify_texture = {
+				texture = "gfx/interface/component_overlay/overlay_effect.dds"
+				blend_mode = overlay
+			}
+		}
+
+		margin_widget = {
+			size = { 100% 100% }
+			margin_top = 40
+			margin_right = 20
+			
+			widget = {
+				size = { 100% 100% }
+				using = Window_Background
+				using = Window_Decoration_Thin
+				
+				vbox = {
+					using = Window_Margins
+					spacing = 8
+					
+					vbox = {
+						layoutpolicy_horizontal = expanding
+			
+						hbox = {
+							name="header"
+							layoutpolicy_horizontal = expanding
+
+							background = {
+								texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
+								margin_bottom = 10
+								spriteType = Corneredtiled
+								spriteborder = { 0 18 }
+								texture_density = 2
+				
+								modify_texture = {
+									name = "mask"
+									texture = "gfx/interface/component_masks/mask_title_big_top.dds"
+									spriteType = Corneredtiled
+									spriteborder = { 160 0 }
+									blend_mode = alphamultiply
+									alpha = 0.5
+								}
+				
+								modify_texture = {
+									name = "overlay"
+									texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
+									spriteType = Corneredstretched
+									spriteborder = { 0 0 }
+									blend_mode = overlay
+								}
+							}
+
+							vbox = {
+								name="current_ruler"
+								margin_left = 24
+
+								portrait_head = { datacontext = "[GetPlayer]" }
+
+								text_single = {
+									text = "CITY_STATE_GUI_CURRENT_RULER"
+									default_format = "#low"
+								}
+						
+								expand = {}
+							}
+			
+							vbox = {
+								name="title_name"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin_top = 24
+								margin_bottom = 40
+
+								text_multi = {
+									text = "[GetPlayer.GetPrimaryTitle.GetNameNoTooltip|U]"
+									default_format = "#high"
+									max_width = 380
+									autoresize = yes
+									using = Font_Size_Big
+								}
+			
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									align = center
+									text = "CITY_STATE_GUI_DEMOCRATIC"
+									fontsize = 14
+									datacontext = "[GetScriptedGui('city_state_gui_is_democratic')]"
+									visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+			
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									text = "CITY_STATE_GUI_TYRANNY"
+									datacontext = "[GetScriptedGui('city_state_gui_is_tyrannical')]"
+									visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+						
+								expand = {}
+
+								button_standard_select_arrow = {
+									visible = "[Not(GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+									onclick = "[OpenSuccessionElectionWindowForTitle(GetPlayer.GetPrimaryTitle)]"
+									
+									blockoverride "button_text"{
+										text = "MY_REALM_WINDOW_VOTE"
+									}
+									
+									tooltip = "MY_REALM_WINDOW_VOTE_TOOLTIP"
+								}
+							}
+
+							vbox = {
+								name="coa"
+								margin = { 0 5 }
+								layoutpolicy_vertical = expanding
+					
+								coa_title_big_crown = {
+									datacontext = "[GetPlayer.GetPrimaryTitle]"
+									tooltip = "[Title.GetCOADeJureTooltip]"
+								}
+						
+								expand = {}
+							}
+			
+							vbox = {
+								name="close"
+								layoutpolicy_vertical = expanding
+
+								buttons_window_control = {
+									blockoverride "button_close"
+									{
+										datacontext = "[GetScriptedGui('city_state_gui_toggle')]"
+										onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									}
+								}
+			
+								expand = {}
+							}
+						}
+
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 16
+						margin_left = 16
+						margin_right = 16
+						hbox = {
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								text = "CITY_STATE_POLICIES"
+							}
+
+							expand = {}
+						}
+
+						city_state_policy_widget = {
+							blockoverride "title" { text = "Policy" }
+							blockoverride "description" { text = "Policies represent the acts and laws that have been implemented in the city state. In the mod, policies are permanent modifiers that affect the domain and ruler." }
+						}
+						city_state_policy_widget = {
+							blockoverride "title" { text = "Theoric Fund" }
+							blockoverride "description" { text = "The Theoric fund was used at Athens to pay for public festivals, sacrifices and other entertainment. It provided money for poorer citizens to attend festivals." }
+							blockoverride "icon" { texture = "gfx/interface/icons/icon_soldier.dds" }
+						}
+						city_state_policy_widget = { }
+
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+
+					expand = {}
+				}
+			}
+		}
+	}
+
+	type city_state_policy_widget = button_standard_list {
+		layoutpolicy_horizontal = expanding
+		minimumsize = { 0 64 }
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+
+			vbox = {
+				margin_bottom = 4
+				margin_left = 8
+
+				icon = {
+					framesize = { 30 30 }
+					size = { 48 48 }
+					block "icon" {
+						texture = "gfx/interface/icons/icon_supplies_small.dds"
+					}
+				}
+			}
+
+			vbox = {
+				margin_top = 4
+				margin_left = 8
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+				spacing = 4
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					block "title" {
+						text = "Enfranchisement"
+					}
+				}
+
+				text_multi = {
+					layoutpolicy_horizontal = expanding
+					fontsize = 11
+					default_format = "#low"
+					block "description" {
+						text = "Many cities started to enfranchise Paroikoi (as Metics were known during the Hellenistic age) to stop the demographic decline of their citizen bodies."
+					}
+				}
+			}
+			
+			buttons_window_control = {
+				margin_top = 18
+				layoutpolicy_vertical = expanding
+				blockoverride "button_close"
+				{
+					datacontext = "[GetScriptedGui('city_state_gui_is_tyrannical')]"
+					visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			vbox = {
+				margin_left = 4
+			}
+		}
+	}
+}
