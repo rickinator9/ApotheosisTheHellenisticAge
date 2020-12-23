@@ -57,8 +57,8 @@ types ATHA_city_state_windows
 					vbox = {
 						layoutpolicy_horizontal = expanding
 			
+						# Header
 						hbox = {
-							name="header"
 							layoutpolicy_horizontal = expanding
 
 							background = {
@@ -86,9 +86,11 @@ types ATHA_city_state_windows
 								}
 							}
 
+							# Current ruler left column
 							vbox = {
-								name="current_ruler"
-								margin_left = 24
+								layoutpolicy_vertical = expanding
+								margin_top = 18
+								margin_left = 12
 
 								portrait_head = { datacontext = "[GetPlayer]" }
 
@@ -100,8 +102,8 @@ types ATHA_city_state_windows
 								expand = {}
 							}
 			
+							# Title name center column
 							vbox = {
-								name="title_name"
 								layoutpolicy_horizontal = expanding
 								layoutpolicy_vertical = expanding
 								margin_top = 24
@@ -145,32 +147,44 @@ types ATHA_city_state_windows
 								}
 							}
 
+							# COA right column
 							vbox = {
-								name="coa"
-								margin = { 0 5 }
+								margin_top = 18
 								layoutpolicy_vertical = expanding
 					
-								coa_title_big_crown = {
-									datacontext = "[GetPlayer.GetPrimaryTitle]"
-									tooltip = "[Title.GetCOADeJureTooltip]"
-								}
-						
-								expand = {}
-							}
-			
-							vbox = {
-								name="close"
-								layoutpolicy_vertical = expanding
+								coa_realm_big_crown = {
+									datacontext = "[GetPlayer]"
 
-								buttons_window_control = {
-									blockoverride "button_close"
+									blockoverride "coa_button"
 									{
-										datacontext = "[GetScriptedGui('city_state_gui_toggle')]"
-										onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										tooltip = "[GetPlayer.GetDefaultRealmFlagTooltipPrimaryTitleClickInfo]"
+										onclick = "[DefaultOnCoatOfArmsClick(GetPlayer.GetPrimaryTitle.GetID)]"
 									}
 								}
-			
-								expand = {}
+
+								vbox = {
+									margin_top = 12
+								}
+							}
+
+							vbox = {
+								layoutpolicy_vertical = expanding
+								margin_right = 8
+								margin_top = 8
+
+								button_close = {
+									name = "button_close"
+									shortcut = "close_window"
+									tooltip = "CLOSE_TOOLTIP"
+									clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_close"
+						
+									using = Animation_ShowHide_Standard
+
+									datacontext = "[GetScriptedGui('city_state_gui_toggle')]"
+									onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+
+								expand = { }
 							}
 						}
 
