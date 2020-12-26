@@ -82,12 +82,11 @@ types ATHA_city_state_windows
 		
 					hbox = {
 						layoutpolicy_horizontal = expanding
-						margin_top = 40
+						margin_top = 32 # Aligns the title roughly at the same height as the other windows.
 
 						# Current ruler left column
 						vbox = {
 							layoutpolicy_vertical = expanding
-							margin_top = 18
 							margin_left = 12
 
 							portrait_head = { datacontext = "[GetPlayer]" }
@@ -104,14 +103,14 @@ types ATHA_city_state_windows
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							layoutpolicy_vertical = expanding
-							margin_top = 24
 							margin_bottom = 40
 
 							text_multi = {
 								text = "[GetPlayer.GetPrimaryTitle.GetNameNoTooltip|U]"
-								default_format = "#high"
 								max_width = 380
 								autoresize = yes
+
+								using = Font_Type_Flavor
 								using = Font_Size_Big
 							}
 		
@@ -146,7 +145,6 @@ types ATHA_city_state_windows
 
 						# COA right column
 						vbox = {
-							margin_top = 18
 							layoutpolicy_vertical = expanding
 				
 							coa_realm_big_crown = {
@@ -168,7 +166,6 @@ types ATHA_city_state_windows
 						vbox = {
 							layoutpolicy_vertical = expanding
 							margin_right = 8
-							margin_top = 8
 
 							button_close = {
 								name = "button_close"
