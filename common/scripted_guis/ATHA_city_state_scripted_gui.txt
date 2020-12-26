@@ -10,17 +10,21 @@ city_state_gui_toggle = {
 	scope = player
 
 	is_shown = {
-		has_variable = city_state_gui_shown
+		has_variable = custom_gui_tab_shown
+		var:custom_gui_tab_shown = flag:city_state_tab
 	}
 
 	effect = {
 		if = {
 			limit = {
-				has_variable = city_state_gui_shown
+				has_variable = custom_gui_tab_shown
 			}
-			remove_variable = city_state_gui_shown
+			remove_variable = custom_gui_tab_shown
 		} else = {
-			set_variable = city_state_gui_shown
+			set_variable = {
+				name = custom_gui_tab_shown
+				value = flag:city_state_tab
+			}
 		}
 	}
 }

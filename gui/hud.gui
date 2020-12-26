@@ -846,6 +846,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_my_realm.dds"
 
 						onclick = "[ToggleGameView('my_realm')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "my_realm_window"
 						down = "[IsGameViewOpen('my_realm')]"
 					}
@@ -870,6 +871,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_military.dds"
 
 						onclick = "[ToggleGameViewData('military', GetPlayer.GetID)]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "military_window"
 						down = "[IsGameViewOpen('military')]"
 					}
@@ -894,6 +896,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_council.dds"
 
 						onclick = "[ToggleGameViewData('council_window', GetPlayer.GetID)]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "council_window"
 						down = "[IsGameViewOpen('council_window')]"
 					}
@@ -935,6 +938,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_court.dds"
 
 						onclick = "[ToggleGameViewData( 'court_window', GetPlayer.GetID )]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "court_window"
 						down = "[IsGameViewOpen( 'court_window' )]"
 					}
@@ -959,6 +963,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_intrigue.dds"
 
 						onclick = "[ToggleGameViewData('intrigue_window', GetPlayer.GetID)]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "intrigue_window"
 						down = "[IsGameViewOpen('intrigue_window')]"
 					}
@@ -983,6 +988,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_factions.dds"
 
 						onclick = "[ToggleGameView('factions_window')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "factions_window"
 						down = "[IsGameViewOpen('factions_window')]"
 					}
@@ -1007,6 +1013,7 @@ widget = {
 						texture = "gfx/interface/icons/hud_maintab/maintab_decisions.dds"
 
 						onclick = "[ToggleGameView('decisions')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "decision_window"
 						down = "[IsGameViewOpen('decisions')]"
 					}
@@ -1026,8 +1033,7 @@ widget = {
 					name = "tab_city_states"
 					tooltip = "CITY_STATE_GUI_TAB"
 		
-					datacontext = "[GetScriptedGui('city_state_gui_tab_displayed')]"
-					visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					visible = "[GetScriptedGui('city_state_gui_tab_displayed').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 					blockoverride "maintab_button"
 					{

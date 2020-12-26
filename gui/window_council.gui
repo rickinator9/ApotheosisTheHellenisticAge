@@ -10,6 +10,9 @@ window = {
 	layer = windows_layer
 	movable = no
 
+	datacontext = "[GetScriptedGui('custom_gui_tab_displayed')]"
+	visible = "[And(IsGameViewOpen('council_window'), Not(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+
 	using = Window_Size_MainTab
 
 	state = {
