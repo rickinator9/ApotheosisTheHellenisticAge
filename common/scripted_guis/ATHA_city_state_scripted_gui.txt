@@ -29,12 +29,24 @@ city_state_gui_toggle = {
 	}
 }
 
+city_state_gui_is_elective = {
+	scope = player
+
+	is_shown = {
+		primary_title = {
+			OR = {
+				has_title_law = democratic_succession_law
+			}
+		}
+	}
+}
+
 city_state_gui_is_aristocratic = {
 	scope = player
 
 	is_shown = {
 		primary_title = {
-			always = no # TODO: Add aristocratic
+			always = no # TODO
 		}
 	}
 }
@@ -49,6 +61,16 @@ city_state_gui_is_democratic = {
 	}
 }
 
+city_state_gui_is_oligarchic = {
+	scope = player
+
+	is_shown = {
+		primary_title = {
+			always = no # TODO
+		}
+	}
+}
+
 city_state_gui_is_tyrannical = {
 	scope = player
 
@@ -57,6 +79,17 @@ city_state_gui_is_tyrannical = {
 			NOR = {
 				has_title_law = democratic_succession_law
 			}
+		}
+	}
+}
+
+city_state_gui_ideal_franchise = {
+	scope = player
+
+	# TODO: Add ideal franchise levels for governments.
+	is_shown = {
+		primary_title = {
+			has_title_law = democratic_succession_law
 		}
 	}
 }

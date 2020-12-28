@@ -117,22 +117,14 @@ types ATHA_city_state_windows
 							text_single = {
 								layoutpolicy_horizontal = expanding
 								align = center
-								text = "CITY_STATE_GUI_DEMOCRATIC"
+								text = "CITY_STATE_GUI_GOVERNMENT"
 								fontsize = 14
-								visible = "[GetScriptedGui('city_state_gui_is_democratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							}
-		
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								text = "CITY_STATE_GUI_TYRANNY"
-								datacontext = "[GetScriptedGui('city_state_gui_is_tyrannical')]"
-								visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 							}
 					
 							expand = {}
 
 							button_standard_select_arrow = {
-								visible = "[Not(GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+								visible = "[GetScriptedGui('city_state_gui_is_elective').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								onclick = "[OpenSuccessionElectionWindowForTitle(GetPlayer.GetPrimaryTitle)]"
 								
 								blockoverride "button_text"{
@@ -192,7 +184,6 @@ types ATHA_city_state_windows
 				vbox = {
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					spacing = 8
 
 					background = {
 						texture = "gfx/interface/illustrations/event_scenes/symposium.dds"
@@ -206,262 +197,325 @@ types ATHA_city_state_windows
 						}
 					}
 
-					# Government overview
 					vbox = {
 						layoutpolicy_horizontal = expanding
-						spacing = 4
+						layoutpolicy_vertical = expanding
+						margin_top = 12
+						margin_left = 8
+						margin_right = 8 
+						spacing = 8
 
-						text_label_center = {
+						# Government overview
+						vbox = {
 							layoutpolicy_horizontal = expanding
-							text = "CITY_STATE_GOVERNMENT_OVERVIEW"
-						}
-
-						# Franchise
-						hbox = {
-							layoutpolicy_horizontal = expanding
-
-							background = { using = Background_Area }
-
-							# Left icon
-							vbox = {
-								margin = { 20 20 }
-								icon_flat_standard = {
-									texture = "gfx/interface/icons/flat_icons/election_vote_strength.dds"
-									size = { 72 72 }
-								}
-							}
-
-							vbox = {
+							spacing = 4
+	
+							text_label_center = {
 								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								margin_top = 16
-								spacing = 4
-
-								# Desired Franchise text.
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									text_single = {
-										margin_left = 4
-										text = "CITY_STATE_DESIRED_FRANCHISE"
-										align = left
-									}
-
-									expand = { }
-
-									text_single = {
-										text = "81 %"
-									}
-								}
-
-								# Progress bar
-								widget = {
-									progressbar_standard = {
-										size = { 100% 30 }
-										value = 81
-										noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-									}
-								
-									progress_threshold = {
-										parentanchor = right
-										size = { 5 30 }
-										visible = "[GetScriptedGui('city_state_gui_is_democratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									}
-									
-									progress_threshold = {
-										parentanchor = right
-										position = { -95 0 } # Approx 75%
-										size = { 5 30 }
-										visible = "[GetScriptedGui('city_state_gui_is_democratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									}
-								}
-
-								# Desired government text.
-								text_single = {
-									layoutpolicy_horizontal = expanding
-									margin_top = 28
-									margin_left = 4
-									text = "CITY_STATE_DESIRED_GOVERNMENT_DEMOCRATIC"
-									align = left
-								}
-
-								expand = { }
-							}	
-
-							# Small margin.
-							vbox = {
-								margin_right = 12
+								text = "CITY_STATE_GOVERNMENT_OVERVIEW"
 							}
-
-							expand = { }
-						}
-
-						# Corruption
-						hbox = {
-							layoutpolicy_horizontal = expanding
-
-							background = { using = Background_Area }
-
-							# Left icon
-							vbox = {
-								margin = { 6 6 }
-
+	
+							# Franchise
+							hbox = {
+								layoutpolicy_horizontal = expanding
+	
+								background = { using = Background_Area }
+	
+								# Left icon
 								vbox = {
-									margin = { 14 14 }
-
-									background = { 
-										using = Background_Area
-										using = Color_Red_Transparent
-									}
-
-									icon_flat_standard = {
-										texture = "gfx/interface/icons/flat_icons/election_preference_over_my_candidate.dds"
-										size = { 72 72 }
+									margin = { 6 6 }
+	
+									vbox = {
+										margin = { 14 14 }
+	
+										background = { 
+											using = Background_Area
+											using = Color_Red_Transparent
+											
+											visible = "[Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+	
+										icon_flat_standard = {
+											texture = "gfx/interface/icons/flat_icons/election_vote_strength.dds"
+											size = { 72 72 }
+										}
 									}
 								}
-							}
-
-							vbox = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								margin_top = 16
-								spacing = 4
-
-								# Corruption text.
-								hbox = {
+	
+								vbox = {
 									layoutpolicy_horizontal = expanding
-									text_single = {
+									layoutpolicy_vertical = expanding
+									margin_top = 16
+									spacing = 4
+	
+									# Desired Franchise text.
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										text_single = {
+											margin_left = 4
+											text = "CITY_STATE_DESIRED_FRANCHISE"
+											align = left
+										}
+	
+										expand = { }
+	
+										text_single = {
+											text = "81 %"
+										}
+									}
+	
+									# Progress bar
+									widget = {
+										progressbar_standard = {
+											size = { 100% 30 }
+											value = 81
+											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
+											visible = "[GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+	
+										progressbar_red = {
+											size = { 100% 30 }
+											value = 81
+											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
+											visible = "[Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+									
+										progress_threshold = {
+											parentanchor = right
+											size = { 5 30 }
+											visible = "[GetScriptedGui('city_state_gui_is_democratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+										
+										progress_threshold = {
+											parentanchor = right
+											position = { -107 0 } # Approx 75%
+											size = { 5 30 }
+											visible = "[Or(GetScriptedGui('city_state_gui_is_democratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_oligarchic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+										
+										progress_threshold = {
+											parentanchor = right
+											position = { -215 0 } # Approx 50%
+											size = { 5 30 }
+											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_oligarchic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+										
+										progress_threshold = {
+											parentanchor = right
+											position = { -322 0 } # Approx 25%
+											size = { 5 30 }
+											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+										
+										progress_threshold = {
+											parentanchor = right
+											position = { -430 0 } # Approx 0%
+											size = { 5 30 }
+											visible = "[GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+	
+									# Desired government text.
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										margin_top = 28
 										margin_left = 4
-										text = "CITY_STATE_CORRUPTION"
-										align = left
+	
+										text_single = {
+											text = "CITY_STATE_DESIRED_GOVERNMENT_DEMOCRATIC"
+											align = left
+										}
+	
+										text_single = {
+											margin_left = 4
+											text = "@warning_icon!"
+											align = left
+	
+											visible = "[Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										}
+	
+										expand = { }
 									}
-
+	
 									expand = { }
-
-									text_single = {
-										text = "84 %"
-									}
+								}	
+	
+								# Small margin.
+								vbox = {
+									margin_right = 12
 								}
-
-								# Progress bar
-								widget = {
-									progressbar_red = {
-										size = { 100% 30 }
-										value = 84
-										noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-									}
-								}
-
-								# Level of corruption text.
-								text_single = {
-									layoutpolicy_horizontal = expanding
-									margin_top = 28
-									margin_left = 4
-									text = "CITY_STATE_CORRUPTION_CRITICAL"
-									align = left
-								}
-
+	
 								expand = { }
 							}
-
-							# Small margin.
-							vbox = {
-								margin_right = 12
-							}
-
-							expand = { }
-						}
-					}
-
-					divider = {
-						layoutpolicy_horizontal = expanding
-					}
-
-					# Issues and policies
-					vbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 4
-
-						text_label_center = {
-							layoutpolicy_horizontal = expanding
-							text = "CITY_STATE_ISSUES_AND_EMERGENCIES"
-						}
-
-						scrollbox = {
-							minimumsize = { 0 240 }
-							layoutpolicy_horizontal = expanding
-
-							scrollbarpolicy_vertical = always_off
-							scrollbarpolicy_horizontal = as_needed
-
-							scrollbar_horizontal = {
-								using = Scrollbar_Horizontal
-							}
-
-							scrollwidget = {
-								hbox = {		
-									background = { using = Background_Area }
-		
-									spacer = {
-										size = { 20 100% }
+	
+							# Corruption
+							hbox = {
+								layoutpolicy_horizontal = expanding
+	
+								background = { using = Background_Area }
+	
+								# Left icon
+								vbox = {
+									margin = { 6 6 }
+	
+									vbox = {
+										margin = { 14 14 }
+	
+										background = { 
+											using = Background_Area
+											using = Color_Red_Transparent
+										}
+	
+										icon_flat_standard = {
+											texture = "gfx/interface/icons/flat_icons/election_preference_over_my_candidate.dds"
+											size = { 72 72 }
+										}
 									}
-		
-									city_state_issue_container = { }
-		
-									spacer = {
-										size = { 20 100% }
+								}
+	
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									margin_top = 16
+									spacing = 4
+	
+									# Corruption text.
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										text_single = {
+											margin_left = 4
+											text = "CITY_STATE_CORRUPTION"
+											align = left
+										}
+	
+										expand = { }
+	
+										text_single = {
+											text = "84 %"
+										}
 									}
-		
+	
+									# Progress bar
+									widget = {
+										progressbar_red = {
+											size = { 100% 30 }
+											value = 84
+											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
+										}
+									}
+	
+									# Level of corruption text.
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										margin_top = 28
+										margin_left = 4
+										text = "CITY_STATE_CORRUPTION_CRITICAL"
+										align = left
+									}
+	
 									expand = { }
 								}
+	
+								# Small margin.
+								vbox = {
+									margin_right = 12
+								}
+	
+								expand = { }
 							}
 						}
-					}
-
-					vbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 4
-
-						text_label_center = {
+	
+						divider = {
 							layoutpolicy_horizontal = expanding
-							text = "CITY_STATE_POLICIES"
 						}
-
-						hbox = {
+	
+						# Issues and policies
+						vbox = {
 							layoutpolicy_horizontal = expanding
-
-							background = { using = Background_Area }
-
-							city_state_policy_container = { }
-
-							widget = {
-								size = { 134 148 }
-
-								button_standard = {
-									position = { 15 15 }
-									size = { 80% 80% }
+							spacing = 4
+	
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "CITY_STATE_ISSUES_AND_EMERGENCIES"
+							}
+	
+							scrollbox = {
+								minimumsize = { 0 240 }
+								layoutpolicy_horizontal = expanding
+	
+								scrollbarpolicy_vertical = always_off
+								scrollbarpolicy_horizontal = as_needed
+	
+								scrollbar_horizontal = {
+									using = Scrollbar_Horizontal
 								}
-
-								icon_flat_standard = {
-									position = { 5 20 }
-									size = { 72 72 }
-									parentanchor = top|hcenter
-									texture = "gfx/interface/icons/flat_icons/edit_text.dds"
-								}
-
-								text_single = {
-									parentanchor = bottom|hcenter
-									position = { 0 -35 }
-									text = "Add Policy..."
-									fontsize = 12
-									default_format = "#clickable"
+	
+								scrollwidget = {
+									hbox = {		
+										background = { using = Background_Area }
+			
+										spacer = {
+											size = { 20 100% }
+										}
+			
+										city_state_issue_container = { }
+			
+										spacer = {
+											size = { 20 100% }
+										}
+			
+										expand = { }
+									}
 								}
 							}
-
-							expand = { }
 						}
-					}
+	
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 4
+	
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "CITY_STATE_POLICIES"
+							}
+	
+							hbox = {
+								layoutpolicy_horizontal = expanding
+	
+								background = { using = Background_Area }
+	
+								city_state_policy_container = { }
+	
+								widget = {
+									size = { 134 148 }
+	
+									button_standard = {
+										position = { 15 15 }
+										size = { 80% 80% }
+									}
+	
+									icon_flat_standard = {
+										position = { 5 20 }
+										size = { 72 72 }
+										parentanchor = top|hcenter
+										texture = "gfx/interface/icons/flat_icons/edit_text.dds"
+									}
+	
+									text_single = {
+										parentanchor = bottom|hcenter
+										position = { 0 -35 }
+										text = "Add Policy..."
+										fontsize = 12
+										default_format = "#clickable"
+									}
+								}
+	
+								expand = { }
+							}
+						}
 
-					expand = { }
+						expand = { }
+					}
 				}
 			}
 		}
