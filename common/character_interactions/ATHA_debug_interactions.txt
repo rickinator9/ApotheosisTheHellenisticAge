@@ -1,0 +1,19 @@
+debug_make_tyranny = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	is_shown = {
+		debug_only = yes
+		NOT = { scope:recipient = scope:actor }
+		scope:recipient = {
+			has_government = city_state_government
+		}
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			change_government = city_state_tyrannical_government
+		}
+	}
+	
+	auto_accept = yes
+}

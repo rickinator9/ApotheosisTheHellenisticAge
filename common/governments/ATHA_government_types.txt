@@ -23,3 +23,29 @@
 
 	  color = hsv { 0.9 0.9 0.9 }
 }
+
+city_state_tyrannical_government = {
+  fallback = 3
+
+  primary_holding = city_holding
+  valid_holdings = { castle_holding }
+  required_county_holdings = { castle_holding city_holding church_holding }
+
+  regiments_prestige_as_gold = yes
+
+  vassal_contract = {
+    city_state_government_taxes
+    city_state_government_levies
+    city_state_role
+    city_state_enforced_government
+    city_state_garrison_right
+    city_state_fortification_right
+    city_state_ritual_coronations_right
+  }
+
+  character_modifier = {
+    domain_limit = -2
+  }
+
+  color = hsv { 0.7 0.7 0.7 }
+}
