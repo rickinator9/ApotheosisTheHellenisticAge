@@ -1,0 +1,77 @@
+﻿namespace = city_state_emergency
+
+# Events related to emergencies occurring in city states.
+
+###
+# 0001-0100: Mercenary mutiny emergency
+# by Rick 'rickinator9' Visser
+###
+# 0001-0010: Entry point.
+#	 0001: Mercenary mutiny entry point.
+#	 0002: Mercenary mutiny is communicated to the ruler.
+
+#region Region
+city_state_emergency.0001 = {
+	type = character_event
+	title = city_state_emergency.0001.t
+	desc = city_state_emergency.0001.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	# trigger = { # TODO
+	# 	exists = liege
+	# 	liege = {
+	# 		# The liege must not be at war and must be in debt. This means that mercs have no way to get money, as in war they would have been able to pillage.
+	# 		is_at_war = no
+	# 		gold < 0
+
+	# 		# The liege must be a city state and must not already be dealing with the issue.
+	# 		has_government = city_state_government
+	# 		NOT = { has_emergency_mercenary_mutiny = yes }
+
+	# 		# The liege must have a marshal and that marshal must be this character.
+	# 		exists = cp:councillor_marshal
+	# 		cp:councillor_marshal = ROOT
+
+	# 		# The liege must have a mercenary company that does not expire within a year.
+	# 		any_hired_mercenary = {
+	# 			mercenary_company_expiration_days > 365
+	# 		}
+	# 	}
+	# }
+
+	# weight_multiplier = {
+	# 	base = 1 # TODO
+	# }
+
+	option = {
+		name = city_state_emergency.0001.a
+
+		liege = {
+			trigger_event = { id = city_state_emergency.0002 days = 4 }
+		}
+	}
+}
+
+city_state_emergency.0002 = {
+	type = character_event
+	title = city_state_emergency.0002.t
+	desc = city_state_emergency.0002.desc
+
+	theme = martial
+	left_portrait = {
+		character = scope:mutiny_reporter
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	option = {
+		name = city_state_emergency.0002.a
+
+		add_emergency_mercenary_mutiny = yes
+	}
+}
+#endregion

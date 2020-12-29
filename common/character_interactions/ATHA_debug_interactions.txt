@@ -17,3 +17,26 @@ debug_make_tyranny = {
 	
 	auto_accept = yes
 }
+
+debug_add_emergency = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	is_shown = {
+		debug_only = yes
+		scope:recipient = scope:actor
+		scope:recipient = {
+			has_government = city_state_government
+			exists = cp:councillor_marshal
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			cp:councillor_marshal = {
+				trigger_event = { id = city_state_emergency.0001 }
+			}
+		}
+	}
+	
+	auto_accept = yes
+}

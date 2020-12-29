@@ -14,11 +14,11 @@ types ATHA_city_state_components
 
 	type city_state_issue_container = hbox {
 		city_state_emergency_widget = {
-			blockoverride "image" 
-			{
-				texture = "gfx/interface/icons/city_state/issue_battle.dds"
-			}
+			blockoverride "image" { texture = "gfx/interface/icons/city_state/issue_battle.dds" }
+			blockoverride "tooltip" { tooltip = "EMERGENCY_MERCENARY_MUTINY_GUI_TOOLTIP" }
 			blockoverride "text" { text = "Mercenary Mutiny" }
+
+			datacontext = "[GetScriptedGui('city_state_gui_mercenary_mutiny')]"
 		}
 
 		city_state_issue_widget = {
@@ -27,6 +27,8 @@ types ATHA_city_state_components
 				texture = "gfx/interface/icons/city_state/issue_soldier.dds"
 			}
 			blockoverride "text" { text = "Manpower Shortage" }
+
+			datacontext = "[GetScriptedGui('city_state_gui_manpower_shortage')]"
 		}
 	}
 }

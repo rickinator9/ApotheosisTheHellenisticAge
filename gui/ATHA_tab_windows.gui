@@ -429,7 +429,7 @@ types ATHA_city_state_windows
 							layoutpolicy_horizontal = expanding
 						}
 	
-						# Issues and policies
+						# Issues
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							spacing = 4
@@ -451,25 +451,39 @@ types ATHA_city_state_windows
 								}
 	
 								scrollwidget = {
-									hbox = {		
-										background = { using = Background_Area }
-			
-										spacer = {
-											size = { 20 100% }
+									widget = {
+										size = { 100% 100% }
+	
+										vbox = {
+											datacontext = "[GetScriptedGui('city_state_has_issue')]"
+											visible = "[Not(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+
+											text_single = {
+												text = "CITY_STATE_NO_ISSUES_OR_EMERGENCIES"
+											}
 										}
-			
-										city_state_issue_container = { }
-			
-										spacer = {
-											size = { 20 100% }
+
+										hbox = {		
+											background = { using = Background_Area }
+				
+											spacer = {
+												size = { 20 100% }
+											}
+				
+											city_state_issue_container = { }
+				
+											spacer = {
+												size = { 20 100% }
+											}
+				
+											expand = { }
 										}
-			
-										expand = { }
 									}
 								}
 							}
 						}
 	
+						# Policies
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							spacing = 4
@@ -524,6 +538,10 @@ types ATHA_city_state_windows
 	type city_state_emergency_widget = widget {
 		size = { 160 220 }
 		margin = { 0 8 }
+		
+		visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+		block "tooltip" { }
 
 		background = {
 			margin = { -8 -8 }
@@ -560,6 +578,10 @@ types ATHA_city_state_windows
 	type city_state_issue_widget = widget {
 		size = { 160 220 }
 		margin = { 0 8 }
+
+		visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+		block "tooltip" { }
 
 		icon = {
 			parentanchor = top|hcenter
