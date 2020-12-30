@@ -21,6 +21,10 @@ city_state_emergency.0001 = {
 		character = ROOT
 		animation = ecstasy # TODO: Customize this.
 	}
+	right_portrait = {
+		character = scope:mutiny_ringleader
+		animation = ecstasy # TODO: Customize this.
+	}
 
 	# trigger = { # TODO
 	# 	exists = liege
@@ -48,6 +52,42 @@ city_state_emergency.0001 = {
 	# 	base = 1 # TODO
 	# }
 
+	immediate = {
+		# Spawn the ringleader of the mutiny.
+		hidden_effect = {
+			liege = {
+				random_sub_realm_county = {
+					save_scope_as = origin
+				}
+
+				if = {
+					limit = {
+						exists = capital_province
+					}
+					capital_province = { save_scope_as = target_location }
+				}
+				else = {
+					location = { save_scope_as = target_location }
+				}
+
+				create_character = {
+					gender_female_chance = root_soldier_female_chance
+					location = scope:target_location
+					template = new_warrior_character
+					faith = scope:origin.faith
+					culture = scope:origin.culture
+
+					save_scope_as = mutiny_ringleader
+				}
+			}
+
+			add_visiting_courtier = scope:mutiny_ringleader
+		}
+
+		# Store the current character as the reporter of the mutiny.
+		save_scope_as = mutiny_reporter
+	}
+
 	option = {
 		name = city_state_emergency.0001.a
 
@@ -65,6 +105,10 @@ city_state_emergency.0002 = {
 	theme = martial
 	left_portrait = {
 		character = scope:mutiny_reporter
+		animation = ecstasy # TODO: Customize this.
+	}
+	right_portrait = {
+		character = scope:mutiny_ringleader
 		animation = ecstasy # TODO: Customize this.
 	}
 
