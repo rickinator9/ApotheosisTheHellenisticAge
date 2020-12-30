@@ -9,6 +9,7 @@
 # 0001-0010: Entry point.
 #	 0001: Mercenary mutiny entry point.
 #	 0002: Mercenary mutiny is communicated to the ruler.
+#	 0003: Councilors have to decide which solution to suggest to the ruler.
 
 #region Region
 city_state_emergency.0001 = {
@@ -116,6 +117,283 @@ city_state_emergency.0002 = {
 		name = city_state_emergency.0002.a
 
 		add_emergency_mercenary_mutiny = yes
+
+		custom_tooltip = city_state_issues_council_called_tooltip
+		hidden_effect = {
+			every_councillor = {
+				trigger_event = city_state_emergency.0003
+			}
+		}
+	}
+}
+
+city_state_emergency.0003 = {
+	type = character_event
+	title = city_state_emergency.0003.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:mutiny_reporter = ROOT
+				}
+				desc = city_state_emergency.0003.reporter_desc
+			}
+			desc = city_state_emergency.0003.desc
+		}
+	}
+	theme = martial
+
+	left_portrait = {
+		character = scope:liege
+		animation = ecstasy # TODO: Customize this.
+	}
+	right_portrait = {
+		character = scope:mutiny_ringleader
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	# COURT CHAPLAIN OPTIONS
+	# Utilise temple gold to pay off the mercenaries.
+	option = {
+		name = city_state_emergency.0003.court_chaplain.temple_gold
+		trigger = { has_council_position = councillor_court_chaplain }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = court_chaplain
+			VALUE_ARG = flag:temple_gold
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Falsely interpret omens as bad for the mercenary troops. (Only makes sense if the mercs are from the same religious group?)
+	option = {
+		name = city_state_emergency.0003.court_chaplain.false_omens
+		trigger = { has_council_position = councillor_court_chaplain }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = court_chaplain
+			VALUE_ARG = flag:false_omens
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# No advice.
+	option = {
+		name = city_state_emergency.0003.court_chaplain.no_advice
+		trigger = { has_council_position = councillor_court_chaplain }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = court_chaplain
+			VALUE_ARG = flag:none
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+
+	# CHANCELLOR OPTIONS
+	# Try to enlist the help of a neighbouring city state.
+	option = {
+		name = city_state_emergency.0003.chancellor.neighbour_help
+		trigger = { has_council_position = councillor_chancellor }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = chancellor
+			VALUE_ARG = flag:neighbour_help
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Try to discredit the ringleader.
+	option = {
+		name = city_state_emergency.0003.chancellor.discredit_ringleader
+		trigger = { has_council_position = councillor_chancellor }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = chancellor
+			VALUE_ARG = flag:discredit_ringleader
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# No advice.
+	option = {
+		name = city_state_emergency.0003.chancellor.no_advice
+		trigger = { has_council_position = councillor_chancellor }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = chancellor
+			VALUE_ARG = flag:none
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+
+	# STEWARD OPTIONS.
+	# Raise a special tax to pay off the mercenaries.
+	option = {
+		name = city_state_emergency.0003.steward.special_tax
+		trigger = { has_council_position = councillor_steward }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = steward
+			VALUE_ARG = flag:special_tax
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Embezzle funds (Theorika or Stratioka) to pay off the mercenaries.
+	option = {
+		name = city_state_emergency.0003.steward.embezzle_funds
+		trigger = { has_council_position = councillor_steward }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = steward
+			VALUE_ARG = flag:embezzle_funds
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Offer to settle the mercenaries in our territory.
+	option = {
+		name = city_state_emergency.0003.steward.settlement
+		trigger = { has_council_position = councillor_steward }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = steward
+			VALUE_ARG = flag:settlement
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# No advice.
+	option = {
+		name = city_state_emergency.0003.steward.no_advice
+		trigger = { has_council_position = councillor_steward }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = steward
+			VALUE_ARG = flag:none
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+
+	# MARSHAL OPTIONS
+	# We should strike against the dissidents now!
+	option = {
+		name = city_state_emergency.0003.marshal.first_strike
+		trigger = { has_council_position = councillor_marshal }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = marshal
+			VALUE_ARG = flag:first_strike
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Duel the ringleader to kill or discredit him.
+	option = {
+		name = city_state_emergency.0003.marshal.duel
+		trigger = { has_council_position = councillor_marshal }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = marshal
+			VALUE_ARG = flag:duel
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# Attempt to form the mercenaries into a regiment.
+	option = {
+		name = city_state_emergency.0003.marshal.regiment
+		trigger = { has_council_position = councillor_marshal }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = marshal
+			VALUE_ARG = flag:regiment
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# No advice.
+	option = {
+		name = city_state_emergency.0003.marshal.no_advice
+		trigger = { has_council_position = councillor_marshal }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = marshal
+			VALUE_ARG = flag:none
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+
+	# SPYMASTER OPTIONS
+	# We should kill the ringleader.
+	option = {
+		name = city_state_emergency.0003.spymaster.assassinate_ringleader
+		trigger = { has_council_position = councillor_spymaster }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = spymaster
+			VALUE_ARG = flag:assassinate_ringleader
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# We should assassinate ALL mercenaries.
+	option = {
+		name = city_state_emergency.0003.spymaster.kill_mercenaries
+		trigger = { has_council_position = councillor_spymaster }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = spymaster
+			VALUE_ARG = flag:kill_mercenaries
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# We should bribe the ringleader.
+	option = {
+		name = city_state_emergency.0003.spymaster.bribe_ringleader
+		trigger = { has_council_position = councillor_spymaster }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = spymaster
+			VALUE_ARG = flag:bribe_ringleader
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+	# No advice.
+	option = {
+		name = city_state_emergency.0003.spymaster.no_advice
+		trigger = { has_council_position = councillor_spymaster }
+
+		add_solution_proposal = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = spymaster
+			VALUE_ARG = flag:none
+			EVENT_ID = city_state_emergency.0004
+		}
+	}
+}
+
+city_state_emergency.0004 = {
+	type = character_event
+	title = city_state_emergency.0004.t
+	desc = {
+		desc = city_state_emergency.0004.preface_desc
+	}
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	option = {
+		name = city_state_emergency.0004.a
 	}
 }
 #endregion

@@ -1,5 +1,17 @@
-has_emergency_mercenary_mutiny = {
+﻿has_emergency_mercenary_mutiny = {
 	primary_title = {
 		has_variable = emergency_mercenary_mutiny
+	}
+}
+
+# Checks if all proposals for an issue or emergency have been submitted. Arguments:
+#	ID_ARG: The id of the issue or emergency. For example, emergency_mercenary_mutiny
+has_all_proposals_for_issue = {
+	primary_title = {
+		has_variable = $ID_ARG$_proposal_court_chaplain
+		has_variable = $ID_ARG$_proposal_chancellor
+		has_variable = $ID_ARG$_proposal_steward
+		has_variable = $ID_ARG$_proposal_marshal
+		has_variable = $ID_ARG$_proposal_spymaster
 	}
 }
