@@ -34,3 +34,23 @@ add_solution_proposal = {
 		}
 	}
 }
+
+# Sets a solution proposal to be the solution the character goes with to resolve an issue. Can only be done by the liege.
+# 	ID_ARG: The identifier of the emergency/issue. Is always prefaced by emergency_/issue_. For example, emergency_mercenary_mutiny
+#	COUNCILLOR_ARG: The name of the councillor whose proposal is taken as the solution, for example marshal or steward.
+set_solution = {
+	hidden_effect = {
+		primary_title = {
+			set_variable = {
+				name = $ID_ARG$_solution
+				value = var:$ID_ARG$_proposal_$COUNCILLOR_ARG$
+			}
+
+			remove_variable = $ID_ARG$_proposal_court_chaplain
+			remove_variable = $ID_ARG$_proposal_chancellor
+			remove_variable = $ID_ARG$_proposal_steward
+			remove_variable = $ID_ARG$_proposal_marshal
+			remove_variable = $ID_ARG$_proposal_spymaster
+		}
+	}
+}

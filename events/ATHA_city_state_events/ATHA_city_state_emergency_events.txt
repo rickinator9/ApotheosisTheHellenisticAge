@@ -118,7 +118,7 @@ city_state_emergency.0002 = {
 
 		add_emergency_mercenary_mutiny = yes
 
-		custom_tooltip = city_state_issues_council_called_tooltip
+		custom_tooltip = CITY_STATE_ISSUES_COUNCIL_CALLED_TOOLTIP
 		hidden_effect = {
 			every_councillor = {
 				trigger_event = city_state_emergency.0003
@@ -384,6 +384,138 @@ city_state_emergency.0004 = {
 	title = city_state_emergency.0004.t
 	desc = {
 		desc = city_state_emergency.0004.preface_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_court_chaplain
+						var:emergency_mercenary_mutiny_proposal_court_chaplain = flag:temple_gold
+					}
+				}
+				desc = city_state_emergency.0004.court_chaplain.temple_gold
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_court_chaplain
+						var:emergency_mercenary_mutiny_proposal_court_chaplain = flag:false_omens
+					}
+				}
+				desc = city_state_emergency.0004.court_chaplain.false_omens
+			}
+			desc = city_state_emergency.0004.court_chaplain.no_advice
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_chancellor
+						var:emergency_mercenary_mutiny_proposal_chancellor = flag:neighbour_help
+					}
+				}
+				desc = city_state_emergency.0004.chancellor.neighbour_help
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_chancellor
+						var:emergency_mercenary_mutiny_proposal_chancellor = flag:discredit_ringleader
+					}
+				}
+				desc = city_state_emergency.0004.chancellor.discredit_ringleader
+			}
+			desc = city_state_emergency.0004.chancellor.no_advice
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_steward
+						var:emergency_mercenary_mutiny_proposal_steward = flag:special_tax
+					}
+				}
+				desc = city_state_emergency.0004.steward.special_tax
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_steward
+						var:emergency_mercenary_mutiny_proposal_steward = flag:embezzle_funds
+					}
+				}
+				desc = city_state_emergency.0004.steward.embezzle_funds
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_steward
+						var:emergency_mercenary_mutiny_proposal_steward = flag:settlement
+					}
+				}
+				desc = city_state_emergency.0004.steward.settlement
+			}
+			desc = city_state_emergency.0004.steward.no_advice
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_marshal
+						var:emergency_mercenary_mutiny_proposal_marshal = flag:first_strike
+					}
+				}
+				desc = city_state_emergency.0004.marshal.first_strike
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_marshal
+						var:emergency_mercenary_mutiny_proposal_marshal = flag:duel
+					}
+				}
+				desc = city_state_emergency.0004.marshal.duel
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_marshal
+						var:emergency_mercenary_mutiny_proposal_marshal = flag:regiment
+					}
+				}
+				desc = city_state_emergency.0004.marshal.regiment
+			}
+			desc = city_state_emergency.0004.marshal.no_advice
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_spymaster
+						var:emergency_mercenary_mutiny_proposal_spymaster = flag:assassinate_ringleader
+					}
+				}
+				desc = city_state_emergency.0004.spymaster.assassinate_ringleader
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_spymaster
+						var:emergency_mercenary_mutiny_proposal_spymaster = flag:kill_mercenaries
+					}
+				}
+				desc = city_state_emergency.0004.spymaster.kill_mercenaries
+			}
+			triggered_desc = {
+				trigger = {
+					primary_title = { 
+						has_variable = emergency_mercenary_mutiny_proposal_spymaster
+						var:emergency_mercenary_mutiny_proposal_spymaster = flag:bribe_ringleader
+					}
+				}
+				desc = city_state_emergency.0004.spymaster.bribe_ringleader
+			}
+			desc = city_state_emergency.0004.spymaster.no_advice
+		}
 	}
 
 	theme = martial
@@ -392,8 +524,128 @@ city_state_emergency.0004 = {
 		animation = ecstasy # TODO: Customize this.
 	}
 
+	immediate = {
+		# Set scopes for the councillors to populate localisation.
+		every_councillor = {
+			if = {
+				limit = { has_council_position = councillor_court_chaplain }
+				save_scope_as = court_chaplain
+			}
+			if = {
+				limit = { has_council_position = councillor_chancellor }
+				save_scope_as = chancellor
+			}
+			if = {
+				limit = { has_council_position = councillor_steward }
+				save_scope_as = steward
+			}
+			if = {
+				limit = { has_council_position = councillor_marshal }
+				save_scope_as = marshal
+			}
+			if = {
+				limit = { has_council_position = councillor_spymaster }
+				save_scope_as = spymaster
+			}
+		}
+	}
+
 	option = {
-		name = city_state_emergency.0004.a
+		name = city_state_emergency.0004.court_chaplain
+		trigger = {
+			primary_title = { 
+				has_variable = emergency_mercenary_mutiny_proposal_court_chaplain
+				NOT = { var:emergency_mercenary_mutiny_proposal_court_chaplain = flag:none }
+			}
+		}
+		if = {
+			limit = {
+				primary_title = { 
+					var:emergency_mercenary_mutiny_proposal_court_chaplain = flag:temple_gold
+				}
+			}
+
+			custom_tooltip = CITY_STATE_CORRUPTION_INCREASE_POTENTIAL_TOOLTIP
+		}
+
+		set_solution = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = court_chaplain
+		}
+	}
+	option = {
+		name = city_state_emergency.0004.chancellor
+		trigger = {
+			primary_title = { 
+				has_variable = emergency_mercenary_mutiny_proposal_chancellor
+				NOT = { var:emergency_mercenary_mutiny_proposal_chancellor = flag:none }
+			}
+		}
+
+		set_solution = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = chancellor
+		}
+	}
+	option = {
+		name = city_state_emergency.0004.steward
+		trigger = {
+			primary_title = { 
+				has_variable = emergency_mercenary_mutiny_proposal_steward
+				NOT = { var:emergency_mercenary_mutiny_proposal_steward = flag:none }
+			}
+		}
+		if = {
+			limit = {
+				primary_title = { 
+					var:emergency_mercenary_mutiny_proposal_steward = flag:embezzle_funds
+				}
+			}
+
+			custom_tooltip = CITY_STATE_CORRUPTION_INCREASE_POTENTIAL_TOOLTIP
+		}
+
+		set_solution = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = steward
+		}
+	}
+	option = {
+		name = city_state_emergency.0004.marshal
+		trigger = {
+			primary_title = { 
+				has_variable = emergency_mercenary_mutiny_proposal_marshal
+				NOT = { var:emergency_mercenary_mutiny_proposal_marshal = flag:none }
+			}
+		}
+
+		set_solution = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = marshal
+		}
+	}
+	option = {
+		name = city_state_emergency.0004.spymaster
+		trigger = {
+			primary_title = { 
+				has_variable = emergency_mercenary_mutiny_proposal_spymaster
+				NOT = { var:emergency_mercenary_mutiny_proposal_spymaster = flag:none }
+			}
+		}
+		if = {
+			limit = {
+				primary_title = { 
+					var:emergency_mercenary_mutiny_proposal_spymaster = flag:bribe_ringleader
+				}
+			}
+
+			custom_tooltip = CITY_STATE_CORRUPTION_INCREASE_GUARANTEE_TOOLTIP
+		}
+
+		set_solution = {
+			ID_ARG = emergency_mercenary_mutiny
+			COUNCILLOR_ARG = spymaster
+		}
 	}
 }
 #endregion
