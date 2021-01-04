@@ -1,4 +1,4 @@
 ﻿l_english:
- AHA_PICK_ANY_CHARACTER:0 "Play as any Ruler in [Subtract_int32(GameSetup.GetSelectedBookmark.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value')))]..."
- AHA_BOOKMARK_ITEM_YEAR:0 "[Subtract_int32(BookmarkItem.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value')))]"
- AHA_BOOKMARK_YEAR_LONG:0 "[GameSetup.GetSelectedDate.GetStringShortNoYear], [Subtract_int32(GameSetup.GetSelectedDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value')))]"
+ ATHA_PICK_ANY_CHARACTER:0 "Play as any Ruler in [Abs_int32(Subtract_int32(GameSetup.GetSelectedBookmark.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))))] [Select_CString(GreaterThan_int32(GameSetup.GetSelectedBookmark.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))),'CE','BCE')]..."
+ ATHA_BOOKMARK_ITEM_YEAR:0 "[Abs_int32(Subtract_int32(BookmarkItem.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))))] [Select_CString(GreaterThan_int32(BookmarkItem.GetDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))),'CE','BCE')]"
+ ATHA_BOOKMARK_YEAR_LONG:0 "[GameSetup.GetSelectedDate.GetStringShortNoYear], [Abs_int32(Subtract_int32(GameSetup.GetSelectedDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))))] [Select_CString(GreaterThan_int32(GameSetup.GetSelectedDate.GetYear, FixedPointToInt(EmptyScope.ScriptValue('ce_date_value'))),'CE','BCE')]"
