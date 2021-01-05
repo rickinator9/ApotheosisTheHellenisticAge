@@ -1,5 +1,46 @@
 ﻿# Maccedonian characters
 
+# Lowborn
+
+macedonianlowborn1 = {
+	name = "Aristopatra"
+	female = yes 
+	religion = epirote_faith
+	culture = epirote
+	3364.1.1 = { # made up
+		birth = yes # 390 BC
+	}
+	3380.1.1 = { # 374 BC, made up
+		add_spouse = macedonian00201 # Alexandros
+	}
+	3410.1.1 = { # made up
+		death = yes # 344 BC
+	}
+}
+macedonianlowborn2 = {
+	name = "Nikaia"
+	female = yes 
+	religion = macedonian_faith
+	culture = macedonian
+	trait = ambitious
+	trait = stubborn
+	trait = trusting
+	3463.1.1 = { # made up
+		birth = yes # 291 BC
+	}
+	3479.1.1 = { # 275 BC, made up
+		add_spouse = macedonian00205 # Alexandros
+	}
+	#3510.1.1 = { # 244 BC, made up
+	#	effect = {
+	#		set_relation_lover = character:... # seems to have had a relationship with the poet Euphorion
+	#	}
+	#}
+	3516.1.1 = { # made up
+		death = yes # 238 BC
+	}
+}
+
 # Antigonides - Macedon
 
 macedonian00101 = {
@@ -97,7 +138,7 @@ macedonian00102 = {
 	#}
 	3449.1.1 = { # 305 BC
 		trait = military_engineer
-		give_nickname = nick_poliorketes
+		give_nickname = nick_poliorketes # conducts an impressive but ultimately unsuccessful siege of Rhodes
 	}
 	3451.1.1 = { # 303 BC
 		#trait = rakish
@@ -198,7 +239,7 @@ macedonian00104 = {
 	#	add_spouse = ... # Phila
 	#}
 	3515.3.1 = {
-		death = yes # spring 239 BC
+		death = yes # died in the spring of 239 BC
 	}
 }
 macedonian00105 = {
@@ -364,7 +405,7 @@ macedonian00112 = {
 	culture = macedonian
 	father = macedonian00104 # Antigonos
 	#mother = ... # Phila
-	3479.1.1 = { # 
+	3479.1.1 = {
 		birth = yes # 275 BC
 	}
 	#3501.1.1 = { # 253 BC, approximate
@@ -788,6 +829,7 @@ macedonian00204 = {
 	trait = content
 	trait = diligent
 	trait = honest
+	# trait = adopted # by Demetrios (macedonian00102)
 	father = macedonian00203 # Krateros
 	#mother = ... # Phila
 	3433.1.1 = {
@@ -1517,43 +1559,338 @@ macedonian01604 = {
 	}
 }
 
-# Macedonian Lowborn
+# Attalides - Pergamon 
 
-macedonianlowborn1 = {
-	name = "Aristopatra"
-	female = yes 
-	religion = epirote_faith
-	culture = epirote
-	3364.1.1 = { # made up
-		birth = yes # 390 BC
+macedonian01701 = {
+	name = "Attalos"
+	dynasty = macedoniandyn017 # Attalides
+	religion = temenid_faith
+	culture = macedonian
+	3386.1.1 = { # made up
+		birth = yes # 368 BC
 	}
-	3380.1.1 = { # 374 BC, made up
-		add_spouse = macedonian00201 # Alexandros
-	}
-	3410.1.1 = { # made up
-		death = yes # 344 BC
+	#3410.1.1 = { # 344 BC, made up
+	#	add_spouse = ... # Boa
+	#}
+	3443.1.1 = { # made up
+		death = yes # 311 BC
 	}
 }
-macedonianlowborn2 = {
-	name = "Nikaia"
-	female = yes 
+macedonian01702 = {
+	name = "Philetairos" # "kyrios" of Pergamon ca. 283-263 BC
+	dynasty = macedoniandyn017 # Attalides
 	religion = macedonian_faith
 	culture = macedonian
-	trait = ambitious
-	trait = stubborn
-	trait = trusting
-	3463.1.1 = { # made up
-		birth = yes # 291 BC
+	diplomacy = 6
+	martial = 2
+	stewardship = 9
+	intrigue = 3
+	learning = 7
+	prowess = 2
+	trait = education_stewardship_4
+	trait = generous
+	trait = fickle
+	trait = patient
+	trait = eunuch
+	trait = herbalist
+	trait = architect
+	trait = shrewd
+	father = macedonian01701 # Attalos
+	#mother = ... # Boa
+	3411.1.1 = { # approximate
+		birth = yes # 343 BC
 	}
-	3479.1.1 = { # 275 BC, made up
-		add_spouse = macedonian00205 # Alexandros
+	3491.1.1 = {
+		death = yes # 263 BC
 	}
-	#3510.1.1 = { # 244 BC, made up
-	#	effect = {
-	#		set_relation_lover = character:... # seems to have had a relationship with the poet Euphorion
-	#	}
+}
+macedonian01703 = {
+	name = "Eumenes" # dynast of Amastris who surrendered the city to Pontus in 279 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian01701 # Attalos
+	#mother = ... # Boa
+	3417.1.1 = { # made up
+		birth = yes # 337 BC
+	}
+	#3448.1.1 = { # 306 BC, made up
+	#	add_spouse = ... # Satyra
 	#}
-	3516.1.1 = { # made up
-		death = yes # 238 BC
+	3495.1.1 = { # made up
+		death = yes # 259 BC
+	}
+}
+macedonian01704 = {
+	name = "Attalos"
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian01701 # Attalos
+	#mother = ... # Boa
+	3422.1.1 = { # made up
+		birth = yes # 332 BC
+	}
+	3477.1.1 = { # made up, probably predeceased his brothers given his absence from a dedication bearing the names of Philetairos and Eumenes
+		death = yes # 277 BC
+	}
+}
+macedonian01705 = {
+	name = "Eumenes" # Eumenes I, dynastes of Pergamon ca. 263-241 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 6
+	martial = 7
+	stewardship = 8
+	intrigue = 6
+	learning = 3
+	prowess = 3
+	trait = education_stewardship_3
+	trait = ambitious
+	trait = forgiving
+	trait = brave
+	trait = drunkard
+	# trait = adopted # by Philetairos (macedonian01702)
+	father = macedonian01703 # Eumenes
+	#mother = ... # Satyra
+	3450.1.1 = { # approximate
+		birth = yes # 304 BC
+	}
+	3513.1.1 = { # 241 BC
+		death = { 
+			death_reason = death_drinking_passive # according to Athenaeus (via Ctesicles), he died of drunkenness
+		}
+	}
+}
+macedonian01706 = {
+	name = "Philetairos" # mentioned in an inscription from Thespiai dating to the mid-3rd century BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian01703 # Eumenes
+	#mother = ... # Satyra
+	3456.1.1 = { # made up
+		birth = yes # 298 BC
+	}
+	3502.1.1 = { # made up
+		death = yes # 252 BC
+	}
+}
+macedonian01707 = {
+	name = "Attalos"
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	# trait = adopted # by Philetairos (macedonian01702)
+	father = macedonian01704 # Attalos
+	3453.1.1 = { # made up
+		birth = yes # 301 BC
+	}
+	#3474.1.1 = { # 280 BC, approximate
+	#	add_spouse = ... # Antiochis
+	#}
+	3509.1.1 = { # made up, probably predeceased Eumenes I and possibly also Philetaerus
+		death = yes # 245 BC
+	}
+}
+macedonian01708 = {
+	name = "Eumenes" # rival claimant to Eumenes I implicated in a mercenary revolt ca. 263-261 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	trait = education_martial_2
+	trait = ambitious
+	trait = deceitful
+	father = macedonian01704 # Attalos
+	3458.1.1 = { # made up
+		birth = yes # 296 BC
+	}
+	3508.1.1 = { # made up
+		death = yes # 246 BC
+	}
+}
+macedonian01709 = {
+	name = "Attalos" # Attalus I Soter, king of Pergamon ca. 241-197 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 8
+	martial = 8
+	stewardship = 6
+	intrigue = 4
+	learning = 4
+	prowess = 4
+	trait = education_martial_3
+	trait = brave
+	trait = stubborn
+	trait = diligent
+	trait = overseer
+	trait = family_first
+	# trait = adopted # by Eumenes (macedonian01705)
+	father = macedonian01707 # Attalos
+	#mother = ... # Antiochis
+	3485.1.1 = {
+		birth = yes # 269 BC
+	}
+	3513.1.1 = { # 241 BC
+		give_nickname = nick_soter # receives the epithet "Soter" after defeating the Galatians at the Caecus River
+	}
+	#3529.1.1 = { # 225 BC, made up
+	#	add_spouse = ... # Apollonis
+	#}
+	3557.9.1 = { # died in the autumn of 197 BC shortly after suffering a stroke
+		death = yes # 197 BC
+	}
+}
+macedonian01710 = {
+	name = "Eumenes" # Eumenes II, king of Pergamon ca. 197-159 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	diplomacy = 7
+	martial = 5
+	stewardship = 8
+	intrigue = 2
+	learning = 6
+	prowess = 3
+	trait = education_stewardship_4
+	trait = generous
+	trait = diligent
+	trait = forgiving
+	trait = deceitful
+	trait = intellect_good_2
+	trait = avaricious
+	trait = architect
+	father = macedonian01709 # Attalos
+	#mother = ... # Apollonis
+	3530.1.1 = { # approximate
+		birth = yes # 224 BC
+	}
+	#3567.1.1 = { # 187 BC, approximate
+	#	add_spouse = ... # Stratonike
+	#}
+	3570.1.1 = { # 184 BC
+		give_nickname = nick_soter # receives the epithet "Soter" in ca. 184 BC in gratitude for his defence of Asia Minor against Prusias, the Galatians and other enemies
+	}
+	#3582.1.1 = { # 172 BC
+	#	trait = wounded_2 # severely injured by a rock fall at Delphi, allegedly as part of an assassination plot by Perseus
+	#}
+	#3583.1.1 = { # 171 BC
+	#	remove_trait = wounded_2 # he eventually recovers from his wounds
+	#}
+	3594.1.1 = { # 160 BC, approximate
+		trait = infirm # appoints Attalus as co-king after his health begins to weaken
+	}
+	3595.9.1 = { # died in the autumn of 159 BC
+		death = yes # 159 BC
+	}
+}
+macedonian01711 = {
+	name = "Attalos" # Attalus II Philadelphus, king of Pergamon ca. 159-138 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	diplomacy = 6
+	martial = 7
+	stewardship = 5
+	intrigue = 1
+	learning = 7
+	prowess = 5
+	trait = education_martial_3
+	trait = trusting
+	trait = lazy
+	trait = honest
+	trait = intellect_good_1
+	father = macedonian01709 # Attalos
+	#mother = ... # Apollonis
+	3534.1.1 = {
+		birth = yes # 220 BC
+		give_nickname = nick_philadelphos
+	}
+	#3595.1.1 = { # 159 BC, approximate
+	#	add_spouse = ... # Stratonike
+	#}
+	3616.1.1 = {
+		death = yes # 138 BC
+	}
+}
+macedonian01712 = {
+	name = "Philetairos"
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01709 # Attalos
+	#mother = ... # Apollonis
+	3538.1.1 = { # approximate
+		birth = yes # 216 BC
+	}
+	3590.1.1 = { # made up, last mentioned in 171 BC and is omitted from a decree honouring his brothers from the late 160s or early 150s BC
+		death = yes # 164 BC
+	}
+}
+macedonian01713 = {
+	name = "Athenaios"
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	father = macedonian01709 # Attalos
+	#mother = ... # Apollonis
+	3541.1.1 = { # made up
+		birth = yes # 213 BC
+	}
+	3614.1.1 = { # made up
+		death = yes # 140 BC
+	}
+}
+macedonian01714 = {
+	name = "Attalos" # Attalus III Philometor, king of Pergamon ca. 138-133 BC
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	diplomacy = 4
+	martial = 4
+	stewardship = 3
+	intrigue = 7
+	learning = 8
+	prowess = 1
+	trait = education_learning_3
+	trait = content
+	trait = paranoid
+	trait = sadistic
+	trait = diligent
+	trait = herbalist
+	trait = reclusive
+	father = macedonian01710 # Eumenes
+	#mother = ... # Stratonike
+	3586.1.1 = { # approximate
+		birth = yes # 168 BC
+		give_nickname = nick_philometor
+	}
+	#3616.1.1 = { # 138 BC, made up
+	#	add_spouse = ... # Berenike
+	#}
+	3621.1.1 = { # 133 BC
+		trait = ill
+		death = { 
+			death_reason = death_ill # according to Justin he died of sun stroke while making a monument to his mother
+		}
+	}
+}
+macedonian01715 = {
+	name = "Aristonikos" # Eumenes III, pretender to the Pergamene throne ca. 133-129
+	dynasty = macedoniandyn017 # Attalides
+	religion = soterism_faith
+	culture = macedonian
+	trait = ambitious
+	trait = bastard
+	father = macedonian01710 # Eumenes
+	3580.1.1 = { # made up
+		birth = yes # 174 BC
+	}
+	3625.1.1 = { # 129 BC, approximate
+		death = { 
+			death_reason = death_execution # executed by strangulation in the Tullianum (Mamertine) prison
+		}
 	}
 }
