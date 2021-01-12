@@ -166,29 +166,29 @@ city_state_emergency.0003 = {
 		}
 	}
 	# Falsely interpret omens as bad for the mercenary troops. (Only makes sense if the mercs are from the same religious group?)
-	option = {
-		name = city_state_emergency.0003.court_chaplain.false_omens
-		trigger = { has_council_position = councillor_court_chaplain }
+	# option = {
+	# 	name = city_state_emergency.0003.court_chaplain.false_omens
+	# 	trigger = { has_council_position = councillor_court_chaplain }
 
-		add_solution_proposal = {
-			ID_ARG = emergency_mercenary_mutiny
-			COUNCILLOR_ARG = court_chaplain
-			VALUE_ARG = flag:false_omens
-			EVENT_ID = city_state_emergency.0004
-		}
-	}
-	# No advice.
-	option = {
-		name = city_state_emergency.0003.court_chaplain.no_advice
-		trigger = { has_council_position = councillor_court_chaplain }
+	# 	add_solution_proposal = {
+	# 		ID_ARG = emergency_mercenary_mutiny
+	# 		COUNCILLOR_ARG = court_chaplain
+	# 		VALUE_ARG = flag:false_omens
+	# 		EVENT_ID = city_state_emergency.0004
+	# 	}
+	# }
+	# # No advice.
+	# option = {
+	# 	name = city_state_emergency.0003.court_chaplain.no_advice
+	# 	trigger = { has_council_position = councillor_court_chaplain }
 
-		add_solution_proposal = {
-			ID_ARG = emergency_mercenary_mutiny
-			COUNCILLOR_ARG = court_chaplain
-			VALUE_ARG = flag:none
-			EVENT_ID = city_state_emergency.0004
-		}
-	}
+	# 	add_solution_proposal = {
+	# 		ID_ARG = emergency_mercenary_mutiny
+	# 		COUNCILLOR_ARG = court_chaplain
+	# 		VALUE_ARG = flag:none
+	# 		EVENT_ID = city_state_emergency.0004
+	# 	}
+	# }
 
 	# CHANCELLOR OPTIONS
 	# Try to enlist the help of a neighbouring city state.
@@ -572,6 +572,8 @@ city_state_emergency.0004 = {
 			ID_ARG = emergency_mercenary_mutiny
 			COUNCILLOR_ARG = court_chaplain
 		}
+
+		create_story = city_state_mercenary_emergency_story
 	}
 	option = {
 		name = city_state_emergency.0004.chancellor
@@ -646,6 +648,22 @@ city_state_emergency.0004 = {
 			ID_ARG = emergency_mercenary_mutiny
 			COUNCILLOR_ARG = spymaster
 		}
+	}
+}
+
+city_state_emergency.0005 = {
+	type = character_event
+	title = city_state_emergency.0005.t
+	desc = city_state_emergency.0005.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	option = {
+		name = city_state_emergency.0005.a
 	}
 }
 #endregion
