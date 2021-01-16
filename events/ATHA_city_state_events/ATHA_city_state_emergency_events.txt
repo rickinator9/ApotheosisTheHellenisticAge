@@ -651,6 +651,13 @@ city_state_emergency.0004 = {
 	}
 }
 
+#####
+#
+#	PRIEST STEALS FROM TEMPLE FLAVOUR EVENTS.
+#
+#####
+
+# The Court Chaplain get caught while stealing from the temple treasury.
 city_state_emergency.0005 = {
 	type = character_event
 	title = city_state_emergency.0005.t
@@ -664,6 +671,26 @@ city_state_emergency.0005 = {
 
 	option = {
 		name = city_state_emergency.0005.a
+
+		liege = {
+			trigger_event = city_state_emergency.0006 
+		}
+	}
+}
+
+city_state_emergency.0006 = {
+	type = character_event
+	title = city_state_emergency.0006.t
+	desc = city_state_emergency.0006.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	option = {
+		name = city_state_emergency.0006.a
 	}
 }
 #endregion

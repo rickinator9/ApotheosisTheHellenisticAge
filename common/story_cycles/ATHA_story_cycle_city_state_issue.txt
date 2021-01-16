@@ -18,10 +18,22 @@ city_state_mercenary_emergency_story = {
 
 		first_valid = {
 			triggered_effect = {
-				trigger = { always = yes }
+				trigger = { 
+					story_owner = {
+						primary_title = {
+							has_variable = emergency_mercenary_mutiny_solution
+							OR = {
+								var:emergency_mercenary_mutiny_solution = flag:temple_gold
+								var:emergency_mercenary_mutiny_solution = flag:false_omens
+							}
+						}
+					}
+				}
 				effect = { 
 					story_owner = {
-						trigger_event = { on_action = ATHA_ongoing_mercenary_issue_events }
+						cp:councillor_court_chaplain = {
+							trigger_event = { on_action = ATHA_ongoing_mercenary_issue_events }
+						}
 					}
 				}
 			}

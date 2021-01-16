@@ -16,3 +16,25 @@ ATHA_game_start.1 = {
         }
     }
 }
+
+# Assign city state values.
+ATHA_game_start.2 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			limit = {
+				highest_held_title_tier >= tier_county
+				has_government = city_state_government
+			}
+
+			primary_title = {
+				set_variable = {
+					name = city_state_corruption
+					value = 25
+				}
+			}
+		}
+	}
+}
