@@ -364,6 +364,8 @@ types ATHA_city_state_windows
 										background = { 
 											using = Background_Area
 											using = Color_Red_Transparent
+											
+											visible = "[GetScriptedGui('city_state_gui_corruption_critical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										}
 	
 										icon_flat_standard = {
@@ -1112,7 +1114,7 @@ types ATHA_city_state_windows
 										layoutpolicy_horizontal = expanding
 										margin_top = 28
 										margin_left = 4
-										text = "CITY_STATE_CORRUPTION_CRITICAL"
+										text = "CITY_STATE_CORRUPTION_LEVEL"
 										align = left
 									}
 	
