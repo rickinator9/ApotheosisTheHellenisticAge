@@ -1,6 +1,8 @@
 ﻿template = {	
 
-	# Greek Shield
+	### GREEK TEMPLATES ######################
+
+	# Metal emblem over normal background with metal shield frame
 	greek_shield_template = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
@@ -12,16 +14,18 @@
 			texture = list "shield_border_list"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
+			color2 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
 		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color3
-			color2 = color3
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }	
+			instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 }  }	
 		}	
 	}
+	# Normal emblem over metal background with normal shield frame
 	greek_shield_template_inverted = {
 		pattern = "pattern_solid.dds"
 		color1 = list "metal_colors"
@@ -33,18 +37,19 @@
 			texture = list "shield_border_list"
 			color1 = list "metal_colors"
 			color2 = list "normal_colors"
+			color3 = list "normal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }	
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 }  }	
 		}
 	}	
 
-	# Greek Wreath
+	# Metal emblem over normal background with metal wreath
 	greek_wreath_template = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
@@ -60,12 +65,13 @@
 		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color3
-			color2 = color3
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}	
 	}
+	# Normal emblem over metal background with green & brown wreath
 	greek_wreath_template_inverted = {
 		pattern = "pattern_solid.dds"
 		color1 = list "metal_colors"
@@ -83,10 +89,11 @@
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}
 	}	
+	# Metal emblem over normal background with flipped metal wreath
 	greek_wreath_template_flipped = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
@@ -98,16 +105,17 @@
 			texture = list "wreath_list"
 			color1 = list "metal_colors"
 			color2 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 1.0 -1.0 }  }	
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }	
 		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color3
-			color2 = color3
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}	
 	}
+	# Normal emblem over metal background with flipped green & brown wreath
 	greek_wreath_template_inverted_flipped = {
 		pattern = "pattern_solid.dds"
 		color1 = list "metal_colors"
@@ -119,18 +127,18 @@
 			texture = list "wreath_list_realcolour"
 			color1 = list "branch_colors"
 			color2 = list "leaf_colors"
-			instance = { position = { 0.5 0.5 } scale = { 1.0 -1.0 }  }		
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
 			color1 = color3
 			color2 = color3
-			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}
 	}	
 
-	# Greek Shield Inset
+	# Metal emblem in normal roundel with metal frame over normal background
 	greek_shield_inset = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
@@ -140,19 +148,20 @@
 		
 		colored_emblem = {
 			texture = list "roundel_list"
-			color1 = color2
+			color1 = list "normal_colors"
 			color2 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
 		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color3
-			color2 = color4
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}
 	}
-	greek_shield_inset_inverted = {
+	# Normal emblem in metal roundel with normal frame over normal background
+	greek_shield_inset_alt = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
 		color2 = list "normal_colors"
@@ -161,7 +170,7 @@
 		
 		colored_emblem = {
 			texture = list "roundel_list"
-			color1 = color3
+			color1 = list "metal_colors"
 			color2 = list "normal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
 		}			
@@ -169,38 +178,174 @@
 			texture = list "charge"
 			color1 = color2
 			color2 = color2
-			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 }  }	
+			color3 = color2
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}
-	}
-	greek_shield_inset_wreath = {
+	}	
+	# Normal emblem in metal roundel with normal frame over metal background
+	greek_shield_inset_inverted = {
 		pattern = "pattern_solid.dds"
 		color1 = list "metal_colors"
 		color2 = list "metal_colors"
 		color3 = list "normal_colors"
 		color4 = list "normal_colors"		
-			
+		
 		colored_emblem = {
-			texture = list "wreath_list_realcolour"
-			color1 = list "branch_colors"
-			color2 = list "leaf_colors"
-			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color3
+			color2 = color3
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}
+	}
+	# Metal emblem in normal roundel with metal frame over metal background
+	greek_shield_inset_inverted_alt = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+		
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}
+	}
+
+	# Metal emblem in normal roundel with metal frame over normal background
+	greek_shield_inset_border = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
 		}	
 		colored_emblem = {
 			texture = list "roundel_list"
-			color1 = color3
-			color2 = list "normal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.56 0.56 }  }	
-		}		
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }		
+		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color1
-			color2 = color2
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.46 0.46 }  }
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }	
 		}
-	}		
-	greek_shield_inset_wreath_inverted = {
+	}
+	# Normal emblem in metal roundel with normal frame over normal background
+	greek_shield_inset_border_alt = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color2
+			color2 = color2
+			color3 = color2
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }	
+		}
+	}	
+	# Normal emblem in metal roundel with normal frame over metal background
+	greek_shield_inset_border_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
+		}
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color3
+			color2 = color3
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }	
+		}
+	}
+	# Metal emblem in normal roundel with metal frame over metal background
+	greek_shield_inset_border_inverted_alt = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+		
+		colored_emblem = {
+			texture = list "shield_border_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 }  }		
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}
+	}
+
+	# Metal emblem in normal roundel with metal frame over normal background with metal wreath
+	greek_shield_inset_wreath = {
 		pattern = "pattern_solid.dds"
 		color1 = list "normal_colors"
 		color2 = list "normal_colors"
@@ -215,18 +360,216 @@
 		}	
 		colored_emblem = {
 			texture = list "roundel_list"
-			color1 = color2
+			color1 = list "normal_colors"
 			color2 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.56 0.56 }  }		
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
 		}			
 		colored_emblem = {
 			texture = list "charge"
-			color1 = color4
-			color2 = color4
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.46 0.46 }  }	
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
 		}
 	}	
+	# Normal emblem in metal roundel with normal/metal frame over normal background with metal wreath
+	greek_shield_inset_wreath_alt = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"	
+		
+		colored_emblem = {
+			texture = list "wreath_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color2
+			color2 = color2
+			color3 = color2
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}
+	# Metal emblem in normal roundel with normal/metal frame over metal background with green & brown wreath
+	greek_shield_inset_wreath_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+			
+		colored_emblem = {
+			texture = list "wreath_list_realcolour"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}		
+		colored_emblem = {
+			texture = list "charge"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}	
+	# Normal emblem in metal roundel with normal frame over metal background with green & brown wreath
+	greek_shield_inset_wreath_inverted_alt = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+			
+		colored_emblem = {
+			texture = list "wreath_list_realcolour"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}		
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color3
+			color2 = color3
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}	
+	# Metal emblem in normal roundel with metal frame over normal background with flipped metal wreath
+	greek_shield_inset_wreath_flipped = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"	
+		
+		colored_emblem = {
+			texture = list "wreath_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}	
+	# Normal emblem in metal roundel with normal/metal frame over normal background with flipped metal wreath
+	greek_shield_inset_wreath_alt_flipped = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"	
+		
+		colored_emblem = {
+			texture = list "wreath_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}			
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color2
+			color2 = color2
+			color3 = color2
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}
+	# Metal emblem in normal roundel with normal/metal frame over metal background with flipped green & brown wreath
+	greek_shield_inset_wreath_inverted_flipped = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+			
+		colored_emblem = {
+			texture = list "wreath_list_realcolour"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}		
+		colored_emblem = {
+			texture = list "charge"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}	
+	# Normal emblem in metal roundel with normal frame over metal background with flipped green & brown wreath
+	greek_shield_inset_wreath_inverted_alt_flipped = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"		
+			
+		colored_emblem = {
+			texture = list "wreath_list_realcolour"
+			color1 = list "branch_colors"
+			color2 = list "leaf_colors"
+			instance = { position = { 0.5 0.5 } scale = { -1.0 -1.0 }  }		
+		}	
+		colored_emblem = {
+			texture = list "roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.5 0.5 }  }	
+		}		
+		colored_emblem = {
+			texture = list "charge"
+			color1 = color3
+			color2 = color3
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 0.4 0.4 }  }
+		}
+	}
+
+	### HELLENISTIC TEMPLATES ######################
 	
 	# Hellenistic Shield
 	hellenistic_shield_template = {
@@ -332,6 +675,7 @@
 			texture = list "shield_border_list"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
 		}			
 		colored_emblem = {
@@ -361,6 +705,7 @@
 			texture = list "shield_border_list"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }	
 		}			
 		colored_emblem = {
@@ -379,8 +724,8 @@
 		}	
 	}
 
-
-	# Spartan		
+	### SPARTAN TEMPLATES ######################
+	# Normal emblem	over black background with metal shield frame	
 	spartan_shield_template = {
 		pattern = "pattern_solid.dds"
 		color1 = "black"
@@ -392,6 +737,7 @@
 			texture = list "shield_border_list"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}			
 		colored_emblem = {
@@ -399,10 +745,11 @@
 			color1 = list "spartan_colors"
 			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }		
+			instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 }  }		
 		}	
 	}
-	spartan_shield_template_b = {
+	# Black emblem	over normal background with metal shield frame	
+	spartan_shield_template_alt = {
 		pattern = "pattern_solid.dds"
 		color1 = list "spartan_colors"
 		color2 = list "normal_colors"
@@ -413,6 +760,7 @@
 			texture = list "shield_border_list"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
+			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }		
 		}			
 		colored_emblem = {
@@ -420,7 +768,7 @@
 			color1 = "black"
 			color2 = list "metal_colors"
 			color3 = list "metal_colors"
-			instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 }  }		
+			instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 }  }		
 		}	
 	}	
 
