@@ -695,10 +695,16 @@ city_state_emergency.0006 = {
 		name = city_state_emergency.0006.a
 
 		primary_title = {
-			change_variable = {
-				name = city_state_corruption
-				add = 25
-			}
+			change_city_state_corruption = { AMOUNT_ARG = corruption_large_increase }
+		}
+
+		# Remove piety from both wrongdoers now that their evil is revealed.
+		add_piety = {
+			value = major_piety_loss
+			multiply = 0.75
+		}
+		court_chaplain = {
+			add_piety = major_piety_loss
 		}
 	}
 }
