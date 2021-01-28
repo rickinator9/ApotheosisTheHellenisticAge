@@ -1,12 +1,17 @@
 ﻿# HELLESPONTINE PHRYGIA
 k_hellespontine_phrygia = {
 	1.1.1 = { change_development_level = 1 }
+
+	3479.1.1 = { # 275 BC
+		liege = e_syria
+		holder = macedonian01901 # Meleagros
+	}
 }
 
 ## TROAS ###################################
 d_troas = {
 	3479.1.1 = { # 275 BC
-		# liege = ... # Hellespontine Phrygia?
+		liege = k_hellespontine_phrygia
 		holder = macedonian01901 # Meleagros
 	}
 }
@@ -62,7 +67,7 @@ c_parion = {
 ## AIOLIS ###################################
 d_aiolis = {
 	3479.1.1 = { # 275 BC
-		# liege = ...
+		liege = e_syria
 		holder = macedonian01702 # Philetairos
 	}
 }
@@ -74,7 +79,7 @@ c_pergamon = {
 }
 c_adramyttion = {
 	3479.1.1 = { # 275 BC
-		# liege = ...
+		liege = e_syria # speculative
 		holder = aeolian00302 # Pheron of Adramyttion (speculative)
 	}
 }
@@ -90,24 +95,22 @@ c_methymna = {
 }
 c_atarneus = {
 	3479.1.1 = { # 275 BC
-		liege = d_aiolis
+		liege = d_aiolis # speculative - it isn't clear when this area came under Attalid rule, but presumably it happened early on
 		holder = spartan002b11 # Damaratos of Sparta (speculative)
 	}
 }
 c_phokaia = {
 	3479.1.1 = { # 275 BC
-		# liege = d_ionia (?)
+		liege = d_ionia
 		holder = ionian00302 # Thrasyllos of Phokaia (speculative)
 	}
 }
 c_kyme = {
 	3479.1.1 = { # 275 BC
-		# liege = ...
+		liege = e_syria # speculative
 		holder = aeolian00202 # Zopyros of Kyme (speculative)
 	}
 }
-
-## TEMNIS ###################################
 c_gambreion = {
 	3479.1.1 = { # 275 BC
 		liege = d_aiolis
@@ -124,7 +127,7 @@ c_hiera_germe = {
 ## MYSIA ###################################
 d_mysia = {
 	3479.1.1 = { # 275 BC
-		# liege = ... # Hellespontine Phrygia?
+		liege = k_hellespontine_phrygia
 		holder = ionian00501 # Diomedon of Kyzikos (speculative)
 	}
 }
@@ -140,16 +143,60 @@ c_daskyleion = {
 		holder = ionian00404 # Apollodoros of Kyzikos (speculative)
 	}
 }
+c_zeleia = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis
+		holder = macedonian02101 # Polemokrates (speculative)
+	}
+}
 c_apollonia_rhyndakon = {
 	3479.1.1 = { # 275 BC
-		# liege = ... # Hellespontine Phrygia?
+		liege = k_hellespontine_phrygia
 		holder = ionian00702 # Praxias of Apollonia (speculative)
 	}
 }
 c_miletopolis = {
 	3479.1.1 = { # 275 BC
-		# liege = ... # Hellespontine Phrygia?
+		liege = k_hellespontine_phrygia
 		holder = ionian00801 # Menephron of Miletoupolis (speculative)
+	}
+}
+
+## TEMNIS ###################################
+d_temnis = {
+	3479.1.1 = { # 275 BC
+		liege = k_hellespontine_phrygia
+		holder = macedonian02101 # Polemokrates (speculative) - aside from Pannioukome, it is unclear which areas fell under his jurisdiction as hyparch
+	}
+}
+c_pioniai = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis # speculative
+		#holder = ... #
+	}
+}
+c_attea = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis # speculative
+		#holder = ... #
+	}
+}
+c_pericharaxis = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis # speculative
+		#holder = ... #
+	}
+}
+c_argyria = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis # speculative
+		#holder = ... #
+	}
+}
+c_argiza = {
+	3479.1.1 = { # 275 BC
+		liege = d_temnis # speculative
+		#holder = ... #
 	}
 }
 
@@ -173,7 +220,17 @@ c_prainetos = {
 }
 
 ## BITHYNIA ###################################
-
+d_bithynia = {
+	3479.1.1 = { # 275 BC
+		holder = test_nikomedes # Nikomedes I
+	}
+}
+c_astakos = {
+	3479.1.1 = { # 275 BC
+		liege = d_bithynia
+		#holder = ... #
+	}
+}
 c_chalkedon = {
 	3479.1.1 = { # 275 BC
 		liege = d_astike # coerced into a sympoliteia with Byzantium in the 4th century BC
@@ -181,8 +238,13 @@ c_chalkedon = {
 	}
 }
 
+c_nikaia = {
+	3479.1.1 = { # 275 BC
+		liege = d_bithynia
+		holder = test_nikomedes # TEMP
+	}
+}
 ## MARIANDYNIA ###################################
-
 d_mariandynia = {
 	3479.1.1 = { # 275 BC
 		holder = megarian00701 # Phokritos of Herakleia
