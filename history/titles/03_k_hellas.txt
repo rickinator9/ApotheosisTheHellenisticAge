@@ -1,14 +1,6 @@
 ﻿# HELLAS
-k_hellas = {
-	1.1.1 = { change_development_level = 1 }
-}
 
 ## LAKEDAIMON ###################################
-d_lakedaimon = {
-	3479.1.1 = { # 275 BC
-		holder = spartan00147 # Areus I
-	}
-}
 c_sparta = {
 	3479.1.1 = { # 275 BC
 		liege = d_lakedaimon
@@ -39,14 +31,15 @@ c_kythera = {
 		holder = spartan00147 # Areus I
 	}
 }
-
-## MESSENIA ###################################
-d_messenia = {
+c_limnai = {
 	3479.1.1 = { # 275 BC
-		holder = messenian00103 # Gorgos of Messene (fictional)
+		liege = d_messenia
+		holder = messenian00405 # Neon (speculative)
 		government = city_state_government
 	}
 }
+
+## MESSENIA ###################################
 c_messene = {
 	3479.1.1 = { # 275 BC
 		liege = d_messenia
@@ -69,21 +62,8 @@ c_methone = {
 	}
 }
 
-c_limnai = {
-	3479.1.1 = { # 275 BC
-		liege = d_messenia
-		holder = messenian00405 # Neon (speculative)
-		government = city_state_government
-	}
-}
 
 ## ELIS ###################################
-d_elis = {
-	3479.1.1 = { # 275 BC
-		holder = elean00103 # Aristotimos (speculative - we have no information about his standing prior to becoming tyrant in 272 BC)
-		government = city_state_government
-	}
-}
 c_koile_elis = {
 	3479.1.1 = { # 275 BC
 		liege = d_elis
@@ -106,12 +86,6 @@ c_pisatis = {
 }
 
 ## ACHAIA ###################################
-d_achaia = {
-	3479.1.1 = { # 275 BC
-		holder = achaean00101 # Margos of Keryneia (speculative, his influence may have been limited to Keryneia/Boura at this time)
-		government = city_state_government
-	}
-}
 c_aigion = {
 	3479.1.1 = { # 275 BC
 		liege = d_achaia
@@ -186,12 +160,6 @@ c_tegea = {
 }
 
 ## ARGOLIS ###################################
-d_argolis = {
-	3479.1.1 = { # 275 BC
-		holder = argive00105 # Aristippos of Argos (speculative, but there is good reason to believe he was already a leading figure at this time)
-		government = city_state_government
-	}
-}
 c_argos = {
 	3479.1.1 = { # 275 BC
 		liege = d_argolis
@@ -244,12 +212,6 @@ c_phleious = {
 }
 
 ## KORINTHIA ###################################
-d_korinthia = {
-	3479.1.1 = { # 275 BC
-		liege = k_makedonia
-		holder = macedonian00204 # Krateros of Corinth
-	}
-}
 c_korinthos = {
 	3479.1.1 = { # 275 BC
 		liege = d_korinthia
@@ -270,13 +232,6 @@ c_megara = {
 }
 
 ## ATTIKE ###################################
-d_attike = {
-	3479.1.1 = { # 275 BC
-		holder = athenian00206 # Kallippos of Eleusis
-		succession_laws = { democratic_succession_law }
-		government = city_state_government
-	}
-}
 c_athenai = {
 	3479.1.1 = { # 275 BC
 		liege = d_attike
@@ -308,12 +263,6 @@ c_marathon = {
 }
 
 ## BOIOTIA ###################################
-d_boiotia = {
-	3479.1.1 = { # 275 BC
-		holder = boeotian00302 # Kaphisodotos of Thespiai (speculative)
-		government = city_state_government
-	}
-}
 c_thespiai = {
 	3479.1.1 = { # 275 BC
 		liege = d_boiotia
@@ -344,12 +293,6 @@ c_tanagra = {
 }
 
 ## PHOKIS ###################################
-d_phokis = {
-	3479.1.1 = { # 275 BC
-		holder = phocian00102 # Xanthippos of Phokis
-		government = city_state_government
-	}
-}
 c_elateia = {
 	3479.1.1 = { # 275 BC
 		liege = d_phokis
@@ -394,14 +337,15 @@ c_thronion = {
 		government = city_state_government
 	}
 }
-
-## AITOLIA ###################################
-d_aitolia = {
+c_naupaktos = {
 	3479.1.1 = { # 275 BC
-		holder = aetolian00101 # Polykritos of Kallion (Strategos in 277/6 BC, we unfortunately don't have any records from 275 BC)
+		liege = d_aitolia
+		holder = aetolian00402 # Neoptolemos of Naupaktos
 		government = city_state_government
 	}
 }
+
+## AITOLIA ###################################
 c_thermon = {
 	3479.1.1 = { # 275 BC
 		liege = d_aitolia
@@ -448,22 +392,7 @@ c_aperantia = {
 	}
 }
 
-c_naupaktos = {
-	3479.1.1 = { # 275 BC
-		liege = d_aitolia
-		holder = aetolian00402 # Neoptolemos of Naupaktos
-		government = city_state_government
-	}
-}
-
 ## AKARNANIA ###################################
-d_akarnania = {
-	3479.1.1 = { # 275 BC
-		liege = k_epeiros
-		holder = acarnanian00301 # Hageson of Stratos (speculative)
-		government = city_state_government
-	}
-}
 c_anaktorion = {
 	3479.1.1 = { # 275 BC
 		liege = d_akarnania
@@ -540,16 +469,6 @@ c_karystos = {
 }
 
 ## KYKLADES ###################################
-d_kyklades = {
-	3447.1.1 = { # 307 BC, speculative
-		# liege = ... # Antigonos I?
-		holder = ionian00404 # Apollodoros of Kyzikos
-	}
-	3466.1.1 = { # 288 BC, speculative
-		liege = k_aegean # Philokles of Sidon
-		holder = boeotian00502 # Bakchon of Boeotia
-	}
-}
 c_delos = {
 	3447.1.1 = { # 307 BC, speculative
 		liege = d_kyklades
