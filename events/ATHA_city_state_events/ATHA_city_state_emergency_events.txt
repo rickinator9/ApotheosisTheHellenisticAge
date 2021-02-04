@@ -10,6 +10,10 @@
 #	 0001: Mercenary mutiny entry point.
 #	 0002: Mercenary mutiny is communicated to the ruler.
 #	 0003: Councilors have to decide which solution to suggest to the ruler.
+#	 0004: Ruler chooses the advice from the councillors.
+# 0011-0100: Flavour events.
+#	 0011: The court chaplain gets caught while stealing from the temple treasury.
+#	 0012: The ruler hears about it...
 
 #region Region
 city_state_emergency.0001 = {
@@ -658,10 +662,10 @@ city_state_emergency.0004 = {
 #####
 
 # The Court Chaplain get caught while stealing from the temple treasury.
-city_state_emergency.0005 = {
+city_state_emergency.0011 = {
 	type = character_event
-	title = city_state_emergency.0005.t
-	desc = city_state_emergency.0005.desc
+	title = city_state_emergency.0011.t
+	desc = city_state_emergency.0011.desc
 
 	theme = martial
 	left_portrait = {
@@ -670,20 +674,21 @@ city_state_emergency.0005 = {
 	}
 
 	option = {
-		name = city_state_emergency.0005.a
+		name = city_state_emergency.0011.a
 
 		save_scope_as = court_chaplain
 
 		liege = {
-			trigger_event = city_state_emergency.0006 
+			trigger_event = city_state_emergency.0012 
 		}
 	}
 }
 
-city_state_emergency.0006 = {
+# The ruler is informed.
+city_state_emergency.0012 = {
 	type = character_event
-	title = city_state_emergency.0006.t
-	desc = city_state_emergency.0006.desc
+	title = city_state_emergency.0012.t
+	desc = city_state_emergency.0012.desc
 
 	theme = martial
 	left_portrait = {
@@ -692,7 +697,7 @@ city_state_emergency.0006 = {
 	}
 
 	option = {
-		name = city_state_emergency.0006.a
+		name = city_state_emergency.0012.a
 
 		primary_title = {
 			change_city_state_corruption = { AMOUNT_ARG = corruption_large_increase }
@@ -706,6 +711,144 @@ city_state_emergency.0006 = {
 		court_chaplain = {
 			add_piety = major_piety_loss
 		}
+
+		# TODO: Inform the assembly if democratic.
+		# TODO: Inform the population otherwise.
+	}
+}
+
+# The priest is offered an armour.
+city_state_emergency.0013 = {
+	type = character_event
+	title = city_state_emergency.0013.t
+	desc = city_state_emergency.0013.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	# A diplomatically skilled councillor may have a rich collector within his network.
+	option = {
+		name = city_state_emergency.0013.a
+		trigger = {
+			diplomacy >= decent_skill_rating
+		}
+
+		# TODO:
+	}
+
+	# Someone less connected can pawn it.
+	option = {
+		name = city_state_emergency.0013.b
+
+		# TODO:
+	}
+
+	# The priest could pawn it for himself.
+	option = {
+		name = city_state_emergency.0013.c
+
+		# TODO:
+	}
+
+	# The priest can let it go.
+	option = {
+		name = city_state_emergency.0013.d
+
+		# TODO:
+
+		add_piety = minor_piety_gain
+	}
+}
+
+# The priest visits a collector that may want to buy the armour.
+city_state_emergency.0014 = {
+	type = character_event
+	title = city_state_emergency.0014.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_variable = collector_great_outcome
+				}
+				desc = city_state_emergency.0014.great_outcome_desc
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = collector_good_outcome
+				}
+				desc = city_state_emergency.0014.good_outcome_desc
+			}
+			desc = city_state_emergency.0014.bad_outcome_desc
+		}
+	}
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	immediate = {
+		# Get a scope to the liege.
+		liege = {
+			save_scope_as = liege_char
+		}
+
+		# Determine the outcome of bartering with the collector.
+		random_list = {
+			33 = {
+				modifier = {
+					factor = 1.1
+					stewardship >= decent_skill_rating
+				}
+				modifier = {
+					factor = 1.3
+					stewardship >= high_skill_rating
+				}
+				modifier = {
+					factor = 1.6
+					stewardship >= very_high_skill_rating
+				}
+				modifier = {
+					factor = 2
+					stewardship >= extremely_high_skill_rating
+				}
+
+				set_variable = collector_great_outcome
+			}
+			33 = {
+				set_variable = collector_good_outcome
+			}
+			33 = {
+				modifier = {
+					factor = 0.75
+					stewardship < mediocre_skill_rating
+				}
+				modifier = {
+					factor = 0.5
+					stewardship < low_skill_rating
+				}
+				
+				set_variable = collector_bad_outcome
+			}
+		}
+	}
+
+	# The loyal councillor gives all of the proceeds to the liege.
+	option = {
+		name = city_state_emergency.0014.a
+
+		# TODO:
+	}
+
+	# Councillor keeps a small amount for himself.
+	option = {
+		name = city_state_emergency.0014.b
+
+		# TODO:
 	}
 }
 #endregion
