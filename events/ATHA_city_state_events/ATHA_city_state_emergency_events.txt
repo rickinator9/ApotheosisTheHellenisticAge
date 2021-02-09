@@ -729,40 +729,46 @@ city_state_emergency.0013 = {
 		animation = ecstasy # TODO: Customize this.
 	}
 
+	immediate = {
+		# Save scopes for future events.
+		save_scope_as = councillor_char
+		liege = { save_scope_as = liege_char }
+	}
+
 	# A diplomatically skilled councillor may have a rich collector within his network.
 	option = {
 		name = city_state_emergency.0013.a
-		trigger = {
-			diplomacy >= decent_skill_rating
-		}
+		# trigger = {
+		# 	diplomacy >= decent_skill_rating
+		# }
 
 		# TODO:
 		trigger_event = city_state_emergency.0014
 	}
 
 	# Someone less connected can pawn it.
-	option = {
-		name = city_state_emergency.0013.b
+	# option = {
+	# 	name = city_state_emergency.0013.b
 
-		# TODO:
-		trigger_event = city_state_emergency.0014
-	}
+	# 	# TODO:
+	# 	trigger_event = city_state_emergency.0014
+	# }
 
-	# The priest could pawn it for himself.
-	option = {
-		name = city_state_emergency.0013.c
+	# # The priest could pawn it for himself.
+	# option = {
+	# 	name = city_state_emergency.0013.c
 
-		# TODO:
-	}
+	# 	# TODO:
+	# }
 
-	# The priest can let it go.
-	option = {
-		name = city_state_emergency.0013.d
+	# # The priest can let it go.
+	# option = {
+	# 	name = city_state_emergency.0013.d
 
-		# TODO:
+	# 	# TODO:
 
-		add_piety = minor_piety_gain
-	}
+	# 	add_piety = minor_piety_gain
+	# }
 }
 
 # The priest visits a collector that may want to buy the armour.
@@ -794,11 +800,6 @@ city_state_emergency.0014 = {
 	}
 
 	immediate = {
-		# Get a scope to the liege.
-		liege = {
-			save_scope_as = liege_char
-		}
-
 		# Determine the outcome of bartering with the collector.
 		random_list = {
 			33 = {
@@ -826,11 +827,11 @@ city_state_emergency.0014 = {
 			}
 			33 = {
 				modifier = {
-					factor = 0.75
+					factor = 2
 					stewardship < mediocre_skill_rating
 				}
 				modifier = {
-					factor = 0.5
+					factor = 2
 					stewardship < low_skill_rating
 				}
 				
@@ -842,15 +843,109 @@ city_state_emergency.0014 = {
 	# The loyal councillor gives all of the proceeds to the liege.
 	option = {
 		name = city_state_emergency.0014.a
-
-		# TODO:
+		# TODO: AI, Stress
+		liege = { trigger_event = city_state_emergency.0015 }
 	}
 
 	# Councillor keeps a small amount for himself.
 	option = {
 		name = city_state_emergency.0014.b
+		# TODO: AI, Stress
 
-		# TODO:
+		set_variable = collector_embezzle_money
+		if = {
+			limit = { has_variable = collector_great_outcome }
+
+			add_gold = {
+				value = armour_great_sell_value
+				multiply = armour_embezzle_councillor_factor
+			}
+		} else_if = {
+			limit = { has_variable = collector_good_outcome }
+
+			add_gold = {
+				value = armour_good_sell_value
+				multiply = armour_embezzle_councillor_factor
+			}
+
+		} else = {
+			add_gold = {
+				value = armour_bad_sell_value
+				multiply = armour_embezzle_councillor_factor
+			}
+		}
+
+		liege = { trigger_event = city_state_emergency.0015 }
+	}
+}
+
+
+# The ruler receives the money from selling the armour to the collector.
+city_state_emergency.0015 = {
+	type = character_event
+	title = city_state_emergency.0015.t
+	desc = city_state_emergency.0015.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	option = {
+		name = {
+			trigger = { scope:councillor_char = { has_variable = collector_great_outcome } }
+			text = city_state_emergency.0015.great
+		}
+		name = {
+			trigger = { scope:councillor_char = { has_variable = collector_good_outcome } }
+			text = city_state_emergency.0015.good
+		}
+		name = {
+			trigger = { scope:councillor_char = { has_variable = collector_bad_outcome } }
+			text = city_state_emergency.0015.bad
+		}		
+
+		if = { # The councillor embezzled some money.
+			limit = { scope:councillor_char = { has_variable = collector_embezzle_money } }
+
+			if = {
+				limit = { scope:councillor_char = { has_variable = collector_great_outcome } }
+				add_gold = {
+					value = armour_great_sell_value
+					multiply = armour_embezzle_liege_factor
+				}
+			} else_if = {
+				limit = { scope:councillor_char = { has_variable = collector_good_outcome } }
+				add_gold = {
+					value = armour_good_sell_value
+					multiply = armour_embezzle_liege_factor
+				}
+			} else = {
+				add_gold = {
+					value = armour_bad_sell_value
+					multiply = armour_embezzle_liege_factor
+				}
+			}
+		} else = { # Everything goes to the liege.
+			if = {
+				limit = { scope:councillor_char = { has_variable = collector_great_outcome } }
+				add_gold = armour_great_sell_value
+			} if = {
+				limit = { scope:councillor_char = { has_variable = collector_good_outcome } }
+				add_gold = armour_good_sell_value
+			} else = {
+				add_gold = armour_bad_sell_value
+			}
+		}
+
+		# Clean up variables.
+		scope:councillor_char = {
+			remove_variable = collector_great_outcome
+			remove_variable = collector_good_outcome
+			remove_variable = collector_bad_outcome
+			remove_variable = collector_embezzle_money
+		}
 	}
 }
 #endregion
