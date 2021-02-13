@@ -45,17 +45,6 @@ theocracy_government = {
 	valid_holdings = { castle_holding }
 	religious = yes
 
-	can_get_government = {
-		NOT = {
-			faith = {
-				has_doctrine = doctrine_theocracy_lay_clergy
-			}
-			primary_title = {
-				tier < tier_county
-			}
-		}
-	}
-
 	vassal_contract = { theocracy_government_obligations }
 	color = hsv { 0.00 0.00 0.78 }
 }

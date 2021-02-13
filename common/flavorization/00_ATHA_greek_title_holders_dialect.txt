@@ -1,5 +1,61 @@
 ﻿# GREEK
 
+## BARONIES ###################################
+
+### Attic
+barony_city_greek_group_attic = { # Demos
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = city_holding
+	cultures = { athenian ionian }
+}
+
+### Doric
+barony_tribal_greek_group_doric = { # Koma
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = tribal_holding
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+barony_city_greek_group_doric = { # Koma
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = city_holding
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
 ## FEUDAL ###################################
 
 ### Arcadian
@@ -98,16 +154,6 @@ king_feudal_male_greek_group_doric = { # Dynastas
 	}
 }
 
-### Ionic
-barony_feudal_greek_group_ionic = { # Chore
-	type = title
-	top_liege = no
-	tier = barony
-	priority = 8
-	governments = { feudal_government }
-	cultures = { ionian }
-}
-
 ## COMMUNITY ###################################
 
 ### Arcadian
@@ -152,28 +198,19 @@ county_republic_greek_group_boeotian = { # Phoula
 	cultures = { boeotian }
 }
 
-### Doric
-barony_republic_greek_group_doric = { # Koma
-	type = title
+### Attic
+baron_republic_male_greek_group_attic = { # Demarchos
+	type = character
+	gender = male
+	special = holder
 	top_liege = no
 	tier = barony
 	priority = 8
 	governments = { republic_government }
-	cultures = {
-	# DORIC
-		achaean
-		dorian
-		dorian_northwest
-		dorian_south
-		epirote
-	# AEOLIC
-		aeolian
-		boeotian
-		thessalian
-	# ARCADO-CYPRIOT
-		arcadian
-	}
+	cultures = { athenian ionian }
 }
+
+### Doric
 county_republic_greek_group_doric = { # Phyla
 	type = title
 	top_liege = no
@@ -318,14 +355,6 @@ duke_clan_male_greek_group_doric = { # Prostatas
 }
 
 ### Ionic
-barony_clan_greek_group_ionic = { # Chore
-	type = title
-	top_liege = no
-	tier = barony
-	priority = 8
-	governments = { clan_government }
-	cultures = { ionian }
-}
 kingdom_clan_greek_group_ionic = { # Basileie
 	type = title
 	top_liege = no
@@ -380,27 +409,6 @@ county_tribal_greek_group_boeotian = { # Phoula
 }
 
 ### Doric
-barony_tribal_greek_group_doric = { # Koma
-	type = title
-	top_liege = no
-	tier = barony
-	priority = 8
-	governments = { tribal_government }
-	cultures = {
-	# DORIC
-		achaean
-		dorian
-		dorian_northwest
-		dorian_south
-		epirote
-	# AEOLIC
-		aeolian
-		boeotian
-		thessalian
-	# ARCADO-CYPRIOT
-		arcadian
-	}
-}
 county_tribal_greek_group_doric = { # Phyla
 	type = title
 	top_liege = no
@@ -643,6 +651,26 @@ empire_bureaucracy_military_greek_group_doric = { # Stratagia
 
 ## BUREAUCRATIC ###################################
 
+### Achaean
+count_bureaucracy_military_male_greek_group_achaean = { # Hypostratagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { bureaucracy_military_government }
+	cultures = { achaean }
+}
+county_bureaucracy_military_greek_group_achaean = { # Synteleia
+	type = title
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { bureaucracy_military_government }
+	cultures = { achaean }
+}
+
 ### Aeolian
 duchy_bureaucracy_civic_greek_group_aeolian = { # Strotagia
 	type = title
@@ -670,6 +698,29 @@ empire_bureaucracy_civic_greek_group_aeolian = { # Strotagia
 }
 
 ### Doric
+baron_bureaucracy_civic_male_greek_group_doric = { # Epistatas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { bureaucracy_civic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
 count_bureaucracy_civic_male_greek_group_doric = { # Epistatas
 	type = character
 	gender = male
@@ -821,16 +872,6 @@ empire_bureaucracy_civic_greek_group_doric = { # Stratagia
 	# ARCADO-CYPRIOT
 		arcadian
 	}
-}
-
-### Ionic
-barony_bureaucracy_civic_greek_group_ionic = { # Chore
-	type = title
-	top_liege = no
-	tier = barony
-	priority = 8
-	governments = { bureaucracy_civic_government }
-	cultures = { ionian }
 }
 
 ## DEMOCRATIC ###################################
