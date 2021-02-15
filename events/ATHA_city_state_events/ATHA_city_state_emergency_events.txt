@@ -738,28 +738,24 @@ city_state_emergency.0013 = {
 	# A diplomatically skilled councillor may have a rich collector within his network.
 	option = {
 		name = city_state_emergency.0013.a
-		# trigger = {
-		# 	diplomacy >= decent_skill_rating
-		# }
+		trigger = {
+			diplomacy >= decent_skill_rating
+		}
 
-		# TODO:
 		trigger_event = city_state_emergency.0014
 	}
 
 	# Someone less connected can pawn it.
-	# option = {
-	# 	name = city_state_emergency.0013.b
+	option = {
+	 	name = city_state_emergency.0013.b
+	 	trigger_event = city_state_emergency.0016
+	}
 
-	# 	# TODO:
-	# 	trigger_event = city_state_emergency.0014
-	# }
-
-	# # The priest could pawn it for himself.
-	# option = {
-	# 	name = city_state_emergency.0013.c
-
-	# 	# TODO:
-	# }
+	# The priest can take it for himself.
+	option = {
+	 	name = city_state_emergency.0013.c
+	 	trigger_event = city_state_emergency.0017
+	}
 
 	# # The priest can let it go.
 	# option = {
@@ -779,13 +775,13 @@ city_state_emergency.0014 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					has_variable = collector_great_outcome
+					has_variable = armour_collector_great_outcome
 				}
 				desc = city_state_emergency.0014.great_outcome_desc
 			}
 			triggered_desc = {
 				trigger = {
-					has_variable = collector_good_outcome
+					has_variable = armour_collector_good_outcome
 				}
 				desc = city_state_emergency.0014.good_outcome_desc
 			}
@@ -820,10 +816,10 @@ city_state_emergency.0014 = {
 					stewardship >= extremely_high_skill_rating
 				}
 
-				set_variable = collector_great_outcome
+				set_variable = armour_collector_great_outcome
 			}
 			33 = {
-				set_variable = collector_good_outcome
+				set_variable = armour_collector_good_outcome
 			}
 			33 = {
 				modifier = {
@@ -835,7 +831,7 @@ city_state_emergency.0014 = {
 					stewardship < low_skill_rating
 				}
 				
-				set_variable = collector_bad_outcome
+				set_variable = armour_collector_bad_outcome
 			}
 		}
 	}
@@ -852,16 +848,16 @@ city_state_emergency.0014 = {
 		name = city_state_emergency.0014.b
 		# TODO: AI, Stress
 
-		set_variable = collector_embezzle_money
+		set_variable = armour_embezzle_money
 		if = {
-			limit = { has_variable = collector_great_outcome }
+			limit = { has_variable = armour_collector_great_outcome }
 
 			add_gold = {
 				value = armour_great_sell_value
 				multiply = armour_embezzle_councillor_factor
 			}
 		} else_if = {
-			limit = { has_variable = collector_good_outcome }
+			limit = { has_variable = armour_collector_good_outcome }
 
 			add_gold = {
 				value = armour_good_sell_value
@@ -894,31 +890,44 @@ city_state_emergency.0015 = {
 
 	option = {
 		name = {
-			trigger = { scope:councillor_char = { has_variable = collector_great_outcome } }
+			trigger = { scope:councillor_char = { has_variable = armour_collector_great_outcome } }
 			text = city_state_emergency.0015.great
 		}
 		name = {
-			trigger = { scope:councillor_char = { has_variable = collector_good_outcome } }
+			trigger = { 
+				scope:councillor_char = {
+					OR = {
+						has_variable = armour_collector_good_outcome 
+						has_variable = armour_pawn_outcome
+					}
+				} 
+			}
 			text = city_state_emergency.0015.good
 		}
 		name = {
-			trigger = { scope:councillor_char = { has_variable = collector_bad_outcome } }
+			trigger = { scope:councillor_char = { has_variable = armour_collector_bad_outcome } }
 			text = city_state_emergency.0015.bad
 		}		
 
 		if = { # The councillor embezzled some money.
-			limit = { scope:councillor_char = { has_variable = collector_embezzle_money } }
+			limit = { scope:councillor_char = { has_variable = armour_embezzle_money } }
 
 			if = {
-				limit = { scope:councillor_char = { has_variable = collector_great_outcome } }
+				limit = { scope:councillor_char = { has_variable = armour_collector_great_outcome } }
 				add_gold = {
 					value = armour_great_sell_value
 					multiply = armour_embezzle_liege_factor
 				}
 			} else_if = {
-				limit = { scope:councillor_char = { has_variable = collector_good_outcome } }
+				limit = { scope:councillor_char = { has_variable = armour_collector_good_outcome } }
 				add_gold = {
 					value = armour_good_sell_value
+					multiply = armour_embezzle_liege_factor
+				}
+			} else_if = {
+				limit = { scope:councillor_char = { has_variable = armour_pawn_outcome } }
+				add_gold = {
+					value = armour_pawn_sell_value
 					multiply = armour_embezzle_liege_factor
 				}
 			} else = {
@@ -929,11 +938,14 @@ city_state_emergency.0015 = {
 			}
 		} else = { # Everything goes to the liege.
 			if = {
-				limit = { scope:councillor_char = { has_variable = collector_great_outcome } }
+				limit = { scope:councillor_char = { has_variable = armour_collector_great_outcome } }
 				add_gold = armour_great_sell_value
-			} if = {
-				limit = { scope:councillor_char = { has_variable = collector_good_outcome } }
+			} else_if = {
+				limit = { scope:councillor_char = { has_variable = armour_collector_good_outcome } }
 				add_gold = armour_good_sell_value
+			} else_if = {
+				limit = { scope:councillor_char = { has_variable = armour_pawn_outcome } }
+				add_gold = armour_pawn_sell_value
 			} else = {
 				add_gold = armour_bad_sell_value
 			}
@@ -941,11 +953,118 @@ city_state_emergency.0015 = {
 
 		# Clean up variables.
 		scope:councillor_char = {
-			remove_variable = collector_great_outcome
-			remove_variable = collector_good_outcome
-			remove_variable = collector_bad_outcome
-			remove_variable = collector_embezzle_money
+			remove_variable = armour_collector_great_outcome
+			remove_variable = armour_collector_good_outcome
+			remove_variable = armour_pawn_outcome
+			remove_variable = armour_collector_bad_outcome
+			remove_variable = armour_embezzle_money
 		}
+	}
+}
+
+# The priest pawns off the armour.
+city_state_emergency.0016 = {
+	type = character_event
+	title = city_state_emergency.0016.t
+	desc = city_state_emergency.0016.desc
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	immediate = {
+		set_variable = armour_pawn_outcome
+	}
+
+	# The councillor sends all of the money to his liege.
+	option = {
+		name = city_state_emergency.0016.a
+		# TODO: AI, Stress
+		liege = { trigger_event = city_state_emergency.0015 }
+	}
+
+	# The councillor embezzles some money.
+	option = {
+		name = city_state_emergency.0016.b
+		# TODO: AI, Stress
+
+		set_variable = armour_embezzle_money
+		add_gold = {
+			value = armour_pawn_sell_value
+			multiply = armour_embezzle_councillor_factor
+		}
+
+		liege = { trigger_event = city_state_emergency.0015 }
+	}
+}
+
+# The priest takes the armour for themselves.
+city_state_emergency.0017 = {
+	type = character_event
+	title = city_state_emergency.0017.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					# Characters that can not fight will not be able to wear the armour.
+					NOT = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege_char } }
+				}
+				desc = city_state_emergency.0017.noncombatant_desc
+			}
+			triggered_desc = {
+				trigger = {
+					# Fat characters can not wear the armour.
+					has_character_modifier = obese_modifier
+				}
+				desc = city_state_emergency.0017.fat_desc
+			}
+
+			# Otherwise they will wear the armour in battle.
+			desc = city_state_emergency.0017.default_desc
+		}
+	}
+
+	theme = martial
+	left_portrait = {
+		character = ROOT
+		animation = ecstasy # TODO: Customize this.
+	}
+
+	# The councillor can wear the armour.
+	option = {
+		name = city_state_emergency.0017.equip
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege_char }
+			NOT = { has_character_modifier = obese_modifier }
+		}
+		# TODO: AI, Stress
+		
+		add_character_modifier = { modifier = bronze_armour_combat_modifier }
+	}
+
+	# They can not.
+	option = {
+		name = {
+			trigger = {
+				NOT = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege_char } }
+			}
+			text = city_state_emergency.0017.noncombatant
+		}
+		name = {
+			trigger = { has_character_modifier = obese_modifier }
+			text = city_state_emergency.0017.stretcher
+		}
+		trigger = {
+			OR = {
+				NOT = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege_char } }
+				has_character_modifier = obese_modifier
+			}
+		}
+		# TODO: AI, Stress
+
+		add_character_modifier = { modifier = bronze_armour_display_modifier }
 	}
 }
 #endregion
