@@ -1,0 +1,44 @@
+﻿# Panhellenic Games traits
+
+panhellenic_victor = {
+	index = 1000
+	
+	vassal_opinion = 5
+	fame = yes
+	monthly_prestige = 0.5
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_panhellenic_victor_desc
+			}
+			desc = trait_panhellenic_victor_character_desc
+		}
+	}
+}
+periodonikes = { # awarded for completing the 'periodos' i.e. victories at Olympia, Delphi, Nemea and the Isthmus
+	index = 1001
+	
+	vassal_opinion = 10
+	fame = yes
+	monthly_prestige = 1
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_periodonikes_desc
+			}
+			desc = trait_periodonikes_character_desc
+		}
+	}
+}
