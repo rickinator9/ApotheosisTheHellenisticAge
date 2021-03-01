@@ -144,6 +144,65 @@ incorruptible = {
 	}	
 }
 
+populist = {
+	index = 1012
+	
+	fame = yes
+	opposites = {
+		elitist
+	}
+	county_opinion_add = 10
+	opposite_opinion = -30
+	same_opinion = 10
+		
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_populist_desc
+			}
+			desc = trait_populist_character_desc
+		}
+	}
+
+	compatibility = {
+		elitist = @neg_compat_high
+	}
+}
+elitist = {
+	index = 1013
+	
+	fame = yes
+	opposites = {
+		populist
+	}
+	monthly_prestige = 0.5
+	opposite_opinion = -30
+	same_opinion = 10
+		
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_elitist_desc
+			}
+			desc = trait_elitist_character_desc
+		}
+	}
+
+	compatibility = {
+		populist = @neg_compat_high
+	}
+}
+
 # Apotheosis Traits
 
 hero = {
