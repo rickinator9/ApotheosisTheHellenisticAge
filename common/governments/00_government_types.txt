@@ -3,10 +3,10 @@
 	rulers_should_have_dynasty = yes
 	dynasty_named_realms = yes
 
-	fallback = 1
+	fallback = 2
 
     valid_holdings = { castle_holding city_holding }
-	required_county_holdings = { city_holding castle_holding church_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -45,6 +45,15 @@ theocracy_government = {
 	valid_holdings = { castle_holding }
 	religious = yes
 
+	can_get_government = {
+		NOT = {
+			faith = {
+				has_doctrine = doctrine_theocracy_lay_clergy
+			}
+			tier > 1
+		}
+	}
+
 	vassal_contract = { theocracy_government_obligations }
 	color = hsv { 0.00 0.00 0.78 }
 }
@@ -57,10 +66,11 @@ clan_government = {
 	always_use_patronym = yes
 	regiments_prestige_as_gold = yes
 	
-	fallback = 2
+	fallback = 3
 	
 	primary_holding = tribal_holding
 	valid_holdings = { castle_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract = { clan_government_obligations }
 	
