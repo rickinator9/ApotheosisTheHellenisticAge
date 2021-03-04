@@ -29,19 +29,52 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
+### HELLENISTIC INNOVATIONS
+
 #culture_group_military
-innovation_hoardings = {
+
+# Re-Enlistment
+innovation_army_03 = {
 	group = culture_group_military
 	culture_era = culture_era_hellenistic
-	icon = @fortifications
+	icon = @maa_02
 
-	custom = unlock_high_medieval_fortification_buildings
+	modifier = {
+		men_at_arms_cap = 1
+		men_at_arms_limit = 4
+		levy_reinforcement_rate = 0.15
+	}
 
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
+innovation_barracks_03 = {
+	group = culture_group_military
+	culture_era = culture_era_hellenistic
+	#icon = @fortifications
 
-innovation_trebuchet = {
+	custom = unlock_high_medieval_military_buildings
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Castramentation
+innovation_fortification_03 = {
+	group = culture_group_military
+	culture_era = culture_era_hellenistic
+	icon = @levy_building
+
+	custom = unlock_high_medieval_fortification_buildings
+
+	modifier = {
+		defender_advantage = 5
+	}
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Ballista
+innovation_siege_03 = {
 	group = culture_group_military
 	culture_era = culture_era_hellenistic
 	icon = @siege_weapons
@@ -51,171 +84,69 @@ innovation_trebuchet = {
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
-
-innovation_castle_baileys = {
+# Chain Mail
+innovation_chain_mail = {
 	group = culture_group_military
 	culture_era = culture_era_hellenistic
-	icon = @levy_building
+	icon = @weapons_and_armor_02
 
-	custom = unlock_high_medieval_military_buildings
-
-	modifier = {
-		levy_reinforcement_rate = 0.15
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_men_at_arms = {
-	group = culture_group_military
-	culture_era = culture_era_hellenistic
-	icon = @maa_02
-
-	modifier = {
-		men_at_arms_cap = 1
-		men_at_arms_limit = 4
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_knighthood = {
-	group = culture_group_military
-	culture_era = culture_era_hellenistic
-	icon = @knight	
-
-	modifier = {
-		direct_vassal_opinion = 5
-		knight_effectiveness_mult = 0.2
-	}
-	custom = students_of_knighthood
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_advanced_bowmaking = {
-	group = culture_group_military
-	culture_era = culture_era_hellenistic
-	icon = @weapons_and_armor_01
-
-	unlock_maa = crossbowmen
 	maa_upgrade = {
-		type = archers
-		damage = 3
+		type = heavy_infantry
+		toughness = 3
 	}
+	maa_upgrade = {
+		type = heavy_cavalry
+		toughness = 3
+	}
+
+	custom = unlock_thorakitai_maa
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+innovation_military_hellenistic_06 = {
+	group = culture_group_military
+	culture_era = culture_era_hellenistic
+	#icon = @fortifications
 
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
 
 #culture_group_civic
-innovation_heraldry = {
+
+# Surveying
+innovation_centralisation_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_hellenistic
-	icon = @raised_banner
+	icon = @administration_3
 
-	unlock_law = high_partition_succession_law
-	unlock_law = single_heir_dynasty_house
-	modifier = {
-		monthly_prestige_gain_mult = 0.05
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_windmills = {
-	group = culture_group_civic
-	culture_era = culture_era_hellenistic
-	icon = @civil_construction_1
-
-	custom = unlock_high_medieval_economic_buildings
+	unlock_law = crown_authority_3
 
 	modifier = {
 		domain_tax_mult = 0.05
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_divine_right = {
-	group = culture_group_civic
-	culture_era = culture_era_hellenistic
-	icon = @majesty_03
-
-	custom = multiple_claim_wars
-
-	custom = unlock_palatinate_contract
-
-	modifier = {
-		short_reign_duration_mult = -0.1
-		monthly_piety_gain_mult = 0.1
 		title_creation_cost_mult = -0.2
 	}
 
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
-
-innovation_land_grants = {
-	group = culture_group_civic
-	culture_era = culture_era_hellenistic
-	icon = @administration_3
-
-	custom = fabricate_claim_speed
-	custom = cb_discount_prestige_10
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_scutage = {
-	group = culture_group_civic
-	culture_era = culture_era_hellenistic
-	icon = @leadership_2
-
-	custom = unlock_scutage_contract
-	
-	modifier = {
-		republic_government_tax_contribution_mult = 0.05
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_guilds = {
-	group = culture_group_civic
-	culture_era = culture_era_hellenistic
-	icon = @nobility_01
-
-	modifier = {
-		domain_limit = 1
-	}
-
-	flag = global_regular
-	flag = high_medieval_era_regular
-}
-
-innovation_development_03 = {
+# Compound Pulley
+innovation_construction_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_hellenistic
 	icon = @civil_construction_2
 
-	custom = reduce_develop_county_penalty_03
+	custom = unlock_high_medieval_economic_buildings
 
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
-
+# Private Banking
 innovation_currency_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_hellenistic
-	icon = @majesty_02
+	icon = @administration_2
 
 	modifier = {
 		development_growth_factor = 0.1
@@ -224,5 +155,73 @@ innovation_currency_03 = {
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
+# Hydraulics
+innovation_development_03 = {
+	group = culture_group_civic
+	culture_era = culture_era_hellenistic
+	icon = @civil_construction_1
+
+	custom = reduce_develop_county_penalty_03
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Postal System
+innovation_diplomacy_03 = {
+	group = culture_group_civic
+	culture_era = culture_era_hellenistic
+	icon = @knight
+
+	modifier = {
+		diplomatic_range_mult = 0.25
+		direct_vassal_opinion = 5
+		fellow_vassal_opinion = 5
+	}
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Aulic Titulature
+innovation_partition_03 = {
+	group = culture_group_civic
+	culture_era = culture_era_hellenistic
+	icon = @nobility_03
+
+	unlock_law = high_partition_succession_law
+	unlock_law = single_heir_dynasty_house
+
+	modifier = {
+		short_reign_duration_mult = -0.1
+	}
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Just War
+innovation_just_war = {
+	group = culture_group_civic
+	culture_era = culture_era_hellenistic
+	icon = @raised_banner
+
+	custom = multiple_claim_wars
+	custom = cb_discount_prestige_10
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+# Astrolabe
+innovation_astrolabe = {
+	group = culture_group_civic
+	culture_era = culture_era_hellenistic
+	icon = @misc_inventions
+
+	modifier = {
+		naval_movement_speed_mult = 0.25
+	}
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+
 
 #culture_group_regional

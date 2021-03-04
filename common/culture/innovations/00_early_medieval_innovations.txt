@@ -29,25 +29,59 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
+### CLASSICAL INNOVATIONS
+
 #culture_group_military
-innovation_battlements = {
+
+# Picked Troops
+innovation_army_02 = {
 	group = culture_group_military
 	culture_era = culture_era_classical
-	icon = @fortifications
+	icon = @maa_02
 
-	custom = unlock_early_medieval_fortification_buildings
-	
-	custom = unlock_fortification_rights_contract
-	
 	modifier = {
-		men_at_arms_maintenance = -0.05
+		men_at_arms_cap = 1
+		men_at_arms_limit = 3
+		knight_effectiveness_mult = 0.2
 	}
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
+# Mustering Grounds
+innovation_barracks_02 = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @levy_building
 
-innovation_mangonel = {
+	custom = unlock_early_medieval_military_buildings
+
+	modifier = {
+		levy_reinforcement_rate = 0.15
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Garrisons
+innovation_fortification_02 = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @fortifications
+
+	custom = unlock_early_medieval_fortification_buildings
+	custom = unlock_colony_holdings
+	custom = unlock_military_command_contract
+
+	modifier = {
+		levy_size = 0.05
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Siege Towers
+innovation_siege_02 = {
 	group = culture_group_military
 	culture_era = culture_era_classical
 	icon = @siege_weapons
@@ -57,85 +91,75 @@ innovation_mangonel = {
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_burhs = {
+# Thyreós
+innovation_thyreos = {
 	group = culture_group_military
 	culture_era = culture_era_classical
-	icon = @civil_construction_2
+	icon = @weapons_and_armor_02
 
-
-	custom = unlock_early_medieval_military_buildings
-
-	custom = unlock_march_contract
-	
-	modifier = {
-		levy_size = 0.05
+	maa_upgrade = {
+		type = skirmishers
+		toughness = 3
 	}
+	maa_upgrade = {
+		type = light_cavalry
+		toughness = 3
+	}
+
+	custom = unlock_thyreophoroi_maa
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_house_soldiers = {
-	group = culture_group_military
-	culture_era = culture_era_classical
-	icon = @maa_01
-
-	modifier = {
-		men_at_arms_cap = 1
-		men_at_arms_limit = 3
-	}
-
-	flag = global_regular
-	flag = early_medieval_era_regular
-}
-
-innovation_horseshoes = {
+# Trilobate Arrowheads
+innovation_trilobate_arrowheads = {
 	group = culture_group_military
 	culture_era = culture_era_classical
 	icon = @weapons_and_armor_01
 
-	modifier = {
-		movement_speed = 0.1
+	maa_upgrade = {
+		type = archers
+		damage = 3
 	}
-
-	flag = global_regular
-	flag = early_medieval_era_regular
-}
-
-innovation_arched_saddle = {
-	group = culture_group_military
-	culture_era = culture_era_classical
-	icon = @knight
-
-	unlock_maa = armored_horsemen
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
 
 #culture_group_civic
-innovation_hereditary_rule = {
+
+# Historical Method
+innovation_administration_02 = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
-	icon = @majesty_02
+	icon = @administration_1
 
-	unlock_law = partition_succession_law
-	modifier = {
-		monthly_prestige_gain_mult = 0.05
-	}
+	unlock_casus_belli = individual_duchy_de_jure_cb
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_manorialism = {
+# Constitution
+innovation_centralisation_02 = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
-	icon = @fortifications
+	icon = @administration_3
+
+	unlock_law = crown_authority_2
+
+	custom = reduce_desired_franchise_shift
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Winch and Pulley
+innovation_construction_02 = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @civil_construction_1
 
 	custom = unlock_early_medieval_economic_buildings
-	
+
 	modifier = {
 		build_speed = -0.1
 	}
@@ -143,22 +167,11 @@ innovation_manorialism = {
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_development_02 = {
-	group = culture_group_civic
-	culture_era = culture_era_classical
-	icon = @nobility_03
-
-	custom = reduce_develop_county_penalty_02
-
-	flag = global_regular
-	flag = early_medieval_era_regular
-}
-
+# Monetary Standards
 innovation_currency_02 = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
-	icon = @nobility_01
+	icon = @administration_2
 	
 	custom = unlock_coinage_rights_contract
 
@@ -169,51 +182,61 @@ innovation_currency_02 = {
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_royal_prerogative = {
+# Hippodamian Plan
+innovation_development_02 = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
-	icon = @majesty_01
+	icon = @civil_construction_2
 
-	unlock_law = crown_authority_2
-	unlock_law = crown_authority_3
+	custom = reduce_develop_county_penalty_02
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
-
-innovation_chronicle_writing = {
+# Diplomatic Missions
+innovation_diplomacy_02 = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
-	icon = @administration_3
+	icon = @nobility_02
 
-	unlock_casus_belli = individual_duchy_de_jure_cb
+	custom = unlock_reform_coalition_decision
 	custom = cb_discount_prestige_10
 
-	flag = global_regular
-	flag = early_medieval_era_regular
-}
-
-innovation_armilary_sphere = {
-	group = culture_group_civic
-	culture_era = culture_era_classical
-	icon = @misc_inventions
-
 	modifier = {
-		naval_movement_speed_mult = 0.25
+		diplomatic_range_mult = 0.25
+		independent_ruler_opinion = 5
 	}
 
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
+# Public Honours
+innovation_partition_02 = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @majesty_02
+	
+	custom = unlock_commission_statue_decision
 
-innovation_baliffs = {
+	unlock_law = partition_succession_law
+	modifier = {
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Bureaucracy
+innovation_provincial_oversight = {
 	group = culture_group_civic
 	culture_era = culture_era_classical
 	icon = @leadership_1
 
+	custom = unlock_civic_bureaucracy_contract
+
 	modifier = {
-		domain_limit = 1
+		direct_vassal_opinion = 5
+		vassal_tax_contribution_mult = 0.1
 	}
 
 	flag = global_regular

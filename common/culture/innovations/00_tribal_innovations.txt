@@ -29,31 +29,27 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
+### ARCHAIC INNOVATIONS
 
 #culture_group_military
-innovation_motte = {
+
+# Ephebic Oath
+innovation_army_01 = {
 	group = culture_group_military
 	culture_era = culture_era_archaic
-	icon = @fortifications
+	icon = @leadership_1
 
-	custom = unlock_tribal_fortification_buildings
+	modifier = {
+		men_at_arms_cap = 1
+		men_at_arms_limit = 2
+	}
+	custom = students_of_knighthood
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_catapult = {
-	group = culture_group_military
-	culture_era = culture_era_archaic
-	icon = @siege_weapons
-
-	unlock_maa = onager
-
-	flag = global_regular
-	flag = tribal_era_regular
-}
-
-innovation_barracks = {
+# Mess Halls
+innovation_barracks_01 = {
 	group = culture_group_military
 	culture_era = culture_era_archaic
 	icon = @levy_building
@@ -63,107 +59,52 @@ innovation_barracks = {
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_mustering_grounds = {
+# Oppida
+innovation_fortification_01 = {
 	group = culture_group_military
 	culture_era = culture_era_archaic
-	icon = @leadership_2
+	icon = @fortifications
 
-	modifier = {
-		men_at_arms_cap = 1
-		men_at_arms_limit = 2
-	}
+	custom = unlock_tribal_fortification_buildings
+	custom = unlock_fort_holdings
+
+	unlock_building = tribe_02
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_bannus = {
+# Battering Ram
+innovation_siege_01 = {
 	group = culture_group_military
 	culture_era = culture_era_archaic
-	icon = @raised_banner
+	icon = @siege_weapons
 
-	modifier = {
-		levy_reinforcement_rate = 0.15
-	}
+	unlock_maa = onager
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_quilted_armor = {
+innovation_military_archaic_05 = {
 	group = culture_group_military
 	culture_era = culture_era_archaic
-	icon = @weapons_and_armor_02
-
-	unlock_maa = armored_footmen
+	#icon = @fortifications
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_development_01 = {
-	group = culture_group_civic
+innovation_military_archaic_06 = {
+	group = culture_group_military
 	culture_era = culture_era_archaic
-	icon = @civil_construction_1
-
-	custom = reduce_develop_county_penalty_01
-
-	flag = global_regular
-	flag = tribal_era_regular
-}
-
-innovation_currency_01 = {
-	group = culture_group_civic
-	culture_era = culture_era_archaic
-	icon = @majesty_02
-
-	modifier = {
-		development_growth_factor = 0.1
-	}
+	#icon = @fortifications
 
 	flag = global_regular
 	flag = tribal_era_regular
 }
 
 #culture_group_civic
-innovation_gavelkind = {
-	group = culture_group_civic
-	culture_era = culture_era_archaic
-	icon = @administration_3
 
-	unlock_law = confederate_partition_succession_law
-
-	flag = global_regular
-	flag = tribal_era_regular
-}
-
-innovation_crop_rotation = {
-	group = culture_group_civic
-	culture_era = culture_era_archaic
-	icon = @levy_building
-
-	custom = unlock_tribal_economic_buildings
-
-	flag = global_regular
-	flag = tribal_era_regular
-}
-
-innovation_city_planning = {
-	group = culture_group_civic
-	culture_era = culture_era_archaic
-	icon = @civil_construction_2
-
-	unlock_building = city_01
-	unlock_building = temple_01
-	unlock_building = monastic_schools_01
-	unlock_building = market_villages_01
-
-	flag = global_regular
-	flag = tribal_era_regular
-}
-
-innovation_casus_belli = {
+# Recordkeeping
+innovation_administration_01 = {
 	group = culture_group_civic
 	culture_era = culture_era_archaic
 	icon = @administration_1
@@ -173,28 +114,92 @@ innovation_casus_belli = {
 	flag = global_regular
 	flag = tribal_era_regular
 }
-
-innovation_plenary_assemblies = {
+# Popular Assemblies
+innovation_centralisation_01 = {
 	group = culture_group_civic
 	culture_era = culture_era_archaic
-	icon = @leadership_1
+	icon = @nobility_01
 
 	unlock_law = crown_authority_1
 
-	unlock_building = tribe_02
-
+	modifier = {
+		county_opinion_add = 5
+	}
+	
 	flag = global_regular
 	flag = tribal_era_regular
 }
+# Two-Field Rotation
+innovation_construction_01 = {
+	group = culture_group_civic
+	culture_era = culture_era_archaic
+	icon = @levy_building
 
-innovation_ledger = {
+	custom = unlock_tribal_economic_buildings
+
+	unlock_building = city_01
+	unlock_building = temple_01
+	unlock_building = monastic_schools_01
+	unlock_building = market_villages_01
+	
+	flag = global_regular
+	flag = tribal_era_regular
+}
+# Measurement
+innovation_currency_01 = {
 	group = culture_group_civic
 	culture_era = culture_era_archaic
 	icon = @administration_2
 
 	modifier = {
-		domain_limit = 1
+		development_growth_factor = 0.1
 	}
+	
+	flag = global_regular
+	flag = tribal_era_regular
+}
+# Plumbing
+innovation_development_01 = {
+	group = culture_group_civic
+	culture_era = culture_era_archaic
+	icon = @civil_construction_2
+
+	custom = reduce_develop_county_penalty_01
+	
+	flag = global_regular
+	flag = tribal_era_regular
+}
+# Cartography
+innovation_diplomacy_01 = {
+	group = culture_group_civic
+	culture_era = culture_era_archaic
+	icon = @misc_inventions
+
+	modifier = {
+		diplomatic_range_mult = 0.25
+	}
+
+	flag = global_regular
+	flag = tribal_era_regular
+}
+# Estate Planning
+innovation_partition_01 = {
+	group = culture_group_civic
+	culture_era = culture_era_archaic
+	icon = @nobility_02
+
+	unlock_law = confederate_partition_succession_law
+	
+	flag = global_regular
+	flag = tribal_era_regular
+}
+# Surgical Instruments
+innovation_surgical_instruments = {
+	group = culture_group_civic
+	culture_era = culture_era_archaic
+	icon = @administration_3
+	
+	custom = improve_physician_treatment_outcomes
 
 	flag = global_regular
 	flag = tribal_era_regular
