@@ -66,8 +66,10 @@ tribe_02 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_plenary_assemblies }
-			has_government = tribal_government
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
 		}
 	}
 	
@@ -110,8 +112,11 @@ tribe_03 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_plenary_assemblies }
-			has_government = tribal_government
+			culture = { has_innovation = innovation_fortification_01 }
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
 		}
 	}
 	
@@ -154,8 +159,11 @@ tribe_04 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_plenary_assemblies }
-			has_government = tribal_government
+			culture = { has_innovation = innovation_fortification_01 }
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
 		}
 	}
 	
@@ -223,7 +231,7 @@ longhouses_02 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_barracks }
+			culture = { has_innovation = innovation_barracks_01 }
 			has_government = tribal_government
 		}
 	}
@@ -298,7 +306,7 @@ war_camps_02 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_barracks }
+			culture = { has_innovation = innovation_barracks_01 }
 			has_government = tribal_government
 		}
 	}	
@@ -378,7 +386,7 @@ palisades_02 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_motte }
+			culture = { has_innovation = innovation_fortification_01 }
 			has_government = tribal_government
 		}
 	}	
@@ -452,7 +460,7 @@ market_villages_02 = {
 	}
 	can_construct_showing_failures_only = {
 		scope:holder = {
-			culture = { has_innovation = innovation_city_planning }
+			culture = { has_innovation = innovation_construction_01 }
 			has_government = tribal_government
 		}
 	}	
