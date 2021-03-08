@@ -46,11 +46,9 @@ theocracy_government = {
 	religious = yes
 
 	can_get_government = {
-		NOT = {
-			faith = {
-				has_doctrine = doctrine_theocracy_lay_clergy
-			}
-			tier > 1
+		OR = {
+			NOT = { highest_held_title_tier > tier_barony }
+			faith = { has_doctrine = doctrine_theocracy_temporal }
 		}
 	}
 

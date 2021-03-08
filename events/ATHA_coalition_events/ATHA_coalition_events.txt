@@ -1,8 +1,6 @@
 ﻿namespace = coalition
 
 # Ping event for the coalition.0002
-# TO-DO: Find a way to prevent new ruler getting decision to declare independence from themselves
-
 coalition.0001 = {
 	hidden = yes
 
@@ -21,7 +19,6 @@ coalition.0001 = {
 			}
 		}
 	}
-
 }
 # Event for vassals to secede when the leader of an Alliance dies or loses a war
 coalition.0002 = {
@@ -33,15 +30,39 @@ coalition.0002 = {
 	right_portrait = liege
 
 	trigger = {
+		NOT = { is_allied_to = liege }
+		NOT = { has_truce = liege }
+		liege = {
+			NOT = { has_strong_hook = root }
+		}
+		OR = {
+			is_ai = no
+			NOR = {
+				has_relation_lover = liege
+				has_relation_friend = liege
+			}
+		}
+		OR = {
+			is_ai = no
+			liege = { is_ai = yes } # AI-led realms should have slightly more unpredictabe and interesting outcomes
+			NOT = { culture = liege.culture }
+			NOT = { faith = liege.faith }
+			NOT = {
+				is_rightful_liege_of_trigger = {
+					VASSAL = root
+					LIEGE = liege
+				}
+			}
+		}
+		liege.highest_held_title_tier > tier_county
+		highest_held_title_tier > tier_barony
+
 		is_at_war = no
 		is_adult = yes
 		is_imprisoned = no
 		is_incapable = no
 		primary_title = {
-			NOR = { 
-				tier = tier_barony
-				this = scope:coalition_title 
-			}
+			NOT = { this = scope:coalition_title }
 		}
 	}
 
@@ -124,7 +145,7 @@ coalition.0002 = {
 			#	add = -2000 
 			#	is_at_war = yes # Do not declare independence if at war
 			#}
-			# +50 join weight at -100 opinion
+			# +40 join weight at -100 opinion
 			opinion_modifier = {
 				who = root
 				opinion_target = liege
