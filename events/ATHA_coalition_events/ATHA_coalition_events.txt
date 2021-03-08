@@ -1,0 +1,280 @@
+﻿namespace = coalition
+
+# Ping event for the coalition.0002
+# TO-DO: Find a way to prevent new ruler getting decision to declare independence from themselves
+# Also should delay the event or more directly incorporate someone's likelihood of joining/creating faction so they don't decline the opportunity and then immediately start a faction
+
+coalition.0001 = {
+	hidden = yes
+
+	trigger = {
+		has_alliance_government = yes
+	}
+
+	immediate = {
+		every_vassal = {
+			limit = {
+				is_at_war = no
+				is_adult = yes
+				is_imprisoned = no
+				is_incapable = no
+				NOT = { tier = tier_barony }
+
+			}
+			trigger_event = {
+				id = coalition.0002
+				days = { 7 28 }
+			}
+		}
+	}
+
+}
+# Event for vassals to secede when the leader of an Alliance dies or loses a war
+coalition.0002 = {
+	type = character_event
+	title = coalition.0002.t
+	desc = coalition.0002.desc
+	theme = realm
+	left_portrait = root
+	right_portrait = liege
+
+	immediate = { save_scope_as = seceding_vassal }
+
+	option = { # declare independence
+		name = coalition.0002.a
+
+		liege = {
+			trigger_event = coalition.0003
+			add_unpressed_claim = root.primary_title # TEMP - one day we'll have a unique CB for this
+		}
+		add_character_flag = ai_should_not_transfer
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = change
+		}
+		change_liege_or_become_independent = {
+			CHANGE = scope:change
+			VASSAL = this
+		}
+		reverse_add_opinion = {
+			modifier = abandoned_alliance_opinion
+			target = liege
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		stress_impact = {
+			craven = medium_stress_impact_gain
+			content = medium_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = -100
+
+			# Tribes, City-States and centralised Coalitions have a strong desire for liberty
+			modifier = {
+				add = 50 
+				has_sympolity_government = yes	
+			}
+			modifier = {
+				add = 50 
+				has_hegemonic_government = yes	
+			}
+			modifier = {
+				add = 200 
+				has_league_government = yes
+			}
+			modifier = {
+				add = 250 
+				OR = {
+					has_city_state_government = yes
+					has_government = tribal_government
+				}	
+			}
+			# Bureaucrats are less likely to strike out on their own
+			modifier = {
+				add = -50 
+				has_bureaucratic_government = yes
+			}
+			# Existing members of independence factions should always declare independence
+			modifier = {
+				add = 1000
+				joined_faction = {
+					faction_is_type = independence_faction
+				}
+			}
+			# Less likely to desire independence if they're the primary heir or if they have a claim
+			modifier = {
+				add = -100 
+				OR = {
+					is_primary_heir_of = liege
+					has_claim_on = liege.primary_title
+				}	
+			}
+
+			# These factors have been copied over from the independence faction weightings
+
+			#modifier = {
+			#	add = -2000 
+			#	is_at_war = yes # Do not declare independence if at war
+			#}
+			# +50 join weight at -100 opinion
+			opinion_modifier = {
+				who = root
+				opinion_target = liege
+				multiplier = -0.4
+				min = 0
+			}
+			# -150 join weight at +100 opinion
+			opinion_modifier = {
+				who = root
+				opinion_target = liege
+				multiplier = -1.5
+				max = 0
+			}
+			# for each character.religion != liege.religion add X join-score
+			pluralism_fundamentalism_modifier = {
+				ASTRAY_BASE_VALUE = 25
+				HOSTILE_BASE_VALUE = 50
+				EVIL_BASE_VALUE = 100
+				BASE_FAITH = faith
+				TARGET_FAITH = liege.faith
+			}
+			# for each character.culture != liege.culture add X join-score
+			modifier = {
+				add = 25
+				has_same_culture_group_as = liege
+				NOT = { culture = liege.culture }
+			}
+			modifier = {
+				add = 50
+				NOT = {
+					has_same_culture_group_as = liege
+				}
+			}
+			# Electors are less likely to declare independence, if they're the same faith
+			modifier = { 
+				add = -50
+				liege.primary_title = {
+					has_order_of_succession = election
+					any_elector = {
+						this = root
+					}
+				}
+				liege.faith = root.faith
+			}
+			# Liege is not my Rightful Liege
+			modifier = {
+				add = 250
+				NOT = {
+					is_rightful_liege_of_trigger = {
+						VASSAL = root
+						LIEGE = liege
+					}
+				}
+			}
+			# Larger realms are inherently more rebellious.
+			modifier = {
+				add = sub_realm_size
+			}
+			# Kingdoms gain an additional boost to independence, as they don't like being under the thumb of others.
+			modifier = {
+				add = 25
+				highest_held_title_tier = tier_kingdom
+			}
+			# Toe the Line Perk
+			modifier = {
+				add = -50
+				liege = {
+					has_perk = toe_the_line_perk
+				}
+			}
+			# +25 join chance per sin, -25 join chance per virtue
+			legalism_virtue_and_sin_modifier = {
+				TARGET = scope:faction.faction_target
+				SCORE_PER_TRAIT = 25
+			}
+			# -100 join chance from intimidation, -1000 join chance from terrified
+			intimidated_from_faction_modifier = {
+				TARGET = scope:faction.faction_target
+			}
+			# Debt: +10 to +60 join chance depending on how far in debt the top liege is
+			liege_debt_modifier = {
+				TARGET = scope:faction.faction_target
+				SCORE_PER_DEBT_LEVEL = 10
+			}
+			# Difficulty Settings
+			modifier = { # Easy
+				add = -50
+				has_game_rule = easy_difficulty
+				scope:faction.faction_target = {
+					is_ai = no
+				}
+			}
+			modifier = { # Very Easy
+				add = -150
+				has_game_rule = very_easy_difficulty
+				scope:faction.faction_target = {
+					is_ai = no
+				}
+			}
+		}	
+	}
+	option = { # Nah
+		name = coalition.0002.b
+
+		reverse_add_opinion = {
+			target = liege
+			modifier = grateful_opinion
+			opinion = 10
+		}
+
+		ai_chance = {
+			base = 150
+		}
+	}
+}
+# Notification for liege that their vassal has seceded from the Alliance
+coalition.0003 = {
+	type = character_event
+	title = coalition.0003.t
+	desc = coalition.0003.desc
+	theme = realm
+	left_portrait = root
+	right_portrait = scope:seceding_vassal
+
+	option = {
+		name = {
+			trigger = { 
+				OR = {
+					has_trait = vengeful
+					has_trait = wrathful
+					has_trait = ambitious
+				}
+			}		
+			text = coalition.0003.a_vengeful
+		}
+		name = {
+			trigger = { 
+				NOR = {
+					has_trait = vengeful
+					has_trait = wrathful
+					has_trait = ambitious
+				}
+			}		
+			text = coalition.0003.a
+		}
+
+		show_as_tooltip = { # Actually happens in coalition.0002
+			scope:seceding_vassal = {
+				becomes_independent = {}
+			}
+			add_unpressed_claim = scope:seceding_vassal.primary_title
+			add_opinion = {
+				modifier = abandoned_alliance_opinion
+				target = scope:seceding_vassal
+			}
+		}
+	}
+}
+
+
