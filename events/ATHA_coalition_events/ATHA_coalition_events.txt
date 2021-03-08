@@ -2,7 +2,6 @@
 
 # Ping event for the coalition.0002
 # TO-DO: Find a way to prevent new ruler getting decision to declare independence from themselves
-# Also should delay the event or more directly incorporate someone's likelihood of joining/creating faction so they don't decline the opportunity and then immediately start a faction
 
 coalition.0001 = {
 	hidden = yes
@@ -12,18 +11,13 @@ coalition.0001 = {
 	}
 
 	immediate = {
+		primary_title = {
+			save_scope_as = coalition_title
+		}
 		every_vassal = {
-			limit = {
-				is_at_war = no
-				is_adult = yes
-				is_imprisoned = no
-				is_incapable = no
-				NOT = { tier = tier_barony }
-
-			}
 			trigger_event = {
 				id = coalition.0002
-				days = { 7 28 }
+				days = { 28 56 }
 			}
 		}
 	}
@@ -37,6 +31,19 @@ coalition.0002 = {
 	theme = realm
 	left_portrait = root
 	right_portrait = liege
+
+	trigger = {
+		is_at_war = no
+		is_adult = yes
+		is_imprisoned = no
+		is_incapable = no
+		primary_title = {
+			NOR = { 
+				tier = tier_barony
+				this = scope:coalition_title 
+			}
+		}
+	}
 
 	immediate = { save_scope_as = seceding_vassal }
 
