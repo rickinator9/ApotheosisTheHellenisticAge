@@ -1,0 +1,557 @@
+﻿namespace = ATHA_government
+
+scripted_trigger has_tribal_capital_trigger = {
+	capital_province = { 
+		has_holding_type = tribal_holding 
+	}
+}
+scripted_trigger has_city_capital_trigger = {
+	capital_province = { 
+		has_holding_type = castle_holding 
+	}
+}
+
+# Event that fires for newly independent bureaucratic rulers
+ATHA_government.0001 = {
+	type = character_event
+	title = ATHA_government.0001.t
+	desc = {
+		desc = ATHA_government.0001.desc
+		triggered_desc = {
+			trigger = {
+				has_tribal_capital_trigger = no
+				NOT = {	highest_held_title_tier > tier_county }
+			}
+			desc = ATHA_government.0001.desc_count
+		}
+		triggered_desc = {
+			trigger = {
+				has_tribal_capital_trigger = no
+				highest_held_title_tier > tier_county
+			}
+			desc = ATHA_government.0001.desc_duke
+		}
+	}
+	theme = realm
+	left_portrait = root
+
+	trigger = {
+		has_bureaucratic_government = yes
+		is_independent_ruler = yes	
+	}
+	immediate = {
+		if = {
+			limit = { 
+				has_tribal_capital_trigger = yes
+			}
+			change_government = clan_government
+		}
+		else = {
+			change_government = feudal_government
+		}
+	}
+
+	option = {
+		name = {
+			trigger = { 
+				has_tribal_capital_trigger = yes
+			}
+			text = ATHA_government.0001.a
+		}
+		name = {
+			trigger = { 
+				has_tribal_capital_trigger = no
+				NOT = {	highest_held_title_tier > tier_county }
+			}	
+			text = ATHA_government.0001.a_count
+		}
+		name = {
+			trigger = { 
+				has_tribal_capital_trigger = no
+				highest_held_title_tier > tier_county
+			}	
+			text = ATHA_government.0001.a_duke
+		}
+		if = {
+			limit = { has_tribal_capital_trigger = no }
+			custom_tooltip = ATHA_government.0001.a.tt
+		}
+	}
+	option = { # decide to become city-state straight away
+		name = ATHA_government.0001.b
+
+		trigger = {
+			NOT = {	highest_held_title_tier > tier_duchy }
+		}
+		custom_tooltip = ATHA_government.city_state_select.tt
+		trigger_event = ATHA_government.0003
+
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+scripted_trigger can_preserve_feudal_government_trigger = {
+	OR = {
+		has_trait = intellect_good
+		has_trait = shrewd
+	}	
+	trait = ambitious
+	NOR = { 
+		trait = craven
+		trait = lazy 
+	}
+}
+
+# Independent feudal count is forced to adopt City-State government
+ATHA_government.0002 = {
+	type = character_event
+	title = ATHA_government.0002.t
+	desc = {
+		desc = ATHA_government.0002.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { can_preserve_feudal_government_trigger = yes }
+				desc = ATHA_government.0002.desc_intelligent
+			}
+			desc = ATHA_government.0002.desc_b
+		}
+	}
+	theme = realm
+	left_portrait = root
+
+	trigger = { 
+		NOT = {	highest_held_title_tier > tier_county }
+		is_independent_ruler = yes	
+		has_government = feudal_government
+		has_city_capital_trigger = yes
+	}
+
+	option = { # Tyranny
+		name = ATHA_government.0002.a
+
+		trigger = {
+			NOT = { has_trait = deceitful }
+			can_preserve_feudal_government_trigger = no
+		}
+
+		change_government = city_state_tyrannical_government
+		add_prestige = medium_prestige_gain
+		add_piety = medium_piety_loss
+		add_dread = medium_dread_gain
+
+		every_realm_county = {
+			change_county_control = medium_county_control_gain
+			add_county_modifier = {
+				modifier = newly_tyrannical_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			craven = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_rationality = -0.5
+				ai_compassion = -1
+			}
+		}
+	}
+	option = { # Populist Tyranny
+		name = ATHA_government.0002.a_deceitful
+		flavor = ATHA_government.0003.a_deceitful.flavor
+
+		trigger = {
+			has_trait = deceitful
+			can_preserve_feudal_government_trigger = no
+		}
+		trait = deceitful
+
+		change_government = city_state_tyrannical_government
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+
+		every_realm_county = {
+			change_county_control = medium_county_control_gain
+			add_county_modifier = {
+				modifier = newly_tyrannical_populist_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 200	
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_honor = -2
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Aristocracy
+		name = ATHA_government.0002.b
+
+		trigger = {
+			can_preserve_feudal_government_trigger = no
+		}
+
+		change_government = city_state_aristocratic_government
+		add_prestige = minor_prestige_gain
+		add_piety = minor_piety_loss
+
+		every_realm_county = {
+			change_county_control = minor_county_control_gain
+			add_county_modifier = {
+				modifier = newly_aristocratic_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = minor_stress_impact_gain
+			craven = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 10 # Aristocracies should be relatively rare	
+
+			modifier = {
+				has_aristocratic_culture_trigger = yes
+				add = 90
+			}
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_honor = 0.5
+				ai_boldness = 0.5
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Oligarchy
+		name = ATHA_government.0002.c
+
+		trigger = {
+			can_preserve_feudal_government_trigger = no
+		}
+
+		change_government = city_state_oligarchic_government
+		add_prestige = minor_prestige_loss
+		add_piety = minor_piety_gain
+
+		every_realm_county = {
+			change_county_control = minor_county_control_loss
+			add_county_modifier = {
+				modifier = newly_oligarchic_populist_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100		
+
+			ai_value_modifier = {
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+	option = { # Democracy
+		name = ATHA_government.0002.d
+
+		trigger = {
+			can_preserve_feudal_government_trigger = no
+		}
+
+		change_government = city_state_government
+		add_prestige = medium_prestige_loss
+		add_piety = medium_piety_gain
+
+		every_realm_county = {
+			change_county_control = medium_county_control_loss
+			add_county_modifier = {
+				modifier = newly_democratic_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			stubborn = medium_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100			
+
+			ai_value_modifier = {
+				ai_greed = -2
+				ai_vengefulness = -1
+				ai_boldness = -1
+				ai_compassion = 1
+			}
+		}
+	}
+	option = { # Can preserve feudal with intellect & ambition
+		name = ATHA_government.0002.intelligent_a
+		custom_tooltip = ATHA_government.0002.intelligent_a.tt
+
+		trigger = {
+			can_preserve_feudal_government_trigger = yes
+		}
+		add_internal_flag = special
+
+		add_prestige = medium_prestige_gain
+
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = { # Can preserve feudal, but decide to become city-state instead
+		name = ATHA_government.0002.intelligent_b
+
+		trigger = {
+			can_preserve_feudal_government_trigger = yes
+		}
+		custom_tooltip = ATHA_government.city_state_select.tt
+		trigger_event = ATHA_government.0003
+
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+scripted_trigger has_aristocratic_culture_trigger = {
+	OR = {
+		has_culture = culture:dorian_south
+		has_culture = culture:thessalian
+	}
+}
+
+# Independent feudal ruler voluntarily adopts City-State government
+ATHA_government.0003 = {
+	type = character_event
+	title = ATHA_government.0003.t
+	desc = ATHA_government.0003.desc
+	theme = realm
+	left_portrait = root
+
+	trigger = { 
+		NOT = {	highest_held_title_tier > tier_duchy }
+		is_independent_ruler = yes	
+		has_government = feudal_government
+		has_city_capital_trigger = yes
+	}
+
+	option = { # Tyranny
+		name = ATHA_government.0003.a
+
+		trigger = {
+			NOT = { has_trait = deceitful }
+		}
+
+		change_government = city_state_tyrannical_government
+		add_prestige = medium_prestige_gain
+		add_piety = medium_piety_loss
+		add_dread = medium_dread_gain
+
+		every_realm_county = {
+			change_county_control = medium_county_control_gain
+			add_county_modifier = {
+				modifier = newly_tyrannical_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			craven = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_rationality = -0.5
+				ai_compassion = -1
+			}
+		}
+	}
+	option = { # Populist Tyranny
+		name = ATHA_government.0003.a_deceitful
+		flavor = ATHA_government.0003.a_deceitful.flavor
+
+		trigger = {	has_trait = deceitful }
+		trait = deceitful
+
+		change_government = city_state_tyrannical_government
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+
+		every_realm_county = {
+			change_county_control = medium_county_control_gain
+			add_county_modifier = {
+				modifier = newly_tyrannical_populist_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 200	
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_honor = -2
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Aristocracy
+		name = ATHA_government.0003.b
+
+		change_government = city_state_aristocratic_government
+		add_prestige = minor_prestige_gain
+		add_piety = minor_piety_loss
+
+		every_realm_county = {
+			change_county_control = minor_county_control_gain
+			add_county_modifier = {
+				modifier = newly_aristocratic_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			generous = minor_stress_impact_gain
+			craven = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 10 # Aristocracies should be relatively rare	
+
+			modifier = {
+				has_aristocratic_culture_trigger = yes
+				add = 90
+			}
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_honor = 0.5
+				ai_boldness = 0.5
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Oligarchy
+		name = ATHA_government.0003.c
+
+		change_government = city_state_oligarchic_government
+		add_prestige = minor_prestige_loss
+		add_piety = minor_piety_gain
+
+		every_realm_county = {
+			change_county_control = minor_county_control_loss
+			add_county_modifier = {
+				modifier = newly_oligarchic_populist_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100		
+
+			ai_value_modifier = {
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+	option = { # Democracy
+		name = ATHA_government.0003.d
+
+		change_government = city_state_government
+		add_prestige = medium_prestige_loss
+		add_piety = medium_piety_gain
+
+		every_realm_county = {
+			change_county_control = medium_county_control_loss
+			add_county_modifier = {
+				modifier = newly_democratic_modifier
+				days = 3650
+			}
+		}
+
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			stubborn = medium_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100			
+
+			ai_value_modifier = {
+				ai_greed = -2
+				ai_vengefulness = -1
+				ai_boldness = -1
+				ai_compassion = 1
+			}
+		}
+	}
+	option = { # Nevermind
+		name = ATHA_government.0003.e
+		custom_tooltip = ATHA_government.0003.e.tt
+
+		ai_chance = {
+			base = 0
+		}
+	}
+}
