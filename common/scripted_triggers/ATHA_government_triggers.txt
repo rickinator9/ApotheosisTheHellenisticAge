@@ -47,3 +47,44 @@ has_bureaucratic_government = {
 		has_government = bureaucracy_civic_government
 	}	
 }
+
+can_create_dependent_vassals = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+	}	
+}
+
+can_create_bureaucratic_vassals = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = federal_league_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+		has_government = clan_government
+	}	
+}
+
+can_enforce_ritual_coronations = {
+	NOR = {
+		government_has_flag = is_federal_government
+		has_government = city_state_government
+		has_government = city_state_oligarchic_government
+	}	
+}
+
+can_enforce_obligations = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = amphictyony_government
+	}	
+}
+
+can_grant_gift_estates = {
+	NOR = {
+		government_has_flag = is_coalition_government
+		has_government = city_state_government
+		has_government = city_state_oligarchic_government
+	}	
+}

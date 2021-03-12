@@ -1,0 +1,428 @@
+﻿@ai_standard_liege_desire = 2
+@ai_standard_vassal_desire = 1
+@ai_desire_always = 10
+@ai_desire_never = 0
+
+vassal_role = {
+	display_mode = radiobutton
+
+	obligation_levels = {
+		vassal_role_city_state_autonomous = {
+			is_valid = {
+				scope:vassal.primary_title.tier <= tier_duchy
+			}
+			position = { 0 1 }
+			
+			tax_factor = autonomous_contract_taxes
+			levies_factor = autonomous_contract_levies
+
+			flag = has_autonomous_city_state_contract
+			flag = has_autonomous_contract
+		}
+		vassal_role_city_state_dependent = {
+			is_valid = {
+				scope:vassal.primary_title.tier <= tier_duchy
+				scope:liege = { can_create_dependent_vassals = yes }
+			}
+			position = { 1 1 }
+			
+			vassal_opinion = -5	
+
+			flag = has_dependent_city_state_contract
+		}
+		vassal_role_coalition_autonomous = {
+			is_valid = {
+				scope:vassal.primary_title.tier >= tier_duchy
+				OR = {
+					scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+					scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+				}	
+			}
+			position = { 1 0 }		
+
+			tax_factor = autonomous_contract_taxes
+			levies_factor = autonomous_contract_levies
+
+			flag = has_autonomous_coalition_contract
+			flag = has_autonomous_contract
+		}
+		vassal_role_coalition_dependent = {
+			is_valid = {
+				scope:vassal.primary_title.tier >= tier_duchy
+				scope:liege = { can_create_dependent_vassals = yes }
+				scope:liege.culture = {	has_innovation = innovation_diplomacy_02 }
+			}
+			position = { 1 2 }
+			
+			vassal_opinion = -5	
+
+			flag = has_dependent_coalition_contract
+		}
+		vassal_role_bureaucracy_civil = {
+			is_valid = {
+				scope:liege = { can_create_bureaucratic_vassals = yes }
+				scope:liege.culture = {	has_innovation = innovation_bureaucracy }
+			}
+			position = { 2 2 }
+
+			tax_factor = bureaucracy_civil_contract_taxes
+			levies_factor = bureaucracy_civil_contract_levies
+			
+			vassal_modifier = {
+				tax_mult = 0.2
+				army_maintenance_mult = 0.2
+			}
+
+			flag = has_civil_bureaucracy_contract
+		}
+		vassal_role_bureaucracy_military = {
+			is_valid = {
+				scope:liege = { can_create_bureaucratic_vassals = yes }
+				scope:liege.culture = {	has_innovation = innovation_fortification_02 }
+			}
+			position = { 2 1 }
+
+			tax_factor = bureaucracy_military_contract_taxes
+			levies_factor = bureaucracy_military_contract_levies
+			
+			vassal_modifier = {
+				additional_fort_level = 1
+				monthly_county_control_change_factor = 0.2
+				levy_size = 0.2
+				garrison_size = 0.2
+				controlled_province_advantage = 5
+			}
+
+			flag = has_military_bureaucracy_contract
+		}
+		vassal_role_bureaucracy_feudal = {
+			is_valid = {
+				scope:vassal = {
+					NOR = { 
+						government_has_flag = is_coalition_government
+						government_has_flag = is_city_state_government
+					}	
+				}
+				scope:liege = { can_create_bureaucratic_vassals = yes }
+				scope:liege.culture = {	has_innovation = innovation_bureaucracy }
+			}
+			position = { 2 3 }
+
+			tax_factor = bureaucracy_feudal_contract_taxes
+			levies_factor = bureaucracy_feudal_contract_levies
+
+			liege_modifier = {
+				men_at_arms_maintenance = -0.03
+			}
+
+			vassal_modifier = {
+				monthly_prestige_gain_mult = 0.2
+				fellow_vassal_opinion = 15
+				owned_personal_scheme_success_chance_add = 10
+				owned_hostile_scheme_success_chance_add = 10
+			}
+
+			flag = has_feudal_bureaucracy_contract
+		}
+	}
+}
+
+imposed_franchise = {
+	display_mode = radiobutton
+
+	obligation_levels = {
+		imposed_franchise_none = {
+			default = yes
+			position = { 0 1 }
+		}
+		imposed_franchise_democratic = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+			}
+			parent = imposed_franchise_none
+			position = { 1 1 }
+			
+			vassal_modifier = {
+				county_opinion_add = 5
+			}
+		}
+		imposed_franchise_oligarchic = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+			}
+			parent = imposed_franchise_none
+			position = { 1 0 }
+			
+			vassal_opinion = 5	
+			
+			vassal_modifier = {
+				county_opinion_add = -5
+			}
+		}
+		imposed_franchise_aristocratic = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+			}
+			parent = imposed_franchise_none
+			position = { 1 2 }
+			
+			vassal_opinion = 5
+			
+			vassal_modifier = {
+				county_opinion_add = -10
+			}
+
+			flag = has_imposed_aristocracy_contract
+		}
+		imposed_franchise_tyrannic = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+			}
+			parent = imposed_franchise_none
+			position = { 2 2 }
+			
+			vassal_opinion = 10
+			
+			vassal_modifier = {
+				county_opinion_add = -20
+			}
+
+			flag = has_imposed_tyranny_contract
+		}
+	}
+}
+
+enforced_centralisation = {
+	display_mode = radiobutton
+
+	obligation_levels = {
+		enforced_centralisation_none = {
+			default = yes
+			position = { 0 1 }
+		}
+		enforced_centralisation_low = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+			}
+			parent = enforced_centralisation_none
+			position = { 1 1 }
+			
+			vassal_opinion = -5
+		}
+		enforced_centralisation_medium = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+			}
+			parent = enforced_centralisation_none
+			position = { 1 0 }
+		}
+		enforced_centralisation_high = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+			}
+			parent = enforced_centralisation_none
+			position = { 1 2 }
+			
+			vassal_opinion = 5
+		}
+	}
+}
+
+enforced_federalism = {
+	display_mode = radiobutton
+
+	obligation_levels = {
+		enforced_federalism_none = {
+			default = yes
+			position = { 0 1 }
+		}
+		enforced_federalism_federal = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+			}
+			parent = enforced_federalism_none
+			position = { 1 0 }
+			
+			vassal_opinion = -5
+		}
+		enforced_federalism_hegemonic = {
+			is_valid = {
+				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+			}
+			parent = enforced_federalism_none
+			position = { 1 1 }
+			
+			vassal_opinion = 5
+		}
+	}
+}
+
+### OBLIGATIONS (for City-State and Coalition vassals)
+garrison_rights = {
+	display_mode = checkbox
+
+	is_shown = {
+		scope:liege = {
+			can_enforce_obligations = yes
+		}
+	}
+
+	obligation_levels = {
+		garrison_rights_none = {
+			default = yes
+			position = { 0 0 }
+		}
+		garrison_rights_installed = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_fortification_02
+				}
+				scope:vassal = { 
+					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+				}	
+			}
+			parent = garrison_rights_none
+			position = { 0 1 }
+			
+			vassal_opinion = -20
+
+			flag = installed_garrison
+		}
+	}
+}
+
+ritual_coronations_rights = {
+	display_mode = checkbox
+
+	is_shown = {
+		scope:liege = {
+			can_enforce_obligations = yes
+			can_enforce_ritual_coronations = yes
+		}
+	}
+
+	obligation_levels = {
+		ritual_coronations_rights_none = {
+			default = yes
+			position = { 0 0 }
+		}
+		ritual_coronations_rights_enforced = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_partition_02
+				}
+			}
+			parent = ritual_coronations_rights_none
+			position = { 0 1 }
+
+			tax_factor = ritual_coronations_contract_taxes
+			
+			liege_modifier = {
+				monthly_prestige_gain_mult = 0.05
+			}
+
+			vassal_modifier = {
+				monthly_prestige_gain_mult = -0.05
+			}
+
+			vassal_opinion = -5
+		}	
+	}
+}
+
+### SPECIAL RIGHTS (for Bureaucratic vassals)
+
+colony_rights = {
+	display_mode = checkbox
+
+	obligation_levels = {
+		colony_rights_none = {
+			default = yes
+			position = { 0 0 }
+		}
+		colony_rights_granted = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_fortification_02
+				}
+			}
+			parent = colony_rights_none
+			position = { 0 1 }
+
+			tax_factor = colony_contract_taxes
+			
+			vassal_modifier = {
+				colony_holding_build_gold_cost = -0.15
+				colony_holding_holding_build_gold_cost = -0.5
+				army_maintenance_mult = -0.2
+				levy_reinforcement_rate = 0.2
+			}
+
+			flag = city_state_encouraged_culture_flipping
+		}	
+	}
+}
+
+gift_estate_rights = {
+	display_mode = checkbox
+
+	is_shown = {
+		scope:liege = {
+			can_grant_gift_estates = yes
+		}
+	}
+
+	obligation_levels = {
+		gift_estate_rights_none = {
+			default = yes
+			position = { 0 0 }
+		}
+		gift_estate_rights_granted = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_centralisation_03
+				}
+			}
+			parent = gift_estate_rights_none
+			position = { 0 1 }
+			
+			tax_factor = gift_estates_contract_taxes
+			levies_factor = gift_estates_contract_levies
+
+			vassal_modifier = {
+				city_holding_build_gold_cost = -0.15
+				city_holding_holding_build_gold_cost = -0.5
+				domain_tax_mult = 0.1
+			}
+
+			vassal_opinion = 5
+		}	
+	}
+}
+
+hereditary_rights = {
+	display_mode = checkbox
+
+	is_shown = {
+		scope:vassal = {
+			government_has_flag = is_bureaucracy_government
+		}
+	}
+
+	obligation_levels = {
+		hereditary_rights_none = {
+			default = yes
+			position = { 0 0 }
+		}
+		hereditary_rights_granted = {
+			parent = hereditary_rights_none
+			position = { 0 1 }
+		}	
+	}
+}
