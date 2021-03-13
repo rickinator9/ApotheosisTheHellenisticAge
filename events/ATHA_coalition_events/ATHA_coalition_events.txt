@@ -7,7 +7,7 @@ coalition.0001 = {
 	hidden = yes
 
 	trigger = {
-		has_alliance_government = yes
+		government_has_flag = is_alliance_government
 	}
 
 	immediate = {
@@ -103,27 +103,27 @@ coalition.0002 = {
 			# Tribes, City-States and centralised Coalitions have a strong desire for liberty
 			modifier = {
 				add = 50 
-				has_sympolity_government = yes	
+				government_has_flag = is_sympolity_government	
 			}
 			modifier = {
 				add = 50 
-				has_hegemonic_government = yes	
+				government_has_flag = is_hegemonic_government	
 			}
 			modifier = {
 				add = 200 
-				has_league_government = yes
+				government_has_flag = is_league_government	
 			}
 			modifier = {
 				add = 250 
 				OR = {
-					has_city_state_government = yes
+					government_has_flag = is_city_state_government
 					has_government = tribal_government
 				}	
 			}
 			# Bureaucrats are less likely to strike out on their own
 			modifier = {
 				add = -50 
-				has_bureaucratic_government = yes
+				government_has_flag = is_bureaucracy_government
 			}
 			# Existing members of independence factions should always declare independence
 			modifier = {

@@ -289,7 +289,10 @@ religious_rights = {
 		religious_rights_none = {
 			is_valid = {
 				scope:vassal = { 
-					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					OR = { 
+						highest_held_title_tier < tier_county
+						NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					}	
 				}	
 			}
 			default = yes
@@ -372,7 +375,10 @@ coinage_rights = {
 		coinage_rights_none = {
 			is_valid = {
 				scope:vassal = { 
-					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					OR = { 
+						highest_held_title_tier < tier_county
+						NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					}	
 				}	
 			}
 			default = yes
@@ -496,7 +502,10 @@ title_revocation_rights = {
 		title_revocation_rights_default = {
 			is_valid = {
 				scope:vassal = { 
-					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					OR = { 
+						highest_held_title_tier < tier_county
+						NOT = { vassal_contract_has_flag = has_autonomous_contract }
+					}	
 				}	
 			}
 			default = yes

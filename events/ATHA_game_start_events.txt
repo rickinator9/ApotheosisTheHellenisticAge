@@ -26,13 +26,140 @@ ATHA_game_start.2 = {
 		every_ruler = {
 			limit = {
 				highest_held_title_tier >= tier_county
-				has_government = city_state_government
+				government_has_flag = is_city_state_government
 			}
 
 			primary_title = {
 				set_variable = {
 					name = city_state_corruption
 					value = corruption_initial_value
+				}
+			}
+		}
+	}
+}
+
+# Assign starting vassal contracts
+ATHA_game_start.3 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			if = {
+				limit = {
+					government_has_flag = is_city_state_government
+					should_start_with_dependent_role = no
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_city_state_autonomous
+				}
+				vassal_contract_set_obligation_level = {
+					type = coinage_rights
+					level = coinage_rights_granted
+				}
+				vassal_contract_set_obligation_level = {
+					type = religious_rights
+					level = religious_rights_protected
+				}
+				vassal_contract_set_obligation_level = {
+					type = title_revocation_rights
+					level = title_revocation_rights_protected
+				}
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_city_state_government
+					should_start_with_dependent_role = yes	
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_city_state_dependent
+				}
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_coalition_government
+					should_start_with_dependent_role = no
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_coalition_autonomous
+				}
+				vassal_contract_set_obligation_level = {
+					type = coinage_rights
+					level = coinage_rights_granted
+				}
+				vassal_contract_set_obligation_level = {
+					type = religious_rights
+					level = religious_rights_protected
+				}
+				vassal_contract_set_obligation_level = {
+					type = title_revocation_rights
+					level = title_revocation_rights_protected
+				}
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_coalition_government
+					should_start_with_dependent_role = yes
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_coalition_dependent
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = bureaucracy_civil_government
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_civil
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = bureaucracy_military_government
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_military
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = feudal_government
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_feudal
+				}
+				vassal_contract_set_obligation_level = {
+					type = hereditary_rights
+					level = hereditary_rights_guaranteed
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						should_start_with_colony_rights = yes
+						has_character_flag = has_colony_rights
+					}	
+				}
+				vassal_contract_set_obligation_level = {
+					type = colony_rights
+					level = colony_rights_granted
+				}
+			}
+			if = {
+				limit = {
+					has_character_flag = has_coinage_rights
+				}
+				vassal_contract_set_obligation_level = {
+					type = coinage_rights
+					level = coinage_rights_granted
 				}
 			}
 		}

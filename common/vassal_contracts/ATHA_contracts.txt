@@ -18,6 +18,19 @@ vassal_role = {
 
 			flag = has_autonomous_city_state_contract
 			flag = has_autonomous_contract
+
+			ai_liege_desire = 0
+			ai_vassal_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_city_state_government # TO-DO: vassals with an imposed franchise that doesn't match the desired franchise shouldn't desire this
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
 		}
 		vassal_role_city_state_dependent = {
 			is_valid = {
@@ -29,6 +42,19 @@ vassal_role = {
 			vassal_opinion = -5	
 
 			flag = has_dependent_city_state_contract
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_city_state_government
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
 		}
 		vassal_role_coalition_autonomous = {
 			is_valid = {
@@ -45,6 +71,19 @@ vassal_role = {
 
 			flag = has_autonomous_coalition_contract
 			flag = has_autonomous_contract
+
+			ai_liege_desire = 0
+			ai_vassal_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_coalition_government
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
 		}
 		vassal_role_coalition_dependent = {
 			is_valid = {
@@ -57,6 +96,19 @@ vassal_role = {
 			vassal_opinion = -5	
 
 			flag = has_dependent_coalition_contract
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_city_state_government
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
 		}
 		vassal_role_bureaucracy_civil = {
 			is_valid = {
@@ -74,6 +126,7 @@ vassal_role = {
 			}
 
 			flag = has_civil_bureaucracy_contract
+			flag = vassal_contract_free_revocation
 		}
 		vassal_role_bureaucracy_military = {
 			is_valid = {
@@ -94,6 +147,7 @@ vassal_role = {
 			}
 
 			flag = has_military_bureaucracy_contract
+			flag = vassal_contract_free_revocation
 		}
 		vassal_role_bureaucracy_feudal = {
 			is_valid = {
@@ -145,6 +199,8 @@ imposed_franchise = {
 			vassal_modifier = {
 				county_opinion_add = 5
 			}
+
+			flag = has_imposed_democratic_franchise
 		}
 		imposed_franchise_oligarchic = {
 			is_valid = {
@@ -159,6 +215,9 @@ imposed_franchise = {
 			vassal_modifier = {
 				county_opinion_add = -5
 			}
+
+			flag = has_imposed_franchise
+			flag = has_imposed_oligarchic_franchise
 		}
 		imposed_franchise_aristocratic = {
 			is_valid = {
@@ -174,7 +233,9 @@ imposed_franchise = {
 				county_opinion_add = -10
 			}
 
-			flag = has_imposed_aristocracy_contract
+			flag = vassal_contract_gives_weak_hook
+			flag = has_imposed_franchise
+			flag = has_imposed_aristocratic_franchise
 		}
 		imposed_franchise_tyrannic = {
 			is_valid = {
@@ -190,7 +251,9 @@ imposed_franchise = {
 				county_opinion_add = -20
 			}
 
-			flag = has_imposed_tyranny_contract
+			flag = vassal_contract_gives_strong_hook
+			flag = has_imposed_franchise
+			flag = has_imposed_tyrannic_franchise
 		}
 	}
 }
@@ -211,6 +274,8 @@ enforced_centralisation = {
 			position = { 1 1 }
 			
 			vassal_opinion = -5
+
+			flag = has_enforced_centralisation_low
 		}
 		enforced_centralisation_medium = {
 			is_valid = {
@@ -219,6 +284,9 @@ enforced_centralisation = {
 			}
 			parent = enforced_centralisation_none
 			position = { 1 0 }
+
+			flag = has_enforced_centralisation
+			flag = has_enforced_centralisation_medium
 		}
 		enforced_centralisation_high = {
 			is_valid = {
@@ -229,6 +297,9 @@ enforced_centralisation = {
 			position = { 1 2 }
 			
 			vassal_opinion = 5
+			
+			flag = has_enforced_centralisation
+			flag = has_enforced_centralisation_high
 		}
 	}
 }
@@ -249,6 +320,8 @@ enforced_federalism = {
 			position = { 1 0 }
 			
 			vassal_opinion = -5
+
+			flag = has_enforced_federalism_federal
 		}
 		enforced_federalism_hegemonic = {
 			is_valid = {
@@ -259,6 +332,9 @@ enforced_federalism = {
 			position = { 1 1 }
 			
 			vassal_opinion = 5
+			
+			flag = has_enforced_federalism
+			flag = has_enforced_federalism_hegemonic
 		}
 	}
 }
@@ -293,6 +369,7 @@ garrison_rights = {
 			vassal_opinion = -20
 
 			flag = installed_garrison
+			flag = vassal_contract_gives_strong_hook
 		}
 	}
 }
@@ -398,10 +475,13 @@ gift_estate_rights = {
 			vassal_modifier = {
 				city_holding_build_gold_cost = -0.15
 				city_holding_holding_build_gold_cost = -0.5
-				domain_tax_mult = 0.1
+				domain_tax_mult = 0.2
 			}
 
 			vassal_opinion = 5
+
+			flag = vassal_contract_free_revocation
+			flag = vassal_contract_gives_weak_hook
 		}	
 	}
 }
@@ -417,10 +497,18 @@ hereditary_rights = {
 
 	obligation_levels = {
 		hereditary_rights_none = {
+			is_valid = {
+				scope:vassal = { 
+					OR = { 
+						highest_held_title_tier < tier_county
+						NOT = { vassal_contract_has_flag = has_feudal_bureaucracy_contract }
+					}	
+				}	
+			}
 			default = yes
 			position = { 0 0 }
 		}
-		hereditary_rights_granted = {
+		hereditary_rights_guaranteed = {
 			parent = hereditary_rights_none
 			position = { 0 1 }
 		}	
