@@ -1,49 +1,63 @@
-﻿# Coalition governments
-has_alliance_government = {
-	OR = {
+﻿### Vassal contract switching triggers
+
+can_create_dependent_vassals = {
+	NOR = {
 		has_government = federal_alliance_government
-		has_government = hegemonic_alliance_government
-	}	
-}
-has_sympolity_government = {
-	OR = {
-		has_government = federal_sympolity_government
-		has_government = hegemonic_sympolity_government
-	}	
-}
-has_league_government = {
-	OR = {
-		has_government = federal_confederacy_government
-		has_government = hegemonic_confederacy_government
-	}	
-}
-has_federal_government = {
-	OR = {
-		has_government = federal_alliance_government
-		has_government = federal_sympolity_government
-		has_government = federal_confederacy_government
-	}	
-}
-has_hegemonic_government = {
-	OR = {
-		has_government = hegemonic_alliance_government
-		has_government = hegemonic_sympolity_government
-		has_government = hegemonic_confederacy_government
+		has_government = amphictyony_government
+		has_government = tribal_government
 	}	
 }
 
-has_city_state_government = {
-	OR = {
-		has_government = city_state_government
-		has_government = city_state_tyrannical_government
-		has_government = city_state_oligarchic_government
-		has_government = city_state_aristocratic_government
-		has_government = city_state_spartan_government
+can_create_bureaucratic_vassals = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = federal_sympolity_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+		has_government = clan_government
 	}	
 }
-has_bureaucratic_government = {
+
+can_enforce_ritual_coronations = {
+	NOR = {
+		government_has_flag = is_federal_government
+		has_government = city_state_government
+		has_government = city_state_oligarchic_government
+	}	
+}
+
+can_enforce_obligations = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = amphictyony_government
+	}	
+}
+
+can_grant_gift_estates = {
+	NOR = {
+		government_has_flag = is_coalition_government
+		has_government = city_state_government
+		has_government = city_state_oligarchic_government
+	}	
+}
+
+### Game-start vassal contract triggers
+
+should_start_with_dependent_role = {
+	liege = { 
+		OR = {
+			has_government = hegemonic_league_government
+			has_government = feudal_government
+		}
+	}
+}
+
+should_start_with_colony_rights = {
 	OR = {
 		has_government = bureaucracy_military_government
-		has_government = bureaucracy_civic_government
-	}	
+		has_government = feudal_government
+	}
+	any_realm_province = {
+		has_holding_type = colony_holding
+	}
 }

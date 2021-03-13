@@ -1,0 +1,321 @@
+﻿namespace = ATHA_vassal_contract
+
+### TO-DO List
+# Somehow prevent contract information from being lost when switching government
+# Somehow prevent contracts from getting reset on inheritance
+# Also, somehow (maybe with the mysterious local_var?) prevent players from exploiting the system by granting privileges which balance out tyranny gain but are immediately invalidated on government change e.g. colony rights
+
+
+# Adjust government type, hooks etc. according to contract
+ATHA_vassal_contract.1 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_autonomous_city_state_contract
+				NOT = { government_has_flag = is_city_state_government }
+			}
+			change_government = city_state_government # TO-DO: Add logic for determining what form the city-state government takes
+
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_imposed_franchise
+				}
+				vassal_contract_set_obligation_level = {
+					type = imposed_franchise
+					level = imposed_franchise_none
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_dependent_city_state_contract
+				NOT = { government_has_flag = is_city_state_government }
+			}
+			change_government = city_state_government # TO-DO: Add events for liege (or vassal) to decide what form the city-state government takes
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_autonomous_coalition_contract
+				NOT = { government_has_flag = is_coalition_government }
+			}
+			change_government = federal_alliance_government
+
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_centralisation
+				}
+				vassal_contract_set_obligation_level = {
+					type = enforced_centralisation
+					level = enforced_centralisation_none
+				}
+			}
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_federalism
+				}
+				vassal_contract_set_obligation_level = {
+					type = enforced_federalism
+					level = enforced_federalism_none
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_dependent_coalition_contract
+				NOT = { government_has_flag = is_coalition_government }
+			}
+			change_government = federal_alliance_government # TO-DO: Add events for liege (or vassal) to decide what form the coalition takes
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_civil_bureaucracy_contract
+				NOT = { has_government = bureaucracy_civil_government }
+			}
+			change_government = bureaucracy_civil_government
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_military_bureaucracy_contract
+				NOT = { has_government = bureaucracy_military_government }
+			}
+			change_government = bureaucracy_military_government
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_feudal_bureaucracy_contract
+				NOT = { has_government = feudal_government }
+			}
+			change_government = feudal_government
+			vassal_contract_set_obligation_level = {
+				type = hereditary_rights
+				level = hereditary_rights_guaranteed
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_autonomous_contract
+			}
+			vassal_contract_set_obligation_level = {
+				type = coinage_rights
+				level = coinage_rights_granted
+			}
+			vassal_contract_set_obligation_level = {
+				type = religious_rights
+				level = religious_rights_protected
+			}
+			vassal_contract_set_obligation_level = {
+				type = title_revocation_rights
+				level = title_revocation_rights_protected
+			}
+			vassal_contract_set_obligation_level = {
+				type = garrison_rights
+				level = garrison_rights_none
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_imposed_democratic_franchise
+				NOT = { has_government = city_state_government }
+			}
+			change_government = city_state_government
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_imposed_oligarchic_franchise
+				NOT = { has_government = city_state_oligarchic_government }
+			}
+			change_government = city_state_oligarchic_government
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_imposed_aristocratic_franchise
+				NOT = { has_government = city_state_aristocratic_government }
+			}
+			change_government = city_state_aristocratic_government
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_imposed_tyrannic_franchise
+				NOT = { has_government = city_state_tyrannical_government }
+			}
+			change_government = city_state_tyrannical_government
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_low
+				NOT = { government_has_flag = is_alliance_government }
+			}
+			if = {
+				limit = {
+					government_has_flag = is_federal_government
+				}
+				change_government = federal_alliance_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_hegemonic_government
+				}
+				change_government = hegemonic_alliance_government
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_medium
+				NOT = { government_has_flag = is_sympolity_government }
+			}
+			if = {
+				limit = {
+					government_has_flag = is_federal_government
+				}
+				change_government = federal_sympolity_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_hegemonic_government
+				}
+				change_government = hegemonic_sympolity_government
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_high
+				NOT = { government_has_flag = is_league_government }
+			}
+			if = {
+				limit = {
+					government_has_flag = is_federal_government
+				}
+				change_government = federal_league_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_hegemonic_government
+				}
+				change_government = hegemonic_league_government
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_federalism_federal
+				NOT = { government_has_flag = is_federal_government }
+			}
+			if = {
+				limit = {
+					government_has_flag = is_alliance_government
+				}
+				change_government = federal_alliance_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_sympolity_government
+				}
+				change_government = federal_sympolity_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_league_government
+				}
+				change_government = federal_league_government
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_federalism_hegemonic
+				NOT = { government_has_flag = is_hegemonic_government }
+			}
+			if = {
+				limit = {
+					government_has_flag = is_alliance_government
+				}
+				change_government = hegemonic_alliance_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_sympolity_government
+				}
+				change_government = hegemonic_sympolity_government
+			}
+			else_if = {
+				limit = {
+					government_has_flag = is_league_government
+				}
+				change_government = hegemonic_league_government
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = vassal_contract_gives_weak_hook
+				liege = {
+					NOT = {
+						has_hook_of_type = { 
+							type = house_head_hook
+							target = root
+						}
+					}
+				}
+			}
+			liege = {
+				add_hook = {
+					type = vassal_contract_weak_hook
+					target = root
+				}	
+			}
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = vassal_contract_gives_strong_hook
+				liege = {
+					NOT = {
+						has_hook_of_type = { 
+							type = loyalty_hook
+							target = root
+						}
+					}
+				}
+			}
+			liege = {
+				add_hook = {
+					type = vassal_contract_strong_hook
+					target = root
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { vassal_contract_has_flag = vassal_contract_gives_weak_hook }
+				liege = {
+					has_hook_of_type = { 
+						type = vassal_contract_weak_hook
+						target = root
+					}
+				}	
+			}
+			liege = {
+				remove_hook = {
+					type = vassal_contract_weak_hook
+					target = root
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { vassal_contract_has_flag = vassal_contract_gives_strong_hook }
+				liege = {
+					has_hook_of_type = { 
+						type = vassal_contract_strong_hook
+						target = root
+					}	
+				}
+			}
+			liege = {
+				remove_hook = {
+					type = vassal_contract_strong_hook
+					target = root
+				}
+			}
+		}
+    }
+}
