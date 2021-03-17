@@ -113,10 +113,6 @@ tribe_03 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_fortification_01 }
-			OR = {
-				has_government = tribal_government
-				has_government = clan_government
-			}
 		}
 	}
 	
@@ -160,10 +156,6 @@ tribe_04 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_fortification_01 }
-			OR = {
-				has_government = tribal_government
-				has_government = clan_government
-			}
 		}
 	}
 	
@@ -187,16 +179,10 @@ longhouses_01 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
 	}
-	can_construct_showing_failures_only = {
-		scope:holder = {
-			has_government = tribal_government
-		}
-	}	
 	
 	cost_prestige = expensive_building_tier_1_cost
 	cost_gold = tribal_building_tier_1_cost
@@ -224,7 +210,6 @@ longhouses_02 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -232,7 +217,6 @@ longhouses_02 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_barracks_01 }
-			has_government = tribal_government
 		}
 	}
 	
@@ -260,15 +244,9 @@ war_camps_01 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
-	}
-	can_construct_showing_failures_only = {
-		scope:holder = {
-			has_government = tribal_government
-		}
 	}
 	
 	cost_prestige = expensive_building_tier_1_cost
@@ -299,7 +277,6 @@ war_camps_02 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -307,7 +284,6 @@ war_camps_02 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_barracks_01 }
-			has_government = tribal_government
 		}
 	}	
 	
@@ -337,15 +313,9 @@ palisades_01 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
-	}
-	can_construct_showing_failures_only = {
-		scope:holder = {
-			has_government = tribal_government
-		}
 	}	
 	
 	cost_prestige = expensive_building_tier_1_cost
@@ -354,7 +324,7 @@ palisades_01 = {
 	levy = normal_building_levy_tier_1
 	garrison = normal_building_garrison_tier_1
 	province_modifier = {
-		defender_advantage = normal_building_advantage_tier_1
+		defender_holding_advantage = normal_building_advantage_tier_1
 		fort_level = normal_building_fort_level_tier_1
 	}
 	
@@ -379,7 +349,6 @@ palisades_02 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -387,9 +356,8 @@ palisades_02 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_fortification_01 }
-			has_government = tribal_government
 		}
-	}	
+	}
 	
 	cost_prestige = expensive_building_tier_2_cost
 	cost_gold = tribal_building_tier_2_cost
@@ -397,7 +365,7 @@ palisades_02 = {
 	levy = normal_building_levy_tier_2
 	garrison = normal_building_garrison_tier_2
 	province_modifier = {
-		defender_advantage = normal_building_advantage_tier_2
+		defender_holding_advantage = normal_building_advantage_tier_2
 		fort_level = normal_building_fort_level_tier_2
 	}
 	
@@ -420,16 +388,10 @@ market_villages_01 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
 	}
-	can_construct_showing_failures_only = {
-		scope:holder = {
-			has_government = tribal_government
-		}
-	}	
 	
 	cost_prestige = expensive_building_tier_1_cost
 	cost_gold = tribal_building_tier_1_cost
@@ -453,7 +415,6 @@ market_villages_02 = {
 
 	is_enabled = {
 		building_requirement_tribal = yes
-		building_disable_if_vastly_over_domain_limit_trigger = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -461,9 +422,8 @@ market_villages_02 = {
 	can_construct_showing_failures_only = {
 		scope:holder = {
 			culture = { has_innovation = innovation_construction_01 }
-			has_government = tribal_government
 		}
-	}	
+	}
 	
 	cost_prestige = expensive_building_tier_2_cost
 	cost_gold = tribal_building_tier_2_cost
