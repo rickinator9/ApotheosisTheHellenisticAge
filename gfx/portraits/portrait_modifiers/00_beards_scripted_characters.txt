@@ -1,0 +1,64 @@
+﻿# We can use these modifiers for adding specific beards and beards to historical and vanity characters
+
+beards_scripted_characters = {
+
+    usage = game
+    selection_behavior = weighted_random
+
+    male_beard_western_03 = { # Short beard
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.11 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+				exists = character:spartan00147 # Areus I of Sparta
+				this = character:spartan00147 # Areus I of Sparta
+            }
+        }
+    }
+
+    male_beard_western_08 = { # Big with fancy mustache
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.27 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = character:athenian00206 #Kallippos of Eleusis
+                this = character:athenian00206 #Kallippos of Eleusis
+            }
+        }
+    }
+
+    male_beard_mena_02 = { # Big with small mustache
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.39 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = character:spartan00143 # Kleonymos
+                this = character:spartan00143 # Kleonymos
+            }
+        }
+    }
+}

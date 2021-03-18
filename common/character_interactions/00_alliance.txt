@@ -406,6 +406,16 @@
 			factor = 0
 		}
 		
+		modifier = { # Don't call brand-new allies into old wars, at least until some time has elapsed.
+			has_variable = delay_calling_recent_ally
+			var:delay_calling_recent_ally = scope:recipient
+			scope:target = {
+				war_days >= 30
+			}
+			factor = 0
+
+		}
+		
 		modifier = { # If the recipient is allied to both the attacker and the defender, the attacker shouldn't call
 			scope:target.casus_belli.primary_attacker = scope:actor
 			scope:target.casus_belli.primary_defender = {
@@ -706,25 +716,16 @@ negotiate_alliance_interaction = {
 							}
 						}
 						save_scope_as = actor_spouse
-					}
-				}
-				scope:recipient = {
-					random_close_family_member = {
-						limit = {
-							OR = {
-								is_child_of = scope:recipient
-								is_parent_of = scope:recipient
-								is_sibling_of = scope:recipient
-							}
-							any_spouse = {
+						random_spouse = {
+							limit = {
 								OR = {
-									is_child_of = scope:actor
-									is_parent_of = scope:actor
-									is_sibling_of = scope:actor
+									is_child_of = scope:recipient
+									is_parent_of = scope:recipient
+									is_sibling_of = scope:recipient
 								}
 							}
+							save_scope_as = recipient_spouse
 						}
-						save_scope_as = recipient_spouse
 					}
 				}
 				scope:actor = {
@@ -1025,7 +1026,7 @@ negotiate_alliance_interaction = {
 		}
 		
 		modifier = {
-			add = 50
+			add = intimidated_reason_value
 			scope:recipient = {
 				target_is_liege_or_above = scope:actor
 				has_dread_level_towards = {
@@ -1036,7 +1037,7 @@ negotiate_alliance_interaction = {
 			desc = INTIMIDATED_REASON
 		}
 		modifier = {
-			add = 100
+			add = cowed_reason_value
 			scope:recipient = {
 				target_is_liege_or_above = scope:actor
 				has_dread_level_towards = {
@@ -1048,7 +1049,7 @@ negotiate_alliance_interaction = {
 		}
 		
 		modifier = {
-			add = 10
+			add = intimidated_external_reason_value
 			scope:recipient = {
 				NOT = { target_is_liege_or_above = scope:actor }
 				has_dread_level_towards = {
@@ -1059,7 +1060,7 @@ negotiate_alliance_interaction = {
 			desc = INTIMIDATED_REASON
 		}
 		modifier = {
-			add = 20
+			add = cowed_external_reason_value
 			scope:recipient = {
 				NOT = { target_is_liege_or_above = scope:actor }
 				has_dread_level_towards = {
@@ -1596,7 +1597,7 @@ perk_alliance_interaction = {
 		}
 		
 		modifier = {
-			add = 50
+			add = intimidated_reason_value
 			scope:recipient = {
 				target_is_liege_or_above = scope:actor
 				has_dread_level_towards = {
@@ -1607,7 +1608,7 @@ perk_alliance_interaction = {
 			desc = INTIMIDATED_REASON
 		}
 		modifier = {
-			add = 100
+			add = cowed_reason_value
 			scope:recipient = {
 				target_is_liege_or_above = scope:actor
 				has_dread_level_towards = {
@@ -1619,7 +1620,7 @@ perk_alliance_interaction = {
 		}
 		
 		modifier = {
-			add = 10
+			add = intimidated_external_reason_value
 			scope:recipient = {
 				NOT = { target_is_liege_or_above = scope:actor }
 				has_dread_level_towards = {
@@ -1630,7 +1631,7 @@ perk_alliance_interaction = {
 			desc = INTIMIDATED_REASON
 		}
 		modifier = {
-			add = 20
+			add = cowed_external_reason_value
 			scope:recipient = {
 				NOT = { target_is_liege_or_above = scope:actor }
 				has_dread_level_towards = {
