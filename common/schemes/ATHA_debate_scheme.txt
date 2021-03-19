@@ -13,12 +13,21 @@
 
     # Can the scheme be started.
     allow = {
+        # TODO
 
+		is_adult = yes
+		is_imprisoned = no
     }
 
     # Can the scheme continue?
     valid = {
+        # TODO
 
+		scope:target = {
+			is_imprisoned = no
+			exists = location
+			in_diplomatic_range = scope:owner 
+		}
     }
 
     # The chance that the debate will succeed.

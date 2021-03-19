@@ -362,9 +362,8 @@ trait_is_criminal_in_faith_trigger = {
 		#ADULTERER/FORNICATOR
 		AND = {
 			OR = {
-				always = yes
-				#scope:criminal_trait_check = flag:adulterer
-				#scope:criminal_trait_check = flag:fornicator
+				scope:criminal_trait_check = flag:adulterer
+				scope:criminal_trait_check = flag:fornicator
 			}
 			OR = {
 				AND = {
@@ -763,6 +762,7 @@ can_create_temporal_head_of_faith_title_trigger = {
 		COUNT = holy_sites_to_create_temporal_head_of_faith
 		CHARACTER = ROOT
 	}
+	root = { piety_level >= high_piety_level }
 	trigger_if = {
 		limit = {
 			root = { is_independent_ruler = no }
@@ -779,6 +779,7 @@ can_create_spiritual_head_of_faith_title_trigger = {
 		COUNT = holy_sites_to_create_spiritual_head_of_faith
 		CHARACTER = ROOT
 	}
+	root = { piety_level >= medium_piety_level }
 }
 
 # this = Person trying to create the title
@@ -797,8 +798,8 @@ can_afford_create_head_of_faith_title_cost_trigger = {
 				has_doctrine_parameter = spiritual_head_of_faith
 			}
 		}
-		gold >= medium_gold_value
-	}	
+		gold >= medium_gold_max_value
+	}
 }
 
 # FAITH = The faith we are trying to make the head of faith title for

@@ -154,7 +154,7 @@ culture_ai_weight_heavy_infantry = {
 		limit = {
             always = no
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -269,5 +269,16 @@ culture_ai_weight_elephants = {
 			always = no
 		}
 		add = 60
+	}
+}
+
+culture_ai_weight_vigmen = {
+	value = 60
+	
+	if = { # Cultures that favours heavy infantry
+		limit = {
+			any_sub_realm_county = { is_coastal_county = yes }
+		}
+		add = 20
 	}
 }
