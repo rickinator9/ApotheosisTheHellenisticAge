@@ -1,0 +1,52 @@
+﻿embrace_polygamy_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_realm.dds" # TODO
+	desc = embrace_polygamy_decision_desc
+	ai_check_interval = 60
+
+	is_shown = {
+		# Only independent rulers with the doctrine can enable it.
+		is_independent_ruler = yes
+		NOT = { has_character_flag = doctrine_polygamy_by_exception_enabled_flag }
+		faith = { has_doctrine = doctrine_polygamy_by_exception }
+	}
+
+	is_valid = {
+		# The ruler needs to find the necessity to marry multiple wives:
+		OR = {
+			# * A diplomatically well-educated ruler may see its usefulness for alliances.
+			custom_description = {
+				text = embrace_polygamy_decision_diplomacy_education_trigger
+				OR = {
+					has_trait = education_diplomacy_3
+					has_trait = education_diplomacy_4
+				}
+			}
+
+			# * An ambitious and diplomatically skilled character could see its usefulness as well.
+			custom_description = {
+				text = embrace_polygamy_decision_diplomacy_ambitious_trigger
+				AND = {
+					has_trait = ambitious
+					diplomacy >= 12
+				}
+			}
+
+			# * An arbitrary ruler will bend the rules to his will if he needs it.
+			custom_description = {
+				text = embrace_polygamy_decision_ambitious_arbitrary_trigger
+				AND = {
+					has_trait = ambitious
+					has_trait = arbitrary
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = embrace_polygamy_decision_effect
+		add_character_flag = doctrine_polygamy_by_exception_enabled_flag
+	}
+
+	# TODO: AI chance.
+	# TODO: Allow AI to marry polygamously within the same religion?
+}

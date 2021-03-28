@@ -1,0 +1,57 @@
+﻿doctrine_marriage_type = {
+	group = "marriage"
+	doctrine_monogamy = {
+		piety_cost = {
+			value = faith_doctrine_cost_mid
+			if = {
+				limit = { has_doctrine = doctrine_monogamy }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+		parameters = {
+			number_of_spouses = 1
+			marriage_event = yes
+		}
+	}
+
+	doctrine_polygamy = {
+		piety_cost = {
+			value = faith_doctrine_cost_mid
+			if = {
+				limit = { has_doctrine = doctrine_polygamy }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+		parameters = {
+			number_of_spouses = 4
+			spouse_piety_loss = yes
+		}
+	}
+
+	doctrine_polygamy_by_exception = {
+		piety_cost = {
+			value = faith_doctrine_cost_mid
+			if = {
+				limit = { has_doctrine = doctrine_polygamy }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+		parameters = {
+			number_of_spouses = 3
+		}
+	}
+
+	doctrine_concubines = {
+		piety_cost = {
+			value = faith_doctrine_cost_mid
+			if = {
+				limit = { has_doctrine = doctrine_concubines }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+		parameters = {
+			number_of_spouses = 1
+			number_of_consorts = 3
+		}
+	}
+}
