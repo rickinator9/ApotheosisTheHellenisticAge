@@ -982,9 +982,31 @@ marriage_ai_accept_modifier = {
 		desc = DIVORCE_POLYGAMY
 
 		scope:secondary_actor = { 
-			is_married = yes 
+			is_married = yes
+			faith = { NOT = { has_doctrine = doctrine_polygamy_by_exception } } # ATHA addition
 		}
-		scope:secondary_recipient.faith = { NOT = {	has_doctrine = doctrine_polygamy }	}
+		scope:secondary_recipient.faith = { 
+			NOR = {	
+				has_doctrine = doctrine_polygamy
+				has_doctrine = doctrine_polygamy_by_exception
+			}	
+		}
+	}
+
+	modifier = { # ATHA: Polygamy by exception gets a minor penalty.
+		add = -25
+		desc = DIVORCE_POLYGAMY_BY_EXCEPTION
+
+		scope:secondary_actor = { 
+			is_married = yes
+			faith = { has_doctrine = doctrine_polygamy_by_exception }
+		}
+		scope:secondary_recipient.faith = { 
+			NOR = {	
+				has_doctrine = doctrine_polygamy
+				has_doctrine = doctrine_polygamy_by_exception
+			}	
+		}
 	}
 
 	###############
