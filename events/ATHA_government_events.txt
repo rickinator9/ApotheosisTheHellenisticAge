@@ -1,6 +1,5 @@
 ﻿### TO-DO: 
 ### Make it so rulers who are already landed aren't forced into giving up their feudal government if they inherit from someone else
-### Add option for letting the people decide
 ### Find out why event for liege deciding government doesn't fire when player is a vassal
 
 namespace = ATHA_government
@@ -136,7 +135,10 @@ ATHA_government.0002 = {
 		}
 	}
 	theme = realm
-	left_portrait = root
+	left_portrait = {
+		character = root
+		animation = stress
+	}
 
 	trigger = { 
 		NOT = {	highest_held_title_tier > tier_county }
@@ -394,7 +396,11 @@ ATHA_government.0003 = {
 		}
 	}
 	theme = realm
-	left_portrait = root
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = scope:contract_liege
 
 	trigger = { 
 		OR = {
@@ -621,7 +627,10 @@ ATHA_government.0004 = {
 	title = ATHA_government.0004.t
 	desc = ATHA_government.0004.desc
 	theme = realm
-	left_portrait = root
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
 	right_portrait = scope:dependent_city_state_vassal
 
 	option = { # Tyranny
@@ -988,6 +997,8 @@ ATHA_government.0004 = {
 	option = { # Let the vassal decide
 		name = ATHA_government.0004.f
 		custom_tooltip = ATHA_government.0004.f.tt
+
+		save_scope_as = contract_liege
 
 		scope:dependent_city_state_vassal = { 
 			add_opinion = {
