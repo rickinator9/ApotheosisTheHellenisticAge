@@ -106,10 +106,16 @@ innovation_chain_mail = {
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
+# Baggage Train
 innovation_military_hellenistic_06 = {
 	group = culture_group_military
 	culture_era = culture_era_hellenistic
-	#icon = @fortifications
+	icon = @leadership_2
+
+	modifier = {
+		movement_speed = 0.1
+		supply_duration	= 0.25
+	}
 
 	flag = global_regular
 	flag = high_medieval_era_regular
@@ -117,17 +123,16 @@ innovation_military_hellenistic_06 = {
 
 #culture_group_civic
 
-# Surveying
+# Aulic Titulature
 innovation_centralisation_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_hellenistic
-	icon = @administration_3
+	icon = @nobility_03
 
 	unlock_law = crown_authority_3
 
 	modifier = {
-		domain_tax_mult = 0.05
-		title_creation_cost_mult = -0.2
+		short_reign_duration_mult = -0.1
 	}
 
 	flag = global_regular
@@ -183,17 +188,18 @@ innovation_diplomacy_03 = {
 	flag = global_regular
 	flag = high_medieval_era_regular
 }
-# Aulic Titulature
+# Land Survey
 innovation_partition_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_hellenistic
-	icon = @nobility_03
+	icon = @administration_3
 
 	unlock_law = high_partition_succession_law
 	unlock_law = single_heir_dynasty_house
 
 	modifier = {
-		short_reign_duration_mult = -0.1
+		domain_tax_mult = 0.05
+		title_creation_cost_mult = -0.2
 	}
 
 	flag = global_regular

@@ -98,10 +98,11 @@ innovation_military_imperial_06 = {
 
 #culture_group_civic
 
+# Codices
 innovation_administration_03 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	#icon = @majesty_01
+	icon = @administration_3
 	
 	unlock_casus_belli = de_jure_cb
 	custom = cb_discount_prestige_10
@@ -109,11 +110,11 @@ innovation_administration_03 = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-# Treadwheel
+# Treadwheel Crane
 innovation_construction_04 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	icon = @civil_construction_2
+	icon = @civil_construction_1
 	
 	custom = unlock_late_medieval_economic_buildings
 	
@@ -124,10 +125,11 @@ innovation_construction_04 = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
+# Promissory Notes
 innovation_currency_04 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	#icon = @majesty_01
+	icon = @administration_1
 
 	modifier = {
 		development_growth_factor = 0.1
@@ -136,11 +138,11 @@ innovation_currency_04 = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-# Hypocaust
+# Rounded Arch
 innovation_development_04 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	icon = @civil_construction_1
+	icon = @fortifications
 
 	custom = reduce_develop_county_penalty_04
 
@@ -154,17 +156,22 @@ innovation_diplomacy_04 = {
 	icon = @levy_building
 
 	modifier = {
-		domain_limit = 1
 		diplomatic_range_mult = 0.25
 	}
 
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
+# Lātifundia
 innovation_partition_04 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	#icon = @majesty_01
+	icon = @civil_construction_2
+
+	modifier = {
+		domain_limit = 1
+		direct_vassal_opinion = 5
+	}
 	
 	unlock_law = single_heir_succession_law
 	unlock_law = single_heir_succession_law_youngest
@@ -172,18 +179,24 @@ innovation_partition_04 = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
+# Hypocaust
 innovation_civic_imperial_07 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	#icon = @majesty_01
+	icon = @nobility_02
 
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
+# Glassblowing
 innovation_civic_imperial_08 = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
-	#icon = @majesty_01
+	icon = @majesty_02
+	
+	modifier = {
+		monthly_prestige_gain_mult = 0.1
+	}
 
 	flag = global_regular
 	flag = late_medieval_era_regular
