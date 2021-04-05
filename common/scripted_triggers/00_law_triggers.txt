@@ -61,11 +61,17 @@ realm_law_use_crown_authority = {
 }
 
 can_have_confederate_partition_succession_law_trigger = {
-	OR = {
-		has_government = feudal_government
-		has_government = tribal_government
-		has_government = clan_government
+	has_government = tribal_government
+}
+
+should_start_confederate_partition_succession_law_trigger = {
+	NOR = {
+		historical_succession_access_high_partition_succession_law_trigger = yes
+		historical_succession_access_single_heir_succession_law_trigger = yes
+		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
+		historical_succession_access_single_heir_dynasty_house_trigger = yes
 	}
+	has_government = tribal_government
 }
 
 can_keep_partition_succession_law_trigger = {
@@ -84,11 +90,27 @@ can_have_partition_succession_law_trigger = {
 	}
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		OR = {
-			has_government = feudal_government
-			has_government = clan_government
-		}
+		NOT = { has_government = tribal_government }
 	}
+
+	NOR = { 
+		# Doesn't make sense in city states with their constitutions and silly bureaucracy!
+		has_government = city_state_government # Democratic
+		has_government = city_state_spartan_government
+
+		# Doesn't make sense in bureaucracies either, as their jurisdictions should not be split up on succession!
+		government_has_flag = is_bureaucracy_government
+	}
+}
+
+should_start_partition_succession_law_trigger = {
+	NOR = {
+		historical_succession_access_high_partition_succession_law_trigger = yes
+		historical_succession_access_single_heir_succession_law_trigger = yes
+		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
+		historical_succession_access_single_heir_dynasty_house_trigger = yes
+	}
+	has_government = clan_government
 }
 
 can_keep_high_partition_succession_law_trigger = {
@@ -97,19 +119,33 @@ can_keep_high_partition_succession_law_trigger = {
 		limit = {
 			has_realm_law = high_partition_succession_law
 		}
-		can_have_high_partition_succession_law_trigger = yes
+		OR = {
+			can_have_high_partition_succession_law_trigger = yes
+			historical_succession_access_high_partition_succession_law_trigger = yes
+		}
 	}
 }
 
 can_have_high_partition_succession_law_trigger = {
 	culture = { has_innovation = innovation_partition_03 }
+	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		OR = {
-			has_government = feudal_government
+		NOR = {
+			has_government = tribal_government
 			has_government = clan_government
 		}
 	}
+
+	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
+	NOR = { 
+		has_government = city_state_government # Democratic
+		has_government = city_state_spartan_government
+	}
+}
+
+should_start_high_partition_succession_law_trigger = {
+	historical_succession_access_high_partition_succession_law_trigger = yes
 }
 
 can_keep_single_heir_succession_law_trigger = {
@@ -126,15 +162,27 @@ can_keep_single_heir_succession_law_trigger = {
 }
 
 can_have_single_heir_succession_law_trigger = {
-	culture = {
-		has_innovation = innovation_partition_04
-	}
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		OR = {
-			has_government = feudal_government
+		NOR = {
+			has_government = tribal_government
 			has_government = clan_government
+		}
+	}
+
+	# This should be accessible for city states, since county title can not have elective.
+}
+
+should_start_single_heir_succession_law_trigger = {
+	OR = {
+		historical_succession_access_single_heir_succession_law_trigger = yes
+		NOR = {
+			should_start_confederate_partition_succession_law_trigger = yes
+			should_start_partition_succession_law_trigger = yes
+			should_start_high_partition_succession_law_trigger = yes
+			should_start_single_heir_youngest_succession_law_trigger = yes
+			should_start_single_heir_dynasty_house_trigger = yes
 		}
 	}
 }
@@ -159,11 +207,20 @@ can_have_single_heir_youngest_succession_law_trigger = {
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		OR = {
-			has_government = feudal_government
+		NOR = {
+			has_government = tribal_government
 			has_government = clan_government
 		}
 	}
+
+	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
+	NOT = { 
+		has_government = city_state_government # Democratic
+	}
+}
+
+should_start_single_heir_youngest_succession_law_trigger = {
+	always = no
 }
 
 can_keep_single_heir_dynasty_house_trigger = {
@@ -184,13 +241,23 @@ can_have_single_heir_dynasty_house_trigger = {
 	culture = {
 		has_innovation = innovation_partition_03
 	}
+	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		OR = {
-			has_government = feudal_government
+		NOR = {
+			has_government = tribal_government
 			has_government = clan_government
 		}
 	}
+
+	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
+	NOT = { 
+		has_government = city_state_government # Democratic
+	}
+}
+
+should_start_single_heir_dynasty_house_trigger = {
+	historical_succession_access_single_heir_dynasty_house_trigger = yes
 }
 
 can_have_bishop_theocratic_succession_law_trigger = {
