@@ -3,104 +3,176 @@
 ############
 
 # Common
+
 delos = {
 	county = c_delos
 
-	# TODO
+	# Delos was an important banking centre
+	character_modifier = {
+		name = holy_site_delos_effect_name
+		stewardship_per_piety_level = 1
+	}
 }
-
 delphi = {
 	county = c_delphi
 
-	# TODO
+	# Arguably the most important Hellenic holy site, and the location of a major oracle
+	character_modifier = {
+		name = holy_site_delphi_effect_name
+		learning = 1
+		monthly_piety_gain_mult = 0.05
+	}
 }
-
 olympia = {
 	county = c_pisatis
 
-	# TODO
+	# Training for sporting competitions makes us tougher!
+	character_modifier = {
+		name = holy_site_olympia_effect_name
+		prowess = 1
+		heavy_infantry_toughness_mult = 0.1
+	}
 }
 
-# Kretagenism
-diktynnaion = {
-	county = c_polyrhen
-	barony = b_diktynnaion_polyrhen
+# Pythodorianism
 
-	# TODO
-}
+asklepieion = {
+	county = c_epidauros
+	barony = b_asklepieion_epidauros
 
-# Lykaionism
-lykosoura = {
-	county = c_megalopolis
-	barony = b_lykosoura_megalopolis
-
-	# TODO
-}
-
-idaion_antron = {
-	county = c_gortyn
-	barony = b_idaion_antron_gortyn
-
-	# TODO
+	# The Asklepieion attracted pilgrims looking to cure various afflictions
+	character_modifier = {
+		name = holy_site_asklepieion_effect_name
+		negate_health_penalty_add = 0.1
+	}
 }
 
 # Macedonian faiths
 
+aigai = { # The Tombs of the Argead kings.
+	county = c_berroia
+	barony = b_aigai_berroia
+
+	# The Argeads are an illustrious dynasty. Holding onto Aigai will increase our standing in the world!
+	character_modifier = {
+		name = holy_site_aigai_effect_name
+		short_reign_duration_mult = -0.1
+		monthly_prestige_gain_mult = 0.05
+	}
+}
 dion = {
 	county = c_dion
 
-	# TODO
+	# The Macedonians held victory feasts and purification rites of the army here
+	character_modifier = {
+		name = holy_site_dion_effect_name
+		martial_per_piety_level = 1
+		knight_effectiveness_mult = 0.2
+	}
 }
-
-samothrake = { # The cult center at Samotrake.
+samothrake = { # The cult center at Samothrake.
 	county = c_samothrake
 
 	# There was a sacred wedding ceremony at Samothrake.
 	# Holding the holy site, in addition to the below, makes the character a more likely (+25) match for the AI.
-	character_effect = {
+	character_modifier = {
+		name = holy_site_samothrake_effect_name
 		spouse_opinion = 25
 	}
 }
 
+# Kretagenism
+
+diktynnaion = {
+	county = c_polyrhen
+	barony = b_diktynnaion_polyrhen
+
+	# Diktynna/Britomartis was associated with mountains and hunting
+	character_modifier = {
+		name = holy_site_diktynnaion_effect_name
+		mountains_advantage = 5
+	}
+}
+idaion_antron = {
+	county = c_gortyn
+	barony = b_idaion_antron_gortyn
+
+	# The Idaean Cave was the centre of a local amphictyony, helping facilitate the strengthening of ties between city-states
+	character_modifier = {
+		name = holy_site_idaion_antron_effect_name
+		owned_personal_scheme_success_chance_add = 5
+		diplomacy = 1
+	}
+}
+
+# Lykaionism
+
+lykosoura = { # Province also contains Mt Lykaion
+	county = c_megalopolis
+	barony = b_lykosoura_megalopolis
+
+	# The people of Arcadia can unite behind their common reverence for Mt Lykaion and Lykosoura
+	character_modifier = {
+		name = holy_site_lykosoura_effect_name
+		controlled_province_advantage = 5
+		county_opinion_add = 5
+	}
+}
+
 # Naism
+
 dodona = {
 	county = c_dodona
 
-	# TODO
+	# The sanctuary at Dodona served as both a religious and political centre of the Epirotes
+	character_modifier = {
+		name = holy_site_dodona_effect_name
+		levy_size = 0.05
+		monthly_county_control_change_factor = 0.1
+	}
 }
-
 kichyros = {
-	county = c_kichyros
+	county = c_kichyros # Location of the Nekromanteion
 
-	# TODO
+	# Communing with your dead relatives is a handy way of getting closure
+	character_modifier = {
+		name = holy_site_kichyros_effect_name
+		close_relative_opinion = 5
+		stress_loss_mult = 0.1
+	}
 }
 
 # Orphism
 
-antissa = {
+antissa = { # oracle of Orpheus at the place where his head washed up
 	county = c_methymna
 	barony = b_antissa_methymna
-
-	# TODO
+	
+	# Learn poetry and music from the best!
+	character_modifier = {
+		name = holy_site_antissa_effect_name
+		diplomacy_per_piety_level = 1
+	}
 }
+ioros = { # speculative location of the famous Krestonian oracle of Dionysus, not too far from where the Derveni papyri were found
+	county = c_moryllos
+	barony = b_ioros_moryllos
 
-dionyseion = {
-	county = c_lete
-	barony = b_dionyseion_lete
-
-	# TODO
+	# Krestonia was once inhabited by the Thracian Bisaltai, the oracle there was used to predict whether the harvests would be fruitful
+	character_modifier = {
+		name = holy_site_ioros_effect_name
+		domain_tax_same_faith_mult = 0.1
+		different_culture_opinion = 5
+	}
 }
-
-leibethra = {
+leibethra = { # commonly held location of Orpheus' tomb
 	county = c_dion
 	barony = b_leibethra_dion
 
-	# TODO
-}
-
-# Pythian
-asklepieion = {
-	country = c_trikka
-
-	# TODO
+	# Leibethra was also associated with the Muses, who were patrons of the arts and learning
+	character_modifier = {
+		name = holy_site_leibethra_effect_name
+		monthly_lifestyle_xp_gain_mult = 0.15
+		courtier_and_guest_opinion = 5
+	}
 }
