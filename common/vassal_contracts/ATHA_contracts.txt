@@ -6,6 +6,7 @@
 vassal_role = {
 	display_mode = radiobutton
 
+	# TODO: This doesn't have a default?!
 	obligation_levels = {
 		vassal_role_city_state_autonomous = {
 			is_valid = {
@@ -184,6 +185,7 @@ vassal_role = {
 imposed_franchise = {
 	display_mode = radiobutton
 
+	# TODO: Doesn't this need an is_shown?
 	obligation_levels = {
 		imposed_franchise_none = {
 			default = yes
@@ -497,14 +499,15 @@ hereditary_rights = {
 
 	obligation_levels = {
 		hereditary_rights_none = {
-			is_valid = {
-				scope:vassal = { 
-					OR = { 
-						highest_held_title_tier < tier_county
-						NOT = { vassal_contract_has_flag = has_feudal_bureaucracy_contract }
-					}	
-				}	
-			}
+			# TODO: 
+			# is_valid = {
+			# 	scope:vassal = { 
+			# 		OR = { 
+			# 			highest_held_title_tier < tier_county
+			# 			NOT = { vassal_contract_has_flag = has_feudal_bureaucracy_contract }
+			# 		}	
+			# 	}	
+			# }
 			default = yes
 			position = { 0 0 }
 		}
