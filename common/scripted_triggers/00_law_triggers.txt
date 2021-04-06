@@ -80,7 +80,10 @@ can_keep_partition_succession_law_trigger = {
 		limit = {
 			has_realm_law = partition_succession_law
 		}
-		can_have_partition_succession_law_trigger = yes
+		OR = {
+			can_have_partition_succession_law_trigger = yes
+			should_start_partition_succession_law_trigger = yes
+		}
 	}
 }
 
@@ -121,7 +124,7 @@ can_keep_high_partition_succession_law_trigger = {
 		}
 		OR = {
 			can_have_high_partition_succession_law_trigger = yes
-			historical_succession_access_high_partition_succession_law_trigger = yes
+			should_start_high_partition_succession_law_trigger = yes
 		}
 	}
 }
@@ -156,7 +159,7 @@ can_keep_single_heir_succession_law_trigger = {
 		}
 		OR = {
 			can_have_single_heir_succession_law_trigger = yes
-			historical_succession_access_single_heir_succession_law_trigger = yes
+			should_start_single_heir_succession_law_trigger = yes
 		}
 	}
 }
@@ -195,7 +198,7 @@ can_keep_single_heir_youngest_succession_law_trigger = {
 		}
 		OR = {
 			can_have_single_heir_youngest_succession_law_trigger = yes
-			historical_succession_access_single_heir_succession_law_youngest_trigger = yes
+			should_start_single_heir_youngest_succession_law_trigger = yes
 		}
 	}
 }
@@ -220,7 +223,7 @@ can_have_single_heir_youngest_succession_law_trigger = {
 }
 
 should_start_single_heir_youngest_succession_law_trigger = {
-	always = no
+	historical_succession_access_single_heir_succession_law_youngest_trigger = yes
 }
 
 can_keep_single_heir_dynasty_house_trigger = {
@@ -231,7 +234,7 @@ can_keep_single_heir_dynasty_house_trigger = {
 		}
 		OR = {
 			can_have_single_heir_dynasty_house_trigger = yes
-			historical_succession_access_single_heir_dynasty_house_trigger = yes
+			should_start_single_heir_dynasty_house_trigger = yes
 		}
 	}
 }
