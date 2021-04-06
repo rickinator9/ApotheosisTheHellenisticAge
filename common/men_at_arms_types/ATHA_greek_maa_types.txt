@@ -1,86 +1,92 @@
-﻿# Archers, counters lowly armored opponents
-toxotai = {
-	type = archers
-	
-	damage = 13
-	toughness = 10
-	pursuit = 0
-	screen = 0
-	
-	terrain_bonus = {
-        # Heights will allow them to have more range.
-		hills = { damage = 5 }
-		mountains = { damage = 8 }
-		desert_mountains = { damage = 8 }
+﻿# standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+@cultural_maa_extra_ai_score = 60 # Equivalent to having 6 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
 
-        # Forests allow less flexibility for projectiles.
-		forest = { damage = -10 toughness = 5 }
-		taiga = { damage = -10 toughness = 5 }
-		jungle = { damage = -10 toughness = 5 }
-	}
-
-	counters = {
-		skirmishers = 1
-		archers = 1
-		slingers = 1
-	}
-
-	buy_cost = { gold = 35 }
-	low_maintenance_cost = { gold = 0 }
-	high_maintenance_cost = { gold = 0.15 }
+# # Archers, counters lowly armored opponents
+# toxotai = {
+# 	type = archers
 	
-	mercenary_fallback = yes
-	holy_order_fallback = yes
+# 	damage = 13
+# 	toughness = 10
+# 	pursuit = 0
+# 	screen = 0
 	
-	stack = 150
-	ai_quality = { value = culture_ai_weight_archers }
-	icon = bowmen
-}
+# 	terrain_bonus = {
+#         # Heights will allow them to have more range.
+# 		hills = { damage = 5 }
+# 		mountains = { damage = 8 }
+# 		desert_mountains = { damage = 8 }
 
-# Slingers, counter higher armored opponents.
-sphendonetai = {
-	type = slingers
-	
-	damage = 13
-	toughness = 10
-	pursuit = 0
-	screen = 0
-	
-	terrain_bonus = {
-        # Heights will allow them to have more range.
-		hills = { damage = 5 }
-		mountains = { damage = 8 }
-		desert_mountains = { damage = 8 }
+#         # Forests allow less flexibility for projectiles.
+# 		forest = { damage = -10 toughness = 5 }
+# 		taiga = { damage = -10 toughness = 5 }
+# 		jungle = { damage = -10 toughness = 5 }
+# 	}
 
-        # Forests allow less flexibility for projectiles.
-		forest = { damage = -10 toughness = 5 }
-		taiga = { damage = -10 toughness = 5 }
-		jungle = { damage = -10 toughness = 5 }
-	}
+# 	counters = {
+# 		skirmishers = 1
+# 		archers = 1
+# 		slingers = 1
+# 	}
 
-	counters = {
-		heavy_infantry = 1
-		pikemen = 1
-		phalanx = 1
-	}
+# 	buy_cost = { gold = 35 }
+# 	low_maintenance_cost = { gold = 0 }
+# 	high_maintenance_cost = { gold = 0.15 }
+	
+# 	mercenary_fallback = yes
+# 	holy_order_fallback = yes
+	
+# 	stack = 150
+# 	ai_quality = { value = culture_ai_weight_archers }
+# 	icon = bowmen
+# }
 
-	buy_cost = { gold = 35 }
-	low_maintenance_cost = { gold = 0 }
-	high_maintenance_cost = { gold = 0.15 }
+# # Slingers, counter higher armored opponents.
+# sphendonetai = {
+# 	type = slingers
 	
-	mercenary_fallback = yes
-	holy_order_fallback = yes
+# 	damage = 13
+# 	toughness = 10
+# 	pursuit = 0
+# 	screen = 0
 	
-	stack = 150
-	ai_quality = { value = culture_ai_weight_archers }
-	icon = bowmen
-}
+# 	terrain_bonus = {
+#         # Heights will allow them to have more range.
+# 		hills = { damage = 5 }
+# 		mountains = { damage = 8 }
+# 		desert_mountains = { damage = 8 }
+
+#         # Forests allow less flexibility for projectiles.
+# 		forest = { damage = -10 toughness = 5 }
+# 		taiga = { damage = -10 toughness = 5 }
+# 		jungle = { damage = -10 toughness = 5 }
+# 	}
+
+# 	counters = {
+# 		heavy_infantry = 1
+# 		pikemen = 1
+# 		phalanx = 1
+# 	}
+
+# 	buy_cost = { gold = 35 }
+# 	low_maintenance_cost = { gold = 0 }
+# 	high_maintenance_cost = { gold = 0.15 }
+	
+# 	mercenary_fallback = yes
+# 	holy_order_fallback = yes
+	
+# 	stack = 150
+# 	ai_quality = { value = culture_ai_weight_archers }
+# 	icon = bowmen
+# }
 
 # Macedonian-style Phalanx
 pezhetairoi = {
 	type = phalanx
 
-	damage = 35
+	damage = 32
 	toughness = 20
 	pursuit = 0
 	screen = 0
@@ -100,9 +106,9 @@ pezhetairoi = {
 	counters = {
 	}
 
-	buy_cost = { gold = 100 }
-	low_maintenance_cost = { gold = 0.3 }
-	high_maintenance_cost = { gold = 1.2 }
+	buy_cost = { gold = phalanx_recruitment_cost }
+	low_maintenance_cost = { gold = phalanx_low_maint_cost }
+	high_maintenance_cost = { gold = phalanx_high_maint_cost }
 	
 	mercenary_fallback = yes
 	holy_order_fallback = yes
@@ -117,7 +123,7 @@ pezhetairoi = {
 hoplitai = {
 	type = phalanx
 
-	damage = 25
+	damage = 28
 	toughness = 25
 	pursuit = 3
 	screen = 0
@@ -135,9 +141,9 @@ hoplitai = {
 	counters = {
 	}
 
-	buy_cost = { gold = 75 }
-	low_maintenance_cost = { gold = 0 }
-	high_maintenance_cost = { gold = 0.75 }
+	buy_cost = { gold = phalanx_recruitment_cost }
+	low_maintenance_cost = { gold = phalanx_low_maint_cost }
+	high_maintenance_cost = { gold = phalanx_high_maint_cost }
 	
 	mercenary_fallback = yes
 	holy_order_fallback = yes
@@ -147,105 +153,105 @@ hoplitai = {
 	icon = pikemen
 }
 
-# TODO? Hypaspists?
+# # TODO? Hypaspists?
 
-# Standard greek cavalry.
-hippeis = {
-	type = light_cavalry
+# # Standard greek cavalry.
+# hippeis = {
+# 	type = light_cavalry
 
-	damage = 20
-	toughness = 10
-	pursuit = 30
-	screen = 30
+# 	damage = 20
+# 	toughness = 10
+# 	pursuit = 30
+# 	screen = 30
 
-	terrain_bonus = {
-		plains = { damage = 5 pursuit = 10 }
-		drylands = { damage = 5 pursuit = 10 }
-		mountains = { damage = -10 }
-		desert_mountains = { damage = -10 }
-		wetlands = { damage = -20 pursuit = -20 }
-	}
+# 	terrain_bonus = {
+# 		plains = { damage = 5 pursuit = 10 }
+# 		drylands = { damage = 5 pursuit = 10 }
+# 		mountains = { damage = -10 }
+# 		desert_mountains = { damage = -10 }
+# 		wetlands = { damage = -20 pursuit = -20 }
+# 	}
 
-	counters = {
-		skirmishers = 1
-		archers = 1
-		slingers = 1
-	}
+# 	counters = {
+# 		skirmishers = 1
+# 		archers = 1
+# 		slingers = 1
+# 	}
 	
-	buy_cost = { gold = 75 }
-	low_maintenance_cost = { gold = 0 }
-	high_maintenance_cost = { gold = 1 }
+# 	buy_cost = { gold = 75 }
+# 	low_maintenance_cost = { gold = 0 }
+# 	high_maintenance_cost = { gold = 1 }
 	
-	mercenary_fallback = yes
-	holy_order_fallback = yes
+# 	mercenary_fallback = yes
+# 	holy_order_fallback = yes
 	
-	stack = 50
-	ai_quality = { value = culture_ai_weight_light_cavalry }
-	icon = light_cavalry
-}
+# 	stack = 50
+# 	ai_quality = { value = culture_ai_weight_light_cavalry }
+# 	icon = light_cavalry
+# }
 
 # Companion cavalry
 hetairoi = {
 	type = heavy_cavalry
 
-	damage = 35
-	toughness = 20
-	pursuit = 10
-	screen = 20
+	damage = 140
+	toughness = 40
+	pursuit = 30
+	screen = 0
 
 	terrain_bonus = {
-		plains = { damage = 10 pursuit = 5 }
-		drylands = { damage = 10 pursuit = 5 }
-		mountains = { damage = -10 }
-		desert_mountains = { damage = -10 }
-		wetlands = { damage = -20 pursuit = -20 }
+		plains = { damage = 30 }
+		drylands = { damage = 30 }
+		hills = { damage = -20 }
+		mountains = { damage = -75 }
+		desert_mountains = { damage = -75 }
+		wetlands = { damage = -50 toughness = -10 pursuit = -10 }
 	}
 
 	counters = {
 		skirmishers = 1
-		heavy_infantry = 1
 		slingers = 1
 		archers = 1
 	}
 
-	buy_cost = { gold = 250 }
-	low_maintenance_cost = { gold = 1 }
-	high_maintenance_cost = { gold = 3.5 }
+	buy_cost = { gold = hetairoi_recruitment_cost }
+	low_maintenance_cost = { gold = hetairoi_low_maint_cost }
+	high_maintenance_cost = { gold = hetairoi_high_maint_cost }
 	
-	stack = 150
+	stack = 100
 	ai_quality = { value = culture_ai_weight_heavy_cavalry }
 	icon = heavy_cavalry
 }
 
-# Peltasts
-peltastai = {
-	type = skirmishers
+# # Peltasts
+# peltastai = {
+# 	type = skirmishers
 
-	damage = 15
-	toughness = 15
-	pursuit = 5
-	screen = 15
+# 	damage = 15
+# 	toughness = 15
+# 	pursuit = 5
+# 	screen = 15
 
-	terrain_bonus = {
-		hills = { damage = 5 }
-		mountains = { damage = 5 }
-		desert_mountains = { damage = 5 }
-	}
+# 	terrain_bonus = {
+# 		hills = { damage = 5 }
+# 		mountains = { damage = 5 }
+# 		desert_mountains = { damage = 5 }
+# 	}
 
-	counters = {
-		heavy_infantry = 1
-		phalanx = 1
-		pikemen = 1
-	}
+# 	counters = {
+# 		heavy_infantry = 1
+# 		phalanx = 1
+# 		pikemen = 1
+# 	}
 
-	buy_cost = { gold = 60 }
-	low_maintenance_cost = { gold = 0.15 }
-	high_maintenance_cost = { gold = 0.6 }
+# 	buy_cost = { gold = 60 }
+# 	low_maintenance_cost = { gold = 0.15 }
+# 	high_maintenance_cost = { gold = 0.6 }
 	
-	mercenary_fallback = yes
-	holy_order_fallback = yes
+# 	mercenary_fallback = yes
+# 	holy_order_fallback = yes
 	
-	stack = 100
-	ai_quality = { value = culture_ai_weight_skirmishers }
-	icon = skirmishers
-}
+# 	stack = 100
+# 	ai_quality = { value = culture_ai_weight_skirmishers }
+# 	icon = skirmishers
+# }
