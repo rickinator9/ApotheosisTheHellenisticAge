@@ -9,6 +9,15 @@
 		}
 		localization_key = knight_hippeus
 	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax
+	}
 	text = {
 		trigger = {
 			OR = {
@@ -18,25 +27,15 @@
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_government
 		}
 		localization_key = knight_epilektos_hoplitas
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_government
 		}
 		localization_key = knight_epilektos_hoplites
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax
 	}
 	text = {
 		localization_key = knight_default
