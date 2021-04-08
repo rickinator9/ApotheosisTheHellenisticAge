@@ -1,5 +1,280 @@
 ﻿# Bithynian characters
 
+# Bithynos - The main ruling dynasty of Bithynia.
+
+# Much of the information about the early Bithynian rulers comes from: http://www.attalus.org/translate/memnon1.html
+
+bithynian00101 = {
+	name = "Doedalses" # Father of Boteiras.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	
+	3281.1.1 = { # made up
+		birth = yes # 477 BC
+	}
+	3342.1.1 = { # made up
+		death = yes # 416 BC
+	}
+}
+
+bithynian00102 = {
+	name = "Boteiras" # Father of Bas.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00101 # Doedalses
+
+	3302.1.1 = { # Apparently died aged 76: https://referenceworks.brillonline.com/entries/der-neue-pauly/doidalses-e12221280?lang=en
+		birth = yes # 456 BC
+	}
+	3378.1.1 = {
+		death = yes # 376 BC
+	}
+}
+
+bithynian00103 = {
+	name = "Bas" # Maintained Bithynian independence vs Alexander's lackeys.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00102 # Boteiras
+
+	trait = education_martial_2 # Defeated Calas, Alexander's commander.
+	# Little more is known of his activities.
+
+	3357.1.1 = {
+		birth = yes # 397 BC
+	}
+	3428.1.1 = {
+		death = yes # 326 BC
+	}
+}
+
+bithynian00104 = {
+	name = "Zipoetes" # I, first king of Bithynia
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00103 # Bas
+
+	trait = education_martial_3 # According to Memnon, he defeated Lysimachid, Seleucid and Heraclean forces.
+	trait = military_engineer # Tried to besiege Chalcedon, but was thwarted by Antigonus. Also manages to take Astacus.
+	trait = ambitious # Often tried to expand his throne.
+
+	3399.1.1 = { # Made up.
+		birth = yes # 355 BC
+	}
+	3460.1.1 = { # Made up.
+		add_trait = architect # 294 BC, founded a city named after himself.
+	}
+	3476.1.1 = {
+		death = yes # 278 BC
+	}
+}
+
+bithynian00105 = {
+	name = "Nikomedes" # I, second king of Bithynia
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00104 # Zipoetes I
+
+	trait = education_diplomacy_3 # Seems to have relied upon diplomacy over war in his foreign policy:
+								  # bringing the heracleans into an alliance with him and ferrying over the galatians to fight his brother.
+	trait = sadistic # Killed all of his (reported) brothers.
+	trait = ambitious # Was very eager in taking his throne.
+	
+	3451.1.1 = { # Made up.
+		birth = yes # 303 BC
+	}
+	# Marries Ditizele at some point.
+	# Marries Etazeta at some point.
+	3476.3.1 = { # Made up 278 BC, killed his brothers.
+		add_trait = kinslayer_3
+	}
+	3490.1.1 = { # 264 BC
+		add_trait = architect # Founds Nicomedia
+	}
+	3499.1.1 = {
+		death = yes # 255 BC
+	}
+}
+
+bithynian00106 = {
+	name = "Boteiras" # Unnamed son of Zipoetes who was killed by Nikomedes I
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00104 # Zipoetes I
+
+	3453.1.1 = { # Made up.
+		birth = yes # 301 BC
+	}
+	3476.3.1 = { # Made up, but very shortly after his father died and Nikomedes inherited the throne.
+		death = { # 278 BC
+			death_reason = death_execution
+			killer = bithynian00105
+		}
+	}
+}
+
+bithynian00107 = {
+	name = "Zipoetes" # II, started a civil war when Nikomedes started killing everyone.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00104 # Zipoetes I
+
+	3454.1.1 = { # Made up.
+		birth = yes # 300 BC
+	}
+	3478.1.1 = { # 276 BC
+		death = {
+			death_reason = death_execution
+			killer = bithynian00105
+		}
+	}
+}
+
+bithynian00108 = {
+	name = "Bas" # Unnamed son of Zipoetes who was killed by Nikomedes I
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00104 # Zipoetes I
+
+	3457.1.1 = { # Made up.
+		birth = yes # 297 BC
+	}
+	3476.3.1 = { # Made up, but very shortly after his father died and Nikomedes inherited the throne.
+		death = { # 278 BC
+			death_reason = death_execution
+			killer = bithynian00105
+		}
+	}
+}
+
+bithynian00109 = {
+	name = "Prusias" # Unnamed brother of Nicomedes who was considered a suitor to Etazeta during the dynastic strife after Nicomedes' death (src Memnon).
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00104 # Zipoetes I
+
+	3469.1.1 = { # Made up. He likely was young at his fathers death, since Nicomedes seems not to have considered him a threat.
+		birth = yes # 285 BC
+	}
+	3524.3.1 = { # Made up. He was alive until 255 BC at the least.
+		death = yes # 230 BC
+	}
+}
+
+bithynian00110 = {
+	name = "Ziaelas" # Firstborn son of Nikomedes I, eventual king.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Ditizele
+
+	trait = education_martial_2 # Engaged in war to take his throne as well as with Antiochus Hierax.
+	trait = ambitious # Was very eager in taking his throne.
+
+	# TODO: Traits
+
+	3479.1.1 = { # Made up.
+		birth = yes # 275 BC
+	}
+	3526.1.1 = {
+		death = { # 228 BC
+			death_reason = death_murder # Killed by Galatians
+		}
+	}
+}
+
+bithynian00111 = {
+	name = "Prusias" # Second son of Nikomedes I.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Ditizele
+
+	3480.1.1 = { # Made up.
+		birth = yes # 274 BC
+	}
+	3520.1.1 = { # Made up
+		death = yes # 234 BC
+	}
+}
+
+bithynian00112 = {
+	name = "Lysandra" # Daughter of Nikomedes I.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Ditizele
+	female = yes
+
+	3485.1.1 = { # Made up.
+		birth = yes # 269 BC
+	}
+	3517.1.1 = { # Made up.
+		death = yes # 237 BC
+	}
+}
+
+# Unnamed sons of Nicomedes. We are not certain how many sons he had with Etazeta.
+bithynian00113 = {
+	name = "Nikomedes" # Later son of Nikomedes I. Described as very young or infants at the time of his death.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Etazeta
+
+	3493.1.1 = { # Made up.
+		birth = yes # 261 BC
+	}
+	3550.1.1 = { # Made up.
+		death = yes # 204 BC
+	}
+}
+
+bithynian00114 = {
+	name = "Zipoetes" # Later son of Nikomedes I. Described as very young or infants at the time of his death.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Etazeta
+
+	3495.1.1 = { # Made up.
+		birth = yes # 259 BC
+	}
+	3543.1.1 = { # Made up.
+		death = yes # 211 BC
+	}
+}
+
+bithynian00115 = {
+	name = "Doedalses" # Later son of Nikomedes I. Described as very young or infants at the time of his death.
+	dynasty = bithyniandyn001 # Bithynos
+	religion = bithynian_faith
+	culture = bithynian
+	father = bithynian00105 # Nikomedes I
+	# mother = ... # Etazeta
+
+	3497.1.1 = { # Made up.
+		birth = yes # 257 BC
+	}
+	3527.1.1 = { # Made up.
+		death = yes # 227 BC
+	}
+}
+
 # Petrozetos - Petrozetoi
 
 bithynian00201 = {
