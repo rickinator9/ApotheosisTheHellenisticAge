@@ -48,6 +48,21 @@ character_gender_can_inherit_from_trigger = {
 	}
 }
 
+can_keep_female_only_law_trigger = {
+	# The 'can_keep' triggers are dependent on actually having the law. If they aren't, the trigger breakdown for the player breaks and shows incomplete information.
+	trigger_if = {
+		limit = {
+			has_realm_law = female_only_law
+		}
+		OR = {
+			faith = {
+				has_doctrine = doctrine_gender_female_dominated
+			}
+			historical_succession_access_female_only_law_trigger = yes
+		}
+	}
+}
+
 has_partition_succession_realm_law_trigger = {
 	OR = {
 		has_realm_law = confederate_partition_succession_law

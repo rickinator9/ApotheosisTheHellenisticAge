@@ -349,6 +349,7 @@ succession_gender_laws = {
 			can_change_succession_law_trigger = yes
 		}
 		should_start_with = {
+			NOT = { historical_succession_access_female_only_law_trigger = yes }
 			NOR = {
 				has_government = feudal_government
 				has_government = clan_government
@@ -392,6 +393,7 @@ succession_gender_laws = {
 			can_change_succession_law_trigger = yes
 		}
 		should_start_with = {
+			NOT = { historical_succession_access_female_only_law_trigger = yes }
 			OR = {
 				AND = {
 					OR = {
@@ -516,9 +518,10 @@ succession_gender_laws = {
 			always = no
 		}
 		can_keep = {
-			faith = {
-				has_doctrine = doctrine_gender_female_dominated
-			}
+			can_keep_female_only_law_trigger = yes
+		}
+		should_start_with = {
+			historical_succession_access_female_only_law_trigger = yes
 		}
 		can_pass = {
 			can_change_succession_law_trigger = yes
