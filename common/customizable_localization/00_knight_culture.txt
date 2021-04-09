@@ -5,7 +5,6 @@
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus
 	}
@@ -50,9 +49,17 @@ KnightCulturePlural = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_plural
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_plural
 	}
 	text = {
 		trigger = {
@@ -63,25 +70,15 @@ KnightCulturePlural = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_plural
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_plural
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_plural
 	}
 	text = {
 		localization_key = knight_default_plural
@@ -96,9 +93,17 @@ KnightCultureNoTooltip = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip
 	}
 	text = {
 		trigger = {
@@ -109,25 +114,15 @@ KnightCultureNoTooltip = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip
 	}
 	text = {
 		localization_key = knight_default_no_tooltip
@@ -142,9 +137,17 @@ KnightCulturePluralNoTooltip = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip_plural
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip_plural
 	}
 	text = {
 		trigger = {
@@ -155,25 +158,15 @@ KnightCulturePluralNoTooltip = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_plural
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_plural
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip_plural
 	}
 	text = {
 		localization_key = knight_default_no_tooltip_plural
@@ -188,9 +181,17 @@ KnightCultureNoTooltipLowercase = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
@@ -201,25 +202,15 @@ KnightCultureNoTooltipLowercase = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip_lowercase
 	}
 	text = {
 		localization_key = knight_default_no_tooltip_lowercase
@@ -234,9 +225,17 @@ KnightCulturePluralNoTooltipLowercase = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
@@ -247,25 +246,15 @@ KnightCulturePluralNoTooltipLowercase = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip_lowercase_plural
 	}
 	text = {
 		localization_key = knight_default_no_tooltip_lowercase_plural
@@ -280,9 +269,17 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural_possessive
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
@@ -293,25 +290,15 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural_possessive
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		localization_key = knight_default_no_tooltip_lowercase_plural_possessive
@@ -326,9 +313,17 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 		trigger = {
 			primary_title = title:d_lakedaimon
 			culture = culture:dorian_south
-			#has_government = city_state_democratic_government
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_adjective
+	}
+	text = { # Epirotes and Macedonians use Somatophylakes.
+		trigger = {
+			OR = {
+				culture = culture:macedonian
+				culture = culture:epirote
+			}
+		}
+		localization_key = knight_somatophylax_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
@@ -339,25 +334,15 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 				culture = culture:dorian
 				culture = culture:dorian_northwest
 				culture = culture:dorian_south
-				culture = culture:epirote
 			}
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
 			has_culture_group = culture_group:greek_group
-			has_government = city_state_democratic_government
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_adjective
-	}
-	text = {
-		trigger = {
-			has_culture_group = culture_group:greek_group
-			has_government = feudal_government
-		}
-		localization_key = knight_somatophylax_no_tooltip_lowercase_adjective
 	}
 	text = {
 		localization_key = knight_default_no_tooltip_lowercase_adjective
