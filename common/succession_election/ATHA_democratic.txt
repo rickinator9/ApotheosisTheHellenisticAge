@@ -12,14 +12,15 @@ democratic_elective = {
         add = {
             type = holder_close_or_extended_family
             limit = {
-				is_player_heir_of = scope:holder
+				is_child_of = scope:holder # Not just the primary heir, since it may just happen that the primary heir has the wrong culture.
+                age >= 20
                 culture = scope:holder.capital_province.culture
             }
         }
         add = {
             type = holder_direct_vassals
             limit = {
-                highest_held_title_tier = 2
+                highest_held_title_tier >= tier_county
                 age >= 20
                 culture = scope:holder.capital_province.culture
             }
@@ -27,12 +28,7 @@ democratic_elective = {
     }
 
     electors = {
-        add = {
-            type = holder
-            limit = {
-                culture = scope:holder.capital_province.culture
-            }
-        }
+        add = holder
         add = {
             type = holder_direct_vassals
             limit = {
