@@ -55,36 +55,30 @@ democratic_elective = {
         base = 0
 
         # Modifiers for electors voting for themselves.
-        elector_self_voting_pattern_feudal_elective_modifier = yes
+        elector_self_voting_pattern_elective_modifier = yes
+        holder_voting_pattern_elective_modifier = yes
 
-        elector_voting_pattern_circumstances_democratic_elective_modifier = yes
-        elector_voting_pattern_prestige_piety_democratic_elective_modifier = yes
-        elector_voting_pattern_traits_democratic_elective_modifier = yes
-        elector_voting_pattern_opinion_democratic_elective_modifier = yes
+        elector_voting_pattern_circumstances_elective_modifier = yes
+        elector_voting_pattern_prestige_piety_elective_modifier = yes
+        elector_voting_pattern_traits_elective_modifier = yes
+        elector_voting_pattern_opinion_elective_modifier = yes
+        elector_voting_pattern_skills_elective_modifier = yes
 
-        # Candidate can not be too young.
-        modifier = {
-            desc = tooltip_democratic_score_too_young
-            scope:candidate = { age < 30 }
-            add = {
-                subtract = 1
-            }
-        }
-
+        # TODO: We may want a decision to claim the de jure capital of an elective title, but AI can only use it if it is not the players last remaining county.
         # If the holder is the player and he only has one county, prevent a game over.
-        modifier = {
-            desc = tooltip_democratic_score_player_protection
-            scope:holder = {
-                is_local_player = yes
-                any_held_title = {
-                    tier = tier_county
-                    count = 1
-                }
-            }
-            scope:candidate = scope:holder_candidate
-            add = {
-                add = 1000
-            }
-        }
+        # modifier = {
+        #     desc = tooltip_democratic_score_player_protection
+        #     scope:holder = {
+        #         is_local_player = yes
+        #         any_held_title = {
+        #             tier = tier_county
+        #             count = 1
+        #         }
+        #     }
+        #     scope:candidate = scope:holder_candidate
+        #     add = {
+        #         add = 1000
+        #     }
+        # }
     }
 }
