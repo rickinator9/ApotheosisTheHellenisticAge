@@ -1,6 +1,31 @@
 ﻿### Character interior background
 character_view_bg = {
 
+	### ATHA BACKGROUNDS
+
+	######################################
+
+	# Temple of Apollo at Delphi - Exclusive to the Pythia
+
+	texture = {
+		reference = "event_scenes/ATHA_delphi.dds"
+		trigger = {
+			exists = primary_title
+			primary_title = title:d_pythia
+		}
+	}
+
+	environment = {
+		reference = "environment_event_study_physician"
+		trigger = {
+			exists = primary_title
+			primary_title = title:d_pythia
+		}
+	}
+
+
+	### END OF ATHA BACKGROUNDS
+
 	######################################
 
 	# Dead
@@ -1019,6 +1044,6 @@ title_holding = {
 				has_holding_type = church_holding
 			}
 		}
-		reference = "holding_types/temple_generic_grass.dds"
+		reference = "holding_types/temple_greek.dds"
 	}
 }
