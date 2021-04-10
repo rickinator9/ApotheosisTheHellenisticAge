@@ -61,7 +61,7 @@ vassal_role = {
 			is_valid = {
 				scope:vassal.primary_title.tier >= tier_duchy
 				OR = {
-					scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+					scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 					scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
 				}	
 			}
@@ -90,7 +90,7 @@ vassal_role = {
 			is_valid = {
 				scope:vassal.primary_title.tier >= tier_duchy
 				scope:liege = { can_create_dependent_vassals = yes }
-				scope:liege.culture = {	has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = {	has_innovation = innovation_classical_diplomatic_missions }
 			}
 			position = { 1 2 }
 			
@@ -114,7 +114,7 @@ vassal_role = {
 		vassal_role_bureaucracy_civil = {
 			is_valid = {
 				scope:liege = { can_create_bureaucratic_vassals = yes }
-				scope:liege.culture = {	has_innovation = innovation_bureaucracy }
+				scope:liege.culture = {	has_innovation = innovation_classical_bureaucracy }
 			}
 			position = { 2 2 }
 
@@ -132,7 +132,7 @@ vassal_role = {
 		vassal_role_bureaucracy_military = {
 			is_valid = {
 				scope:liege = { can_create_bureaucratic_vassals = yes }
-				scope:liege.culture = {	has_innovation = innovation_fortification_02 }
+				scope:liege.culture = {	has_innovation = innovation_classical_garrisons }
 			}
 			position = { 2 1 }
 
@@ -159,7 +159,7 @@ vassal_role = {
 					}	
 				}
 				scope:liege = { can_create_bureaucratic_vassals = yes }
-				scope:liege.culture = {	has_innovation = innovation_bureaucracy }
+				scope:liege.culture = {	has_innovation = innovation_classical_bureaucracy }
 			}
 			position = { 2 3 }
 
@@ -193,7 +193,7 @@ imposed_franchise = {
 		}
 		imposed_franchise_democratic = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_constitution }
 			}
 			parent = imposed_franchise_none
 			position = { 1 1 }
@@ -206,7 +206,7 @@ imposed_franchise = {
 		}
 		imposed_franchise_oligarchic = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_constitution }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
 			}
 			parent = imposed_franchise_none
@@ -223,7 +223,7 @@ imposed_franchise = {
 		}
 		imposed_franchise_aristocratic = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_constitution }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
 			}
 			parent = imposed_franchise_none
@@ -241,7 +241,7 @@ imposed_franchise = {
 		}
 		imposed_franchise_tyrannic = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_centralisation_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_constitution }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
 			}
 			parent = imposed_franchise_none
@@ -270,7 +270,7 @@ enforced_centralisation = {
 		}
 		enforced_centralisation_low = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 			}
 			parent = enforced_centralisation_none
 			position = { 1 1 }
@@ -281,7 +281,7 @@ enforced_centralisation = {
 		}
 		enforced_centralisation_medium = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
 			}
 			parent = enforced_centralisation_none
@@ -292,7 +292,7 @@ enforced_centralisation = {
 		}
 		enforced_centralisation_high = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
 			}
 			parent = enforced_centralisation_none
@@ -316,7 +316,7 @@ enforced_federalism = {
 		}
 		enforced_federalism_federal = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 			}
 			parent = enforced_federalism_none
 			position = { 1 0 }
@@ -327,7 +327,7 @@ enforced_federalism = {
 		}
 		enforced_federalism_hegemonic = {
 			is_valid = {
-				scope:liege.culture = { has_innovation = innovation_diplomacy_02 }
+				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
 			}
 			parent = enforced_federalism_none
@@ -359,7 +359,7 @@ garrison_rights = {
 		garrison_rights_installed = {
 			is_valid = {
 				scope:liege.culture = {
-					has_innovation = innovation_fortification_02
+					has_innovation = innovation_classical_garrisons
 				}
 				scope:vassal = { 
 					NOT = { vassal_contract_has_flag = has_autonomous_contract }
@@ -394,7 +394,7 @@ ritual_coronations_rights = {
 		ritual_coronations_rights_enforced = {
 			is_valid = {
 				scope:liege.culture = {
-					has_innovation = innovation_partition_02
+					has_innovation = innovation_classical_public_honours
 				}
 			}
 			parent = ritual_coronations_rights_none
@@ -428,7 +428,7 @@ colony_rights = {
 		colony_rights_granted = {
 			is_valid = {
 				scope:liege.culture = {
-					has_innovation = innovation_fortification_02
+					has_innovation = innovation_classical_garrisons
 				}
 			}
 			parent = colony_rights_none
@@ -465,7 +465,7 @@ gift_estate_rights = {
 		gift_estate_rights_granted = {
 			is_valid = {
 				scope:liege.culture = {
-					has_innovation = innovation_partition_03
+					has_innovation = innovation_hellenistic_land_survey
 				}
 			}
 			parent = gift_estate_rights_none

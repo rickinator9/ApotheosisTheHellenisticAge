@@ -1,0 +1,250 @@
+﻿#### Local Types ####
+@administration_1 = "gfx/interface/icons/culture_innovations/innovation_archaic_recordkeeping.dds"
+@administration_2 = "gfx/interface/icons/culture_innovations/innovation_classical_historical_method.dds"
+@administration_3 = "gfx/interface/icons/culture_innovations/innovation_imperial_codices.dds"
+@civil_construction_1 = "gfx/interface/icons/culture_innovations/innovation_civil_construction_01.dds"
+@civil_construction_2 = "gfx/interface/icons/culture_innovations/innovation_civil_construction_02.dds"
+@leadership_1 = "gfx/interface/icons/culture_innovations/innovation_leadership_01.dds"
+@leadership_2 = "gfx/interface/icons/culture_innovations/innovation_leadership_02.dds"
+@raised_banner = "gfx/interface/icons/culture_innovations/innovation_raised_banner.dds"
+@fortifications = "gfx/interface/icons/culture_innovations/innovation_fortifications.dds"
+@siege_weapons = "gfx/interface/icons/culture_innovations/innovation_siege_weapons.dds"
+@levy_building = "gfx/interface/icons/culture_innovations/innovation_levy_building.dds"
+@maa_01 = "gfx/interface/icons/culture_innovations/innovation_maa_01.dds"
+@maa_02 = "gfx/interface/icons/culture_innovations/innovation_maa_02.dds"
+@weapons_and_armor_01 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_01.dds"
+@weapons_and_armor_02 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_02.dds"
+@knight = "gfx/interface/icons/culture_innovations/innovation_knight.dds"
+@hird = "gfx/interface/icons/culture_innovations/innovation_hird.dds"
+@longboats = "gfx/interface/icons/culture_innovations/innovation_longboats.dds"
+@majesty_01 = "gfx/interface/icons/culture_innovations/innovation_majesty_01.dds"
+@majesty_02 = "gfx/interface/icons/culture_innovations/innovation_majesty_02.dds"
+@majesty_03 = "gfx/interface/icons/culture_innovations/innovation_majesty_03.dds"
+@nobility_01 = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+@nobility_02 = "gfx/interface/icons/culture_innovations/innovation_nobility_02.dds"
+@nobility_03 = "gfx/interface/icons/culture_innovations/innovation_nobility_03.dds"
+@nobility_04 = "gfx/interface/icons/culture_innovations/innovation_nobility_04.dds"
+@misc_inventions = "gfx/interface/icons/culture_innovations/innovation_misc_inventions.dds"
+
+@camel = "gfx/interface/icons/culture_innovations/innovation_camel.dds"
+@elephant = "gfx/interface/icons/culture_innovations/innovation_elephant.dds"
+@special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
+@special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
+
+### CLASSICAL ERA INNOVATIONS
+
+#culture_group_military
+
+# Picked Troops
+innovation_classical_picked_troops = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @maa_02
+
+	modifier = {
+		men_at_arms_cap = 1
+		men_at_arms_limit = 3
+		knight_effectiveness_mult = 0.2
+	}
+
+	unlock_maa = armored_horsemen
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Mustering Grounds
+innovation_classical_mustering_grounds = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @levy_building
+
+	custom = unlock_early_medieval_military_buildings
+
+	modifier = {
+		levy_reinforcement_rate = 0.15
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Garrisons
+innovation_classical_garrisons = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @fortifications
+
+	custom = unlock_early_medieval_fortification_buildings
+	custom = unlock_colony_holdings
+	custom = unlock_military_command_contract
+
+	modifier = {
+		levy_size = 0.05
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Siege Towers
+innovation_classical_siege_towers = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @siege_weapons
+
+	unlock_maa = siege_tower
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Thyreós
+innovation_classical_thyreos = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @weapons_and_armor_02
+
+	maa_upgrade = {
+		type = skirmishers
+		toughness = 3
+	}
+	maa_upgrade = {
+		type = light_cavalry
+		toughness = 3
+	}
+
+	custom = unlock_thyreophoroi_maa
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Trilobate Arrowheads
+innovation_classical_trilobate_arrowheads = {
+	group = culture_group_military
+	culture_era = culture_era_classical
+	icon = @weapons_and_armor_01
+
+	maa_upgrade = {
+		type = archers
+		damage = 3
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+
+#culture_group_civic
+
+# Historical Method
+innovation_classical_historical_method = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @administration_1
+
+	unlock_casus_belli = individual_duchy_de_jure_cb
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Constitution
+innovation_classical_constitution = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @administration_3
+
+	unlock_law = crown_authority_2
+
+	custom = reduce_desired_franchise_shift
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Winch and Pulley
+innovation_classical_winch_and_pulley = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @civil_construction_1
+
+	custom = unlock_early_medieval_economic_buildings
+
+	modifier = {
+		build_speed = -0.1
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Monetary Standards
+innovation_classical_monetary_standards = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @administration_2
+	
+	custom = unlock_coinage_rights_contract
+
+	modifier = {
+		development_growth_factor = 0.1
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Hippodamian Plan
+innovation_classical_hippodamian_plan = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @civil_construction_2
+
+	custom = reduce_develop_county_penalty_02
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Diplomatic Missions
+innovation_classical_diplomatic_missions = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @nobility_02
+
+	custom = unlock_reform_coalition_decision
+	custom = cb_discount_prestige_10
+
+	modifier = {
+		diplomatic_range_mult = 0.25
+		independent_ruler_opinion = 5
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Public Honours
+innovation_classical_public_honours = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @majesty_02
+	
+	custom = unlock_commission_statue_decision
+
+	unlock_law = partition_succession_law
+	modifier = {
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+# Bureaucracy
+innovation_classical_bureaucracy = {
+	group = culture_group_civic
+	culture_era = culture_era_classical
+	icon = @leadership_1
+
+	custom = unlock_civic_bureaucracy_contract
+
+	modifier = {
+		direct_vassal_opinion = 5
+		vassal_tax_contribution_mult = 0.1
+	}
+
+	flag = global_regular
+	flag = early_medieval_era_regular
+}
+
+#culture_group_regional
