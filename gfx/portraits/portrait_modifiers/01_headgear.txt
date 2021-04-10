@@ -752,50 +752,50 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 101 # larger than the western war headgear
-				portrait_wear_helmet_trigger = yes
-				portrait_dde_hre_clothing_trigger = yes
+			# modifier = {
+			# 	add = 101 # larger than the western war headgear
+			# 	portrait_wear_helmet_trigger = yes
+			# 	portrait_dde_hre_clothing_trigger = yes
 				
-				NOR = {
-				    AND = {
-				        religion = religion:christianity_religion
-				        has_government = holy_order_government
-				    }
-				    AND = {
-				        religion = religion:christianity_religion
-				        is_landed = no
-				        portrait_wear_armor_trigger = yes
-				        exists = liege
-				        liege = {
-				            has_government = holy_order_government
-				        }
-				    }
-				    AND = {
-				        religion = religion:christianity_religion
-				        portrait_wear_armor_trigger = yes
-				        OR = {
-				            any_character_war = {
-				                OR = {
-				                    using_cb = undirected_great_holy_war
-				                    using_cb = directed_great_holy_war
-				                }
-				                is_attacker = prev
-				            }
-				            any_liege_or_above = {
-				                faith = prev.faith
-				                any_character_war = {
-				                    OR = {
-				                        using_cb = undirected_great_holy_war
-				                        using_cb = directed_great_holy_war
-				                    }
-				                    is_attacker = prev
-				                }
-				            }
-				        }
-				    }
-				}
-			}
+			# 	NOR = {
+			# 	    AND = {
+			# 	        religion = religion:christianity_religion
+			# 	        has_government = holy_order_government
+			# 	    }
+			# 	    AND = {
+			# 	        religion = religion:christianity_religion
+			# 	        is_landed = no
+			# 	        portrait_wear_armor_trigger = yes
+			# 	        exists = liege
+			# 	        liege = {
+			# 	            has_government = holy_order_government
+			# 	        }
+			# 	    }
+			# 	    AND = {
+			# 	        religion = religion:christianity_religion
+			# 	        portrait_wear_armor_trigger = yes
+			# 	        OR = {
+			# 	            any_character_war = {
+			# 	                OR = {
+			# 	                    using_cb = undirected_great_holy_war
+			# 	                    using_cb = directed_great_holy_war
+			# 	                }
+			# 	                is_attacker = prev
+			# 	            }
+			# 	            any_liege_or_above = {
+			# 	                faith = prev.faith
+			# 	                any_character_war = {
+			# 	                    OR = {
+			# 	                        using_cb = undirected_great_holy_war
+			# 	                        using_cb = directed_great_holy_war
+			# 	                    }
+			# 	                    is_attacker = prev
+			# 	                }
+			# 	            }
+			# 	        }
+			# 	    }
+			# 	}
+			# }
 		}
 	}
 

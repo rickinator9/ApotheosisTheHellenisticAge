@@ -71,20 +71,16 @@ fp1_is_coastal_norse_tribal = {
 }
 
 fp1_is_in_scandinavia = {
-	always = no
-
-	# capital_county.title_province = { geographical_region = world_europe_north }
+	capital_county.title_province = { geographical_region = world_europe_north }
 }
 
 fp1_is_in_scandinavian_colonies = {
-	always = no
-
-	# capital_county.title_province = {
-	# 	OR = {
-	# 		geographical_region = world_europe_west_britannia
-	# 		geographical_region = dlc_fp1_region_colonial_eastern_europe
-	# 	}
-	# }
+	capital_county.title_province = {
+		OR = {
+			geographical_region = world_europe_west_britannia
+			geographical_region = dlc_fp1_region_colonial_eastern_europe
+		}
+	}
 }
 
 fp1_is_in_scandinavia_or_colonies = {
@@ -166,10 +162,12 @@ suitable_shieldmaiden_gaoler_trigger = {
 # Interaction Triggers
 
 basic_can_have_trial_by_combat_trigger = {
-	OR = {
-		culture_group = culture_group:north_germanic_group
-		culture = culture:norman
-	}
+	always = no
+	# TODO: Which cultures can have trials by combat?
+	# OR = {
+	# 	culture_group = culture_group:north_germanic_group
+	# 	culture = culture:norman
+	# }
 }
 
 can_have_trial_by_combat_trigger = {
@@ -206,46 +204,14 @@ gruesome_sacrifices_grand_blot_can_continue_trigger = {
 
 fp1_valid_norse_faith_for_jomsvikings_trigger = {
 	always = no
-
-	# religion = religion:germanic_religion
-	# has_doctrine = unreformed_faith_doctrine
 }
 
 fp1_jomsvikings_have_not_existed_trigger = {
 	always = no
-
-	# # They've already been destroyed in 1066.
-	# game_start_date < 1000.1.1
-	# NOR = {
-	# 	# And otherwise can't currently be created.
-	# 	exists = global_var:jomsvikings_title
-	# 	# Nor should they have been made via decision or event.
-	# 	is_target_in_global_variable_list = {
-	# 		name = unavailable_unique_decisions
-	# 		target = flag:flag_forged_jomvikings
-	# 	}
-	# }
 }
 
 fp1_valid_county_for_jomsvikings_trigger = {
 	always = no
-
-	# tier = tier_county
-	# is_coastal_county = yes
-	# custom_description = {
-	# 	text = forge_the_jomsvikings_decision.tt.is_in_correct_region
-	# 	title_province = { geographical_region = dlc_fp1_region_non_scandinavian_southern_baltic }
-	# }
-	# any_county_province = {
-	# 	custom_description = {
-	# 		text = forge_the_jomsvikings_decision.tt.empty_castle_or_city
-	# 		OR = {
-	# 			has_holding = no
-	# 			has_holding_type = castle_holding
-	# 			has_holding_type = city_holding
-	# 		}
-	# 	}
-	# }
 }
 
 ##################################################
@@ -253,26 +219,14 @@ fp1_valid_county_for_jomsvikings_trigger = {
 
 fp1_achievement_culture_norse_trigger = {
 	always = no
-
-	# OR = {
-	# 	culture_group = culture_group:north_germanic_group
-	# 	culture = culture:norman
-	# }
 }
 
 fp1_achievement_culture_norse_or_rus_trigger = {
 	always = no
-
-	# OR = {
-	# 	fp1_achievement_culture_norse_trigger = yes
-	# 	culture = culture:russian
-	# }
 }
 
 fp1_achievement_religious_norse_trigger = {
 	always = no
-
-	# religion = religion:germanic_religion
 }
 
 fp1_achievement_culture_plus_religion_norse_trigger = {

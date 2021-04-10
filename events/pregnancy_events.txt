@@ -920,6 +920,9 @@ pregnancy.3001 = {
 				has_character_flag = pregnancy_real_father_knows
 			}
 		}
+
+		#Safety block for spouses that are also lovers, since this event is for bastard fathers
+		NOT = { is_consort_of = scope:mother }
 	}
 
 
@@ -935,9 +938,6 @@ pregnancy.3001 = {
 				}
 			}
 		}
-
-		#Safety block for spouses that are also lovers, since this event is for bastard fathers
-		NOT = { is_consort_of = scope:mother }
 	}
 
 	option = { #Could it be...

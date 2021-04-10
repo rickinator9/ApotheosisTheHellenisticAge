@@ -463,13 +463,11 @@ pool_repopulate_local_flavor = {
 	random_traits = yes
 	faith = root.faith
 	
-	random_culture = {
-		root.culture = {
-			trigger = {
-				root.faith = { religion = { is_in_family = rf_all } }
-			}
-		}
-	}
+	culture = root.culture
+	# random_culture = {
+# 	# TODO: Define some local cultures. Uses the same culture as ROOT for now.
+	# 	root.culture
+	# }
 	
 	learning = {
 		min_guest_template_skill max_guest_template_skill
@@ -509,7 +507,7 @@ pool_repopulate_local_flavor = {
 	after_creation = {
 		if = {
 			limit = {
-				religion = { is_in_family = rf_all }
+				always = yes # Used to be religion = { is_in_family = rf_pagan }
 			}
 			random_list = {
 				10 = {
