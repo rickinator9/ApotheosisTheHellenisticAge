@@ -2833,41 +2833,10 @@ undirected_great_holy_war = {
 			save_scope_as = the_ghw
 		}
 		force_truce_GHW_defenders_effect = yes
-		every_player = { #Fluff for attackers/defenders
-			limit = {
-				scope:attacker.faith.great_holy_war = {
-					OR = {
-						has_pledged_attacker = prev
-						has_pledged_defender = prev
-					}
-				}
-			}
-			trigger_event = great_holy_war.0051
-		}
 		on_declared_war = yes
 		scope:attacker.faith.great_holy_war = {
 			divide_war_chest = {
 				fraction = ghw_war_start_handout_percentage
-			}
-		}
-
-		# First of the Crusader Kings achievement tracking.
-		if = {
-			limit = {
-				scope:attacker.faith = faith:catholic
-				NOT = { exists = global_var:had_first_catholic_crusade }
-			}
-			# Credit where chredit is due.
-			scope:attacker.faith.great_holy_war = {
-				every_pledged_attacker = {
-					limit = { fp1_achievement_culture_norse_trigger = yes }
-					add_character_flag = first_of_the_crusader_kings_achievement_flag
-				}
-			}
-			# Mark the first crusade as having happened.
-			set_global_variable = {
-				name = had_first_catholic_crusade
-				value = yes
 			}
 		}
 
@@ -2891,10 +2860,6 @@ undirected_great_holy_war = {
 		}
 		scope:attacker.faith.great_holy_war = {
 			save_scope_as = the_ghw
-		}
-		every_player = {
-			limit = { is_within_diplo_range = { CHARACTER = scope:defender } }
-			trigger_event = great_holy_war.0056
 		}
 		hidden_effect = {
 			if = { #Clear pledged gold flag.
@@ -3141,18 +3106,6 @@ undirected_great_holy_war = {
 		}
 
 		hidden_effect = {
-			every_player = { #Fluff for players
-				limit = {
-					OR = {
-						this = scope:attacker
-						this = scope:defender
-						any_war_enemy = { this = scope:attacker }
-						any_war_enemy = { this = scope:defender }
-						is_within_diplo_range = { CHARACTER = scope:defender }
-					}
-				}
-				trigger_event = great_holy_war.0052 #Differentiate depending on faith (compared to scope:attacker)
-			}
 
 			if = {
 				limit = { exists = scope:title_recipient }
@@ -3239,37 +3192,6 @@ undirected_great_holy_war = {
 					add_gold = 500 # Some extra plunder
 					add_prestige = 500
 					add_piety = 500
-				}
-			}
-			scope:attacker.faith.great_holy_war = { #Give Prestige/Piety modifier to Dynasty/House of the winners' Beneficiaries (only if they gained any land in the GHW).
-				every_pledged_attacker = {
-					limit = { exists = ghw_beneficiary }
-					ghw_beneficiary = { trigger_event = great_holy_war.0061 }
-				}
-				if = { #Chance to switch-play to Crusader King.
-					limit = {
-						exists = scope:title_recipient
-						exists = scope:title_recipient.dynasty
-						scope:title_recipient = {
-							is_ai = yes
-							has_trait = crusader_king
-						}
-						any_pledged_attacker = {
-							is_ai = no
-							dynasty = scope:title_recipient.dynasty
-						}
-					}
-					random_pledged_attacker = {
-						limit = {
-							is_ai = no
-							dynasty = scope:title_recipient.dynasty
-							scope:title_recipient = {
-								is_ai = yes
-								has_trait = crusader_king
-							}
-						}
-						trigger_event = { id = great_holy_war.0070 days = 5 }
-					}
 				}
 			}
 		}
@@ -3361,19 +3283,6 @@ undirected_great_holy_war = {
 					add_achievement_flag = { FLAG = achievement_for_the_faith_flag }
 				}
 			}
-		}
-
-		every_player = { #Fluff for players
-			limit = {
-				OR = {
-					this = scope:attacker
-					this = scope:defender
-					any_war_enemy = { this = scope:attacker }
-					any_war_enemy = { this = scope:defender }
-					is_within_diplo_range = { CHARACTER = scope:defender }
-				}
-			}
-			trigger_event = great_holy_war.0053 #Differentiate depending on faith (compared to scope:attacker)
 		}
 
 		# Truce
@@ -3506,16 +3415,6 @@ directed_great_holy_war = {
 				}
 			}
 		}
-		scope:attacker.faith.great_holy_war = {
-			every_pledged_attacker = { #Add Beneficiary automatically on victory of direct GHW for any attacker that doesn't have one already.
-				limit = {
-					NOT = {
-						exists = ghw_beneficiary
-					}
-				}
-				trigger_event = great_holy_war.0026
-			}
-		}
 		scope:attacker.faith.great_holy_war.ghw_target_title = {
 			save_scope_as = target_kingdom
 		}
@@ -3535,54 +3434,7 @@ directed_great_holy_war = {
 			save_scope_as = the_ghw
 		}
 		force_truce_GHW_defenders_effect = yes
-		hidden_effect = {
-			every_ruler = {
-				limit = {
-					faith = scope:attacker.faith
-					is_ai = yes
-					is_landed = yes
-					highest_held_title_tier >= tier_county
-					NOT = { this = scope:ghw_sponsor }
-					exists = scope:attacker.faith.great_holy_war
-					NOT = { scope:attacker.faith.great_holy_war = { has_pledged_attacker = prev } }
-				}
-				trigger_event = great_holy_war.0092 #AI pledging.
-			}
-			every_ruler = {
-				limit = {
-					faith = scope:defender.faith
-					is_ai = yes
-					is_landed = yes
-					highest_held_title_tier >= tier_county
-					exists = scope:attacker.faith.great_holy_war
-					NOT = { scope:attacker.faith.great_holy_war = { has_pledged_defender = prev } }
-					NOT = { scope:defender = top_liege }
-				}
-				trigger_event = great_holy_war.0093 #AI counterpledging.
-			}
-			scope:attacker.faith = {
-				every_faith_holy_order = {
-					trigger_event = great_holy_war.0090 # Holy orders always join
-				}
-			}
-			scope:defender.faith = {
-				every_faith_holy_order = {
-					trigger_event = great_holy_war.0091 # Holy orders always join
-				}
-			}
-		}
 
-		every_player = { #Fluff for attackers/defenders
-			limit = {
-				OR = {
-					faith = scope:the_faith
-					faith = scope:ghw_defender.faith
-					is_vassal_of = scope:attacker
-					is_vassal_of = scope:defender
-				}
-			}
-			trigger_event = great_holy_war.0071
-		}
 		on_declared_war = yes
 
 		debug_log = directed_ghw_debug_loc
@@ -3719,12 +3571,6 @@ directed_great_holy_war = {
 					}
 				}
 			}
-			scope:attacker.faith.great_holy_war = { #Give Prestige/Piety modifier to Dynasty/House of the winners' Beneficiaries (only if they gained any land in the GHW).
-				every_pledged_attacker = {
-					limit = { exists = ghw_beneficiary }
-					ghw_beneficiary = { trigger_event = great_holy_war.0061 }
-				}
-			}
 		}
 
 		scope:attacker.faith = {
@@ -3736,19 +3582,6 @@ directed_great_holy_war = {
 
 		#Truce between the chief beneficiary & all defenders
 		add_truce_GHW_attacker_victory_effect = yes
-
-		every_player = { #Fluff for players
-			limit = {
-				OR = {
-					this = scope:attacker
-					this = scope:defender
-					any_war_enemy = { this = scope:attacker }
-					any_war_enemy = { this = scope:defender }
-					is_within_diplo_range = { CHARACTER = scope:defender }
-				}
-			}
-			trigger_event = great_holy_war.0052 #Differentiate depending on faith (compared to scope:attacker)
-		}
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
@@ -3790,19 +3623,6 @@ directed_great_holy_war = {
 					add_achievement_flag = { FLAG = achievement_for_the_faith_flag }
 				}
 			}
-		}
-
-		every_player = { #Fluff for players
-			limit = {
-				OR = {
-					this = scope:attacker
-					this = scope:defender
-					any_war_enemy = { this = scope:attacker }
-					any_war_enemy = { this = scope:defender }
-					is_within_diplo_range = { CHARACTER = scope:defender }
-				}
-			}
-			trigger_event = great_holy_war.0053 #Differentiate depending on faith (compared to scope:attacker)
 		}
 
 		# Truce

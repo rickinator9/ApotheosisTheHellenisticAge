@@ -1276,13 +1276,14 @@ imperial_reconquest_cb = {
 	mutually_exclusive_titles = { always = yes }
 
 	allowed_for_character = {
-		scope:attacker = {
-			has_title = title:e_roman_empire
-			OR = {
-				faith.religion = faith:catholic.religion #Either Christian
-				faith.religion = faith:hellenic_pagan.religion #Or Hellenic
-			}
-		}
+		always = no
+		# scope:attacker = {
+		# 	has_title = title:e_roman_empire
+		# 	OR = {
+		# 		faith.religion = faith:catholic.religion #Either Christian
+		# 		faith.religion = faith:hellenic_pagan.religion #Or Hellenic
+		# 	}
+		# }
 	}
 	
 	allowed_against_character = {
@@ -1528,15 +1529,6 @@ dismantle_holy_pretender_cb = {
 		}
 		# truce
 		add_truce_attacker_victory_effect = yes
-
-		hidden_effect = {
-			scope:attacker = {
-				trigger_event = roman_restoration.0162
-			}
-			scope:defender = {
-				trigger_event = roman_restoration.0163
-			}
-		}
 	}
 
 	on_defeat_desc = {
@@ -1573,15 +1565,6 @@ dismantle_holy_pretender_cb = {
 	
 		# Truce
 		add_truce_attacker_defeat_effect = yes
-
-		hidden_effect = {
-			scope:attacker = {
-				trigger_event = roman_restoration.0164
-			}
-			scope:defender = {
-				trigger_event = roman_restoration.0165
-			}
-		}
 		
 		scope:attacker = {
 			save_temporary_scope_as = loser
@@ -1674,15 +1657,6 @@ dismantle_byz_pretender_cb = {
 		
 		# truce
 		add_truce_attacker_victory_effect = yes
-
-		hidden_effect = {
-			scope:attacker = {
-				trigger_event = roman_restoration.0172
-			}
-			scope:defender = {
-				trigger_event = roman_restoration.0173
-			}
-		}
 	}
 
 	on_defeat_desc = {
@@ -1719,15 +1693,6 @@ dismantle_byz_pretender_cb = {
 
 		# Truce
 		add_truce_attacker_defeat_effect = yes
-	
-		hidden_effect = {
-			scope:attacker = {
-				trigger_event = roman_restoration.0174
-			}
-			scope:defender = {
-				trigger_event = roman_restoration.0175
-			}
-		}
 		
 		scope:attacker = {
 			save_temporary_scope_as = loser

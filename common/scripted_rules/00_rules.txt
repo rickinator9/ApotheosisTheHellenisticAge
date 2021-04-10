@@ -338,18 +338,19 @@ can_raid_across_water = {
 # Can this character traverse rivers using boats?
 # root: the owner of the army
 can_traverse_river = {
-	OR = {
-		culture = {
-			OR = {
-				has_innovation = innovation_longboats
-				has_innovation = innovation_african_canoes
-			}
-		}
-		AND = {
-			exists = dynasty
-			dynasty = { has_dynasty_modifier = fp1_legacy_of_piracy_modifier }
-		}
-	}
+	always = no # TODO: Identify who can traverse rivers.
+	# OR = {
+	# 	culture = {
+	# 		OR = {
+	# 			has_innovation = innovation_longboats
+	# 			has_innovation = innovation_african_canoes
+	# 		}
+	# 	}
+	# 	AND = {
+	# 		exists = dynasty
+	# 		dynasty = { has_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+	# 	}
+	# }
 }
 
 #Is this character hard blocked from backing a scheme?

@@ -327,7 +327,7 @@ set_local_venomous_creature_effect = {
 			modifier = {
 				factor = 0
 				NOT = {
-					location = { geographical_region = world_elam }
+					location = { geographical_region = world_india }
 				}
 			}
 		}
@@ -340,8 +340,9 @@ set_local_venomous_creature_effect = {
 				factor = 0
 				location = {
 					OR = {
-						geographical_region = world_greekaegean
-						geographical_region = world_anatolia
+						geographical_region = world_africa_north
+						geographical_region = world_middle_east
+						geographical_region = world_asia_minor
 					}
 				}
 			}
@@ -355,8 +356,9 @@ set_local_venomous_creature_effect = {
 				factor = 0
 				location = {
 					OR = {
-						geographical_region = world_greekaegean
-						geographical_region = world_anatolia
+						geographical_region = world_middle_east
+						geographical_region = world_africa_north_east
+						geographical_region = world_africa_east
 					}
 				}
 			}
@@ -370,8 +372,7 @@ set_local_venomous_creature_effect = {
 				factor = 0
 				location = {
 					NOR = {
-						geographical_region = world_greekaegean
-						geographical_region = world_anatolia
+						geographical_region = world_europe
 					}
 				}
 			}
@@ -383,8 +384,11 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_nubia }
+				location = {
+					NOR = {
+						geographical_region = world_africa_west
+						geographical_region = world_africa_east
+					}
 				}
 			}
 		}
@@ -395,8 +399,11 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_nubia }
+				location = {
+					NOR = {
+						geographical_region = world_africa_west
+						geographical_region = world_africa_east
+					}
 				}
 			}
 		}
@@ -407,10 +414,8 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_elam
-					}
+				NOT = {
+					location = { geographical_region = world_india }
 				}
 			}
 		}
@@ -422,7 +427,7 @@ set_local_venomous_creature_effect = {
 			modifier = {
 				factor = 0
 				NOT = {
-					location = { geographical_region = world_elam }
+					location = { geographical_region = world_india }
 				}
 			}
 		}
@@ -434,9 +439,11 @@ set_local_venomous_creature_effect = {
 			modifier = {
 				factor = 0
 				location = {
-					OR = {
-						geographical_region = world_greekaegean
-						geographical_region = world_anatolia
+					NOR = {
+						geographical_region = world_middle_east
+						geographical_region = world_africa_north_east
+						geographical_region = world_africa_east
+						geographical_region = world_india
 					}
 				}
 			}
