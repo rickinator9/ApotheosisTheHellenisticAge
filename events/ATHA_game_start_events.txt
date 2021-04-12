@@ -174,3 +174,24 @@ ATHA_game_start.3 = {
 		}
 	}
 }
+
+# Add/subtract building slots from certain holding types
+ATHA_game_start.4 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_province = {
+			if = {
+				limit = { has_holding_type = fort_holding }
+
+				add_building_slot = -1
+			}
+			else_if = {
+				limit = { has_holding_type = castle_holding }
+
+				add_building_slot = 1
+			}
+		}
+	}
+}
