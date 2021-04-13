@@ -216,6 +216,20 @@
 
 	tenet_communion = {
 		icon = core_tenet_chalice
+
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						always = no
+						# religion_tag = christianity_religion
+					}
+					desc = tenet_communion_name
+				}
+				desc = tenet_communion_name_alternate
+			}
+		}
+
 		piety_cost = {
 			if = {
 				limit = {
@@ -363,6 +377,19 @@
 
 	tenet_gnosticism = {
 		icon = core_tenet_gnostic
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						always = no
+						# religion_tag = christianity_religion
+					}
+					desc = tenet_gnosticism_name
+				}
+				desc = tenet_gnosticism_name_alternate
+			}
+		}
+
 		piety_cost = {
 			if = {
 				limit = {
@@ -475,6 +502,29 @@
 
 	tenet_monasticism = {
 		icon = core_tenet_meditation
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						always = no
+						# religion_tag = christianity_religion
+						# religion_tag = buddhism_religion
+						# religion_tag = hinduism_religion
+						# religion_tag = jainism_religion
+					}
+					desc = tenet_monasticism_name
+				}
+				triggered_desc = {
+					trigger = {
+						always = no
+						# religion_tag = judaism_religion
+					}
+					desc = tenet_monasticism_name_judaism
+				}
+				desc = tenet_monasticism_name_alternate
+			}
+		}
+
 		piety_cost = {
 			if = {
 				limit = {
