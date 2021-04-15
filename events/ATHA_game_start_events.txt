@@ -44,6 +44,14 @@ ATHA_game_start.2 = {
 
 				primary_title = { add_title_law = democratic_succession_law }
 			}
+			if = {
+				limit = { 
+					highest_held_title_tier >= tier_duchy
+					has_government = city_state_oligarchic_government
+				}
+
+				primary_title = { add_title_law = oligarchic_succession_law }
+			}
 		}
 	}
 }
