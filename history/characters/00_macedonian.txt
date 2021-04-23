@@ -2300,7 +2300,7 @@ macedonian02902 = {
 	3473.9.1 = {
 		death = { # 281 BC
 			death_reason = death_murder_known
-			#killer = ... # Ptolemaios Keraunos
+			killer = macedonian03107 # Ptolemaios Keraunos
 		}
 	}
 }
@@ -2494,7 +2494,7 @@ macedonian02910 = {
 	}
 	3501.1.1 = { # 253 BC, he divorces Laodike and marries Berenike (daughter of Ptolemy II).
 		remove_spouse = macedonian02404 # Laodike
-		# add_spouse = ... # Berenike.
+		add_spouse = macedonian03116 # Berenike.
 	}
 	3508.7.1 = { # 246 BC in the summer.
 		death = {
@@ -2522,5 +2522,508 @@ macedonian02911 = {
 		# Stratonike may have raised a rebellion against Seleucus II at Antioch, but this is without much evidence.
 		# She seems to dissapear from history after her divorce of Demetrius.
 		death = yes # 235 BC
+	}
+}
+
+# Ptolemaion - Ptolemies
+
+macedonian03101 = {
+	name = "Lagos" # Father of Ptolemy I
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	# Don't know enough about him to identify traits.
+
+	3364.1.1 = { # Made up.
+		birth = yes # 390 BC
+	}
+	# Likely marries Arsinoe 367 BC.
+	3416.1.1 = { # Made up
+		death = yes # 338 BC
+	}
+}
+
+macedonian03102 = {
+	name = "Ptolemaios" # Ptolemy I "Soter"
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith # Probably too early for the Alexander cult.
+	culture = macedonian
+
+	father = macedonian03101 # Lagos
+	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
+
+	trait = education_stewardship_4 # Ptolemy was not known for his martial ability; he did however consolidate his control on Egypt very effectively.
+	trait = ambitious # Showed the first signs out of any Diadochi king when he seized Alexander's body.
+	trait = lustful # He had a ton of kids and some mistresses as well.
+	trait = patient # He was known for his caution.
+	diplomacy = 8
+	martial = 6
+	stewardship = 9
+	intrigue = 5
+	learning = 6
+	prowess = 5
+
+	3387.1.1 = {
+		birth = yes # 367 BC
+	}
+	# Takes Thaïs as a mistress between 334 - 330 BC.
+	# 324 BC, marries Artakama.
+	# 323-322 BC, divorces Artakama.
+	# 320-319 BC, marries Eurydike.
+	# 317 BC, takes Berenike I as a mistress.
+	# 317-314 BC, marries Berenike I.
+	# Ptolemy possibly repudiates Eurydike when he appoints Ptolemy II as his successor.
+	3472.5.1 = {
+		give_nickname = nick_soter # The 'Soter' nickname was probably popularized posthumously by his successor.
+		death = yes # 282 BC
+	}
+}
+
+macedonian03103 = {
+	name = "Menelaus" # Brother of Ptolemy
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03101 # Lagos
+	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
+
+	3391.1.1 = { # Made up
+		birth = yes # 363 BC
+	}
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3478.1.1 = { # Made up. Last attested in 281 BC.
+		death = yes # 276 BC
+	}
+}
+
+# Children of Ptolemy I
+
+macedonian03104 = {
+	name = "Lagos" # Son of Ptolemy I by Thais
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Thais
+
+	trait = brave # Probably need some courage to participate in chariot races!
+	trait = child_of_concubine_female # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
+
+	3425.1.1 = { # Made up. Probably between 326-330 BC.
+		birth = yes # 329 BC
+	}
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3491.1.1 = { # Made up. Last attested in 308 BC when winning the chariot race in Arcadia.
+		death = yes # 263 BC
+	}
+}
+
+macedonian03105 = {
+	name = "Eirene" # Daughter of Ptolemy I by Thais
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Thais
+
+	trait = child_of_concubine_female # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
+
+	3427.1.1 = { # Made up. Probably between 325-330 BC.
+		birth = yes # 327 BC
+	}
+	3461.1.1 = { # Made up. Last attested marrying Eunostos of Soli around 310-320 BC.
+		death = yes # 293 BC
+	}
+}
+
+macedonian03106 = {
+	name = "Leontiskos" # Son of Ptolemy I by Thais
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Thais
+
+	trait = child_of_concubine_female # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
+
+	3431.1.1 = { # Made up.
+		birth = yes # 323 BC
+	}
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3491.1.1 = { # Made up. Last attested in 308 BC when winning the chariot race in Arcadia.
+		death = yes # 263 BC
+	}
+}
+
+macedonian03107 = {
+	name = "Ptolemaios" # Keraunos. Son of Ptolemy I by Eurydike.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	trait = education_intrigue_3 # Seems to mainly have been skulking about in the shadows of the courts.
+	trait = ambitious
+	trait = arrogant # This guy really wanted a crown for his own.
+	trait = deceitful # Seeing how he manipulated Arsinoe in marrying him and killing her children afterwards.
+
+	3435.1.1 = {
+		birth = yes # 319 BC
+	}
+	3470.1.1 = { # 284 BC.
+		add_trait = disinherited # He is passed over in favour of Ptolemy II.
+	}
+	3473.9.1 = { # 281 BC upon killing Seleucus.
+		add_trait = murderer
+		give_nickname = nick_keraunos
+	}
+	3474.1.1 = { # 280 BC
+		add_spouse = macedonian03113 # Arsinoe II
+	}
+	3474.2.1 = { # 280 BC
+		# After killing his sister's sons, she flees to Samothrace.
+		add_trait = kinslayer_3
+		remove_spouse = macedonian03113 # Arsinoe II
+	}
+	# Marries Arsinoe II in the winter of 281/280 BC.
+	3475.1.1 = { # Dies in battle (technically beheaded after being captured) against the Gauls.
+		add_trait = wounded_1 # Wounded in the battle.
+		death = { # 279 BC
+			death_reason = death_decapitated
+		}
+	}
+}
+
+macedonian03108 = {
+	name = "Meleagros" # King of Macedon. Son of Ptolemy I by Eurydike.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	3437.1.1 = { # Made up.
+		birth = yes # 317 BC
+	}
+	3475.4.1 = { # 279 BC. Kicked off the Macedonian throne.
+		add_pressed_claim = k_makedonia
+	}
+	3494.1.1 = { # Made up. Last attested in 279 BC.
+		death = yes # 260 BC
+	}
+}
+
+macedonian03109 = {
+	name = "Antipatros" # "Unknown" son of Ptolemy I by Eurydike. Executed by Ptolemy II.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	3441.1.1 = { # Made up.
+		birth = yes # 315 BC
+	}
+	3473.1.1 = { # Executed by Ptolemy II in what was likely his first year as king.
+		death = { # 281 BC
+			death_reason = death_execution
+			killer = macedonian03115 # Ptolemy II
+		}
+	}
+}
+
+macedonian03110 = {
+	name = "Lysandra" # Wife to Alexander V and Agathocles. Daughter of Ptolemy I by Eurydike.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	3442.1.1 = { # Made up.
+		birth = yes # 314 BC
+	}
+	# Marries Alexander V in Sept 297 BC.
+	# Marries Agathocles at some point after the death of Alexander V.
+	3490.1.1 = { # Made up.
+		death = yes # 266 BC
+	}
+}
+
+macedonian03111 = {
+	name = "Ptolemais" # Wife to Demetrios I. Daughter of Ptolemy I by Eurydike.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	3442.1.1 = { # Made up.
+		birth = yes # 312 BC
+	}
+	# Engaged to Demetrius around 299 BC. Possibly too young to be married immediately.
+	# Marries Demetrius Poliorketes in 287 BC.
+	3484.1.1 = { # Made up. She gave birth to Demetrius the Fair in 285 BC in this mod, so must have died afterwards.
+		death = yes # 270 BC
+	}
+}
+
+macedonian03112 = {
+	name = "Argaios" # Son of Ptolemy I by Eurydike. Executed by Ptolemy II.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Eurydike
+
+	trait = deceitful # Possibly plotting rebellion against Ptolemy II.
+
+	3445.1.1 = { # Made up.
+		birth = yes # 309 BC
+	}
+	3473.1.1 = { # Executed by Ptolemy II in what was possibly his first year as king.
+		death = { # 281 BC
+			death_reason = death_execution
+			killer = macedonian03115 # Ptolemy II
+		}
+	}
+}
+
+macedonian03113 = {
+	name = "Arsinoe" # Daughter of Ptolemy I by Berenike. Married Lysimachus, Ptolemy Keraunos and Ptolemy II.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Berenike
+
+	trait = education_intrigue_2 # She manipulated Lysimachus into killing his firstborn son.
+	trait = trusting # She trusted Keraunos.
+
+	3438.1.1 = {
+		birth = yes # 316 BC
+	}
+	# Marries Lysimachus in 299 BC.
+	# Marries Ptolemy Keraunos in 280 BC.
+	# Divorces him one month after as she flees after her sons are killed.
+	3481.1.1 = { # Marries Ptolemy II in 273 BC and becomes part of the Ptolemaic ruler cult.
+		religion = soterism_faith
+		give_nickname = nick_philadelphos
+	}
+	3486.7.1 = { # The death of Arsinoe is very controversial and often debated. This goes with Grzybek's theory.
+		death = yes # 268 BC
+	}
+}
+
+macedonian03114 = {
+	name = "Philotera" # Daughter of Ptolemy I by Berenike.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Berenike
+
+	3439.1.1 = { # Probably born between Arsinoe II and Ptolemy II
+		birth = yes # 315 BC
+	}
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3484.1.1 = { # Probably dies before Arsinoe.
+		death = yes # 270 BC
+	}
+}
+
+macedonian03115 = {
+	name = "Ptolemaios" # Ptolemy II.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03102 # Ptolemy I
+	# mother = Berenike
+
+	trait = education_learning_3
+	trait = ambitious # Under his leadership, Egypt expanded everywhere but also became overstretched.
+	trait = diligent
+	trait = fickle
+	trait = lustful # He had a lot of mistresses.
+	trait = generous # He dedicated a lot of land to temples and gave subsidies to the Achaean league.
+	diplomacy = 7
+	martial = 7
+	stewardship = 8
+	intrigue = 5
+	learning = 6
+	prowess = 5
+
+	3446.1.1 = {
+		birth = yes # 308 BC
+	}
+	# Marries Arsinoe I between 284 and 281 BC.
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3475.1.1 = { # Killed some brothers.
+		add_trait = kinslayer_3
+	}
+	# Divorces Arsinoe I before 273 BC as she is found plotting against Ptolemy II.
+	3481.1.1 = { # Marries Arsinoe II in 273 BC.
+		add_spouse = macedonian03113 # Arsinoe II
+		give_nickname = nick_philadelphos
+	}
+	3508.1.28 = {
+		death = yes # 246 BC
+	}
+}
+
+# Children of Ptolemy II
+
+macedonian03116 = {
+	name = "Ptolemaios" # Ptolemy III.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+
+	father = macedonian03115 # Ptolemy II
+	# mother = Arsinoe I
+
+	trait = education_martial_3 # While he is not well-attested in battle, he managed to maintain his conquests against the Seleucids.
+	trait = generous # Funded a lot of anti-Seleucid states.
+	trait = intellect_good_2 # Under his rule, the Ptolemies reached their highest heights.
+	trait = chaste # Compared to the earlier Ptolemies, Euergetes did not have many women in his life.
+	diplomacy = 7
+	martial = 8
+	stewardship = 7
+	intrigue = 5
+	learning = 5
+	prowess = 6
+
+	3472.1.1 = { # Born between 284 and 275 BC.
+		birth = yes # 282 BC
+	}
+	3472.5.1 = { # 282 BC, Becomes part of the Ptolemaic ruler / Alexander cult after Ptolemy I dies.
+		religion = soterism_faith
+	}
+	3508.1.1 = {
+		add_trait = vengeful # Likely becomes vengeful after the Seleucids kill his sister.
+	}
+	# Marries Berenike II, probably early in 246 BC.
+	3511.1.1 = { # He along with his wife are deified.
+		give_nickname = nick_euergetes
+	}
+	3532.12.1 = {
+		death = yes # 222 BC
+	}
+}
+
+macedonian03117 = {
+	name = "Berenike" # Daughter of Ptolemy II by Arsinoe I. Would marry Antiochus II.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = soterism_faith
+	culture = macedonian
+
+	father = macedonian03115 # Ptolemy II
+	# mother = Arsinoe I
+
+	3475.1.1 = { # Born between 284 and 275 BC.
+		birth = yes # 279 BC
+	}
+	3502.1.1 = { # 252 BC, marries Antiochus II. She was well known for her downry.
+		give_nickname = nick_phernophoros
+	}
+	3508.1.1 = {
+		death = { # 246 BC, assassinated by either Laodike or Seleucus II following the death of Antiochus II.
+			death_reason = death_murder_known
+			killer = macedonian02404 # Laodike
+		} 
+	}
+}
+
+macedonian03118 = {
+	name = "Lysimachos" # Son of Ptolemy II by Arsinoe I.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = soterism_faith
+	culture = macedonian
+
+	father = macedonian03115 # Ptolemy II
+	# mother = Arsinoe I
+
+	3479.1.1 = { # Born between 284 and 275 BC.
+		birth = yes # 275 BC
+	}
+	3533.1.1 = {
+		death = { # 221 BC, murdered by Sosibius on orders of Ptolemy IV during the Purge.
+			death_reason = death_execution
+			# killer = # Ptolemy IV
+		} 
+	}
+}
+
+macedonian03119 = {
+	name = "Ptolemaios" # Illegitimate son of Ptolemy II by Bilistiche.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = soterism_faith
+	culture = macedonian
+
+	father = macedonian03115 # Ptolemy II
+	# mother = Arsinoe I
+
+	trait = education_martial_2 # He was a commander. Little else is known of him.
+	trait = bastard
+
+	3487.1.1 = { # Around the death of Arsinoe II
+		birth = yes # 267 BC
+		give_nickname = nick_andromachou
+	}
+	3533.1.1 = {
+		death = { # 243 BC, killed by mutinying Thracian mercenaries.
+			death_reason = death_siege
+		} 
+	}
+}
+
+# Children of Ptolemy Keraunos
+
+macedonian03120 = {
+	name = "Eurydike" # Unnamed daughter of Ptolemy Keraunos.
+	dynasty = macedoniandyn030 # Ptolemaion
+	religion = macedonian_faith
+	culture = macedonian
+	female = yes
+
+	father = macedonian03107 # Ptolemy Keraunos
+	# Mother is unknown.
+
+	3455.1.1 = { # She was old enough to marry Pyrrhus in 280 BC, so probably born before 295 BC.
+		birth = yes # 299 BC
+	}
+	# Marries Pyrrhus in 280 BC.
+	3533.1.1 = { # Made up.
+		death = yes # 274 BC
 	}
 }
