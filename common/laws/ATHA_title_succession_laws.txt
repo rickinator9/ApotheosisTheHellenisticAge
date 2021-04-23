@@ -28,6 +28,7 @@
 		}
 	}
 
+	# Oligarchic
 	oligarchic_succession_law = {
 		can_have = {
 			government_has_flag = is_city_state_government
@@ -43,6 +44,35 @@
 		succession = {
 			order_of_succession = election
 			election_type = oligarchic_elective
+		}
+		flag = elective_succession_law
+		modifier = {
+			direct_vassal_opinion = 10
+		}
+		revoke_cost = {
+			prestige = change_title_succession_law_prestige_cost
+		}
+		pass_cost = {
+			prestige = change_title_succession_law_prestige_cost
+		}
+	}
+
+	# Aristocratic
+	aristocratic_succession_law = {
+		can_have = {
+			government_has_flag = is_city_state_government
+			highest_held_title_tier >= tier_duchy
+		}
+		can_pass = {
+			can_change_title_law_trigger = yes
+			monthly_character_income > 0
+		}
+		can_title_have = {
+			tier >= tier_duchy
+		}
+		succession = {
+			order_of_succession = election
+			election_type = aristocratic_elective
 		}
 		flag = elective_succession_law
 		modifier = {

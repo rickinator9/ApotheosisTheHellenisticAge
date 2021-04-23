@@ -39,21 +39,19 @@ oligarchic_elective = {
 
     elector_vote_strength = {
         base = 1
+ #       modifier = {
+		#Add Monthly Income /2 to Vote strength. Done moreso to hopefully create less insane looking vote powers at high level play.
+#           desc = tooltip_oligarchy_strength_income
+#			add = {
+#    			value = scope:elector.monthly_chracter_income
+#   			divide = 2
+#       }   
         modifier = {
-			#Add Monthly Income /2 to Vote strength. Done moreso to hopefully create less insane looking vote powers at high level play.
-            desc = tooltip_oligarchy_strength_income
-			add = {
-                divide_variable = {
-    			which = monthly_chracter_income
-    			value = 2
-			}
-        }   
 			#Add Bonus for Diplo - much lighter weighting at 25%
-			desc = tooltip_oligarchy_strength_income
-			add = {divide_variable = {
-    			which = diplomacy
-    			value = 4
-            }
+			desc = tooltip_oligarchy_strength_diplomacy
+			add = {
+    			value = scope:elector.diplomacy
+    			divide = 4
 			}
 			
             

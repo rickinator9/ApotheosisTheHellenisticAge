@@ -258,6 +258,9 @@ macedonian00105 = {
 	3452.1.1 = { # approximate
 		birth = yes # 302 BC
 	}
+	3479.1.1 = { # 275 BC, made up
+		employer = test_ptolemaios # according to Plutarch, Alexander took up residence in Egypt; it is unclear whether this was of his own accord however
+	}
 	3503.1.1 = { # made up
 		death = yes # 251 BC
 	}
@@ -1091,7 +1094,6 @@ macedonian00604 = {
 		death = yes # 222 BC
 	}
 }
-
 
 # Dieus - Dion
 
@@ -2300,7 +2302,7 @@ macedonian02902 = {
 	3473.9.1 = {
 		death = { # 281 BC
 			death_reason = death_murder_known
-			killer = macedonian03107 # Ptolemaios Keraunos
+			killer = macedonian03207 # Ptolemaios Keraunos
 		}
 	}
 }
@@ -2494,7 +2496,7 @@ macedonian02910 = {
 	}
 	3501.1.1 = { # 253 BC, he divorces Laodike and marries Berenike (daughter of Ptolemy II).
 		remove_spouse = macedonian02404 # Laodike
-		add_spouse = macedonian03116 # Berenike.
+		add_spouse = macedonian03216 # Berenike.
 	}
 	3508.7.1 = { # 246 BC in the summer.
 		death = {
@@ -2525,9 +2527,335 @@ macedonian02911 = {
 	}
 }
 
-# Ptolemaion - Ptolemies
+# Lynkestas - Lynkos
 
 macedonian03101 = {
+	name = "Bromeros" 
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	3259.1.1 = { # made up
+		birth = yes # 495 BC
+	}
+	3318.1.1 = { # made up
+		death = yes # 436 BC
+	}
+}
+macedonian03102 = {
+	name = "Arrhabaios" # Arrhabaeus I, king of the Lyncestians during the Peloponnesian war
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03101 # Bromeros
+	3291.1.1 = { # made up
+		birth = yes # 463 BC
+	}
+	3343.1.1 = { # made up
+		death = yes # 411 BC
+	}
+}
+macedonian03103 = {
+	name = "Sirras" # regent or general who assisted Arrhabaeus II in a war against Archelaus
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03101 # Bromeros, speculative
+	3298.1.1 = { # made up
+		birth = yes # 456 BC
+	}
+	3337.1.1 = { # 417 BC, made up
+		add_spouse = macedonian03105 # Eurynoa
+	}
+	3367.1.1 = { # made up
+		death = yes # 387 BC
+	}
+}
+macedonian03104 = {
+	name = "Arrhabaios" # Arrhabaeus II, probable king of the Lyncestians who fought against Archelaus
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03102 # Arrhabaios
+	3325.1.1 = { # made up
+		birth = yes # 429 BC
+	}
+	3374.1.1 = { # made up
+		death = yes # 380 BC
+	}
+}
+macedonian03105 = {
+	name = "Eurynoa" # made up name - her granddaughter was called Eurynoa
+	female = yes
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03102 # Arrhabaios
+	3320.1.1 = { # made up
+		birth = yes # 434 BC
+	}
+	3337.1.1 = { # 417 BC, made up
+		add_spouse = macedonian03103 # Sirras
+	}
+	3357.1.1 = { # made up
+		death = yes # 397 BC
+	}
+}
+macedonian03106 = {
+	name = "Arrhabaios"
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03103 # Sirras, speculative
+	3329.1.1 = { # made up
+		birth = yes # 425 BC
+	}
+	3376.1.1 = { # made up
+		death = yes # 378 BC
+	}
+}
+macedonian03107 = {
+	name = "Aeropos" # commander of Philip II who was banished from Macedonia ca. 338 BC
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 7
+	martial = 7
+	stewardship = 3
+	intrigue = 5
+	learning = 2
+	prowess = 6
+	trait = education_intrigue_2
+	trait = lustful # tried to bring a female harpist into the camp
+	trait = ambitious # the disproportionate punishment for his actions suggests he was already a political rival of Philip II
+	trait = arrogant # may have been deliberately trying to flout Philip's authority
+	father = macedonian03104 # Arrhabaios
+	3357.1.1 = { # made up
+		birth = yes # 397 BC
+	}
+	3417.1.1 = { # made up
+		death = yes # 337 BC
+	}
+}
+macedonian03108 = {
+	name = "Heromenes" # fictional
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03103 # Sirras
+	mother = macedonian03105 # Eurynoa
+	3338.1.1 = { # made up
+		birth = yes # 416 BC
+	}
+	3379.1.1 = { # made up
+		death = yes # 375 BC
+	}
+}
+macedonian03109 = {
+	name = "Eurydika" # Macedonian queen noted for her prominent role in politics
+	female = yes
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 7
+	martial = 6
+	stewardship = 6
+	intrigue = 5
+	learning = 6
+	prowess = 4
+	trait = education_diplomacy_4 # successfully appealed for aid from Iphicrates following an invasion by the pretender Pausanias
+	trait = brave # her intervention in political and military affairs was unprecedented
+	trait = patient # learned how to read rather late in life
+	trait = ambitious # took on a much greater public role than previous Argead women
+	trait = shrewd # her actions to preserve the position of herself and her sons were generally successful
+	trait = family_first # Plutarch cites her as a good model in the education of children
+	father = macedonian03103 # Sirras
+	mother = macedonian03105 # Eurynoa
+	3342.1.1 = { # approximate
+		birth = yes # 412 BC
+	}
+	#3362.1.1 = { # 392 BC, approximate
+	#	add_spouse = ... # Amyntas
+	#}
+	3403.1.1 = { # made up (Aeschines' account of 346 BC seems to imply that she was already dead by that point)
+		death = yes # 351 BC
+	}
+}
+macedonian03110 = {
+	name = "Amyntas" # high-ranking commander present at Granicus and Sagalassus
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03106 # Arrhabaios
+	3356.1.1 = { # made up
+		birth = yes # 398 BC
+	}
+	3422.1.1 = { # made up
+		death = yes # 332 BC
+	}
+}
+macedonian03111 = {
+	name = "Neoptolemos" # Macedonian who deserted to the Persians ca. 334 BC
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03106 # Arrhabaios
+	3363.1.1 = { # made up
+		birth = yes # 391 BC
+	}
+	3420.1.1 = { # 334 BC
+		death = { 
+			death_reason = death_battle # died in a sortie during the siege of Halicarnassus
+		}
+	}
+}
+macedonian03112 = {
+	name = "Arrhabaios" # Lyncestian prince suspected of involvement in Philip II's murder
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03107 # Aeropos
+	3382.1.1 = { # made up
+		birth = yes # 372 BC
+	}
+	3418.1.1 = { # 336 BC
+		death = { 
+			death_reason = death_execution_killer # put to death by Alexander the Great for alleged complicity in the murder of Philip II
+			#killer = ... # Alexandros
+		}
+	}
+}
+macedonian03113 = {
+	name = "Heromenes" # Lyncestian prince suspected of involvement in Philip II's murder
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03107 # Aeropos
+	3384.1.1 = { # made up
+		birth = yes # 370 BC
+	}
+	3418.1.1 = { # 336 BC
+		death = { 
+			death_reason = death_execution_killer # put to death by Alexander the Great for alleged complicity in the murder of Philip II
+			#killer = ... # Alexandros
+		}
+	}
+}
+macedonian03114 = {
+	name = "Alexandros" # governor and commander who allegedly plotted against Alexander the Great
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 7
+	martial = 5
+	stewardship = 3
+	intrigue = 6
+	learning = 2
+	prowess = 4
+	trait = education_intrigue_3
+	trait = fickle # suspected of complicity in Philip's murder, yet was the first to hail Alexander as "King"
+	trait = deceitful # was possibly involved in plots against Philip II and Alexander
+	trait = ambitious # likely motivated by desire to restore his family's kingdom in Lyncestis
+	father = macedonian03107 # Aeropos
+	3388.1.1 = { # made up
+		birth = yes # 366 BC
+	}
+	#3416.1.1 = { # 338 BC, made up
+	#	add_spouse = ... # d. Antipater
+	#}
+	#3421.1 = { # 333 BC, approximate
+	#	imprisoner = ... # arrested on the orders of Alexander
+	#}
+	3424.1.1 = { # 330 BC
+		death = { 
+			death_reason = death_execution_killer # put to death by Alexander the Great in the aftermath of the Philotas affair
+			#killer = ... # Alexandros
+		}
+	}
+}
+macedonian03115 = {
+	name = "Anteas"
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03108 # Heromenes, speculative
+	3369.1.1 = { # made up
+		birth = yes # 385 BC
+	}
+	3413.1.1 = { # made up
+		death = yes # 341 BC
+	}
+}
+macedonian03116 = {
+	name = "Sirras" # general in charge of Macedonia while Antipater was in Thessaly ca. 323 BC
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03110 # Amyntas, speculative
+	3383.1.1 = { # made up
+		birth = yes # 371 BC
+	}
+	3439.1.1 = { # made up
+		death = yes # 315 BC
+	}
+}
+macedonian03117 = {
+	name = "Arrhabaios" # named as a friend of the kings in an inscription from Nesos dating to ca. 315 BC
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03114 # Alexandros
+	#mother = ... # d. Antipater
+	3417.1.1 = { # made up
+		birth = yes # 337 BC
+	}
+	3477.1.1 = { # made up
+		death = yes # 277 BC
+	}
+}
+macedonian03118 = {
+	name = "Leonnatos" # somatophylax and general who became satrap of Hellespontine Phrygia
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	diplomacy = 5
+	martial = 8
+	stewardship = 7
+	intrigue = 3
+	learning = 2
+	prowess = 8
+	trait = education_martial_2 # a reliable commander noted for his impressive victory against the Oreitae
+	trait = compassionate # tasked with assuring Darius of his family's safety
+	trait = diligent # undertook various administrative and logistical tasks
+	trait = arrogant # adopted Persian luxuries, probably seeking to emulate Alexander
+	trait = ambitious # sought to establish himself as King of Macedonia
+	trait = strong # was fond of wrestling and hunting
+	trait = hunter_1
+	father = macedonian03115 # Anteas
+	3398.1.1 = {
+		birth = yes # 356 BC
+	}
+	3432.1.1 = { # 322 BC
+		death = { 
+			death_reason = death_battle # died in battle against Antiphilus
+		}
+	}
+}
+macedonian03119 = {
+	name = "Kassandros" # proxenos at Epidauros ca. 260-240 BC
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03117 # Arrhabaios
+	3449.1.1 = { # made up
+		birth = yes # 305 BC
+	}
+	3515.1.1 = { # made up
+		death = yes # 239 BC
+	}
+}
+# Ptolemaion - Ptolemies
+
+macedonian03201 = {
 	name = "Lagos" # Father of Ptolemy I
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
@@ -2544,13 +2872,13 @@ macedonian03101 = {
 	}
 }
 
-macedonian03102 = {
+macedonian03202 = {
 	name = "Ptolemaios" # Ptolemy I "Soter"
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith # Probably too early for the Alexander cult.
 	culture = macedonian
 
-	father = macedonian03101 # Lagos
+	father = macedonian03201 # Lagos
 	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
 
 	trait = education_stewardship_4 # Ptolemy was not known for his martial ability; he did however consolidate his control on Egypt very effectively.
@@ -2580,13 +2908,13 @@ macedonian03102 = {
 	}
 }
 
-macedonian03103 = {
+macedonian03203 = {
 	name = "Menelaus" # Brother of Ptolemy
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03101 # Lagos
+	father = macedonian03201 # Lagos
 	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
 
 	3391.1.1 = { # Made up
@@ -2602,13 +2930,13 @@ macedonian03103 = {
 
 # Children of Ptolemy I
 
-macedonian03104 = {
+macedonian03204 = {
 	name = "Lagos" # Son of Ptolemy I by Thais
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Thais
 
 	trait = brave # Probably need some courage to participate in chariot races!
@@ -2625,17 +2953,17 @@ macedonian03104 = {
 	}
 }
 
-macedonian03105 = {
+macedonian03205 = {
 	name = "Eirene" # Daughter of Ptolemy I by Thais
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Thais
 
-	trait = child_of_concubine_female # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
+	trait = child_of_concubine_male # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
 
 	3427.1.1 = { # Made up. Probably between 325-330 BC.
 		birth = yes # 327 BC
@@ -2645,16 +2973,16 @@ macedonian03105 = {
 	}
 }
 
-macedonian03106 = {
+macedonian03206 = {
 	name = "Leontiskos" # Son of Ptolemy I by Thais
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Thais
 
-	trait = child_of_concubine_female # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
+	trait = child_of_concubine_male # Although Ptolemy possibly married Thaïs, her children never seem to have been considered for ruling Egypt.
 
 	3431.1.1 = { # Made up.
 		birth = yes # 323 BC
@@ -2667,13 +2995,13 @@ macedonian03106 = {
 	}
 }
 
-macedonian03107 = {
+macedonian03207 = {
 	name = "Ptolemaios" # Keraunos. Son of Ptolemy I by Eurydike.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	trait = education_intrigue_3 # Seems to mainly have been skulking about in the shadows of the courts.
@@ -2692,12 +3020,12 @@ macedonian03107 = {
 		give_nickname = nick_keraunos
 	}
 	3474.1.1 = { # 280 BC
-		add_spouse = macedonian03113 # Arsinoe II
+		add_spouse = macedonian03213 # Arsinoe II
 	}
 	3474.2.1 = { # 280 BC
 		# After killing his sister's sons, she flees to Samothrace.
 		add_trait = kinslayer_3
-		remove_spouse = macedonian03113 # Arsinoe II
+		remove_spouse = macedonian03213 # Arsinoe II
 	}
 	# Marries Arsinoe II in the winter of 281/280 BC.
 	3475.1.1 = { # Dies in battle (technically beheaded after being captured) against the Gauls.
@@ -2708,13 +3036,13 @@ macedonian03107 = {
 	}
 }
 
-macedonian03108 = {
+macedonian03208 = {
 	name = "Meleagros" # King of Macedon. Son of Ptolemy I by Eurydike.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	3437.1.1 = { # Made up.
@@ -2728,13 +3056,13 @@ macedonian03108 = {
 	}
 }
 
-macedonian03109 = {
+macedonian03209 = {
 	name = "Antipatros" # "Unknown" son of Ptolemy I by Eurydike. Executed by Ptolemy II.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	3441.1.1 = { # Made up.
@@ -2743,19 +3071,19 @@ macedonian03109 = {
 	3473.1.1 = { # Executed by Ptolemy II in what was likely his first year as king.
 		death = { # 281 BC
 			death_reason = death_execution
-			killer = macedonian03115 # Ptolemy II
+			killer = macedonian03215 # Ptolemy II
 		}
 	}
 }
 
-macedonian03110 = {
+macedonian03210 = {
 	name = "Lysandra" # Wife to Alexander V and Agathocles. Daughter of Ptolemy I by Eurydike.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	3442.1.1 = { # Made up.
@@ -2768,14 +3096,14 @@ macedonian03110 = {
 	}
 }
 
-macedonian03111 = {
+macedonian03211 = {
 	name = "Ptolemais" # Wife to Demetrios I. Daughter of Ptolemy I by Eurydike.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	3442.1.1 = { # Made up.
@@ -2788,13 +3116,13 @@ macedonian03111 = {
 	}
 }
 
-macedonian03112 = {
+macedonian03212 = {
 	name = "Argaios" # Son of Ptolemy I by Eurydike. Executed by Ptolemy II.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Eurydike
 
 	trait = deceitful # Possibly plotting rebellion against Ptolemy II.
@@ -2805,19 +3133,19 @@ macedonian03112 = {
 	3473.1.1 = { # Executed by Ptolemy II in what was possibly his first year as king.
 		death = { # 281 BC
 			death_reason = death_execution
-			killer = macedonian03115 # Ptolemy II
+			killer = macedonian03215 # Ptolemy II
 		}
 	}
 }
 
-macedonian03113 = {
+macedonian03213 = {
 	name = "Arsinoe" # Daughter of Ptolemy I by Berenike. Married Lysimachus, Ptolemy Keraunos and Ptolemy II.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Berenike
 
 	trait = education_intrigue_2 # She manipulated Lysimachus into killing his firstborn son.
@@ -2838,14 +3166,14 @@ macedonian03113 = {
 	}
 }
 
-macedonian03114 = {
+macedonian03214 = {
 	name = "Philotera" # Daughter of Ptolemy I by Berenike.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Berenike
 
 	3439.1.1 = { # Probably born between Arsinoe II and Ptolemy II
@@ -2859,13 +3187,13 @@ macedonian03114 = {
 	}
 }
 
-macedonian03115 = {
+macedonian03215 = {
 	name = "Ptolemaios" # Ptolemy II.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03102 # Ptolemy I
+	father = macedonian03202 # Ptolemy I
 	# mother = Berenike
 
 	trait = education_learning_3
@@ -2893,7 +3221,7 @@ macedonian03115 = {
 	}
 	# Divorces Arsinoe I before 273 BC as she is found plotting against Ptolemy II.
 	3481.1.1 = { # Marries Arsinoe II in 273 BC.
-		add_spouse = macedonian03113 # Arsinoe II
+		add_spouse = macedonian03213 # Arsinoe II
 		give_nickname = nick_philadelphos
 	}
 	3508.1.28 = {
@@ -2903,13 +3231,13 @@ macedonian03115 = {
 
 # Children of Ptolemy II
 
-macedonian03116 = {
+macedonian03216 = {
 	name = "Ptolemaios" # Ptolemy III.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 
-	father = macedonian03115 # Ptolemy II
+	father = macedonian03215 # Ptolemy II
 	# mother = Arsinoe I
 
 	trait = education_martial_3 # While he is not well-attested in battle, he managed to maintain his conquests against the Seleucids.
@@ -2941,13 +3269,13 @@ macedonian03116 = {
 	}
 }
 
-macedonian03117 = {
+macedonian03217 = {
 	name = "Berenike" # Daughter of Ptolemy II by Arsinoe I. Would marry Antiochus II.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = soterism_faith
 	culture = macedonian
 
-	father = macedonian03115 # Ptolemy II
+	father = macedonian03215 # Ptolemy II
 	# mother = Arsinoe I
 
 	3475.1.1 = { # Born between 284 and 275 BC.
@@ -2964,13 +3292,13 @@ macedonian03117 = {
 	}
 }
 
-macedonian03118 = {
+macedonian03218 = {
 	name = "Lysimachos" # Son of Ptolemy II by Arsinoe I.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = soterism_faith
 	culture = macedonian
 
-	father = macedonian03115 # Ptolemy II
+	father = macedonian03215 # Ptolemy II
 	# mother = Arsinoe I
 
 	3479.1.1 = { # Born between 284 and 275 BC.
@@ -2984,13 +3312,13 @@ macedonian03118 = {
 	}
 }
 
-macedonian03119 = {
+macedonian03219 = {
 	name = "Ptolemaios" # Illegitimate son of Ptolemy II by Bilistiche.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = soterism_faith
 	culture = macedonian
 
-	father = macedonian03115 # Ptolemy II
+	father = macedonian03215 # Ptolemy II
 	# mother = Arsinoe I
 
 	trait = education_martial_2 # He was a commander. Little else is known of him.
@@ -3009,14 +3337,14 @@ macedonian03119 = {
 
 # Children of Ptolemy Keraunos
 
-macedonian03120 = {
+macedonian03220 = {
 	name = "Eurydike" # Unnamed daughter of Ptolemy Keraunos.
 	dynasty = macedoniandyn030 # Ptolemaion
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
 
-	father = macedonian03107 # Ptolemy Keraunos
+	father = macedonian03207 # Ptolemy Keraunos
 	# Mother is unknown.
 
 	3455.1.1 = { # She was old enough to marry Pyrrhus in 280 BC, so probably born before 295 BC.
