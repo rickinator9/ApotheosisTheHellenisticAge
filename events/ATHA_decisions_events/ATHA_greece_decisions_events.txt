@@ -1,0 +1,237 @@
+﻿namespace = greece_decisions
+
+## form_k_lakedaimon_decision
+# 0001 - I formed k_lakedaimon
+# 0002 - Someone else formed k_lakedaimon
+
+scripted_trigger cares_about_messenia_trigger = {
+	is_independent_ruler = yes
+	faith = faith:pythian_faith
+	NOR = { # fellow Spartans don't care
+		dynasty = dynasty:spartandyn001
+		dynasty = dynasty:spartandyn002
+	}
+}
+
+# I formed k_lakedaimon
+greece_decisions.0001 = {
+	type = character_event
+	title = greece_decisions.0001.t
+	desc = greece_decisions.0001.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_lakedaimon_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		form_k_lakedaimon_decision_effects = yes
+
+		title:d_messenia = {
+			save_scope_as = messenia
+		}
+	}
+	
+	option = { # Enslave the Messenians!
+		name = greece_decisions.0001.a
+		custom_tooltip = greece_decisions.0001.a.tt
+
+		add_character_flag = founder_enslaved_messenia
+
+		title:c_sparta = {
+			add_county_modifier = {
+				modifier = helot_labourers_modifier
+				years = 20
+			}
+		}
+		add_dread = medium_dread_gain
+
+		if = {
+			limit = {
+				faith = faith:pythian_faith
+			}
+			add_piety = medium_piety_loss
+			every_independent_ruler = {
+				limit = {
+					faith = faith:pythian_faith
+					NOR = { # fellow Spartans don't care
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+				custom = every_independent_ruler_faith
+				add_opinion = {
+					modifier = enslaved_messenia_opinion
+					target = root
+				}
+			}
+		}
+		every_realm_county = {
+			limit = {
+				de_jure_liege = title:d_messenia
+			}
+			custom = every_county_d_messenia
+			add_county_modifier = {
+				modifier = helot_population_modifier
+				years = 20 # TODO: turn this into a permanent modifier which the province holder can pay to remove via decision
+			}
+		}
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_lakedaimon_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_lakedaimon_founder }
+			}
+			trigger_event = greece_decisions.0002
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			forgiving = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_vengefulness = 1
+				ai_boldness = 0.25
+				ai_honor = -0.25
+				ai_compassion = -0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = generous
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = forgiving
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = compassionate
+			}
+		}
+	}
+	option = { # Grant the Messenians perioikic status
+		name = greece_decisions.0001.b
+		custom_tooltip = greece_decisions.0001.b.tt
+
+		add_character_flag = founder_freed_messenia
+
+		add_piety = medium_piety_gain
+
+		every_realm_county = {
+			limit = {
+				de_jure_liege = title:d_messenia
+			}
+			add_county_modifier = {
+				modifier = newly_perioikic_modifier
+				years = 20
+			}
+		}
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_lakedaimon_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_lakedaimon_founder }
+			}
+			trigger_event = greece_decisions.0002
+		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			vengeful = medium_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_vengefulness = -2
+				ai_rationality = 0.25
+				ai_compassion = 1
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = greedy
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = vengeful
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = arbitrary
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = sadistic
+			}
+		}
+	}
+}
+
+# Someone else formed k_lakedaimon
+greece_decisions.0002 = {
+	type = character_event
+	title = greece_decisions.0002.t
+	desc = greece_decisions.0002.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_lakedaimon_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		title:d_messenia = {
+			save_scope_as = messenia
+		}
+	}
+
+	option = { # Character responding to enslavement
+		name = greece_decisions.0002.a
+
+		trigger = {
+			scope:k_lakedaimon_founder = {
+				has_character_flag = founder_enslaved_messenia
+			}
+			cares_about_messenia_trigger = no
+		}
+	}	
+	option = { # Pythodorian character responding to enslavement
+		name = greece_decisions.0002.a_pythian
+
+		trigger = {
+			scope:k_lakedaimon_founder = {
+				has_character_flag = founder_enslaved_messenia
+			}
+			#cares_about_messenia_trigger = yes
+		}
+		show_as_tooltip = { # Actually happens in greece_decisions.0001.a
+			add_opinion = {
+				modifier = enslaved_messenia_opinion
+				target = scope:k_lakedaimon_founder
+			}
+		}
+	}
+	option = { # Character responding to 'liberation'
+		name = greece_decisions.0002.b
+
+		trigger = {
+			#scope:k_lakedaimon_founder = {
+			#	has_character_flag = founder_freed_messenia
+			#}
+		}
+	}	
+}
