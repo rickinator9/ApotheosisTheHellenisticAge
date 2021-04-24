@@ -21,7 +21,7 @@ ATHA_elector_voting_pattern_aristocratic_modifier = {
 				age > 50
 				age < 70
 			}
-		}
+	}
 
 	# New Logic below.
 
@@ -32,7 +32,7 @@ ATHA_elector_voting_pattern_aristocratic_modifier = {
 				age > 50
 				age < 70
 			}
-		}
+	}
 	
 	modifier = { # Okay Age
 	add = 15
@@ -43,13 +43,13 @@ ATHA_elector_voting_pattern_aristocratic_modifier = {
 		}
 	}
 
-	#modifier = {# House Head bonus
+	modifier = {# House Head bonus
 		# Must be greater than bonuses for heir to ensure this is offset in favour of house head.
-	#	add = 40
-	#	desc = tooltip_aristocratic_elector_vote_dynasty_head
-	#		scope:candidate = {
-	#			dynasty.dynast }
-	#		}	
+		add = 40
+		desc = tooltip_aristocratic_elector_vote_dynasty_head
+			scope:candidate = { is_house_head = yes }
+	}	
+			
 	modifier = {# Prestige bonus
 	# Must be greater than bonuses for heir to ensure this is offset in favour of house head.
 	add = 40
@@ -57,12 +57,10 @@ ATHA_elector_voting_pattern_aristocratic_modifier = {
 	
 	add = {
 		add = 10  
-	   if = {
-		   limit = {
-			   exists this.house
-		   }
-		   multiply = scope:elector.dynasty.dynasty_prestige_level
-	   }
-	}
+		if = {
+			limit = { exists = this.house }
+			multiply = scope:elector.dynasty.dynasty_prestige_level
+			}
+		}
 	}
 }
