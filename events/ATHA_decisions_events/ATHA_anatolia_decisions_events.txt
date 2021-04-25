@@ -1,0 +1,91 @@
+﻿namespace = anatolia_decisions
+
+## form_k_bithynia_decision
+# 0001 - I formed k_bithynia
+# 0002 - Someone else formed k_bithynia
+
+# I formed k_bithynia
+anatolia_decisions.0001 = {
+	type = character_event
+	title = anatolia_decisions.0001.t
+	desc = anatolia_decisions.0001.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_bithynia_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		form_k_bithynia_decision_effects = yes
+
+		title:c_astakos = { save_scope_as = astakos }
+		title:c_chalkedon = { save_scope_as = chalkedon }
+	}
+	
+	option = { # I choose Astakos
+		name = anatolia_decisions.0001.a
+
+		trigger = {
+			title:c_astakos.holder = scope:k_bithynia_founder
+		}
+		title:c_astakos = {
+			save_scope_as = new_bithynian_capital
+			found_bithynian_capital_scripted_effect = yes
+		}
+		title:b_astakos_astakos = { 
+			save_scope_as = new_bithynian_capital_barony 
+			found_bithynian_capital_barony_scripted_effect = yes
+		}
+
+		every_player = {
+			limit = {
+				#NOT = { this = scope:k_bithynia_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_bithynia_founder }
+			}
+			trigger_event = anatolia_decisions.0002
+		}
+	}
+	option = { # I choose Chalkedon
+		name = anatolia_decisions.0001.b
+
+		trigger = {
+			title:c_chalkedon.holder = scope:k_bithynia_founder
+		}
+		title:c_chalkedon = {
+			save_scope_as = new_bithynian_capital
+			found_bithynian_capital_scripted_effect = yes
+		}
+		title:b_chalkedon_chalkedon = { 
+			save_scope_as = new_bithynian_capital_barony 
+			found_bithynian_capital_barony_scripted_effect = yes
+		}
+
+		every_player = {
+			limit = {
+				#NOT = { this = scope:k_bithynia_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_bithynia_founder }
+			}
+			trigger_event = anatolia_decisions.0002
+		}
+	}
+}
+
+# Someone else formed k_bithynia
+anatolia_decisions.0002 = {
+	type = character_event
+	title = anatolia_decisions.0002.t
+	desc = anatolia_decisions.0002.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_bithynia_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0002.a
+	}
+}

@@ -1,0 +1,78 @@
+﻿##############################
+# Form k_bithynia		 	 #
+##############################
+
+# TO-DO: (Probably excessive, but worth considering) Character gains philhellene modifier, boosting their relationship with Greek characters as long as their culture is non-Greek (is this even possible?) - in the future it may be worth looking into whether a similar modifier could be applied to dynasties that became considerably Hellenised, though this should be invalidated for characters who adopt Greek culture. The ideal ultimately would be to have this work dynamically with any culture to reflect peer polity interaction
+
+form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = form_k_bithynia_decision_desc
+	selection_tooltip = form_k_bithynia_decision_tooltip
+
+	is_shown = {
+		has_culture = culture:bithynian
+		highest_held_title_tier <= tier_duchy
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+		title:k_bithynia = { is_titular = yes }
+	}
+
+	is_valid = {
+		# Must be independent
+		is_independent_ruler = yes
+
+		# Should have a decent prestige level
+		prestige_level >= high_prestige_level
+
+		# Must control d_bithynia, and at least one of the other component duchies
+		has_primary_title = title:d_bithynia
+		OR = {
+			has_title = title:d_mariandynia
+			has_title = title:d_askania
+			has_title = title:d_sangarios
+		}
+		# Must personally hold a city in d_bithynia that can serve as the new capital
+		OR = {			
+			has_title = title:c_astakos
+			has_title = title:c_chalkedon
+		}
+		# Should also have asserted dominance over at least one of the other main cities in the broader region
+		OR = {
+			completely_controls = title:c_nikaia
+			completely_controls = title:c_herakleia_pontica
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		
+	}
+
+	effect = {
+		save_scope_as = k_bithynia_founder
+
+		show_as_tooltip = { form_k_bithynia_decision_effects = yes } # Actually applied in anatolia_decisions.0001 - de-jure, title etc
+		custom_tooltip = form_k_bithynia_decision_effect_tooltip
+
+		#Events
+		trigger_event = anatolia_decisions.0001 # Ruler invests in new capital
+	}
+
+	cost = {
+		gold = 500
+		prestige = 1000
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
