@@ -1,5 +1,10 @@
 ﻿namespace = greece_decisions
 
+## TODO
+## If Sparta takes the option to enslave Messenia, there could be a decision for foreign rulers to liberate Messenia and humiliate the Spartans, which would shatter the k_lakedaimon title, hurt the prestige of the Spartan ruler, and could offer some ineteresting choices to the ruler as to how free Messenia should be (in name only, autonomous subject, independent ally etc.) 
+## Perhaps there can be an additional decision for rulers to free the helots in their held counties, which would remove the modifier at some cost (gold/prestige/control) that would represent compensation or other measures - there could be an event offering multiple ways of removing the modifier.
+## In the longer term, it might be interesting to have a fully fleshed out slavery/serfdom mechanic that would allow us to model peoples who had been reduced to servitude (helots, penestae, Mariandynoi), as well as slave revolts and the slave economy
+
 ## form_k_lakedaimon_decision
 # 0001 - I formed k_lakedaimon
 # 0002 - Someone else formed k_lakedaimon
@@ -186,7 +191,18 @@ greece_decisions.0001 = {
 greece_decisions.0002 = {
 	type = character_event
 	title = greece_decisions.0002.t
-	desc = greece_decisions.0002.desc
+	desc = {
+		desc = greece_decisions.0002.desc
+		first_valid = {
+			triggered_desc = {
+				scope:k_lakedaimon_founder = {
+					has_character_flag = founder_enslaved_messenia
+				}
+				desc = greece_decisions.0002.desc_a
+			}
+			desc = greece_decisions.0002.desc_b
+		}
+	}
 	theme = realm
 	left_portrait = {
 		character = scope:k_lakedaimon_founder
@@ -216,7 +232,7 @@ greece_decisions.0002 = {
 			scope:k_lakedaimon_founder = {
 				has_character_flag = founder_enslaved_messenia
 			}
-			#cares_about_messenia_trigger = yes
+			cares_about_messenia_trigger = yes
 		}
 		show_as_tooltip = { # Actually happens in greece_decisions.0001.a
 			add_opinion = {
@@ -229,9 +245,9 @@ greece_decisions.0002 = {
 		name = greece_decisions.0002.b
 
 		trigger = {
-			#scope:k_lakedaimon_founder = {
-			#	has_character_flag = founder_freed_messenia
-			#}
+			scope:k_lakedaimon_founder = {
+				has_character_flag = founder_freed_messenia
+			}
 		}
 	}	
 }

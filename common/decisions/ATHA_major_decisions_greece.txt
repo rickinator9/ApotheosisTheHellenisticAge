@@ -2,21 +2,6 @@
 # Form k_lakedaimon		 	 #
 ##############################
 
-# TO-DO: Move effects to a notification event, which would also give the Spartan king the choice of whether to enslave the Messenians or maintain their freedom (and this in turn triggers a notification event for neighbouring rulers, or perhaps all rulers with land in k_hellas?)
-
-## Enslave the Messenians:
-## - spend piety
-## - lose opinion with same-faith (?) independent rulers
-## - provinces in d_messenia gain a permanent modifier that boosts control and taxes but hurts popular opinion & slows development growth
-## - provinces in d_sparta (or just c_sparta?) gain a temporary modifier that boosts development and reduces construction time and cost
-## - character modifier and nickname?
-## - opens up decision for foreign rulers to liberate the Messenians (and humiliate the Spartans) - the ruler could then have some choices as to how free Messenia should be (in name only, autonomous subject, independent ally etc.) Perhaps Spartan rulers could have their own decision to free their Messenian subjects, which would hurt control and remove the modifiers
-
-## Offer the Messenians perioikoi status
-## - provinces in d_messenia gain a temporary modifier that boosts levy_size
-## - gain piety
-
-
 form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
@@ -30,20 +15,17 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 		has_culture = culture:dorian_south
 		has_government = city_state_spartan_government
 		highest_held_title_tier <= tier_duchy
-		NOT = {	
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_formed_k_lakedaimon
-			}
+		title:k_lakedaimon = {
+			NOT = { exists = holder }
 		}
 	}
 
 	is_valid = {
 		is_independent_ruler = yes
 		has_primary_title = title:d_lakedaimon
-		#completely_controls = title:d_messenia
-		#completely_controls = title:c_megalopolis # part of Megalopolis' purpose was to keep Sparta at bay
-		#completely_controls = title:c_thyreatis # given to the Argives by Philip II 
+		completely_controls = title:d_messenia
+		completely_controls = title:c_megalopolis # part of Megalopolis' purpose was to keep Sparta at bay
+		completely_controls = title:c_thyreatis # given to the Argives by Philip II 
 	}
 
 	is_valid_showing_failures_only = {
@@ -54,15 +36,10 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 		save_scope_as = k_lakedaimon_founder
 
 		show_as_tooltip = { form_k_lakedaimon_decision_effects = yes } # Actually applied in greece.0001 - prestige, de-jure, title etc
+		custom_tooltip = form_k_lakedaimon_decision_effect_tooltip
 
 		#Events
-		trigger_event = greece_decisions.0001
-
-		# Once per game
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:flag_formed_k_lakedaimon
-		}
+		trigger_event = greece_decisions.0001 # Ruler gets a choice of whether or not to enslave Messenia
 	}
 
 	ai_potential = {
