@@ -1,0 +1,101 @@
+
+# Saves the vassal contracts of CONTRACT_HOLDER to THIS character.
+# CONTRACT_HOLDER is the character that is currently affected by the contracts.
+save_vassal_contract_settings = {
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = feudal_government_taxes }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = feudal_government_levies }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = religious_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = fortification_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = coinage_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = succession_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = war_declaration_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = council_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = title_revocation_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = vassal_role }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = imposed_franchise }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = enforced_centralisation }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = enforced_federalism }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = garrison_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = ritual_coronations_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = colony_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = gift_estate_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = hereditary_rights }
+}
+
+# Applies saved vassal contract settings to THIS character.
+apply_vassal_contract_settings = {
+	_pvt_apply_vassal_contract_setting = { CONTRACT = feudal_government_taxes }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = feudal_government_levies }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = religious_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = fortification_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = coinage_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = succession_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = war_declaration_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = council_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = title_revocation_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = vassal_role }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = imposed_franchise }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = enforced_centralisation }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = enforced_federalism }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = garrison_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = ritual_coronations_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = colony_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = gift_estate_rights }
+	_pvt_apply_vassal_contract_setting = { CONTRACT = hereditary_rights }
+}
+
+# Clears saved vassal contract settings from THIS character.
+clear_vassal_contract_settings = {
+	_pvt_clear_vassal_contract_setting = { CONTRACT = feudal_government_taxes }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = feudal_government_levies }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = religious_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = fortification_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = coinage_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = succession_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = war_declaration_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = council_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = title_revocation_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = vassal_role }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = imposed_franchise }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = enforced_centralisation }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = enforced_federalism }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = garrison_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = ritual_coronations_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = colony_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = gift_estate_rights }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = enforced_federalism }
+	_pvt_clear_vassal_contract_setting = { CONTRACT = hereditary_rights }
+}
+
+# Private functions
+
+# Saves a single vassal contract of CONTRACT_HOLDER to THIS character.
+# CONTRACT_HOLDER is the character that is currently affected by the contracts.
+# CONTRACT is the id of the vassal contract category to store.
+_pvt_save_vassal_contract_setting = {
+	if = {
+		limit = { $CONTRACT_HOLDER$ = { vassal_contract_has_flag = category_$CONTRACT$ } }
+		set_variable = {
+			name = $CONTRACT$_var
+			value = $CONTRACT_HOLDER$.vassal_contract_obligation_level:$CONTRACT$
+		}
+	}
+}
+
+# Applies a single saved vassal contract setting to THIS character.
+# CONTRACT is the id of the vassal contract category to apply.
+_pvt_apply_vassal_contract_setting = {
+	if = {
+		limit = { has_variable = $CONTRACT$_var }
+		set_obligation_value_if_changed_effect = { OBLIGATION_TYPE = $CONTRACT$ VALUE = var:$CONTRACT$_var }
+	}
+}
+
+# Clears a single saved vassal contract settings from THIS character.
+# CONTRACT is the id of the vassal contract category to clear.
+_pvt_clear_vassal_contract_setting = {
+	if = {
+		limit = { has_variable = $CONTRACT$_var }
+		remove_variable = $CONTRACT$_var
+	}
+}

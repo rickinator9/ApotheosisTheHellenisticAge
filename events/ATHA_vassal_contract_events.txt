@@ -333,3 +333,44 @@ ATHA_vassal_contract.1 = {
 		}
     }
 }
+
+# Save the contract settings on death.
+ATHA_vassal_contract.0010 = {
+	type = empty
+	hidden = yes
+
+	# Only trigger this for landed, vassal rulers that can have contracts.
+	trigger = {
+		is_landed = yes
+		is_independent_ruler = no
+	}
+
+	immediate = {
+		every_heir = {
+			set_variable = {
+				name = highest_tier_before_inheritance
+				value = highest_held_title_tier
+			}
+
+			save_vassal_contract_settings = { CONTRACT_HOLDER = root }
+		}
+	}
+}
+
+# Apply the contract settings to people who inherited titles.
+ATHA_vassal_contract.0011 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:title.tier > var:highest_tier_before_inheritance
+		is_independent_ruler = no
+	}
+
+	immediate = {
+		apply_vassal_contract_settings = yes
+		clear_vassal_contract_settings = yes
+
+		remove_variable = highest_tier_before_inheritance
+	}
+}

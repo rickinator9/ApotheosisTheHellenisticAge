@@ -32,6 +32,8 @@ vassal_role = {
 					add = @ai_desire_always
 				}
 			}
+
+			flag = category_vassal_role
 		}
 		vassal_role_city_state_dependent = {
 			is_valid = {
@@ -56,6 +58,8 @@ vassal_role = {
 				}
 			}
 			ai_vassal_desire = 0
+
+			flag = category_vassal_role
 		}
 		vassal_role_coalition_autonomous = {
 			is_valid = {
@@ -85,6 +89,8 @@ vassal_role = {
 					add = @ai_desire_always
 				}
 			}
+
+			flag = category_vassal_role
 		}
 		vassal_role_coalition_dependent = {
 			is_valid = {
@@ -110,6 +116,8 @@ vassal_role = {
 				}
 			}
 			ai_vassal_desire = 0
+
+			flag = category_vassal_role
 		}
 		vassal_role_bureaucracy_civil = {
 			is_valid = {
@@ -128,6 +136,7 @@ vassal_role = {
 
 			flag = has_civil_bureaucracy_contract
 			flag = vassal_contract_free_revocation
+			flag = category_vassal_role
 		}
 		vassal_role_bureaucracy_military = {
 			is_valid = {
@@ -149,6 +158,7 @@ vassal_role = {
 
 			flag = has_military_bureaucracy_contract
 			flag = vassal_contract_free_revocation
+			flag = category_vassal_role
 		}
 		vassal_role_bureaucracy_feudal = {
 			is_valid = {
@@ -178,6 +188,7 @@ vassal_role = {
 			}
 
 			flag = has_feudal_bureaucracy_contract
+			flag = category_vassal_role
 		}
 	}
 }
@@ -203,6 +214,7 @@ imposed_franchise = {
 			}
 
 			flag = has_imposed_democratic_franchise
+			flag = category_imposed_franchise
 		}
 		imposed_franchise_oligarchic = {
 			is_valid = {
@@ -220,6 +232,7 @@ imposed_franchise = {
 
 			flag = has_imposed_franchise
 			flag = has_imposed_oligarchic_franchise
+			flag = category_imposed_franchise
 		}
 		imposed_franchise_aristocratic = {
 			is_valid = {
@@ -238,6 +251,7 @@ imposed_franchise = {
 			flag = vassal_contract_gives_weak_hook
 			flag = has_imposed_franchise
 			flag = has_imposed_aristocratic_franchise
+			flag = category_imposed_franchise
 		}
 		imposed_franchise_tyrannic = {
 			is_valid = {
@@ -256,6 +270,7 @@ imposed_franchise = {
 			flag = vassal_contract_gives_strong_hook
 			flag = has_imposed_franchise
 			flag = has_imposed_tyrannic_franchise
+			flag = category_imposed_franchise
 		}
 	}
 }
@@ -278,6 +293,7 @@ enforced_centralisation = {
 			vassal_opinion = -5
 
 			flag = has_enforced_centralisation_low
+			flag = category_enforced_centralisation
 		}
 		enforced_centralisation_medium = {
 			is_valid = {
@@ -289,6 +305,7 @@ enforced_centralisation = {
 
 			flag = has_enforced_centralisation
 			flag = has_enforced_centralisation_medium
+			flag = category_enforced_centralisation
 		}
 		enforced_centralisation_high = {
 			is_valid = {
@@ -302,6 +319,7 @@ enforced_centralisation = {
 			
 			flag = has_enforced_centralisation
 			flag = has_enforced_centralisation_high
+			flag = category_enforced_centralisation
 		}
 	}
 }
@@ -324,6 +342,7 @@ enforced_federalism = {
 			vassal_opinion = -5
 
 			flag = has_enforced_federalism_federal
+			flag = category_enforced_federalism
 		}
 		enforced_federalism_hegemonic = {
 			is_valid = {
@@ -337,6 +356,7 @@ enforced_federalism = {
 			
 			flag = has_enforced_federalism
 			flag = has_enforced_federalism_hegemonic
+			flag = category_enforced_federalism
 		}
 	}
 }
@@ -355,6 +375,8 @@ garrison_rights = {
 		garrison_rights_none = {
 			default = yes
 			position = { 0 0 }
+
+			flag = category_garrison_rights
 		}
 		garrison_rights_installed = {
 			is_valid = {
@@ -372,6 +394,7 @@ garrison_rights = {
 
 			flag = installed_garrison
 			flag = vassal_contract_gives_strong_hook
+			flag = category_garrison_rights
 		}
 	}
 }
@@ -390,6 +413,8 @@ ritual_coronations_rights = {
 		ritual_coronations_rights_none = {
 			default = yes
 			position = { 0 0 }
+
+			flag = category_ritual_coronations_rights
 		}
 		ritual_coronations_rights_enforced = {
 			is_valid = {
@@ -411,6 +436,8 @@ ritual_coronations_rights = {
 			}
 
 			vassal_opinion = -5
+
+			flag = category_ritual_coronations_rights
 		}	
 	}
 }
@@ -424,6 +451,8 @@ colony_rights = {
 		colony_rights_none = {
 			default = yes
 			position = { 0 0 }
+
+			flag = category_colony_rights
 		}
 		colony_rights_granted = {
 			is_valid = {
@@ -444,6 +473,7 @@ colony_rights = {
 			}
 
 			flag = city_state_encouraged_culture_flipping
+			flag = category_colony_rights
 		}	
 	}
 }
@@ -461,6 +491,8 @@ gift_estate_rights = {
 		gift_estate_rights_none = {
 			default = yes
 			position = { 0 0 }
+
+			flag = category_gift_estate_rights
 		}
 		gift_estate_rights_granted = {
 			is_valid = {
@@ -484,6 +516,7 @@ gift_estate_rights = {
 
 			flag = vassal_contract_free_revocation
 			flag = vassal_contract_gives_weak_hook
+			flag = category_gift_estate_rights
 		}	
 	}
 }
@@ -504,10 +537,14 @@ hereditary_rights = {
 			# }
 			default = yes
 			position = { 0 0 }
+
+			flag = category_hereditary_rights
 		}
 		hereditary_rights_guaranteed = {
 			parent = hereditary_rights_none
 			position = { 0 1 }
+
+			flag = category_hereditary_rights
 		}	
 	}
 }

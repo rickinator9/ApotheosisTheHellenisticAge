@@ -13,6 +13,8 @@ feudal_government_taxes = {
 
 			ai_liege_desire = 1
 			ai_vassal_desire = 5
+			
+			flag = category_feudal_government_taxes
 		}
 		feudal_tax_low = {
 			parent = feudal_tax_exempt
@@ -23,6 +25,8 @@ feudal_government_taxes = {
 
 			ai_liege_desire = 2
 			ai_vassal_desire = 4
+			
+			flag = category_feudal_government_taxes
 		}
 		feudal_tax_normal = {
 			default = yes
@@ -33,6 +37,8 @@ feudal_government_taxes = {
 
 			ai_liege_desire = 3
 			ai_vassal_desire = 3
+			
+			flag = category_feudal_government_taxes
 		}
 		feudal_tax_high = {
 			parent = feudal_tax_normal
@@ -43,6 +49,8 @@ feudal_government_taxes = {
 
 			ai_liege_desire = 4
 			ai_vassal_desire = 2
+			
+			flag = category_feudal_government_taxes
 		}
 		feudal_tax_extortionate = {
 			parent = feudal_tax_high
@@ -53,6 +61,8 @@ feudal_government_taxes = {
 
 			ai_liege_desire = 5
 			ai_vassal_desire = 1
+			
+			flag = category_feudal_government_taxes
 		}
 	}
 }
@@ -69,6 +79,8 @@ feudal_government_levies = {
 
 			ai_liege_desire = 1
 			ai_vassal_desire = 5
+			
+			flag = category_feudal_government_levies
 		}
 		feudal_levies_low = {
 			parent = feudal_levies_exempt
@@ -79,6 +91,8 @@ feudal_government_levies = {
 
 			ai_liege_desire = 2
 			ai_vassal_desire = 4
+			
+			flag = category_feudal_government_levies
 		}
 		feudal_levies_normal = {
 			default = yes
@@ -89,6 +103,8 @@ feudal_government_levies = {
 
 			ai_liege_desire = 3
 			ai_vassal_desire = 3
+			
+			flag = category_feudal_government_levies
 		}
 		feudal_levies_high = {
 			parent = feudal_levies_normal
@@ -99,6 +115,8 @@ feudal_government_levies = {
 
 			ai_liege_desire = 4
 			ai_vassal_desire = 2
+			
+			flag = category_feudal_government_levies
 		}
 		feudal_levies_extortionate = {
 			parent = feudal_levies_high
@@ -109,6 +127,8 @@ feudal_government_levies = {
 
 			ai_liege_desire = 5
 			ai_vassal_desire = 1
+			
+			flag = category_feudal_government_levies
 		}
 	}
 }
@@ -139,6 +159,8 @@ religious_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_religious_rights
 		}
 		religious_rights_protected = {
 			parent = religious_rights_none
@@ -158,6 +180,7 @@ religious_rights = {
 			}
 			
 			flag = religiously_protected
+			flag = category_religious_rights
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = 10
@@ -181,6 +204,8 @@ fortification_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_fortification_rights
 		}
 		fortification_rights_granted = {
 			parent = fortification_rights_none
@@ -198,7 +223,9 @@ fortification_rights = {
 				additional_fort_level = -2
 			}
 
-			vassal_opinion = -10			
+			vassal_opinion = -10
+
+			flag = category_fortification_rights
 		}
 	}
 }
@@ -228,6 +255,8 @@ coinage_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_coinage_rights
 		}
 		coinage_rights_granted = {
 			is_valid = {
@@ -248,6 +277,8 @@ coinage_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+
+			flag = category_coinage_rights
 		}
 	}
 }
@@ -266,6 +297,8 @@ succession_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+
+			flag = category_succession_rights
 		}
 		succession_rights_forced_partition = {
 			is_valid = {
@@ -282,6 +315,8 @@ succession_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_succession_rights
 		}
 	}
 }
@@ -295,6 +330,8 @@ war_declaration_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_war_declaration_rights
 		}
 		war_declaration_rights_allowed = {
 			parent = war_declaration_rights_default
@@ -306,6 +343,8 @@ war_declaration_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+
+			flag = category_war_declaration_rights
 		}
 	}
 }
@@ -319,6 +358,8 @@ council_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+
+			flag = category_council_rights
 		}
 		council_rights_guaranteed = {
 			parent = council_rights_none
@@ -334,6 +375,8 @@ council_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+
+			flag = category_council_rights
 		}
 	}
 }
@@ -362,6 +405,8 @@ title_revocation_rights = {
 			
 			ai_liege_desire = 1
 			ai_vassal_desire = 0
+
+			flag = category_title_revocation_rights
 		}
 		title_revocation_rights_protected = {
 			parent = title_revocation_rights_default
@@ -373,6 +418,8 @@ title_revocation_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+
+			flag = category_title_revocation_rights
 		}
 	}
 }

@@ -80,6 +80,8 @@ on_title_gain = {
 on_title_gain_inheritance = {
 	events = {
 		ATHA_vassal_contract.1 # Adjust government type, hooks etc. according to contract
+		delay = { days = 1 } # 1 day delayed since there's bugs doing it immediately.
+		ATHA_vassal_contract.0011 # Reassign the contracts when someone inherits a title.
 	}
 	effect = {
 		trigger_event = {

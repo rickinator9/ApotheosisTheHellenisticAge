@@ -562,3 +562,18 @@ set_obligation_if_changed_effect = {
 		}
 	}
 }
+
+# OBLIGATION_TYPE - The type of the obligation in a vassal contract to set
+# VALUE - The value to change.
+# this - The person who's obligation will be changed
+set_obligation_value_if_changed_effect = {
+	if = {
+		limit = {
+			$VALUE$ != vassal_contract_obligation_level:$OBLIGATION_TYPE$
+		}
+		vassal_contract_set_obligation_level = {
+			type = $OBLIGATION_TYPE$
+			level = $VALUE$
+		}
+	}
+}
