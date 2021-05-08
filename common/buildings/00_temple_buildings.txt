@@ -58,8 +58,23 @@ temple_01 = {
 	type_icon = "icon_building_monastic_schools.dds"
 
 	on_complete = {
-		county.holder = { add_piety = massive_piety_gain }
-		county.holder.faith = { change_fervor = 1 }
+		# Mountain Sanctuaries Tenet
+		if = {
+			limit = { 
+				terrain = mountains 
+				county.holder.faith = { has_doctrine = tenet_mountain_sanctuaries }
+			}
+			county.holder = {
+				custom_description_no_bullet = {
+					text = mountain_sanctuary_holdings_effect
+				}
+			}
+			mountain_sanctuary_holdings_effect = yes
+		}
+		else = {
+			county.holder = { add_piety = massive_piety_gain }
+			county.holder.faith = { change_fervor = 1 }		
+		}
 
 		#to give follow-up to the vassal.1001 event
 		hidden_effect = {

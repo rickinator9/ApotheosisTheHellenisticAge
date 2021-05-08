@@ -30,9 +30,9 @@
 			}
 		}
 
-		is_shown = {
-			has_doctrine = abrahamic_hostility_doctrine
-		}
+		# is_shown = {
+		# 	has_doctrine = abrahamic_hostility_doctrine
+		# }
 
 		can_pick = {
 			always = yes
@@ -786,10 +786,6 @@
 	tenet_pastoral_isolation = {
 		icon = core_tenet_holytree
 
-		is_shown = {
-			always = no
-			# religion_tag = christianity_religion
-		}
 		can_pick = {
 			custom_description = {
 				text = doctrine_no_head_of_faith_trigger
@@ -808,9 +804,9 @@
 		}
 
 		parameters = {
-			hostility_override_special_doctrine_is_christian_faith = 0
+			#hostility_override_special_doctrine_is_christian_faith = 0
 			#For loc:
-			is_christian_faith_pastoral_isolation_loc_override = 0
+			#is_christian_faith_pastoral_isolation_loc_override = 0
 			sanctioned_false_conversion = yes
 			unattractive_for_character_conversions = yes
 		}
@@ -1416,12 +1412,7 @@
 		piety_cost = {
 			if = {
 				limit = {
-					always = no
-					# OR = {
-					# 	religion_tag = hinduism_religion
-					# 	religion_tag = buddhism_religion
-					# 	religion_tag = jainism_religion
-					# }
+					religion_tag = olympian_religion
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1446,10 +1437,9 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						always = no
-						# religion_tag = hinduism_religion
+						religion_tag = olympian_religion
 					}
-					desc = tenet_ritual_hospitality_alternate_name
+					desc = tenet_ritual_hospitality_name_olympian
 				}
 				desc = tenet_ritual_hospitality_name
 			}
@@ -1490,10 +1480,9 @@
 			}
 		}
 
-		is_shown = {
-			always = no
-			# religion_tag = west_african_bori_religion
-		}
+		# is_shown = {
+		# 	religion_tag = west_african_bori_religion
+		# }
 
 		parameters = {
 			spirit_possession_active = yes
@@ -2094,8 +2083,9 @@
 
 		is_shown = {
 			OR = {
-				has_doctrine = abrahamic_hostility_doctrine
-				has_doctrine = pagan_hostility_doctrine
+				always = no
+				# has_doctrine = abrahamic_hostility_doctrine
+				# has_doctrine = pagan_hostility_doctrine
 			}
 		}
 		can_pick = {
@@ -2647,6 +2637,37 @@
 
 		parameters = {
 			no_unfaithfulness_penalty_active = yes
+		}
+	}
+
+	#############################
+	# ATHA Tenets 				#
+	#############################
+
+	tenet_mountain_sanctuaries = {
+		icon = core_tenet_birdofprey
+
+		piety_cost = {
+			value = faith_tenet_cost_low
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_mountain_sanctuaries }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+		}
+
+		parameters = {
+			mountain_sanctuary_holdings_active = yes
+		}
+
+		character_modifier = {
+			mountains_attrition_mult = -0.25
+			mountains_advantage = 5
+			valley_advantage = 5
 		}
 	}
 
