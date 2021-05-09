@@ -17,6 +17,22 @@ epirotelowborn1 = {
 		death = yes # 364 BC
 	}
 }
+epirotelowborn2 = {
+	name = "Phthia"
+	female = yes
+	religion = epirote_faith
+	culture = epirote
+	trait = compassionate
+	3260.1.1 = { # made up
+		birth = yes # 494 BC
+	}
+	3280.1.1 = { # 474 BC, made up
+		add_spouse = epirote00201 # Admatos
+	}
+	3317.1.1 = { # made up
+		death = yes # 437 BC
+	}
+}
 
 # Opatos - Thesprotia
 
@@ -132,30 +148,28 @@ epirote00201 = {
 	religion = epirote_faith
 	culture = epirote
 	trait = stubborn
-	3252.1.1 = { # made up
-		birth = yes # 502 BC
+	father = epirote002v02 # Phokos, speculative
+	3241.1.1 = { # made up
+		birth = yes # 513 BC
 	}
 	3280.1.1 = { # 474 BC, made up
-		add_spouse = epirote00202 # Phthia
+		add_spouse = epirotelowborn2 # Phthia
 	}
-	3324.1.1 = { # speculative
-		death = yes # 430 BC
+	3308.1.1 = { # made up
+		death = yes # 446 BC
 	}
 }
 epirote00202 = {
-	name = "Phthia"
-	female = yes
+	name = "Alkon" # one of the suitors of Agariste of Sicyon ca. 560 BC
+	dynasty = epirotedyn002
 	religion = epirote_faith
 	culture = epirote
-	trait = compassionate
-	3260.1.1 = { # made up
-		birth = yes # 494 BC
+	father = epirote002v04 # Kastor, speculative
+	3166.1.1 = { # made up
+		birth = yes # 588 BC
 	}
-	3280.1.1 = { # 474 BC, made up
-		add_spouse = epirote00201 # Admatos
-	}
-	3317.1.1 = { # made up
-		death = yes # 437 BC
+	3221.1.1 = { # made up
+		death = yes # 533 BC
 	}
 }
 epirote00203 = {
@@ -163,7 +177,7 @@ epirote00203 = {
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
 	culture = epirote
-	father = epirote00232 # Neoptolemos
+	father = epirote002v01 # Neoptolemos, speculative
 	3314.1.1 = { # made up
 		birth = yes # 440 BC
 	}
@@ -779,20 +793,6 @@ epirote00231 = {
 	}
 }
 epirote00232 = {
-	name = "Neoptolemos" # fictional link between Admetus and Tharypas
-	dynasty = epirotedyn002 # Aiakidas
-	religion = epirote_faith
-	culture = epirote
-	father = epirote00201 # Admatos
-	mother = epirote00202 # Phthia
-	3281.1.1 = { # made up
-		birth = yes # 473 BC
-	}
-	3322.1.1 = { # made up
-		death = yes # 432 BC
-	}
-}
-epirote00233 = {
 	name = "Leonidas" # tutor of Alexander the Great noted for his austere nature
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
@@ -809,13 +809,13 @@ epirote00233 = {
 		death = yes # 326 BC
 	}
 }
-epirote00234 = {
+epirote00233 = {
 	name = "Arybbas" # somatophylax under Philip II and Alexander the Great
 	dynasty = epirotedyn002 # Aiakidas
 	religion = macedonian_faith
 	culture = macedonian # possibly brought up under the royal page system
 	trait = education_martial_2
-	father = epirote00233 # Leonidas, specuative
+	father = epirote00232 # Leonidas, specuative
 	3393.1.1 = { # made up
 		birth = yes # 361 BC
 	}
@@ -826,7 +826,7 @@ epirote00234 = {
 		}
 	}
 }
-epirote00235 = {
+epirote00234 = {
 	name = "Billeas"
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
@@ -837,6 +837,180 @@ epirote00235 = {
 	}
 	3413.1.1 = { # made up
 		death = yes # 341 BC
+	}
+}
+
+# Aiakidas - Dubious Historicity - the following are only attested in the pedigree of Iulius Valerius
+
+epirote002v01 = {
+	name = "Neoptolemos" # speculative link between Tharyps and Admetus
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote00201 # Admatos, speculative
+	mother = epirotelowborn2 # Phthia, speculative
+	3281.1.1 = { # made up
+		birth = yes # 473 BC
+	}
+	3324.1.1 = { # speculative
+		death = yes # 430 BC
+	}
+}
+epirote002v02 = {
+	name = "Phokos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v03 # Dromon
+	3204.1.1 = { # made up
+		birth = yes # 550 BC
+	}
+	3255.1.1 = { # made up
+		death = yes # 499 BC
+	}
+}
+epirote002v03 = {
+	name = "Dromon"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v04 # Kastor
+	3162.1.1 = { # made up
+		birth = yes # 592 BC
+	}
+	3213.1.1 = { # made up
+		death = yes # 541 BC
+	}
+}
+epirote002v04 = {
+	name = "Kastor"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v05 # Lykos
+	3113.1.1 = { # made up
+		birth = yes # 641 BC
+	}
+	3169.1.1 = { # made up
+		death = yes # 585 BC
+	}
+}
+epirote002v05 = {
+	name = "Lykos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v06 # Eurimachos
+	3055.1.1 = { # made up
+		birth = yes # 699 BC
+	}
+	3126.1.1 = { # made up
+		death = yes # 628 BC
+	}
+}
+epirote002v06 = {
+	name = "Eurimachos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v07 # Tryinos
+	2996.1.1 = { # made up
+		birth = yes # 758 BC
+	}
+	3072.1.1 = { # made up
+		death = yes # 682 BC
+	}
+}
+epirote002v07 = {
+	name = "Tryinos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v08 # Priamos
+	2938.1.1 = { # made up
+		birth = yes # 816 BC
+	}
+	3011.1.1 = { # made up
+		death = yes # 743 BC
+	}
+}
+epirote002v08 = {
+	name = "Priamos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	mother = epirote002v09 # Areta
+	2887.1.1 = { # made up
+		birth = yes # 867 BC
+	}
+	2945.1.1 = { # made up
+		death = yes # 809 BC
+	}
+}
+epirote002v09 = {
+	name = "Areta"
+	female = yes
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v10 # Xanthos
+	2861.1.1 = { # made up
+		birth = yes # 893 BC
+	}
+	2919.1.1 = { # made up
+		death = yes # 835 BC
+	}
+}
+epirote002v10 = {
+	name = "Xanthos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v11 # Argos
+	2806.1.1 = { # made up
+		birth = yes # 948 BC
+	}
+	2866.1.1 = { # made up
+		death = yes # 888 BC
+	}
+}
+epirote002v11 = {
+	name = "Argos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v12 # Nessos
+	2750.1.1 = { # made up
+		birth = yes # 1004 BC
+	}
+	2823.1.1 = { # made up
+		death = yes # 931 BC
+	}
+}
+epirote002v12 = {
+	name = "Nessos"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	father = epirote002v13 # Eubios
+	2699.1.1 = { # made up
+		birth = yes # 1055 BC
+	}
+	2768.1.1 = { # made up
+		death = yes # 986 BC
+	}
+}
+epirote002v13 = {
+	name = "Eubios"
+	dynasty = epirotedyn002
+	religion = epirote_faith
+	culture = epirote
+	#father = ... # Pielos
+	2644.1.1 = { # made up
+		birth = yes # 1110 BC
+	}
+	2709.1.1 = { # made up
+		death = yes # 1045 BC
 	}
 }
 
