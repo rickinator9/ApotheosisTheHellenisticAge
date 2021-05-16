@@ -374,3 +374,35 @@ ATHA_vassal_contract.0011 = {
 		remove_variable = highest_tier_before_inheritance
 	}
 }
+
+# Save the contract settings when gaining titles.
+ATHA_vassal_contract.0012 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		is_independent_ruler = no
+
+		# The ruler should not have two titles of the same tier, which means that he already held a title.
+		NOT = {
+			any_held_title = {
+				tier = root.primary_title.tier
+				NOT = { this = scope:title }
+			}
+		}
+
+		# Only trigger this when the circumstances for the transfer of the titles is correct.
+		OR = {
+			scope:transfer_type = flag:abdication
+			scope:transfer_type = flag:election
+			scope:transfer_type = flag:faction_demand
+			scope:transfer_type = flag:usurped
+		}
+	}
+
+	immediate = {
+		save_vassal_contract_settings = { CONTRACT_HOLDER = scope:previous_holder }
+		apply_vassal_contract_settings = yes
+		clear_vassal_contract_settings = yes
+	}
+}
