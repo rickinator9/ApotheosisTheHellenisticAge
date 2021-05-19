@@ -29,13 +29,18 @@ ATHA_game_start.2 = {
 				government_has_flag = is_city_state_government
 			}
 
-			primary_title = {
-				set_variable = {
-					name = city_state_corruption
-					value = corruption_initial_value
+			if = {
+				limit = {
+					has_government = city_state_democratic_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_democratic_initial_value
+					}
 				}
 			}
-
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
@@ -43,6 +48,18 @@ ATHA_game_start.2 = {
 				}
 
 				primary_title = { add_title_law = democratic_succession_law }
+			}
+			if = {
+				limit = {
+					has_government = city_state_oligarchic_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_oligarchic_initial_value
+					}
+				}
 			}
 			if = {
 				limit = { 
@@ -53,12 +70,36 @@ ATHA_game_start.2 = {
 				primary_title = { add_title_law = oligarchic_succession_law }
 			}
 			if = {
+				limit = {
+					has_government = city_state_aristrocratic_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_aristocratic_initial_value
+					}
+				}
+			}
+			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
 					has_government = city_state_aristrocratic_government
 				}
 
 				primary_title = { add_title_law = aristocratic_succession_law }
+			}
+			if = {
+				limit = {
+					has_government = city_state_spartan_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_aristocratic_initial_value
+					}
+				}
 			}
 		}
 	}
@@ -207,6 +248,24 @@ ATHA_game_start.4 = {
 				limit = { has_holding_type = castle_holding }
 
 				add_building_slot = 1
+			}
+		}
+	}
+}
+
+# Distribute modifiers for corruption level
+ATHA_game_start.5 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			limit = {
+				government_has_flag = is_city_state_government
+			}
+
+			trigger_event = {
+				on_action = on_corruption_change
 			}
 		}
 	}

@@ -1,0 +1,58 @@
+on_corruption_change = {
+	if = {
+		limit = { has_variable = city_state_corruption }
+	}
+
+	effect = {
+		if = {
+			limit = {
+				primary_title = {
+					var:city_state_corruption < 24.5
+				}
+			}
+			add_character_modifier = { modifier = low_corruption_modifier }
+			remove_character_modifier = mediocre_corruption_modifier
+			remove_character_modifier = high_corruption_modifier
+			remove_character_modifier = critical_corruption_modifier
+		}
+		if = {
+			limit = {
+				primary_title = {
+					AND = {
+						var:city_state_corruption >= 24.5
+						var:city_state_corruption <= 49.5
+					}
+				}
+			}
+			add_character_modifier = { modifier = mediocre_corruption_modifier }
+			remove_character_modifier = low_corruption_modifier
+			remove_character_modifier = high_corruption_modifier
+			remove_character_modifier = critical_corruption_modifier
+		}
+		if = {
+			limit = {
+				primary_title = {
+					AND = {
+						var:city_state_corruption >= 49.5
+						var:city_state_corruption <= 74.5
+					}
+				}
+			}
+			add_character_modifier = { modifier = high_corruption_modifier }
+			remove_character_modifier = low_corruption_modifier
+			remove_character_modifier = mediocre_corruption_modifier
+			remove_character_modifier = critical_corruption_modifier
+		}
+		if = {
+			limit = {
+				primary_title = {
+					var:city_state_corruption > 74.5
+				}
+			}
+			add_character_modifier = { modifier = critical_corruption_modifier }
+			remove_character_modifier = low_corruption_modifier
+			remove_character_modifier = mediocre_corruption_modifier
+			remove_character_modifier = high_corruption_modifier
+		}
+	}
+}
