@@ -195,3 +195,61 @@ leibethra = { # commonly held location of Orpheus' tomb
 		courtier_and_guest_opinion = 5
 	}
 }
+
+# ANATOLIAN
+# Temporary for now until more of the map is revealed.
+
+alabanda = {
+	county = c_alabanda
+
+	# Capital of the satrapy of Caria. Reference to Alabandus' victory in a horse race.
+	character_modifier = {
+		name = holy_site_alabanda_effect_name
+		light_cavalry_pursuit_mult = 0.1
+		light_cavalry_toughness_mult = 0.1
+		heavy_cavalry_pursuit_mult = 0.1
+		heavy_cavalry_toughness_mult = 0.1
+	}
+}
+
+kybele = {
+	county = c_ariste
+	barony = b_kybele_ariste
+
+	# Kybele. Since she is the mother of the mountains and this place is mountainous, give an advantage.
+	character_modifier = {
+		name = holy_site_kybele_effect_name
+		mountains_advantage = 5
+		valley_advantage = 5
+	}
+}
+
+magnesia_ad_sipylum = {
+	county = c_magnesia_sipylon
+
+	# Kybele is often given attributes regarding fertility.
+	character_modifier = {
+		fertility = 0.05
+	}
+}
+
+sabazios = {
+	county = c_silandos
+	barony = b_sabazios_silandos
+
+	# Sabazios is often identified with Dionysus
+	character_modifier = {
+		name = holy_site_sabazios_effect_name
+		direct_vassal_opinion = 5
+	}
+}
+
+sardis = {
+	county = c_sardis
+
+	# Sardis was very well known for its river yielding gold.
+	character_modifier = {
+		name = holy_site_sardis_effect_name
+		domain_tax_mult = 0.05
+	}
+}
