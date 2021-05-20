@@ -1,14 +1,216 @@
-﻿# Corruption
-corruption_tiny_increase = 1
-corruption_small_increase = 2.5
-corruption_moderate_increase = 4
-corruption_large_increase = 6
-corruption_huge_increase = 10
-
-corruption_tiny_decrease = -1
-corruption_small_decrease = -2.5
-corruption_moderate_decrease = -4
-corruption_large_decrease = -6
-corruption_huge_decrease = -10
-
+﻿# Initial Corruption values
 corruption_initial_value = 25
+corruption_tyrannical_initial_value = 50
+corruption_aristocratic_initial_value = 35
+corruption_oligarchic_initial_value = 25
+corruption_democratic_initial_value = 10
+
+#Increase corruption values
+corruption_tiny_increase = {
+	value = 1
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}	
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_small_increase = {
+	value = 2.5
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_moderate_increase = {
+	value = 4
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}	
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_large_increase = {
+	value = 6
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_huge_increase = {
+	value = 10
+	if = {
+		limit = {
+			holder = {
+				OR = {
+					has_government = city_state_aristrocratic_government
+					has_government = city_state_oligarchic_government
+					has_government = city_state_spartan_government
+				}
+			}
+		}
+		multiply = 1.25
+	}
+	else_if = {
+		limit = {
+			holder = {has_government = city_state_tyrannical_government}
+		}
+		multiply = 1.5
+	}
+}
+
+#decrease corruption values
+corruption_tiny_decrease = {
+	value = -1
+	if = {
+		limit = {
+			has_government = city_state_democratic_government
+		}
+		multiply = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_small_decrease = {
+	value = -2.5
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_moderate_decrease = {
+	value = -4
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}	
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_large_decrease = {
+	value = -6
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}	
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}
+
+corruption_huge_decrease = {
+	value = -10
+	if = {
+		limit = {
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
+			}	
+		}
+		multiply = 1.25
+	}
+	if = {
+		limit = {
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+}

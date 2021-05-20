@@ -12,6 +12,7 @@ city_state_maintenance.0001 = {
             has_government = city_state_tyrannical_government
             has_government = city_state_oligarchic_government
             has_government = city_state_aristocratic_government
+            has_government = city_state_spartan_government
         }
     }
 
@@ -67,33 +68,59 @@ city_state_maintenance.0003 = {
     }
 
     option = {
-        primary_title = {
-			change_city_state_corruption = { AMOUNT_ARG = corruption_huge_increase }
-		}
+        change_city_state_corruption = { AMOUNT_ARG = corruption_huge_increase }
+
+        trigger_event = {
+            on_action = on_corruption_change
+        }
     }
 
     option = {
-        primary_title = {
-			change_city_state_corruption = { AMOUNT_ARG = corruption_huge_decrease }
-		}
+        change_city_state_corruption = { AMOUNT_ARG = corruption_huge_decrease }
+
+        trigger_event = {
+            on_action = on_corruption_change
+        }
     }
 }
-
 
 #Corruption is inherited when a character dies
 city_state_maintenance.0004 = {
     type = character_event
     hidden = yes
 
-    immediate = {     
-        every_heir = {
-            limit = {
-                tier = primary_title.tier
-            }
+    trigger = {
+        OR = {
+            has_government = city_state_democratic_government
+            has_government = city_state_tyrannical_government
+            has_government = city_state_oligarchic_government
+            has_government = city_state_aristocratic_government
+            has_government = city_state_spartan_government
+        }
+    }
 
+    immediate = {     
+        primary_heir = {
             set_variable = {
                 name = city_state_corruption
                 value = root.primary_title.var:city_state_corruption
+            }
+
+            trigger_event = { 
+                id = city_state_maintenance.0007
+                days = 1
+            }
+        }
+
+        every_heir = {
+            set_variable = {
+                name = city_state_corruption
+                value = root.primary_title.var:city_state_corruption
+            }
+
+            trigger_event = { 
+                id = city_state_maintenance.0007
+                days = 1
             }
         }
     }
@@ -102,6 +129,16 @@ city_state_maintenance.0004 = {
 #Triggered by on_rank_up and on_rank_down, it preserves the city-state's current corruption value on the title holder
 city_state_maintenance.0005 = {
     hidden = yes
+
+    trigger = {
+        OR = {
+            has_government = city_state_democratic_government
+            has_government = city_state_tyrannical_government
+            has_government = city_state_oligarchic_government
+            has_government = city_state_aristocratic_government
+            has_government = city_state_spartan_government
+        }
+    }
 
     immediate = {     
         set_variable = {
@@ -113,7 +150,7 @@ city_state_maintenance.0005 = {
     }
 }
 
-#Applies the corruption value from the holder onto the title
+#Applies saved corruption from city_state_maintenance.0005
 city_state_maintenance.0006 = {
     hidden = yes
 
@@ -130,5 +167,19 @@ city_state_maintenance.0006 = {
         }
 
         remove_variable = rank_change_corruption
+    }
+}
+
+#Restores the corruption to the heir after leader death
+city_state_maintenance.0007 = {
+    hidden = yes
+
+    immediate = {
+        primary_title = {
+            set_variable = {
+                name = city_state_corruption
+                value = root.var:city_state_corruption
+            }
+        }
     }
 }
