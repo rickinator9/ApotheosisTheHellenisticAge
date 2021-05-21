@@ -531,6 +531,21 @@ task_conversion = {
 
 		#Conversion bonuses from certain Holy Sites.
 		#Maluses from certain Holy Sites.
+		if = {
+			limit = {
+				exists = scope:county
+				scope:county.faith = {
+					controls_holy_site = thebai
+				}
+				title:b_thebai_thebai = {
+					is_holy_site_of = scope:councillor.faith
+				}
+			}
+			add = {
+				value = scope:councillor.conversion_holy_site_thebai
+				desc = COURT_CHAPLAIN_CONVERSION_HOLY_SITE_THEBAI
+			}
+		}
 
 		#Other
 		if = {
