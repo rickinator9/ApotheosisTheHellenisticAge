@@ -126,7 +126,7 @@ aigina = {
 
 # Lykaionism
 
-lykosoura = { # Province also contains Mt Lykaion
+lykosoura = { # Sanctuary of Despoina, the sanctuaries of Zeus and Pan are located nearby on Mt Lykaion
 	county = c_megalopolis
 	barony = b_lykosoura_megalopolis
 
@@ -150,8 +150,8 @@ dodona = {
 		monthly_county_control_change_factor = 0.1
 	}
 }
-kichyros = {
-	county = c_kichyros # Location of the Nekromanteion
+kichyros = { # Nekromanteion
+	county = c_kichyros
 
 	# Communing with your dead relatives is a handy way of getting closure
 	character_modifier = {
@@ -193,6 +193,48 @@ leibethra = { # commonly held location of Orpheus' tomb
 		name = holy_site_leibethra_effect_name
 		monthly_lifestyle_xp_gain_mult = 0.15
 		courtier_and_guest_opinion = 5
+	}
+}
+
+# Kabeirism
+
+lemnos = { # supposed location of Hephaestus' forge
+	county = c_lemnos
+
+	# If we can convince people our armour is crafted by Hephaestus himself...
+	character_modifier = {
+		name = holy_site_lemnos_effect_name
+		knight_effectiveness_mult = 0.2
+		prowess_per_piety_level = 1
+	}
+}
+thebai = { # location of a sanctuary to the Cabeiri
+	county = c_thebai
+
+	# Pausanias relates several stories of trespassers in the sanctuary receiving divine punishment (9.25.5-26.1)
+	flag = thebai_conversion_resistance_bonus # 50% County Conversion Resistance
+}
+
+# Kykladism
+
+kos = { # Asklepieion of Kos
+	county = c_kos
+
+	# The Asklepieion was the site of a prominent medical school
+	character_modifier = {
+		name = holy_site_kos_effect_name
+		negate_learning_penalty_add = 2
+		learning_per_piety_level = 1
+	}
+}
+samos = { # Heraion of Samos
+	county = c_samos
+
+	# Hera was closely associated with marriage and fertility
+	character_modifier = {
+		name = holy_site_samos_effect_name
+		spouse_opinion = 20
+		negate_fertility_penalty_add = 0.2
 	}
 }
 
