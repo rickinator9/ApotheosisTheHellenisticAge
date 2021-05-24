@@ -29,7 +29,7 @@ olympia = {
 	# Training for sporting competitions makes us tougher!
 	character_modifier = {
 		name = holy_site_olympia_effect_name
-		prowess = 1
+		heavy_infantry_damage_mult = 0.1
 		heavy_infantry_toughness_mult = 0.1
 	}
 }
@@ -224,7 +224,7 @@ kos = { # Asklepieion of Kos
 	character_modifier = {
 		name = holy_site_kos_effect_name
 		negate_learning_penalty_add = 2
-		learning_per_piety_level = 1
+		negate_health_penalty_add = 0.1
 	}
 }
 samos = { # Heraion of Samos
@@ -235,6 +235,37 @@ samos = { # Heraion of Samos
 		name = holy_site_samos_effect_name
 		spouse_opinion = 20
 		negate_fertility_penalty_add = 0.2
+	}
+}
+
+# Tyndaridism
+
+sparta = {
+	county = c_sparta
+
+	character_modifier = {
+		name = holy_site_sparta_effect_name
+		prowess = 1
+		dread_baseline_add = 5
+	}
+}
+thermopylai = {
+	county = c_trachis
+
+	character_modifier = {
+		name = holy_site_thermopylai_effect_name
+		defender_advantage = 5
+		monthly_prestige_gain_per_knight_mult = 0.02
+	}
+}
+limnai = { # sanctuary of Artemis Limnatis
+	county = c_limnai
+	barony = b_limnai_limnai
+
+	# Artemis Limnatis was the goddess of boundaries and transitions, and her border sanctuary was a point of constant contention between the Spartans and Messenians. It was also a symbol of Messenian independence.
+	character_modifier = {
+		name = holy_site_limnai_effect_name
+		monthly_county_control_change_factor = 0.1
 	}
 }
 
