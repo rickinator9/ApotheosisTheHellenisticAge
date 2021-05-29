@@ -184,7 +184,7 @@ convert_whole_realm_to_feudalism_effect = {
 			is_independent_ruler = no
 			liege = { has_government = clan_government }
 		}
-		change_government = clan_government
+		change_government_form = { GOVERNMENT = clan_government }
 	}
 	##Liege has feudal? Convert to feudal!
 	else_if = {
@@ -192,10 +192,10 @@ convert_whole_realm_to_feudalism_effect = {
 			is_independent_ruler = no
 			liege = { has_government = feudal_government }
 		}
-		change_government = feudal_government
+		change_government_form = { GOVERNMENT = feudal_government }
 	}
 	##You're an independent anything else? Convert to feudal!
-	else = { change_government = feudal_government }
+	else = { change_government_form = { GOVERNMENT = feudal_government } }
 	##General
 	custom_tooltip = all_holding_will_change
 	##Liege has clan? Convert to clan!
@@ -256,7 +256,7 @@ convert_whole_realm_to_feudalism_effect = {
 		}
 		every_vassal_or_below = {
 			limit = { has_government = tribal_government }
-			change_government = clan_government
+			change_government_form = { GOVERNMENT = clan_government }
 			#Nuke tribal authorities.
 			if = {
 				limit = { has_realm_law = tribal_authority_0 }
@@ -286,7 +286,7 @@ convert_whole_realm_to_feudalism_effect = {
 	else = {
 		every_vassal = {
 			limit = { has_government = tribal_government }
-			change_government = feudal_government
+			change_government_form = { GOVERNMENT = feudal_government }
 			#Nuke tribal authorities.
 			if = {
 				limit = { has_realm_law = tribal_authority_0 }

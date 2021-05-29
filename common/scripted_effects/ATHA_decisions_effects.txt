@@ -43,12 +43,12 @@ form_k_bithynia_decision_effects = {
 	# Government changes.
 	if = {
 		limit = { has_government = clan_government }
-		change_government = feudal_government
+		change_government_form = { GOVERNMENT = feudal_government }
 	}
 	every_vassal = {
 		limit = { has_government = tribal_government }
 		custom = every_tribal_vassal
-		change_government = clan_government
+		change_government_form = { GOVERNMENT = clan_government }
 		hidden_effect = {
 			#Nuke tribal authorities.
 			if = {

@@ -722,7 +722,7 @@ successful_popular_revolt_outcome_effect = {
 				limit = {
 					$SOURCE_GOVERNMENT$ = { has_government = tribal_government }
 				}
-				change_government = tribal_government
+				change_government_form = { GOVERNMENT = tribal_government }
 				add_realm_law = tribal_authority_0
 				if = { limit = { has_realm_law = crown_authority_0 } remove_realm_law = crown_authority_0 }
 				if = { limit = { has_realm_law = crown_authority_1 } remove_realm_law = crown_authority_1 }
@@ -734,14 +734,14 @@ successful_popular_revolt_outcome_effect = {
 				limit = {
 					$SOURCE_GOVERNMENT$ = { has_government = clan_government }
 				}
-				change_government = clan_government
+				change_government_form = { GOVERNMENT = clan_government }
 			}
 			#If sourced from feudal, make feudal.
 			else_if = {
 				limit = {
 					$SOURCE_GOVERNMENT$ = { has_government = feudal_government }
 				}
-				change_government = feudal_government
+				change_government_form = { GOVERNMENT = feudal_government }
 			}
 			#If sourced elsewhere, and Islamic, make clan.
 			#If sourced elsewhere, and not Islamic, make feudal.
@@ -755,7 +755,7 @@ successful_popular_revolt_outcome_effect = {
 						}
 					}
 				}
-				change_government = feudal_government
+				change_government_form = { GOVERNMENT = feudal_government }
 			}
 		}
 	}
