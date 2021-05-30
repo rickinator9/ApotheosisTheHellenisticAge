@@ -164,6 +164,13 @@
 			}
 		}
 
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_ritual_castration_trigger
+				NOT = { flag:tenet_ritual_castration = { is_in_list = selected_doctrines } }
+			}
+		}
+
 		character_modifier = {
 			fertility = 0.25
 		}
@@ -618,6 +625,10 @@
 				NOT = {
 					flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
 				}
+			}
+			custom_description = {
+				text = incompatible_tenet_ritual_castration_trigger
+				NOT = { flag:tenet_ritual_castration = { is_in_list = selected_doctrines } }
 			}
 		}
 
@@ -1357,6 +1368,10 @@
 				NOT = {
 					flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
 				}
+			}
+			custom_description = {
+				text = incompatible_tenet_ritual_castration_trigger
+				NOT = { flag:tenet_ritual_castration = { is_in_list = selected_doctrines } }
 			}
 		}
 		
@@ -2675,21 +2690,45 @@
 		icon = core_tenet_meditation
 		# potentially update this later
 		piety_cost = {
-			value = faith_tenet_cost_low
-			# update this later	
+			if = {
+				limit = {
+					religion_tag = anatolian_religion
+				}
+				value = faith_tenet_cost_low
+				# low cost for Anatolian faiths
+			}
+			else = {
+				value = faith_tenet_cost_high
+				# high cost for non-Anatolian faiths
+			}
+
+			if = {
+				limit = {
+					has_doctrine = tenet_ritual_castration
+				}
+				multiply = faith_unchanged_doctrine_cost_mult
+				# Multiplier for keeping same tenet
+			}
 		}
 		is_shown = {
 			always = yes
 		}
 		can_pick = {
-			always = yes
-			# specify later for no pacifist or hedonist doctrines
+			custom_description = {
+				text = incompatible_tenet_pacifism_trigger
+				NOT = { flag:tenet_pacifism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_dharmic_pacifism_trigger
+				NOT = { flag:tenet_dharmic_pacifism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_carnal_exaltation_trigger
+				NOT = { flag:tenet_carnal_exaltation = { is_in_list = selected_doctrines } }
+			}
 		}
 		traits = {
 			virtues = { eunuch }
-		}
-		character_modifier = {
-			valley_advantage = 5
 		}
 	}
 
