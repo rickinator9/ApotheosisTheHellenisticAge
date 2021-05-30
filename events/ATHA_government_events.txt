@@ -72,10 +72,10 @@ ATHA_government.0001 = {
 			limit = { 
 				has_tribal_capital_trigger = yes
 			}
-			change_government = clan_government
+			change_government_form = { GOVERNMENT = clan_government }
 		}
 		else = {
-			change_government = feudal_government
+			change_government_form = { GOVERNMENT = feudal_government }
 		}
 	}
 
@@ -155,7 +155,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government = city_state_tyrannical_government
+		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = medium_piety_loss
 		add_dread = medium_dread_gain
@@ -196,7 +196,7 @@ ATHA_government.0002 = {
 		}
 		trait = deceitful
 
-		change_government = city_state_tyrannical_government
+		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_loss
 
@@ -232,7 +232,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government = city_state_aristocratic_government
+		change_government_form = { GOVERNMENT = city_state_aristocratic_government }
 		add_prestige = minor_prestige_gain
 		add_piety = minor_piety_loss
 
@@ -273,7 +273,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government = city_state_oligarchic_government
+		change_government_form = { GOVERNMENT = city_state_oligarchic_government }
 		add_prestige = minor_prestige_loss
 		add_piety = minor_piety_gain
 
@@ -308,7 +308,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government = city_state_democratic_government
+		change_government_form = { GOVERNMENT = city_state_democratic_government }
 		add_prestige = medium_prestige_loss
 		add_piety = medium_piety_gain
 
@@ -346,7 +346,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government = city_state_democratic_government # TEMP
+		change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
 
 		ai_chance = {
 			base = 0
@@ -417,7 +417,7 @@ ATHA_government.0003 = {
 			NOT = { has_trait = deceitful }
 		}
 
-		change_government = city_state_tyrannical_government
+		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = medium_piety_loss
 		add_dread = medium_dread_gain
@@ -457,7 +457,7 @@ ATHA_government.0003 = {
 		trigger = {	has_trait = deceitful }
 		trait = deceitful
 
-		change_government = city_state_tyrannical_government
+		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_loss
 
@@ -491,7 +491,7 @@ ATHA_government.0003 = {
 	option = { # Aristocracy
 		name = ATHA_government.0003.b
 
-		change_government = city_state_aristocratic_government
+		change_government_form = { GOVERNMENT = city_state_aristocratic_government }
 		add_prestige = minor_prestige_gain
 		add_piety = minor_piety_loss
 
@@ -530,7 +530,7 @@ ATHA_government.0003 = {
 	option = { # Oligarchy
 		name = ATHA_government.0003.c
 
-		change_government = city_state_oligarchic_government
+		change_government_form = { GOVERNMENT = city_state_oligarchic_government }
 		add_prestige = minor_prestige_loss
 		add_piety = minor_piety_gain
 
@@ -563,7 +563,7 @@ ATHA_government.0003 = {
 	option = { # Democracy
 		name = ATHA_government.0003.d
 
-		change_government = city_state_democratic_government
+		change_government_form = { GOVERNMENT = city_state_democratic_government }
 		add_prestige = medium_prestige_loss
 		add_piety = medium_piety_gain
 
@@ -599,7 +599,7 @@ ATHA_government.0003 = {
 		name = ATHA_government.0003.e
 		custom_tooltip = ATHA_government.0003.e.tt
 
-		change_government = city_state_democratic_government # TEMP
+		change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
 
 		ai_chance = {
 			base = 0
@@ -645,7 +645,7 @@ ATHA_government.0004 = {
 		add_dread = medium_dread_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government = city_state_tyrannical_government
+			change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 			every_held_county = {
 				change_county_control = medium_county_control_gain
 				add_county_modifier = {
@@ -721,7 +721,7 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_loss
 
 		scope:dependent_city_state_vassal = { 
-			change_government = city_state_tyrannical_government
+			change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 			every_held_county = {
 				change_county_control = medium_county_control_gain
 				add_county_modifier = {
@@ -790,7 +790,7 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_loss
 
 		scope:dependent_city_state_vassal = { 
-			change_government = city_state_aristocratic_government
+			change_government_form = { GOVERNMENT = city_state_aristocratic_government }
 			every_held_county = {
 				change_county_control = minor_county_control_gain
 				add_county_modifier = {
@@ -866,7 +866,7 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government = city_state_oligarchic_government
+			change_government_form = { GOVERNMENT = city_state_oligarchic_government }
 			every_held_county = {
 				change_county_control = minor_county_control_loss
 				add_county_modifier = {
@@ -924,7 +924,7 @@ ATHA_government.0004 = {
 		add_piety = medium_piety_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government = city_state_democratic_government
+			change_government_form = { GOVERNMENT = city_state_democratic_government }
 			every_held_county = {
 				change_county_control = medium_county_control_loss
 				add_county_modifier = {
@@ -987,7 +987,7 @@ ATHA_government.0004 = {
 				modifier = disappointed_opinion
 				opinion = -10
 			}
-			change_government = city_state_democratic_government # TEMP
+			change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
 		}
 
 		ai_chance = {
