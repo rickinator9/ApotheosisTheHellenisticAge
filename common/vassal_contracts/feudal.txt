@@ -138,22 +138,8 @@ feudal_government_levies = {
 religious_rights = {
 	display_mode = checkbox
 
-	is_shown = {
-		scope:vassal = { 
-			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-		}
-	}
-
 	obligation_levels = {
 		religious_rights_none = {
-			# is_valid = {
-			# 	scope:vassal = { 
-			# 		OR = { 
-			# 			highest_held_title_tier < tier_county
-			# 			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-			# 		}	
-			# 	}	
-			# }
 			default = yes
 			position = { 0 0 }
 			
@@ -188,47 +174,47 @@ religious_rights = {
 	}
 }
 
-fortification_rights = {
-	display_mode = checkbox
-
-	is_shown = {
-		scope:liege = {
-			can_enforce_obligations = yes
-		}
-	}
-
-	obligation_levels = {
-		fortification_rights_none = {
-			default = yes
-			position = { 0 0 }
-			
-			ai_liege_desire = @ai_standard_liege_desire
-			ai_vassal_desire = 0
-
-			flag = category_fortification_rights
-		}
-		fortification_rights_granted = {
-			parent = fortification_rights_none
-			position = { 1 0 }
-			
-			liege_modifier = {
-				castle_holding_build_gold_cost = -0.05
-			}
-			
-			vassal_modifier = {
-				fort_holding_build_gold_cost = 0.3
-				fort_holding_holding_build_gold_cost = 1
-				colony_holding_build_gold_cost = 0.3
-				colony_holding_holding_build_gold_cost = 1
-				additional_fort_level = -2
-			}
-
-			vassal_opinion = -10
-
-			flag = category_fortification_rights
-		}
-	}
-}
+#	fortification_rights = {
+#		display_mode = checkbox
+#		is_shown = {
+#			scope:liege.culture = {
+#				has_innovation = innovation_battlements
+#			}
+#		}
+#		obligation_levels = {
+#			fortification_rights_none = {
+#				default = yes
+#				position = { 0 0 }
+#				
+#				ai_liege_desire = @ai_standard_liege_desire
+#				ai_vassal_desire = 0
+#			}
+#			fortification_rights_granted = {
+#				is_valid = {
+#					scope:liege.culture = {
+#						has_innovation = innovation_battlements
+#					}
+#				}
+#				parent = fortification_rights_none
+#				position = { 1 0 }
+#				
+#				liege_modifier = {
+#					castle_holding_build_gold_cost = 0.05
+#				}
+#				
+#				vassal_modifier = {
+#					castle_holding_build_gold_cost = -0.15
+#					castle_holding_holding_build_gold_cost = -0.5
+#					additional_fort_level = 1
+#				}
+#				
+#				tax_factor = fortification_rights_contract_taxes
+#				
+#				ai_liege_desire = 0
+#				ai_vassal_desire = @ai_standard_vassal_desire
+#			}
+#		}
+#	}
 
 coinage_rights = {
 	display_mode = checkbox
@@ -236,20 +222,9 @@ coinage_rights = {
 		scope:liege.culture = {
 			has_innovation = innovation_classical_monetary_standards
 		}
-		scope:vassal = { 
-			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-		}
 	}
 	obligation_levels = {
 		coinage_rights_none = {
-			# is_valid = {
-			# 	scope:vassal = { 
-			# 		OR = { 
-			# 			highest_held_title_tier < tier_county
-			# 			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-			# 		}	
-			# 	}	
-			# }
 			default = yes
 			position = { 0 0 }
 			
@@ -383,23 +358,8 @@ council_rights = {
 
 title_revocation_rights = {
 	display_mode = checkbox
-
-	is_shown = {
-		scope:vassal = { 
-			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-		}
-	}
-
 	obligation_levels = {
 		title_revocation_rights_default = {
-			# is_valid = {
-			# 	scope:vassal = { 
-			# 		OR = { 
-			# 			highest_held_title_tier < tier_county
-			# 			NOT = { vassal_contract_has_flag = has_autonomous_contract }
-			# 		}	
-			# 	}	
-			# }
 			default = yes
 			position = { 0 0 }
 			

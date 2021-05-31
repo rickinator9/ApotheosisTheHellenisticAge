@@ -1,8 +1,4 @@
-﻿### TO-DO: 
-### Make it so rulers who are already landed aren't forced into giving up their feudal government if they inherit from someone else
-### Find out why event for liege deciding government doesn't fire when player is a vassal
-
-namespace = ATHA_government
+﻿namespace = ATHA_government
 
 scripted_trigger has_tribal_capital_trigger = {
 	capital_province = { 
@@ -120,7 +116,32 @@ ATHA_government.0001 = {
 	}
 }
 
-# Independent feudal count is forced to adopt City-State government
+# Keep track of heirs of independent dynastic count
+ATHA_government.00011 = {
+	type = empty
+	hidden = yes
+
+	# Only trigger this for rulers that don't meet the conditions for preserving dynastic government
+	trigger = {
+		is_landed = yes
+
+		NOT = {	highest_held_title_tier > tier_county }
+		is_independent_ruler = yes	
+		has_government = feudal_government
+		has_city_capital_trigger = yes
+	}
+
+	immediate = {
+		every_heir = {
+			set_variable = {
+				name = highest_tier_before_inheritance
+				value = highest_held_title_tier
+			}
+		}
+	}
+}
+
+# Independent dynastic count is forced to adopt City-State government
 ATHA_government.0002 = {
 	type = character_event
 	title = ATHA_government.0002.t
@@ -145,6 +166,8 @@ ATHA_government.0002 = {
 		is_independent_ruler = yes	
 		has_government = feudal_government
 		has_city_capital_trigger = yes
+
+		scope:title.tier > var:highest_tier_before_inheritance
 	}
 
 	option = { # Tyranny
@@ -155,24 +178,11 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = medium_piety_loss
 		add_dread = medium_dread_gain
 
-		every_held_county = {
-			change_county_control = medium_county_control_gain
-			add_county_modifier = {
-				modifier = newly_tyrannical_modifier
-				days = 3650
-			}
-		}
-
-		stress_impact = {
-			generous = medium_stress_impact_gain
-			craven = medium_stress_impact_gain
-			just = medium_stress_impact_gain
-		}
+		implement_franchise_tyranny = yes
 
 		ai_chance = {
 			base = 100
@@ -196,22 +206,10 @@ ATHA_government.0002 = {
 		}
 		trait = deceitful
 
-		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_loss
 
-		every_held_county = {
-			change_county_control = medium_county_control_gain
-			add_county_modifier = {
-				modifier = newly_tyrannical_populist_modifier
-				days = 3650
-			}
-		}
-
-		stress_impact = {
-			generous = medium_stress_impact_gain
-			just = medium_stress_impact_gain
-		}
+		implement_franchise_tyranny_populist = yes
 
 		ai_chance = {
 			base = 200	
@@ -232,23 +230,10 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government_form = { GOVERNMENT = city_state_aristocratic_government }
 		add_prestige = minor_prestige_gain
 		add_piety = minor_piety_loss
 
-		every_held_county = {
-			change_county_control = minor_county_control_gain
-			add_county_modifier = {
-				modifier = newly_aristocratic_modifier
-				days = 3650
-			}
-		}
-
-		stress_impact = {
-			generous = minor_stress_impact_gain
-			craven = minor_stress_impact_gain
-			stubborn = minor_stress_impact_gain
-		}
+		implement_franchise_aristocracy = yes
 
 		ai_chance = {
 			base = 10 # Aristocracies should be relatively rare	
@@ -273,24 +258,10 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government_form = { GOVERNMENT = city_state_oligarchic_government }
 		add_prestige = minor_prestige_loss
 		add_piety = minor_piety_gain
 
-		every_held_county = {
-			change_county_control = minor_county_control_loss
-			add_county_modifier = {
-				modifier = newly_oligarchic_populist_modifier
-				days = 3650
-			}
-		}
-
-		stress_impact = {
-			greedy = minor_stress_impact_gain
-			arrogant = minor_stress_impact_gain
-			stubborn = minor_stress_impact_gain
-			ambitious = minor_stress_impact_gain
-		}
+		implement_franchise_oligarchy = yes
 
 		ai_chance = {
 			base = 100		
@@ -308,24 +279,10 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government_form = { GOVERNMENT = city_state_democratic_government }
 		add_prestige = medium_prestige_loss
 		add_piety = medium_piety_gain
 
-		every_held_county = {
-			change_county_control = medium_county_control_loss
-			add_county_modifier = {
-				modifier = newly_democratic_modifier
-				days = 3650
-			}
-		}
-
-		stress_impact = {
-			greedy = medium_stress_impact_gain
-			arrogant = medium_stress_impact_gain
-			stubborn = medium_stress_impact_gain
-			ambitious = medium_stress_impact_gain
-		}
+		implement_franchise_democracy = yes
 
 		ai_chance = {
 			base = 100			
@@ -346,7 +303,7 @@ ATHA_government.0002 = {
 			can_preserve_feudal_government_trigger = no
 		}
 
-		change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
+		implement_franchise_desired = yes
 
 		ai_chance = {
 			base = 0
@@ -364,7 +321,7 @@ ATHA_government.0002 = {
 		add_prestige = medium_prestige_gain
 
 		ai_chance = {
-			base = 10
+			base = 100
 		}
 	}
 	option = { # Can preserve feudal, but decide to become city-state instead
@@ -417,26 +374,14 @@ ATHA_government.0003 = {
 			NOT = { has_trait = deceitful }
 		}
 
-		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = medium_piety_loss
 		add_dread = medium_dread_gain
 
-		every_held_county = {
-			change_county_control = medium_county_control_gain
-			add_county_modifier = {
-				modifier = newly_tyrannical_modifier
-				days = 3650
-			}
-		}
+		implement_franchise_tyranny = yes
+
 		remove_character_flag = vassal_can_create_city_state
 		remove_character_flag = liege_let_vassal_create_city_state	
-
-		stress_impact = {
-			generous = medium_stress_impact_gain
-			craven = medium_stress_impact_gain
-			just = medium_stress_impact_gain
-		}
 
 		ai_chance = {
 			base = 100
@@ -457,24 +402,13 @@ ATHA_government.0003 = {
 		trigger = {	has_trait = deceitful }
 		trait = deceitful
 
-		change_government_form = { GOVERNMENT = city_state_tyrannical_government }
 		add_prestige = medium_prestige_gain
 		add_piety = minor_piety_loss
 
-		every_held_county = {
-			change_county_control = medium_county_control_gain
-			add_county_modifier = {
-				modifier = newly_tyrannical_populist_modifier
-				days = 3650
-			}
-		}
+		implement_franchise_tyranny_populist = yes
+
 		remove_character_flag = vassal_can_create_city_state
 		remove_character_flag = liege_let_vassal_create_city_state	
-
-		stress_impact = {
-			generous = medium_stress_impact_gain
-			just = medium_stress_impact_gain
-		}
 
 		ai_chance = {
 			base = 200	
@@ -491,25 +425,13 @@ ATHA_government.0003 = {
 	option = { # Aristocracy
 		name = ATHA_government.0003.b
 
-		change_government_form = { GOVERNMENT = city_state_aristocratic_government }
 		add_prestige = minor_prestige_gain
 		add_piety = minor_piety_loss
 
-		every_held_county = {
-			change_county_control = minor_county_control_gain
-			add_county_modifier = {
-				modifier = newly_aristocratic_modifier
-				days = 3650
-			}
-		}
+		implement_franchise_aristocracy = yes
+
 		remove_character_flag = vassal_can_create_city_state
 		remove_character_flag = liege_let_vassal_create_city_state	
-
-		stress_impact = {
-			generous = minor_stress_impact_gain
-			craven = minor_stress_impact_gain
-			stubborn = minor_stress_impact_gain
-		}
 
 		ai_chance = {
 			base = 10 # Aristocracies should be relatively rare	
@@ -530,26 +452,13 @@ ATHA_government.0003 = {
 	option = { # Oligarchy
 		name = ATHA_government.0003.c
 
-		change_government_form = { GOVERNMENT = city_state_oligarchic_government }
 		add_prestige = minor_prestige_loss
 		add_piety = minor_piety_gain
 
-		every_held_county = {
-			change_county_control = minor_county_control_loss
-			add_county_modifier = {
-				modifier = newly_oligarchic_populist_modifier
-				days = 3650
-			}
-		}
+		implement_franchise_oligarchy = yes
+
 		remove_character_flag = vassal_can_create_city_state
 		remove_character_flag = liege_let_vassal_create_city_state	
-
-		stress_impact = {
-			greedy = minor_stress_impact_gain
-			arrogant = minor_stress_impact_gain
-			stubborn = minor_stress_impact_gain
-			ambitious = minor_stress_impact_gain
-		}
 
 		ai_chance = {
 			base = 100		
@@ -563,26 +472,13 @@ ATHA_government.0003 = {
 	option = { # Democracy
 		name = ATHA_government.0003.d
 
-		change_government_form = { GOVERNMENT = city_state_democratic_government }
 		add_prestige = medium_prestige_loss
 		add_piety = medium_piety_gain
 
-		every_held_county = {
-			change_county_control = medium_county_control_loss
-			add_county_modifier = {
-				modifier = newly_democratic_modifier
-				days = 3650
-			}
-		}
+		implement_franchise_democracy = yes
+
 		remove_character_flag = vassal_can_create_city_state
 		remove_character_flag = liege_let_vassal_create_city_state	
-
-		stress_impact = {
-			greedy = medium_stress_impact_gain
-			arrogant = medium_stress_impact_gain
-			stubborn = medium_stress_impact_gain
-			ambitious = medium_stress_impact_gain
-		}
 
 		ai_chance = {
 			base = 100			
@@ -599,7 +495,7 @@ ATHA_government.0003 = {
 		name = ATHA_government.0003.e
 		custom_tooltip = ATHA_government.0003.e.tt
 
-		change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
+		implement_franchise_desired = yes
 
 		ai_chance = {
 			base = 0
@@ -645,52 +541,10 @@ ATHA_government.0004 = {
 		add_dread = medium_dread_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government_form = { GOVERNMENT = city_state_tyrannical_government }
-			every_held_county = {
-				change_county_control = medium_county_control_gain
-				add_county_modifier = {
-					modifier = newly_tyrannical_modifier
-					days = 3650
-				}
-			}
-			vassal_contract_set_obligation_level = {
-				type = imposed_franchise
-				level = imposed_franchise_tyrannic
-			}
-			stress_impact = {
-				generous = medium_stress_impact_gain
-				craven = medium_stress_impact_gain
-				just = medium_stress_impact_gain
-			}
-			if = {
-				limit = {
-					OR = {
-						has_trait = generous
-						has_trait = craven
-						has_trait = just
-					}
-				}
-				add_opinion = {
-					target = ROOT
-					modifier = disappointed_opinion
-					opinion = -20
-				}
-			}
+			implement_franchise_tyranny = yes
+			add_character_flag = liege_imposed_tyranny
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}	
-		if = {
-			limit = {
-				NOT = {
-					has_hook_of_type = { 
-						type = loyalty_hook
-						target = scope:dependent_city_state_vassal
-					}
-				}
-			}
-			add_hook = {
-				type = vassal_contract_strong_hook
-				target = scope:dependent_city_state_vassal
-			}
-		}
 
 		stress_impact = {
 			generous = medium_stress_impact_gain
@@ -721,49 +575,9 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_loss
 
 		scope:dependent_city_state_vassal = { 
-			change_government_form = { GOVERNMENT = city_state_tyrannical_government }
-			every_held_county = {
-				change_county_control = medium_county_control_gain
-				add_county_modifier = {
-					modifier = newly_tyrannical_populist_modifier
-					days = 3650
-				}
-			}
-			vassal_contract_set_obligation_level = {
-				type = imposed_franchise
-				level = imposed_franchise_tyrannic
-			}
-			stress_impact = {
-				generous = medium_stress_impact_gain
-				just = medium_stress_impact_gain
-			}
-			if = {
-				limit = {
-					OR = {
-						has_trait = generous
-						has_trait = just
-					}
-				}
-				add_opinion = {
-					target = ROOT
-					modifier = disappointed_opinion
-					opinion = -20
-				}
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_hook_of_type = { 
-						type = loyalty_hook
-						target = scope:dependent_city_state_vassal
-					}
-				}
-			}
-			add_hook = {
-				type = vassal_contract_strong_hook
-				target = scope:dependent_city_state_vassal
-			}
+			implement_franchise_tyranny_populist = yes
+			add_character_flag = liege_imposed_tyranny_populist
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}
 
 		stress_impact = {
@@ -790,52 +604,10 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_loss
 
 		scope:dependent_city_state_vassal = { 
-			change_government_form = { GOVERNMENT = city_state_aristocratic_government }
-			every_held_county = {
-				change_county_control = minor_county_control_gain
-				add_county_modifier = {
-					modifier = newly_aristocratic_modifier
-					days = 3650
-				}
-			}
-			vassal_contract_set_obligation_level = {
-				type = imposed_franchise
-				level = imposed_franchise_aristocratic
-			}
-			stress_impact = {
-				generous = minor_stress_impact_gain
-				craven = minor_stress_impact_gain
-				stubborn = minor_stress_impact_gain
-			}
-			if = {
-				limit = {
-					OR = {
-						has_trait = generous
-						has_trait = craven
-						has_trait = stubborn
-					}
-				}
-				add_opinion = {
-					target = ROOT
-					modifier = disappointed_opinion
-					opinion = -10
-				}
-			}
+			implement_franchise_aristocracy = yes
+			add_character_flag = liege_imposed_aristocracy
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}	
-		if = {
-			limit = {
-				NOT = {
-					has_hook_of_type = { 
-						type = house_head_hook
-						target = scope:dependent_city_state_vassal
-					}
-				}
-			}
-			add_hook = {
-				type = vassal_contract_weak_hook
-				target = scope:dependent_city_state_vassal
-			}
-		}
 
 		stress_impact = {
 			generous = minor_stress_impact_gain
@@ -866,39 +638,9 @@ ATHA_government.0004 = {
 		add_piety = minor_piety_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government_form = { GOVERNMENT = city_state_oligarchic_government }
-			every_held_county = {
-				change_county_control = minor_county_control_loss
-				add_county_modifier = {
-					modifier = newly_oligarchic_populist_modifier
-					days = 3650
-				}
-			}
-			vassal_contract_set_obligation_level = {
-				type = imposed_franchise
-				level = imposed_franchise_oligarchic
-			}
-			stress_impact = {
-				greedy = minor_stress_impact_gain
-				arrogant = minor_stress_impact_gain
-				stubborn = minor_stress_impact_gain
-				ambitious = minor_stress_impact_gain
-			}
-			if = {
-				limit = {
-					OR = {
-						has_trait = greedy
-						has_trait = arrogant
-						has_trait = stubborn
-						has_trait = ambitious
-					}
-				}
-				add_opinion = {
-					target = ROOT
-					modifier = disappointed_opinion
-					opinion = -10
-				}
-			}
+			implement_franchise_oligarchy = yes
+			add_character_flag = liege_imposed_oligarchy
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}	
 
 		stress_impact = {
@@ -924,39 +666,9 @@ ATHA_government.0004 = {
 		add_piety = medium_piety_gain
 
 		scope:dependent_city_state_vassal = { 
-			change_government_form = { GOVERNMENT = city_state_democratic_government }
-			every_held_county = {
-				change_county_control = medium_county_control_loss
-				add_county_modifier = {
-					modifier = newly_democratic_modifier
-					days = 3650
-				}
-			}
-			vassal_contract_set_obligation_level = {
-				type = imposed_franchise
-				level = imposed_franchise_democratic
-			}
-			stress_impact = {
-				greedy = medium_stress_impact_gain
-				arrogant = medium_stress_impact_gain
-				stubborn = medium_stress_impact_gain
-				ambitious = medium_stress_impact_gain
-			}
-			if = {
-				limit = {
-					OR = {
-						has_trait = greedy
-						has_trait = arrogant
-						has_trait = stubborn
-						has_trait = ambitious
-					}
-				}
-				add_opinion = {
-					target = ROOT
-					modifier = disappointed_opinion
-					opinion = -20
-				}
-			}
+			implement_franchise_democracy = yes
+			add_character_flag = liege_imposed_democracy
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}	
 
 		stress_impact = {
@@ -982,12 +694,8 @@ ATHA_government.0004 = {
 		custom_tooltip = ATHA_government.0004.e.tt
 
 		scope:dependent_city_state_vassal = { 
-			add_opinion = {
-				target = ROOT
-				modifier = disappointed_opinion
-				opinion = -10
-			}
-			change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
+			implement_franchise_desired = yes
+			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
 		}
 
 		ai_chance = {
@@ -1015,6 +723,77 @@ ATHA_government.0004 = {
 
 		ai_chance = {
 			base = 0
+		}
+	}
+}
+
+# Vassal is notified about newly imposed franchise
+ATHA_government.0005 = {
+	type = character_event
+	title = ATHA_government.0005.t
+	desc = {
+		desc = ATHA_government.0005.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_character_flag = liege_imposed_tyranny }
+				desc = ATHA_government.0005.desc_tyranny
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = liege_imposed_tyranny_populist }
+				desc = ATHA_government.0005.desc_tyranny_populist
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = liege_imposed_aristocracy }
+				desc = ATHA_government.0005.desc_aristocracy
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = liege_imposed_oligarchy }
+				desc = ATHA_government.0005.desc_oligarchy
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = liege_imposed_democracy }
+				desc = ATHA_government.0005.desc_democracy
+			}
+			desc = ATHA_government.0005.desc_franchise
+		}
+	}
+	theme = realm
+	left_portrait = root
+	right_portrait = {
+		character = liege
+		animation = personality_rational
+	}
+	option = {
+		name = ATHA_government.0005.a
+
+		if = {
+			limit = { has_character_flag = liege_imposed_tyranny }
+			show_as_tooltip = { implement_franchise_tyranny = yes }
+			remove_character_flag = liege_imposed_tyranny
+		}
+		else_if = {
+			limit = { has_character_flag = liege_imposed_tyranny_populist }
+			show_as_tooltip = { implement_franchise_tyranny_populist = yes }
+			remove_character_flag = liege_imposed_tyranny_populist
+		}
+		else_if = {
+			limit = { has_character_flag = liege_imposed_aristocracy }
+			show_as_tooltip = { implement_franchise_aristocracy = yes }
+			remove_character_flag = liege_imposed_aristocracy
+		}
+		else_if = {
+			limit = { has_character_flag = liege_imposed_oligarchy }
+			show_as_tooltip = { implement_franchise_oligarchy = yes }
+			remove_character_flag = liege_imposed_oligarchy
+		}
+		else_if = {
+			limit = { has_character_flag = liege_imposed_democracy }
+			show_as_tooltip = { implement_franchise_democracy = yes }
+			remove_character_flag = liege_imposed_democracy
+		}
+		else = {
+			custom_tooltip = ATHA_government.0004.e.tt
+			show_as_tooltip = { implement_franchise_desired = yes }
 		}
 	}
 }

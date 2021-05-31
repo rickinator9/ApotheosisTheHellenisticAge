@@ -1263,10 +1263,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:fortification_rights != vassal_contract_obligation_level:fortification_rights
+			local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
 		}
 		if = {
-			limit = { local_var:fortification_rights = 0 }
+			limit = { local_var:atha_fortification_rights = 0 }
 			add = 1
 		}
 		else = {
@@ -1393,7 +1393,7 @@ count_total_obligation_changes = {
 	}
 	if = {
 		limit = {
-			local_var:fortification_rights != vassal_contract_obligation_level:fortification_rights
+			local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
 		}
 		add = 1
 	}

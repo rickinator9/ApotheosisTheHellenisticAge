@@ -361,6 +361,112 @@ enforced_federalism = {
 	}
 }
 
+### SPECIAL RIGHTS
+
+colony_rights = {
+	display_mode = checkbox
+
+	obligation_levels = {
+		colony_rights_none = {
+			default = yes
+			position = { 0 0 }
+
+			flag = category_colony_rights
+		}
+		colony_rights_granted = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_classical_garrisons
+				}
+			}
+			parent = colony_rights_none
+			position = { 0 1 }
+
+			tax_factor = colony_contract_taxes
+			
+			vassal_modifier = {
+				colony_holding_build_gold_cost = -0.15
+				colony_holding_holding_build_gold_cost = -0.5
+				army_maintenance_mult = -0.2
+				levy_reinforcement_rate = 0.2
+			}
+
+			flag = city_state_encouraged_culture_flipping
+			flag = category_colony_rights
+		}	
+	}
+}
+
+gift_estate_rights = {
+	display_mode = checkbox
+
+	is_shown = {
+		scope:liege = {
+			can_grant_gift_estates = yes
+		}
+	}
+
+	obligation_levels = {
+		gift_estate_rights_none = {
+			default = yes
+			position = { 0 0 }
+
+			flag = category_gift_estate_rights
+		}
+		gift_estate_rights_granted = {
+			is_valid = {
+				scope:liege.culture = {
+					has_innovation = innovation_hellenistic_land_survey
+				}
+			}
+			parent = gift_estate_rights_none
+			position = { 0 1 }
+			
+			tax_factor = gift_estates_contract_taxes
+			levies_factor = gift_estates_contract_levies
+
+			vassal_modifier = {
+				city_holding_build_gold_cost = -0.15
+				city_holding_holding_build_gold_cost = -0.5
+				domain_tax_mult = 0.2
+			}
+
+			vassal_opinion = 5
+
+			flag = vassal_contract_gives_weak_hook
+			flag = category_gift_estate_rights
+		}	
+	}
+}
+
+#	hereditary_rights = {
+#		display_mode = checkbox
+#
+#		obligation_levels = {
+#			hereditary_rights_none = {
+#				# TODO: 
+#				# is_valid = {
+#				# 	scope:vassal = { 
+#				# 		OR = { 
+#				# 			highest_held_title_tier < tier_county
+#				# 			NOT = { vassal_contract_has_flag = has_feudal_bureaucracy_contract }
+#				# 		}	
+#				# 	}	
+#				# }
+#				default = yes
+#				position = { 0 0 }
+#
+#				flag = category_hereditary_rights
+#			}
+#			hereditary_rights_guaranteed = {
+#				parent = hereditary_rights_none
+#				position = { 0 1 }
+#
+#				flag = category_hereditary_rights
+#			}	
+#		}
+#	}
+
 ### OBLIGATIONS (for City-State and Coalition vassals)
 garrison_rights = {
 	display_mode = checkbox
@@ -442,109 +548,44 @@ ritual_coronations_rights = {
 	}
 }
 
-### SPECIAL RIGHTS (for Bureaucratic vassals)
-
-colony_rights = {
-	display_mode = checkbox
-
-	obligation_levels = {
-		colony_rights_none = {
-			default = yes
-			position = { 0 0 }
-
-			flag = category_colony_rights
-		}
-		colony_rights_granted = {
-			is_valid = {
-				scope:liege.culture = {
-					has_innovation = innovation_classical_garrisons
-				}
-			}
-			parent = colony_rights_none
-			position = { 0 1 }
-
-			tax_factor = colony_contract_taxes
-			
-			vassal_modifier = {
-				colony_holding_build_gold_cost = -0.15
-				colony_holding_holding_build_gold_cost = -0.5
-				army_maintenance_mult = -0.2
-				levy_reinforcement_rate = 0.2
-			}
-
-			flag = city_state_encouraged_culture_flipping
-			flag = category_colony_rights
-		}	
-	}
-}
-
-gift_estate_rights = {
+atha_fortification_rights = {
 	display_mode = checkbox
 
 	is_shown = {
 		scope:liege = {
-			can_grant_gift_estates = yes
+			can_enforce_obligations = yes
 		}
 	}
 
 	obligation_levels = {
-		gift_estate_rights_none = {
+		atha_fortification_rights_none = {
 			default = yes
 			position = { 0 0 }
-
-			flag = category_gift_estate_rights
-		}
-		gift_estate_rights_granted = {
-			is_valid = {
-				scope:liege.culture = {
-					has_innovation = innovation_hellenistic_land_survey
-				}
-			}
-			parent = gift_estate_rights_none
-			position = { 0 1 }
 			
-			tax_factor = gift_estates_contract_taxes
-			levies_factor = gift_estates_contract_levies
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
 
+			flag = category_fortification_rights
+		}
+		atha_fortification_rights_restricted = {
+			parent = atha_fortification_rights_none
+			position = { 1 0 }
+			
+			liege_modifier = {
+				castle_holding_build_gold_cost = -0.05
+			}
+			
 			vassal_modifier = {
-				city_holding_build_gold_cost = -0.15
-				city_holding_holding_build_gold_cost = -0.5
-				domain_tax_mult = 0.2
+				fort_holding_build_gold_cost = 0.3
+				fort_holding_holding_build_gold_cost = 1
+				colony_holding_build_gold_cost = 0.3
+				colony_holding_holding_build_gold_cost = 1
+				additional_fort_level = -2
 			}
 
-			vassal_opinion = 5
+			vassal_opinion = -10
 
-			flag = vassal_contract_free_revocation
-			flag = vassal_contract_gives_weak_hook
-			flag = category_gift_estate_rights
-		}	
-	}
-}
-
-hereditary_rights = {
-	display_mode = checkbox
-
-	obligation_levels = {
-		hereditary_rights_none = {
-			# TODO: 
-			# is_valid = {
-			# 	scope:vassal = { 
-			# 		OR = { 
-			# 			highest_held_title_tier < tier_county
-			# 			NOT = { vassal_contract_has_flag = has_feudal_bureaucracy_contract }
-			# 		}	
-			# 	}	
-			# }
-			default = yes
-			position = { 0 0 }
-
-			flag = category_hereditary_rights
+			flag = category_fortification_rights
 		}
-		hereditary_rights_guaranteed = {
-			parent = hereditary_rights_none
-			position = { 0 1 }
-
-			flag = category_hereditary_rights
-		}	
 	}
 }
