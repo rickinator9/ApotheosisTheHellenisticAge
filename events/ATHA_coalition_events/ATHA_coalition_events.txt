@@ -1,8 +1,6 @@
-﻿### TO-DO: get this to also fire when the ruler is deposed or otherwise abdicates
+﻿namespace = coalition
 
-namespace = coalition
-
-# Ping event for the coalition.0002
+# Ping event for coalition.0002 (War Defeat)
 coalition.0001 = {
 	hidden = yes
 
@@ -11,9 +9,6 @@ coalition.0001 = {
 	}
 
 	immediate = {
-		primary_title = {
-			save_scope_as = coalition_title
-		}
 		every_vassal = {
 			trigger_event = {
 				id = coalition.0002
@@ -22,7 +17,31 @@ coalition.0001 = {
 		}
 	}
 }
-# Event for vassals to secede when the leader of an Alliance dies or loses a war
+# Alternate ping event for coalition.0002 (Succession)
+coalition.00011 = {
+	hidden = yes
+
+	trigger = {
+		government_has_flag = is_alliance_government
+		OR = {
+			scope:transfer_type = flag:inheritance
+			scope:transfer_type = flag:abdication
+			scope:transfer_type = flag:election
+			scope:transfer_type = flag:faction_demand
+			scope:transfer_type = flag:usurped
+		}
+	}
+
+	immediate = {
+		every_vassal = {
+			trigger_event = {
+				id = coalition.0002
+				days = { 28 56 }
+			}
+		}
+	}
+}
+# Event for vassals of an Alliance realm to secede on succession or after defeat in war
 coalition.0002 = {
 	type = character_event
 	title = coalition.0002.t
@@ -64,7 +83,7 @@ coalition.0002 = {
 		is_imprisoned = no
 		is_incapable = no
 		primary_title = {
-			NOT = { this = scope:coalition_title }
+			NOT = { this = scope:title }
 		}
 	}
 
