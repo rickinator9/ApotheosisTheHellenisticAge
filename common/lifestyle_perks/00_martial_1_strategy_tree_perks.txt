@@ -117,7 +117,7 @@ engineered_for_destruction_perk = {
 }
 
 
-fixme_replacement_perk = {
+defensive_maneuvering_perk = {
 	lifestyle = martial_lifestyle
 	tree = strategy
 	position = { 4 2.5 }
@@ -125,10 +125,11 @@ fixme_replacement_perk = {
 	
 	parent = engineered_for_destruction_perk
 	
-	effect = {
-		custom_description_no_bullet = {
-			text = fixme_replacement_perk_effect
-		}
+	character_modifier = {
+		defender_advantage = 5
+		hills_advantage = 2
+		mountains_advantage = 2
+		min_combat_roll = 1
 	}
 }
 
@@ -141,7 +142,7 @@ sappers_perk = {
 	
 	parent = envelopment_perk
 	parent = hit_and_run_perk
-	parent = fixme_replacement_perk
+	parent = defensive_maneuvering_perk
 	
 	character_modifier = {
 		heavy_infantry_siege_value_add = 0.1
