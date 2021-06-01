@@ -1,3 +1,49 @@
+# Loot delivered.
+raiding.0011 = {
+	hidden = yes
+	scope = army
+
+	immediate = {
+		set_variable = {
+			name = raid_loot
+			value = {
+				value = root.raid_loot
+				if = {
+					limit = {
+						scope:raider = {
+							has_perk = stealing_treasure_perk
+						}
+					}
+					multiply = 2
+				}
+			}
+		}
+		scope:raider = {
+			send_interface_message = {
+				type = event_raid_good
+				title = raiding.0011.t
+				desc = raiding.0011.desc
+				right_icon = root.army_commander
+				hidden_effect = {
+					add_prestige = root.var:raid_loot
+					if = {
+						limit = {
+							has_perk = stealing_treasure_perk
+						}
+						add_gold = {
+							# The original loot gold is already added by code
+							# So we just have to add half of the new loot gold
+							value = root.var:raid_loot
+							divide = 2
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
 # Chance to kidnap prisoners from the holding holder.
 raiding.0013 = {
 	hidden = yes
