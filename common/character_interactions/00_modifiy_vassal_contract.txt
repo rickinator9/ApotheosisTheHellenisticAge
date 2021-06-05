@@ -126,14 +126,15 @@
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = council_rights }			
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = garrison_rights }	
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = ritual_coronations_rights }	
-					set_obligation_if_changed_effect = { OBLIGATION_TYPE = fortification_rights }
+					set_obligation_if_changed_effect = { OBLIGATION_TYPE = atha_fortification_rights }
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = colony_rights }
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = gift_estate_rights }
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }
-					
-					trigger_event = ATHA_vassal_contract.1
 				}
 			}
+		}
+		scope:recipient = {
+			trigger_event = ATHA_vassal_contract.1
 		}
 	}
 
@@ -243,7 +244,7 @@ vassal_modify_vassal_contract_interaction = {
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = council_rights }			
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = garrison_rights }	
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = ritual_coronations_rights }	
-				set_obligation_if_changed_effect = { OBLIGATION_TYPE = fortification_rights }
+				set_obligation_if_changed_effect = { OBLIGATION_TYPE = atha_fortification_rights }
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = colony_rights }
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = gift_estate_rights }
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }	

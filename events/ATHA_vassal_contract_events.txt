@@ -1,9 +1,8 @@
 ﻿namespace = ATHA_vassal_contract
 
 ### TO-DO List
-# Somehow prevent contract information from being lost when switching government
-# Somehow prevent contracts from getting reset on inheritance
-# Also, somehow (maybe with the mysterious local_var?) prevent players from exploiting the system by granting privileges which balance out tyranny gain but are immediately invalidated on government change e.g. colony rights, which can only be granted to bureaucratic governments
+# Get the game to recognise government changes when contract change is initiated by vassal
+# Prevent players from exploiting the system by granting privileges which balance out tyranny gain but are immediately invalidated on government change e.g. colony rights, which can only be granted to bureaucratic governments
 # Somehow get game to recognise changes from autonomous to dependent and vice versa so we can tailor events to these (e.g. liege deciding on forced contract for newly dependent realm)
 ## Additionally we could tie in the populist/elitist traits to how the vassal (and their courtiers and vassals) regard the change, and perhaps use it for AI logic when deciding on what government to impose on a vassal
 
@@ -42,7 +41,10 @@ ATHA_vassal_contract.1 = {
 				}
 				save_scope_as = dependent_city_state_vassal
 				liege = {
-					trigger_event = ATHA_government.0004 # Liege decides on city-state government for their vassal
+					trigger_event = {
+						id = ATHA_government.0004 # Liege decides on city-state government for their vassal
+						days = { 5 7 }
+					}
 				}
 			}
 			else = {
@@ -159,60 +161,6 @@ ATHA_vassal_contract.1 = {
 		}
 		if = {
 			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_low
-				NOT = { government_has_flag = is_alliance_government }
-			}
-			if = {
-				limit = {
-					government_has_flag = is_federal_government
-				}
-				change_government_form = { GOVERNMENT = federal_alliance_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_hegemonic_government
-				}
-				change_government_form = { GOVERNMENT = hegemonic_alliance_government }
-			}
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_medium
-				NOT = { government_has_flag = is_sympolity_government }
-			}
-			if = {
-				limit = {
-					government_has_flag = is_federal_government
-				}
-				change_government_form = { GOVERNMENT = federal_sympolity_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_hegemonic_government
-				}
-				change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
-			}
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_high
-				NOT = { government_has_flag = is_league_government }
-			}
-			if = {
-				limit = {
-					government_has_flag = is_federal_government
-				}
-				change_government_form = { GOVERNMENT = federal_league_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_hegemonic_government
-				}
-				change_government_form = { GOVERNMENT = hegemonic_league_government }
-			}
-		}
-		if = {
-			limit = {
 				vassal_contract_has_flag = has_enforced_federalism_federal
 				NOT = { government_has_flag = is_federal_government }
 			}
@@ -258,6 +206,24 @@ ATHA_vassal_contract.1 = {
 				}
 				change_government_form = { GOVERNMENT = hegemonic_league_government }
 			}
+		}
+		if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_low
+			}
+			add_realm_law = crown_authority_0
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_medium
+			}
+			add_realm_law = crown_authority_1
+		}
+		else_if = {
+			limit = {
+				vassal_contract_has_flag = has_enforced_centralisation_high
+			}
+			add_realm_law = crown_authority_2
 		}
 		if = {
 			limit = {

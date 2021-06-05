@@ -202,10 +202,6 @@ ATHA_game_start.3 = {
 					type = vassal_role
 					level = vassal_role_bureaucracy_feudal
 				}
-				vassal_contract_set_obligation_level = {
-					type = hereditary_rights
-					level = hereditary_rights_guaranteed
-				}
 			}
 			if = {
 				limit = {
@@ -226,6 +222,22 @@ ATHA_game_start.3 = {
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
 					level = coinage_rights_granted
+				}
+			}
+			if = {
+				limit = {
+					has_character_flag = has_gift_estate_rights
+				}
+				vassal_contract_set_obligation_level = {
+					type = gift_estate_rights
+					level = gift_estate_rights_granted
+				}
+				save_temporary_scope_as = gift_estate_vassal
+				liege = {
+					add_hook = {
+						type = vassal_contract_weak_hook
+						target = scope:gift_estate_vassal
+					}	
 				}
 			}
 		}
@@ -266,6 +278,36 @@ ATHA_game_start.5 = {
 
 			trigger_event = {
 				on_action = on_corruption_change
+			}
+		}
+	}
+}
+
+# Set centralisation laws for governments
+ATHA_game_start.6 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			if = {
+				limit = {
+					OR = {
+						government_has_flag = is_sympolity_government
+						government_has_flag = is_bureaucracy_government
+					}
+					NOT = { government_has_flag = is_alliance_government } # Amphictyonies should have lower centralisation
+				}
+				add_realm_law_skip_effects = crown_authority_1
+			}
+			if = {
+				limit = {
+					OR = {
+						government_has_flag = is_league_government
+						government_has_flag = is_city_state_government
+					}
+				}
+				add_realm_law_skip_effects = crown_authority_2
 			}
 		}
 	}
