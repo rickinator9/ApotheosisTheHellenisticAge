@@ -326,4 +326,56 @@ coalition.0003 = {
 	}
 }
 
+# Change coalition government form according to centralisation
+coalition.0004 = {
+	hidden = yes
+
+	trigger = {
+		government_has_flag = is_coalition_government
+	}
+
+	immediate = {
+		if = {
+			limit = { has_realm_law = crown_authority_0 }
+			if = {
+				limit = { 
+					government_has_flag = is_federal_government
+					NOT = { has_government = amphictyony_government } 
+				}
+				change_government_form = { GOVERNMENT = federal_alliance_government }
+			}
+			else_if = {
+				limit = { government_has_flag = is_hegemonic_government }
+				change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+			}
+		}
+		else_if = {
+			limit = { has_realm_law = crown_authority_1 }
+			if = {
+				limit = { 
+					government_has_flag = is_federal_government
+					NOT = { has_government = amphictyony_government } 
+				}
+				change_government_form = { GOVERNMENT = federal_sympolity_government }
+			}
+			else_if = {
+				limit = { government_has_flag = is_hegemonic_government }
+				change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+			}
+		}
+		else_if = {
+			limit = { has_realm_law = crown_authority_2 }
+			if = {
+				limit = { government_has_flag = is_federal_government }
+				change_government_form = { GOVERNMENT = federal_league_government }
+			}
+			else_if = {
+				limit = { government_has_flag = is_hegemonic_government }
+				change_government_form = { GOVERNMENT = hegemonic_league_government }
+			}
+		}
+	}
+}
+
+
 
