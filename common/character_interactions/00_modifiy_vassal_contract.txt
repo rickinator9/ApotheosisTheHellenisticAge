@@ -72,6 +72,7 @@
 						NOT = { always = scope:hook }
 					}
 				}
+
 				trigger_else = {} # Otherwise we're fine!
 			}
 				
@@ -81,6 +82,8 @@
 				value = scope:recipient.count_total_obligation_changes
 				scope:recipient.count_total_obligation_changes <= max_contract_changes
 			}
+			
+			vassal_contract_compatibility_trigger = yes
 		}
 	}
 
@@ -212,6 +215,8 @@ vassal_modify_vassal_contract_interaction = {
 				}
 			}
 		}
+			
+		vassal_contract_compatibility_trigger = yes
 	}
 
 	auto_accept = yes
