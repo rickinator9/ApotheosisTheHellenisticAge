@@ -1174,9 +1174,14 @@ ransom_interaction = {
 	send_option = {
 		is_shown = {
 			scope:actor = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:recipient = {
@@ -1191,9 +1196,14 @@ ransom_interaction = {
 	send_option = {
 		is_shown = {
 			scope:actor = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:recipient = {
@@ -1217,6 +1227,9 @@ ransom_interaction = {
 						}
 					}
 				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
+				}
 			}
 			scope:recipient = {
 				gold >= scope:secondary_recipient.ransom_cost_value
@@ -1237,6 +1250,9 @@ ransom_interaction = {
 							has_dynasty_perk = fp1_pillage_legacy_3
 						}
 					}
+				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:recipient = {
@@ -1640,9 +1656,14 @@ pay_ransom_interaction = {
 		is_shown = {
 			exists = scope:recipient
 			scope:recipient = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 		}
@@ -1661,9 +1682,14 @@ pay_ransom_interaction = {
 		is_shown = {
 			exists = scope:recipient
 			scope:recipient = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:actor = {
@@ -1686,6 +1712,9 @@ pay_ransom_interaction = {
 							has_dynasty_perk = fp1_pillage_legacy_3
 						}
 					}
+				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 		}
@@ -1711,6 +1740,9 @@ pay_ransom_interaction = {
 							has_dynasty_perk = fp1_pillage_legacy_3
 						}
 					}
+				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:actor = {
@@ -2038,6 +2070,7 @@ pay_ransom_interaction = {
 }
 
 #To ransom yourself
+#To ransom yourself
 ransom_me_interaction = {
 	interface_priority = 50
 	common_interaction = yes
@@ -2145,9 +2178,14 @@ ransom_me_interaction = {
 		is_shown = {
 			exists = scope:recipient
 			scope:recipient = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 		}
@@ -2165,9 +2203,14 @@ ransom_me_interaction = {
 		is_shown = {
 			exists = scope:recipient
 			scope:recipient = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = fp1_pillage_legacy_3
+				OR = {
+					AND = {
+						exists = dynasty
+						dynasty = {
+							has_dynasty_perk = fp1_pillage_legacy_3
+						}
+					}
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:actor = {
@@ -2190,6 +2233,9 @@ ransom_me_interaction = {
 							has_dynasty_perk = fp1_pillage_legacy_3
 						}
 					}
+				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 		}
@@ -2214,6 +2260,9 @@ ransom_me_interaction = {
 							has_dynasty_perk = fp1_pillage_legacy_3
 						}
 					}
+				}
+				NOT = {
+					has_perk = fortune_favors_the_infamous_perk
 				}
 			}
 			scope:actor = {
