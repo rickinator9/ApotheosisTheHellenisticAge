@@ -219,7 +219,6 @@ vassal_role = {
 imposed_franchise = {
 	display_mode = radiobutton
 
-	# TODO: Doesn't this need an is_shown?
 	obligation_levels = {
 		imposed_franchise_none = {
 			default = yes
@@ -242,7 +241,12 @@ imposed_franchise = {
 		imposed_franchise_oligarchic = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_constitution }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_city_state_contract"
+						vassal_contract_has_flag = has_dependent_city_state_contract 
+					}
+				}
 			}
 			parent = imposed_franchise_none
 			position = { 1 0 }
@@ -260,7 +264,12 @@ imposed_franchise = {
 		imposed_franchise_aristocratic = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_constitution }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_city_state_contract"
+						vassal_contract_has_flag = has_dependent_city_state_contract 
+					}
+				}
 			}
 			parent = imposed_franchise_none
 			position = { 1 2 }
@@ -279,7 +288,12 @@ imposed_franchise = {
 		imposed_franchise_tyrannic = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_constitution }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_city_state_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_city_state_contract"
+						vassal_contract_has_flag = has_dependent_city_state_contract 
+					}
+				}
 			}
 			parent = imposed_franchise_none
 			position = { 2 2 }
@@ -321,7 +335,12 @@ enforced_centralisation = {
 		enforced_centralisation_medium = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_coalition_contract"
+						vassal_contract_has_flag = has_dependent_coalition_contract 
+					}
+				}
 			}
 			parent = enforced_centralisation_none
 			position = { 1 0 }
@@ -333,7 +352,12 @@ enforced_centralisation = {
 		enforced_centralisation_high = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_coalition_contract"
+						vassal_contract_has_flag = has_dependent_coalition_contract 
+					}
+				}
 			}
 			parent = enforced_centralisation_none
 			position = { 1 2 }
@@ -370,7 +394,12 @@ enforced_federalism = {
 		enforced_federalism_hegemonic = {
 			is_valid = {
 				scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
-				scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
+				scope:vassal = { 
+					custom_description = {
+						text = "has_dependent_coalition_contract"
+						vassal_contract_has_flag = has_dependent_coalition_contract 
+					}
+				}
 			}
 			parent = enforced_federalism_none
 			position = { 1 1 }
@@ -514,8 +543,23 @@ garrison_rights = {
 					has_innovation = innovation_classical_garrisons
 				}
 				scope:vassal = { 
-					NOT = { vassal_contract_has_flag = has_autonomous_contract }
-				}	
+					OR = {
+						trigger_if = {
+							limit = { government_has_flag = is_city_state_government }
+							custom_description = {
+								text = "has_dependent_city_state_contract"
+								vassal_contract_has_flag = has_dependent_city_state_contract 
+							}
+						}
+						trigger_else_if = {
+							limit = { government_has_flag = is_coalition_government }
+							custom_description = {
+								text = "has_dependent_coalition_contract"
+								vassal_contract_has_flag = has_dependent_coalition_contract 
+							}
+						}
+					}
+				}
 			}
 			parent = garrison_rights_none
 			position = { 0 1 }
