@@ -113,3 +113,100 @@ _pvt_clear_vassal_contract_setting = {
 		remove_variable = $CONTRACT$_var
 	}
 }
+
+invalidated_contract_notification_effect = {
+	# Ritual Coronations, Fortification Rights & Garrison Rights
+	if = {
+		limit = {
+			exists = local_var:vassal_role
+			local_var:vassal_role >= 4
+		}
+		if = {
+			limit = { 
+				exists = local_var:ritual_coronations_rights
+				local_var:ritual_coronations_rights = 1
+			}
+			custom_description = {
+				text = "vassal_contract_ritual_coronations_rights_invalidated"				
+			}
+		}
+		if = {
+			limit = { 
+				exists = local_var:atha_fortification_rights
+				local_var:atha_fortification_rights = 1
+			}
+			custom_description = {
+				text = "vassal_contract_fortification_rights_invalidated"			
+			}
+		}
+		if = {
+			limit = { 
+				exists = local_var:garrison_rights
+				local_var:garrison_rights = 1
+			}
+			custom_description = {
+				text = "vassal_contract_garrison_rights_invalidated"				
+			}
+		}
+	}
+	# Colony Rights
+	if = {
+		limit = {
+			exists = local_var:vassal_role
+			local_var:vassal_role <= 4
+		}
+		if = {
+			limit = { 
+				exists = local_var:colony_rights
+				local_var:colony_rights = 1
+			}
+			custom_description = {
+				text = "vassal_contract_colony_rights_invalidated"				
+			}
+		}
+	}
+	# Imposed Franchise
+	if = {
+		limit = {
+			exists = local_var:vassal_role
+			local_var:vassal_role >= 2
+		}
+		if = {
+			limit = { 
+				exists = local_var:imposed_franchise
+				local_var:imposed_franchise >= 1
+			}
+			custom_description = {
+				text = "vassal_contract_imposed_franchise_invalidated"				
+			}
+		}
+	}
+	# Imposed Centralisation & Federalism
+	if = {
+		limit = {
+			exists = local_var:vassal_role
+			OR = {
+				local_var:vassal_role <= 1
+				local_var:vassal_role >= 4
+			}
+		}
+		if = {
+			limit = { 
+				exists = local_var:enforced_centralisation
+				local_var:enforced_centralisation >= 1
+			}
+			custom_description = {
+				text = "vassal_contract_enforced_centralisation_invalidated"				
+			}
+		}
+		if = {
+			limit = { 
+				exists = local_var:enforced_federalism
+				local_var:enforced_federalism >= 1
+			}
+			custom_description = {
+				text = "vassal_contract_enforced_federalism_invalidated"				
+			}
+		}
+	}
+}

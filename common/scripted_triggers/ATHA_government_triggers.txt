@@ -1,20 +1,32 @@
-﻿### Vassal contract switching triggers
+﻿### Used for building requirements 
+
+can_build_tribal = {
+	government_has_flag = is_tribal_government
+}
+
+### Liege contract modification triggers
 
 can_create_dependent_vassals = {
-	NOR = {
-		has_government = federal_alliance_government
-		has_government = amphictyony_government
-		has_government = tribal_government
-	}	
+	custom_description = {
+		text = "can_create_dependent_vassals"
+		NOR = {
+			has_government = federal_alliance_government
+			has_government = amphictyony_government
+			has_government = tribal_government
+		}	
+	}
 }
 
 can_create_bureaucratic_vassals = {
-	NOR = {
-		has_government = federal_alliance_government
-		has_government = federal_sympolity_government
-		has_government = amphictyony_government
-		has_government = tribal_government
-		has_government = clan_government
+	custom_description = {
+		text = "can_create_bureaucratic_vassals"
+		NOR = {
+			has_government = federal_alliance_government
+			has_government = federal_sympolity_government
+			has_government = amphictyony_government
+			has_government = tribal_government
+			has_government = clan_government
+		}
 	}	
 }
 
@@ -62,7 +74,7 @@ should_start_with_colony_rights = {
 	}
 }
 
-### Conditions for modifying vassal contracts
+### Compatibility triggers for modifying vassal contract
 
 vassal_contract_compatibility_trigger = {
 	# Forced Coinage Rights
@@ -286,10 +298,4 @@ vassal_contract_compatibility_trigger = {
 			}
 		}
 	}
-}
-
-### Used for building requirements 
-
-can_build_tribal = {
-	government_has_flag = is_tribal_government
 }

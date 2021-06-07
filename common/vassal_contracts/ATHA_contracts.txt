@@ -10,7 +10,12 @@ vassal_role = {
 	obligation_levels = {
 		vassal_role_city_state_autonomous = {
 			is_valid = {
-				scope:vassal.primary_title.tier <= tier_duchy
+				scope:vassal = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_lower"
+						highest_held_title_tier <= tier_duchy
+					}
+				}
 			}
 			position = { 0 1 }
 			
@@ -37,7 +42,12 @@ vassal_role = {
 		}
 		vassal_role_city_state_dependent = {
 			is_valid = {
-				scope:vassal.primary_title.tier <= tier_duchy
+				scope:vassal = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_lower"
+						highest_held_title_tier <= tier_duchy
+					}
+				}
 				scope:liege = { can_create_dependent_vassals = yes }
 			}
 			position = { 1 1 }
@@ -63,7 +73,12 @@ vassal_role = {
 		}
 		vassal_role_coalition_autonomous = {
 			is_valid = {
-				scope:vassal.primary_title.tier >= tier_duchy
+				scope:vassal = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_higher"
+						highest_held_title_tier >= tier_duchy
+					}
+				}
 				OR = {
 					scope:liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 					scope:vassal = { vassal_contract_has_flag = has_dependent_coalition_contract }
@@ -94,7 +109,12 @@ vassal_role = {
 		}
 		vassal_role_coalition_dependent = {
 			is_valid = {
-				scope:vassal.primary_title.tier >= tier_duchy
+				scope:vassal = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_higher"
+						highest_held_title_tier >= tier_duchy
+					}
+				}
 				scope:liege = { can_create_dependent_vassals = yes }
 				scope:liege.culture = {	has_innovation = innovation_classical_diplomatic_missions }
 			}
@@ -163,10 +183,13 @@ vassal_role = {
 		vassal_role_bureaucracy_feudal = {
 			is_valid = {
 				scope:vassal = {
-					NOR = { 
-						government_has_flag = is_coalition_government
-						government_has_flag = is_city_state_government
-					}	
+					custom_description = {
+						text = "can_become_bureaucracy_feudal"
+						NOR = { 
+							government_has_flag = is_coalition_government
+							government_has_flag = is_city_state_government
+						}	
+					}
 				}
 				scope:liege = { can_create_bureaucratic_vassals = yes }
 				scope:liege.culture = {	has_innovation = innovation_classical_bureaucracy }
