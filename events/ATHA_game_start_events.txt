@@ -282,3 +282,33 @@ ATHA_game_start.5 = {
 		}
 	}
 }
+
+# Set centralisation laws for governments
+ATHA_game_start.6 = {
+	type = empty
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			if = {
+				limit = {
+					OR = {
+						government_has_flag = is_sympolity_government
+						government_has_flag = is_bureaucracy_government
+					}
+					NOT = { government_has_flag = is_alliance_government } # Amphictyonies should have lower centralisation
+				}
+				add_realm_law_skip_effects = crown_authority_1
+			}
+			if = {
+				limit = {
+					OR = {
+						government_has_flag = is_league_government
+						government_has_flag = is_city_state_government
+					}
+				}
+				add_realm_law_skip_effects = crown_authority_2
+			}
+		}
+	}
+}

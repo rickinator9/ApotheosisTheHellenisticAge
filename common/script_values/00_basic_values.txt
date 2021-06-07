@@ -1159,7 +1159,10 @@ count_obligation_improvements_for_vassal = {
 	# Levies and taxes are a linear scale, moving up adds and moving down subtracts
 	if = {
 		limit = {
-			local_var:feudal_government_taxes != vassal_contract_obligation_level:feudal_government_taxes
+			AND = {
+				exists = local_var:feudal_government_taxes
+				local_var:feudal_government_taxes != vassal_contract_obligation_level:feudal_government_taxes
+			}
 		}
 		add = {
 			value = vassal_contract_obligation_level:feudal_government_taxes
@@ -1168,18 +1171,131 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:feudal_government_levies != vassal_contract_obligation_level:feudal_government_levies
+			AND = {
+				exists = local_var:feudal_government_levies
+				local_var:feudal_government_levies != vassal_contract_obligation_level:feudal_government_levies
+			}
 		}
 		add = {
 			value = vassal_contract_obligation_level:feudal_government_levies
 			subtract = local_var:feudal_government_levies
 		}
 	}
+	if = {
+		limit = {
+			AND = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != vassal_contract_obligation_level:vassal_role
+			}
+		}
+		if = {
+			# Everyone wants autonomy or dynastic rights.
+			limit = {
+				OR = {
+					vassal_contract_obligation_level:vassal_role = 1
+					vassal_contract_obligation_level:vassal_role = 3
+					vassal_contract_obligation_level:vassal_role = 4
+					vassal_contract_obligation_level:vassal_role = 5
+				}
+				OR = {
+					local_var:vassal_role = 0
+					local_var:vassal_role = 2
+					local_var:vassal_role = 6
+				}
+			}
+			add = 1
+		}
+		else_if = {
+			# No one wants to lose autonomy or dynastic rights.
+			limit = {
+				OR = {
+					vassal_contract_obligation_level:vassal_role = 0
+					vassal_contract_obligation_level:vassal_role = 2
+					vassal_contract_obligation_level:vassal_role = 6
+				}
+				NOR = {
+					local_var:vassal_role = 0
+					local_var:vassal_role = 2
+					local_var:vassal_role = 6
+				}
+			}
+			subtract = 1
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				exists = local_var:imposed_franchise
+				local_var:imposed_franchise != vassal_contract_obligation_level:imposed_franchise
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_obligation_level:imposed_franchise = 0
+				local_var:imposed_franchise > 0
+			}
+			subtract = 1
+		}
+		else_if = {
+			limit = {
+				vassal_contract_obligation_level:imposed_franchise > 0
+				local_var:imposed_franchise = 0
+			}
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				exists = local_var:enforced_centralisation
+				local_var:enforced_centralisation != vassal_contract_obligation_level:enforced_centralisation
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_obligation_level:enforced_centralisation = 0
+				local_var:enforced_centralisation > 0
+			}
+			subtract = 1
+		}
+		else_if = {
+			limit = {
+				vassal_contract_obligation_level:enforced_centralisation > 0
+				local_var:enforced_centralisation = 0
+			}
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				exists = local_var:enforced_federalism
+				local_var:enforced_federalism != vassal_contract_obligation_level:enforced_federalism
+			}
+		}
+		if = {
+			limit = {
+				vassal_contract_obligation_level:enforced_federalism = 0
+				local_var:enforced_federalism > 0
+			}
+			subtract = 1
+		}
+		else_if = {
+			limit = {
+				vassal_contract_obligation_level:enforced_federalism > 0
+				local_var:enforced_federalism = 0
+			}
+			add = 1
+		}
+	}
 	# Any non-default fine print contract takes subtracts one
 	# special_contract intentionally has no effect
 	if = {
 		limit = {
-			local_var:coinage_rights != vassal_contract_obligation_level:coinage_rights
+			AND = {
+				exists = local_var:coinage_rights
+				local_var:coinage_rights != vassal_contract_obligation_level:coinage_rights
+			}
 		}
 		if = {
 			limit = { local_var:coinage_rights != 0 }
@@ -1191,7 +1307,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:religious_rights != vassal_contract_obligation_level:religious_rights
+			AND = {
+				exists = local_var:religious_rights
+				local_var:religious_rights != vassal_contract_obligation_level:religious_rights
+			}
 		}
 		if = {
 			limit = { local_var:religious_rights != 0 }
@@ -1203,7 +1322,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:title_revocation_rights != vassal_contract_obligation_level:title_revocation_rights
+			AND = {
+				exists = local_var:title_revocation_rights
+				local_var:title_revocation_rights != vassal_contract_obligation_level:title_revocation_rights
+			}
 		}
 		if = {
 			limit = { local_var:title_revocation_rights != 0 }
@@ -1215,7 +1337,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:war_declaration_rights != vassal_contract_obligation_level:war_declaration_rights
+			AND = {
+				exists = local_var:war_declaration_rights
+				local_var:war_declaration_rights != vassal_contract_obligation_level:war_declaration_rights
+			}
 		}
 		if = {
 			limit = { local_var:war_declaration_rights != 0 }
@@ -1227,7 +1352,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:council_rights != vassal_contract_obligation_level:council_rights
+			AND = {
+				exists = local_var:council_rights
+				local_var:council_rights != vassal_contract_obligation_level:council_rights
+			}
 		}
 		if = {
 			limit = { local_var:council_rights != 0 }
@@ -1239,7 +1367,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:garrison_rights != vassal_contract_obligation_level:garrison_rights
+			AND = {
+				exists = local_var:garrison_rights
+				local_var:garrison_rights != vassal_contract_obligation_level:garrison_rights
+			}
 		}
 		if = {
 			limit = { local_var:garrison_rights = 0 }
@@ -1251,7 +1382,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:ritual_coronations_rights != vassal_contract_obligation_level:ritual_coronations_rights
+			AND = {
+				exists = local_var:ritual_coronations_rights
+				local_var:ritual_coronations_rights != vassal_contract_obligation_level:ritual_coronations_rights
+			}
 		}
 		if = {
 			limit = { local_var:ritual_coronations_rights = 0 }
@@ -1263,7 +1397,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
+			AND = {
+				exists = local_var:atha_fortification_rights
+				local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
+			}
 		}
 		if = {
 			limit = { local_var:atha_fortification_rights = 0 }
@@ -1275,7 +1412,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:colony_rights != vassal_contract_obligation_level:colony_rights
+			AND = {
+				exists = local_var:colony_rights
+				local_var:colony_rights != vassal_contract_obligation_level:colony_rights
+			}
 		}
 		if = {
 			limit = { local_var:colony_rights != 0 }
@@ -1287,7 +1427,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:gift_estate_rights != vassal_contract_obligation_level:gift_estate_rights
+			AND = {
+				exists = local_var:gift_estate_rights
+				local_var:gift_estate_rights != vassal_contract_obligation_level:gift_estate_rights
+			}
 		}
 		if = {
 			limit = { local_var:gift_estate_rights != 0 }
@@ -1299,7 +1442,10 @@ count_obligation_improvements_for_vassal = {
 	}
 	if = {
 		limit = {
-			local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+			AND = {
+				exists = local_var:hereditary_rights
+				local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+			}
 		}
 		if = {
 			limit = { local_var:hereditary_rights != 0 }
@@ -1315,103 +1461,154 @@ count_total_obligation_changes = {
 	value = 0
 	if = {
 		limit = {
-			local_var:feudal_government_taxes != vassal_contract_obligation_level:feudal_government_taxes
+			AND = {
+				exists = local_var:feudal_government_taxes
+				local_var:feudal_government_taxes != vassal_contract_obligation_level:feudal_government_taxes
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:feudal_government_levies != vassal_contract_obligation_level:feudal_government_levies
+			AND = {
+				exists = local_var:feudal_government_levies
+				local_var:feudal_government_levies != vassal_contract_obligation_level:feudal_government_levies
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:vassal_role != vassal_contract_obligation_level:vassal_role
+			AND = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != vassal_contract_obligation_level:vassal_role
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:imposed_franchise != vassal_contract_obligation_level:imposed_franchise
+			AND = {
+				exists = local_var:imposed_franchise
+				local_var:imposed_franchise != vassal_contract_obligation_level:imposed_franchise
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:enforced_centralisation != vassal_contract_obligation_level:enforced_centralisation
+			AND = {
+				exists = local_var:enforced_centralisation
+				local_var:enforced_centralisation != vassal_contract_obligation_level:enforced_centralisation
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:enforced_federalism != vassal_contract_obligation_level:enforced_federalism
+			AND = {
+				exists = local_var:enforced_federalism
+				local_var:enforced_federalism != vassal_contract_obligation_level:enforced_federalism
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:coinage_rights != vassal_contract_obligation_level:coinage_rights
+			AND = {
+				exists = local_var:coinage_rights
+				local_var:coinage_rights != vassal_contract_obligation_level:coinage_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:religious_rights != vassal_contract_obligation_level:religious_rights
+			AND = {
+				exists = local_var:religious_rights
+				local_var:religious_rights != vassal_contract_obligation_level:religious_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:title_revocation_rights != vassal_contract_obligation_level:title_revocation_rights
+			AND = {
+				exists = local_var:title_revocation_rights
+				local_var:title_revocation_rights != vassal_contract_obligation_level:title_revocation_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:war_declaration_rights != vassal_contract_obligation_level:war_declaration_rights
+			AND = {
+				exists = local_var:war_declaration_rights
+				local_var:war_declaration_rights != vassal_contract_obligation_level:war_declaration_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:council_rights != vassal_contract_obligation_level:council_rights
+			AND = {
+				exists = local_var:council_rights
+				local_var:council_rights != vassal_contract_obligation_level:council_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:garrison_rights != vassal_contract_obligation_level:garrison_rights
+			AND = {
+				exists = local_var:garrison_rights
+				local_var:garrison_rights != vassal_contract_obligation_level:garrison_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:ritual_coronations_rights != vassal_contract_obligation_level:ritual_coronations_rights
+			AND = {
+				exists = local_var:ritual_coronations_rights
+				local_var:ritual_coronations_rights != vassal_contract_obligation_level:ritual_coronations_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
+			AND = {
+				exists = local_var:atha_fortification_rights
+				local_var:atha_fortification_rights != vassal_contract_obligation_level:atha_fortification_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:colony_rights != vassal_contract_obligation_level:colony_rights
+			AND = {
+				exists = local_var:colony_rights
+				local_var:colony_rights != vassal_contract_obligation_level:colony_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:gift_estate_rights != vassal_contract_obligation_level:gift_estate_rights
+			AND = {
+				exists = local_var:gift_estate_rights
+				local_var:gift_estate_rights != vassal_contract_obligation_level:gift_estate_rights
+			}
 		}
 		add = 1
 	}
 	if = {
 		limit = {
-			local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+			AND = {
+				exists = local_var:hereditary_rights
+				local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+			}
 		}
 		add = 1
 	}

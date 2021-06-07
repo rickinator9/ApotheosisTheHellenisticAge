@@ -72,6 +72,7 @@
 						NOT = { always = scope:hook }
 					}
 				}
+
 				trigger_else = {} # Otherwise we're fine!
 			}
 				
@@ -81,6 +82,8 @@
 				value = scope:recipient.count_total_obligation_changes
 				scope:recipient.count_total_obligation_changes <= max_contract_changes
 			}
+			
+			vassal_contract_compatibility_trigger = yes
 		}
 	}
 
@@ -130,10 +133,12 @@
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = colony_rights }
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = gift_estate_rights }
 					set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }
-					
-					trigger_event = ATHA_vassal_contract.1
 				}
 			}
+		}
+		scope:recipient = {
+			invalidated_contract_notification_effect = yes
+			trigger_event = ATHA_vassal_contract.1
 		}
 	}
 
@@ -211,6 +216,8 @@ vassal_modify_vassal_contract_interaction = {
 				}
 			}
 		}
+			
+		vassal_contract_compatibility_trigger = yes
 	}
 
 	auto_accept = yes

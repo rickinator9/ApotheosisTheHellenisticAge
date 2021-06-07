@@ -25,8 +25,16 @@ colony_01 = {
 	}
 	
 	can_construct = {	
-		culture = {
-			has_innovation = innovation_classical_garrisons
+		OR = {
+			culture = {
+				has_innovation = innovation_classical_garrisons
+			}
+			scope:holder = { 
+				custom_description = {
+					text = "has_colony_rights_contract"
+					vassal_contract_has_flag = has_colony_rights
+				}
+			}
 		}
 	}
 	
