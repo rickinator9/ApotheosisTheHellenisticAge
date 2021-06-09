@@ -2668,6 +2668,26 @@ seek_indulgences_interaction_effect = {
 		else_if = {
 			limit = {
 				OR = {
+					has_character_flag = seek_indulgences_removed_corrupt # For the post-interaction letter event
+					AND = {
+						has_trait = corrupt
+						trait_is_shunned_or_criminal_in_faith_trigger = { FAITH = faith TRAIT = corrupt GENDER_CHARACTER = scope:actor }
+					}
+				}
+			}
+			pay_short_term_gold = {
+				target = scope:recipient
+				gold = seek_indulgences_medium_criminal_trait_value
+			}
+			remove_trait_force_tooltip = corrupt
+			add_character_flag = {
+				flag = seek_indulgences_removed_corrupt
+				days = 30
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
 					has_character_flag = seek_indulgences_removed_sodomite # For the post-interaction letter event
 					AND = {
 						has_trait = sodomite

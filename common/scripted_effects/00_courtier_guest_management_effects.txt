@@ -393,6 +393,25 @@ select_and_move_to_pool_effect = {
 
 courtier_guest_pool_character_secret_giving_effect = {
 	random_list = {
+		# Corrupt
+		200 = {
+			trigger = {
+				NOR = {
+					has_trait = content
+					has_trait = temperate
+					any_secret = { secret_type = secret_corrupt }
+					has_trait = corrupt
+				}
+			}
+			modifier = {
+				OR = {
+					has_trait = ambitious
+				}
+				add = 50
+			}
+
+			give_corrupt_secret_or_trait_effect = yes
+		}
 		# Deviant
 		200 = {
 			trigger = {

@@ -1023,6 +1023,10 @@ seek_indulgences_interaction = {
 							has_trait = sodomite
 							trait_is_shunned_or_criminal_in_faith_trigger = { FAITH = faith TRAIT = sodomite GENDER_CHARACTER = scope:actor }
 						}
+						AND = {
+							has_trait = corrupt
+							trait_is_shunned_or_criminal_in_faith_trigger = { FAITH = faith TRAIT = corrupt GENDER_CHARACTER = scope:actor }
+						}
 					}
 				}
 				gold >= seek_indulgences_medium_criminal_trait_value
@@ -2335,6 +2339,7 @@ take_vows_interaction = {
 					has_trait = hashishiyah
 					has_trait = flagellant
 					has_trait = reclusive
+					has_trait = corrupt
 					num_of_bad_genetic_traits >= 1
 					num_sinful_traits >= 2
 				}

@@ -55,3 +55,22 @@
 		}
 	}
 }
+
+doctrine_corruption = {
+	group = "crimes"
+	doctrine_corruption_crime = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = doctrine_corruption_crime }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+			else_if = {
+				limit = { has_doctrine = doctrine_corruption_accepted }
+				multiply = faith_changed_doctrine_cost_mult_two_step
+			}
+		}
+		parameters = {
+			corruption_illegal = yes
+		}
+}

@@ -249,6 +249,15 @@ disinherit_interaction = {
 					}
 					trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = scope:actor.faith GENDER_CHARACTER = scope:recipient }
 				}
+				AND = {
+					scope:recipient = {
+						has_trait = corrupt
+					}
+					NOT = {
+						is_corrupt_trigger = yes
+					}
+					trait_is_criminal_in_faith_trigger = { TRAIT = corrupt FAITH = scope:actor.faith GENDER_CHARACTER = scope:recipient }
+				}
 			}
 		}
 		
@@ -597,6 +606,15 @@ denounce_interaction = {
 						is_cannibal_trigger = yes
 					}
 					trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = scope:actor.faith GENDER_CHARACTER = scope:recipient }
+				}
+				AND = {
+					scope:recipient = {
+						has_trait = corrupt
+					}
+					NOT = {
+						is_corrupt_trigger = yes
+					}
+					trait_is_criminal_in_faith_trigger = { TRAIT = corrupt FAITH = scope:actor.faith GENDER_CHARACTER = scope:recipient }
 				}
 			}
 		}

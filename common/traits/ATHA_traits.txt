@@ -68,7 +68,6 @@ panhellenic_cheater = {
 }
 
 # City-State Traits
-
 corrupt = {
 	index = 1010
 	
@@ -76,8 +75,10 @@ corrupt = {
 	opposites = {
 		incorruptible
 	}
-	general_opinion = -5
-	opposite_opinion = -10
+	stewardship = 2
+
+	same_opinion = 20
+	opposite_opinion = -20
 		
 	ruler_designer_cost = -5
 	
@@ -103,7 +104,13 @@ corrupt = {
 		honest = @neg_compat_medium
 		just = @neg_compat_medium
 		incorruptible = @neg_compat_high
-	}	
+	}
+
+	triggered_opinion = {
+		parameter = corruption_illegal
+		opinion_modifier = corruption_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
 }
 incorruptible = {
 	index = 1011
@@ -112,10 +119,10 @@ incorruptible = {
 	opposites = {
 		corrupt
 	}
-	stewardship = 1
+	diplomacy = 2
 	
-	vassal_opinion = 5
-	opposite_opinion = -10
+	general_opinion = 15
+	opposite_opinion = -20
 		
 	ruler_designer_cost = 40
 	

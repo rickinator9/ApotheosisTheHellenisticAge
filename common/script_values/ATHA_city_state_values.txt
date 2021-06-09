@@ -6,7 +6,7 @@ corruption_oligarchic_initial_value = 25
 corruption_democratic_initial_value = 10
 
 #Increase corruption values
-corruption_tiny_increase = {
+corruption_miniscule_increase = {
 	value = 1
 	if = {
 		limit = {
@@ -14,19 +14,25 @@ corruption_tiny_increase = {
 				has_government = city_state_aristrocratic_government
 				has_government = city_state_oligarchic_government
 				has_government = city_state_spartan_government
-			}	
+			}
 		}
 		multiply = 1.25
 	}
-	if = {
+	else_if = {
 		limit = {
 			has_government = city_state_tyrannical_government
 		}
 		multiply = 1.5
 	}
+	if = {
+		limit = {
+			has_trait = corrupt
+		}
+		multiply = 1.5
+	}
 }
 
-corruption_small_increase = {
+corruption_minor_increase = {
 	value = 2.5
 	if = {
 		limit = {
@@ -38,15 +44,21 @@ corruption_small_increase = {
 		}
 		multiply = 1.25
 	}
-	if = {
+	else_if = {
 		limit = {
 			has_government = city_state_tyrannical_government
 		}
 		multiply = 1.5
 	}
+	if = {
+		limit = {
+			has_trait = corrupt
+		}
+		multiply = 1.5
+	}
 }
 
-corruption_moderate_increase = {
+corruption_medium_increase = {
 	value = 4
 	if = {
 		limit = {
@@ -54,19 +66,25 @@ corruption_moderate_increase = {
 				has_government = city_state_aristrocratic_government
 				has_government = city_state_oligarchic_government
 				has_government = city_state_spartan_government
-			}	
+			}
 		}
 		multiply = 1.25
 	}
-	if = {
+	else_if = {
 		limit = {
 			has_government = city_state_tyrannical_government
 		}
 		multiply = 1.5
 	}
+	if = {
+		limit = {
+			has_trait = corrupt
+		}
+		multiply = 1.5
+	}
 }
 
-corruption_large_increase = {
+corruption_major_increase = {
 	value = 6
 	if = {
 		limit = {
@@ -78,138 +96,92 @@ corruption_large_increase = {
 		}
 		multiply = 1.25
 	}
-	if = {
+	else_if = {
 		limit = {
 			has_government = city_state_tyrannical_government
 		}
 		multiply = 1.5
 	}
+	if = {
+		limit = {
+			has_trait = corrupt
+		}
+		multiply = 1.5
+	}
 }
 
-corruption_huge_increase = {
+corruption_massive_increase = {
 	value = 10
 	if = {
 		limit = {
-			holder = {
-				OR = {
-					has_government = city_state_aristrocratic_government
-					has_government = city_state_oligarchic_government
-					has_government = city_state_spartan_government
-				}
+			OR = {
+				has_government = city_state_aristrocratic_government
+				has_government = city_state_oligarchic_government
+				has_government = city_state_spartan_government
 			}
 		}
 		multiply = 1.25
 	}
 	else_if = {
 		limit = {
-			holder = {has_government = city_state_tyrannical_government}
+			has_government = city_state_tyrannical_government
+		}
+		multiply = 1.5
+	}
+	if = {
+		limit = {
+			has_trait = corrupt
 		}
 		multiply = 1.5
 	}
 }
 
 #decrease corruption values
-corruption_tiny_decrease = {
+corruption_miniscule_decrease = {
 	value = -1
 	if = {
 		limit = {
-			has_government = city_state_democratic_government
-		}
-		multiply = 1
-	}
-	if = {
-		limit = {
-			OR = {
-				has_government = city_state_aristrocratic_government
-				has_government = city_state_oligarchic_government
-				has_government = city_state_spartan_government
-			}
-		}
-		multiply = 1.25
-	}
-	if = {
-		limit = {
-			has_government = city_state_tyrannical_government
+			has_trait = incorruptible
 		}
 		multiply = 1.5
 	}
 }
 
-corruption_small_decrease = {
+corruption_minor_decrease = {
 	value = -2.5
 	if = {
 		limit = {
-			OR = {
-				has_government = city_state_aristrocratic_government
-				has_government = city_state_oligarchic_government
-				has_government = city_state_spartan_government
-			}
-		}
-		multiply = 1.25
-	}
-	if = {
-		limit = {
-			has_government = city_state_tyrannical_government
+			has_trait = incorruptible
 		}
 		multiply = 1.5
 	}
 }
 
-corruption_moderate_decrease = {
+corruption_medium_decrease = {
 	value = -4
 	if = {
 		limit = {
-			OR = {
-				has_government = city_state_aristrocratic_government
-				has_government = city_state_oligarchic_government
-				has_government = city_state_spartan_government
-			}	
-		}
-		multiply = 1.25
-	}
-	if = {
-		limit = {
-			has_government = city_state_tyrannical_government
+			has_trait = incorruptible
 		}
 		multiply = 1.5
 	}
 }
 
-corruption_large_decrease = {
+corruption_major_decrease = {
 	value = -6
 	if = {
 		limit = {
-			OR = {
-				has_government = city_state_aristrocratic_government
-				has_government = city_state_oligarchic_government
-				has_government = city_state_spartan_government
-			}	
-		}
-		multiply = 1.25
-	}
-	if = {
-		limit = {
-			has_government = city_state_tyrannical_government
+			has_trait = incorruptible
 		}
 		multiply = 1.5
 	}
 }
 
-corruption_huge_decrease = {
+corruption_massive_decrease = {
 	value = -10
 	if = {
 		limit = {
-			OR = {
-				has_government = city_state_aristrocratic_government
-				has_government = city_state_oligarchic_government
-				has_government = city_state_spartan_government
-			}	
-		}
-		multiply = 1.25
-	}
-	if = {
-		limit = {
-			has_government = city_state_tyrannical_government
+			has_trait = incorruptible
 		}
 		multiply = 1.5
 	}

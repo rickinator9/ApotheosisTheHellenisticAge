@@ -124,6 +124,9 @@ DeathMessageIntro = {
 					has_trait = witch
 					NOT = { faith = { has_doctrine = doctrine_witchcraft_accepted } }
 				}
+				AND = {
+					has_trait = corrupt
+				}
 			}
 		}
 		weight_multiplier = {
@@ -202,6 +205,7 @@ DeathMessageReason = {
 # Fornicator
 # Murderer
 # Witch
+# Corrupt
 
 # ACCOMPLISHMENTS
 # Saoshyant
@@ -526,6 +530,15 @@ DeathMessageOutro = {
 			base = 2
 		}
 	}
+	text = {
+		localization_key = SUCCESSION_EVENT_WINDOW_DEAD_OUTRO_SCANDAL_CORRUPT
+		trigger = {
+			has_trait = corrupt
+		}
+		weight_multiplier = {
+			base = 2
+		}
+	}
 	# ACCOMPLISHMENTS
 	text = {
 		localization_key = SUCCESSION_EVENT_WINDOW_DEAD_OUTRO_ACCOMPLISHMENT_SAOSHYANT
@@ -828,6 +841,7 @@ DeathMessageOutro = {
 # Cannibal
 # Other crime (rumored to have unsavory habits, bad reputation)
 # Heir is a Witch/Mystic/Herbalist
+# Heir is corrupt
 
 HeirMessageInterface = {
 	type = character
@@ -1358,6 +1372,15 @@ HeirMessageInterface = {
 			AND = {
 				has_trait = witch
 				NOT = { faith = { has_doctrine = doctrine_witchcraft_accepted } }
+			}
+		}
+	}
+	text = {
+		localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CORRUPT
+		trigger = {
+			is_adult = yes
+			AND = {
+				has_trait = corrupt
 			}
 		}
 	}
