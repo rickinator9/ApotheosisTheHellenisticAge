@@ -186,3 +186,24 @@ corruption_massive_decrease = {
 		multiply = 1.5
 	}
 }
+
+#provide vice scripted values
+provide_vice_cooldown_value = {
+	value = 1
+	if = {
+		limit = {
+			scope:root = {
+				intrigue <= mediocre_skill_rating
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			scope:root = {
+				intrigue >= very_high_skill_rating
+			}
+		}
+		add = -0.5
+	}
+}

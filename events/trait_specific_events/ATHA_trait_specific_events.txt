@@ -1,4 +1,4 @@
-namespace = ATHA_trait_specific
+﻿namespace = ATHA_trait_specific
 
 #####################
 #####################
@@ -9,12 +9,12 @@ namespace = ATHA_trait_specific
 #A quick solution to a messy problem
 ATHA_trait_specific.0001 = { #By Grathalas
 	type = character_event
-	title = ATHA_trait_specific.0001.t #write this
-	desc = ATHA_trait_specific.0001.desc #write this
+	title = ATHA_trait_specific.0001.t
+	desc = ATHA_trait_specific.0001.desc
 
 	theme = realm
 	left_portrait = {
-		character = scope:land_owner
+		character = scope:landowner
 		animation = beg
 	}
 
@@ -35,7 +35,7 @@ ATHA_trait_specific.0001 = { #By Grathalas
 		create_character = {
 			location = root.capital_province
 			template = merchant_template
-			save_scope_as = land_owner
+			save_scope_as = landowner
 		}
 		
 		if = {
@@ -49,40 +49,12 @@ ATHA_trait_specific.0001 = { #By Grathalas
 					is_corrupt_trigger = yes
 				}
 				save_scope_as = corrupt_vassal
-				if = {
-					limit = {
-						any_secret = {
-							secret_type = secret_corrupt
-							is_known_by = root
-						}
-					}
-					save_scope_value_as = { #For desc purposes
-						name = secret_known
-						value = yes
-					}
-				}
-				if = { #To save the secret so it can be revealed
-					limit = {
-						any_secret = {
-							secret_type = secret_corrupt
-							NOT = { is_known_by = root }
-						}
-					}
-					random_secret = {
-						limit = {
-							secret_type = secret_corrupt
-							NOT = { is_known_by = root }
-						}
-						save_scope_as = vassal_secret
-						reveal_to = root
-					}
-				}
 			}
 		}
 	}
 
 	option = { #Summon the vassal
-		name = ATHA_trait_specific.0001.a #write this
+		name = ATHA_trait_specific.0001.a
 
 		trigger_event = {
 			id = ATHA_trait_specific.0002
@@ -91,7 +63,7 @@ ATHA_trait_specific.0001 = { #By Grathalas
 	}
 
 	option = { #Dismiss the land owner
-		name = ATHA_trait_specific.0001.b #write this
+		name = ATHA_trait_specific.0001.b
 
 		stress_impact = {
 			just = medium_stress_impact_gain
@@ -111,12 +83,12 @@ ATHA_trait_specific.0001 = { #By Grathalas
 
 ATHA_trait_specific.0002 = {
 	type = character_event
-	title = ATHA_trait_specific.0002.t #write this
-	desc = ATHA_trait_specific.0002.desc #write this
+	title = ATHA_trait_specific.0002.t
+	desc = ATHA_trait_specific.0002.desc
 
 	theme = realm
 	right_portrait = {
-		character = scope:land_owner
+		character = scope:landowner
 		animation = disapproval
 	}
 	left_portrait = {
@@ -129,7 +101,7 @@ ATHA_trait_specific.0002 = {
 	}
 
 	option = { #Side with the vassal
-		name = trait_specific.0002.a #write loc
+		name = ATHA_trait_specific.0002.a
 		scope:corrupt_vassal = {
 			add_opinion = {
 				target = root
@@ -137,17 +109,22 @@ ATHA_trait_specific.0002 = {
 				opinion = 15
 			}
 		}
-		county_opinion_add = -10
-
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 
 		stress_impact = {
 			just = major_stress_impact_gain
 		}
+
+		scope:county = {
+			add_county_modifier = {
+				modifier = governance_1052_resentful_serfs_modifier
+				years = 10
+			}
+		}
 	}
 
 	option = { #Side with the land owner
-		name = trait_specific.0002.b #write loc
+		name = ATHA_trait_specific.0002.b
 		scope:corrupt_vassal = {
 			add_opinion = {
 				target = root
@@ -155,12 +132,18 @@ ATHA_trait_specific.0002 = {
 				opinion = -15
 			}
 		}
-		county_opinion_add = 10
+
+		scope:county = {
+			add_county_modifier = {
+				modifier = governance_1052_grateful_freefolk_modifier
+				years = 10
+			}
+		}
 	}
 
 	option = { #Take time to consider
-		name = trait_specific.0002.c #write loc
-		flavor = trait_specific.0002.c.tt #write loc
+		name = ATHA_trait_specific.0002.c
+		flavor = ATHA_trait_specific.0002.c.tt
 
 		trigger_event = ATHA_trait_specific.0003
 	}
@@ -168,8 +151,8 @@ ATHA_trait_specific.0002 = {
 
 ATHA_trait_specific.0003 = {
 	type = character_event
-	title = ATHA_trait_specific.0003.t #write loc
-	desc = ATHA_trait_specific.0003.desc #write loc
+	title = ATHA_trait_specific.0003.t
+	desc = ATHA_trait_specific.0003.desc
 
 	theme = corruption
 	override_background = {
@@ -180,8 +163,28 @@ ATHA_trait_specific.0003 = {
 		animation = scheme
 	}
 
+	immediate = {
+		scope:corrupt_vassal = {
+			if = { #To save the secret so it can be revealed
+				limit = {
+					any_secret = {
+						secret_type = secret_corrupt
+						NOT = { is_known_by = root }
+					}
+				}
+			}
+			random_secret = {
+				limit = {
+					secret_type = secret_corrupt
+					NOT = { is_known_by = root }
+				}
+				reveal_to = root
+			}
+		}		
+	}
+
 	option = { #Accept the deal
-		name = ATHA_trait_specific.0003.a #write loc
+		name = ATHA_trait_specific.0003.a
 		if = {
 			limit = {
 				is_corrupt_trigger = no
@@ -198,6 +201,10 @@ ATHA_trait_specific.0003 = {
 				gold = medium_gold_value
 				target = root
 			}
+			any_secret = {
+				secret_type = secret_corrupt
+				reveal_to = scope:root
+			}
 		}
 		any_secret = {
 			secret_type = secret_corrupt
@@ -210,7 +217,7 @@ ATHA_trait_specific.0003 = {
 	}
 
 	option = { #Expose the vassal
-		name = ATHA_trait_specific.0003.b #write loc
+		name = ATHA_trait_specific.0003.b
 		scope:corrupt_vassal = {
 			add_opinion = {
 				target = root
@@ -234,7 +241,7 @@ ATHA_trait_specific.0003 = {
 	}
 
 	option = { #Decline the deal
-		name = ATHA_trait_specific.0003.c #write loc
+		name = ATHA_trait_specific.0003.c
 		scope:corrupt_vassal = {
 			add_opinion = {
 				target = root
@@ -258,7 +265,15 @@ ATHA_trait_specific.0004 = {
 	desc = ATHA_trait_specific.0004.desc
 	sender = scope:corrupt_vassal
 
+	immediate = {
+		scope:landowner = {
+			death = {
+				death_reason = death_vanished
+			}
+		}
+	}
+
 	option = {
-		name = trait_specific.9004.a
+		name = ATHA_trait_specific.9004.a
 	}
 }
