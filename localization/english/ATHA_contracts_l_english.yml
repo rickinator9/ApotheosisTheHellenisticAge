@@ -69,17 +69,16 @@
   city_state_ritual_coronations_enabled_desc:0 "#flavor The City-State has decided to gift its autocratic [liege|E] with golden crowns indicating his status as benefactor and saviour."
 
 # Vassal Role
-  #vassal_role:0 "[Concept( 'vassal_role', 'Vassal Role' )|B]"  
-  vassal_role:0 "Vassal Role"  
+  vassal_role:0 "[vassal_role|B|color_black|U]"
   vassal_role_city_state_autonomous:0 "Autonomous City-State"  
   vassal_role_city_state_autonomous_short:0 "Free City"  
-  vassal_role_city_state_autonomous_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts a [city_state|E] form of [government|E] according to their [city_state_desired_franchise|E]\n\n#emphasis #bold [vassal|E] Privileges:#!#!\nThe following [feudal_contracts|E] are guaranteed by the [liege|E] and may not be revoked:\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'coinage_rights' ).GetObligationName( 'coinage_rights_granted' )]\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'religious_rights' ).GetObligationName( 'religious_rights_protected' )]\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'title_revocation_rights' ).GetObligationName( 'title_revocation_rights_protected' )]\n\n#flavor As an $vassal_role_city_state_autonomous$, the [vassal|E] will pay #high [EmptyScope.ScriptValue('autonomous_contract_taxes_tooltip')|0]%#! less [tax|E] than what their $feudal_government_taxes$ [obligation|E] dictates, and #high [EmptyScope.ScriptValue('autonomous_contract_levies_tooltip')|0]%#! fewer [levies|E] than what their $feudal_government_levies$ [obligation|E] dictates.#!" 
+  vassal_role_city_state_autonomous_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts a [city_state|E] form of [government|E] according to their [city_state_desired_franchise|E]\n\n#emphasis #bold [vassal|E] Privileges:#!#!\nThe following [feudal_contracts|E] are guaranteed by the [liege|E] and may not be revoked:\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'coinage_rights' ).GetObligationName( 'coinage_rights_granted' )]\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'religious_rights' ).GetObligationName( 'religious_rights_protected' )]\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'title_revocation_rights' ).GetObligationName( 'title_revocation_rights_protected' )]\n\n#flavor As an $vassal_role_city_state_autonomous$, the [vassal|E] will pay #high [EmptyScope.ScriptValue('autonomous_contract_taxes_tooltip')|0]%#! less [tax|E] than what their $feudal_government_taxes$ [obligation|E] dictates, and #high [EmptyScope.ScriptValue('autonomous_contract_levies_tooltip')|0]%#! fewer [levies|E] than what their $feudal_government_levies$ [obligation|E] dictates.#!" 
   vassal_role_city_state_dependent:0 "Dependent City-State" 
   vassal_role_city_state_dependent_short:0 "Subject City"  
   vassal_role_city_state_dependent_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts a [city_state|E] form of [government|E] as chosen by their [liege|E]\n\n#emphasis #bold [liege|E] Privileges:#!#!\nThe [liege|E] can use the $imposed_franchise$ [contract|E] to force the [vassal|E] to adopt a particular form of [city_state|E] [government|E]\n\n#flavor As a $vassal_role_city_state_dependent$, the [vassal|E] gives up a considerable degree of autonomy and is vulnerable to the meddling of their [liege|E]. Placing a [vassal] in this position is sure to make them unhappy.#!"  
   vassal_role_coalition_autonomous:0 "Autonomous Coalition"  
   vassal_role_coalition_autonomous_short:0 "Free Coalition"  
-  vassal_role_coalition_autonomous_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nIf the [vassal|E] already has a [coalition|E] form of [government|E] then this is preserved. Otherwise, the [vassal] adopts the [GetGovernment( 'federal_alliance_government' ).GetName] form of [coalition] [government]\n\n#emphasis #bold [vassal|E] Privileges:#!#!\nThe following [feudal_contracts|E] are guaranteed by the [liege|E] and may not be revoked:\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'coinage_rights' ).GetObligationName( 'coinage_rights_granted' )]\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'religious_rights' ).GetObligationName( 'religious_rights_protected' )]\n$EFFECT_LIST_BULLET$[GetVassalContractType( 'title_revocation_rights' ).GetObligationName( 'title_revocation_rights_protected' )]\n\n#flavor As an $vassal_role_coalition_autonomous$, the [vassal|E] will pay #high [EmptyScope.ScriptValue('autonomous_contract_taxes_tooltip')|0]%#! less [tax|E] than what their $feudal_government_taxes$ [obligation|E] dictates, and #high [EmptyScope.ScriptValue('autonomous_contract_levies_tooltip')|0]%#! fewer [levies|E] than what their $feudal_government_levies$ [obligation|E] dictates.#!"  
+  vassal_role_coalition_autonomous_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nIf the [vassal|E] already has a [coalition|E] form of [government|E] then this is preserved. Otherwise, the [vassal] adopts the [GetGovernment( 'federal_alliance_government' ).GetName] form of [coalition] [government]\n\n#emphasis #bold [vassal|E] Privileges:#!#!\nThe following [feudal_contracts|E] are guaranteed by the [liege|E] and may not be revoked:\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'coinage_rights' ).GetObligationName( 'coinage_rights_granted' )]\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'religious_rights' ).GetObligationName( 'religious_rights_protected' )]\n$EFFECT_LIST_BULLET$ [GetVassalContractType( 'title_revocation_rights' ).GetObligationName( 'title_revocation_rights_protected' )]\n\n#flavor As an $vassal_role_coalition_autonomous$, the [vassal|E] will pay #high [EmptyScope.ScriptValue('autonomous_contract_taxes_tooltip')|0]%#! less [tax|E] than what their $feudal_government_taxes$ [obligation|E] dictates, and #high [EmptyScope.ScriptValue('autonomous_contract_levies_tooltip')|0]%#! fewer [levies|E] than what their $feudal_government_levies$ [obligation|E] dictates.#!"  
   vassal_role_coalition_dependent:0 "Dependent Coalition"  
   vassal_role_coalition_dependent_short:0 "Subject Coalition"
   vassal_role_coalition_dependent_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts a [coalition|E] form of [government|E] as chosen by their [liege|E]\n\n#emphasis #bold [liege|E] Privileges:#!#!\nThe [liege|E] can use the $enforced_centralisation$ [contract|E] to lock the [vassal|E] to a particular [crown_authority|E] [law|E]\nThe [liege|E] can use the $enforced_federalism$ [contract|E] to force the [vassal|E] to adopt a [federal|E] or [hegemonic|E] administration\n\n#flavor As a $vassal_role_coalition_dependent$, the [vassal|E] gives up a considerable degree of autonomy and is vulnerable to the meddling of their [liege|E]. Placing a [vassal] in this position is sure to make them unhappy.#!"   
@@ -94,8 +93,7 @@
   vassal_role_bureaucracy_feudal_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts the [GetGovernment( 'feudal_government' ).GetName] form of [bureaucratic|E] [government|E]\n\n#flavor As a $vassal_role_bureaucracy_feudal$, the [vassal|E] will pay #high [EmptyScope.ScriptValue('bureaucracy_feudal_contract_taxes_tooltip')|0]%#! less [tax|E] than what their $feudal_government_taxes$ [obligation|E] dictates, and #high [EmptyScope.ScriptValue('bureaucracy_feudal_contract_levies_tooltip')|0]%#! fewer [levies|E] than what their $feudal_government_levies$ [obligation|E] dictates.#!"
 
 # Imposed Franchise
-  #imposed_franchise:0 "[Concept( 'imposed_franchise', 'Imposed Franchise' )|B]"  
-  imposed_franchise:0 "Imposed Franchise"  
+  imposed_franchise:0 "[imposed_franchise|B|color_black|U]"
   imposed_franchise_none:0 "No Imposed Franchise"  
   imposed_franchise_none_short:0 "None"  
   imposed_franchise_democratic:0 "Imposed Democratic Franchise"  
@@ -112,8 +110,7 @@
   imposed_franchise_tyrannic_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts the [GetGovernment( 'city_state_tyrannical_government' ).GetName] form of [city_state|E] [government|E]\n\n#emphasis #bold [liege|E] Privileges:#!#!\nThe [liege|E] gains a [strong_hook|E] on the [vassal|E]\n\n#flavor The [city_state|E] [vassal|E] is ordered by its [liege|E] to be ruled by the decisive and strong arm of a [city_state_tyrant|E].#!"
 
 # Enforced Centralisation
-  #enforced_centralisation:0 "[Concept( 'enforced_centralisation', 'Enforced Centralisation' )|B]"  
-  enforced_centralisation:0 "Enforced Centralisation"  
+  enforced_centralisation:0 "[enforced_centralisation|B|color_black|U]"
   enforced_centralisation_none:0 "No Enforced Centralisation"  
   enforced_centralisation_none_short:0 "None"  
   enforced_centralisation_low:0 "Enforced Decentralisation"  
@@ -127,8 +124,7 @@
   enforced_centralisation_high_desc:0 "#emphasis #bold [vassal|E] Governance:#!#!\nThe [vassal|E] adopts a League form of [coalition|E] [government|E]\n\n#emphasis #bold [vassal|E] Restrictions:#!#!\nThe [vassal|E] is locked to the [GetLaw('crown_authority_2').GetName] [law|E]\n\n#flavor The [coalition|E] [vassal|E] is ordered by its [liege|E] to be organised into a highly centralised League with well-developed institutions and a burgeoning central bureaucracy.#!"
 
 # Enforced Federalism
-  #enforced_federalism:0 "[Concept( 'enforced_federalism', 'Enforced Federalism' )|B]"  
-  enforced_federalism:0 "Enforced Federalism"  
+  enforced_federalism:0 "[enforced_federalism|B|color_black|U]"
   enforced_federalism_none:0 "No Enforced Federalism"  
   enforced_federalism_none_short:0 "None"  
   enforced_federalism_federal:0 "Enforced Federal Administration"  
