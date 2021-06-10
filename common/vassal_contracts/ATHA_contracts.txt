@@ -129,7 +129,7 @@ vassal_role = {
 				if = {
 					limit = {
 						scope:vassal = {
-							government_has_flag = is_city_state_government
+							government_has_flag = is_coalition_government
 						}
 					}
 					add = @ai_standard_liege_desire
@@ -156,6 +156,21 @@ vassal_role = {
 
 			flag = has_civil_bureaucracy_contract
 			flag = vassal_contract_free_revocation
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_bureaucracy_government
+							has_government = feudal_government
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_vassal_role
 		}
 		vassal_role_bureaucracy_military = {
@@ -178,6 +193,21 @@ vassal_role = {
 
 			flag = has_military_bureaucracy_contract
 			flag = vassal_contract_free_revocation
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_bureaucracy_government
+							has_government = feudal_government
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_vassal_role
 		}
 		vassal_role_bureaucracy_feudal = {
@@ -211,6 +241,19 @@ vassal_role = {
 			}
 
 			flag = has_feudal_bureaucracy_contract
+
+			ai_liege_desire = 0
+			ai_vassal_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:vassal = {
+							government_has_flag = is_bureaucracy_government
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
 			flag = category_vassal_role
 		}
 	}
@@ -223,6 +266,9 @@ imposed_franchise = {
 		imposed_franchise_none = {
 			default = yes
 			position = { 0 1 }
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 		}
 		imposed_franchise_democratic = {
 			is_valid = {
@@ -236,6 +282,23 @@ imposed_franchise = {
 			}
 
 			flag = has_imposed_democratic_franchise
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							has_government = city_state_democratic_government
+						}
+						scope:vassal = {
+							NOT = { has_government = city_state_democratic_government }
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_imposed_franchise
 		}
 		imposed_franchise_oligarchic = {
@@ -259,6 +322,25 @@ imposed_franchise = {
 
 			flag = has_imposed_franchise
 			flag = has_imposed_oligarchic_franchise
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							OR = { 
+								has_government = city_state_oligarchic_government
+								has_government = city_state_spartan_government
+						}
+						scope:vassal = {
+							NOT = { has_government = city_state_oligarchic_government }
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_imposed_franchise
 		}
 		imposed_franchise_aristocratic = {
@@ -283,6 +365,23 @@ imposed_franchise = {
 			flag = vassal_contract_gives_weak_hook
 			flag = has_imposed_franchise
 			flag = has_imposed_aristocratic_franchise
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							has_government = city_state_aristocratic_government
+						}
+						scope:vassal = {
+							NOT = { has_government = city_state_aristocratic_government }
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_imposed_franchise
 		}
 		imposed_franchise_tyrannic = {
@@ -304,6 +403,22 @@ imposed_franchise = {
 				county_opinion_add = -20
 			}
 
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							has_government = city_state_tyrannical_government
+						}
+						scope:vassal = {
+							NOT = { has_government = city_state_tyrannical_government }
+						}
+					}
+					add = @ai_desire_always
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = vassal_contract_gives_strong_hook
 			flag = has_imposed_franchise
 			flag = has_imposed_tyrannic_franchise
@@ -319,6 +434,9 @@ enforced_centralisation = {
 		enforced_centralisation_none = {
 			default = yes
 			position = { 0 1 }
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 		}
 		enforced_centralisation_low = {
 			is_valid = {
@@ -330,6 +448,23 @@ enforced_centralisation = {
 			vassal_opinion = -5
 
 			flag = has_enforced_centralisation_low
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							government_has_flag = is_alliance_government
+						}
+						scope:vassal = {
+							NOT = { government_has_flag = is_alliance_government }
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_enforced_centralisation
 		}
 		enforced_centralisation_medium = {
@@ -347,6 +482,23 @@ enforced_centralisation = {
 
 			flag = has_enforced_centralisation
 			flag = has_enforced_centralisation_medium
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							government_has_flag = is_sympolity_government
+						}
+						scope:vassal = {
+							NOT = { government_has_flag = is_sympolity_government }
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_enforced_centralisation
 		}
 		enforced_centralisation_high = {
@@ -366,6 +518,23 @@ enforced_centralisation = {
 			
 			flag = has_enforced_centralisation
 			flag = has_enforced_centralisation_high
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							government_has_flag = is_league_government
+						}
+						scope:vassal = {
+							NOT = { government_has_flag = is_league_government }
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_enforced_centralisation
 		}
 	}
@@ -378,6 +547,9 @@ enforced_federalism = {
 		enforced_federalism_none = {
 			default = yes
 			position = { 0 1 }
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 		}
 		enforced_federalism_federal = {
 			is_valid = {
@@ -389,6 +561,23 @@ enforced_federalism = {
 			vassal_opinion = -5
 
 			flag = has_enforced_federalism_federal
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							government_has_flag = is_federal_government
+						}
+						scope:vassal = {
+							NOT = { government_has_flag = is_federal_government }
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_enforced_federalism
 		}
 		enforced_federalism_hegemonic = {
@@ -408,6 +597,23 @@ enforced_federalism = {
 			
 			flag = has_enforced_federalism
 			flag = has_enforced_federalism_hegemonic
+
+			ai_liege_desire =  {
+				value = 0
+				if = {
+					limit = {
+						scope:liege = {
+							government_has_flag = is_hegemonic_government
+						}
+						scope:vassal = {
+							NOT = { government_has_flag = is_hegemonic_government }
+						}
+					}
+					add = @ai_standard_liege_desire
+				}
+			}
+			ai_vassal_desire = 0
+
 			flag = category_enforced_federalism
 		}
 	}
@@ -422,6 +628,9 @@ colony_rights = {
 		colony_rights_none = {
 			default = yes
 			position = { 0 0 }
+			
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
 
 			flag = category_colony_rights
 		}
@@ -445,6 +654,10 @@ colony_rights = {
 
 			flag = city_state_encouraged_culture_flipping
 			flag = has_colony_rights
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
+
 			flag = category_colony_rights
 		}	
 	}
@@ -463,6 +676,9 @@ gift_estate_rights = {
 		gift_estate_rights_none = {
 			default = yes
 			position = { 0 0 }
+			
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
 
 			flag = category_gift_estate_rights
 		}
@@ -487,6 +703,10 @@ gift_estate_rights = {
 			vassal_opinion = 5
 
 			flag = vassal_contract_gives_weak_hook
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
+
 			flag = category_gift_estate_rights
 		}	
 	}
@@ -534,6 +754,9 @@ garrison_rights = {
 		garrison_rights_none = {
 			default = yes
 			position = { 0 0 }
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 
 			flag = category_garrison_rights
 		}
@@ -568,6 +791,10 @@ garrison_rights = {
 
 			flag = installed_garrison
 			flag = vassal_contract_gives_strong_hook
+			
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
+
 			flag = category_garrison_rights
 		}
 	}
@@ -587,6 +814,9 @@ ritual_coronations_rights = {
 		ritual_coronations_rights_none = {
 			default = yes
 			position = { 0 0 }
+			
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 
 			flag = category_ritual_coronations_rights
 		}
@@ -610,6 +840,9 @@ ritual_coronations_rights = {
 			}
 
 			vassal_opinion = -5
+			
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
 
 			flag = category_ritual_coronations_rights
 		}	
@@ -630,8 +863,8 @@ atha_fortification_rights = {
 			default = yes
 			position = { 0 0 }
 			
-			ai_liege_desire = @ai_standard_liege_desire
-			ai_vassal_desire = 0
+			ai_liege_desire = 0
+			ai_vassal_desire = @ai_standard_vassal_desire
 
 			flag = category_fortification_rights
 		}
@@ -652,6 +885,9 @@ atha_fortification_rights = {
 			}
 
 			vassal_opinion = -10
+			
+			ai_liege_desire = @ai_standard_liege_desire
+			ai_vassal_desire = 0
 
 			flag = category_fortification_rights
 		}
