@@ -53,8 +53,26 @@ varangian_ongoing = {
 		always = no
 	}
 	effect = {
-		#debug_log = "Fired the varangian_ongoing pulse"
-		#debug_log_scopes = yes
+
+		#Verify if the character became landed: in that case, remove the flag
+		if = {
+			limit = {
+				is_ruler = yes
+			}
+			remove_character_flag = is_currently_varangian
+		}
+		else = {
+			#debug_log = "Fired the varangian_ongoing pulse"
+			#debug_log_scopes = yes
+			change_variable = { # NOTE: Will *not* be relevant to non-delayed trigger evaluations for the events below
+				name = years_as_varangian
+				add = 1
+			}
+			trigger_event = {
+				on_action = varangian_ongoing
+				days = { 340 380 }
+			}
+		}
 	}
 	random_events = {
 		500 = 0
