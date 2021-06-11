@@ -291,6 +291,14 @@ faith_conversion.1001 = {
 				add_trait = devoted
 			}
 		}
+
+		#Dummy check to avoid errors since the flag is only checked in portrait modifiers otherwise
+		if = {
+			limit = {
+				has_character_flag = need_priest_outfit
+			}
+			#Please dress properly!
+		}
 	}
 
 	option = { 
