@@ -80,9 +80,10 @@ types ATHA_city_state_windows
 						}
 					}
 		
-					hbox = {
+					hbox = { # Header if Player is City-State.
 						layoutpolicy_horizontal = expanding
 						margin_top = 32 # Aligns the title roughly at the same height as the other windows.
+						visible = "[Not(GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 
 						# Current ruler left column
 						vbox = {
@@ -146,6 +147,102 @@ types ATHA_city_state_windows
 								{
 									tooltip = "[GetPlayer.GetDefaultRealmFlagTooltipPrimaryTitleClickInfo]"
 									onclick = "[DefaultOnCoatOfArmsClick(GetPlayer.GetPrimaryTitle.GetID)]"
+								}
+							}
+
+							vbox = {
+								margin_top = 12
+							}
+						}
+
+						# Close button
+						vbox = {
+							layoutpolicy_vertical = expanding
+							margin_right = 8
+
+							button_close = {
+								name = "button_close"
+								shortcut = "close_window"
+								tooltip = "CLOSE_TOOLTIP"
+								clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_close"
+					
+								using = Animation_ShowHide_Standard
+
+								datacontext = "[GetScriptedGui('city_state_gui_toggle')]"
+								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							expand = { }
+						}
+					}
+		
+					hbox = { # Header is Player is vassal of a city state.
+						layoutpolicy_horizontal = expanding
+						margin_top = 32 # Aligns the title roughly at the same height as the other windows.
+						visible = "[GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+						# Current ruler left column
+						vbox = {
+							layoutpolicy_vertical = expanding
+							margin_left = 12
+
+							portrait_head = { datacontext = "[GetPlayer.GetLiege]" }
+
+							text_single = {
+								text = "CITY_STATE_GUI_CURRENT_RULER"
+								default_format = "#low"
+							}
+					
+							expand = {}
+						}
+		
+						# Title name center column
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							margin_bottom = 40
+
+							text_multi = {
+								text = "[GetPlayer.GetLiege.GetPrimaryTitle.GetNameNoTooltip|U]"
+								max_width = 380
+								autoresize = yes
+
+								using = Font_Type_Flavor
+								using = Font_Size_Big
+							}
+		
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								align = center
+								text = "CITY_STATE_GUI_LIEGE_GOVERNMENT"
+								fontsize = 14
+							}
+					
+							expand = {}
+
+							button_standard_select_arrow = {
+								visible = "[GetScriptedGui('city_state_gui_is_elective').IsShown(GuiScope.SetRoot(GetPlayer.GetLiege.MakeScope).End)]"
+								onclick = "[OpenSuccessionElectionWindowForTitle(GetPlayer.GetLiege.GetPrimaryTitle)]"
+								
+								blockoverride "button_text"{
+									text = "MY_REALM_WINDOW_VOTE"
+								}
+								
+								tooltip = "MY_REALM_WINDOW_VOTE_TOOLTIP"
+							}
+						}
+
+						# COA right column
+						vbox = {
+							layoutpolicy_vertical = expanding
+				
+							coa_realm_big_crown = {
+								datacontext = "[GetPlayer.GetLiege]"
+
+								blockoverride "coa_button"
+								{
+									tooltip = "[GetPlayer.GetLiege.GetDefaultRealmFlagTooltipPrimaryTitleClickInfo]"
+									onclick = "[DefaultOnCoatOfArmsClick(GetPlayer.GetLiege.GetPrimaryTitle.GetID)]"
 								}
 							}
 

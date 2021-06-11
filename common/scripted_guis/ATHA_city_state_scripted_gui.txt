@@ -2,7 +2,10 @@
 	scope = player
 
 	is_shown = {
-		government_has_flag = is_city_state_government
+		OR = {
+			government_has_flag = is_city_state_government
+			is_city_state_bureaucracy = yes
+		}
 	}
 }
 
@@ -29,11 +32,25 @@ city_state_gui_toggle = {
 	}
 }
 
+city_state_gui_is_vassal = {
+	scope = player
+
+	is_shown = {
+		is_city_state_bureaucracy = yes
+	}
+}
+
 city_state_gui_is_elective = {
 	scope = player
 
 	is_shown = {
-		NOT = { has_government = city_state_tyrannical_government }
+		NOR = {
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_tyrannical_government }
+			}
+			has_government = city_state_tyrannical_government
+		}
 	}
 }
 
@@ -41,7 +58,13 @@ city_state_gui_is_aristocratic = {
 	scope = player
 
 	is_shown = {
-		has_government = city_state_aristocratic_government
+		OR = {
+			has_government = city_state_aristocratic_government
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_aristocratic_government }
+			}
+		}
 	}
 }
 
@@ -49,7 +72,13 @@ city_state_gui_is_democratic = {
 	scope = player
 
 	is_shown = {
-		has_government = city_state_democratic_government
+		OR = {
+			has_government = city_state_democratic_government
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_democratic_government }
+			}
+		}
 	}
 }
 
@@ -57,7 +86,13 @@ city_state_gui_is_oligarchic = {
 	scope = player
 
 	is_shown = {
-		has_government = city_state_oligarchic_government
+		OR = {
+			has_government = city_state_oligarchic_government
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_oligarchic_government }
+			}
+		}
 	}
 }
 
@@ -65,7 +100,13 @@ city_state_gui_is_tyrannical = {
 	scope = player
 
 	is_shown = {
-		has_government = city_state_tyrannical_government
+		OR = {
+			has_government = city_state_tyrannical_government
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_tyrannical_government }
+			}
+		}
 	}
 }
 
@@ -74,7 +115,13 @@ city_state_gui_ideal_franchise = {
 
 	# TODO: Add ideal franchise levels for governments.
 	is_shown = {
-		has_government = city_state_democratic_government
+		OR = {
+			has_government = city_state_democratic_government
+			AND = {
+				is_city_state_bureaucracy = yes
+				liege = { has_government = city_state_democratic_government }
+			}
+		}
 	}
 }
 
@@ -82,9 +129,18 @@ city_state_gui_corruption_critical = {
 	scope = player
 
 	is_shown = {
-		primary_title = {
-			has_variable = city_state_corruption
-			var:city_state_corruption >= 74.5
+		OR = {			
+			primary_title = {
+				has_variable = city_state_corruption
+				var:city_state_corruption >= 74.5
+			}
+			AND = {
+				is_city_state_bureaucracy = yes				
+				primary_title = {
+					has_variable = city_state_corruption
+					var:city_state_corruption >= 74.5
+				}
+			}
 		}
 	}
 }
@@ -95,6 +151,12 @@ city_state_has_issue = {
 	is_shown = {
 		OR = {
 			has_emergency_mercenary_mutiny = yes
+			AND = {
+				is_city_state_bureaucracy = yes
+				OR = {
+					has_emergency_mercenary_mutiny = yes
+				}
+			}
 		}
 	}
 }
