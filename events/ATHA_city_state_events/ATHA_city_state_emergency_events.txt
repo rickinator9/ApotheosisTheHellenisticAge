@@ -684,6 +684,10 @@ city_state_emergency.0012 = {
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
 
+		trigger_event = {
+            on_action = on_corruption_gain
+        }
+
 		# Remove piety from both wrongdoers now that their evil is revealed.
 		add_piety = {
 			value = major_piety_loss

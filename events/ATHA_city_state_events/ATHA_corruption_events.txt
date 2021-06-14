@@ -1,8 +1,74 @@
-﻿#####################
-# CORRUPTION EVENTS #
-#####################
+﻿namespace = corruption
 
-namespace = corruption
+####
+#0001 - 0002: Corruption change events
+#By Grathalas
+####
+
+####
+#1001 - 1005: Provide Vice events
+# By Grathalas
+####
+
+############################
+# CORRUPTION CHANGE EVENTS #
+############################
+corruption.0001 = {
+	hidden = yes
+	
+	trigger = {
+		primary_title = {
+			has_variable = city_state_corruption
+		}
+		NOR = {
+			is_corrupt_trigger = yes
+			has_trait = incorruptible
+		}
+		
+	}
+
+	immediate = {
+		give_corrupt_secret_or_trait_effect = yes
+
+		send_interface_message = {
+			type = event_generic_bad_text
+			title = corruption.0001.notification
+			desc = gain_corrupt_secret_desc
+
+			left_icon = root
+		}
+	}
+}
+
+corruption.0002 = {
+	hidden = yes
+	
+	trigger = {
+		primary_title = {
+			has_variable = city_state_corruption
+		}
+		NOR = {
+			is_corrupt_trigger = yes
+			has_trait = incorruptible
+		}
+	}
+
+	immediate = {
+		send_interface_message = {
+			type = event_generic_good_text
+			title = corruption.0002.notification
+			desc = gain_incorruptible_trait_tooltip
+
+			left_icon = root
+		}
+
+		add_trait = incorruptible
+	}
+}
+
+#######################
+# PROVIDE VICE EVENTS #
+#######################
 
 scripted_trigger corruption_1001_can_learn_owner_secret = {
 	save_temporary_scope_as = secret_learner
@@ -20,7 +86,7 @@ scripted_trigger corruption_1001_unlock_reveal_trigger = {
 }
 
 #Success
-corruption.1001 = { #by Grathalas
+corruption.1001 = {
 	type = character_event
 	title = corruption.1001.t
 	desc = corruption.1001.desc
@@ -107,6 +173,10 @@ corruption.1001 = { #by Grathalas
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
+
+		trigger_event = {
+            on_action = on_corruption_gain
+        }
 	}
 
 	#Show them a good time
@@ -143,6 +213,10 @@ corruption.1001 = { #by Grathalas
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+
+		trigger_event = {
+            on_action = on_corruption_gain
+        }
 	}
 
 	#Now is not the right time
@@ -185,7 +259,7 @@ corruption.1001 = { #by Grathalas
 }
 
 #Success, but discovered
-corruption.1002 = { #by Grathalas
+corruption.1002 = {
 	type = character_event
 	title = corruption.1002.t
 	desc = corruption.1002.desc
@@ -264,7 +338,7 @@ corruption.1002 = { #by Grathalas
 }
 
 #They refuse
-corruption.1003 = { #by Grathalas
+corruption.1003 = {
 	type = character_event
 	title = corruption.1003.t
 	desc = {
@@ -320,7 +394,7 @@ corruption.1003 = { #by Grathalas
 }
 
 #They tell their liege
-corruption.1004 = { #by Grathalas
+corruption.1004 = {
 	type = character_event
 	title = corruption.1003.t
 	desc = {
@@ -401,7 +475,7 @@ corruption.1004 = { #by Grathalas
 }
 
 #Someone is trying to corrupt me (player only)
-corruption.1005 = { #by Grathalas
+corruption.1005 = {
 	type = character_event
 	title = corruption.1005.t
 	desc = corruption.1005.desc

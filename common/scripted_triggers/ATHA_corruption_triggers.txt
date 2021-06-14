@@ -1,4 +1,4 @@
-knows_about_character_being_corrupt_trigger = {
+﻿knows_about_character_being_corrupt_trigger = {
 	OR = {
 		$CHARACTER$ = { has_trait = corrupt }
 		any_known_secret = {
@@ -21,15 +21,6 @@ secret_corrupt_is_valid_trigger = {
 	$OWNER$ = {
 		NOT = {
 			has_trait = corrupt
-		}
-	}
-}
-
-secret_corrupt_is_shunned_trigger = {
-	$OWNER$ = {
-		OR = {
-			faith = { has_doctrine_parameter = corruption_shunned }
-			any_liege_or_above = { faith = { has_doctrine_parameter = corruption_shunned } }
 		}
 	}
 }

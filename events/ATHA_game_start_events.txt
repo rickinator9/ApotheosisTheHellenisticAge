@@ -26,7 +26,10 @@ ATHA_game_start.2 = {
 		every_ruler = {
 			limit = {
 				highest_held_title_tier >= tier_county
-				government_has_flag = is_city_state_government
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_bureaucracy_government
+				}
 			}
 
 			if = {
@@ -98,6 +101,30 @@ ATHA_game_start.2 = {
 					set_variable = {
 						name = city_state_corruption
 						value = corruption_aristocratic_initial_value
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_government = bureaucracy_military_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_aristocratic_initial_value
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_government = bureaucracy_civil_government
+				}
+
+				primary_title = {
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_democratic_initial_value
 					}
 				}
 			}

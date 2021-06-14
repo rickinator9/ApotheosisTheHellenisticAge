@@ -1,6 +1,8 @@
-on_corruption_change = {
-	if = {
-		limit = { has_variable = city_state_corruption }
+﻿on_corruption_change = {
+	trigger = {
+		if = {
+			limit = { has_variable = city_state_corruption }
+		}
 	}
 
 	effect = {
@@ -10,7 +12,7 @@ on_corruption_change = {
 					var:city_state_corruption < 24.5
 				}
 			}
-			add_character_modifier = { modifier = low_corruption_modifier }
+			add_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = high_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
@@ -24,7 +26,7 @@ on_corruption_change = {
 					}
 				}
 			}
-			add_character_modifier = { modifier = mediocre_corruption_modifier }
+			add_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = high_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
@@ -38,7 +40,7 @@ on_corruption_change = {
 					}
 				}
 			}
-			add_character_modifier = { modifier = high_corruption_modifier }
+			add_character_modifier = high_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
@@ -49,10 +51,24 @@ on_corruption_change = {
 					var:city_state_corruption > 74.5
 				}
 			}
-			add_character_modifier = { modifier = critical_corruption_modifier }
+			add_character_modifier = critical_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = high_corruption_modifier
 		}
+	}
+}
+
+on_corruption_gain = {
+	random_events = {
+		chance_to_happen = 10
+		100 = corruption.0001
+	}
+}
+
+on_corruption_loss = {
+	random_events = {
+		chance_to_happen = 10
+		100 = corruption.0002
 	}
 }
