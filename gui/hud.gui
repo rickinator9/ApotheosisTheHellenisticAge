@@ -1040,7 +1040,24 @@ widget = {
 						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_decisions_enter','hud_tab_glow_decisions_leave')]"
 					}
 				}
+			}
 
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { 0 15 }
+
+				icon = {
+					visible = "[And( Not( IsPauseMenuShown ), And(Or(Not(IsObserver), GetPlayer.IsValid), IsDefaultGUIMode))]"
+					parentanchor = right|vcenter
+					position = { -5 0 }
+					texture = "gfx/interface/skinned/hud_spike_big.dds"
+					size = { 25 15 }
+
+					using = Animation_ShowHide_Standard
+				}
+			}
+
+			vbox = {
 				button_hud_main_tab = {
 					name = "tab_city_states"
 					tooltip = "CITY_STATE_GUI_TAB"
