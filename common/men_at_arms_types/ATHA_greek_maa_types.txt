@@ -114,7 +114,7 @@ pezhetairoi = {
 	holy_order_fallback = yes
 	
 	stack = 128 # Half the size of a syntagma.
-	ai_quality = { value = culture_ai_weight_pikemen }
+	ai_quality = { value = @cultural_maa_extra_ai_score }
 	icon = pikemen
 }
 
@@ -149,7 +149,41 @@ hoplitai = {
 	holy_order_fallback = yes
 	
 	stack = 100
-	ai_quality = { value = culture_ai_weight_pikemen }
+	ai_quality = {
+		value = @cultural_maa_extra_ai_score
+
+		if = {
+			# Spartans love hoplites.
+			limit = {
+				is_spartan = yes
+			}
+
+			add = 40
+		}
+
+		if = {
+			# City States love hoplites a whole lot more.
+			limit = {
+				government_has_flag = is_city_state_government
+			}
+
+			add = 40
+		}
+	
+		# If Hoplites are clearly obsolete, prefer Phalangites.
+		if = {
+			limit = {
+				culture = { has_innovation = innovation_sarissa }
+				OR = {
+					culture = culture:macedonian
+					culture = culture:epirote
+					current_year = 3514 # 240 BC
+				}
+			}
+
+			add = -50
+		}
+	}
 	icon = pikemen
 }
 
@@ -219,7 +253,7 @@ hetairoi = {
 	high_maintenance_cost = { gold = hetairoi_high_maint_cost }
 	
 	stack = 100
-	ai_quality = { value = culture_ai_weight_heavy_cavalry }
+	ai_quality = { value = @cultural_maa_extra_ai_score }
 	icon = heavy_cavalry
 }
 

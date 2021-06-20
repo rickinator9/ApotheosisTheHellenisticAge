@@ -603,241 +603,7 @@ widget = {
 
 			icon = {
 				size = { 100% 100% }
-				texture = "gfx/interface/skinned/hud_maintab_bg.dds"
-
-				@duration_maintab_button_enter = 0.03
-				@duration_maintab_button_leave = 0.1
-
-				modify_texture = {
-					name = "glow_my_realm"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.04 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_military"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.14 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_council"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.25 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_court"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.42 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_intrigue"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.55 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_factions"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.15 -0.68 }
-					alpha = 0
-				}
-
-				modify_texture = {
-					name = "glow_decisions"
-					texture = "gfx/interface/skinned/hud_maintab_bg_glow.dds"
-					blend_mode = colordodge
-					translate_uv = { -0.2 -0.79 }
-					alpha = 0
-				}
-
-				# My Realm
-				state = {
-					name = "hud_tab_glow_my_realm_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_my_realm"
-						alpha = 1
-						translate_uv = { -0.15 -0.04 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_my_realm_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_my_realm"
-						alpha = 0
-						translate_uv = { -0.15 -0.04 }
-					}
-				}
-
-				# Military
-				state = {
-					name = "hud_tab_glow_military_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_military"
-						alpha = 1
-						translate_uv = { -0.15 -0.14 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_military_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_military"
-						alpha = 0
-						translate_uv = { -0.15 -0.14 }
-					}
-				}
-
-				# Council
-				state = {
-					name = "hud_tab_glow_council_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_council"
-						alpha = 1
-						translate_uv = { -0.15 -0.25 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_council_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_council"
-						alpha = 0
-						translate_uv = { -0.15 -0.25 }
-					}
-				}
-
-				# Court
-				state = {
-					name = "hud_tab_glow_court_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_court"
-						alpha = 1
-						translate_uv = { -0.15 -0.42 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_court_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_court"
-						alpha = 0
-						translate_uv = { -0.15 -0.42 }
-					}
-				}
-
-				# Intrigue
-				state = {
-					name = "hud_tab_glow_intrigue_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_intrigue"
-						alpha = 1
-						translate_uv = { -0.15 -0.55 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_intrigue_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_intrigue"
-						alpha = 0
-						translate_uv = { -0.15 -0.55 }
-					}
-				}
-
-				# Factions
-				state = {
-					name = "hud_tab_glow_factions_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_factions"
-						alpha = 1
-						translate_uv = { -0.15 -0.68 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_factions_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_factions"
-						alpha = 0
-						translate_uv = { -0.15 -0.68 }
-					}
-				}
-
-				# Decisions
-				state = {
-					name = "hud_tab_glow_decisions_enter"
-					duration = @duration_maintab_button_enter
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_decisions"
-						alpha = 1
-						translate_uv = { -0.2 -0.79 }
-					}
-				}
-
-				state = {
-					name = "hud_tab_glow_decisions_leave"
-					duration = @duration_maintab_button_leave
-					using = Animation_Curve_Default
-
-					modify_texture = {
-						name = "glow_decisions"
-						alpha = 0
-						translate_uv = { -0.2 -0.79 }
-					}
-				}			
+				texture = "gfx/interface/skinned/hud_maintab_bg.dds"		
 			}
 		}
 
@@ -862,16 +628,6 @@ widget = {
 						shortcut = "my_realm_window"
 						down = "[IsGameViewOpen('my_realm')]"
 					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_my_realm_leave','hud_tab_glow_my_realm_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_my_realm_enter','hud_tab_glow_my_realm_leave')]"
-					}
 				}
 
 				button_hud_main_tab = {
@@ -887,16 +643,6 @@ widget = {
 						shortcut = "military_window"
 						down = "[IsGameViewOpen('military')]"
 					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_military_leave','hud_tab_glow_military_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_military_enter','hud_tab_glow_military_leave')]"
-					}
 				}
 
 				button_hud_main_tab = {
@@ -911,16 +657,6 @@ widget = {
 						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "council_window"
 						down = "[IsGameViewOpen('council_window')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_council_leave','hud_tab_glow_council_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_council_enter','hud_tab_glow_council_leave')]"
 					}
 				}
 			}
@@ -954,16 +690,6 @@ widget = {
 						shortcut = "court_window"
 						down = "[IsGameViewOpen( 'court_window' )]"
 					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_court_leave','hud_tab_glow_court_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_court_enter','hud_tab_glow_court_leave')]"
-					}
 				}
 
 				button_hud_main_tab = {
@@ -978,16 +704,6 @@ widget = {
 						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "intrigue_window"
 						down = "[IsGameViewOpen('intrigue_window')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_intrigue_leave','hud_tab_glow_intrigue_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_intrigue_enter','hud_tab_glow_intrigue_leave')]"
 					}
 				}
 
@@ -1004,16 +720,6 @@ widget = {
 						shortcut = "factions_window"
 						down = "[IsGameViewOpen('factions_window')]"
 					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_factions_leave','hud_tab_glow_factions_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_factions_enter','hud_tab_glow_factions_leave')]"
-					}
 				}
 
 				button_hud_main_tab = {
@@ -1029,18 +735,26 @@ widget = {
 						shortcut = "decision_window"
 						down = "[IsGameViewOpen('decisions')]"
 					}
-
-					state = {
-						name = _mouse_hierarchy_enter
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_decisions_leave','hud_tab_glow_decisions_enter')]"
-					}
-
-					state = {
-						name = _mouse_hierarchy_leave
-						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_decisions_enter','hud_tab_glow_decisions_leave')]"
-					}
 				}
+			}
 
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { 0 15 }
+				visible = "[GetScriptedGui('city_state_gui_tab_displayed').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+				icon = {
+					visible = "[And( Not( IsPauseMenuShown ), And(Or(Not(IsObserver), GetPlayer.IsValid), IsDefaultGUIMode))]"
+					parentanchor = right|vcenter
+					position = { -5 0 }
+					texture = "gfx/interface/skinned/hud_spike_big.dds"
+					size = { 25 15 }
+
+					using = Animation_ShowHide_Standard
+				}
+			}
+
+			vbox = {
 				button_hud_main_tab = {
 					name = "tab_city_states"
 					tooltip = "CITY_STATE_GUI_TAB"
