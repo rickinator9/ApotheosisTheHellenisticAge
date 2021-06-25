@@ -1,5 +1,5 @@
 ﻿implement_franchise_tyranny = {
-	change_government_form = { GOVERNMENT = city_state_tyrannical_government }
+	change_government_form_to_tyranny = yes
 	every_held_county = {
 		change_county_control = medium_county_control_gain
 		add_county_modifier = {
@@ -54,7 +54,7 @@
 	}
 }
 implement_franchise_tyranny_populist = {
-	change_government_form = { GOVERNMENT = city_state_tyrannical_government }
+	change_government_form_to_tyranny = yes
 	every_held_county = {
 		change_county_control = medium_county_control_gain
 		add_county_modifier = {
@@ -109,7 +109,7 @@ implement_franchise_tyranny_populist = {
 	}
 }
 implement_franchise_aristocracy = {
-	change_government_form = { GOVERNMENT = city_state_aristocratic_government }
+	change_government_form_to_aristocracy = yes
 	every_held_county = {
 		change_county_control = minor_county_control_gain
 		add_county_modifier = {
@@ -164,7 +164,7 @@ implement_franchise_aristocracy = {
 	}
 }
 implement_franchise_oligarchy = {
-	change_government_form = { GOVERNMENT = city_state_oligarchic_government }
+	change_government_form_to_oligarchy = yes
 	every_held_county = {
 		change_county_control = minor_county_control_loss
 		add_county_modifier = {
@@ -205,7 +205,7 @@ implement_franchise_oligarchy = {
 	}
 }
 implement_franchise_democracy = {
-	change_government_form = { GOVERNMENT = city_state_democratic_government }
+	change_government_form_to_democracy = yes
 	every_held_county = {
 		change_county_control = medium_county_control_loss
 		add_county_modifier = {
@@ -246,7 +246,7 @@ implement_franchise_democracy = {
 	}
 }
 implement_franchise_desired = {
-	change_government_form = { GOVERNMENT = city_state_democratic_government } # TEMP
+	change_government_form_to_democracy = yes # TODO
 	if = {
 		limit = { 
 			is_independent = no 
@@ -257,5 +257,39 @@ implement_franchise_desired = {
 			modifier = disappointed_opinion
 			opinion = -10
 		}
+	}
+}
+
+change_government_form_to_tyranny = {
+	change_government_form = { GOVERNMENT = city_state_tyrannical_government }
+	if = {
+		limit = {
+			NOT = { has_title_law = single_heir_succession_law }
+		}
+		primary_title = { add_title_law = single_heir_succession_law }
+	}
+}
+
+change_government_form_to_aristocracy = {
+	change_government_form = { GOVERNMENT = city_state_aristocratic_government }
+	if = {
+		limit = { highest_held_title_tier >= tier_duchy }
+		primary_title = { add_title_law = aristocratic_succession_law }
+	}
+}
+
+change_government_form_to_oligarchy = {
+	change_government_form = { GOVERNMENT = city_state_oligarchic_government }
+	if = {
+		limit = { highest_held_title_tier >= tier_duchy }
+		primary_title = { add_title_law = oligarchic_succession_law }
+	}
+}
+
+change_government_form_to_democracy = {
+	change_government_form = { GOVERNMENT = city_state_democratic_government }
+	if = {
+		limit = { highest_held_title_tier >= tier_duchy }
+		primary_title = { add_title_law = democratic_succession_law }
 	}
 }

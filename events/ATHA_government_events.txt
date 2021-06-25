@@ -797,3 +797,323 @@ ATHA_government.0005 = {
 		}
 	}
 }
+
+# Newly autonomous ruler decides on City-State government to adopt
+ATHA_government.0006 = {
+	type = character_event
+	title = ATHA_government.0006.t
+	desc = ATHA_government.0006.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = scope:contract_liege
+
+	option = { # Tyranny
+		name = ATHA_government.0006.a
+
+		trigger = {
+			NOT = { has_trait = deceitful }
+		}
+
+		add_prestige = medium_prestige_gain
+		add_piety = medium_piety_loss
+		add_dread = medium_dread_gain
+
+		implement_franchise_tyranny = yes
+
+		remove_character_flag = vassal_can_create_city_state
+		remove_character_flag = liege_let_vassal_create_city_state	
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_rationality = -0.5
+				ai_compassion = -1
+			}
+		}
+	}
+	option = { # Populist Tyranny
+		name = ATHA_government.0006.b
+		flavor = ATHA_government.0006.b.flavor
+
+		trigger = {	has_trait = deceitful }
+		trait = deceitful
+
+		add_prestige = medium_prestige_gain
+		add_piety = minor_piety_loss
+
+		implement_franchise_tyranny_populist = yes
+
+		remove_character_flag = vassal_can_create_city_state
+		remove_character_flag = liege_let_vassal_create_city_state	
+
+		ai_chance = {
+			base = 200	
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_honor = -2
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Aristocracy
+		name = ATHA_government.0006.c
+
+		add_prestige = minor_prestige_gain
+		add_piety = minor_piety_loss
+
+		implement_franchise_aristocracy = yes
+
+		remove_character_flag = vassal_can_create_city_state
+		remove_character_flag = liege_let_vassal_create_city_state
+
+		ai_chance = {
+			base = 10 # Aristocracies should be relatively rare	
+
+			modifier = {
+				has_aristocratic_culture_trigger = yes
+				add = 90
+			}
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_honor = 0.5
+				ai_boldness = 0.5
+				ai_compassion = -0.5
+			}
+		}
+	}
+	option = { # Oligarchy
+		name = ATHA_government.0006.d
+
+		add_prestige = minor_prestige_loss
+		add_piety = minor_piety_gain	
+
+		implement_franchise_oligarchy = yes
+
+		remove_character_flag = vassal_can_create_city_state
+		remove_character_flag = liege_let_vassal_create_city_state
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+	option = { # Democracy
+		name = ATHA_government.0006.e
+
+		add_prestige = medium_prestige_loss
+		add_piety = medium_piety_gain
+
+		implement_franchise_democracy = yes
+
+		remove_character_flag = vassal_can_create_city_state
+		remove_character_flag = liege_let_vassal_create_city_state
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_greed = -2
+				ai_vengefulness = -1
+				ai_boldness = -1
+				ai_compassion = 1
+			}
+		}
+	}
+	option = { # Let the people decide
+		name = ATHA_government.0006.f
+		custom_tooltip = ATHA_government.0006.f.tt
+
+		implement_franchise_desired = yes
+
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Newly autonomous ruler decides on coalition government to adopt
+ATHA_government.0007 = {
+	type = character_event
+	title = ATHA_government.0007.t
+	desc = ATHA_government.0007.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = scope:contract_liege
+
+	option = { # Federal Alliance
+		name = ATHA_government.0007.a
+
+		change_government_form = { GOVERNMENT = federal_alliance_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Federal Sympolity
+		name = ATHA_government.0007.b
+
+		change_government_form = { GOVERNMENT = federal_sympolity_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Federal League
+		name = ATHA_government.0007.c
+
+		change_government_form = { GOVERNMENT = federal_league_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Amphictyony
+		name = ATHA_government.0007.d
+
+		change_government_form = { GOVERNMENT = amphictyony_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Alliance
+		name = ATHA_government.0007.e
+
+		change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Sympolity
+		name = ATHA_government.0007.f
+
+		change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic League
+		name = ATHA_government.0007.g
+
+		change_government_form = { GOVERNMENT = hegemonic_league_government }
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+}
+
+# Liege decides on coalition government for newly dependent vassal
+ATHA_government.0008 = {
+	type = character_event
+	title = ATHA_government.0008.t
+	desc = ATHA_government.0008.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = scope:contract_liege
+
+	immediate = {
+		scope:dependent_coalition_vassal.capital_province.county = { save_scope_as = vassal_capital }
+	}
+
+	option = { # Federal Alliance
+		name = ATHA_government.0008.a
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = federal_alliance_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Federal Sympolity
+		name = ATHA_government.0008.b
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = federal_sympolity_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Federal League
+		name = ATHA_government.0008.c
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = federal_league_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Amphictyony
+		name = ATHA_government.0008.d
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = amphictyony_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Alliance
+		name = ATHA_government.0008.e
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Sympolity
+		name = ATHA_government.0008.f
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic League
+		name = ATHA_government.0008.g
+
+		scope:dependent_coalition_vassal = {
+			change_government_form = { GOVERNMENT = hegemonic_league_government }
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+}

@@ -1,23 +1,28 @@
 ﻿namespace = ATHA_vassal_contract
 
 ### TO-DO List
-# Get the game to recognise government changes when contract change is initiated by vassal
-# Somehow get game to recognise changes from autonomous to dependent and vice versa so we can tailor events to these (e.g. liege deciding on forced contract for newly dependent realm)
-## Additionally we could tie in the populist/elitist traits to how the vassal (and their courtiers and vassals) regard the change, and perhaps use it for AI logic when deciding on what government to impose on a vassal
+## We could tie in the populist/elitist traits to how the vassal (and their courtiers and vassals) regard the change, and perhaps use it for AI logic when deciding on what government to impose on a vassal
 
-
-# Adjust government type, hooks etc. according to contract
+# Adjust government type when a city state becomes autonomous.
 ATHA_vassal_contract.1 = {
 	type = empty
 	hidden = yes
 
-    immediate = {
-		if = {
-			limit = {
-				vassal_contract_has_flag = has_autonomous_city_state_contract
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_autonomous_city_state_contract
+			# Either the vassal does not have a city state government at all or he became autonomous, in which case he should be able to change their government.
+			OR = {
 				NOT = { government_has_flag = is_city_state_government }
+				scope:dependent_will_become_autonomous = yes
 			}
-			change_government_form = { GOVERNMENT = city_state_democratic_government } # TO-DO: Add logic for determining what form the city-state government takes
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			add_character_flag = liege_let_vassal_create_city_state
+			trigger_event = ATHA_government.0006 # Vassal decides what city-state government to adopt
 
 			if = {
 				limit = {
@@ -29,278 +34,432 @@ ATHA_vassal_contract.1 = {
 				}
 			}
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_dependent_city_state_contract
+    }
+}
+
+# Adjust a vassal to a dependent city state where the liege can choose which type they become.
+ATHA_vassal_contract.2 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution }
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_dependent_city_state_contract
+			# Either the vassal does not have a city state government at all or he became dependent, in which case the liege should be able to change their government.
+			OR = {
 				NOT = { government_has_flag = is_city_state_government }
-			}
-			if = {
-				limit = {
-					liege.culture = { has_innovation = innovation_classical_constitution }
-				}
-				save_scope_as = dependent_city_state_vassal
-				liege = {
-					trigger_event = {
-						id = ATHA_government.0004 # Liege decides on city-state government for their vassal
-						days = { 5 7 }
-					}
-				}
-			}
-			else = {
-				add_character_flag = vassal_can_create_city_state
-				trigger_event = ATHA_government.0003 # Vassal decides what city-state government to adopt
+				scope:autonomous_will_become_dependent = yes
 			}
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_autonomous_coalition_contract
-				NOT = { government_has_flag = is_coalition_government }
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = { save_scope_as = dependent_city_state_vassal }
+		scope:vassal_contract_liege = {
+			trigger_event = {
+				id = ATHA_government.0004 # Liege decides on city-state government for their vassal
+				days = { 5 7 }
 			}
-			change_government_form = { GOVERNMENT = federal_alliance_government }
+		}
+    }
+}
+
+# Adjust a vassal to a dependent city state where they can choose when the liege does not have the right innovation.
+ATHA_vassal_contract.3 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution } }
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_dependent_city_state_contract
+			NOT = { government_has_flag = is_city_state_government }
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			add_character_flag = vassal_can_create_city_state
+			trigger_event = ATHA_government.0003 # Vassal decides what city-state government to adopt
+		}
+    }
+}
+
+# Adjust a vassal to a coalition government when their contract changes.
+ATHA_vassal_contract.4 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_autonomous_coalition_contract
+			OR = {
+				NOT = { government_has_flag = is_coalition_government }
+				scope:dependent_will_become_autonomous = yes
+			}
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			trigger_event = ATHA_government.0007
 
 			if = {
-				limit = {
-					vassal_contract_has_flag = has_enforced_centralisation
-				}
+				limit = { vassal_contract_has_flag = has_enforced_centralisation }
+
 				vassal_contract_set_obligation_level = {
 					type = enforced_centralisation
 					level = enforced_centralisation_none
 				}
 			}
 			if = {
-				limit = {
-					vassal_contract_has_flag = has_enforced_federalism
-				}
+				limit = { vassal_contract_has_flag = has_enforced_federalism }
+
 				vassal_contract_set_obligation_level = {
 					type = enforced_federalism
 					level = enforced_federalism_none
 				}
 			}
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_dependent_coalition_contract
+    }
+}
+
+# Adjust a vassal to a dependent coalition government when their contract changes.
+ATHA_vassal_contract.5 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_dependent_coalition_contract
+			OR = {
 				NOT = { government_has_flag = is_coalition_government }
+				scope:autonomous_will_become_dependent = yes
 			}
-			change_government_form = { GOVERNMENT = federal_alliance_government } # TO-DO: Add events for liege (or vassal) to decide what form the coalition takes
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_civil_bureaucracy_contract
-				NOT = { has_government = bureaucracy_civil_government }
-			}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			save_scope_as = dependent_coalition_vassal
+		}
+		scope:vassal_contract_liege = {
+			trigger_event = ATHA_government.0008
+		}
+    }
+}
+
+# Adjust a vassal to a civil bureaucracy government when their contract changes.
+ATHA_vassal_contract.6 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_civil_bureaucracy_contract
+			NOT = { has_government = bureaucracy_civil_government }
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
 			change_government_form = { GOVERNMENT = bureaucracy_civil_government }
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_military_bureaucracy_contract
-				NOT = { has_government = bureaucracy_military_government }
-			}
+    }
+}
+
+# Adjust a vassal to a military bureaucracy government when their contract changes.
+ATHA_vassal_contract.7 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_military_bureaucracy_contract
+			NOT = { has_government = bureaucracy_military_government }
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
 			change_government_form = { GOVERNMENT = bureaucracy_military_government }
 		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_feudal_bureaucracy_contract
-				NOT = { has_government = feudal_government }
-			}
+    }
+}
+
+# Adjust a vassal to a dynastic government when their contract changes.
+ATHA_vassal_contract.8 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_feudal_bureaucracy_contract
+			NOT = { has_government = feudal_government }
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
 			change_government_form = { GOVERNMENT = feudal_government }
+
 			vassal_contract_set_obligation_level = {
 				type = hereditary_rights
 				level = hereditary_rights_guaranteed
 			}
 		}
-		if = {
-			limit = {
-				vassal_contract_has_flag = has_autonomous_contract
-			}
-			vassal_contract_set_obligation_level = {
-				type = coinage_rights
-				level = coinage_rights_granted
-			}
-			vassal_contract_set_obligation_level = {
-				type = religious_rights
-				level = religious_rights_protected
-			}
-			vassal_contract_set_obligation_level = {
-				type = title_revocation_rights
-				level = title_revocation_rights_protected
-			}
-			vassal_contract_set_obligation_level = {
-				type = garrison_rights
-				level = garrison_rights_none
-			}
-		}
-		if = {
-			limit = {
-				vassal_contract_has_flag = has_imposed_democratic_franchise
-				NOT = { has_government = city_state_democratic_government }
-			}
-			change_government_form = { GOVERNMENT = city_state_democratic_government }
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_imposed_oligarchic_franchise
-				NOT = { has_government = city_state_oligarchic_government }
-			}
-			change_government_form = { GOVERNMENT = city_state_oligarchic_government }
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_imposed_aristocratic_franchise
-				NOT = { has_government = city_state_aristocratic_government }
-			}
-			change_government_form = { GOVERNMENT = city_state_aristocratic_government }
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_imposed_tyrannic_franchise
-				NOT = { has_government = city_state_tyrannical_government }
-			}
-			change_government_form = { GOVERNMENT = city_state_tyrannical_government }
-		}
-		if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_federalism_federal
-				NOT = { government_has_flag = is_federal_government }
-			}
+    }
+}
+
+# Adjust autonomy contracts when gaining autonomy.
+ATHA_vassal_contract.9 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:dependent_will_become_autonomous = yes
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
 			if = {
 				limit = {
-					government_has_flag = is_alliance_government
+					vassal_contract_has_flag = has_autonomous_contract
 				}
-				change_government_form = { GOVERNMENT = federal_alliance_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_sympolity_government
+				vassal_contract_set_obligation_level = {
+					type = coinage_rights
+					level = coinage_rights_granted
 				}
-				change_government_form = { GOVERNMENT = federal_sympolity_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_league_government
+				vassal_contract_set_obligation_level = {
+					type = religious_rights
+					level = religious_rights_protected
 				}
-				change_government_form = { GOVERNMENT = federal_league_government }
-			}
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_federalism_hegemonic
-				NOT = { government_has_flag = is_hegemonic_government }
-			}
-			if = {
-				limit = {
-					government_has_flag = is_alliance_government
+				vassal_contract_set_obligation_level = {
+					type = title_revocation_rights
+					level = title_revocation_rights_protected
 				}
-				change_government_form = { GOVERNMENT = hegemonic_alliance_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_sympolity_government
-				}
-				change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
-			}
-			else_if = {
-				limit = {
-					government_has_flag = is_league_government
-				}
-				change_government_form = { GOVERNMENT = hegemonic_league_government }
-			}
-		}
-		if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_low
-			}
-			add_realm_law = crown_authority_0
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_medium
-			}
-			add_realm_law = crown_authority_1
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = has_enforced_centralisation_high
-			}
-			add_realm_law = crown_authority_2
-		}
-		if = {
-			limit = {
-				vassal_contract_has_flag = vassal_contract_gives_weak_hook
-				liege = {
-					NOT = {
-						has_hook_of_type = { 
-							type = house_head_hook
-							target = root
-						}
-					}
-				}
-			}
-			liege = {
-				add_hook = {
-					type = vassal_contract_weak_hook
-					target = root
-				}	
-			}
-		}
-		else_if = {
-			limit = {
-				vassal_contract_has_flag = vassal_contract_gives_strong_hook
-				liege = {
-					NOT = {
-						has_hook_of_type = { 
-							type = loyalty_hook
-							target = root
-						}
-					}
-				}
-			}
-			liege = {
-				add_hook = {
-					type = vassal_contract_strong_hook
-					target = root
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				NOT = { vassal_contract_has_flag = vassal_contract_gives_weak_hook }
-				liege = {
-					has_hook_of_type = { 
-						type = vassal_contract_weak_hook
-						target = root
-					}
-				}	
-			}
-			liege = {
-				remove_hook = {
-					type = vassal_contract_weak_hook
-					target = root
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				NOT = { vassal_contract_has_flag = vassal_contract_gives_strong_hook }
-				liege = {
-					has_hook_of_type = { 
-						type = vassal_contract_strong_hook
-						target = root
-					}	
-				}
-			}
-			liege = {
-				remove_hook = {
-					type = vassal_contract_strong_hook
-					target = root
+				vassal_contract_set_obligation_level = {
+					type = garrison_rights
+					level = garrison_rights_none
 				}
 			}
 		}
     }
 }
 
+# Adjust governments after changing enforced franchise.
+ATHA_vassal_contract.10 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_imposed_democratic_franchise
+					NOT = { has_government = city_state_democratic_government }
+				}
+				change_government_form = { GOVERNMENT = city_state_democratic_government }
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_imposed_oligarchic_franchise
+					NOT = { has_government = city_state_oligarchic_government }
+				}
+				change_government_form = { GOVERNMENT = city_state_oligarchic_government }
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_imposed_aristocratic_franchise
+					NOT = { has_government = city_state_aristocratic_government }
+				}
+				change_government_form = { GOVERNMENT = city_state_aristocratic_government }
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_imposed_tyrannic_franchise
+					NOT = { has_government = city_state_tyrannical_government }
+				}
+				change_government_form = { GOVERNMENT = city_state_tyrannical_government }
+			}
+		}
+	}
+}
+
+# Adjust governments after changing enforced federalism.
+ATHA_vassal_contract.11 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_federalism_federal
+					NOT = { government_has_flag = is_federal_government }
+				}
+				if = {
+					limit = {
+						government_has_flag = is_alliance_government
+					}
+					change_government_form = { GOVERNMENT = federal_alliance_government }
+				}
+				else_if = {
+					limit = {
+						government_has_flag = is_sympolity_government
+					}
+					change_government_form = { GOVERNMENT = federal_sympolity_government }
+				}
+				else_if = {
+					limit = {
+						government_has_flag = is_league_government
+					}
+					change_government_form = { GOVERNMENT = federal_league_government }
+				}
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_federalism_hegemonic
+					NOT = { government_has_flag = is_hegemonic_government }
+				}
+				if = {
+					limit = {
+						government_has_flag = is_alliance_government
+					}
+					change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+				}
+				else_if = {
+					limit = {
+						government_has_flag = is_sympolity_government
+					}
+					change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+				}
+				else_if = {
+					limit = {
+						government_has_flag = is_league_government
+					}
+					change_government_form = { GOVERNMENT = hegemonic_league_government }
+				}
+			}
+		}
+	}
+}
+
+# Adjust governments after changing enforced centralisation.
+ATHA_vassal_contract.12 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_centralisation_low
+				}
+				add_realm_law = crown_authority_0
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_centralisation_medium
+				}
+				add_realm_law = crown_authority_1
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = has_enforced_centralisation_high
+				}
+				add_realm_law = crown_authority_2
+			}
+		}
+	}
+}
+
+# Adjust hooks after changing enforced contracts.
+ATHA_vassal_contract.13 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			if = {
+				limit = {
+					vassal_contract_has_flag = vassal_contract_gives_weak_hook
+					liege = {
+						NOT = {
+							has_hook_of_type = { 
+								type = house_head_hook
+								target = scope:vassal_contract_holder
+							}
+						}
+					}
+				}
+				liege = {
+					add_hook = {
+						type = vassal_contract_weak_hook
+						target = scope:vassal_contract_holder
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					vassal_contract_has_flag = vassal_contract_gives_strong_hook
+					liege = {
+						NOT = {
+							has_hook_of_type = { 
+								type = loyalty_hook
+								target = scope:vassal_contract_holder
+							}
+						}
+					}
+				}
+				liege = {
+					add_hook = {
+						type = vassal_contract_strong_hook
+						target = scope:vassal_contract_holder
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { vassal_contract_has_flag = vassal_contract_gives_weak_hook }
+					liege = {
+						has_hook_of_type = { 
+							type = vassal_contract_weak_hook
+							target = scope:vassal_contract_holder
+						}
+					}	
+				}
+				liege = {
+					remove_hook = {
+						type = vassal_contract_weak_hook
+						target = scope:vassal_contract_holder
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { vassal_contract_has_flag = vassal_contract_gives_strong_hook }
+					liege = {
+						has_hook_of_type = { 
+							type = vassal_contract_strong_hook
+							target = scope:vassal_contract_holder
+						}	
+					}
+				}
+				liege = {
+					remove_hook = {
+						type = vassal_contract_strong_hook
+						target = scope:vassal_contract_holder
+					}
+				}
+			}
+		}
+	}
+}
+
 # Save the contract settings on death.
-ATHA_vassal_contract.0010 = {
+ATHA_vassal_contract.50 = {
 	type = empty
 	hidden = yes
 
@@ -323,7 +482,7 @@ ATHA_vassal_contract.0010 = {
 }
 
 # Apply the contract settings to people who inherited titles.
-ATHA_vassal_contract.0011 = {
+ATHA_vassal_contract.51 = {
 	type = empty
 	hidden = yes
 
@@ -341,7 +500,7 @@ ATHA_vassal_contract.0011 = {
 }
 
 # Save the contract settings when gaining titles.
-ATHA_vassal_contract.0012 = {
+ATHA_vassal_contract.52 = {
 	type = empty
 	hidden = yes
 

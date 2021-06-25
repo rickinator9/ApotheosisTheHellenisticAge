@@ -1,3 +1,56 @@
+# Triggers the vassal contract on-action.
+# LIEGE is the character that is the liege in the negotiation.
+# VASSAL is the character that is the vassal in the negotiation.
+trigger_vassal_contract_change_on_action = {
+	$VASSAL$ = {
+		# Save this character as the holder of the contract.
+		save_scope_as = vassal_contract_holder
+
+		# Check whether a dependent vassal will become autonomous.
+		if = {
+			limit = {
+				has_variable = vassal_role_var
+				OR = {
+					vassal_contract_obligation_level:vassal_role = 0 # Autonomous
+					vassal_contract_obligation_level:vassal_role = 2 # Autonomous
+				}
+				OR = {
+					var:vassal_role_var = 1 # Dependent city state.
+					var:vassal_role_var = 3 # Dependent coalition.
+				}
+			}
+			save_scope_value_as = { name = dependent_will_become_autonomous value = yes }
+		} else = {
+			save_scope_value_as = { name = dependent_will_become_autonomous value = no }
+		}
+
+		# Check whether an autonomous vassal will become dependent.
+		if = {
+			limit = {
+				has_variable = vassal_role_var
+				OR = {
+					vassal_contract_obligation_level:vassal_role = 1 # Dependent
+					vassal_contract_obligation_level:vassal_role = 3 # Dependent
+				}
+				OR = {
+					var:vassal_role_var = 0 # Autonomous city state.
+					var:vassal_role_var = 2 # Autonomous coalition.
+				}
+			}
+			save_scope_value_as = { name = autonomous_will_become_dependent value = yes }
+		} else = {
+			save_scope_value_as = { name = autonomous_will_become_dependent value = no }
+		}
+
+		# Finally clear the settings, since we no longer need them.
+		clear_vassal_contract_settings = yes
+	}
+
+	$LIEGE$ = {
+		save_scope_as = vassal_contract_liege
+		trigger_event = { on_action = vassal_contract_change }
+	}
+}
 
 # Saves the vassal contracts of CONTRACT_HOLDER to THIS character.
 # CONTRACT_HOLDER is the character that is currently affected by the contracts.

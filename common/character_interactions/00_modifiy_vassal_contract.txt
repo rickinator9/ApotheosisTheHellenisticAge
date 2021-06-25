@@ -90,6 +90,8 @@
 	auto_accept = yes
 
 	on_accept = {
+		scope:recipient = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:recipient } }
+
 		scope:actor = {
 			send_interface_message = {
 				type = msg_vassal_contract_change
@@ -136,10 +138,9 @@
 				}
 			}
 		}
-		scope:recipient = {
-			invalidated_contract_notification_effect = yes
-			trigger_event = ATHA_vassal_contract.1
-		}
+		scope:recipient = { invalidated_contract_notification_effect = yes }
+
+		trigger_vassal_contract_change_on_action = { LIEGE = scope:actor VASSAL = scope:recipient }
 	}
 
 	send_option = {
@@ -223,8 +224,9 @@ vassal_modify_vassal_contract_interaction = {
 	auto_accept = yes
 
 	on_accept = {
+		scope:actor = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:actor } }
+
 		scope:actor = {
-			trigger_event = ATHA_vassal_contract.1
 			send_interface_message = {
 				type = msg_vassal_contract_change
 				title = modify_vassal_contract_interaction_notification
@@ -256,6 +258,8 @@ vassal_modify_vassal_contract_interaction = {
 				set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }	
 			}
 		}
+
+		trigger_vassal_contract_change_on_action = { LIEGE = scope:recipient VASSAL = scope:actor }
 	}
 
 	send_option = {
@@ -302,6 +306,8 @@ ai_only_liege_modify_vassal_contract_interaction = {
 	}
 		
 	on_accept = {
+		scope:recipient = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:recipient } }
+
 		scope:actor = {
 			stress_impact = {
 				generous = minor_stress_impact_gain
@@ -311,8 +317,9 @@ ai_only_liege_modify_vassal_contract_interaction = {
 		scope:recipient = {
 			set_vassal_contract_modification_blocked = yes
 			trigger_event = char_interaction.0250
-			trigger_event = ATHA_vassal_contract.1
 		}
+
+		trigger_vassal_contract_change_on_action = { LIEGE = scope:actor VASSAL = scope:recipient }
 	}
 
 	ai_potential = {
@@ -373,13 +380,13 @@ ai_only_vassal_modify_vassal_contract_interaction = {
 	}
 		
 	on_accept = {
-		scope:actor = {
-			trigger_event = ATHA_vassal_contract.1
-		}
+		scope:actor = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:actor } }
 
 		scope:recipient = {
 			trigger_event = char_interaction.0251
 		}
+
+		trigger_vassal_contract_change_on_action = { LIEGE = scope:recipient VASSAL = scope:actor }
 	}
 
 	ai_potential = {
