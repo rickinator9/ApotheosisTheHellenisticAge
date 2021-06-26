@@ -2027,11 +2027,13 @@ offer_vassalization_interaction_effect = {
 	resolve_title_and_vassal_change = scope:change
 
 	# Special terms for feudal contracts
-	# TODO: Do this for ATHA govs as well.
 	scope:recipient = {
 		if = {
 			limit = {
-				has_government = feudal_government
+                OR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 			if = {
 				limit = { scope:high_obligations = yes }
@@ -2083,6 +2085,96 @@ offer_vassalization_interaction_effect = {
 				custom_tooltip = normal_obligations_levies
 			}		
 		}
+
+		if = {
+			limit = {
+				government_has_flag = is_city_state_government
+				scope:autonomous = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}		
+			}
+			custom_tooltip = city_autonomous
+		} else_if = {
+			limit = {
+				government_has_flag = is_city_state_government
+				scope:dependent = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 1 }
+				}		
+			}
+			custom_tooltip = city_dependent
+		} else_if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				scope:autonomous = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}		
+			}
+			custom_tooltip = coalition_autonomous
+		} else_if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				scope:dependent = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 3 }
+				}		
+			}
+			custom_tooltip = coalition_dependent
+		} else_if = {
+			limit = {
+				has_government = bureaucracy_civil_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
+				}		
+			}
+			custom_tooltip = bureaucracy_civil
+		} else_if = {
+			limit = {
+				has_government = bureaucracy_military_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}		
+			}
+			custom_tooltip = bureaucracy_military
+		} else_if = {
+			limit = {
+				has_government = feudal_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
+				}		
+			}
+			custom_tooltip = bureaucracy_feudal
+		}
 	}
 }
 
@@ -2104,12 +2196,14 @@ offer_fealty_interaction_effect = {
 	}
 	resolve_title_and_vassal_change = scope:change
 
-	# TODO: DO this for ATHA governments as well.
 	scope:actor = {
 		# Special terms for feudal contracts
 		if = {
 			limit = {
-				has_government = feudal_government
+                OR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 			if = {
 				limit = { scope:high_obligations = yes }
@@ -2160,6 +2254,96 @@ offer_fealty_interaction_effect = {
 				custom_tooltip = normal_obligations_taxes
 				custom_tooltip = normal_obligations_levies
 			}		
+		}
+
+		if = {
+			limit = {
+				government_has_flag = is_city_state_government
+				scope:autonomous = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}		
+			}
+			custom_tooltip = city_autonomous
+		} else_if = {
+			limit = {
+				government_has_flag = is_city_state_government
+				scope:dependent = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 1 }
+				}		
+			}
+			custom_tooltip = city_dependent
+		} else_if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				scope:autonomous = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}		
+			}
+			custom_tooltip = coalition_autonomous
+		} else_if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				scope:dependent = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 3 }
+				}		
+			}
+			custom_tooltip = coalition_dependent
+		} else_if = {
+			limit = {
+				has_government = bureaucracy_civil_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
+				}		
+			}
+			custom_tooltip = bureaucracy_civil
+		} else_if = {
+			limit = {
+				has_government = bureaucracy_military_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}		
+			}
+			custom_tooltip = bureaucracy_military
+		} else_if = {
+			limit = {
+				has_government = feudal_government
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
+				}		
+			}
+			custom_tooltip = bureaucracy_feudal
 		}
 	}
 }

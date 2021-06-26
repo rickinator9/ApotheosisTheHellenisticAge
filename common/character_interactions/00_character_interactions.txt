@@ -431,21 +431,32 @@ offer_vassalization_interaction = {
 		# CONTRACT OPTIONS
 		modifier = {
 			add = 60
-			scope:recipient = {	has_government = feudal_government }
+			scope:recipient = {	government_has_flag = has_religious_rights_contract }
 			scope:religious_exemption = yes
 			desc = CONTRACT_RELIGIOUS_EXEMPTION_REASON
 		}
 		modifier = {
 			add = 30
-			scope:recipient = {	has_government = feudal_government }
+			scope:recipient = {	government_has_flag = has_discrete_tax_contracts }
 			scope:low_obligations = yes
 			desc = CONTRACT_LOW_TAXES_REASON
 		}
 		modifier = {
 			add = -40
-			scope:recipient = {	has_government = feudal_government }
+			scope:recipient = {	government_has_flag = has_discrete_tax_contracts }
 			scope:high_obligations = yes
 			desc = CONTRACT_HIGH_TAXES_REASON
+		}
+		modifier = {
+			add = -60
+			scope:recipient = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+			scope:dependent = yes
+			desc = CONTRACT_DEPENDENT_REASON_THIRD
 		}
 	}
 
@@ -453,7 +464,11 @@ offer_vassalization_interaction = {
 	send_option = {
 		is_shown = {
 			scope:recipient = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+				NOR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
 			}
 		}
 		flag = low_obligations
@@ -464,7 +479,11 @@ offer_vassalization_interaction = {
 	send_option = {										
 		is_shown = {
 			scope:recipient = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+				NOR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
 			}
 		}
 		flag = normal_obligations								# If selected then scope:flag_name will be set to yes
@@ -477,7 +496,11 @@ offer_vassalization_interaction = {
 	send_option = {
 		is_shown = {
 			scope:recipient = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+				NOR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
 			}
 		}
 		flag = high_obligations								# If selected then scope:flag_name will be set to yes
@@ -488,7 +511,11 @@ offer_vassalization_interaction = {
 	send_option = {
 		is_shown = {
 			scope:recipient = {
-				has_government = feudal_government
+				government_has_flag = has_religious_rights_contract
+				NOR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
 			}
 		}
 		is_valid = {
@@ -498,11 +525,40 @@ offer_vassalization_interaction = {
 		localization = religious_exemption
 	}
 
+	# Autonomous
+	send_option = {
+		is_shown = {
+			scope:recipient = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+		}
+		flag = autonomous
+		localization = autonomous
+	}
+
+	# Dependent
+	send_option = {
+		is_shown = {
+			scope:recipient = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+		}
+		flag = dependent
+		localization = dependent
+	}
+
 	send_option = { # Needed so that the AI can use the interaction
         is_shown = {
             scope:recipient = {
-                NOT = {
-                    has_government = feudal_government
+                NOR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
                 }
             }
             scope:actor = {
@@ -551,6 +607,11 @@ offer_vassalization_interaction = {
 		modifier = {
 			add = 4
 			scope:high_obligations = yes
+		}
+
+		modifier = {
+			add = 4
+			scope:dependent = yes
 		}
 
 		# Cynical rulers are happy to offer religious protection to potential vassals, but only when it makes them accept a vassalization offer they would otherwise refuse.
@@ -814,21 +875,49 @@ offer_fealty_interaction = {
 					add = 30
 				}
 			}
-			scope:actor = {	has_government = feudal_government }
+			scope:actor = {	government_has_flag = has_religious_rights_contract }
 			scope:religious_taxation = yes
 			desc = CONTRACT_RELIGIOUS_TAXATION_REASON
 		}
 		modifier = {
 			add = -40
-			scope:actor = {	has_government = feudal_government }
+			scope:actor = {	government_has_flag = has_discrete_tax_contracts }
 			scope:low_obligations = yes
 			desc = CONTRACT_LOW_TAXES_REASON
 		}
 		modifier = {
 			add = 40
-			scope:actor = {	has_government = feudal_government }
+			scope:actor = {	government_has_flag = has_discrete_tax_contracts }
 			scope:high_obligations = yes
 			desc = CONTRACT_HIGH_TAXES_REASON
+		}
+		modifier = {
+			add = 40
+			scope:actor = {	government_has_flag = has_discrete_tax_contracts }
+			scope:high_obligations = yes
+			desc = CONTRACT_HIGH_TAXES_REASON
+		}
+		modifier = {
+			add = -20
+			scope:recipient = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+			scope:autonomous = yes
+			desc = CONTRACT_AUTONOMY_REASON_SECOND
+		}
+		modifier = {
+			add = 40
+			scope:recipient = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+			scope:dependent = yes
+			desc = CONTRACT_DEPENDENT_REASON_SECOND
 		}
 	}
 
@@ -836,7 +925,11 @@ offer_fealty_interaction = {
 	send_option = {
 		is_shown = {
 			scope:actor = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+                NOR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 		}
 		flag = high_obligations	
@@ -847,7 +940,11 @@ offer_fealty_interaction = {
 	send_option = {										
 		is_shown = {
 			scope:actor = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+                NOR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 		}
 		flag = normal_obligations						
@@ -860,7 +957,11 @@ offer_fealty_interaction = {
 	send_option = {
 		is_shown = {
 			scope:actor = {
-				has_government = feudal_government
+				government_has_flag = has_discrete_tax_contracts
+                NOR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 		}
 		flag = low_obligations
@@ -871,7 +972,11 @@ offer_fealty_interaction = {
 	send_option = {
 		is_shown = {
 			scope:actor = {
-				has_government = feudal_government
+				government_has_flag = has_religious_rights_contract
+                NOR = {
+					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_religious_rights_contract
+                }
 			}
 		}
 		is_valid = {
@@ -879,6 +984,34 @@ offer_fealty_interaction = {
 		}
 		flag = religious_taxation
 		localization = religious_taxation
+	}
+
+	# Autonomous
+	send_option = {
+		is_shown = {
+			scope:actor = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+		}
+		flag = autonomous
+		localization = autonomous
+	}
+
+	# Dependent
+	send_option = {
+		is_shown = {
+			scope:actor = {
+				OR = {
+					government_has_flag = is_city_state_government
+					government_has_flag = is_coalition_government
+				}
+			}
+		}
+		flag = dependent
+		localization = dependent
 	}
 
 	send_options_exclusive = yes
