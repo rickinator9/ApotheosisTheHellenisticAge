@@ -366,6 +366,16 @@
 
 		scope:attacker = {
 			add_piety = religious_cb_piety_white_peace
+			stress_impact = {
+				ambitious = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
+
+		scope:defender = {
+			stress_impact = {
+				arrogant = medium_stress_impact_gain
+			}
 		}
 	}
 
@@ -829,6 +839,16 @@ religious_war = {
 
 		scope:attacker = {
 			add_piety = religious_cb_piety_white_peace
+			stress_impact = {
+				ambitious = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
+
+		scope:defender = {
+			stress_impact = {
+				arrogant = medium_stress_impact_gain
+			}
 		}
 	}
 
@@ -1297,6 +1317,16 @@ major_religious_war = {
 
 		scope:attacker = {
 			add_piety = religious_cb_piety_white_peace
+			stress_impact = {
+				ambitious = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
+
+		scope:defender = {
+			stress_impact = {
+				arrogant = medium_stress_impact_gain
+			}
 		}
 
 		# Truce
@@ -1492,6 +1522,16 @@ excommunication_war = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 		scope:attacker = {
 			add_piety = excommunication_cb_piety_white_peace
+			stress_impact = {
+				ambitious = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
+
+		scope:defender = {
+			stress_impact = {
+				arrogant = medium_stress_impact_gain
+			}
 		}
 
 		# Truce
@@ -2229,7 +2269,13 @@ flowery_war_cb = {
 	}
 
 	on_white_peace = {
-		scope:attacker = { show_pow_release_message_effect = yes }
+		scope:attacker = { 
+			show_pow_release_message_effect = yes
+			stress_impact = {
+				ambitious = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
 		scope:attacker = {	#Piety loss for the attacker if appropriate, otherwise prestige loss.
 			if = {
 				limit = {
@@ -2263,6 +2309,12 @@ flowery_war_cb = {
 			}
 			opinion = {
 				modifier = contributed_in_war
+			}
+		}
+
+		scope:defender = {
+			stress_impact = {
+				arrogant = medium_stress_impact_gain
 			}
 		}
 
