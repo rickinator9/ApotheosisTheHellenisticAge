@@ -52,27 +52,49 @@ trigger_vassal_contract_change_on_action = {
 	}
 }
 
-# Saves the vassal contracts of CONTRACT_HOLDER to THIS character.
-# CONTRACT_HOLDER is the character that is currently affected by the contracts.
+# Saves the vassal contracts of this character to variables.
 save_vassal_contract_settings = {
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = feudal_government_taxes }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = feudal_government_levies }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = religious_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = atha_fortification_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = coinage_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = succession_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = war_declaration_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = council_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = title_revocation_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = vassal_role }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = imposed_franchise }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = enforced_centralisation }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = enforced_federalism }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = garrison_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = ritual_coronations_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = colony_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = gift_estate_rights }
-	_pvt_save_vassal_contract_setting = { CONTRACT_HOLDER = $CONTRACT_HOLDER$ CONTRACT = hereditary_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = feudal_government_taxes }
+	_pvt_save_vassal_contract_setting = { CONTRACT = feudal_government_levies }
+	_pvt_save_vassal_contract_setting = { CONTRACT = religious_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = atha_fortification_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = coinage_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = succession_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = war_declaration_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = council_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = title_revocation_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = vassal_role }
+	_pvt_save_vassal_contract_setting = { CONTRACT = imposed_franchise }
+	_pvt_save_vassal_contract_setting = { CONTRACT = enforced_centralisation }
+	_pvt_save_vassal_contract_setting = { CONTRACT = enforced_federalism }
+	_pvt_save_vassal_contract_setting = { CONTRACT = garrison_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = ritual_coronations_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = colony_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = gift_estate_rights }
+	_pvt_save_vassal_contract_setting = { CONTRACT = hereditary_rights }
+}
+
+# Saves the vassal contracts of CHAR to THIS character.
+# CHAR is the character that is currently affected by the contracts.
+save_vassal_contract_settings_of_character = {
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = feudal_government_taxes }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = feudal_government_levies }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = religious_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = atha_fortification_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = coinage_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = succession_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = war_declaration_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = council_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = title_revocation_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = vassal_role }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = imposed_franchise }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = enforced_centralisation }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = enforced_federalism }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = garrison_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = ritual_coronations_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = colony_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = gift_estate_rights }
+	_pvt_save_vassal_contract_setting_for_char = { CHAR = $CHAR$ CONTRACT = hereditary_rights }
 }
 
 # Applies saved vassal contract settings to THIS character.
@@ -124,7 +146,22 @@ clear_vassal_contract_settings = {
 # GOVERNMENT is the government that it should change to.
 change_government_form = {
 	# Save the vassal contract settings.
-	save_vassal_contract_settings = { CONTRACT_HOLDER = root }
+	save_vassal_contract_settings = yes
+
+	# Change the government.
+	change_government = $GOVERNMENT$
+
+	# Fix the contracts again.
+	apply_vassal_contract_settings = yes
+	clear_vassal_contract_settings = yes
+}
+
+# Changes government, while keeping vassal contract settings, of a specific character.
+# GOVERNMENT is the government that it should change to.
+# CHAR is the holder of the contract.
+change_government_form_for_character = {
+	# Save the vassal contract settings.
+	save_vassal_contract_settings_of_character = { CHAR = $CHAR$ }
 
 	# Change the government.
 	change_government = $GOVERNMENT$
@@ -136,15 +173,27 @@ change_government_form = {
 
 # Private functions
 
-# Saves a single vassal contract of CONTRACT_HOLDER to THIS character.
-# CONTRACT_HOLDER is the character that is currently affected by the contracts.
+# Saves a single vassal contract of this character and saves it to a variable.
 # CONTRACT is the id of the vassal contract category to store.
 _pvt_save_vassal_contract_setting = {
 	if = {
-		limit = { $CONTRACT_HOLDER$ = { vassal_contract_has_flag = category_$CONTRACT$ } }
+		limit = { vassal_contract_has_flag = category_$CONTRACT$ }
 		set_variable = {
 			name = $CONTRACT$_var
-			value = $CONTRACT_HOLDER$.vassal_contract_obligation_level:$CONTRACT$
+			value = vassal_contract_obligation_level:$CONTRACT$
+		}
+	}
+}
+
+# Saves a single vassal contract of CHAR to THIS character in a variable.
+# CHAR is the character that is currently affected by the contracts.
+# CONTRACT is the id of the vassal contract category to store.
+_pvt_save_vassal_contract_setting_for_char = {
+	if = {
+		limit = { $CHAR$ = { vassal_contract_has_flag = category_$CONTRACT$ } }
+		set_variable = {
+			name = $CONTRACT$_var
+			value = $CHAR$.vassal_contract_obligation_level:$CONTRACT$
 		}
 	}
 }

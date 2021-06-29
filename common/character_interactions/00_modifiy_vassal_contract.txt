@@ -90,7 +90,7 @@
 	auto_accept = yes
 
 	on_accept = {
-		scope:recipient = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:recipient } }
+		scope:recipient = { save_vassal_contract_settings = yes }
 
 		scope:actor = {
 			send_interface_message = {
@@ -224,7 +224,7 @@ vassal_modify_vassal_contract_interaction = {
 	auto_accept = yes
 
 	on_accept = {
-		scope:actor = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:actor } }
+		scope:actor = { save_vassal_contract_settings = yes }
 
 		scope:actor = {
 			send_interface_message = {
@@ -306,7 +306,7 @@ ai_only_liege_modify_vassal_contract_interaction = {
 	}
 		
 	on_accept = {
-		scope:recipient = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:recipient } }
+		scope:recipient = { save_vassal_contract_settings = yes }
 
 		scope:actor = {
 			stress_impact = {
@@ -380,7 +380,7 @@ ai_only_vassal_modify_vassal_contract_interaction = {
 	}
 		
 	on_accept = {
-		scope:actor = { save_vassal_contract_settings = { CONTRACT_HOLDER = scope:actor } }
+		scope:actor = { save_vassal_contract_settings = yes }
 
 		scope:recipient = {
 			trigger_event = char_interaction.0251
