@@ -26,24 +26,11 @@ ATHA_game_start.2 = {
 		every_ruler = {
 			limit = {
 				highest_held_title_tier >= tier_county
-				OR = {
-					government_has_flag = is_city_state_government
-					government_has_flag = is_bureaucracy_government
-				}
+				government_has_flag = is_city_state_government
 			}
 
-			if = {
-				limit = {
-					has_government = city_state_democratic_government
-				}
+			assign_initial_corruption_value = yes
 
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_democratic_initial_value
-					}
-				}
-			}
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
@@ -51,18 +38,6 @@ ATHA_game_start.2 = {
 				}
 
 				primary_title = { add_title_law = democratic_succession_law }
-			}
-			if = {
-				limit = {
-					has_government = city_state_oligarchic_government
-				}
-
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_oligarchic_initial_value
-					}
-				}
 			}
 			if = {
 				limit = { 
@@ -73,60 +48,12 @@ ATHA_game_start.2 = {
 				primary_title = { add_title_law = oligarchic_succession_law }
 			}
 			if = {
-				limit = {
-					has_government = city_state_aristocratic_government
-				}
-
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_aristocratic_initial_value
-					}
-				}
-			}
-			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
 					has_government = city_state_aristocratic_government
 				}
 
 				primary_title = { add_title_law = aristocratic_succession_law }
-			}
-			if = {
-				limit = {
-					has_government = city_state_spartan_government
-				}
-
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_aristocratic_initial_value
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_government = bureaucracy_military_government
-				}
-
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_aristocratic_initial_value
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_government = bureaucracy_civil_government
-				}
-
-				primary_title = {
-					set_variable = {
-						name = city_state_corruption
-						value = corruption_democratic_initial_value
-					}
-				}
 			}
 		}
 	}

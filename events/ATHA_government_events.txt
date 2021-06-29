@@ -1117,3 +1117,18 @@ ATHA_government.0008 = {
 		}
 	}
 }
+
+# The government of the character changes; try setting the initial corruption value.
+ATHA_government.0100 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		government_has_flag = is_city_state_government
+	}
+
+	immediate = {
+		# Initialize any values we need.
+		assign_initial_corruption_value = yes
+	}
+}

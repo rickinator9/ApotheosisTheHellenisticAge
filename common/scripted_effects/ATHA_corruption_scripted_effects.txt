@@ -1,4 +1,89 @@
-﻿update_corruption_modifier_after_death_effect = {
+﻿# Assigns the default corruption value to a character's city state if it does not have any corruption values assigned.
+assign_initial_corruption_value = {
+	if = {
+		limit = {
+			NOT = {
+				primary_title = { has_variable = city_state_corruption }
+			}
+		}
+
+		if = {
+			limit = { has_government = city_state_democratic_government }
+			primary_title = {
+				set_variable = { name = city_state_corruption value = corruption_democratic_initial_value }
+			}
+		} else_if = {
+			limit = { has_government = city_state_democratic_government }
+			primary_title = {
+				set_variable = { name = city_state_corruption value = corruption_oligarchic_initial_value }
+			}
+		} else_if = {
+			limit = {
+				OR = {
+					has_government = city_state_aristocratic_government
+					has_government = city_state_spartan_government
+				}
+			}
+			primary_title = {
+				set_variable = { name = city_state_corruption value = corruption_aristocratic_initial_value }
+			}
+		}
+	}
+}
+
+# Changes the amount of corruption in a city state.
+#	- AMOUNT_ARG: The amount to change the corruption. Valid values can be found in ATHA_city_state_values.txt
+change_city_state_corruption = {
+	set_variable = {
+		name = city_state_corruption_change
+		value = $AMOUNT_ARG$
+	}
+
+	custom_tooltip = $AMOUNT_ARG$_tooltip
+	hidden_effect = {
+		primary_title = {
+			# Make sure that the variable is even present.
+			if = {
+				limit = { NOT = { has_variable = city_state_corruption } }
+
+				#Leave this set to the default value as a failsafe for city-states that don't recieve the correct value
+				set_variable = {
+					name = city_state_corruption
+					value = corruption_initial_value
+				}
+			}
+
+			# Change the value.
+			change_variable = {
+				name = city_state_corruption
+				add = $AMOUNT_ARG$
+			}
+
+			# Constrain the corruption between 0 and 100.
+			if = {
+				limit = { var:city_state_corruption < 0 }
+
+				set_variable = {
+					name = city_state_corruption
+					value = 0
+				}
+			}else if = {
+				limit = { var:city_state_corruption > 100 }
+
+				set_variable = {
+					name = city_state_corruption
+					value = 100
+				}
+			}
+		}
+
+		trigger_event = {
+            on_action = on_corruption_change
+        }
+	}
+}
+
+update_corruption_modifier_after_death_effect = {
 		
 	trigger_event = {
 		on_action = on_corruption_change
