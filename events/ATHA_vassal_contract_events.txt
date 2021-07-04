@@ -14,7 +14,10 @@ ATHA_vassal_contract.1 = {
 			# Either the vassal does not have a city state government at all or he became autonomous, in which case he should be able to change their government.
 			OR = {
 				NOT = { government_has_flag = is_city_state_government }
-				scope:dependent_will_become_autonomous = yes
+				AND = {
+					NOT = { vassal_contract_has_flag = category_imposed_franchise }
+					scope:dependent_will_become_autonomous = yes
+				}
 			}
 		}
 	}
@@ -65,7 +68,10 @@ ATHA_vassal_contract.2 = {
 			# Either the vassal does not have a city state government at all or he became dependent, in which case the liege should be able to change their government.
 			OR = {
 				NOT = { government_has_flag = is_city_state_government }
-				scope:autonomous_will_become_dependent = yes
+				AND = {
+					NOT = { vassal_contract_has_flag = category_imposed_franchise }
+					scope:autonomous_will_become_dependent = yes
+				}
 			}
 		}
 	}
@@ -112,7 +118,10 @@ ATHA_vassal_contract.4 = {
 			vassal_contract_has_flag = has_autonomous_coalition_contract
 			OR = {
 				NOT = { government_has_flag = is_coalition_government }
-				scope:dependent_will_become_autonomous = yes
+				AND = {
+					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+					scope:dependent_will_become_autonomous = yes
+				}
 			}
 		}
 	}
@@ -167,7 +176,10 @@ ATHA_vassal_contract.5 = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
 			OR = {
 				NOT = { government_has_flag = is_coalition_government }
-				scope:autonomous_will_become_dependent = yes
+				AND = {
+					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+					scope:autonomous_will_become_dependent = yes
+				}
 			}
 		}
 	}

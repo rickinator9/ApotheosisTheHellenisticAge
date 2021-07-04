@@ -1194,15 +1194,15 @@ count_obligation_improvements_for_vassal = {
 			# Everyone wants autonomy or dynastic rights.
 			limit = {
 				OR = {
-					vassal_contract_obligation_level:vassal_role = 1
-					vassal_contract_obligation_level:vassal_role = 3
-					vassal_contract_obligation_level:vassal_role = 4
-					vassal_contract_obligation_level:vassal_role = 5
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_city_state_dependent
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_coalition_dependent
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_bureaucracy_civil
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_bureaucracy_military
 				}
 				OR = {
-					local_var:vassal_role = 0
-					local_var:vassal_role = 2
-					local_var:vassal_role = 6
+					local_var:vassal_role = contract_vassal_role_city_state_autonomous
+					local_var:vassal_role = contract_vassal_role_coalition_autonomous
+					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
 				}
 			}
 			add = 1
@@ -1211,14 +1211,14 @@ count_obligation_improvements_for_vassal = {
 			# No one wants to lose autonomy or dynastic rights.
 			limit = {
 				OR = {
-					vassal_contract_obligation_level:vassal_role = 0
-					vassal_contract_obligation_level:vassal_role = 2
-					vassal_contract_obligation_level:vassal_role = 6
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_city_state_autonomous
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_coalition_autonomous
+					vassal_contract_obligation_level:vassal_role = contract_vassal_role_bureaucracy_feudal
 				}
 				NOR = {
-					local_var:vassal_role = 0
-					local_var:vassal_role = 2
-					local_var:vassal_role = 6
+					local_var:vassal_role = contract_vassal_role_city_state_autonomous
+					local_var:vassal_role = contract_vassal_role_coalition_autonomous
+					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
 				}
 			}
 			subtract = 1
@@ -1233,15 +1233,15 @@ count_obligation_improvements_for_vassal = {
 		}
 		if = {
 			limit = {
-				vassal_contract_obligation_level:imposed_franchise = 0
-				local_var:imposed_franchise > 0
+				vassal_contract_obligation_level:imposed_franchise = contract_imposed_franchise_none
+				local_var:imposed_franchise > contract_imposed_franchise_none
 			}
 			subtract = 1
 		}
 		else_if = {
 			limit = {
-				vassal_contract_obligation_level:imposed_franchise > 0
-				local_var:imposed_franchise = 0
+				vassal_contract_obligation_level:imposed_franchise > contract_imposed_franchise_none
+				local_var:imposed_franchise = contract_imposed_franchise_none
 			}
 			add = 1
 		}
@@ -1255,15 +1255,15 @@ count_obligation_improvements_for_vassal = {
 		}
 		if = {
 			limit = {
-				vassal_contract_obligation_level:enforced_centralisation = 0
-				local_var:enforced_centralisation > 0
+				vassal_contract_obligation_level:enforced_centralisation = contract_enforced_centralisation_none
+				local_var:enforced_centralisation > contract_enforced_centralisation_none
 			}
 			subtract = 1
 		}
 		else_if = {
 			limit = {
-				vassal_contract_obligation_level:enforced_centralisation > 0
-				local_var:enforced_centralisation = 0
+				vassal_contract_obligation_level:enforced_centralisation > contract_enforced_centralisation_none
+				local_var:enforced_centralisation = contract_enforced_centralisation_none
 			}
 			add = 1
 		}
@@ -1277,15 +1277,15 @@ count_obligation_improvements_for_vassal = {
 		}
 		if = {
 			limit = {
-				vassal_contract_obligation_level:enforced_federalism = 0
-				local_var:enforced_federalism > 0
+				vassal_contract_obligation_level:enforced_federalism = contract_enforced_federalism_none
+				local_var:enforced_federalism > contract_enforced_federalism_none
 			}
 			subtract = 1
 		}
 		else_if = {
 			limit = {
-				vassal_contract_obligation_level:enforced_federalism > 0
-				local_var:enforced_federalism = 0
+				vassal_contract_obligation_level:enforced_federalism > contract_enforced_federalism_none
+				local_var:enforced_federalism = contract_enforced_federalism_none
 			}
 			add = 1
 		}
