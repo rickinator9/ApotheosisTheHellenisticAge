@@ -24,7 +24,7 @@ ATHA_vassal_contract.1 = {
 
     immediate = {
 		scope:vassal_contract_holder = {
-			add_character_flag = liege_let_vassal_create_city_state
+			add_character_flag = vassal_can_create_city_state
 			trigger_event = ATHA_government.0006 # Vassal decides what city-state government to adopt
 
 			if = {
@@ -79,15 +79,12 @@ ATHA_vassal_contract.2 = {
     immediate = {
 		scope:vassal_contract_holder = { save_scope_as = dependent_city_state_vassal }
 		scope:vassal_contract_liege = {
-			trigger_event = {
-				id = ATHA_government.0004 # Liege decides on city-state government for their vassal
-				days = { 5 7 }
-			}
+			trigger_event = ATHA_government.0004 # Liege decides on city-state government for their vassal
 		}
     }
 }
 
-# Adjust a vassal to a dependent city state where they can choose when the liege does not have the right innovation.
+# Adjust a vassal to a dependent city state where they can choose when the liege does not have the right innovation and they did not previously have a city-state government form.
 ATHA_vassal_contract.3 = {
 	type = empty
 	hidden = yes
@@ -108,7 +105,7 @@ ATHA_vassal_contract.3 = {
     }
 }
 
-# Adjust a vassal to a coalition government when their contract changes.
+# Adjust a vassal to an autonomous coalition government when their contract changes.
 ATHA_vassal_contract.4 = {
 	type = empty
 	hidden = yes
@@ -119,7 +116,10 @@ ATHA_vassal_contract.4 = {
 			OR = {
 				NOT = { government_has_flag = is_coalition_government }
 				AND = {
-					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+					NAND = { 
+						vassal_contract_has_flag = category_enforced_federalism
+						vassal_contract_has_flag = category_enforced_centralisation
+					}
 					scope:dependent_will_become_autonomous = yes
 				}
 			}
@@ -128,7 +128,7 @@ ATHA_vassal_contract.4 = {
 
     immediate = {
 		scope:vassal_contract_holder = {
-			trigger_event = ATHA_government.0007
+			trigger_event = ATHA_government.0007 # Vassal decides what coalition government to adopt
 
 			if = {
 				limit = { vassal_contract_has_flag = has_enforced_centralisation }
@@ -166,18 +166,22 @@ ATHA_vassal_contract.4 = {
     }
 }
 
-# Adjust a vassal to a dependent coalition government when their contract changes.
+# Adjust a vassal to a dependent coalition where the liege can choose which type they become.
 ATHA_vassal_contract.5 = {
 	type = empty
 	hidden = yes
 
 	trigger = {
+		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
 			OR = {
 				NOT = { government_has_flag = is_coalition_government }
 				AND = {
-					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+					NAND = { 
+						vassal_contract_has_flag = category_enforced_federalism
+						vassal_contract_has_flag = category_enforced_centralisation
+					}
 					scope:autonomous_will_become_dependent = yes
 				}
 			}
@@ -189,13 +193,33 @@ ATHA_vassal_contract.5 = {
 			save_scope_as = dependent_coalition_vassal
 		}
 		scope:vassal_contract_liege = {
-			trigger_event = ATHA_government.0008
+			trigger_event = ATHA_government.0008 # Liege decides on coalition government for their vassal
+		}
+    }
+}
+
+# Adjust a vassal to a dependent coalition where they can choose when the liege does not have the right innovation and they did not previously have a coalition government form.
+ATHA_vassal_contract.6 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions } }
+		scope:vassal_contract_holder = {
+			vassal_contract_has_flag = has_dependent_coalition_contract
+			NOT = { government_has_flag = is_coalition_government }
+		}
+	}
+
+    immediate = {
+		scope:vassal_contract_holder = {
+			trigger_event = ATHA_government.0007 # Vassal decides what coalition government to adopt
 		}
     }
 }
 
 # Adjust a vassal to a civil bureaucracy government when their contract changes.
-ATHA_vassal_contract.6 = {
+ATHA_vassal_contract.7 = {
 	type = empty
 	hidden = yes
 
@@ -214,7 +238,7 @@ ATHA_vassal_contract.6 = {
 }
 
 # Adjust a vassal to a military bureaucracy government when their contract changes.
-ATHA_vassal_contract.7 = {
+ATHA_vassal_contract.8 = {
 	type = empty
 	hidden = yes
 
@@ -233,7 +257,7 @@ ATHA_vassal_contract.7 = {
 }
 
 # Adjust a vassal to a dynastic government when their contract changes.
-ATHA_vassal_contract.8 = {
+ATHA_vassal_contract.9 = {
 	type = empty
 	hidden = yes
 
@@ -257,7 +281,7 @@ ATHA_vassal_contract.8 = {
 }
 
 # Adjust autonomy contracts when gaining autonomy.
-ATHA_vassal_contract.9 = {
+ATHA_vassal_contract.10 = {
 	type = empty
 	hidden = yes
 
@@ -293,7 +317,7 @@ ATHA_vassal_contract.9 = {
 }
 
 # Adjust governments after changing enforced franchise.
-ATHA_vassal_contract.10 = {
+ATHA_vassal_contract.11 = {
 	type = empty
 	hidden = yes
 
@@ -332,7 +356,7 @@ ATHA_vassal_contract.10 = {
 }
 
 # Adjust governments after changing enforced federalism.
-ATHA_vassal_contract.11 = {
+ATHA_vassal_contract.12 = {
 	type = empty
 	hidden = yes
 
@@ -391,7 +415,7 @@ ATHA_vassal_contract.11 = {
 }
 
 # Adjust governments after changing enforced centralisation.
-ATHA_vassal_contract.12 = {
+ATHA_vassal_contract.13 = {
 	type = empty
 	hidden = yes
 
@@ -420,7 +444,7 @@ ATHA_vassal_contract.12 = {
 }
 
 # Adjust hooks after changing enforced contracts.
-ATHA_vassal_contract.13 = {
+ATHA_vassal_contract.14 = {
 	type = empty
 	hidden = yes
 
