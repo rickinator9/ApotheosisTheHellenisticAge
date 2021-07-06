@@ -1,10 +1,13 @@
 ﻿implement_franchise_tyranny = {
-	change_government_form_to_tyranny = yes
-	every_held_county = {
-		change_county_control = medium_county_control_gain
-		add_county_modifier = {
-			modifier = newly_tyrannical_modifier
-			days = 3650
+	if = {
+		limit = { NOT = { has_government = city_state_tyrannical_government } }
+		change_government_form_to_tyranny = yes
+		every_held_county = {
+			change_county_control = medium_county_control_gain
+			add_county_modifier = {
+				modifier = newly_tyrannical_modifier
+				days = 3650
+			}
 		}
 	}
 	if = {
@@ -54,7 +57,10 @@
 	}
 }
 implement_franchise_tyranny_populist = {
-	change_government_form_to_tyranny = yes
+	if = {
+		limit = { NOT = { has_government = city_state_tyrannical_government } }
+		change_government_form_to_tyranny = yes
+	}
 	every_held_county = {
 		change_county_control = medium_county_control_gain
 		add_county_modifier = {
@@ -109,12 +115,15 @@ implement_franchise_tyranny_populist = {
 	}
 }
 implement_franchise_aristocracy = {
-	change_government_form_to_aristocracy = yes
-	every_held_county = {
-		change_county_control = minor_county_control_gain
-		add_county_modifier = {
-			modifier = newly_aristocratic_modifier
-			days = 3650
+	if = {
+		limit = { NOT = { has_government = city_state_aristocratic_government } }
+		change_government_form_to_aristocracy = yes
+		every_held_county = {
+			change_county_control = minor_county_control_gain
+			add_county_modifier = {
+				modifier = newly_aristocratic_modifier
+				days = 3650
+			}
 		}
 	}
 	if = {
@@ -164,12 +173,15 @@ implement_franchise_aristocracy = {
 	}
 }
 implement_franchise_oligarchy = {
-	change_government_form_to_oligarchy = yes
-	every_held_county = {
-		change_county_control = minor_county_control_loss
-		add_county_modifier = {
-			modifier = newly_oligarchic_populist_modifier
-			days = 3650
+	if = {
+		limit = { NOT = { has_government = city_state_oligarchic_government } }
+		change_government_form_to_oligarchy = yes
+		every_held_county = {
+			change_county_control = minor_county_control_loss
+			add_county_modifier = {
+				modifier = newly_oligarchic_populist_modifier
+				days = 3650
+			}
 		}
 	}
 	if = {
@@ -205,12 +217,15 @@ implement_franchise_oligarchy = {
 	}
 }
 implement_franchise_democracy = {
-	change_government_form_to_democracy = yes
-	every_held_county = {
-		change_county_control = medium_county_control_loss
-		add_county_modifier = {
-			modifier = newly_democratic_modifier
-			days = 3650
+	if = {
+		limit = { NOT = { has_government = city_state_democratic_government } }
+		change_government_form_to_democracy = yes
+		every_held_county = {
+			change_county_control = medium_county_control_loss
+			add_county_modifier = {
+				modifier = newly_democratic_modifier
+				days = 3650
+			}
 		}
 	}
 	if = {

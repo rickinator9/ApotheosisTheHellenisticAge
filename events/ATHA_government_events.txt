@@ -502,9 +502,7 @@ ATHA_government.0003 = {
 		custom_tooltip = ATHA_government.0003.f.tt
 
 		trigger = {
-			NOR = {	
-				has_character_flag = vassal_can_create_city_state 
-			}
+			NOT = {	has_character_flag = vassal_can_create_city_state }
 		}
 		ai_chance = {
 			base = 0
@@ -688,6 +686,12 @@ ATHA_government.0004 = {
 		name = ATHA_government.0004.e
 		custom_tooltip = ATHA_government.0004.e.tt
 
+		trigger = {
+			scope:dependent_city_state_vassal = { 
+				scope:autonomous_will_become_dependent = no
+			}	
+		}
+
 		scope:dependent_city_state_vassal = { 
 			implement_franchise_desired = yes
 			trigger_event = ATHA_government.0005 # Vassal is notified about newly imposed franchise
@@ -700,6 +704,12 @@ ATHA_government.0004 = {
 	option = { # Let the vassal decide
 		name = ATHA_government.0004.f
 		custom_tooltip = ATHA_government.0004.f.tt
+
+		trigger = {
+			scope:dependent_city_state_vassal = { 
+				scope:autonomous_will_become_dependent = no
+			}	
+		}
 
 		scope:dependent_city_state_vassal = { 
 			add_opinion = {
@@ -718,6 +728,20 @@ ATHA_government.0004 = {
 			base = 0
 		}
 	}
+	option = { # Keep the existing constitution
+		name = ATHA_government.0004.g
+		custom_tooltip = ATHA_government.0004.g.tt
+
+		trigger = {
+			scope:dependent_city_state_vassal = { 
+				scope:autonomous_will_become_dependent = yes
+			}	
+		}
+
+		ai_chance = {
+			base = 0
+		}
+	}
 }
 
 # Vassal is notified about newly imposed franchise
@@ -726,6 +750,14 @@ ATHA_government.0005 = {
 	title = ATHA_government.0005.t
 	desc = {
 		desc = ATHA_government.0005.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:autonomous_will_become_dependent = no }
+				desc = ATHA_government.0005_desc_new_city_state
+			}
+			desc = ATHA_government.0005_desc_existing_city_state
+		}
+		desc = ATHA_government.0005.desc_b
 		first_valid = {
 			triggered_desc = {
 				trigger = { has_character_flag = liege_imposed_tyranny }
@@ -1065,18 +1097,80 @@ ATHA_government.0008 = {
 	}
 
 	option = { # Federal Alliance
-		name = ATHA_government.0008.a
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+				}
+			}
+			text = ATHA_government.0008.a
+		}
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					vassal_contract_has_flag = category_enforced_federalism
+				}
+			}	
+			text = ATHA_government.0008.a_federal
+		}
 
 		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = federal_alliance_government }
-			add_realm_law_skip_effects = crown_authority_0
-			vassal_contract_set_obligation_level = {
-				type = enforced_federalism 
-				level = enforced_federalism_federal
+			if = {
+				limit = { NOT = { has_government = federal_alliance_government } }
+				change_government_form = { GOVERNMENT = federal_alliance_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_0 } }
+				add_realm_law_skip_effects = crown_authority_0
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_federalism_federal } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_federalism 
+					level = enforced_federalism_federal
+				}
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_centralisation_low } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_centralisation
+					level = enforced_centralisation_low
+				}
+			}
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Alliance
+		name = ATHA_government.0008.b
+
+		trigger = {
+			scope:dependent_coalition_vassal = {
+				NOT = { vassal_contract_has_flag = category_enforced_federalism }
+			}
+		}
+
+		scope:dependent_coalition_vassal = {
+			if = {
+				limit = { NOT = { has_government = hegemonic_alliance_government } }
+				change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_0 } }
+				add_realm_law_skip_effects = crown_authority_0
 			}
 			vassal_contract_set_obligation_level = {
-				type = enforced_centralisation
-				level = enforced_centralisation_low
+				type = enforced_federalism 
+				level = enforced_federalism_hegemonic
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_centralisation_low } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_centralisation
+					level = enforced_centralisation_low
+				}
 			}
 		}
 
@@ -1085,7 +1179,22 @@ ATHA_government.0008 = {
 		}
 	}
 	option = { # Federal Sympolity
-		name = ATHA_government.0008.b
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+				}
+			}
+			text = ATHA_government.0008.c
+		}
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					vassal_contract_has_flag = category_enforced_federalism
+				}
+			}	
+			text = ATHA_government.0008.c_federal
+		}
 
 		trigger = {
 			scope:dependent_coalition_vassal = {
@@ -1094,11 +1203,55 @@ ATHA_government.0008 = {
 		}
 
 		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = federal_sympolity_government }
-			add_realm_law_skip_effects = crown_authority_1
+			if = {
+				limit = { NOT = { has_government = federal_sympolity_government } }
+				change_government_form = { GOVERNMENT = federal_sympolity_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_1 } }
+				add_realm_law_skip_effects = crown_authority_1
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_federalism_federal } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_federalism 
+					level = enforced_federalism_federal
+				}
+			}
+			vassal_contract_set_obligation_level = {
+				type = enforced_centralisation
+				level = enforced_centralisation_medium
+			}
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Hegemonic Sympolity
+		name = ATHA_government.0008.d
+
+		trigger = {
+			scope:dependent_coalition_vassal = {
+				NOR = { 
+					vassal_contract_has_flag = category_enforced_federalism 
+					vassal_contract_has_flag = category_enforced_centralisation 
+				}
+			}
+		}
+
+		scope:dependent_coalition_vassal = {
+			if = {
+				limit = { NOT = { has_government = hegemonic_sympolity_government } }
+				change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_1 } }
+				add_realm_law_skip_effects = crown_authority_1
+			}
 			vassal_contract_set_obligation_level = {
 				type = enforced_federalism 
-				level = enforced_federalism_federal
+				level = enforced_federalism_hegemonic
 			}
 			vassal_contract_set_obligation_level = {
 				type = enforced_centralisation
@@ -1111,7 +1264,22 @@ ATHA_government.0008 = {
 		}
 	}
 	option = { # Federal League
-		name = ATHA_government.0008.c
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					NOT = { vassal_contract_has_flag = category_enforced_federalism }
+				}
+			}
+			text = ATHA_government.0008.e
+		}
+		name = {
+			trigger = { 
+				scope:dependent_coalition_vassal = {
+					vassal_contract_has_flag = category_enforced_federalism
+				}
+			}	
+			text = ATHA_government.0008.e_federal
+		}
 
 		trigger = {
 			scope:dependent_coalition_vassal = {
@@ -1120,11 +1288,20 @@ ATHA_government.0008 = {
 		}
 
 		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = federal_league_government }
-			add_realm_law_skip_effects = crown_authority_2
-			vassal_contract_set_obligation_level = {
-				type = enforced_federalism 
-				level = enforced_federalism_federal
+			if = {
+				limit = { NOT = { has_government = federal_league_government } }
+				change_government_form = { GOVERNMENT = federal_league_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_2 } }
+				add_realm_law_skip_effects = crown_authority_2
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_federalism_federal } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_federalism 
+					level = enforced_federalism_federal
+				}
 			}
 			vassal_contract_set_obligation_level = {
 				type = enforced_centralisation
@@ -1136,53 +1313,7 @@ ATHA_government.0008 = {
 			base = 100
 		}
 	}
-	option = { # Amphictyony
-		name = ATHA_government.0008.d
-
-		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = amphictyony_government }
-			add_realm_law_skip_effects = crown_authority_0
-			vassal_contract_set_obligation_level = {
-				type = enforced_federalism 
-				level = enforced_federalism_federal
-			}
-			vassal_contract_set_obligation_level = {
-				type = enforced_centralisation
-				level = enforced_centralisation_low
-			}
-		}
-
-		ai_chance = { # TODO
-			base = 100
-		}
-	}
-	option = { # Hegemonic Alliance
-		name = ATHA_government.0008.e
-
-		trigger = {
-			scope:dependent_coalition_vassal = {
-				NOT = { vassal_contract_has_flag = category_enforced_federalism }
-			}
-		}
-
-		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = hegemonic_alliance_government }
-			add_realm_law_skip_effects = crown_authority_0
-			vassal_contract_set_obligation_level = {
-				type = enforced_federalism 
-				level = enforced_federalism_hegemonic
-			}
-			vassal_contract_set_obligation_level = {
-				type = enforced_centralisation
-				level = enforced_centralisation_low
-			}
-		}
-
-		ai_chance = { # TODO
-			base = 100
-		}
-	}
-	option = { # Hegemonic Sympolity
+	option = { # Hegemonic League
 		name = ATHA_government.0008.f
 
 		trigger = {
@@ -1195,37 +1326,14 @@ ATHA_government.0008 = {
 		}
 
 		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
-			add_realm_law_skip_effects = crown_authority_1
-			vassal_contract_set_obligation_level = {
-				type = enforced_federalism 
-				level = enforced_federalism_hegemonic
+			if = {
+				limit = { NOT = { has_government = hegemonic_league_government } }
+				change_government_form = { GOVERNMENT = hegemonic_league_government }
 			}
-			vassal_contract_set_obligation_level = {
-				type = enforced_centralisation
-				level = enforced_centralisation_medium
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_2 } }
+				add_realm_law_skip_effects = crown_authority_2
 			}
-		}
-
-		ai_chance = { # TODO
-			base = 100
-		}
-	}
-	option = { # Hegemonic League
-		name = ATHA_government.0008.g
-
-		trigger = {
-			scope:dependent_coalition_vassal = {
-				NOR = { 
-					vassal_contract_has_flag = category_enforced_federalism 
-					vassal_contract_has_flag = category_enforced_centralisation 
-				}
-			}
-		}
-
-		scope:dependent_coalition_vassal = {
-			change_government_form = { GOVERNMENT = hegemonic_league_government }
-			add_realm_law_skip_effects = crown_authority_2
 			vassal_contract_set_obligation_level = {
 				type = enforced_federalism 
 				level = enforced_federalism_hegemonic
@@ -1238,6 +1346,78 @@ ATHA_government.0008 = {
 
 		ai_chance = { # TODO
 			base = 100
+		}
+	}
+	option = { # Amphictyony
+		name = ATHA_government.0008.g
+
+		scope:dependent_coalition_vassal = {
+			if = {
+				limit = { NOT = { has_government = amphictyony_government } }
+				change_government_form = { GOVERNMENT = amphictyony_government }
+			}
+			if = {
+				limit = { NOT = { has_realm_law = crown_authority_0 } }
+				add_realm_law_skip_effects = crown_authority_0
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_federalism_federal } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_federalism 
+					level = enforced_federalism_federal
+				}
+			}
+			if = {
+				limit = { NOT = { vassal_contract_has_flag = has_enforced_centralisation_low } }
+				vassal_contract_set_obligation_level = {
+					type = enforced_centralisation
+					level = enforced_centralisation_low
+				}
+			}
+		}
+
+		ai_chance = { # TODO
+			base = 100
+		}
+	}
+	option = { # Let the vassal decide
+		name = ATHA_government.0008.h
+		custom_tooltip = ATHA_government.0008.h.tt
+
+		trigger = {
+			scope:dependent_coalition_vassal = { 
+				scope:autonomous_will_become_dependent = no
+			}	
+		}
+
+		scope:dependent_coalition_vassal = { 
+			add_opinion = {
+				target = ROOT
+				modifier = grateful_opinion
+				opinion = 10
+			}
+			trigger_event = {
+				id = ATHA_government.0007 # Vassal decides what coalition government to adopt
+				days = { 5 7 }
+			}
+		}
+
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = { # Keep the existing coalition
+		name = ATHA_government.0008.i
+		custom_tooltip = ATHA_government.0008.i.tt
+
+		trigger = {
+			scope:dependent_coalition_vassal = { 
+				scope:autonomous_will_become_dependent = yes
+			}	
+		}
+
+		ai_chance = {
+			base = 0
 		}
 	}
 }
