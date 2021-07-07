@@ -423,7 +423,15 @@
 		every_in_list = {
 			list = target_titles
 			scope:attacker = {
-				add_prestige_experience = minor_prestige_value
+				add_prestige_experience = {
+					value = minor_prestige_value
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
+				}
 			}
 		}
 
@@ -536,7 +544,15 @@
 
 		# Prestige for Defender
 		scope:defender = {
-			add_prestige = medium_prestige_value
+			add_prestige = {
+				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 
 		# Prestige for the attacker's war allies
@@ -1066,7 +1082,15 @@ duchy_conquest_cb = {
 		every_in_list = {
 			list = target_titles
 			scope:attacker = {
-				add_prestige_experience = medium_prestige_value
+				add_prestige_experience = {
+					value = medium_prestige_value
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
+				}
 			}
 		}
 
@@ -1169,7 +1193,15 @@ duchy_conquest_cb = {
 
 		# Prestige for Defender
 		scope:defender = {
-			add_prestige = major_prestige_value
+			add_prestige = {
+				value = major_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 
 		# Prestige for the attacker's war allies
@@ -1670,7 +1702,15 @@ ducal_conquest_cb = {
 		every_in_list = {
 			list = target_titles
 			scope:attacker = {
-				add_prestige_experience = minor_prestige_value
+				add_prestige_experience = {
+					value = minor_prestige_value
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
+				}
 			}
 		}
 
@@ -1773,7 +1813,15 @@ ducal_conquest_cb = {
 
 		# Prestige for Defender
 		scope:defender = {
-			add_prestige = medium_prestige_value
+			add_prestige = {
+				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 
 		# Prestige for the attacker's war allies

@@ -37,23 +37,26 @@
 
 #culture_group_military
 
-innovation_army_04 = {
+# Re-Enlistment
+innovation_imperial_reenlistment = {
 	group = culture_group_military
 	culture_era = culture_era_imperial
-	#icon = @fortifications
+	icon = @maa_01
 
 	modifier = {
 		men_at_arms_cap = 1
 		men_at_arms_limit = 5
+		levy_reinforcement_rate = 0.15
 	}
 
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-innovation_barracks_04 = {
+# Standing Camps
+innovation_imperial_standing_camps = {
 	group = culture_group_military
 	culture_era = culture_era_imperial
-	#icon = @fortifications
+	icon = @levy_building
 	
 	custom = unlock_late_medieval_military_buildings
 
@@ -71,28 +74,46 @@ innovation_imperial_limites = {
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-innovation_siege_04 = {
+# Siege Engineers
+innovation_imperial_siege_engineers = {
 	group = culture_group_military
 	culture_era = culture_era_imperial
-	#icon = @fortifications
+	icon = @siege_weapons
+	
+	modifier = {
+		siege_phase_time = -0.1
+	}
 
-	unlock_maa = bombard
-
-	flag = global_regular
-	flag = late_medieval_era_regular
-}
-innovation_military_imperial_05 = {
-	group = culture_group_military
-	culture_era = culture_era_imperial
-	#icon = @fortifications
+	unlock_maa = siege_engineers
 
 	flag = global_regular
 	flag = late_medieval_era_regular
 }
-innovation_military_imperial_06 = {
+# Auxiliary Corps
+innovation_imperial_auxiliary_corps = {
 	group = culture_group_military
 	culture_era = culture_era_imperial
-	#icon = @fortifications
+	icon = @maa_02
+
+	modifier = {
+		mercenary_hire_cost_mult = -0.1
+		different_culture_opinion = 5
+	}
+
+	flag = global_regular
+	flag = late_medieval_era_regular
+}
+# Distinguished Service
+innovation_imperial_distinguished_service = {
+	group = culture_group_military
+	culture_era = culture_era_imperial
+	icon = @diadem
+
+	modifier = {
+		knight_effectiveness_mult = 0.2
+	}
+
+	custom = increase_war_rewards
 
 	flag = global_regular
 	flag = late_medieval_era_regular
@@ -107,6 +128,7 @@ innovation_imperial_codices = {
 	icon = @administration_3
 	
 	unlock_casus_belli = de_jure_cb
+	custom = multiple_claim_wars_others
 	custom = cb_discount_prestige_10
 
 	flag = global_regular
@@ -159,6 +181,7 @@ innovation_imperial_waystations = {
 
 	modifier = {
 		diplomatic_range_mult = 0.25
+		direct_vassal_opinion = 5
 	}
 
 	flag = global_regular
@@ -173,6 +196,7 @@ innovation_imperial_latifundia = {
 	modifier = {
 		domain_limit = 1
 		direct_vassal_opinion = 5
+		republic_government_tax_contribution_mult = 0.05
 	}
 	
 	unlock_law = single_heir_succession_law
@@ -186,6 +210,12 @@ innovation_imperial_hypocaust = {
 	group = culture_group_civic
 	culture_era = culture_era_imperial
 	icon = @nobility_02
+
+	modifier = {
+		county_opinion_add = 5
+	}
+
+	custom = reduce_illness_chance
 
 	flag = global_regular
 	flag = late_medieval_era_regular

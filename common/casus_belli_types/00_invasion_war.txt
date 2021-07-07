@@ -709,6 +709,12 @@ clan_invasion_war = {
 		scope:attacker = {
 			add_prestige_experience = {
 				value = major_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
 			}
 		}
 
@@ -1156,6 +1162,12 @@ mongol_invasion_war = {
 		scope:attacker = {
 			add_prestige_experience = {
 				value = mongol_invasion_cb_prestige_experience_gain
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
 			}
 		}
 
@@ -1249,7 +1261,15 @@ mongol_invasion_war = {
 			list = target_titles
 			
 			scope:defender = {
-				add_prestige = mongol_invasion_cb_prestige_gain
+				add_prestige = {
+					value = mongol_invasion_cb_prestige_experience_gain
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
+				}
 			}
 
 			scope:attacker = {
@@ -1599,6 +1619,12 @@ mongol_realm_invasion_war = {
 		scope:attacker = {
 			add_prestige_experience = {
 				value = mongol_invasion_cb_prestige_experience_gain
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
 			}
 		}
 
@@ -1692,7 +1718,15 @@ mongol_realm_invasion_war = {
 			list = target_titles
 			
 			scope:defender = {
-				add_prestige = mongol_invasion_cb_prestige_gain
+				add_prestige = {
+					value = mongol_invasion_cb_prestige_experience_gain
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
+				}
 			}
 
 			scope:attacker = {

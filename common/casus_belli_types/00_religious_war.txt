@@ -320,6 +320,12 @@
 						}
 						multiply = 1.5
 					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
 				}
 			}
 		}
@@ -426,6 +432,12 @@
 							}
 						}
 						multiply = 1.5
+					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
 					}
 				}
 			}
@@ -793,6 +805,12 @@ religious_war = {
 						}
 						multiply = 1.5
 					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
 				}
 			}
 		}
@@ -889,6 +907,12 @@ religious_war = {
 							}
 						}
 						multiply = 1.5
+					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
 					}
 				}
 			}
@@ -1274,6 +1298,12 @@ major_religious_war = {
 						}
 						multiply = 1.5
 					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
+					}
 				}
 			}
 		}
@@ -1370,6 +1400,12 @@ major_religious_war = {
 							}
 						}
 						multiply = 1.5
+					}
+					if = {
+						limit = {
+							culture = { has_innovation = innovation_imperial_distinguished_service }
+						}
+						multiply = 1.25
 					}
 				}
 			}
@@ -1837,37 +1873,101 @@ flowery_war_cb = {
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_county }
-					add_piety = { value = minor_piety_gain }
+					add_piety = { 
+						value = minor_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_duchy }
-					add_piety = { value = medium_piety_gain }
+					add_piety = { 
+						value = medium_piety_gain
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_kingdom }
-					add_piety = { value = major_piety_gain }
+					add_piety = { 
+						value = major_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_empire }
-					add_piety = { value = massive_piety_gain }
+					add_piety = { 
+						value = massive_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 			}
 			else = {	#If the attacker has since stopped enjoying human sacrifice, then the war was just prestigious.
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_county }
-					add_prestige = { value = minor_prestige_gain }
+					add_prestige = { 
+						value = minor_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_duchy }
-					add_prestige = { value = medium_prestige_gain }
+					add_prestige = { 
+						value = medium_prestige_gain
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_kingdom }
-					add_prestige = { value = major_prestige_gain }
+					add_prestige = { 
+						value = major_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:defender.primary_title.tier = tier_empire }
-					add_prestige = { value = massive_prestige_gain }
+					add_prestige = { 
+						value = massive_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 			}
 		}
@@ -2395,37 +2495,101 @@ flowery_war_cb = {
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_county }
-					add_piety = { value = minor_piety_gain }
+					add_piety = { 
+						value = minor_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_duchy }
-					add_piety = { value = medium_piety_gain }
+					add_piety = { 
+						value = medium_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_kingdom }
-					add_piety = { value = major_piety_gain }
+					add_piety = { 
+						value = major_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_empire }
-					add_piety = { value = massive_piety_gain }
+					add_piety = { 
+						value = massive_piety_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 			}
 			else = {	#Otherwise, the war was just prestigious.
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_county }
-					add_prestige = { value = minor_prestige_gain }
+					add_prestige = { 
+						value = minor_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_duchy }
-					add_prestige = { value = medium_prestige_gain }
+					add_prestige = { 
+						value = medium_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_kingdom }
-					add_prestige = { value = major_prestige_gain }
+					add_prestige = { 
+						value = major_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 				if = {
 					limit = { scope:attacker.primary_title.tier = tier_empire }
-					add_prestige = { value = massive_prestige_gain }
+					add_prestige = { 
+						value = massive_prestige_gain 
+						if = {
+							limit = {
+								culture = { has_innovation = innovation_imperial_distinguished_service }
+							}
+							multiply = 1.25
+						}
+					}
 				}
 			}
 		}

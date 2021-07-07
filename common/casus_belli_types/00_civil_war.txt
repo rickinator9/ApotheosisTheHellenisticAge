@@ -105,7 +105,15 @@ independence_faction_war = {
 			}
 		}
 		scope:attacker = {
-			add_prestige = medium_prestige_value
+			add_prestige = {
+				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 		scope:defender = {
 			add_prestige = {
@@ -180,7 +188,15 @@ independence_faction_war = {
 				flag = recent_independence_faction_war
 				years = faction_war_white_peace_cooldown
 			}
-			add_prestige = minor_prestige_value
+			add_prestige = {
+				value = minor_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 
 		on_white_peace_faction_revolt_war = yes
@@ -215,7 +231,15 @@ independence_faction_war = {
 			}
 			add_dread = medium_dread_gain
 			# Prestige for Defender
-			add_prestige = medium_prestige_value
+			add_prestige = {
+				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
 		}
 
@@ -1416,7 +1440,15 @@ independence_war = {
 		}
 
 		scope:defender = {
-			add_prestige = minor_prestige_value
+			add_prestige = {
+				value = minor_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 			stress_impact = {
  				arrogant = medium_stress_impact_gain
  			}
@@ -1447,7 +1479,15 @@ independence_war = {
 		scope:defender = {
 			add_dread = medium_dread_gain
 			# Prestige for Defender
-			add_prestige = medium_prestige_value
+			add_prestige = {
+				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
+			}
 		}
 		
 		scope:attacker = {

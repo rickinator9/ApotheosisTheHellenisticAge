@@ -279,6 +279,12 @@
 		scope:attacker = {
 			add_prestige_experience = {
 				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
 			}
 		}
 
@@ -404,6 +410,12 @@
 		scope:defender = {
 			add_prestige = {
 				value = medium_prestige_value
+				if = {
+					limit = {
+						culture = { has_innovation = innovation_imperial_distinguished_service }
+					}
+					multiply = 1.25
+				}
 			}
 		}
 
