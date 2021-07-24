@@ -641,7 +641,7 @@ macedonian00119 = {
 	}
 	3574.1.1 = { # 180 BC
 		death = { 
-			death_reason = death_murder_known # poisoned by Didas on the orders of Philip
+			death_reason = death_poison # poisoned by Didas on the orders of Philip
 			killer = macedonian00116 # Philippos
 		}
 	}
@@ -814,7 +814,7 @@ macedonian00203 = {
 	#		remove_relation_rival = character:... # Alexander reconciles him with Hephaestion
 	#	}
 	#}
-	#3430.2.1 = { # February 324 BC
+	#3430.3.1 = { # March 324 BC
 	#	add_spouse = ... # Amastris
 	#	trait = ill # he was sent back to Macedon later in the year, in part due to his poor health
 	#}
@@ -1474,7 +1474,7 @@ macedonian01502 = {
 	3430.1.1 = { # 324 BC
 		death = { 
 			death_reason = death_execution # executed by Alexander the Great on charges of maladministration
-			#killer = ... # Alexandros
+			killer = macedonian03948 # Alexandros
 		}
 	}
 }
@@ -2685,8 +2685,11 @@ macedonian03109 = {
 	3342.1.1 = { # approximate
 		birth = yes # 412 BC
 	}
-	#3362.1.1 = { # 392 BC, approximate
-	#	add_spouse = ... # Amyntas
+	3362.1.1 = { # 392 BC, approximate
+		add_spouse = macedonian03936 # Amyntas
+	}
+	#3387.1.1 = { # 367 BC, speculative
+	#	add_spouse = ... # Ptolemaios
 	#}
 	3403.1.1 = { # made up (Aeschines' account of 346 BC seems to imply that she was already dead by that point)
 		death = yes # 351 BC
@@ -2732,7 +2735,7 @@ macedonian03112 = {
 	3418.1.1 = { # 336 BC
 		death = { 
 			death_reason = death_execution # put to death by Alexander the Great for alleged complicity in the murder of Philip II
-			#killer = ... # Alexandros
+			killer = macedonian03948 # Alexandros
 		}
 	}
 }
@@ -2748,7 +2751,7 @@ macedonian03113 = {
 	3418.1.1 = { # 336 BC
 		death = { 
 			death_reason = death_execution # put to death by Alexander the Great for alleged complicity in the murder of Philip II
-			#killer = ... # Alexandros
+			killer = macedonian03948 # Alexandros
 		}
 	}
 }
@@ -2774,13 +2777,13 @@ macedonian03114 = {
 	#3416.1.1 = { # 338 BC, made up
 	#	add_spouse = ... # d. Antipater
 	#}
-	#3421.1 = { # 333 BC, approximate
-	#	imprisoner = ... # arrested on the orders of Alexander
-	#}
+	3421.1 = { # 333 BC, approximate
+		imprisoner = macedonian03948 # arrested on the orders of Alexander
+	}
 	3424.1.1 = { # 330 BC
 		death = { 
 			death_reason = death_execution # put to death by Alexander the Great in the aftermath of the Philotas affair
-			#killer = ... # Alexandros
+			killer = macedonian03948 # Alexandros
 		}
 	}
 }
@@ -2866,7 +2869,32 @@ macedonian03119 = {
 	}
 }
 
+# Dubious Inclusion
+
+macedonian031w01 = {
+	name = "Kleopatra" # wife of Perdiccas II and Archelaus
+	female = yes
+	dynasty = macedoniandyn031 # Lynkestas
+	religion = macedonian_faith
+	culture = macedonian
+	trait = trusting # appears to have believed Archelaus' story about her son falling into a well chasing a goose
+	father = macedonian03102 # Arrhabaios, speculative
+	3314.1.1 = { # made up
+		birth = yes # 440 BC
+	}
+	3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
+		add_spouse = macedonian03917 # Perdikkas
+	}
+	3341.1.1 = { # 413 BC, approximate
+		add_spouse = macedonian03927 # Archelaos
+	}
+	3368.1.1 = { # made up
+		death = yes # 386 BC
+	}
+}
+
 # Seiraios - Sirrha
+
 macedonian03001 = {
 	name = "Epikrates"
 	dynasty = macedoniandyn030 # Seiraios
@@ -2897,7 +2925,6 @@ macedonian03002 = {
 	}
 }
 
-
 # Ptolemaion - Ptolemies
 
 macedonian03201 = {
@@ -2908,11 +2935,11 @@ macedonian03201 = {
 
 	# Don't know enough about him to identify traits.
 
-	3364.1.1 = { # Made up.
+	3364.1.1 = { # made up
 		birth = yes # 390 BC
 	}
 	# Likely marries Arsinoe 367 BC.
-	3416.1.1 = { # Made up
+	3416.1.1 = { # made up
 		death = yes # 338 BC
 	}
 }
@@ -2924,7 +2951,7 @@ macedonian03202 = {
 	culture = macedonian
 
 	father = macedonian03201 # Lagos
-	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
+	mother = macedonian039v03 # Arsinoe (who was possibly an Argead)
 
 	trait = education_stewardship_4 # Ptolemy was not known for his martial ability; he did however consolidate his control on Egypt very effectively.
 	trait = ambitious # Showed the first signs out of any Diadochi king when he seized Alexander's body.
@@ -2959,7 +2986,7 @@ macedonian03203 = {
 	culture = macedonian
 
 	father = macedonian03201 # Lagos
-	# mother = Arsinoe. This Arsinoe could be descended from the Argead line.
+	mother = macedonian039v03 # Arsinoe (who was possibly an Argead)
 
 	3391.1.1 = { # Made up
 		birth = yes # 363 BC
@@ -3761,5 +3788,1073 @@ macedonian03809 = {
 	}
 	3575.1.1 = { # made up
 		death = yes # 179 BC
+	}
+}
+
+# Temenidas - Argos/Macedonia
+
+macedonian03901 = {
+	name = "Karanos" # king Caranus, dubious historicity
+	dynasty = macedoniandyn039
+	religion = macedonian_faith
+	culture = macedonian
+	#father = ... # Aristodamidas
+	2916.1.1 = { # made up
+		birth = yes # 838 BC
+	}
+	#2952.1.1 = { # 802 BC, made up
+	#	add_spouse = ... # Lanika 
+	#}
+	2988.1.1 = { # speculative
+		death = yes # 766 BC
+	}
+}
+macedonian03902 = {
+	name = "Koinos" # king Coenus, dubious historicity
+	dynasty = macedoniandyn039
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03901 # Karanos
+	#mother = ... # Lanika
+	2959.1.1 = { # made up
+		birth = yes # 795 BC
+	}
+	3016.1.1 = { # speculative
+		death = yes # 738 BC
+	}
+}
+macedonian03903 = {
+	name = "Tyrimmas" # king Tyrimmas, dubious historicity
+	dynasty = macedoniandyn039
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03902 # Koinos
+	2998.1.1 = { # made up
+		birth = yes # 756 BC
+	}
+	#3031.1.1 = { # 723 BC, made up
+	#	add_spouse = ... # Kleonika 
+	#}
+	3059.1.1 = { # speculative
+		death = yes # 695 BC
+	}
+}
+macedonian03904 = {
+	name = "Gauanas"
+	dynasty = macedoniandyn039
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03903 # Tyrimmas
+	#mother = ... # Kleonika
+	3032.1.1 = { # made up
+		birth = yes # 722 BC
+	}
+	3075.1.1 = { # made up
+		death = yes # 679 BC
+	}
+}
+macedonian03905 = {
+	name = "Aeropos"
+	dynasty = macedoniandyn039
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03903 # Tyrimmas
+	#mother = ... # Kleonika
+	3034.1.1 = { # made up
+		birth = yes # 720 BC
+	}
+	3098.1.1 = { # made up
+		death = yes # 656 BC
+	}
+}
+
+# Temenidas - Argeadas - Macedonia
+
+macedonian03906 = {
+	name = "Perdikkas" # king Perdiccas I	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03903 # Tyrimmas
+	#mother = ... # Kleonika
+	3037.1.1 = { # made up
+		birth = yes # 685 BC
+	}
+	#3069.1.1 = { # 657 BC, made up
+	#	add_spouse = ... # Kleopatra 
+	#}
+	3107.1.1 = { # speculative
+		death = yes # 647 BC
+	}
+}
+macedonian03907 = {
+	name = "Argaios" # king Argaeus	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03906 # Perdikkas
+	#mother = ... # Kleopatra
+	3072.1.1 = { # made up
+		birth = yes # 682 BC
+	}
+	#3097.1.1 = { # 657 BC, made up
+	#	add_spouse = ... # Prothoa 
+	#}
+	3138.1.1 = { # speculative
+		death = yes # 616 BC
+	}
+}
+macedonian03908 = {
+	name = "Philippos" # king Philip I	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03907 # Argaios
+	#mother = ... # Prothoa
+	3103.1.1 = { # made up
+		birth = yes # 651 BC
+	}
+	#3128.1.1 = { # 626 BC, made up
+	#	add_spouse = ... # Nikonoa 
+	#}
+	3171.1.1 = { # speculative
+		death = yes # 583 BC
+	}
+}
+macedonian03909 = {
+	name = "Aeropos" # king Aeropus I	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03908 # Philippos
+	#mother = ... # Nikonoa
+	3130.1.1 = { # made up
+		birth = yes # 624 BC
+	}
+	3191.1.1 = { # speculative
+		death = yes # 563 BC
+	}
+}
+macedonian03910 = {
+	name = "Alketas" # king Alcetas	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03909 # Aeropos
+	3157.1.1 = { # made up
+		birth = yes # 597 BC
+	}
+	3209.1.1 = { # speculative
+		death = yes # 545 BC
+	}
+}
+macedonian03911 = {
+	name = "Amyntas" # king Amyntas I	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03910 # Alketas
+	3190.1.1 = { # made up
+		birth = yes # 564 BC
+	}
+	3259.1.1 = { # approximate
+		death = yes # 495 BC
+	}
+}
+macedonian03912 = {
+	name = "Alexandros" # king Alexander I	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03911 # Amyntas
+	3229.1.1 = { # approximate
+		birth = yes # 525 BC
+	}
+	3302.1.1 = { # 452 BC, approximate
+		death = {
+			death_reason = death_battle # Curt. 6. 11. 26 implies that he died violently though it is unclear whether this was through assassination or war
+		}
+	}
+}
+macedonian03913 = {
+	name = "Gygaia" 	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03911 # Amyntas
+	3226.1.1 = { # made up
+		birth = yes # 528 BC
+	}
+	#3244.1.1 = { # 510 BC, approximate
+	#	add_spouse = ... # Boubares 
+	#}
+	3277.1.1 = { # made up
+		death = yes # 477 BC
+	}
+}
+
+# Children of Alexander I
+
+macedonian03914 = {
+	name = "Philippos" # controlled a principality corresponding roughly to Amphaxitis	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3263.1.1 = { # made up
+		birth = yes # 491 BC
+	}
+	3323.1.1 = { # made up (but probably died between 434 and 429 BC)
+		death = yes # 431 BC
+	}
+}
+macedonian03915 = {
+	name = "Alketas" # controlled a principality before being driven out by Perdiccas II	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3269.1.1 = { # made up
+		birth = yes # 485 BC
+	}
+	3341.1.1 = {
+		death = {
+			death_reason = death_murder_known # murdered on the orders of Archelaus
+			killer = macedonian03927 # Archelaos
+		}
+	}
+}
+macedonian03916 = {
+	name = "Amyntas" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3272.1.1 = { # made up
+		birth = yes # 482 BC
+	}
+	3345.1.1 = { # made up
+		death = yes # 409 BC
+	}
+}
+macedonian03917 = {
+	name = "Perdikkas" # king Perdiccas II	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3276.1.1 = { # made up
+		birth = yes # 478 BC
+	}
+	3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
+		add_spouse = macedonian031w01 # Kleopatra 
+	}
+	3341.1.1 = { # 413 BC
+		death = yes
+	}
+}
+macedonian03918 = {
+	name = "Menelaos" # named in the treaty between Athens and Perdiccas, ca. 423/2 or 417-413 BC	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3284.1.1 = { # made up
+		birth = yes # 470 BC
+	}
+	3343.1.1 = { # made up
+		death = yes # 411 BC
+	}
+}
+macedonian03919 = {
+	name = "Stratonike" 	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03912 # Alexandros
+	3297.1.1 = { # made up
+		birth = yes # 457 BC
+	}
+	#3325.1.1 = { # 429 BC 
+	#	add_spouse = ... # Seuthes 
+	#}
+	3354.1.1 = { # made up
+		death = yes # 400 BC
+	}
+}
+
+# Family of Philippos
+
+macedonian03920 = {
+	name = "Amyntas" # supported by Sitalces as a pretender to the Macedonian throne ca. 429 BC	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03914 # Philippos
+	3291.1.1 = { # made up
+		birth = yes # 463 BC
+	}
+	3333.1.1 = { # made up
+		death = yes # 421 BC
+	}
+}
+macedonian03921 = {
+	name = "Agerros" # named in the treaty between Athens and Perdiccas, ca. 423/2 or 417-413 BC	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03914 # Philippos
+	3298.1.1 = { # made up
+		birth = yes # 456 BC
+	}
+	3356.1.1 = { # made up
+		death = yes # 398 BC
+	}
+}
+
+# Children of Alketas
+
+macedonian03922 = {
+	name = "Alexandros" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03915 # Alketas
+	3301.1.1 = { # made up (but was about the same age as Archelaus)
+		birth = yes # 453 BC
+	}
+	3341.1.1 = { # 413 BC
+		death = {
+			death_reason = death_murder_known # murdered on the orders of Archelaus
+			killer = macedonian03927 # Archelaos
+		}
+	}
+}
+macedonian03923 = {
+	name = "Agelaos" # named in the treaty between Athens and Perdiccas, ca. 423/2 or 417-413 BC	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03915 # Alketas
+	3308.1.1 = { # made up
+		birth = yes # 446 BC
+	}
+	3352.1.1 = { # made up
+		death = yes # 402 BC
+	}
+}
+macedonian03924 = {
+	name = "Arepyros" # name reconstructed from [...]yros; appears in treaty between Athens and Perdiccas
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03915 # Alketas
+	3310.1.1 = { # made up
+		birth = yes # 444 BC
+	}
+	3364.1.1 = { # made up
+		death = yes # 390 BC
+	}
+}
+
+# Children of Agelaos
+
+macedonian03925 = {
+	name = "Argaios" # pretender who appears to have briefly ruled ca. 386-384 BC	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03923 # Agelaos
+	3339.1.1 = { # made up
+		birth = yes # 415 BC
+	}
+	3394.9.1 = { # September 360 BC, speculative
+		death = {
+			death_reason = death_execution # probably executed by Philip II after his capture
+			killer = macedonian03940 # Philippos
+		}
+	}
+}
+macedonian03926 = {
+	name = "Pausanias" # pretender to the Macedonian throne	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03923 # Agelaos
+	3341.1.1 = { # made up
+		birth = yes # 413 BC
+	}
+	3395.1.1 = { # made up
+		death = yes # 359 BC
+	}
+}
+
+# Family of Perdiccas II
+
+macedonian03927 = {
+	name = "Archelaos" # king Archelaus	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03917 # Perdikkas
+	#mother = ... # Simiche
+	3301.1.1 = { # made up
+		birth = yes # 453 BC
+	}
+	# probably at least two wives before Cleopatra - highly unlikely Amyntas would have married a full sister
+	3341.1.1 = { # 413 BC, approximate 
+		add_spouse = macedonian031w01 # Kleopatra 
+	}
+	3355.1.1 = { # 399 BC (archon-year 400/399 BC)
+		death = {
+			death_reason = death_hunting_accident # killed by Crateuas during a hunting expedition, possibly intentionally
+			killer = macedonian03927 # Krateuas
+		}
+	}
+}
+macedonian03928 = {
+	name = "Aeropos" # king Aeropus II	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03917 # Perdikkas
+	#mother = ... # Simiche
+	3305.1.1 = { # made up
+		birth = yes # 449 BC
+	}
+	3360.9.1 = { # 394 BC, approximate (archon-year 394/3BC, presumably not long after the summer of 394 BC)
+		trait = ill
+		death = {
+			death_reason = death_ill # died from sickness according to Diodorus
+		}
+	}
+}
+macedonian03929 = {
+	name = "Alketas" # speculative name - a scholiast says this son was either called Meropos or Alcetas	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03917 # Perdikkas
+	mother = macedonian031w01 # Kleopatra
+	3334.1.1 = {
+		birth = yes # 420 BC
+	}
+	3341.1.1 = { # 413 BC
+		death = {
+			death_reason = death_murder_known # murdered by his half-brother Archelaus
+			killer = macedonian03927 # Archelaos
+		}
+	}
+}
+
+# Children of Archelaos
+
+macedonian03930 = {
+	name = "Stratonike" # made up name
+	female = yes	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03927 # Archelaos
+	3333.1.1 = { # made up
+		birth = yes # 421 BC
+	}
+	#3354.1.1 = { # 400 BC, approximate
+	#	add_spouse = ... # k. of Elimea 
+	#}
+	3377.1.1 = { # made up
+		death = yes # 377 BC
+	}
+}
+macedonian03931 = {
+	name = "Amyntas" # king Amyntas II 'the Little'	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03927 # Archelaos
+	3337.1.1 = { # made up
+		give_nickname = nick_ho_mikros
+		birth = yes # 417 BC
+	}
+	3354.1.1 = { # 400 BC, approximate
+		add_spouse = macedonian03932 # Kleonika 
+	}
+	3361.1.1 = { # 393 BC (archon-year 394/3 BC)
+		death = { 
+			death_reason = death_murder_known # possibly murdered by Derdas after mocking his youth
+			#killer = ... # Derdas
+		}
+	}
+}
+macedonian03932 = {
+	name = "Kleonika" # made up name
+	female = yes	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03927 # Archelaos
+	3337.1.1 = { # made up
+		birth = yes # 417 BC
+	}
+	3354.1.1 = { # 400 BC, approximate
+		add_spouse = macedonian03931 # Amyntas 
+	}
+	3390.1.1 = { # made up
+		death = yes # 364 BC
+	}
+}
+macedonian03933 = {
+	name = "Orestes" # king Orestes	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03927 # Archelaos
+	mother = macedonian031w01 # Kleopatra
+	3342.1.1 = { # approximate
+		birth = yes # 412 BC
+	}
+	3358.1.1 = { # 396 BC (archon-year 397/6 BC)
+		death = { 
+			death_reason = death_murder_known # murdered by his guardian and regent Aeropus
+			killer = macedonian03928 # Aeropos
+		}
+	}
+}
+
+# Children of Aeropos
+
+macedonian03934 = {
+	name = "Pausanias" # king Pausanias	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03928 # Aeropos
+	3338.1.1 = { # made up
+		birth = yes # 416 BC
+	}
+	3361.1.1 = { # 393 BC, approximate
+		death = { 
+			death_reason = death_murder_known # killed by Amyntas III in a ruse
+			killer = macedonian03936 # Amyntas
+		}
+	}
+}
+
+# Family of Amyntas
+
+macedonian03935 = {
+	name = "Arrhidaios" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03916 # Amyntas
+	3299.1.1 = { # made up
+		birth = yes # 455 BC
+	}
+	3358.1.1 = { # made up
+		death = yes # 396 BC
+	}
+}
+macedonian03936 = {
+	name = "Amyntas" # king Amyntas III	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03935 # Arrhidaios
+	3320.1.1 = { # made up
+		birth = yes # 434 BC
+	}
+	3361.1.1 = { # 393 BC, made up
+		add_spouse = macedonian039w01 # Gygaia 
+	}
+	3362.1.1 = { # 392 BC, approximate
+		add_spouse = macedonian03109 # Eurydika 
+	}
+	3386.1.1 = { # 368 BC (archon-year 369/8 BC)
+		death = { 
+			death_reason = death_old_age # died of old age according to Isocrates 6. 46
+		}
+	}
+}
+
+# Children of Amyntas III
+# by Eurydice
+
+macedonian03937 = {
+	name = "Alexandros" # king Alexander II	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian03109 # Eurydika
+	3363.1.1 = { # made up
+		birth = yes # 391 BC
+	}
+	3387.1.1 = { # 367 BC (archon-year 368/7 BC)
+		death = { 
+			death_reason = death_murder_known # murdered during a festival on the orders of Ptolemy of Alorus
+			#killer = ... # Ptolemy of Alorus
+		}
+	}
+}
+macedonian03938 = {
+	name = "Eurynoa" 	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian03109 # Eurydika
+	3365.1.1 = { # made up
+		birth = yes # 389 BC
+	}
+	#3383.1.1 = { # 371 BC, made up
+	#	add_spouse = ... # Ptolemaios
+	#}
+	3385.1.1 = { # 369 BC, speculative
+		death = yes # if the theory that Eurydice married Ptolemy of Alorus is correct, then Eurynoe surely died before Alexander II
+	}
+}
+macedonian03939 = {
+	name = "Perdikkas" # king Perdiccas III	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian03109 # Eurydika
+	3369.1.1 = { # made up
+		birth = yes # 385 BC
+	}
+	3394.8.1 = { # August 360 BC, approximate
+		death = { 
+			death_reason = death_battle # died in battle against the Illyrians
+		}
+	}
+}
+macedonian03940 = {
+	name = "Philippos" # king Philip II	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian03109 # Eurydika
+	3372.1.1 = { # approximate
+		birth = yes # 382 BC
+	}
+	#3395.1.1 = { # winter/spring 360/359 BC, approximate
+	#	add_spouse = ... # Audata
+	#}
+	3396.12.1 = { # autumn/winter 358 BC, approximate
+		add_spouse = thessalian002a04 # Philinna
+	}
+	3397.9.1 = { # autumn 357 BC, approximate
+		add_spouse = epirote00208 # Olympias 
+	}
+	#3402.6.1 = { # early summer 352 BC, approximate
+	#	add_spouse = ... # Nikasipolis
+	#}
+	#3413.1.1 = { # 341 BC, approximate
+	#	add_spouse = ... # Meda
+	#}
+	#3417.3.1 = { # spring 337 BC, approximate
+	#	add_spouse = ... # Kleopatra
+	#}
+	3418.10.1 = { # October 336
+		death = { 
+			death_reason = death_murder_known # murdered by Pausanias at the wedding of Cleopatra and Alexander of Epirus
+			#killer = ... # Pausanias
+		}
+	}
+}
+
+# Children of Amyntas III
+# by Gygaia
+
+macedonian03941 = {
+	name = "Archelaos" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian039w01 # Gygaia
+	3371.1.1 = { # made up
+		birth = yes # 383 BC
+	}
+	3395.1.1 = { # 359 BC, approximate
+		death = { 
+			death_reason = death_execution # executed on the orders of Philip II
+			killer = macedonian03940 # Philippos
+		}
+	}
+}
+macedonian03942 = {
+	name = "Arrhidaios" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian039w01 # Gygaia
+	3374.1.1 = { # made up
+		birth = yes # 380 BC
+	}
+	3406.8.1 = { # August 348 BC, speculative
+		death = { 
+			death_reason = death_execution # probably executed by Philip II after the fall of Olynthus
+			killer = macedonian03940 # Philippos
+		}
+	}
+}
+macedonian03943 = {
+	name = "Menelaos" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03936 # Amyntas
+	mother = macedonian039w01 # Gygaia
+	3376.1.1 = { # made up
+		birth = yes # 378 BC
+	}
+	3406.8.1 = { # August 348 BC, speculative
+		death = { 
+			death_reason = death_execution # probably executed by Philip II after the fall of Olynthus
+			killer = macedonian03940 # Philippos
+		}
+	}
+}
+
+# Line of Perdikkas III
+
+macedonian03944 = {
+	name = "Amyntas" # Amyntas IV, unlikely he actually ever served as king	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03939 # Perdikkas
+	3389.1.1 = {
+		birth = yes # 365 BC
+	}
+	3416.1.1 = { # 338 BC, made up (more likely occurred in 337 BC while Alexander was in exile, but we want Adea-Eurydice to be at least 16 when she marries Philip Arrhidaeus in 321 BC)
+		add_spouse = macedonian03946 # Kynnana
+	}
+	3419.1.1 = { # 335 BC, approximate
+		death = { 
+			death_reason = death_execution # executed on the orders of Alexander the Great
+			killer = macedonian03948 # Alexandros
+		}
+	}
+}
+macedonian03945 = {
+	name = "Hadea" # aka Adea-Eurydike	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03944 # Amyntas
+	mother = macedonian03946 # Kynnana
+	3417.1.1 = { # made up
+		birth = yes # 337 BC
+	}
+	3433.1.1 = { # 321 BC
+		name = "Eurydike" # adopts the name Eurydike on her marriage with Arrhidaeus
+		give_nickname = nick_hadea
+		add_spouse = macedonian03945 # Arrhidaios
+	}
+	3437.10.1 = { # October 317 BC
+		death = { 
+			death_reason = death_suicide # captured and compelled by Olympias to commit suicide
+		}
+	}
+}
+
+# Children of Philip II
+
+macedonian03946 = {
+	name = "Kynnana" 	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	#mother = ... # Audata
+	3396.1.1 = { # approximate
+		birth = yes # 358 BC
+	}
+	3416.1.1 = { # 338 BC, made up (more likely occurred in 337 BC while Alexander was in exile, but we want Adea-Eurydice to be at least 16 when she marries Philip Arrhidaeus in 321 BC)
+		add_spouse = macedonian03944 # Amyntas
+	}
+	3432.1.1 = { # 322 BC, approximate
+		death = { 
+			death_reason = death_execution # executed on the orders of Alcetas
+			#killer = ... # Alketas
+		}
+	}
+}
+macedonian03947 = {
+	name = "Arrhidaios" # king Philip III Arrhidaeus	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	mother = thessalian002a04 # Philinna
+	3398.1.1 = { # approximate
+		birth = yes # 356 BC
+	}
+	3431.6.11 = { # 11 June 323 BC
+		name = "Philippos" # adopts the regnal name Philip
+		give_nickname = nick_arrhidaios
+	}
+	3433.1.1 = { # 321 BC
+		add_spouse = macedonian03945 # Hadea
+	}
+	3437.10.1 = { # October 317 BC
+		death = { 
+			death_reason = death_execution # stabbed to death by Thracian soldiers on the orders of Olympias
+			killer = epirote00208 # Olympias
+		}
+	}
+}
+macedonian03948 = {
+	name = "Alexandros" # the one and only king Alexander (III) the Great	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = alexandrian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	mother = epirote00208 # Olympias
+	3398.1.1 = { # 20 July 356 BC
+		birth = yes
+	}
+	#3427.3.1 = { # early spring 327 BC
+	#	add_spouse = ... # Rhoxane
+	#}
+	#3430.3.1 = { # March 324 BC, Susa weddings
+	#	add_spouse = ... # Stateira
+	#}
+	#3430.3.1 = { # March 324 BC, Susa weddings
+	#	add_spouse = ... # Parysatis
+	#}
+	3431.6.11 = { # 11 June 323 BC
+		give_nickname = nick_ho_megas # his epithet 'the Great' is only attested after his death, first appearing in Plautus' play Mostellaria
+		death = { 
+			death_reason = death_mysterious # his death has been variously attributed to poisoning, disease or a combination of heavy drinking and severe wounds
+		}
+	}
+}
+macedonian03949 = {
+	name = "Kleopatra" # queen of Epirus	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	mother = epirote00208 # Olympias
+	3400.1.1 = { # approximate (probably born in the period 355-353 BC)
+		birth = yes # 354 BC
+	}
+	3418.10.1 = { # October 336 BC
+		add_spouse = epirote00207 # Alexandros
+	}
+	3445.1.1 = { # 309 BC
+		death = { 
+			death_reason = death_murder_known # murdered by women acting under the governor of Sardis, who in turn was under orders from Antigonus I
+			killer = macedonian00101 # Antigonos
+		}
+	}
+}
+macedonian03950 = {
+	name = "Europe" 	
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	#mother = ... # Kleopatra
+	3418.9.1 = { # September 336 BC, approximate
+		birth = yes # according to Diodorus she was born a few days before Philip II's death
+	}
+	3419.1.1 = { # 335 BC, approximate
+		death = { 
+			death_reason = death_murder_known # supposedly murdered on the orders of Olympias
+			killer = epirote00208 # Olympias
+		}
+	}
+}
+macedonian03951 = {
+	name = "Thessalonike"
+	female = yes 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03940 # Philippos
+	#mother = ... # Nikasipolis
+	3410.1.1 = { # approximate
+		birth = yes # 344 BC
+	}
+	#3439.1.1 = { # 315 BC
+	#	add_spouse = ... # Kassandros
+	#}
+	3460.9.1 = { # Autumn 294 BC, approximate
+		death = { 
+			death_reason = death_murder_known # murdered by her son Antipater
+			#killer = ... # Antipatros
+		}
+	}
+}
+
+# Children of Alexander III
+
+macedonian03952 = {
+	name = "Herakles" # alleged bastard son of Alexander the Great and Barsine	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03948 # Alexandros
+	#mother = ... # Barsine
+	3428.1.1 = { # approximate
+		birth = yes # 326 BC
+	}
+	3445.6.1 = { # summer 309 BC, approximate
+		death = { 
+			death_reason = death_poison # poisoned on the orders of Polyperchon after reaching an agreement with Cassander
+			#killer = ... # Polyperchon
+		}
+	}
+}
+macedonian03953 = {
+	name = "Alexandros" # king Alexander IV	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03948 # Alexandros
+	#mother = ... # Rhoxane
+	3431.8.1 = { # August 323 BC, approximate
+		birth = yes
+	}
+	3495.1.1 = { # 309 BC, approximate (TODO: change back to 3445 when done with family tree)
+		death = { 
+			death_reason = death_murder_known # murdered on the orders of Cassander
+			#killer = ... # Kassandros
+		}
+	}
+}
+
+# Argeadas - Dubious Historicity
+
+# Line of Arsinoe (only attested in an extract from Satyrus (FGrH 631 fr 2), preserved in Theophilus 2.7)
+
+macedonian039v01 = {
+	name = "Bokros" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03916 # Amyntas
+	3302.1.1 = { # made up
+		birth = yes # 452 BC
+	}
+	3356.1.1 = { # made up
+		death = yes # 398 BC
+	}
+}
+macedonian039v02 = {
+	name = "Meleagros" 	
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian039v01 # Bokros
+	3335.1.1 = { # made up
+		birth = yes # 419 BC
+	}
+	3389.1.1 = { # made up
+		death = yes # 365 BC
+	}
+}
+macedonian039v03 = {
+	name = "Arsinoe"
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian039v02 # Meleagros
+	3368.1.1 = { # made up
+		birth = yes # 386 BC
+	}
+	3387.1.1 = { # 367 BC, approximate
+		add_spouse = macedonian03201 # Lagos
+	}
+	3423.1.1 = { # made up
+		death = yes # 331 BC
+	}
+}
+
+# Argeadas - Dubious inclusion
+
+macedonian039w01 = {
+	name = "Gygaia"
+	female = yes
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03928 # Aeropos
+	3345.1.1 = { # made up
+		birth = yes # 409 BC
+	}
+	3362.1.1 = { # 392 BC, speculative (if Gygaia is indeed an Argead, then her marriage to Amyntas could have occurred shortly after he usurped the throne)
+		add_spouse = macedonian03936 # Amyntas
+	}
+	3380.1.1 = { # made up
+		death = yes # 374 BC
 	}
 }

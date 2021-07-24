@@ -177,6 +177,7 @@ epirote00203 = {
 	dynasty = epirotedyn002 # Aiakidas
 	religion = epirote_faith
 	culture = epirote
+	sexuality = bisexual # may have had a fling with Menon of Pharsalus (thessalian00108) according to Xen. Anab. 2.6.28
 	father = epirote002v01 # Neoptolemos, speculative
 	3314.1.1 = { # made up
 		birth = yes # 440 BC
@@ -243,9 +244,9 @@ epirote00207 = {
 	3383.1.1 = { # approximate
 		birth = yes # 371 BC
 	}
-	#3418.10.1 = { # October 336 BC
-	#	add_spouse = ... # Kleopatra
-	#}
+	3418.10.1 = { # October 336 BC
+		add_spouse = macedonian03949 # Kleopatra
+	}
 	3423.1.1 = { # 331 BC
 		death = { 
 			death_reason = death_battle # died in battle against the Lucanians
@@ -271,22 +272,27 @@ epirote00208 = {
 	trait = zealous
 	father = epirote00205 # Neoptolemos
 	3379.1.1 = {
+		name = Polyxena # her birth name
 		birth = yes # 375 BC
 	}
-	#3397.1.1 = { # 357 BC
-	#	add_spouse = ... # Philippos
-	#}
+	3397.1.1 = { # 357 BC
+		name = Myrtale # adopted on her marriage
+		add_spouse = macedonian03940 # Philippos
+	}
+	3398.1.1 = { # 20 July 356 BC
+		name = Olympias # possibly adopted this name following Philip II's Olympic victory, which coincided with Alexander's birth
+	}
 	3417.1.1 = { # 337 BC, approximate
 		employer = epirote00207 # flees to the court of her brother Alexander
-		#effect = {		
-		#	set_relation_rival = character:... # rivalry with Cleopatra, probably caused by concerns about Alexander's rights of inheritance
-		#}
+		effect = {		
+			set_relation_rival = character:macedonian03949 # rivalry with Cleopatra, probably caused by concerns about Alexander's rights of inheritance
+		}
 	}
-	#3418.1.1 = { # 336 BC, approximate
-	#	employer = ... # returns to Pella
-	#}
+	3418.1.1 = { # 336 BC, approximate
+		employer = macedonian03940 # returns to Pella
+	}
 	3437.1.1 = { # 317 BC
-		give_nickname = nick_stratonike
+		give_nickname = nick_stratonike # possibly adopted this name following her victory at Euia against Adea-Eurydice
 	}
 	3438.1.1 = { # 316 BC
 		death = { 
@@ -355,7 +361,7 @@ epirote00211 = {
 	trait = arbitrary
 	trait = arrogant
 	father = epirote00207 # Alexandros
-	#mother = ... # Kleopatra
+	mother = macedonian03949 # Kleopatra
 	3422.1.1 = { # made up
 		birth = yes # 332 BC
 	}
@@ -373,7 +379,7 @@ epirote00212 = {
 	religion = epirote_faith
 	culture = epirote
 	father = epirote00207 # Alexandros
-	#mother = ... # Kleopatra
+	mother = macedonian03949 # Kleopatra
 	3420.1.1 = { # approximate up
 		birth = yes # 334 BC
 	}
@@ -437,8 +443,8 @@ epirote00215 = {
 	trait = education_martial_4
 	trait = ambitious
 	trait = brave
-	trait = forgiving
-	trait = arbitrary
+	trait = fickle
+	trait = impatient
 	trait = intellect_good_2
 	trait = strategist
 	trait = gallant
@@ -502,6 +508,11 @@ epirote00216 = {
 	#3437.1.1 = { # 317 BC, approximate
 	#	effect = {
 	#		create_betrothal = character:... # Alexandros
+	#	}
+	#}
+	#3438.1.1 = { # 316 BC, approximate
+	#	effect = {
+	#		break_betrothal = character:... # Alexandros
 	#	}
 	#}
 	3451.1.1 = { # 303 BC
