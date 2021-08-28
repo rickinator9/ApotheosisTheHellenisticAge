@@ -10,9 +10,9 @@ macedonianlowborn1 = {
 	3364.1.1 = { # made up
 		birth = yes # 390 BC
 	}
-	3380.1.1 = { # 374 BC, made up
-		add_spouse = macedonian00201 # Alexandros
-	}
+	#3380.1.1 = { # 374 BC, made up
+	#	add_spouse = macedonian00201 # Alexandros
+	#}
 	3410.1.1 = { # made up
 		death = yes # 344 BC
 	}
@@ -28,9 +28,9 @@ macedonianlowborn2 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
-	3479.1.1 = { # 275 BC, made up
-		add_spouse = macedonian00205 # Alexandros
-	}
+	#3479.1.1 = { # 275 BC, made up
+	#	add_spouse = macedonian00205 # Alexandros
+	#}
 	#3510.1.1 = { # 244 BC, made up
 	#	effect = {
 	#		set_relation_lover = character:... # seems to have had a relationship with the poet Euphorion
@@ -152,7 +152,12 @@ macedonian00102 = {
 	#	effect = {
 	#		remove_relation_lover = character:... # his relationship with Lamia possibly fizzles out after he leaves Athens
 	#	}
-	#}
+	#}	
+	3455.1.1 = { # 299 BC, approximate
+		effect = {
+			create_betrothal = character:macedonian03211 # Ptolemais
+		}
+	}
 	#3463.1.1 = { # 291 BC
 	#	add_spouse = ... # Lanassa
 	#}
@@ -168,9 +173,9 @@ macedonian00102 = {
 	#		set_relation_nemesis = character:... # Lysimachus invades Macedonia
 	#	}
 	#}
-	#3467.7.1 = { # July 287 BC
-	#	add_spouse = ... # Ptolemais
-	#}
+	3467.7.1 = { # July 287 BC
+		add_spouse = macedonian03211 # Ptolemais
+	}
 	3470.1.1 = { # 284 BC
 		#remove_trait = rakish
 		#remove_trait = profligate
@@ -278,7 +283,7 @@ macedonian00106 = {
 	#trait = lustful
 	disallow_random_traits = yes
 	father = macedonian00102 # Demetrios
-	#mother = ... # Ptolemais
+	mother = macedonian03211 # Ptolemais
 	3469.1.1 = {
 		birth = yes # 285 BC
 	}
@@ -351,8 +356,13 @@ macedonian00109 = {
 	3437.1.1 = { # approximate
 		birth = yes # 317 BC
 	}
-	# Marries Seleukos in 298 BC, approximate.
-	# Marries Antiochos in 293 BC, approximate.
+	#3456.1.1 = { # 298 BC, approximate
+	#	add_spouse = macedonian02902 # Seleukos
+	#}
+	#3461.1.1 = { # 293 BC, approximate
+	#	remove_spouse = macedonian02902 # Seleukos
+	#	add_spouse = macedonian02904 # Antiochos
+	#}
 	3500.9.1 = { # September 254 BC, approximate
 		death = yes
 	}
@@ -735,8 +745,8 @@ macedonian00125 = {
 	dynasty = macedoniandyn001 # Antigonides
 	religion = macedonian_faith
 	culture = macedonian
-	father = macedonian00112 # Demetrios
-	mother = macedonian02911 # Stratonike
+	father = macedonian00112 # Demetrios, speculative
+	mother = macedonian02911 # Stratonike, speculative
 	3507.1.1 = { # made up
 		birth = yes # 247 BC
 	}
@@ -2117,9 +2127,9 @@ macedonian02402 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
-	3478.1.1 = { # 276 BC, approximate
-		add_spouse = macedonian01707 # Attalos
-	}
+	#3478.1.1 = { # 276 BC, approximate
+	#	add_spouse = macedonian01707 # Attalos
+	#}
 	3511.1.1 = { # made up
 		death = yes # 243 BC
 	}
@@ -2139,11 +2149,9 @@ macedonian02404 = {
 	3469.1.1 = { # approximate
 		birth = yes # 285 BC
 	}
-	# Marries Antiochus II in approximately 267 BC.
 	#3487.1.1 = { # 267 BC, approximate
 	#	add_spouse = ... # Antiochos
 	#}
-	#
 	3518.1.1 = { # approximate
 		death = yes # 236 BC
 	}
@@ -2408,9 +2416,9 @@ macedonian02906 = {
 	3435.1.1 = { # Made up
 		birth = yes # 319 BC
 	}
-	3462.1.1 = { # 292 BC, made up
-		add_spouse = macedonian02401 # Achaios
-	}
+	#3462.1.1 = { # 292 BC, made up
+	#	add_spouse = macedonian02401 # Achaios
+	#}
 	3495.1.1 = { # Made up.
 		death = yes # 259 BC
 	}
@@ -2426,9 +2434,9 @@ macedonian02907 = {
 	3459.1.1 = { # Made up, but had to have happened between 298 and 293 BC.
 		birth = yes # 295 BC
 	}
-	3478.1.1 = { # 276 BC, approximate
-		add_spouse = macedonian00104 # Antigonos
-	}
+	#3478.1.1 = { # 276 BC, approximate
+	#	add_spouse = macedonian00104 # Antigonos
+	#}
 	3489.1.1 = { # Made up, but has to be later than 275 BC.
 		death = yes # 265 BC
 	}
@@ -2507,9 +2515,11 @@ macedonian02910 = {
 	3496.1.1 = { # 258 BC after killing Timarchus of Miletus.
 		give_nickname = nick_theos 
 	}
-	3501.1.1 = { # 253 BC, he divorces Laodike and marries Berenike (daughter of Ptolemy II).
+	3501.1.1 = { # 253 BC, he divorces Laodike in order to marrie Berenike (daughter of Ptolemy II).
 		remove_spouse = macedonian02404 # Laodike
-		add_spouse = macedonian03216 # Berenike.
+	}
+	3502.6.1 = { # summer 252 BC
+		add_spouse = macedonian03216 # Berenike
 	}
 	3508.7.1 = { # 246 BC in the summer.
 		death = {
@@ -2605,9 +2615,9 @@ macedonian03105 = {
 	3320.1.1 = { # made up
 		birth = yes # 434 BC
 	}
-	3337.1.1 = { # 417 BC, made up
-		add_spouse = macedonian03103 # Sirras
-	}
+	#3337.1.1 = { # 417 BC, made up
+	#	add_spouse = macedonian03103 # Sirras
+	#}
 	3357.1.1 = { # made up
 		death = yes # 397 BC
 	}
@@ -2685,9 +2695,9 @@ macedonian03109 = {
 	3342.1.1 = { # approximate
 		birth = yes # 412 BC
 	}
-	3362.1.1 = { # 392 BC, approximate
-		add_spouse = macedonian03936 # Amyntas
-	}
+	#3362.1.1 = { # 392 BC, approximate
+	#	add_spouse = macedonian03936 # Amyntas
+	#}
 	#3387.1.1 = { # 367 BC, speculative
 	#	add_spouse = ... # Ptolemaios
 	#}
@@ -2882,12 +2892,12 @@ macedonian031w01 = {
 	3314.1.1 = { # made up
 		birth = yes # 440 BC
 	}
-	3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
-		add_spouse = macedonian03917 # Perdikkas
-	}
-	3341.1.1 = { # 413 BC, approximate
-		add_spouse = macedonian03927 # Archelaos
-	}
+	#3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
+	#	add_spouse = macedonian03917 # Perdikkas
+	#}
+	#3341.1.1 = { # 413 BC, approximate
+	#	add_spouse = macedonian03927 # Archelaos
+	#}
 	3368.1.1 = { # made up
 		death = yes # 386 BC
 	}
@@ -2938,7 +2948,9 @@ macedonian03201 = {
 	3364.1.1 = { # made up
 		birth = yes # 390 BC
 	}
-	# Likely marries Arsinoe 367 BC.
+	3387.1.1 = { # 367 BC, approximate
+		add_spouse = macedonian039v03 # Arsinoe
+	}
 	3416.1.1 = { # made up
 		death = yes # 338 BC
 	}
@@ -3172,8 +3184,14 @@ macedonian03211 = {
 	3442.1.1 = { # Made up.
 		birth = yes # 312 BC
 	}
-	# Engaged to Demetrius around 299 BC. Possibly too young to be married immediately.
-	# Marries Demetrius Poliorketes in 287 BC.
+	#3455.1.1 = { # 299 BC, approximate
+	#	effect = {
+	#		create_betrothal = character:macedonian00102 # Engaged to Demetrius I, possibly too young to be married immediately
+	#	}
+	#}
+	#3467.7.1 = { # July 287 BC
+	#	add_spouse = macedonian00102 # Demetrios
+	#}
 	3484.1.1 = { # Made up. She gave birth to Demetrius the Fair in 285 BC in this mod, so must have died afterwards.
 		death = yes # 270 BC
 	}
@@ -3217,9 +3235,15 @@ macedonian03213 = {
 		birth = yes # 316 BC
 	}
 	# Marries Lysimachus in 299 BC.
-	# Marries Ptolemy Keraunos in 280 BC.
-	# Divorces him one month after as she flees after her sons are killed.
+
+	#3474.1.1 = { # 280 BC
+	#	add_spouse = macedonian03207 # Ptolemaios
+	#}
+	#3474.2.1 = { # 280 BC
+	#	remove_spouse = macedonian03207 # divorces Ceraunus a month later and flees after he kills her sons
+	#}
 	3481.1.1 = { # Marries Ptolemy II in 273 BC and becomes part of the Ptolemaic ruler cult.
+		#add_spouse = macedonian03215 # Ptolemaios
 		religion = alexandrian_faith
 		give_nickname = nick_philadelphos
 	}
@@ -3296,7 +3320,7 @@ macedonian03216 = {
 	culture = macedonian
 
 	father = macedonian03215 # Ptolemy II
-	# mother = Arsinoe I
+	#mother = ... # Arsinoe I
 
 	trait = education_martial_3 # While he is not well-attested in battle, he managed to maintain his conquests against the Seleucids.
 	trait = generous # Funded a lot of anti-Seleucid states.
@@ -3334,12 +3358,13 @@ macedonian03217 = {
 	female = yes
 
 	father = macedonian03215 # Ptolemy II
-	# mother = Arsinoe I
+	#mother = ... # Arsinoe I
 
 	3475.1.1 = { # Born between 284 and 275 BC.
 		birth = yes # 279 BC
 	}
-	3502.1.1 = { # 252 BC, marries Antiochus II. She was well known for her downry.
+	3502.6.1 = { # summer 252 BC, marries Antiochus II. She was well known for her downry.
+		#add_spouse = macedonian02910 # Antiochos
 		give_nickname = nick_phernophoros
 	}
 	3508.1.1 = {
@@ -3356,7 +3381,7 @@ macedonian03218 = {
 	culture = macedonian
 
 	father = macedonian03215 # Ptolemy II
-	# mother = Arsinoe I
+	#mother = ... # Arsinoe I
 
 	3479.1.1 = { # Born between 284 and 275 BC.
 		birth = yes # 275 BC
@@ -3375,7 +3400,7 @@ macedonian03219 = {
 	culture = macedonian
 
 	father = macedonian03215 # Ptolemy II
-	# mother = Arsinoe I
+	#mother = ... # Arsinoe I
 
 	trait = education_martial_2 # He was a commander. Little else is known of him.
 	trait = bastard
@@ -3405,9 +3430,9 @@ macedonian03220 = {
 	3455.1.1 = { # She was old enough to marry Pyrrhus in 280 BC, so probably born before 295 BC.
 		birth = yes # 299 BC
 	}
-	3474.1.1 = { # 280 BC
-		add_spouse = epirote00215 # Pyrrhos
-	}
+	#3474.1.1 = { # 280 BC
+	#	add_spouse = epirote00215 # Pyrrhos
+	#}
 	3533.1.1 = { # Made up.
 		death = yes # 274 BC
 	}
@@ -4325,9 +4350,9 @@ macedonian03932 = {
 	3337.1.1 = { # made up
 		birth = yes # 417 BC
 	}
-	3354.1.1 = { # 400 BC, approximate
-		add_spouse = macedonian03931 # Amyntas 
-	}
+	#3354.1.1 = { # 400 BC, approximate
+	#	add_spouse = macedonian03931 # Amyntas 
+	#}
 	3390.1.1 = { # made up
 		death = yes # 364 BC
 	}
@@ -4599,7 +4624,7 @@ macedonian03945 = {
 	3433.1.1 = { # 321 BC
 		name = "Eurydike" # adopts the name Eurydike on her marriage with Arrhidaeus
 		give_nickname = nick_hadea
-		add_spouse = macedonian03945 # Arrhidaios
+		#add_spouse = macedonian03945 # Arrhidaios
 	}
 	3437.10.1 = { # October 317 BC
 		death = { 
@@ -4623,7 +4648,7 @@ macedonian03946 = {
 		birth = yes # 358 BC
 	}
 	3416.1.1 = { # 338 BC, made up (more likely occurred in 337 BC while Alexander was in exile, but we want Adea-Eurydice to be at least 16 when she marries Philip Arrhidaeus in 321 BC)
-		add_spouse = macedonian03944 # Amyntas
+		#add_spouse = macedonian03944 # Amyntas
 	}
 	3432.1.1 = { # 322 BC, approximate
 		death = { 
@@ -4696,9 +4721,9 @@ macedonian03949 = {
 	3400.1.1 = { # approximate (probably born in the period 355-353 BC)
 		birth = yes # 354 BC
 	}
-	3418.10.1 = { # October 336 BC
-		add_spouse = epirote00207 # Alexandros
-	}
+	#3418.10.1 = { # October 336 BC
+	#	add_spouse = epirote00207 # Alexandros
+	#}
 	3445.1.1 = { # 309 BC
 		death = { 
 			death_reason = death_murder_known # murdered by women acting under the governor of Sardis, who in turn was under orders from Antigonus I
@@ -4779,6 +4804,16 @@ macedonian03953 = {
 	3431.8.1 = { # August 323 BC, approximate
 		birth = yes
 	}
+	3437.1.1 = { # 317 BC, approximate
+		effect = {
+			create_betrothal = character:epirote00216 # Deidameia
+		}
+	}
+	3438.1.1 = { # 316 BC, approximate
+		effect = {
+			break_betrothal = character:epirote00216 # Deidameia
+		}
+	}
 	3495.1.1 = { # 309 BC, approximate (TODO: change back to 3445 when done with family tree)
 		death = { 
 			death_reason = death_murder_known # murdered on the orders of Cassander
@@ -4830,9 +4865,9 @@ macedonian039v03 = {
 	3368.1.1 = { # made up
 		birth = yes # 386 BC
 	}
-	3387.1.1 = { # 367 BC, approximate
-		add_spouse = macedonian03201 # Lagos
-	}
+	#3387.1.1 = { # 367 BC, approximate
+	#	add_spouse = macedonian03201 # Lagos
+	#}
 	3423.1.1 = { # made up
 		death = yes # 331 BC
 	}
@@ -4851,9 +4886,9 @@ macedonian039w01 = {
 	3345.1.1 = { # made up
 		birth = yes # 409 BC
 	}
-	3362.1.1 = { # 392 BC, speculative (if Gygaia is indeed an Argead, then her marriage to Amyntas could have occurred shortly after he usurped the throne)
-		add_spouse = macedonian03936 # Amyntas
-	}
+	#3362.1.1 = { # 392 BC, speculative (if Gygaia is indeed an Argead, then her marriage to Amyntas could have occurred shortly after he usurped the throne)
+	#	add_spouse = macedonian03936 # Amyntas
+	#}
 	3380.1.1 = { # made up
 		death = yes # 374 BC
 	}
