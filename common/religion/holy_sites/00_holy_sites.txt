@@ -1,5 +1,5 @@
 ﻿############
-# OLYMPIAN #
+# HELLENIC #
 ############
 
 # Common
@@ -49,7 +49,7 @@ asklepieion = {
 didyma = {
 	county = c_miletos
 
-	# having been desecrated and left abandoned by the Persians, priests all over will be grateful if their leaders can prevent this from happening again 
+	# The sanctuary was desecrated and left abandoned by the Persians, priests all over will be grateful if we can prevent this from happening again 
 	character_modifier = {
 		name = holy_site_didyma_effect_name
 		clergy_opinion = 5
@@ -268,10 +268,24 @@ limnai = { # sanctuary of Artemis Limnatis
 	}
 }
 
-# ANATOLIAN
-# Temporary for now until more of the map is revealed.
+#############
+# ANATOLIAN #
+#############
 
-alabanda = {
+# Phrygian
+
+hierapolis = { # location of a famous Ploutonion
+	county = c_tripolis_lydia
+	barony = b_hierapolis_tripolis_lydia
+
+	# the Ploutonion was known for its poisonous vapours, which only the Galli could pass through unscathed
+	character_modifier = {
+		name = holy_site_hierapolis_effect_name
+		intrigue_per_piety_level = 1
+	}
+}
+
+alabanda = { # TEMP
 	county = c_alabanda
 
 	# Capital of the satrapy of Caria. Reference to Alabandus' victory in a horse race.
@@ -283,8 +297,7 @@ alabanda = {
 		heavy_cavalry_toughness_mult = 0.1
 	}
 }
-
-kybele = {
+kybele = { # TEMP
 	county = c_ariste
 	barony = b_kybele_ariste
 
@@ -295,27 +308,30 @@ kybele = {
 		valley_advantage = 5
 	}
 }
+#sabazios = { # TEMP
+#	county = c_silandos
+#	barony = b_sabazios_silandos
+#
+#	# Sabazios is often identified with Dionysus
+#	character_modifier = {
+#		name = holy_site_sabazios_effect_name
+#		direct_vassal_opinion = 5
+#	}
+#}
 
-magnesia_ad_sipylum = {
-	county = c_magnesia_sipylon
+# Maeonian
 
-	# Kybele is often given attributes regarding fertility.
+ephesos = { # location of the renowned sanctuary of Artemis Ephesia. According to Strabo (14. 1. 20), the nearby Mt Solmissos was where the Curetes helped Leto conceal the birth of Apollo and Artemis
+	county = c_ephesos
+
+	# Artemis Ephesia was associated with fertility, and Artemis more generally was a protector of newborn children
 	character_modifier = {
+		name = holy_site_ephesos_effect_name
 		fertility = 0.05
+
+		# Also lowers the chance for death in childbirth.
 	}
 }
-
-sabazios = {
-	county = c_silandos
-	barony = b_sabazios_silandos
-
-	# Sabazios is often identified with Dionysus
-	character_modifier = {
-		name = holy_site_sabazios_effect_name
-		direct_vassal_opinion = 5
-	}
-}
-
 sardis = {
 	county = c_sardis
 
@@ -325,8 +341,84 @@ sardis = {
 		domain_tax_mult = 0.05
 	}
 }
+sipylos = { # Mount Sipylos 
+	county = c_magnesia_sipylon
 
-# Thracian
+	# The most famous of the Lydian Orgia of the Meter Theon were held on Mt Siypylos
+	character_modifier = {
+		name = holy_site_sipylos_effect_name
+		fertility = 0.05
+	}
+}
+
+# Troadic
+
+mount_ida = {
+	county = c_adramyttion
+	barony = b_thebe_adramyttion
+
+	# The Idaean dactyls were considered the inventors of metalworking
+	character_modifier = {
+		name = holy_site_mount_ida_effect_name
+		prowess = 1
+		heavy_infantry_toughness_mult = 0.1
+	}
+}
+mount_dindymon = {
+	county = c_kyzikos
+
+	# The cult of Meter Dindymene was alleged to have been founded by the Argonauts
+	character_modifier = {
+		name = holy_site_mount_dindymon_effect_name
+		supply_duration = 0.25
+		prowess = 1
+	}
+}
+
+# Mariandynian
+
+herakleia_pontike = { # location of a Metroon (i.e. a sanctuary to the Great Mother)
+	county = c_herakleia_pontica
+
+	# We will liberate our brethren by defeating the Heracleans once and for all!
+	character_modifier = {
+		name = holy_site_mount_ida_effect_name
+		clergy_opinion = 10
+		monthly_prestige_gain_mult = 0.2
+	}
+}
+
+# Carian
+
+mylasa = { # site of the sanctuary of Zeus Karios mentioned by Herodotus. Labraunda is located nearby 
+	county = c_mylasa
+
+	# Labraunda was the religious centre of the Hecatomnid dynasty, and Zeus Labraundos their patron
+	character_modifier = {
+		name = holy_site_mylasa_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+mount_latmos = { # there was a sanctuary to Endymion at Heraclea and a myth, probably derived from Carian tradition, that he lay in a cave on Mount Latmos. Prehistoric cave paintings may indicate that the mountain was sacred from the earliest times     
+	county = c_miletos
+	barony = b_ioniapolis_miletos
+
+	# Latmos is at the crossroads of Greece and Asia, where traditions and learnings are passed from one culture to the other
+	character_modifier = {
+		name = holy_site_mount_latmos_effect_name
+		different_culture_opinion = 5
+		learning = 1
+	}
+}
+
+
+############
+# THRACIAN #
+############
+
+# Bendism
+
 hieron_chalkedon = {
 	county = c_chalkedon
 	barony = b_zeus_ourios_chalkedon
@@ -334,19 +426,6 @@ hieron_chalkedon = {
 	character_modifier = {
 		name = holy_site_hieron_chalkedon_effect_name
 		embarkation_cost_mult = -0.5
-	}
-}
-
-mount_ida = {
-	county = c_adramyttion
-	barony = b_thebe_adramyttion
-
-	# Hypta was described being the wet nurse of Bacchus.
-	character_modifier = {
-		name = holy_site_mount_ida_effect_name
-		fertility = 0.05
-
-		# Also lowers the chance for death in childbirth.
 	}
 }
 
