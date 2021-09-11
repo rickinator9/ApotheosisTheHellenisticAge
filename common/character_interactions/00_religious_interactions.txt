@@ -1786,7 +1786,7 @@ request_excommunication_interaction = {
 
 #Ask to take the vows to join Holy order
 #by Linnéa Thimrén & Bianca Savazzi
-take_vows_interaction = {
+send_to_holy_order_interaction = {
 	category = interaction_category_friendly
 
 	ai_maybe = yes
@@ -2480,7 +2480,11 @@ take_vows_interaction = {
 			is_courtier_of = scope:actor
 			NOR = { 
 				has_trait = devoted 
-				has_trait = order_member 
+				has_trait = order_member
+				AND = {
+					has_trait = eunuch
+					faith = { has_doctrine_parameter = priests_are_eunuchs }
+				}
 			}
 		}
 		NOT = { #Not your bishop
@@ -2489,7 +2493,10 @@ take_vows_interaction = {
 			}
 		}
 		scope:actor.faith = {
-			has_doctrine_parameter = take_vows_active # Faith has Monastery order that recipient can be sent to
+			OR = {
+				has_doctrine_parameter = take_vows_active # Faith has Monastery order that recipient can be sent to
+				has_doctrine_parameter = priests_are_eunuchs
+			}
 		}
 	}
 	

@@ -275,6 +275,13 @@ pool_repopulate_learning = {
 				}
 			}
 		}
+		if = {
+			limit = { faith = { has_doctrine_parameter = priests_are_eunuchs } }
+			random_list = {
+				90 = { }
+				10 = { add_trait = eunuch }
+			}
+		}
 
 		random_list = {
 			95 = {}
@@ -493,6 +500,13 @@ pool_repopulate_local_flavor = {
 					}
 					add_trait = berserker
 				}
+			}
+		}
+		if = {
+			limit = { faith = { has_doctrine_parameter = priests_are_eunuchs } }
+			random_list = {
+				95 = { }
+				5 = { add_trait = eunuch }
 			}
 		}
 	}
