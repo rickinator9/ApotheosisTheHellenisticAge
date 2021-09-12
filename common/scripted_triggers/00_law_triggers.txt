@@ -76,17 +76,26 @@ realm_law_use_crown_authority = {
 }
 
 can_have_confederate_partition_succession_law_trigger = {
-	has_government = tribal_government
+	NOT = { _has_specific_locked_government = yes }
 }
 
 should_start_confederate_partition_succession_law_trigger = {
+	NOT = { _has_specific_locked_government = yes }
 	NOR = {
 		historical_succession_access_high_partition_succession_law_trigger = yes
 		historical_succession_access_single_heir_succession_law_trigger = yes
 		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
 		historical_succession_access_single_heir_dynasty_house_trigger = yes
 	}
-	has_government = tribal_government
+	OR = {
+		culture = {
+			NOR = {
+				has_innovation = innovation_classical_public_honours
+				has_innovation = innovation_hellenistic_land_survey
+			}
+		}
+		has_government = tribal_government
+	}
 }
 
 can_keep_partition_succession_law_trigger = {
@@ -111,24 +120,24 @@ can_have_partition_succession_law_trigger = {
 		NOT = { has_government = tribal_government }
 	}
 
-	NOR = { 
-		# Doesn't make sense in city states with their constitutions and silly bureaucracy!
-		has_government = city_state_democratic_government
-		has_government = city_state_spartan_government
-
-		# Doesn't make sense in bureaucracies either, as their jurisdictions should not be split up on succession!
-		government_has_flag = is_bureaucracy_government
-	}
+	NOT = { _has_specific_locked_government = yes }
 }
 
 should_start_partition_succession_law_trigger = {
+	NOT = { _has_specific_locked_government = yes }
 	NOR = {
 		historical_succession_access_high_partition_succession_law_trigger = yes
 		historical_succession_access_single_heir_succession_law_trigger = yes
 		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
 		historical_succession_access_single_heir_dynasty_house_trigger = yes
 	}
-	has_government = clan_government
+	OR = {
+		has_government = clan_government
+		culture = {
+			has_innovation = innovation_classical_public_honours
+			NOT = { has_innovation = innovation_hellenistic_land_survey }
+		}
+	}
 }
 
 can_keep_high_partition_succession_law_trigger = {
@@ -155,15 +164,23 @@ can_have_high_partition_succession_law_trigger = {
 		}
 	}
 
-	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
-	NOR = { 
-		has_government = city_state_democratic_government
-		has_government = city_state_spartan_government
-	}
+	NOT = { _has_specific_locked_government = yes }
 }
 
 should_start_high_partition_succession_law_trigger = {
-	historical_succession_access_high_partition_succession_law_trigger = yes
+	NOT = { _has_specific_locked_government = yes }
+	NOR = {
+		historical_succession_access_single_heir_succession_law_trigger = yes
+		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
+		historical_succession_access_single_heir_dynasty_house_trigger = yes
+	}
+	OR = {
+		culture = {
+			has_innovation = innovation_hellenistic_land_survey
+			NOT = { has_innovation = innovation_imperial_latifundia }
+		}
+		historical_succession_access_high_partition_succession_law_trigger = yes
+	}
 }
 
 can_keep_single_heir_succession_law_trigger = {
@@ -180,32 +197,33 @@ can_keep_single_heir_succession_law_trigger = {
 }
 
 can_have_single_heir_succession_law_trigger = {
-	# Non-tribals only
-	custom_description = {
-		text = succession_laws_must_have_organised_government_tooltip
-		NOR = {
-			has_government = tribal_government
-			has_government = clan_government
+	NOT = { _has_ai_government = yes }
+	OR = {
+		# This should be accessible for city states, since county title can not have elective.
+		is_city_state_elective_type = yes
+
+		AND = {
+			culture = {
+				has_innovation = innovation_imperial_latifundia
+			}
+			# Non-tribals only
+			custom_description = {
+				text = succession_laws_must_have_organised_government_tooltip
+				NOR = {
+					has_government = tribal_government
+					has_government = clan_government
+				}
+			}
 		}
 	}
-
-	# This should be accessible for city states, since county title can not have elective.
 }
 
 should_start_single_heir_succession_law_trigger = {
+	NOT = { _has_ai_government = yes }
 	OR = {
 		historical_succession_access_single_heir_succession_law_trigger = yes
-		NOR = {
-			should_start_confederate_partition_succession_law_trigger = yes
-			should_start_partition_succession_law_trigger = yes
-			should_start_high_partition_succession_law_trigger = yes
-			should_start_single_heir_youngest_succession_law_trigger = yes
-			should_start_single_heir_dynasty_house_trigger = yes
-
-			# No theocracy or community governments, as they will keep their own successions.
-			has_government = theocracy_government
-			has_government = republic_government
-		}
+		is_city_state_elective_type = yes
+		culture = { has_innovation = innovation_imperial_latifundia }
 	}
 }
 
@@ -226,6 +244,7 @@ can_have_single_heir_youngest_succession_law_trigger = {
 	culture = {
 		has_innovation = innovation_imperial_latifundia
 	}
+
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
@@ -235,10 +254,7 @@ can_have_single_heir_youngest_succession_law_trigger = {
 		}
 	}
 
-	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
-	NOT = { 
-		has_government = city_state_democratic_government
-	}
+	NOT = { _has_specific_locked_government = yes }
 }
 
 should_start_single_heir_youngest_succession_law_trigger = {
@@ -263,6 +279,7 @@ can_have_single_heir_dynasty_house_trigger = {
 	culture = {
 		has_innovation = innovation_hellenistic_land_survey
 	}
+
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
@@ -272,10 +289,7 @@ can_have_single_heir_dynasty_house_trigger = {
 		}
 	}
 
-	# Doesn't make sense in city states with their constitutions and silly bureaucracy!
-	NOT = { 
-		has_government = city_state_democratic_government
-	}
+	NOT = { _has_specific_locked_government = yes }
 }
 
 should_start_single_heir_dynasty_house_trigger = {
@@ -332,4 +346,18 @@ title_can_reduce_partition_law_trigger = {
 			}
 		}
 	}
+}
+
+_has_specific_locked_government = {
+	OR = {
+		is_city_state_elective_type = yes
+		_has_ai_government = yes
+	}
+}
+
+_has_ai_government = {
+	can_have_bishop_theocratic_succession_law_trigger = yes
+	can_have_holy_order_succession_law_trigger = yes
+	can_have_mercenary_succession_law_trigger = yes
+	can_have_city_succession_law_trigger = yes
 }

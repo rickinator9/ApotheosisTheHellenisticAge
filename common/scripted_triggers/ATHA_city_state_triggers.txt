@@ -7,3 +7,12 @@ is_city_state_bureaucracy = {
 		has_government = feudal_government
 	}
 }
+
+# Determines whether a character rules a city state that represents an elective government.
+is_city_state_elective_type = {
+	OR = {
+		has_government = city_state_democratic_government
+		has_government = city_state_oligarchic_government
+		has_government = city_state_aristocratic_government
+	}
+}
