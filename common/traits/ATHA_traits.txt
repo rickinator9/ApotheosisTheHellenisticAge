@@ -77,10 +77,10 @@ corrupt = {
 	}
 	stewardship = 2
 
-	same_opinion = 20
+	same_opinion = 25
 	opposite_opinion = -20
 		
-	ruler_designer_cost = 10
+	ruler_designer_cost = 15
 	
 	desc = {
 		first_valid = {
@@ -93,6 +93,9 @@ corrupt = {
 			desc = trait_corrupt_character_desc
 		}
 	}
+
+	ai_honor = -20
+	ai_sociability = low_positive_ai_value
 
 	compatibility = {
 		deceitful = @pos_compat_low
@@ -107,7 +110,6 @@ corrupt = {
 	}
 
 	triggered_opinion = {
-		parameter = corruption_illegal
 		opinion_modifier = corruption_crime
 		ignore_opinion_value_if_same_trait = yes
 	}
@@ -137,6 +139,9 @@ incorruptible = {
 			desc = trait_incorruptible_character_desc
 		}
 	}
+
+	ai_honor = -20
+	ai_energy = 20
 
 	compatibility = {
 		stubborn = @pos_compat_low

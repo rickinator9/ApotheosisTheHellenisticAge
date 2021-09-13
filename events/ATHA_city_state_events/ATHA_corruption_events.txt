@@ -119,15 +119,6 @@ corruption.1001 = {
 				type = event_generic_good
 				title = corruption.1001.message
 				left_icon = scope:owner
-				scope:owner = {
-					random_secret = {
-						limit = {
-							secret_type = secret_corrupt
-							NOT = { is_known_by = scope:target }
-						}
-						reveal_to = scope:target
-					}
-				}
 			}
 
 			if = {
@@ -173,10 +164,6 @@ corruption.1001 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
-
-		trigger_event = {
-            on_action = on_corruption_gain
-        }
 	}
 
 	#Show them a good time
@@ -213,10 +200,6 @@ corruption.1001 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
-
-		trigger_event = {
-            on_action = on_corruption_gain
-        }
 	}
 
 	#Now is not the right time
