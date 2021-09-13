@@ -6,7 +6,6 @@
 vassal_role = {
 	display_mode = radiobutton
 
-	# TODO: This doesn't have a default?!
 	obligation_levels = {
 		vassal_role_city_state_autonomous = {
 			is_valid = {
@@ -31,7 +30,7 @@ vassal_role = {
 				if = {
 					limit = {
 						scope:vassal = {
-							government_has_flag = is_city_state_government # TO-DO: vassals with an imposed franchise that doesn't match the desired franchise shouldn't desire this
+							government_has_flag = is_city_state_government # TODO: vassals with an imposed franchise that doesn't match the desired franchise shouldn't desire this
 						}
 					}
 					add = @ai_desire_always

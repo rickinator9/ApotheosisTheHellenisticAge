@@ -954,7 +954,10 @@ faith_conversion_cost_mult = {
 		if = {
 			limit = {
 				scope:character = {
-					has_government = clan_government
+					OR = {
+						has_government = clan_government
+						has_government = republic_government
+					}
 				}
 			}
 			add = {
@@ -966,7 +969,7 @@ faith_conversion_cost_mult = {
 		else_if = {
 			limit = {
 				scope:character = {
-					has_government = feudal_government
+					government_has_flag = is_bureaucracy_government
 				}
 			}
 			add = {
@@ -978,7 +981,10 @@ faith_conversion_cost_mult = {
 		else_if = {
 			limit = {
 				scope:character = {
-					has_government = republic_government
+					OR = {
+						government_has_flag = is_city_state_government
+						government_has_flag = is_coalition_government	
+					}					
 				}
 			}
 			add = {
@@ -1033,6 +1039,44 @@ faith_conversion_cost_mult = {
 			value = 2
 		}
 	}
+	else_if = {
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_great_mother }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						NOT = { is_in_family = rf_great_mother }
+					}
+				}
+			}
+		}
+		add = {
+			desc = faith_conversion_cost_other_religion_family
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 2
+		}
+	}
+	else_if = {
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_anatolian }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						NOT = { is_in_family = rf_anatolian }
+					}
+				}
+			}
+		}
+		add = {
+			desc = faith_conversion_cost_other_religion_family
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 2
+		}
+	}
 	# TODO: Add religion families as we expand.
 	
 	# Unreformed Faiths have an easier way converting to Organized faiths
@@ -1066,6 +1110,46 @@ faith_conversion_cost_mult = {
 				faith = {
 					religion = {
 						is_in_family = rf_hellenic
+						NOT = { this = scope:new_faith.religion}
+					}
+				}
+			}
+		}
+		add = {
+			desc = faith_conversion_cost_inside_religion_family
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 1
+		}
+	}
+	else_if = {
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_great_mother }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						is_in_family = rf_great_mother
+						NOT = { this = scope:new_faith.religion}
+					}
+				}
+			}
+		}
+		add = {
+			desc = faith_conversion_cost_inside_religion_family
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 1
+		}
+	}
+	else_if = {
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_anatolian }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						is_in_family = rf_anatolian
 						NOT = { this = scope:new_faith.religion}
 					}
 				}
@@ -1221,6 +1305,94 @@ faith_conversion_cost_mult = {
 				faith = {
 					religion = {
 						NOT = { is_in_family = rf_hellenic }
+					}
+				}
+				OR = {
+					any_neighboring_top_liege_realm_owner = {
+						faith = scope:new_faith
+					}
+					any_vassal = {
+						faith = scope:new_faith
+					}
+					any_realm_province = {
+						faith = scope:new_faith
+					}
+					AND = {
+						exists = liege
+						liege = {
+							faith = scope:new_faith
+						}
+					}
+					AND = {
+						exists = liege
+						liege = {	
+							any_vassal = {
+								faith = scope:new_faith
+							}
+						}
+					}
+				}
+			}
+		}
+		subtract = {
+			desc = faith_conversion_cost_present
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 2.5
+		}
+	}
+	else_if = { #Cheaper if the religion is present near/in your borders
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_great_mother }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						NOT = { is_in_family = rf_great_mother }
+					}
+				}
+				OR = {
+					any_neighboring_top_liege_realm_owner = {
+						faith = scope:new_faith
+					}
+					any_vassal = {
+						faith = scope:new_faith
+					}
+					any_realm_province = {
+						faith = scope:new_faith
+					}
+					AND = {
+						exists = liege
+						liege = {
+							faith = scope:new_faith
+						}
+					}
+					AND = {
+						exists = liege
+						liege = {	
+							any_vassal = {
+								faith = scope:new_faith
+							}
+						}
+					}
+				}
+			}
+		}
+		subtract = {
+			desc = faith_conversion_cost_present
+			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			value = 2.5
+		}
+	}
+	else_if = { #Cheaper if the religion is present near/in your borders
+		limit = {
+			scope:new_faith = {
+				religion = { is_in_family = rf_anatolian }
+			}
+			scope:character = {
+				faith = {
+					religion = {
+						NOT = { is_in_family = rf_anatolian }
 					}
 				}
 				OR = {
