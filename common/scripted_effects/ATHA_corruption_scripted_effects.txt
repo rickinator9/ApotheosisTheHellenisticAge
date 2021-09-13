@@ -77,6 +77,22 @@ change_city_state_corruption = {
 			}
 		}
 
+		root = {
+			if = {
+				limit = { var:city_state_corruption_change > 0 }
+				trigger_event = {
+					on_action = on_corruption_gain
+				}
+			}
+
+			else_if = {
+				limit = { var:city_state_corruption_change < 0 }
+				trigger_event = {
+					on_action = on_corruption_loss
+				}
+			}
+		}
+
 		trigger_event = {
             on_action = on_corruption_change
         }
