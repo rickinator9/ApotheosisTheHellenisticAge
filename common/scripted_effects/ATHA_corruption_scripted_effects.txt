@@ -56,7 +56,7 @@ change_city_state_corruption = {
 			# Change the value.
 			change_variable = {
 				name = city_state_corruption
-				add = $AMOUNT_ARG$
+				add = holder.var:city_state_corruption_change
 			}
 
 			# Constrain the corruption between 0 and 100.
@@ -67,7 +67,7 @@ change_city_state_corruption = {
 					name = city_state_corruption
 					value = 0
 				}
-			}else if = {
+			} else_if = {
 				limit = { var:city_state_corruption > 100 }
 
 				set_variable = {
