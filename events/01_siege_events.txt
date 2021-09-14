@@ -1,4 +1,4 @@
-#Events for sieges
+﻿#Events for sieges
 
 namespace = siege
 
@@ -54,7 +54,7 @@ siege.0001 = {
 			}
 			holder = {
 				if = {
-					limit = { siege_0001_can_be_captured = yes }
+					limit = { siege_0001_can_be_captured = yes } # TODO_NEW this trigger is not defined anywhere!
 					add_to_list = capture_attempt_targets
 				}
 				every_courtier_or_guest = {
@@ -213,7 +213,7 @@ siege.0001 = {
 			# Check if this prisoner is important enough (worth war score) that it is worth sending a toast about them in the first place.
 			if = {
 				limit = {
-					siege_0001_character_is_important_hostage = yes
+					siege_0001_character_is_important_hostage = yes # TODO_NEW this trigger is not defined anywhere!
 				}
 				save_scope_as = important_hostage
 
