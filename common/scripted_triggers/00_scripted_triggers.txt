@@ -369,10 +369,10 @@ has_changed_contract_obligation_trigger = {
 				exists = local_var:gift_estate_rights
 				local_var:gift_estate_rights != scope:obligation_check.vassal_contract_obligation_level:gift_estate_rights
 			}
-			AND = {
-				exists = local_var:hereditary_rights
-				local_var:hereditary_rights != scope:obligation_check.vassal_contract_obligation_level:hereditary_rights
-			}
+			#AND = {
+			#	exists = local_var:hereditary_rights
+			#	local_var:hereditary_rights != scope:obligation_check.vassal_contract_obligation_level:hereditary_rights
+			#}
 		}
 	}
 }

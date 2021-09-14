@@ -1442,21 +1442,21 @@ count_obligation_improvements_for_vassal = {
 			subtract = 1
 		}
 	}
-	if = {
-		limit = {
-			AND = {
-				exists = local_var:hereditary_rights
-				local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
-			}
-		}
-		if = {
-			limit = { local_var:hereditary_rights != 0 }
-			add = 1
-		}
-		else = {
-			subtract = 1
-		}
-	}
+	#if = {
+	#	limit = {
+	#		AND = {
+	#			exists = local_var:hereditary_rights
+	#			local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+	#		}
+	#	}
+	#	if = {
+	#		limit = { local_var:hereditary_rights != 0 }
+	#		add = 1
+	#	}
+	#	else = {
+	#		subtract = 1
+	#	}
+	#}
 }
 
 count_total_obligation_changes = {
@@ -1605,15 +1605,15 @@ count_total_obligation_changes = {
 		}
 		add = 1
 	}
-	if = {
-		limit = {
-			AND = {
-				exists = local_var:hereditary_rights
-				local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
-			}
-		}
-		add = 1
-	}
+	#if = {
+	#	limit = {
+	#		AND = {
+	#			exists = local_var:hereditary_rights
+	#			local_var:hereditary_rights != vassal_contract_obligation_level:hereditary_rights
+	#		}
+	#	}
+	#	add = 1
+	#}
 }
 
 # Requires local_var:<obligation_type> to be set for feudal obligations

@@ -66,6 +66,10 @@ ATHA_game_start.3 = {
 
 	immediate = {
 		every_ruler = {
+			limit = {
+				highest_held_title_tier >= tier_county
+				NOT = { is_independent_ruler = yes }
+			}
 			if = {
 				limit = {
 					government_has_flag = is_city_state_government
