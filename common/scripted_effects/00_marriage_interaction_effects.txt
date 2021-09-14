@@ -104,11 +104,17 @@
 					#... then family members who also do not believe in polygamy aren't happy about having a relative forced into polygamous union with you.
 					every_close_family_member = {
 						if = {
-							limit = { 
-								NOR = {
-									faith = { has_doctrine = doctrine_polygamy }
-									faith = { has_doctrine = doctrine_polygamy_by_exception }
-									faith = { has_doctrine = doctrine_concubines }
+							limit = {
+								faith = {
+									NOR = {
+										has_doctrine = doctrine_polygamy
+										has_doctrine = doctrine_polygamy_by_exception
+										has_doctrine = doctrine_concubines
+									}
+									OR = {
+										has_doctrine = doctrine_pluralism_righteous
+										has_doctrine = doctrine_pluralism_fundamentalist
+									}
 								}
 							}
 							add_opinion = {
@@ -209,10 +215,16 @@ concubine_on_accept_effect = {
 
 					# Family members are even *more* angry if they don't believe in concubines/polyamory (different from polygamy).
 					if = {
-						limit = { 
-							NOR = {
-								faith = { has_doctrine = doctrine_concubines }
-								faith = { has_doctrine = tenet_polyamory }
+						limit = {
+							faith = {
+								NOR = {
+									has_doctrine = doctrine_concubines
+									has_doctrine = tenet_polyamory
+								}
+								OR = {
+									has_doctrine = doctrine_pluralism_righteous
+									has_doctrine = doctrine_pluralism_fundamentalist
+								}
 							}
 						}
 						add_opinion = {
@@ -331,10 +343,16 @@ concubine_offer_on_accept_effect = {
 
 					# Family members are even *more* angry if they don't believe in concubines/polyamory (different from polygamy).
 					if = {
-						limit = { 
-							NOR = {
-								faith = { has_doctrine = doctrine_concubines }
-								faith = { has_doctrine = tenet_polyamory }
+						limit = {
+							faith = {
+								NOR = {
+									has_doctrine = doctrine_concubines
+									has_doctrine = tenet_polyamory
+								}
+								OR = {
+									has_doctrine = doctrine_pluralism_righteous
+									has_doctrine = doctrine_pluralism_fundamentalist
+								}
 							}
 						}
 						add_opinion = {
