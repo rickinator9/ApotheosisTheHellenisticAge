@@ -252,16 +252,293 @@ elopment_ai_accept_modifier = { #Should copy marriage_ai_accept_modifier on rele
 	}
 }
 
+marriage_ai_offer_modifier = {
+
+	# Characters who hold claims on the realms they would ally (and can easily beat) are less likely to offer.
+	modifier = {
+		scope:actor = {
+			NOT = { is_allied_to = scope:recipient }
+			yields_alliance = {
+				candidate = scope:secondary_actor
+				target = scope:recipient
+				target_candidate = scope:secondary_recipient
+			}
+			any_claim = {
+				OR = {
+					holder = scope:recipient
+					any_liege_or_above = { this = scope:recipient }
+				}
+			}
+			military_strength_greater_than_ratio_trigger = { TARGET = scope:recipient RATIO = 0.66 }
+		}
+		add = {
+			value = 0
+
+			scope:actor = {
+				# Counts, dukes and kings care about county claims.
+				if = {
+					limit = {
+						highest_held_title_tier < tier_empire
+					}
+					every_claim = {
+						limit = {
+							tier = tier_county
+							OR = {
+								holder = scope:recipient
+								any_liege_or_above = { this = scope:recipient }
+							}
+						}
+
+						if = {
+							limit = { scope:actor.highest_held_title_tier = tier_county }
+							subtract = 20
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_duchy }
+							subtract = 10
+						} else = {
+							subtract = 5
+						}
+					}
+				}
+
+				# Everyone cares about duchy claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_duchy
+							OR = {
+								holder = scope:recipient
+								any_liege_or_above = { this = scope:recipient }
+							}
+						}
+
+						if = {
+							limit = { scope:actor.highest_held_title_tier = tier_county }
+							subtract = 30
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_duchy }
+							subtract = 20
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_kingdom }
+							subtract = 10
+						} else = {
+							subtract = 5
+						}
+					}
+				}
+
+				# Everyone cares about kingdom claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_kingdom
+							OR = {
+								holder = scope:recipient
+								any_liege_or_above = { this = scope:recipient }
+							}
+						}
+
+						if = {
+							limit = { scope:actor.highest_held_title_tier = tier_county }
+							subtract = 40
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_duchy }
+							subtract = 30
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_kingdom }
+							subtract = 20
+						} else = {
+							subtract = 10
+						}
+					}
+				}
+
+				# Everyone cares about empire claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_empire
+							holder = scope:recipient
+						}
+
+						if = {
+							limit = { scope:actor.highest_held_title_tier = tier_county }
+							subtract = 50
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_duchy }
+							subtract = 40
+						} else_if = {
+							limit = { scope:actor.highest_held_title_tier = tier_kingdom }
+							subtract = 30
+						} else = {
+							subtract = 20
+						}
+					}
+				}
+
+				# Everyone especially cares about primary title claims.
+				if = {
+					limit = {
+						scope:recipient.primary_title = {
+							scope:actor = { has_claim_on = prev }
+						}
+					}
+
+					subtract = 100
+				}
+			}
+		}
+		desc = EASY_CLAIM_MARRIAGE_MODIFIER
+	}
+}
 
 marriage_ai_accept_modifier = {
 	##################
 	# ATHA MODIFIERS #
 	##################
 
+	# Holding Samothraike makes people a more likely match.
 	modifier = {
 		scope:actor.faith = { controls_holy_site = samothrake }
 		add = samothrake_modifier_value
 		desc = SAMOTHRAKE_MARRIAGE_MODIFIER
+	}
+
+	# Characters who hold claims on the realms they would ally (and can easily beat) are less likely to accept.
+	modifier = {
+		scope:recipient = {
+			NOT = { is_allied_to = scope:actor }
+			yields_alliance = {
+				candidate = scope:secondary_recipient
+				target = scope:actor
+				target_candidate = scope:secondary_actor
+			}
+			any_claim = {
+				OR = {
+					holder = scope:actor
+					any_liege_or_above = { this = scope:actor }
+				}
+			}
+			military_strength_greater_than_ratio_trigger = { TARGET = scope:actor RATIO = 1.5 }
+		}
+		add = {
+			value = 0
+
+			scope:recipient = {
+				# Counts, dukes and kings care about county claims.
+				if = {
+					limit = {
+						highest_held_title_tier < tier_empire
+					}
+					every_claim = {
+						limit = {
+							tier = tier_county
+							OR = {
+								holder = scope:actor
+								any_liege_or_above = { this = scope:actor }
+							}
+						}
+
+						if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_county }
+							subtract = 20
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_duchy }
+							subtract = 10
+						} else = {
+							subtract = 5
+						}
+					}
+				}
+
+				# Everyone cares about duchy claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_duchy
+							OR = {
+								holder = scope:actor
+								any_liege_or_above = { this = scope:actor }
+							}
+						}
+
+						if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_county }
+							subtract = 30
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_duchy }
+							subtract = 20
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_kingdom }
+							subtract = 10
+						} else = {
+							subtract = 5
+						}
+					}
+				}
+
+				# Everyone cares about kingdom claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_kingdom
+							OR = {
+								holder = scope:actor
+								any_liege_or_above = { this = scope:actor }
+							}
+						}
+
+						if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_county }
+							subtract = 40
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_duchy }
+							subtract = 30
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_kingdom }
+							subtract = 20
+						} else = {
+							subtract = 10
+						}
+					}
+				}
+
+				# Everyone cares about empire claims.
+				if = {
+					every_claim = {
+						limit = {
+							tier = tier_empire
+							holder = scope:actor
+						}
+
+						if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_county }
+							subtract = 50
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_duchy }
+							subtract = 40
+						} else_if = {
+							limit = { scope:recipient.highest_held_title_tier = tier_kingdom }
+							subtract = 30
+						} else = {
+							subtract = 20
+						}
+					}
+				}
+
+				# Everyone especially cares about primary title claims.
+				if = {
+					limit = {
+						scope:actor.primary_title = {
+							scope:recipient = { has_claim_on = prev }
+						}
+					}
+
+					subtract = 50
+				}
+			}
+		}
+		desc = EASY_CLAIM_MARRIAGE_MODIFIER
 	}
 
 	#########
