@@ -1,6 +1,6 @@
 ﻿### BUREAUCRATIC ###
 
-bureaucracy_military_government = {
+bureaucracy_military_government = { # Military Command
 	create_cadet_branches = yes
 	rulers_should_have_dynasty = yes
 
@@ -33,7 +33,7 @@ bureaucracy_military_government = {
 	color = hsv { 0.67 0.7 0.38 }
 }
 
-bureaucracy_civil_government = {
+bureaucracy_civil_government = { # Civil Bureaucracy
 	create_cadet_branches = yes
 	rulers_should_have_dynasty = yes
 
@@ -67,7 +67,7 @@ bureaucracy_civil_government = {
 
 ### CITY-STATE ###
 
-city_state_democratic_government = { # Democratic
+city_state_democratic_government = {
 	fallback = 3
 
 	create_cadet_branches = yes
@@ -221,7 +221,7 @@ city_state_aristocratic_government = {
 	color = hsv { 0.96 0.76 0.78 }
 }
 
-city_state_spartan_government = {
+city_state_spartan_government = { # Rhetra
 	create_cadet_branches = yes
 	rulers_should_have_dynasty = yes
 
@@ -231,20 +231,22 @@ city_state_spartan_government = {
 
 	regiments_prestige_as_gold = yes
 
-	vassal_contract = {
-		feudal_government_taxes
-		feudal_government_levies
-		vassal_role
-		coinage_rights
-		religious_rights
-		title_revocation_rights
-		war_declaration_rights
-		council_rights
-		garrison_rights
-		ritual_coronations_rights
-		atha_fortification_rights
-		gift_estate_rights
-	}
+	#vassal_contract = {
+	#	feudal_government_taxes
+	#	feudal_government_levies
+	#	vassal_role
+	#	coinage_rights
+	#	religious_rights
+	#	title_revocation_rights
+	#	war_declaration_rights
+	#	council_rights
+	#	garrison_rights
+	#	ritual_coronations_rights
+	#	atha_fortification_rights
+	#	gift_estate_rights
+	#}
+
+	vassal_contract = { tribal_government_obligations } # TEMP
 
 	character_modifier = {
 	  prowess = 5
