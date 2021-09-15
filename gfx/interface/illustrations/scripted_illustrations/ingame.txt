@@ -26,7 +26,7 @@ character_view_bg = {
 
 	### END OF ATHA BACKGROUNDS
 
-	######################################
+	##########################################
 
 	# Dead
 	texture = {
@@ -41,6 +41,26 @@ character_view_bg = {
 
 		trigger = {
 			is_alive = no
+		}
+	}
+
+	######################################
+
+	# Dungeon
+	texture = {
+		reference = "event_scenes/fp1_tribal_prison.dds"
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			is_in_prison_type = dungeon
+		}
+	}
+
+	environment = {
+		reference = "environment_event_dungeon"
+
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			is_in_prison_type = dungeon
 		}
 	}
 
@@ -102,37 +122,90 @@ character_view_bg = {
 
 	# Tribal
 	texture = {
-		reference = "character_view/throneroom_tribal.dds"
+		reference = "character_view/greek_tribal.dds"
 
 		trigger = {
-			has_government = tribal_government
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
 		}
 	}
 
 	environment = {
-		reference = "environment_cw_tribal_main"
+		reference = "environment_cw_india_main"
 
 		trigger = {
-			has_government = tribal_government
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
 			is_character_window_main_character = yes
 		}
 	}
 
 	environment = {
-		reference = "environment_cw_tribal_spouse"
+		reference = "environment_cw_india_spouse"
 
 		trigger = {
 			OR = {
 				AND = {
 					exists = primary_spouse
 					primary_spouse = {
-						has_government = tribal_government
+						OR = {
+							has_government = tribal_government
+							has_government = clan_government
+						}
 					}
 				}
 				AND = {
 					exists = betrothed
 					betrothed = {
-						has_government = tribal_government
+						OR = {
+							has_government = tribal_government
+							has_government = clan_government
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+	# Theocracy
+	texture = { 
+		reference = "character_view/greek_temple.dds"
+
+		trigger = {
+			has_government = theocracy_government
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_main"
+
+		trigger = {
+			has_government = theocracy_government
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						has_government = theocracy_government
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						has_government = theocracy_government
 					}
 				}
 			}
@@ -771,23 +844,40 @@ character_location_exterior = {
 	}
 
 	texture = {
-		reference = "event_scenes/market_tribal.dds"
-
-		trigger = {
-			has_government = tribal_government
-		}
+		reference = "event_scenes/throneroom_tribal.dds"
+		trigger = { has_government = tribal_government }
 	}
-
-	texture = {
-		reference = "event_scenes/market_west.dds"
-
-		trigger = {
-			has_graphical_western_region_trigger = yes
-		}
-	}
-
 	texture = {
 		reference = "event_scenes/market_east.dds"
+		trigger = { has_government = clan_government }
+	}
+	texture = {
+		reference = "event_scenes/courtyard.dds"
+		trigger = { has_government = bureaucracy_military_government }
+	}
+	texture = {
+		reference = "event_scenes/study.dds"
+		trigger = { has_government = bureaucracy_civil_government }
+	}
+	texture = {
+		reference = "event_scenes/ATHA_pythia.dds"
+		trigger = { has_government = theocracy_government }
+	}
+	texture = {
+		reference = "event_scenes/ATHA_farms.dds"
+		trigger = { has_government = republic_government }
+	}
+
+	texture = {
+		reference = "event_scenes/ATHA_garden.dds"
+
+		trigger = {
+			has_graphical_western_region_trigger = yes # apparently this includes dead people
+		}
+	}
+
+	texture = {
+		reference = "event_scenes/ATHA_garden.dds"
 
 		trigger = {
 			OR = {
@@ -850,7 +940,7 @@ title_holding = {
 				is_mercenary_company = yes
 			}
 		}
-		reference = "holding_types/castle_western.dds"
+		reference = "event_scenes/genericcamp.dds"
 	}
 	texture = {
 		trigger = {
@@ -883,7 +973,7 @@ title_holding = {
 				}
 			}
 		}
-		reference = "holding_types/castle_mediterranean.dds"
+		reference = "holding_types/city_mediterranean.dds"
 	}
 	texture = {
 		trigger = {
@@ -969,7 +1059,7 @@ title_holding = {
 				}
 			}
 		}
-		reference = "holding_types/city_mediterranean.dds"
+		reference = "event_scenes/farms.dds"
 	}
 	texture = {
 		trigger = {
@@ -1040,5 +1130,23 @@ title_holding = {
 			}
 		}
 		reference = "holding_types/temple_greek.dds"
+	}
+	texture = { # Fort
+		trigger = {
+			title_illustration_save_province_temporary = yes
+			scope:province = {
+				has_holding_type = fort_holding
+			}
+		}
+		reference = "holding_types/castle_mediterranean.dds"
+	}
+	texture = { # Colony
+		trigger = {
+			title_illustration_save_province_temporary = yes
+			scope:province = {
+				has_holding_type = colony_holding
+			}
+		}
+		reference = "event_scenes/genericcamp.dds"
 	}
 }
