@@ -436,6 +436,24 @@ arrange_marriage_interaction = {
 				}
 			}
 		}
+
+		#Blocks AI from marrying into an alliance while they can easily depose that ruler.
+		scope:actor = {
+			OR = {
+				is_allied_to = scope:recipient
+				NAND = {
+					yields_alliance = {
+						candidate = scope:secondary_actor
+						target = scope:recipient
+						target_candidate = scope:secondary_recipient
+					}
+					scope:recipient.primary_title = {
+						scope:actor = { has_claim_on = prev }
+					}
+					# military_strength_greater_than_ratio_trigger = { TARGET = scope:recipient RATIO = 0.66 }
+				}
+			}
+		}
 	}
 
 	pre_auto_accept = {
@@ -485,12 +503,6 @@ arrange_marriage_interaction = {
 		base = 0
 
 		marriage_ai_accept_modifier = yes
-	}
-
-	ai_will_do = {
-		base = 100
-
-		marriage_ai_offer_modifier = yes
 	}
 	
 	send_option = {
@@ -832,6 +844,24 @@ marry_off_interaction = {
 				NOT = { is_pool_guest_of = host }
 			}
 		}
+
+		#Blocks AI from marrying into an alliance while they can easily depose that ruler.
+		scope:actor = {
+			OR = {
+				is_allied_to = scope:recipient
+				NAND = {
+					yields_alliance = {
+						candidate = scope:secondary_actor
+						target = scope:recipient
+						target_candidate = scope:secondary_recipient
+					}
+					scope:recipient.primary_title = {
+						scope:actor = { has_claim_on = prev }
+					}
+					# military_strength_greater_than_ratio_trigger = { TARGET = scope:recipient RATIO = 0.66 }
+				}
+			}
+		}
 	}
 
 	on_accept = {
@@ -855,12 +885,6 @@ marry_off_interaction = {
 		base = 0 # Should be 0 for all interactions
 		
 		marriage_ai_accept_modifier = yes
-	}
-
-	ai_will_do = {
-		base = 100
-
-		marriage_ai_offer_modifier = yes
 	}
 	
 	send_option = {
