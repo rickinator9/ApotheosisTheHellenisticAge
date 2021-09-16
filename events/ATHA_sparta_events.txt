@@ -16,7 +16,12 @@ city_state_sparta.0001 = {
 			limit = {
 				is_landed = yes
 				player_heir = {
-					is_landed = no
+					OR = {
+						is_landed = no
+						liege = {
+							this = root.liege
+						}
+					}
 					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root.liege }
 				}
 			}
@@ -29,7 +34,7 @@ city_state_sparta.0001 = {
 			}
 		}
 
-		# TODO: Needs some extra cases:
+		# TODO: Needs some extra cases in a later release (focussing on Sparta perhaps?):
 		# - What happens when the heir is already landed elsewhere?
 		# - What happens when the heir is unlanded and in someone elses court when this character is also unlanded?
 		# - In the last resort, we will just have to yank a random dynasty member from elsewhere to become the spartan monarch. Perhaps this could be tied into the flavour to create a Leonidas_II who was criticised from his non-spartan manners?
@@ -55,5 +60,7 @@ city_state_sparta.0002 = {
 				target = root
 			}
 		}
+
+		remove_variable = will_be_next_spartan_dual_monarch
 	}
 }

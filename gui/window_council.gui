@@ -992,7 +992,6 @@ types CouncilTaskTypes
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			maximumsize = { -1 932 }
-			spacing = 5
 
 			scrollbox = {
 				layoutpolicy_vertical = expanding
@@ -1001,6 +1000,10 @@ types CouncilTaskTypes
 				blockoverride "scrollbox_margins" {}
 
 				blockoverride "scrollbox_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						parentanchor = bottom
+						spacing = 5
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
@@ -1009,7 +1012,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_spartan_dual_monarch')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1052,7 +1055,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_spouse')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1138,7 +1141,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_court_chaplain')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1170,7 +1173,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_chancellor')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1192,7 +1195,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_steward')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1222,7 +1225,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_marshal')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1244,7 +1247,7 @@ types CouncilTaskTypes
 
 						widget_councillor_item = {
 							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
+							size = { 260 285 }
 							datacontext = "[CouncilWindow.GetCouncillor('councillor_spymaster')]"
 							datacontext = "[GuiCouncilPosition.GetActiveCouncilTask]"
 							datacontext = "[ActiveCouncilTask.GetPositionType]"
@@ -1264,6 +1267,7 @@ types CouncilTaskTypes
 							}
 						}
 					}
+				}
 				}
 			}
 		}
