@@ -1,7 +1,12 @@
-﻿# Determines whether a character is the ruler of a bureaucracy under a city state.
+﻿# Determines whether a character leads a city state.
+is_city_state = {
+	government_has_flag = is_city_state_government
+}
+
+# Determines whether a character is the ruler of a bureaucracy under a city state.
 is_city_state_bureaucracy = {
 	exists = liege
-	liege = { government_has_flag = is_city_state_government }
+	liege = { is_city_state = yes }
 	OR = {
 		government_has_flag = is_bureaucracy_government
 		has_government = feudal_government

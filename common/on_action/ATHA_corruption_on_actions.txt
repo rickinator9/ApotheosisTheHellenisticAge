@@ -1,56 +1,36 @@
 ﻿on_corruption_change = {
 	trigger = {
-		if = {
-			limit = { has_variable = city_state_corruption }
-		}
+		has_variable = city_state_corruption
 	}
 
 	effect = {
 		if = {
-			limit = {
-				primary_title = {
-					var:city_state_corruption < 24.5
-				}
-			}
+			limit = { has_low_corruption_level = yes }
+
 			add_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = high_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
 		}
 		else_if = {
-			limit = {
-				primary_title = {
-					AND = {
-						var:city_state_corruption >= 24.5
-						var:city_state_corruption <= 49.5
-					}
-				}
-			}
+			limit = { has_medium_corruption_level = yes }
+
 			add_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = high_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
 		}
 		else_if = {
-			limit = {
-				primary_title = {
-					AND = {
-						var:city_state_corruption >= 49.5
-						var:city_state_corruption <= 74.5
-					}
-				}
-			}
+			limit = { has_high_corruption_level = yes }
+
 			add_character_modifier = high_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier
 			remove_character_modifier = critical_corruption_modifier
 		}
 		else_if = {
-			limit = {
-				primary_title = {
-					var:city_state_corruption > 74.5
-				}
-			}
+			limit = { has_critical_corruption_level = yes }
+
 			add_character_modifier = critical_corruption_modifier
 			remove_character_modifier = low_corruption_modifier
 			remove_character_modifier = mediocre_corruption_modifier

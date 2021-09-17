@@ -357,7 +357,7 @@ types ATHA_city_state_windows
 										expand = { }
 	
 										text_single = {
-											text = "81 %"
+											text = "CITY_STATE_FRANCHISE_PERCENTAGE"
 										}
 									}
 	
@@ -365,16 +365,30 @@ types ATHA_city_state_windows
 									widget = {
 										progressbar_standard = {
 											size = { 100% 30 }
-											value = 81
+											value = "[FixedPointToFloat(GetPlayer.GetPrimaryTitle.MakeScope.Var('city_state_franchise').GetValue)]"
 											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-											visible = "[GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[And(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+										}
+
+										progressbar_red = {
+											size = { 100% 30 }
+											value = "[FixedPointToFloat(GetPlayer.GetPrimaryTitle.MakeScope.Var('city_state_franchise').GetValue)]"
+											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
+											visible = "[And(Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), Not(GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+										}
+	
+										progressbar_standard = {
+											size = { 100% 30 }
+											value = "[FixedPointToFloat(GetPlayer.GetLiege.GetPrimaryTitle.MakeScope.Var('city_state_franchise').GetValue)]"
+											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
+											visible = "[And(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End) )]"
 										}
 	
 										progressbar_red = {
 											size = { 100% 30 }
-											value = 81
+											value = "[FixedPointToFloat(GetPlayer.GetLiege.GetPrimaryTitle.MakeScope.Var('city_state_franchise').GetValue)]"
 											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-											visible = "[Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[And(Not(GetScriptedGui('city_state_gui_ideal_franchise').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										}
 									
 										progress_threshold = {
@@ -394,14 +408,14 @@ types ATHA_city_state_windows
 											parentanchor = right
 											position = { -215 0 } # Approx 50%
 											size = { 5 30 }
-											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_oligarchic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic_or_spartan').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_oligarchic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										}
 										
 										progress_threshold = {
 											parentanchor = right
 											position = { -322 0 } # Approx 25%
 											size = { 5 30 }
-											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Or(GetScriptedGui('city_state_gui_is_aristocratic_or_spartan').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), GetScriptedGui('city_state_gui_is_tyrannical').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										}
 										
 										progress_threshold = {
@@ -419,7 +433,7 @@ types ATHA_city_state_windows
 										margin_left = 4
 	
 										text_single = {
-											text = "CITY_STATE_DESIRED_GOVERNMENT_DEMOCRATIC"
+											text = "CITY_STATE_DESIRED_GOVERNMENT_LABEL"
 											align = left
 										}
 	
@@ -495,713 +509,17 @@ types ATHA_city_state_windows
 									}
 	
 									# Progress bar.
-									# Lots of values to represent every value from 0 to 100. Be sure to fold the widget to avoid the spam.
 									widget = {
 										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_0')]"
 											size = { 100% 30 }
-											value = 0
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											value = "[FixedPointToFloat(GetPlayer.GetPrimaryTitle.MakeScope.Var('city_state_corruption').GetValue)]"
+											visible = "[Not(GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
 										}
 										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_1')]"
 											size = { 100% 30 }
-											value = 1
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_2')]"
-											size = { 100% 30 }
-											value = 2
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_3')]"
-											size = { 100% 30 }
-											value = 3
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_4')]"
-											size = { 100% 30 }
-											value = 4
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_5')]"
-											size = { 100% 30 }
-											value = 5
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_6')]"
-											size = { 100% 30 }
-											value = 6
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_7')]"
-											size = { 100% 30 }
-											value = 7
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_8')]"
-											size = { 100% 30 }
-											value = 8
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_9')]"
-											size = { 100% 30 }
-											value = 9
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_10')]"
-											size = { 100% 30 }
-											value = 10
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_11')]"
-											size = { 100% 30 }
-											value = 11
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_12')]"
-											size = { 100% 30 }
-											value = 12
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_13')]"
-											size = { 100% 30 }
-											value = 13
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_14')]"
-											size = { 100% 30 }
-											value = 14
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_15')]"
-											size = { 100% 30 }
-											value = 15
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_16')]"
-											size = { 100% 30 }
-											value = 16
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_17')]"
-											size = { 100% 30 }
-											value = 17
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_18')]"
-											size = { 100% 30 }
-											value = 18
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_19')]"
-											size = { 100% 30 }
-											value = 19
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_20')]"
-											size = { 100% 30 }
-											value = 20
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_21')]"
-											size = { 100% 30 }
-											value = 21
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_22')]"
-											size = { 100% 30 }
-											value = 22
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_23')]"
-											size = { 100% 30 }
-											value = 23
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_24')]"
-											size = { 100% 30 }
-											value = 24
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_25')]"
-											size = { 100% 30 }
-											value = 25
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_26')]"
-											size = { 100% 30 }
-											value = 26
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_27')]"
-											size = { 100% 30 }
-											value = 27
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_28')]"
-											size = { 100% 30 }
-											value = 28
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_29')]"
-											size = { 100% 30 }
-											value = 29
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_30')]"
-											size = { 100% 30 }
-											value = 30
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_31')]"
-											size = { 100% 30 }
-											value = 31
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_32')]"
-											size = { 100% 30 }
-											value = 32
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_33')]"
-											size = { 100% 30 }
-											value = 33
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_34')]"
-											size = { 100% 30 }
-											value = 34
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_35')]"
-											size = { 100% 30 }
-											value = 35
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_36')]"
-											size = { 100% 30 }
-											value = 36
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_37')]"
-											size = { 100% 30 }
-											value = 37
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_38')]"
-											size = { 100% 30 }
-											value = 38
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_39')]"
-											size = { 100% 30 }
-											value = 39
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_40')]"
-											size = { 100% 30 }
-											value = 40
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_41')]"
-											size = { 100% 30 }
-											value = 41
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_42')]"
-											size = { 100% 30 }
-											value = 42
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_43')]"
-											size = { 100% 30 }
-											value = 43
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_44')]"
-											size = { 100% 30 }
-											value = 44
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_45')]"
-											size = { 100% 30 }
-											value = 45
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_46')]"
-											size = { 100% 30 }
-											value = 46
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_47')]"
-											size = { 100% 30 }
-											value = 47
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_48')]"
-											size = { 100% 30 }
-											value = 48
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_49')]"
-											size = { 100% 30 }
-											value = 49
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_50')]"
-											size = { 100% 30 }
-											value = 50
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_51')]"
-											size = { 100% 30 }
-											value = 51
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_52')]"
-											size = { 100% 30 }
-											value = 52
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_53')]"
-											size = { 100% 30 }
-											value = 53
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_54')]"
-											size = { 100% 30 }
-											value = 54
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_55')]"
-											size = { 100% 30 }
-											value = 55
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_56')]"
-											size = { 100% 30 }
-											value = 56
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_57')]"
-											size = { 100% 30 }
-											value = 57
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_58')]"
-											size = { 100% 30 }
-											value = 58
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_59')]"
-											size = { 100% 30 }
-											value = 59
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_60')]"
-											size = { 100% 30 }
-											value = 60
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_61')]"
-											size = { 100% 30 }
-											value = 61
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_62')]"
-											size = { 100% 30 }
-											value = 62
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_63')]"
-											size = { 100% 30 }
-											value = 63
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_64')]"
-											size = { 100% 30 }
-											value = 64
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_65')]"
-											size = { 100% 30 }
-											value = 65
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_66')]"
-											size = { 100% 30 }
-											value = 66
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_67')]"
-											size = { 100% 30 }
-											value = 67
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_68')]"
-											size = { 100% 30 }
-											value = 68
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_69')]"
-											size = { 100% 30 }
-											value = 69
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_70')]"
-											size = { 100% 30 }
-											value = 70
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_71')]"
-											size = { 100% 30 }
-											value = 71
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_72')]"
-											size = { 100% 30 }
-											value = 72
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_73')]"
-											size = { 100% 30 }
-											value = 73
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_74')]"
-											size = { 100% 30 }
-											value = 74
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_75')]"
-											size = { 100% 30 }
-											value = 75
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_76')]"
-											size = { 100% 30 }
-											value = 76
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_77')]"
-											size = { 100% 30 }
-											value = 77
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_78')]"
-											size = { 100% 30 }
-											value = 78
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_79')]"
-											size = { 100% 30 }
-											value = 79
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_80')]"
-											size = { 100% 30 }
-											value = 80
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_81')]"
-											size = { 100% 30 }
-											value = 81
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_82')]"
-											size = { 100% 30 }
-											value = 82
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_83')]"
-											size = { 100% 30 }
-											value = 83
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_84')]"
-											size = { 100% 30 }
-											value = 84
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_85')]"
-											size = { 100% 30 }
-											value = 85
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_86')]"
-											size = { 100% 30 }
-											value = 86
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_87')]"
-											size = { 100% 30 }
-											value = 87
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_88')]"
-											size = { 100% 30 }
-											value = 88
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_89')]"
-											size = { 100% 30 }
-											value = 89
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_90')]"
-											size = { 100% 30 }
-											value = 90
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_91')]"
-											size = { 100% 30 }
-											value = 91
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_92')]"
-											size = { 100% 30 }
-											value = 92
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_93')]"
-											size = { 100% 30 }
-											value = 93
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_94')]"
-											size = { 100% 30 }
-											value = 94
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_95')]"
-											size = { 100% 30 }
-											value = 95
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_96')]"
-											size = { 100% 30 }
-											value = 96
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_97')]"
-											size = { 100% 30 }
-											value = 97
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_98')]"
-											size = { 100% 30 }
-											value = 98
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_99')]"
-											size = { 100% 30 }
-											value = 99
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
-										}
-										progressbar_red = {
-											datacontext = "[GetScriptedGui('city_state_corruption_percentage_100')]"
-											size = { 100% 30 }
-											value = 100
-											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											value = "[FixedPointToFloat(GetPlayer.GetLiege.GetPrimaryTitle.MakeScope.Var('city_state_corruption').GetValue)]"
+											visible = "[GetScriptedGui('city_state_gui_is_vassal').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											noprogresstexture = "gfx/interface/progressbars/progress_blue_bg.dds"
 										}
 									}
@@ -1297,6 +615,8 @@ types ATHA_city_state_windows
 	
 							hbox = {
 								layoutpolicy_horizontal = expanding
+
+								visible = false # TODO: Reenable once policies are added.
 	
 								background = { using = Background_Area }
 	
@@ -1327,6 +647,18 @@ types ATHA_city_state_windows
 								}
 	
 								expand = { }
+							}
+
+							widget = {
+								layoutpolicy_horizontal = expanding
+								size = { 100% 148 }
+	
+								background = { using = Background_Area }
+
+								text_single = {
+									text = "CITY_STATE_NO_ISSUES_OR_EMERGENCIES"
+									parentanchor = center
+								}
 							}
 						}
 

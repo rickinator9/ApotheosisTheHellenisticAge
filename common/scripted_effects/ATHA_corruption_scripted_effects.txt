@@ -9,14 +9,13 @@ assign_initial_corruption_value = {
 
 		if = {
 			limit = { has_government = city_state_democratic_government }
-			primary_title = {
-				set_variable = { name = city_state_corruption value = corruption_democratic_initial_value }
-			}
+			set_city_state_corruption = { AMOUNT_ARG = corruption_democratic_initial_value }
 		} else_if = {
-			limit = { has_government = city_state_democratic_government }
-			primary_title = {
-				set_variable = { name = city_state_corruption value = corruption_oligarchic_initial_value }
-			}
+			limit = { has_government = city_state_oligarchic_government }
+			set_city_state_corruption = { AMOUNT_ARG = corruption_oligarchic_initial_value }
+		} else_if = {
+			limit = { has_government = city_state_tyrannical_government }
+			set_city_state_corruption = { AMOUNT_ARG = corruption_tyrannical_initial_value }
 		} else_if = {
 			limit = {
 				OR = {
@@ -24,10 +23,16 @@ assign_initial_corruption_value = {
 					has_government = city_state_spartan_government
 				}
 			}
-			primary_title = {
-				set_variable = { name = city_state_corruption value = corruption_aristocratic_initial_value }
-			}
+			set_city_state_corruption = { AMOUNT_ARG = corruption_aristocratic_initial_value }
 		}
+	}
+}
+
+# Sets the amount of corruption in a city state.
+#	- AMOUNT_ARG: The amount to set the corruption.
+set_city_state_corruption = {
+	primary_title = {
+		set_variable = { name = city_state_corruption value = $AMOUNT_ARG$ }
 	}
 }
 
