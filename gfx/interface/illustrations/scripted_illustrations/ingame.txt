@@ -215,7 +215,7 @@ character_view_bg = {
 
 	##########################################
 
-	# Mediterranean, high rank
+	# Mediterranean, empire rank
 	texture = {
 		reference = "character_view/greek_palace.dds"
 
@@ -264,7 +264,104 @@ character_view_bg = {
 	}
 
 	##########################################
-	# Mediterranean, regular
+
+	# Mediterranean, king rank
+	texture = {
+		reference = "character_view/greek_library.dds"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_kingdom
+			has_graphical_mediterranean_region_trigger = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_throneroom_main"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_kingdom
+			has_graphical_mediterranean_region_trigger = yes
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_throneroom_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						exists = primary_title
+						primary_title.tier = tier_kingdom
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						exists = primary_title
+						primary_title.tier = tier_kingdom
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+	# Mediterranean, duke rank
+	texture = {
+		reference = "character_view/greek_villa.dds"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_duchy
+			has_graphical_mediterranean_region_trigger = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_main"
+
+		trigger = {
+			has_graphical_mediterranean_region_trigger = yes
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						exists = primary_title
+						primary_title.tier = tier_duchy
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						exists = primary_title
+						primary_title.tier = tier_duchy
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+	# Mediterranean, count rank
 	texture = {
 		reference = "character_view/greek.dds"
 
@@ -844,23 +941,47 @@ character_location_exterior = {
 	}
 
 	texture = {
-		reference = "event_scenes/throneroom_tribal.dds"
+		reference = "government_types/tribal_government.dds"
 		trigger = { has_government = tribal_government }
 	}
 	texture = {
-		reference = "event_scenes/market_east.dds"
+		reference = "government_types/clan_government.dds"
 		trigger = { has_government = clan_government }
 	}
 	texture = {
-		reference = "event_scenes/courtyard.dds"
-		trigger = { has_government = bureaucracy_military_government }
+		reference = "government_types/city_state_tyrannical_government.dds"
+		trigger = { has_government = city_state_tyrannical_government }
+	}	
+	texture = {
+		reference = "government_types/city_state_aristocratic_government.dds"
+		trigger = { has_government = city_state_aristocratic_government }
 	}
 	texture = {
-		reference = "event_scenes/study.dds"
-		trigger = { has_government = bureaucracy_civil_government }
+		reference = "government_types/city_state_oligarchic_government.dds"
+		trigger = { has_government = city_state_oligarchic_government }
+	}
+	texture = {
+		reference = "government_types/city_state_democratic_government.dds"
+		trigger = { has_government = city_state_democratic_government }
+	}
+	texture = {
+		reference = "government_types/city_state_tyrannical_government.dds"
+		trigger = { has_government = city_state_spartan_government }
 	}
 	texture = {
 		reference = "event_scenes/ATHA_pythia.dds"
+		trigger = { government_has_flag = is_coalition_government }
+	}
+	texture = {
+		reference = "government_types/bureaucracy_military_government.dds"
+		trigger = { has_government = bureaucracy_military_government }
+	}
+	texture = {
+		reference = "government_types/bureaucracy_civil_government.dds"
+		trigger = { has_government = bureaucracy_civil_government }
+	}
+	texture = {
+		reference = "government_types/theocracy_government.dds"
 		trigger = { has_government = theocracy_government }
 	}
 	texture = {
