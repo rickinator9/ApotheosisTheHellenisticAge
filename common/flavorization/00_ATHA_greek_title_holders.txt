@@ -1,1367 +1,2723 @@
-﻿# GREEK
+﻿# LANDED TITLES
 
-## BARONIES ###################################
+## HOLDINGS ###################################
 
-### Default (Koine)
-barony_castle_greek_group = { # Polis
+### City (Castle)
+polis_castle = { # Pólis
 	type = title
 	top_liege = no
 	tier = barony
 	priority = 7
 	holding = castle_holding
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-barony_tribal_greek_group = { # Kome
-	type = title
-	top_liege = no
-	tier = barony
-	priority = 7
-	holding = tribal_holding
-	culture_groups = { greek_group }
-}
-barony_city_greek_group = { # Kome
+
+### Rural Settlement (City)
+kome_city = { # Kōmē
 	type = title
 	top_liege = no
 	tier = barony
 	priority = 7
 	holding = city_holding
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-barony_church_greek_group = { # Temenos
+koma_city = { # Kōma
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = city_holding
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+demos_city = { # Dêmos
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = city_holding
+	cultures = { athenian ionian }
+}
+demos_city_d_doris = { # Dêmos
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 9
+	holding = city_holding
+	de_jure_liege = { d_doris }
+	#culture_groups = { greek_group }
+}
+damos_city_d_doris = { # Dâmos
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 10
+	holding = city_holding
+	de_jure_liege = { d_doris }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Tribal
+kome_tribal = { # Kōmē
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 7
+	holding = tribal_holding
+	#culture_groups = { greek_group }
+}
+koma_tribal = { # Kōma
+	type = title
+	top_liege = no
+	tier = barony
+	priority = 8
+	holding = tribal_holding
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Sanctuary (Church)
+temenos_church = { # Témenos
 	type = title
 	top_liege = no
 	tier = barony
 	priority = 7
 	holding = church_holding
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-barony_fort_greek_group = { # Phrourion
+
+### Fort
+phrourion_fort = { # Phroúrion
 	type = title
 	top_liege = no
 	tier = barony
 	priority = 7
 	holding = fort_holding
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-barony_colony_greek_group = { # Klerouchia
+
+### Colony
+klerouchia_colony = { # Klēroukhía
 	type = title
 	top_liege = no
 	tier = barony
 	priority = 7
 	holding = colony_holding
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
 
-# Religious
-baron_church_male_greek_group = { # Hiereus
-	type = character
-	gender = male
-	special = holder
-	tier = barony
-	priority = 7
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-baron_church_female_greek_group = { # Hiereia
-	type = character
-	gender = female
-	special = holder
-	tier = barony
-	priority = 7
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-count_church_male_greek_group = { # Hiereus
-	type = character
-	gender = male
-	special = holder
-	tier = county
-	priority = 17
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-count_church_female_greek_group = { # Hiereia
-	type = character
-	gender = female
-	special = holder
-	tier = county
-	priority = 17
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-duke_church_male_greek_group = { # Arkhiereus
-	type = character
-	gender = male
-	special = holder
-	tier = duchy
-	priority = 27
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-duke_church_female_greek_group = { # Arkhiereia
-	type = character
-	gender = female
-	special = holder
-	tier = duchy
-	priority = 27
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-king_church_male_greek_group = { # Arkhiereus
-	type = character
-	gender = male
-	special = holder
-	tier = kingdom
-	priority = 47
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-king_church_female_greek_group = { # Arkhiereia
-	type = character
-	gender = female
-	special = holder
-	tier = kingdom
-	priority = 47
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-emperor_church_male_greek_group = { # Arkhiereus
-	type = character
-	gender = male
-	special = holder
-	tier = empire
-	priority = 102
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
-emperor_church_female_greek_group = { # Arkhiereia
-	type = character
-	gender = female
-	special = holder
-	tier = empire
-	priority = 102
-	top_liege = no
-	governments = { theocracy_government }
-	culture_groups = { greek_group }
-}
+## THEOCRATIC ###################################
+
+### ==> TODO <== ###
+
+
 
 ## FEUDAL ###################################
 
-### Default (Koine)
-baron_feudal_male_greek_group = { # Kyrios
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { feudal_government }
-	culture_groups = { greek_group }
-}
-count_feudal_male_greek_group = { # Kyrios
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { feudal_government }
-	culture_groups = { greek_group }
-}
-county_feudal_greek_group = { # Topos
+### County
+topos_county = { # Tópos
 	type = title
 	top_liege = no
 	tier = county
 	priority = 18
-	governments = { feudal_government }
-	culture_groups = { greek_group }
+	governments = { feudal_government bureaucracy_military_government bureaucracy_civil_government }
+	#culture_groups = { greek_group }
 }
-duke_feudal_male_greek_group = { # Dynastes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { feudal_government }
-	culture_groups = { greek_group }
-}
-duchy_feudal_greek_group = { # Dynasteia
+
+### Duchy
+dynasteia_duchy = { # Dynasteía
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
 	governments = { feudal_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-king_feudal_male_greek_group = { # Dynastes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { feudal_government }
-	culture_groups = { greek_group }
-}
-kingdom_feudal_greek_group = { # Dynasteia
+
+### Kingdom
+dynasteia_kingdom = { # Dynasteía
 	type = title
 	top_liege = no
 	tier = kingdom
 	priority = 47
 	governments = { feudal_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-emperor_feudal_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
+basileia_kingdom_independent = { # Basileía
+	type = title
 	top_liege = no
-	tier = empire
-	priority = 102
+	tier = kingdom
+	priority = 49
+	only_independent = yes
 	governments = { feudal_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-empire_feudal_greek_group = { # Arche
+basileie_kingdom_independent = { # Basilēíē
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 50
+	only_independent = yes
+	governments = { feudal_government }
+	cultures = { ionian }
+}
+
+### Empire
+arche_empire = { # Arkhē
 	type = title
 	top_liege = no
 	tier = empire
 	priority = 102
-	governments = { feudal_government }
-	culture_groups = { greek_group }
+	governments = { feudal_government republic_government clan_government tribal_government city_state_democratic_government city_state_oligarchic_government city_state_aristocratic_government city_state_tyrannical_government city_state_spartan_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
+}
+archa_empire = { # Arkhá
+	type = title
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { feudal_government republic_government clan_government tribal_government city_state_democratic_government city_state_oligarchic_government city_state_aristocratic_government city_state_tyrannical_government city_state_spartan_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
 
 ## COMMUNITY ###################################
 
-### Default (Koine)
-baron_republic_male_greek_group = { # Komarches
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-count_republic_male_greek_group = { # Phylarchos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-county_republic_greek_group = { # Phyle
+### County
+phyle_county = { # Phylē
 	type = title
 	top_liege = no
 	tier = county
 	priority = 18
-	governments = { republic_government }
-	culture_groups = { greek_group }
+	governments = { republic_government clan_government tribal_government }
+	#culture_groups = { greek_group }
 }
-duke_republic_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-duchy_republic_greek_group = { # Ethnos
+phyla_county = { # Phylá
 	type = title
 	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { republic_government }
-	culture_groups = { greek_group }
+	tier = county
+	priority = 19
+	governments = { republic_government clan_government tribal_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
-king_republic_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-kingdom_republic_greek_group = { # Basileia
+phoula_county = { # Phoulá
 	type = title
 	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-emperor_republic_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { republic_government }
-	culture_groups = { greek_group }
-}
-empire_republic_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { republic_government }
-	culture_groups = { greek_group }
+	tier = county
+	priority = 19
+	governments = { republic_government clan_government tribal_government }
+	cultures = { boeotian }
 }
 
-## CLAN ###################################
-
-### Default (Koine)
-baron_clan_male_greek_group = { # Komarches
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-count_clan_male_greek_group = { # Phylarchos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-county_clan_greek_group = { # Phyle
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-duke_clan_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-duchy_clan_greek_group = { # Ethnos
+### Duchy
+ethnos_duchy = { # Éthnos
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-king_clan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-kingdom_clan_greek_group = { # Basileia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-emperor_clan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { clan_government }
-	culture_groups = { greek_group }
-}
-empire_clan_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { clan_government }
-	culture_groups = { greek_group }
+	governments = { republic_government clan_government tribal_government }
+	#culture_groups = { greek_group }
 }
 
-## TRIBAL ###################################
-
-### Default (Koine)
-baron_tribal_male_greek_group = { # Komarches
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-count_tribal_male_greek_group = { # Phylarchos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-county_tribal_greek_group = { # Phyle
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-duke_tribal_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-duchy_tribal_greek_group = { # Ethnos
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-king_tribal_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-kingdom_tribal_greek_group = { # Basileia
+### Kingdom
+basileia_kingdom = { # Basileía
 	type = title
 	top_liege = no
 	tier = kingdom
 	priority = 47
-	governments = { tribal_government }
-	culture_groups = { greek_group }
+	governments = { republic_government clan_government tribal_government }
+	#culture_groups = { greek_group }
 }
-emperor_tribal_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { tribal_government }
-	culture_groups = { greek_group }
-}
-empire_tribal_greek_group = { # Arche
+basileie_kingdom = { # Basilēíē
 	type = title
 	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { tribal_government }
-	culture_groups = { greek_group }
+	tier = kingdom
+	priority = 48
+	governments = { republic_government clan_government tribal_government }
+	cultures = { ionian }
 }
 
 ## MILITARY COMMAND ###################################
 
-### Default (Koine)
-baron_bureaucracy_military_male_greek_group = { # Phrourarchos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-count_bureaucracy_military_male_greek_group = { # Toparches
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-county_bureaucracy_military_greek_group = { # Topos
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-duke_bureaucracy_military_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-duchy_bureaucracy_military_greek_group = { # Strategia
+### Duchy
+strategia_duchy = { # Stratēgía
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	#culture_groups = { greek_group }
 }
-king_bureaucracy_military_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-kingdom_bureaucracy_military_greek_group = { # Strategia
+stratagia_duchy = { # Stratagía
 	type = title
 	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
-emperor_bureaucracy_military_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
-}
-empire_bureaucracy_military_greek_group = { # Strategia
+strategie_duchy = { # Stratēgíē
 	type = title
 	top_liege = no
-	tier = empire
-	priority = 102
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { ionian }
+}
+strotagia_duchy = { # Strotagía
+	type = title
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { aeolian }
+}
+hyparcheia_duchy = { # Hyparkheía
+	type = title
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { k_hellespontine_phrygia k_lydia k_karia }
 	governments = { bureaucracy_military_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
 
-## BUREAUCRATIC ###################################
-
-### Default (Koine)
-baron_bureaucracy_civil_male_greek_group = { # Epistates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-count_bureaucracy_civil_male_greek_group = { # Epistates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-county_bureaucracy_civil_greek_group = { # Topos
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-duke_bureaucracy_civil_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-duchy_bureaucracy_civil_greek_group = { # Strategia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-king_bureaucracy_civil_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-kingdom_bureaucracy_civil_greek_group = { # Strategia
+### Kingdom
+strategia_kingdom = { # Stratēgía
 	type = title
 	top_liege = no
 	tier = kingdom
 	priority = 47
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	#culture_groups = { greek_group }
 }
-emperor_bureaucracy_civil_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
-}
-empire_bureaucracy_civil_greek_group = { # Strategia
+stratagia_kingdom = { # Stratagía
 	type = title
 	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { bureaucracy_civil_government }
-	culture_groups = { greek_group }
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strategie_kingdom = { # Stratēgíē
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { ionian }
+}
+strotagia_kingdom = { # Strotagía
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_military_government bureaucracy_civil_government }
+	cultures = { aeolian }
+}
+satrapeia_kingdom = { # Satrapeía
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	titles = { k_hellespontine_phrygia k_lydia k_karia }
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+satrapeie_kingdom = { # Satrapeie
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 50
+	titles = { k_hellespontine_phrygia k_lydia k_karia }
+	governments = { bureaucracy_military_government }
+	cultures = { ionian }
 }
 
 ## DEMOCRATIC ###################################
 
-### Default (Koine)
-baron_city_state_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-count_city_state_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-county_city_state_greek_group = { # Polis
+### County
+polis_county = { # Pólis
 	type = title
 	top_liege = no
 	tier = county
 	priority = 18
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-duke_city_state_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-duchy_city_state_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-king_city_state_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-kingdom_city_state_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-emperor_city_state_male_greek_group = { # Prostates
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
-}
-empire_city_state_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_democratic_government }
-	culture_groups = { greek_group }
+	governments = { city_state_democratic_government city_state_oligarchic_government city_state_aristocratic_government city_state_tyrannical_government city_state_spartan_government }
+	#culture_groups = { greek_group }
 }
 
-## TYRANNIC ###################################
-
-### Default (Koine)
-baron_city_state_tyrannical_male_greek_group = { # Tyrannos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-count_city_state_tyrannical_male_greek_group = { # Tyrannos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-county_city_state_tyrannical_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-duke_city_state_tyrannical_male_greek_group = { # Tyrannos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-duchy_city_state_tyrannical_greek_group = { # Polis
+### Duchy
+polis_duchy = { # Pólis
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-king_city_state_tyrannical_male_greek_group = { # Tyrannos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-kingdom_city_state_tyrannical_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-emperor_city_state_tyrannical_male_greek_group = { # Tyrannos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
-}
-empire_city_state_tyrannical_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_tyrannical_government }
-	culture_groups = { greek_group }
+	governments = { city_state_democratic_government city_state_oligarchic_government city_state_aristocratic_government city_state_tyrannical_government city_state_spartan_government }
+	#culture_groups = { greek_group }
 }
 
-## OLIGARCHIC ###################################
-
-### Default (Koine)
-baron_city_state_oligarchic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-count_city_state_oligarchic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-county_city_state_oligarchic_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-duke_city_state_oligarchic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-duchy_city_state_oligarchic_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-king_city_state_oligarchic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-kingdom_city_state_oligarchic_greek_group = { # Polis
+### Kingdom
+polis_kingdom = { # Pólis
 	type = title
 	top_liege = no
 	tier = kingdom
 	priority = 47
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-emperor_city_state_oligarchic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
-}
-empire_city_state_oligarchic_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_oligarchic_government }
-	culture_groups = { greek_group }
+	governments = { city_state_democratic_government city_state_oligarchic_government city_state_aristocratic_government city_state_tyrannical_government city_state_spartan_government }
+	#culture_groups = { greek_group }
 }
 
-## ARISTOCRATIC ###################################
+## FEDERAL ALLIED ###################################
 
-### Default (Koine)
-baron_city_state_aristocratic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-count_city_state_aristocratic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-county_city_state_aristocratic_greek_group = { # Polis
+### County
+symmachia_county = { # Symmakhía
 	type = title
 	top_liege = no
 	tier = county
 	priority = 18
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	#culture_groups = { greek_group }
 }
-duke_city_state_aristocratic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-duchy_city_state_aristocratic_greek_group = { # Polis
+symmachie_county = { # Symmakhíē
 	type = title
 	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-king_city_state_aristocratic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-kingdom_city_state_aristocratic_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-emperor_city_state_aristocratic_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
-}
-empire_city_state_aristocratic_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_aristocratic_government }
-	culture_groups = { greek_group }
+	tier = county
+	priority = 19
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	cultures = { ionian }
 }
 
-## RHETRA ###################################
-
-### Default (Koine)
-baron_city_state_spartan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-count_city_state_spartan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-county_city_state_spartan_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-duke_city_state_spartan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-duchy_city_state_spartan_greek_group = { # Polis
+### Duchy
+symmachia_duchy = { # Symmakhía
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	#culture_groups = { greek_group }
 }
-king_city_state_spartan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-kingdom_city_state_spartan_greek_group = { # Polis
+symmachie_duchy = { # Symmakhíē
 	type = title
 	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-emperor_city_state_spartan_male_greek_group = { # Basileus
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
-}
-empire_city_state_spartan_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { city_state_spartan_government }
-	culture_groups = { greek_group }
+	tier = duchy
+	priority = 28
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	cultures = { ionian }
 }
 
-## ALLIANCE ###################################
+### Kingdom
+symmachia_kingdom = { # Symmakhía
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	#culture_groups = { greek_group }
+}
+symmachie_kingdom = { # Symmakhíē
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { federal_alliance_government hegemonic_alliance_government }
+	cultures = { ionian }
+}
 
-### Default (Koine)
-baron_federal_alliance_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-count_federal_alliance_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-county_federal_alliance_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-duke_federal_alliance_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-duchy_federal_alliance_greek_group = { # Symmachia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-king_federal_alliance_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-kingdom_federal_alliance_greek_group = { # Symmachia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-emperor_federal_alliance_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
-}
-empire_federal_alliance_greek_group = { # Symmachia
+### Empire
+symmachia_empire = { # Symmakhía
 	type = title
 	top_liege = no
 	tier = empire
 	priority = 102
 	governments = { federal_alliance_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-
-## LEAGUE ###################################
-
-### Default (Koine)
-baron_federal_league_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-count_federal_league_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-county_federal_league_greek_group = { # Polis
+symmachie_empire = { # Symmakhíē
 	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-duke_federal_league_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-duchy_federal_league_greek_group = { # Sympoliteia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-king_federal_league_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-kingdom_federal_league_greek_group = { # Sympoliteia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
-}
-emperor_federal_league_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
 	top_liege = no
 	tier = empire
-	priority = 102
-	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
+	priority = 103
+	governments = { federal_alliance_government }
+	cultures = { ionian }
 }
-empire_federal_league_greek_group = { # Sympoliteia
+
+## FEDERAL SYMPOLITY ###################################
+
+### County
+sympoliteia_county = { # Sympoliteía
+	type = title
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	#culture_groups = { greek_group }
+}
+sympoliteie_county = { # Sympolitēíē
+	type = title
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	cultures = { ionian }
+}
+
+### Duchy
+sympoliteia_duchy = { # Sympoliteía
+	type = title
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	#culture_groups = { greek_group }
+}
+sympoliteie_duchy = { # Sympolitēíē
+	type = title
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	cultures = { ionian }
+}
+
+### Kingdom
+sympoliteia_kingdom = { # Sympoliteía
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	#culture_groups = { greek_group }
+}
+sympoliteie_kingdom = { # Sympolitēíē
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { federal_sympolity_government hegemonic_sympolity_government }
+	cultures = { ionian }
+}
+
+### Empire
+sympoliteia_empire = { # Sympoliteía
 	type = title
 	top_liege = no
 	tier = empire
 	priority = 102
 	governments = { federal_sympolity_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
+}
+sympoliteie_empire = { # Sympolitēíē
+	type = title
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { federal_sympolity_government }
+	cultures = { ionian }
 }
 
-## FEDERAL ###################################
+## FEDERAL LEAGUE ###################################
 
-### Default (Koine)
-baron_federal_confederacy_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
-}
-count_federal_confederacy_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
-}
-county_federal_confederacy_greek_group = { # Polis
+### County
+koinon_county = { # Koinón
 	type = title
 	top_liege = no
 	tier = county
 	priority = 18
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
+	governments = { federal_league_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
-duke_federal_confederacy_male_greek_group = { # Strategos
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
-}
-duchy_federal_confederacy_greek_group = { # Koinon
+
+### Duchy
+koinon_duchy = { # Koinón
 	type = title
 	top_liege = no
 	tier = duchy
 	priority = 27
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
+	governments = { federal_league_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
-king_federal_confederacy_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
-}
-kingdom_federal_confederacy_greek_group = { # Koinon
+
+### Kingdom
+koinon_kingdom = { # Koinón
 	type = title
 	top_liege = no
 	tier = kingdom
 	priority = 47
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
+	governments = { federal_league_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
-emperor_federal_confederacy_male_greek_group = { # Strategos Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
-}
-empire_federal_confederacy_greek_group = { # Koinon
+
+### Empire
+koinon_empire = { # Koinón
 	type = title
 	top_liege = no
 	tier = empire
 	priority = 102
-	governments = { federal_league_government }
-	culture_groups = { greek_group }
+	governments = { federal_league_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
 
 ## AMPHICTYONIC ###################################
 
-### Default (Koine)
-baron_amphictyony_male_greek_group = { # Epimeletes
+### County
+amphiktyonia_county = { # Amphiktyonía
+	type = title
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { amphictyony_government }
+	#culture_groups = { greek_group }
+}
+
+### Duchy
+amphiktyonia_duchy = { # Amphiktyonía
+	type = title
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { amphictyony_government }
+	#culture_groups = { greek_group }
+}
+
+### Kingdom
+amphiktyonia_kingdom = { # Amphiktyonía
+	type = title
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { amphictyony_government }
+	#culture_groups = { greek_group }
+}
+
+### Empire
+amphiktyonia_empire = { # Amphiktyonía
+	type = title
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { amphictyony_government }
+	#culture_groups = { greek_group }
+}
+
+# MALE RULERS
+
+## THEOCRATIC ###################################
+
+### Baron
+hiereus_baron = { # Hiereús
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 7
+	top_liege = no
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+hiareus_baron = { # Hiareús
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 8
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+hireus_baron = { # Hireús
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 8
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { ionian }
+}
+hiares_baron = { # Hiarēs
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 8
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { arcadian }
+}
+
+### Count
+hiereus_count = { # Hiereús
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 17
+	top_liege = no
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+hiareus_count = { # Hiareús
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+hireus_count = { # Hireús
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { ionian }
+}
+hiares_count = { # Hiarēs
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { arcadian }
+}
+
+### Duke
+archiereus_duke = { # Arkhiereús
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	top_liege = no
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiareus_duke = { # Arkhiareús
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 28
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	}
+}
+archiereos_duke = { # Arkhiéreōs
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 28
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { ionian }
+}
+archeireus_duke = { # Arkheíreus
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 28
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { aeolian }
+}
+archiares_duke = { # Arkhiarēs
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 28
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { arcadian }
+}
+archieristes_duke = { # Arkhieristēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiaristas_duke = { # Arkhiaristás
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 30
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hierarches_duke = { # Hierárkhēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+hiararchas_duke = { # Hiarárkhas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 30
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### King
+archiereus_king = { # Arkhiereús
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	top_liege = no
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiareus_king = { # Arkhiareús
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 48
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	}
+}
+archiereos_king = { # Arkhiéreōs
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 48
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { ionian }
+}
+archeireus_king = { # Arkheíreus
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 48
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { aeolian }
+}
+archiares_king = { # Arkhiarēs
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 48
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { arcadian }
+}
+archieristes_king = { # Arkhieristēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiaristas_king = { # Arkhiaristás
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 50
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hierarches_king = { # Hierárkhēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+hiararchas_king = { # Hiarárkhas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 50
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Emperor
+archiereus_emperor = { # Arkhiereús
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	top_liege = no
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiareus_emperor = { # Arkhiareús
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 103
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	}
+}
+archiereos_emperor = { # Arkhiéreōs
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 103
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { ionian }
+}
+archeireus_emperor = { # Arkheíreus
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 103
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { aeolian }
+}
+archiares_emperor = { # Arkhiarēs
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 103
+	top_liege = no
+	governments = { theocracy_government }
+	cultures = { arcadian }
+}
+archieristes_emperor = { # Arkhieristēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 104
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+archiaristas_emperor = { # Arkhiaristás
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 105
+	de_jure_liege = { d_doris }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hierarches_emperor = { # Hierárkhēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 104
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	#culture_groups = { greek_group }
+}
+hiararchas_emperor = { # Hiarárkhas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 105
+	de_jure_liege = { d_boiotia }
+	governments = { theocracy_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+## FEUDAL ###################################
+
+### Baron
+kyrios_baron = { # Kýrios
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { feudal_government }
+	#culture_groups = { greek_group }
+}
+kourios_baron = { # Koúrios
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { feudal_government }
+	cultures = { boeotian }
+}
+kyrrhos_baron = { # Kŷrrhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { feudal_government }
+	cultures = { thessalian }
+}
+
+### Count
+kyrios_count = { # Kýrios
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { feudal_government }
+	#culture_groups = { greek_group }
+}
+kourios_count = { # Koúrios
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { feudal_government }
+	cultures = { boeotian }
+}
+kyrrhos_count = { # Kŷrrhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { feudal_government }
+	cultures = { thessalian }
+}
+
+### Duke
+dynastes_duke = { # Dynástēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { feudal_government }
+	#culture_groups = { greek_group }
+}
+dynastas_duke = { # Dynástas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { feudal_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### King
+dynastes_king = { # Dynástēs
+	type = character
+	gender = female
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government }
+	#culture_groups = { greek_group }
+}
+dynastas_king = { # Dynástas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { feudal_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+basileus_king_independent = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	only_independent = yes
+	governments = { feudal_government }
+	#culture_groups = { greek_group }
+}
+basiles_king_independent = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 50
+	only_independent = yes
+	governments = { feudal_government }
+	cultures = { arcadian }
+}
+
+### Emperor
+basileus_emperor = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { feudal_government republic_government clan_government tribal_government city_state_spartan_government }
+	#culture_groups = { greek_group }
+}
+basiles_emperor = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { feudal_government republic_government clan_government tribal_government city_state_spartan_government }
+	cultures = { arcadian }
+}
+
+## COMMUNITY ###################################
+
+### Baron
+komarches_baron = { # Kōmárkhēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { republic_government clan_government tribal_government }
+	#culture_groups = { greek_group }
+}
+demarchos_baron = { # Dēmarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { republic_government }
+	cultures = { athenian ionian }
+}
+komarchas_baron = { # Kōmárkhas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { republic_government clan_government tribal_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+demarchos_baron_d_doris = { # Dēmarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 9
+	de_jure_liege = { d_doris }
+	governments = { republic_government }
+	#culture_groups = { greek_group }
+}
+damarchos_baron_d_doris = { # Dámarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 10
+	de_jure_liege = { d_doris }
+	governments = { republic_government }
+	cultures = {
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Count
+phylarchos_count = { # Phýlarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { republic_government clan_government tribal_government }
+	#culture_groups = { greek_group }
+}
+phoularchos_count = { # Phoúlarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { republic_government clan_government tribal_government }
+	cultures = { boeotian }
+}
+
+### Duke
+prostates_duke = { # Prostátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { republic_government clan_government tribal_government city_state_democratic_government }
+	#culture_groups = { greek_group }
+}
+prostatas_duke = { # Prostátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { republic_government clan_government tribal_government city_state_democratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### King
+basileus_king = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { republic_government clan_government tribal_government city_state_spartan_government }
+	#culture_groups = { greek_group }
+}
+basiles_king = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { republic_government clan_government tribal_government city_state_spartan_government }
+	cultures = { arcadian }
+}
+
+## CLAN ###################################
+
+### Duke
+basileus_duke_independent = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	only_independent = yes
+	governments = { clan_government }
+	#culture_groups = { greek_group }
+}
+basiles_duke_independent = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 30
+	only_independent = yes
+	governments = { clan_government }
+	cultures = { arcadian }
+}
+
+## MILITARY COMMAND ###################################
+
+### Baron
+phrourarchos_baron = { # Phroúrarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+
+### Count
+toparches_count = { # Topárkhēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+toparchas_count = { # Topárkhas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { bureaucracy_military_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Duke
+strategos_duke = { # Stratēgós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { bureaucracy_military_government federal_alliance_government federal_sympolity_government federal_league_government }
+	#culture_groups = { greek_group }
+}
+stratagos_duke = { # Stratagós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_military_government federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_duke = { # Strótagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_military_government federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { aeolian }
+}
+hyparchos_duke = { # Hýparkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { k_hellespontine_phrygia k_lydia k_karia }
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+
+### King
+strategos_king = { # Stratēgós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+stratagos_king = { # Stratagós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_military_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_king = { # Strótagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_military_government }
+	cultures = { aeolian }
+}
+
+### Emperor
+strategos_emperor = { # Stratēgós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { bureaucracy_military_government }
+	#culture_groups = { greek_group }
+}
+stratagos_emperor = { # Stratagós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { bureaucracy_military_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_emperor = { # Strótagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { bureaucracy_military_government }
+	cultures = { aeolian }
+}
+
+## CIVIL BUREAURACY ###################################
+
+### Baron
+epistates_baron = { # Epistátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { bureaucracy_civil_government }
+	#culture_groups = { greek_group }
+}
+epistatas_baron = { # Epistátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { bureaucracy_civil_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Count
+epistates_count = { # Epistátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { bureaucracy_civil_government }
+	#culture_groups = { greek_group }
+}
+epistatas_count = { # Epistátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { bureaucracy_civil_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Duke
+epimeletes_duke = { # Epimelētēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { bureaucracy_civil_government amphictyony_government }
+	#culture_groups = { greek_group }
+}
+epimeletas_duke = { # Epimelētas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { bureaucracy_civil_government amphictyony_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### King
+epimeletes_king = { # Epimelētēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { bureaucracy_civil_government amphictyony_government }
+	#culture_groups = { greek_group }
+}
+epimeletas_king = { # Epimelētas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { bureaucracy_civil_government amphictyony_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Emperor
+epimeletes_emperor = { # Epimelētēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { bureaucracy_civil_government amphictyony_government }
+	#culture_groups = { greek_group }
+}
+epimeletas_emperor = { # Epimelētas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { bureaucracy_civil_government amphictyony_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+## DEMOCRATIC ###################################
+
+### Baron
+prostates_baron = { # Prostátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { city_state_democratic_government }
+	#culture_groups = { greek_group }
+}
+prostatas_baron = { # Prostátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { city_state_democratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Count
+prostates_count = { # Prostátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { city_state_democratic_government }
+	#culture_groups = { greek_group }
+}
+prostatas_count = { # Prostátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { city_state_democratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### King
+prostates_king = { # Prostátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { city_state_democratic_government }
+	#culture_groups = { greek_group }
+}
+prostatas_king = { # Prostátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { city_state_democratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Emperor
+prostates_emperor = { # Prostátēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { city_state_democratic_government }
+	#culture_groups = { greek_group }
+}
+prostatas_emperor = { # Prostátas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { city_state_democratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+## OLIGARCHIC ###################################
+
+### Baron
+hegemon_baron = { # Hēgemōn
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
+}
+hagemon_baron = { # Hagemōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hagimon_baron = { # Hagímōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+protokosmos_baron = { # Prōtókosmos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 9
+	de_jure_liege = { k_krete }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { dorian_south }
+}
+archipoliarchos_baron = { # Arkhipolíarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 9
+	de_jure_liege = { k_thessalia }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { thessalian }
+}
+
+### Count
+hegemon_count = { # Hēgemōn
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
+}
+hagemon_count = { # Hagemōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hagimon_count = { # Hagímōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+protokosmos_count = { # Prōtókosmos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 20
+	de_jure_liege = { k_krete }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { dorian_south }
+}
+archipoliarchos_count = { # Arkhipolíarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 20
+	de_jure_liege = { k_thessalia }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { thessalian }
+}
+
+### Duke
+hegemon_duke = { # Hēgemōn
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
+}
+hagemon_duke = { # Hagemōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hagimon_duke = { # Hagímōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { city_state_oligarchic_government city_state_aristocratic_government hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+protokosmos_duke = { # Prōtókosmos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { k_krete }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { dorian_south }
+}
+archipoliarchos_duke = { # Arkhipolíarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 29
+	de_jure_liege = { k_thessalia }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { thessalian }
+}
+
+### King
+hegemon_king = { # Hēgemōn
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	#culture_groups = { greek_group }
+}
+hagemon_king = { # Hagemōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hagimon_king = { # Hagímōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+protokosmos_king = { # Prōtókosmos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	de_jure_liege = { k_krete }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { dorian_south }
+}
+archipoliarchos_king = { # Arkhipolíarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 49
+	de_jure_liege = { k_thessalia }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { thessalian }
+}
+
+### Emperor
+hegemon_emperor = { # Hēgemōn
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	#culture_groups = { greek_group }
+}
+hagemon_emperor = { # Hagemōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+hagimon_emperor = { # Hagímōn 
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
+}
+protokosmos_emperor = { # Prōtókosmos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 104
+	de_jure_liege = { k_krete }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { dorian_south }
+}
+archipoliarchos_emperor = { # Arkhipolíarkhos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 104
+	de_jure_liege = { k_thessalia }
+	governments = { city_state_oligarchic_government city_state_aristocratic_government }
+	cultures = { thessalian }
+}
+
+## TYRANNIC ###################################
+
+### Baron
+tyrannos_baron = { # Týrannos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { city_state_tyrannical_government }
+	#culture_groups = { greek_group }
+}
+
+### Count
+tyrannos_count = { # Týrannos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { city_state_tyrannical_government }
+	#culture_groups = { greek_group }
+}
+
+### Duke
+tyrannos_duke = { # Týrannos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { city_state_tyrannical_government }
+	#culture_groups = { greek_group }
+}
+
+### King
+tyrannos_king = { # Týrannos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { city_state_tyrannical_government }
+	#culture_groups = { greek_group }
+}
+
+### Emperor
+tyrannos_emperor = { # Týrannos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { city_state_tyrannical_government }
+	#culture_groups = { greek_group }
+}
+
+## RHETRA ###################################
+
+### Baron
+basileus_baron = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { city_state_spartan_government }
+	#culture_groups = { greek_group }
+}
+basiles_baron = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { city_state_spartan_government }
+	cultures = { arcadian }
+}
+
+### Count
+basileus_count = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { city_state_spartan_government }
+	#culture_groups = { greek_group }
+}
+basiles_count = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { city_state_spartan_government }
+	cultures = { arcadian }
+}
+
+### Duke
+basileus_duke = { # Basileús
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 27
+	governments = { city_state_spartan_government }
+	#culture_groups = { greek_group }
+}
+basiles_duke = { # Basilēs
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = duchy
+	priority = 28
+	governments = { city_state_spartan_government }
+	cultures = { arcadian }
+}
+
+## FEDERAL ALLIED ###################################
+
+### Baron
+strategos_baron = { # Stratēgós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 7
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	#culture_groups = { greek_group }
+}
+stratagos_baron = { # Stratagós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_baron = { # Strótagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { aeolian }
+}
+
+### Count
+strategos_count = { # Stratēgós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 18
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	#culture_groups = { greek_group }
+}
+stratagos_count = { # Stratagós
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_count = { # Strótagos
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = county
+	priority = 19
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { aeolian }
+}
+
+### King
+strategos_autokrator_king = { # Stratēgós Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 47
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	#culture_groups = { greek_group }
+}
+stratagos_autokrator_king = { # Stratagós Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_autokrator_king = { # Strótagos Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = kingdom
+	priority = 48
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { aeolian }
+}
+
+### Emperor
+strategos_autokrator_emperor = { # Stratēgós Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 102
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	#culture_groups = { greek_group }
+}
+stratagos_autokrator_emperor = { # Stratagós Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+strotagos_autokrator_emperor = { # Strótagos Autokrátōr
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = empire
+	priority = 103
+	governments = { federal_alliance_government federal_sympolity_government federal_league_government }
+	cultures = { aeolian }
+}
+
+## AMPHICTYONIC ###################################
+
+### Baron
+epimeletes_baron = { # Epimelētēs
 	type = character
 	gender = male
 	special = holder
@@ -1369,9 +2725,34 @@ baron_amphictyony_male_greek_group = { # Epimeletes
 	tier = barony
 	priority = 7
 	governments = { amphictyony_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-count_amphictyony_male_greek_group = { # Epimeletes
+epimeletas_baron = { # Epimelētas
+	type = character
+	gender = male
+	special = holder
+	top_liege = no
+	tier = barony
+	priority = 8
+	governments = { amphictyony_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
+}
+
+### Count
+epimeletes_count = { # Epimelētēs
 	type = character
 	gender = male
 	special = holder
@@ -1379,325 +2760,122 @@ count_amphictyony_male_greek_group = { # Epimeletes
 	tier = county
 	priority = 18
 	governments = { amphictyony_government }
-	culture_groups = { greek_group }
+	#culture_groups = { greek_group }
 }
-county_amphictyony_greek_group = { # Polis
-	type = title
+epimeletas_count = { # Epimelētas
+	type = character
+	gender = male
+	special = holder
 	top_liege = no
 	tier = county
-	priority = 18
+	priority = 19
 	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-duke_amphictyony_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-duchy_amphictyony_greek_group = { # Amphiktyonia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-king_amphictyony_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-kingdom_amphictyony_greek_group = { # Amphiktyonia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-emperor_amphictyony_male_greek_group = { # Epimeletes
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
-}
-empire_amphictyony_greek_group = { # Koinon
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { amphictyony_government }
-	culture_groups = { greek_group }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
 
 ## HEGEMONIC ALLIED ###################################
 
-### Default (Koine)
-baron_hegemonic_alliance_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-count_hegemonic_alliance_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-county_hegemonic_alliance_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-duke_hegemonic_alliance_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-duchy_hegemonic_alliance_greek_group = { # Symmachia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-king_hegemonic_alliance_male_greek_group = { # Hegemon Autokrator
+### King
+hegemon_autokrator_king = { # Hēgemōn Autokrátōr 
 	type = character
 	gender = male
 	special = holder
 	top_liege = no
 	tier = kingdom
 	priority = 47
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
-kingdom_hegemonic_alliance_greek_group = { # Symmachia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
-}
-emperor_hegemonic_alliance_male_greek_group = { # Hegemon Autokrator
+hagemon_autokrator_king = { # Hagemōn Autokrátōr 
 	type = character
 	gender = male
 	special = holder
 	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
+	tier = kingdom
+	priority = 48
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
-empire_hegemonic_alliance_greek_group = { # Arche
-	type = title
+hagimon_autokrator_king = { # Hagímōn Autokrátōr 
+	type = character
+	gender = male
+	special = holder
 	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { hegemonic_alliance_government }
-	culture_groups = { greek_group }
+	tier = kingdom
+	priority = 48
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
 }
 
-## HEGEMONIC LEAGUE ###################################
-
-### Default (Koine)
-baron_hegemonic_league_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-count_hegemonic_league_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-county_hegemonic_league_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-duke_hegemonic_league_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-duchy_hegemonic_league_greek_group = { # Sympoliteia
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-king_hegemonic_league_male_greek_group = { # Hegemon Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-kingdom_hegemonic_league_greek_group = { # Sympoliteia
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-emperor_hegemonic_league_male_greek_group = { # Hegemon Autokrator
+### Emperor
+hegemon_autokrator_emperor = { # Hēgemōn Autokrátōr 
 	type = character
 	gender = male
 	special = holder
 	top_liege = no
 	tier = empire
 	priority = 102
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	#culture_groups = { greek_group }
 }
-empire_hegemonic_league_greek_group = { # Arche
-	type = title
-	top_liege = no
-	tier = empire
-	priority = 102
-	governments = { hegemonic_sympolity_government }
-	culture_groups = { greek_group }
-}
-
-## HEGEMONIC FEDERAL ###################################
-
-### Default (Koine)
-baron_hegemonic_confederacy_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = barony
-	priority = 7
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-count_hegemonic_confederacy_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-county_hegemonic_confederacy_greek_group = { # Polis
-	type = title
-	top_liege = no
-	tier = county
-	priority = 18
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-duke_hegemonic_confederacy_male_greek_group = { # Hegemon
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-duchy_hegemonic_confederacy_greek_group = { # Koinon
-	type = title
-	top_liege = no
-	tier = duchy
-	priority = 27
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-king_hegemonic_confederacy_male_greek_group = { # Hegemon Autokrator
-	type = character
-	gender = male
-	special = holder
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-kingdom_hegemonic_confederacy_greek_group = { # Koinon
-	type = title
-	top_liege = no
-	tier = kingdom
-	priority = 47
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
-}
-emperor_hegemonic_confederacy_male_greek_group = { # Hegemon Autokrator
+hagemon_autokrator_emperor = { # Hagemōn Autokrátōr 
 	type = character
 	gender = male
 	special = holder
 	top_liege = no
 	tier = empire
-	priority = 102
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
+	priority = 103
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# DORIC
+		achaean
+		dorian
+		dorian_northwest
+		dorian_south
+		epirote
+	# ARCADO-CYPRIOT
+		arcadian
+	}
 }
-empire_hegemonic_confederacy_greek_group = { # Arche
-	type = title
+hagimon_autokrator_emperor = { # Hagímōn Autokrátōr 
+	type = character
+	gender = male
+	special = holder
 	top_liege = no
 	tier = empire
-	priority = 102
-	governments = { hegemonic_league_government }
-	culture_groups = { greek_group }
+	priority = 103
+	governments = { hegemonic_alliance_government hegemonic_sympolity_government hegemonic_league_government }
+	cultures = { 
+	# AEOLIC
+		aeolian
+		boeotian
+		thessalian
+	}
 }
