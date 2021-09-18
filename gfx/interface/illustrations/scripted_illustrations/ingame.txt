@@ -28,9 +28,90 @@ character_view_bg = {
 
 	##########################################
 
-	# Dead
+	# Dead with deified trait
+	texture = {
+		reference = "character_view/greek_tomb_alexander.dds"
+		trigger = {
+			is_alive = no
+			has_trait = deified
+		}
+	}
+
+	environment = {
+		reference = "environment_event_dungeon"
+
+		trigger = {
+			is_alive = no
+			has_trait = deified
+		}
+	}
+
+	##########################################
+
+	# Dead with godlike trait
+	texture = {
+		reference = "character_view/greek_tomb_battos.dds"
+		trigger = {
+			is_alive = no
+			has_trait = godlike
+		}
+	}
+
+	environment = {
+		reference = "environment_event_feast"
+
+		trigger = {
+			is_alive = no
+			has_trait = godlike
+		}
+	}
+
+	##########################################
+
+	# Dead with hero trait
+	texture = {
+		reference = "character_view/greek_tomb_hero.dds"
+		trigger = {
+			is_alive = no
+			has_trait = hero
+		}
+	}
+
+	environment = {
+		reference = "environment_event_sittingroom"
+
+		trigger = {
+			is_alive = no
+			has_trait = hero
+		}
+	}
+
+	##########################################
+
+	# Dead title holder
 	texture = {
 		reference = "character_view/greek_grave.dds"
+		trigger = {
+			is_alive = no
+			exists = primary_title
+		}
+	}
+
+	environment = {
+		reference = "environment_event_temple"
+
+		trigger = {
+			is_alive = no
+			exists = primary_title
+		}
+	}
+
+
+	##########################################
+
+	# Dead
+	texture = {
+		reference = "character_view/greek_cemetery.dds"
 		trigger = {
 			is_alive = no
 		}
@@ -277,7 +358,7 @@ character_view_bg = {
 	}
 
 	environment = {
-		reference = "environment_cw_mediterranean_throneroom_main"
+		reference = "environment_cw_east_main"
 
 		trigger = {
 			exists = primary_title
@@ -288,7 +369,7 @@ character_view_bg = {
 	}
 
 	environment = {
-		reference = "environment_cw_mediterranean_throneroom_spouse"
+		reference = "environment_cw_east_spouse"
 
 		trigger = {
 			OR = {
