@@ -274,9 +274,11 @@ marriage_ai_accept_modifier = {
 				target_candidate = scope:secondary_actor
 			}
 			any_claim = {
-				OR = {
-					holder = scope:actor
-					any_liege_or_above = { this = scope:actor }
+				holder = {
+					OR = {
+						this = scope:actor
+						any_liege_or_above = { this = scope:actor }
+					}
 				}
 			}
 			military_strength_greater_than_ratio_trigger = { TARGET = scope:actor RATIO = 1.5 }

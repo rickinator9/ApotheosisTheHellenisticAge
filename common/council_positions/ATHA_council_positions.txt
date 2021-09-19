@@ -19,15 +19,14 @@
     }
 
     valid_character = {
-        can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root.top_liege }
-        exists = root.top_liege
+        can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root.liege_or_court_owner }
         OR = {
             AND = {
-                root.top_liege.dynasty = dynasty:spartandyn001
+                root.liege_or_court_owner.dynasty = dynasty:spartandyn001
                 dynasty = dynasty:spartandyn002 # Eurypontidas
             }
             AND = {
-                root.top_liege.dynasty = dynasty:spartandyn002 # Eurypontidas
+                root.liege_or_court_owner.dynasty = dynasty:spartandyn002 # Eurypontidas
                 dynasty = dynasty:spartandyn001 # Agiadas
             }
         }
