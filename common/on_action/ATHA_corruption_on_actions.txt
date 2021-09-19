@@ -1,42 +1,38 @@
-﻿on_corruption_change = {
-	trigger = {
-		has_variable = city_state_corruption
-	}
-
+﻿# Is called when the corruption changes.
+# 	scope:affected_character: The character that the corruption changes for.
+on_corruption_change = {
 	effect = {
-		if = {
-			limit = { has_low_corruption_level = yes }
+		scope:affected_character = { 
+			if = {
+				limit = { has_low_corruption_level = yes }
 
-			add_character_modifier = low_corruption_modifier
-			remove_character_modifier = mediocre_corruption_modifier
-			remove_character_modifier = high_corruption_modifier
-			remove_character_modifier = critical_corruption_modifier
-		}
-		else_if = {
-			limit = { has_medium_corruption_level = yes }
+				add_character_modifier = low_corruption_modifier
+				remove_character_modifier = mediocre_corruption_modifier
+				remove_character_modifier = high_corruption_modifier
+				remove_character_modifier = critical_corruption_modifier
+			} else_if = {
+				limit = { has_medium_corruption_level = yes }
 
-			add_character_modifier = mediocre_corruption_modifier
-			remove_character_modifier = low_corruption_modifier
-			remove_character_modifier = high_corruption_modifier
-			remove_character_modifier = critical_corruption_modifier
-		}
-		else_if = {
-			limit = { has_high_corruption_level = yes }
+				add_character_modifier = mediocre_corruption_modifier
+				remove_character_modifier = low_corruption_modifier
+				remove_character_modifier = high_corruption_modifier
+				remove_character_modifier = critical_corruption_modifier
+			} else_if = {
+				limit = { has_high_corruption_level = yes }
 
-			add_character_modifier = high_corruption_modifier
-			remove_character_modifier = low_corruption_modifier
-			remove_character_modifier = mediocre_corruption_modifier
-			remove_character_modifier = critical_corruption_modifier
-		}
-		else_if = {
-			limit = { has_critical_corruption_level = yes }
+				add_character_modifier = high_corruption_modifier
+				remove_character_modifier = low_corruption_modifier
+				remove_character_modifier = mediocre_corruption_modifier
+				remove_character_modifier = critical_corruption_modifier
+			} else_if = {
+				limit = { has_critical_corruption_level = yes }
 
-			add_character_modifier = critical_corruption_modifier
-			remove_character_modifier = low_corruption_modifier
-			remove_character_modifier = mediocre_corruption_modifier
-			remove_character_modifier = high_corruption_modifier
-		}
-		root = {
+				add_character_modifier = critical_corruption_modifier
+				remove_character_modifier = low_corruption_modifier
+				remove_character_modifier = mediocre_corruption_modifier
+				remove_character_modifier = high_corruption_modifier
+			}
+
 			remove_variable = city_state_corruption_change
 		}
 	}

@@ -231,13 +231,9 @@ ATHA_game_start.5 = {
 
 	immediate = {
 		every_ruler = {
-			limit = {
-				government_has_flag = is_city_state_government
-			}
+			limit = { is_city_state = yes }
 
-			trigger_event = {
-				on_action = on_corruption_change
-			}
+			invoke_corruption_change_effect = yes
 		}
 	}
 }

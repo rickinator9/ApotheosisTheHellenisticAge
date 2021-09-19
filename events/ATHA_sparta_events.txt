@@ -6,7 +6,14 @@ city_state_sparta.0001 = {
 	hidden = yes
 
 	trigger = {
-		this = liege.cp:councillor_spartan_dual_monarch
+		trigger_if = {
+			limit = { exists = liege }
+			liege = {
+				cp:councillor_spartan_dual_monarch = {
+					this = root
+				}
+			}
+		}
 	}
 
 	immediate = {

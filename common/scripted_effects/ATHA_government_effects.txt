@@ -261,7 +261,25 @@ implement_franchise_democracy = {
 	}
 }
 implement_franchise_desired = {
-	change_government_form_to_democracy = yes # TODO
+	# Assign the right government form based on franchise.
+	if = {
+		limit = { is_desired_franchise_democratic = yes }
+		change_government_form_to_democracy = yes
+	} else_if = {
+		limit = { is_desired_franchise_oligarchic = yes }
+		change_government_form_to_oligarchy = yes
+	} else_if = {
+		limit = { is_desired_franchise_aristocratic = yes }
+		change_government_form_to_aristocracy = yes
+	} else_if = {
+		limit = { is_desired_franchise_spartan = yes }
+		change_government_form_to_spartan = yes
+	} else_if = {
+		limit = { is_desired_franchise_tyrannical = yes }
+		change_government_form_to_tyranny = yes
+	}
+
+	# Adjust opinion of the liege. 
 	if = {
 		limit = { 
 			is_independent_ruler = no 
@@ -372,4 +390,9 @@ change_government_form_to_democracy = {
 		limit = { highest_held_title_tier >= tier_duchy }
 		primary_title = { add_title_law = democratic_succession_law }
 	}
+}
+
+change_government_form_to_spartan = {
+	change_government_form = { GOVERNMENT = city_state_spartan_government }
+	primary_title = { add_title_law = single_heir_succession_law }
 }

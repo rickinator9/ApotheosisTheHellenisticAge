@@ -34,6 +34,7 @@ set_city_state_corruption = {
 	primary_title = {
 		set_variable = { name = city_state_corruption value = $AMOUNT_ARG$ }
 	}
+	invoke_corruption_change_effect = yes
 }
 
 # Changes the amount of corruption in a city state.
@@ -80,6 +81,8 @@ change_city_state_corruption = {
 					value = 100
 				}
 			}
+
+			holder = { invoke_corruption_change_effect = yes }
 		}
 
 		root = {
@@ -97,15 +100,22 @@ change_city_state_corruption = {
 				}
 			}
 		}
-
-		trigger_event = {
-            on_action = on_corruption_change
-        }
 	}
 }
 
 update_corruption_modifier_after_death_effect = {
-		
+	invoke_corruption_change_with_delay_effect = yes
+}
+
+# Invokes the corruption change on-action.
+invoke_corruption_change_effect = {
+	save_scope_as = affected_character
+	trigger_event = { on_action = on_corruption_change }
+}
+
+# Invokes the corruption change on-action.
+invoke_corruption_change_with_delay_effect = {
+	save_scope_as = affected_character
 	trigger_event = {
 		on_action = on_corruption_change
 		days = 1

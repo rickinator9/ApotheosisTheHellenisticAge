@@ -46,6 +46,22 @@ raiding.0011 = {
 }
 
 
+# Prisoner-taking script beyond this point. Much of this is transcribed from work done by Sean Hughes & Mathilda Bjarnehed for siege events.
+scripted_trigger raiding_0012_can_be_captured = {
+	# Captured characters must be located in the raided barony itself.
+	location = scope:barony.title_province
+
+	# Reasons to exclude characters from the capture pool:
+	NOR = {
+		# If the raiders have defeated the holder's army, but the army has not yet retreated to a different province, shield them from capture by the raid.
+		exists = commanding_army
+		exists = knight_army
+
+		# Is imprisoned in the barony stay prisoners (special case, any courtiers/vassals of the raider will get released elsewhere).
+		is_imprisoned = yes
+	}
+}
+
 # Chance to kidnap prisoners from the holding holder.
 raiding.0013 = {
 	hidden = yes
@@ -63,7 +79,7 @@ raiding.0013 = {
 		#BUILD CAPTURE ATTEMPT LIST
 		scope:barony.holder = {
 			if = {
-				limit = { raiding_0012_can_be_captured = yes } # TODO_NEW this trigger is not defined anywhere!
+				limit = { raiding_0012_can_be_captured = yes }
 				add_to_list = capture_attempt_targets
 			}
 			every_courtier_or_guest = {
