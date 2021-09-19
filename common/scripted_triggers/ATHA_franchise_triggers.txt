@@ -1,0 +1,95 @@
+﻿# Checks whether the given character's city state is at its ideal franchise level.
+is_at_ideal_franchise = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		OR = {
+			AND = {
+				has_government = city_state_democratic_government
+				is_desired_franchise_democratic = yes
+			}
+			AND = {
+				has_government = city_state_oligarchic_government
+				is_desired_franchise_oligarchic = yes
+			}
+			AND = {
+				has_government = city_state_aristocratic_government
+				is_desired_franchise_aristocratic = yes
+			}
+			AND = {
+				has_government = city_state_spartan_government
+				is_desired_franchise_spartan = yes
+			}
+			AND = {
+				has_government = city_state_tyrannical_government
+				is_desired_franchise_tyrannical = yes
+			}
+		}
+	}
+}
+
+# Checks whether the character's city state's franchise is desiring a democratic government.
+is_desired_franchise_democratic = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		primary_title = {
+			var:city_state_franchise >= 75
+		}
+	}
+}
+
+# Checks whether the character's city state's franchise is desiring a oligarchic government.
+is_desired_franchise_oligarchic = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		primary_title = {
+			var:city_state_franchise < 75
+			var:city_state_franchise >= 50
+		}
+	}
+}
+
+# Checks whether the character's city state's franchise is desiring a aristocratic government.
+is_desired_franchise_aristocratic = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		primary_title = {
+			var:city_state_franchise < 50
+			var:city_state_franchise >= 25
+			NOR = {
+				this = title:d_lakedaimon
+				this = title:k_lakedaimon
+				holder = {
+					has_government = city_state_spartan_government
+				}
+			}
+		}
+	}
+}
+
+# Checks whether the character's city state's franchise is desiring a spartan government.
+is_desired_franchise_spartan = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		primary_title = {
+			var:city_state_franchise < 50
+			var:city_state_franchise >= 25
+			OR = {
+				this = title:d_lakedaimon
+				this = title:k_lakedaimon
+				holder = {
+					has_government = city_state_spartan_government
+				}
+			}
+		}
+	}
+}
+
+# Checks whether the character's city state's franchise is desiring a tyrannical government.
+is_desired_franchise_tyrannical = {
+	trigger_if = {
+		limit = { primary_title = { has_variable = city_state_franchise } }
+		primary_title = {
+			var:city_state_franchise < 25
+		}
+	}
+}

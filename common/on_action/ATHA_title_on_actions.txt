@@ -1,0 +1,15 @@
+﻿# New ATHA on actions about titles
+
+# Title(s) are granted to an unlanded character.
+#	root, scope:grantee = the character the titles were granted to.
+#	scope:granter = the character who granted the titles.
+#	scope:highest_tier_title = the title with the highest tier that was granted.
+on_title_granted_to_unlanded = {
+	events = {
+		delay = { days = 1 }
+		ATHA_government.0200 # Set the government and vassal contracts of a newly landed baron.
+		ATHA_government.0201 # Set the government and vassal contracts of a newly landed count or above below a tribal/clan ruler.
+		ATHA_government.0202 # Set the government and vassal contracts of a newly landed count or above below an alliance or sympolity.
+		ATHA_government.0203 # Set the government and vassal contracts of a newly landed count or above below a city state or league.
+	}
+}

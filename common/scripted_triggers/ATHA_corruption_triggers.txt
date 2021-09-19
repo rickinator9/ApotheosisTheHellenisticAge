@@ -30,3 +30,45 @@ secret_corrupt_is_shunned_trigger = {
 secret_corrupt_is_criminal_trigger = {
 	$OWNER$ = { always = yes }
 }
+
+# Checks whether this character's city state has a low corruption level.
+has_low_corruption_level = {
+	primary_title = {
+		OR = {
+			NOT = { has_variable = city_state_corruption }
+			var:city_state_corruption < 25
+		}
+	}
+}
+
+# Checks whether this character's city state has a medium corruption level.
+has_medium_corruption_level = {
+	primary_title = {
+		trigger_if = {
+			limit = { has_variable = city_state_corruption }
+			var:city_state_corruption >= 25
+			var:city_state_corruption < 50
+		}
+	}
+}
+
+# Checks whether this character's city state has a high corruption level.
+has_high_corruption_level = {
+	primary_title = {
+		trigger_if = {
+			limit = { has_variable = city_state_corruption }
+			var:city_state_corruption >= 50
+			var:city_state_corruption < 75
+		}
+	}
+}
+
+# Checks whether this character's city state has a medium corruption level.
+has_critical_corruption_level = {
+	primary_title = {
+		trigger_if = {
+			limit = { has_variable = city_state_corruption }
+			var:city_state_corruption >= 75
+		}
+	}
+}

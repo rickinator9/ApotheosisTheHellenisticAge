@@ -28,9 +28,90 @@ character_view_bg = {
 
 	##########################################
 
-	# Dead
+	# Dead with deified trait
+	texture = {
+		reference = "character_view/greek_tomb_alexander.dds"
+		trigger = {
+			is_alive = no
+			has_trait = deified
+		}
+	}
+
+	environment = {
+		reference = "environment_event_dungeon"
+
+		trigger = {
+			is_alive = no
+			has_trait = deified
+		}
+	}
+
+	##########################################
+
+	# Dead with godlike trait
+	texture = {
+		reference = "character_view/greek_tomb_battos.dds"
+		trigger = {
+			is_alive = no
+			has_trait = godlike
+		}
+	}
+
+	environment = {
+		reference = "environment_event_feast"
+
+		trigger = {
+			is_alive = no
+			has_trait = godlike
+		}
+	}
+
+	##########################################
+
+	# Dead with hero trait
+	texture = {
+		reference = "character_view/greek_tomb_hero.dds"
+		trigger = {
+			is_alive = no
+			has_trait = hero
+		}
+	}
+
+	environment = {
+		reference = "environment_event_sittingroom"
+
+		trigger = {
+			is_alive = no
+			has_trait = hero
+		}
+	}
+
+	##########################################
+
+	# Dead title holder
 	texture = {
 		reference = "character_view/greek_grave.dds"
+		trigger = {
+			is_alive = no
+			exists = primary_title
+		}
+	}
+
+	environment = {
+		reference = "environment_event_temple"
+
+		trigger = {
+			is_alive = no
+			exists = primary_title
+		}
+	}
+
+
+	##########################################
+
+	# Dead
+	texture = {
+		reference = "character_view/greek_cemetery.dds"
 		trigger = {
 			is_alive = no
 		}
@@ -215,7 +296,7 @@ character_view_bg = {
 
 	##########################################
 
-	# Mediterranean, high rank
+	# Mediterranean, empire rank
 	texture = {
 		reference = "character_view/greek_palace.dds"
 
@@ -264,7 +345,104 @@ character_view_bg = {
 	}
 
 	##########################################
-	# Mediterranean, regular
+
+	# Mediterranean, king rank
+	texture = {
+		reference = "character_view/greek_library.dds"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_kingdom
+			has_graphical_mediterranean_region_trigger = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_east_main"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_kingdom
+			has_graphical_mediterranean_region_trigger = yes
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_east_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						exists = primary_title
+						primary_title.tier = tier_kingdom
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						exists = primary_title
+						primary_title.tier = tier_kingdom
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+	# Mediterranean, duke rank
+	texture = {
+		reference = "character_view/greek_villa.dds"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier = tier_duchy
+			has_graphical_mediterranean_region_trigger = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_main"
+
+		trigger = {
+			has_graphical_mediterranean_region_trigger = yes
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_mediterranean_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						exists = primary_title
+						primary_title.tier = tier_duchy
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						exists = primary_title
+						primary_title.tier = tier_duchy
+						has_graphical_mediterranean_region_trigger = yes
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+	# Mediterranean, count rank
 	texture = {
 		reference = "character_view/greek.dds"
 
@@ -844,23 +1022,47 @@ character_location_exterior = {
 	}
 
 	texture = {
-		reference = "event_scenes/throneroom_tribal.dds"
+		reference = "government_types/tribal_government.dds"
 		trigger = { has_government = tribal_government }
 	}
 	texture = {
-		reference = "event_scenes/market_east.dds"
+		reference = "government_types/clan_government.dds"
 		trigger = { has_government = clan_government }
 	}
 	texture = {
-		reference = "event_scenes/courtyard.dds"
-		trigger = { has_government = bureaucracy_military_government }
+		reference = "government_types/city_state_tyrannical_government.dds"
+		trigger = { has_government = city_state_tyrannical_government }
+	}	
+	texture = {
+		reference = "government_types/city_state_aristocratic_government.dds"
+		trigger = { has_government = city_state_aristocratic_government }
 	}
 	texture = {
-		reference = "event_scenes/study.dds"
-		trigger = { has_government = bureaucracy_civil_government }
+		reference = "government_types/city_state_oligarchic_government.dds"
+		trigger = { has_government = city_state_oligarchic_government }
+	}
+	texture = {
+		reference = "government_types/city_state_democratic_government.dds"
+		trigger = { has_government = city_state_democratic_government }
+	}
+	texture = {
+		reference = "government_types/city_state_tyrannical_government.dds"
+		trigger = { has_government = city_state_spartan_government }
 	}
 	texture = {
 		reference = "event_scenes/ATHA_pythia.dds"
+		trigger = { government_has_flag = is_coalition_government }
+	}
+	texture = {
+		reference = "government_types/bureaucracy_military_government.dds"
+		trigger = { has_government = bureaucracy_military_government }
+	}
+	texture = {
+		reference = "government_types/bureaucracy_civil_government.dds"
+		trigger = { has_government = bureaucracy_civil_government }
+	}
+	texture = {
+		reference = "government_types/theocracy_government.dds"
 		trigger = { has_government = theocracy_government }
 	}
 	texture = {

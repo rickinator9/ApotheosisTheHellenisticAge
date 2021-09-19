@@ -1,49 +1,26 @@
-﻿councillor_spartan_dual_monarch_default = {
+﻿task_councillor_spartan_dual_monarch_default = {
 	default_task = yes
 	position = councillor_spartan_dual_monarch
 
-	effect_desc = task_spouse_default_effect_desc
+	effect_desc = task_councillor_spartan_dual_monarch_default_desc
 
 	task_type = task_type_general
 	task_progress = task_progress_infinite
 
 	council_owner_modifier = {
-		name = task_spouse_default_diplomacy_modifier
-		diplomacy = 1
-		scale = spouse_default_task_diplomacy_scale
-	}
-
-	council_owner_modifier = {
-		name = task_spouse_default_martial_modifier
+		name = task_councillor_spartan_dual_monarch_default_modifier
 		martial = 1
-		scale = spouse_default_task_martial_scale
+		scale = spartan_dual_monarch_default_task_martial_scale
 	}
 
 	council_owner_modifier = {
-		name = task_spouse_default_stewardship_modifier
-		stewardship = 1
-		scale = spouse_default_task_stewardship_scale
-	}
-
-	council_owner_modifier = {
-		name = task_spouse_default_intrigue_modifier
-		intrigue = 1
-		scale = spouse_default_task_intrigue_scale
-	}
-
-	council_owner_modifier = {
-		name = task_spouse_default_learning_modifier
-		learning = 1
-		scale = spouse_default_task_learning_scale
+		name = task_councillor_spartan_dual_monarch_default_modifier
+		knight_effectiveness_mult = 0.05
+		scale = spartan_dual_monarch_default_task_knight_effectiveness_scale
 	}
 
 	on_monthly = {
-		scope:councillor_liege = {
-			trigger_event = {
-				on_action = spouse_councillor_default_on_action
-				days = { 0 30 }
-			}
-		}
+		# Nothing happens.
 	}
 
 	ai_will_do = {

@@ -2093,6 +2093,22 @@ macedonian02401 = {
 	}
 	3462.1.1 = { # 292 BC, made up
 		add_spouse = macedonian02906 # Laodike, daughter of Seleucus
+		effect = {
+			create_alliance = {
+				target = character:macedonian02902 # Seleukos
+				allied_through_owner = root
+				allied_through_target = character:macedonian02906
+			}
+		}
+	}
+	3473.9.1 = { # 281 BC, Antiochos inherits so Achaios keeps his alliance with the Seleucids through his wife.
+		effect = {
+			create_alliance = {
+				target = character:macedonian02904 # Antiochos I
+				allied_through_owner = root
+				allied_through_target = character:macedonian02906
+			}
+		}
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
@@ -4879,7 +4895,7 @@ macedonian03953 = {
 			break_betrothal = character:epirote00216 # Deidameia
 		}
 	}
-	3495.1.1 = { # 309 BC, approximate (TODO: change back to 3445 when done with family tree)
+	3445.1.1 = { # 309 BC, approximate
 		death = { 
 			death_reason = death_murder_known # poisoned by Glaucias on the orders of Cassander
 			#killer = ... # Kassandros

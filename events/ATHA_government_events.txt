@@ -1434,5 +1434,344 @@ ATHA_government.0100 = {
 	immediate = {
 		# Initialize any values we need.
 		assign_initial_corruption_value = yes
+		assign_initial_franchise_value = yes
+	}
+}
+
+# An unlanded character is granted land. Set the government based on their capital barony.
+
+# Triggered by on_title_granted_to_unlanded.
+# 	root, scope:grantee = the character the titles were granted to.
+# 	scope:granter = the character who granted the titles.
+# 	scope:highest_tier_title = the title with the highest tier that was granted.
+ATHA_government.0200 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:highest_tier_title.tier = tier_barony
+	}
+
+	immediate = {
+		scope:highest_tier_title.title_province = {
+			if = {
+				limit = {
+					OR = {
+						has_building_with_flag = colony
+						has_building_with_flag = fort
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_military_government }
+				}
+			} else_if = {
+				limit = { has_building_with_flag = castle }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_civil_government }
+				}
+			} else_if = {
+				limit = { has_building_with_flag = city }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = republic_government }
+				}
+			} else_if = {
+				limit = { has_building_with_flag = temple }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = theocracy_government }
+				}
+			}
+		}
+	}
+}
+
+# An unlanded character is granted a county or above by a clan or tribal liege. Set the government based on their capital barony.
+
+# Triggered by on_title_granted_to_unlanded.
+# 	root, scope:grantee = the character the titles were granted to.
+# 	scope:granter = the character who granted the titles.
+# 	scope:highest_tier_title = the title with the highest tier that was granted.
+ATHA_government.0201 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:highest_tier_title.tier > tier_barony
+		scope:granter = {
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
+		}
+	}
+
+	immediate = {
+		scope:grantee.capital_province = {
+			if = {
+				limit = { has_holding_type = tribal_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = tribal_government }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = colony_holding
+						has_holding_type = fort_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_military_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier = tier_county
+				}
+
+				scope:grantee = {
+					change_government_form_to_democracy = yes
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier > tier_county
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = federal_alliance_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}
+			} else_if = {
+				limit = { has_holding_type = city_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = feudal_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
+				}
+			}
+		}
+	}
+}
+
+# An unlanded character is granted a county or above by a alliance, sympolity or amphictyony liege. Set the government based on their capital barony.
+
+# Triggered by on_title_granted_to_unlanded.
+# 	root, scope:grantee = the character the titles were granted to.
+# 	scope:granter = the character who granted the titles.
+# 	scope:highest_tier_title = the title with the highest tier that was granted.
+ATHA_government.0202 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:highest_tier_title.tier > tier_barony
+		scope:granter = {
+			OR = {
+				government_has_flag = is_alliance_government
+				government_has_flag = is_sympolity_government
+			}
+		}
+	}
+
+	immediate = {
+		scope:grantee.capital_province = {
+			if = {
+				limit = { has_holding_type = tribal_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = clan_government }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = colony_holding
+						has_holding_type = fort_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_military_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier = tier_county
+				}
+
+				scope:grantee = {
+					change_government_form_to_democracy = yes
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier > tier_county
+				}
+
+				scope:grantee = {
+					change_government_form_to_characters = { CHAR = scope:granter }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}
+			} else_if = {
+				limit = { has_holding_type = city_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = feudal_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
+				}
+			}
+		}
+	}
+}
+
+# An unlanded character is granted a county or above by a city-state/league liege. Set the government based on their capital barony.
+
+# Triggered by on_title_granted_to_unlanded.
+# 	root, scope:grantee = the character the titles were granted to.
+# 	scope:granter = the character who granted the titles.
+# 	scope:highest_tier_title = the title with the highest tier that was granted.
+ATHA_government.0203 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:highest_tier_title.tier > tier_barony
+		scope:granter = {
+			OR = {
+				is_city_state = yes
+				government_has_flag = is_league_government
+			}
+		}
+	}
+
+	immediate = {
+		scope:granter = {
+			send_interface_message = {
+				title = unlanded_landed_debug_rick
+			}
+		}
+		scope:grantee.capital_province = {
+			if = {
+				limit = { has_holding_type = tribal_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = clan_government }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = colony_holding
+						has_holding_type = fort_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_military_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier = tier_county
+				}
+
+				scope:grantee = {
+					change_government_form_to_democracy = yes
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = castle_holding
+						has_holding_type = city_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_civil_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
+				}
+			}
+		}
+	}
+}
+
+# An unlanded character is granted a county or above by a city-state/league liege. Set the government based on their capital barony.
+
+# Triggered by on_title_granted_to_unlanded.
+# 	root, scope:grantee = the character the titles were granted to.
+# 	scope:granter = the character who granted the titles.
+# 	scope:highest_tier_title = the title with the highest tier that was granted.
+ATHA_government.0204 = {
+	type = empty
+	hidden = yes
+
+	trigger = {
+		scope:highest_tier_title.tier > tier_barony
+		scope:granter = {
+			OR = {
+				is_city_state = yes
+				government_has_flag = is_league_government
+			}
+		}
+	}
+
+	immediate = {
+		scope:granter = {
+			send_interface_message = {
+				title = unlanded_landed_debug_rick
+			}
+		}
+		scope:grantee.capital_province = {
+			if = {
+				limit = { has_holding_type = tribal_holding }
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = clan_government }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = colony_holding
+						has_holding_type = fort_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_military_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+				}
+			} else_if = {
+				limit = {
+					has_holding_type = castle_holding
+					scope:grantee.highest_held_title_tier = tier_county
+				}
+
+				scope:grantee = {
+					change_government_form_to_democracy = yes
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						has_holding_type = castle_holding
+						has_holding_type = city_holding
+					}
+				}
+
+				scope:grantee = {
+					change_government_form = { GOVERNMENT = bureaucracy_civil_government }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
+				}
+			}
+		}
 	}
 }

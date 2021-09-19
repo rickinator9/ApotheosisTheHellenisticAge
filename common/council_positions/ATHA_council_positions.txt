@@ -2,22 +2,34 @@
     skills = martial
     auto_fill = no
     can_fire = no
-    inherit = yes
-    can_reassign = no
+    inherit = no # Handled by events instead.
 
     name = councillor_spartan_dual_monarch
     tooltip = councillor_spartan_dual_monarch_tooltip
 
+    can_reassign = {
+        NOT = {
+            cp:councillor_spartan_dual_monarch = { exists = yes }
+        }
+    }
+
     valid_position = {
-        has_culture = culture:dorian_south
+        has_government = city_state_spartan_government
         is_independent_ruler = yes
-        primary_title = title:d_lakedaimon
-        dynasty = dynasty:spartandyn001 # Agiadas
     }
 
     valid_character = {
-        has_culture = culture:dorian_south
-        dynasty = dynasty:spartandyn002 # Eurypontidas
+        can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root.liege_or_court_owner }
+        OR = {
+            AND = {
+                root.liege_or_court_owner.dynasty = dynasty:spartandyn001
+                dynasty = dynasty:spartandyn002 # Eurypontidas
+            }
+            AND = {
+                root.liege_or_court_owner.dynasty = dynasty:spartandyn002 # Eurypontidas
+                dynasty = dynasty:spartandyn001 # Agiadas
+            }
+        }
 	}
 
     portrait_animation = marshal

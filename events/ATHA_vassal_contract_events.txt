@@ -328,28 +328,28 @@ ATHA_vassal_contract.11 = {
 					vassal_contract_has_flag = has_imposed_democratic_franchise
 					NOT = { has_government = city_state_democratic_government }
 				}
-				change_government_form = { GOVERNMENT = city_state_democratic_government }
+				change_government_form_to_democracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_oligarchic_franchise
 					NOT = { has_government = city_state_oligarchic_government }
 				}
-				change_government_form = { GOVERNMENT = city_state_oligarchic_government }
+				change_government_form_to_oligarchy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_aristocratic_franchise
 					NOT = { has_government = city_state_aristocratic_government }
 				}
-				change_government_form = { GOVERNMENT = city_state_aristocratic_government }
+				change_government_form_to_aristocracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_tyrannic_franchise
 					NOT = { has_government = city_state_tyrannical_government }
 				}
-				change_government_form = { GOVERNMENT = city_state_tyrannical_government }
+				change_government_form_to_tyranny = yes
 			}
 		}
 	}

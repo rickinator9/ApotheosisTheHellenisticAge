@@ -26,7 +26,7 @@ empress_mother = {
 	gender = female
 	special = queen_mother
 	tier = empire
-	governments = { feudal_government }
+	governments = { feudal_government clan_government city_state_spartan_government }
 	priority = 75
 	top_liege = no
 }
@@ -36,6 +36,17 @@ queen_mother = {
 	gender = female
 	special = queen_mother
 	tier = kingdom
+	governments = { clan_government city_state_spartan_government }
+	priority = 42
+	top_liege = no
+}
+
+queen_mother_independent = {
+	type = character
+	gender = female
+	special = queen_mother
+	tier = kingdom
+	only_independent = yes
 	governments = { feudal_government }
 	priority = 42
 	top_liege = no
@@ -46,7 +57,18 @@ prince = {
 	gender = male
 	special = ruler_child
 	tier = kingdom
-	governments = { feudal_government clan_government }
+	governments = { clan_government city_state_spartan_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_independent = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	only_independent = yes
+	governments = { feudal_government }
 	priority = 35
 	top_liege = no
 }
@@ -56,7 +78,18 @@ princess = {
 	gender = female
 	special = ruler_child
 	tier = kingdom
-	governments = { feudal_government clan_government }
+	governments = { clan_government city_state_spartan_government }
+	priority = 35
+	top_liege = no
+}
+
+princess_independent = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	only_independent = yes
+	governments = { feudal_government }
 	priority = 35
 	top_liege = no
 }
@@ -66,7 +99,7 @@ prince_empire = {
 	gender = male
 	special = ruler_child
 	tier = empire
-	governments = { feudal_government clan_government }
+	governments = { feudal_government clan_government city_state_spartan_government }
 	priority = 35
 	top_liege = no
 }
@@ -76,7 +109,7 @@ princess_empire = {
 	gender = female
 	special = ruler_child
 	tier = empire
-	governments = { feudal_government clan_government }
+	governments = { feudal_government clan_government city_state_spartan_government }
 	priority = 35
 	top_liege = no
 }

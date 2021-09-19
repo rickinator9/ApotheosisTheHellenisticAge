@@ -2031,7 +2031,7 @@ offer_vassalization_interaction_effect = {
 		if = {
 			limit = {
                 OR = {
-					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_discrete_tax_contract
 					government_has_flag = has_religious_rights_contract
                 }
 			}
@@ -2084,6 +2084,51 @@ offer_vassalization_interaction_effect = {
 				custom_tooltip = normal_obligations_taxes
 				custom_tooltip = normal_obligations_levies
 			}		
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_coinage_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = coinage_rights level = 1 }
+				}		
+			}
+			custom_tooltip = coinage_granted
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_religious_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
+				}		
+			}
+			custom_tooltip = religious_protection_granted
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_title_revocation_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = title_revocation_rights level = 1 }
+				}		
+			}
+			custom_tooltip = title_revocation_granted
 		}
 
 		if = {
@@ -2201,7 +2246,7 @@ offer_fealty_interaction_effect = {
 		if = {
 			limit = {
                 OR = {
-					government_has_flag = has_discrete_tax_contracts
+					government_has_flag = has_discrete_tax_contract
 					government_has_flag = has_religious_rights_contract
                 }
 			}
@@ -2254,6 +2299,51 @@ offer_fealty_interaction_effect = {
 				custom_tooltip = normal_obligations_taxes
 				custom_tooltip = normal_obligations_levies
 			}		
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_coinage_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = coinage_rights level = 1 }
+				}		
+			}
+			custom_tooltip = coinage_granted
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_religious_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
+				}		
+			}
+			custom_tooltip = religious_protection_granted
+		}
+
+		if = {
+			limit = {
+				scope:autonomous = yes
+				government_has_flag = has_title_revocation_rights_contract
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = title_revocation_rights level = 1 }
+				}		
+			}
+			custom_tooltip = title_revocation_granted
 		}
 
 		if = {
