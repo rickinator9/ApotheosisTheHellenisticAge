@@ -74,14 +74,14 @@ CityStateGUICorruptionValue = {
 	text = {
 		trigger = {
 			is_city_state_bureaucracy = yes
-			liege.primary_title = { has_variable = city_state_corruption }
+			liege = { has_corruption_trigger = yes }
 		}
 		localization_key = CITY_STATE_CORRUPTION_PERCENTAGE_LIEGE
 	}
 	text = {
 		trigger = {
 			government_has_flag = is_city_state_government
-			primary_title = { has_variable = city_state_corruption }
+			has_corruption_trigger = yes
 		}
 		localization_key = CITY_STATE_CORRUPTION_PERCENTAGE_SELF
 	}

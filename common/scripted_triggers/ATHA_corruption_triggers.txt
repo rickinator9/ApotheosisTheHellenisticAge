@@ -1,4 +1,15 @@
-﻿knows_about_character_being_corrupt_trigger = {
+﻿can_have_corruption_trigger = {
+	is_city_state = yes
+}
+
+has_corruption_trigger = {
+	trigger_if = {
+		limit = { exists = primary_title }
+		primary_title = { has_variable = city_state_corruption }
+	}
+}
+
+knows_about_character_being_corrupt_trigger = {
 	OR = {
 		$CHARACTER$ = { has_trait = corrupt }
 		any_known_secret = {
@@ -19,19 +30,17 @@ is_corrupt_trigger = {
 
 # Checks whether this character's city state has a low corruption level.
 has_low_corruption_level = {
-	primary_title = {
-		OR = {
-			NOT = { has_variable = city_state_corruption }
-			var:city_state_corruption < 25
-		}
+	OR = {
+		NOT = { has_corruption_trigger = yes }
+		primary_title = { var:city_state_corruption < 25 }
 	}
 }
 
 # Checks whether this character's city state has a medium corruption level.
 has_medium_corruption_level = {
-	primary_title = {
-		trigger_if = {
-			limit = { has_variable = city_state_corruption }
+	trigger_if = {
+		limit = { has_corruption_trigger = yes }
+		primary_title = {
 			var:city_state_corruption >= 25
 			var:city_state_corruption < 50
 		}
@@ -40,9 +49,9 @@ has_medium_corruption_level = {
 
 # Checks whether this character's city state has a high corruption level.
 has_high_corruption_level = {
-	primary_title = {
-		trigger_if = {
-			limit = { has_variable = city_state_corruption }
+	trigger_if = {
+		limit = { has_corruption_trigger = yes }
+		primary_title = {
 			var:city_state_corruption >= 50
 			var:city_state_corruption < 75
 		}
@@ -51,10 +60,8 @@ has_high_corruption_level = {
 
 # Checks whether this character's city state has a medium corruption level.
 has_critical_corruption_level = {
-	primary_title = {
-		trigger_if = {
-			limit = { has_variable = city_state_corruption }
-			var:city_state_corruption >= 75
-		}
+	trigger_if = {
+		limit = { has_corruption_trigger = yes }
+		primary_title = { var:city_state_corruption >= 75 }
 	}
 }

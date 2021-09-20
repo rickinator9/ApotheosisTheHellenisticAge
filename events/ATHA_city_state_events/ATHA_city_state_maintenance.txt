@@ -7,25 +7,14 @@ city_state_maintenance.0001 = {
     hidden = yes
 
     trigger = {
-        OR = {
-            has_government = city_state_democratic_government
-            has_government = city_state_tyrannical_government
-            has_government = city_state_oligarchic_government
-            has_government = city_state_aristocratic_government
-            has_government = city_state_spartan_government
-        }
+        can_have_corruption_trigger = yes
     }
 
     immediate = {     
         every_held_title = {
-            limit = {
-                tier = root.primary_title.tier
-            }
+            limit = { tier = root.primary_title.tier }
 
-            set_variable = {
-                name = city_state_corruption
-                value = root.primary_title.var:city_state_corruption
-            }
+            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.primary_title.var:city_state_corruption }
         }
     }
 }
@@ -82,21 +71,12 @@ city_state_maintenance.0004 = {
     hidden = yes
 
     trigger = {
-        OR = {
-            has_government = city_state_democratic_government
-            has_government = city_state_tyrannical_government
-            has_government = city_state_oligarchic_government
-            has_government = city_state_aristocratic_government
-            has_government = city_state_spartan_government
-        }
+        can_have_corruption_trigger = yes
     }
 
     immediate = {     
         primary_heir = {
-            set_variable = {
-                name = city_state_corruption
-                value = root.primary_title.var:city_state_corruption
-            }
+            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.primary_title.var:city_state_corruption }
 
             trigger_event = { 
                 id = city_state_maintenance.0007
@@ -105,10 +85,7 @@ city_state_maintenance.0004 = {
         }
 
         every_heir = {
-            set_variable = {
-                name = city_state_corruption
-                value = root.primary_title.var:city_state_corruption
-            }
+            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.primary_title.var:city_state_corruption }
 
             trigger_event = { 
                 id = city_state_maintenance.0007
@@ -123,13 +100,7 @@ city_state_maintenance.0005 = {
     hidden = yes
 
     trigger = {
-        OR = {
-            has_government = city_state_democratic_government
-            has_government = city_state_tyrannical_government
-            has_government = city_state_oligarchic_government
-            has_government = city_state_aristocratic_government
-            has_government = city_state_spartan_government
-        }
+        can_have_corruption_trigger = yes
     }
 
     immediate = {     
@@ -148,14 +119,9 @@ city_state_maintenance.0006 = {
 
     immediate = {
         every_held_title = {
-            limit = {
-                tier = root.primary_title.tier
-            }
+            limit = { tier = root.primary_title.tier }
 
-            set_variable = {
-                name = city_state_corruption
-                value = root.var:rank_change_corruption
-            }
+            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:rank_change_corruption }
         }
 
         remove_variable = rank_change_corruption
@@ -167,12 +133,7 @@ city_state_maintenance.0007 = {
     hidden = yes
 
     immediate = {
-        primary_title = {
-            set_variable = {
-                name = city_state_corruption
-                value = root.var:city_state_corruption
-            }
-        }
+        set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:city_state_corruption }
     }
 }
 
@@ -182,11 +143,11 @@ city_state_maintenance.0008 = {
 
     immediate = {
         primary_heir = {
-            update_corruption_modifier_after_death_effect = yes
+            invoke_corruption_change_with_delay_effect = yes
         }
 
         every_heir = {
-            update_corruption_modifier_after_death_effect = yes
+            invoke_corruption_change_with_delay_effect = yes
         }
 	}
 }

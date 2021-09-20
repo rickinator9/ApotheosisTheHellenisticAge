@@ -2,9 +2,8 @@
 assign_initial_corruption_value = {
 	if = {
 		limit = {
-			NOT = {
-				primary_title = { has_variable = city_state_corruption }
-			}
+			can_have_corruption_trigger = yes
+			NOT = { has_corruption_trigger = yes }
 		}
 
 		if = {
@@ -31,80 +30,90 @@ assign_initial_corruption_value = {
 # Sets the amount of corruption in a city state.
 #	- AMOUNT_ARG: The amount to set the corruption.
 set_city_state_corruption = {
-	primary_title = {
-		set_variable = { name = city_state_corruption value = $AMOUNT_ARG$ }
+	if = {
+		limit = { can_have_corruption_trigger = yes }
+
+		primary_title = {
+			set_city_state_corruption_on_scope = { AMOUNT_ARG = $AMOUNT_ARG$ }
+		}
+		invoke_corruption_change_effect = yes
 	}
-	invoke_corruption_change_effect = yes
+}
+
+# Sets the amount of corruption on this scope.
+#	- AMOUNT_ARG: The amount to set the corruption.
+set_city_state_corruption_on_scope = {
+	set_variable = { name = city_state_corruption value = $AMOUNT_ARG$ }
 }
 
 # Changes the amount of corruption in a city state.
 #	- AMOUNT_ARG: The amount to change the corruption. Valid values can be found in ATHA_city_state_values.txt
 change_city_state_corruption = {
-	set_variable = {
-		name = city_state_corruption_change
-		value = $AMOUNT_ARG$
-	}
+	if = {
+		limit = { can_have_corruption_trigger = yes }
 
-	custom_tooltip = $AMOUNT_ARG$_tooltip
-	hidden_effect = {
-		primary_title = {
-			# Make sure that the variable is even present.
-			if = {
-				limit = { NOT = { has_variable = city_state_corruption } }
-
-				#Leave this set to the default value as a failsafe for city-states that don't recieve the correct value
-				set_variable = {
-					name = city_state_corruption
-					value = corruption_initial_value
-				}
-			}
-
-			# Change the value.
-			change_variable = {
-				name = city_state_corruption
-				add = holder.var:city_state_corruption_change
-			}
-
-			# Constrain the corruption between 0 and 100.
-			if = {
-				limit = { var:city_state_corruption < 0 }
-
-				set_variable = {
-					name = city_state_corruption
-					value = 0
-				}
-			} else_if = {
-				limit = { var:city_state_corruption > 100 }
-
-				set_variable = {
-					name = city_state_corruption
-					value = 100
-				}
-			}
-
-			holder = { invoke_corruption_change_effect = yes }
+		set_variable = {
+			name = city_state_corruption_change
+			value = $AMOUNT_ARG$
 		}
-
-		root = {
-			if = {
-				limit = { var:city_state_corruption_change > 0 }
-				trigger_event = {
-					on_action = on_corruption_gain
+	
+		custom_tooltip = $AMOUNT_ARG$_tooltip
+		hidden_effect = {
+			primary_title = {
+				# Make sure that the variable is even present.
+				if = {
+					limit = { NOT = { has_variable = city_state_corruption } }
+	
+					#Leave this set to the default value as a failsafe for city-states that don't recieve the correct value
+					set_variable = {
+						name = city_state_corruption
+						value = corruption_initial_value
+					}
 				}
+	
+				# Change the value.
+				change_variable = {
+					name = city_state_corruption
+					add = holder.var:city_state_corruption_change
+				}
+	
+				# Constrain the corruption between 0 and 100.
+				if = {
+					limit = { var:city_state_corruption < 0 }
+	
+					set_variable = {
+						name = city_state_corruption
+						value = 0
+					}
+				} else_if = {
+					limit = { var:city_state_corruption > 100 }
+	
+					set_variable = {
+						name = city_state_corruption
+						value = 100
+					}
+				}
+	
+				holder = { invoke_corruption_change_effect = yes }
 			}
-
-			else_if = {
-				limit = { var:city_state_corruption_change < 0 }
-				trigger_event = {
-					on_action = on_corruption_loss
+	
+			root = {
+				if = {
+					limit = { var:city_state_corruption_change > 0 }
+					trigger_event = {
+						on_action = on_corruption_gain
+					}
+				}
+	
+				else_if = {
+					limit = { var:city_state_corruption_change < 0 }
+					trigger_event = {
+						on_action = on_corruption_loss
+					}
 				}
 			}
 		}
 	}
-}
-
-update_corruption_modifier_after_death_effect = {
-	invoke_corruption_change_with_delay_effect = yes
 }
 
 # Invokes the corruption change on-action.
