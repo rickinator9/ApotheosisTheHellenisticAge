@@ -396,3 +396,43 @@ change_government_form_to_spartan = {
 	change_government_form = { GOVERNMENT = city_state_spartan_government }
 	primary_title = { add_title_law = single_heir_succession_law }
 }
+
+# Assign a tribal government to this character.
+land_tribal_government = {
+	change_government_form = { GOVERNMENT = tribal_government }
+}
+
+# Assign a tribal government to this character.
+land_clan_government = {
+	change_government_form = { GOVERNMENT = clan_government }
+}
+
+# Assign a dynastic government to this character and set up the correct vassal contracts.
+land_dynastic_government = {
+	change_government_form = { GOVERNMENT = feudal_government }
+	vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
+}
+
+# Assign a military bureaucracy to this character and set up the correct vassal contracts.
+land_civil_bureaucracy_government = {
+	change_government_form = { GOVERNMENT = bureaucracy_civil_government }
+	vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
+}
+
+# Assign a military bureaucracy to this character and set up the correct vassal contracts.
+land_military_government = {
+	change_government_form = { GOVERNMENT = bureaucracy_military_government }
+	vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
+}
+
+# Assign a democratic government to this character and set up the correct vassal contracts.
+land_democratic_government = {
+	change_government_form_to_democracy = yes
+	vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+}
+
+# Assign a federal alliance government to this character and set up the correct vassal contracts.
+land_federal_alliance_government = {
+	change_government_form = { GOVERNMENT = federal_alliance_government }
+	vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+}

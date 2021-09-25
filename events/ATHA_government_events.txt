@@ -1512,10 +1512,7 @@ ATHA_government.0201 = {
 		scope:grantee.capital_province = {
 			if = {
 				limit = { has_holding_type = tribal_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = tribal_government }
-				}
+				scope:grantee = { land_tribal_government = yes }
 			} else_if = {
 				limit = {
 					OR = {
@@ -1523,38 +1520,22 @@ ATHA_government.0201 = {
 						has_holding_type = fort_holding
 					}
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_military_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
-				}
+				scope:grantee = { land_military_government = yes }
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding
 					scope:grantee.highest_held_title_tier = tier_county
 				}
-
-				scope:grantee = {
-					change_government_form_to_democracy = yes
-					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
-				}
+				scope:grantee = { land_democratic_government = yes }
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding
 					scope:grantee.highest_held_title_tier > tier_county
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = federal_alliance_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
-				}
+				scope:grantee = { land_federal_alliance_government = yes }
 			} else_if = {
 				limit = { has_holding_type = city_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = feudal_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
-				}
+				scope:grantee = { land_dynastic_government = yes }
 			}
 		}
 	}
@@ -1584,10 +1565,7 @@ ATHA_government.0202 = {
 		scope:grantee.capital_province = {
 			if = {
 				limit = { has_holding_type = tribal_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = clan_government }
-				}
+				scope:grantee = { land_clan_government = yes }
 			} else_if = {
 				limit = {
 					OR = {
@@ -1595,21 +1573,13 @@ ATHA_government.0202 = {
 						has_holding_type = fort_holding
 					}
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_military_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
-				}
+				scope:grantee = { land_military_government = yes }
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding
 					scope:grantee.highest_held_title_tier = tier_county
 				}
-
-				scope:grantee = {
-					change_government_form_to_democracy = yes
-					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
-				}
+				scope:grantee = { land_democratic_government = yes }
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding
@@ -1622,11 +1592,7 @@ ATHA_government.0202 = {
 				}
 			} else_if = {
 				limit = { has_holding_type = city_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = feudal_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
-				}
+				scope:grantee = { land_dynastic_government = yes }
 			}
 		}
 	}
@@ -1653,18 +1619,10 @@ ATHA_government.0203 = {
 	}
 
 	immediate = {
-		scope:granter = {
-			send_interface_message = {
-				title = unlanded_landed_debug_rick
-			}
-		}
 		scope:grantee.capital_province = {
 			if = {
 				limit = { has_holding_type = tribal_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = clan_government }
-				}
+				scope:grantee = { land_clan_government = yes }
 			} else_if = {
 				limit = {
 					OR = {
@@ -1672,21 +1630,7 @@ ATHA_government.0203 = {
 						has_holding_type = fort_holding
 					}
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_military_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
-				}
-			} else_if = {
-				limit = {
-					has_holding_type = castle_holding
-					scope:grantee.highest_held_title_tier = tier_county
-				}
-
-				scope:grantee = {
-					change_government_form_to_democracy = yes
-					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
-				}
+				scope:grantee = { land_military_government = yes }
 			} else_if = {
 				limit = {
 					OR = {
@@ -1694,17 +1638,13 @@ ATHA_government.0203 = {
 						has_holding_type = city_holding
 					}
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_civil_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
-				}
+				scope:grantee = { land_civil_bureaucracy_government = yes }
 			}
 		}
 	}
 }
 
-# An unlanded character is granted a county or above by a city-state/league liege. Set the government based on their capital barony.
+# An unlanded character is granted a county or above by a dynastic/bureaucratic liege. Set the government based on their capital barony.
 
 # Triggered by on_title_granted_to_unlanded.
 # 	root, scope:grantee = the character the titles were granted to.
@@ -1718,25 +1658,17 @@ ATHA_government.0204 = {
 		scope:highest_tier_title.tier > tier_barony
 		scope:granter = {
 			OR = {
-				is_city_state = yes
-				government_has_flag = is_league_government
+				has_government = feudal_government
+				government_has_flag = is_bureaucracy_government
 			}
 		}
 	}
 
 	immediate = {
-		scope:granter = {
-			send_interface_message = {
-				title = unlanded_landed_debug_rick
-			}
-		}
 		scope:grantee.capital_province = {
 			if = {
 				limit = { has_holding_type = tribal_holding }
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = clan_government }
-				}
+				scope:grantee = { land_clan_government = yes }
 			} else_if = {
 				limit = {
 					OR = {
@@ -1744,33 +1676,17 @@ ATHA_government.0204 = {
 						has_holding_type = fort_holding
 					}
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_military_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
-				}
+				scope:grantee = { land_military_government = yes }
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding
-					scope:grantee.highest_held_title_tier = tier_county
 				}
-
-				scope:grantee = {
-					change_government_form_to_democracy = yes
-					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
-				}
+				scope:grantee = { land_civil_bureaucracy_government = yes }
 			} else_if = {
 				limit = {
-					OR = {
-						has_holding_type = castle_holding
-						has_holding_type = city_holding
-					}
+					has_holding_type = city_holding
 				}
-
-				scope:grantee = {
-					change_government_form = { GOVERNMENT = bureaucracy_civil_government }
-					vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
-				}
+				scope:grantee = { land_dynastic_government = yes }
 			}
 		}
 	}
