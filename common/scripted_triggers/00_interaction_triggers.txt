@@ -56,7 +56,7 @@ title_revocation_is_tyrannical_trigger = {
 	NOR = {
 		has_revoke_title_reason = scope:recipient
 		has_claim_on = scope:landed_title
-		scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revocation }
+		scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revoke_title }
 		faith = {
 			OR = {
 				AND = {								
@@ -81,6 +81,7 @@ title_revocation_is_tyrannical_trigger = {
 vassal_revocation_is_tyrannical_trigger = {
 	NOR = {
 		has_revoke_title_reason = scope:recipient
+		scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revoke_vassal }
 		faith = {
 			OR = {
 				AND = {								

@@ -697,6 +697,12 @@ vassal_revocation_tyranny_effect = {
 	}
 	else_if = {
 		limit = {
+			scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revoke_vassal }
+		}
+		custom_tooltip = IS_ALLOWED_TO_REVOKE_VASSAL_GOVERNOR_DESC
+	}
+	else_if = {
+		limit = {
 			faith = {
 				OR = {
 					has_doctrine_parameter = pluralism_righteous_revocation_tyranny_reduced
@@ -762,7 +768,7 @@ revocation_tyranny_effect = {
 		}
 		else_if = {
 			limit = {
-				scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revocation }
+				scope:recipient = { vassal_contract_has_flag = vassal_contract_free_revoke_title }
 			}
 			custom_tooltip = IS_ALLOWED_TO_REVOKE_TITLE_GOVERNOR_DESC
 		}
