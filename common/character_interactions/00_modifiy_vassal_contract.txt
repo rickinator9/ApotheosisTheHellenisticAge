@@ -84,6 +84,112 @@
 			}
 			
 			vassal_contract_compatibility_trigger = yes
+			
+			# Vassal must be duchy-tier or lower in order to become a City-State
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					local_var:vassal_role < contract_vassal_role_coalition_autonomous
+				}
+				scope:recipient = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_lower"
+						highest_held_title_tier <= tier_duchy
+					}
+				}
+			}
+			# Liege must meet conditions to create dependent vassals
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					OR = {
+						local_var:vassal_role = contract_vassal_role_city_state_dependent
+						local_var:vassal_role = contract_vassal_role_coalition_dependent
+					}
+				}
+				scope:actor = { can_create_dependent_vassals = yes }
+			}
+			# Vassal must be duchy-tier or higher in order to become a Coalition
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					OR = {
+						local_var:vassal_role = contract_vassal_role_coalition_autonomous
+						local_var:vassal_role = contract_vassal_role_coalition_dependent
+					}
+				}
+				scope:recipient = {
+					custom_description = {
+						text = "vassal_contract_duchy_or_higher"
+						highest_held_title_tier >= tier_duchy
+					}
+				}
+			}
+			# Liege needs Diplomatic Missions innovation to create Coalition vassals (unless the vassal already has the dependent coalition contract)
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					OR = {
+						local_var:vassal_role = contract_vassal_role_coalition_autonomous
+						local_var:vassal_role = contract_vassal_role_coalition_dependent
+					}
+					scope:recipient = {
+						NOT = { vassal_contract_has_flag = has_dependent_coalition_contract }
+					}
+				}
+				scope:actor.culture = { has_innovation = innovation_classical_diplomatic_missions }
+			}
+			# Liege must meet conditions to create bureaucratic vassals
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					local_var:vassal_role > contract_vassal_role_coalition_dependent
+				}
+				scope:actor = { can_create_bureaucratic_vassals = yes }
+			}
+			# Liege needs Garrisons innovation to create Military Command vassals
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					local_var:vassal_role = contract_vassal_role_bureaucracy_military
+				}
+				scope:actor.culture = { has_innovation = innovation_classical_garrisons }
+			}
+			# Liege needs Bureaucracy innovation to create Civil Bureaucracy & Dynastic vassals
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					OR = {
+						local_var:vassal_role = contract_vassal_role_bureaucracy_civil
+						local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+					}
+				}
+				scope:actor.culture = { has_innovation = innovation_classical_bureaucracy }
+			}
+			# Vassal must have already have a bureaucratic government before it can be given dynastic
+			trigger_if = {
+				limit = {
+					exists = local_var:vassal_role
+					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+				}
+				scope:recipient = {
+					custom_description = {
+						text = "can_become_bureaucracy_feudal"
+						NOR = { 
+							government_has_flag = is_coalition_government
+							government_has_flag = is_city_state_government
+						}	
+					}
+				}
+			}
 		}
 	}
 
@@ -219,6 +325,121 @@ vassal_modify_vassal_contract_interaction = {
 		}
 			
 		vassal_contract_compatibility_trigger = yes
+
+		# Vassal must be duchy-tier or lower in order to become a City-State
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				local_var:vassal_role < contract_vassal_role_coalition_autonomous
+			}
+			scope:actor = {
+				custom_description = {
+					text = "vassal_contract_duchy_or_lower"
+					highest_held_title_tier <= tier_duchy
+				}
+			}
+		}
+		# Liege must meet conditions to create dependent vassals
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				OR = {
+					local_var:vassal_role = contract_vassal_role_city_state_dependent
+					local_var:vassal_role = contract_vassal_role_coalition_dependent
+				}
+			}
+			scope:recipient = { can_create_dependent_vassals = yes }
+		}
+		# Vassal must be duchy-tier or higher in order to become a Coalition
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				OR = {
+					local_var:vassal_role = contract_vassal_role_coalition_autonomous
+					local_var:vassal_role = contract_vassal_role_coalition_dependent
+				}
+			}
+			scope:actor = {
+				custom_description = {
+					text = "vassal_contract_duchy_or_higher"
+					highest_held_title_tier >= tier_duchy
+				}
+			}
+		}
+		# Liege needs Diplomatic Missions innovation to create Coalition vassals (unless the vassal already has this innovation or has the dependent coalition contract)
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				OR = {
+					local_var:vassal_role = contract_vassal_role_coalition_autonomous
+					local_var:vassal_role = contract_vassal_role_coalition_dependent
+				}
+				scope:actor = {
+					NOR = { 
+						vassal_contract_has_flag = has_dependent_coalition_contract
+						culture = { has_innovation = innovation_classical_diplomatic_missions }
+					}
+				}
+			}
+			scope:recipient.culture = { has_innovation = innovation_classical_diplomatic_missions }
+		}
+		# Liege must meet conditions to create bureaucratic vassals
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				local_var:vassal_role > contract_vassal_role_coalition_dependent
+			}
+			scope:recipient = { can_create_bureaucratic_vassals = yes }
+		}
+		# Liege needs Garrisons innovation to create Military Command vassals (unless the vassal already has this innovation)
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				local_var:vassal_role = contract_vassal_role_bureaucracy_military
+				NOT = { 
+					scope:actor.culture = { has_innovation = innovation_classical_garrisons }
+				}
+			}
+			scope:recipient.culture = { has_innovation = innovation_classical_garrisons }
+		}
+		# Liege needs Bureaucracy innovation to create Civil Bureaucracy & Dynastic vassals (unless the vassal already has this innovation)
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				OR = {
+					local_var:vassal_role = contract_vassal_role_bureaucracy_civil
+					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+				}
+				NOT = { 
+					scope:actor.culture = { has_innovation = innovation_classical_bureaucracy }
+				}
+			}
+			scope:recipient.culture = { has_innovation = innovation_classical_bureaucracy }
+		}
+		# Vassal must have already have a bureaucratic government before it can be given dynastic
+		trigger_if = {
+			limit = {
+				exists = local_var:vassal_role
+				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
+				local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+			}
+			scope:actor = {
+				custom_description = {
+					text = "can_become_bureaucracy_feudal"
+					NOR = { 
+						government_has_flag = is_coalition_government
+						government_has_flag = is_city_state_government
+					}	
+				}
+			}
+		}
 	}
 
 	auto_accept = yes
