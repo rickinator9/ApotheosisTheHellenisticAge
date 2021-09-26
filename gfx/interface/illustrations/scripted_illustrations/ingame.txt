@@ -201,6 +201,66 @@ character_view_bg = {
 
 	##########################################
 
+	# Tribal King & Emperor
+	texture = {
+		reference = "character_view/greek_tribal_king.dds"
+
+		trigger = {
+			exists = primary_title
+			primary_title.tier >= tier_kingdom
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_india_main"
+
+		trigger = {
+			OR = {
+				has_government = tribal_government
+				has_government = clan_government
+			}
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_cw_india_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						exists = primary_title
+						primary_title.tier >= tier_kingdom
+						OR = {
+							has_government = tribal_government
+							has_government = clan_government
+						}
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						exists = primary_title
+						primary_title.tier >= tier_kingdom
+						OR = {
+							has_government = tribal_government
+							has_government = clan_government
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
+
 	# Tribal
 	texture = {
 		reference = "character_view/greek_tribal.dds"
@@ -1046,7 +1106,7 @@ character_location_exterior = {
 		trigger = { has_government = city_state_democratic_government }
 	}
 	texture = {
-		reference = "government_types/city_state_tyrannical_government.dds"
+		reference = "government_types/city_state_spartan_government.dds"
 		trigger = { has_government = city_state_spartan_government }
 	}
 	texture = {
