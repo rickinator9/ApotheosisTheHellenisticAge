@@ -1546,6 +1546,7 @@ yearly.5010 = {
 	}
 	option = { #Midway solution (diplomatic duel)
 		name = yearly.5010.b
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 		duel = {
 			skill = diplomacy
 			value = medium_skill_rating
@@ -1728,6 +1729,7 @@ yearly.5010 = {
 				}
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 		duel = {
 			skill = intrigue
 			value = decent_skill_rating
@@ -2436,6 +2438,7 @@ yearly.5020 = {
 			}
 			scope:helpful_councillor = { set_relation_mentor = scope:scoped_heir }
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 		duel = {
 			skill = intrigue
 			target = scope:helpful_councillor
@@ -2590,6 +2593,7 @@ yearly.5021 = {
 				}
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 		if = {
 			limit = {
 				scope:helpful_councillor = { is_councillor_of = root }
@@ -3833,6 +3837,7 @@ yearly.5040 = {
 
 	option = { #Spy on them.
 		name = yearly.5040.b
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 		duel = {
 			skill = intrigue
 			value = decent_skill_rating
@@ -3906,6 +3911,7 @@ yearly.5040 = {
 			text = yearly.5040.c.b
 		}
 		add_dread = medium_dread_gain
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	
 		
 		
@@ -3987,6 +3993,7 @@ yearly.5040 = {
 	option = { #Do nothing.
 		name = yearly.5040.d
 		add_dread = minor_dread_loss
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 		stress_impact = {
 			paranoid = medium_stress_impact_gain
 		}
@@ -4431,6 +4438,7 @@ yearly.5050 = {
 
 	option = { #Punish courtier.
 		name = yearly.5050.a.a
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 		scope:scoped_spouse = {
 			add_prestige = minor_prestige_gain
 			add_opinion = {
@@ -4525,6 +4533,7 @@ yearly.5050 = {
 	}
 	option = { #Investigate story.
 		name = yearly.5050.c
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 		duel = {
 			skill = intrigue
 			value = mediocre_skill_rating
@@ -4685,6 +4694,7 @@ yearly.5051 = {
 			scope:scoped_spouse = { has_character_flag = flag_spouse_lying }
 			has_trait = arbitrary
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 		trait = arbitrary
 		add_prestige = minor_prestige_loss
 		scope:scoped_spouse = {
@@ -5492,6 +5502,8 @@ yearly.8000 = { # Vassal offers liege a gift, by Alexander Oltner
 				}
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 		
 		scope:vassal = {
 			add_opinion = {
