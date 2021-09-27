@@ -1691,3 +1691,46 @@ ATHA_government.0204 = {
 		}
 	}
 }
+
+# Triggered by on_rank_up. Assigns a elective succession law if the character is a duke or above and they do not have an elective succession law.
+ATHA_government.0301 = {
+	type = character_event
+	title = ATHA_government.0301.t
+	desc = ATHA_government.0301.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	trigger = {
+		highest_held_title_tier >= tier_duchy
+		is_city_state_elective_type = yes
+		NOT = {
+			any_held_title = {
+				OR = {
+					has_title_law = democratic_succession_law
+					has_title_law = oligarchic_succession_law
+					has_title_law = aristocratic_succession_law
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_government = city_state_democratic_government }
+			primary_title = { add_title_law = democratic_succession_law }
+		} else_if = {
+			limit = { has_government = city_state_oligarchic_government }
+			primary_title = { add_title_law = oligarchic_succession_law }
+		} else_if = {
+			limit = { has_government = city_state_aristocratic_government }
+			primary_title = { add_title_law = aristocratic_succession_law }
+		}
+	}
+
+	option = {
+		name = ATHA_government.0301.a
+	}
+}
