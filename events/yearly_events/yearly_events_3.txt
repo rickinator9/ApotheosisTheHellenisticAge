@@ -617,6 +617,7 @@ yearly.3002 = {
 					type = threat_hook
 				}
 			}
+			change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 			add_hook = {
 				target = scope:vassal
 				type = threat_hook
@@ -646,6 +647,7 @@ yearly.3002 = {
 			modifier = yearly_benevolent_forgiveness_modifier
 			years = 10
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 		if = {
 			limit = {
 				tyranny > 0		
@@ -718,6 +720,7 @@ yearly.3003 = {
 				gold = root.major_gold_value
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 		stress_impact = {
 			greedy = medium_stress_impact_gain
 		}
@@ -846,6 +849,7 @@ yearly.3004 = {
 				type = loyalty_hook
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 
 		reverse_add_opinion = {
 			target = scope:vassal
@@ -886,6 +890,7 @@ yearly.3004 = {
 		stress_impact = {
 			forgiving = medium_stress_impact_gain
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 
 		ai_chance = {
 			base = 100
@@ -908,6 +913,7 @@ yearly.3004 = {
 			compassionate = major_stress_impact_gain
 			forgiving = major_stress_impact_gain
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 
 		ai_chance = {
 			base = 50
@@ -974,6 +980,7 @@ yearly.3005 = {
 						opinion = -20
 					}
 				}
+				change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 			}
 		}
 
@@ -1000,6 +1007,8 @@ yearly.3005 = {
 			forgiving = major_stress_impact_gain
 			just = major_stress_impact_gain
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 
 		ai_chance = {
 			base = 50
@@ -1977,6 +1986,7 @@ yearly.3031 = {
 							type = favor_hook
 							target = liege
 						}
+						change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 					}
 
 					add_prestige = medium_prestige_gain
@@ -2005,6 +2015,7 @@ yearly.3031 = {
 								type = favor_hook
 								target = liege
 							}
+							change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 						}
 
 						add_prestige = medium_prestige_gain
@@ -2047,6 +2058,7 @@ yearly.3031 = {
 							type = favor_hook
 							target = liege
 						}
+						change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 					}
 
 					add_prestige = medium_prestige_gain
@@ -2083,6 +2095,7 @@ yearly.3031 = {
 								type = favor_hook
 								target = liege
 							}
+							change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 						}
 
 						add_prestige = medium_prestige_gain
@@ -2341,6 +2354,7 @@ yearly.3031 = {
 							type = favor_hook
 							target = liege
 						}
+						change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 					}
 
 					add_piety = medium_piety_gain
@@ -2369,6 +2383,7 @@ yearly.3031 = {
 								type = favor_hook
 								target = liege
 							}
+							change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 						}
 
 						add_piety = medium_piety_gain
@@ -2411,6 +2426,7 @@ yearly.3031 = {
 							type = favor_hook
 							target = liege
 						}
+						change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 					}
 
 					add_piety = medium_piety_gain
@@ -2447,6 +2463,7 @@ yearly.3031 = {
 								type = favor_hook
 								target = liege
 							}
+							change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 						}
 
 						add_piety = medium_piety_gain
@@ -2701,6 +2718,7 @@ yearly.3031 = {
 					type = favor_hook
 					target = liege
 				}
+				change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 			}
 
 			reverse_add_opinion = {
@@ -2737,6 +2755,7 @@ yearly.3031 = {
 						type = favor_hook
 						target = liege
 					}
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 				}
 
 				reverse_add_opinion = {
@@ -3196,6 +3215,8 @@ yearly.3051 = {
 			modifier = angry_opinion
 			opinion = -30
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		
 		if = {
 			limit = {
 				OR = {
@@ -3244,6 +3265,7 @@ yearly.3051 = {
 			modifier = grateful_opinion
 			opinion = 30
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 
 		stress_impact = {
 			greedy = medium_stress_impact_gain
@@ -3256,128 +3278,6 @@ yearly.3051 = {
 				ai_honor = 1
 				ai_compassion = 0.5
 			}
-		}
-	}
-}
-
-
-
-
-################################
-# Cagots
-# by Petter Vilberg
-################################
-scripted_trigger yearly_3061_county_trigger = {
-	tier = tier_county
-	title_province = {
-		always = no
-	}
-	faith = root.faith
-}
-
-yearly.3061 = {
-	type = character_event
-	title = yearly.3061.t
-	desc = yearly.3061.desc
-	theme = realm
-	override_background = {
-		reference = terrain_scope
-	}
-	left_portrait = {
-		character = root
-		triggered_animation = {
-			trigger = { has_trait = zealous }
-			animation = rage
-		}
-		triggered_animation = {
-			trigger = {
-				OR = {
-					has_trait = paranoid
-					has_trait = craven
-				}
-			}
-			animation = worry
-		}
-		triggered_animation = {
-			trigger = { always = yes }
-			animation = disapproval
-		}
-	}
-	
-	trigger = {
-		is_ai = no
-		NOT = { exists = global_var:had_cagot_event }
-		always = no
-		any_held_title = {
-			yearly_3061_county_trigger = yes
-		}
-	}
-
-	immediate = {
-		set_global_variable = {
-			name = had_cagot_event
-			value = yes
-		}
-		random_held_title = {
-			limit = {
-				yearly_3061_county_trigger = yes
-			}
-			save_scope_as = county
-			title_province = {
-				save_scope_as = background_terrain_scope
-			}
-		}
-	}
-
-	option = { # Levy a tax, but leave them be
-		name = yearly.3061.a
-		trigger = { NOT = { has_trait = lunatic } }
-		show_as_unavailable = { always = yes }
-		add_gold = medium_gold_value
-		add_piety = minor_piety_loss
-		scope:county = {
-			add_county_modifier = {
-				modifier = cagots_left_in_peace_modifier
-				years = 25
-			}
-		}
-	}
-
-	option = { # Separate them out!
-		name = yearly.3061.b
-		flavor = yearly.3061.b.flavor
-		trigger = { NOT = { has_trait = lunatic } }
-		show_as_unavailable = { always = yes }
-		remove_short_term_gold = medium_gold_value
-		add_piety = minor_piety_gain
-		scope:county = {
-			add_county_modifier = {
-				modifier = cagots_separated_modifier
-				years = 100
-			}
-		}
-	}
-	
-	option = { # Perhaps we could try to live side by side with them?
-		name = yearly.3061.c
-		trigger = { has_trait = lunatic }
-		trait = lunatic_1
-		trait = lunatic_genetic
-		add_prestige = minor_prestige_loss
-		add_character_modifier = {
-			modifier = lunatic_accepting_of_others_modifier
-			years = 10
-		}
-	}
-	
-	option = { # Drive them out and seize their possessions!
-		name = yearly.3061.d
-		trigger = { has_trait = zealous }
-		trait = zealous
-		add_gold = major_gold_value
-		scope:county = {
-			change_development_level = -1
-			change_county_control = 50
 		}
 	}
 }
