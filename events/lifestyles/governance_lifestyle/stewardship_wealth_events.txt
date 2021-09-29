@@ -171,7 +171,6 @@ stewardship_wealth.1001 = {
 			}
 		}
 
-
 		stress_impact = {
 			lazy = minor_stress_impact_gain
 			dull = minor_stress_impact_gain
@@ -186,7 +185,8 @@ stewardship_wealth.1001 = {
 				add = 100
 				stewardship >= 12
 			}
-		}			
+		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }			
 	}
 
 	#Option 2: Exchange a favor with a wealth vassal to get some gold from them.
@@ -247,6 +247,7 @@ stewardship_wealth.1001 = {
 				ai_greed = -1.0
 			}
 		}	
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 	
 	#Option 3: A tyrannical ruler can spend Dread to receive gold from their vassals, though the move makes them seem weak.
@@ -283,6 +284,7 @@ stewardship_wealth.1001 = {
 				ai_vengefulness = 1.0
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
 	}
 
 	#Option 4: Confiscate church property to pay for your debts.
@@ -303,6 +305,7 @@ stewardship_wealth.1001 = {
 				ai_greed = 2.0
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	#Option 5: Tighten your belt. Earn a small amount of gold for stress
@@ -323,6 +326,7 @@ stewardship_wealth.1001 = {
 				ai_boldness = -2.0
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 }
@@ -382,6 +386,8 @@ stewardship_wealth.1011 = {
 				ai_rationality = 2
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	#Option 2: Mint new gold coins to gain prestige.
@@ -415,6 +421,8 @@ stewardship_wealth.1011 = {
 				ai_boldness = 2
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	#Option 3: Debase the coins to earn a quick buck.
@@ -478,7 +486,9 @@ stewardship_wealth.1011 = {
 				ai_greed = 3
 				ai_honor = -1
 			}
-		}			
+		}
+		
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
 
@@ -562,7 +572,9 @@ stewardship_wealth.1021 = {
 				ai_compassion = -1
 				ai_honor = 2
 			}
-		}	
+		}
+		
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	#Option 2: Reduce the maintenance cost of your armies; Martial challenge to avoid getting a combat penalty.
@@ -629,6 +641,7 @@ stewardship_wealth.1021 = {
 			}
 		}		
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 	
 	#Option 3: Gain a bonus to looting enemy lands.
@@ -736,6 +749,7 @@ stewardship_wealth.1022 = {
 				ai_greed = 1
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	option = { # Refuse to use the money, spend it on reparations
@@ -758,6 +772,7 @@ stewardship_wealth.1022 = {
 				ai_compassion = 2
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 	
 	option = { # I should be able to take whatever I want!
@@ -788,6 +803,7 @@ stewardship_wealth.1022 = {
 				ai_boldness = 2
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
 	}
 }
 
@@ -908,6 +924,8 @@ stewardship_wealth.1051 = {
 		ai_chance = {
 			base = 0
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	#Allow the peasant farmer to buy your lands, gaining a lot of gold but suffering heavy county authority penalties.
@@ -940,6 +958,8 @@ stewardship_wealth.1051 = {
 				ai_greed = 100
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	#Refuse to allow the farmer more land, solidifying your grip on the province.
@@ -984,6 +1004,8 @@ stewardship_wealth.1051 = {
 				}
 			}			
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
 
@@ -1182,6 +1204,8 @@ stewardship_wealth.1061 = {
 				ai_rationality = 100
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	# Option B: Gain a Favor on a random vassal.
@@ -1206,6 +1230,8 @@ stewardship_wealth.1061 = {
 				ai_greed = -100
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 	
 	# Option C: Just give me some gold.
@@ -1226,6 +1252,8 @@ stewardship_wealth.1061 = {
 				ai_rationality = -100
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
 
@@ -1287,6 +1315,8 @@ stewardship_wealth.5001 = {
 				ai_rationality = 0.5
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 
 	option = { #try to breed them
@@ -1342,6 +1372,7 @@ stewardship_wealth.5001 = {
 				ai_vengefulness = 0.5
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 }
 
