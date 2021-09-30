@@ -43,22 +43,32 @@
 		}
 	}
 
-	modifier = {# House Head bonus
-		# Must be greater than bonuses for heir to ensure this is offset in favour of house head.
-		add = 40
+	modifier = { # Dynasty Head bonus
+		add = 20
 		desc = tooltip_aristocratic_elector_vote_dynasty_head
-		scope:candidate = { is_house_head = yes }
+		scope:candidate = { is_dynast = yes }
 	}	
+
+	modifier = { # Future Dynasty Head bonus
+		add = 10
+		desc = tooltip_aristocratic_elector_vote_next_dynasty_head
+		scope:candidate.dynasty.dynast = {
+			primary_heir = { this = scope:candidate }
+		}
+	}
 			
 	modifier = { # Prestige bonus
-		# Must be greater than bonuses for heir to ensure this is offset in favour of house head.
-		add = 40
 		desc = tooltip_aristocratic_elector_vote_dynasty_prestige
 		add = {
 			add = 10
 			if = {
-				limit = { exists = this.house }
-				multiply = scope:elector.dynasty.dynasty_prestige_level
+				limit = {
+					trigger_if = {
+						limit = { exists = scope:candidate.dynasty }
+						scope:candidate.dynasty.dynasty_prestige_level >= 1
+					}
+				}
+				multiply = scope:candidate.dynasty.dynasty_prestige_level
 			}
 		}
 	}
