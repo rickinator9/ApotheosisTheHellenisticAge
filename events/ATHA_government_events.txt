@@ -1522,17 +1522,8 @@ ATHA_government.0201 = {
 				}
 				scope:grantee = { land_military_government = yes }
 			} else_if = {
-				limit = {
-					has_holding_type = castle_holding
-					scope:grantee.highest_held_title_tier = tier_county
-				}
-				scope:grantee = { land_democratic_government = yes }
-			} else_if = {
-				limit = {
-					has_holding_type = castle_holding
-					scope:grantee.highest_held_title_tier > tier_county
-				}
-				scope:grantee = { land_federal_alliance_government = yes }
+				limit = { has_holding_type = castle_holding }
+				scope:grantee = { land_clan_government = yes }
 			} else_if = {
 				limit = { has_holding_type = city_holding }
 				scope:grantee = { land_dynastic_government = yes }

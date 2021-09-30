@@ -549,6 +549,11 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
+		is_valid = {
+			scope:actor = {
+				can_create_dependent_vassals = yes
+			}
+		}
 		flag = dependent
 		localization = dependent
 	}
@@ -1008,6 +1013,11 @@ offer_fealty_interaction = {
 					government_has_flag = is_city_state_government
 					government_has_flag = is_coalition_government
 				}
+			}
+		}
+		is_valid = {
+			scope:recipient = {
+				can_create_dependent_vassals = yes
 			}
 		}
 		flag = dependent
