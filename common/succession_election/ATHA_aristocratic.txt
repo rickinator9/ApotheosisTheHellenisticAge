@@ -44,21 +44,11 @@ aristocratic_elective = {
 			desc = tooltip_aristocratic_elective_size
 			is_landed = yes
 			domain_size >= 1
-			any_held_title = {
-				tier = tier_county
-				development_level > 0
-				target_is_de_jure_liege_or_above = scope:title
-			}
+			any_held_title = { tier = tier_county }
 			add = {
 				every_held_title = {
-					limit = {
-						tier = tier_county
-						development_level > 0
-						target_is_de_jure_liege_or_above = scope:title
-					}
-					add = {
-						value = 1
-					}
+					limit = { tier = tier_county }
+					add = 1
 				}
 			}
 		}
