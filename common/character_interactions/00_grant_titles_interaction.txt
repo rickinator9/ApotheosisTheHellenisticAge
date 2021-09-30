@@ -628,6 +628,48 @@
 			# Trigger the on_action.
 			trigger_event = { on_action = on_title_granted_to_unlanded }
 		}
+
+		# ATHA: Add corruption if landing incompetent characters, especially if the character receiving land is a relative, a lover or a friend.
+		scope:recipient = {
+			if = {
+				limit = {
+					NOR = {
+						diplomacy >= decent_skill_rating
+						martial >= decent_skill_rating
+						stewardship >= decent_skill_rating
+						intrigue >= decent_skill_rating
+						learning >= decent_skill_rating
+						prowess >= high_skill_rating # Prowess is a minor stat, so the requirement should be higher for this.
+					}
+				}
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = scope:actor
+							has_relation_best_friend = scope:actor
+							has_relation_soulmate = scope:actor
+							has_relation_lover = scope:actor
+						}
+					}
+					scope:actor = {
+						change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
+					}
+				} else_if = {
+					limit = {
+						is_extended_family_of = scope:actor
+						has_relation_friend = scope:actor
+					}
+					scope:actor = {
+						change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+					}
+				} else = {
+					scope:actor = {
+						change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
+					}
+				}
+			}
+		}
 	}
 }
 
