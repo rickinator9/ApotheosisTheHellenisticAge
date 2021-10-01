@@ -652,6 +652,7 @@ scripted_effect yearly_1010_imprison_target_effect = {
 			TARGET = scope:target_prisoner
 			IMPRISONER = root
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 }
 
@@ -2411,6 +2412,8 @@ yearly.1020 = { #by Mathilda Bjarnehed
 			}
 		}
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+
 		show_as_tooltip = {
 			reverse_add_opinion = {
 				target = scope:enemy
@@ -2511,6 +2514,8 @@ yearly.1020 = { #by Mathilda Bjarnehed
 			opinion = -10
 		}
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+
 		stress_impact = {
 			ambitious = medium_stress_impact_gain
 		}
@@ -2580,6 +2585,8 @@ yearly.1021 = { #by Mathilda Bjarnehed
 			modifier = refusal_opinion
 			opinion = -15
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 
 		ai_chance = {
 			base = 30
@@ -2978,6 +2985,8 @@ yearly.1030 = { #by Mathilda Bjarnehed
 			target = scope:hooked
 		}
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
+
 		reverse_add_opinion = {
 			target = scope:hooked
 			modifier = grateful_opinion
@@ -3041,6 +3050,8 @@ yearly.1030 = { #by Mathilda Bjarnehed
 			modifier = cruelty_opinion
 			opinion = -30
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 
 		random = {
 			chance = 33
@@ -3754,6 +3765,8 @@ yearly.1041 = { #by Mathilda Bjarnehed
 			else_if = {
 				limit = { scope:secret_type = flag:secret }
 				scope:secret = { reveal_to = root }
+
+				change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 			}
 		}
 	}
@@ -6906,6 +6919,8 @@ yearly.1084 = { #by Mathilda Bjarnehed
 			IMPRISONER = root
 		}
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+
 		ai_chance = {
 			base = 100
 
@@ -6922,6 +6937,8 @@ yearly.1084 = { #by Mathilda Bjarnehed
 		name = yearly.1084.b
 
 		yearly_1081_reveal_guilt_effect = yes
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 		
 		ai_chance = {
 			base = 50
@@ -7001,6 +7018,8 @@ yearly.1085 = { #by Mathilda Bjarnehed
 
 		add_prestige = minor_prestige_loss
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+
 		ai_chance = {
 			base = 50
 
@@ -7018,6 +7037,8 @@ yearly.1085 = { #by Mathilda Bjarnehed
 			TARGET = scope:suspicious
 			IMPRISONER = root
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 
 		ai_chance = {
 			base = 0
