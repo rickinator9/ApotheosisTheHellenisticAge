@@ -6,7 +6,7 @@
 ####
 
 ####
-#1001 - 1005: Provide Vice events
+#1001 - 1005: Entice events
 # By Grathalas
 ####
 
@@ -63,23 +63,23 @@ corruption.0002 = {
 }
 
 #######################
-# PROVIDE VICE EVENTS #
+# ENTICE EVENTS #
 #######################
 
-scripted_trigger corruption_1001_can_learn_owner_secret = {
-	save_temporary_scope_as = secret_learner
-	scope:owner = {
-		any_secret = {
-			secret_type = secret_corrupt
-			NOT = { is_known_by = scope:secret_learner }
-		}
-	}
-}
+# scripted_trigger corruption_1001_can_learn_owner_secret = {
+# 	save_temporary_scope_as = secret_learner
+# 	scope:owner = {
+# 		any_secret = {
+# 			secret_type = secret_corrupt
+# 			NOT = { is_known_by = scope:secret_learner }
+# 		}
+# 	}
+# }
 
-scripted_trigger corruption_1001_unlock_reveal_trigger = {
-	NOT = { exists = scope:scheme_discovered }
-	scope:target = { corruption_1001_can_learn_owner_secret = yes }
-}
+# scripted_trigger corruption_1001_unlock_reveal_trigger = {
+# 	NOT = { exists = scope:scheme_discovered }
+# 	scope:target = { corruption_1001_can_learn_owner_secret = yes }
+# }
 
 #Success
 corruption.1001 = {
@@ -99,7 +99,7 @@ corruption.1001 = {
 	immediate = {
 		scope:target = {
 			add_character_flag = {	
-				flag = block_provide_vice
+				flag = block_entice
 				days = 1825
 			}
 		}
@@ -107,7 +107,7 @@ corruption.1001 = {
 
 	#Show them the best night of their life
 	option = {
-		trigger = { corruption_1001_unlock_reveal_trigger = yes }
+		#trigger = { corruption_1001_unlock_reveal_trigger = yes }
 		name = corruption.1001.a
 
 		scope:target = {
@@ -159,12 +159,12 @@ corruption.1001 = {
 			gold = major_gold_value
 		}
 
-		change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	#Show them a good time
 	option = {
-		trigger = { corruption_1001_unlock_reveal_trigger = yes }
+		#trigger = { corruption_1001_unlock_reveal_trigger = yes }
 		name = corruption.1001.b
 
 		scope:target = {
@@ -195,7 +195,7 @@ corruption.1001 = {
 			gold = medium_gold_value
 		}
 
-		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
 	#Now is not the right time
@@ -205,6 +205,8 @@ corruption.1001 = {
 		scope:scheme = {
 			end_scheme = yes
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 
 	after = {
@@ -357,7 +359,7 @@ corruption.1003 = {
 		}
 		scope:target = {
 			add_character_flag = {	
-				flag = block_provide_vice
+				flag = block_entice
 				days = 1825
 			}
 		}
@@ -432,7 +434,7 @@ corruption.1004 = {
 		}
 		scope:target = {
 			add_character_flag = {	
-				flag = block_provide_vice
+				flag = block_entice
 				days = 1825
 			}
 		}

@@ -1,6 +1,6 @@
-﻿provide_vice = { #Written by Grathalas
+﻿entice = { #Written by Grathalas
 	skill = intrigue
-	cooldown = { years = provide_vice_cooldown_value }
+	cooldown = { years = entice_cooldown_value }
 	is_secret = yes
 	base_secrecy = 20
 	uses_agents = no
@@ -23,12 +23,12 @@
 
 		#5 year general target blocker
 		custom_description = {
-			text = provide_vice_scheme_blocked
+			text = entice_scheme_blocked
 			subject = scope:target
 
 			NOT = {
 				scope:target = {
-					has_character_flag = block_provide_vice
+					has_character_flag = block_entice
 				}
 			}
 		}
@@ -62,7 +62,7 @@
 
 		#SCHEME OWNER#
 		modifier = { # Home Advantage perk bonus against own Courtiers and Guests
-			desc = PROVIDE_VICE_COURTIER_GUEST_PERK_BONUS
+			desc = entice_COURTIER_GUEST_PERK_BONUS
 			scope:owner = { has_perk = home_advantage_perk } ###dependant on lifestyle tree
 			scope:target = {
 				OR = {
@@ -227,7 +227,7 @@
 			}
 			scope:owner = {
 				send_interface_toast = {
-					title = provide_vice_scheme_invalidated_title
+					title = entice_scheme_invalidated_title
 					left_icon = scope:target
 					custom_description_no_bullet = {
 						object = scope:target
@@ -245,7 +245,7 @@
 			}
 			scope:owner = {
 				send_interface_toast = {
-					title = provide_vice_scheme_invalidated_title
+					title = entice_scheme_invalidated_title
 					left_icon = scope:target
 					right_icon = scope:other_imprisoner
 					custom_description_no_bullet = {
@@ -258,5 +258,5 @@
 		}
 	}
 
-	success_desc = "PROVIDE_VICE_SUCCESS_DESC"
+	success_desc = "ENTICE_SUCCESS_DESC"
 }

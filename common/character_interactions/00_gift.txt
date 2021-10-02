@@ -105,14 +105,8 @@ gift_interaction = {
 				}
 			}
 
-			#Corruption to be added if giving gifts to vassls
-			if = {
-				limit = {
-					scope:recipient = { is_vassal_of = scope:actor }
-				}
-				change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
-			}
-
+			#Corruption to be added if giving gifts to other characters
+			change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 		}
 	}
 	

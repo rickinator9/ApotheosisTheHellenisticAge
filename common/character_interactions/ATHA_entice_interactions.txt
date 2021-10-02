@@ -1,17 +1,17 @@
-﻿provide_vice_interaction = {
+﻿entice_interaction = {
 	category = interaction_category_friendly
 
 	interface_priority = 90
-	scheme = provide_vice
+	scheme = entice
 
 	send_name = START_SCHEME
 
-	desc = provide_vice_interaction_desc
+	desc = entice_interaction_desc
 
 	is_shown = {
 		scope:actor = {
 			can_start_scheme = {
-				type = provide_vice
+				type = entice
 				target = scope:recipient
 			}
 		}
@@ -22,7 +22,7 @@
 		scope:actor = {
 			NOT = { is_at_war_with = scope:recipient }
 			can_start_scheme = {
-				type = provide_vice
+				type = entice
 				target = scope:recipient
 			}
 		}
@@ -50,13 +50,13 @@
 		hidden_effect = {
 			scope:actor = {
 				send_interface_toast = {
-					title = provide_vice_interaction_notification
+					title = entice_interaction_notification
 
 					left_icon = scope:actor					
 					right_icon = scope:recipient
 
 					start_scheme = {
-						type = provide_vice
+						type = entice
 						target = scope:recipient
 					}
 				}
