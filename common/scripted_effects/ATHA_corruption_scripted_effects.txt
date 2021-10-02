@@ -49,7 +49,14 @@ set_city_state_corruption_on_scope = {
 # Changes the amount of corruption in a city state.
 #	- AMOUNT_ARG: The amount to change the corruption. Valid values can be found in ATHA_city_state_values.txt
 change_city_state_corruption = {
-	if = {
+	change_city_state_corruption_with_tooltip = { AMOUNT_ARG = $AMOUNT_ARG$ TOOLTIP_ARG = $AMOUNT_ARG$_tooltip }
+}
+
+# Changes the amount of corruption in a city state.
+#	- AMOUNT_ARG: The amount to change the corruption. Valid values can be found in ATHA_city_state_values.txt
+#	- TOOLTIP_ARG: The tooltip to display when changing corruption.
+change_city_state_corruption_with_tooltip = {
+if = {
 		limit = { can_have_corruption_trigger = yes }
 
 		set_variable = {
@@ -57,7 +64,7 @@ change_city_state_corruption = {
 			value = $AMOUNT_ARG$
 		}
 	
-		custom_tooltip = $AMOUNT_ARG$_tooltip
+		custom_tooltip = $TOOLTIP_ARG$
 		hidden_effect = {
 			primary_title = {
 				# Make sure that the variable is even present.
