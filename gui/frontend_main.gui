@@ -1087,30 +1087,62 @@ widget = {
 
 	widget = {
 		parentanchor = right
-
-		size = { 260 70 }
 		vbox = {
 			parentanchor = right
 
 			text_single = {
-				text = "MUSIC_CREDIT_LABEL"
+				text = "MICHAEL_LEVY_MUSIC_CREDIT_LABEL"
 				layoutpolicy_horizontal = expanding
 				margin_right = 12
-				align = right
+				align = left
 	
 				using = Font_Size_Big
 				default_format = "#high;size=18;glow_color:{0,0,0,1}"
 			}
-	
-			text_single = {
-				text = "MUSIC_CREDIT_LINK"
+
+			hbox = {
 				layoutpolicy_horizontal = expanding
-				margin_right = 12
-				margin_bottom = 10
-				align = right
+
+				vbox = {
+					margin_right = 10
+
+					text_single = {
+						text = "MUSIC_CREDIT_WEBSITE"
 	
-				using = Font_Size_Small
-				default_format = "#game_link;size=12;glow_color:{0,0,0,1}"
+						fontsize = 14
+						default_format = "#high;glow_color:{0,0,0,1}"
+					}
+	
+					text_single = {
+						text = "MUSIC_CREDIT_SPOTIFY"
+	
+						fontsize = 14
+						default_format = "#high;glow_color:{0,0,0,1}"
+					}
+				}
+
+				vbox = {
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "MICHAEL_LEVY_MUSIC_CREDIT_WEBSITE_LINK"
+						align = left
+			
+						fontsize = 14
+						default_format = "#game_link;glow_color:{0,0,0,1}"
+					}
+	
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "MICHAEL_LEVY_MUSIC_CREDIT_SPOTIFY_LINK"
+						align = left
+			
+						fontsize = 14
+						default_format = "#game_link;glow_color:{0,0,0,1}"
+					}
+
+				}
+
+				expand = { }
 			}
 		}
 	}
