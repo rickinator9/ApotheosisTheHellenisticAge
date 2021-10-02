@@ -357,8 +357,10 @@ ATHA_government.0003 = {
 		character = root
 		animation = personality_rational
 	}
-	right_portrait = root.liege
-
+	right_portrait = {
+		trigger = { independent_can_create_city_state_trigger = no }
+		character = root.liege
+	}
 	trigger = { 
 		OR = {
 			independent_can_create_city_state_trigger = yes
