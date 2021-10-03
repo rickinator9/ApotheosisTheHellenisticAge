@@ -1,5 +1,21 @@
 name="Apotheosis: The Hellenistic Age"
+version="1.0.0"
+supported_version="1.4.*"
 path="mod/ApotheosisTheHellenisticAge"
+tags={
+    "Bookmarks"
+    "Character Interactions"
+    "Culture"
+    "Decisions"
+    "Events"
+    "Gameplay"
+    "Historical"
+    "Map"
+    "Religion"
+    "Schemes"
+    "Sound"
+    "Total Conversion"
+}
 
 replace_path = "common/culture/cultures"
 replace_path = "common/culture/innovations"
