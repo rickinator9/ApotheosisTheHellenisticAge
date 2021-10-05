@@ -134,12 +134,12 @@ found_bithynian_capital_scripted_effect = {
 			modifier = bithynian_capital_modifier
 			years = 20
 		}
-		#If this county isn't the de jure capital of d_bithynia, make it so.
+		#If this county doesn't have Bithynian culture, make it so
 		if = {
-			limit = {
-				NOT = { this = title:d_bithynia.title_capital_county }
+			limit = { 
+				NOT = { culture = culture:bithynian }
 			}
-			title:d_bithynia = { set_capital_county = scope:new_bithynian_capital }
+			set_county_culture = culture:bithynian }
 		}
 		#If this county isn't the de jure capital of k_bithynia, make it so.
 		if = {
