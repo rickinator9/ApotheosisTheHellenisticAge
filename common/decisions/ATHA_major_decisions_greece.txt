@@ -86,30 +86,11 @@ form_k_athenai_decision = { # aka: Establish the Third Naval League
 			}
 			AND = {
 				has_title = title:d_euboia
-				OR = {
-					AND = { 
-						has_title = title:d_apsinthis
-						has_title = title:d_briantike
-					}
-					AND = { 
-						has_title = title:d_apsinthis
-						has_title = title:d_parastrymonia
-					}
-					AND = { 
-						has_title = title:d_apsinthis
-						has_title = title:d_chalkidike
-					}
-					AND = { 
-						has_title = title:d_briantike
-						has_title = title:d_parastrymonia
-					}
-					AND = { 
-						has_title = title:d_briantike
-						has_title = title:d_chalkidike
-					}
-					AND = { 
-						has_title = title:d_parastrymonia
-						has_title = title:d_chalkidike
+				custom_description = {
+					text = form_k_athenai_regional_requirements_tooltip
+					any_realm_county = {
+						count >= 10
+						title_province = { geographical_region = custom_athens_league }
 					}
 				}
 			}
