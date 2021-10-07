@@ -9,6 +9,10 @@
 # 0001 - I formed k_lakedaimon
 # 0002 - Someone else formed k_lakedaimon
 
+## form_k_athenai_decision
+# 0003 - I formed k_athenai
+# 0004 - Someone else formed k_athenai
+
 scripted_trigger cares_about_messenia_trigger = {
 	is_independent_ruler = yes
 	faith = faith:pythian_faith
@@ -65,7 +69,7 @@ greece_decisions.0001 = {
 						dynasty = dynasty:spartandyn002
 					}
 				}
-				custom = every_independent_ruler_faith
+				custom = every_independent_ruler_pythian_faith
 				add_opinion = {
 					modifier = enslaved_messenia_opinion
 					target = root
@@ -252,4 +256,217 @@ greece_decisions.0002 = {
 			}
 		}
 	}	
+}
+
+# I formed k_athenai
+greece_decisions.0003 = {
+	type = character_event
+	title = greece_decisions.0003.t
+	desc = greece_decisions.0003.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_athenai_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		form_k_athenai_decision_effects = yes
+		if = {
+			limit = { k_athenai_prestige_value > 0 }
+			hidden_effect = { add_prestige = k_athenai_prestige_value }
+			custom_tooltip = greece_decisions.0003.tt
+		}
+	}
+	
+	option = { # Be extortionate like the Delian League
+		name = greece_decisions.0003.a
+
+		change_government_form = { GOVERNMENT = hegemonic_league_government }
+		add_dread = minor_dread_gain
+
+		custom_description_no_bullet = {
+			text = greece_decisions_0003_a_effect
+			every_vassal = {
+				limit = { primary_title = { tier >= tier_county } }
+				if = {
+					limit = { 
+						OR = {
+							government_has_flag = is_city_state_government
+							government_has_flag = is_coalition_government
+						}
+					}
+					add_opinion = {
+						target = ROOT
+						modifier = angry_opinion
+						opinion = -20
+					}
+					vassal_contract_increase_obligation_level = feudal_government_taxes
+					vassal_contract_decrease_obligation_level = feudal_government_levies
+				}
+				if = {
+					limit = { vassal_contract_has_flag = has_autonomous_city_state_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 1 }
+				}
+				else_if = { 
+					limit = { vassal_contract_has_flag = has_autonomous_coalition_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 3 }
+				}
+			}
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			forgiving = minor_stress_impact_gain
+			just = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_vengefulness = 1
+				ai_honor = -0.5
+				ai_compassion = -0.5
+				ai_rationality = -1
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = generous
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = forgiving
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = compassionate
+			}
+		}
+	}
+	option = { # Be moderate like the Second Athenian League
+		name = greece_decisions.0003.b
+
+		change_government_form = { GOVERNMENT = hegemonic_league_government }
+
+		custom_description_no_bullet = {
+			text = greece_decisions_0003_b_effect
+			every_vassal = {
+				limit = { primary_title = { tier >= tier_county } }
+				if = {
+					limit = { vassal_contract_has_flag = has_dependent_city_state_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+				else_if = { 
+					limit = { vassal_contract_has_flag = has_dependent_coalition_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}
+			}
+		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = -1
+				ai_vengefulness = -0.5
+				ai_boldness = 0.5
+				ai_rationality = 0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = greedy
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = vengeful
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = arbitrary
+			}
+		}
+	}
+	option = { # Be mild and reform into a Federal League
+		name = greece_decisions.0003.c
+
+		change_government_form = { GOVERNMENT = federal_league_government }
+		add_piety = minor_piety_gain
+
+		custom_description_no_bullet = {
+			text = greece_decisions_0003_c_effect
+			every_vassal = {
+				limit = { primary_title = { tier >= tier_county } }
+				if = {
+					limit = { 
+						OR = {
+							government_has_flag = is_city_state_government
+							government_has_flag = is_coalition_government
+						}
+					}
+					add_opinion = {
+						target = ROOT
+						modifier = grateful_opinion
+						opinion = 10
+					}
+				}
+				if = {
+					limit = { vassal_contract_has_flag = has_dependent_city_state_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				}
+				else_if = { 
+					limit = { vassal_contract_has_flag = has_dependent_coalition_contract }
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}
+			}
+		}
+
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			vengeful = medium_stress_impact_gain
+			arbitrary = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_greed = -2
+				ai_vengefulness = -1
+				ai_rationality = 0.5
+				ai_compassion = 1
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = greedy
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = vengeful
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = arbitrary
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = ambitious
+			}
+		}
+	}
 }

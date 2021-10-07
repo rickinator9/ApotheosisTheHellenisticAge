@@ -1,43 +1,43 @@
-﻿k_athenai_prestige_multiplier = {
-	value = medium_prestige_value
+﻿k_athenai_prestige_value = { # duchies that are more difficult to obtain net higher rewards
+	value = 0
 	if = {
 		limit = { has_title = title:d_kyklades }
-		multiply = 1.5
+		add = major_prestige_value # strategically important, requires taking on Egypt
 	}
 	if = {
 		limit = { has_title = title:d_doris }
-		multiply = 2
+		add = major_prestige_value # large & wealthy region that requires taking on Egypt and Rhodes
 	}
 	if = {
 		limit = { has_title = title:d_ionia }
-		multiply = 2
+		add = major_prestige_value # wealthy region that requires taking on the Seleucids
 	}
 	if = {
 		limit = { has_title = title:d_aiolis }
-		multiply = 1
+		add = minor_prestige_value # smaller region, but still requires taking on the Seleucids to form the duchy
 	}
 	if = {
 		limit = { has_title = title:d_troas }
-		multiply = 1.5
+		add = medium_prestige_value # large region that requires taking on the Seleucids
 	}
 	if = {
 		limit = { has_title = title:d_euboia }
-		multiply = 1
+		add = 0 # can get relatively easily by warring OPMs
 	}
 	if = {
 		limit = { has_title = title:d_apsinthis }
-		multiply = 1
+		add = 0 # can get relatively easily by warring OPMs
 	}
 	if = {
 		limit = { has_title = title:d_briantike }
-		multiply = 1
+		add = 0 # can get relatively easily by warring OPMs
 	}
 	if = {
 		limit = { has_title = title:d_parastrymonia }
-		multiply = 1.5
+		add = medium_prestige_value # requires taking on Macedonia
 	}
 	if = {
 		limit = { has_title = title:d_chalkidike }
-		multiply = 1.5
+		add = medium_prestige_value # requires taking on Macedonia
 	}
 }
