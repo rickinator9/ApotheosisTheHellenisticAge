@@ -316,6 +316,16 @@ greece_decisions.0003 = {
 			}
 		}
 
+		add_character_flag = founded_extortionate_hegemonic_league
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_athenai_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_athenai_founder }
+			}
+			trigger_event = greece_decisions.0004
+		}
+
 		stress_impact = {
 			generous = medium_stress_impact_gain
 			forgiving = minor_stress_impact_gain
@@ -369,6 +379,16 @@ greece_decisions.0003 = {
 					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
 				}
 			}
+		}
+
+		add_character_flag = founded_hegemonic_league
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_athenai_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_athenai_founder }
+			}
+			trigger_event = greece_decisions.0004
 		}
 
 		stress_impact = {
@@ -434,6 +454,16 @@ greece_decisions.0003 = {
 			}
 		}
 
+		add_character_flag = founded_federal_league
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_athenai_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_athenai_founder }
+			}
+			trigger_event = greece_decisions.0004
+		}
+
 		stress_impact = {
 			greedy = medium_stress_impact_gain
 			vengeful = medium_stress_impact_gain
@@ -469,4 +499,59 @@ greece_decisions.0003 = {
 			}
 		}
 	}
+}
+
+# Someone else formed k_athenai
+greece_decisions.0004 = {
+	type = character_event
+	title = greece_decisions.0004.t
+	desc = {
+		desc = greece_decisions.0004.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:k_athenai_founder = {
+						has_character_flag = founded_extortionate_hegemonic_league
+					}
+				}
+				desc = greece_decisions.0004.desc_a
+			}
+			triggered_desc = {
+				trigger = {
+					scope:k_athenai_founder = {
+						has_character_flag = founded_hegemonic_league
+					}
+				}
+				desc = greece_decisions.0004.desc_b
+			}
+			desc = greece_decisions.0004.desc_c
+		}
+	}
+	theme = realm
+	left_portrait = {
+		character = scope:k_athenai_founder
+		animation = personality_honorable
+	}
+
+	option = { # Athenian
+		name = greece_decisions.0004.a
+
+		trigger = { has_culture = culture:athenian }
+	}	
+	option = { # Macedonian
+		name = greece_decisions.0004.b
+
+		trigger = { has_culture = culture:macedonian }
+
+	}
+	option = { # Okay
+		name = greece_decisions.0004.c
+
+		trigger = { 
+			NOR = {
+				has_culture = culture:athenian 
+				has_culture = culture:macedonian 
+			}
+		}
+	}	
 }
