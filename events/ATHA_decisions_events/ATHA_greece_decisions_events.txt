@@ -423,6 +423,8 @@ greece_decisions.0003 = {
 	option = { # Be mild and reform into a Federal League
 		name = greece_decisions.0003.c
 
+		custom_tooltip = greece_decisions.0003.c.tt
+
 		change_government_form = { GOVERNMENT = federal_league_government }
 		add_piety = minor_piety_gain
 
@@ -441,6 +443,17 @@ greece_decisions.0003 = {
 						target = ROOT
 						modifier = grateful_opinion
 						opinion = 10
+					}
+				}
+				else_if = {
+					limit = { 
+						has_culture = culture:athenian
+						government_has_flag = is_bureaucracy_government
+					}
+					add_opinion = {
+						target = ROOT
+						modifier = weak_opinion
+						opinion = -10
 					}
 				}
 				if = {
@@ -472,7 +485,7 @@ greece_decisions.0003 = {
 		}
 
 		ai_chance = {
-			base = 100	
+			base = 0 # shouldn't be willing to give up their hegemony that easily	
 
 			ai_value_modifier = {
 				ai_boldness = -0.5
@@ -553,5 +566,27 @@ greece_decisions.0004 = {
 				has_culture = culture:macedonian 
 			}
 		}
+	}	
+}
+
+# I formed e_athenai
+greece_decisions.0005 = {
+	type = character_event
+	title = greece_decisions.0005.t
+	desc = greece_decisions.0005.desc
+	theme = realm
+	left_portrait = {
+		character = scope:e_athenai_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		form_e_athenai_decision_effects = yes
+	}
+
+	option = { # Okay
+		name = greece_decisions.0005.a
 	}	
 }

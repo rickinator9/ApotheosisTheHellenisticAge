@@ -54,7 +54,7 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 # Form k_athenai		 	 #
 ##############################
 
-form_k_athenai_decision = { # aka: Establish the Third Naval League
+form_k_athenai_decision = { # aka: Establish the Third Athenian League
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -65,8 +65,9 @@ form_k_athenai_decision = { # aka: Establish the Third Naval League
 
 	is_shown = {
 		has_culture = culture:athenian
-		government_has_flag = is_city_state_government
 		highest_held_title_tier <= tier_duchy
+		
+		#Can only do it once
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -75,23 +76,28 @@ form_k_athenai_decision = { # aka: Establish the Third Naval League
 		}
 	}
 
-	is_valid = {
+	is_valid = {		
+		#Must be independent
 		is_independent_ruler = yes
+		
+		#Should be the current ruler of Athens
 		has_primary_title = title:d_attike
+		
+		#Must have expelled the Peiraieus garrison
 		completely_controls = title:d_attike
+
+		#Must have a city-state government
+		custom_description = {
+			text = has_city_state_government
+			government_has_flag = is_city_state_government
+		}
+		
+		#Should have re-conquered some of the Aegean coast, either in Macedonia/Thrace or Asia Minor
 		OR = {
-			AND = { 
-				has_title = title:d_kyklades
-				OR = { 
-					has_title = title:d_doris
-					has_title = title:d_ionia
-					has_title = title:d_aiolis
-					has_title = title:d_troas
-				}
-			}
+			#Easier pathway which can avoid conflict with the successor kingdoms
 			AND = {
 				has_title = title:d_euboia
-				custom_description = { # TODO: it would be ideal if these titles showed up as a checklist
+				custom_description = {
 					text = "form_k_athenai_decision_at_least_two"
 					any_held_title = {
 						count >= 2
@@ -102,6 +108,16 @@ form_k_athenai_decision = { # aka: Establish the Third Naval League
 							this = title:d_chalkidike
 						}
 					}
+				}
+			}
+			#Harder but more rewarding pathway that requires fighting the Ptolemies/Seleucids
+			AND = { 
+				has_title = title:d_kyklades
+				OR = { 
+					has_title = title:d_doris
+					has_title = title:d_ionia
+					has_title = title:d_aiolis
+					has_title = title:d_troas
 				}
 			}
 		}
@@ -136,6 +152,97 @@ form_k_athenai_decision = { # aka: Establish the Third Naval League
 
 	cost = {
 		gold = 300
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##############################
+# Form e_athenai		 	 #
+##############################
+
+form_e_athenai_decision = { # aka: Reform the Athenian Empire
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = form_e_athenai_decision_desc
+	selection_tooltip = form_e_athenai_decision_tooltip
+
+	is_shown = {
+		has_culture = culture:athenian
+		highest_held_title_tier <= tier_kingdom
+		capital_province = { geographical_region = custom_athenian_empire }
+		
+		#Someone needs to have already formed k_athenai
+		title:k_athenai = { is_title_created = yes }
+		
+		#Can only do it once
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:form_e_athenai_decision
+			}
+		}
+	}
+
+	is_valid = {
+		#Must be independent
+		is_independent_ruler = yes
+		
+		#Should be the current ruler of Athens
+		has_primary_title = title:k_athenai
+
+		#Must have city-state or hegemonic league government (so no federal leagues)
+		OR = {
+			custom_description = {
+				text = has_city_state_government
+				government_has_flag = is_city_state_government
+			}
+			has_government = hegemonic_league_government
+		}
+
+		#Has to control a region equating, more or less, to the Athenian empire at its height
+		#completely_controls_region = custom_athenian_empire
+	}
+
+	is_valid_showing_failures_only = {
+		
+	}
+
+	effect = {
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:form_e_athenai_decision
+		}
+		
+		save_scope_as = e_athenai_founder
+
+		show_as_tooltip = { form_e_athenai_decision_effects = yes } # Actually applied in greece_decisions.0005 - prestige, title etc
+
+		#Event for player
+		trigger_event = greece_decisions.0005
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = greece_decisions.0006
+		}
+	}
+
+	cost = {
+		gold = 600
 	}
 
 	ai_potential = {
