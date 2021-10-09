@@ -482,15 +482,12 @@ greece_decisions.0003 = {
 
 		add_character_flag = founded_federal_league
 
-		every_ruler = {
+		every_player = {
 			limit = {
 				NOT = { this = scope:k_athenai_founder }
 				is_within_diplo_range = { CHARACTER = scope:k_athenai_founder }
 			}
-			trigger_event = {
-				id = greece_decisions.0004
-				days = 7
-			}
+			trigger_event = greece_decisions.0004
 		}
 
 		stress_impact = {
@@ -709,4 +706,299 @@ greece_decisions.0005 = {
 	option = { # Okay
 		name = greece_decisions.0005.a
 	}	
+}
+
+# I formed k_insular_phoros
+greece_decisions.0007 = {
+	type = character_event
+	title = greece_decisions.0007.t
+	desc = greece_decisions.0007.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_insular_phoros_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		form_k_insular_phoros_decision_effects = yes
+
+		capital_county = { save_scope_as = realm_capital }
+		title:c_delos = { save_scope_as = delos }
+		title:c_chalkis = { save_scope_as = chalkis }
+		title:c_demetrias = { save_scope_as = demetrias }
+		title:c_eretria = { save_scope_as = eretria }
+
+		every_held_title = {
+			count = 4
+			if = {
+				limit = {
+					tier = tier_county
+					target_is_de_jure_liege_or_above = title:k_insular_phoros
+				}
+				if = {
+					limit = {
+						OR = {
+							NOT = { exists = scope:province_1 }
+							this = scope:realm_capital
+						}
+					}
+					save_scope_as = province_1
+				}
+				else_if = {
+					limit = {
+						OR = {
+							NOT = { exists = scope:province_2 }
+							this = scope:delos
+						}
+					}
+					save_scope_as = province_2
+				}
+				else_if = {
+					limit = {
+						OR = {
+							NOT = { exists = scope:province_3 }
+							this = scope:chalkis
+						}
+					}
+					save_scope_as = province_3
+				}
+				else_if = {
+					limit = {
+						OR = {
+							NOT = { exists = scope:province_3 }
+							this = scope:demetrias
+						}
+					}
+					save_scope_as = province_4
+				}
+			}
+		}
+	}
+
+	option = { # province_1
+		name = greece_decisions.0007.a
+
+		trigger = { exists = scope:province_1 }
+
+		scope:province_1 = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:province_1 }
+			}
+		}
+	}
+	option = { # province_2
+		name = greece_decisions.0007.b
+
+		trigger = { exists = scope:province_2 }
+
+		scope:province_2 = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:province_2 }
+			}
+		}
+	}
+	option = { # province_3
+		name = greece_decisions.0007.c
+
+		trigger = { exists = scope:province_3 }
+
+		scope:province_3 = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:province_3 }
+			}
+		}
+	}
+	option = { # province_4
+		name = greece_decisions.0007.d
+
+		trigger = { exists = scope:province_4 }
+
+		scope:province_4 = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:province_4 }
+			}
+		}
+	}
+	option = { # Delos
+		name = greece_decisions.0007.e
+
+		trigger = { 
+			#Only the ruler of e_athenai can designate a county they don't own
+			has_primary_title = title:e_athenai
+			
+			NOR = { 
+				exists = scope:province_4 
+				has_title = scope:delos
+			}
+		}
+
+		scope:delos = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:delos }
+			}
+		}
+	}
+	option = { # Chalkis
+		name = greece_decisions.0007.f
+
+		trigger = { 
+			#Only the ruler of e_athenai can designate a county they don't own
+			has_primary_title = title:e_athenai
+			
+			OR = {
+				NOR = { 
+					exists = scope:province_4
+					NOT = { has_title = scope:delos }
+					has_title = scope:chalkis
+				}
+				NOR = { 
+					exists = scope:province_3 
+					has_title = scope:chalkis
+				}
+			}
+		}
+
+		scope:chalkis = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:chalkis }
+			}
+		}
+	}
+	option = { # Demetrias
+		name = greece_decisions.0007.g
+
+		trigger = { 
+			#Only the ruler of e_athenai can designate a county they don't own
+			has_primary_title = title:e_athenai
+			
+			OR = {
+				NOR = { 
+					exists = scope:province_4
+					NOT = { has_title = scope:delos }
+					NOT = { has_title = scope:chalkis }
+					has_title = scope:demetrias
+				}
+				NOR = { 
+					exists = scope:province_3
+					NOT = { has_title = scope:chalkis }
+					has_title = scope:demetrias
+				}
+				NOR = { 
+					exists = scope:province_2
+					has_title = scope:demetrias
+				}
+			}
+		}
+
+		scope:demetrias = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:demetrias }
+			}
+		}
+	}
+	option = { # Eretria
+		name = greece_decisions.0007.h
+
+		trigger = { 
+			#Only the ruler of e_athenai can designate a county they don't own
+			has_primary_title = title:e_athenai
+			
+			OR = {
+				NOR = { 
+					exists = scope:province_4
+					NOT = { has_title = scope:delos }
+					NOT = { has_title = scope:chalkis }
+					NOT = { has_title = scope:demetrias }
+					has_title = scope:eretria
+				}
+				NOR = { 
+					exists = scope:province_3
+					NOT = { has_title = scope:chalkis }
+					NOT = { has_title = scope:demetrias }
+					has_title = scope:eretria
+				}
+				NOR = { 
+					exists = scope:province_2 
+					NOT = { has_title = scope:demetrias }
+					has_title = scope:eretria
+				}
+				NOR = { 
+					exists = scope:province_1 
+					has_title = scope:eretria
+				}
+			}
+		}
+
+		scope:eretria = {
+			add_county_modifier = {
+				modifier = administrative_centre_modifier
+				years = 50
+			}
+			#If this county isn't the de jure capital of k_insular_phoros, make it so.
+			if = {
+				limit = {
+					NOT = { this = title:k_insular_phoros.title_capital_county }
+				}
+				title:k_insular_phoros = { set_capital_county = scope:eretria }
+			}
+		}
+	}
 }
