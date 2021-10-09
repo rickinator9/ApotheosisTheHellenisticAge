@@ -297,6 +297,7 @@ greece_decisions.0003 = {
 							government_has_flag = is_coalition_government
 						}
 					}
+					add_character_flag = extorted_vassal
 					add_opinion = {
 						target = ROOT
 						modifier = angry_opinion
@@ -307,10 +308,12 @@ greece_decisions.0003 = {
 				}
 				if = {
 					limit = { vassal_contract_has_flag = has_autonomous_city_state_contract }
+					add_character_flag = newly_dependent_city_state
 					vassal_contract_set_obligation_level = { type = vassal_role level = 1 }
 				}
 				else_if = { 
 					limit = { vassal_contract_has_flag = has_autonomous_coalition_contract }
+					add_character_flag = newly_dependent_coalition
 					vassal_contract_set_obligation_level = { type = vassal_role level = 3 }
 				}
 			}
@@ -372,11 +375,15 @@ greece_decisions.0003 = {
 				limit = { primary_title = { tier >= tier_county } }
 				if = {
 					limit = { vassal_contract_has_flag = has_dependent_city_state_contract }
+					add_character_flag = newly_autonomous_city_state
 					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+					hidden_effect = { set_autonomous_contracts_effect = yes }
 				}
 				else_if = { 
 					limit = { vassal_contract_has_flag = has_dependent_coalition_contract }
+					add_character_flag = newly_autonomous_coalition
 					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+					hidden_effect = { set_autonomous_contracts_effect = yes }
 				}
 			}
 		}
@@ -439,6 +446,7 @@ greece_decisions.0003 = {
 							government_has_flag = is_coalition_government
 						}
 					}
+					add_character_flag = grateful_vassal
 					add_opinion = {
 						target = ROOT
 						modifier = grateful_opinion
@@ -450,6 +458,7 @@ greece_decisions.0003 = {
 						has_culture = culture:athenian
 						government_has_flag = is_bureaucracy_government
 					}
+					add_character_flag = federal_athenian_vassal
 					add_opinion = {
 						target = ROOT
 						modifier = weak_opinion
@@ -458,23 +467,30 @@ greece_decisions.0003 = {
 				}
 				if = {
 					limit = { vassal_contract_has_flag = has_dependent_city_state_contract }
+					add_character_flag = newly_autonomous_city_state
 					vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+					hidden_effect = { set_autonomous_contracts_effect = yes }
 				}
 				else_if = { 
 					limit = { vassal_contract_has_flag = has_dependent_coalition_contract }
+					add_character_flag = newly_autonomous_coalition
 					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+					hidden_effect = { set_autonomous_contracts_effect = yes }
 				}
 			}
 		}
 
 		add_character_flag = founded_federal_league
 
-		every_player = {
+		every_ruler = {
 			limit = {
 				NOT = { this = scope:k_athenai_founder }
 				is_within_diplo_range = { CHARACTER = scope:k_athenai_founder }
 			}
-			trigger_event = greece_decisions.0004
+			trigger_event = {
+				id = greece_decisions.0004
+				days = 7
+			}
 		}
 
 		stress_impact = {
@@ -546,27 +562,131 @@ greece_decisions.0004 = {
 		animation = personality_honorable
 	}
 
-	option = { # Athenian
-		name = greece_decisions.0004.a
+	immediate = {
+	}
 
-		trigger = { has_culture = culture:athenian }
-	}	
-	option = { # Macedonian
+	option = { # Athenian
+		name = greece_decisions.0004.a 
+
+		trigger = { 
+			has_culture = culture:athenian
+			NOR = { 
+				has_character_flag = federal_athenian_vassal 
+				has_character_flag = extorted_vassal 
+			}
+		}
+
+		show_as_tooltip = {
+			if = {
+				limit = { has_character_flag = grateful_vassal }
+				add_opinion = {
+					target = scope:k_athenai_founder
+					modifier = grateful_opinion
+					opinion = 10
+				}
+				remove_character_flag = grateful_vassal
+			}
+			if = {
+				limit = { has_character_flag = newly_autonomous_city_state }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				remove_character_flag = newly_autonomous_city_state
+			}
+			else_if = { 
+				limit = { has_character_flag = newly_autonomous_coalition }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				remove_character_flag = newly_autonomous_coalition
+			}
+		}
+	}
+	option = { # Athenian disappointed by federalism
+		name = greece_decisions.0004.a_federal
+
+		trigger = { 
+			has_character_flag = federal_athenian_vassal 
+			NOT = { has_character_flag = grateful_vassal }
+		}
+
+		show_as_tooltip = {
+			add_opinion = {
+				target = scope:k_athenai_founder
+				modifier = weak_opinion
+				opinion = -10
+			}
+			remove_character_flag = federal_athenian_vassal
+		}
+	}
+	option = { # Independent Macedonians
 		name = greece_decisions.0004.b
 
-		trigger = { has_culture = culture:macedonian }
-
+		trigger = { 
+			has_culture = culture:macedonian
+			is_independent = yes
+		}
 	}
-	option = { # Okay
+	option = { # Extorted vassals
 		name = greece_decisions.0004.c
+
+		trigger = { has_character_flag = extorted_vassal }
+
+		show_as_tooltip = {
+			add_opinion = {
+				target = scope:k_athenai_founder
+				modifier = angry_opinion
+				opinion = -20
+			}
+			vassal_contract_increase_obligation_level = feudal_government_taxes
+			vassal_contract_decrease_obligation_level = feudal_government_levies
+
+			if = {
+				limit = { has_character_flag = newly_dependent_city_state }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 1 }
+				remove_character_flag = newly_dependent_city_state
+			}
+			else_if = { 
+				limit = { has_character_flag = newly_dependent_coalition }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 3 }
+				remove_character_flag = newly_dependent_coalition
+			}
+			
+			remove_character_flag = extorted_vassal
+		}
+	}
+	option = { # Everyone else
+		name = greece_decisions.0004.d
 
 		trigger = { 
 			NOR = {
-				has_culture = culture:athenian 
-				has_culture = culture:macedonian 
+				has_character_flag = extorted_vassal
+				has_culture = culture:athenian
+				AND = {
+					has_culture = culture:macedonian
+					is_independent = yes
+				}
 			}
 		}
-	}	
+
+		show_as_tooltip = {
+			if = {
+				limit = { has_character_flag = grateful_vassal }
+				add_opinion = {
+					target = scope:k_athenai_founder
+					modifier = grateful_opinion
+					opinion = 10
+				}
+				remove_character_flag = grateful_vassal
+			}
+			if = {
+				limit = { has_character_flag = newly_autonomous_city_state }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				remove_character_flag = newly_autonomous_city_state
+			}
+			else_if = { 
+				limit = { has_character_flag = newly_autonomous_coalition }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				remove_character_flag = newly_autonomous_coalition
+			}
+		}
+	}
 }
 
 # I formed e_athenai
