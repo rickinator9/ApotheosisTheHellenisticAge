@@ -374,6 +374,74 @@ martial_strategy.2000 = {
 	title = martial_strategy.2000.t
 	desc = {
 		desc = martial_strategy.2000.start.desc
+		random_valid = {
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.thermopylae.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.salamis.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.plataea.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.aegospotami.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.leuctra.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.chaeronea.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.issus.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.tyre.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.gaugamela.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.rhodes.desc
+			}
+			triggered_desc = {
+				trigger = {
+					location = { geographical_region = world_europe }
+				}
+				desc = martial_strategy.2000.ipsus.desc
+			}
+		}
 		desc = martial_strategy.2000.end.desc
 	}
 	theme = martial_strategy_focus
@@ -504,29 +572,17 @@ martial_strategy.2001 = {
 		desc = martial_strategy.2001.start.desc
 		random_valid = {
 			triggered_desc = {
-				trigger = { var:ancient_battle = flag:gaixia }
-				desc = martial_strategy.2001.gaixia.desc
+				trigger = { var:ancient_battle = flag:megiddo }
+				desc = martial_strategy.2001.megiddo.desc
 			}
 			triggered_desc = {
-				trigger = { var:ancient_battle = flag:red_cliffs }
-				desc = martial_strategy.2001.red_cliffs.desc
+				trigger = { var:ancient_battle = flag:kadesh }
+				desc = martial_strategy.2001.kadesh.desc
 			}
 			triggered_desc = {
-				trigger = { var:ancient_battle = flag:thermopylae }
-				desc = martial_strategy.2001.thermopylae.desc
+				trigger = { var:ancient_battle = flag:nineveh }
+				desc = martial_strategy.2001.nineveh.desc
 			}
-			triggered_desc = {
-				trigger = { var:ancient_battle = flag:teutoburg_forest }
-				desc = martial_strategy.2001.teutoburg_forest.desc
-			}
-			#triggered_desc = {
-			#	trigger = { var:ancient_battle = flag:cannae }
-			#	desc = martial_strategy.2001.cannae.desc
-			#}
-			#triggered_desc = {
-			#	trigger = { var:ancient_battle = flag:gaugamela }
-			#	desc = martial_strategy.2001.gaugamela.desc
-			#}
 		}
 	}
 	theme = martial_strategy_focus
@@ -543,26 +599,24 @@ martial_strategy.2001 = {
 				1 = {
 					modifier = {
 						factor = 0
-						has_character_modifier = studied_the_battle_of_red_cliffs
+						has_character_modifier = studied_the_battle_of_megiddo
 					}
-					set_variable = { name = ancient_battle value = flag:red_cliffs }
+					set_variable = { name = ancient_battle value = flag:megiddo }
 				}
 				1 = {
 					modifier = {
 						factor = 0
-						has_character_modifier = studied_the_battle_of_thermopylae
+						has_character_modifier = studied_the_battle_of_kadesh
 					}
-					set_variable = { name = ancient_battle value = flag:thermopylae }
+					set_variable = { name = ancient_battle value = flag:kadesh }
 				}
 				1 = {
 					modifier = {
 						factor = 0
-						has_character_modifier = studied_the_battle_of_teutoburg_forest
+						has_character_modifier = studied_the_sack_of_nineveh
 					}
-					set_variable = { name = ancient_battle value = flag:teutoburg_forest }
+					set_variable = { name = ancient_battle value = flag:nineveh }
 				}
-				#1 = { set_variable = { name = ancient_battle value = flag:cannae } }
-				#1 = { set_variable = { name = ancient_battle value = flag:gaugamela } }
 			}
 		}
 	}
@@ -570,36 +624,28 @@ martial_strategy.2001 = {
 	option = { #I must try this out!
 		name = martial_strategy.2001.a
 
-
-			if = {
-				limit = { var:ancient_battle = flag:gaixia }
-				add_character_modifier = {
-				modifier = studied_the_battle_of_gaixia
+		if = {
+			limit = { var:ancient_battle = flag:megiddo }
+			add_character_modifier = {
+				modifier = studied_the_battle_of_megiddo
 				years = 20
 			}
-			}
-			if = {
-				limit = { var:ancient_battle = flag:red_cliffs }
-				add_character_modifier = {
-				modifier = studied_the_battle_of_red_cliffs
+		}
+		if = {
+			limit = { var:ancient_battle = flag:kadesh }
+			add_character_modifier = {
+				modifier = studied_the_battle_of_kadesh
 				years = 20
 			}
-			}
-			if = {
-				limit = { var:ancient_battle = flag:thermopylae }
-				add_character_modifier = {
-				modifier = studied_the_battle_of_thermopylae
+		}
+		if = {
+			limit = { var:ancient_battle = flag:nineveh }
+			add_character_modifier = {
+				modifier = studied_the_sack_of_nineveh
 				years = 20
 			}
-			}
-			if = {
-				limit = { var:ancient_battle = flag:teutoburg_forest }
-				add_character_modifier = {
-				modifier = studied_the_battle_of_teutoburg_forest
-				years = 20
-			}
-			}
-			add_martial_lifestyle_xp = medium_lifestyle_experience #Must match in 2000, 2001 and 2002
+		}
+		add_martial_lifestyle_xp = medium_lifestyle_experience #Must match in 2000, 2001 and 2002
 	}
 
 	option = { #So interesting, books are great!
