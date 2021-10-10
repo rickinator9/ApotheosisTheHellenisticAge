@@ -214,7 +214,7 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 		}
 
 		#Has to control a region equating, more or less, to the Athenian empire at its height
-		#completely_controls_region = custom_athenian_empire
+		completely_controls_region = custom_athenian_empire
 	}
 
 	is_valid_showing_failures_only = {
@@ -264,15 +264,15 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 ##############################
 # Athenian Phoroi Decisions	 #
 ##############################
-# These are more or less identical aside from province requirements
-# - form_k_insular_phoros_decision (greece_decisions.0007-0008)
-# - form_k_ionian_phoros_decision (greece_decisions.0009-0010)
-# - form_k_thracian_phoros_decision (greece_decisions.0011-0012)
-# - form_k_hellespontine_phoros_decision (greece_decisions.0013-0014)
-# - form_k_pontic_phoros_decision (greece_decisions.0015-0016) -- TODO
-# - form_k_sicilian_phoros_decision (greece_decisions.0017-0018) -- TODO
+# These are identical aside from province requirements
+# - form_k_insular_phoros_decision
+# - form_k_ionian_phoros_decision
+# - form_k_thracian_phoros_decision
+# - form_k_hellespontine_phoros_decision
+# - form_k_pontic_phoros_decision -- TODO
+# - form_k_sicilian_phoros_decision -- TODO
 
-form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros (greece_decisions.0007-0008)
+form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -344,11 +344,11 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros (greece_deci
 			}
 		}
 
-		#Should be centralised
-		#OR = { 
-		#	has_realm_law = crown_authority_2 
-		#	has_realm_law = crown_authority_3
-		#}
+		Should be centralised
+		OR = { 
+			has_realm_law = crown_authority_2 
+			has_realm_law = crown_authority_3
+		}
 
 		#Must control the de jure region (and more)
 		completely_controls = title:d_euboia
@@ -364,9 +364,11 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros (greece_deci
 	}
 
 	effect = {
-		save_scope_as = k_insular_phoros_founder
+		save_scope_as = phoros_founder
+		title:k_insular_phoros = { save_scope_as = phoros }
 
 		show_as_tooltip = { form_k_insular_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
 		trigger_event = greece_decisions.0007 # Ruler gets to choose an administrative capital
@@ -381,27 +383,11 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros (greece_deci
 	}
 
 	ai_will_do = {
-		base = 0
-
-		#Only worth considering if you actually have your capital in the region, or are the ruler of Athens.
-		modifier = {
-			add = 100
-			OR = {
-				has_primary_title = title:e_athenai
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_euboia }
-						de_jure_liege = { this = title:d_kyklades }
-						de_jure_liege = { this = title:d_magnesia }
-						this = title:c_aigina
-					}
-				}
-			}
-		}
+		base = 100
 	}
 }
 
-form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros (greece_decisions.0009-0010)
+form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -490,12 +476,14 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros (greece_decisi
 	}
 
 	effect = {
-		save_scope_as = k_ionian_phoros_founder
+		save_scope_as = phoros_founder
+		title:k_ionian_phoros = { save_scope_as = phoros }
 
-		show_as_tooltip = { form_k_ionian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0009 - prestige, title, de jure changes etc
+		show_as_tooltip = { form_k_ionian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
-		trigger_event = greece_decisions.0009 # Ruler gets to choose an administrative capital
+		trigger_event = greece_decisions.0007 # Ruler gets to choose an administrative capital
 	}
 
 	cost = {
@@ -507,26 +495,11 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros (greece_decisi
 	}
 
 	ai_will_do = {
-		base = 0
-
-		#Only worth considering if you actually have your capital in the region, or are the ruler of Athens.
-		modifier = {
-			add = 100
-			OR = {
-				has_primary_title = title:e_athenai
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_doris }
-						de_jure_liege = { this = title:d_ionia }
-						de_jure_liege = { this = title:d_aiolis }
-					}
-				}
-			}
-		}
+		base = 100
 	}
 }
 
-form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros (greece_decisions.0011-0012)
+form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -621,12 +594,14 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros (greece_de
 	}
 
 	effect = {
-		save_scope_as = k_thracian_phoros_founder
+		save_scope_as = phoros_founder
+		title:k_thracian_phoros = { save_scope_as = phoros }
 		
-		show_as_tooltip = { form_k_thracian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0011 - prestige, title, de jure changes etc
+		show_as_tooltip = { form_k_thracian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
-		trigger_event = greece_decisions.0011 # Ruler gets to choose an administrative capital
+		trigger_event = greece_decisions.0007 # Ruler gets to choose an administrative capital
 	}
 
 	cost = {
@@ -638,28 +613,11 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros (greece_de
 	}
 
 	ai_will_do = {
-		base = 0
-
-		#Only worth considering if you actually have your capital in the region, or are the ruler of Athens.
-		modifier = {
-			add = 100
-			OR = {
-				has_primary_title = title:e_athenai
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_briantike }
-						de_jure_liege = { this = title:d_parastrymonia }
-						de_jure_liege = { this = title:d_chalkidike }
-						de_jure_liege = { this = title:d_amphaxitis }
-						this = title:c_pydna
-					}
-				}
-			}
-		}
+		base = 100
 	}
 }
 
-form_k_hellespontine_phoros_decision = { # aka: Reform the hellespontine Phoros (greece_decisions.0013-0014)
+form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -760,12 +718,14 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the hellespontine Phoros 
 	}
 
 	effect = {
-		save_scope_as = k_hellespontine_phoros_founder
+		save_scope_as = phoros_founder
+		title:k_hellespontine_phoros = { save_scope_as = phoros }
 		
-		show_as_tooltip = { form_k_hellespontine_phoros_decision_effects = yes } # Actually applied in greece_decisions.0013 - prestige, title, de jure changes etc
+		show_as_tooltip = { form_k_hellespontine_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
-		trigger_event = greece_decisions.0013 # Ruler gets to choose an administrative capital
+		trigger_event = greece_decisions.0007 # Ruler gets to choose an administrative capital
 	}
 
 	cost = {
@@ -777,25 +737,6 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the hellespontine Phoros 
 	}
 
 	ai_will_do = {
-		base = 0
-
-		#Only worth considering if you actually have your capital in the region, or are the ruler of Athens.
-		modifier = {
-			add = 100
-			OR = {
-				has_primary_title = title:e_athenai
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_troas }
-						de_jure_liege = { this = title:d_mysia }
-						de_jure_liege = { this = title:d_astike }
-						de_jure_liege = { this = title:d_apsinthis }
-						de_jure_liege = { this = title:d_zeleia }
-						de_jure_liege = { this = title:d_askania }
-						de_jure_liege = { this = title:d_bithynia }
-					}
-				}
-			}
-		}
+		base = 100
 	}
 }
