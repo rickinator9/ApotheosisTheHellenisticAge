@@ -21,6 +21,14 @@
 # 0007 - I formed a phoros
 # 0008 - Someone else formed a phoros
 
+## form phoroi decisions
+# 0009 - I formed k_peloponnesos
+# 0010 - Someone else formed k_peloponnesos
+
+##############################
+# Form k_lakedaimon		 	 #
+##############################
+
 scripted_trigger cares_about_messenia_trigger = {
 	is_independent_ruler = yes
 	faith = faith:pythian_faith
@@ -265,6 +273,10 @@ greece_decisions.0002 = {
 		}
 	}	
 }
+
+##############################
+# Form k_athenai		 	 #
+##############################
 
 # I formed k_athenai
 greece_decisions.0003 = {
@@ -702,6 +714,10 @@ greece_decisions.0004 = {
 	}
 }
 
+##############################
+# Form e_athenai		 	 #
+##############################
+
 # I formed e_athenai
 greece_decisions.0005 = {
 	type = character_event
@@ -774,6 +790,10 @@ greece_decisions.0006 = {
 	}	
 }
 
+##############################
+# Athenian Phoroi Decisions	 #
+##############################
+
 # I formed a phoros
 greece_decisions.0007 = {
 	type = character_event
@@ -822,7 +842,7 @@ greece_decisions.0007 = {
 			title:c_byzantion = { save_scope_as = centre_1 }
 			title:c_chersonesos_thrace = { save_scope_as = centre_2 }
 			title:c_kyzikos = { save_scope_as = centre_3 }
-			title:c_philippoi = { save_scope_as = centre_4 }
+			title:c_kios = { save_scope_as = centre_4 }
 		}
 
 		remove_character_flag = founded_k_insular_phoros
@@ -1187,5 +1207,39 @@ greece_decisions.0008 = {
 	}
 	option = { # Okay
 		name = greece_decisions.0008.a
+	}	
+}
+
+##############################
+# Form k_peloponnesos	 	 #
+##############################
+
+# I formed k_peloponnesos
+greece_decisions.0009 = {
+	type = character_event
+	title = greece_decisions.0009.t
+	desc = greece_decisions.0009.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_peloponnesos_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		form_k_peloponnesos_decision_effects = yes
+	}
+
+	option = { # Okay
+		name = greece_decisions.0009.a
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_peloponnesos_founder }
+				is_within_diplo_range = { CHARACTER = scope:k_peloponnesos_founder }
+			}
+			trigger_event = greece_decisions.0010
+		}
 	}	
 }

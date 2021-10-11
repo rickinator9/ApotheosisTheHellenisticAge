@@ -118,9 +118,11 @@ form_k_insular_phoros_decision_effects = {
 	}
 
 	# De jure shifts
-	title:d_euboia = { set_de_jure_liege_title = title:k_insular_phoros }
-	title:d_kyklades = { set_de_jure_liege_title = title:k_insular_phoros }
-	title:d_magnesia = { set_de_jure_liege_title = title:k_insular_phoros }
+	hidden_effect = {
+		title:d_euboia = { set_de_jure_liege_title = title:k_insular_phoros }
+		title:d_kyklades = { set_de_jure_liege_title = title:k_insular_phoros }
+		title:d_magnesia = { set_de_jure_liege_title = title:k_insular_phoros }
+	}
 }
 form_k_ionian_phoros_decision_effects = {
 	# Create kingdom title
@@ -145,9 +147,11 @@ form_k_ionian_phoros_decision_effects = {
 	}
 
 	# De jure shifts
-	title:d_doris = { set_de_jure_liege_title = title:k_ionian_phoros }
-	title:d_ionia = { set_de_jure_liege_title = title:k_ionian_phoros }
-	title:d_aiolis = { set_de_jure_liege_title = title:k_ionian_phoros }
+	hidden_effect = {
+		title:d_doris = { set_de_jure_liege_title = title:k_ionian_phoros }
+		title:d_ionia = { set_de_jure_liege_title = title:k_ionian_phoros }
+		title:d_aiolis = { set_de_jure_liege_title = title:k_ionian_phoros }
+	}
 }
 form_k_thracian_phoros_decision_effects = {
 	# Create kingdom title
@@ -172,10 +176,12 @@ form_k_thracian_phoros_decision_effects = {
 	}
 
 	# De jure shifts
-	title:d_briantike = { set_de_jure_liege_title = title:k_thracian_phoros }
-	title:d_parastrymonia = { set_de_jure_liege_title = title:k_thracian_phoros }
-	title:d_chalkidike = { set_de_jure_liege_title = title:k_thracian_phoros }
-	title:d_amphaxitis = { set_de_jure_liege_title = title:k_thracian_phoros }
+	hidden_effect = {
+		title:d_briantike = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_parastrymonia = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_chalkidike = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_amphaxitis = { set_de_jure_liege_title = title:k_thracian_phoros }
+	}
 }
 form_k_hellespontine_phoros_decision_effects = {
 	# Create kingdom title
@@ -200,13 +206,45 @@ form_k_hellespontine_phoros_decision_effects = {
 	}
 
 	# De jure shifts
-	title:d_troas = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_mysia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_astike = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_apsinthis = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_zeleia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_askania = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-	title:d_bithynia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+	hidden_effect = {
+		title:d_troas = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_mysia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_astike = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_apsinthis = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_zeleia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_askania = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_bithynia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+	}
+}
+
+form_k_peloponnesos_decision_effects = {
+	# Create kingdom title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_peloponnesos = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# De jure shifts
+	hidden_effect = {
+		title:d_lakedaimon = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_messenia = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_elis = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_arcadia = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_achaia = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_korinthia = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_argolis = { set_de_jure_liege_title = title:k_peloponnesos }
+	}
+	hidden_effect = {
+		title:k_peloponnesos = { set_de_jure_liege_title = title:e_hellas }
+	}
 }
 
 form_k_bithynia_decision_effects = {

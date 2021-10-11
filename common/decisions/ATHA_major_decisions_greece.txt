@@ -89,31 +89,27 @@ form_k_athenai_decision = { # aka: Establish the Third Athenian League
 		completely_controls = title:d_attike
 
 		#Must have a city-state government
-		custom_description = {
-			text = has_city_state_government
-			government_has_flag = is_city_state_government
-		}
+		has_city_state_government = yes
 		
 		#Should have re-conquered some of the Aegean coast, either in Macedonia/Thrace or Asia Minor
 		OR = {
 			#Easier pathway which can avoid conflict with the successor kingdoms
-			AND = {
+			custom_description = {
+				text = "form_k_athenai_decision_thracian_duchies"
 				has_title = title:d_euboia
-				custom_description = {
-					text = "form_k_athenai_decision_at_least_two"
-					any_held_title = {
-						count >= 2
-						OR = {
-							this = title:d_apsinthis 
-							this = title:d_briantike
-							this = title:d_parastrymonia
-							this = title:d_chalkidike
-						}
+				any_held_title = {
+					count >= 2
+					OR = {
+						this = title:d_apsinthis 
+						this = title:d_briantike
+						this = title:d_parastrymonia
+						this = title:d_chalkidike
 					}
 				}
 			}
 			#Harder but more rewarding pathway that requires fighting the Ptolemies/Seleucids
-			AND = { 
+			custom_description = {
+				text = "form_k_athenai_decision_asian_duchies"
 				has_title = title:d_kyklades
 				OR = { 
 					has_title = title:d_doris
@@ -206,10 +202,7 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 
 		#Must have city-state or hegemonic league government (so no federal leagues)
 		OR = {
-			custom_description = {
-				text = has_city_state_government
-				government_has_flag = is_city_state_government
-			}
+			has_city_state_government = yes
 			has_government = hegemonic_league_government
 		}
 
@@ -260,7 +253,6 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 	}
 }
 
-
 ##############################
 # Athenian Phoroi Decisions	 #
 ##############################
@@ -289,14 +281,7 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 			has_primary_title = title:e_athenai
 			AND = {
 				liege = title:e_athenai.holder
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_euboia }
-						de_jure_liege = { this = title:d_kyklades }
-						de_jure_liege = { this = title:d_magnesia }
-						this = title:c_aigina
-					}
-				}
+				capital_province = { geographical_region = custom_insular_phoros }
 			}
 		}
 
@@ -307,13 +292,8 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 		title:k_insular_phoros = { is_titular = yes }
 
 		#Must have land within the relevant area
-		any_sub_realm_county = {
-			OR = {
-				de_jure_liege = { this = title:d_euboia }
-				de_jure_liege = { this = title:d_kyklades }
-				de_jure_liege = { this = title:d_magnesia }
-				this = title:c_aigina
-			}
+		any_sub_realm_barony = {
+			title_province = { geographical_region = custom_insular_phoros }
 		}
 	}
 
@@ -324,37 +304,31 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 		#Must be a competent steward
 		stewardship >= 10
 
+		#Should be a bureaucrat, if not the ruler of Athens
+		OR = {
+			has_primary_title = title:e_athenai
+			has_bureaucracy_government = yes
+		}
+
 		#Ruler of Athens must have city-state or hegemonic league government (so no federal leagues or dynastic)
 		title:e_athenai.holder = {
 			OR = {
-				custom_description = {
-					text = has_city_state_government
-					government_has_flag = is_city_state_government
-				}
+				has_city_state_government = yes
 				has_government = hegemonic_league_government
 			}
 		}
 
-		#Should be a bureaucrat, if not the ruler of Athens
-		OR = {
-			has_primary_title = title:e_athenai
-			custom_description = {
-				text = has_bureaucracy_government
-				government_has_flag = is_bureaucracy_government
+		#Should be centralised
+		custom_description = {
+		text = form_phoros_decision_centralisation.tt
+			OR = { 
+				has_realm_law = crown_authority_2 
+				has_realm_law = crown_authority_3
 			}
 		}
 
-		Should be centralised
-		OR = { 
-			has_realm_law = crown_authority_2 
-			has_realm_law = crown_authority_3
-		}
-
-		#Must control the de jure region (and more)
-		completely_controls = title:d_euboia
-		completely_controls = title:d_kyklades
-		completely_controls = title:d_magnesia
-		completely_controls = title:c_aigina 
+		#Must control the Insular phoros region
+		completely_controls_region = custom_insular_phoros
 	}
 
 	is_valid_showing_failures_only = {
@@ -368,6 +342,7 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 		title:k_insular_phoros = { save_scope_as = phoros }
 
 		show_as_tooltip = { form_k_insular_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_k_insular_phoros_decision_effects_de_jure.tt
 		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
@@ -404,13 +379,7 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 			has_primary_title = title:e_athenai
 			AND = {
 				liege = title:e_athenai.holder
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_doris }
-						de_jure_liege = { this = title:d_ionia }
-						de_jure_liege = { this = title:d_aiolis }
-					}
-				}
+				capital_province = { geographical_region = custom_ionian_phoros }
 			}
 		}
 
@@ -421,12 +390,8 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 		title:k_ionian_phoros = { is_titular = yes }
 
 		#Must have land within the relevant area
-		any_sub_realm_county = {
-			OR = {
-				de_jure_liege = { this = title:d_doris }
-				de_jure_liege = { this = title:d_ionia }
-				de_jure_liege = { this = title:d_aiolis }
-			}
+		any_sub_realm_barony = {
+			title_province = { geographical_region = custom_ionian_phoros }
 		}
 	}
 
@@ -437,36 +402,31 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 		#Must be a competent steward
 		stewardship >= 10
 
+		#Should be a bureaucrat, if not the ruler of Athens
+		OR = {
+			has_primary_title = title:e_athenai
+			has_bureaucracy_government = yes
+		}
+
 		#Ruler of Athens must have city-state or hegemonic league government (so no federal leagues or dynastic)
 		title:e_athenai.holder = {
 			OR = {
-				custom_description = {
-					text = has_city_state_government
-					government_has_flag = is_city_state_government
-				}
+				has_city_state_government = yes
 				has_government = hegemonic_league_government
 			}
 		}
 
-		#Should be a bureaucrat, if not the ruler of Athens
-		OR = {
-			has_primary_title = title:e_athenai
-			custom_description = {
-				text = has_bureaucracy_government
-				government_has_flag = is_bureaucracy_government
+		#Should be centralised
+		custom_description = {
+		text = form_phoros_decision_centralisation.tt
+			OR = { 
+				has_realm_law = crown_authority_2 
+				has_realm_law = crown_authority_3
 			}
 		}
 
-		#Should be centralised
-		OR = { 
-			has_realm_law = crown_authority_2 
-			has_realm_law = crown_authority_3
-		}
-
-		#Must control the de jure region
-		completely_controls = title:d_doris
-		completely_controls = title:d_ionia
-		completely_controls = title:d_aiolis
+		#Must control the Ionian phoros region
+		completely_controls_region = custom_ionian_phoros
 	}
 
 	is_valid_showing_failures_only = {
@@ -480,6 +440,7 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 		title:k_ionian_phoros = { save_scope_as = phoros }
 
 		show_as_tooltip = { form_k_ionian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_k_ionian_phoros_decision_effects_de_jure.tt
 		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
@@ -516,15 +477,7 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 			has_primary_title = title:e_athenai
 			AND = {
 				liege = title:e_athenai.holder
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_briantike }
-						de_jure_liege = { this = title:d_parastrymonia }
-						de_jure_liege = { this = title:d_chalkidike }
-						de_jure_liege = { this = title:d_amphaxitis }
-						this = title:c_pydna
-					}
-				}
+				capital_province = { geographical_region = custom_thracian_phoros }
 			}
 		}
 
@@ -535,14 +488,8 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 		title:k_thracian_phoros = { is_titular = yes }
 
 		#Must have land within the relevant area
-		any_sub_realm_county = {
-			OR = {
-				de_jure_liege = { this = title:d_briantike }
-				de_jure_liege = { this = title:d_parastrymonia }
-				de_jure_liege = { this = title:d_chalkidike }
-				de_jure_liege = { this = title:d_amphaxitis }
-				this = title:c_pydna
-			}
+		any_sub_realm_barony = {
+			title_province = { geographical_region = custom_thracian_phoros }
 		}
 	}
 
@@ -553,38 +500,31 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 		#Must be a competent steward
 		stewardship >= 10
 
+		#Should be a bureaucrat, if not the ruler of Athens
+		OR = {
+			has_primary_title = title:e_athenai
+			has_bureaucracy_government = yes
+		}
+
 		#Ruler of Athens must have city-state or hegemonic league government (so no federal leagues or dynastic)
 		title:e_athenai.holder = {
 			OR = {
-				custom_description = {
-					text = has_city_state_government
-					government_has_flag = is_city_state_government
-				}
+				has_city_state_government = yes
 				has_government = hegemonic_league_government
 			}
 		}
 
-		#Should be a bureaucrat, if not the ruler of Athens
-		OR = {
-			has_primary_title = title:e_athenai
-			custom_description = {
-				text = has_bureaucracy_government
-				government_has_flag = is_bureaucracy_government
+		#Should be centralised
+		custom_description = {
+		text = form_phoros_decision_centralisation.tt
+			OR = { 
+				has_realm_law = crown_authority_2 
+				has_realm_law = crown_authority_3
 			}
 		}
 
-		#Should be centralised
-		OR = { 
-			has_realm_law = crown_authority_2 
-			has_realm_law = crown_authority_3
-		}
-
-		#Must control the de jure region (and more)
-		completely_controls = title:d_briantike
-		completely_controls = title:d_parastrymonia
-		completely_controls = title:d_chalkidike
-		completely_controls = title:d_amphaxitis 
-		completely_controls = title:c_pydna 
+		#Must control the Thracian phoros region
+		completely_controls_region = custom_thracian_phoros
 	}
 
 	is_valid_showing_failures_only = {
@@ -596,8 +536,9 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 	effect = {
 		save_scope_as = phoros_founder
 		title:k_thracian_phoros = { save_scope_as = phoros }
-		
+
 		show_as_tooltip = { form_k_thracian_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_k_thracian_phoros_decision_effects_de_jure.tt
 		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
@@ -634,17 +575,7 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 			has_primary_title = title:e_athenai
 			AND = {
 				liege = title:e_athenai.holder
-				capital_county = {
-					OR = {
-						de_jure_liege = { this = title:d_troas }
-						de_jure_liege = { this = title:d_mysia }
-						de_jure_liege = { this = title:d_astike }
-						de_jure_liege = { this = title:d_apsinthis }
-						de_jure_liege = { this = title:d_zeleia }
-						de_jure_liege = { this = title:d_askania }
-						de_jure_liege = { this = title:d_bithynia }
-					}
-				}
+				capital_province = { geographical_region = custom_hellespontine_phoros }
 			}
 		}
 
@@ -655,16 +586,8 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 		title:k_hellespontine_phoros = { is_titular = yes }
 
 		#Must have land within the relevant area
-		any_sub_realm_county = {
-			OR = {
-				de_jure_liege = { this = title:d_troas }
-				de_jure_liege = { this = title:d_mysia }
-				de_jure_liege = { this = title:d_astike }
-				de_jure_liege = { this = title:d_apsinthis }
-				de_jure_liege = { this = title:d_zeleia }
-				de_jure_liege = { this = title:d_askania }
-				de_jure_liege = { this = title:d_bithynia }
-			}
+		any_sub_realm_barony = {
+			title_province = { geographical_region = custom_hellespontine_phoros }
 		}
 	}
 
@@ -675,40 +598,31 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 		#Must be a competent steward
 		stewardship >= 10
 
+		#Should be a bureaucrat, if not the ruler of Athens
+		OR = {
+			has_primary_title = title:e_athenai
+			has_bureaucracy_government = yes
+		}
+
 		#Ruler of Athens must have city-state or hegemonic league government (so no federal leagues or dynastic)
 		title:e_athenai.holder = {
 			OR = {
-				custom_description = {
-					text = has_city_state_government
-					government_has_flag = is_city_state_government
-				}
+				has_city_state_government = yes
 				has_government = hegemonic_league_government
 			}
 		}
 
-		#Should be a bureaucrat, if not the ruler of Athens
-		OR = {
-			has_primary_title = title:e_athenai
-			custom_description = {
-				text = has_bureaucracy_government
-				government_has_flag = is_bureaucracy_government
+		#Should be centralised
+		custom_description = {
+		text = form_phoros_decision_centralisation.tt
+			OR = { 
+				has_realm_law = crown_authority_2 
+				has_realm_law = crown_authority_3
 			}
 		}
 
-		#Should be centralised
-		OR = { 
-			has_realm_law = crown_authority_2 
-			has_realm_law = crown_authority_3
-		}
-
-		#Must control the de jure region
-		completely_controls = title:d_troas
-		completely_controls = title:d_mysia
-		completely_controls = title:d_astike
-		completely_controls = title:d_apsinthis 
-		completely_controls = title:d_zeleia
-		completely_controls = title:d_askania
-		completely_controls = title:d_bithynia
+		#Must control the Hellespontine phoros region
+		completely_controls_region = custom_hellespontine_phoros
 	}
 
 	is_valid_showing_failures_only = {
@@ -722,6 +636,7 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 		title:k_hellespontine_phoros = { save_scope_as = phoros }
 		
 		show_as_tooltip = { form_k_hellespontine_phoros_decision_effects = yes } # Actually applied in greece_decisions.0007 - prestige, title, de jure changes etc
+		custom_tooltip = form_k_hellespontine_phoros_decision_effects_de_jure.tt
 		custom_tooltip = form_phoros_decision_effect_tooltip
 
 		#Event for player
@@ -730,6 +645,93 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 
 	cost = {
 		gold = 500
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##############################
+# Form k_peloponnesos	 	 #
+##############################
+
+form_k_peloponnesos_decision = { # aka: Unite the Peloponnese
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = form_k_peloponnesos_decision_desc
+	selection_tooltip = form_k_peloponnesos_decision_tooltip
+
+	is_shown = {
+		has_culture_group = culture_group:greek_group
+		highest_held_title_tier <= tier_duchy
+		capital_province = { geographical_region = custom_peloponnese }
+		title:k_peloponnesos = { is_titular = yes }
+	}
+
+	is_valid = {
+		#Must be independent
+		is_independent_ruler = yes
+
+		#Must have city-state or hegemonic league government (so no federal leagues)
+		OR = {
+			has_city_state_government = yes
+			has_coalition_government = yes
+		}
+
+		#Primary title must be one of the Peloponnesian duchies
+		custom_description = {
+   			text = form_k_peloponnesos_decision_primary.tt
+			OR = {
+				has_primary_title = title:d_lakedaimon
+				has_primary_title = title:d_messenia
+				has_primary_title = title:d_elis
+				has_primary_title = title:d_arcadia
+				has_primary_title = title:d_achaia
+				has_primary_title = title:d_korinthia
+				has_primary_title = title:d_argolis
+			}
+		}
+
+		#Has to control a the entire Peloponnese
+		completely_controls_region = custom_peloponnese
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		save_scope_as = k_peloponnesos_founder
+
+		show_as_tooltip = { form_k_peloponnesos_decision_effects = yes } # Actually applied in greece_decisions.0005 - prestige, title etc
+		custom_tooltip = form_k_peloponnesos_decision_effects_de_jure.tt
+
+		#Event for player
+		trigger_event = greece_decisions.0009
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = greece_decisions.0009
+		}
+	}
+
+	cost = {
+		gold = 300
+		prestige = 200
 	}
 
 	ai_potential = {

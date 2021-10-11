@@ -4,30 +4,30 @@ can_build_tribal = {
 	government_has_flag = is_tribal_government
 }
 
+### Government category triggers
+
+has_city_state_government = { government_has_flag = is_city_state_government }
+has_bureaucracy_government = { government_has_flag = is_bureaucracy_government }
+has_coalition_government = { government_has_flag = is_coalition_government }
+
 ### Liege contract modification triggers
 
 can_create_dependent_vassals = {
-	custom_description = {
-		text = "can_create_dependent_vassals"
-		NOR = {
-			has_government = federal_alliance_government
-			has_government = amphictyony_government
-			has_government = tribal_government
-		}	
-	}
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+	}	
 }
 
 can_create_bureaucratic_vassals = {
-	custom_description = {
-		text = "can_create_bureaucratic_vassals"
-		NOR = {
-			has_government = federal_alliance_government
-			has_government = federal_sympolity_government
-			has_government = amphictyony_government
-			has_government = tribal_government
-			has_government = clan_government
-		}
-	}	
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = federal_sympolity_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+		has_government = clan_government
+	}
 }
 
 can_enforce_ritual_coronations = {
