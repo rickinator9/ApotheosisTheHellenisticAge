@@ -41,3 +41,31 @@
 		add = medium_prestige_value # requires taking on Macedonia
 	}
 }
+k_peloponnesos_prestige_value = {
+	value = 0
+
+	every_in_list = {
+		list = peloponnesian_accepted_list
+		if = {
+			limit = { highest_held_title_tier = tier_duchy }
+			add = minor_prestige_value
+		}
+		else = {
+			add = miniscule_prestige_value
+		}
+	}
+	every_in_list = {
+		list = peloponnesian_rejected_list
+		if = {
+			limit = { highest_held_title_tier = tier_duchy }
+			subtract = minor_prestige_value
+		}
+		else = {
+			subtract = miniscule_prestige_value
+		}
+	}
+	every_in_list = {
+		list = peloponnesian_claimant_list
+		subtract = medium_prestige_value
+	}
+}

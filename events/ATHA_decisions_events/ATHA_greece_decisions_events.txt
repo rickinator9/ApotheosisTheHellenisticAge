@@ -1,10 +1,5 @@
 ﻿namespace = greece_decisions
 
-## TODO
-## If Sparta takes the option to enslave Messenia, there could be a decision for foreign rulers to liberate Messenia and humiliate the Spartans, which would shatter the k_lakedaimon title, hurt the prestige of the Spartan ruler, and could offer some ineteresting choices to the ruler as to how free Messenia should be (in name only, autonomous subject, independent ally etc.) 
-## Perhaps there can be an additional decision for rulers to free the helots in their held counties, which would remove the modifier at some cost (gold/prestige/control) that would represent compensation or other measures - there could be an event offering multiple ways of removing the modifier.
-## In the longer term, it might be interesting to have a fully fleshed out slavery/serfdom mechanic that would allow us to model peoples who had been reduced to servitude (helots, penestae, Mariandynoi), as well as slave revolts and the slave economy
-
 ## form_k_lakedaimon_decision
 # 0001 - I formed k_lakedaimon
 # 0002 - Someone else formed k_lakedaimon
@@ -21,13 +16,17 @@
 # 0007 - I formed a phoros
 # 0008 - Someone else formed a phoros
 
-## form phoroi decisions
+## form k_peloponnesos decision
 # 0009 - I formed k_peloponnesos
 # 0010 - Someone else formed k_peloponnesos
 
 ##############################
 # Form k_lakedaimon		 	 #
 ##############################
+## TODO
+## If Sparta takes the option to enslave Messenia, there could be a decision for foreign rulers to liberate Messenia and humiliate the Spartans, which would shatter the k_lakedaimon title, hurt the prestige of the Spartan ruler, and could offer some ineteresting choices to the ruler as to how free Messenia should be (in name only, autonomous subject, independent ally etc.) 
+## Perhaps there can be an additional decision for rulers to free the helots in their held counties, which would remove the modifier at some cost (gold/prestige/control) that would represent compensation or other measures - there could be an event offering multiple ways of removing the modifier.
+## In the longer term, it might be interesting to have a fully fleshed out slavery/serfdom mechanic that would allow us to model peoples who had been reduced to servitude (helots, penestae, Mariandynoi), as well as slave revolts and the slave economy
 
 scripted_trigger cares_about_messenia_trigger = {
 	is_independent_ruler = yes
@@ -1222,24 +1221,156 @@ greece_decisions.0009 = {
 	theme = realm
 	left_portrait = {
 		character = scope:k_peloponnesos_founder
+		animation = personality_rational
+	}
+
+	immediate = {
+		form_k_peloponnesos_decision_effects = yes
+		every_county_in_region = {
+			region = custom_peloponnese
+			limit = {
+				exists = holder
+				holder = { 
+					form_k_peloponnesos_decision_potential_vassal_trigger = yes
+					NOT = { this = scope:k_peloponnesos_founder } 
+				}
+			}
+			holder = { add_character_flag = peloponnesian_ruler }
+		}
+	}
+
+	option = { # Hegemonic
+		name = greece_decisions.0009.a
+
+		add_character_flag = k_peloponnesos_founder_hegemonic
+
+		every_ruler = {
+			limit = { has_character_flag = peloponnesian_ruler }
+			trigger_event = {
+				id = greece_decisions.0010
+				days = { 7 28 }
+			}
+		}
+	}	
+
+	option = { # Federal
+		name = greece_decisions.0009.b
+
+		add_character_flag = k_peloponnesos_founder_federal
+
+		every_ruler = {
+			limit = { has_character_flag = peloponnesian_ruler }
+			trigger_event = {
+				id = greece_decisions.0010
+				days = { 7 28 }
+			}
+		}
+	}
+}
+
+# Independent Peloponnesian ruler decides whether to join league 
+greece_decisions.0010 = {
+	type = character_event
+	title = greece_decisions.0010.t
+	desc = greece_decisions.0010.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:k_peloponnesos_founder
 		animation = personality_honorable
 	}
 
 	immediate = {
-		play_music_cue = "mx_cue_epic_sacral_moment"
+	}
 
-		form_k_peloponnesos_decision_effects = yes
+	option = { # Sure
+		name = greece_decisions.0010.a
+
+		form_k_peloponnesos_accept_effect = yes
+
+		scope:k_peloponnesos_founder = {
+			trigger_event = greece_decisions.0011
+		}
+	}
+
+	option = { # Nah
+		name = greece_decisions.0010.b
+
+		form_k_peloponnesos_reject_effect = yes
+
+		scope:k_peloponnesos_founder = {
+			trigger_event = greece_decisions.0011
+		}
+	}
+
+	option = { # I'd be a better hegemon
+		name = greece_decisions.0010.c
+
+		trigger = {
+			NOT = {
+				any_ruler = { has_character_flag = peloponnesian_ruler_claimant }
+			}
+		}
+
+		form_k_peloponnesos_claimant_effect = yes
+		save_scope_as = peloponnesian_claimant
+
+		scope:k_peloponnesos_founder = {
+			trigger_event = greece_decisions.0011
+		}
+	}
+}
+
+# Peloponnesian League founder gets notified of the overall outcome 
+greece_decisions.0011 = {
+	type = character_event
+	title = greece_decisions.0011.t
+	desc = greece_decisions.0011.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_peloponnesos_founder
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:peloponnesian_claimant
+		animation = personality_bold
+	}
+
+	trigger = {
+		NOT = {
+			any_ruler = { has_character_flag = peloponnesian_ruler }
+		}
+	}
+
+	immediate = {
+		every_ruler = {
+			if = {
+				limit = { has_character_flag = peloponnesian_ruler_accepted }
+				add_to_list = peloponnesian_accepted_list
+			}
+			else_if = {
+				limit = { has_character_flag = peloponnesian_ruler_rejected }
+				add_to_list = peloponnesian_rejected_list
+			}
+			else_if = {
+				limit = { has_character_flag = peloponnesian_ruler_claimant }
+				add_to_list = peloponnesian_claimant_list
+				save_scope_as = peloponnesian_claimant
+			}
+		}
+
+		# Add/remove prestige
+		add_prestige = k_peloponnesos_prestige_value
 	}
 
 	option = { # Okay
-		name = greece_decisions.0009.a
+		name = greece_decisions.0011.a
 
-		every_player = {
-			limit = {
-				NOT = { this = scope:k_peloponnesos_founder }
-				is_within_diplo_range = { CHARACTER = scope:k_peloponnesos_founder }
-			}
-			trigger_event = greece_decisions.0010
+		show_as_tooltip = { # TODO: convert into custom_tooltip to show as 'has happened'
+			scope:peloponnesian_claimant = { form_k_peloponnesos_claimant_effect }
 		}
-	}	
+	}
 }

@@ -20,7 +20,11 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 			has_government = feudal_government
 			has_government = clan_government
 		}
-		title:k_bithynia = { is_titular = yes }
+		#Must not already exist or have de jure territory
+		title:k_bithynia = { 
+			is_titular = yes
+			is_title_created = no
+		}
 	}
 
 	is_valid = {
