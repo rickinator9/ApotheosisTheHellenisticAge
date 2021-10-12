@@ -13,14 +13,24 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 
 	is_shown = {
 		has_culture = culture:dorian_south
-		has_government = city_state_spartan_government
-		highest_held_title_tier <= tier_duchy
-		title:k_lakedaimon = { is_titular = yes }
+		has_government = city_state_spartan_government # TODO: need more robust system that also allows for Spartan-led Hegemonic Leagues
+		OR = {
+			highest_held_title_tier <= tier_duchy
+			has_primary_title = title:k_peloponnesos
+		}
+		#Must not already exist or have de jure territory
+		title:k_lakedaimon = { 
+			is_titular = yes
+			is_title_created = no
+		}
 	}
 
 	is_valid = {
 		is_independent_ruler = yes
-		has_primary_title = title:d_lakedaimon
+		OR = {
+			has_primary_title = title:d_lakedaimon
+			has_primary_title = title:k_peloponnesos
+		}
 		completely_controls = title:d_lakedaimon
 		completely_controls = title:d_messenia
 		completely_controls = title:c_megalopolis # part of Megalopolis' purpose was to keep Sparta at bay
@@ -288,8 +298,11 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 		#Must be duke or higher
 		highest_held_title_tier >= tier_duchy
 		
-		#Has not already been formed
-		title:k_insular_phoros = { is_titular = yes }
+		#Must not already exist or have de jure territory
+		title:k_insular_phoros = { 
+			is_titular = yes
+			is_title_created = no
+		}
 
 		#Must have land within the relevant area
 		any_sub_realm_barony = {
@@ -386,8 +399,11 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 		#Must be duke or higher
 		highest_held_title_tier >= tier_duchy
 		
-		#Has not already been formed
-		title:k_ionian_phoros = { is_titular = yes }
+		#Must not already exist or have de jure territory
+		title:k_ionian_phoros = { 
+			is_titular = yes
+			is_title_created = no
+		}
 
 		#Must have land within the relevant area
 		any_sub_realm_barony = {
@@ -484,8 +500,11 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 		#Must be duke or higher
 		highest_held_title_tier >= tier_duchy
 		
-		#Has not already been formed
-		title:k_thracian_phoros = { is_titular = yes }
+		#Must not already exist or have de jure territory
+		title:k_thracian_phoros = { 
+			is_titular = yes
+			is_title_created = no
+		}
 
 		#Must have land within the relevant area
 		any_sub_realm_barony = {
@@ -582,8 +601,11 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 		#Must be duke or higher
 		highest_held_title_tier >= tier_duchy
 		
-		#Has not already been formed
-		title:k_hellespontine_phoros = { is_titular = yes }
+		#Must not already exist or have de jure territory
+		title:k_hellespontine_phoros = { 
+			is_titular = yes
+			is_title_created = no
+		}
 
 		#Must have land within the relevant area
 		any_sub_realm_barony = {
@@ -660,7 +682,7 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 # Form k_peloponnesos	 	 #
 ##############################
 
-form_k_peloponnesos_decision = { # aka: Unite the Peloponnese
+form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -671,37 +693,82 @@ form_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 
 	is_shown = {
 		has_culture_group = culture_group:greek_group
-		highest_held_title_tier <= tier_duchy
+		OR = {
+			highest_held_title_tier <= tier_duchy
+			has_primary_title = title:k_lakedaimon
+		}
+
+		#Must have a capital in the region
 		capital_province = { geographical_region = custom_peloponnese }
-		title:k_peloponnesos = { is_titular = yes }
+
+		#Must not already exist or have de jure territory
+		title:k_peloponnesos = { 
+			is_titular = yes
+			is_title_created = no
+		}
 	}
 
 	is_valid = {
 		#Must be independent
 		is_independent_ruler = yes
 
-		#Must have city-state or hegemonic league government (so no federal leagues)
+		#Must have city-state or coalition government
 		OR = {
 			has_city_state_government = yes
 			has_coalition_government = yes
 		}
 
-		#Primary title must be one of the Peloponnesian duchies
+		#Should have a decent prestige level
+		prestige_level >= medium_prestige_level
+
+		#Primary title must be one of the Peloponnesian duchies, or k_lakedaimon
+		OR = {
+			custom_description = {
+	   			text = form_k_peloponnesos_decision_primary.tt
+				OR = {
+					has_primary_title = title:d_lakedaimon
+					has_primary_title = title:d_messenia
+					has_primary_title = title:d_elis
+					has_primary_title = title:d_arcadia
+					has_primary_title = title:d_achaia
+					has_primary_title = title:d_korinthia
+					has_primary_title = title:d_argolis
+				}
+			}
+			has_primary_title = title:k_lakedaimon
+		}
+
+		# And must completely control any two duchies within the Peloponnese
 		custom_description = {
-   			text = form_k_peloponnesos_decision_primary.tt
-			OR = {
-				has_primary_title = title:d_lakedaimon
-				has_primary_title = title:d_messenia
-				has_primary_title = title:d_elis
-				has_primary_title = title:d_arcadia
-				has_primary_title = title:d_achaia
-				has_primary_title = title:d_korinthia
-				has_primary_title = title:d_argolis
+			text = form_k_peloponnesos_decision_controlled_duchies.tt
+			any_held_title = {
+				count >= 2
+				tier = tier_duchy
+				OR = {
+					this = title:d_lakedaimon
+					this = title:d_messenia
+					this = title:d_elis
+					this = title:d_arcadia
+					this = title:d_achaia
+					this = title:d_korinthia
+					this = title:d_argolis
+				}
+				save_temporary_scope_as = de_jure_duchy
+				root = { completely_controls = scope:de_jure_duchy }
 			}
 		}
 
-		#Has to control a the entire Peloponnese
-		completely_controls_region = custom_peloponnese
+		# Must have at least one other realm to negotiate with
+		custom_description = {
+			text = form_k_peloponnesos_decision_potential_vassal.tt
+			any_county_in_region = {
+				region = custom_peloponnese
+				holder = { 
+					form_k_peloponnesos_decision_potential_vassal_trigger = yes 
+					NOT = { this = root }
+				}
+			}
+		}
 	}
 
 	is_valid_showing_failures_only = {
@@ -714,19 +781,12 @@ form_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 		save_scope_as = k_peloponnesos_founder
 
 		show_as_tooltip = { form_k_peloponnesos_decision_effects = yes } # Actually applied in greece_decisions.0005 - prestige, title etc
-		custom_tooltip = form_k_peloponnesos_decision_effects_de_jure.tt
+		custom_tooltip = form_k_peloponnesos_decision_effect_de_jure.tt
+		custom_tooltip = form_k_peloponnesos_decision_effect_preview.tt
+		custom_tooltip = form_k_peloponnesos_decision_effect_warning.tt
 
 		#Event for player
 		trigger_event = greece_decisions.0009
-
-		#Notify other players
-		every_player = {
-			limit = {
-				NOT = { this = root }
-				is_within_diplo_range = { CHARACTER = root }
-			}
-			trigger_event = greece_decisions.0009
-		}
 	}
 
 	cost = {

@@ -33,7 +33,7 @@
  form_e_athenai_decision_desc:0 "Not only have we recovered, but we have strived. It is time that we recognise $k_athenai$ for what it has truly become: an Empire."
  form_e_athenai_decision_confirm:0 "Prepare the decree"
 
- form_phoros_decision_centralisation.tt:0 "You must have the [GetLaw('crown_authority_2').GetName] or [GetLaw('crown_authority_3').GetName] Law"
+ form_phoros_decision_centralisation.tt:0 "You must have the [GetLaw('crown_authority_2').GetName] (#V 3#!) or [GetLaw('crown_authority_3').GetName] (#V 4#!) Law"
  form_phoros_decision_effect_tooltip:0 "You will get to choose an [GetModifier( 'administrative_centre_modifier').GetNameWithTooltip|L] for the phoros"
 
  form_k_insular_phoros_decision:0 "Reform the Insular Phoros"
@@ -60,12 +60,23 @@
  form_k_hellespontine_phoros_decision_confirm:0 "$form_k_insular_phoros_decision_confirm$"
  form_k_hellespontine_phoros_decision_effects_de_jure.tt:0 "All [duchies] completely inside the [GetGeographicalRegion('custom_hellespontine_phoros').GetName] [region|E] will become [de_jure|E] part of the new [kingdom]"
 
- form_k_peloponnesos_decision:0 "Unite the Peloponnese"
+ form_k_peloponnesos_decision:0 "Reform the Peloponnesian League"
  form_k_peloponnesos_decision_tooltip:0 "The Kingdom of $k_peloponnesos$ will be formed"
- form_k_peloponnesos_decision_desc:0 "The Peloponnese has always been fragmented, with its peoples in constant conflict and competition. If these groups could be brought under a single banner, they would surely be a force to be reckoned with."
- form_k_peloponnesos_decision_confirm:0 "Assemble the people"
+ form_k_peloponnesos_decision_desc:0 "The Peloponnese has always been fragmented, with its peoples in constant conflict and competition. Perhaps we could attempt a more diplomatic approach to bringing these groups under a single banner."
+ form_k_peloponnesos_decision_confirm:0 "Send out the envoys!"
  form_k_peloponnesos_decision_primary.tt:0 "Your [primary_title|E] is a Peloponnesian [duchy|E]"
- form_k_peloponnesos_decision_effects_de_jure.tt:0 "All [duchies] inside the [GetGeographicalRegion('custom_peloponnese').GetName] [region|E] will become [de_jure|E] part of the new [kingdom]"
+ form_k_peloponnesos_decision_controlled_duchies.tt:0 "You must [completely_control|E] at least #V two#! [duchies] within the [GetGeographicalRegion('custom_peloponnese').GetName] [region|E]"
+ form_k_peloponnesos_decision_potential_vassal.tt:0 "There must be at least one valid [independent|E] Ruler to negotiate with"
+ form_k_peloponnesos_decision_effect_preview.tt:0 "You will be able to establish a [coalition|E] and attempt to bring other [rulers] into it peacefully."
+ form_k_peloponnesos_decision_effect_de_jure.tt:0 "Controlling Peloponnesian [duchy|E] [Concept('de_jure_capital','Capitals')|E] that are within $k_hellas$ will make those [duchies] become [de_jure|E] part of the new [kingdom]"
+ form_k_peloponnesos_decision_effect_warning.tt:0 "@warning_icon!#X Failing to convince other [rulers] to join will cause you to lose [prestige|E]#!"
+
+ unite_k_peloponnesos_decision:0 "Unite the Peloponnese"
+ unite_k_peloponnesos_decision_tooltip:0 "The Kingdom of $k_peloponnesos$ will be formed"
+ unite_k_peloponnesos_decision_desc:0 "The Peloponnese has always been fragmented, with its peoples in constant conflict and competition. If these groups could be brought under a single banner, they would surely be a force to be reckoned with."
+ unite_k_peloponnesos_decision_confirm:0 "Assemble the people"
+ unite_k_peloponnesos_decision_primary.tt:0 "Your [primary_title|E] is a Peloponnesian [duchy|E]"
+ unite_k_peloponnesos_decision_effects_de_jure.tt:0 "All [duchies] inside the [GetGeographicalRegion('custom_peloponnese').GetName] [region|E] will become [de_jure|E] part of the new [kingdom]"
 
  form_k_bithynia_decision:0 "Consolidate the Kingdom of $k_bithynia$"
  form_k_bithynia_decision_tooltip:0 "Elevate $d_bithynia$ to a Kingdom"
