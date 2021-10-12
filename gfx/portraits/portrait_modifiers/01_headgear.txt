@@ -3004,4 +3004,276 @@ headgear = {
 	        }
         }
 	}
+
+	ATHA_spartan_war = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = spartan_war
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_spartan_clothing_trigger = yes
+			}
+		}
+	}
+
+	ATHA_classical_greek_war = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = classical_greek_war
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 150 # slightly higher than regular
+				OR = {
+					has_council_position = councillor_marshal
+					AND = {
+						is_landed = yes
+						highest_held_title_tier >= tier_county
+					}
+				}
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_classical_greek_clothing_trigger = yes
+				
+				NOR = {
+					AND = {
+						has_trait = peasant_leader
+						OR = {
+							is_ruler = no
+							is_leading_faction_type = peasant_faction
+							AND = {
+								is_ruler = yes
+								is_landed = no
+								OR = {
+									has_government = feudal_government
+									has_government = clan_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ATHA_classical_greek_war_common = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = classical_greek_war_common
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_classical_greek_clothing_trigger = yes
+			}
+		}
+	}
+
+	ATHA_hellenistic_greek_war = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = hellenistic_greek_war
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 150 # slightly higher than regular
+				OR = {
+					has_council_position = councillor_marshal
+					AND = {
+						is_landed = yes
+						highest_held_title_tier >= tier_county
+					}
+				}
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_hellenistic_greek_clothing_trigger = yes
+				
+				NOR = {
+					AND = {
+						has_trait = peasant_leader
+						OR = {
+							is_ruler = no
+							is_leading_faction_type = peasant_faction
+							AND = {
+								is_ruler = yes
+								is_landed = no
+								OR = {
+									has_government = feudal_government
+									has_government = clan_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ATHA_hellenistic_greek_war_common = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = hellenistic_greek_war_common
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_hellenistic_greek_clothing_trigger = yes
+			}
+		}
+	}
+
+	ATHA_thracian_war = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = thracian_war
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 150 # slightly higher than regular
+				OR = {
+					has_council_position = councillor_marshal
+					AND = {
+						is_landed = yes
+						highest_held_title_tier >= tier_county
+					}
+				}
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_thracian_clothing_trigger = yes
+				
+				NOR = {
+					AND = {
+						has_trait = peasant_leader
+						OR = {
+							is_ruler = no
+							is_leading_faction_type = peasant_faction
+							AND = {
+								is_ruler = yes
+								is_landed = no
+								OR = {
+									has_government = feudal_government
+									has_government = clan_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ATHA_thracian_war_common = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = thracian_war_common
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_thracian_clothing_trigger = yes
+			}
+		}
+	}
+
+	
+	ATHA_anatolian_war = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = anatolian_war
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 150 # slightly higher than regular
+				OR = {
+					has_council_position = councillor_marshal
+					AND = {
+						is_landed = yes
+						highest_held_title_tier >= tier_county
+					}
+				}
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_anatolian_clothing_trigger = yes
+				
+				NOR = {
+					AND = {
+						has_trait = peasant_leader
+						OR = {
+							is_ruler = no
+							is_leading_faction_type = peasant_faction
+							AND = {
+								is_ruler = yes
+								is_landed = no
+								OR = {
+									has_government = feudal_government
+									has_government = clan_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ATHA_anatolian_war_common = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = anatolian_war_common
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_wear_helmet_trigger = yes
+				portrait_ATHA_anatolian_clothing_trigger = yes
+			}
+		}
+	}
 }
