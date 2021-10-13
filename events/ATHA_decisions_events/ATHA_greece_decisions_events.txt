@@ -1381,7 +1381,7 @@ greece_decisions.0010 = {
 	immediate = {
 		set_variable = {
 			name = k_peloponnesos_acceptance
-			value = k_peloponnesos_acceptance_modifier
+			value = k_peloponnesos_acceptance_value_modifier
 			days = 10
 		}
 	}
@@ -1389,6 +1389,7 @@ greece_decisions.0010 = {
 	option = { # Sure
 		name = greece_decisions.0010.a
 
+		#Vassalisation, opinion modifiers, de jure changes etc.
 		form_k_peloponnesos_accept_effect = yes
 
 		scope:k_peloponnesos_founder = {
@@ -1419,6 +1420,7 @@ greece_decisions.0010 = {
 	option = { # Nah
 		name = greece_decisions.0010.b
 
+		#Opinion modifiers etc.
 		form_k_peloponnesos_reject_effect = yes
 
 		scope:k_peloponnesos_founder = {
@@ -1451,21 +1453,23 @@ greece_decisions.0010 = {
 #
 #		ai_chance = {
 #			base = 0
-#			modifier = {
-#				add = k_peloponnesos_acceptance_value_modifier
-#			}
-#
+#			
+#			var:k_peloponnesos_acceptance = yes
+#			
 #		}
 #	}
-
+#
 #	option = { # Just to see the AI chance
 #		name = greece_decisions.0010.test
 #
 #		ai_chance = {
 #			base = 0
 #
-#			modifier = {
-#				add = k_peloponnesos_acceptance_modifier
+#			k_peloponnesos_acceptance_modifier = {
+#				if = {
+#					limit = { this > 100 }
+#				}
+#				add = 1000
 #			}
 #		}
 #	}
@@ -1473,14 +1477,14 @@ greece_decisions.0010 = {
 	option = { # I'd be a better hegemon
 		name = greece_decisions.0010.c
 
+		# Has to be an ambitious ruler of similar strength
 		trigger = { is_hegemon_candidate_trigger = yes }
 
 		add_internal_flag = special
 
+		# Give claim, prestige, opinion modifiers etc.
 		add_prestige = medium_prestige_gain
 		form_k_peloponnesos_claimant_effect = yes
-
-		save_scope_as = peloponnesian_claimant
 
 		scope:k_peloponnesos_founder = {
 			trigger_event = greece_decisions.0011
@@ -1581,6 +1585,7 @@ greece_decisions.0011 = {
 	}
 
 	immediate = {
+		#Add the rulers who responded to the appropriate lists so we can determine k_peloponnesos_founder's score
 		every_ruler = {
 			if = {
 				limit = { has_character_flag = peloponnesian_ruler_accepted }
@@ -1654,6 +1659,7 @@ greece_decisions.0011 = {
 			limit = { has_character_flag = k_peloponnesos_critical_success }
 			add_prestige = medium_prestige_gain
 		}
+		# Tooltips to show effects e.g. opinion modifiers, vassalisation
 		custom_tooltip = greece_decisions.0011.tt_accepted
 		custom_tooltip = greece_decisions.0011.tt_rejected
 
