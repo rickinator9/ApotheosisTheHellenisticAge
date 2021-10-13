@@ -1,0 +1,124 @@
+﻿k_peloponnesos_acceptance_modifier = {
+	modifier = { add = 100 }
+	# More likely if they're a Federal League
+	modifier = {
+		factor = 2
+		scope:k_peloponnesos_founder = {
+			government_has_flag = is_federal_government
+		}
+	}			
+	# Unlikely if you're Arrogant
+	modifier = {
+		factor = 0.4
+		has_trait = arrogant
+	}
+	# Unlikely if you're Ambitious
+	modifier = {
+		factor = 0.4
+		has_trait = ambitious
+	}
+	# Likely if you're a Craven
+	modifier = {
+		factor = 1.2
+		has_trait = craven
+	}
+	# Likely if you're Content
+	modifier = {
+		factor = 1.2
+		has_trait = content
+	}
+
+	# More likely if they have a hook on you
+	modifier = {
+		factor = 2
+		scope:k_peloponnesos_founder = { has_hook = ROOT }
+	}
+
+	# Much more likely if they have a strong hook on you
+	modifier = {
+		factor = 10
+		scope:k_peloponnesos_founder = { has_strong_hook = ROOT }
+	}
+
+	# More likely if you're just a count
+	modifier = {
+		add = 300
+		highest_held_title_tier = tier_county
+	}
+
+	# MODIFIERS FROM OFFER VASSALISATION INTERACTION
+	#Account for differences in military strength
+	modifier = {
+  	  	add = {
+			value = 1
+				subtract = {
+					value = ROOT.max_military_strength
+					divide = { value = scope:k_peloponnesos_founder.max_military_strength min = 1 }
+				}
+			multiply = 50
+			ceiling = yes
+  		}
+	}
+	#Opinion influence
+	modifier = {
+		add = intimidated_external_reason_value
+		has_dread_level_towards = {
+			target = scope:k_peloponnesos_founder
+			level = 1
+		}
+	}
+	modifier = {
+		add = cowed_external_reason_value
+		has_dread_level_towards = {
+			target = scope:k_peloponnesos_founder
+			level = 2
+		}
+	}
+	#Compare Opinion modifier
+	opinion_modifier = { 
+		who = ROOT
+		opinion_target = scope:k_peloponnesos_founder
+		multiplier = 0.35
+	}
+	#We just fought against each other
+	modifier = { 
+		any_truce_holder = {
+			this = scope:k_peloponnesos_founder
+		}
+		factor = 0.5
+	}
+	#I fought an independence war against you
+	modifier = { 
+		exists = var:independence_war_former_liege
+		var:independence_war_former_liege = scope:k_peloponnesos_founder
+		factor = 0
+	}
+	#Culture differences slightly reduce acceptance
+	modifier = {
+		culture_group = scope:k_peloponnesos_founder.culture_group
+		NOT = { culture = scope:k_peloponnesos_founder.culture }
+		factor = 0.9
+	}
+	#Friend modifier
+	modifier = {
+		has_relation_friend = scope:k_peloponnesos_founder
+		NOT = { has_relation_best_friend = scope:k_peloponnesos_founder }
+		factor = 1.1
+	}
+	#Best Friend modifier
+	modifier = {
+		has_relation_best_friend = scope:k_peloponnesos_founder
+		factor = 1.2
+	}
+	#Rivalry modifier
+	modifier = {
+		has_relation_rival = scope:k_peloponnesos_founder
+		NOT = { has_relation_nemesis = scope:k_peloponnesos_founder }
+		factor = 0.8
+	}
+	#Nemesis modifier
+	modifier = { 
+		has_relation_nemesis = scope:k_peloponnesos_founder
+		factor = 0
+	}
+}

@@ -41,31 +41,150 @@
 		add = medium_prestige_value # requires taking on Macedonia
 	}
 }
-k_peloponnesos_prestige_value = {
+k_peloponnesos_acceptance_value = {
 	value = 0
 
 	every_in_list = {
 		list = peloponnesian_accepted_list
 		if = {
 			limit = { highest_held_title_tier = tier_duchy }
-			add = minor_prestige_value
+			add = 3
 		}
 		else = {
-			add = miniscule_prestige_value
+			add = 1
 		}
 	}
+}
+k_peloponnesos_rejection_value = {
+	value = 0
+
 	every_in_list = {
 		list = peloponnesian_rejected_list
 		if = {
 			limit = { highest_held_title_tier = tier_duchy }
-			subtract = minor_prestige_value
+			add = 3
 		}
 		else = {
-			subtract = miniscule_prestige_value
+			add = 1
 		}
 	}
-	every_in_list = {
-		list = peloponnesian_claimant_list
-		subtract = medium_prestige_value
+}
+k_peloponnesos_outcome_value = {
+	value = k_peloponnesos_acceptance_value
+	subtract = k_peloponnesos_rejection_value
+}
+
+k_peloponnesos_acceptance_value_modifier = {
+	value = 100
+
+	#More likely if they're a Federal League
+	if = {
+		limit = { 
+			scope:k_peloponnesos_founder = {
+				government_has_flag = is_federal_government
+			}
+		}
+		multiply = 2
+	}	
+		
+	#Unlikely if you're Arrogant
+	if = {
+		limit = { has_trait = arrogant }
+		multiply = 0.4
+	}
+	#Unlikely if you're Ambitious
+	if = {
+		limit = { has_trait = ambitious }
+		multiply = 0.4
+	}
+	#Likely if you're a Craven
+	if = {
+		limit = { has_trait = craven }
+		multiply = 1.2
+	}
+	#Likely if you're Content
+	if = {
+		limit = { has_trait = content }
+		multiply = 1.2
+	}
+
+	#More likely if they have a hook on you
+	if = {
+		limit = { 
+			scope:k_peloponnesos_founder = { has_hook = ROOT }
+		}
+		multiply = 2
+	}
+	#Much more likely if they have a strong hook on you
+	if = {
+		limit = { 
+			scope:k_peloponnesos_founder = { has_strong_hook = ROOT }
+		}
+		multiply = 2
+	}
+
+	#More likely if you're just a count
+	if = {
+		limit = { highest_held_title_tier = tier_county }
+		add = 300
+	}
+
+	#Account for differences in military strength
+	add = {
+		value = 1
+			subtract = {
+				value = ROOT.max_military_strength
+				divide = { value = scope:k_peloponnesos_founder.max_military_strength min = 1 }
+			}
+		multiply = 50
+		ceiling = yes
+	}
+
+	#Intimidated modifier
+	if = {
+		limit = {
+			has_dread_level_towards = {
+				target = scope:k_peloponnesos_founder
+				level = 1
+			}
+		}
+		add = intimidated_external_reason_value
+	}
+	#Cowed modifier
+	else_if = {
+		limit = {
+			has_dread_level_towards = {
+				target = scope:k_peloponnesos_founder
+				level = 2
+			}
+		}
+		add = cowed_external_reason_value
+	}
+
+	#Friend modifier
+	if = {
+		limit = { 
+			has_relation_friend = scope:k_peloponnesos_founder
+			NOT = { has_relation_best_friend = scope:k_peloponnesos_founder }
+		}
+		multiply = 1.1
+	}
+	#Best Friend modifier
+	if = {
+		limit = { has_relation_best_friend = scope:k_peloponnesos_founder }
+		multiply = 1.2
+	}
+	#Rivalry modifier
+	if = {
+		limit = { 
+			has_relation_rival = scope:k_peloponnesos_founder
+			NOT = { has_relation_nemesis = scope:k_peloponnesos_founder }
+		}
+		multiply = 0.4
+	}
+	#Nemesis modifier
+	if = {
+		limit = { has_relation_nemesis = scope:k_peloponnesos_founder }
+		multiply = 0
 	}
 }

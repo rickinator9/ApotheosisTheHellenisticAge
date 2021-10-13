@@ -1244,11 +1244,45 @@ greece_decisions.0009 = {
 
 		add_character_flag = k_peloponnesos_founder_hegemonic
 
+		change_government_form = { GOVERNMENT = hegemonic_league_government }
+
 		every_ruler = {
 			limit = { has_character_flag = peloponnesian_ruler }
 			trigger_event = {
 				id = greece_decisions.0010
 				days = { 7 28 }
+			}
+		}
+
+		stress_impact = {
+			generous = minor_stress_impact_gain
+			content = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_boldness = 1
+				ai_compassion = -0.5
+			}
+			modifier = { # Federal realms don't want this.
+				add = -100
+				government_has_flag = is_federal_government
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = generous
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = content
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = just
 			}
 		}
 	}	
@@ -1258,6 +1292,8 @@ greece_decisions.0009 = {
 
 		add_character_flag = k_peloponnesos_founder_federal
 
+		change_government_form = { GOVERNMENT = federal_league_government }
+
 		every_ruler = {
 			limit = { has_character_flag = peloponnesian_ruler }
 			trigger_event = {
@@ -1265,6 +1301,65 @@ greece_decisions.0009 = {
 				days = { 7 28 }
 			}
 		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+
+			ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_greed = -1
+				ai_rationality = 0.5
+				ai_compassion = 1
+			}
+			modifier = { # Hegemonies shouldn't want to give up their position so easily.
+				add = -100
+				OR = {
+					government_has_flag = is_hegemonic_government
+					government_has_flag = is_city_state_government
+				}
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = greedy
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = arbitrary
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = ambitious
+			}
+		}
+	}
+}
+
+scripted_trigger is_hegemon_candidate_trigger = {
+	#There can only be one claimant
+	NOT = {
+		any_ruler = { has_character_flag = peloponnesian_ruler_claimant }
+	}
+
+	# Can only be hegemon of a hegemonic realm
+	scope:k_peloponnesos_founder = { government_has_flag = is_hegemonic_government }
+
+	#Has to have at least 80% of the Peloponnesian ruler's military strength
+	ROOT.max_military_strength > {
+		value = scope:k_peloponnesos_founder.max_military_strength
+		multiply = 0.8
+	}
+
+	#Has to be the sort of person to press such a claim
+	has_trait = ambitious
+	NOR = { 
+		has_trait = craven
+		has_trait = lazy 
 	}
 }
 
@@ -1284,6 +1379,11 @@ greece_decisions.0010 = {
 	}
 
 	immediate = {
+		set_variable = {
+			name = k_peloponnesos_acceptance
+			value = k_peloponnesos_acceptance_modifier
+			days = 10
+		}
 	}
 
 	option = { # Sure
@@ -1293,6 +1393,26 @@ greece_decisions.0010 = {
 
 		scope:k_peloponnesos_founder = {
 			trigger_event = greece_decisions.0011
+		}
+
+		ai_chance = {
+			base = 100
+
+			#If a ruler has high enough acceptance, we shouldn't leave it to chance
+			modifier = {
+				var:k_peloponnesos_acceptance > 300
+				factor = 10
+			}
+			#If a ruler has low enough acceptance, we shouldn't leave it to chance
+			modifier = {
+				var:k_peloponnesos_acceptance < 100
+				factor = 0
+			}
+			#Rulers should never pick this over the free claim
+			modifier = {
+				is_hegemon_candidate_trigger = yes
+				factor = 0
+			}
 		}
 	}
 
@@ -1304,22 +1424,71 @@ greece_decisions.0010 = {
 		scope:k_peloponnesos_founder = {
 			trigger_event = greece_decisions.0011
 		}
+
+		ai_chance = {
+			base = 300
+
+			#If a ruler has high enough acceptance, we shouldn't leave it to chance
+			modifier = {
+				var:k_peloponnesos_acceptance > 300
+				factor = 0
+			}
+			#If a ruler has low enough acceptance, we shouldn't leave it to chance
+			modifier = {
+				var:k_peloponnesos_acceptance < 100
+				factor = 10
+			}
+			#Rulers should never pick this over the free claim
+			modifier = {
+				is_hegemon_candidate_trigger = yes
+				factor = 0
+			}
+		}
+	}
+
+	option = { # Just to see the AI chance
+		name = greece_decisions.0010.test2
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = k_peloponnesos_acceptance_value_modifier
+			}
+
+		}
+	}
+
+	option = { # Just to see the AI chance
+		name = greece_decisions.0010.test
+
+		ai_chance = {
+			base = 0
+
+			modifier = {
+				add = k_peloponnesos_acceptance_modifier
+			}
+		}
 	}
 
 	option = { # I'd be a better hegemon
 		name = greece_decisions.0010.c
 
-		trigger = {
-			NOT = {
-				any_ruler = { has_character_flag = peloponnesian_ruler_claimant }
-			}
-		}
+		trigger = { is_hegemon_candidate_trigger = yes }
 
+		add_internal_flag = special
+
+		add_prestige = medium_prestige_gain
 		form_k_peloponnesos_claimant_effect = yes
+
 		save_scope_as = peloponnesian_claimant
 
 		scope:k_peloponnesos_founder = {
 			trigger_event = greece_decisions.0011
+		}
+
+		# AI should always take this if it has the chance
+		ai_chance = {
+			base = 1000
 		}
 	}
 }
@@ -1328,15 +1497,81 @@ greece_decisions.0010 = {
 greece_decisions.0011 = {
 	type = character_event
 	title = greece_decisions.0011.t
-	desc = greece_decisions.0011.desc
+	desc = {
+		desc = greece_decisions.0011.desc_opening
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_character_flag = k_peloponnesos_critical_failure }
+				desc = greece_decisions.0011.desc_critical_failure
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = k_peloponnesos_failure }
+				desc = greece_decisions.0011.desc_failure
+			}
+			triggered_desc = {
+				trigger = { has_character_flag = k_peloponnesos_success }
+				desc = greece_decisions.0011.desc_success
+			}
+			desc = greece_decisions.0011.desc_critical_success
+		}
+		triggered_desc = {
+			trigger = { exists = scope:peloponnesian_claimant }
+			desc = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { 
+							OR = {
+								has_character_flag = k_peloponnesos_critical_failure 
+								has_character_flag = k_peloponnesos_failure
+							}
+						}
+						desc = greece_decisions.0011.desc_failure_claimant
+					}
+					triggered_desc = {
+						trigger = { 
+							OR = {
+								has_character_flag = k_peloponnesos_critical_success
+								has_character_flag = k_peloponnesos_success
+							}
+						}
+						desc = greece_decisions.0011.desc_success_claimant
+					}
+				}
+			}
+		}
+	}
+
 	theme = realm
 	left_portrait = {
 		character = scope:k_peloponnesos_founder
-		animation = personality_honorable
+		triggered_animation = {
+			trigger = { exists = scope:peloponnesian_claimant }
+			animation = personality_vengeful
+		}
+		triggered_animation = {
+			trigger = {  
+				NOT = { exists = scope:peloponnesian_claimant }
+				OR = {
+					has_character_flag = k_peloponnesos_critical_failure
+					has_character_flag = k_peloponnesos_failure
+				}
+			}
+			animation = personality_coward
+		}
+		triggered_animation = {
+			trigger = {  
+				NOT = { exists = scope:peloponnesian_claimant }
+				OR = {
+					has_character_flag = k_peloponnesos_critical_success
+					has_character_flag = k_peloponnesos_success
+				}
+			}
+			animation = personality_honorable
+		}
 	}
 	right_portrait = {
 		character = scope:peloponnesian_claimant
-		animation = personality_bold
+		animation = personality_dishonorable
 	}
 
 	trigger = {
@@ -1357,20 +1592,76 @@ greece_decisions.0011 = {
 			}
 			else_if = {
 				limit = { has_character_flag = peloponnesian_ruler_claimant }
-				add_to_list = peloponnesian_claimant_list
+				add_to_list = peloponnesian_rejected_list
 				save_scope_as = peloponnesian_claimant
 			}
 		}
 
-		# Add/remove prestige
-		add_prestige = k_peloponnesos_prestige_value
+		if = {
+			limit = {
+				# If no one joins at all, that's bad
+				OR = {
+					k_peloponnesos_acceptance_value = 0 
+					k_peloponnesos_outcome_value < 0
+				}
+				# Lots of rejects is bad, even if you get a few accepts
+				k_peloponnesos_outcome_value < -8
+			}
+			add_character_flag = k_peloponnesos_critical_failure
+		}
+		else_if = {
+			# Not great if more rulers are rejecting than accepting
+			limit = { 
+				k_peloponnesos_outcome_value >= -8
+				k_peloponnesos_outcome_value < 0
+			}
+			add_character_flag = k_peloponnesos_failure
+		}
+		else_if = {
+			# Good if there's more accepts than rejects
+			limit = { 
+				k_peloponnesos_outcome_value >= 0
+				k_peloponnesos_outcome_value < 8
+			}
+			add_character_flag = k_peloponnesos_success
+		}
+		else_if = {
+			# If most rulers are accepting, then that's great
+			limit = { 
+				k_peloponnesos_outcome_value >= 8
+			}
+			add_character_flag = k_peloponnesos_critical_success
+		}
 	}
 
 	option = { # Okay
 		name = greece_decisions.0011.a
 
-		show_as_tooltip = { # TODO: convert into custom_tooltip to show as 'has happened'
-			scope:peloponnesian_claimant = { form_k_peloponnesos_claimant_effect }
+		# Add/remove prestige
+		if = {
+			limit = { has_character_flag = k_peloponnesos_critical_failure }
+			add_prestige = major_prestige_loss
+		}
+		else_if = {
+			limit = { has_character_flag = k_peloponnesos_failure }
+			add_prestige = medium_prestige_loss
+		}
+		else_if = {
+			limit = { has_character_flag = k_peloponnesos_success }
+			add_prestige = minor_prestige_gain
+		}
+		else_if = {
+			limit = { has_character_flag = k_peloponnesos_critical_success }
+			add_prestige = medium_prestige_gain
+		}
+		custom_tooltip = greece_decisions.0011.tt_accepted
+		custom_tooltip = greece_decisions.0011.tt_rejected
+
+		if = { 
+			limit = { exists = scope:peloponnesian_claimant }
+			show_as_tooltip = {
+				scope:peloponnesian_claimant = { form_k_peloponnesos_claimant_effect }
+			}
 		}
 	}
 }

@@ -11,9 +11,18 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 	desc = form_k_lakedaimon_decision_desc
 	selection_tooltip = form_k_lakedaimon_decision_tooltip
 
-	is_shown = {
+	is_shown = { # TODO: Update conditions once we implement Spartan culture
 		has_culture = culture:dorian_south
-		has_government = city_state_spartan_government # TODO: need more robust system that also allows for Spartan-led Hegemonic Leagues
+		OR = { 
+			has_government = city_state_spartan_government
+			AND = { 
+				has_government = hegemonic_league_government
+				OR = {
+					dynasty = dynasty:spartandyn001
+					dynasty = dynasty:spartandyn002
+				}
+			}
+		}
 		OR = {
 			highest_held_title_tier <= tier_duchy
 			has_primary_title = title:k_peloponnesos
