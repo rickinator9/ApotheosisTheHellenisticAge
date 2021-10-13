@@ -1400,12 +1400,12 @@ greece_decisions.0010 = {
 
 			#If a ruler has high enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance > 300
+				var:k_peloponnesos_acceptance > 400
 				factor = 10
 			}
 			#If a ruler has low enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance < 100
+				var:k_peloponnesos_acceptance < 200
 				factor = 0
 			}
 			#Rulers should never pick this over the free claim
@@ -1430,12 +1430,12 @@ greece_decisions.0010 = {
 
 			#If a ruler has high enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance > 300
+				var:k_peloponnesos_acceptance > 400
 				factor = 0
 			}
 			#If a ruler has low enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance < 100
+				var:k_peloponnesos_acceptance < 200
 				factor = 10
 			}
 			#Rulers should never pick this over the free claim
@@ -1446,29 +1446,29 @@ greece_decisions.0010 = {
 		}
 	}
 
-	option = { # Just to see the AI chance
-		name = greece_decisions.0010.test2
+#	option = { # Just to see the AI chance
+#		name = greece_decisions.0010.test2
+#
+#		ai_chance = {
+#			base = 0
+#			modifier = {
+#				add = k_peloponnesos_acceptance_value_modifier
+#			}
+#
+#		}
+#	}
 
-		ai_chance = {
-			base = 0
-			modifier = {
-				add = k_peloponnesos_acceptance_value_modifier
-			}
-
-		}
-	}
-
-	option = { # Just to see the AI chance
-		name = greece_decisions.0010.test
-
-		ai_chance = {
-			base = 0
-
-			modifier = {
-				add = k_peloponnesos_acceptance_modifier
-			}
-		}
-	}
+#	option = { # Just to see the AI chance
+#		name = greece_decisions.0010.test
+#
+#		ai_chance = {
+#			base = 0
+#
+#			modifier = {
+#				add = k_peloponnesos_acceptance_modifier
+#			}
+#		}
+#	}
 
 	option = { # I'd be a better hegemon
 		name = greece_decisions.0010.c

@@ -234,8 +234,8 @@ form_k_peloponnesos_decision_effects = {
 	}
 	resolve_title_and_vassal_change = scope:change
 
-	# De jure shifts
 	hidden_effect = {
+		# De jure shifts
 		every_sub_realm_county = {
 			limit = {
 				#Has to be in the Peloponnese region
@@ -250,7 +250,17 @@ form_k_peloponnesos_decision_effects = {
 			duchy = { set_de_jure_liege_title = title:k_peloponnesos }
 		}
 		title:k_peloponnesos = { set_de_jure_liege_title = title:e_hellas }
+
+		#Make your realm capital the de jure kingdom capital
+		if = {
+			limit = {
+				NOT = { capital_county = title:k_peloponnesos.title_capital_county }
+			}
+			title:k_peloponnesos = { set_capital_county = root.capital_county }
+		}
 	}
+
+		
 }
 
 form_k_peloponnesos_accept_effect = {
