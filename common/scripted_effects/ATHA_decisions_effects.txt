@@ -348,6 +348,9 @@ form_k_peloponnesos_claimant_effect = {
 	# Ruler gets a claim on the Peloponnese title
 	add_unpressed_claim = title:k_peloponnesos
 
+	# And a healthy amount of prestige
+	add_prestige = medium_prestige_gain
+
 	# Big opinion loss between the two rulers
 	add_opinion = {
 		target = scope:k_peloponnesos_founder
@@ -362,29 +365,40 @@ form_k_peloponnesos_claimant_effect = {
 }
 
 unite_k_peloponnesos_decision_effects = {
-	# Create kingdom title
-	create_title_and_vassal_change = {
-		type = created
-		save_scope_as = change
-		add_claim_on_loss = no
-	}
-	title:k_peloponnesos = {
-		change_title_holder = {
-			holder = root
-			change = scope:change
+	# Add some prestige
+	add_prestige = major_prestige_gain
+
+	# Let's make a little list of Peloponnesian kingdoms
+	title:k_lakedaimon = { add_to_list = peloponnese_kingdoms }
+	title:k_peloponnesos = { add_to_list = peloponnese_kingdoms }
+
+	custom_tooltip = unite_k_peloponnesos_decision_effects_de_jure.tt
+	hidden_effect = {
+		every_in_list = {
+			list = peloponnese_kingdoms
+			limit = {
+				NOT = { this = scope:k_peloponnesos_uniter.primary_title }
+			}
+
+			#There can only be one
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_duchy }
+				set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title
+			}
+
+			#Destroy the rest
+			scope:k_peloponnesos_uniter = { destroy_title = prev }
 		}
 	}
-	resolve_title_and_vassal_change = scope:change
-
-	# De jure shifts
+	# If any Peloponnesian titles have de jure drifted somewhere else, bring them back
 	hidden_effect = {
-		title:d_lakedaimon = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_messenia = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_elis = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_arcadia = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_achaia = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_korinthia = { set_de_jure_liege_title = title:k_peloponnesos }
-		title:d_argolis = { set_de_jure_liege_title = title:k_peloponnesos }
+		title:d_lakedaimon = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_messenia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_elis = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_arcadia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_achaia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_korinthia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
+		title:d_argolis = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
 	}
 }
 

@@ -18,7 +18,11 @@
 
 ## form k_peloponnesos decision
 # 0009 - I formed k_peloponnesos
-# 0010 - Someone else formed k_peloponnesos
+# 0010 - Independent Peloponnesian ruler decides whether to join league
+# 0011 - k_peloponnesos founder gets notified of the overall outcome
+
+## unite k_peloponnesos decision
+# 0012 - I united k_peloponnesos
 
 ##############################
 # Form k_lakedaimon		 	 #
@@ -1483,7 +1487,6 @@ greece_decisions.0010 = {
 		add_internal_flag = special
 
 		# Give claim, prestige, opinion modifiers etc.
-		add_prestige = medium_prestige_gain
 		form_k_peloponnesos_claimant_effect = yes
 
 		scope:k_peloponnesos_founder = {
@@ -1497,7 +1500,7 @@ greece_decisions.0010 = {
 	}
 }
 
-# Peloponnesian League founder gets notified of the overall outcome 
+# k_peloponnesos founder gets notified of the overall outcome 
 greece_decisions.0011 = {
 	type = character_event
 	title = greece_decisions.0011.t
@@ -1670,4 +1673,38 @@ greece_decisions.0011 = {
 			}
 		}
 	}
+}
+
+##############################
+# Unite k_peloponnesos	 	 #
+##############################
+
+# I united k_peloponnesos
+greece_decisions.0011 = {
+	type = character_event
+	title = greece_decisions.0011.t
+	desc = greece_decisions.0011.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_peloponnese_uniter
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		unite_k_peloponnesos_decision_effects = yes
+	}
+
+	option = { # Okay
+		name = greece_decisions.0011.a
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:k_peloponnese_uniter }
+				is_within_diplo_range = { CHARACTER = scope:k_peloponnese_uniter }
+			}
+			trigger_event = greece_decisions.0012
+		}
+	}	
 }

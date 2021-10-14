@@ -32,6 +32,13 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 			is_titular = yes
 			is_title_created = no
 		}
+		#If the Peloponnese has already been united, then you're a bit too late
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:unite_k_peloponnesos_decision
+			}
+		}
 	}
 
 	is_valid = {
@@ -789,7 +796,7 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 	effect = {
 		save_scope_as = k_peloponnesos_founder
 
-		show_as_tooltip = { form_k_peloponnesos_decision_effects = yes } # Actually applied in greece_decisions.0005 - prestige, title etc
+		show_as_tooltip = { form_k_peloponnesos_decision_effects = yes } # Actually applied in greece_decisions.0009 - prestige, title etc.
 		custom_tooltip = form_k_peloponnesos_decision_effect_de_jure.tt
 		custom_tooltip = form_k_peloponnesos_decision_effect_preview.tt
 		custom_tooltip = form_k_peloponnesos_decision_effect_warning.tt
@@ -801,6 +808,109 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 	cost = {
 		gold = 300
 		prestige = 200
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+
+##############################
+# Unite k_peloponnesos	 	 #
+##############################
+
+unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = form_k_peloponnesos_decision_desc
+	selection_tooltip = form_k_peloponnesos_decision_tooltip
+
+	is_shown = {
+		has_culture_group = culture_group:greek_group
+		OR = {
+			highest_held_title_tier <= tier_duchy
+			has_primary_title = title:k_peloponnesos
+			has_primary_title = title:k_lakedaimon
+		}
+
+		#Must have a capital in the region
+		capital_province = { geographical_region = custom_peloponnese }
+
+		#Can only do it once
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:unite_k_peloponnesos_decision
+			}
+		}
+	}
+
+	is_valid = {
+		#Must be independent
+		is_independent_ruler = yes
+
+		#Must have city-state or coalition government
+		OR = {
+			has_city_state_government = yes
+			has_coalition_government = yes
+		}
+
+		#Should have a good prestige level
+		prestige_level >= high_prestige_level
+
+		#Can't do this while the Peloponnesian kingdoms are held by different people 
+		custom_description = {
+			text = "unite_k_peloponnesos_decision_titles"
+			OR = {
+				AND = {
+					has_primary_title = title:k_peloponnesos
+					title:k_lakedaimon = { is_title_created = no }
+				}
+				AND = {
+					has_primary_title = title:k_lakedaimon
+					title:k_peloponnesos = { is_title_created = no }
+				}
+				AND = {
+					has_primary_title = title:k_peloponnesos
+					has_primary_title = title:k_lakedaimon
+				}
+			}
+		}
+
+		#And must completely control the Peloponnese
+		completely_controls_region = custom_peloponnese
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:unite_k_peloponnesos_decision
+		}
+
+		save_scope_as = k_peloponnesos_uniter
+
+		show_as_tooltip = { unite_k_peloponnesos_decision_effects = yes } # Actually applied in greece_decisions.0012 - prestige, title etc.
+
+		#Event for player
+		trigger_event = greece_decisions.0012
+	}
+
+	cost = {
 	}
 
 	ai_potential = {
