@@ -4760,12 +4760,37 @@ macedonian03948 = {
 	name = "Alexandros" # the one and only king Alexander (III) the Great	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
+	dna = macedonian03948_dna
 	religion = alexandrian_faith
 	culture = macedonian
+	diplomacy = 12
+	martial = 14
+	stewardship = 7
+	intrigue = 8
+	learning = 9
+	prowess = 10
+	trait = education_martial_4
+	trait = ambitious # did not know when to stop
+	trait = brave # constantly put his life on the line in battles and sieges
+	trait = paranoid # brutally supressed suspected plots
+	trait = arrogant # had a literal god complex
+	trait = reckless # was no stranger to risk
+	trait = organizer # implemented logistical reforms
+	trait = flexible_leader # was able secure victory from unfavourable positions
+	trait = strategist
+	trait = overseer # re-organised military & civil governance structures after conquering Persia
+	trait = gallant # sought to emulate the Homeric heroes
+	trait = blademaster_2 # adept at single combat
+	trait = reveler_2 # and adept at getting absolutely hammered
+	trait = drunkard # ...perhaps too adept
+	trait = intellect_good_3 # not your typical intellectual, but displayed ingenuinity in his strategies
 	father = macedonian03940 # Philippos
 	mother = epirote00208 # Olympias
 	3398.1.1 = { # 20 July 356 BC
 		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance # Force him to look like his DNA for non-genetic properties (hairstyle etc)
+		}
 	}
 	3421.1 = { # 333 BC, approximate
 		effect = {
@@ -4784,8 +4809,12 @@ macedonian03948 = {
 	#3430.3.1 = { # March 324 BC, Susa weddings
 	#	add_spouse = ... # Parysatis
 	#}
+	3431.5.30 = { # 30 May 323 BC, approximate
+		trait = ill # his health started to rapidly decline around 11-14 days before his death
+	}
 	3431.6.11 = { # 11 June 323 BC
 		give_nickname = nick_ho_megas # his epithet 'the Great' is only attested after his death, first appearing in Plautus' play Mostellaria
+		trait = deified # the cult of Alexander became widespread after his death
 		death = { 
 			death_reason = death_mysterious # his death has been variously attributed to poisoning, disease or a combination of heavy drinking and severe wounds
 		}
@@ -4900,6 +4929,24 @@ macedonian03953 = {
 		death = { 
 			death_reason = death_murder_known # poisoned by Glaucias on the orders of Cassander
 			#killer = ... # Kassandros
+		}
+	}
+}
+macedonian03954 = {
+	name = "Philippos" # made up name, son of Alexander and Rhoxane who died at birth
+	# dynasty = macedoniandyn039
+	dynasty_house = house_argeadas
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian03948 # Alexandros
+	#mother = ... # Rhoxane
+	3428.9.1 = { # autumn 326 BC, approximate (at the Acesines River)
+		birth = yes # 344 BC
+		trait = sickly
+	}
+	3428.9.2 = { # autumn 326 BC, approximate
+		death = { 
+			death_reason = death_sickly # died stillborn or within a few days of his birth
 		}
 	}
 }

@@ -79,7 +79,6 @@ k_peloponnesos_outcome_value = {
 
 k_peloponnesos_acceptance_value_modifier = {
 	value = 100
-
 	#More likely if they're a Federal League
 	if = {
 		limit = { 
@@ -89,7 +88,6 @@ k_peloponnesos_acceptance_value_modifier = {
 		}
 		multiply = 2
 	}	
-		
 	#Unlikely if you're Arrogant
 	if = {
 		limit = { has_trait = arrogant }
@@ -135,11 +133,11 @@ k_peloponnesos_acceptance_value_modifier = {
 	#Account for differences in military strength
 	add = {
 		value = 1
-			subtract = {
-				value = ROOT.max_military_strength
-				divide = { value = scope:k_peloponnesos_founder.max_military_strength min = 1 }
-			}
-		multiply = 50
+		subtract = {
+			value = ROOT.max_military_strength
+			divide = { value = scope:k_peloponnesos_founder.max_military_strength min = 1 }
+		}
+		multiply = 100
 		ceiling = yes
 	}
 
@@ -189,5 +187,27 @@ k_peloponnesos_acceptance_value_modifier = {
 	if = {
 		limit = { has_relation_nemesis = scope:k_peloponnesos_founder }
 		multiply = 0
+	}
+	#We just fought against each other
+	if = { 
+		limit = {
+			any_truce_holder = { this = scope:k_peloponnesos_founder }
+		}
+		multiply = 0.5
+	}
+	#I fought an independence war against you
+	if = { 
+		limit = {
+			exists = var:independence_war_former_liege
+			var:independence_war_former_liege = scope:k_peloponnesos_founder
+			multiply = 0
+		}
+	}
+	#Culture differences slightly reduce acceptance
+	if = {
+		limit = {
+			NOT = { culture = scope:k_peloponnesos_founder.culture }
+		}
+		multiply = 0.9
 	}
 }

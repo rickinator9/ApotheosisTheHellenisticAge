@@ -1385,7 +1385,7 @@ greece_decisions.0010 = {
 	immediate = {
 		set_variable = {
 			name = k_peloponnesos_acceptance
-			value = k_peloponnesos_acceptance_value_modifier
+			value = k_peloponnesos_acceptance_modifier
 			days = 10
 		}
 	}
@@ -1401,16 +1401,25 @@ greece_decisions.0010 = {
 		}
 
 		ai_chance = {
-			base = 100
+			base = 0
+
+			modifier = {
+				add = k_peloponnesos_acceptance_value_modifier
+			}
 
 			#If a ruler has high enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance > 400
+				k_peloponnesos_acceptance_value_modifier > 500
 				factor = 10
+			}
+			#If a ruler has high acceptance, we give additional acceptance weight
+			modifier = {
+				k_peloponnesos_acceptance_value_modifier > 400
+				factor = 2
 			}
 			#If a ruler has low enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance < 200
+				k_peloponnesos_acceptance_value_modifier < 100
 				factor = 0
 			}
 			#Rulers should never pick this over the free claim
@@ -1436,12 +1445,17 @@ greece_decisions.0010 = {
 
 			#If a ruler has high enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance > 400
+				k_peloponnesos_acceptance_value_modifier > 500
 				factor = 0
+			}
+			#If a ruler has quite low acceptance, we give additional refusal weight
+			modifier = {
+				k_peloponnesos_acceptance_value_modifier < 200
+				factor = 2
 			}
 			#If a ruler has low enough acceptance, we shouldn't leave it to chance
 			modifier = {
-				var:k_peloponnesos_acceptance < 200
+				k_peloponnesos_acceptance_value_modifier < 100
 				factor = 10
 			}
 			#Rulers should never pick this over the free claim
@@ -1451,32 +1465,6 @@ greece_decisions.0010 = {
 			}
 		}
 	}
-
-#	option = { # Just to see the AI chance
-#		name = greece_decisions.0010.test2
-#
-#		ai_chance = {
-#			base = 0
-#			
-#			var:k_peloponnesos_acceptance = yes
-#			
-#		}
-#	}
-#
-#	option = { # Just to see the AI chance
-#		name = greece_decisions.0010.test
-#
-#		ai_chance = {
-#			base = 0
-#
-#			k_peloponnesos_acceptance_modifier = {
-#				if = {
-#					limit = { this > 100 }
-#				}
-#				add = 1000
-#			}
-#		}
-#	}
 
 	option = { # I'd be a better hegemon
 		name = greece_decisions.0010.c
