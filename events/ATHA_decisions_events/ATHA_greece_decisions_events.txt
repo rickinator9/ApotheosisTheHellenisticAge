@@ -23,6 +23,7 @@
 
 ## unite k_peloponnesos decision
 # 0012 - I united k_peloponnesos
+# 0013 - Someone else united k_peloponnesos
 
 ##############################
 # Form k_lakedaimon		 	 #
@@ -1230,6 +1231,8 @@ greece_decisions.0009 = {
 
 	immediate = {
 		form_k_peloponnesos_decision_effects = yes
+
+		#Flag all rulers who we're going to invite to the league
 		every_county_in_region = {
 			region = custom_peloponnese
 			limit = {
@@ -1245,10 +1248,13 @@ greece_decisions.0009 = {
 
 	option = { # Hegemonic
 		name = greece_decisions.0009.a
+		custom_tooltip = greece_decisions.0009.tt
+		custom_tooltip = greece_decisions.0009.tt_autonomous
 
 		add_character_flag = k_peloponnesos_founder_hegemonic
 
 		change_government_form = { GOVERNMENT = hegemonic_league_government }
+		custom_tooltip = greece_decisions.0009.a.tt
 
 		every_ruler = {
 			limit = { has_character_flag = peloponnesian_ruler }
@@ -1293,10 +1299,18 @@ greece_decisions.0009 = {
 
 	option = { # Federal
 		name = greece_decisions.0009.b
+		custom_tooltip = greece_decisions.0009.tt
+		custom_tooltip = greece_decisions.0009.tt_autonomous
+
+		# A Spartan restoration isn't really compatible with federalism
+		trigger = {
+			NOT = { has_primary_title = title:k_lakedaimon }
+		}
 
 		add_character_flag = k_peloponnesos_founder_federal
 
 		change_government_form = { GOVERNMENT = federal_league_government }
+		custom_tooltip = greece_decisions.0009.b.tt
 
 		every_ruler = {
 			limit = { has_character_flag = peloponnesian_ruler }
@@ -1369,18 +1383,19 @@ scripted_trigger is_hegemon_candidate_trigger = {
 
 # Independent Peloponnesian ruler decides whether to join league 
 greece_decisions.0010 = {
-	type = character_event
-	title = greece_decisions.0010.t
+	type = letter_event
+	opening = greece_decisions.0010.t
 	desc = greece_decisions.0010.desc
-	theme = realm
-	left_portrait = {
-		character = root
-		animation = personality_rational
-	}
-	right_portrait = {
-		character = scope:k_peloponnesos_founder
-		animation = personality_honorable
-	}
+	sender = scope:k_peloponnesos_founder
+#	theme = realm
+#	left_portrait = {
+#		character = root
+#		animation = personality_rational
+#	}
+#	right_portrait = {
+#		character = scope:k_peloponnesos_founder
+#		animation = personality_honorable
+#	}
 
 	immediate = {
 		set_variable = {
@@ -1468,6 +1483,8 @@ greece_decisions.0010 = {
 
 	option = { # I'd be a better hegemon
 		name = greece_decisions.0010.c
+
+		custom_tooltip = greece_decisions.0010.c.tt
 
 		# Has to be an ambitious ruler of similar strength
 		trigger = { is_hegemon_candidate_trigger = yes }
@@ -1570,6 +1587,7 @@ greece_decisions.0011 = {
 	}
 
 	trigger = {
+		#Check that no one else is still to respond
 		NOT = {
 			any_ruler = { has_character_flag = peloponnesian_ruler }
 		}
@@ -1622,8 +1640,13 @@ greece_decisions.0011 = {
 			add_character_flag = k_peloponnesos_success
 		}
 		else_if = {
-			# If most rulers are accepting, then that's great
 			limit = { 
+				# If everyone joins, that's great
+				OR = {
+					k_peloponnesos_rejection_value = 0 
+					k_peloponnesos_outcome_value > 0
+				}
+				# If most rulers are accepting, then that's still great
 				k_peloponnesos_outcome_value >= 8
 			}
 			add_character_flag = k_peloponnesos_critical_success
@@ -1668,10 +1691,10 @@ greece_decisions.0011 = {
 ##############################
 
 # I united k_peloponnesos
-greece_decisions.0011 = {
+greece_decisions.0012 = {
 	type = character_event
-	title = greece_decisions.0011.t
-	desc = greece_decisions.0011.desc
+	title = greece_decisions.0012.t
+	desc = greece_decisions.0012.desc
 	theme = realm
 	left_portrait = {
 		character = scope:k_peloponnese_uniter
@@ -1685,14 +1708,25 @@ greece_decisions.0011 = {
 	}
 
 	option = { # Okay
-		name = greece_decisions.0011.a
+		name = greece_decisions.0012.a
+	}	
+}
 
-		every_player = {
-			limit = {
-				NOT = { this = scope:k_peloponnese_uniter }
-				is_within_diplo_range = { CHARACTER = scope:k_peloponnese_uniter }
-			}
-			trigger_event = greece_decisions.0012
-		}
+# Someone else united k_peloponnesos
+greece_decisions.0013 = {
+	type = character_event
+	title = greece_decisions.0013.t
+	desc = greece_decisions.0013.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_peloponnese_uniter
+		animation = personality_honorable
+	}
+
+	immediate = {
+	}
+
+	option = { # Okay
+		name = greece_decisions.0013.a
 	}	
 }

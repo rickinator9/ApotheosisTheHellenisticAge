@@ -879,8 +879,8 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 					title:k_peloponnesos = { is_title_created = no }
 				}
 				AND = {
-					has_primary_title = title:k_peloponnesos
-					has_primary_title = title:k_lakedaimon
+					has_title = title:k_peloponnesos
+					has_title = title:k_lakedaimon
 				}
 			}
 		}
@@ -908,6 +908,15 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 
 		#Event for player
 		trigger_event = greece_decisions.0012
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = greece_decisions.0013
+		}
 	}
 
 	cost = {

@@ -362,6 +362,18 @@ form_k_peloponnesos_claimant_effect = {
 		modifier = insult_opinion
 		opinion = -40
 	}
+
+	# Nudge them towards rivalry
+	if = {
+		limit = {
+			NOR = {
+				has_relation_rival = scope:k_peloponnesos_founder
+				has_relation_potential_rival = scope:k_peloponnesos_founder
+			}
+			scope:k_peloponnesos_founder = { is_alive = yes }
+		}
+		set_relation_potential_rival = scope:k_peloponnesos_founder
+	}
 }
 
 unite_k_peloponnesos_decision_effects = {
