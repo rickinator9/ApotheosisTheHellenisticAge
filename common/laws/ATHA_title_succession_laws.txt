@@ -3,7 +3,10 @@
 	# Democratic
 	democratic_succession_law = {
 		can_have = {
-			has_government = city_state_democratic_government
+			OR = {
+				has_government = city_state_democratic_government
+				has_government = city_state_tyrannical_government
+			}
 			highest_held_title_tier >= tier_duchy
 		}
 		can_pass = {
@@ -21,17 +24,39 @@
 			direct_vassal_opinion = 10
 		}
 		revoke_cost = {
-			prestige = change_title_succession_law_prestige_cost
+			prestige = change_city_state_succession_law_prestige_cost
 		}
 		pass_cost = {
 			prestige = change_title_succession_law_prestige_cost
+		}
+		on_pass = {
+			save_scope_as = former_tyrant
+			save_scope_value_as = { name = new_democracy value = yes }
+			change_government_form_to_democracy = yes
+
+			scope:former_tyrant = {
+				trigger_event = ATHA_government.0010
+			}
+		}
+		on_revoke = {
+			save_scope_as = new_tyrant
+			save_scope_value_as = { name = former_democracy value = yes }
+			change_government_form_to_tyranny = yes
+
+			every_player = {	
+				limit = { is_within_diplo_range = { CHARACTER = scope:new_tyrant } }	
+				trigger_event = ATHA_government.0009
+			}
 		}
 	}
 
 	# Oligarchic
 	oligarchic_succession_law = {
 		can_have = {
-			has_government = city_state_oligarchic_government
+			OR = {
+				has_government = city_state_oligarchic_government
+				has_government = city_state_tyrannical_government
+			}
 			highest_held_title_tier >= tier_duchy
 		}
 		can_pass = {
@@ -50,17 +75,39 @@
 			direct_vassal_opinion = 10
 		}
 		revoke_cost = {
-			prestige = change_title_succession_law_prestige_cost
+			prestige = change_city_state_succession_law_prestige_cost
 		}
 		pass_cost = {
 			prestige = change_title_succession_law_prestige_cost
+		}
+		on_pass = {
+			save_scope_as = former_tyrant
+			save_scope_value_as = { name = new_oligarchy value = yes }
+			change_government_form_to_oligarchy = yes
+
+			scope:former_tyrant = {
+				trigger_event = ATHA_government.0010
+			}
+		}
+		on_revoke = {
+			save_scope_as = new_tyrant
+			save_scope_value_as = { name = former_oligarchy value = yes }
+			change_government_form_to_tyranny = yes
+
+			every_player = {	
+				limit = { is_within_diplo_range = { CHARACTER = scope:new_tyrant } }	
+				trigger_event = ATHA_government.0009
+			}
 		}
 	}
 
 	# Aristocratic
 	aristocratic_succession_law = {
 		can_have = {
-			has_government = city_state_aristocratic_government
+			OR = {
+				has_government = city_state_aristocratic_government
+				has_government = city_state_tyrannical_government
+			}
 			highest_held_title_tier >= tier_duchy
 		}
 		can_pass = {
@@ -79,10 +126,29 @@
 			direct_vassal_opinion = 10
 		}
 		revoke_cost = {
-			prestige = change_title_succession_law_prestige_cost
+			prestige = change_city_state_succession_law_prestige_cost
 		}
 		pass_cost = {
 			prestige = change_title_succession_law_prestige_cost
+		}
+		on_pass = {
+			save_scope_as = former_tyrant
+			save_scope_value_as = { name = new_aristocracy value = yes }
+			change_government_form_to_aristocracy = yes
+
+			scope:former_tyrant = {
+				trigger_event = ATHA_government.0010
+			}
+		}
+		on_revoke = {
+			save_scope_as = new_tyrant
+			save_scope_value_as = { name = former_aristocracy value = yes }
+			change_government_form_to_tyranny = yes
+
+			every_player = {	
+				limit = { is_within_diplo_range = { CHARACTER = scope:new_tyrant } }	
+				trigger_event = ATHA_government.0009
+			}
 		}
 	}
 }

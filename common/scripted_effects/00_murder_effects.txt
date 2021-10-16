@@ -339,10 +339,10 @@ set_local_venomous_creature_effect = {
 			modifier = {
 				factor = 0
 				location = {
-					OR = {
+					NOR = {
 						geographical_region = world_africa_north
-						geographical_region = world_middle_east
-						geographical_region = world_asia_minor
+						geographical_region = world_middle_east_jerusalem
+						geographical_region = world_middle_east_persia
 					}
 				}
 			}
@@ -355,10 +355,9 @@ set_local_venomous_creature_effect = {
 			modifier = {
 				factor = 0
 				location = {
-					OR = {
+					NOR = {
 						geographical_region = world_middle_east
 						geographical_region = world_africa_north_east
-						geographical_region = world_africa_east
 					}
 				}
 			}
@@ -372,7 +371,9 @@ set_local_venomous_creature_effect = {
 				factor = 0
 				location = {
 					NOR = {
-						geographical_region = world_europe
+						geographical_region = world_europe_north
+						geographical_region = world_europe_east
+						geographical_region = world_europe_south_east
 					}
 				}
 			}
@@ -384,11 +385,8 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_africa_west
-						geographical_region = world_africa_east
-					}
+				NOT = {
+					location = { geographical_region = world_africa_west }
 				}
 			}
 		}
@@ -399,11 +397,8 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_africa_west
-						geographical_region = world_africa_east
-					}
+				NOT = {
+					location = { geographical_region = world_africa_west }
 				}
 			}
 		}
@@ -414,8 +409,11 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_india }
+				location = {
+					NOR = {
+						geographical_region = world_india
+						geographical_region = world_burma
+					}
 				}
 			}
 		}
@@ -440,10 +438,24 @@ set_local_venomous_creature_effect = {
 				factor = 0
 				location = {
 					NOR = {
+						geographical_region = world_africa_north
 						geographical_region = world_middle_east
-						geographical_region = world_africa_north_east
-						geographical_region = world_africa_east
 						geographical_region = world_india
+					}
+				}
+			}
+		}
+		500 = {
+			save_scope_value_as = {
+				name = venomous_creature
+				value = flag:krait #Pakistan, India, Southeast Asia
+			}
+			modifier = {
+				factor = 0
+				location = {
+					NOR = {
+						geographical_region = world_india
+						geographical_region = world_burma
 					}
 				}
 			}

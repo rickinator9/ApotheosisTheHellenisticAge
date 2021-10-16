@@ -151,3 +151,22 @@ city_state_maintenance.0008 = {
         }
 	}
 }
+
+#Removes corruption if the character switches to an invalid government
+city_state_maintenance.0009 = {
+    hidden = yes
+
+    trigger = {
+        can_have_corruption_trigger = no
+    }
+
+    immediate = {
+        every_held_title = {
+            remove_variable = city_state_corruption
+        }
+        remove_character_modifier = low_corruption_modifier
+        remove_character_modifier = mediocre_corruption_modifier
+		remove_character_modifier = high_corruption_modifier
+		remove_character_modifier = critical_corruption_modifier
+    }
+}
