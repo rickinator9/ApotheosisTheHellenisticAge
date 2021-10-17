@@ -92,7 +92,7 @@ greece_decisions.0001 = {
 				custom = every_independent_ruler_pythian_faith
 				add_opinion = {
 					modifier = enslaved_messenia_opinion
-					target = ROOT
+					target = root
 				}
 			}
 		}
@@ -323,7 +323,7 @@ greece_decisions.0003 = {
 					}
 					add_character_flag = extorted_vassal
 					add_opinion = {
-						target = ROOT
+						target = root
 						modifier = angry_opinion
 						opinion = -20
 					}
@@ -472,7 +472,7 @@ greece_decisions.0003 = {
 					}
 					add_character_flag = grateful_vassal
 					add_opinion = {
-						target = ROOT
+						target = root
 						modifier = grateful_opinion
 						opinion = 10
 					}
@@ -484,7 +484,7 @@ greece_decisions.0003 = {
 					}
 					add_character_flag = federal_athenian_vassal
 					add_opinion = {
-						target = ROOT
+						target = root
 						modifier = weak_opinion
 						opinion = -10
 					}
@@ -649,7 +649,7 @@ greece_decisions.0004 = {
 
 		trigger = { 
 			has_culture = culture:macedonian
-			is_independent = yes
+			is_independent_ruler = yes
 		}
 	}
 	option = { # Extorted vassals
@@ -689,7 +689,7 @@ greece_decisions.0004 = {
 				has_culture = culture:athenian
 				AND = {
 					has_culture = culture:macedonian
-					is_independent = yes
+					is_independent_ruler = yes
 				}
 			}
 		}
@@ -1174,7 +1174,7 @@ greece_decisions.0007 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = ROOT }
+				NOT = { this = root }
 				top_liege = scope:phoros_founder.top_liege
 			}
 			trigger_event = greece_decisions.0008
@@ -1359,7 +1359,7 @@ scripted_trigger is_hegemon_candidate_trigger = {
 	scope:k_peloponnesos_founder = { government_has_flag = is_hegemonic_government }
 
 	#Has to have at least 80% of the Peloponnesian ruler's military strength
-	ROOT.max_military_strength > {
+	root.max_military_strength > {
 		value = scope:k_peloponnesos_founder.max_military_strength
 		multiply = 0.8
 	}
@@ -1586,16 +1586,18 @@ greece_decisions.0011 = {
 				save_scope_as = peloponnesian_claimant
 			}
 		}
-
+		#Now we use the score to evaluate whether k_peloponnesos_founder's efforts were successful or not
 		if = {
 			limit = {
-				# If no one joins at all, that's bad
 				OR = {
-					k_peloponnesos_acceptance_value = 0 
-					k_peloponnesos_outcome_value < 0
+					# If no one joins at all, that's bad
+					AND = {
+						k_peloponnesos_acceptance_value = 0 
+						k_peloponnesos_outcome_value < 0
+					}
+					# Lots of rejects is bad, even if you get a few accepts
+					k_peloponnesos_outcome_value < -8
 				}
-				# Lots of rejects is bad, even if you get a few accepts
-				k_peloponnesos_outcome_value < -8
 			}
 			add_character_flag = k_peloponnesos_critical_failure
 		}
@@ -1617,13 +1619,15 @@ greece_decisions.0011 = {
 		}
 		else_if = {
 			limit = { 
-				# If everyone joins, that's great
 				OR = {
-					k_peloponnesos_rejection_value = 0 
-					k_peloponnesos_outcome_value > 0
+					# If everyone joins, that's great
+					AND = {
+						k_peloponnesos_rejection_value = 0 
+						k_peloponnesos_outcome_value > 0
+					}
+					# If most rulers are accepting, then that's still great
+					k_peloponnesos_outcome_value >= 8
 				}
-				# If most rulers are accepting, then that's still great
-				k_peloponnesos_outcome_value >= 8
 			}
 			add_character_flag = k_peloponnesos_critical_success
 		}
@@ -1656,7 +1660,7 @@ greece_decisions.0011 = {
 		if = { 
 			limit = { exists = scope:peloponnesian_claimant }
 			show_as_tooltip = {
-				scope:peloponnesian_claimant = { form_k_peloponnesos_claimant_effect }
+				scope:peloponnesian_claimant = { form_k_peloponnesos_claimant_effect = yes }
 			}
 		}
 	}
@@ -1684,7 +1688,7 @@ greece_decisions.0012 = {
 	}
 
 	option = { # Okay
-		name = greece_decisions.0005.a
+		name = greece_decisions.0012.a
 	}	
 }
 
