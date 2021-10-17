@@ -373,6 +373,8 @@ change_government_form_to_aristocracy = {
 	if = {
 		limit = { highest_held_title_tier >= tier_duchy }
 		primary_title = { add_title_law = aristocratic_succession_law }
+	} else = {
+		primary_title = { add_title_law = single_heir_succession_law }
 	}
 }
 
@@ -381,6 +383,8 @@ change_government_form_to_oligarchy = {
 	if = {
 		limit = { highest_held_title_tier >= tier_duchy }
 		primary_title = { add_title_law = oligarchic_succession_law }
+	} else = {
+		primary_title = { add_title_law = single_heir_succession_law }
 	}
 }
 
@@ -389,6 +393,8 @@ change_government_form_to_democracy = {
 	if = {
 		limit = { highest_held_title_tier >= tier_duchy }
 		primary_title = { add_title_law = democratic_succession_law }
+	} else = {
+		primary_title = { add_title_law = single_heir_succession_law }
 	}
 }
 
@@ -413,14 +419,16 @@ land_dynastic_government = {
 	vassal_contract_set_obligation_level = { type = vassal_role level = 6 }
 }
 
-# Assign a military bureaucracy to this character and set up the correct vassal contracts.
+# Assign a civil bureaucracy to this character and set up the correct vassal contracts.
 land_civil_bureaucracy_government = {
 	change_government_form = { GOVERNMENT = bureaucracy_civil_government }
+	primary_title = { add_title_law = single_heir_succession_law }
 	vassal_contract_set_obligation_level = { type = vassal_role level = 4 }
 }
 
 # Assign a military bureaucracy to this character and set up the correct vassal contracts.
 land_military_government = {
 	change_government_form = { GOVERNMENT = bureaucracy_military_government }
+	primary_title = { add_title_law = single_heir_succession_law }
 	vassal_contract_set_obligation_level = { type = vassal_role level = 5 }
 }
