@@ -92,7 +92,7 @@ greece_decisions.0001 = {
 				custom = every_independent_ruler_pythian_faith
 				add_opinion = {
 					modifier = enslaved_messenia_opinion
-					target = root
+					target = ROOT
 				}
 			}
 		}
@@ -649,7 +649,7 @@ greece_decisions.0004 = {
 
 		trigger = { 
 			has_culture = culture:macedonian
-			is_independent_yes = yes
+			is_independent = yes
 		}
 	}
 	option = { # Extorted vassals
@@ -689,7 +689,7 @@ greece_decisions.0004 = {
 				has_culture = culture:athenian
 				AND = {
 					has_culture = culture:macedonian
-					is_independent_yes = yes
+					is_independent = yes
 				}
 			}
 		}
@@ -852,7 +852,6 @@ greece_decisions.0007 = {
 		remove_character_flag = founded_k_insular_phoros
 
 		every_held_title = {
-			count = 4
 			if = {
 				limit = {
 					tier = tier_county
@@ -1175,7 +1174,7 @@ greece_decisions.0007 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = root }
+				NOT = { this = ROOT }
 				top_liege = scope:phoros_founder.top_liege
 			}
 			trigger_event = greece_decisions.0008
@@ -1187,15 +1186,7 @@ greece_decisions.0007 = {
 greece_decisions.0008 = {
 	type = character_event
 	title = greece_decisions.0008.t
-	desc = {
-		desc = greece_decisions.0008.desc
-		triggered_desc = {
-			trigger = {
-				has_title = title:e_athenai
-			}
-			desc = greece_decisions.0008.desc_a
-		}
-	}
+	desc = greece_decisions.0008.desc
 	theme = realm
 	left_portrait = {
 		character = scope:phoros_founder
@@ -1389,11 +1380,6 @@ greece_decisions.0010 = {
 	sender = scope:k_peloponnesos_founder
 
 	immediate = {
-		set_variable = {
-			name = k_peloponnesos_acceptance
-			value = k_peloponnesos_acceptance_modifier
-			days = 10
-		}
 	}
 
 	option = { # Sure
@@ -1543,7 +1529,6 @@ greece_decisions.0011 = {
 			}
 		}
 	}
-
 	theme = realm
 	left_portrait = {
 		character = scope:k_peloponnesos_founder
@@ -1688,7 +1673,7 @@ greece_decisions.0012 = {
 	desc = greece_decisions.0012.desc
 	theme = realm
 	left_portrait = {
-		character = scope:k_peloponnese_uniter
+		character = scope:k_peloponnesos_uniter
 		animation = personality_honorable
 	}
 
@@ -1699,7 +1684,7 @@ greece_decisions.0012 = {
 	}
 
 	option = { # Okay
-		name = greece_decisions.0012.a
+		name = greece_decisions.0005.a
 	}	
 }
 
@@ -1710,7 +1695,7 @@ greece_decisions.0013 = {
 	desc = greece_decisions.0013.desc
 	theme = realm
 	left_portrait = {
-		character = scope:k_peloponnese_uniter
+		character = scope:k_peloponnesos_uniter
 		animation = personality_honorable
 	}
 
