@@ -1,6 +1,6 @@
 ﻿# Called from code after history generation
 # Empty scope
-on_game_start {
+ATHA_on_game_start = {
     events = {
         ATHA_game_start.1 # Assign spartan dual monarch correctly.
         ATHA_game_start.2 # Assign city state values correctly.
@@ -8,5 +8,15 @@ on_game_start {
         ATHA_game_start.4 # Add/subtract building slots from certain holding types
         ATHA_game_start.5 # Distribute modifiers for corruption level
         ATHA_game_start.6 # Set centralisation laws for governments 
+    }
+}
+
+# Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
+ATHA_on_game_start_after_lobby = {
+    effect = {
+        every_player = {
+			limit = { is_from_ruler_designer = yes }
+			trigger_event = ATHA_game_start.10
+		}
     }
 }

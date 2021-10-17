@@ -144,6 +144,81 @@ set_up_translation_story_effect = {
 
 pick_translation_book_effect = {
 	random_list = {
+		1 = { # Anabasis by Xenophon
+			trigger = {
+				trigger_if = {
+					limit = {
+						exists = scope:option_1
+					}
+					NOT = { scope:option_1 = flag:anabasis }
+				}
+			}
+			
+			save_scope_value_as = {
+				name = $OPTION$
+				value = flag:anabasis
+			}
+		}
+		1 = { # Histories by Herodotus
+			trigger = {
+				trigger_if = {
+					limit = {
+						exists = scope:option_1
+					}
+					NOT = { scope:option_1 = flag:histories }
+				}
+			}
+			
+			save_scope_value_as = {
+				name = $OPTION$
+				value = flag:histories
+			}
+		}
+		1 = { # History of the Peloponnesian War by Thucydides
+			trigger = {
+				trigger_if = {
+					limit = {
+						exists = scope:option_1
+					}
+					NOT = { scope:option_1 = flag:history_of_the_peloponnesian_war }
+				}
+			}
+			
+			save_scope_value_as = {
+				name = $OPTION$
+				value = flag:history_of_the_peloponnesian_war
+			}
+		}
+		1 = { # Constitution of the Lacedaemonians by Xenophon
+			trigger = {
+				trigger_if = {
+					limit = {
+						exists = scope:option_1
+					}
+					NOT = { scope:option_1 = flag:constitution_of_the_lacedaemonians }
+				}
+			}
+			
+			save_scope_value_as = {
+				name = $OPTION$
+				value = flag:constitution_of_the_lacedaemonians
+			}
+		}
+		1 = { # Indica by Megasthenes
+			trigger = {
+				trigger_if = {
+					limit = {
+						exists = scope:option_1
+					}
+					NOT = { scope:option_1 = flag:indica }
+				}
+			}
+			
+			save_scope_value_as = {
+				name = $OPTION$
+				value = flag:indica
+			}
+		}
 		1 = { #Fallback: Family History
 			trigger = {
 				trigger_if = {

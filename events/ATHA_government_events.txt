@@ -1424,6 +1424,152 @@ ATHA_government.0008 = {
 	}
 }
 
+# A elective city state becomes a tyranny.
+ATHA_government.0009 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:former_aristocracy }
+				desc = ATHA_government.0009.t_aristocracy
+			}
+			triggered_desc = {
+				trigger = { exists = scope:former_oligarchy }
+				desc = ATHA_government.0009.t_oligarchy
+			}
+			desc = ATHA_government.0009.t_democracy
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:former_democracy
+					root = scope:new_tyrant
+				}
+				desc = ATHA_government.0009.desc_democratic_root
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:former_oligarchy
+					root = scope:new_tyrant
+				}
+				desc = ATHA_government.0009.desc_oligarchic_root
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:former_aristocracy
+					root = scope:new_tyrant
+				}
+				desc = ATHA_government.0009.desc_aristocratic_root
+			}
+			triggered_desc = {
+				trigger = { exists = scope:former_democracy }
+				desc = ATHA_government.0009.desc_democratic_foreign
+			}
+			triggered_desc = {
+				trigger = { exists = scope:former_oligarchy }
+				desc = ATHA_government.0009.desc_oligarchic_foreign
+			}
+			triggered_desc = {
+				trigger = { exists = scope:former_aristocracy }
+				desc = ATHA_government.0009.desc_aristocratic_foreign
+			}
+		}
+		triggered_desc = {
+			trigger = { root = scope:new_tyrant }
+			desc = ATHA_government.0009.desc_outro_fp
+		}
+	}
+	theme = realm
+	left_portrait = {
+		character = scope:new_tyrant
+		animation = personality_callous
+	}
+
+	option = {
+		name = {
+			trigger = { root = scope:new_tyrant }
+			text = ATHA_government.0009.a_root
+		}
+		name = {
+			trigger = {
+				NOT = { root = scope:new_tyrant }
+				OR = {
+					has_government = feudal_government
+					has_government = clan_government
+					has_government = tribal_government
+					has_government = city_state_tyrannical_government
+					has_government = city_state_spartan_government
+				}
+			}
+			text = ATHA_government.0009.a_dynastic
+		}
+		name = {
+			trigger = {
+				NOR = {
+					root = scope:new_tyrant
+					has_government = feudal_government
+					has_government = clan_government
+					has_government = tribal_government
+					has_government = city_state_tyrannical_government
+					has_government = city_state_spartan_government
+				}
+			}
+			text = ATHA_government.0009.a_liberal
+		}
+		show_as_tooltip = {
+			scope:new_tyrant = {
+				change_government_form_to_tyranny = yes
+			}
+		}
+	}
+}
+
+# A elective city state becomes a tyranny.
+ATHA_government.0010 = {
+	type = character_event
+	title = ATHA_government.0010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:new_oligarchy }
+				desc = ATHA_government.0010.desc_oligarchic
+			}
+			triggered_desc = {
+				trigger = { exists = scope:new_aristocracy }
+				desc = ATHA_government.0010.desc_aristocratic
+			}
+			desc = ATHA_government.0010.desc_democratic
+		}
+	}
+	theme = realm
+	left_portrait = {
+		character = scope:former_tyrant
+		animation = personality_rational
+	}
+
+	option = {
+		name = ATHA_government.0010.a
+		if = {
+			limit = { exists = scope:new_democracy }
+			show_as_tooltip = {
+				scope:former_tyrant = { change_government_form_to_democracy = yes }
+			}
+		} else_if = {
+			limit = { exists = scope:new_oligarchy }
+			show_as_tooltip = {
+				scope:former_tyrant = { change_government_form_to_oligarchy = yes }
+			}
+		} else_if = {
+			limit = { exists = scope:new_aristocracy }
+			show_as_tooltip = {
+				scope:former_tyrant = { change_government_form_to_aristocracy = yes }
+			}
+		}
+	}
+}
+
 # The government of the character changes; try setting the initial corruption value.
 ATHA_government.0100 = {
 	type = empty
