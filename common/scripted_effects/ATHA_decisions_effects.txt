@@ -400,7 +400,7 @@ unite_k_peloponnesos_decision_effects = {
 			scope:k_peloponnesos_uniter = { destroy_title = prev }
 		}
 	}
-	# If any Peloponnesian titles have de jure drifted somewhere else, bring them back
+	# Update the de jure liege of the Peloponnesian duchies
 	hidden_effect = {
 		title:d_lakedaimon = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
 		title:d_messenia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
@@ -410,6 +410,9 @@ unite_k_peloponnesos_decision_effects = {
 		title:d_korinthia = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
 		title:d_argolis = { set_de_jure_liege_title = scope:k_peloponnesos_uniter.primary_title }
 	}
+
+	# You get a fancy nickname, literally "son of Pelops"
+	set_nickname_effect = { NICKNAME = nick_pelopidas }
 }
 
 form_k_bithynia_decision_effects = {
