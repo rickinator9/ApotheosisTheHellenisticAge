@@ -819,7 +819,6 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 	}
 }
 
-
 ##############################
 # Unite k_peloponnesos	 	 #
 ##############################
@@ -830,8 +829,8 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 
 	ai_check_interval = 120
 
-	desc = form_k_peloponnesos_decision_desc
-	selection_tooltip = form_k_peloponnesos_decision_tooltip
+	desc = unite_k_peloponnesos_decision_desc
+	selection_tooltip = unite_k_peloponnesos_decision_tooltip
 
 	is_shown = {
 		has_culture_group = culture_group:greek_group
@@ -865,6 +864,12 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 
 		#Should have a good prestige level
 		prestige_level >= high_prestige_level
+
+		#Must have a Peloponnese-based primary title
+		OR = {
+			has_primary_title = title:k_peloponnesos
+			has_primary_title = title:k_lakedaimon
+		}
 
 		#Can't do this while the Peloponnesian kingdoms are held by different people 
 		custom_description = {
@@ -917,9 +922,6 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 			}
 			trigger_event = greece_decisions.0013
 		}
-	}
-
-	cost = {
 	}
 
 	ai_potential = {
