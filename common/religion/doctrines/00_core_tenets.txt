@@ -1636,6 +1636,10 @@
 				text = incompatible_tenet_mendicant_preachers_trigger
 				NOT = { flag:tenet_mendicant_preachers = { is_in_list = selected_doctrines } }
 			}
+			custom_description = {
+				text = incompatible_tenet_great_rhetra_trigger
+				NOT = { flag:tenet_great_rhetra = { is_in_list = selected_doctrines } }
+			}
 		}
 
 		parameters = {
@@ -2733,6 +2737,42 @@
 		}
 		traits = {
 			virtues = { eunuch }
+		}
+	}
+
+	tenet_great_rhetra = {
+		icon = core_tenet_bigbook
+
+		piety_cost = {
+			value = faith_tenet_cost_low
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_great_rhetra }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			always = no
+		}
+
+		parameters = {
+		}
+
+		character_modifier = {
+			monthly_martial_lifestyle_xp_gain_mult = 0.2
+		}
+
+		traits = {
+			virtues = {
+				temperate
+				stubborn
+			}
+			sins = { 
+				greedy
+				gluttonous
+			}
 		}
 	}
 
