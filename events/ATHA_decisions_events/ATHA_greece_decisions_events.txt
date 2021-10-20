@@ -1710,3 +1710,230 @@ greece_decisions.0013 = {
 		name = greece_decisions.0013.a
 	}	
 }
+
+##############################
+# Revive spartan_faith	 	 #
+##############################
+
+scripted_effect revive_spartan_faith_notify_players_effect = {
+	every_player = {
+		limit = {
+			NOT = { this = root }
+			OR = {
+				capital_province = { geographical_region = custom_peloponnese }
+				top_liege = root
+			}
+		}
+		trigger_event = greece_decisions.0015
+	}
+}
+
+# I revived Tyndaridism
+greece_decisions.0014 = {
+	type = character_event
+	title = greece_decisions.0014.t
+	desc = greece_decisions.0014.desc
+	theme = faith
+	left_portrait = {
+		character = scope:spartan_faith_reformer
+		animation = personality_zealous
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		revive_spartan_faith_decision_effects = yes
+	}
+
+	#The Old Ways need no adjustment.
+	option = {
+		name = greece_decisions.0014.a
+
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = spartan_faith_revival
+			value = flag:vanilla
+		}
+		revive_spartan_faith_notify_players_effect = yes
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = -0.5
+				ai_boldness = -0.5
+				ai_honor = 1
+				ai_zeal = 1
+				ai_energy = 0.5
+			}
+		}
+	}
+
+	#Warmonger + Fundamentalist
+	option = {
+		name = greece_decisions.0014.b
+
+		#Reasonable carrot for your efforts.
+		add_piety_experience = major_piety_value
+
+		#Warmonger replaces Ritual Celebrations.
+		faith:spartan_faith = {
+			remove_doctrine = tenet_ritual_celebrations
+			add_doctrine = tenet_warmonger
+		}
+
+		#Fundamentalist replaces Righteous.
+		faith:spartan_faith = {
+			remove_doctrine = doctrine_pluralism_righteous
+			add_doctrine = doctrine_pluralism_fundamentalist
+		}
+
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = spartan_faith_revival
+			value = flag:fundamentalist
+		}
+		revive_spartan_faith_notify_players_effect = yes
+
+		ai_chance = {
+			base = 0	
+
+			ai_value_modifier = {
+				ai_greed = -1
+				ai_boldness = 0.5
+				ai_zeal = 2
+				ai_energy = 1
+			}
+		}
+	}
+
+	#Pursuit of Power + Pluralistic
+	option = {
+		name = greece_decisions.0014.c
+		#Reasonable carrot for your efforts.
+		add_piety_experience = major_piety_value
+
+		#Pursuit of Power replaces Ritual Celebrations.
+		faith:spartan_faith = {
+			remove_doctrine = tenet_ritual_celebrations
+			add_doctrine = tenet_pursuit_of_power
+		}
+
+		#Pluralist replaces Righteous.
+		faith:spartan_faith = {
+			remove_doctrine = doctrine_pluralism_righteous
+			add_doctrine = doctrine_pluralism_pluralistic
+		}
+
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = spartan_faith_revival
+			value = flag:pluralistic
+		}
+		revive_spartan_faith_notify_players_effect = yes
+
+		ai_chance = {
+			base = 0	
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_boldness = 0.5
+				ai_zeal = -0.5
+				ai_energy = 1
+			}
+		}
+	}
+}
+
+# Someone else revived Tyndaridism
+greece_decisions.0015 = {
+	type = character_event
+	title = greece_decisions.0015.t
+	desc = {
+		desc = greece_decisions.0015.desc.intro
+		triggered_desc = {
+			trigger = { scope:spartan_faith_revival = flag:vanilla }
+			desc = greece_decisions.0015.desc.conversion_vanilla
+		}
+		triggered_desc = {
+			trigger = { scope:spartan_faith_revival = flag:fundamentalist }
+			desc = greece_decisions.0015.desc.conversion_fundamentalist
+		}
+		triggered_desc = {
+			trigger = { scope:spartan_faith_revival = flag:pluralistic }
+			desc = greece_decisions.0015.desc.conversion_pluralistic
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:spartan_faith_reformer
+		animation = personality_zealous
+	}
+	
+	#Tyndarid adherents are pleased
+	option = {
+		name = greece_decisions.0015.a
+		trigger = { faith = faith:spartan_faith }
+	}
+
+	#Vassal who doesn't follow the Tyndarid faith decides to convert
+	option = {
+		name = greece_decisions.0015.b
+		trigger = {
+			top_liege = scope:spartan_faith_reformer
+			NOT = { faith = faith:spartan_faith }
+		}
+		set_character_faith_with_conversion = faith:spartan_faith
+
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			gluttonous = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = -1
+				ai_boldness = 0.5
+				ai_honor = 1
+				ai_zeal = 1
+				ai_energy = 0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = greedy
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = gluttonous
+			}
+		}
+	}
+
+	#Vassal who doesn't follow the Tyndarid faith decides not to convert
+	option = {
+		name = greece_decisions.0015.c
+		trigger = {
+			top_liege = scope:spartan_faith_reformer
+			NOT = { faith = faith:spartan_faith }
+		}
+
+		ai_chance = {
+			base = 0	
+		}
+	}
+
+	#Non-vassals don't really care
+	option = { 
+		name = greece_decisions.0015.d 
+		trigger = {
+			NOR = { 
+				top_liege = scope:spartan_faith_reformer
+				faith = faith:spartan_faith 
+			}
+		}
+	}
+}

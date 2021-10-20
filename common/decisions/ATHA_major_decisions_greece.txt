@@ -840,6 +840,12 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 			has_primary_title = title:k_lakedaimon
 		}
 
+		#At least one of the titles that can unite the Peloponnese needs to have been formed
+		OR = {
+			title:k_peloponnesos = { is_title_created = yes }
+			title:k_lakedaimon = { is_title_created = yes }
+		}
+
 		#Must have a capital in the region
 		capital_province = { geographical_region = custom_peloponnese }
 
@@ -930,5 +936,142 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 
 	ai_will_do = {
 		base = 100
+	}
+}
+
+##############################
+# Revive spartan_faith	 	 #
+##############################
+
+revive_spartan_faith_decision = { # aka: Honour the Laws of Lykourgos
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = revive_spartan_faith_decision_desc
+	selection_tooltip = revive_spartan_faith_decision_tooltip
+
+	is_shown = { # TODO: Update conditions once we implement Spartan culture
+		is_landed = yes
+		has_culture = culture:dorian_south
+		OR = { 
+			dynasty = dynasty:spartandyn001
+			dynasty = dynasty:spartandyn002
+		}
+		#Can only be done once
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:revive_spartan_faith_decision
+			}
+		}
+	}
+
+	is_valid = {
+		#Must be independent
+		is_independent_ruler = yes
+
+		#Must be suitably prestigious.
+		prestige_level >= high_prestige_level
+
+		#Must be seen as a good religious example as well.
+		piety_level >= high_piety_level
+
+		#Must be king of Sparta
+		OR = {
+			has_primary_title = title:d_lakedaimon
+			has_primary_title = title:k_lakedaimon
+			has_primary_title = title:k_peloponnesos
+		}
+
+		#Must have Rhetra or Hegemonic League government
+		OR = { 
+			has_government = hegemonic_league_government
+			has_government = city_state_spartan_government
+		}
+
+		#Should be centralised
+		custom_description = {
+		text = revive_spartan_faith_decision_centralisation.tt
+			OR = { 
+				has_realm_law = crown_authority_2 
+				has_realm_law = crown_authority_3
+			}
+		}
+
+		#Must be a noted scholar of theology, or an accomplished administrator.
+		OR = {
+			has_trait = theologian
+			has_trait = administrator
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:revive_spartan_faith_decision
+		}
+
+		save_scope_as = spartan_faith_reformer
+
+		#Save historical characters as scopes for event flavour
+		character:spartan00207 = { save_scope_as = lycurgus }
+		character:macedonian03948 = { save_scope_as = alexander }
+
+		custom_tooltip = revive_spartan_faith_decision.adjust_the_faith.tt
+
+		show_as_tooltip = { revive_spartan_faith_decision_effects = yes } # Actually applied in greece_decisions.0014 - conversion, nickname, county flipping etc.
+
+		#Event for player
+		trigger_event = greece_decisions.0014
+	}
+
+	cost = {
+		piety = 1000
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+		#Weight up for zealous characters.
+		modifier = {
+			add = 25
+			has_trait = zealous
+		}
+		#Ironically, weight up for cynical characters: they stand to gain the most.
+		modifier = {
+			add = 15
+			has_trait = cynical
+		}
+		#Mildly weight up theologians, who would understand the religious aspect of the Lycurgan reforms
+		modifier = {
+			add = 10
+			has_trait = theologian
+		}
+		#Mildly weight up administrators, who would understand the practical benefit of the Lycurgan reforms
+		modifier = {
+			add = 10
+			has_trait = administrator
+		}
+		#Weight down characters who would be considered sinful by the Tyndarid faith 
+		modifier = {
+			add = -25
+			has_trait = greedy
+		}
+		modifier = {
+			add = -25
+			has_trait = gluttonous
+		}
 	}
 }

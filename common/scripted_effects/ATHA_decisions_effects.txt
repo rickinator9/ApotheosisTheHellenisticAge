@@ -415,6 +415,68 @@ unite_k_peloponnesos_decision_effects = {
 	set_nickname_effect = { NICKNAME = nick_pelopidas }
 }
 
+revive_spartan_faith_decision_effects = {
+	#Convert yourself and close family over to Tyndaridism. Note that we're doing things slightly differently to the 'set_character_faith_with_conversion' scripted effect
+	show_as_tooltip = { set_character_faith_with_conversion = faith:spartan_faith }
+	hidden_effect = {
+		set_character_faith = faith:spartan_faith
+		every_close_family_member = { set_character_faith = faith:spartan_faith }
+	}
+
+	#Gain a nickname for your troubles.
+	set_nickname_effect = { NICKNAME = nick_the_reformer }
+
+	#Spartan counties may revert back to the old ways.
+	custom_tooltip = revive_spartan_faith_decision_effects.county_conversions.tt
+	hidden_effect = {
+		primary_title = {
+			every_in_de_facto_hierarchy = {
+				limit = {
+					tier = tier_county
+					culture = culture:dorian_south # TODO: update to Spartan once culture is added
+				}
+				#Provinces in de jure d_lakedaimonia remember the old ways best, and have a high chance to flip.
+				if = {
+					limit = { 
+						de_jure_liege = { this = title:d_lakedaimon } 
+					}
+					random = {
+						chance = 70
+						set_county_faith = faith:spartan_faith
+					}
+				}
+				#Slightly up the chances for provinces directly controlled by the reformer.
+				else_if = {
+					limit = { holder = root }
+					random = {
+						chance = 50
+						set_county_faith = faith:spartan_faith
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = revive_spartan_faith_decision_effects.county_modifiers.tt
+	#Make flipping counties deliriously happy about the whole affair.
+	primary_title = {
+		every_in_de_facto_hierarchy = {
+			limit = {
+				tier = tier_county
+				faith = faith:spartan_faith
+			}
+			custom = revive_spartan_faith_decision.every_converted_province
+			add_county_modifier = {
+				modifier = spartan_appreciation_modifier
+				years = 25
+			}
+		}
+	}
+	#Finally, give spartan_faith a hefty fervour boost, just so that they don't immediately convert back.
+	hidden_effect = {
+		faith:spartan_faith = { change_fervor = 100 }
+	}
+}
+
 form_k_bithynia_decision_effects = {
 	# Create kingdom title.
 	create_title_and_vassal_change = {
