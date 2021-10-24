@@ -1,3 +1,54 @@
-﻿uses_greek_for_nickname_localization = {
+﻿# Does this character use greek localization for nicknames?
+uses_greek_for_nickname_localization_trigger_trigger = {
 	always = yes # We currently only have cultures that use Greek for nicknames.
+}
+
+# Is this character allowed to get an epithet?
+is_allowed_epithet_trigger = {
+	is_independent_ruler = yes
+	OR = {
+		has_government = feudal_government
+		has_government = clan_government
+		has_government = tribal_government
+		has_government = city_state_tyrannical_government
+	}
+}
+
+# Can this character get an epithet right now?
+can_get_epithet_trigger = {
+	is_allowed_epithet_trigger = yes
+	NOR = {
+		has_any_nickname = yes
+		has_character_flag = refused_epithet
+	}
+}
+
+# Does this character have an epithet?
+has_epithet_trigger = {
+	OR = {
+		has_nickname = epithet_the_asian
+		has_nickname = epithet_the_autocrat
+		has_nickname = epithet_the_bearer_of_victory
+		has_nickname = epithet_the_beautiful_victor
+		has_nickname = epithet_the_benefactor
+		has_nickname = epithet_the_divine
+		has_nickname = epithet_the_divine_manifest
+		has_nickname = epithet_the_father_loving
+		has_nickname = epithet_the_generous
+		has_nickname = epithet_the_illustrous
+		has_nickname = epithet_the_just
+		has_nickname = epithet_the_mother_loving
+		has_nickname = epithet_the_pious
+		has_nickname = epithet_the_saviour
+		has_nickname = epithet_the_sibling_loving
+		has_nickname = epithet_the_victor
+		has_nickname = epithet_the_wealthy
+		has_nickname = epithet_the_well_born
+	}
+}
+
+# Does this character have a nickname that is not an epithet?
+has_nickname_trigger = {
+	has_any_nickname = yes
+	NOT = { has_epithet_trigger = yes }
 }

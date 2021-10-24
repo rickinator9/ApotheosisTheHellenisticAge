@@ -1,0 +1,249 @@
+﻿namespace = ATHA_nickname
+
+# Assign an epithet to a ruler that can have an epithet when they succeed to an independent throne.
+ATHA_nickname.0001 = {
+	type = character_event
+	title = ATHA_nickname.0001.t
+	desc = ATHA_nickname.0001.desc
+	theme = crown
+	left_portrait = root
+
+	trigger = {
+		can_get_epithet_trigger = yes
+		NOT = { has_character_flag = prompted_to_choose_epithet } # Prevent getting the event multiple times when inheriting a lot of titles.
+	}
+
+	immediate = {
+		save_epithet_suggestion = { OPTION = option1 }
+		save_epithet_suggestion = { OPTION = option2 }
+		save_epithet_suggestion = { OPTION = option3 }
+
+		add_character_flag = prompted_to_choose_epithet
+
+		# Councillor used in localisation.
+		random_councillor = {
+			save_scope_as = councillor
+		}
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_asian
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_asian
+				scope:option2 = flag:the_asian
+				scope:option3 = flag:the_asian
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_asian }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_autocrat
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_autocrat
+				scope:option2 = flag:the_autocrat
+				scope:option3 = flag:the_autocrat
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_autocrat }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_bearer_of_victory
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_bearer_of_victory
+				scope:option2 = flag:the_bearer_of_victory
+				scope:option3 = flag:the_bearer_of_victory
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_bearer_of_victory }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_beautiful_victor
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_beautiful_victor
+				scope:option2 = flag:the_beautiful_victor
+				scope:option3 = flag:the_beautiful_victor
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_beautiful_victor }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_benefactor
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_benefactor
+				scope:option2 = flag:the_benefactor
+				scope:option3 = flag:the_benefactor
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_benefactor }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_divine
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_divine
+				scope:option2 = flag:the_divine
+				scope:option3 = flag:the_divine
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_divine }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_divine_manifest
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_divine_manifest
+				scope:option2 = flag:the_divine_manifest
+				scope:option3 = flag:the_divine_manifest
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_divine_manifest }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_father_loving
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_father_loving
+				scope:option2 = flag:the_father_loving
+				scope:option3 = flag:the_father_loving
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_father_loving }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_generous
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_generous
+				scope:option2 = flag:the_generous
+				scope:option3 = flag:the_generous 
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_generous }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_just
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_just
+				scope:option2 = flag:the_just
+				scope:option3 = flag:the_just
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_just }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_mother_loving
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_mother_loving
+				scope:option2 = flag:the_mother_loving
+				scope:option3 = flag:the_mother_loving
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_mother_loving }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_pious
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_pious
+				scope:option2 = flag:the_pious
+				scope:option3 = flag:the_pious
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_pious }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_saviour
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_saviour
+				scope:option2 = flag:the_saviour
+				scope:option3 = flag:the_saviour
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_saviour }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_sibling_loving
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_sibling_loving
+				scope:option2 = flag:the_sibling_loving
+				scope:option3 = flag:the_sibling_loving
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_sibling_loving }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_victor
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_victor
+				scope:option2 = flag:the_victor
+				scope:option3 = flag:the_victor
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_victor }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_wealthy
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_wealthy
+				scope:option2 = flag:the_wealthy
+				scope:option3 = flag:the_wealthy
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_wealthy }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_the_well_born
+		trigger = {
+			OR = {
+				scope:option1 = flag:the_well_born
+				scope:option2 = flag:the_well_born
+				scope:option3 = flag:the_well_born
+			}
+		}
+
+		set_epithet_effect = { EPITHET = epithet_the_well_born }
+	}
+}
