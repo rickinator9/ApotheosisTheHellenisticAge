@@ -41,6 +41,79 @@
 		add = medium_prestige_value # requires taking on Macedonia
 	}
 }
+
+phoros_capital_candidate_score = {
+	# Prioritise the realm capital
+	if = {
+		limit = { this = scope:phoros_founder.capital_county }
+		add = 200
+	}
+	# Prioritise directly held counties
+	if = {
+		limit = { 
+			holder = { this = scope:phoros_founder }
+		}
+		add = 100
+	}
+	# Prioritise the traditional centres
+	if = {
+		limit = { this = scope:centre_1 }
+		add = 18
+	}
+	else_if = {
+		limit = { this = scope:centre_2 }
+		add = 14
+	}
+	else_if = {
+		limit = { this = scope:centre_3 }
+		add = 12
+	}
+	else_if = {
+		limit = { this = scope:centre_4 }
+		add = 10
+	}
+
+	# Factor in development
+	add = development_level
+
+	# Prioritise counties with lots of barony slots
+	if = {
+		limit = {
+			any_county_province = {
+				count >= 4
+			}
+  		}
+		add = 8
+	}
+	else_if = {
+		limit = {
+			any_county_province = {
+				count >= 3
+			}
+  		}
+		add = 4
+	}
+	# Prioritise counties with filled barony slots
+	if = {
+		limit = {
+			any_county_province = {
+				count >= 4
+				building_slots > 1
+			}
+  		}
+		add = 4
+	}
+	else_if = {
+		limit = {
+			any_county_province = {
+				count >= 3
+				building_slots > 1
+			}
+  		}
+		add = 2
+	}
+}
+
 # Count the rulers who accepted the offer to join the League
 k_peloponnesos_acceptance_value = {
 	value = 0
