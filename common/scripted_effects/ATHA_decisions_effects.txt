@@ -1,4 +1,4 @@
-﻿form_k_lakedaimon_decision_effects = {
+form_k_lakedaimon_decision_effects = {
 	# Create kingdom title
 	create_title_and_vassal_change = {
 		type = created
@@ -382,7 +382,6 @@ unite_k_peloponnesos_decision_effects = {
 	title:k_lakedaimon = { add_to_list = peloponnese_kingdoms }
 	title:k_peloponnesos = { add_to_list = peloponnese_kingdoms }
 
-	custom_tooltip = unite_k_peloponnesos_decision_effects_de_jure.tt
 	hidden_effect = {
 		every_in_list = {
 			list = peloponnese_kingdoms
@@ -591,7 +590,7 @@ found_bithynian_capital_scripted_effect = {
 			limit = { 
 				NOT = { culture = culture:bithynian }
 			}
-			set_county_culture = culture:bithynian }
+			set_county_culture = culture:bithynian
 		}
 		#If this county isn't the de jure capital of k_bithynia, make it so.
 		if = {
@@ -671,5 +670,171 @@ found_bithynian_capital_barony_scripted_effect = {
 				set_title_name = city_ziaela
 			}
 		}
+	}
+}
+
+form_k_ionia_decision_effects = {
+	# Create kingdom title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_ionia = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# De jure shifts
+	hidden_effect = {
+		title:d_ionia = { set_de_jure_liege_title = title:k_ionia }
+		title:d_aiolis = { set_de_jure_liege_title = title:k_ionia }
+		title:d_doris = { set_de_jure_liege_title = title:k_ionia }
+		title:c_adramyttion = { set_de_jure_liege_title = title:d_aiolis }
+		title:c_atarneus = { set_de_jure_liege_title = title:d_aiolis }
+	}
+
+	#Bring Ionia over to e_hellas
+	hidden_effect = {
+		title:k_ionia = { set_de_jure_liege_title = title:e_hellas }
+	}
+
+	#Make your realm capital the de jure kingdom capital
+	if = {
+		limit = {
+			NOT = { capital_county = title:k_ionia.title_capital_county }
+		}
+		title:k_ionia = { set_capital_county = root.capital_county }
+	}
+
+	#Rename title based on culture
+	if = {
+		limit = { has_culture = culture:ionian }
+		# Rename the title to Ionie
+		hidden_effect = {
+			title:k_ionia = { set_title_name = cn_ionia_ionic }
+		}
+	}
+	else_if = {
+		limit = { has_culture = culture:aeolian }
+		# Rename the title to Aiolis
+		hidden_effect = {
+			title:k_ionia = { set_title_name = d_aiolis }
+		}
+	}
+	else_if = {
+		limit = { has_culture = culture:dorian }
+		# Rename the title to Doris
+		hidden_effect = {
+			title:k_ionia = { set_title_name = d_doris }
+		}
+	}
+
+	#The following only apply if you're a duke taking the decision
+	if = {
+		limit = { 
+			NOR = {
+				has_primary_title = title:k_troas
+			}
+		}
+
+		#Transfer over innovations from other local Greek cultures
+		culture = {
+			if = {
+				limit = { 
+					NOT = { this = culture:ionian }
+				}
+				get_all_innovations_from = culture:ionian
+			}
+			if = {
+				limit = { 
+					NOT = { this = culture:aeolian }
+				}
+				get_all_innovations_from = culture:aeolian
+			}
+			if = {
+				limit = { 
+					NOT = { this = culture:dorian }
+				}
+				get_all_innovations_from = culture:dorian
+			}
+		}
+		#And gain some prestige for your troubles
+		add_prestige = major_prestige_gain
+	}
+}
+
+form_k_troas_decision_effects = {
+	# Create kingdom title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_troas = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# De jure shifts
+	hidden_effect = {
+		title:d_troas = { set_de_jure_liege_title = title:k_troas }
+		title:d_mysia = { set_de_jure_liege_title = title:k_troas }
+		title:d_askania = { set_de_jure_liege_title = title:k_troas }
+		title:c_zeleia = { set_de_jure_liege_title = title:d_mysia }
+		title:c_astakos = { set_de_jure_liege_title = title:d_askania }
+		title:c_chalkedon = { set_de_jure_liege_title = title:d_askania }
+	}
+
+	#Bring Troas over to e_hellas
+	hidden_effect = {
+		title:k_troas = { set_de_jure_liege_title = title:e_hellas }
+	}
+
+	#Make your realm capital the de jure kingdom capital
+	if = {
+		limit = {
+			NOT = { capital_county = title:k_troas.title_capital_county }
+		}
+		title:k_troas = { set_capital_county = root.capital_county }
+	}
+
+	#The following only apply if you're a duke taking the decision
+	if = {
+		limit = { 
+			NOR = {
+				has_primary_title = title:k_ionia
+			}
+		}
+
+		#Transfer over innovations from other local Greek cultures
+		culture = {
+			if = {
+				limit = { 
+					NOT = { this = culture:ionian }
+				}
+				get_all_innovations_from = culture:ionian
+			}
+			if = {
+				limit = { 
+					NOT = { this = culture:aeolian }
+				}
+				get_all_innovations_from = culture:aeolian
+			}
+			if = {
+				limit = { 
+					NOT = { this = culture:dorian }
+				}
+				get_all_innovations_from = culture:dorian
+			}
+		}
+		#And gain some prestige for your troubles
+		add_prestige = major_prestige_gain
 	}
 }

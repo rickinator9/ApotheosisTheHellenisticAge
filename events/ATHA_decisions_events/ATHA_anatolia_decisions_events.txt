@@ -4,6 +4,10 @@
 # 0001 - I formed k_bithynia
 # 0002 - Someone else formed k_bithynia
 
+## form_k_ionia_decision
+# 0003 - I formed k_ionia
+# 0004 - Someone else formed k_ionia
+
 # I formed k_bithynia
 anatolia_decisions.0001 = {
 	type = character_event
@@ -97,5 +101,52 @@ anatolia_decisions.0002 = {
 
 	option = { # okay
 		name = anatolia_decisions.0002.a
+	}
+}
+
+# I formed an Ionian kingdom
+anatolia_decisions.0003 = {
+	type = character_event
+	title = anatolia_decisions.0003.t
+	desc = anatolia_decisions.0003.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_kingdom_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		if = {
+			limit = { title:k_ionia = { this = scope:ionian_kingdom } }
+			form_k_ionia_decision_effects = yes
+		}
+		else_if = {
+			limit = { title:k_troas = { this = scope:ionian_kingdom } }
+			form_k_troas_decision_effects = yes
+		}
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0003.a
+	}
+}
+
+# Someone else formed an Ionian kingdom
+anatolia_decisions.0004 = {
+	type = character_event
+	title = anatolia_decisions.0004.t
+	desc = anatolia_decisions.0004.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_kingdom_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		form_k_troas_decision_effects = yes
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0004.a
 	}
 }
