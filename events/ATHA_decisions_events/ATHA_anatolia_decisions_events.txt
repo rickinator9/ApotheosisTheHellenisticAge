@@ -205,7 +205,6 @@ anatolia_decisions.0005 = {
 		start_war = {
 			casus_belli = ionian_revolt_cb
 			target = scope:ionian_revolt_defender
-			target_title = k_ionia
 		}
 	}
 
@@ -231,5 +230,97 @@ anatolia_decisions.0005 = {
 			name = unavailable_unique_decisions
 			target = flag:ionian_revolt_decision
 		}
+	}
+}
+
+# Title distribution maintenance event
+anatolia_decisions.0006 = {
+	type = character_event
+	title = anatolia_decisions.0006.t
+	desc = anatolia_decisions.0006.desc
+	theme = war
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:ionian_revolt_defender
+		animation = war_defender
+	}
+
+	immediate = {
+		if = {
+			#Usurp counties held directly by king/emperor tier rulers, or held by rulers without a capital in the region
+			limit = { 
+				OR = { 
+					highest_held_title_tier >= tier_kingdom
+					NOT = { capital_province = { geographical_region = custom_ionia } }
+				}
+			}
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change
+					add_claim_on_loss = yes
+				}
+				every_county_in_region = {
+					region = custom_ionia
+					limit = { holder = root }
+					change_title_holder_include_vassals = {
+						holder = scope:attacker
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		else_if = {
+			#Transfer duke/count tier rulers who have a capital in the region to k_ionia
+			limit = { 
+				highest_held_title_tier <= tier_duchy
+				capital_province = { geographical_region = custom_ionia }
+			}
+
+			#Save old liege so we can transfer them back if they've also joined k_ionia
+			liege = { save_scope_as = old_liege }
+
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = conquest_populist
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:attacker
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		#Tidy up vassals
+		if = {
+			limit = {
+				scope:old_liege.liege = scope:attacker
+			}
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:old_liege
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+	}
+
+	option = { # Okay
+		name = anatolia_decisions.0006.a
 	}
 }
