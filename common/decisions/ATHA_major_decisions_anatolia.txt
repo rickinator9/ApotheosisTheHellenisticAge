@@ -437,3 +437,94 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 		base = 100
 	}
 }
+
+##############################
+# Ionian Revolt Decision  	 #
+##############################
+
+ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = ionian_revolt_decision_desc
+
+	selection_tooltip = ionian_revolt_decision_tooltip
+
+	is_shown = {
+		#Has a culture in the Greek group
+		has_culture_group = culture_group:greek_group
+
+		#Cannot be independent
+		is_independent_ruler = no
+
+		#Must be duke or lower
+		highest_held_title_tier <= tier_duchy
+
+		#Capital must be in the Ionian region
+		capital_province = { geographical_region = custom_ionia }
+
+		#Ionia must not already exist or have de jure territory
+		title:k_ionia = { 
+			is_titular = yes
+			is_title_created = no
+		}
+	}
+
+	is_valid = {
+		#Reiterate that ruler can't be independent
+		is_independent_ruler = no
+
+		custom_description = {
+			text = ionian_revolt_decision.primary_title.tt
+			primary_title.title_capital_county.title_province = { geographical_region = custom_ionia }
+		}
+
+		#Must have city-state or coalition government
+		OR = {
+			has_city_state_government = yes
+			has_coalition_government = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		save_scope_as = ionian_revolt_leader
+		top_liege = { save_scope_as = ionian_revolt_defender }
+		liege = { 
+			limit = { NOT = { this = scope:ionian_revolt_defender } }
+			save_scope_as = ionian_revolt_liege
+		}
+
+		show_as_tooltip = { ionian_revolt_decision_effects = yes } # Actually applied in anatolia_decisions.0005 - prestige, de-jure, title etc
+
+		#Events
+		trigger_event = anatolia_decisions.0005
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = anatolia_decisions.0006
+		}
+	}
+
+	cost = {
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

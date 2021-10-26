@@ -157,3 +157,70 @@ anatolia_decisions.0004 = {
 		name = anatolia_decisions.0004.a
 	}
 }
+
+##############################
+# Ionian Revolt Decision 	 #
+##############################
+
+# I started the Ionian revolt
+anatolia_decisions.0005 = {
+	type = character_event
+	title = anatolia_decisions.0005.t
+	desc = anatolia_decisions.0005.desc
+	theme = war
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:ionian_revolt_defender
+		animation = war_defender
+	}
+
+	immediate = {
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			scope:ionian_revolt_leader = {
+				change_liege = {
+					liege = scope:ionian_revolt_defender
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	option = { # Let's do this!
+		name = anatolia_decisions.0005.a
+		start_war = {
+			casus_belli = ionian_revolt_cb
+			target = scope:ionian_revolt_defender
+			target_title = k_ionia
+		}
+	}
+
+	option = { # I've changed my mind
+		name = anatolia_decisions.0005.b
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			scope:ionian_revolt_leader = {
+				change_liege = {
+					liege = scope:ionian_revolt_liege
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+}
