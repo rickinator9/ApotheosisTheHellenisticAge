@@ -109,26 +109,38 @@ form_k_ionia_decision = { # aka: Unite the poleis of the Ionian coast
 
 		capital_province = { geographical_region = custom_ionia }
 
-		highest_held_title_tier <= tier_duchy
+		OR = {
+			highest_held_title_tier <= tier_duchy
+			has_primary_title = title:k_ionia
+		}
 
-		#Must not already exist or have de jure territory
+		#Must not already have de jure territory
 		title:k_ionia = { 
 			is_titular = yes
-			is_title_created = no
 		}
+
+		#The Ionian revolt must have been attempted
+		exists = global_var:ionian_revolt_attempted
 	}
 
 	is_valid = {
 		is_independent_ruler = yes
 
 		#Primary title must be one of the Ionian duchies
-		custom_description = {
-			text = form_k_ionia_decision.primary_duchy.tt
-			OR = {
-				has_primary_title = title:d_aiolis
-				has_primary_title = title:d_ionia
-				has_primary_title = title:d_doris
+		
+		OR = {
+			AND = {
+				custom_description = {
+					text = form_k_ionia_decision.primary_duchy.tt
+					OR = {
+						has_primary_title = title:d_aiolis
+						has_primary_title = title:d_ionia
+						has_primary_title = title:d_doris
+					}
+				}
+				title:k_ionia = { is_title_created = no }
 			}
+			has_primary_title = title:k_ionia
 		}
 
 		#Must have city-state or coalition government
@@ -198,6 +210,7 @@ liberate_k_ionia_decision = { # aka: Liberate the Ionian coast
 			has_culture = culture:aeolian
 		}
 
+		#Primary title must be one of the liberated kingdoms in the Greater Ionia region
 		OR = {
 			has_primary_title = title:k_troas
 		}
@@ -207,9 +220,27 @@ liberate_k_ionia_decision = { # aka: Liberate the Ionian coast
 			is_titular = yes
 			is_title_created = no
 		}
+
+		#The Ionian revolt must have been attempted
+		exists = global_var:ionian_revolt_attempted
 	}
 
 	is_valid = {
+		is_independent_ruler = yes
+
+		#Primary title must be one of the liberated kingdoms in the Greater Ionia region
+		custom_description = {
+			text = liberate_k_troas_decision.primary_kingdom.tt
+			OR = {
+				has_primary_title = title:k_troas
+			}
+		}
+
+		#Must have federal government
+		has_federal_government = yes
+
+		#Has to control the western coast of Asia Minor
+		completely_controls_region = custom_ionia
 	}
 
 	is_valid_showing_failures_only = {
@@ -286,6 +317,9 @@ form_k_troas_decision = { # aka: Unite the poleis of the Troadic coast
 			is_titular = yes
 			is_title_created = no
 		}
+
+		#The Ionian revolt must have been attempted
+		exists = global_var:ionian_revolt_attempted
 	}
 
 	is_valid = {
@@ -368,6 +402,7 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 			has_culture = culture:aeolian
 		}
 
+		#Primary title must be one of the liberated kingdoms in the Greater Ionia region
 		OR = {
 			has_primary_title = title:k_ionia
 		}
@@ -377,6 +412,9 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 			is_titular = yes
 			is_title_created = no
 		}
+
+		#The Ionian revolt must have been attempted
+		exists = global_var:ionian_revolt_attempted
 	}
 
 	is_valid = {
@@ -442,7 +480,7 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 # Ionian Revolt Decision  	 #
 ##############################
 
-ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
+ionian_revolt_decision = { # aka: The Ionian Revolt
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	major = yes
 
@@ -465,10 +503,31 @@ ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
 		#Capital must be in the Ionian region
 		capital_province = { geographical_region = custom_ionia }
 
+		#Top liege must be a foreign king or emperor
+		top_liege = {
+			highest_held_title_tier >= tier_kingdom
+			NOR = {
+				culture = culture:dorian
+				culture = culture:ionian
+				culture = culture:aeolian
+			}
+		}
+
+		#Must not have already attempted a revolt
+		NOT = { has_character_flag = attempted_ionian_revolt }
+
 		#Ionia must not already exist or have de jure territory
 		title:k_ionia = { 
 			is_titular = yes
 			is_title_created = no
+		}
+
+		#Cannot be taken while the revolt is in progress
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:ionian_revolt_decision
+			}
 		}
 	}
 
@@ -476,15 +535,31 @@ ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
 		#Reiterate that ruler can't be independent
 		is_independent_ruler = no
 
+		#Reiterate that ruler must be duke or lower
+		highest_held_title_tier <= tier_duchy
+
+		#De jure capital of primary title must be in Ionia region
 		custom_description = {
 			text = ionian_revolt_decision.primary_title.tt
 			primary_title.title_capital_county.title_province = { geographical_region = custom_ionia }
 		}
+		# Should have a decent prestige level
+		prestige_level >= high_prestige_level
 
 		#Must have city-state or coalition government
 		OR = {
 			has_city_state_government = yes
 			has_coalition_government = yes
+		}
+
+		#Top liege must be a foreign king or emperor
+		top_liege = {
+			highest_held_title_tier >= tier_kingdom
+			OR = {
+				has_government = feudal_government
+				has_government = clan_government
+				has_government = tribal_government
+			}
 		}
 	}
 
@@ -495,14 +570,19 @@ ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
 	}
 
 	effect = {
+		#Make sure no one can take the decision while the revolt is happening
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
+		}
+
 		save_scope_as = ionian_revolt_leader
+		add_character_flag = attempted_ionian_revolt
 		top_liege = { save_scope_as = ionian_revolt_defender }
 		liege = { 
 			limit = { NOT = { this = scope:ionian_revolt_defender } }
 			save_scope_as = ionian_revolt_liege
 		}
-
-		show_as_tooltip = { ionian_revolt_decision_effects = yes } # Actually applied in anatolia_decisions.0005 - prestige, de-jure, title etc
 
 		#Events
 		trigger_event = anatolia_decisions.0005
@@ -518,6 +598,8 @@ ionian_revolt_decision = { # aka: Ionian/Aeolian/Dorian Revolt
 	}
 
 	cost = {
+		gold = 500
+		prestige = 350
 	}
 
 	ai_potential = {

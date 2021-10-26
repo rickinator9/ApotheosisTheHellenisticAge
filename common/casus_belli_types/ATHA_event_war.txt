@@ -111,6 +111,18 @@ ionian_revolt_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Enable decisions to form/liberate kingdoms on the Asian coast
+		set_global_variable = {
+			name = ionian_revolt_attempted
+			value = yes
+		}
+
+		# Allow for future Ionian revolts
+		remove_list_global_variable = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
+		}
 	}
 
 	on_white_peace_desc = {
@@ -152,6 +164,18 @@ ionian_revolt_cb = {
  				arrogant = medium_stress_impact_gain
  			}
 		}
+
+		# Enable decisions to form/liberate kingdoms on the Asian coast
+		set_global_variable = {
+			name = ionian_revolt_attempted
+			value = yes
+		}
+
+		# Allow for future Ionian revolts
+		remove_list_global_variable = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
+		}
 	}
 
 	on_defeat_desc = {
@@ -187,6 +211,18 @@ ionian_revolt_cb = {
 					modifier = vassal_lost_faction_revolt_war
 				}
 			}
+		}
+
+		# Enable decisions to form/liberate kingdoms on the Asian coast
+		set_global_variable = {
+			name = ionian_revolt_attempted
+			value = yes
+		}
+
+		# Allow for future Ionian revolts
+		remove_list_global_variable = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
 		}
 	}
 
