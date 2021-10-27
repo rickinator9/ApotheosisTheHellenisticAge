@@ -201,14 +201,176 @@ anatolia_decisions.0005 = {
 		name = anatolia_decisions.0005.a
 
 		add_trait = ionian_revolt_leader
+
+		#Adjust culture if not Ionian/Aeolian/Dorian
+		if = {
+			limit = {
+				NOR = {
+					has_culture = culture:aeolian
+					has_culture = culture:dorian
+					has_culture = culture:ionian
+				}
+			}
+			#If capital is Ionian/Aeolian/Dorian, swap to your capital's culture
+			if = {
+				limit = {
+					capital_province.culture = {
+						OR = {
+							this = culture:aeolian
+							this = culture:dorian
+							this = culture:ionian
+						}
+					}
+				}
+				set_culture = capital_province.culture
+			}
+			#Otherwise, take the culture that your capital had at game-start
+			else_if = {
+				limit = {
+					OR = {
+						capital_province.duchy = title:d_ionia
+						capital_province.county = title:c_miletos
+						capital_province.county = title:c_halikarnassos
+						capital_province.county = title:c_phokaia
+						capital_province.county = title:c_atarneus
+					}
+				}
+				set_culture = culture:ionian
+			}
+			else_if = {
+				limit = { 
+					OR = {
+						capital_province.duchy = title:d_aiolis 
+						capital_province.county = title:c_adramyttion
+					}
+				}
+				set_culture = culture:aeolian
+			}
+			else_if = {
+				limit = { capital_province.duchy = title:d_doris }
+				set_culture = culture:dorian
+			}
+		}
 		
 		start_war = {
 			casus_belli = ionian_revolt_cb
 			target = scope:ionian_revolt_defender
 		}
+
+		every_character_war = {
+			limit = {
+				primary_attacker = scope:ionian_revolt_leader
+				primary_defender = scope:ionian_revolt_defender
+			}
+			save_scope_as = ionian_revolt_war
+		}
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = scope:ionian_revolt_leader }
+				is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
+			}
+			trigger_event = anatolia_decisions.0006
+		}
+
+		#Ionia calls for aid
+		every_ruler = {
+			limit = {
+				NOR = { 
+					this = scope:ionian_revolt_leader 
+					any_liege_or_above = { this = scope:ionian_revolt_leader }
+					is_imprisoned = yes
+				}
+				is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
+			}
+
+			#Everyone in the same realm with land in the region
+			if = {
+				limit = {
+					any_realm_province = { geographical_region = custom_ionia }
+					any_liege_or_above = { this = scope:ionian_revolt_defender }
+				}
+				add_character_flag = ionian_revolt_proximity_3
+
+				#BUT... If they've got something to lose, they get a letter from the defender instead
+				if = {
+					limit = {
+						OR = { 
+							highest_held_title_tier >= tier_kingdom
+							NOT = { capital_province = { geographical_region = custom_ionia } }
+						}
+					}
+					trigger_event = anatolia_decisions.0008
+				}
+				else = { trigger_event = anatolia_decisions.0007 }
+			}
+			#Everyone with an appropriate culture & government with land in one of the coastal regions
+			else_if = {
+				limit = {
+					OR = {
+						has_culture = culture:dorian
+						has_culture = culture:ionian
+						has_culture = culture:aeolian
+					}
+					OR = {
+						has_city_state_government = yes
+						has_coalition_government = yes
+						has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+					}
+					any_realm_province = { 
+						OR = {
+							geographical_region = custom_ionia 
+							geographical_region = custom_troas
+						}
+					}
+				}
+				add_character_flag = ionian_revolt_proximity_2
+				trigger_event = anatolia_decisions.0007
+			}
+			#Everyone with a similar enough culture who is either independent or autonomous
+			else_if = {
+				limit = {
+					OR = {
+						has_city_state_government = yes
+						has_coalition_government = yes
+					}
+					OR = {
+						is_independent_ruler = yes 
+						vassal_contract_has_flag = has_autonomous_contract
+					}
+					OR = {
+						AND = {
+							scope:ionian_revolt_leader = { has_culture = culture:dorian }
+							OR = {
+								has_culture = culture:dorian
+								has_culture = culture:dorian_south
+							}
+						}
+						AND = {
+							scope:ionian_revolt_leader = { has_culture = culture:ionian }
+							OR = {
+								has_culture = culture:ionian
+								has_culture = culture:athenian
+							}
+						}
+						AND = {
+							scope:ionian_revolt_leader = { has_culture = culture:aeolian }
+							OR = {
+								has_culture = culture:aeolian
+								has_culture = culture:boeotian
+								has_culture = culture:thessalian
+							}
+						}
+					}
+				}
+				add_character_flag = ionian_revolt_proximity_1
+				trigger_event = anatolia_decisions.0007
+			}
+		}
 	}
 
-	option = { # I've changed my mind
+	option = { # Nevermind
 		name = anatolia_decisions.0005.b
 		hidden_effect = {
 			create_title_and_vassal_change = {
@@ -233,11 +395,220 @@ anatolia_decisions.0005 = {
 	}
 }
 
-# Title distribution maintenance event
+# Someone else started the Ionian revolt
 anatolia_decisions.0006 = {
 	type = character_event
 	title = anatolia_decisions.0006.t
 	desc = anatolia_decisions.0006.desc
+	theme = war
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:ionian_revolt_defender
+		animation = war_defender
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0006.a
+	}
+}
+
+# Ionia calls for aid...
+anatolia_decisions.0007 = {
+	type = character_event
+	title = anatolia_decisions.0007.t
+	desc = anatolia_decisions.0007.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = personality_honorable
+	}
+
+	immediate = {
+		save_scope_as = ionian_revolt_third_party
+	}
+
+	option = { # ...And *insert random county* will answer
+		name = anatolia_decisions.0007.a
+		trigger = {
+			OR = {
+				is_ai = no
+				is_at_war = no
+			}
+		}
+		scope:ionian_revolt_war = { add_attacker = root }
+		add_character_flag = ionian_revolt_joined_as_attacker
+
+		add_trait = populist
+	}
+
+	option = { # Side with the Defender!
+		name = anatolia_decisions.0007.b
+		trigger = { 			
+			has_character_flag = ionian_revolt_proximity_3 #Only local rulers can side with the defender 
+			OR = {
+				is_ai = no
+				is_at_war = no
+			}
+		}
+		scope:ionian_revolt_war = { add_defender = root }
+		add_character_flag = ionian_revolt_joined_as_defender
+
+		add_trait = elitist
+	}
+
+	option = { # Offer men
+		name = anatolia_decisions.0007.c
+		trigger = {
+			OR = {
+				is_ai = no
+				is_at_war = no
+			}
+		}
+		scope:ionian_revolt_leader = {
+			spawn_army = {
+				name = ionian_expeditionary_force
+				levies = {
+					add = root.max_military_strength
+					multiply = 0.1
+				}
+				men_at_arms = {
+					type = hoplitai
+					stacks = 1
+				}
+				location = capital_province
+				uses_supply = yes
+				war = scope:ionian_revolt_war
+				inheritable = no
+			}
+		}
+		capital_county = {
+			add_county_modifier = {
+				modifier = maintaining_expeditionary_force_modifier
+				years = 10
+			}
+		}
+		add_character_flag = ionian_revolt_supplied_troops
+
+		add_trait = kitharode_1
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Offer money
+		name = anatolia_decisions.0007.c
+		trigger = {
+			OR = {
+				is_ai = no
+				AND = {
+					is_at_war = no
+					short_term_gold >= major_gold_value
+				}
+			}
+		}
+		pay_short_term_gold = {
+			target = scope:ionian_revolt_leader
+			gold = major_gold_value
+		}
+		add_character_flag = ionian_revolt_supplied_gold
+
+		add_trait = kitharode_2
+	}
+
+	option = { # Offer thoughts and prayers
+		name = anatolia_decisions.0007.e
+		add_character_flag = ionian_revolt_stayed_neutral
+
+		add_trait = kitharode_3
+	}
+}
+
+# Revolt defender requests your assistance
+anatolia_decisions.0008 = {
+	type = character_event
+	title = anatolia_decisions.0008.t
+	desc = anatolia_decisions.0008.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = personality_honorable
+	}
+
+	immediate = {
+	}
+
+	option = { # Offer your assistance
+		name = anatolia_decisions.0008.a
+		trigger = {
+			OR = {
+				is_ai = no
+				is_at_war = no
+			}
+		}
+		scope:ionian_revolt_war = { add_defender = root }
+		add_character_flag = ionian_revolt_joined_as_defender
+
+		add_trait = elitist
+	}
+
+	option = { # It's not my war to fight
+		name = anatolia_decisions.0008.b
+		add_character_flag = ionian_revolt_stayed_neutral
+
+		add_trait = deified
+	}
+}
+
+# Revolt leader receives letter from potential supporters
+anatolia_decisions.0009 = {
+	type = character_event
+	title = anatolia_decisions.0009.t
+	desc = anatolia_decisions.0009.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = personality_honorable
+	}
+
+	immediate = {
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0009.a
+	}
+}
+
+# Revolt defender receives letter from potential supporters
+anatolia_decisions.0010 = {
+	type = character_event
+	title = anatolia_decisions.0010.t
+	desc = anatolia_decisions.0010.desc
+	theme = realm
+	left_portrait = {
+		character = scope:ionian_revolt_leader
+		animation = personality_honorable
+	}
+
+	immediate = {
+	}
+
+	option = { # okay
+		name = anatolia_decisions.0010.a
+	}
+}
+
+# Title distribution maintenance event
+anatolia_decisions.0011 = {
+	type = character_event
+	title = anatolia_decisions.0011.t
+	desc = anatolia_decisions.0011.desc
 	theme = war
 	override_background = {
 		event_background = throne_room
@@ -302,8 +673,10 @@ anatolia_decisions.0006 = {
 		}
 		#Tidy up vassals
 		if = {
-			limit = {
-				scope:old_liege.liege = scope:attacker
+			limit = { 
+				scope:old_liege.liege = {
+					this = scope:attacker 
+				}
 			}
 			hidden_effect = {
 				create_title_and_vassal_change = {
@@ -318,9 +691,32 @@ anatolia_decisions.0006 = {
 				resolve_title_and_vassal_change = scope:change
 			}
 		}
+		#Tidy up contracts & governments
+		if = {
+			limit = { liege = scope:attacker }
+			#If they have a dependent vassal contract, make them autonomous
+			if = {
+				limit = { vassal_contract_has_flag = has_dependent_city_state_contract }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				hidden_effect = { set_autonomous_contracts_effect = yes }
+			}
+			else_if = { 
+				limit = { vassal_contract_has_flag = has_dependent_coalition_contract }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				hidden_effect = { set_autonomous_contracts_effect = yes }
+			}
+			#If they were a bureaucracy, make them an autonomous city state
+			#TODO: Give bureaucratic rulers choice to become city-state or give up their titles
+			else_if = { 
+				limit = { government_has_flag = is_bureaucracy_government }
+				vassal_contract_set_obligation_level = { type = vassal_role level = 0 }
+				save_scope_as = vassal_contract_holder
+				trigger_event = ATHA_vassal_contract.1
+			}
+		}
 	}
 
 	option = { # Okay
-		name = anatolia_decisions.0006.a
+		name = anatolia_decisions.0011.a
 	}
 }

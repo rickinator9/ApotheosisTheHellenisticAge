@@ -691,6 +691,29 @@ form_k_ionia_decision_effects = {
 			}
 		}
 		resolve_title_and_vassal_change = scope:change
+
+		#Rename title based on culture
+		if = {
+			limit = { has_culture = culture:ionian }
+			# Rename the title to Ionie
+			hidden_effect = {
+				title:k_ionia = { set_title_name = cn_ionia_ionic }
+			}
+		}
+		else_if = {
+			limit = { has_culture = culture:aeolian }
+			# Rename the title to Aiolis
+			hidden_effect = {
+				title:k_ionia = { set_title_name = d_aiolis }
+			}
+		}
+		else_if = {
+			limit = { has_culture = culture:dorian }
+			# Rename the title to Doris
+			hidden_effect = {
+				title:k_ionia = { set_title_name = d_doris }
+			}
+		}
 	}
 
 	# De jure shifts
@@ -713,29 +736,6 @@ form_k_ionia_decision_effects = {
 			NOT = { capital_county = title:k_ionia.title_capital_county }
 		}
 		title:k_ionia = { set_capital_county = root.capital_county }
-	}
-
-	#Rename title based on culture
-	if = {
-		limit = { has_culture = culture:ionian }
-		# Rename the title to Ionie
-		hidden_effect = {
-			title:k_ionia = { set_title_name = cn_ionia_ionic }
-		}
-	}
-	else_if = {
-		limit = { has_culture = culture:aeolian }
-		# Rename the title to Aiolis
-		hidden_effect = {
-			title:k_ionia = { set_title_name = d_aiolis }
-		}
-	}
-	else_if = {
-		limit = { has_culture = culture:dorian }
-		# Rename the title to Doris
-		hidden_effect = {
-			title:k_ionia = { set_title_name = d_doris }
-		}
 	}
 
 	#The following only apply if you're a duke taking the decision

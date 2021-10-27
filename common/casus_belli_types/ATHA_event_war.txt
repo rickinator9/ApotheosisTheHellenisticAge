@@ -79,23 +79,39 @@ ionian_revolt_cb = {
 				}
 			}
 			resolve_title_and_vassal_change = scope:change
-		}
-		hidden_effect = {
-			title:d_ionia = { set_de_jure_liege_title = title:k_ionia }
-			title:d_aiolis = { set_de_jure_liege_title = title:k_ionia }
-			title:d_doris = { set_de_jure_liege_title = title:k_ionia }
-			title:c_adramyttion = { set_de_jure_liege_title = title:d_aiolis }
-			title:c_atarneus = { set_de_jure_liege_title = title:d_aiolis }
+
+			#Rename k_ionia title based on culture
+			if = {
+				limit = { has_culture = culture:ionian }
+				# Rename the title to Ionie
+				hidden_effect = {
+					title:k_ionia = { set_title_name = cn_ionia_ionic }
+				}
+			}
+			else_if = {
+				limit = { has_culture = culture:aeolian }
+				# Rename the title to Aiolis
+				hidden_effect = {
+					title:k_ionia = { set_title_name = d_aiolis }
+				}
+			}
+			else_if = {
+				limit = { has_culture = culture:dorian }
+				# Rename the title to Doris
+				hidden_effect = {
+					title:k_ionia = { set_title_name = d_doris }
+				}
+			}
 		}
 
 		#Maintenance event to handle title changes
 		scope:defender = {
-			trigger_event = anatolia_decisions.0006
+			trigger_event = anatolia_decisions.0011
 			every_vassal_or_below = {
 				limit = {
 					any_realm_province = { geographical_region = custom_ionia }
 				}
-				trigger_event = anatolia_decisions.0006
+				trigger_event = anatolia_decisions.0011
 			}
 		}
 
