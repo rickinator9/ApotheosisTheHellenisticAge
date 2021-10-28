@@ -107,17 +107,17 @@ form_k_ionia_decision = { # aka: Unite the poleis of the Ionian coast
 			has_culture = culture:aeolian
 		}
 
-		capital_province = { geographical_region = custom_ionia }
-
+		#Must be duke-tier or lower with capital in Ionian region, or be k_ionia
 		OR = {
-			highest_held_title_tier <= tier_duchy
+			AND = {
+				capital_province = { geographical_region = custom_ionia }
+				highest_held_title_tier <= tier_duchy
+			}
 			has_primary_title = title:k_ionia
 		}
 
 		#Must not already have de jure territory
-		title:k_ionia = { 
-			is_titular = yes
-		}
+		title:k_ionia = { is_titular = yes }
 
 		#The Ionian revolt must have been attempted
 		exists = global_var:ionian_revolt_attempted
@@ -126,8 +126,7 @@ form_k_ionia_decision = { # aka: Unite the poleis of the Ionian coast
 	is_valid = {
 		is_independent_ruler = yes
 
-		#Primary title must be one of the Ionian duchies
-		
+		#Primary title must be one of the Ionian duchies, or k_ionia
 		OR = {
 			AND = {
 				custom_description = {

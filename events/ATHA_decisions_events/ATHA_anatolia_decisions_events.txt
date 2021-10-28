@@ -284,94 +284,40 @@ anatolia_decisions.0005 = {
 				}
 				is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
 			}
-
-			#Everyone in the same realm with land in the region
 			if = {
-				limit = {
-					any_realm_province = { geographical_region = custom_ionia }
-					any_liege_or_above = { this = scope:ionian_revolt_defender }
-				}
+				limit = { ionian_revolt_proximity_3_trigger = yes }
 				add_character_flag = ionian_revolt_proximity_3
-
-				#BUT... If they've got something to lose, they get a letter from the defender instead
 				if = {
-					limit = {
-						OR = { 
-							highest_held_title_tier >= tier_kingdom
-							NOT = { capital_province = { geographical_region = custom_ionia } }
-						}
+					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+					if = {
+						limit = { ionian_revolt_should_not_support_trigger = yes }
+						trigger_event = anatolia_decisions.0008
 					}
-					trigger_event = anatolia_decisions.0008
+					else = { trigger_event = anatolia_decisions.0007 }
 				}
-				else = { trigger_event = anatolia_decisions.0007 }
 			}
-			#Everyone with an appropriate culture & government with land in one of the coastal regions
 			else_if = {
-				limit = {
-					OR = {
-						has_culture = culture:dorian
-						has_culture = culture:ionian
-						has_culture = culture:aeolian
-					}
-					OR = {
-						has_city_state_government = yes
-						has_coalition_government = yes
-						has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
-					}
-					any_realm_province = { 
-						OR = {
-							geographical_region = custom_ionia 
-							geographical_region = custom_troas
-						}
-					}
-				}
+				limit = { ionian_revolt_proximity_2_trigger = yes }
 				add_character_flag = ionian_revolt_proximity_2
-				trigger_event = anatolia_decisions.0007
-			}
-			#Everyone with a similar enough culture who is either independent or autonomous
-			else_if = {
-				limit = {
-					OR = {
-						has_city_state_government = yes
-						has_coalition_government = yes
-					}
-					OR = {
-						is_independent_ruler = yes 
-						vassal_contract_has_flag = has_autonomous_contract
-					}
-					OR = {
-						AND = {
-							scope:ionian_revolt_leader = { has_culture = culture:dorian }
-							OR = {
-								has_culture = culture:dorian
-								has_culture = culture:dorian_south
-							}
-						}
-						AND = {
-							scope:ionian_revolt_leader = { has_culture = culture:ionian }
-							OR = {
-								has_culture = culture:ionian
-								has_culture = culture:athenian
-							}
-						}
-						AND = {
-							scope:ionian_revolt_leader = { has_culture = culture:aeolian }
-							OR = {
-								has_culture = culture:aeolian
-								has_culture = culture:boeotian
-								has_culture = culture:thessalian
-							}
-						}
-					}
+				if = {
+					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+					trigger_event = anatolia_decisions.0007
 				}
+			}
+			else_if = {
+				limit = { ionian_revolt_proximity_1_trigger = yes }
 				add_character_flag = ionian_revolt_proximity_1
-				trigger_event = anatolia_decisions.0007
+				if = {
+					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+					trigger_event = anatolia_decisions.0007
+				}
 			}
 		}
 	}
 
 	option = { # Nevermind
 		name = anatolia_decisions.0005.b
+		#Transfer back to their original liege
 		hidden_effect = {
 			create_title_and_vassal_change = {
 				type = returned
@@ -386,12 +332,15 @@ anatolia_decisions.0005 = {
 			}
 			resolve_title_and_vassal_change = scope:change
 		}
+		#Allow this character (and others) to attempt a revolt in the future
 		remove_character_flag = attempted_ionian_revolt
-
 		remove_list_global_variable = {
 			name = unavailable_unique_decisions
 			target = flag:ionian_revolt_decision
 		}
+		#Return the resources spent on taking the decision
+		add_gold = 500
+		add_prestige = 350
 	}
 }
 
@@ -432,8 +381,8 @@ anatolia_decisions.0007 = {
 	immediate = {
 		save_scope_as = ionian_revolt_third_party
 	}
-
-	option = { # ...And *insert random county* will answer
+	
+	option = { # ...And *random county* will answer
 		name = anatolia_decisions.0007.a
 		trigger = {
 			OR = {
@@ -444,7 +393,9 @@ anatolia_decisions.0007 = {
 		scope:ionian_revolt_war = { add_attacker = root }
 		add_character_flag = ionian_revolt_joined_as_attacker
 
-		add_trait = populist
+		ai_chance = {
+			base = 50
+		}
 	}
 
 	option = { # Side with the Defender!
@@ -453,18 +404,24 @@ anatolia_decisions.0007 = {
 			has_character_flag = ionian_revolt_proximity_3 #Only local rulers can side with the defender 
 			OR = {
 				is_ai = no
-				is_at_war = no
+				AND = {
+					is_at_war = no
+					ionian_revolt_should_support_trigger = no #No AI backstabbing, please
+				}
 			}
 		}
 		scope:ionian_revolt_war = { add_defender = root }
 		add_character_flag = ionian_revolt_joined_as_defender
 
-		add_trait = elitist
+		ai_chance = {
+			base = 0
+		}
 	}
 
 	option = { # Offer men
 		name = anatolia_decisions.0007.c
 		trigger = {
+			NOT = { has_character_flag = ionian_revolt_proximity_3 } #You can't really launch an expedition to yourself
 			OR = {
 				is_ai = no
 				is_at_war = no
@@ -495,8 +452,6 @@ anatolia_decisions.0007 = {
 		}
 		add_character_flag = ionian_revolt_supplied_troops
 
-		add_trait = kitharode_1
-
 		ai_chance = {
 			base = 100
 		}
@@ -519,14 +474,18 @@ anatolia_decisions.0007 = {
 		}
 		add_character_flag = ionian_revolt_supplied_gold
 
-		add_trait = kitharode_2
+		ai_chance = {
+			base = 200
+		}
 	}
 
 	option = { # Offer thoughts and prayers
 		name = anatolia_decisions.0007.e
 		add_character_flag = ionian_revolt_stayed_neutral
 
-		add_trait = kitharode_3
+		ai_chance = {
+			base = 300
+		}
 	}
 }
 
@@ -554,15 +513,11 @@ anatolia_decisions.0008 = {
 		}
 		scope:ionian_revolt_war = { add_defender = root }
 		add_character_flag = ionian_revolt_joined_as_defender
-
-		add_trait = elitist
 	}
 
 	option = { # It's not my war to fight
 		name = anatolia_decisions.0008.b
 		add_character_flag = ionian_revolt_stayed_neutral
-
-		add_trait = deified
 	}
 }
 
@@ -624,8 +579,81 @@ anatolia_decisions.0011 = {
 
 	immediate = {
 		if = {
-			#Usurp counties held directly by king/emperor tier rulers, or held by rulers without a capital in the region
+			#King-tier rulers outside the region become independent
 			limit = { 
+				has_character_flag = ionian_revolt_proximity_2
+				highest_held_title_tier >= tier_kingdom
+			}
+			add_character_flag = ionian_revolt_independent_king
+
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege_or_become_independent = {
+					CHANGE = scope:change
+					VASSAL = root
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		else_if = {
+			#Transfer duke/count tier vassals who joined in the revolt to k_ionia
+			#Note that this may cause other rulers in the realm to lose vassals even if they do not hold land in the Ionian region
+			limit = { 
+				has_character_flag = ionian_revolt_joined_as_attacker 
+				#Exclude vassals of king-tier rulers about to gain independence
+				NOT = { 
+					any_liege_or_above = { has_character_flag = ionian_revolt_independent_king }	
+				}
+			}
+
+			#Save old liege so we can transfer them back if they've also joined k_ionia
+			liege = { save_scope_as = old_liege }
+
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = conquest_populist
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:attacker
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		else_if = {
+			#Transfer duke/count tier vassals who have a capital in the region to k_ionia
+			limit = { 
+				has_character_flag = ionian_revolt_proximity_3
+				highest_held_title_tier <= tier_duchy
+				capital_province = { geographical_region = custom_ionia }
+			}
+
+			#Save old liege so we can transfer them back if they've also joined k_ionia
+			liege = { save_scope_as = old_liege }
+
+			hidden_effect = {
+				create_title_and_vassal_change = {
+					type = conquest_populist
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:attacker
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		else_if = {
+			#Usurp counties in the region held directly by king/emperor tier rulers, or held by rulers without a capital in the region
+			limit = { 
+				has_character_flag = ionian_revolt_proximity_3
 				OR = { 
 					highest_held_title_tier >= tier_kingdom
 					NOT = { capital_province = { geographical_region = custom_ionia } }
@@ -644,29 +672,6 @@ anatolia_decisions.0011 = {
 						holder = scope:attacker
 						change = scope:change
 					}
-				}
-				resolve_title_and_vassal_change = scope:change
-			}
-		}
-		else_if = {
-			#Transfer duke/count tier rulers who have a capital in the region to k_ionia
-			limit = { 
-				highest_held_title_tier <= tier_duchy
-				capital_province = { geographical_region = custom_ionia }
-			}
-
-			#Save old liege so we can transfer them back if they've also joined k_ionia
-			liege = { save_scope_as = old_liege }
-
-			hidden_effect = {
-				create_title_and_vassal_change = {
-					type = conquest_populist
-					save_scope_as = change
-					add_claim_on_loss = no
-				}
-				change_liege = {
-					liege = scope:attacker
-					change = scope:change
 				}
 				resolve_title_and_vassal_change = scope:change
 			}

@@ -21,3 +21,129 @@ form_k_peloponnesos_decision_potential_vassal_trigger = {
 		has_coalition_government = yes
 	}
 }
+
+ionian_revolt_proximity_1_trigger = {
+	#Have a similar enough culture to the revolt leader and be independent or autonomous
+	OR = {
+		has_city_state_government = yes
+		has_coalition_government = yes
+		has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+	}
+	OR = {
+		is_independent_ruler = yes 
+		vassal_contract_has_flag = has_autonomous_contract
+		has_government = feudal_government # has to be reiterated so dynastic vassals are counted
+	}
+	OR = {
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:dorian }
+			OR = {
+				has_culture = culture:dorian
+				has_culture = culture:dorian_south
+			}
+		}
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:ionian }
+			OR = {
+				has_culture = culture:ionian
+				has_culture = culture:athenian
+			}
+		}
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:aeolian }
+			OR = {
+				has_culture = culture:aeolian
+				has_culture = culture:boeotian
+				has_culture = culture:thessalian
+			}
+		}
+	}
+}
+
+ionian_revolt_proximity_2_trigger = {
+	OR = {
+		#Have an appropriate culture & government with land in one of the coastal regions or adjacent to the Ionian region
+		AND = {
+			OR = {
+				has_culture = culture:dorian
+				has_culture = culture:ionian
+				has_culture = culture:aeolian
+			}
+			OR = {
+				has_city_state_government = yes
+				has_coalition_government = yes
+				has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+			}
+			OR = {
+				any_realm_county = { 
+					any_neighboring_county = {
+						title_province = { geographical_region = custom_ionia }
+					}
+				}
+				any_realm_province = { 
+					OR = {
+						geographical_region = custom_ionia 
+						geographical_region = custom_troas
+					}
+				}
+			}
+		}
+		#Neighbour the Ionian region and satisfy ionian_revolt_proximity_1_trigger
+		AND = {
+			ionian_revolt_proximity_1_trigger = yes
+			any_realm_county = { 
+				any_neighboring_county = {
+					title_province = { geographical_region = custom_ionia }
+				}
+			}
+		}
+	}
+}
+
+ionian_revolt_proximity_3_trigger = {
+	#Be in the same realm and have land in the Ionian region
+	any_realm_province = { geographical_region = custom_ionia }
+	any_liege_or_above = { this = scope:ionian_revolt_defender }
+}
+
+ionian_revolt_should_support_trigger = {
+	OR = {
+		has_culture = culture:dorian
+		has_culture = culture:ionian
+		has_culture = culture:aeolian
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:dorian }
+			has_culture = culture:dorian_south
+		}
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:ionian }
+			has_culture = culture:athenian
+		}
+		AND = {
+			scope:ionian_revolt_leader = { has_culture = culture:aeolian }
+			OR = {
+				has_culture = culture:boeotian
+				has_culture = culture:thessalian
+			}
+		}
+	}
+	OR = {
+		has_city_state_government = yes
+		has_coalition_government = yes
+		has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+	}	
+}
+
+ionian_revolt_should_not_support_trigger = {
+	#If you've got something to lose, you get a letter from the defender requesting your aid
+	OR = {
+		#Kings will always lose their land in the region to k_ionia
+		highest_held_title_tier >= tier_kingdom
+
+		#Those without a capital in the region who are unlikely to join the revolt will lose land
+		AND = {
+			NOT = { capital_province = { geographical_region = custom_ionia } }
+			ionian_revolt_should_support_trigger = no
+		}
+	}	
+}

@@ -109,7 +109,13 @@ ionian_revolt_cb = {
 			trigger_event = anatolia_decisions.0011
 			every_vassal_or_below = {
 				limit = {
-					any_realm_province = { geographical_region = custom_ionia }
+					OR = {
+						has_character_flag = ionian_revolt_proximity_3
+						AND = {
+							has_character_flag = ionian_revolt_proximity_2
+							has_character_flag = ionian_revolt_joined_as_attacker
+						}
+					}
 				}
 				trigger_event = anatolia_decisions.0011
 			}
@@ -246,8 +252,10 @@ ionian_revolt_cb = {
 	defender_allies_inherit = yes
 
 	transfer_behavior = transfer
-
-	war_name = "INDEPENDENCE_WAR_NAME"
+	
+	war_name = "IONIAN_REVOLT_WAR_NAME"
+	war_name_base = "IONIAN_REVOLT_WAR_NAME_BASE"
+	cb_name = "IONIAN_REVOLT_CB_NAME"
 
 	interface_priority = 120
 
