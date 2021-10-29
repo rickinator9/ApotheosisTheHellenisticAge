@@ -843,3 +843,150 @@ form_k_troas_decision_effects = {
 		add_prestige = major_prestige_gain
 	}
 }
+
+ionian_revolt_decision_effects = {
+	#You get a neat trait
+	add_trait = ionian_revolt_leader
+
+	#Adjust culture if not Ionian/Aeolian/Dorian
+	if = {
+		limit = {
+			NOR = {
+				has_culture = culture:aeolian
+				has_culture = culture:dorian
+				has_culture = culture:ionian
+			}
+		}
+		#If capital is Ionian/Aeolian/Dorian, swap to your capital's culture
+		if = {
+			limit = {
+				capital_province.culture = {
+					OR = {
+						this = culture:aeolian
+						this = culture:dorian
+						this = culture:ionian
+					}
+				}
+			}
+			set_culture = capital_province.culture
+		}
+		#Otherwise, take the culture that your capital had at game-start
+		else_if = {
+			limit = {
+				OR = {
+					capital_province.duchy = title:d_ionia
+					capital_province.county = title:c_miletos
+					capital_province.county = title:c_halikarnassos
+					capital_province.county = title:c_phokaia
+					capital_province.county = title:c_atarneus
+				}
+			}
+			set_culture = culture:ionian
+		}
+		else_if = {
+			limit = { 
+				OR = {
+					capital_province.duchy = title:d_aiolis 
+					capital_province.county = title:c_adramyttion
+				}
+			}
+			set_culture = culture:aeolian
+		}
+		else_if = {
+			limit = { capital_province.duchy = title:d_doris }
+			set_culture = culture:dorian
+		}
+	}
+	
+	start_war = {
+		casus_belli = ionian_revolt_cb
+		target = scope:ionian_revolt_defender
+		target_title = d_aiolis
+		target_title = d_ionia
+		target_title = d_doris
+		target_title = c_atarneus
+		target_title = c_adramyttion
+	}
+
+	every_character_war = {
+		limit = {
+			primary_attacker = scope:ionian_revolt_leader
+			primary_defender = scope:ionian_revolt_defender
+		}
+		save_scope_as = ionian_revolt_war
+	}
+
+	#Notify other players
+	every_ruler = {
+		limit = {
+			NOT = { this = scope:ionian_revolt_leader }
+			is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
+		}
+		trigger_event = anatolia_decisions.0006
+	}
+
+	#Send out requests for aid
+	every_ruler = {
+		limit = {
+			NOR = { 
+				this = scope:ionian_revolt_leader 
+				any_liege_or_above = { this = scope:ionian_revolt_leader }
+				is_imprisoned = yes
+			}
+			is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
+		}
+		if = {
+			limit = { ionian_revolt_proximity_3_trigger = yes }
+			add_character_flag = ionian_revolt_proximity_3
+			if = {
+				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+				if = {
+					limit = { ionian_revolt_should_not_support_trigger = yes }
+					#Players who have something to lose should be able to join at the start
+					if = {
+						limit = { is_ai = no }
+						trigger_event = {
+							id = anatolia_decisions.0008
+							days = { 7 14 }
+						}
+					}
+					#Other vassals get notified later if the liege is getting desperate
+					else = {
+						trigger_event = {
+							id = anatolia_decisions.0008
+							days = { 365 730 }
+						}
+					}
+				}
+				else = { 
+					trigger_event = {
+						id = anatolia_decisions.0007
+						days = { 3 5 }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { ionian_revolt_proximity_2_trigger = yes }
+			add_character_flag = ionian_revolt_proximity_2
+			if = {
+				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+				trigger_event = {
+					id = anatolia_decisions.0007
+					days = { 7 14 }
+				}
+			}
+		}
+		else_if = {
+			limit = { ionian_revolt_proximity_1_trigger = yes }
+			add_character_flag = ionian_revolt_proximity_1
+			if = {
+				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+				trigger_event = {
+					id = anatolia_decisions.0007
+					days = { 14 28 }
+				}
+			}
+		}
+	}
+}

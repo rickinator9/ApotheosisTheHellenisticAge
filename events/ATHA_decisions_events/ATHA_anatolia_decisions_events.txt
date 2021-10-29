@@ -186,139 +186,13 @@ anatolia_decisions.0005 = {
 	option = { # Let's do this!
 		name = anatolia_decisions.0005.a
 
-		add_trait = ionian_revolt_leader
-
-		#Adjust culture if not Ionian/Aeolian/Dorian
-		if = {
-			limit = {
-				NOR = {
-					has_culture = culture:aeolian
-					has_culture = culture:dorian
-					has_culture = culture:ionian
-				}
-			}
-			#If capital is Ionian/Aeolian/Dorian, swap to your capital's culture
-			if = {
-				limit = {
-					capital_province.culture = {
-						OR = {
-							this = culture:aeolian
-							this = culture:dorian
-							this = culture:ionian
-						}
-					}
-				}
-				set_culture = capital_province.culture
-			}
-			#Otherwise, take the culture that your capital had at game-start
-			else_if = {
-				limit = {
-					OR = {
-						capital_province.duchy = title:d_ionia
-						capital_province.county = title:c_miletos
-						capital_province.county = title:c_halikarnassos
-						capital_province.county = title:c_phokaia
-						capital_province.county = title:c_atarneus
-					}
-				}
-				set_culture = culture:ionian
-			}
-			else_if = {
-				limit = { 
-					OR = {
-						capital_province.duchy = title:d_aiolis 
-						capital_province.county = title:c_adramyttion
-					}
-				}
-				set_culture = culture:aeolian
-			}
-			else_if = {
-				limit = { capital_province.duchy = title:d_doris }
-				set_culture = culture:dorian
-			}
-		}
-		
-		start_war = {
-			casus_belli = ionian_revolt_cb
-			target = scope:ionian_revolt_defender
-			target_title = d_aiolis
-			target_title = d_ionia
-			target_title = d_doris
-			target_title = c_atarneus
-			target_title = c_adramyttion
-		}
-
-		every_character_war = {
-			limit = {
-				primary_attacker = scope:ionian_revolt_leader
-				primary_defender = scope:ionian_revolt_defender
-			}
-			save_scope_as = ionian_revolt_war
-		}
-
-		#Notify other players
-		every_player = {
-			limit = {
-				NOT = { this = scope:ionian_revolt_leader }
-				is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
-			}
-			trigger_event = anatolia_decisions.0006
-		}
-
-		#Ionia calls for aid
-		every_ruler = {
-			limit = {
-				NOR = { 
-					this = scope:ionian_revolt_leader 
-					any_liege_or_above = { this = scope:ionian_revolt_leader }
-					is_imprisoned = yes
-				}
-				is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
-			}
-			if = {
-				limit = { ionian_revolt_proximity_3_trigger = yes }
-				add_character_flag = ionian_revolt_proximity_3
-				if = {
-					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-					if = {
-						limit = { ionian_revolt_should_not_support_trigger = yes }
-						trigger_event = anatolia_decisions.0008
-					}
-					else = { 
-						trigger_event = {
-							id = anatolia_decisions.0007
-							days = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = { ionian_revolt_proximity_2_trigger = yes }
-				add_character_flag = ionian_revolt_proximity_2
-				if = {
-					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-					trigger_event = {
-						id = anatolia_decisions.0007
-						days = 3
-					}
-				}
-			}
-			else_if = {
-				limit = { ionian_revolt_proximity_1_trigger = yes }
-				add_character_flag = ionian_revolt_proximity_1
-				if = {
-					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-					trigger_event = {
-						id = anatolia_decisions.0007
-						days = 5
-					}
-				}
-			}
-		}
+		ionian_revolt_decision_effects = yes
 	}
 
 	option = { # Nevermind
 		name = anatolia_decisions.0005.b
+		trigger = { is_ai = no }
+
 		#Allow this character (and others) to attempt a revolt in the future
 		remove_character_flag = attempted_ionian_revolt
 		remove_list_global_variable = {
@@ -356,13 +230,15 @@ anatolia_decisions.0006 = {
 
 # Ionia calls for aid...
 anatolia_decisions.0007 = {
-	type = character_event
-	title = anatolia_decisions.0007.t
+	type = letter_event
+	opening = anatolia_decisions.0007.t
 	desc = anatolia_decisions.0007.desc
 	theme = realm
-	left_portrait = {
-		character = scope:ionian_revolt_leader
-		animation = personality_honorable
+	sender = scope:ionian_revolt_defender
+
+	trigger = {
+		exists = scope:ionian_revolt_war
+		NOT = { is_participant_in_war = scope:ionian_revolt_war }
 	}
 
 	immediate = {
@@ -399,6 +275,10 @@ anatolia_decisions.0007 = {
 			modifier = { # Weight down for stress.
 				add = -20
 				has_trait = craven
+			}
+			modifier = { # More likely if same culture as attacker
+				culture = scope:ionian_revolt_leader.culture
+				factor = 1.2
 			}
 			modifier = { # Less likely if low proximity to revolt
 				has_character_flag = ionian_revolt_proximity_1
@@ -491,6 +371,11 @@ anatolia_decisions.0007 = {
 		ai_chance = {
 			base = 0
 
+			#More likely if same culture as defender
+			modifier = { 
+				culture = scope:ionian_revolt_defender.culture
+				factor = 1.2
+			}
 			#More likely if the defender has a hook on you
 			modifier = {
 				add = 300
@@ -575,6 +460,11 @@ anatolia_decisions.0007 = {
 
 		ai_chance = {
 			base = 100
+
+			modifier = { # More likely if same culture as attacker
+				culture = scope:ionian_revolt_leader.culture
+				factor = 1.2
+			}
 		}
 	}
 
@@ -617,6 +507,10 @@ anatolia_decisions.0007 = {
 				add = -20
 				has_trait = greedy
 			}
+			modifier = { # More likely if same culture as attacker
+				culture = scope:ionian_revolt_leader.culture
+				factor = 1.2
+			}
 		}
 	}
 
@@ -643,13 +537,17 @@ anatolia_decisions.0007 = {
 
 # Revolt defender requests your assistance
 anatolia_decisions.0008 = {
-	type = character_event
-	title = anatolia_decisions.0008.t
+	type = letter_event
+	opening = anatolia_decisions.0008.t
 	desc = anatolia_decisions.0008.desc
 	theme = realm
-	left_portrait = {
-		character = scope:ionian_revolt_leader
-		animation = personality_honorable
+	sender = scope:ionian_revolt_defender
+
+	trigger = {
+		exists = scope:ionian_revolt_war
+		NOT = { is_participant_in_war = scope:ionian_revolt_war }
+		ionian_revolt_proximity_3_trigger = yes
+		ionian_revolt_should_not_support_trigger = yes		
 	}
 
 	immediate = {
@@ -669,6 +567,36 @@ anatolia_decisions.0008 = {
 		ai_chance = {
 			base = 50
 
+			modifier = { # Much less likely if the defender is winning decisively
+				scope:ionian_revolt_war = { defender_war_score > 50 }
+				factor = 0
+			}
+			modifier = { # Less likely if the defender is winning 
+				scope:ionian_revolt_war = { defender_war_score > 25 }
+				factor = 0.5
+			}
+			modifier = { # More likely if the defender is losing 
+				scope:ionian_revolt_war = { defender_war_score < 0 }
+				factor = 1.5
+			}
+			modifier = { # More likely if the defender is losing badly
+				scope:ionian_revolt_war = { defender_war_score < -25 }
+				factor = 2
+			}
+			modifier = { # Less likely if defenders outnumber attackers
+				ionian_revolt_defender_strength > ionian_revolt_attacker_strength
+				factor = 0.5
+			}
+			modifier = { # More likely if attackers outnumber defenders
+				ionian_revolt_defender_strength < ionian_revolt_attacker_strength
+				factor = 2
+			}
+
+			#More likely if same culture as defender
+			modifier = { 
+				culture = scope:ionian_revolt_defender.culture
+				factor = 1.2
+			}
 			#Much more likely if you have something to lose
 			modifier = {
 				factor = 2

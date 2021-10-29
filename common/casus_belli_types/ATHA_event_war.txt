@@ -21,6 +21,11 @@ ionian_revolt_cb = {
 
 	#Configure war-score. This is a bit different to usual - the roles are effectively reversed, in the sense that the attacker can win entirely through battles (since we don't want the revolt armies heading over to Alexandria or Antioch) whilst the defender has to siege down the rebellious cities.
 	defender_capital_gives_war_score = no
+	use_de_jure_wargoal_only = yes
+
+	attacker_wargoal_percentage = 0.8
+	defender_wargoal_percentage = 0.8
+
 	max_attacker_score_from_battles = 100
 	max_defender_score_from_battles = 50
 
@@ -109,6 +114,12 @@ ionian_revolt_cb = {
 			}
 		}
 
+		#You get all titles in the Ionia region
+		custom_tooltip = ionian_revolt_cb_effect.tt.ionia
+
+		#Vassals who sided with you join you or become independent
+		custom_tooltip = ionian_revolt_cb_effect.tt.vassals
+
 		#Maintenance event to handle title changes
 		scope:defender = {
 			trigger_event = anatolia_decisions.0011
@@ -126,17 +137,27 @@ ionian_revolt_cb = {
 			}
 		}
 
-		# Truce
-		add_truce_attacker_victory_effect = yes
-
-		# FP1: note the victory for future memorialisation via stele (if applicable).
-		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
-
-		# Enable decisions to form/liberate kingdoms on the Asian coast
+		# Enable additional decisions to form/liberate kingdoms on the Asian coast
+		custom_tooltip = ionian_revolt_cb_effect.tt.decisions
 		set_global_variable = {
 			name = ionian_revolt_attempted
 			value = yes
 		}
+
+		# Truce
+		hidden_effect = {
+			scope:attacker = {
+				add_truce_both_ways = {
+					character = scope:defender
+					days = 1825
+					war = root.war
+					result = victory
+				}
+			}
+		}
+
+		# FP1: note the victory for future memorialisation via stele (if applicable).
+		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
 
 		# Allow for future Ionian revolts
 		remove_list_global_variable = {
@@ -185,7 +206,8 @@ ionian_revolt_cb = {
  			}
 		}
 
-		# Enable decisions to form/liberate kingdoms on the Asian coast
+		# Enable additional decisions to form/liberate kingdoms on the Asian coast
+		custom_tooltip = ionian_revolt_cb_effect.tt.decisions
 		set_global_variable = {
 			name = ionian_revolt_attempted
 			value = yes
@@ -233,7 +255,8 @@ ionian_revolt_cb = {
 			}
 		}
 
-		# Enable decisions to form/liberate kingdoms on the Asian coast
+		# Enable additional decisions to form/liberate kingdoms on the Asian coast
+		custom_tooltip = ionian_revolt_cb_effect.tt.decisions
 		set_global_variable = {
 			name = ionian_revolt_attempted
 			value = yes
@@ -263,11 +286,6 @@ ionian_revolt_cb = {
 	cb_name = "IONIAN_REVOLT_CB_NAME"
 
 	interface_priority = 120
-
-	attacker_wargoal_percentage = 0.8
-
-	max_attacker_score_from_battles = 100
-	max_defender_score_from_battles = 50
 
 	max_ai_diplo_distance_to_title = 500
 }

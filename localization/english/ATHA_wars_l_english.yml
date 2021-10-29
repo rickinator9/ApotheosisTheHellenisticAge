@@ -2,4 +2,20 @@
  ionian_revolt_cb:0 "$k_ionia_adj$ Revolt"
  IONIAN_REVOLT_WAR_NAME:0 "$ionian_revolt_cb$ against [DEFENDER.GetShortUINameNotMe]"
  IONIAN_REVOLT_WAR_NAME_BASE:0 ""
- IONIAN_REVOLT_CB_NAME:0 "$ionian_revolt_cb$"
+ IONIAN_REVOLT_CB_NAME:0 "$ionian_revolt_cb$" 
+
+ ionian_revolt_cb_defeat_desc_defender:0 "You [imprison|E] [attacker.GetShortUIName|U], and gain a [revoke_title_reason|E]."
+ ionian_revolt_cb_defeat_desc_attacker:0 "[defender.GetShortUIName|U] [imprisons|E] you, and gains a [revoke_title_reason|E]."
+ ionian_revolt_cb_defeat_desc:0 "[defender.GetShortUIName|U] [imprisons|E] [attacker.GetShortUIName|U], and gains a [revoke_title_reason|E]."
+
+ ionian_revolt_cb_white_peace_desc_defender:0 "[attacker.GetShortUIName|U] remains your vassal."
+ ionian_revolt_cb_white_peace_desc_attacker:0 "You remain a vassal of [defender.GetShortUIName]."
+ ionian_revolt_cb_white_peace_desc:0 "[attacker.GetShortUIName|U] remain a vassal of [defender.GetShortUIName]."
+
+ ionian_revolt_cb_victory_desc_defender:0 "[attacker.GetShortUIName|U] gets the Kingdom of Ionia and becomes independent, seizing all titles within your realm in the [GetGeographicalRegion('custom_ionia').GetName] region. Nearby attackers in the realm will become [attacker.GetHerHis] vassal or gain independence, depending on their [rank|E]."
+ ionian_revolt_cb_victory_desc_attacker:0 "You get the Kingdom of Ionia and become independent, seizing all titles within [defender.GetShortUINamePossessive] realm in the [GetGeographicalRegion('custom_ionia').GetName] region. Nearby attackers in the realm will become your vassal or gain independence, depending on their [rank|E]."
+ ionian_revolt_cb_victory_desc:0 "[attacker.GetShortUIName|U] gets the Kingdom of Ionia and becomes independent, seizing all titles within [defender.GetShortUINamePossessive] realm in the [GetGeographicalRegion('custom_ionia').GetName] region. Nearby attackers in the realm will become [attacker.GetHerHis] vassal or gain independence, depending on their [rank|E]."
+
+ ionian_revolt_cb_effect.tt.ionia:0 "All titles within [defender.GetShortUINamePossessive] realm belonging to the [GetGeographicalRegion('custom_ionia').GetName] region are seized or vassalised by [attacker.GetShortUIName|U]"
+ ionian_revolt_cb_effect.tt.vassals:0 "Other attackers in [defender.GetShortUINamePossessive] realm with land inside [GetGeographicalRegion('custom_coastal_asia').GetName] or adjacent to [GetGeographicalRegion('custom_ionia').GetName]:#indent_newline:3 \n$EFFECT_LIST_BULLET$If [king|E] rank, become [independent|E]\n$EFFECT_LIST_BULLET$If [duke|E] rank or lower, become a vassal of [attacker.GetShortUIName|U]#!"
+ ionian_revolt_cb_effect.tt.decisions:0 "Additional [decisions|E] to unite regions within [GetGeographicalRegion('custom_coastal_asia').GetName] become available"

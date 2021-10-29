@@ -575,15 +575,12 @@ ionian_revolt_decision = { # aka: The Ionian Revolt
 			target = flag:ionian_revolt_decision
 		}
 
+		custom_tooltip = ionian_revolt_decision.preview.tt
+		custom_tooltip = ionian_revolt_decision.clarification.tt
+
 		save_scope_as = ionian_revolt_leader
 		add_character_flag = attempted_ionian_revolt
 		top_liege = { save_scope_as = ionian_revolt_defender }
-		if = {
-			limit = { 
-				NOT = { liege = scope:ionian_revolt_defender } 
-			}
-			save_scope_as = ionian_revolt_liege
-		}
 
 		#Events
 		trigger_event = anatolia_decisions.0005
