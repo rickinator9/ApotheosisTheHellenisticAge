@@ -14,11 +14,15 @@ ionian_revolt_cb = {
 		}
 	}
 
-	target_titles = none
-	target_title_tier = all
+	target_titles = all
+	target_title_tier = duchy
 	target_de_jure_regions_above = yes
-	ignore_effect = change_title_holder
 	ai_only_against_liege = yes
+
+	#Configure war-score. This is a bit different to usual - the roles are effectively reversed, in the sense that the attacker can win entirely through battles (since we don't want the revolt armies heading over to Alexandria or Antioch) whilst the defender has to siege down the rebellious cities.
+	defender_capital_gives_war_score = no
+	max_attacker_score_from_battles = 100
+	max_defender_score_from_battles = 50
 
 	valid_to_start = {
 		always = no
@@ -54,14 +58,15 @@ ionian_revolt_cb = {
 			}
 			create_title_and_vassal_change = {
 				type = independency
-				save_scope_as = change
+				save_scope_as = going_independent
 				add_claim_on_loss = no
 			}
-			change_liege_or_become_independent = {
-				CHANGE = scope:change
-				VASSAL = scope:attacker
+			scope:attacker = {
+				becomes_independent = {
+					change = scope:going_independent
+				}
 			}
-			resolve_title_and_vassal_change = scope:change
+			resolve_title_and_vassal_change = scope:going_independent
 		}
 
 		#Attacker gets Ionian kingdom title
@@ -110,7 +115,7 @@ ionian_revolt_cb = {
 			every_vassal_or_below = {
 				limit = {
 					OR = {
-						has_character_flag = ionian_revolt_proximity_3
+						any_realm_province = { geographical_region = custom_ionia }
 						AND = {
 							has_character_flag = ionian_revolt_proximity_2
 							has_character_flag = ionian_revolt_joined_as_attacker

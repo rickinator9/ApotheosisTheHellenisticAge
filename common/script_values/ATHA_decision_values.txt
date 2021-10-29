@@ -284,3 +284,17 @@ k_peloponnesos_acceptance_value_modifier = {
 		multiply = 0.9
 	}
 }
+
+ionian_revolt_attacker_strength = {
+	every_ruler = {
+		limit = { is_attacker_in_war = scope:ionian_revolt_war }
+		add = max_military_strength
+	}
+}
+
+ionian_revolt_defender_strength = {
+	every_ruler = {
+		limit = { is_defender_in_war = scope:ionian_revolt_war }
+		add = max_military_strength
+	}
+}

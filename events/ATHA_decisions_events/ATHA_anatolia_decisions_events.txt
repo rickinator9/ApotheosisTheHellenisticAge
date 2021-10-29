@@ -181,20 +181,6 @@ anatolia_decisions.0005 = {
 	}
 
 	immediate = {
-		hidden_effect = {
-			create_title_and_vassal_change = {
-				type = independency
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			scope:ionian_revolt_leader = {
-				change_liege = {
-					liege = scope:ionian_revolt_defender
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
-		}
 	}
 
 	option = { # Let's do this!
@@ -255,6 +241,11 @@ anatolia_decisions.0005 = {
 		start_war = {
 			casus_belli = ionian_revolt_cb
 			target = scope:ionian_revolt_defender
+			target_title = d_aiolis
+			target_title = d_ionia
+			target_title = d_doris
+			target_title = c_atarneus
+			target_title = c_adramyttion
 		}
 
 		every_character_war = {
@@ -293,7 +284,12 @@ anatolia_decisions.0005 = {
 						limit = { ionian_revolt_should_not_support_trigger = yes }
 						trigger_event = anatolia_decisions.0008
 					}
-					else = { trigger_event = anatolia_decisions.0007 }
+					else = { 
+						trigger_event = {
+							id = anatolia_decisions.0007
+							days = 1
+						}
+					}
 				}
 			}
 			else_if = {
@@ -301,7 +297,10 @@ anatolia_decisions.0005 = {
 				add_character_flag = ionian_revolt_proximity_2
 				if = {
 					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-					trigger_event = anatolia_decisions.0007
+					trigger_event = {
+						id = anatolia_decisions.0007
+						days = 3
+					}
 				}
 			}
 			else_if = {
@@ -309,7 +308,10 @@ anatolia_decisions.0005 = {
 				add_character_flag = ionian_revolt_proximity_1
 				if = {
 					limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-					trigger_event = anatolia_decisions.0007
+					trigger_event = {
+						id = anatolia_decisions.0007
+						days = 5
+					}
 				}
 			}
 		}
@@ -317,21 +319,6 @@ anatolia_decisions.0005 = {
 
 	option = { # Nevermind
 		name = anatolia_decisions.0005.b
-		#Transfer back to their original liege
-		hidden_effect = {
-			create_title_and_vassal_change = {
-				type = returned
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			scope:ionian_revolt_leader = {
-				change_liege = {
-					liege = scope:ionian_revolt_liege
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
-		}
 		#Allow this character (and others) to attempt a revolt in the future
 		remove_character_flag = attempted_ionian_revolt
 		remove_list_global_variable = {
@@ -387,14 +374,102 @@ anatolia_decisions.0007 = {
 		trigger = {
 			OR = {
 				is_ai = no
-				is_at_war = no
+				AND = {
+					is_at_war = no
+					ionian_revolt_should_support_trigger = yes
+				}
 			}
 		}
 		scope:ionian_revolt_war = { add_attacker = root }
 		add_character_flag = ionian_revolt_joined_as_attacker
 
+		stress_impact = {
+			craven = medium_stress_impact_gain
+		}
+
 		ai_chance = {
 			base = 50
+
+			ai_value_modifier = {
+				ai_energy = 0.5
+				ai_boldness = 1
+				ai_honor = 0.5
+			}
+
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = craven
+			}
+			modifier = { # Less likely if low proximity to revolt
+				has_character_flag = ionian_revolt_proximity_1
+				factor = 0.5
+			}
+			modifier = { # Less likely if war is far away
+				scope:ionian_revolt_leader.capital_province = {
+					squared_distance = { target = root.capital_county value > 200000 }
+				}
+				factor = 0.5
+			}
+			modifier = { # Less likely if attackers outnumber defenders
+				ionian_revolt_attacker_strength > ionian_revolt_defender_strength
+				factor = 0.5
+			}
+			modifier = { # More likely if defenders outnumber attackers
+				ionian_revolt_attacker_strength < ionian_revolt_defender_strength
+				factor = 2
+			}
+			modifier = { # More likely if you're in the same region
+				ionian_revolt_should_support_trigger = yes
+				has_character_flag = ionian_revolt_proximity_3
+				factor = 1.5
+			}
+			modifier = { # More likely if you have a shot at independence
+				factor = 1.2
+				has_character_flag = ionian_revolt_proximity_2
+				any_liege_or_above = { this = scope:ionian_revolt_defender }
+			}
+			#More likely if the revolt leader has a hook on you
+			modifier = {
+				factor = 1.5
+				scope:ionian_revolt_leader = { has_hook = ROOT }
+			}
+			#Much more likely if the revolt leader has a strong hook on you
+			modifier = {
+				factor = 2
+				scope:ionian_revolt_leader = { has_strong_hook = ROOT }
+			}
+			#More likely to go against your rival
+			modifier = {
+				factor = 1.5
+				has_relation_rival = scope:ionian_revolt_defender
+				NOT = { has_relation_nemesis = scope:ionian_revolt_defender }
+			}
+			#Much more likely to go against your nemesis
+			modifier = {
+				factor = 2
+				has_relation_nemesis = scope:ionian_revolt_defender
+			}
+			#Less likely if the defender has a hook on you
+			modifier = {
+				factor = 0.5
+				scope:ionian_revolt_defender = { has_hook = ROOT }
+			}
+			#Much less likely if the defender has a strong hook on you
+			modifier = {
+				factor = 0
+				scope:ionian_revolt_defender = { has_strong_hook = ROOT }
+			}
+			#Less likely to go against your friend
+			modifier = {
+				has_relation_friend = scope:ionian_revolt_defender
+				NOT = { has_relation_best_friend = scope:ionian_revolt_defender }
+				factor = 0.5
+			}
+			#Much less likely to go against your best friend
+			modifier = {
+				has_relation_best_friend = scope:ionian_revolt_defender
+				factor = 0
+			}
 		}
 	}
 
@@ -415,6 +490,49 @@ anatolia_decisions.0007 = {
 
 		ai_chance = {
 			base = 0
+
+			#More likely if the defender has a hook on you
+			modifier = {
+				add = 300
+				scope:ionian_revolt_defender = { has_hook = ROOT }
+			}
+			#Much more likely if the defender has a strong hook on you
+			modifier = {
+				factor = 2
+				scope:ionian_revolt_defender = { has_strong_hook = ROOT }
+			}
+			#More likely to go against your rival
+			modifier = {
+				has_relation_rival = scope:ionian_revolt_leader
+				NOT = { has_relation_nemesis = scope:ionian_revolt_leader }
+				add = 300
+			}
+			#Much more likely to go against your nemesis
+			modifier = {
+				has_relation_nemesis = scope:ionian_revolt_leader
+				add = 600
+			}
+			#Less likely if the revolt leader has a hook on you
+			modifier = {
+				factor = 0.5
+				scope:ionian_revolt_leader = { has_hook = ROOT }
+			}
+			#Much less likely if the revolt leader has a strong hook on you
+			modifier = {
+				factor = 0
+				scope:ionian_revolt_leader = { has_strong_hook = ROOT }
+			}
+			#Less likely to go against your friend
+			modifier = {
+				has_relation_friend = scope:ionian_revolt_leader
+				NOT = { has_relation_best_friend = scope:ionian_revolt_leader }
+				factor = 0.5
+			}
+			#Much less likely to go against your best friend
+			modifier = {
+				has_relation_best_friend = scope:ionian_revolt_leader
+				factor = 0
+			}
 		}
 	}
 
@@ -424,7 +542,10 @@ anatolia_decisions.0007 = {
 			NOT = { has_character_flag = ionian_revolt_proximity_3 } #You can't really launch an expedition to yourself
 			OR = {
 				is_ai = no
-				is_at_war = no
+				AND = {
+					is_at_war = no
+					ionian_revolt_should_support_trigger = yes
+				}
 			}
 		}
 		scope:ionian_revolt_leader = {
@@ -458,12 +579,13 @@ anatolia_decisions.0007 = {
 	}
 
 	option = { # Offer money
-		name = anatolia_decisions.0007.c
+		name = anatolia_decisions.0007.d
 		trigger = {
 			OR = {
 				is_ai = no
 				AND = {
 					is_at_war = no
+					ionian_revolt_should_support_trigger = yes
 					short_term_gold >= major_gold_value
 				}
 			}
@@ -474,8 +596,27 @@ anatolia_decisions.0007 = {
 		}
 		add_character_flag = ionian_revolt_supplied_gold
 
+		stress_impact = {
+			generous = minor_stress_impact_loss
+			greedy = medium_stress_impact_gain
+		}
+
 		ai_chance = {
 			base = 200
+
+			ai_value_modifier = {
+				ai_greed = -2
+				ai_energy = -0.5
+			}
+
+			modifier = { # Weight up for stress.
+				add = 10
+				has_trait = generous
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = greedy
+			}
 		}
 	}
 
@@ -485,6 +626,17 @@ anatolia_decisions.0007 = {
 
 		ai_chance = {
 			base = 300
+
+			modifier = { # Nearby rulers in the same realm should try to get involved
+				factor = 0.5
+				has_character_flag = ionian_revolt_proximity_2
+				any_liege_or_above = { this = scope:ionian_revolt_defender }
+			}
+			modifier = { # Rulers in the region should always get involved if they can
+				factor = 0
+				has_character_flag = ionian_revolt_proximity_3
+				ionian_revolt_should_support_trigger = yes
+			}
 		}
 	}
 }
@@ -513,11 +665,89 @@ anatolia_decisions.0008 = {
 		}
 		scope:ionian_revolt_war = { add_defender = root }
 		add_character_flag = ionian_revolt_joined_as_defender
+
+		ai_chance = {
+			base = 50
+
+			#Much more likely if you have something to lose
+			modifier = {
+				factor = 2
+				OR = { 
+					NOT = { capital_province = { geographical_region = custom_ionia } }
+					highest_held_title_tier >= tier_kingdom
+				}
+				OR = {
+					any_realm_county = {
+						percent >= 0.25
+						title_province = { geographical_region = custom_ionia }
+					}
+					any_realm_county = {
+						count >= 4
+						title_province = { geographical_region = custom_ionia }
+					}
+					any_held_title = {
+						tier = tier_county
+						title_province = { geographical_region = custom_ionia }
+					}
+				}
+			}
+			#Much likely if you're allied with the defender
+			modifier = {
+				factor = 2
+				is_allied_to = scope:ionian_revolt_defender
+			}
+			#More likely if the defender has a hook on you
+			modifier = {
+				factor = 1.5
+				scope:ionian_revolt_defender = { has_hook = ROOT }
+			}
+			#Much more likely if the defender has a strong hook on you
+			modifier = {
+				factor = 2
+				scope:ionian_revolt_defender = { has_strong_hook = ROOT }
+			}
+			#More likely to go against your rival
+			modifier = {
+				factor = 1.5
+				has_relation_rival = scope:ionian_revolt_leader
+				NOT = { has_relation_nemesis = scope:ionian_revolt_leader }
+			}
+			#Much more likely to go against your nemesis
+			modifier = {
+				factor = 2
+				has_relation_nemesis = scope:ionian_revolt_leader
+			}
+			#Less likely if the revolt leader has a hook on you
+			modifier = {
+				factor = 0.5
+				scope:ionian_revolt_leader = { has_hook = ROOT }
+			}
+			#Much less likely if the revolt leader has a strong hook on you
+			modifier = {
+				factor = 0
+				scope:ionian_revolt_leader = { has_strong_hook = ROOT }
+			}
+			#Less likely to go against your friend
+			modifier = {
+				has_relation_friend = scope:ionian_revolt_leader
+				NOT = { has_relation_best_friend = scope:ionian_revolt_leader }
+				factor = 0.5
+			}
+			#Much less likely to go against your best friend
+			modifier = {
+				has_relation_best_friend = scope:ionian_revolt_leader
+				factor = 0
+			}
+		}
 	}
 
 	option = { # It's not my war to fight
 		name = anatolia_decisions.0008.b
 		add_character_flag = ionian_revolt_stayed_neutral
+
+		ai_chance = {
+			base = 100
+		}
 	}
 }
 
