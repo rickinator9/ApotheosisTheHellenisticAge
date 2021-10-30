@@ -848,6 +848,9 @@ ionian_revolt_decision_effects = {
 	#You get a neat trait
 	add_trait = ionian_revolt_leader
 
+	#Prevent AI liege from just transferring you back to your old liege
+	add_character_flag = ai_should_not_transfer
+
 	#Adjust culture if not Ionian/Aeolian/Dorian
 	if = {
 		limit = {
@@ -908,6 +911,21 @@ ionian_revolt_decision_effects = {
 		target_title = c_adramyttion
 	}
 
+	custom_tooltip = anatolia_decisions.0005.tt_aid
+
+	custom_description_no_bullet = {
+		text = anatolia_decisions.0005.tt_victory
+		object = scope:ionian_revolt_defender
+	}
+	custom_description_no_bullet = {
+		text = anatolia_decisions.0005.tt_white_peace
+		object = scope:ionian_revolt_defender
+	}
+	custom_description_no_bullet = {
+		text = anatolia_decisions.0005.tt_defeat
+		object = scope:ionian_revolt_defender
+	}
+
 	every_character_war = {
 		limit = {
 			primary_attacker = scope:ionian_revolt_leader
@@ -931,62 +949,192 @@ ionian_revolt_decision_effects = {
 			NOR = { 
 				this = scope:ionian_revolt_leader 
 				any_liege_or_above = { this = scope:ionian_revolt_leader }
-				is_imprisoned = yes
 			}
 			is_within_diplo_range = { CHARACTER = scope:ionian_revolt_leader }
 		}
 		if = {
 			limit = { ionian_revolt_proximity_3_trigger = yes }
-			add_character_flag = ionian_revolt_proximity_3
 			if = {
-				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+				limit = { ionian_revolt_should_not_support_trigger = yes }
+				#Players who have something to lose should be able to join at the start
 				if = {
-					limit = { ionian_revolt_should_not_support_trigger = yes }
-					#Players who have something to lose should be able to join at the start
-					if = {
-						limit = { is_ai = no }
-						trigger_event = {
-							id = anatolia_decisions.0008
-							days = { 7 14 }
-						}
-					}
-					#Other vassals get notified later if the liege is getting desperate
-					else = {
-						trigger_event = {
-							id = anatolia_decisions.0008
-							days = { 365 730 }
-						}
-					}
-				}
-				else = { 
+					limit = { is_ai = no }
 					trigger_event = {
-						id = anatolia_decisions.0007
-						days = { 3 5 }
+						id = anatolia_decisions.0008
+						days = { 7 14 }
+					}
+				}
+				#Other vassals get notified later on and may join if things are getting desperate
+				else = {
+					trigger_event = {
+						id = anatolia_decisions.0008
+						days = { 365 730 }
 					}
 				}
 			}
-		}
-		else_if = {
-			limit = { ionian_revolt_proximity_2_trigger = yes }
-			add_character_flag = ionian_revolt_proximity_2
-			if = {
-				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
+			else = { 
 				trigger_event = {
 					id = anatolia_decisions.0007
-					days = { 7 14 }
+					days = { 3 15 }
 				}
 			}
 		}
 		else_if = {
-			limit = { ionian_revolt_proximity_1_trigger = yes }
-			add_character_flag = ionian_revolt_proximity_1
+			limit = { 
+				ionian_revolt_proximity_2_trigger = yes
+				NAND = { # Allies should join the war normally, if they are able to
+					is_allied_to = scope:ionian_revolt_leader
+					NOT = { any_liege_or_above = { this = scope:ionian_revolt_defender } }
+				}
+			}
+			trigger_event = {
+				id = anatolia_decisions.0007
+				days = { 15 45 }
+			}
+		}
+		else_if = {
+			limit = { 
+				ionian_revolt_proximity_1_trigger = yes
+				NAND = { # Allies should join the war normally, if they are able to
+					is_allied_to = scope:ionian_revolt_leader
+					NOT = { any_liege_or_above = { this = scope:ionian_revolt_defender } }
+				}
+			}
+			trigger_event = {
+				id = anatolia_decisions.0007
+				days = { 30 90 }
+			}
+		}
+	}
+}
+
+#Tooltip for anatolia_decisions.0007.a
+ionian_revolt_0007_tt_effects_a = {
+	if = {
+		limit = { any_liege_or_above = { this = scope:ionian_revolt_defender } }		
+		if = {
+			#Transfer duke/count tier vassals who hold land in the region to k_ionia
+			limit = { 
+				ionian_revolt_proximity_3_trigger = yes
+				highest_held_title_tier <= tier_duchy
+			}
 			if = {
-				limit = { NOT = { is_allied_to = scope:ionian_revolt_leader } }
-				trigger_event = {
-					id = anatolia_decisions.0007
-					days = { 14 28 }
+				limit = { 
+					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+				}
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_vassal_autonomy
+					object = scope:ionian_revolt_leader
+				}
+			}
+			else = {
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_vassal
+					object = scope:ionian_revolt_leader
 				}
 			}
 		}
+		else_if = {
+			#King-tier rulers outside the region become independent
+			limit = { 
+				ionian_revolt_proximity_2_trigger = yes
+				highest_held_title_tier >= tier_kingdom
+			}
+			custom_description_no_bullet = {
+				text = anatolia_decisions.0007.tt_independent_ally
+				object = scope:ionian_revolt_leader
+			}
+		}
+		else_if = {
+			#Transfer duke/count tier vassals who join in the revolt to k_ionia
+			limit = { 
+				OR = {
+					ionian_revolt_proximity_2_trigger = yes
+					ionian_revolt_proximity_3_trigger = yes
+				} 
+			}
+			custom_description_no_bullet = {
+				text = anatolia_decisions.0007.tt_vassal_ally
+				object = scope:ionian_revolt_leader
+			}
+		}
+	}
+}
+
+#Tooltip for anatolia_decisions.0007.b-e
+ionian_revolt_0007_tt_effects_b = {
+	if = {
+		limit = { any_liege_or_above = { this = scope:ionian_revolt_defender } }		
+		if = {
+			#Transfer duke/count tier vassals who have a capital in the region to k_ionia
+			limit = { 
+				ionian_revolt_proximity_3_trigger = yes
+				highest_held_title_tier <= tier_duchy
+				capital_province = { geographical_region = custom_ionia }
+			}
+			if = {
+				limit = { 
+					NOT = { vassal_contract_has_flag = has_autonomous_contract }
+				}
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_vassal_autonomy
+					object = scope:ionian_revolt_leader
+				}
+			}
+			else = {
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_vassal
+					object = scope:ionian_revolt_leader
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				ionian_revolt_proximity_3_trigger = yes
+				OR = { 
+					highest_held_title_tier >= tier_kingdom
+					NOT = { capital_province = { geographical_region = custom_ionia } }
+				}
+			}
+			if = {
+				limit = { highest_held_title_tier >= tier_duchy }
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_lose_land_in_region
+					object = scope:ionian_revolt_leader
+				}
+			}
+			else = {  
+				custom_description_no_bullet = {
+					text = anatolia_decisions.0007.tt_lose_land_count
+					object = scope:ionian_revolt_leader
+				} 
+			}
+		}
+		else_if = {
+			limit = { 
+				ionian_revolt_proximity_2_trigger = yes
+				highest_held_title_tier >= tier_duchy 
+			}
+			custom_description_no_bullet = {
+				text = anatolia_decisions.0007.tt_lose_vassals
+				object = scope:ionian_revolt_leader
+			}
+		}
+	}
+}
+#Tooltip for anatolia_decisions.0008
+ionian_revolt_0008_tt_effects = {
+	if = {
+		limit = { highest_held_title_tier >= tier_duchy }
+		custom_description_no_bullet = {
+			text = anatolia_decisions.0007.tt_lose_land_in_region
+			object = scope:ionian_revolt_leader
+		}
+	}
+	else = {  
+		custom_description_no_bullet = {
+			text = anatolia_decisions.0007.tt_lose_land_count
+			object = scope:ionian_revolt_leader
+		} 
 	}
 }

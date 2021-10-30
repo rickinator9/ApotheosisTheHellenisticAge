@@ -181,6 +181,21 @@ anatolia_decisions.0005 = {
 	}
 
 	immediate = {
+		#Make the revolt leader a direct vassal of their top-liege to avoid problems with war inheritance
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			scope:ionian_revolt_leader = {
+				change_liege = {
+					liege = scope:ionian_revolt_defender
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
 	}
 
 	option = { # Let's do this!
@@ -192,6 +207,22 @@ anatolia_decisions.0005 = {
 	option = { # Nevermind
 		name = anatolia_decisions.0005.b
 		trigger = { is_ai = no }
+
+		#Transfer back to their original liege
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			scope:ionian_revolt_leader = {
+				change_liege = {
+					liege = scope:ionian_revolt_liege
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
 
 		#Allow this character (and others) to attempt a revolt in the future
 		remove_character_flag = attempted_ionian_revolt
@@ -234,11 +265,16 @@ anatolia_decisions.0007 = {
 	opening = anatolia_decisions.0007.t
 	desc = anatolia_decisions.0007.desc
 	theme = realm
-	sender = scope:ionian_revolt_defender
+	sender = scope:ionian_revolt_leader
 
 	trigger = {
 		exists = scope:ionian_revolt_war
+
+		#Must not already be participating in the war
 		NOT = { is_participant_in_war = scope:ionian_revolt_war }
+
+		#Must not be imprisoned
+		is_imprisoned = no	
 	}
 
 	immediate = {
@@ -256,8 +292,23 @@ anatolia_decisions.0007 = {
 				}
 			}
 		}
+		ionian_revolt_0007_tt_effects_a = yes
+
+		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
+			}
+		}
 		scope:ionian_revolt_war = { add_attacker = root }
 		add_character_flag = ionian_revolt_joined_as_attacker
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = sided_with_the_enemy_opinion
+			}
+		}
 
 		stress_impact = {
 			craven = medium_stress_impact_gain
@@ -281,7 +332,7 @@ anatolia_decisions.0007 = {
 				factor = 1.2
 			}
 			modifier = { # Less likely if low proximity to revolt
-				has_character_flag = ionian_revolt_proximity_1
+				ionian_revolt_proximity_1_trigger = yes
 				factor = 0.5
 			}
 			modifier = { # Less likely if war is far away
@@ -300,12 +351,12 @@ anatolia_decisions.0007 = {
 			}
 			modifier = { # More likely if you're in the same region
 				ionian_revolt_should_support_trigger = yes
-				has_character_flag = ionian_revolt_proximity_3
+				ionian_revolt_proximity_3_trigger = yes
 				factor = 1.5
 			}
 			modifier = { # More likely if you have a shot at independence
 				factor = 1.2
-				has_character_flag = ionian_revolt_proximity_2
+				ionian_revolt_proximity_2_trigger = yes
 				any_liege_or_above = { this = scope:ionian_revolt_defender }
 			}
 			#More likely if the revolt leader has a hook on you
@@ -356,7 +407,7 @@ anatolia_decisions.0007 = {
 	option = { # Side with the Defender!
 		name = anatolia_decisions.0007.b
 		trigger = { 			
-			has_character_flag = ionian_revolt_proximity_3 #Only local rulers can side with the defender 
+			ionian_revolt_proximity_3_trigger = yes #Only local rulers can side with the defender 
 			OR = {
 				is_ai = no
 				AND = {
@@ -365,12 +416,35 @@ anatolia_decisions.0007 = {
 				}
 			}
 		}
+		ionian_revolt_0007_tt_effects_b = yes
+
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
+			}
+		}
 		scope:ionian_revolt_war = { add_defender = root }
 		add_character_flag = ionian_revolt_joined_as_defender
+		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = sided_with_the_enemy_opinion
+			}
+		}
+
+		stress_impact = {
+			craven = medium_stress_impact_gain
+		}
 
 		ai_chance = {
 			base = 0
 
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = craven
+			}
 			#More likely if same culture as defender
 			modifier = { 
 				culture = scope:ionian_revolt_defender.culture
@@ -424,7 +498,7 @@ anatolia_decisions.0007 = {
 	option = { # Offer men
 		name = anatolia_decisions.0007.c
 		trigger = {
-			NOT = { has_character_flag = ionian_revolt_proximity_3 } #You can't really launch an expedition to yourself
+			NOT = { ionian_revolt_proximity_3_trigger = yes } #You can't really launch an expedition to yourself
 			OR = {
 				is_ai = no
 				AND = {
@@ -433,7 +507,13 @@ anatolia_decisions.0007 = {
 				}
 			}
 		}
+		ionian_revolt_0007_tt_effects_b = yes
 		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 10
+			}
 			spawn_army = {
 				name = ionian_expeditionary_force
 				levies = {
@@ -458,6 +538,38 @@ anatolia_decisions.0007 = {
 		}
 		add_character_flag = ionian_revolt_supplied_troops
 
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -10
+			}
+		}
+		scope:ionian_revolt_leader = {
+			send_interface_message = {
+				type = event_war_good
+				title = anatolia_decisions.0007.c.feed.t
+				right_icon = root
+				show_as_tooltip = {
+					spawn_army = {
+						name = ionian_expeditionary_force
+						levies = {
+							add = root.max_military_strength
+							multiply = 0.1
+						}
+						men_at_arms = {
+							type = hoplitai
+							stacks = 1
+						}
+						location = capital_province
+						uses_supply = yes
+						war = scope:ionian_revolt_war
+						inheritable = no
+					}
+				}
+			}
+		}
+
 		ai_chance = {
 			base = 100
 
@@ -480,9 +592,25 @@ anatolia_decisions.0007 = {
 				}
 			}
 		}
+		ionian_revolt_0007_tt_effects_b = yes
+
 		pay_short_term_gold = {
 			target = scope:ionian_revolt_leader
 			gold = major_gold_value
+		}
+		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 10
+			}
+		}
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -10
+			}
 		}
 		add_character_flag = ionian_revolt_supplied_gold
 
@@ -516,6 +644,16 @@ anatolia_decisions.0007 = {
 
 	option = { # Offer thoughts and prayers
 		name = anatolia_decisions.0007.e
+
+		ionian_revolt_0007_tt_effects_b = yes
+
+		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -5
+			}
+		}
 		add_character_flag = ionian_revolt_stayed_neutral
 
 		ai_chance = {
@@ -523,12 +661,12 @@ anatolia_decisions.0007 = {
 
 			modifier = { # Nearby rulers in the same realm should try to get involved
 				factor = 0.5
-				has_character_flag = ionian_revolt_proximity_2
+				ionian_revolt_proximity_2_trigger = yes
 				any_liege_or_above = { this = scope:ionian_revolt_defender }
 			}
 			modifier = { # Rulers in the region should always get involved if they can
 				factor = 0
-				has_character_flag = ionian_revolt_proximity_3
+				ionian_revolt_proximity_3_trigger = yes
 				ionian_revolt_should_support_trigger = yes
 			}
 		}
@@ -545,24 +683,57 @@ anatolia_decisions.0008 = {
 
 	trigger = {
 		exists = scope:ionian_revolt_war
+
+		#Must not already be participating in the war
 		NOT = { is_participant_in_war = scope:ionian_revolt_war }
+
+		#Must have something to lose
 		ionian_revolt_proximity_3_trigger = yes
-		ionian_revolt_should_not_support_trigger = yes		
+		ionian_revolt_should_not_support_trigger = yes	
+
+		#Must not be imprisoned
+		is_imprisoned = no	
 	}
 
 	immediate = {
+		save_scope_as = ionian_revolt_third_party
 	}
 
 	option = { # Offer your assistance
 		name = anatolia_decisions.0008.a
+		add_character_flag = ionian_revolt_joined_as_defender
 		trigger = {
 			OR = {
 				is_ai = no
 				is_at_war = no
 			}
 		}
+		ionian_revolt_0008_tt_effects = yes
+
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
+			}
+		}
 		scope:ionian_revolt_war = { add_defender = root }
-		add_character_flag = ionian_revolt_joined_as_defender
+		scope:ionian_revolt_leader = {
+			add_opinion = {
+				target = root
+				modifier = sided_with_the_enemy_opinion
+			}
+		}
+
+		scope:ionian_revolt_leader = { 
+			trigger_event = {
+				id = anatolia_decisions.0009
+				days = 2
+			}
+		}
+		scope:ionian_revolt_defender = { 
+			trigger_event = anatolia_decisions.0010
+		}
 
 		ai_chance = {
 			base = 50
@@ -619,10 +790,15 @@ anatolia_decisions.0008 = {
 					}
 				}
 			}
-			#Much likely if you're allied with the defender
+			#Much more likely if you're allied with the defender
 			modifier = {
 				factor = 2
 				is_allied_to = scope:ionian_revolt_defender
+			}
+			#Much less likely if you're allied with the revolt leader
+			modifier = {
+				factor = 0
+				is_allied_to = scope:ionian_revolt_leader
 			}
 			#More likely if the defender has a hook on you
 			modifier = {
@@ -671,7 +847,16 @@ anatolia_decisions.0008 = {
 
 	option = { # It's not my war to fight
 		name = anatolia_decisions.0008.b
+		ionian_revolt_0008_tt_effects = yes
+
 		add_character_flag = ionian_revolt_stayed_neutral
+		scope:ionian_revolt_defender = {
+			add_opinion = {
+				target = root
+				modifier = refusal_opinion
+				opinion = low_negative_opinion
+			}
+		}
 
 		ai_chance = {
 			base = 100
@@ -679,41 +864,103 @@ anatolia_decisions.0008 = {
 	}
 }
 
-# Revolt leader receives letter from potential supporters
+# Revolt leader receives letter from potential supporters (and enemies!)
 anatolia_decisions.0009 = {
-	type = character_event
-	title = anatolia_decisions.0009.t
+	type = letter_event
+	opening = anatolia_decisions.0009.t
 	desc = anatolia_decisions.0009.desc
 	theme = realm
-	left_portrait = {
-		character = scope:ionian_revolt_leader
-		animation = personality_honorable
-	}
+	sender = scope:ionian_revolt_third_party
 
 	immediate = {
+		if = {
+			limit = { 
+				scope:ionian_revolt_third_party = { has_character_flag = ionian_revolt_joined_as_defender }
+			}
+			scope:ionian_revolt_war = { add_defender = scope:ionian_revolt_third_party }
+			add_opinion = {
+				target = scope:ionian_revolt_third_party
+				modifier = sided_with_the_enemy_opinion
+			}
+		}
 	}
 
-	option = { # okay
-		name = anatolia_decisions.0009.a
+	option = { # New defender
+		name = {
+			trigger = { always = no }
+			text = anatolia_decisions.0009.a
+		}
+		name = {
+			trigger = {
+				OR = {
+					has_trait = arrogant
+					attacker_war_score > 25
+				}
+			}
+			text = anatolia_decisions.0009.a_winning
+		}
+		name = {
+			trigger = {
+				OR = {
+					has_trait = craven
+					attacker_war_score < 25
+				}
+			}
+			text = anatolia_decisions.0009.a_losing
+		}
+
+		trigger = {
+			scope:ionian_revolt_third_party = { has_character_flag = ionian_revolt_joined_as_defender }
+		}
 	}
 }
 
 # Revolt defender receives letter from potential supporters
 anatolia_decisions.0010 = {
-	type = character_event
-	title = anatolia_decisions.0010.t
+	type = letter_event
+	opening = anatolia_decisions.0010.t
 	desc = anatolia_decisions.0010.desc
 	theme = realm
-	left_portrait = {
-		character = scope:ionian_revolt_leader
-		animation = personality_honorable
-	}
+	sender = scope:ionian_revolt_third_party
 
 	immediate = {
+		if = {
+			limit = { 
+				scope:ionian_revolt_third_party = { has_character_flag = ionian_revolt_joined_as_defender }
+			}
+			scope:ionian_revolt_war = { add_defender = scope:ionian_revolt_third_party }
+			add_opinion = {
+				target = scope:ionian_revolt_third_party
+				modifier = grateful_opinion
+				opinion = 20
+			}
+		}
 	}
 
-	option = { # okay
-		name = anatolia_decisions.0010.a
+	option = { # New defender
+		name = {
+			trigger = { always = no }
+			text = anatolia_decisions.0010.a
+		}
+		name = {
+			trigger = {
+				OR = {
+					has_trait = arrogant
+					attacker_war_score > 25
+				}
+			}
+			text = anatolia_decisions.0010.a_winning
+		}
+		name = {
+			trigger = {
+				attacker_war_score < 25
+			}
+			text = anatolia_decisions.0010.a_losing
+		}
+
+		trigger = {
+			scope:ionian_revolt_third_party = { has_character_flag = ionian_revolt_joined_as_defender }
+		}
 	}
 }
 
@@ -727,11 +974,11 @@ anatolia_decisions.0011 = {
 		event_background = throne_room
 	}
 	left_portrait = {
-		character = scope:ionian_revolt_leader
+		character = scope:attacker
 		animation = war_attacker
 	}
 	right_portrait = {
-		character = scope:ionian_revolt_defender
+		character = scope:defender
 		animation = war_defender
 	}
 
@@ -739,7 +986,7 @@ anatolia_decisions.0011 = {
 		if = {
 			#King-tier rulers outside the region become independent
 			limit = { 
-				has_character_flag = ionian_revolt_proximity_2
+				ionian_revolt_proximity_2_trigger = yes
 				highest_held_title_tier >= tier_kingdom
 			}
 			add_character_flag = ionian_revolt_independent_king
@@ -787,7 +1034,7 @@ anatolia_decisions.0011 = {
 		else_if = {
 			#Transfer duke/count tier vassals who have a capital in the region to k_ionia
 			limit = { 
-				has_character_flag = ionian_revolt_proximity_3
+				ionian_revolt_proximity_3_trigger = yes
 				highest_held_title_tier <= tier_duchy
 				capital_province = { geographical_region = custom_ionia }
 			}
@@ -811,7 +1058,7 @@ anatolia_decisions.0011 = {
 		else_if = {
 			#Usurp counties in the region held directly by king/emperor tier rulers, or held by rulers without a capital in the region
 			limit = { 
-				has_character_flag = ionian_revolt_proximity_3
+				ionian_revolt_proximity_3_trigger = yes
 				OR = { 
 					highest_held_title_tier >= tier_kingdom
 					NOT = { capital_province = { geographical_region = custom_ionia } }

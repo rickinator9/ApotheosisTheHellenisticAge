@@ -120,6 +120,9 @@ ionian_revolt_cb = {
 		#Vassals who sided with you join you or become independent
 		custom_tooltip = ionian_revolt_cb_effect.tt.vassals
 
+		#New vassals gain autonomous contracts
+		custom_tooltip = ionian_revolt_cb_effect.tt.contracts
+
 		#Maintenance event to handle title changes
 		scope:defender = {
 			trigger_event = anatolia_decisions.0011
@@ -128,7 +131,7 @@ ionian_revolt_cb = {
 					OR = {
 						any_realm_province = { geographical_region = custom_ionia }
 						AND = {
-							has_character_flag = ionian_revolt_proximity_2
+							ionian_revolt_proximity_2_trigger = yes
 							has_character_flag = ionian_revolt_joined_as_attacker
 						}
 					}
