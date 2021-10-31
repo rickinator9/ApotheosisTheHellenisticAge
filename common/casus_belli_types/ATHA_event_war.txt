@@ -38,6 +38,15 @@ ionian_revolt_cb = {
 	on_declaration = {
 		on_declared_war = yes
 	}
+	
+	on_invalidated = {
+		#Allow the attacker (and others) to attempt a revolt in the future
+		scope:attacker = { remove_character_flag = attempted_ionian_revolt }
+		remove_list_global_variable = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
+		}
+	}
 
 	on_victory_desc = {
 		first_valid = {
@@ -139,7 +148,7 @@ ionian_revolt_cb = {
 						}
 					}
 				}
-				trigger_event = {
+				trigger_event = { # TODO - remove delay once notification events are complete
 					id = anatolia_decisions.0011
 					days = 2
 				}
