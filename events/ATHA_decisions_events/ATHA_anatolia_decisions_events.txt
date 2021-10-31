@@ -240,7 +240,27 @@ anatolia_decisions.0005 = {
 anatolia_decisions.0006 = {
 	type = character_event
 	title = anatolia_decisions.0006.t
-	desc = anatolia_decisions.0006.desc
+	desc = {
+		desc = anatolia_decisions.0006.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { this = scope:ionian_revolt_defender }
+				desc = anatolia_decisions.0006.desc_defender
+			}
+			triggered_desc = {
+				trigger = { 
+					ionian_revolt_should_support_trigger = yes
+					OR = {
+						ionian_revolt_proximity_1_trigger = yes
+						ionian_revolt_proximity_2_trigger = yes
+						ionian_revolt_proximity_3_trigger = yes
+					}
+				}
+				desc = anatolia_decisions.0006.desc_ally
+			}
+			desc = anatolia_decisions.0006.desc_generic
+		}
+	}
 	theme = war
 	override_background = {
 		event_background = throne_room
@@ -254,8 +274,55 @@ anatolia_decisions.0006 = {
 		animation = war_defender
 	}
 
-	option = { # okay
+	option = { # Primary defender
 		name = anatolia_decisions.0006.a
+		trigger = { this = scope:ionian_revolt_defender }
+
+		custom_tooltip = anatolia_decisions.0006.tt_aid_defender
+
+		custom_description_no_bullet = {
+			text = anatolia_decisions.0006.tt_victory
+			object = scope:ionian_revolt_leader
+		}
+		custom_description_no_bullet = {
+			text = anatolia_decisions.0006.tt_white_peace
+			object = scope:ionian_revolt_leader
+		}
+		custom_description_no_bullet = {
+			text = anatolia_decisions.0006.tt_defeat
+			object = scope:ionian_revolt_leader
+		}
+	}
+	option = { # Potential allies
+		name = anatolia_decisions.0006.b
+		trigger = { 
+			ionian_revolt_should_support_trigger = yes
+			OR = {
+				ionian_revolt_proximity_1_trigger = yes
+				ionian_revolt_proximity_2_trigger = yes
+				ionian_revolt_proximity_3_trigger = yes
+			}
+		}
+
+		custom_tooltip = anatolia_decisions.0006.tt_aid
+	}
+	option = { # Everyone else
+		name = anatolia_decisions.0006.c
+		trigger = { 
+			NOR = { 
+				this = scope:ionian_revolt_defender
+				AND = {
+					ionian_revolt_should_support_trigger = yes
+					OR = {
+						ionian_revolt_proximity_1_trigger = yes
+						ionian_revolt_proximity_2_trigger = yes
+						ionian_revolt_proximity_3_trigger = yes
+					}
+				}
+			}
+		}
+
+		custom_tooltip = anatolia_decisions.0006.tt_aid
 	}
 }
 
@@ -1034,7 +1101,6 @@ anatolia_decisions.0011 = {
 		else_if = {
 			#Transfer duke/count tier vassals who have a capital in the region to k_ionia
 			limit = { 
-				ionian_revolt_proximity_3_trigger = yes
 				highest_held_title_tier <= tier_duchy
 				capital_province = { geographical_region = custom_ionia }
 			}
@@ -1058,7 +1124,6 @@ anatolia_decisions.0011 = {
 		else_if = {
 			#Usurp counties in the region held directly by king/emperor tier rulers, or held by rulers without a capital in the region
 			limit = { 
-				ionian_revolt_proximity_3_trigger = yes
 				OR = { 
 					highest_held_title_tier >= tier_kingdom
 					NOT = { capital_province = { geographical_region = custom_ionia } }
