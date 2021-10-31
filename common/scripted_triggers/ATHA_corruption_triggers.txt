@@ -3,6 +3,7 @@
 }
 
 has_corruption_trigger = {
+	can_have_corruption_trigger = yes
 	trigger_if = {
 		limit = { exists = primary_title }
 		primary_title = { has_variable = city_state_corruption }
@@ -30,6 +31,7 @@ is_corrupt_trigger = {
 
 # Checks whether this character's city state has a low corruption level.
 has_low_corruption_level = {
+	can_have_corruption_trigger = yes
 	OR = {
 		NOT = { has_corruption_trigger = yes }
 		primary_title = { var:city_state_corruption < 25 }
