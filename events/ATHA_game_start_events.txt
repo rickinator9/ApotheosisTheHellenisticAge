@@ -267,3 +267,523 @@ ATHA_game_start.6 = {
 		}
 	}
 }
+
+# A Ruler designed character gets to choose their government.
+	# Initial
+ATHA_game_start.10 = {
+	type = character_event
+	title = ATHA_game_start.10.t
+	desc = ATHA_game_start.10.desc
+
+	theme = realm
+	left_portrait = root
+
+	# Tribal
+	option = {
+		name = ATHA_game_start.10.a
+		custom_tooltip = ATHA_game_start.10.a_tooltip
+		trigger = {
+			capital_province = { has_holding_type = tribal_holding }
+		}
+
+		hidden_effect = {
+			land_tribal_government = yes
+		}
+	}
+
+	# Clan
+	option = {
+		name = ATHA_game_start.10.b
+		custom_tooltip = ATHA_game_start.10.b_tooltip
+		trigger = {
+			capital_province = {
+				OR = {
+					has_holding_type = tribal_holding
+					has_holding_type = castle_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+
+		hidden_effect = {
+			land_clan_government = yes
+		}
+	}
+
+	# Dynastic
+	option = {
+		name = ATHA_game_start.10.c
+		custom_tooltip = ATHA_game_start.10.c_tooltip
+		trigger = {
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = city_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+
+		hidden_effect = {
+			land_dynastic_government = yes
+			if = {
+				limit = { 
+					NOT = { is_independent_ruler = yes }
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_feudal
+				}
+			}			
+		}
+	}
+
+	# City State
+	option = {
+		name = ATHA_game_start.10.d
+		custom_tooltip = ATHA_game_start.10.d_tooltip
+		trigger = {
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+		trigger_event = ATHA_game_start.11
+	}
+
+	# Bureaucracy
+	option = {
+		name = ATHA_game_start.10.e
+		custom_tooltip = ATHA_game_start.10.e_tooltip
+		trigger = {
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = city_holding
+					has_holding_type = church_holding
+					has_holding_type = fort_holding
+					has_holding_type = colony_holding
+				}
+			}
+			is_independent_ruler = no
+		}
+		trigger_event = ATHA_game_start.12
+	}
+
+	# Alliance
+	option = {
+		name = ATHA_game_start.10.f
+		custom_tooltip = ATHA_game_start.10.f_tooltip
+		trigger = {
+			highest_held_title_tier >= tier_duchy
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+		trigger_event = ATHA_game_start.13
+	}
+
+	# Sympolity
+	option = {
+		name = ATHA_game_start.10.g
+		custom_tooltip = ATHA_game_start.10.g_tooltip
+		trigger = {
+			highest_held_title_tier >= tier_duchy
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+		trigger_event = ATHA_game_start.14
+	}
+
+	# League
+	option = {
+		name = ATHA_game_start.10.h
+		custom_tooltip = ATHA_game_start.10.h_tooltip
+		trigger = {
+			highest_held_title_tier >= tier_duchy
+			capital_province = {
+				OR = {
+					has_holding_type = castle_holding
+					has_holding_type = church_holding
+				}
+			}
+		}
+		trigger_event = ATHA_game_start.15
+	}
+}
+
+	# City State
+ATHA_game_start.11 = {
+	type = character_event
+	title = ATHA_game_start.11.t
+	desc = ATHA_game_start.11.desc
+
+	theme = realm
+	left_portrait = root
+
+	# Democratic
+	option = {
+		name = ATHA_game_start.11.a
+		custom_tooltip = ATHA_game_start.11.a_tooltip
+
+		hidden_effect = {
+			change_government_form_to_democracy = yes
+		}
+	}
+
+	# Oligarchic
+	option = {
+		name = ATHA_game_start.11.b
+		custom_tooltip = ATHA_game_start.11.b_tooltip
+
+		hidden_effect = {
+			change_government_form_to_oligarchy = yes
+		}
+	}
+
+	# Aristocratic
+	option = {
+		name = ATHA_game_start.11.c
+		custom_tooltip = ATHA_game_start.11.c_tooltip
+
+		hidden_effect = {
+			change_government_form_to_aristocracy = yes
+		}
+	}
+
+	# Tyrannical
+	option = {
+		name = ATHA_game_start.11.d
+		custom_tooltip = ATHA_game_start.11.d_tooltip
+
+		hidden_effect = {
+			change_government_form_to_tyranny = yes
+		}
+	}
+
+	# Spartan
+	option = {
+		name = ATHA_game_start.11.e
+		custom_tooltip = ATHA_game_start.11.e_tooltip
+		trigger = { primary_title = title:d_lakedaimon }
+
+		hidden_effect = {
+			change_government_form_to_spartan = yes			
+		}
+	}
+
+	# Go back
+	option = {
+		name = ATHA_game_start.11.f
+		custom_tooltip = ATHA_game_start.11.f_tooltip
+		trigger_event = ATHA_game_start.10
+	}
+
+	after = {
+		if = {
+			limit = { government_has_flag = is_city_state_government }
+
+			assign_initial_corruption_value = yes
+			assign_initial_franchise_value = yes
+			invoke_corruption_change_effect = yes
+			add_realm_law_skip_effects = crown_authority_2
+
+			if = {
+				limit = {
+					NOT = { is_independent_ruler = yes }
+					should_start_with_dependent_role = no
+				}
+
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_city_state_autonomous
+				}
+				vassal_contract_set_obligation_level = {
+					type = coinage_rights
+					level = coinage_rights_granted
+				}
+				vassal_contract_set_obligation_level = {
+					type = religious_rights
+					level = religious_rights_protected
+				}
+				vassal_contract_set_obligation_level = {
+					type = title_revocation_rights
+					level = title_revocation_rights_protected
+				}
+			} else_if = {
+				limit = {
+					NOT = { is_independent_ruler = yes }
+					should_start_with_dependent_role = yes	
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_city_state_dependent
+				}
+			}
+			
+			if = {
+				limit = {
+					NOT = { is_independent_ruler = yes }
+					should_start_with_colony_rights = yes
+				}
+				vassal_contract_set_obligation_level = {
+					type = colony_rights
+					level = colony_rights_granted
+				}
+			}
+		}
+	}
+}
+
+	# Bureaucracy
+ATHA_game_start.12 = {
+	type = character_event
+	title = ATHA_game_start.12.t
+	desc = ATHA_game_start.12.desc
+
+	theme = realm
+	left_portrait = root
+
+	# Military
+	option = {
+		name = ATHA_game_start.12.a
+		custom_tooltip = ATHA_game_start.12.a_tooltip
+
+		hidden_effect = {
+			land_military_government = yes
+			add_realm_law_skip_effects = crown_authority_1
+			if = {
+				limit = { 
+					NOT = { is_independent_ruler = yes }
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_military
+				}
+			}		
+		}
+	}
+
+	# Civil
+	option = {
+		name = ATHA_game_start.12.b
+		custom_tooltip = ATHA_game_start.12.b_tooltip
+		trigger = {
+			capital_province = {
+				NOR = {
+					has_holding_type = fort_holding
+					has_holding_type = colony_holding
+				}
+			}
+		}
+
+		hidden_effect = {
+			land_civil_bureaucracy_government = yes
+			add_realm_law_skip_effects = crown_authority_1
+			if = {
+				limit = { 
+					NOT = { is_independent_ruler = yes }
+				}
+				vassal_contract_set_obligation_level = {
+					type = vassal_role
+					level = vassal_role_bureaucracy_civil
+				}
+			}		
+		}
+	}
+
+	# Go back
+	option = {
+		name = ATHA_game_start.12.c
+		custom_tooltip = ATHA_game_start.12.c_tooltip
+
+		trigger_event = ATHA_game_start.10
+	}
+}
+
+	# Alliance
+ATHA_game_start.13 = {
+	type = character_event
+	title = ATHA_game_start.13.t
+	desc = ATHA_game_start.13.desc
+
+	theme = realm
+	left_portrait = root
+
+	immediate = {
+		capital_county = { save_scope_as = capital } # Used in localization.
+	}
+
+	# Federal
+	option = {
+		name = ATHA_game_start.13.a
+		custom_tooltip = ATHA_game_start.13.a_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = federal_alliance_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Hegemonic
+	option = {
+		name = ATHA_game_start.13.b
+		custom_tooltip = ATHA_game_start.13.b_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = hegemonic_alliance_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Go back
+	option = {
+		name = ATHA_game_start.13.c
+		custom_tooltip = ATHA_game_start.13.c_tooltip
+
+		trigger_event = ATHA_game_start.10
+	}
+
+	after = {
+		if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				should_start_with_dependent_role = no
+				NOT = { is_independent_ruler = yes }
+			}
+			vassal_contract_set_obligation_level = {
+				type = vassal_role
+				level = vassal_role_coalition_autonomous
+			}
+			vassal_contract_set_obligation_level = {
+				type = coinage_rights
+				level = coinage_rights_granted
+			}
+			vassal_contract_set_obligation_level = {
+				type = religious_rights
+				level = religious_rights_protected
+			}
+			vassal_contract_set_obligation_level = {
+				type = title_revocation_rights
+				level = title_revocation_rights_protected
+			}
+		} else_if = {
+			limit = {
+				government_has_flag = is_coalition_government
+				should_start_with_dependent_role = yes
+				NOT = { is_independent_ruler = yes }
+			}
+			vassal_contract_set_obligation_level = {
+				type = vassal_role
+				level = vassal_role_coalition_dependent
+			}
+		}
+	}
+}
+
+	# Sympolity
+ATHA_game_start.14 = {
+	type = character_event
+	title = ATHA_game_start.14.t
+	desc = ATHA_game_start.14.desc
+
+	theme = realm
+	left_portrait = root
+
+	immediate = {
+		capital_county = { save_scope_as = capital } # Used in localization.
+	}
+
+	# Federal
+	option = {
+		name = ATHA_game_start.14.a
+		custom_tooltip = ATHA_game_start.14.a_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = federal_sympolity_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Hegemony
+	option = {
+		name = ATHA_game_start.14.b
+		custom_tooltip = ATHA_game_start.14.b_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Go back
+	option = {
+		name = ATHA_game_start.14.c
+		custom_tooltip = ATHA_game_start.14.c_tooltip
+
+		trigger_event = ATHA_game_start.10
+	}
+}
+
+	# League
+ATHA_game_start.15 = {
+	type = character_event
+	title = ATHA_game_start.15.t
+	desc = ATHA_game_start.15.desc
+
+	theme = realm
+	left_portrait = root
+
+	immediate = {
+		capital_county = { save_scope_as = capital } # Used in localization.
+	}
+
+	# Federal
+	option = {
+		name = ATHA_game_start.15.a
+		custom_tooltip = ATHA_game_start.15.a_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = federal_league_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Hegemony
+	option = {
+		name = ATHA_game_start.15.b
+		custom_tooltip = ATHA_game_start.15.b_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = hegemonic_league_government }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+	}
+
+	# Amphictyony
+	option = {
+		name = ATHA_game_start.15.c
+		custom_tooltip = ATHA_game_start.15.c_tooltip
+
+		hidden_effect = {
+			change_government_form = { GOVERNMENT = amphictyony_government }
+		}
+	}
+
+	# Go back
+	option = {
+		name = ATHA_game_start.15.d
+		custom_tooltip = ATHA_game_start.15.d_tooltip
+
+		trigger_event = ATHA_game_start.10
+	}
+}
