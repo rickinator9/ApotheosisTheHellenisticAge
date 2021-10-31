@@ -474,3 +474,28 @@ pillager = {
 	}
 
 }
+
+## Intrigue Traits ###################################
+
+mithridatist = {
+	index = 2005
+	fame = yes
+
+	intrigue = 2
+	hostile_scheme_resistance_mult = 0.2
+	negate_health_penalty_add = 0.25
+	
+	ruler_designer_cost = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_mithridatist_desc
+			}
+			desc = trait_mithridatist_character_desc
+		}
+	}
+}

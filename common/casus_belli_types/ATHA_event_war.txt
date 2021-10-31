@@ -38,6 +38,15 @@ ionian_revolt_cb = {
 	on_declaration = {
 		on_declared_war = yes
 	}
+	
+	on_invalidated = {
+		#Allow the attacker (and others) to attempt a revolt in the future
+		scope:attacker = { remove_character_flag = attempted_ionian_revolt }
+		remove_list_global_variable = {
+			name = unavailable_unique_decisions
+			target = flag:ionian_revolt_decision
+		}
+	}
 
 	on_victory_desc = {
 		first_valid = {
@@ -55,6 +64,9 @@ ionian_revolt_cb = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+		scope:attacker = {
+			remove_character_flag = ai_should_not_transfer
+		}
 		
 		#Make the revolt leader independent
 		if = {
@@ -136,7 +148,10 @@ ionian_revolt_cb = {
 						}
 					}
 				}
-				trigger_event = anatolia_decisions.0011
+				trigger_event = { # TODO - remove delay once notification events are complete
+					id = anatolia_decisions.0011
+					days = 2
+				}
 			}
 		}
 
@@ -191,6 +206,9 @@ ionian_revolt_cb = {
  				arrogant = medium_stress_impact_gain
  			}
 		}
+		scope:attacker = {
+			remove_character_flag = ai_should_not_transfer
+		}
 		hidden_effect = {
 			scope:attacker = {
 				add_truce_both_ways = {
@@ -239,6 +257,9 @@ ionian_revolt_cb = {
 
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+		scope:attacker = {
+			remove_character_flag = ai_should_not_transfer
+		}
 		scope:defender = {
 			add_dread = medium_dread_gain
 			# Prestige for Defender

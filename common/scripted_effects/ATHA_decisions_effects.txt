@@ -934,6 +934,40 @@ ionian_revolt_decision_effects = {
 		save_scope_as = ionian_revolt_war
 	}
 
+	#Create story cycles for primary attacker & defender
+	scope:ionian_revolt_leader = {
+		create_story = {
+			type = story_ionian_revolt
+			save_scope_as = ionian_revolt_leader_story
+		}
+	}
+	scope:ionian_revolt_leader_story = {
+		set_variable = {
+			name = ionian_revolt_leader
+			value = scope:ionian_revolt_leader
+		}
+		set_variable = {
+			name = ionian_revolt_war
+			value = scope:ionian_revolt_war
+		}
+	}
+	scope:ionian_revolt_defender = {
+		create_story = {
+			type = story_ionian_revolt
+			save_scope_as = ionian_revolt_defender_story
+		}
+	}
+	scope:ionian_revolt_defender_story = {
+		set_variable = {
+			name = ionian_revolt_defender
+			value = scope:ionian_revolt_defender
+		}
+		set_variable = {
+			name = ionian_revolt_war
+			value = scope:ionian_revolt_war
+		}
+	}
+
 	#Notify other players
 	every_ruler = {
 		limit = {
