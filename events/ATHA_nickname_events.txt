@@ -35,6 +35,25 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_asian
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = gregarious # Willing to show their acculturisation to others.
+			}
+			modifier = {
+				factor = 1.2
+				OR = {
+					has_trait = education_diplomacy
+					has_trait = education_learning
+				}
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_asian }
 	}
@@ -46,6 +65,34 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_autocrat
 				scope:option2 = flag:the_autocrat
 				scope:option3 = flag:the_autocrat
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.3
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_stewardship
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = august
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = overseer
 			}
 		}
 
@@ -61,6 +108,30 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_bearer_of_victory
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = strategist
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_bearer_of_victory }
 	}
@@ -72,6 +143,30 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_beautiful_victor
 				scope:option2 = flag:the_beautiful_victor
 				scope:option3 = flag:the_beautiful_victor
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = august
 			}
 		}
 
@@ -87,6 +182,42 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_benefactor
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.2
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_diplomacy
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = overseer
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = administrator
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = architect
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_benefactor }
 	}
@@ -98,6 +229,39 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_divine
 				scope:option2 = flag:the_divine
 				scope:option3 = flag:the_divine
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_learning
+			}
+			modifier = { # Religions that do not allow people to be deified should not choose this as a title, unless ROOT is insane of course!
+				factor = 0
+				NOR = {
+					has_trait = lunatic_1
+					has_trait = lunatic_genetic
+					faith = faith:alexandrian_faith # TODO: Tie this to a tenet once we have a Apotheosis tenet.
+					faith = faith:soterism_faith
+				}
+			}
+			modifier = {
+				factor = 1.5
+				num_virtuous_traits >= 3
 			}
 		}
 
@@ -113,6 +277,39 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_divine_manifest
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_learning
+			}
+			modifier = { # Religions that do not allow people to be deified should not choose this as a title, unless ROOT is insane of course!
+				factor = 0
+				NOR = {
+					has_trait = lunatic_1
+					has_trait = lunatic_genetic
+					faith = faith:alexandrian_faith # TODO: Tie this to a tenet once we have a Apotheosis tenet.
+					faith = faith:soterism_faith
+				}
+			}
+			modifier = {
+				factor = 1.5
+				num_virtuous_traits >= 3
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_divine_manifest }
 	}
@@ -124,6 +321,47 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_father_loving
 				scope:option2 = flag:the_father_loving
 				scope:option3 = flag:the_father_loving
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = { # These familial nicknames were very common in the Greek world.
+				factor = 1.5
+				uses_greek_for_nickname_localization_trigger = yes
+			}
+			modifier = { # The character had exceedingly positive relations with their father.
+				factor = 1.5
+				OR = {
+					has_relation_friend = father
+					has_relation_best_friend = father
+					has_relation_lover = father
+					has_relation_soulmate = father
+				}
+			}
+			modifier = { # Will never assume this epithet if this character had exceedingly bad relations with their father or if they are deceitful.
+				factor = 0
+				NOT = { has_trait = deceitful }
+				OR = {
+					has_relation_rival = father
+					has_relation_nemesis = father
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = gregarious # More likely to establish family ties.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_diplomacy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = family_first
 			}
 		}
 
@@ -139,6 +377,22 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_generous 
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_diplomacy
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_generous }
 	}
@@ -150,6 +404,38 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_just
 				scope:option2 = flag:the_just
 				scope:option3 = flag:the_just
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.2
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = just
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_stewardship
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = administrator
 			}
 		}
 
@@ -165,6 +451,47 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_mother_loving
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = { # These familial nicknames were very common in the Greek world.
+				factor = 1.5
+				uses_greek_for_nickname_localization_trigger = yes
+			}
+			modifier = { # The character had exceedingly positive relations with their mother.
+				factor = 1.5
+				OR = {
+					has_relation_friend = mother
+					has_relation_best_friend = mother
+					has_relation_lover = mother
+					has_relation_soulmate = mother
+				}
+			}
+			modifier = { # Will never assume this epithet if this character had exceedingly bad relations with their mother or if they are deceitful.
+				factor = 0
+				NOT = { has_trait = deceitful }
+				OR = {
+					has_relation_rival = mother
+					has_relation_nemesis = mother
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = gregarious # More likely to establish family ties.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_diplomacy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = family_first
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_mother_loving }
 	}
@@ -176,6 +503,26 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_pious
 				scope:option2 = flag:the_pious
 				scope:option3 = flag:the_pious
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_learning
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = theologian
+			}
+			modifier = {
+				factor = 1.25
+				num_virtuous_traits >= 1
 			}
 		}
 
@@ -191,6 +538,34 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_saviour
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = wrathful # Sort of a slight xenophobic behavior.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = arrogant # Arrogant people likely hate barbarians.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = zealous # Those barbs probably have a different faith, otherwise they wouldn't be barbs.
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = theologian
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_saviour }
 	}
@@ -202,6 +577,51 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_sibling_loving
 				scope:option2 = flag:the_sibling_loving
 				scope:option3 = flag:the_sibling_loving
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = { # These familial nicknames were very common in the Greek world.
+				factor = 1.5
+				uses_greek_for_nickname_localization_trigger = yes
+			}
+			modifier = { # The character had exceedingly positive relations with one of their siblings.
+				factor = 1.5
+				any_sibling = {
+					OR = {
+						has_relation_friend = root
+						has_relation_best_friend = root
+						has_relation_lover = root
+						has_relation_soulmate = root
+					}
+				}
+			}
+			modifier = { # Will never assume this epithet if this character had exceedingly bad relations with one of their siblings or if they are deceitful.
+				factor = 0
+				NOT = { has_trait = deceitful }
+				any_sibling = {
+					OR = {
+						has_relation_rival = root
+						has_relation_nemesis = root
+					}
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = gregarious # More likely to establish family ties.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_diplomacy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = family_first
 			}
 		}
 
@@ -217,6 +637,30 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_victor
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = strategist
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_victor }
 	}
@@ -228,6 +672,18 @@ ATHA_nickname.0001 = {
 				scope:option1 = flag:the_wealthy
 				scope:option2 = flag:the_wealthy
 				scope:option3 = flag:the_wealthy
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_stewardship
 			}
 		}
 
@@ -243,7 +699,56 @@ ATHA_nickname.0001 = {
 				scope:option3 = flag:the_well_born
 			}
 		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_intrigue
+			}
+			modifier = { # If they have good genetic traits and are arrogant, they will certainly want to showcase this to the world.
+				factor = 1.5
+				has_trait = arrogant
+				num_of_good_genetic_traits > 0
+			}
+		}
 
 		set_epithet_effect = { EPITHET = epithet_the_well_born }
+	}
+
+	option = {
+		name = ATHA_nickname.0001.opt_no_epithet
+		ai_chance = {
+			base = 0 # AI should never pick this unless any of the traits are applicable.
+
+			modifier = {
+				add = 10
+				has_trait = content # Doesn't care about an epithet.
+			}
+			modifier = {
+				add = 5
+				has_trait = fickle # Can't choose between the others.
+			}
+			modifier = {
+				add = 5
+				has_trait = humble # May see an epithet as unnecessary.
+			}
+			modifier = { # They hate themselves, so do they really deserve an epithet?
+				add = 5
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+			modifier = {
+				add = 10
+				has_trait = bastard_founder
+			}
+		}
+		add_character_flag = refused_epithet
 	}
 }
