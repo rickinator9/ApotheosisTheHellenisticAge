@@ -528,6 +528,10 @@ ionian_revolt_decision = { # aka: The Ionian Revolt
 				target = flag:ionian_revolt_decision
 			}
 		}
+
+		#Must not have been a recent attempt
+		NOT = { exists = global_var:ionian_revolt_cooldown }
+
 	}
 
 	is_valid = {
