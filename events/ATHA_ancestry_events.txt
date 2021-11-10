@@ -1,0 +1,239 @@
+﻿namespace = ancestry
+
+######################
+# INVESTIGATION      #
+######################
+
+#Starting Event
+ancestry.0001 = {
+    type = character_event
+    title = ancestry.0001.t
+    desc = ancestry.0001.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_honorable
+    }
+
+    immediate = {
+    }
+
+    option = {
+        name = ancestry.0001.a
+
+        trigger_event = ancestry.0002
+    }
+    option = {
+        name = ancestry.0001.b
+
+        trigger_event = ancestry.0002
+    }
+    option = {
+        name = ancestry.0001.c
+
+        trigger_event = ancestry.0002
+    }
+    option = {
+        name = ancestry.0001.d
+
+        trigger_event = ancestry.0002
+    }
+}
+
+#Chancellor approaches you concerning rumours of a tomb
+ancestry.0002 = {
+    type = character_event
+    title = ancestry.0002.t
+    desc = ancestry.0002.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+    right_portrait = {
+        character = scope:chancellor
+        animation = personality_compassionate
+    }
+
+    weight_multiplier = {
+        base = 1
+    }
+
+    trigger = {
+        NOT = { exists = scope:story.var:had_event_0002 }
+        exists = cp:councillor_chancellor
+    }
+
+    immediate = {
+        scope:story = {
+            set_variable = {
+                name = had_event_0002
+                value = yes
+            }
+        }
+        cp:councillor_chancellor = {
+            save_scope_as = chancellor
+        }
+        random_sub_realm_barony = {
+            limit = {
+                county.holder = root
+            }
+            save_scope_as = barony
+        }
+
+        #Set random gender for loc
+        random_list = {
+            100 = {
+                dummy_female = { save_scope_as = real_ancestor }
+            }
+            100 = {
+                dummy_male = { save_scope_as = real_ancestor }
+            }
+        }
+    }
+
+    option = {
+        name = ancestry.0002.a
+
+        trigger_event = ancestry.0003
+    }
+
+    option = {
+        name = ancestry.0002.b
+
+        trigger_event = ancestry.0003
+    }
+}
+
+#You find the tomb
+ancestry.0003 = {
+    type = character_event
+    title = ancestry.0003.t
+    desc = ancestry.0003.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = idle
+    }
+    right_portrait = {
+        character = scope:chancellor
+        animation = happiness
+    }
+    override_background = { reference = terrain_scope }
+
+    weight_multiplier = {
+        base = 1
+    }
+
+    trigger = {
+    }
+
+    immediate = {
+        scope:barony.title_province = { save_scope_as = background_terrain_scope }
+    }
+
+    option = {
+        name = ancestry.0003.a
+
+        trigger_event = ancestry.0004
+    }
+}
+
+#You enter the tomb
+ancestry.0004 = {
+    type = character_event
+    title = ancestry.0004.t
+    desc = {
+        desc = ancestry.0004.desc
+        triggered_desc = {
+            trigger = {
+                always = yes
+            }
+            desc = ancestry.0004.desc_1
+        }
+        triggered_desc = {
+            trigger = {
+                always = no
+            }
+            desc = ancestry.0004.desc_2
+        }
+        triggered_desc = {
+            trigger = {
+                always = no
+            }
+            desc = ancestry.0004.desc_3
+        }
+        triggered_desc = {
+            trigger = {
+                always = no
+            }
+            desc = ancestry.0004.desc_4
+        }
+    }
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        triggered_animation = {
+            trigger = { always = yes }
+            animation = personality_honorable
+        }
+        triggered_animation = {
+            trigger = { always = no }
+            animation = personality_cynical
+        }
+        triggered_animation = {
+            trigger = { always = no }
+            animation = personality_rational
+        }
+        triggered_animation = {
+            trigger = { always = no }
+            animation = worry
+        }
+    }
+    override_background = { reference = tomb }
+
+    immediate = {
+        character:test_herakles = { save_scope_as = new_ancestor }
+    }
+
+    option = {
+        name = ancestry.0004.1_a
+
+        trigger = { always = yes }
+    }
+    option = {
+        name = ancestry.0004.2_a
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.2_b
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.3_a
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.3_b
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.3_c
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.4_a
+
+        trigger = { always = no }
+    }
+    option = {
+        name = ancestry.0004.4_b
+
+        trigger = { always = no }
+    }
+}
