@@ -1,0 +1,745 @@
+﻿namespace = ancestry
+
+#######################
+# INVESTIGATION PHASE #
+#######################
+
+#Starting Event
+ancestry.0001 = {
+    type = character_event
+    title = ancestry.0001.t
+    desc = ancestry.0001.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_honorable
+    }
+
+    immediate = {
+        set_variable = {
+            name = ancestry_outcome
+            value = 0
+        }
+        set_variable = {
+            name = ancestry_discovery_risk
+            value = 0
+        }
+    }
+
+    option = { # Small investment
+        name = ancestry.0001.a
+        custom_tooltip = ancestry.0001.a_tt
+
+        remove_short_term_gold = {
+            add = medium_gold_value
+            multiply = 2
+        }
+        trigger_event = ancestry.0002
+
+        ai_chance = {
+            base = 50
+        }
+    }
+    option = { # Medium investment
+        name = ancestry.0001.b
+        custom_tooltip = ancestry.0001.b_tt
+
+        remove_short_term_gold = {
+            add = major_gold_value
+            multiply = 2
+        }
+        trigger_event = ancestry.0002
+
+        ai_chance = {
+            base = 100
+            modifier = {
+                factor = 0.5
+                short_term_gold < massive_gold_value
+            }
+            ai_value_modifier = {
+                ai_greed = -0.5
+                ai_honor = 0.5
+            }
+            modifier = {
+                factor = 0
+                short_term_gold <= major_gold_value
+            }
+        }
+    }
+    option = { # Large investment
+        name = ancestry.0001.c
+        custom_tooltip = ancestry.0001.c_tt
+
+        remove_short_term_gold = {
+            add = massive_gold_value
+            multiply = 2
+        }
+        trigger_event = ancestry.0002
+
+        stress_impact = {
+            greedy = medium_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 200
+            modifier = {
+                factor = 0.5
+                short_term_gold < monumental_gold_value
+            }
+            ai_value_modifier = {
+                ai_greed = -1
+                ai_honor = 1
+            }
+            modifier = { # Weight down for stress.
+                add = -20
+                has_trait = greedy
+            }
+            modifier = {
+                factor = 0
+                short_term_gold <= massive_gold_value
+            }
+        }
+    }
+    option = { # Skip to preparation phase
+        name = ancestry.0001.d
+        custom_tooltip = ancestry.0001.d_tt
+
+        trigger_event = ancestry.0002
+
+        stress_impact = {
+            honest = medium_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 0
+            ai_value_modifier = {
+                ai_greed = 1
+                ai_honor = -1
+            }
+            modifier = { # Weight down for stress.
+                add = -20
+                has_trait = honest
+            }
+        }
+    }
+}
+
+#Chancellor approaches you concerning rumours of a tomb
+ancestry.0002 = {
+    type = character_event
+    title = ancestry.0002.t
+    desc = ancestry.0002.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+    right_portrait = {
+        character = scope:chancellor
+        animation = personality_compassionate
+    }
+
+    weight_multiplier = {
+        base = 1
+    }
+
+    trigger = {
+        NOT = { exists = scope:story.var:had_event_0002 }
+        exists = cp:councillor_chancellor
+    }
+
+    immediate = {
+        scope:story = {
+            set_variable = {
+                name = had_event_0002
+                value = yes
+            }
+        }
+        cp:councillor_chancellor = {
+            save_scope_as = chancellor
+        }
+        random_sub_realm_barony = {
+            limit = {
+                county.holder = root
+            }
+            save_scope_as = barony
+        }
+
+        #Set random gender for loc
+        random_list = {
+            100 = {
+                dummy_female = { save_scope_as = real_ancestor }
+            }
+            100 = {
+                dummy_male = { save_scope_as = real_ancestor }
+            }
+        }
+    }
+
+    option = { # Begin a search for the tomb
+        name = ancestry.0002.a
+
+        trigger_event = ancestry.0003
+    }
+
+    option = { # Don't investigate further
+        name = ancestry.0002.b
+
+        # +1 claim strength
+        ancestry_weak_evidence_effect = yes
+
+        trigger_event = ancestry.0005
+    }
+}
+
+#You find the tomb
+ancestry.0003 = {
+    type = character_event
+    title = ancestry.0003.t
+    desc = ancestry.0003.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = idle
+    }
+    right_portrait = {
+        character = scope:chancellor
+        animation = happiness
+    }
+    override_background = { reference = terrain_scope }
+
+    trigger = {
+    }
+
+    immediate = {
+        scope:barony.title_province = { save_scope_as = background_terrain_scope }
+    }
+
+    option = { # Enter the tomb
+        name = ancestry.0003.a
+
+        trigger_event = ancestry.0004
+
+        hidden_effect = {
+            random_list = {
+                25 = { # Strong evidence
+                    set_variable = {
+                        name = tomb_strong_evidence
+                        value = yes
+                        days = 1
+                    }
+                }
+                50 = { # Weak evidence
+                    set_variable = {
+                        name = tomb_weak_evidence
+                        value = yes
+                        days = 1
+                    }
+                }
+                15 = { # Contradictory evidence
+                    set_variable = {
+                        name = tomb_contradictory_evidence
+                        value = yes
+                        days = 1
+                    }
+                }
+                10 = { # Strong evidence for a *different* ancestor
+                    set_variable = {
+                        name = tomb_different_ancestor
+                        value = yes
+                        days = 1
+                    }
+                }
+            }
+        }
+
+        stress_impact = {
+            craven = minor_stress_impact_gain
+        }
+    }
+}
+
+#You enter the tomb
+ancestry.0004 = {
+    type = character_event
+    title = ancestry.0004.t
+    desc = {
+        desc = ancestry.0004.desc
+        triggered_desc = {
+            trigger = { exists = var:tomb_strong_evidence }
+            desc = ancestry.0004.desc_1
+        }
+        triggered_desc = {
+            trigger = { exists = var:tomb_weak_evidence }
+            desc = ancestry.0004.desc_2
+        }
+        triggered_desc = {
+            trigger = { exists = var:tomb_contradictory_evidence }
+            desc = ancestry.0004.desc_3
+        }
+        triggered_desc = {
+            trigger = { exists = var:tomb_different_ancestor }
+            desc = ancestry.0004.desc_4
+        }
+    }
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        triggered_animation = {
+            trigger = { exists = var:tomb_strong_evidence }
+            animation = personality_honorable
+        }
+        triggered_animation = {
+            trigger = { exists = var:tomb_weak_evidence }
+            animation = personality_cynical
+        }
+        triggered_animation = {
+            trigger = { exists = var:tomb_contradictory_evidence }
+            animation = worry
+        }
+        triggered_animation = {
+            trigger = { exists = var:tomb_different_ancestor }
+            animation = personality_rational
+        }
+    }
+    override_background = { reference = tomb }
+
+    immediate = {
+        character:test_herakles = { save_scope_as = new_ancestor } # TODO: Convert into scripted effect that pulls a random possible ancestor
+    }
+
+    #Strong evidence
+    option = { # Okay
+        name = ancestry.0004.1_a
+        trigger = { exists = var:tomb_strong_evidence }
+
+        # +3 claim strength
+        ancestry_strong_evidence_effect = yes
+    }
+
+    #Weak evidence
+    option = { # Okay
+        name = ancestry.0004.2_a
+        trigger = { exists = var:tomb_weak_evidence }
+
+        # +1 claim strength
+        ancestry_weak_evidence_effect = yes
+        
+        stress_impact = {
+            ambitious = minor_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 100
+
+            modifier = { # Weight down for stress.
+                add = -10
+                has_trait = ambitious
+            }
+        }
+    }
+    option = { # Try fabricating strong evidence
+        name = ancestry.0004.2_b
+        trigger = { exists = var:tomb_weak_evidence }
+
+        duel = {
+            skill = diplomacy
+            value = 10
+            10 = {
+                desc = ancestry.0004.2_b.critical_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 0.5
+                }
+                send_interface_toast = {
+                    title = ancestry.0004.2_b.critical_success
+                    left_icon = root
+                    # +3 claim strength
+                    ancestry_strong_evidence_effect = yes
+                }
+            }
+            30 = {
+                desc = ancestry.0004.2_b.success
+                send_interface_toast = {
+                    title = ancestry.0004.2_b.success
+                    left_icon = root
+
+                    # +3 claim strength
+                    ancestry_strong_evidence_effect = yes
+
+                    # +1 claim risk
+                    ancestry_discovery_risk_effect = yes
+                }
+            }
+            10 = {
+                desc = ancestry.0004.2_b.failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                }
+                send_interface_toast = {
+                    title = ancestry.0004.2_b.failure
+                    left_icon = root
+
+                    # +1 claim strength
+                    ancestry_weak_evidence_effect = yes
+
+                    # +1 claim risk
+                    ancestry_discovery_risk_effect = yes
+                }
+            }
+        }
+        
+        stress_impact = {
+            honest = medium_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 0
+
+            modifier = {
+                add = 100
+                has_trait = deceitful
+            }
+            modifier = { # Weight down for stress.
+                add = -20
+                has_trait = honest
+            }
+            ai_value_modifier = {
+                ai_honor = -2
+                ai_boldness = 0.5
+            }
+        }
+    }
+
+    #Contradictory evidence
+    option = { # Okay
+        name = ancestry.0004.3_a
+        trigger = { exists = var:tomb_contradictory_evidence }
+
+        # -2 claim strength
+        ancestry_contradictory_evidence_effect = yes
+        
+        stress_impact = {
+            base = medium_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+    option = { # Try covering it up
+        name = ancestry.0004.3_b
+        trigger = { exists = var:tomb_contradictory_evidence }
+
+        random_list = {
+            80 = { # You successfully cover it up
+                desc = ancestry.0004.3_b.success
+                send_interface_toast = {
+                    title = ancestry.0004.3_b.success
+                    left_icon = root
+
+                    # +1 claim risk
+                    ancestry_discovery_risk_effect = yes
+                }
+            }
+            20 = { # You do a poor job of covering it up
+                desc = ancestry.0004.3_b.failure
+                send_interface_toast = {
+                    title = ancestry.0004.3_b.failure
+                    left_icon = root
+
+                    # -2 claim strength
+                    ancestry_contradictory_evidence_effect = yes
+
+                    # +1 claim risk
+                    ancestry_discovery_risk_effect = yes
+                }
+            }
+        }
+
+        stress_impact = {
+            base = minor_stress_impact_gain
+            honest = minor_stress_impact_gain
+            deceitful = medium_stress_impact_loss
+        }
+
+        ai_chance = {
+            base = 50
+
+            modifier = {
+                add = 100
+                has_trait = deceitful
+            }
+            modifier = { # Weight down for stress.
+                add = -10
+                has_trait = honest
+            }
+            ai_value_modifier = {
+                ai_honor = -2
+                ai_boldness = 0.5
+            }
+        }
+    }
+    option = { # Destroy the tomb
+        name = ancestry.0004.3_c
+        trigger = { exists = var:tomb_contradictory_evidence }
+
+        random_list = {
+            50 = { # No one notices
+                desc = ancestry.0004.3_c.success
+                send_interface_toast = {
+                    title = ancestry.0004.3_b.success
+                    left_icon = root
+                }
+            }
+            25 = { # People find out
+                desc = ancestry.0004.3_c.failure
+                send_interface_toast = {
+                    title = ancestry.0004.3_c.failure
+                    left_icon = root
+
+                    add_dread = minor_dread_gain
+                    add_piety = major_piety_loss
+                    scope:barony.county = {
+                        add_county_modifier = {
+                            modifier = tomb_defiler_modifier
+                            years = 10
+                        }
+                    }
+                }
+            }
+            25 = { # A bunch of local peasants stop you
+                desc = ancestry.0004.3_c.critical_failure
+                send_interface_toast = {
+                    title = ancestry.0004.3_c.critical_failure
+                    left_icon = root
+
+                    # -2 claim strength
+                    ancestry_contradictory_evidence_effect = yes
+
+                    add_piety = major_piety_loss
+                    scope:barony.county = {
+                        add_county_modifier = {
+                            modifier = tomb_defiler_modifier
+                            years = 10
+                        }
+                    }
+                }
+            }
+        }
+
+        stress_impact = {
+            base = minor_stress_impact_gain
+            calm = minor_stress_impact_gain
+            zealous = medium_stress_impact_gain
+            callous = medium_stress_impact_loss
+            sadistic = medium_stress_impact_loss
+            vengeful = medium_stress_impact_loss
+            wrathful = medium_stress_impact_loss
+        }
+
+        ai_chance = {
+            base = 0
+
+            modifier = {
+                add = -100
+                has_trait = zealous
+            }
+            modifier = { # Weight down for stress.
+                add = -10
+                has_trait = calm
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = callous
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = callous
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = sadistic
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = vengeful
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = wrathful
+            }
+            ai_value_modifier = {
+                ai_honor = -2
+                ai_zeal = -2
+                ai_boldness = 0.5
+            }
+        }
+    }
+
+    #Strong evidence for a *different* ancestor
+    option = { # Follow this new lead
+        name = ancestry.0004.4_a
+        custom_tooltip = ancestry.0004.4_a.tt
+        custom_tooltip = ancestry.0004.4_a.tt_abandoned
+        trigger = { exists = var:tomb_different_ancestor }
+
+        # Reset claim strength
+        set_variable = {
+            name = ancestry_outcome
+            value = 0
+        }
+        # Change scoped ancestor
+        scope:new_ancestor = { save_scope_as = ancestor }
+
+        # +3 claim strength for the new ancestor
+        hidden_effect = {
+            ancestry_strong_evidence_effect = yes
+        }
+
+        stress_impact = {
+            stubborn = minor_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 100
+
+            modifier = { # Weight down for stress
+                add = -20
+                has_trait = stubborn
+            }
+            modifier = { # Shouldn't switch if the current investigation is going well
+                add = -100
+                var:ancestry_outcome > 3
+            }
+        }
+    }
+    option = { # Stick with current investigation
+        name = ancestry.0004.4_b
+        trigger = { exists = var:tomb_different_ancestor }
+
+        ai_chance = {
+            base = 0
+
+            modifier = {
+                add = 100
+                has_trait = stubborn
+            }
+            modifier = { # Shouldn't switch if the current investigation is going well
+                add = 100
+                var:ancestry_outcome > 3
+            }
+        }
+    }
+}
+
+#You can't find the tomb
+ancestry.0005 = {
+    type = character_event
+    title = ancestry.0005.t
+    desc = ancestry.0005.desc
+    theme = diplomacy
+    left_portrait = {
+        character = root
+        animation = personality_vengeful
+    }
+    right_portrait = {
+        character = scope:chancellor
+        animation = worry
+    }
+    override_background = { reference = terrain_scope }
+
+    trigger = {
+    }
+
+    immediate = {
+        scope:barony.title_province = { save_scope_as = background_terrain_scope }
+    }
+
+    option = { # Give up
+        name = ancestry.0005.a
+        flavor = ancestry.0005.a_flavour
+
+        stress_impact = {
+            base = medium_stress_impact_gain
+            impatient = minor_stress_impact_gain
+            patient = medium_stress_impact_loss
+        }
+
+        ai_chance = {
+            base = 100
+
+            modifier = { # Weight down for stress.
+                add = -10
+                has_trait = impatient
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = patient
+            }
+        }
+    }
+
+    option = { # Kill the annoying chancellor (and give up)
+        name = ancestry.0005.b
+        flavor = ancestry.0005.b_flavour
+
+        unknown_murder_effect = {
+            VICTIM = scope:chancellor
+            MURDERER = root
+            REASON = death_accident
+        }
+
+        stress_impact = {
+            base = minor_stress_impact_gain
+            vengeful = medium_stress_impact_loss
+            sadistic = medium_stress_impact_loss
+            callous = medium_stress_impact_loss
+            forgiving = medium_stress_impact_gain
+            compassionate = medium_stress_impact_gain
+            just = minor_stress_impact_gain
+        }
+
+        ai_chance = {
+            base = 0
+
+            modifier = {
+                add = 100
+                has_trait = sadistic
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = vengeful
+            }
+            modifier = { # Weight up for stress.
+                add = 20
+                has_trait = callous
+            }
+            modifier = { # Weight down for stress.
+                add = -20
+                has_trait = forgiving
+            }
+            modifier = { # Weight down for stress.
+                add = -20
+                has_trait = compassionate
+            }
+            modifier = { # Weight down for stress.
+                add = -10
+                has_trait = just
+            }
+            ai_value_modifier = {
+                ai_honor = -2
+                ai_compassion = -1
+                ai_boldness = 0.5
+            }
+            modifier = {
+                add = 100
+                opinion = {
+                    target = scope:chancellor
+                    value <= -20
+                }
+            }
+        }
+    }
+}

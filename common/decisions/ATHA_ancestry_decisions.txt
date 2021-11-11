@@ -1,0 +1,40 @@
+﻿##############################
+# Claim Ancestry		 	 #
+##############################
+
+claim_atreid_ancestry_decision = { # Claim Atreid Ancestry
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = claim_atreid_ancestry_decision_desc
+	selection_tooltip = claim_atreid_ancestry_decision_tooltip
+
+	is_shown = {
+	}
+
+	is_valid = {
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		character:test_atreus = { save_scope_as = ancestor }
+
+		#Events
+		trigger_event = ancestry.0001
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
