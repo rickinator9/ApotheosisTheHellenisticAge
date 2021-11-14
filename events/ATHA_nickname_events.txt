@@ -14,9 +14,9 @@ ATHA_nickname.0001 = {
 	}
 
 	immediate = {
-		save_epithet_suggestion = { OPTION = option1 }
-		save_epithet_suggestion = { OPTION = option2 }
-		save_epithet_suggestion = { OPTION = option3 }
+		save_epithet_suggestion_effect = { OPTION = option1 }
+		save_epithet_suggestion_effect = { OPTION = option2 }
+		save_epithet_suggestion_effect = { OPTION = option3 }
 
 		add_character_flag = prompted_to_choose_epithet
 
@@ -982,5 +982,61 @@ ATHA_nickname.0001 = {
 			}
 		}
 		add_character_flag = refused_epithet
+	}
+}
+
+#### NICKNAMES ####
+
+# nick_the_bastard
+ATHA_nickname.0100 = {
+	type = character_event
+	title = ATHA_nickname.0100.t
+	desc = ATHA_nickname.0100.desc
+	theme = crown
+	override_background = { event_background = market }
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_bastard = yes
+	}
+
+	immediate = {
+		random_held_title = { # Used in localization.
+			limit = { tier = tier_county }
+
+			save_scope_as = nickname_county
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0100.a
+		ai_chance = {
+			base = 10
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_bastard }
+		add_prestige_level = -1
+	}
+	option = { # Bribe them to not use it anymore.
+		name = ATHA_nickname.0100.b
+		custom_tooltip = ATHA_bribery_suppression_tt
+		ai_chance = {
+			base = 10
+		}
+
+		remove_short_term_gold = medium_gold_value
+	}
+	option = { # Punish them!
+		name = ATHA_nickname.0100.c
+		custom_tooltip = ATHA_violent_suppression_tt
+		ai_chance = {
+			base = 10
+		}
+
+		scope:nickname_county = {
+			change_development_progress_with_overflow = -100
+		}
+		add_dread = minor_dread_gain
+		add_piety = medium_piety_loss
 	}
 }

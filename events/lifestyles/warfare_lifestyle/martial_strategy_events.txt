@@ -161,8 +161,8 @@ martial_strategy.1051 = {
 			limit = {
 				has_trait = arrogant
 			}
-			change_nickname_weight = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
-			change_nickname_weight = { NICKNAME = nick_the_illustrous CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_illustrous CHANGE = nickname_weight_small_increase }
 			add_prestige = major_prestige_gain
 		}
 		else = {
@@ -191,7 +191,7 @@ martial_strategy.1051 = {
 		trait = brave
 		trait = unyielding_defender
 
-		change_nickname_weight = { NICKNAME = nick_the_victor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_victor CHANGE = nickname_weight_small_increase }
 
 		if = {
 			#If we're Unyielding Defender, we gain the modifier for an extended duration.
@@ -240,7 +240,7 @@ martial_strategy.1051 = {
 			limit = {
 				has_trait = sadistic
 			}
-			change_nickname_weight = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 
 			add_character_modifier = {
 				modifier = warfare_ferocious_reputation_modifier
@@ -249,7 +249,7 @@ martial_strategy.1051 = {
 		}
 		else = {
 			#Otherwise, we get the modifier for a normal duration.
-			change_nickname_weight = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 
 			add_character_modifier = {
 				modifier = warfare_ferocious_reputation_modifier
@@ -301,9 +301,9 @@ martial_strategy.1051 = {
 				has_trait = zealous
 			}
 
-			change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
-			change_nickname_weight = { NICKNAME = nick_the_divine CHANGE = nickname_weight_small_increase }
-			change_nickname_weight = { NICKNAME = nick_the_godlike CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_divine CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_godlike CHANGE = nickname_weight_small_increase }
 
 			add_piety = major_piety_gain
 			add_dread = major_dread_gain
@@ -314,15 +314,15 @@ martial_strategy.1051 = {
 				has_trait = sadistic
 			}
 
-			change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
 
 			add_piety = miniscule_piety_loss
 			add_dread = major_dread_gain	
 		}
 		else = {
 			#If only Zealous, we can some Piety.
-			change_nickname_weight = { NICKNAME = nick_the_divine CHANGE = nickname_weight_small_increase }
-			change_nickname_weight = { NICKNAME = nick_the_godlike CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_divine CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_godlike CHANGE = nickname_weight_small_increase }
 			add_piety = major_piety_gain
 		}
 	}
@@ -362,7 +362,7 @@ martial_strategy.1051 = {
 		trait = callous
 		trait = ambitious
 
-		change_nickname_weight = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 		add_prestige = medium_prestige_gain
 		add_dread = minor_dread_gain
 	}
@@ -851,7 +851,7 @@ martial_strategy.2020 = {
 				desc = martial_strategy.2020.a.failure
 				show_as_tooltip = {
 					add_prestige = minor_prestige_loss
-					change_nickname_weight = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 				}
 				
 			}
@@ -978,7 +978,7 @@ martial_strategy.2022 = {
 	option = { #Return to using more conventional tactics
 		name = martial_strategy.2022.b
 		add_prestige = minor_prestige_loss
-		change_nickname_weight = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 	}
 }
 

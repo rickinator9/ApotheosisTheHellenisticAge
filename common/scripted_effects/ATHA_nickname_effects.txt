@@ -1,7 +1,7 @@
 ﻿
 # Saves an epithet suggestion to the specified scope. Supported values for $OPTION$: option1, option2, option3
 	# OPTION: The scope to save the option to.
-save_epithet_suggestion = {
+save_epithet_suggestion_effect = {
 	random_list = {
 		1 = {
 			trigger = {
@@ -299,7 +299,7 @@ set_epithet_effect = {
 # Sets the weight for a certain nickname. Most nicknames appear based on a certain weight that is influenced by decision effects.
 	# NICKNAME: The id of the nickname to affect.
 	# CHANGE: The adjustment in weight.
-change_nickname_weight = {
+change_nickname_weight_effect = {
 	if = {
 		limit = { exists = var:$NICKNAME$ }
 		set_variable = {
@@ -314,9 +314,19 @@ change_nickname_weight = {
 	}
 }
 
+# Sets the specified nickname on the character. A cooldown of 5 years is assigned to prevent nicknames from jumping around too much.
+	# NICKNAME: The id of the nickname to set.
+set_nickname_with_cooldown_effect = {
+	give_nickname = $NICKNAME$
+	add_character_flag = {
+		flag = nickname_cooldown
+		years = 5
+	}
+}
+
 # Sets the specified nickname permanently; it cannot be overridden by the nickname system.
 	# NICKNAME: The id of the nickname to set.
-set_permanent_nickname = {
+set_permanent_nickname_effect = {
 	give_nickname = $NICKNAME$
 	add_character_flag = has_permanent_nickname
 }

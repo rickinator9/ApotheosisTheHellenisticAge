@@ -47,8 +47,44 @@ has_epithet_trigger = {
 	}
 }
 
+# Is this character allowed to get a nickname?
+is_allowed_nickname_trigger = {
+	is_independent_ruler = yes
+	OR = {
+		has_government = feudal_government
+		has_government = clan_government
+		has_government = tribal_government
+		has_government = city_state_tyrannical_government
+	}
+}
+
+# Can this character get a nickname right now?
+can_get_nickname_trigger = {
+	is_allowed_nickname_trigger = yes
+	NOT = { has_character_flag = nickname_cooldown }
+	OR = {
+		NOT = { has_nickname_trigger = yes }
+		has_incorrect_nickname = yes
+	}
+}
+
+# Does this character have a nickname that does not apply anymore?
+has_incorrect_nickname = {
+	NOT = { has_character_flag = has_permanent_nickname }
+	always = yes # TODO: Implement
+}
+
 # Does this character have a nickname that is not an epithet?
 has_nickname_trigger = {
 	has_any_nickname = yes
 	NOT = { has_epithet_trigger = yes }
+}
+
+######### NICKNAME-SPECIFIC TRIGGERS ########
+
+can_get_nick_the_bastard = {
+	OR = {
+		has_trait = bastard
+		has_trait = legitimized_bastard
+	}
 }
