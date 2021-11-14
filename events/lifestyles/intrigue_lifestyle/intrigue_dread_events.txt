@@ -1812,7 +1812,7 @@ intrigue_dread.4002 = {
 
 		# Gain reputation among your vassals for the brutal display.
 		add_dread = major_dread_gain
-		set_nickname_effect = { NICKNAME = nick_the_flayer }
+		change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_large_increase }
 		add_character_flag = {
 			flag = completed_event_intrigue_dread_4001
 		}
@@ -1893,7 +1893,7 @@ intrigue_dread.4002 = {
 						}
 					}
 
-					set_nickname_effect = { NICKNAME = nick_the_mindbreaker }
+					change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
 				}
 				1 = {
 					desc = intrigue_dread.4002.c.failure.desc
@@ -2326,6 +2326,10 @@ intrigue_dread.4006 = {
 		}
 	}
 
+	immediate = {
+		change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
+	}
+
 	option = {
 		name = intrigue_dread.4006.a
 		flavor = intrigue_dread.4006.a.tt
@@ -2367,8 +2371,6 @@ intrigue_dread.4006 = {
 			remove_variable = break_value
 		}
 
-		set_nickname_effect = { NICKNAME = nick_the_mindbreaker }
-
 		# Once per character lifetime.
 		add_character_flag = completed_event_intrigue_dread_4001
 
@@ -2407,10 +2409,6 @@ intrigue_dread.4007 = {
 		}
 	}
 
-	immediate = {
-
-	}
-
 	option = {
 		name = intrigue_dread.4007.a
 
@@ -2438,7 +2436,7 @@ intrigue_dread.4007 = {
 			release_from_prison = yes
 		}
 
-		set_nickname_effect = { NICKNAME = nick_the_mindbreaker }
+		change_nickname_weight = { NICKNAME = nick_the_malefactor CHANGE = nickname_weight_small_increase }
 
 		trigger_event = {
 			id = intrigue_dread.4008

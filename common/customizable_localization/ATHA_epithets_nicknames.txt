@@ -415,8 +415,18 @@ EpithetTheBenefactor = {
 	type = character
 
 	text = {
-		localization_key = EPITHET_THE_BENEFACTOR_GREEK
-		trigger = { uses_greek_for_nickname_localization_trigger = yes }
+		localization_key = EPITHET_THE_BENEFACTOR_GREEK_MALE
+		trigger = {
+			uses_greek_for_nickname_localization_trigger = yes
+			is_male = yes
+		}
+	}
+	text = {
+		localization_key = EPITHET_THE_BENEFACTOR_GREEK_FEMALE
+		trigger = {
+			uses_greek_for_nickname_localization_trigger = yes
+			is_female = yes
+		}
 	}
 	text = {
 		localization_key = EPITHET_THE_BENEFACTOR_DEFAULT
@@ -492,6 +502,19 @@ EpithetTheGenerous = {
 	}
 	text = {
 		localization_key = EPITHET_THE_GENEROUS_DEFAULT
+		fallback = yes
+	}
+}
+
+EpithetTheHawk = {
+	type = character
+
+	text = {
+		localization_key = EPITHET_THE_HAWK_GREEK
+		trigger = { uses_greek_for_nickname_localization_trigger = yes }
+	}
+	text = {
+		localization_key = EPITHET_THE_HAWK_DEFAULT
 		fallback = yes
 	}
 }

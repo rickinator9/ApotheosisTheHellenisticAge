@@ -295,3 +295,28 @@ set_epithet_effect = {
 		give_nickname = $EPITHET$
 	}
 }
+
+# Sets the weight for a certain nickname. Most nicknames appear based on a certain weight that is influenced by decision effects.
+	# NICKNAME: The id of the nickname to affect.
+	# CHANGE: The adjustment in weight.
+change_nickname_weight = {
+	if = {
+		limit = { exists = var:$NICKNAME$ }
+		set_variable = {
+			name = $NICKNAME$_weight
+			value = $CHANGE$
+		}
+	} else = {
+		change_variable = {
+			name = $NICKNAME$_weight
+			add = $CHANGE$
+		}
+	}
+}
+
+# Sets the specified nickname permanently; it cannot be overridden by the nickname system.
+	# NICKNAME: The id of the nickname to set.
+set_permanent_nickname = {
+	give_nickname = $NICKNAME$
+	add_character_flag = has_permanent_nickname
+}
