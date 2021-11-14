@@ -53,6 +53,17 @@ ATHA_nickname.0001 = {
 					has_trait = education_learning
 				}
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					has_nickname = epithet_the_asian
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_asian }
@@ -94,18 +105,32 @@ ATHA_nickname.0001 = {
 				factor = 1.1
 				has_trait = overseer
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_autocrat
+						has_nickname = nick_the_autocrat
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_autocrat }
 	}
 
 	option = {
-		name = ATHA_nickname.0001.opt_the_bearer_of_victory
+		name = ATHA_nickname.0001.opt_the_victorious
 		trigger = {
 			OR = {
-				scope:option1 = flag:the_bearer_of_victory
-				scope:option2 = flag:the_bearer_of_victory
-				scope:option3 = flag:the_bearer_of_victory
+				scope:option1 = flag:the_victorious
+				scope:option2 = flag:the_victorious
+				scope:option3 = flag:the_victorious
 			}
 		}
 		ai_chance = {
@@ -131,18 +156,32 @@ ATHA_nickname.0001 = {
 				factor = 1.1
 				has_trait = strategist
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_victorious
+						has_nickname = nick_the_victorious
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_victorious }
 	}
 
 	option = {
-		name = ATHA_nickname.0001.opt_the_beautiful_victor
+		name = ATHA_nickname.0001.opt_the_beautifully_triumphant
 		trigger = {
 			OR = {
-				scope:option1 = flag:the_beautiful_victor
-				scope:option2 = flag:the_beautiful_victor
-				scope:option3 = flag:the_beautiful_victor
+				scope:option1 = flag:the_beautifully_triumphant
+				scope:option2 = flag:the_beautifully_triumphant
+				scope:option3 = flag:the_beautifully_triumphant
 			}
 		}
 		ai_chance = {
@@ -167,6 +206,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.1
 				has_trait = august
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_beautifully_triumphant
+						has_nickname = nick_the_beautifully_triumphant
+					}
+				}
 			}
 		}
 
@@ -217,6 +270,20 @@ ATHA_nickname.0001 = {
 				factor = 1.1
 				has_trait = architect
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_benefactor
+						has_nickname = nick_the_benefactor
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_benefactor }
@@ -263,6 +330,20 @@ ATHA_nickname.0001 = {
 				factor = 1.5
 				num_virtuous_traits >= 3
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_divine
+						has_nickname = nick_the_divine
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_divine }
@@ -308,6 +389,17 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.5
 				num_virtuous_traits >= 3
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					has_nickname = epithet_the_divine_manifest
+				}
 			}
 		}
 
@@ -363,6 +455,20 @@ ATHA_nickname.0001 = {
 				factor = 1.2
 				has_trait = family_first
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_father_loving
+						has_nickname = nick_the_father_loving
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_father_loving }
@@ -391,6 +497,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.2
 				has_trait = education_diplomacy
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_generous
+						has_nickname = nick_the_generous
+					}
+				}
 			}
 		}
 
@@ -436,6 +556,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.05
 				has_trait = administrator
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_just
+						has_nickname = nick_the_just
+					}
+				}
 			}
 		}
 
@@ -491,6 +625,20 @@ ATHA_nickname.0001 = {
 				factor = 1.2
 				has_trait = family_first
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_mother_loving
+						has_nickname = nick_the_mother_loving
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_mother_loving }
@@ -523,6 +671,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.25
 				num_virtuous_traits >= 1
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_pious
+						has_nickname = nick_the_pious
+					}
+				}
 			}
 		}
 
@@ -564,6 +726,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.05
 				has_trait = theologian
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_saviour
+						has_nickname = nick_the_saviour
+					}
+				}
 			}
 		}
 
@@ -623,6 +799,20 @@ ATHA_nickname.0001 = {
 				factor = 1.2
 				has_trait = family_first
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_sibling_loving
+						has_nickname = nick_the_sibling_loving
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_sibling_loving }
@@ -660,6 +850,20 @@ ATHA_nickname.0001 = {
 				factor = 1.1
 				has_trait = strategist
 			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_victor
+						has_nickname = nick_the_victor
+					}
+				}
+			}
 		}
 
 		set_epithet_effect = { EPITHET = epithet_the_victor }
@@ -684,6 +888,20 @@ ATHA_nickname.0001 = {
 			modifier = {
 				factor = 1.2
 				has_trait = education_stewardship
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_wealthy
+						has_nickname = nick_the_wealthy
+					}
+				}
 			}
 		}
 
@@ -714,6 +932,20 @@ ATHA_nickname.0001 = {
 				factor = 1.5
 				has_trait = arrogant
 				num_of_good_genetic_traits > 0
+			}
+			modifier = { # This character's ancestors used this particular nickname.
+				factor = 1.2
+				any_close_family_member = {
+					OR = {
+						is_parent_of = root
+						is_grandparent_of = root
+						is_great_grandparent_of = root
+					}
+					OR = {
+						has_nickname = epithet_the_well_born
+						has_nickname = nick_the_well_born
+					}
+				}
 			}
 		}
 
