@@ -15,6 +15,9 @@ claim_atreid_ancestry_decision = { # Claim Atreid Ancestry
 	}
 
 	is_valid = {
+		is_independent_ruler = yes
+		is_dynast = yes
+		#prestige_level >= very_high_prestige_level
 	}
 
 	is_valid_showing_failures_only = {
@@ -26,8 +29,19 @@ claim_atreid_ancestry_decision = { # Claim Atreid Ancestry
 	effect = {
 		character:test_atreus = { save_scope_as = ancestor }
 
+		#Tooltips
+		custom_tooltip = claim_ancestry_decision.process.tt
+		custom_tooltip = claim_ancestry_decision.outcome.tt
+		custom_tooltip = claim_ancestry_decision.claim_strength.tt
+		custom_tooltip = claim_ancestry_decision.claim_risk.tt
+
 		#Events
 		trigger_event = ancestry.0001
+	}
+
+	cost = {
+		#prestige = 1000
+		#gold = major_gold_value
 	}
 
 	ai_potential = {
