@@ -1,5 +1,10 @@
 ﻿namespace = ancestry
 
+## Investigation Phase
+# 0001 - Starting Event
+# 0002-0005 - Rumours of a Tomb
+# 0006-0009 - A Hero's Item
+
 #######################
 # INVESTIGATION PHASE #
 #######################
@@ -34,7 +39,7 @@ ancestry.0001 = {
             add = medium_gold_value
             multiply = 2
         }
-        trigger_event = ancestry.0002
+        trigger_event = ancestry.0006
 
         ai_chance = {
             base = 50
@@ -74,7 +79,7 @@ ancestry.0001 = {
             add = massive_gold_value
             multiply = 2
         }
-        trigger_event = ancestry.0002
+        trigger_event = ancestry.0006
 
         stress_impact = {
             greedy = medium_stress_impact_gain
@@ -104,7 +109,7 @@ ancestry.0001 = {
         name = ancestry.0001.d
         custom_tooltip = ancestry.0001.d_tt
 
-        trigger_event = ancestry.0002
+        trigger_event = ancestry.0006
 
         stress_impact = {
             honest = medium_stress_impact_gain
@@ -123,6 +128,12 @@ ancestry.0001 = {
         }
     }
 }
+
+#######################
+# Rumours of a tomb   #
+#######################
+
+# Diplomacy-based event chain
 
 #Chancellor approaches you concerning rumours of a tomb
 ancestry.0002 = {
@@ -156,6 +167,7 @@ ancestry.0002 = {
             }
         }
         cp:councillor_chancellor = {
+            limit = { is_ai = yes }
             save_scope_as = chancellor
         }
         random_sub_realm_barony = {
@@ -179,16 +191,77 @@ ancestry.0002 = {
     option = { # Begin a search for the tomb
         name = ancestry.0002.a
 
-        trigger_event = ancestry.0003
+        duel = {
+            skill = diplomacy
+            value = average_skill_rating
+            desc = outcome_in_a_few_weeks
+            60 = {  
+                desc = ancestry.0002.a_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                trigger_event = {
+                    id = ancestry.0003
+                    days = { 14 21 }
+                }
+                custom_tooltip = ancestry.0002.a_success.tt
+            }
+            40 = {
+                desc = ancestry.0002.a_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -1.5
+                    min = -49
+                }
+                trigger_event = {
+                    id = ancestry.0005
+                    days = { 14 21 }
+                }
+                show_as_tooltip = {
+                    add_prestige = medium_prestige_loss
+                }
+            }
+        }
+        add_character_modifier = {
+            modifier = ancestry_looking_for_tomb_modifier
+            years = 5
+        }
+        reverse_add_opinion = {
+            target = scope:chancellor
+            modifier = grateful_opinion
+            opinion = 10
+        }
+        scope:chancellor = {
+            hidden_effect  = {
+                add_character_modifier = {
+                    modifier = ancestry_looking_for_tomb_modifier
+                    years = 5
+                }   
+            } 
+        }
+
+        ai_chance = {
+            base = 100
+
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_energy = 0.5
+            }
+        }
     }
 
     option = { # Don't investigate further
         name = ancestry.0002.b
+        flavor = ancestry.0002.b_flavour
 
         # +1 claim strength
         ancestry_weak_evidence_effect = yes
 
-        trigger_event = ancestry.0005
+        ai_chance = {
+            base = 0
+        }
     }
 }
 
@@ -315,6 +388,8 @@ ancestry.0004 = {
 
         # +3 claim strength
         ancestry_strong_evidence_effect = yes
+
+        add_prestige = medium_prestige_gain
     }
 
     #Weak evidence
@@ -324,6 +399,8 @@ ancestry.0004 = {
 
         # +1 claim strength
         ancestry_weak_evidence_effect = yes
+
+        add_prestige = minor_prestige_gain
         
         stress_impact = {
             ambitious = minor_stress_impact_gain
@@ -349,13 +426,16 @@ ancestry.0004 = {
                 desc = ancestry.0004.2_b.critical_success
                 compare_modifier = {
                     value = scope:duel_value
-                    multiplier = 0.5
+                    multiplier = 1.5
                 }
                 send_interface_toast = {
                     title = ancestry.0004.2_b.critical_success
                     left_icon = root
+
                     # +3 claim strength
                     ancestry_strong_evidence_effect = yes
+
+                    add_prestige = medium_prestige_gain
                 }
             }
             30 = {
@@ -386,6 +466,8 @@ ancestry.0004 = {
 
                     # +1 claim risk
                     ancestry_discovery_risk_effect = yes
+
+                    add_piety = minor_piety_loss
                 }
             }
         }
@@ -419,6 +501,8 @@ ancestry.0004 = {
 
         # -2 claim strength
         ancestry_contradictory_evidence_effect = yes
+
+        add_prestige = medium_prestige_loss
         
         stress_impact = {
             base = medium_stress_impact_gain
@@ -454,6 +538,8 @@ ancestry.0004 = {
 
                     # +1 claim risk
                     ancestry_discovery_risk_effect = yes
+
+                    add_piety = medium_piety_loss
                 }
             }
         }
@@ -655,11 +741,30 @@ ancestry.0005 = {
 
     immediate = {
         scope:barony.title_province = { save_scope_as = background_terrain_scope }
+        add_prestige = medium_prestige_loss
     }
 
     option = { # Give up
         name = ancestry.0005.a
         flavor = ancestry.0005.a_flavour
+
+        add_opinion = {
+            target = scope:chancellor
+            modifier = annoyed_opinion
+            opinion = -20
+        }
+        if = {
+            limit = {
+                NOR = { 
+                    has_relation_rival = scope:chancellor
+                    has_trait = forgiving 
+                }
+            }
+            progress_towards_rival_effect = {
+                CHARACTER = scope:chancellor
+                OPINION = no
+            }
+        }
 
         stress_impact = {
             base = medium_stress_impact_gain
@@ -706,6 +811,13 @@ ancestry.0005 = {
 
             modifier = {
                 add = 100
+                any_scheme = { #More likely if they have a murder scheme against the chancellor
+                    scheme_type = murder
+                    scheme_target = scope:chancellor
+                }
+            }
+            modifier = {
+                add = 100
                 has_trait = sadistic
             }
             modifier = { # Weight up for stress.
@@ -740,6 +852,377 @@ ancestry.0005 = {
                     value <= -20
                 }
             }
+        }
+    }
+}
+
+#######################
+# A Hero's Item       #
+#######################
+
+# Martial-based event chain
+
+#Martial approaches you about the equipment of an ancient hero
+ancestry.0006 = {
+    type = character_event
+    title = ancestry.0006.t
+    desc = ancestry.0006.desc
+    theme = martial
+    left_portrait = {
+        character = root
+        animation = personality_rational
+    }
+    right_portrait = {
+        character = scope:marshal
+        animation = personality_bold
+    }
+
+    weight_multiplier = {
+        base = 1
+    }
+
+    trigger = {
+        NOT = { exists = scope:story.var:had_event_0006 }
+        # Make sure there is an appropriate character to approach you
+        OR = {
+            exists = cp:councillor_marshal
+            any_knight = {
+                can_be_commander_now_trigger = { ARMY_OWNER = root }
+                is_available_ai_adult = yes
+                NOT = { this = root.cp:councillor_marshal }
+            }
+        }
+    }
+
+    immediate = {
+        scope:story = {
+            set_variable = {
+                name = had_event_0006
+                value = yes
+            }
+        }
+        if = {
+            limit = { exists = cp:councillor_marshal }
+            cp:councillor_marshal = {
+                limit = { is_ai = yes }
+                save_scope_as = marshal
+            }
+        }
+        else = {
+            random_knight = {
+                limit = {
+                    can_be_commander_now_trigger = { ARMY_OWNER = root }
+                    is_available_ai_adult = yes
+                    NOT = { this = root.cp:councillor_marshal }
+                }
+                save_scope_as = marshal
+            }     
+        }
+        random_sub_realm_barony = {
+            limit = {
+                county.holder = root
+            }
+            save_scope_as = barony
+        }
+
+        #Set the type of equipment
+        random_list = {
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:panoply
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:shield
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:helmet
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:breastplate
+                }
+            }
+            1 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:greaves
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:sword
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:axe
+                }
+            }
+            2 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:spear
+                }
+            }
+            1 = {
+                set_variable = {
+                    name = ancestor_equipment
+                    value = flag:chariot
+                }
+            }
+        }
+
+        #Set random gender for loc
+        random_list = { #TODO: Update so it's based on culture's commander gender once RC comes out
+            #100 = {
+            #    dummy_female = { save_scope_as = real_ancestor }
+            #}
+            100 = {
+                dummy_male = { save_scope_as = real_ancestor }
+            }
+        }
+    }
+
+    option = { # Take an aggressive approach
+        name = ancestry.0006.a
+        flavor = ancestry.0006.a_flavour
+
+        duel = {
+            skill = martial
+            value = average_skill_rating
+            desc = outcome_in_a_few_days
+
+            20 = { # You massacre the bandits 
+                desc = ancestry.0006.critical_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.0006.critical_success.tt
+            }
+            50 = { # You corner the bandits 
+                desc = ancestry.0006.success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 1.5
+                    min = -49
+                }
+                trigger_event = ancestry.0007
+                custom_tooltip = ancestry.0006.success.tt
+            }
+            10 = { # The bandits escape 
+                desc = ancestry.0006.failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.25
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = medium_prestige_loss
+                }
+            }
+            20 = { # You are captured and humiliated by the bandits 
+                desc = ancestry.0006.critical_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = major_prestige_loss
+                    remove_short_term_gold = major_gold_value
+                }
+            }
+        }
+        add_character_modifier = {
+            modifier = ancestry_hunting_bandits_modifier
+            years = 5
+        }
+        reverse_add_opinion = {
+            target = scope:marshal
+            modifier = grateful_opinion
+            opinion = 10
+        }
+        scope:chancellor = {
+            hidden_effect  = {
+                add_character_modifier = {
+                    modifier = ancestry_hunting_bandits_modifier
+                    years = 5
+                }   
+            } 
+        }
+
+        ai_chance = {
+            base = 100
+
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_energy = 0.5
+            }
+        }
+    }
+
+    option = { # Take a more cautious approach
+        name = ancestry.0006.b
+        flavor = ancestry.0006.b_flavour
+
+        duel = {
+            skill = martial
+            value = average_skill_rating
+            desc = outcome_in_a_few_days
+
+            10 = { # You massacre the bandits 
+                desc = ancestry.0006.critical_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.0006.critical_success.tt
+            }
+            40 = { # You corner the bandits 
+                desc = ancestry.0006.success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 1.5
+                    min = -49
+                }
+                trigger_event = ancestry.0007
+                custom_tooltip = ancestry.0006.success.tt
+            }
+            40 = { # The bandits escape 
+                desc = ancestry.0006.failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.25
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = medium_prestige_loss
+                }
+            }
+            10 = { # You are captured and humiliated by the bandits 
+                desc = ancestry.0006.critical_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = major_prestige_loss
+                    remove_short_term_gold = major_gold_value
+                }
+            }
+        }
+        add_character_modifier = {
+            modifier = ancestry_hunting_bandits_modifier
+            years = 5
+        }
+        reverse_add_opinion = {
+            target = scope:marshal
+            modifier = grateful_opinion
+            opinion = 10
+        }
+        scope:chancellor = {
+            hidden_effect  = {
+                add_character_modifier = {
+                    modifier = ancestry_hunting_bandits_modifier
+                    years = 5
+                }   
+            } 
+        }
+
+        ai_chance = {
+            base = 100
+
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_energy = 0.5
+            }
+        }
+    }
+
+    option = { # Take a stealthy approach
+        name = ancestry.0006.c
+        flavor = ancestry.0006.c_flavour
+
+        duel = {
+            skill = intrigue
+            value = average_skill_rating
+            desc = outcome_in_a_few_days
+
+            40 = { # You successfully steal the item 
+                desc = ancestry.0006.c_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.0006.critical_success.tt
+            }
+            30 = { # The bandits are alerted and try to stop you 
+                desc = ancestry.0006.c_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.25
+                    min = -49
+                }
+                trigger_event = ancestry.0008
+                custom_tooltip = ancestry.0006.c_failure.tt
+            }
+            30 = { # You are captured and humiliated by the bandits 
+                desc = ancestry.0006.critical_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                    min = -49
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = major_prestige_loss
+                    remove_short_term_gold = major_gold_value
+                }
+            }
+        }
+        reverse_add_opinion = {
+            target = scope:marshal
+            modifier = grateful_opinion
+            opinion = 10
+        }
+
+        ai_chance = {
+            base = 0
+        }
+    }
+
+    option = { # Don't investigate further
+        name = ancestry.0006.d
+        flavor = ancestry.0006.d_flavour
+
+        # +1 claim strength
+        ancestry_weak_evidence_effect = yes
+
+        ai_chance = {
+            base = 0
         }
     }
 }
