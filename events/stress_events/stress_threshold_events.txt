@@ -12022,24 +12022,7 @@ stress_threshold.2341 = {
 		add_stress = medium_stress_impact_loss
 		
 		#Your feast gives you a poor nickname.
-		if = {
-			limit = { has_any_nickname = no }
-			custom_tooltip = stress_threshold.2341.c.comfort_eater.tt
-			hidden_effect = {
-				random_list = {	#nick_the_fat excluded from the list, as it feels a little too mean-spirited.
-					13 = { give_nickname = nick_the_greedy }
-					13 = { give_nickname = nick_the_unworthy }
-					13 = { give_nickname = nick_the_selfish }
-					12 = { give_nickname = nick_the_wicked }
-					13 = { give_nickname = nick_the_terrible }
-					12 = { give_nickname = nick_the_plump }
-					12 = { give_nickname = nick_the_little } #Ironically.
-					12 = { give_nickname = nick_the_wicked }
-				}
-			}
-		}
-		#... Or else just lost prestige.
-		else = { add_prestige = medium_prestige_loss }
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat AMOUNT = nickname_weight_medium_increase }
 
 		ai_chance = {
 			base = 25

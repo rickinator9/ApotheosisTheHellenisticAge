@@ -2443,8 +2443,8 @@ scripted_effect gruesome_festivals_martyred_a_hof_effect = {
 			faith = { change_fervor = hof_humsacd_fervour_gain }
 			# Since the nickname is assigned elsewhere, if they've already gotten it, it's safe to show it again.
 			if = {
-				limit = { has_nickname = nick_the_martyr }
-				give_nickname = nick_the_martyr
+				limit = { has_nickname = nick_the_sacrificed }
+				set_permanent_nickname = { NICKNAME = nick_the_sacrificed }
 			}
 		}
 	}
