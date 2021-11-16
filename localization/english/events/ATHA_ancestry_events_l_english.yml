@@ -1,4 +1,6 @@
 ﻿l_english:
+  ancestry.claim_strength_opportunity.tt:0 "You may get an opportunity to greatly increase your [claim_strength|E]"
+
   ancestry.0001.t:0 "A Great Ancestor"
   ancestry.0001.desc:0 "Considering the achievements of the [ROOT.Char.GetDynasty.GetName] dynasty, it does not seem so far-fetched that we would count [ancestor.GetFirstName] and [ancestor.GetHerHis] distinguished kin among our ancestors. Yet it is one thing to make a claim, and another thing to actually #emp convince#! others of its truth.\n\nThere is surely no better way to persuade people than with decisive evidence, though of course this is easier said than done. We would need to invest time, and resources, as we mobilise servants, bureaucrats and scribes to comb through archives and investigate leads."
   ancestry.0001.a:0 "I can only spend a small amount on this."
@@ -70,8 +72,40 @@
   ancestry.0006.d:0 "There is no need for action, your word is evidence enough."
   ancestry.0006.d_flavour:0 "You decide not to investigate this lead any further"
   ancestry.0006.critical_success:0 "Your forces easily massacre the bandits and secure the [ROOT.Char.Custom('AncestorEquipment')]"
-  ancestry.0006.critical_success.tt:0 "You may encounter the opportunity to greatly increase your [claim_strength|E]"
   ancestry.0006.success:0 "You corner a lone bandit guarding the [ROOT.Char.Custom('AncestorEquipment')]"
   ancestry.0006.success.tt:0 "You continue to pursue the lead..."
   ancestry.0006.failure:0 "The bandits manage to escape, taking the treasured [ROOT.Char.Custom('AncestorEquipment')] with them"
   ancestry.0006.critical_failure:0 "You are captured and humiliated by the bandits"
+
+  ancestry.0007.t:0 "Great Ancestor: Duel for the [ROOT.Char.Custom('AncestorEquipment')|U]"
+  ancestry.0007.desc.approach_aggressive:0 "With my signal, our small force rushes into the encampment that surrounds the shrine. The assault clearly takes the bandits by surprise, and many of them are only half-dressed as they hastily run to pick up their arms and defend.\n\n"
+  ancestry.0007.desc.approach_cautious:0 "After staking out the bandit encampment for several days, we make our move: as [marshal.GetTitledFirstNameNoTooltip] bursts through the front entrance with the bulk of our small force, I lead a detachment into the rear of the bandits which throws them into confusion.\n\n"
+  ancestry.0007.desc:0 "In the midst of the chaos, I find myself in the old shrine, separated from my companions. Before me stands a hulk of a [bandit.GetWomanMan] with defiance in [bandit.GetHerHis] eyes. My gaze rests on the distinctly archaic [ROOT.Char.Custom('AncestorEquipment')] [bandit.GetSheHe] [ROOT.Char.Custom('AncestorEquipmentAction')], surely the exact thing I am after. \n\n\"You want this [ROOT.Char.Custom('AncestorEquipment')], huh?\" the brute sneers. \"Well, you will have to kill me first!\""
+  ancestry.0007.a:0 "I will #emp gladly#! kill you, you [bandit.Custom('InsultAdjective')] [bandit.Custom('InsultNoun')]."
+  ancestry.0007.a_success:0 "You manage to strike down the bandit"
+  ancestry.0007.a_failure:0 "The bandit wounds you and escapes with the treasured [ROOT.Char.Custom('AncestorEquipment')]"
+  ancestry.0007.a_critical_failure:0 "You are killed by the bandit"
+  ancestry.0007.b:0 "[marshal.GetTitledFirstNameNoTooltip], I need backup!"
+  ancestry.0007.b_success:0 "With the help of your companions, you kill the bandit"
+  ancestry.0007.b_failure:0 "The bandit runs off with the treasured [ROOT.Char.Custom('AncestorEquipment')] while you wait for support"
+
+  ancestry.0008.t:0 "Great Ancestor: Fight or Flight?"
+  ancestry.0008.desc.approach_stealth:0 "At nightfall, we make our move. After incapacitating the guards, we creep into the camp and head for the ruined shrine at its centre. In no time, I am standing before the ancient [ROOT.Char.Custom('AncestorEquipment')] as it glimmers in the moonlight.\n\n"
+  ancestry.0008.desc.outcome:0 "With trembling hands, I lift up the [ROOT.Char.Custom('AncestorEquipment')], and–\n\n#emp CLANG!#!\n\nI... did I just #emp drop#! it?"
+  ancestry.0008.desc.outcome_chariot:0 "With a trembling hand, I reach out to touch the chariot, and–\n\n#emp NEIGHHH!#!\n\nIs that a... #emp horse#! in the shrine?!" 
+  ancestry.0008.desc.ending:0 "The sound seems to reverberate across the whole camp, and all we can do is stand there helplessly. Almost immediately, I hear bandits rousing and shouting in alarm, and the angry tumult is getting closer and closer..."
+  ancestry.0008.a:0 "Get ready to fight, we cannot lose this [ROOT.Char.Custom('AncestorEquipment')]." 
+  ancestry.0008.a_success:0 "You fight your way out of the encampment without losing the treasured [ROOT.Char.Custom('AncestorEquipment')]"
+  ancestry.0008.a_failure:0 "You are captured and humiliated by the bandits"
+  ancestry.0008.b:0 "By [ROOT.Char.GetFaith.HighGodName], we must run for our lives!"
+  ancestry.0008.b_success:0 "You manage to escape with the [ROOT.Char.Custom('AncestorEquipment')]"
+  ancestry.0008.b_failure:0 "You escape, but lose the [ROOT.Char.Custom('AncestorEquipment')] in the confusion" 
+  ancestry.0008.c:0 "Get in the chariot, [marshal.GetFirstNameNoTooltip], there's no time to explain!" 
+  ancestry.0008.c_tt:0 "This option is available because you have a chariot"
+  ancestry.0008.c_success:0 "You make an epic escape"
+  ancestry.0008.c_failure:0 "You die in a spectacular crash"
+  ancestry.0008.c.tt_claim_strength_opportunity:0 "You may still get an opportunity to greatly increase your [claim_strength|E]"
+
+
+
+  ancestry.0009.stealthfaildesc:0 "\"You know, [marshal.GetTitledFirstNameNoTooltip],\" I whisper, "this almost seems too easy–\""

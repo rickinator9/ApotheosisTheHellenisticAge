@@ -3,7 +3,7 @@
 ## Investigation Phase
 # 0001 - Starting Event
 # 0002-0005 - Rumours of a Tomb
-# 0006-0009 - A Hero's Item
+# 0006-0009 - A Hero's Equipment
 
 #######################
 # INVESTIGATION PHASE #
@@ -206,7 +206,7 @@ ancestry.0002 = {
                     id = ancestry.0003
                     days = { 14 21 }
                 }
-                custom_tooltip = ancestry.0002.a_success.tt
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
             }
             40 = {
                 desc = ancestry.0002.a_failure
@@ -857,7 +857,7 @@ ancestry.0005 = {
 }
 
 #######################
-# A Hero's Item       #
+# A Hero's Equipment  #
 #######################
 
 # Martial-based event chain
@@ -983,6 +983,38 @@ ancestry.0006 = {
             }
         }
 
+        #Set the evidence strength
+        random_list = {
+            25 = { # Strong evidence
+                set_variable = {
+                    name = ancestor_equipment_strong_evidence
+                    value = yes
+                    days = 8
+                }
+            }
+            50 = { # Weak evidence
+                set_variable = {
+                    name = ancestor_equipment_weak_evidence
+                    value = yes
+                    days = 8
+                }
+            }
+            15 = { # Contradictory evidence
+                set_variable = {
+                    name = ancestor_equipment_contradictory_evidence
+                    value = yes
+                    days = 8
+                }
+            }
+            10 = { # Strong evidence for a *different* ancestor
+                set_variable = {
+                    name = ancestor_equipment_different_ancestor
+                    value = yes
+                    days = 8
+                }
+            }
+        }
+
         #Set random gender for loc
         random_list = { #TODO: Update so it's based on culture's commander gender once RC comes out
             #100 = {
@@ -998,6 +1030,11 @@ ancestry.0006 = {
         name = ancestry.0006.a
         flavor = ancestry.0006.a_flavour
 
+        set_variable = {
+            name = ancestry_0006_approach
+            value = flag:aggressive
+            days = 8
+        }
         duel = {
             skill = martial
             value = average_skill_rating
@@ -1010,8 +1047,13 @@ ancestry.0006 = {
                     multiplier = 3.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_success_agressive
+                    days = 8
+                }
                 trigger_event = ancestry.0009
-                custom_tooltip = ancestry.0006.critical_success.tt
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
             }
             50 = { # You corner the bandits 
                 desc = ancestry.0006.success
@@ -1030,9 +1072,14 @@ ancestry.0006 = {
                     multiplier = -0.25
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_agressive
+                    days = 8
+                }
                 trigger_event = ancestry.0009
                 show_as_tooltip = {
-                    add_prestige = medium_prestige_loss
+                    add_prestige = minor_prestige_loss
                 }
             }
             20 = { # You are captured and humiliated by the bandits 
@@ -1042,10 +1089,15 @@ ancestry.0006 = {
                     multiplier = -0.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_failure_agressive
+                    days = 8
+                }
                 trigger_event = ancestry.0009
                 show_as_tooltip = {
                     add_prestige = major_prestige_loss
-                    remove_short_term_gold = major_gold_value
+                    remove_short_term_gold = massive_gold_value
                 }
             }
         }
@@ -1058,7 +1110,7 @@ ancestry.0006 = {
             modifier = grateful_opinion
             opinion = 10
         }
-        scope:chancellor = {
+        scope:marshal = {
             hidden_effect  = {
                 add_character_modifier = {
                     modifier = ancestry_hunting_bandits_modifier
@@ -1081,6 +1133,11 @@ ancestry.0006 = {
         name = ancestry.0006.b
         flavor = ancestry.0006.b_flavour
 
+        set_variable = {
+            name = ancestry_0006_approach
+            value = flag:cautious
+            days = 8
+        }
         duel = {
             skill = martial
             value = average_skill_rating
@@ -1093,8 +1150,13 @@ ancestry.0006 = {
                     multiplier = 3.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_success_cautious
+                    days = 8
+                }
                 trigger_event = ancestry.0009
-                custom_tooltip = ancestry.0006.critical_success.tt
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
             }
             40 = { # You corner the bandits 
                 desc = ancestry.0006.success
@@ -1113,9 +1175,14 @@ ancestry.0006 = {
                     multiplier = -0.25
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_cautious
+                    days = 8
+                }
                 trigger_event = ancestry.0009
                 show_as_tooltip = {
-                    add_prestige = medium_prestige_loss
+                    add_prestige = minor_prestige_loss
                 }
             }
             10 = { # You are captured and humiliated by the bandits 
@@ -1125,10 +1192,15 @@ ancestry.0006 = {
                     multiplier = -0.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_failure_cautious
+                    days = 8
+                }
                 trigger_event = ancestry.0009
                 show_as_tooltip = {
                     add_prestige = major_prestige_loss
-                    remove_short_term_gold = major_gold_value
+                    remove_short_term_gold = massive_gold_value
                 }
             }
         }
@@ -1141,7 +1213,7 @@ ancestry.0006 = {
             modifier = grateful_opinion
             opinion = 10
         }
-        scope:chancellor = {
+        scope:marshal = {
             hidden_effect  = {
                 add_character_modifier = {
                     modifier = ancestry_hunting_bandits_modifier
@@ -1164,6 +1236,11 @@ ancestry.0006 = {
         name = ancestry.0006.c
         flavor = ancestry.0006.c_flavour
 
+        set_variable = {
+            name = ancestry_0006_approach
+            value = flag:stealth
+            days = 8
+        }
         duel = {
             skill = intrigue
             value = average_skill_rating
@@ -1176,8 +1253,13 @@ ancestry.0006 = {
                     multiplier = 3.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_stealth
+                    days = 8
+                }
                 trigger_event = ancestry.0009
-                custom_tooltip = ancestry.0006.critical_success.tt
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
             }
             30 = { # The bandits are alerted and try to stop you 
                 desc = ancestry.0006.c_failure
@@ -1196,10 +1278,15 @@ ancestry.0006 = {
                     multiplier = -0.5
                     min = -49
                 }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_failure_stealth
+                    days = 8
+                }
                 trigger_event = ancestry.0009
                 show_as_tooltip = {
                     add_prestige = major_prestige_loss
-                    remove_short_term_gold = major_gold_value
+                    remove_short_term_gold = massive_gold_value
                 }
             }
         }
@@ -1223,6 +1310,593 @@ ancestry.0006 = {
 
         ai_chance = {
             base = 0
+        }
+    }
+}
+
+#Corner bandit who has the hero's equipment
+ancestry.0007 = {
+    type = character_event
+    title = ancestry.0007.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { var:ancestry_0006_approach = flag:aggressive }
+                desc = ancestry.0007.desc.approach_aggressive
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_approach = flag:cautious }
+                desc = ancestry.0007.desc.approach_cautious
+            }
+        }
+        desc = ancestry.0007.desc
+    }
+    theme = martial
+    left_portrait = {
+        character = scope:bandit
+        animation = anger
+    }
+    override_background = { reference = burning_building }
+
+    immediate = {
+        #To create the bandit
+        create_character = {
+            trait = giant
+            location = scope:barony
+            template = new_warrior_character
+            faith = scope:barony.county.faith
+            culture = scope:barony.county.culture
+            dynasty = none
+            save_scope_as = bandit
+        }
+    }
+
+    option = { # Duel the bandit
+        name = ancestry.0007.a
+
+        set_variable = {
+            name = ancestry_0007_approach
+            value = flag:duel
+            days = 1
+        }
+        duel = {
+            skill = prowess
+            value = scope:bandit.prowess
+            80 = { # You win the duel
+                desc = ancestry.0007.a_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_duel
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    scope:bandit = {
+                        death = {
+                            killer = root
+                            death_reason = death_duel
+                        }
+                    }
+                }
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
+            }
+            20 = { # You are wounded and the bandit escapes
+                desc = ancestry.0007.a_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                    min = -49
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_duel
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    increase_wounds_effect = { REASON = duel }
+                    add_prestige = minor_prestige_loss
+                }
+            }
+            0 = { # The bandit straight up murders you
+                desc = ancestry.0007.a_critical_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -0.5
+                    min = -49
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:critical_failure_duel
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    death = {
+                        killer = scope:bandit
+                        death_reason = death_duel
+                    }
+                }
+            }
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+
+    option = { # Wait for backup
+        name = ancestry.0007.b
+
+        set_variable = {
+            name = ancestry_0007_approach
+            value = flag:wait
+            days = 1
+        }
+        random_list = {
+            50 = { # Backup arrives in time
+                desc = ancestry.0007.b_success
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_wait
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
+                show_as_tooltip = {
+                    scope:bandit = {
+                        death = { death_reason = death_duel }
+                    }
+                }
+            }
+            50 = { # The bandit escapes
+                desc = ancestry.0007.b_failure
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_wait
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = minor_prestige_loss
+                }
+            }
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+}
+
+#You alert the bandits to your presence
+ancestry.0008 = {
+    type = character_event
+    title = ancestry.0008.t
+    desc = {
+        desc = ancestry.0008.desc.approach_stealth
+        first_valid
+            triggered_desc = {
+                trigger = { var:ancestor_equipment = flag:chariot }
+                desc = ancestry.0008.desc.outcome_chariot
+            }
+            desc = ancestry.0008.desc.outcome
+        }
+        desc = ancestry.0008.desc.ending
+    }
+    theme = martial
+    left_portrait = {
+        character = root
+        animation = paranoia
+    }
+    right_portrait = {
+        character = scope:marshal
+        animation = paranoia
+    }
+    override_background = { reference = corridor_night }
+
+    immediate = {
+    }
+
+    option = { # Fight your way out
+        name = ancestry.0008.a
+
+        set_variable = {
+            name = ancestry_0008_approach
+            value = flag:fight
+            days = 1
+        }
+        duel = {
+            skill = prowess
+            value = average_skill_rating
+            50 = { # You make it out with the equipment
+                desc = ancestry.0008.a_success
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_fight
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
+            }
+            50 = { # The bandits overwhelm you and humiliate you
+                desc = ancestry.0008.a_failure
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -3.5
+                    min = -49
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_fight
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                show_as_tooltip = {
+                    add_prestige = major_prestige_loss
+                    remove_short_term_gold = massive_gold_value
+                }
+            }
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+
+    option = { # Run!
+        name = ancestry.0008.b
+
+        add_prestige = medium_prestige_loss
+        set_variable = {
+            name = ancestry_0008_approach
+            value = flag:run
+            days = 1
+        }
+        random_list = {
+            40 = { # You make it out with the equipment
+                desc = ancestry.0008.b_success
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_run
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
+            }
+            60 = { # You lose the equipment in the confusion
+                desc = ancestry.0008.b_failure
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_run
+                    days = 1
+                }
+                trigger_event = ancestry.0009
+            }
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+
+    option = { # Get in the chariot!
+        name = ancestry.0008.c
+        custom_tooltip = ancestry.0008.c_tt
+
+        trigger = { var:ancestor_equipment = flag:chariot }
+        add_internal_flag = special
+
+        set_variable = {
+            name = ancestry_0008_approach
+            value = flag:chariot
+            days = 1
+        }
+        random_list = {
+            95 = { # You Blues Brothers your way out
+                desc = ancestry.0008.c_success
+                modifier = { # Don't drive under the influence
+                    add = -15
+                    OR = {
+                        has_trait = drunkard
+                        has_trait = hashishiyah
+                    }
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:success_chariot
+                    days = 1
+                }
+                trigger_event = ancestry.0010
+                custom_tooltip = ancestry.claim_strength_opportunity.tt
+            }
+            5 = { # You die in a spectacular crash
+                desc = ancestry.0008.c_failure
+                modifier = { # Don't drive under the influence
+                    add = 15
+                    OR = {
+                        has_trait = drunkard
+                        has_trait = hashishiyah
+                    }
+                }
+                set_variable = {
+                    name = ancestry_0006_outcome
+                    value = flag:failure_chariot
+                    days = 1
+                }
+                trigger_event = ancestry.0010
+                show_as_tooltip = {
+                    death = {
+                        death_reason = death_chariot_accident
+                    }
+                }
+                custom_tooltip = ancestry.0008.c.tt_claim_strength_opportunity
+            }
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+}
+
+#Outcome event for for ancestry.0006
+ancestry.0009 = {
+    type = character_event
+    title = ancestry.0009.t
+    desc = {
+        #Approach
+        first_valid = {
+            triggered_desc = {
+                trigger = { var:ancestry_0007_approach = flag:duel }
+                desc = ancestry.0009.desc.approach_duel
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0007_approach = flag:wait }
+                desc = ancestry.0009.desc.approach_wait
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0008_approach = flag:fight }
+                desc = ancestry.0009.desc.approach_fight
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0008_approach = flag:run }
+                desc = ancestry.0009.desc.approach_flee
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_approach = flag:aggressive }
+                desc = ancestry.0009.desc.approach_aggressive
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_approach = flag:cautious }
+                desc = ancestry.0009.desc.approach_cautious
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_approach = flag:stealth }
+                desc = ancestry.0009.desc.approach_stealth
+            }
+        }
+        #Outcome
+        first_valid = {
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_success_agressive }
+                desc = ancestry.0009.desc.outcome_critical_success_agressive
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_agressive }
+                desc = ancestry.0009.desc.outcome_failure_agressive
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_failure_agressive }
+                desc = ancestry.0009.desc.outcome_critical_failure_agressive
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_success_cautious }
+                desc = ancestry.0009.desc.outcome_critical_success_cautious
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_cautious }
+                desc = ancestry.0009.desc.outcome_failure_cautious
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_failure_cautious }
+                desc = ancestry.0009.desc.outcome_critical_failure_cautious
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_stealth }
+                desc = ancestry.0009.desc.outcome_success_stealth
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_failure_stealth }
+                desc = ancestry.0009.desc.outcome_critical_failure_stealth
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_duel }
+                desc = ancestry.0009.desc.outcome_success_duel
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_duel }
+                desc = ancestry.0009.desc.outcome_failure_duel
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:critical_failure_duel }
+                desc = ancestry.0009.desc.outcome_critical_failure_duel
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_wait }
+                desc = ancestry.0009.desc.outcome_success_wait
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_wait }
+                desc = ancestry.0009.desc.outcome_failure_wait
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_fight }
+                desc = ancestry.0009.desc.outcome_success_fight
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_fight }
+                desc = ancestry.0009.desc.outcome_failure_fight
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_run }
+                desc = ancestry.0009.desc.outcome_success_run
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_run }
+                desc = ancestry.0009.desc.outcome_failure_run
+            }
+        }
+        #Ending
+        first_valid = {
+            triggered_desc = { # Examine hero's equipment once the fighting has ceased 
+                trigger = { 
+                    OR = {
+                        var:ancestry_0006_outcome = flag:critical_success_aggressive
+                        var:ancestry_0006_outcome = flag:critical_success_cautious
+                        var:ancestry_0006_outcome = flag:success_duel
+                        var:ancestry_0006_outcome = flag:success_wait
+                    }
+                }
+                desc = ancestry.0009.desc.ending_success
+            }
+            triggered_desc = { # Examine hero's equipment once you're at a safe distance 
+                trigger = { var:ancestry_0006_outcome = flag:success_stealth }
+                desc = ancestry.0009.desc.ending_success_stealth
+            }
+            triggered_desc = { # Examine hero's equipment once you've lost your pursuers 
+                trigger = { 
+                    OR = {
+                        var:ancestry_0006_outcome = flag:success_fight
+                        var:ancestry_0006_outcome = flag:success_run
+                    }
+                }
+                desc = ancestry.0009.desc.ending_success_escape
+            }
+            triggered_desc = { # You realise you were killed with ancestor's weapon 
+                trigger = { 
+                    exists = var:ancestor_equipment_strong_evidence
+                    var:ancestry_0006_outcome = flag:critical_failure_duel
+                    OR = {
+                        var:ancestor_equipment = flag:sword
+                        var:ancestor_equipment = flag:axe
+                        var:ancestor_equipment = flag:spear
+                    }
+                }
+                desc = ancestry.0009.desc.ending_death
+            }
+            triggered_desc = { # You die realising your efforts were all for nothing
+                trigger = { 
+                    exists = var:ancestor_equipment_contradictory_evidence
+                    var:ancestry_0006_outcome = flag:critical_failure_duel
+                }
+                desc = ancestry.0009.desc.ending_death
+            }
+            triggered_desc = { # You die
+                trigger = { var:ancestry_0006_outcome = flag:critical_failure_duel }
+                desc = ancestry.0009.desc.ending_death
+            }
+            # You contemplate your failure
+            desc = ancestry.0009.desc.ending_failure
+        }
+    }
+    theme = martial
+    left_portrait = {
+        character = root
+        animation = personality_honorable
+    }
+
+    immediate = {
+    }
+
+    option = { # Okay
+        name = ancestry.0009.a
+        custom_tooltip = ancestry.0009.a_tt
+
+        ai_chance = {
+            base = 100
+        }
+    }
+}
+
+
+#Grand theft chariot (special outcome event)
+ancestry.0010 = {
+    type = character_event
+    title = ancestry.0010.t
+    desc = {
+        desc = ancestry.0010.desc.opening
+        first_valid = {
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_chariot }
+                desc = ancestry.0010.desc.success
+            }
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:failure_chariot }
+                desc = ancestry.0010.desc.failure
+            }
+        }
+        first_valid = {
+            triggered_desc = {
+                trigger = { var:ancestry_0006_outcome = flag:success_chariot }
+                desc = ancestry.0009.0010.ending_success
+            }
+            triggered_desc = {
+                trigger = { exists = var:ancestor_equipment_strong_evidence }
+                desc = ancestry.0009.desc.ending_strong_evidence
+            }
+            triggered_desc = {
+                trigger = { exists = var:ancestor_equipment_weak_evidence }
+                desc = ancestry.0009.desc.ending_weak_evidence
+            }
+            triggered_desc = {
+                trigger = { exists = var:ancestor_equipment_contradictory_evidence }
+                desc = ancestry.0009.desc.ending_contradictory_evidence
+            }
+            triggered_desc = {
+                trigger = { exists = var:ancestor_equipment_different_ancestor }
+                desc = ancestry.0009.desc.ending_different_ancestor
+            }
+        }
+    }
+    theme = martial
+    left_portrait = {
+        character = root
+        animation = personality_honorable
+    }
+
+    immediate = {
+    }
+
+    option = { # What could have been...
+        name = ancestry.0009.a
+        triggered = {
+            exists = var:ancestor_equipment_different_ancestor 
+            var:ancestry_0006_outcome = flag:failure_chariot
+        }
+
+        ai_chance = {
+            base = 100
+        }
+    }
+
+    after = {
+        # If the bandit lives they will run off, never to be seen again
+        if = {
+            limit = { exists = scope:bandit }
+            scope:bandit = {
+                death = { death_reason = death_vanished }
+            }
         }
     }
 }

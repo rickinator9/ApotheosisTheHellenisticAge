@@ -351,3 +351,48 @@ AncestorEquipmentInDef = {
 		localization_key = AncestorEquipmentInDef_chariot
 	}
 }
+
+AncestorEquipmentAction = {
+	type = character
+
+	text = {
+		trigger = { 
+			OR = {
+				var:ancestor_equipment = flag:panoply 
+				var:ancestor_equipment = flag:helmet 
+				var:ancestor_equipment = flag:breastplate 
+				var:ancestor_equipment = flag:greaves 
+			}
+		}
+		localization_key = AncestorEquipmentAction_wearing
+	}
+	text = {
+		trigger = { 
+			OR = {
+				var:ancestor_equipment = flag:sword 
+				var:ancestor_equipment = flag:axe 
+				var:ancestor_equipment = flag:spear 
+			}
+		}
+		localization_key = AncestorEquipmentAction_wielding
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:shield }
+		localization_key = AncestorEquipmentInDef_bearing
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:chariot }
+		localization_key = AncestorEquipmentInDef_guarding
+	}
+}
+
+AncestorEquipmentNoise = {
+	text = {
+		trigger = { always = no }
+		localization_key = AncestorEquipmentNoise_clang
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:chariot }
+		localization_key = AncestorEquipmentNoise_neigh
+	}
+}
