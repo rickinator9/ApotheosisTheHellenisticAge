@@ -71,8 +71,13 @@ can_get_nickname_trigger = {
 # Does this character have a nickname that does not apply anymore?
 has_incorrect_nickname = {
 	NOT = { has_character_flag = has_permanent_nickname }
-	always = yes # TODO: Implement
-}
+	OR = {
+		AND = {
+			has_nickname = nick_the_bastard
+			NOT = { can_get_nick_the_bastard = yes }
+		}
+	}
+} # TODO
 
 # Does this character have a nickname that is not an epithet?
 has_nickname_trigger = {
@@ -86,5 +91,6 @@ can_get_nick_the_bastard = {
 	OR = {
 		has_trait = bastard
 		has_trait = legitimized_bastard
+		has_trait = disputed_heritage
 	}
 }

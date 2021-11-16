@@ -987,6 +987,36 @@ ATHA_nickname.0001 = {
 
 #### NICKNAMES ####
 
+scripted_effect select_nickname_county_effect = {
+	random_held_title = { # Used in localization.
+		limit = { tier = tier_county }
+
+		save_scope_as = nickname_county
+	}
+}
+
+scripted_effect prevent_nickname_by_county_bribe_effect = {
+	remove_short_term_gold = medium_gold_value
+	scope:nickname_county = {
+		add_county_modifier = {
+			modifier = nickname_county_bribe_modifier
+			years = 1
+		}
+	}
+}
+
+scripted_effect prevent_nickname_by_county_punishment_effect = {
+	scope:nickname_county = {
+		change_development_progress_with_overflow = -20
+		add_county_modifier = {
+			modifier = nickname_county_punishment_modifier
+			years = 5
+		}
+	}
+	add_dread = minor_dread_gain
+	add_piety = medium_piety_loss
+}
+
 # nick_the_bastard
 ATHA_nickname.0100 = {
 	type = character_event
@@ -1000,18 +1030,48 @@ ATHA_nickname.0100 = {
 		can_get_nick_the_bastard = yes
 	}
 
-	immediate = {
-		random_held_title = { # Used in localization.
-			limit = { tier = tier_county }
-
-			save_scope_as = nickname_county
-		}
-	}
+	immediate = { select_nickname_county_effect = yes }
 
 	option = { # Accept the nickname.
 		name = ATHA_nickname.0100.a
 		ai_chance = {
 			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = { # I am a terrible human being, so of course I am a bastard!
+				factor = 1.2
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+			modifier = { # Unlikely to admit to their disputed heritage.
+				factor = 0.75
+				has_trait = disputed_heritage
+			}
 		}
 
 		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_bastard }
@@ -1021,22 +1081,51 @@ ATHA_nickname.0100 = {
 		name = ATHA_nickname.0100.b
 		custom_tooltip = ATHA_bribery_suppression_tt
 		ai_chance = {
-			base = 10
+			base = 12
+
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+			modifier = { # People who aren't generous will still be reluctant to let their gold go.
+				factor = 0.9
+				NOR = {
+					has_trait = generous
+					has_trait = greedy
+				}
+			}
 		}
 
-		remove_short_term_gold = medium_gold_value
+		prevent_nickname_by_county_bribe_effect = yes
 	}
 	option = { # Punish them!
 		name = ATHA_nickname.0100.c
 		custom_tooltip = ATHA_violent_suppression_tt
 		ai_chance = {
 			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.8
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = sadistic
+			}
 		}
 
-		scope:nickname_county = {
-			change_development_progress_with_overflow = -100
-		}
-		add_dread = minor_dread_gain
-		add_piety = medium_piety_loss
+		prevent_nickname_by_county_punishment_effect = yes
 	}
 }
