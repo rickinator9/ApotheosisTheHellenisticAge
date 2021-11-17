@@ -995,6 +995,12 @@ scripted_effect select_nickname_county_effect = {
 	}
 }
 
+scripted_effect select_nickname_councillor_effect = {
+	random_councillor = { # Used in localization.
+		save_scope_as = nickname_councillor
+	}
+}
+
 scripted_effect prevent_nickname_by_county_bribe_effect = {
 	remove_short_term_gold = medium_gold_value
 	scope:nickname_county = {
@@ -1002,6 +1008,14 @@ scripted_effect prevent_nickname_by_county_bribe_effect = {
 			modifier = nickname_county_bribe_modifier
 			years = 1
 		}
+	}
+}
+
+scripted_effect prevent_nickname_by_county_deceit_effect = {
+	add_prestige = major_prestige_loss
+	add_character_modifier = {
+		modifier = nickname_deceiver_modifier
+		years = 2
 	}
 }
 
@@ -1109,11 +1123,11 @@ ATHA_nickname.0100 = {
 				has_trait = calm
 			}
 			modifier = {
-				factor = 1.2
+				factor = 1.5
 				has_trait = vengeful
 			}
 			modifier = {
-				factor = 0.8
+				factor = 0.5
 				has_trait = compassionate
 			}
 			modifier = {
@@ -1121,7 +1135,123 @@ ATHA_nickname.0100 = {
 				has_trait = paranoid
 			}
 			modifier = {
+				factor = 1.5
+				has_trait = sadistic
+			}
+		}
+
+		prevent_nickname_by_county_punishment_effect = yes
+	}
+}
+
+# nick_the_clubfooted
+ATHA_nickname.0101 = {
+	type = character_event
+	title = ATHA_nickname.0101.t
+	desc = ATHA_nickname.0101.desc
+	theme = crown
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_clubfooted = yes
+	}
+
+	immediate = {
+		select_nickname_county_effect = yes
+		select_nickname_councillor_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0101.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = { # I am a terrible human being, so it is fair for me to be known for my bad qualities!
 				factor = 1.2
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_clubfooted }
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Spread lies.
+		name = ATHA_nickname.0101.b
+		custom_tooltip = ATHA_deceit_suppression_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = deceitful
+				NOR = {
+					has_trait = vengeful
+					has_trait = sadistic
+				}
+			}
+			modifier = { # Surely, they have to believe this!
+				factor = 1.2
+				has_trait = trusting
+			}
+			modifier = { # They make their own truths.
+				factor = 1.1
+				has_trait = arbitrary
+			}
+		}
+
+		prevent_nickname_by_county_deceit_effect = yes
+	}
+	option = { # Punish them!
+		name = ATHA_nickname.0101.c
+		custom_tooltip = ATHA_violent_suppression_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 1.5
 				has_trait = sadistic
 			}
 		}
