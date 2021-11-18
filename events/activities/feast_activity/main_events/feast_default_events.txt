@@ -313,6 +313,9 @@ feast_default.1002 = {
 				modifier = annoying_glutton_at_feast_opinion
 			}
 		}
+
+		# Complaining about food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -921,6 +924,9 @@ feast_default.1007 = {
 				ai_honor = 0.5
 			}
 		}
+		
+		# Clearly eating a lot of food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I'll eat them under the table!
@@ -952,6 +958,9 @@ feast_default.1007 = {
 				}
 			}
 		}
+		
+		# Clearly eating a LOT of food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_medium_increase }
 	}
 
 	after = {
@@ -2219,6 +2228,11 @@ feast_default.2001 = {
 				modifier = annoying_glutton_at_feast_opinion
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_decrease }
+		scope:glutton = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
+		}
 	}
 
 	option = { # Yeah, where's the food?!
@@ -2245,6 +2259,11 @@ feast_default.2001 = {
 				add = 100
 				stress >= high_medium_stress
 			}
+		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
+		scope:glutton = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 		}
 	}
 
@@ -5899,7 +5918,9 @@ feast_default.5004 = {
 			gluttonous = minor_stress_impact_gain
 			inappetetic = minor_stress_impact_loss
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Make yourself disappear
@@ -6026,6 +6047,8 @@ feast_default.5005 = {
 			modifier = feast_obsessed_with_garum_modifier
 			years = 10
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 }
 

@@ -130,6 +130,12 @@
 				base = feast_stress_loss_value
 			}
 		}
+		
+		# If the character is gluttonous, they will likely eat a ton during the feast making the nickname more applicable.
+		if = {
+			limit = { has_trait = gluttonous }
+			change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
+		}
 	}
 	
 	ai_potential = {

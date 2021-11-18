@@ -80,6 +80,10 @@ has_incorrect_nickname = {
 			has_nickname = nick_the_clubfooted
 			NOT = { can_get_nick_the_clubfooted = yes }
 		}
+		AND = {
+			has_nickname = nick_the_fat
+			NOT = { can_get_nick_the_fat = yes }
+		}
 	}
 } # TODO
 
@@ -101,4 +105,17 @@ can_get_nick_the_bastard = {
 
 can_get_nick_the_clubfooted = {
 	has_trait = clubfooted
+}
+
+can_get_nick_the_fat = {
+	trigger_if = {
+		limit = { has_variable = nick_the_fat_weight }
+		OR = {
+			AND = {
+				has_character_modifier = obese_modifier
+				var:nick_the_fat_weight >= 10
+			}
+			var:nick_the_fat_weight >= 30
+		}
+	}
 }

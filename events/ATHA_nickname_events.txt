@@ -995,6 +995,17 @@ scripted_effect select_nickname_county_effect = {
 	}
 }
 
+scripted_effect select_nickname_capital_effect = {
+	capital_province = {
+		county = {
+			save_scope_as = nickname_county
+		}
+		barony = {
+			save_scope_as = nickname_barony
+		}
+	}
+}
+
 scripted_effect select_nickname_councillor_effect = {
 	random_councillor = { # Used in localization.
 		save_scope_as = nickname_councillor
@@ -1029,6 +1040,17 @@ scripted_effect prevent_nickname_by_county_punishment_effect = {
 	}
 	add_dread = minor_dread_gain
 	add_piety = medium_piety_loss
+}
+
+scripted_effect prevent_nickname_by_county_imprison_effect = {
+	scope:nickname_county = {
+		add_county_modifier = {
+			modifier = nickname_county_imprison_modifier
+			years = 5
+		}
+	}
+	add_dread = minor_dread_gain
+	add_piety = minor_piety_loss
 }
 
 # nick_the_bastard
@@ -1087,13 +1109,19 @@ ATHA_nickname.0100 = {
 				has_trait = disputed_heritage
 			}
 		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			disputed_heritage = medium_stress_impact_gain
+		}
 
 		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_bastard }
 		add_prestige_level = -1
 	}
 	option = { # Bribe them to not use it anymore.
 		name = ATHA_nickname.0100.b
-		custom_tooltip = ATHA_bribery_suppression_tt
+		custom_tooltip = ATHA_nickname_bribery_suppression_tt
 		ai_chance = {
 			base = 12
 
@@ -1109,12 +1137,15 @@ ATHA_nickname.0100 = {
 				}
 			}
 		}
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+		}
 
 		prevent_nickname_by_county_bribe_effect = yes
 	}
 	option = { # Punish them!
 		name = ATHA_nickname.0100.c
-		custom_tooltip = ATHA_violent_suppression_tt
+		custom_tooltip = ATHA_nickname_violent_suppression_tt
 		ai_chance = {
 			base = 10
 
@@ -1138,6 +1169,12 @@ ATHA_nickname.0100 = {
 				factor = 1.5
 				has_trait = sadistic
 			}
+		}
+		stress_impact = {
+			vengeful = medium_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+			sadistic = medium_stress_impact_loss
+			paranoid = minor_stress_impact_loss
 		}
 
 		prevent_nickname_by_county_punishment_effect = yes
@@ -1201,10 +1238,18 @@ ATHA_nickname.0101 = {
 
 		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_clubfooted }
 		add_prestige = medium_prestige_loss
+
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			depressed_1 = minor_stress_impact_loss
+			depressed_genetic = minor_stress_impact_loss
+		}
 	}
 	option = { # Spread lies.
 		name = ATHA_nickname.0101.b
-		custom_tooltip = ATHA_deceit_suppression_tt
+		custom_tooltip = ATHA_nickname_deceit_suppression_tt
 		ai_chance = {
 			base = 10
 
@@ -1230,7 +1275,7 @@ ATHA_nickname.0101 = {
 	}
 	option = { # Punish them!
 		name = ATHA_nickname.0101.c
-		custom_tooltip = ATHA_violent_suppression_tt
+		custom_tooltip = ATHA_nickname_violent_suppression_tt
 		ai_chance = {
 			base = 10
 
@@ -1255,7 +1300,261 @@ ATHA_nickname.0101 = {
 				has_trait = sadistic
 			}
 		}
+		stress_impact = {
+			vengeful = medium_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+			sadistic = medium_stress_impact_loss
+			paranoid = minor_stress_impact_loss
+		}
 
 		prevent_nickname_by_county_punishment_effect = yes
 	}
 }
+
+# nick_the_dowry_bearer
+# ATHA_nickname.0102 = {
+
+# nick_the_eagle
+# ATHA_nickname.0103 = {
+
+# nick_the_young
+# ATHA_nickname.0104 = {
+
+# nick_the_short_lived
+# ATHA_nickname.0105 = {
+
+# nick_the_one_eyed
+# ATHA_nickname.0106 = {
+
+# nick_the_great
+# ATHA_nickname.0107 = {
+
+# nick_the_sacrificed
+# ATHA_nickname.0108 = {
+
+# nick_the_autocrat
+# ATHA_nickname.0109 = {
+
+# nick_the_autocrat - Transition from epithet to nickname.
+# ATHA_nickname.0110 = {
+
+# nick_the_benefactor
+# ATHA_nickname.0111 = {
+
+# nick_the_benefactor - Transition from epithet to nickname.
+# ATHA_nickname.0112 = {
+
+# nick_the_besieger
+# ATHA_nickname.0113 = {
+
+# nick_the_bold
+# ATHA_nickname.0114 = {
+
+# nick_the_builder
+# ATHA_nickname.0115 = {
+
+# nick_the_cruel
+# ATHA_nickname.0116 = {
+
+# nick_the_divine
+# ATHA_nickname.0117 = {
+
+# nick_the_divine - Transition from epithet to nickname.
+# ATHA_nickname.0118 = {
+
+# nick_the_devourer
+# ATHA_nickname.0119 = {
+
+# nick_the_flautist
+# ATHA_nickname.0120 = {
+
+# nick_the_fair
+# ATHA_nickname.0121 = {
+
+# nick_the_fat
+ATHA_nickname.0122 = {
+	type = character_event
+	title = ATHA_nickname.0122.t
+	desc = ATHA_nickname.0122.desc
+	theme = feast_activity
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_bastard = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.5
+			var:nick_the_fat_weight > 30
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_fat_weight > 40
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_fat_weight > 50
+		}
+	}
+
+	immediate = { select_nickname_capital_effect = yes }
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0122.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = { # I am a terrible human being, so of course I am a bastard!
+				factor = 1.2
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			depressed_1 = minor_stress_impact_loss
+			depressed_genetic = minor_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_fat }
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Throw them in jail.
+		name = ATHA_nickname.0122.b
+		custom_tooltip = ATHA_nickname_imprison_suppression_tt
+		ai_chance = {
+			base = 12
+
+			modifier = {
+				factor = 0.9
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = arbitrary
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = just
+			}
+		}
+		stress_impact = {
+			vengeful = medium_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+			arbitrary = minor_stress_impact_loss
+		}
+
+		prevent_nickname_by_county_imprison_effect = yes
+	}
+	option = { # Invite them for dinner!
+		name = ATHA_nickname.0122.c
+		custom_tooltip = ATHA_nickname_feast_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.2
+				OR = {
+					has_trait = reveler_1
+					has_trait = reveler_2
+					has_trait = reveler_3
+				}
+			}
+			modifier = {
+				factor = 1.2
+				OR = {
+					has_trait = gluttonous
+					has_trait = comfort_eater
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.8
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 0.1
+				has_trait = paranoid
+			}
+		}
+		stress_impact = {
+			reveler_1 = minor_stress_impact_loss
+			reveler_2 = minor_stress_impact_loss
+			reveler_3 = minor_stress_impact_loss
+			comfort_eater = minor_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+			stubborn = minor_stress_impact_loss
+			paranoid = major_stress_impact_gain
+		}
+
+		add_prestige = minor_prestige_loss
+		add_character_modifier = {
+			modifier = nickname_feasting_with_commoners_modifier
+			years = 3
+		}
+	}
+}
+
+# nick_the_flayer
+# ATHA_nickname.0123 = {
+
+# nick_the_father_loving
+# ATHA_nickname.0124 = {
+
+# nick_the_father_loving - Transition from epithet to nickname.
+# ATHA_nickname.0125 = {
