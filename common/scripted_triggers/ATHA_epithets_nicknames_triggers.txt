@@ -81,8 +81,23 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_clubfooted = yes }
 		}
 		AND = {
+			has_nickname = nick_the_fair
+			NOT = { can_get_nick_the_fair = yes }
+		}
+		AND = {
 			has_nickname = nick_the_fat
 			NOT = { can_get_nick_the_fat = yes }
+		}
+		AND = {
+			has_nickname = nick_the_poet
+			NOR = {
+				can_get_nick_the_poet_good = yes
+				can_get_nick_the_poet_bad = yes
+			}
+		}
+		AND = {
+			has_nickname = nick_the_young
+			NOT = { can_get_nick_the_young = yes }
 		}
 	}
 } # TODO
@@ -107,6 +122,10 @@ can_get_nick_the_clubfooted = {
 	has_trait = clubfooted
 }
 
+can_get_nick_the_fair = {
+	is_attractive_character_trigger = yes
+}
+
 can_get_nick_the_fat = {
 	trigger_if = {
 		limit = { has_variable = nick_the_fat_weight }
@@ -118,4 +137,36 @@ can_get_nick_the_fat = {
 			var:nick_the_fat_weight >= 30
 		}
 	}
+}
+
+can_get_nick_the_poet_bad = {
+	trigger_if = {
+		limit = { has_variable = nick_the_poet_bad_weight }
+		var:nick_the_poet_bad_weight >= 10
+		OR = {
+			NOT = { has_variable = nick_the_poet_good_weight }
+			trigger_if = {
+				limit = { has_variable = nick_the_poet_good_weight }
+				var:nick_the_poet_bad_weight > var:nick_the_poet_good_weight
+			}
+		}
+	}
+}
+
+can_get_nick_the_poet_good = {
+	trigger_if = {
+		limit = { has_variable = nick_the_poet_good_weight }
+		var:nick_the_poet_good_weight >= 10
+		OR = {
+			NOT = { has_variable = nick_the_poet_bad_weight }
+			trigger_if = {
+				limit = { has_variable = nick_the_poet_bad_weight }
+				var:nick_the_poet_good_weight > var:nick_the_poet_bad_weight
+			}
+		}
+	}
+}
+
+can_get_nick_the_young = {
+	NOT = { is_adult = yes }
 }

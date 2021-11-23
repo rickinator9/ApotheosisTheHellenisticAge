@@ -1012,6 +1012,64 @@ scripted_effect select_nickname_councillor_effect = {
 	}
 }
 
+scripted_effect select_vassal_effect = {
+	random_vassal = {
+		limit = { # Select a vassal with a capital that is close.
+			capital_province = {
+				squared_distance = { target = root.capital_province value <= squared_distance_small } # Roughly the distance the size of Wales
+			}
+		}
+		alternative_limit = { } # In crazy cases where the king does not have any vassals with capitals close by.
+
+		save_scope_as = nickname_vassal
+		capital_province = {
+			barony = { save_scope_as = nickname_vassal_barony }
+		}
+	}
+}
+
+scripted_effect select_independent_ruler_effect = {
+	random_independent_ruler = {
+		limit = {
+			NOT = { this = ROOT }
+		}
+
+		save_scope_as = nickname_other_ruler
+		capital_province = {
+			barony = { save_scope_as = nickname_other_ruler_barony }
+			county = { save_scope_as = nickname_other_ruler_county }
+		}
+	}
+}
+
+scripted_effect select_two_independent_rulers_effect = {
+	random_independent_ruler = {
+		limit = {
+			NOT = { this = ROOT }
+		}
+
+		save_scope_as = nickname_ruler_1
+		capital_province = {
+			barony = { save_scope_as = nickname_ruler_1_barony }
+			county = { save_scope_as = nickname_ruler_1_county }
+		}
+	}
+	random_independent_ruler = {
+		limit = {
+			NOR = {
+				this = ROOT
+				this = scope:nickname_ruler_1
+			}
+		}
+
+		save_scope_as = nickname_ruler_2
+		capital_province = {
+			barony = { save_scope_as = nickname_ruler_2_barony }
+			county = { save_scope_as = nickname_ruler_2_county }
+		}
+	}
+}
+
 scripted_effect prevent_nickname_by_county_bribe_effect = {
 	remove_short_term_gold = medium_gold_value
 	scope:nickname_county = {
@@ -1066,7 +1124,11 @@ ATHA_nickname.0100 = {
 		can_get_nick_the_bastard = yes
 	}
 
-	immediate = { select_nickname_county_effect = yes }
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_nickname_county_effect = yes
+	}
 
 	option = { # Accept the nickname.
 		name = ATHA_nickname.0100.a
@@ -1194,6 +1256,8 @@ ATHA_nickname.0101 = {
 	}
 
 	immediate = {
+		set_nickname_cooldown_effect = yes
+
 		select_nickname_county_effect = yes
 		select_nickname_councillor_effect = yes
 	}
@@ -1317,70 +1381,447 @@ ATHA_nickname.0101 = {
 # nick_the_eagle
 # ATHA_nickname.0103 = {
 
-# nick_the_young
-# ATHA_nickname.0104 = {
+# nick_the_fair
+ATHA_nickname.0104 = {
+	type = character_event
+	title = ATHA_nickname.0104.t
+	desc = ATHA_nickname.0104.desc
+	theme = feast_activity
+	left_portrait = root
+	right_portrait = scope:nickname_vassal
+
+	trigger = {
+		can_get_nick_the_fair = yes
+
+		# Additional requirements not included in the general trigger (to prevent the system from revoking the nickname):
+		NOT = { has_trait = leper }
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = { # This character is flawless in both face and body.
+			factor = 10
+			is_flawlessly_attractive_character_trigger = yes
+		}
+		modifier = { # This character has additional muscle tone on their already attractive body.
+			factor = 2
+			has_attractive_body_trigger = yes
+			has_trait = strong
+		}
+		modifier = { # Missing an eye will make a character's face less attractive.
+			factor = 0.75
+			has_attractive_face_trigger = yes
+			has_trait = one_eyed
+		}
+		modifier = { # Albinoism may be found unattractive by many.
+			factor = 0.75
+			has_trait = albino # Not specific to face only, as it may also create awkward situations of having a whiter skin among dark-skinned/tanned populations.
+		}
+		modifier = { # Obesity can make faces lose definition.
+			factor = 0.5
+			has_character_modifier = obese_modifier
+		}
+		modifier = { # The boils can be quite unsightly.
+			factor = 0.5
+			has_trait = lovers_pox
+		}
+
+		# Becomes less likely with age.
+		modifier = {
+			factor = 0.5
+			age >= 40
+		}
+		modifier = {
+			factor = 0.5
+			age >= 50
+		}
+		modifier = {
+			factor = 0.5
+			age >= 60
+		}
+
+		# Additional modifiers based on sexual success. The weight starts decently high as sex can be had with just the wife.
+		modifier = {
+			factor = 1.25
+			trigger_if = {
+				limit = { has_variable = nick_the_fair_weight }
+				var:nick_the_fair_weight >= 30
+			}
+		}
+		modifier = {
+			factor = 1.25
+			trigger_if = {
+				limit = { has_variable = nick_the_fair_weight }
+				var:nick_the_fair_weight >= 60
+			}
+		}
+		modifier = {
+			factor = 2
+			trigger_if = {
+				limit = { has_variable = nick_the_fair_weight }
+				var:nick_the_fair_weight >= 100
+			}
+		}
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_vassal_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0104.a
+		ai_chance = {
+			base = 10
+
+			modifier = { # People who do not like intimacy may not appreciate being known as a catch worldwide.
+				factor = 0.8
+				has_trait = chaste
+			}
+			modifier = { # Lusty people, however...
+				factor = 1.5
+				OR = {
+					has_trait = lustful
+					has_trait = rakish
+				}
+			}
+			modifier = { # Ambitious people will know that there are benefits to first impressions.
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = { # Shy people do not want much attention.
+				factor = 0.75
+				has_trait = shy
+			}
+			modifier = { # But may have to admit to the fact...
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = { # Humble people may not want to admit to their superior appearance.
+				factor = 0.75
+				has_trait = humble
+			}
+			modifier = { # Arrogant people will want to bask in it.
+				factor = 3
+				has_trait = arrogant
+			}
+			modifier = { # Paranoid people will know this could attract many who are envious.
+				factor = 0.5
+				has_trait = paranoid
+			}
+			modifier = { # A depressed person will never be able to believe it.
+				factor = 0.5
+				has_trait = depressed
+			}
+			modifier = { # A blind and depressed person will never be able to believe it.
+				factor = 0.5
+				has_trait = depressed
+				has_trait = blind
+			}
+			modifier = { # Unless beauty or physique is a virtue, zealous people would like to be known for their religious efforts.
+				factor = 0.75
+				has_trait = zealous
+				faith = { 
+					OR = {
+						trait_is_virtue = beauty_good
+						trait_is_virtue = physique_good
+					}
+				}
+			}
+		}
+		stress_impact = {
+			lustful = medium_stress_impact_loss
+			rakish = medium_stress_impact_loss
+			shy = medium_stress_impact_gain
+			honest = small_stress_impact_loss
+			humble = medium_stress_impact_gain
+			arrogant = major_stress_impact_loss
+			paranoid = medium_stress_impact_gain
+			depressed_1 = medium_stress_impact_gain
+			depressed_genetic = medium_stress_impact_gain
+		}
+	
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_fair }
+		add_prestige = medium_prestige_gain
+		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_gain }
+	}
+	option = { # Direct the attention onto the vassal instead. The vassal may perceive this as an insult.
+		name = ATHA_nickname.0104.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 2
+				has_trait = humble
+			}
+			modifier = { # Content to operate in the shadow of others.
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = generous
+			}
+			modifier = { # A gregarious character will use this opportunity to improve their opinion among others, but will be tactful enough to not insult them.
+				factor = 1.25
+				has_trait = gregarious
+			}
+			modifier = { # If they have the necessary social skills to recognise that this would insult the vassal, they will almost never say it. Unless the vassal is a rival of course!
+				factor = 0.25
+				scope:nickname_vassal = { has_trait = beauty_bad }
+				OR = {
+					has_trait = gregarious
+					has_trait = education_diplomacy_2
+					has_trait = education_diplomacy_3
+					has_trait = education_diplomacy_4
+				}
+				NOR = {
+					has_relation_rival = scope:nickname_vassal
+					has_relation_nemesis = scope:nickname_vassal
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				scope:nickname_vassal = { has_trait = beauty_bad }
+			}
+			custom_tooltip = ATHA_nickname_sarcastic_insult_tt
+
+			scope:nickname_vassal = {
+				add_opinion = {
+					modifier = insulted_opinion
+					target = root
+					years = 2
+				}
+			}
+
+			# If one is insulting a rival, they will derive pleasure from that.
+			if = {
+				limit = {
+					OR = {
+						has_relation_rival = scope:nickname_vassal
+						has_relation_nemesis = scope:nickname_vassal
+					}
+				}
+
+				add_stress = medium_stress_loss
+			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		} else = {
+			custom_tooltip = ATHA_nickname_humble_rejection_tt
+			scope:nickname_vassal = {
+				add_opinion = {
+					modifier = compliment_opinion
+					target = root
+					opinion = 20
+				}
+			}
+			add_character_modifier = {
+				modifier = nickname_humble_modifier
+				years = 5
+			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_illustrous CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
+		}
+
+		stress_impact = {
+			humble = major_stress_impact_loss
+			content = small_stress_impact_loss
+		}
+	}
+	option = { # Allude to the fateful demise of any previous conquests.
+		name = ATHA_nickname.0104.c
+		trigger = { has_trait = sadistic }
+		custom_tooltip = ATHA_nickname_unspeakable_acts_tt
+		ai_chance = {
+			base = 0
+
+			modifier = { # Does not like any conflict at all.
+				factor = 0.5
+				has_trait = craven
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					has_trait = lunatic
+					has_trait = possessed
+				}
+			}
+			modifier = { # A Weepy-Voiced Killer?
+				factor = 1.5
+				has_trait = contrite
+			}
+		}
+		stress_impact = {
+			craven = major_stress_impact_gain
+			sadistic = major_stress_impact_loss
+			contrite = medium_stress_impact_loss
+		}
+
+		trait = sadistic
+
+		add_prestige = medium_prestige_loss
+		add_character_modifier = {
+			modifier = nickname_skeletons_in_closet_modifier
+			years = 5
+		}
+	}
+	option = { # Loudly complain about the gathered crowd.
+		name = ATHA_nickname.0104.d
+		custom_tooltip = ATHA_nickname_inner_beauty_tt
+		ai_chance = {
+			base = 10
+
+			modifier = { # Does not like any conflict at all.
+				factor = 0.5
+				has_trait = craven
+			}
+			modifier = { # Does not like to talk, especially to large crowds.
+				factor = 0.5
+				has_trait = shy
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = { # Arrogant people love basking in the attention.
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.8
+				has_trait = calm
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = compassionate
+			}
+			modifier = { # Less control over the self.
+				factor = 1.2
+				has_trait = drunkard
+			}
+			modifier = { # This is a Karen.
+				factor = 2
+				has_trait = irritable
+			}
+		}
+		stress_impact = {
+			shy = major_stress_impact_gain
+			arrogant = major_stress_impact_gain
+			compassionate = small_stress_impact_gain
+			irritable = major_stress_impact_loss
+		}
+
+		add_prestige = medium_prestige_loss
+	}
+}
+
+# nick_the_young - Initial event triggered by the death of the ruler.
+ATHA_nickname.0105 = {
+	hidden = yes
+
+	trigger = {
+		is_allowed_nickname_trigger = yes
+		can_get_nick_the_young = yes
+	}
+
+	immediate = {
+		save_scope_as = nick_the_young_receiver
+		player_heir = {
+			trigger_event = {
+				id = ATHA_nickname.0106
+				days = { 14 30 }
+			}
+		}
+	}
+}
+
+# nick_the_young - Event for next heir.
+ATHA_nickname.0106 = {
+	type = character_event
+	title = ATHA_nickname.0106.t
+	desc = ATHA_nickname.0106.desc
+	theme = skull
+	left_portrait = root
+	right_portrait = scope:nick_the_young_receiver
+
+	immediate = {
+		select_nickname_capital_effect = yes
+
+		scope:nick_the_young_receiver = {
+			set_permanent_nickname_effect = { NICKNAME = nick_the_young }
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0106.a
+	}
+}
 
 # nick_the_short_lived
-# ATHA_nickname.0105 = {
-
-# nick_the_one_eyed
-# ATHA_nickname.0106 = {
-
-# nick_the_great
 # ATHA_nickname.0107 = {
 
-# nick_the_sacrificed
+# nick_the_one_eyed
 # ATHA_nickname.0108 = {
 
-# nick_the_autocrat
+# nick_the_great
 # ATHA_nickname.0109 = {
 
-# nick_the_autocrat - Transition from epithet to nickname.
+# nick_the_sacrificed
 # ATHA_nickname.0110 = {
 
-# nick_the_benefactor
+# nick_the_autocrat
 # ATHA_nickname.0111 = {
 
-# nick_the_benefactor - Transition from epithet to nickname.
+# nick_the_autocrat - Transition from epithet to nickname.
 # ATHA_nickname.0112 = {
 
-# nick_the_besieger
+# nick_the_benefactor
 # ATHA_nickname.0113 = {
 
-# nick_the_bold
+# nick_the_benefactor - Transition from epithet to nickname.
 # ATHA_nickname.0114 = {
 
-# nick_the_builder
+# nick_the_besieger
 # ATHA_nickname.0115 = {
 
-# nick_the_cruel
+# nick_the_bold
 # ATHA_nickname.0116 = {
 
-# nick_the_divine
+# nick_the_builder
 # ATHA_nickname.0117 = {
 
-# nick_the_divine - Transition from epithet to nickname.
+# nick_the_cruel
 # ATHA_nickname.0118 = {
 
-# nick_the_devourer
+# nick_the_divine
 # ATHA_nickname.0119 = {
 
-# nick_the_flautist
+# nick_the_divine - Transition from epithet to nickname.
 # ATHA_nickname.0120 = {
 
-# nick_the_fair
+# nick_the_devourer
 # ATHA_nickname.0121 = {
 
+# nick_the_flautist
+# ATHA_nickname.0122 = {
+	
 # nick_the_fat
-ATHA_nickname.0122 = {
+ATHA_nickname.0124 = {
 	type = character_event
-	title = ATHA_nickname.0122.t
-	desc = ATHA_nickname.0122.desc
+	title = ATHA_nickname.0124.t
+	desc = ATHA_nickname.0124.desc
 	theme = feast_activity
 	left_portrait = root
 
 	trigger = {
-		can_get_nick_the_bastard = yes
+		can_get_nick_the_fat = yes
 	}
 
 	weight_multiplier = {
@@ -1400,10 +1841,14 @@ ATHA_nickname.0122 = {
 		}
 	}
 
-	immediate = { select_nickname_capital_effect = yes }
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_nickname_capital_effect = yes
+	}
 
 	option = { # Accept the nickname.
-		name = ATHA_nickname.0122.a
+		name = ATHA_nickname.0124.a
 		ai_chance = {
 			base = 10
 
@@ -1451,7 +1896,7 @@ ATHA_nickname.0122 = {
 		add_prestige = medium_prestige_loss
 	}
 	option = { # Throw them in jail.
-		name = ATHA_nickname.0122.b
+		name = ATHA_nickname.0124.b
 		custom_tooltip = ATHA_nickname_imprison_suppression_tt
 		ai_chance = {
 			base = 12
@@ -1495,7 +1940,7 @@ ATHA_nickname.0122 = {
 		prevent_nickname_by_county_imprison_effect = yes
 	}
 	option = { # Invite them for dinner!
-		name = ATHA_nickname.0122.c
+		name = ATHA_nickname.0124.c
 		custom_tooltip = ATHA_nickname_feast_tt
 		ai_chance = {
 			base = 10
@@ -1551,10 +1996,488 @@ ATHA_nickname.0122 = {
 }
 
 # nick_the_flayer
-# ATHA_nickname.0123 = {
+# ATHA_nickname.0125 = {
 
 # nick_the_father_loving
-# ATHA_nickname.0124 = {
+# ATHA_nickname.0126 = {
 
 # nick_the_father_loving - Transition from epithet to nickname.
-# ATHA_nickname.0125 = {
+# ATHA_nickname.0127 = {
+
+# nick_the_gardener
+# ATHA_nickname.0128 = {
+
+# nick_the_godlike
+# ATHA_nickname.0129 = {
+
+# nick_the_good
+# ATHA_nickname.0130 = {
+
+# nick_the_hawk
+# ATHA_nickname.0131 = {
+
+# nick_the_hunter
+# ATHA_nickname.0132 = {
+
+# nick_the_illustrious
+# ATHA_nickname.0133 = {
+
+# nick_the_illustrious - Transition from epithet to nickname.
+# ATHA_nickname.0134 = {
+
+# nick_the_invincible
+# ATHA_nickname.0135 = {
+
+# nick_the_just
+# ATHA_nickname.0136 = {
+
+# nick_the_just - Transition from epithet to nickname.
+# ATHA_nickname.0137 = {
+
+# nick_the_lame
+# ATHA_nickname.0138 = {
+
+# nick_the_mad
+# ATHA_nickname.0139 = {
+
+# nick_the_mother_loving
+# ATHA_nickname.0140 = {
+
+# nick_the_mother_loving - Transition from epithet to nickname.
+# ATHA_nickname.0141 = {
+
+# nick_the_mindbreaker
+# ATHA_nickname.0142 = {
+
+# nick_the_overpromiser
+# ATHA_nickname.0143 = {
+
+# nick_the_pious
+# ATHA_nickname.0144 = {
+
+# nick_the_pious - Transition from epithet to nickname.
+# ATHA_nickname.0145 = {
+
+# nick_the_poet - Bad
+ATHA_nickname.0146 = { 
+	type = character_event
+	title = ATHA_nickname.0146.t
+	desc = ATHA_nickname.0146.desc
+	theme = feast_activity
+	left_portrait = root
+	right_portrait = scope:nickname_councillor
+
+	trigger = {
+		can_get_nick_the_poet_bad = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 2
+			has_trait = poet
+		}
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_nickname_councillor_effect = yes
+		select_independent_ruler_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0146.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = { # I am a terrible human being, so of course I should be known for my bad poetry!
+				factor = 1.2
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			depressed_1 = minor_stress_impact_loss
+			depressed_genetic = minor_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet }
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Quit poetry.
+		name = ATHA_nickname.0146.b
+		custom_tooltip = ATHA_nickname_abandon_poetry_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.75
+				has_trait = calm
+			}
+			modifier = {
+				factor = 2
+				has_trait = lazy
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = impatient
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = patient
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = poet
+			}
+		}
+		stress_impact = {
+			calm = minor_stress_impact_gain
+			lazy = medium_stress_impact_gain
+			impatient = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+			patient = medium_stress_impact_gain
+		}
+
+		if = {
+			limit = { has_trait = poet }
+
+			remove_trait = poet
+			add_stress = major_stress_impact_gain
+		} else = {
+			add_stress = medium_stress_impact_gain
+		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_poet_bad AMOUNT = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_poet_good AMOUNT = nickname_weight_large_decrease }
+	}
+	option = { # Invite the actors to your court.
+		name = ATHA_nickname.0146.c
+		custom_tooltip = ATHA_nickname_invite_play_peaceful_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				OR = {
+					has_trait = reveler_1
+					has_trait = reveler_2
+					has_trait = reveler_3
+				}
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0
+				has_trait = vengeful
+			}
+		}
+		stress_impact = {
+			reveler_1 = medium_stress_impact_loss
+			reveler_2 = medium_stress_impact_loss
+			reveler_3 = medium_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			paranoid = minor_stress_impact_gain
+			greedy = medium_stress_impact_gain
+			vengeful = major_stress_impact_gain
+		}
+
+		add_gold = minor_gold_loss
+		add_character_modifier = {
+			modifier = nickname_can_take_a_joke_modifier
+			years = 2
+		}
+	}
+	option = { # Invite the actors to your court to make them dissapear.
+		name = ATHA_nickname.0146.d
+		custom_tooltip = ATHA_nickname_invite_play_sadistic_tt
+		ai_chance = {
+			base = 15
+
+			modifier = {
+				factor = 2
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 2
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+		}
+		stress_impact = {
+			sadistic = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+			vengeful = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			greedy = medium_stress_impact_gain
+		}
+
+		add_gold = minor_gold_loss
+		add_dread = 5
+		add_character_modifier = {
+			modifier = nickname_mysterious_dissapearance_modifier
+			years = 5
+		}
+	}
+}
+
+# nick_the_poet - Good
+ATHA_nickname.0147 = { 
+	type = character_event
+	title = ATHA_nickname.0147.t
+	desc = ATHA_nickname.0147.desc
+	theme = feast_activity
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_poet_good = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 2
+			has_trait = poet
+		}
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_two_independent_rulers_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0147.a
+		ai_chance = {
+			base = 10
+
+			modifier = { # Likes being the center of attention.
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = { # Hates being the center of attention.
+				factor = 0.5
+				has_trait = shy
+			}
+			modifier = {
+				factor = 2
+				has_trait = poet
+			}
+			modifier = { # The world should be exposed to my poetry without price.
+				factor = 1.5
+				has_trait = generous
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			shy = medium_stress_impact_gain
+			poet = major_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet }
+		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_gain }
+	}
+	option = { # Sell poetry for gold.
+		name = ATHA_nickname.0147.b
+		custom_tooltip = ATHA_nickname_sell_poems_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = impatient
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = generous
+			}
+		}
+		stress_impact = {
+			greedy = major_stress_impact_loss
+			impatient = minor_stress_impact_loss
+			generous = medium_stress_impact_gain
+		}
+
+		add_gold = medium_gold_value
+		add_character_modifier = {
+			modifier = nickname_selling_poems_modifier
+			years = 5
+		}
+	}
+	option = { # Use poetry to pursue political goals.
+		name = ATHA_nickname.0147.c
+		custom_tooltip = ATHA_nickname_political_poems_tt
+		ai_chance = {
+			base = 10
+			
+			modifier = {
+				factor = 2
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = impatient
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+		}
+		stress_impact = {
+			ambitious = major_stress_impact_loss
+			diligent = medium_stress_impact_loss
+			humble = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_political_poems_modifier
+			years = 5
+		}
+	}
+}
+
+# nick_the_saviour
+# ATHA_nickname.0148 = {
+
+# nick_the_saviour - Transition from epithet to nickname.
+# ATHA_nickname.0149 = {
+
+# nick_the_scholar
+# ATHA_nickname.0150 = {
+
+# nick_the_sibling_loving
+# ATHA_nickname.0151 = {
+
+# nick_the_sibling_loving - Transition from epithet to nickname.
+# ATHA_nickname.0152 = {
+
+# nick_the_small
+# ATHA_nickname.0153 = {
+
+# nick_the_smelly
+# ATHA_nickname.0154 = {
+
+# nick_the_thin
+# ATHA_nickname.0155 = {
+
+# nick_the_ugly
+# ATHA_nickname.0156 = {
+
+# nick_the_untimely
+# ATHA_nickname.0157 = {
+
+# nick_the_victor
+# ATHA_nickname.0158 = {
+
+# nick_the_victor - Transition from epithet to nickname.
+# ATHA_nickname.0159 = {
+
+# nick_the_victorious
+# ATHA_nickname.0160 = {
+
+# nick_the_victorious - Transition from epithet to nickname.
+# ATHA_nickname.0161 = {
+
+# nick_the_wealthy
+# ATHA_nickname.0162 = {
+
+# nick_the_wealthy - Transition from epithet to nickname.
+# ATHA_nickname.0163 = {
+
+# nick_the_well_born
+# ATHA_nickname.0164 = {
+
+# nick_the_well_born - Transition from epithet to nickname.
+# ATHA_nickname.0165 = {
+
+# nick_the_wise
+# ATHA_nickname.0166 = {

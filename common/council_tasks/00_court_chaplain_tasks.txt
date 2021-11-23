@@ -854,6 +854,18 @@ task_fabricate_claim = {
 				desc = COURT_CHAPLAIN_FABRICATE_CLAIM_INNOVATION_BONUS_LAND_GRANTS
 			}
 		}
+
+		# ATHA nickname modifier
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+			}
+			add = {
+				value = scope:councillor.spymaster_find_secrets_nickname_political_poems_modifier_bonus
+				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+			}
+		}
+
 		if = {
 			limit = {
 				exists = scope:county

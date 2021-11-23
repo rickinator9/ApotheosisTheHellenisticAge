@@ -499,6 +499,17 @@ task_integrate_title = {
 				desc = INTEGRATE_TITLE_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
+
+		# ATHA nickname modifier
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+			}
+			add = {
+				value = scope:councillor.chancellor_integrate_title_nickname_political_poems_modifier_bonus
+				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+			}
+		}
 	}
 
 	on_monthly_county = {
