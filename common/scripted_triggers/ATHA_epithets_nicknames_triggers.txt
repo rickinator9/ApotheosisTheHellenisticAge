@@ -118,6 +118,14 @@ can_get_nick_the_bastard = {
 	}
 }
 
+can_get_nick_the_bold = {
+	NOT = { has_trait = craven }
+	trigger_if = {
+		limit = { has_variable = nick_the_bold_weight }
+		var:nick_the_bold_weight >= 30
+	}
+}
+
 can_get_nick_the_clubfooted = {
 	has_trait = clubfooted
 }

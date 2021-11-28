@@ -1792,7 +1792,158 @@ ATHA_nickname.0106 = {
 # ATHA_nickname.0115 = {
 
 # nick_the_bold
-# ATHA_nickname.0116 = {
+ATHA_nickname.0116 = {
+	type = character_event
+	title = ATHA_nickname.0116.t
+	desc = ATHA_nickname.0116.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_bold = yes
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.5
+			has_trait = brave
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = reckless
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = impatient
+		}
+		modifier = {
+			factor = 1.1
+			var:nick_the_bold_weight > 30
+		}
+		modifier = {
+			factor = 1.2
+			var:nick_the_bold_weight > 40
+		}
+		modifier = {
+			factor = 1.3
+			var:nick_the_bold_weight > 50
+		}
+		modifier = {
+			factor = 1.4
+			var:nick_the_bold_weight > 60
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_bold_weight > 70
+		}
+		modifier = {
+			factor = 2
+			var:nick_the_bold_weight > 100
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0116.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 2
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = aggressive_attacker
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = reckless
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = calm
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = patient
+			}
+		}
+		stress_impact = {
+			brave = medium_stress_impact_loss
+			arrogant = medium_stress_impact_loss
+			reckless = minor_stress_impact_loss
+			content = minor_stress_impact_gain
+			humble = medium_stress_impact_gain
+			patient = medium_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_bold }
+		add_prestige = major_prestige_gain
+	}
+	option = { # I am getting too old for this.
+		name = ATHA_nickname.0116.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = calm
+			}
+			modifier = {
+				factor = 2
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = lazy
+			}
+			modifier = {
+				factor = 1.25
+				age >= 45
+			}
+			modifier = {
+				factor = 1.5
+				age >= 50
+			}
+			modifier = {
+				factor = 2
+				age >= 60
+			}
+			modifier = {
+				factor = 3
+				age >= 70
+			}
+		}
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			reckless = minor_stress_impact_gain
+			calm = minor_stress_impact_loss
+			content = medium_stress_impact_loss
+			lazy = medium_stress_impact_loss
+		}
+
+		add_prestige = medium_prestige_loss
+	}
+}
 
 # nick_the_builder
 # ATHA_nickname.0117 = {

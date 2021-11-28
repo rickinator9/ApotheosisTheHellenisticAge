@@ -247,6 +247,10 @@
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -741,6 +745,10 @@ religious_war = {
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1253,6 +1261,10 @@ major_religious_war = {
 	on_declaration = {
 		on_declared_war = yes
 		scope:attacker = { add_character_flag = declared_major_religious_war_flag }
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1566,6 +1578,10 @@ excommunication_war = {
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1888,6 +1904,10 @@ undirected_great_holy_war = {
 		}
 
 		debug_log = undirected_ghw_debug_loc
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -2601,6 +2621,10 @@ directed_great_holy_war = {
 		on_declared_war = yes
 
 		debug_log = directed_ghw_debug_loc
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
