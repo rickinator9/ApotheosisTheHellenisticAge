@@ -1768,7 +1768,231 @@ ATHA_nickname.0106 = {
 # ATHA_nickname.0107 = {
 
 # nick_the_one_eyed
-# ATHA_nickname.0108 = {
+ATHA_nickname.0108 = {
+	type = character_event
+	title = ATHA_nickname.0108.t
+	desc = ATHA_nickname.0108.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_one_eyed = yes
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	option = { # Accept the nickname (flagellant).
+		name = ATHA_nickname.0108.a_flagellant
+		trigger = {
+			has_character_flag = put_out_own_eye
+		}
+		ai_chance = { # Proof of piety.
+			base = 10
+
+			modifier = {
+				factor = 10
+				has_trait = flagellant
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 2
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = cynical
+			}
+		}
+		stress_impact = {
+			flagellant = massive_stress_impact_loss
+			zealous = medium_stress_impact_loss
+			cynical = medium_stress_impact_gain
+		}
+		trait = flagellant
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_one_eyed }
+		add_piety = medium_piety_gain
+	}
+	option = { # Accept the nickname (non-flagellant).
+		name = ATHA_nickname.0108.a
+		trigger = {
+			NOT = { has_character_flag = put_out_own_eye } 
+		}
+		ai_chance = { # Proof of bravery in battle.
+			base = 10
+
+			modifier = {
+				factor = 2
+				OR = {
+					has_trait = brave
+					AND = { # The character may want to adopt the nickname if it speaks against their cowardice.
+						has_trait = craven
+						faith = { trait_is_sin = craven }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = education_martial
+			}
+		}
+		stress_impact = {
+			brave = medium_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_one_eyed }
+	}
+	option = { # I took things too far (flagellant)
+		name = ATHA_nickname.0108.b_flagellant
+		trigger = {
+			has_character_flag = put_out_own_eye
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = fickle
+			}
+			modifier = {
+				factor = 0.8
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0
+				has_trait = flagellant
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = zealous
+			}
+		}
+		stress_impact = {
+			calm = medium_stress_impact_loss
+			flagellant = major_stress_impact_gain
+			zealous = medium_stress_impact_gain
+			cynical = medium_stress_impact_loss
+		}
+		trait = flagellant
+
+		if = {
+			limit = { has_trait = flagellant }
+			remove_trait = flagellant
+		}
+
+		add_character_modifier = {
+			modifier = nickname_regrets_eye_flagellation_modifier
+			years = 2
+		}
+	}
+	option = { # Threaten (non-flagellant)
+		name = ATHA_nickname.0108.b
+		trigger = {
+			NOT = { has_character_flag = put_out_own_eye } 
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = education_intrigue
+			}
+		}
+		stress_impact = {
+			wrathful = minor_stress_impact_loss
+			vengeful = medium_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+			brave = medium_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_eye_gouging_threats_modifier
+			years = 2
+		}
+	}
+	option = { # Complain (both)
+		name = ATHA_nickname.0108.c
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = { # May realize the effects on their chances with the opposite sex.
+				factor = 1.2
+				has_trait = lustful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = just
+			}
+		}
+		if = {
+			limit = { has_character_flag = put_out_own_eye }
+			stress_impact = {
+				arrogant = medium_stress_impact_loss
+				flagellant = major_stress_impact_gain
+				zealous = medium_stress_impact_gain
+				cynical = medium_stress_impact_loss
+			}
+		} else = {
+			stress_impact = {
+				arrogant = medium_stress_impact_loss
+				brave = medium_stress_impact_gain
+			}
+		}
+
+		add_gold = minor_gold_loss
+		add_prestige = minor_prestige_loss
+		add_piety = minor_piety_loss
+	}
+}
 
 # nick_the_great
 # ATHA_nickname.0109 = {
