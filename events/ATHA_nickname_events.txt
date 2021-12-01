@@ -2182,7 +2182,288 @@ ATHA_nickname.0116 = {
 # ATHA_nickname.0120 = {
 
 # nick_the_devourer
-# ATHA_nickname.0121 = {
+ATHA_nickname.0121 = {
+	type = character_event
+	title = ATHA_nickname.0121.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ATHA_nickname.0121.desc_good
+				trigger = {
+					faith = { 
+						OR = {
+							trait_is_virtue = cannibal
+							has_doctrine = tenet_ritual_cannibalism
+						}
+					}
+				}
+			}
+			desc = ATHA_nickname.0121.desc_bad
+		}
+	}
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_devourer = yes
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0121.a_good
+		trigger = {
+			faith = { 
+				OR = {
+					trait_is_virtue = cannibal
+					has_doctrine = tenet_ritual_cannibalism
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = just
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = gluttonous
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			just = medium_stress_impact_gain
+			gluttonous = medium_stress_impact_loss
+			zealous = medium_stress_impact_loss
+			compassionate = major_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_devourer }
+		add_prestige = medium_piety_gain
+	}
+	option = { # Accept the nickname
+		name = ATHA_nickname.0121.a_bad
+		trigger = {
+			faith = { 
+				NOR = {
+					trait_is_virtue = cannibal
+					has_doctrine = tenet_ritual_cannibalism
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = just 
+			}
+			modifier = {
+				factor = 2
+				has_trait = gluttonous
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = zealous
+				faith = { trait_is_sin = cannibal }
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = comfort_eater
+			}
+		}
+		stress_impact = {
+			just = major_stress_impact_gain
+			gluttonous = major_stress_impact_loss
+			zealous = major_stress_impact_gain
+			compassionate = major_stress_impact_gain
+			comfort_eater = medium_stress_impact_gain
+		}
+
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Is it really right to eat people?
+		name = ATHA_nickname.0121.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = fickle
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 2
+				has_trait = just
+			}
+			modifier = {
+				factor = 2
+				has_trait = zealous
+				faith = { trait_is_sin = cannibal }
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = zealous
+				faith = { trait_is_virtue = cannibal }
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = sadistic
+			}
+		}
+		stress_impact = {
+			base = major_stress_impact_gain
+			stubborn = minor_stress_impact_gain
+			just = major_stress_impact_loss
+			compassionate = medium_stress_impact_loss
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+				faith = { trait_is_sin = cannibal }
+			}
+			stress_impact = { zealous = medium_stress_impact_loss }
+			add_piety = minor_piety_gain
+		} else_if = {
+			limit = {
+				has_trait = zealous
+				faith = { trait_is_virtue = cannibal }
+			}
+			stress_impact = { zealous = medium_stress_impact_gain }
+			add_piety = minor_piety_loss
+		}
+
+		remove_trait = cannibal
+	}
+	option = { # Maybe I should ease up on meat. I am developing a belly...
+		name = ATHA_nickname.0121.c
+		trigger = {
+			OR = {
+				NOT = { current_weight < 0 }
+				has_trait = lunatic
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.75
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = lazy
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_trait = gluttonous
+					has_trait = comfort_eater
+				}
+			}
+			modifier = {
+				factor = 2
+				has_character_modifier = obese_modifier
+				OR = {
+					has_trait = arrogant
+					NOT = { has_trait = gluttonous }
+				}
+			}
+		}
+		stress_impact = {
+			base = minor_stress_impact_gain
+			content = minor_stress_impact_gain
+			lazy = minor_stress_impact_gain
+			arrogant = medium_stress_impact_loss
+			gluttonous = medium_stress_impact_gain
+			comfort_eater = medium_stress_impact_gain
+		}
+		if = {
+			limit = { has_trait = comfort_eater }
+			remove_trait = comfort_eater
+		} else_if = {
+			limit = { has_trait = gluttonous }
+			remove_trait = gluttonous
+		} else_if = {
+			limit = { 
+				NOT = { has_trait = temperate }
+			}
+			add_trait = temperate
+		} else_if = {
+			limit = { has_trait = temperate }
+			add_trait = inappetetic
+		}
+
+		change_current_weight = -5
+	}
+}
 
 # nick_the_flautist
 # ATHA_nickname.0122 = {
