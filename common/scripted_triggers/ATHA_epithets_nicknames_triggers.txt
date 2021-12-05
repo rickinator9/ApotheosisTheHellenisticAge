@@ -97,6 +97,10 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_fat = yes }
 		}
 		AND = {
+			has_nickname = nick_the_mad
+			NOT = { can_get_nick_the_mad = yes }
+		}
+		AND = {
 			has_nickname = nick_the_one_eyed
 			NOT = { can_get_nick_the_one_eyed = yes }
 		}
@@ -160,6 +164,13 @@ can_get_nick_the_fat = {
 			}
 			var:nick_the_fat_weight >= 30
 		}
+	}
+}
+
+can_get_nick_the_mad = {
+	trigger_if = {
+		limit = { has_variable = nick_the_mad_weight }
+		var:nick_the_mad_weight >= 30
 	}
 }
 
