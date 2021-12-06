@@ -112,6 +112,13 @@ has_incorrect_nickname = {
 			}
 		}
 		AND = {
+			has_nickname = nick_the_victorious
+			trigger_if = {
+				limit = { has_variable = net_battle_wins }
+				var:net_battle_wins <= 0
+			}
+		}
+		AND = {
 			has_nickname = nick_the_young
 			NOT = { can_get_nick_the_young = yes }
 		}
@@ -203,6 +210,13 @@ can_get_nick_the_poet_good = {
 				var:nick_the_poet_good_weight > var:nick_the_poet_bad_weight
 			}
 		}
+	}
+}
+
+can_get_nick_the_victorious = {
+	trigger_if = {
+		limit = { has_variable = net_battle_wins }
+		var:net_battle_wins >= 10
 	}
 }
 

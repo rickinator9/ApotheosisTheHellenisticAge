@@ -3461,3 +3461,43 @@ ATHA_nickname.0147 = {
 
 # nick_the_wise
 # ATHA_nickname.0166 = {
+
+# Add 1 battle win to the battle counter.
+ATHA_nickname.0300 = {
+	scope = combat_side
+	hidden = yes
+
+	immediate = {
+		side_commander = {
+			if = {
+				limit = {
+					NOT = { has_variable = net_battle_wins }
+				}
+
+				set_variable = { name = net_battle_wins value = 1 }
+			} else = {
+				change_variable = { name = net_battle_wins add = 1 }
+			}
+		}
+	}
+}
+
+# Add 1 battle loss to the battle counter.
+ATHA_nickname.0301 = {
+	scope = combat_side
+	hidden = yes
+
+	immediate = {
+		side_commander = {
+			if = {
+				limit = {
+					NOT = { has_variable = net_battle_wins }
+				}
+
+				set_variable = { name = net_battle_wins value = -1 }
+			} else = {
+				change_variable = { name = net_battle_wins add = -1 }
+			}
+		}
+	}
+}
