@@ -1218,16 +1218,6 @@ humsacd_a_hof_effect = {
 			save_scope_as = sacrificed_hof
 			# Up fervour.
 			faith = { change_fervor = hof_humsacd_fervour_gain }
-			# Martyr the HoF explicitly if possible.
-			if = {
-				limit = {
-					OR = {
-						has_bad_nickname = yes
-						has_any_nickname = no
-					}
-				}
-				give_nickname = nick_the_martyr
-			}
 		}
 		# Inform players of the consequences.
 		## Scope:sacrificer is now cheaper to holy war if they're a separate faith.

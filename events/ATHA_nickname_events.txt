@@ -2064,7 +2064,43 @@ ATHA_nickname.0108 = {
 # ATHA_nickname.0109 = {
 
 # nick_the_sacrificed
-# ATHA_nickname.0110 = {
+# Triggered from events.
+ATHA_nickname.0110 = {
+	type = character_event
+	title = ATHA_nickname.0110.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_doctrine_parameter = human_sacrifice_active }
+				desc = ATHA_nickname.0110.desc_good
+			}
+			desc = ATHA_nickname.0110.desc_bad
+		}
+	}
+	theme = death
+	left_portrait = root
+
+	immediate = {
+		show_as_tooltip = {
+			scope:nickname_the_sacrificed_receiver = { 
+				set_permanent_nickname_effect = { NICKNAME = nick_the_sacrificed }
+			}
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = {
+			trigger = { has_doctrine_parameter = human_sacrifice_active }
+			text = ATHA_nickname.0110.a_good
+		}
+		name = {
+			trigger = {
+				NOT = { has_doctrine_parameter = human_sacrifice_active }
+			}
+			text = ATHA_nickname.0110.a_good
+		}
+	}
+}
 
 # nick_the_autocrat
 # ATHA_nickname.0111 = {

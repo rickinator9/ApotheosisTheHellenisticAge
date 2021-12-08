@@ -341,6 +341,30 @@ set_permanent_nickname_effect = {
 
 # NICKNAME-SPECIFIC EFFECTS
 
+# Has a random chance to assign nickname nick_the_sacrificed to the currently scoped character.
+# KILLER: The character who killed the character in the current scope.
+possibly_assign_nick_the_sacrificed_effect = {
+	hidden_effect = {
+		if = {
+			limit = { can_get_nick_the_sacrificed = yes }
+	
+			random = {
+				chance = 1
+	
+				$KILLER$ = { save_scope_as = nick_the_sacrificed_killer }
+				save_scope_as = nick_the_sacrificed_receiver
+				set_permanent_nickname_effect = { NICKNAME = nick_the_sacrificed }
+				every_close_family_member = {
+					trigger_event = {
+						id = ATHA_nickname.0110
+						days = { 4 14 }
+					}
+				}
+			}
+		}
+	}
+}
+
 # Changes the weight of nick_the_bold based on the strength ratio between the current character
 # and TARGET.
 change_nick_the_bold_based_on_strength_ratio = {
