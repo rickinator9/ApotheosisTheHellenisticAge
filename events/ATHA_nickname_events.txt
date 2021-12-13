@@ -3031,10 +3031,163 @@ ATHA_nickname.0135 = {
 }
 
 # nick_the_just
-# ATHA_nickname.0136 = {
+ATHA_nickname.0136 = {
+	type = character_event
+	title = ATHA_nickname.0136.t
+	desc = ATHA_nickname.0136.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_just = yes
+		NOT = { has_nickname = epithet_the_just }
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0136.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.5
+				has_bad_nickname = yes
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = just
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = zealous
+				faith = { trait_is_virtue = just }
+			}
+		}
+		stress_impact = {
+			just = minor_stress_impact_loss
+			arbitrary = medium_stress_impact_gain
+			humble = minor_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_just }
+		add_prestige = medium_prestige_gain
+	}
+	option = { # Humble rejection.
+		name = ATHA_nickname.0136.b
+		trait = humble
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = just
+			}
+		}
+		stress_impact = {
+			humble = medium_stress_impact_loss
+			just = medium_stress_impact_loss
+			arbitrary = medium_stress_impact_gain
+		}
+
+		add_piety = medium_piety_gain
+	}
+	option = { # Arbitary approach.
+		name = ATHA_nickname.0136.c
+		trait = arbitrary
+		ai_chance = {
+			base = 10
+			
+			modifier = {
+				factor = 1.25
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = fickle
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arbitrary
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = zealous
+				faith = { trait_is_virtue = arbitary }
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = callous
+			}
+		}
+		stress_impact = {
+			vengeful = minor_stress_impact_loss
+			arbitrary = medium_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			just = medium_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+		}
+
+		if = {
+			limit = { has_trait = just }
+
+			remove_trait = just
+		} else_if = {
+			limit = {
+				NOT = { has_trait = arbitrary }
+			}
+
+			random = {
+				chance = 10
+				add_trait = arbitrary
+			}
+		}
+	}
+}
 
 # nick_the_just - Transition from epithet to nickname.
-# ATHA_nickname.0137 = {
+ATHA_nickname.0137 = {
+	hidden = yes
+
+	trigger = {
+		can_get_nick_the_just = yes
+		has_nickname = epithet_the_just
+	}
+
+	immediate = {
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_just }
+	}
+}
 
 # nick_the_lame
 # ATHA_nickname.0138 = {
@@ -3722,10 +3875,141 @@ ATHA_nickname.0147 = {
 # ATHA_nickname.0159 = {
 
 # nick_the_victorious
-# ATHA_nickname.0160 = {
+ATHA_nickname.0160 = {
+	type = character_event
+	title = ATHA_nickname.0160.t
+	desc = ATHA_nickname.0160.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_victorious = yes
+		NOT = { has_nickname = epithet_the_victorious }
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0160.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = education_martial
+			}
+		}
+		stress_impact = {
+			brave = minor_stress_impact_loss
+			honest = minor_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			education_martial_1 = minor_stress_impact_loss
+			education_martial_2 = minor_stress_impact_loss
+			education_martial_3 = minor_stress_impact_loss
+			education_martial_4 = minor_stress_impact_loss
+			content = minor_stress_impact_gain
+			humble = medium_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_victorious }
+		add_prestige = medium_prestige_gain
+	}
+	option = { # Humbly refuse.
+		name = ATHA_nickname.0160.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = patient
+			}
+		}
+		stress_impact = {
+			calm = minor_stress_impact_loss
+			content = minor_stress_impact_loss
+			humble = medium_stress_impact_loss
+			brave = minor_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			education_martial_1 = minor_stress_impact_gain
+			education_martial_2 = minor_stress_impact_gain
+			education_martial_3 = minor_stress_impact_gain
+			education_martial_4 = minor_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_humble_in_victory_modifier
+			years = 5
+		}
+		add_prestige = medium_prestige_gain
+
+		if = {
+			limit = { has_trait = arrogant }
+			add_trait = arrogant
+		} else_if = {
+			limit = {
+				NOT = { has_trait = humble }
+			}
+
+			random = {
+				chance = 10
+				add_trait = humble
+			}
+		}
+	}
+}
 
 # nick_the_victorious - Transition from epithet to nickname.
-# ATHA_nickname.0161 = {
+ATHA_nickname.0161 = {
+	hidden = yes
+
+	trigger = {
+		can_get_nick_the_victorious = yes
+		has_nickname = epithet_the_victorious
+	}
+
+	immediate = {
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_victorious }
+	}
+}
 
 # nick_the_wealthy
 # ATHA_nickname.0162 = {

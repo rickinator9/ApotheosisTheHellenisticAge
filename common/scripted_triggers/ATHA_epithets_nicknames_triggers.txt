@@ -102,6 +102,10 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_invincible = yes }
 		}
 		AND = {
+			has_nickname = nick_the_just
+			NOT = { can_get_nick_the_just = yes }
+		}
+		AND = {
 			has_nickname = nick_the_mad
 			NOT = { can_get_nick_the_mad = yes }
 		}
@@ -188,6 +192,13 @@ can_get_nick_the_invincible = {
 			limit = { has_variable = battle_losses }
 			var:battle_losses = 0
 		}
+	}
+}
+
+can_get_nick_the_just = {
+	trigger_if = {
+		limit = { has_variable = nick_the_just_weight }
+		var:nick_the_just_weight >= 20
 	}
 }
 
