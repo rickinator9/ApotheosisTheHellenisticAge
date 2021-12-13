@@ -1012,6 +1012,12 @@ scripted_effect select_nickname_councillor_effect = {
 	}
 }
 
+scripted_effect select_nickname_knight_effect = {
+	random_knight = {
+		save_scope_as = nickname_knight
+	}
+}
+
 scripted_effect select_nickname_ancestor_effect = {
 	random_close_family_member = {
 		even_if_dead = yes
@@ -1445,7 +1451,93 @@ ATHA_nickname.0101 = {
 # ATHA_nickname.0102 = {
 
 # nick_the_eagle
-# ATHA_nickname.0103 = {
+# Triggered when winning a stackwipe victory through ATHA_nickname.0302.
+ATHA_nickname.0103 = {
+	type = character_event
+	title = ATHA_nickname.0103.t
+	desc = ATHA_nickname.0103.desc
+	theme = battle
+	left_portrait = root
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		select_nickname_knight_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0103.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = arrogant
+			}
+		}
+		stress_impact = {
+			brave = medium_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_eagle }
+		add_prestige = medium_prestige_gain
+	}
+
+	option = { # Reject the nickname.
+		name = ATHA_nickname.0103.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = forgiving
+			}
+		}
+		stress_impact = {
+			content = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			forgiving = minor_stress_impact_loss
+		}
+
+		add_prestige = medium_prestige_loss
+	}
+}
 
 # nick_the_fair
 ATHA_nickname.0104 = {
@@ -2784,7 +2876,159 @@ ATHA_nickname.0124 = {
 # ATHA_nickname.0134 = {
 
 # nick_the_invincible
-# ATHA_nickname.0135 = {
+ATHA_nickname.0135 = {
+	type = character_event
+	title = ATHA_nickname.0135.t
+	desc = ATHA_nickname.0135.desc 
+	theme = battle
+	left_portrait = root
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 2
+			is_commanding_army = yes
+		}
+	}
+
+	trigger = {
+		can_get_nick_the_invincible = yes
+	}
+
+	immediate = { 
+		set_nickname_cooldown_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0135.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.5
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = lifestyle_blademaster
+			}
+		}
+		stress_impact = {
+			brave = medium_stress_impact_loss
+			content = minor_stress_impact_gain
+			arrogant = medium_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_invincible }
+		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_gain }
+	}
+	option = { # Humble rejection.
+		name = ATHA_nickname.0135.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = shy
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = paranoid
+			}
+		}
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			content = minor_stress_impact_loss
+			shy = minor_stress_impact_loss
+			paranoid = medium_stress_impact_loss
+		}
+
+		add_character_modifier = {
+			modifier = nickname_humble_in_victory_modifier
+			years = 5
+		}
+	}
+	option = { # Ramp up recruitment.
+		name = ATHA_nickname.0135.c
+		ai_chance = {
+			base = 10
+			
+			modifier = {
+				factor = 2
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = education_martial
+			}
+		}
+		stress_impact = {
+			ambitious = major_stress_impact_loss
+			diligent = minor_stress_impact_loss
+			education_martial_1 = minor_stress_impact_loss
+			education_martial_2 = minor_stress_impact_loss
+			education_martial_3 = minor_stress_impact_loss
+			education_martial_4 = minor_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+			content = minor_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_impassioned_recruitment_modifier
+			years = 5
+		}
+	}
+}
 
 # nick_the_just
 # ATHA_nickname.0136 = {
@@ -3504,17 +3748,7 @@ ATHA_nickname.0300 = {
 	hidden = yes
 
 	immediate = {
-		side_commander = {
-			if = {
-				limit = {
-					NOT = { has_variable = net_battle_wins }
-				}
-
-				set_variable = { name = net_battle_wins value = 1 }
-			} else = {
-				change_variable = { name = net_battle_wins add = 1 }
-			}
-		}
+		side_commander = { register_battle_win = yes }
 	}
 }
 
@@ -3524,16 +3758,29 @@ ATHA_nickname.0301 = {
 	hidden = yes
 
 	immediate = {
-		side_commander = {
-			if = {
-				limit = {
-					NOT = { has_variable = net_battle_wins }
-				}
+		side_commander = { register_battle_loss = yes }
+	}
+}
 
-				set_variable = { name = net_battle_wins value = -1 }
-			} else = {
-				change_variable = { name = net_battle_wins add = -1 }
-			}
+# Intermediate event for nick_the_eagle.
+ATHA_nickname.0302 = {
+	scope = combat_side
+	hidden = yes
+
+	trigger = {
+		side_primary_participant = {
+			can_get_nickname_trigger = yes
+			can_get_nick_the_eagle = yes
+		}
+
+		exists = scope:wipe # The battle was a stackwipe.
+	}
+
+	immediate = {
+		combat.location = { save_scope_as = combat_location }
+
+		side_primary_participant = {
+			trigger_event = { id = ATHA_nickname.0103 }
 		}
 	}
 }

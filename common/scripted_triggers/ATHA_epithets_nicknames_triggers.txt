@@ -88,6 +88,7 @@ has_incorrect_nickname = {
 			has_nickname = nick_the_devourer
 			NOT = { can_get_nick_the_devourer = yes }
 		}
+		# nick_the_eagle can never be replaced.
 		AND = {
 			has_nickname = nick_the_fair
 			NOT = { can_get_nick_the_fair = yes }
@@ -95,6 +96,10 @@ has_incorrect_nickname = {
 		AND = {
 			has_nickname = nick_the_fat
 			NOT = { can_get_nick_the_fat = yes }
+		}
+		AND = {
+			has_nickname = nick_the_invincible
+			NOT = { can_get_nick_the_invincible = yes }
 		}
 		AND = {
 			has_nickname = nick_the_mad
@@ -113,10 +118,7 @@ has_incorrect_nickname = {
 		}
 		AND = {
 			has_nickname = nick_the_victorious
-			trigger_if = {
-				limit = { has_variable = net_battle_wins }
-				var:net_battle_wins <= 0
-			}
+			net_battle_wins <= 0
 		}
 		AND = {
 			has_nickname = nick_the_young
@@ -157,6 +159,10 @@ can_get_nick_the_devourer = {
 	has_trait = cannibal
 }
 
+can_get_nick_the_eagle = {
+	always = yes
+}
+
 can_get_nick_the_fair = {
 	is_attractive_character_trigger = yes
 }
@@ -170,6 +176,17 @@ can_get_nick_the_fat = {
 				var:nick_the_fat_weight >= 10
 			}
 			var:nick_the_fat_weight >= 30
+		}
+	}
+}
+
+can_get_nick_the_invincible = {
+	net_battle_wins >= 10
+	OR = {
+		NOT = { has_variable = battle_losses }
+		trigger_if = {
+			limit = { has_variable = battle_losses }
+			var:battle_losses = 0
 		}
 	}
 }
@@ -218,10 +235,8 @@ can_get_nick_the_sacrificed = {
 }
 
 can_get_nick_the_victorious = {
-	trigger_if = {
-		limit = { has_variable = net_battle_wins }
-		var:net_battle_wins >= 10
-	}
+	net_battle_wins >= 10
+	NOT = { can_get_nick_the_invincible = yes }
 }
 
 can_get_nick_the_young = {

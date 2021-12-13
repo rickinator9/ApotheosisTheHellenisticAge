@@ -1,0 +1,25 @@
+﻿# Registers a won battle / duel for this character.
+register_battle_win = {
+	if = {
+		limit = {
+			NOT = { has_variable = battle_wins }
+		}
+
+		set_variable = { name = battle_wins value = 1 }
+	} else = {
+		change_variable = { name = battle_wins add = 1 }
+	}
+}
+
+# Registers a lost battle / duel for this character.
+register_battle_loss = {
+	if = {
+		limit = {
+			NOT = { has_variable = battle_losses }
+		}
+
+		set_variable = { name = battle_losses value = -1 }
+	} else = {
+		change_variable = { name = battle_losses add = -1 }
+	}
+}

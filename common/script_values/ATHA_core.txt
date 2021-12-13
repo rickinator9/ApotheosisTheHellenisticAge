@@ -35,3 +35,15 @@ nickname_weight_large_increase = 2.5
 nickname_weight_small_decrease = -0.5
 nickname_weight_medium_decrease = -1
 nickname_weight_large_decrease = -2.5
+
+net_battle_wins = {
+	value = 0
+	if = {
+		limit = { has_variable = battle_wins }
+		add = var:battle_wins
+	}
+	if = {
+		limit = { has_variable = battle_losses }
+		subtract = var:battle_losses
+	}
+}
