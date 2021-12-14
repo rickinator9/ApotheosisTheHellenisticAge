@@ -118,10 +118,14 @@ city_state_maintenance.0006 = {
     hidden = yes
 
     immediate = {
-        every_held_title = {
-            limit = { tier = root.primary_title.tier }
+        if = {
+            limit = { can_have_corruption_trigger = yes }
 
-            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:rank_change_corruption }
+            every_held_title = {
+                limit = { tier = root.primary_title.tier }
+    
+                set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:rank_change_corruption }
+            }
         }
 
         remove_variable = rank_change_corruption
