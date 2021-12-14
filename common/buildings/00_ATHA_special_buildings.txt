@@ -813,6 +813,62 @@ artemision_of_ephesos_01 = {
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_monastic_schools.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	is_enabled = {
+		custom_description = {
+			text = holy_site_olympian_or_holy_site_trigger
+			OR = {
+				scope:holder = {
+					religion = religion:olympian_religion
+				}
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
+				}
+			}
+		}
+	}
+	
+	show_disabled = yes
+	
+	cost_gold = 500
+
+	character_modifier = {
+		monthly_piety = 0.1
+		monthly_dynasty_prestige_mult = 0.01
+		levy_reinforcement_rate_same_faith = 0.05
+	}
+
+	province_modifier = {
+		monthly_income = 0.5
+	}
+	
+	county_modifier = {
+		tax_mult = 0.05
+		development_growth_factor = 0.1
+		development_growth = 0.05
+		supply_limit_mult = 0.25
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	next_building = artemision_of_ephesos_02
+	
+	type = special
+}
+
+artemision_of_ephesos_02 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_monastic_schools.dds"
 	
 	can_construct_potential = {
 		building_requirement_tribal = no
@@ -859,7 +915,7 @@ artemision_of_ephesos_01 = {
 	character_modifier = {
 		monthly_piety = 0.25
 		monthly_dynasty_prestige_mult = 0.025
-		levy_reinforcement_rate_same_faith = 0.075
+		levy_reinforcement_rate_same_faith = 0.10
 	}
 
 	province_modifier = {
@@ -867,22 +923,22 @@ artemision_of_ephesos_01 = {
 	}
 	
 	county_modifier = {
-		tax_mult = 0.05
-		development_growth_factor = 0.15
+		tax_mult = 0.10
+		development_growth_factor = 0.2
 		development_growth = 0.1
-		supply_limit_mult = 0.05
+		supply_limit_mult = 0.5
 	}
 	
 	ai_value = {
 		base = 100
 	}
 
-	next_building = artemision_of_ephesos_02
+	next_building = artemision_of_ephesos_03
 	
 	type = special
 }
 
-artemision_of_ephesos_02 = {
+artemision_of_ephesos_03 = {
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_monastic_schools.dds"
@@ -1081,13 +1137,52 @@ heraion_of_samos_02 = {
 }
 
 ##########
-# Acropolis of Athênai
+# Akropolis of Athênai
 ##########
 
-acropolis_of_athenai_01 = {
+akropolis_of_athenai_01 = {
 	construction_time = very_slow_construction_time
 
-	type_icon = "icon_building_monastic_schools.dds"
+	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	
+	show_disabled = yes
+	
+	cost_gold = 3000
+
+	county_modifier = {
+		development_growth_factor = 0.15
+		development_growth = 0.15
+		tax_mult = 0.05
+		hostile_raid_time = 0.25
+	}
+	
+	province_modifier = {
+		garrison_size = 0.5
+		fort_level = 1
+		defender_holding_advantage = 5
+	}
+
+	character_modifier = {
+		monthly_prestige = 0.25
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	next_building = akropolis_of_athenai_02
+	
+	type = special
+}
+
+akropolis_of_athenai_02 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
 	
 	can_construct_potential = {
 		building_requirement_tribal = no
@@ -1134,7 +1229,7 @@ acropolis_of_athenai_01 = {
 kolossos_of_rhodos_01 = {
 	construction_time = very_slow_construction_time
 
-	type_icon = "icon_building_monastic_schools.dds"
+	type_icon = "icon_structure_iron_pillar_of_dhar.dds"
 	
 	can_construct_potential = {
 		building_requirement_tribal = no
@@ -2506,6 +2601,81 @@ asklepeion_of_kos_01 = {
 }
 
 ##########
+# Asklepeion of Trikka
+##########
+
+asklepeion_of_trikka_01 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_monastic_schools.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	can_construct = {
+		OR = {
+			scope:holder = {
+				religion = religion:olympian_religion
+			}
+			custom_description = {
+				text = holy_site_building_trigger
+				barony = {
+					is_holy_site_of = scope:holder.faith
+				}
+			}
+		}
+		scope:holder.culture = {
+			has_innovation = innovation_classical_winch_and_pulley
+		}
+	}
+	
+	is_enabled = {
+		custom_description = {
+			text = holy_site_olympian_or_holy_site_trigger
+			OR = {
+				scope:holder = {
+					religion = religion:olympian_religion
+				}
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
+				}
+			}
+		}
+	}
+	
+	show_disabled = yes
+	
+	cost_gold = 1000
+
+	character_modifier = {
+		monthly_piety = 1
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_county_control_change_factor = 0.1
+		negate_health_penalty_add = 0.15
+	}
+	
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.2
+		development_growth = 0.1
+	}
+
+	province_modifier = {
+		monthly_income = 2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+##########
 # Artemision of Límnai
 ##########
 
@@ -2534,13 +2704,16 @@ artemision_of_limnai_01 = {
 
 	is_enabled = {
 		custom_description = {
-			text = cybele_relief_trigger
+			text = holy_site_olympian_or_holy_site_trigger
 			OR = {
 				scope:holder = {
-					religion = { is_in_family = olympian_religion }
+					religion = religion:olympian_religion
 				}
-				scope:holder = {
-					religion = { is_in_family = rf_hellenic }
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
 				}
 			}
 		}
@@ -2666,6 +2839,150 @@ hieron_01 = {
 	
 	province_modifier = {
 		monthly_income = 3
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+##########
+# Akrokórinthos
+##########
+
+akrokorinthos_01 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
+	
+	can_construct_potential = {
+		barony = title:b_korinthos_korinthos
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = 3000
+	
+	max_garrison = 250
+	
+	duchy_capital_county_modifier = {
+		levy_size = 0.05
+		tax_mult = 0.05
+	}
+	county_modifier = {
+		development_growth = 0.1
+		development_growth_factor = 0.05
+		hostile_raid_time = 0.25
+	}
+	province_modifier = {
+		fort_level = 1
+		garrison_size = 0.25
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	next_building = akrokorinthos_02
+	
+	type = special
+}
+
+akrokorinthos_02 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
+	
+	can_construct_potential = {
+		barony = title:b_korinthos_korinthos
+		building_requirement_tribal = no
+	}
+
+	can_construct = {
+		scope:holder.culture = {
+			has_innovation = innovation_classical_winch_and_pulley
+		}
+	}
+	
+	cost_gold = 1000
+	
+	max_garrison = 500
+	
+	duchy_capital_county_modifier = {
+		levy_size = 0.15
+		tax_mult = 0.15
+	}
+	county_modifier = {
+		development_growth = 0.2
+		development_growth_factor = 0.1
+		hostile_raid_time = 0.5
+	}
+	province_modifier = {
+		fort_level = 3
+		garrison_size = 0.5
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+##########
+# Thermopylai
+##########
+
+thermopylai_01 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_palisades.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = 3000
+
+	province_modifier = {
+		defender_holding_advantage = normal_building_advantage_tier_1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	next_building = thermopylai_02
+	
+	type = special
+}
+
+thermopylai_02 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_hadrians_wall.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	can_construct = {
+		scope:holder.culture = {
+			has_innovation = innovation_classical_winch_and_pulley
+		}
+	}
+	
+	cost_gold = 1000
+
+	max_garrison = good_building_max_garrison_tier_1
+	province_modifier = {
+		defender_holding_advantage = normal_building_advantage_tier_1
+		fort_level = good_building_fort_level_tier_1
 	}
 	
 	ai_value = {
