@@ -67,3 +67,12 @@ has_critical_corruption_level = {
 		primary_title = { var:city_state_corruption >= 75 }
 	}
 }
+
+# Checks to see if a character is viable to passively reduce corruption
+has_corruption_reduction_trait_trigger = {
+    OR = {
+        ai_honor >= 50
+        has_trait = incorruptible
+        has_trait = just
+    }
+}
