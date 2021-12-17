@@ -23,7 +23,8 @@ crown_authority = {
 			}
 		}
 		
-		on_pass = {	
+		on_pass = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 			trigger_event = {
 				id = coalition.0004
 				days = 1
@@ -80,6 +81,13 @@ crown_authority = {
 		}
 		
 		on_pass = {
+			if = {
+				limit = { has_realm_law = crown_authority_0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+			} else = {
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+			}
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
@@ -151,6 +159,18 @@ crown_authority = {
 		}
 		
 		on_pass = {
+			if = {
+				limit = {
+					OR = {
+						has_realm_law = crown_authority_0
+						has_realm_law = crown_authority_1
+					}
+				}
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+			} else = {
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+			}
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
@@ -215,6 +235,8 @@ crown_authority = {
 		}
 		
 		on_pass = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
@@ -236,6 +258,10 @@ tribal_authority = {
 
 		can_keep = { realm_law_use_crown_authority = no }
 		#Imprisonment is disabled if you have this law. Script is in the interaction, currently in 00_prison_interactions.
+
+		on_pass = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		}
 	}
 	
 	tribal_authority_1 = {
@@ -275,6 +301,13 @@ tribal_authority = {
 		}
 		
 		on_pass = {
+			if = {
+				limit = { has_realm_law = tribal_authority_0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+			} else = {
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+			}
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
@@ -330,6 +363,18 @@ tribal_authority = {
 		}
 		
 		on_pass = {
+			if = {
+				limit = {
+					OR = {
+						has_realm_law = tribal_authority_0
+						has_realm_law = tribal_authority_1
+					}
+				}
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+			} else = {
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+			}
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
@@ -371,6 +416,8 @@ tribal_authority = {
 		pass_cost = { prestige = increase_tribal_authority_prestige_cost }
 		
 		on_pass = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_increase }
+
 			# Increment cooldown breaker tally, if appropriate.
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.

@@ -132,6 +132,8 @@ independence_faction_war = {
 				limit = { has_realm_law = crown_authority_3 }
 				add_realm_law = crown_authority_2
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 		resolve_title_and_vassal_change = scope:change
 	
@@ -241,6 +243,8 @@ independence_faction_war = {
 				}
 			}
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 
 		on_lost_faction_revolt_war = yes
@@ -352,6 +356,8 @@ liberty_faction_war = {
 				flag = recent_liberty_faction_war
 				years = liberty_war_victory_cooldown
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
 		hidden_effect = {
@@ -473,6 +479,8 @@ liberty_faction_war = {
 			}
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_faction_revolt_war = yes
 	}
@@ -554,6 +562,8 @@ populist_war = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 		scope:defender = {
 			add_prestige_level = -1
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 		random_in_list = {
 			list = target_titles
@@ -742,6 +752,9 @@ claimant_faction_war = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+		scope:defender = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		}
 		hidden_effect = {
 			scope:attacker = {
 				add_truce_both_ways = {
@@ -815,6 +828,8 @@ claimant_faction_war = {
 		scope:defender = {
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 	}
 
@@ -900,6 +915,8 @@ depose_war = {
 			hidden_effect = { fp1_remove_humsac_offended_counties_effect = yes }
 			# Then our liege is deposed (but the imprisonment loss remains true for their heir).
 			depose = yes
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
 
@@ -948,6 +965,8 @@ depose_war = {
 		on_lost_faction_revolt_war = yes
 		scope:defender = {
 			add_dread = medium_dread_gain
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 	}
 	
@@ -1055,6 +1074,8 @@ refused_liege_demand_war = {
 
 			# Then our liege is deposed (but the imprisonment loss remains true for their heir).
 			depose = yes
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
 		hidden_effect = {
@@ -1127,6 +1148,8 @@ refused_liege_demand_war = {
 				years = 10
 			}
 			add_dread = medium_dread_gain
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_request_revolt_war = yes
 	}
@@ -1407,6 +1430,9 @@ independence_war = {
 				}
 			}
 		}
+		scope:defender = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		}
 
 		resolve_title_and_vassal_change = scope:change
 	
@@ -1499,6 +1525,8 @@ independence_war = {
 					multiply = 1.25
 				}
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		
 		scope:attacker = {

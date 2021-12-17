@@ -81,6 +81,14 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_bold = yes }
 		}
 		AND = {
+			has_nickname = nick_the_builder
+			NOT = { can_get_nick_the_builder = yes }
+		}
+		AND = {
+			has_nickname = nick_the_cruel
+			NOT = { can_get_nick_the_cruel = yes }
+		}
+		AND = {
 			has_nickname = nick_the_clubfooted
 			NOT = { can_get_nick_the_clubfooted = yes }
 		}
@@ -96,6 +104,18 @@ has_incorrect_nickname = {
 		AND = {
 			has_nickname = nick_the_fat
 			NOT = { can_get_nick_the_fat = yes }
+		}
+		AND = {
+			has_nickname = nick_the_flayer
+			NOT = { can_get_nick_the_flayer = yes }
+		}
+		AND = {
+			has_nickname = nick_the_gardener
+			NOT = { can_get_nick_the_gardener = yes }
+		}
+		AND = {
+			has_nickname = nick_the_hawk
+			NOT = { can_get_nick_the_hawk = yes }
 		}
 		AND = {
 			has_nickname = nick_the_invincible
@@ -155,6 +175,20 @@ can_get_nick_the_bold = {
 	}
 }
 
+can_get_nick_the_builder = {
+	trigger_if = {
+		limit = { has_variable = nick_the_builder_weight }
+		var:nick_the_builder_weight >= 5
+	}
+}
+
+can_get_nick_the_cruel = {
+	trigger_if = {
+		limit = { has_variable = nick_the_cruel_weight }
+		var:nick_the_cruel_weight >= 30
+	}
+}
+
 can_get_nick_the_clubfooted = {
 	has_trait = clubfooted
 }
@@ -171,6 +205,13 @@ can_get_nick_the_fair = {
 	is_attractive_character_trigger = yes
 }
 
+can_get_nick_the_flayer = {
+	trigger_if = {
+		limit = { has_variable = nick_the_flayer_weight }
+		var:nick_the_flayer_weight >= 30
+	}
+}
+
 can_get_nick_the_fat = {
 	trigger_if = {
 		limit = { has_variable = nick_the_fat_weight }
@@ -181,6 +222,20 @@ can_get_nick_the_fat = {
 			}
 			var:nick_the_fat_weight >= 30
 		}
+	}
+}
+
+can_get_nick_the_gardener = {
+	trigger_if = {
+		limit = { has_variable = nick_the_gardener_weight }
+		var:nick_the_gardener_weight >= 5
+	}
+}
+
+can_get_nick_the_hawk = {
+	trigger_if = {
+		limit = { has_variable = nick_the_hawk_weight }
+		var:nick_the_hawk_weight >= 30
 	}
 }
 

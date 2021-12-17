@@ -354,6 +354,7 @@ stewardship_domain.1042 = {
 						}
 					}
 				}
+				change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 			}
 			60 = {
 				compare_modifier = {
@@ -433,6 +434,7 @@ stewardship_domain.1042 = {
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 	}
 	
 	#Revoke the privileges you granted the guild to bring them in line.
@@ -552,6 +554,8 @@ stewardship_domain.1052 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 
 	#Be generous and give the troubled freefolk some charity.
@@ -590,6 +594,8 @@ stewardship_domain.1052 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 	
 	#Lean on the church to aid the troubled freefolk.
@@ -617,6 +623,7 @@ stewardship_domain.1052 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2060,6 +2067,7 @@ stewardship_domain_special.1001 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 
 		# Ends event chain.
 		remove_character_flag = is_in_stewardship_domain_special_event
@@ -2370,6 +2378,7 @@ stewardship_domain_special.1002 = {
 					id = stewardship_domain_special.1005
 					days = { 14 21 }
 				}
+				change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 			}
 			50 = {
 				desc = stewardship_domain_special.1002.b.failure
@@ -2464,7 +2473,10 @@ stewardship_domain_special.1002 = {
 				ai_compassion = -200
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3555,6 +3567,7 @@ stewardship_domain_special.1301 = {
 		remove_character_flag = is_in_stewardship_domain_special_event
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -3626,6 +3639,7 @@ stewardship_domain_special.1311 = {
 			stewardship_domain_special_1301_increase_road_progress_effect = yes
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 
@@ -3639,7 +3653,9 @@ stewardship_domain_special.1311 = {
 			stewardship_domain_special_1301_increase_road_quality_effect = yes
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 	
 	option = { #Claim land for myself
@@ -3653,7 +3669,9 @@ stewardship_domain_special.1311 = {
 		}
 		custom_tooltip = stewardship_domain_special.1301.increase_road_progress_1
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3927,7 +3945,9 @@ stewardship_domain_special.1314 = {
 			stewardship_domain_special_1301_increase_road_quality_effect = yes
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -4102,7 +4122,9 @@ stewardship_domain_special.1316 = {
 		stress_impact = {
 			diligent = minor_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 	}
 
 }
@@ -4176,7 +4198,9 @@ stewardship_domain_special.1317 = {
 			temperate = minor_stress_impact_gain
 			impatient = minor_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 	
 	option = { #Get them back to work on the road
@@ -4261,7 +4285,9 @@ stewardship_domain_special.1318 = {
 			stewardship_domain_special_1301_increase_road_quality_effect = yes
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Focus on doing a good job
@@ -4296,6 +4322,8 @@ stewardship_domain_special.1318 = {
 			stewardship_domain_special_1301_increase_road_progress_effect = yes
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
@@ -4901,6 +4929,8 @@ stewardship_domain_special.1397 = {
 		ai_chance = {
 			base = 1
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -4934,6 +4964,8 @@ stewardship_domain_special.1397 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -4972,6 +5004,8 @@ stewardship_domain_special.1398 = {
 		ai_chance = {
 			base = 1
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -5004,6 +5038,8 @@ stewardship_domain_special.1398 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -5042,6 +5078,8 @@ stewardship_domain_special.1399 = {
 		ai_chance = {
 			base = 1
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_medium_increase }
 	}
 
 	option = {
@@ -5069,6 +5107,8 @@ stewardship_domain_special.1399 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_medium_increase }
 	}
 
 	after = {
@@ -5392,7 +5432,9 @@ stewardship_domain_special.1412 = {
 				ai_rationality = 1
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Drive the peasants out
@@ -5427,6 +5469,9 @@ stewardship_domain_special.1412 = {
 				ai_vengefulness = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
@@ -5457,6 +5502,8 @@ stewardship_domain_special.1413 = {
 				days = { 20 30 }
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 	
@@ -5494,6 +5541,8 @@ stewardship_domain_special.1413 = {
 			id = stewardship_domain_special.1412
 			days = { 2 3 }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_medium_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
@@ -5673,6 +5722,8 @@ stewardship_domain_special.1422 = {
 				ai_honor = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Leave the child with some villagers
@@ -5695,6 +5746,8 @@ stewardship_domain_special.1422 = {
 				ai_rationality = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 	}
 	
 	option = { #Burn the village, and the child
@@ -5727,6 +5780,8 @@ stewardship_domain_special.1422 = {
 				ai_compassion = -1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -5900,6 +5955,8 @@ stewardship_domain_special.1425 = {
 				add_trait = ill
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -6002,6 +6059,8 @@ stewardship_domain_special.1431 = {
 				ai_greed = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 }
@@ -6557,7 +6616,9 @@ stewardship_domain_special.1500 = {
 				ai_boldness = 50
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 
 	#Option 2: Faster and cheaper survey option, but outcome may be of a lower quality.
@@ -6631,7 +6692,9 @@ stewardship_domain_special.1500 = {
 				ai_greed = 50
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 	
 	#Option 3: Reject survey proposal to gain a small opinion bonus with all other vassals.
@@ -6672,7 +6735,9 @@ stewardship_domain_special.1500 = {
 				ai_compassion = 100
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -7122,6 +7187,8 @@ stewardship_domain_special.1510 = {
 				ai_greed = -200
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 	
@@ -7162,7 +7229,9 @@ stewardship_domain_special.1510 = {
 
 					custom_tooltip = stewardship_domain_special.1510.b.tt
 					stewardship_domain_special_1500_decrease_quality_effect = yes
-				}	
+				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 			}
 		}
 
@@ -7348,6 +7417,7 @@ stewardship_domain_special.1520 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Option 2: Assert your authority over the noble's holdings and assess them anyway.
@@ -7620,6 +7690,7 @@ stewardship_domain_special.1530 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 	
@@ -7813,6 +7884,7 @@ stewardship_domain_special.1540 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
@@ -7990,6 +8062,7 @@ stewardship_domain_special.1550 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_medium_decrease }
 	}
 
 	#Option B: Make the steward use the bribes to re-assess all compromised holdings.
@@ -8054,6 +8127,7 @@ stewardship_domain_special.1550 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 
@@ -8238,7 +8312,9 @@ stewardship_domain_special.1560 = {
 				ai_compassion = 200
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Option C: Exclude the merchants, for a fee...
@@ -8534,6 +8610,7 @@ stewardship_domain_special.1590 = {
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_medium_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_major_decrease }
 	}
 
@@ -8629,6 +8706,7 @@ stewardship_domain_special.1590 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 	
 	 #Pin all the blame on your steward and execute them.
@@ -8666,6 +8744,7 @@ stewardship_domain_special.1590 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	######################
@@ -9182,6 +9261,8 @@ stewardship_domain_special.8001 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Irrigation ditches
@@ -9216,6 +9297,8 @@ stewardship_domain_special.8001 = {
 		ai_chance = {
 			base = 0
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -9385,6 +9468,8 @@ stewardship_domain_special.8011 = {
 				ai_compassion = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 }
@@ -9413,6 +9498,8 @@ stewardship_domain_special.8012 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
@@ -9663,6 +9750,8 @@ stewardship_domain_special.8021 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
@@ -9731,6 +9820,8 @@ stewardship_domain_special.8021 = {
 					id = stewardship_domain_special.8022
 					days = { 60 90 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		ai_chance = {
@@ -9877,6 +9968,8 @@ stewardship_domain_special.8022 = {
 				ai_boldness = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 	
@@ -9966,6 +10059,8 @@ stewardship_domain_special.8023 = {
 				ai_greed = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 	
@@ -10076,6 +10171,8 @@ stewardship_domain_special.8031 = {
 		hidden_effect = {
 			remove_character_flag = is_in_stewardship_domain_special_event
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 }
 

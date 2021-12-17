@@ -332,6 +332,8 @@ execute_prisoner_effect = {
 				}
 			}
 		}
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	execute_opinion_effect = { VICTIM = scope:victim EXECUTIONER = scope:executioner }
@@ -640,6 +642,8 @@ sacrifice_prisoner_effect = {
 		}
 		#Kinslaying
 		add_kinslayer_trait_or_nothing_effect = { VICTIM = scope:victim }
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	execute_opinion_effect = { VICTIM = scope:victim EXECUTIONER = scope:executioner }
@@ -1363,5 +1367,6 @@ imprison_tyranny_effect = {
 
 	else = {
 		add_tyranny = imprisonment_tyranny_gain
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 }
