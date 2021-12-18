@@ -35,7 +35,7 @@ has_epithet_trigger = {
 		has_nickname = epithet_the_divine_manifest
 		has_nickname = epithet_the_father_loving
 		has_nickname = epithet_the_generous
-		has_nickname = epithet_the_illustrous
+		has_nickname = epithet_the_illustrious
 		has_nickname = epithet_the_just
 		has_nickname = epithet_the_mother_loving
 		has_nickname = epithet_the_pious
@@ -114,8 +114,20 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_gardener = yes }
 		}
 		AND = {
+			has_nickname = nick_the_good
+			NOT = { can_get_nick_the_good = yes }
+		}
+		AND = {
 			has_nickname = nick_the_hawk
 			NOT = { can_get_nick_the_hawk = yes }
+		}
+		AND = {
+			has_nickname = nick_the_hunter
+			NOT = { can_get_nick_the_hunter = yes }
+		}
+		AND = {
+			has_nickname = nick_the_illustrious
+			NOT = { can_get_nick_the_illustrious = yes }
 		}
 		AND = {
 			has_nickname = nick_the_invincible
@@ -124,6 +136,10 @@ has_incorrect_nickname = {
 		AND = {
 			has_nickname = nick_the_just
 			NOT = { can_get_nick_the_just = yes }
+		}
+		AND = {
+			has_nickname = nick_the_lame
+			NOT = { can_get_nick_the_lame = yes }
 		}
 		AND = {
 			has_nickname = nick_the_mad
@@ -232,10 +248,31 @@ can_get_nick_the_gardener = {
 	}
 }
 
+can_get_nick_the_good = {
+	trigger_if = {
+		limit = { has_variable = nick_the_good_weight }
+		var:nick_the_good_weight >= 50
+	}
+}
+
 can_get_nick_the_hawk = {
 	trigger_if = {
 		limit = { has_variable = nick_the_hawk_weight }
 		var:nick_the_hawk_weight >= 30
+	}
+}
+
+can_get_nick_the_hunter = {
+	trigger_if = {
+		limit = { has_variable = nick_the_hunter_weight }
+		var:nick_the_hunter_weight >= 20
+	}
+}
+
+can_get_nick_the_illustrious = {
+	trigger_if = {
+		limit = { has_variable = nick_the_illustrious_weight }
+		var:nick_the_illustrious_weight >= 30
 	}
 }
 
@@ -254,6 +291,17 @@ can_get_nick_the_just = {
 	trigger_if = {
 		limit = { has_variable = nick_the_just_weight }
 		var:nick_the_just_weight >= 20
+	}
+}
+
+can_get_nick_the_lame = {
+	OR = {
+		has_trait = incapable
+		has_trait = infirm
+		has_trait = maimed
+		has_trait = physique_bad
+		has_trait = hunchbacked
+		has_trait = spindly
 	}
 }
 

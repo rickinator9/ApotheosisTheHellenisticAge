@@ -97,6 +97,8 @@ intrigue_dread_special.1101 = {
 		ai_chance = {
 			base = 50
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Nah, I'll watch!
@@ -121,6 +123,8 @@ intrigue_dread_special.1101 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #No. This is beneath me.
@@ -146,6 +150,8 @@ intrigue_dread_special.1101 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -196,6 +202,8 @@ intrigue_dread_special.1102 = {
 					add_prestige = minor_prestige_gain
 					add_intrigue_lifestyle_xp = minor_lifestyle_xp
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 			}
 			5 = {
 				desc = intrigue_dread_special.1102.a.duel_failure
@@ -208,6 +216,8 @@ intrigue_dread_special.1102 = {
 					title = tooltip.intrigue_dread_special.1102.a.duel_failure
 					add_prestige = minor_prestige_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		stress_impact = {
@@ -268,6 +278,8 @@ intrigue_dread_special.1102 = {
 					title = tooltip.intrigue_dread_special.1102.b.duel_failure
 					add_prestige = minor_prestige_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		stress_impact = {
@@ -356,6 +368,8 @@ intrigue_dread_special.1103 = {
 					add_prestige = minor_prestige_gain
 					add_intrigue_lifestyle_xp = minor_lifestyle_xp
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 			}
 			5 = {
 				desc = intrigue_dread_special.1103.a.duel_failure
@@ -373,6 +387,8 @@ intrigue_dread_special.1103 = {
 					title = tooltip.intrigue_dread_special.1103.a.duel_failure
 					add_prestige = minor_prestige_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		stress_impact = {
@@ -414,6 +430,8 @@ intrigue_dread_special.1103 = {
 					add_prestige = minor_prestige_gain
 					add_intrigue_lifestyle_xp = minor_lifestyle_xp
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 			}
 			5 = {
 				desc = intrigue_dread_special.1103.b.duel_failure
@@ -427,6 +445,8 @@ intrigue_dread_special.1103 = {
 					title = tooltip.intrigue_dread_special.1103.a.duel_failure
 					add_prestige = minor_prestige_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		stress_impact = {
@@ -460,6 +480,8 @@ intrigue_dread_special.1103 = {
 		ai_chance = {
 			base = 50
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 	after = {
 		trigger_event = {
@@ -539,6 +561,8 @@ intrigue_dread_special.1199 = {
 		add_intrigue_lifestyle_perk_points = 1
 		add_dread = medium_dread_gain
 		trigger_event = intrigue_dread_special.1198
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 	option = {
 		name = intrigue_dread_special.1199.a
@@ -552,6 +576,8 @@ intrigue_dread_special.1199 = {
 				years = 5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 	option = { #You *will* cheer, filthy peasants.
 		name = {
@@ -592,6 +618,8 @@ intrigue_dread_special.1199 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 	option = {
 		name = intrigue_dread_special.1199.b
@@ -614,6 +642,7 @@ intrigue_dread_special.1199 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 	after = {
 		remove_variable = audience_won
@@ -793,6 +822,7 @@ intrigue_dread_special.1301 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_medium_decrease }
 	}
 	#Dreaded ruler batters into submission. (gains xp)
 	option = {
@@ -810,6 +840,9 @@ intrigue_dread_special.1301 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	#Diplomacy duel (success gains xp, loss loses opinion)
 	option = {
@@ -869,6 +902,7 @@ intrigue_dread_special.1301 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 	#Default (opinion loss, gain xp)
 	option = {
@@ -1130,6 +1164,7 @@ intrigue_dread.1502 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Throw them in the dungeons!
@@ -1181,6 +1216,7 @@ intrigue_dread.1502 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1843,6 +1879,9 @@ intrigue_dread.4002 = {
 			shy = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Option B: Kill the victim and gain a massive amount of stress reduction.
@@ -1876,6 +1915,9 @@ intrigue_dread.4002 = {
 			gregarious = medium_stress_impact_gain
 			impatient = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Option C: Begin the slow process of breaking & conditioning the victim's mind.
@@ -1912,8 +1954,6 @@ intrigue_dread.4002 = {
 							target = root
 						}
 					}
-
-					change_nickname_weight_effect = { NICKNAME = nick_the_mindbreaker CHANGE = nickname_weight_small_increase }
 				}
 				1 = {
 					desc = intrigue_dread.4002.c.failure.desc
@@ -1928,7 +1968,7 @@ intrigue_dread.4002 = {
 			days = { 3 5 }
 		}
 
-		
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Option D: Terminates the event chain for now, but gives this a higher chance to re-appear later.
@@ -1945,6 +1985,8 @@ intrigue_dread.4002 = {
 		stress_impact = {
 			impatient = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2168,6 +2210,8 @@ intrigue_dread.4004 = {
 			forgiving = minor_stress_impact_gain
 			just = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2325,6 +2369,8 @@ intrigue_dread.4005 = {
 			just = minor_stress_impact_gain
 			forgiving = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2347,6 +2393,7 @@ intrigue_dread.4006 = {
 	}
 
 	immediate = {
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_mindbreaker CHANGE = nickname_weight_small_increase }
 	}
 
@@ -3012,6 +3059,7 @@ intrigue_dread.4100 = {
 			just = minor_stress_impact_gain
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_medium_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
@@ -3041,6 +3089,7 @@ intrigue_dread.4100 = {
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
@@ -3143,6 +3192,7 @@ intrigue_dread.4100 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { # Conciliatory Reaction
@@ -3208,6 +3258,7 @@ intrigue_dread.4100 = {
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 

@@ -1214,6 +1214,8 @@ bishop.2002 = {
 					title = bishop.2002.success.a.desc.tt
 					custom_tooltip = bishop.2002.success.a.desc.tt
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 			}
 			10 = { #Failure.
 					compare_modifier = {
@@ -1262,6 +1264,9 @@ bishop.2002 = {
 						opinion = -20
 						}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		stress_impact = {
@@ -1333,7 +1338,9 @@ bishop.2002 = {
 				has_trait = zealous
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Use Dread.
@@ -1359,7 +1366,9 @@ bishop.2002 = {
 				dread >= medium_dread
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1499,7 +1508,10 @@ bishop.2003 = {
 				has_trait = zealous
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 	option = { #Endure.
 		name = {
@@ -1610,6 +1622,8 @@ bishop.2003 = {
 				dread >= medium_dread
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }

@@ -1084,6 +1084,22 @@ scripted_effect select_nickname_ancestor_effect = {
 	}
 }
 
+scripted_effect select_physician_effect = {
+	if = {
+		limit = {
+			any_relation = {
+				type = court_physician
+				count >= 1
+			}
+		}
+
+		random_relation = {
+			type = court_physician
+			save_scope_as = nickname_physician
+		}
+	}
+}
+
 scripted_effect select_vassal_effect = {
 	random_vassal = {
 		limit = { # Select a vassal with a capital that is close.
@@ -1784,7 +1800,7 @@ ATHA_nickname.0104 = {
 			}
 
 			change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
-			change_nickname_weight_effect = { NICKNAME = nick_the_illustrous CHANGE = nickname_weight_small_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 			change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 		}
 
@@ -4070,7 +4086,146 @@ ATHA_nickname.0128 = {
 # ATHA_nickname.0129 = {
 
 # nick_the_good
-# ATHA_nickname.0130 = {
+ATHA_nickname.0130 = {
+	type = character_event
+	title = ATHA_nickname.0130.t
+	desc = ATHA_nickname.0130.desc
+	theme = realm
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_good = yes
+	}
+
+	immediate = {
+		select_nickname_councillor_effect = yes
+
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.1
+			has_trait = compassionate
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = calm
+		}
+		modifier = {
+			factor = 1.1
+			var:nick_the_good_weight > 50
+		}
+		modifier = {
+			factor = 1.2
+			var:nick_the_good_weight > 60
+		}
+		modifier = {
+			factor = 1.3
+			var:nick_the_good_weight > 70
+		}
+		modifier = {
+			factor = 1.4
+			var:nick_the_good_weight > 80
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_good_weight > 90
+		}
+		modifier = {
+			factor = 2
+			var:nick_the_good_weight > 100
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0130.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = just
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+		}
+		stress_impact = {
+			stubborn = minor_stress_impact_loss
+			honest = minor_stress_impact_loss
+			arrogant = medium_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			humble = major_stress_impact_gain
+			paranoid = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_good }
+		add_prestige = medium_prestige_gain
+		add_piety = medium_piety_gain
+	}
+	option = { # Humble refusal.
+		name = ATHA_nickname.0130.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 2
+				has_trait = humble
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = sadistic
+				NOT = { has_trait = deceitful }
+			}
+		}
+		stress_impact = {
+			humble = major_stress_impact_loss
+			paranoid = minor_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			honest = minor_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+		}
+
+		add_prestige = medium_prestige_loss
+		add_character_modifier = {
+			modifier = nickname_humble_modifier
+			years = 10
+		}
+	}
+}
 
 # nick_the_hawk
 ATHA_nickname.0131 = {
@@ -4232,14 +4387,371 @@ ATHA_nickname.0131 = {
 }
 
 # nick_the_hunter
-# ATHA_nickname.0132 = {
+ATHA_nickname.0132 = {
+	type = character_event
+	title = ATHA_nickname.0132.t
+	desc = ATHA_nickname.0132.desc
+	theme = hunting
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_hunter = yes
+	}
+
+	immediate = {
+		select_nickname_councillor_effect = yes
+
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.1
+			var:nick_the_hunter_weight > 20
+		}
+		modifier = {
+			factor = 1.2
+			var:nick_the_hunter_weight > 25
+		}
+		modifier = {
+			factor = 1.3
+			var:nick_the_hunter_weight > 30
+		}
+		modifier = {
+			factor = 1.4
+			var:nick_the_hunter_weight > 35
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_hunter_weight > 40
+		}
+		modifier = {
+			factor = 2
+			var:nick_the_hunter_weight > 50
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0132.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = craven
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = gluttonous
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = trusting
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = lifestyle_hunter
+			}
+		}
+		stress_impact = {
+			gregarious = minor_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			gluttonous = minor_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			hunter_1 = medium_stress_impact_loss
+			hunter_2 = medium_stress_impact_loss
+			hunter_3 = medium_stress_impact_loss
+			just = minor_stress_impact_gain
+			compassionate = major_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_hunter }
+		add_prestige = medium_prestige_gain
+	}
+	option = { # Adopt a pet.
+		name = ATHA_nickname.0132.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = fickle
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = shy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = just
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = temperate
+			}
+			modifier = {
+				factor = 2
+				has_trait = compassionate
+			}
+		}
+		trait = hunter_1
+		trait = hunter_2
+		trait = hunter_3
+		stress_impact = {
+			fickle = minor_stress_impact_loss
+			just = minor_stress_impact_loss
+			temperate = minor_stress_impact_loss
+			compassionate = medium_stress_impact_loss
+			sadistic = minor_stress_impact_gain
+			hunter_1 = major_stress_impact_gain
+			hunter_2 = major_stress_impact_gain
+			hunter_3 = major_stress_impact_gain
+		}
+
+		if = {
+			limit = { has_trait = lifestyle_hunter }
+
+			remove_trait = hunter_1
+			remove_trait = hunter_2
+			remove_trait = hunter_3
+		}
+
+		random_list = {
+			40 = {
+				trigger = {
+					NOT = { has_character_modifier = cat_story_modifier }
+				}
+				start_cat_story_cycle_effect = yes
+			}
+			40 = {
+				trigger = {
+					NOT = { has_character_modifier = dog_story_modifier }
+				}
+				start_dog_story_cycle_effect = yes
+			}
+			20 = {
+				trigger = {
+					NOT = { has_character_modifier = horse_story_modifier }
+				}
+				modifier = {
+					factor = 2
+					has_trait = education_martial
+				}
+				start_warhorse_story_cycle_effect = yes
+			}
+		}
+	}
+}
 
 # nick_the_illustrious
-# ATHA_nickname.0133 = {
+ATHA_nickname.0133 = {
+	type = character_event
+	title = ATHA_nickname.0133.t
+	desc = ATHA_nickname.0133.desc
+	theme = diplomacy
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_illustrious = yes
+		NOT = { has_nickname = epithet_the_illustrious }
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.5
+			has_trait = august
+		}
+		modifier = {
+			factor = 1.1
+			var:nick_the_illustrious_weight > 30
+		}
+		modifier = {
+			factor = 1.2
+			var:nick_the_illustrious_weight > 35
+		}
+		modifier = {
+			factor = 1.3
+			var:nick_the_illustrious_weight > 40
+		}
+		modifier = {
+			factor = 1.4
+			var:nick_the_illustrious_weight > 45
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_illustrious_weight > 50
+		}
+		modifier = {
+			factor = 2
+			var:nick_the_illustrious_weight > 60
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0133.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+			modifier = {
+				factor = 2
+				has_trait = august
+			}
+		}
+		stress_impact = {
+			content = minor_stress_impact_loss
+			ambitious = medium_stress_impact_loss
+			honest = minor_stress_impact_loss
+			arrogant = major_stress_impact_loss
+			humble = medium_stress_impact_gain
+			depressed_1 = medium_stress_impact_gain
+			depressed_genetic = medium_stress_impact_gain
+			august = medium_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_illustrious }
+		add_prestige = major_prestige_gain
+	}
+	option = { # Stop spending so much on the court.
+		name = ATHA_nickname.0133.b
+		ai_chance = {
+			base = 10
+
+			modifier = { # May want to spend money on different benefactions.
+				factor = 1.25
+				has_trait = generous
+			}
+			modifier = {
+				factor = 2
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = gregarious
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = humble
+			}
+			modifier = { # Less people at the court is less spies!
+				factor = 1.25
+				has_trait = paranoid
+			}
+		}
+		stress_impact = {
+			generous = minor_stress_impact_loss
+			greedy = major_stress_impact_loss
+			gregarious = minor_stress_impact_loss
+			humble = medium_stress_impact_loss
+			paranoid = minor_stress_impact_loss
+			august = major_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_diminished_court_modifier
+			years = 5
+		}
+		add_prestige = medium_prestige_loss
+	}
+}
 
 # nick_the_illustrious - Transition from epithet to nickname.
-# ATHA_nickname.0134 = {
+ATHA_nickname.0134 = {
+	hidden = yes
 
+	trigger = {
+		can_get_nick_the_illustrious = yes
+		has_nickname = epithet_the_illustrious
+	}
+
+	immediate = {
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_illustrious }
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			factor = 1.5
+			has_trait = august
+		}
+		modifier = {
+			factor = 1.1
+			var:nick_the_illustrious_weight > 30
+		}
+		modifier = {
+			factor = 1.2
+			var:nick_the_illustrious_weight > 35
+		}
+		modifier = {
+			factor = 1.3
+			var:nick_the_illustrious_weight > 40
+		}
+		modifier = {
+			factor = 1.4
+			var:nick_the_illustrious_weight > 45
+		}
+		modifier = {
+			factor = 1.5
+			var:nick_the_illustrious_weight > 50
+		}
+		modifier = {
+			factor = 2
+			var:nick_the_illustrious_weight > 60
+		}
+	}
+}
+ 
 # nick_the_invincible
 ATHA_nickname.0135 = {
 	type = character_event
@@ -4555,7 +5067,394 @@ ATHA_nickname.0137 = {
 }
 
 # nick_the_lame
-# ATHA_nickname.0138 = {
+ATHA_nickname.0138 = {
+	type = character_event
+	title = ATHA_nickname.0138.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_trait = incapable }
+				desc = ATHA_nickname.0138.desc_incapable
+			}
+			desc = {
+				desc = ATHA_nickname.0138.desc_opening
+				first_valid = {
+					triggered_desc = {
+						trigger = { has_trait = maimed }
+						desc = ATHA_nickname.0138.desc_maimed
+					}
+					triggered_desc = {
+						trigger = {
+							OR = {
+								has_trait = physique_bad
+								has_trait = hunchbacked
+								has_trait = spindly
+							}
+						}
+						desc = ATHA_nickname.0138.desc_genetic
+					}
+					desc = ATHA_nickname.0138.desc_default
+				}
+				desc = ATHA_nickname.0138.desc_closing
+			}
+		}
+	}
+	theme = physical_health
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_lame = yes
+	}
+
+	immediate = {
+		select_physician_effect = yes
+		select_two_independent_rulers_effect = yes
+
+		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 0.5
+
+		modifier = {
+			factor = 10
+			has_trait = incapable
+		}
+		modifier = {
+			factor = 5
+			has_trait = infirm
+		}
+		modifier = {
+			factor = 2
+			has_trait = maimed
+		}
+		modifier = {
+			factor = 2
+			has_trait = physique_bad
+		}
+		modifier = {
+			factor = 2
+			has_trait = hunchbacked
+		}
+		modifier = {
+			factor = 2
+			has_trait = spindly
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = {
+			trigger = { has_trait = incapable }
+			text = ATHA_nickname.0138.a_incapable
+		}
+		name = {
+			trigger = {
+				NOT = { has_trait = incapable }
+			}
+			text = ATHA_nickname.0138.a_regular
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = honest
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.25
+				OR = {
+					has_trait = depressed_1
+					has_trait = depressed_genetic
+				}
+			}
+		}
+		stress_impact = {
+			content = minor_stress_impact_loss
+			ambitious = medium_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+			depressed_1 = minor_stress_impact_loss
+			depressed_genetic = minor_stress_impact_loss
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_lame }
+		add_prestige = major_prestige_loss
+	}
+	option = { # Exercise to get strength.
+		name = ATHA_nickname.0138.b
+		trigger = {
+			OR = {
+				has_trait = weak
+				has_trait = physique_bad
+			}
+			NOR = {
+				has_trait = maimed
+				has_trait = one_legged
+				has_trait = infirm
+				has_trait = incapable
+				has_trait = wounded
+			}
+		}
+		trait = weak
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = lazy
+			}
+			modifier = { # Exercise tends to take time before seeing results.
+				factor = 0.75
+				has_trait = impatient
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = temperate
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = education_martial
+			}
+		}
+		stress_impact = {
+			diligent = minor_stress_impact_loss
+			lazy = major_stress_impact_gain
+			impatient = minor_stress_impact_gain
+			content = minor_stress_impact_gain
+		}
+
+		if = {
+			limit = { has_trait = athletic }
+			random = {
+				chance = 10
+				add_trait = athletic
+			}
+		}
+
+		random_list = {
+			10 = {
+				trigger = { has_trait = weak }
+				remove_trait = weak
+			}
+			10 = {
+				trigger = {
+					NOT = { has_trait = weak }
+				}
+				add_trait = strong
+			}
+			20 = {
+				add_character_modifier = {
+					modifier = exercise_modifier
+					months = 6
+				}
+			}
+		}
+
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Try to get court physician to fix the disformity.
+		name = ATHA_nickname.0138.c
+		custom_tooltip = ATHA_nickname.0138.c_tt
+		trigger = {
+			exists = scope:nickname_physician
+			OR = {
+				has_trait = maimed
+				has_trait = hunchbacked
+				has_trait = spindly
+			}
+			NOT = { has_trait = incapable }
+		}
+		trait = maimed
+		trait = hunchbacked
+		trait = spindly
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = craven
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = paranoid # Doesn't trust a doctor.
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = education_learning
+			}
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+			arrogant = medium_stress_impact_loss
+			content = minor_stress_impact_gain
+		}
+
+		random_list = {
+			10 = {
+				trigger = { has_trait = maimed }
+				modifier = {
+					factor = 0.5
+					scope:nickname_physician = { learning <= low_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= mediocre_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= medium_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= decent_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= very_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= extremely_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = lifestyle_physician_2
+				}
+				modifier = {
+					factor = 2
+					has_trait = lifestyle_physician_3
+				}
+				remove_trait = maimed
+			}
+			5 = {
+				trigger = { has_trait = hunchbacked }
+				modifier = {
+					factor = 0.5
+					scope:nickname_physician = { learning <= low_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= mediocre_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= medium_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= decent_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= very_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= extremely_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = lifestyle_physician_2
+				}
+				modifier = {
+					factor = 2
+					has_trait = lifestyle_physician_3
+				}
+				remove_trait = hunchbacked
+			}
+			5 = {
+				trigger = { has_trait = spindly }
+				modifier = {
+					factor = 0.5
+					scope:nickname_physician = { learning <= low_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= mediocre_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= medium_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= decent_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= very_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.1
+					scope:nickname_physician = { learning >= extremely_high_skill_rating }
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = lifestyle_physician_2
+				}
+				modifier = {
+					factor = 2
+					has_trait = lifestyle_physician_3
+				}
+				remove_trait = spindly
+			}
+			5 = {
+				modifier = {
+					factor = 2
+					OR = {
+						has_trait = hunchbacked
+						has_trait = spindly
+					}
+				}
+				custom_tooltip = ATHA_nickname.0138.c_death_tt
+				hidden_effect = {
+					death = {
+						death_reason = death_treatment
+						killer = scope:nickname_physician
+					}
+				}
+			}
+			10 = { }
+		}
+		add_gold = minor_gold_loss
+		add_prestige = medium_prestige_loss
+	}
+}
 
 # nick_the_mad
 ATHA_nickname.0139 = {
@@ -4575,7 +5474,7 @@ ATHA_nickname.0139 = {
 					has_trait = lunatic
 					uses_greek_for_nickname_localization_trigger = yes
 					OR = {
-						has_nickname = epithet_the_illustrous
+						has_nickname = epithet_the_illustrious
 						has_nickname = nick_the_illustrious
 					}
 				}
@@ -4585,7 +5484,7 @@ ATHA_nickname.0139 = {
 				trigger = {
 					uses_greek_for_nickname_localization_trigger = yes
 					OR = {
-						has_nickname = epithet_the_illustrous
+						has_nickname = epithet_the_illustrious
 						has_nickname = nick_the_illustrious
 					}
 				}
@@ -4623,7 +5522,7 @@ ATHA_nickname.0139 = {
 			factor = 2
 			uses_greek_for_nickname_localization_trigger = yes
 			OR = {
-				has_nickname = epithet_the_illustrous
+				has_nickname = epithet_the_illustrious 
 				has_nickname = nick_the_illustrious
 			}
 		}

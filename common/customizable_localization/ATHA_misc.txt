@@ -36,3 +36,22 @@ DerogatoryOppositeWomenMen = {
 		trigger = { is_male = yes }
 	}
 }
+
+HeavyObjectForWeakRulerPossessive = {
+	type = character
+	random_valid = yes
+
+	text = {
+		localization_key = HEAVY_OBJECT_CHILD_POSSESSIVE
+		trigger = {
+			any_child = { age < 3 }
+		}
+	}
+	text = {
+		localization_key = HEAVY_OBJECT_SPEAR_POSSESSIVE
+		trigger = { can_be_commander_basic_trigger = yes }
+	}
+	text = {
+		localization_key = HEAVY_OBJECT_DEFAULT_POSSESSIVE
+	}
+}
