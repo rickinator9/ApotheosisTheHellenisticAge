@@ -88,6 +88,8 @@ excommunicate_character = {
 					right_icon = scope:religious_head	
 				}
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 	}
 }
@@ -242,6 +244,8 @@ pledge_ghw_war_chest_prestige_effect = { #To be fired within the scope of an Att
 		limit = { prev = { highest_held_title_tier = 1 } }
 		change_war_chest_prestige =  250
 	}
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 }
 
 pledge_ghw_war_chest_piety_effect = { #To be fired within the scope of an Attacker of the correct Faith.
@@ -265,6 +269,8 @@ pledge_ghw_war_chest_piety_effect = { #To be fired within the scope of an Attack
 		limit = { prev = { highest_held_title_tier = 1 } }
 		change_war_chest_piety =  75
 	}
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 }
 
 unpledge_ghw_war_chest_prestige_effect = { #To be fired within the ghw scope, assuming that the prev scope is the character joining it as an attacker.
@@ -288,6 +294,8 @@ unpledge_ghw_war_chest_prestige_effect = { #To be fired within the ghw scope, as
 		limit = { prev = { highest_held_title_tier = 1 } }
 		change_war_chest_prestige =  -250
 	}
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 }
 
 unpledge_ghw_war_chest_piety_effect = { #To be fired within the scope of an Attacker of the correct Faith.
@@ -311,6 +319,8 @@ unpledge_ghw_war_chest_piety_effect = { #To be fired within the scope of an Atta
 		limit = { prev = { highest_held_title_tier = 1 } }
 		change_war_chest_piety =  -75
 	}
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 }
 
 ghw_set_new_war_declarer_effect = {
@@ -964,6 +974,9 @@ demand_conversion_interaction_effect = {
 			}
 		}
 	}
+	scope:actor = {
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+	}
 }
 
 new_faith_created_conversion_effect = {
@@ -1042,6 +1055,9 @@ new_faith_created_conversion_effect = {
 				years = 5
 			}
 		}
+	}
+	scope:actor = {
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 

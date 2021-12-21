@@ -366,6 +366,7 @@ learning_medicine.2001 = { #by Mathilda Bjarnehed
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	
 	after = {
@@ -463,6 +464,8 @@ learning_medicine.2002 = { #by Mathilda Bjarnehed
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 	}
 
 	#Investigate
@@ -667,6 +670,8 @@ learning_medicine.2010 = { #by Mathilda Bjarnehed
 			}
 		}
 		cynical_progression_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	#These books are bad, I know better ones
@@ -705,6 +710,7 @@ learning_medicine.2010 = { #by Mathilda Bjarnehed
 		}
 
 		zealous_progression_effect = yes
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2946,12 +2952,14 @@ learning_medicine_special.2110 = {
 				faith = { trait_is_sin = gluttonous }
 			}
 			add_piety = minor_piety_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {	#Unless they like them, in which case you confuse and annoy people.
 			limit = {
 				faith = { trait_is_virtue = gluttonous }
 			}
 			add_piety = minor_piety_loss
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		else = { add_prestige = miniscule_prestige_gain }	#Otherwise you're just a bit of a neutral kill-joy, I guess.
 		stress_impact = {
@@ -3041,6 +3049,8 @@ learning_medicine_special.2110 = {
 				}
 			}
 			stress_impact = { zealous = minor_stress_impact_gain }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -3168,7 +3178,9 @@ learning_medicine_special.2110 = {
 					trait_is_sin = gluttonous
 				}
 			}
+
 			stress_impact = { zealous = medium_stress_impact_gain }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -3438,6 +3450,8 @@ learning_medicine_special.1003 = {
 					id = learning_medicine_special.1005
 					days = { 7 14 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_smelly CHANGE = nickname_weight_small_decrease }
 			}
 			5 = {
 				compare_modifier = {
@@ -3463,6 +3477,8 @@ learning_medicine_special.1003 = {
 					id = learning_medicine_special.1006
 					days = { 7 14 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_smelly CHANGE = nickname_weight_medium_increase }
 			}
 		}
 	}
@@ -3923,6 +3939,8 @@ learning_medicine_special.2100 = {
 				}
 			}
 			stress_impact = { zealous = medium_stress_impact_gain }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -4020,6 +4038,7 @@ learning_medicine_special.2100 = {
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	option = {	#Magic or no, get this commoner out of my good [faith] court.
 		name = learning_medicine_special.2100.d
@@ -4028,12 +4047,14 @@ learning_medicine_special.2100 = {
 				faith = { has_doctrine_parameter = witchcraft_shunned }
 			}
 			add_prestige = minor_prestige_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {
 			limit = {
 				faith = { has_doctrine_parameter = witchcraft_illegal }
 			}
 			add_prestige = medium_prestige_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		add_character_modifier = {
 			modifier = aloof_from_the_commoners_modifier

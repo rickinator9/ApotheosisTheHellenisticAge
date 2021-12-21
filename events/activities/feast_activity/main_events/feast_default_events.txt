@@ -383,6 +383,9 @@ feast_default.1003 = {
 				save_scope_as = other_guest
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wise CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I feel pretty good about that!
@@ -1260,6 +1263,7 @@ feast_default.1010 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = {
@@ -1296,6 +1300,7 @@ feast_default.1010 = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -5000,6 +5005,8 @@ feast_default.3006 = {
 				cynical = minor_stress_impact_gain
 				craven = minor_stress_impact_gain
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 		}
 		else = {
 			stress_impact = {
@@ -5039,6 +5046,25 @@ feast_default.3006 = {
 				ai_boldness = 0.5
 			}
 		}
+
+		if = {
+			limit = {
+				OR = {
+					trait_is_shunned_in_faith_trigger = {
+						TRAIT = adulterer
+						GENDER_CHARACTER = root
+						FAITH = root.faith
+					}
+					trait_is_criminal_in_faith_trigger = {
+						TRAIT = adulterer
+						GENDER_CHARACTER = root
+						FAITH = root.faith
+					}
+				}
+			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
+		}
 	}
 
 
@@ -5058,6 +5084,8 @@ feast_default.3006 = {
 				opinion_target = scope:spouse
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -6100,6 +6128,9 @@ feast_default.5005 = {
 		trait = intellect_good_3
 
 		add_prestige = medium_prestige_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wise CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Yes, more garum!

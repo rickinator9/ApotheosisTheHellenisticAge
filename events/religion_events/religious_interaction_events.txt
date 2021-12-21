@@ -638,6 +638,8 @@ religious_interaction.1020 = {
 
 	option = {
 		name = religious_interaction.1000.strong_negative
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -657,6 +659,8 @@ religious_interaction.1021 = {
 
 	option = {
 		name = religious_interaction.1000.strong_negative
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -715,6 +719,8 @@ religious_interaction.1024 = {
 
 	option = {
 		name = religious_interaction.1024.positive
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -767,6 +773,8 @@ religious_interaction.1031 = {
 
 	option = {
 		name = religious_interaction.1000.strong_negative
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -1655,6 +1663,8 @@ religious_interaction.2400 = {
 		ai_chance = {	#Unavailable to the AI.
 			base = 0
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1696,6 +1706,8 @@ religious_interaction.2401 = {
 				target = scope:recipient
 				modifier = literalist_debate_loser_opinion
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {
 			limit = { has_character_flag = debate_lost }
@@ -1704,6 +1716,8 @@ religious_interaction.2401 = {
 				target = scope:recipient
 				modifier = literalist_debate_victor_opinion
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		stress_impact = { cynical = medium_stress_impact_gain }
 		ai_chance = {	#No other options available.
@@ -1750,6 +1764,8 @@ religious_interaction.2402 = {
 				target = scope:actor
 				modifier = literalist_debate_loser_opinion
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {
 			limit = { has_character_flag = debate_lost }
@@ -1758,6 +1774,8 @@ religious_interaction.2402 = {
 				target = scope:actor
 				modifier = literalist_debate_victor_opinion
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		#No stress, as the AI is forced to get here.
 		ai_chance = {	#No other options available.
@@ -1857,5 +1875,7 @@ religious_interaction.2501 = {
 		name = religious_interaction.1000.negative
 		add_piety_level = -1
 		stress_impact = { zealous = major_stress_impact_gain }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 }

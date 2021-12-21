@@ -73,6 +73,7 @@ learning_theology.1301 = {
  		ai_chance = {
  			base = 50
  		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 	}
 
@@ -91,7 +92,9 @@ learning_theology.1301 = {
 		ai_chance = {
 			base = 50
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #nah
@@ -109,7 +112,9 @@ learning_theology.1301 = {
 				ai_greed = 0.5
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -733,6 +738,8 @@ learning_theology.3002 = {
 			}
 		}
 		cynical_progression_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #The church knows best
@@ -748,6 +755,8 @@ learning_theology.3002 = {
 				opinion = 10
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -805,6 +814,9 @@ learning_theology.3003 = {
 			}
 		}
 		cynical_progression_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Focus on earthly matters
@@ -823,6 +835,9 @@ learning_theology.3003 = {
 			}
 		}
 		zealous_progression_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1252,6 +1267,8 @@ learning_theology.3021 = {
 		ai_chance = {
 			base = 50
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	#energetic
@@ -1594,6 +1611,8 @@ learning_theology.3031 = {
 				ai_compassion = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Force conversion
@@ -1637,6 +1656,8 @@ learning_theology.3031 = {
 				ai_zeal = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -1757,6 +1778,8 @@ learning_theology.3043 = {
 		ai_chance = {
 			base = 50
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # I feel nothing, but it's very relaxing
@@ -1857,6 +1880,8 @@ learning_theology.3045 = {
 		stress_impact = {
 			stubborn = medium_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2136,6 +2161,8 @@ learning_theology_special.1001 = {
 					add_learning_lifestyle_perk_points = 1
 				}
 				trigger_event = learning_theology_special.1002
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 			}
 			20 = {
 				desc = learning_theology_special.1001.d.failure
@@ -2145,6 +2172,8 @@ learning_theology_special.1001 = {
 					add_learning_lifestyle_xp = minor_lifestyle_xp
 					add_piety = major_piety_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 			}
 		}
 		stress_impact = {
@@ -2179,6 +2208,8 @@ learning_theology_special.1001 = {
 					add_learning_lifestyle_perk_points = 1
 				}
 				trigger_event = learning_theology_special.1002
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 			}
 			50 = {
 				desc = learning_theology_special.1001.e.failure
@@ -2188,6 +2219,8 @@ learning_theology_special.1001 = {
 					add_learning_lifestyle_xp = minor_lifestyle_xp
 					add_piety = major_piety_loss
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 			}
 		}
 		stress_impact = {
@@ -2270,6 +2303,8 @@ learning_theology_special.1001 = {
 				ai_zeal = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Burn.
@@ -2286,6 +2321,9 @@ learning_theology_special.1001 = {
 				ai_zeal = 1.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -2436,6 +2474,9 @@ learning_theology_special.1101 = {
 		ai_chance = {
 			base = 75
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #nah
@@ -2449,6 +2490,8 @@ learning_theology_special.1101 = {
 		ai_chance = {
 			base = 0
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #heretic!!
@@ -2477,6 +2520,9 @@ learning_theology_special.1101 = {
 				ai_zeal = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_medium_decrease }
 	}
 
 	after = {
@@ -2558,6 +2604,8 @@ learning_theology_special.1102 = {
 		ai_chance = {
 			base = 200
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #"Publish" and claim prestige
@@ -2580,7 +2628,8 @@ learning_theology_special.1102 = {
 				}
 				add_learning_lifestyle_perk_points = 1
 				add_prestige = medium_prestige_gain
-				
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 			}
 			40 = {
 				desc = learning_theology_special.1102.b.failure
@@ -2590,6 +2639,8 @@ learning_theology_special.1102 = {
 				}
 				add_learning_lifestyle_xp = minor_lifestyle_xp
 				add_prestige = medium_prestige_loss
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_medium_decrease }
 			}
 		}
 		ai_chance = {
@@ -2617,6 +2668,8 @@ learning_theology_special.1102 = {
 		ai_chance = {
 			base = 200
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {

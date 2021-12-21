@@ -301,7 +301,9 @@ set_epithet_effect = {
 	# CHANGE: The adjustment in weight.
 change_nickname_weight_effect = {
 	if = {
-		limit = { exists = var:$NICKNAME$ }
+		limit = {
+			NOT = { has_variable = $NICKNAME$_weight }
+		}
 		set_variable = {
 			name = $NICKNAME$_weight
 			value = $CHANGE$

@@ -137,6 +137,10 @@ ask_for_conversion_courtier_interaction = {
 				trigger_event = char_interaction.0180
 			}
 		}
+
+		scope:actor = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+		}
 	}
 
 	on_decline = {
@@ -2589,6 +2593,8 @@ take_vows_interaction = {
 					move_to_pool_at = scope:actor.capital_province
 				}
 				kick_from_court_interaction_warning_tooltip_effect = yes
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 			}
 			trigger_event = holy_order.0002
 			if = {
@@ -2621,6 +2627,8 @@ take_vows_interaction = {
 					}
 				}
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 
 		hidden_effect = {
@@ -2637,12 +2645,16 @@ take_vows_interaction = {
 				modifier = asked_me_to_take_vows_opinion
 				years = 10
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		#Letter event informing the character about the rejection.
 		scope:actor = {
 			trigger_event = {
 				id = religious_interaction.1031
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 
 		# Refund piety cost
@@ -3521,6 +3533,8 @@ host_honored_guest_interaction = {
 				cynical = minor_stress_impact_gain
 				shy = minor_stress_impact_gain
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		scope:recipient = {
 			hidden_effect = {

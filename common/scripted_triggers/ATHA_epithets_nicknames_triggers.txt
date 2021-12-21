@@ -73,12 +73,20 @@ has_incorrect_nickname = {
 	NOT = { has_character_flag = has_permanent_nickname }
 	OR = {
 		AND = {
+			has_nickname = nick_the_autocrat
+			NOT = { can_get_nick_the_autocrat = yes }
+		}
+		AND = {
 			has_nickname = nick_the_bastard
 			NOT = { can_get_nick_the_bastard = yes }
 		}
 		AND = {
 			has_nickname = nick_the_bold
 			NOT = { can_get_nick_the_bold = yes }
+		}
+		AND = {
+			has_nickname = nick_the_benefactor
+			NOT = { can_get_nick_the_benefactor = yes }
 		}
 		AND = {
 			has_nickname = nick_the_builder
@@ -146,8 +154,20 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_mad = yes }
 		}
 		AND = {
+			has_nickname = nick_the_mindbreaker
+			NOT = { can_get_nick_the_mindbreaker = yes }
+		}
+		AND = {
 			has_nickname = nick_the_one_eyed
 			NOT = { can_get_nick_the_one_eyed = yes }
+		}
+		AND = {
+			has_nickname = nick_the_overpromiser
+			NOT = { can_get_nick_the_overpromiser = yes }
+		}
+		AND = {
+			has_nickname = nick_the_pious
+			NOT = { can_get_nick_the_pious = yes }
 		}
 		AND = {
 			has_nickname = nick_the_poet
@@ -155,6 +175,22 @@ has_incorrect_nickname = {
 				can_get_nick_the_poet_good = yes
 				can_get_nick_the_poet_bad = yes
 			}
+		}
+		AND = {
+			has_nickname = nick_the_scholar
+			NOT = { can_get_nick_the_scholar = yes }
+		}
+		AND = {
+			has_nickname = nick_the_small
+			NOT = { can_get_nick_the_small = yes }
+		}
+		AND = {
+			has_nickname = nick_the_smelly
+			NOT = { can_get_nick_the_smelly = yes }
+		}
+		AND = {
+			has_nickname = nick_the_thin
+			NOT = { can_get_nick_the_thin = yes }
 		}
 		AND = {
 			has_nickname = nick_the_victorious
@@ -175,6 +211,11 @@ has_nickname_trigger = {
 
 ######### NICKNAME-SPECIFIC TRIGGERS ########
 
+can_get_nick_the_autocrat = {
+	has_variable = nick_the_autocrat_weight
+	var:nick_the_autocrat_weight >= 30
+}
+
 can_get_nick_the_bastard = {
 	OR = {
 		has_trait = bastard
@@ -185,24 +226,23 @@ can_get_nick_the_bastard = {
 
 can_get_nick_the_bold = {
 	NOT = { has_trait = craven }
-	trigger_if = {
-		limit = { has_variable = nick_the_bold_weight }
-		var:nick_the_bold_weight >= 30
-	}
+	has_variable = nick_the_bold_weight
+	var:nick_the_bold_weight >= 30
 }
 
 can_get_nick_the_builder = {
-	trigger_if = {
-		limit = { has_variable = nick_the_builder_weight }
-		var:nick_the_builder_weight >= 5
-	}
+	has_variable = nick_the_builder_weight
+	var:nick_the_builder_weight >= 5
+}
+
+can_get_nick_the_benefactor = {
+	has_variable = nick_the_benefactor_weight
+	var:nick_the_benefactor_weight >= 30
 }
 
 can_get_nick_the_cruel = {
-	trigger_if = {
-		limit = { has_variable = nick_the_cruel_weight }
-		var:nick_the_cruel_weight >= 30
-	}
+	has_variable = nick_the_cruel_weight
+	var:nick_the_cruel_weight >= 30
 }
 
 can_get_nick_the_clubfooted = {
@@ -222,76 +262,57 @@ can_get_nick_the_fair = {
 }
 
 can_get_nick_the_flayer = {
-	trigger_if = {
-		limit = { has_variable = nick_the_flayer_weight }
-		var:nick_the_flayer_weight >= 30
-	}
+	has_variable = nick_the_flayer_weight
+	var:nick_the_flayer_weight >= 30
 }
 
 can_get_nick_the_fat = {
-	trigger_if = {
-		limit = { has_variable = nick_the_fat_weight }
-		OR = {
-			AND = {
-				has_character_modifier = obese_modifier
-				var:nick_the_fat_weight >= 10
-			}
-			var:nick_the_fat_weight >= 30
+	has_variable = nick_the_fat_weight
+	OR = {
+		AND = {
+			has_character_modifier = obese_modifier
+			var:nick_the_fat_weight >= 10
 		}
+		var:nick_the_fat_weight >= 30
 	}
 }
 
 can_get_nick_the_gardener = {
-	trigger_if = {
-		limit = { has_variable = nick_the_gardener_weight }
-		var:nick_the_gardener_weight >= 5
-	}
+	has_variable = nick_the_gardener_weight
+	var:nick_the_gardener_weight >= 5
 }
 
 can_get_nick_the_good = {
-	trigger_if = {
-		limit = { has_variable = nick_the_good_weight }
-		var:nick_the_good_weight >= 50
-	}
+	has_variable = nick_the_good_weight
+	var:nick_the_good_weight >= 50
 }
 
 can_get_nick_the_hawk = {
-	trigger_if = {
-		limit = { has_variable = nick_the_hawk_weight }
-		var:nick_the_hawk_weight >= 30
-	}
+	has_variable = nick_the_hawk_weight
+	var:nick_the_hawk_weight >= 30
 }
 
 can_get_nick_the_hunter = {
-	trigger_if = {
-		limit = { has_variable = nick_the_hunter_weight }
-		var:nick_the_hunter_weight >= 20
-	}
+	has_variable = nick_the_hunter_weight
+	var:nick_the_hunter_weight >= 20
 }
 
 can_get_nick_the_illustrious = {
-	trigger_if = {
-		limit = { has_variable = nick_the_illustrious_weight }
-		var:nick_the_illustrious_weight >= 30
-	}
+	has_variable = nick_the_illustrious_weight
+	var:nick_the_illustrious_weight >= 30
 }
 
 can_get_nick_the_invincible = {
 	net_battle_wins >= 10
 	OR = {
 		NOT = { has_variable = battle_losses }
-		trigger_if = {
-			limit = { has_variable = battle_losses }
-			var:battle_losses = 0
-		}
+		var:battle_losses = 0
 	}
 }
 
 can_get_nick_the_just = {
-	trigger_if = {
-		limit = { has_variable = nick_the_just_weight }
-		var:nick_the_just_weight >= 20
-	}
+	has_variable = nick_the_just_weight
+	var:nick_the_just_weight >= 20
 }
 
 can_get_nick_the_lame = {
@@ -306,46 +327,69 @@ can_get_nick_the_lame = {
 }
 
 can_get_nick_the_mad = {
-	trigger_if = {
-		limit = { has_variable = nick_the_mad_weight }
-		var:nick_the_mad_weight >= 30
-	}
+	has_variable = nick_the_mad_weight
+	var:nick_the_mad_weight >= 30
+}
+
+can_get_nick_the_mindbreaker = {
+	has_variable = nick_the_mindbreaker_weight
+	var:nick_the_mindbreaker_weight >= 3
 }
 
 can_get_nick_the_one_eyed = {
 	has_trait = one_eyed
 }
 
+can_get_nick_the_overpromiser = {
+	has_variable = nick_the_overpromiser_weight
+	var:nick_the_overpromiser_weight >= 20
+}
+
+can_get_nick_the_pious = {
+	has_variable = nick_the_pious_weight
+	var:nick_the_pious_weight >= 20
+}
+
 can_get_nick_the_poet_bad = {
-	trigger_if = {
-		limit = { has_variable = nick_the_poet_bad_weight }
-		var:nick_the_poet_bad_weight >= 10
-		OR = {
-			NOT = { has_variable = nick_the_poet_good_weight }
-			trigger_if = {
-				limit = { has_variable = nick_the_poet_good_weight }
-				var:nick_the_poet_bad_weight > var:nick_the_poet_good_weight
-			}
-		}
+	var:nick_the_poet_bad_weight >= 10
+	OR = {
+		NOT = { has_variable = nick_the_poet_good_weight }
+		var:nick_the_poet_bad_weight > var:nick_the_poet_good_weight
 	}
 }
 
 can_get_nick_the_poet_good = {
-	trigger_if = {
-		limit = { has_variable = nick_the_poet_good_weight }
-		var:nick_the_poet_good_weight >= 10
-		OR = {
-			NOT = { has_variable = nick_the_poet_bad_weight }
-			trigger_if = {
-				limit = { has_variable = nick_the_poet_bad_weight }
-				var:nick_the_poet_good_weight > var:nick_the_poet_bad_weight
-			}
-		}
+	has_variable = nick_the_poet_good_weight
+	var:nick_the_poet_good_weight >= 10
+	OR = {
+		NOT = { has_variable = nick_the_poet_bad_weight }
+		var:nick_the_poet_good_weight > var:nick_the_poet_bad_weight
 	}
 }
 
 can_get_nick_the_sacrificed = {
 	NOT = { can_get_nickname_trigger = yes }
+}
+
+can_get_nick_the_scholar = {
+	has_variable = nick_the_scholar_weight
+	var:nick_the_scholar_weight >= 20
+}
+
+can_get_nick_the_small = {
+	has_trait = dwarf
+}
+
+can_get_nick_the_smelly = {
+	has_variable = nick_the_smelly_weight
+	var:nick_the_smelly_weight >= 5
+}
+
+can_get_nick_the_thin = {
+	OR = {
+		has_trait = spindly
+		has_character_modifier = malnourished_modifier
+	}
 }
 
 can_get_nick_the_victorious = {
