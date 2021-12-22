@@ -38,69 +38,160 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
-innovation_hoplon = {
-	group = culture_group_regional
-	culture_era = culture_era_classical
-	icon = @weapons_and_armor_01
+### LATE HELLENISTIC ERA INNOVATIONS
 
-	potential = {
-		OR = {
-			this = culture:achaean
-			this = culture:aeolian
-			this = culture:arcadian
-			this = culture:athenian
-			this = culture:boeotian
-			this = culture:dorian
-			this = culture:dorian_northwest
-			this = culture:dorian_south
-			this = culture:epirote
-			this = culture:ionian
-			this = culture:macedonian
-			this = culture:thessalian
-		}
-	}
+#culture_group_military
 
-	unlock_maa = hoplitai
+# Professional army
+# Auxilia
+# Re-enlistment
 
-	flag = global_maa
+# TODO
+innovation_late_hellenistic_military_1 = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	modifier = {}
 }
 
-innovation_sarissa = {
-	group = culture_group_regional
-	culture_era = culture_era_classical
-	icon = @weapons_and_armor_01
+# TODO
+innovation_late_hellenistic_military_2 = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
 
-	potential = {
-		OR = {
-			this = culture:achaean
-			this = culture:aeolian
-			this = culture:arcadian
-			this = culture:athenian
-			this = culture:boeotian
-			this = culture:dorian
-			this = culture:dorian_northwest
-			this = culture:dorian_south
-			this = culture:epirote
-			this = culture:ionian
-			this = culture:macedonian
-		}
-	}
-
-	unlock_maa = pezhetairoi
-
-	flag = global_maa
+	modifier = {}
 }
 
-innovation_companion_cavalry = {
-	group = culture_group_regional
-	culture_era = culture_era_classical
-	icon = @companion
+# TODO
+innovation_late_hellenistic_military_3 = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
 
-	potential = {
-		this = culture:macedonian
+	modifier = {}
+}
+
+# Siege Engineers
+innovation_late_hellenistic_siege_engineers = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @siege_weapons
+	
+	modifier = {
+		siege_phase_time = -0.1
 	}
 
-	unlock_maa = hetairoi
+	unlock_maa = siege_engineers
 
-	flag = global_maa
+	flag = global_regular
+	flag = high_medieval_era_regular
 }
+
+# TODO
+innovation_late_hellenistic_military_5 = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	modifier = {}
+}
+
+# TODO
+innovation_late_hellenistic_military_6 = {
+	group = culture_group_military
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	modifier = {}
+}
+
+#culture_group_civic
+
+# Epithets for independents
+
+# TODO
+innovation_late_hellenistic_civic_1 = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	modifier = {}
+}
+
+# Cement
+innovation_late_hellenistic_cement = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @civil_construction_1
+
+	custom = unlock_high_medieval_economic_buildings
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+
+# TODO
+innovation_late_hellenistic_civic_3 = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	modifier = {}
+}
+
+# Industrialized farming - formerly latifundia.
+innovation_late_hellenistic_industrialized_farming = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @civil_construction_2
+
+	modifier = {
+		domain_limit = 1
+		direct_vassal_opinion = 5
+		republic_government_tax_contribution_mult = 0.05
+	}
+	
+	unlock_law = single_heir_succession_law # TODO
+	unlock_law = single_heir_succession_law_youngest # TODO
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+
+# Hypocaust
+innovation_late_hellenistic_hypocaust = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @nobility_02
+
+	modifier = {
+		county_opinion_add = 5
+	}
+
+	custom = reduce_illness_chance
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+
+# Aristolabe
+innovation_late_hellenistic_aristolabe = {
+	group = culture_group_civic
+	culture_era = culture_era_late_hellenistic
+	icon = @misc_inventions
+
+	custom = unlocks_naval_raiding
+	custom = unlocks_sailable_major_rivers
+
+	modifier = {
+		naval_movement_speed_mult = 0.25
+		diplomatic_range_mult = 0.25
+	}
+
+	flag = global_regular
+	flag = high_medieval_era_regular
+}
+
+#culture_group_regional
