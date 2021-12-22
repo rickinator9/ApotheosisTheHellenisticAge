@@ -386,15 +386,62 @@ AncestorEquipmentAction = {
 	}
 }
 
-AncestorEquipmentNoise = {
+AncestorEquipmentTake = {
+	type = character
+
+	text = {
+		trigger = { 
+			OR = {
+				var:ancestor_equipment = flag:panoply 
+				var:ancestor_equipment = flag:helmet 
+				var:ancestor_equipment = flag:breastplate 
+				var:ancestor_equipment = flag:greaves 
+			}
+		}
+		localization_key = AncestorEquipmentTake_strip
+	}
+	text = {
+		trigger = { 
+			OR = {
+				var:ancestor_equipment = flag:sword 
+				var:ancestor_equipment = flag:axe 
+				var:ancestor_equipment = flag:spear 
+				var:ancestor_equipment = flag:shield
+			}
+		}
+		localization_key = AncestorEquipmentTake_pick_up
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:chariot }
+		localization_key = AncestorEquipmentTake_step_over
+	}
+}
+
+AncestorEquipmentInscription = {
 	type = character
 
 	text = {
 		trigger = { always = no }
-		localization_key = AncestorEquipmentNoise_clang
+		localization_key = AncestorEquipmentInscription_surface
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:shield }
+		localization_key = AncestorEquipmentInscription_rim
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:sword }
+		localization_key = AncestorEquipmentInscription_blade
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:axe }
+		localization_key = AncestorEquipmentInscription_handle
+	}
+	text = {
+		trigger = { var:ancestor_equipment = flag:spear }
+		localization_key = AncestorEquipmentInscription_shaft
 	}
 	text = {
 		trigger = { var:ancestor_equipment = flag:chariot }
-		localization_key = AncestorEquipmentNoise_neigh
+		localization_key = AncestorEquipmentInscription_carriage
 	}
 }
