@@ -67,20 +67,13 @@ corruption.0002 = {
 #######################
 
 scripted_trigger corruption_1001_can_learn_owner_secret = {
-	always = no
-	# save_temporary_scope_as = secret_learner
-	# scope:owner = {
-	# 	any_secret = {
-	# 		secret_type = secret_corrupt
-	# 		NOT = { is_known_by = scope:secret_learner }
-	# 	}
-	# }
-}
-
-scripted_trigger corruption_1001_unlock_reveal_trigger = {
-	always = no
-	# NOT = { exists = scope:scheme_discovered }
-	# scope:target = { corruption_1001_can_learn_owner_secret = yes }
+	save_temporary_scope_as = secret_learner
+	scope:owner = {
+		any_secret = {
+			secret_type = secret_corrupt
+			NOT = { is_known_by = scope:secret_learner }
+		}
+	}
 }
 
 #Success
@@ -109,7 +102,6 @@ corruption.1001 = {
 
 	#Show them the best night of their life
 	option = {
-		#trigger = { corruption_1001_unlock_reveal_trigger = yes }
 		name = corruption.1001.a
 
 		scope:target = {
@@ -157,16 +149,13 @@ corruption.1001 = {
 			target = scope:target
 		}
 
-		pay_short_term_gold = {
-			gold = major_gold_value
-		}
+		remove_short_term_gold = major_gold_value
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	#Show them a good time
 	option = {
-		#trigger = { corruption_1001_unlock_reveal_trigger = yes }
 		name = corruption.1001.b
 
 		scope:target = {
@@ -193,9 +182,7 @@ corruption.1001 = {
 			target = scope:target
 		}
 
-		pay_short_term_gold = {
-			gold = medium_gold_value
-		}
+		remove_short_term_gold = medium_gold_value
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
@@ -340,7 +327,7 @@ corruption.1003 = {
 	}
 	left_portrait = {
 		character = scope:target
-		animation = angry
+		animation = anger
 	}
 
 	immediate = {
@@ -390,7 +377,7 @@ corruption.1004 = {
 	}
 	left_portrait = {
 		character = scope:target
-		animation = angry
+		animation = anger
 	}
 	trigger = {
 		scope:target = {
