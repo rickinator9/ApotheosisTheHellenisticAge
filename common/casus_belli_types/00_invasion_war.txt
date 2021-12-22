@@ -291,6 +291,10 @@
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -338,6 +342,10 @@
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -392,6 +400,10 @@
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	transfer_behavior = transfer
@@ -759,6 +771,10 @@ clan_invasion_war = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -806,6 +822,10 @@ clan_invasion_war = {
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -860,6 +880,10 @@ clan_invasion_war = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	transfer_behavior = transfer

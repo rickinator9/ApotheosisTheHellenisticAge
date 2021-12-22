@@ -4534,7 +4534,7 @@ feast_default.3005 = {
 			}
 		}
 
-		register_battle_win = yes
+		register_battle_win_effect = yes
 				
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
@@ -4566,7 +4566,7 @@ feast_default.3005 = {
 			}
 		}
 
-		register_battle_loss = yes
+		register_battle_loss_effect = yes
 	}
 
 	option = { #You lost - give up
@@ -4585,7 +4585,7 @@ feast_default.3005 = {
 			base = 100
 		}
 
-		register_battle_loss = yes
+		register_battle_loss_effect = yes
 	}
 
 	option = { #You won - be an ass about it
@@ -4604,7 +4604,7 @@ feast_default.3005 = {
 			base = 100
 		}
 
-		register_battle_win = yes
+		register_battle_win_effect = yes
 	}
 
 	option = { #You lost - slit their Achilles tendon
@@ -4626,7 +4626,7 @@ feast_default.3005 = {
 			base = 500
 		}
 
-		register_battle_loss = yes
+		register_battle_loss_effect = yes
 	}
 
 	after = {
@@ -7267,7 +7267,9 @@ feast_default.6231 = {
 				ai_compassion = 0.25
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #We all have to pitch in!
@@ -7287,6 +7289,7 @@ feast_default.6231 = {
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #I have a private stash!
@@ -7311,6 +7314,7 @@ feast_default.6231 = {
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {

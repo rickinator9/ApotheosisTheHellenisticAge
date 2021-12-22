@@ -167,8 +167,10 @@ ancestry.0002 = {
             }
         }
         cp:councillor_chancellor = {
-            limit = { is_ai = yes }
-            save_scope_as = chancellor
+            if = {
+                limit = { is_ai = yes }
+                save_scope_as = chancellor
+            }
         }
         random_sub_realm_barony = {
             limit = {
@@ -904,8 +906,10 @@ ancestry.0006 = {
         if = {
             limit = { exists = cp:councillor_marshal }
             cp:councillor_marshal = {
-                limit = { is_ai = yes }
-                save_scope_as = marshal
+                if = {
+                    limit = { is_ai = yes }
+                    save_scope_as = marshal
+                }
             }
         }
         else = {
@@ -1480,7 +1484,7 @@ ancestry.0008 = {
     title = ancestry.0008.t
     desc = {
         desc = ancestry.0008.desc.approach_stealth
-        first_valid
+        first_valid = {
             triggered_desc = {
                 trigger = { var:ancestor_equipment = flag:chariot }
                 desc = ancestry.0008.desc.outcome_chariot
@@ -1880,7 +1884,7 @@ ancestry.0010 = {
 
     option = { # What could have been...
         name = ancestry.0009.a
-        triggered = {
+        trigger = {
             exists = var:ancestor_equipment_different_ancestor 
             var:ancestry_0006_outcome = flag:failure_chariot
         }

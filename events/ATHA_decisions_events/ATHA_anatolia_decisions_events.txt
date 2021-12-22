@@ -331,7 +331,6 @@ anatolia_decisions.0007 = {
 	type = letter_event
 	opening = anatolia_decisions.0007.t
 	desc = anatolia_decisions.0007.desc
-	theme = realm
 	sender = scope:ionian_revolt_leader
 
 	trigger = {
@@ -745,7 +744,6 @@ anatolia_decisions.0008 = {
 	type = letter_event
 	opening = anatolia_decisions.0008.t
 	desc = anatolia_decisions.0008.desc
-	theme = realm
 	sender = scope:ionian_revolt_defender
 
 	trigger = {
@@ -936,7 +934,6 @@ anatolia_decisions.0009 = {
 	type = letter_event
 	opening = anatolia_decisions.0009.t
 	desc = anatolia_decisions.0009.desc
-	theme = realm
 	sender = scope:ionian_revolt_third_party
 
 	immediate = {
@@ -961,7 +958,7 @@ anatolia_decisions.0009 = {
 			trigger = {
 				OR = {
 					has_trait = arrogant
-					attacker_war_score > 25
+					scope:ionian_revolt_war = { attacker_war_score > 25 }
 				}
 			}
 			text = anatolia_decisions.0009.a_winning
@@ -970,7 +967,7 @@ anatolia_decisions.0009 = {
 			trigger = {
 				OR = {
 					has_trait = craven
-					attacker_war_score < 25
+					scope:ionian_revolt_war = { attacker_war_score < 25 }
 				}
 			}
 			text = anatolia_decisions.0009.a_losing
@@ -987,7 +984,6 @@ anatolia_decisions.0010 = {
 	type = letter_event
 	opening = anatolia_decisions.0010.t
 	desc = anatolia_decisions.0010.desc
-	theme = realm
 	sender = scope:ionian_revolt_third_party
 
 	immediate = {
@@ -1013,14 +1009,14 @@ anatolia_decisions.0010 = {
 			trigger = {
 				OR = {
 					has_trait = arrogant
-					attacker_war_score > 25
+					scope:ionian_revolt_war = { attacker_war_score > 25 }
 				}
 			}
 			text = anatolia_decisions.0010.a_winning
 		}
 		name = {
 			trigger = {
-				attacker_war_score < 25
+				scope:ionian_revolt_war = { attacker_war_score < 25 }
 			}
 			text = anatolia_decisions.0010.a_losing
 		}

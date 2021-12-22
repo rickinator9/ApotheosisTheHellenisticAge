@@ -1463,6 +1463,7 @@ stewardship_duty.1062 = {
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -2455,7 +2456,7 @@ stewardship_duty.1072 = {
 
 		if = {
 			limit = { 
-				ANY = {
+				OR = {
 					has_trait = compassionate
 					has_trait = just
 				}
@@ -3753,6 +3754,7 @@ stewardship_duty.4040 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 
 	#Attempt to persuade your vassal.
@@ -5224,6 +5226,7 @@ stewardship_duty.7023 = {
 		}
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	# Talk your way out of it

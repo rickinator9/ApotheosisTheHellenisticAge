@@ -167,7 +167,9 @@ ATHA_government.0002 = {
 		has_government = feudal_government
 		has_city_capital_trigger = yes
 
-		scope:title.tier > var:highest_tier_before_inheritance
+		scope:title = {
+			tier > var:highest_tier_before_inheritance
+		}
 	}
 
 	option = { # Tyranny
@@ -1718,7 +1720,10 @@ ATHA_government.0202 = {
 					has_holding_type = castle_holding
 					scope:grantee.highest_held_title_tier = tier_county
 				}
-				scope:grantee = { land_democratic_government = yes }
+				scope:grantee = {
+					change_government_form_to_democracy = yes
+					vassal_contract_set_obligation_level = { type = vassal_role level = 2 }
+				}
 			} else_if = {
 				limit = {
 					has_holding_type = castle_holding

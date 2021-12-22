@@ -136,7 +136,10 @@ independence_faction_war = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 		resolve_title_and_vassal_change = scope:change
-	
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -202,6 +205,10 @@ independence_faction_war = {
 		}
 
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -248,6 +255,10 @@ independence_faction_war = {
 		}
 
 		on_lost_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -394,7 +405,11 @@ liberty_faction_war = {
 					}
 				}
 			}
-		}	
+		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }	
 	}
 
 	on_white_peace_desc = {
@@ -448,6 +463,10 @@ liberty_faction_war = {
 			}
 		}
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -483,6 +502,10 @@ liberty_faction_war = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -591,6 +614,9 @@ populist_war = {
 			SOURCE_GOVERNMENT = scope:defender
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -639,6 +665,10 @@ populist_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 
@@ -677,6 +707,10 @@ populist_war = {
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -775,6 +809,9 @@ claimant_faction_war = {
 			#DEFENDER_PRESTIGE = -10
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -814,6 +851,10 @@ claimant_faction_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -831,6 +872,10 @@ claimant_faction_war = {
 
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	check_attacker_inheritance_validity = no
@@ -919,7 +964,9 @@ depose_war = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
-
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -947,6 +994,10 @@ depose_war = {
  			}
 		}
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -968,6 +1019,10 @@ depose_war = {
 
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	on_invalidated_desc = msg_invalidate_war_title
@@ -1089,6 +1144,9 @@ refused_liege_demand_war = {
 			}
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1127,6 +1185,10 @@ refused_liege_demand_war = {
 			}
 		}
 		on_white_peace_request_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1152,6 +1214,10 @@ refused_liege_demand_war = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_request_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -1435,7 +1501,10 @@ independence_war = {
 		}
 
 		resolve_title_and_vassal_change = scope:change
-	
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1490,6 +1559,10 @@ independence_war = {
  				arrogant = medium_stress_impact_gain
  			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1541,6 +1614,10 @@ independence_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

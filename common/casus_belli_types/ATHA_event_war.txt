@@ -192,6 +192,10 @@ ionian_revolt_cb = {
 			value = yes
 			years = ionian_revolt_cooldown_value
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -255,6 +259,10 @@ ionian_revolt_cb = {
 			value = yes
 			years = ionian_revolt_cooldown_value
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -313,6 +321,10 @@ ionian_revolt_cb = {
 			value = yes
 			years = ionian_revolt_cooldown_value
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

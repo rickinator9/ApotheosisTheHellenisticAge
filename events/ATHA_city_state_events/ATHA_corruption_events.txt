@@ -66,20 +66,22 @@ corruption.0002 = {
 # ENTICE EVENTS #
 #######################
 
-# scripted_trigger corruption_1001_can_learn_owner_secret = {
-# 	save_temporary_scope_as = secret_learner
-# 	scope:owner = {
-# 		any_secret = {
-# 			secret_type = secret_corrupt
-# 			NOT = { is_known_by = scope:secret_learner }
-# 		}
-# 	}
-# }
+scripted_trigger corruption_1001_can_learn_owner_secret = {
+	always = no
+	# save_temporary_scope_as = secret_learner
+	# scope:owner = {
+	# 	any_secret = {
+	# 		secret_type = secret_corrupt
+	# 		NOT = { is_known_by = scope:secret_learner }
+	# 	}
+	# }
+}
 
-# scripted_trigger corruption_1001_unlock_reveal_trigger = {
-# 	NOT = { exists = scope:scheme_discovered }
-# 	scope:target = { corruption_1001_can_learn_owner_secret = yes }
-# }
+scripted_trigger corruption_1001_unlock_reveal_trigger = {
+	always = no
+	# NOT = { exists = scope:scheme_discovered }
+	# scope:target = { corruption_1001_can_learn_owner_secret = yes }
+}
 
 #Success
 corruption.1001 = {

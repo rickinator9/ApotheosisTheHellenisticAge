@@ -193,8 +193,20 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_thin = yes }
 		}
 		AND = {
+			has_nickname = nick_the_ugly
+			NOT = { can_get_nick_the_ugly = yes }
+		}
+		AND = {
+			has_nickname = nick_the_victor
+			NOT = { can_get_nick_the_victor = yes }
+		}
+		AND = {
 			has_nickname = nick_the_victorious
 			net_battle_wins <= 0
+		}
+		AND = {
+			has_nickname = nick_the_wealthy
+			NOT = { can_get_nick_the_wealthy = yes }
 		}
 		AND = {
 			has_nickname = nick_the_young
@@ -351,20 +363,11 @@ can_get_nick_the_pious = {
 }
 
 can_get_nick_the_poet_bad = {
-	var:nick_the_poet_bad_weight >= 10
-	OR = {
-		NOT = { has_variable = nick_the_poet_good_weight }
-		var:nick_the_poet_bad_weight > var:nick_the_poet_good_weight
-	}
+	net_nick_the_poet_value <= -5
 }
 
 can_get_nick_the_poet_good = {
-	has_variable = nick_the_poet_good_weight
-	var:nick_the_poet_good_weight >= 10
-	OR = {
-		NOT = { has_variable = nick_the_poet_bad_weight }
-		var:nick_the_poet_good_weight > var:nick_the_poet_bad_weight
-	}
+	net_nick_the_poet_value >= 5
 }
 
 can_get_nick_the_sacrificed = {
@@ -392,9 +395,21 @@ can_get_nick_the_thin = {
 	}
 }
 
+can_get_nick_the_ugly = {
+	has_trait = beauty_bad
+}
+
+can_get_nick_the_victor = {
+	net_war_wins >= 10
+}
+
 can_get_nick_the_victorious = {
-	net_battle_wins >= 10
+	net_battle_wins >= 20
 	NOT = { can_get_nick_the_invincible = yes }
+}
+
+can_get_nick_the_wealthy = {
+	gold >= 5_years_gold_value
 }
 
 can_get_nick_the_young = {

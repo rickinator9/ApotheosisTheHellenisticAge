@@ -49,9 +49,34 @@ HeavyObjectForWeakRulerPossessive = {
 	}
 	text = {
 		localization_key = HEAVY_OBJECT_SPEAR_POSSESSIVE
-		trigger = { can_be_commander_basic_trigger = yes }
+		trigger = {
+			can_be_commander_basic_trigger = { ARMY_OWNER = root }
+		}
 	}
 	text = {
 		localization_key = HEAVY_OBJECT_DEFAULT_POSSESSIVE
+	}
+}
+
+MilitaryGenderPlural = {
+	type = character
+
+	text = {
+		localization_key = men
+		trigger = {
+			faith = { has_doctrine_parameter = combatant_must_be_male }
+		}
+	}
+	text = {
+		localization_key = women
+		trigger = {
+			faith = { has_doctrine_parameter = combatant_must_be_female }
+		}
+	}
+	text = {
+		localization_key = people
+		trigger = {
+			faith = { has_doctrine_parameter = combatant_can_be_either_gender }
+		}
 	}
 }

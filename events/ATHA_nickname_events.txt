@@ -508,7 +508,6 @@ ATHA_nickname.0001 = {
 					}
 					OR = {
 						has_nickname = epithet_the_generous
-						has_nickname = nick_the_generous
 					}
 				}
 			}
@@ -1688,22 +1687,16 @@ ATHA_nickname.0104 = {
 				has_trait = depressed
 				has_trait = blind
 			}
-			modifier = { # Unless beauty or physique is a virtue, zealous people would like to be known for their religious efforts.
+			modifier = { # Zealous people would like to be known for their religious efforts.
 				factor = 0.75
 				has_trait = zealous
-				faith = { 
-					OR = {
-						trait_is_virtue = beauty_good
-						trait_is_virtue = physique_good
-					}
-				}
 			}
 		}
 		stress_impact = {
 			lustful = medium_stress_impact_loss
 			rakish = medium_stress_impact_loss
 			shy = medium_stress_impact_gain
-			honest = small_stress_impact_loss
+			honest = minor_stress_impact_loss
 			humble = medium_stress_impact_gain
 			arrogant = major_stress_impact_loss
 			paranoid = medium_stress_impact_gain
@@ -1800,7 +1793,7 @@ ATHA_nickname.0104 = {
 
 		stress_impact = {
 			humble = major_stress_impact_loss
-			content = small_stress_impact_loss
+			content = minor_stress_impact_loss
 		}
 	}
 	option = { # Allude to the fateful demise of any previous conquests.
@@ -1882,7 +1875,7 @@ ATHA_nickname.0104 = {
 		stress_impact = {
 			shy = major_stress_impact_gain
 			arrogant = major_stress_impact_gain
-			compassionate = small_stress_impact_gain
+			compassionate = minor_stress_impact_gain
 			irritable = major_stress_impact_loss
 		}
 
@@ -2173,7 +2166,9 @@ ATHA_nickname.0110 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { has_doctrine_parameter = human_sacrifice_active }
+				trigger = {
+					faith = { has_doctrine_parameter = human_sacrifice_active }
+				}
 				desc = ATHA_nickname.0110.desc_good
 			}
 			desc = ATHA_nickname.0110.desc_bad
@@ -2192,12 +2187,16 @@ ATHA_nickname.0110 = {
 
 	option = { # Accept the nickname.
 		name = {
-			trigger = { has_doctrine_parameter = human_sacrifice_active }
+			trigger = {
+				faith = { has_doctrine_parameter = human_sacrifice_active }
+			}
 			text = ATHA_nickname.0110.a_good
 		}
 		name = {
 			trigger = {
-				NOT = { has_doctrine_parameter = human_sacrifice_active }
+				NOT = {
+					faith = { has_doctrine_parameter = human_sacrifice_active }
+				}
 			}
 			text = ATHA_nickname.0110.a_good
 		}
@@ -4985,7 +4984,7 @@ ATHA_nickname.0136 = {
 
 		add_piety = medium_piety_gain
 	}
-	option = { # Arbitary approach.
+	option = { # Arbitrary approach.
 		name = ATHA_nickname.0136.c
 		trait = arbitrary
 		ai_chance = {
@@ -5006,7 +5005,7 @@ ATHA_nickname.0136 = {
 			modifier = {
 				factor = 1.25
 				has_trait = zealous
-				faith = { trait_is_virtue = arbitary }
+				faith = { trait_is_virtue = arbitrary }
 			}
 			modifier = {
 				factor = 0.75
@@ -5924,7 +5923,7 @@ ATHA_nickname.0142 = {
 			years = 5
 		}
 		add_piety = medium_piety_loss
-		random_domain_title = {
+		random_held_title = {
 			limit = { tier = tier_county }
 
 			change_development_progress_with_overflow = -100
@@ -6066,7 +6065,7 @@ ATHA_nickname.0143 = {
 			}
 			modifier = {
 				factor = 1.25
-				has_trait = arbitary
+				has_trait = arbitrary
 			}
 			modifier = {
 				factor = 1.5
@@ -6074,7 +6073,7 @@ ATHA_nickname.0143 = {
 			}
 		}
 		stress_impact = {
-			arbitary = minor_stress_impact_loss
+			arbitrary = minor_stress_impact_loss
 			callous = medium_stress_impact_loss
 		}
 
@@ -6253,7 +6252,7 @@ ATHA_nickname.0144 = {
 		}
 		# No point in stress if this character dies.
 
-		hidden_tooltip = {
+		hidden_effect = {
 			add_piety_level = 1
 		}
 		set_permanent_nickname_effect = { NICKNAME = nick_the_pious }
@@ -6594,8 +6593,8 @@ ATHA_nickname.0146 = {
 			add_stress = medium_stress_impact_gain
 		}
 
-		change_nickname_weight_effect = { NICKNAME = nick_the_poet_bad AMOUNT = nickname_weight_large_decrease }
-		change_nickname_weight_effect = { NICKNAME = nick_the_poet_good AMOUNT = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_poet_bad CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_poet_good CHANGE = nickname_weight_large_decrease }
 	}
 	option = { # Invite the actors to your court.
 		name = ATHA_nickname.0146.c
@@ -6990,7 +6989,7 @@ ATHA_nickname.0150 = {
 		}
 		stress_impact = {
 			greedy = major_stress_impact_loss
-			arbitary = minor_stress_impact_loss
+			arbitrary = minor_stress_impact_loss
 			scholar = major_stress_impact_gain
 			content = minor_stress_impact_gain
 			generous = medium_stress_impact_gain
@@ -7680,16 +7679,371 @@ ATHA_nickname.0155 = {
 }
 
 # nick_the_ugly
-# ATHA_nickname.0156 = {
+ATHA_nickname.0156 = {
+	type = character_event
+	title = ATHA_nickname.0156.t
+	desc = ATHA_nickname.0156.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_ugly = yes
+	}
+
+	weight_multiplier = {
+		base = 0.5 # If you just have the minor ugliness genetic trait, this will be less likely to happen.
+
+		modifier = {
+			factor = 2
+			has_trait = beauty_bad_2
+		}
+		modifier = {
+			factor = 4
+			has_trait = beauty_bad_3
+		}
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		random_held_title = {
+			limit = {
+				tier = tier_county
+			}
+
+			add_to_list = statue_counties
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				NOT = { is_in_list = statue_counties }
+			}
+
+			add_to_list = statue_counties
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				NOT = { is_in_list = statue_counties }
+			}
+
+			add_to_list = statue_counties
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0156.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = calm
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = honest
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = arrogant
+			}
+		}
+		stress_impact = {
+			base = minor_stress_impact_gain
+			content = minor_stress_impact_loss
+			honest = minor_stress_impact_loss
+			arrogant = major_stress_impact_gain
+			wrathful = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_ugly }
+		add_prestige = medium_prestige_loss
+	}
+	option = { # Become celibate.
+		name = ATHA_nickname.0156.b
+		trigger = { # Must be able to become celibate.	
+			NOR = {
+				has_trait = lifestyle_reveler
+				has_trait = seducer
+			}
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = wrathful # Ragequit.
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = chaste
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = lustful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = impatient
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = zealous
+				NOT = {
+					faith = { has_doctrine = tenet_carnal_exaltation }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_child = { count = 0 }
+			}
+		}
+		if = {
+			limit = {
+				faith = { has_doctrine = tenet_carnal_exaltation }
+			}
+
+			stress_impact = {
+				content = minor_stress_impact_gain
+				lustful = medium_stress_impact_gain
+				zealous = major_stress_impact_loss
+				wrathful = minor_stress_impact_loss
+			}
+		} else = {
+			stress_impact = {
+				content = minor_stress_impact_gain
+				lustful = medium_stress_impact_gain
+				zealous = minor_stress_impact_gain
+				wrathful = minor_stress_impact_loss
+			}
+			add_piety = major_piety_gain
+		}
+
+		add_prestige = minor_prestige_loss
+		add_trait = celibate
+	}
+	option = { # Threaten them.
+		name = ATHA_nickname.0156.c
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = just
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = sadistic
+			}
+		}
+		stress_impact = {
+			wrathful = minor_stress_impact_loss
+			vengeful = medium_stress_impact_loss
+			forgiving = medium_stress_impact_gain
+			just = minor_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+		}
+
+		add_prestige = medium_prestige_loss
+		add_character_modifier = {
+			modifier = nickname_air_of_dread_modifier
+			years = 3
+		}
+	}
+	option = { # Propagandize.
+		name = ATHA_nickname.0156.d
+		custom_tooltip = ATHA_nickname.0156.d_tt
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = lazy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = generous
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = deceitful
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = paranoid # Does not trust the artists to do a good job.
+			}
+		}
+		stress_impact = {
+			generous = minor_stress_impact_loss
+			greedy = medium_stress_impact_gain
+			arrogant = minor_stress_impact_loss
+			paranoid = minor_stress_impact_gain
+			honest = medium_stress_impact_gain
+		}
+
+		remove_short_term_gold = medium_gold_value
+		every_in_list = {
+			list = statue_counties
+			title_province = {
+				add_province_modifier = {
+					modifier = nickname_county_ruler_statue_modifier
+					years = 15
+				}
+			}
+		}
+	}
+}
 
 # nick_the_untimely
 # ATHA_nickname.0157 = {
 
 # nick_the_victor
-# ATHA_nickname.0158 = {
+ATHA_nickname.0158 = {
+	type = character_event
+	title = ATHA_nickname.0158.t
+	desc = ATHA_nickname.0158.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_victor = yes
+		NOT = { has_nickname = epithet_the_victor }
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0158.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = education_martial
+			}
+		}
+		stress_impact = {
+			brave = minor_stress_impact_loss
+			content = minor_stress_impact_loss
+			ambitious = medium_stress_impact_loss
+			arrogant = medium_stress_impact_loss
+			humble = major_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_victor }
+		add_prestige = medium_prestige_gain
+	}
+	option = { # Humbly refuse.
+		name = ATHA_nickname.0158.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = craven # What if I will be expected to lead the armies myself?!
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = fickle
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = compassionate
+			}
+		}
+		stress_impact = {
+			humble = medium_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+			brave = minor_stress_impact_gain
+		}
+
+		add_character_modifier = {
+			modifier = nickname_humble_modifier
+			years = 5
+		}
+		add_piety = medium_piety_gain 
+	}
+}
 
 # nick_the_victor - Transition from epithet to nickname.
-# ATHA_nickname.0159 = {
+ATHA_nickname.0159 = {
+	hidden = yes
+
+	trigger = {
+		can_get_nick_the_victor = yes
+		has_nickname = epithet_the_victor
+	}
+
+	immediate = {
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_victor }
+	}
+}
 
 # nick_the_victorious
 ATHA_nickname.0160 = {
@@ -7829,10 +8183,265 @@ ATHA_nickname.0161 = {
 }
 
 # nick_the_wealthy
-# ATHA_nickname.0162 = {
+ATHA_nickname.0162 = {
+	type = character_event
+	title = ATHA_nickname.0162.t
+	desc = ATHA_nickname.0162.desc
+	theme = battle
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_wealthy = yes
+		NOT = { has_nickname = epithet_the_wealthy }
+	}
+
+	immediate = {
+		set_nickname_cooldown_effect = yes
+
+		random_held_title = {
+			limit = { tier = tier_county }
+
+			add_to_list = invested_counties
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				NOT = { is_in_list = invested_counties }
+			}
+
+			add_to_list = invested_counties
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				NOT = { is_in_list = invested_counties }
+			}
+
+			add_to_list = invested_counties
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				NOT = { is_in_list = invested_counties }
+			}
+
+			add_to_list = invested_counties
+		}
+	}
+
+	weight_multiplier = {
+		base = 0.5
+
+		# Increased chance if very wealthy.
+		modifier = {
+			factor = 1.2
+			gold >= 10_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 15_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 20_years_gold_value
+		}
+		modifier = {
+			factor = 1.4
+			gold >= 30_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 35_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 40_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 45_years_gold_value
+		}
+		modifier = {
+			factor = 1.2
+			gold >= 50_years_gold_value
+		}
+
+		# Increased chance if there is a historical pattern of heavy spending and they are STILL wealthy.
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 30
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 40
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 50
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 60
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 70
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 80
+		}
+		modifier = {
+			factor = 1.1
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 90
+		}
+		modifier = {
+			factor = 1.5
+			has_variable = nickname_the_wealthy_weight
+			var:nickname_the_wealthy_weight >= 100
+		}
+
+		# Decreased chance if ancestors had the same nickname (I think it would be very common to see this in the late game otherwise).
+		modifier = {
+			factor = 0.5
+			any_close_family_member = {
+				is_parent_of = root
+				has_nickname = nick_the_wealthy
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_close_family_member = {
+				is_grandparent_of = root
+				has_nickname = nick_the_wealthy
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_close_family_member = {
+				is_great_grandparent_of = root
+				has_nickname = nick_the_wealthy
+			}
+		}
+	}
+
+	option = { # Accept the nickname.
+		name = {
+			trigger = { has_trait = greedy }
+			text = ATHA_nickname.0162.a_greedy
+		}
+		name = {
+			trigger = {
+				NOT = { has_trait = greedy }
+			}
+			text = ATHA_nickname.0162.a_regular
+		}
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 1.25
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = paranoid # Makes me a more likely target for villainy!
+			}
+		}
+		stress_impact = {
+			content = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+			greedy = minor_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			paranoid = major_stress_impact_gain
+		}
+
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_wealthy }
+		add_prestige = medium_prestige_gain
+	}
+	option = { # Invest in realm.
+		name = ATHA_nickname.0162.b
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				factor = 0.9
+				has_trait = lazy
+			}
+			modifier = {
+				factor = 2
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = humble
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_trait = callous
+					has_trait = sadistic
+				}
+			}
+		}
+		stress_impact = {
+			generous = major_stress_impact_loss
+			greedy = major_stress_impact_gain
+			humble = medium_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+			compassionate = minor_stress_impact_loss
+		}
+
+		remove_short_term_gold = massive_gold_value
+		add_prestige = medium_prestige_gain
+		every_in_list = {
+			list = invested_counties
+			title_province = {
+				add_province_modifier = {
+					modifier = nickname_county_provincial_investment_modifier
+					years = 10
+				}
+			}
+		}
+	}
+}
 
 # nick_the_wealthy - Transition from epithet to nickname.
-# ATHA_nickname.0163 = {
+ATHA_nickname.0163 = {
+	hidden = yes
+
+	trigger = {
+		can_get_nick_the_wealthy = yes
+		has_nickname = epithet_the_wealthy
+	}
+
+	immediate = {
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_wealthy }
+	}
+}
 
 # nick_the_well_born
 # ATHA_nickname.0164 = {
@@ -7849,7 +8458,7 @@ ATHA_nickname.0300 = {
 	hidden = yes
 
 	immediate = {
-		side_commander = { register_battle_win = yes }
+		side_commander = { register_battle_win_effect = yes }
 	}
 }
 
@@ -7859,7 +8468,7 @@ ATHA_nickname.0301 = {
 	hidden = yes
 
 	immediate = {
-		side_commander = { register_battle_loss = yes }
+		side_commander = { register_battle_loss_effect = yes }
 	}
 }
 

@@ -357,6 +357,10 @@
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -398,6 +402,10 @@
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -483,6 +491,10 @@
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_primary_attacker_death = inherit
@@ -856,6 +868,10 @@ religious_war = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -897,6 +913,10 @@ religious_war = {
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -983,6 +1003,10 @@ religious_war = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_primary_attacker_death = inherit
@@ -1374,6 +1398,10 @@ major_religious_war = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1415,6 +1443,10 @@ major_religious_war = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1501,6 +1533,10 @@ major_religious_war = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_primary_attacker_death = inherit
@@ -1619,6 +1655,10 @@ excommunication_war = {
 
 		# Truce
 		add_truce_attacker_victory_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1651,6 +1691,10 @@ excommunication_war = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1697,6 +1741,10 @@ excommunication_war = {
 
 		# Truce
 		add_truce_attacker_defeat_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	should_invalidate = {
@@ -2249,17 +2297,6 @@ undirected_great_holy_war = {
 								}
 							}
 						}
-						men_at_arms = {
-							type = teutonic_knights
-							stacks = {
-								value = 1
-								scope:attacker.faith.great_holy_war = {
-									every_pledged_attacker = {
-										add = 0.2
-									}
-								}
-							}
-						}
 						inheritable = no
 						uses_supply = no
 						location = capital_province
@@ -2347,6 +2384,10 @@ undirected_great_holy_war = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -2438,6 +2479,10 @@ undirected_great_holy_war = {
 			}
 		}
 		debug_log = undirected_ghw_defeat_debug_message
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 }
 
@@ -2791,6 +2836,10 @@ directed_great_holy_war = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -2826,7 +2875,7 @@ directed_great_holy_war = {
 					is_defender = scope:defender
 				}
 				every_war_defender = {
-					add_achievement_flag = { FLAG = achievement_for_the_faith_flag }
+					add_achievement_flag_effect = { FLAG = achievement_for_the_faith_flag }
 				}
 			}
 		}
@@ -2864,6 +2913,10 @@ directed_great_holy_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
