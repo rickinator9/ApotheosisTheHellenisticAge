@@ -12,3 +12,12 @@ add_to_var_effect = {
 		change_variable = { name = $VAR$ add = $ADD$ }
 	}
 }
+
+# Removes the character modifier if it is assigned to this character.
+# - MODIFIER: The modifier to remove.
+remove_character_modifier_if_present = {
+	if = {
+		limit = { has_character_modifier = $MODIFIER$ }
+		remove_character_modifier = $MODIFIER$
+	}
+}
