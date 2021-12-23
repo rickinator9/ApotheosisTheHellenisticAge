@@ -49,7 +49,10 @@
 				scope:actor = { has_usable_hook = scope:recipient } # without this the is_valid_showing_failures_only above shows the same error
 			}
 			scope:actor = {
-				gold >= scope:recipient.recruit_guest_interaction_cost
+				OR = {
+					gold >= scope:recipient.recruit_guest_interaction_cost
+					has_character_modifier = nick_the_illustrious_modifier
+				}
 			}
 		}
 	}
@@ -95,9 +98,15 @@
 			}
 
 			scope:actor = {
-				pay_short_term_gold = {
-					target = scope:most_expensive_person
-					gold = scope:most_expensive_person.recruit_guest_interaction_cost_with_list #This value needs a list with the name "recruiting_family"
+				if = {
+					limit = {
+						NOT = { has_character_modifier = nick_the_illustrious_modifier }
+					}
+
+					pay_short_term_gold = {
+						target = scope:most_expensive_person
+						gold = scope:most_expensive_person.recruit_guest_interaction_cost_with_list #This value needs a list with the name "recruiting_family"
+					}
 				}
 			}
 		}
@@ -134,7 +143,13 @@
 		   		}
 			}
 
-			change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
+			if = {
+				limit = { # Only so long as you are not recruiting them for free.
+					NOT = { has_character_modifier = nick_the_illustrious_modifier }
+				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
+			}
 		}
 	}
 
@@ -912,6 +927,13 @@ invite_to_court_interaction = {
 			is_child_of = scope:actor
  			has_character_modifier = lust_for_adventure
  		}
+
+		# ATHA - more willingness to move to very grand courts of an illustrious ruler.
+		modifier = {
+			add = 20
+			desc = NICK_THE_ILLUSTRIOUS_INVITE_TO_COURT_BONUS
+			scope:actor = { has_character_modifier = nick_the_illustrious_modifier }
+		}
 	}
 
 

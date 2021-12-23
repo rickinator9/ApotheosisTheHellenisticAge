@@ -1920,6 +1920,15 @@ pay_ransom_interaction = {
 			}
 			desc = COWED_REASON
 		}
+
+		# ATHA - wealthy nickname modifier
+		modifier = {
+			add = 20
+			trigger = {
+				scope:actor = { has_character_modifier = nick_the_wealthy_modifier }
+			}
+			desc = NICK_THE_WEALTHY_RANSOM_ACCEPTANCE_BONUS
+		}
 	}
 
 	auto_accept = {
@@ -2442,6 +2451,21 @@ ransom_me_interaction = {
 				}
 			}
 			desc = COWED_REASON
+		}
+
+		# ATHA - wealthy nickname modifier
+		modifier = {
+			add = 20
+			trigger = {
+				scope:actor = { has_character_modifier = nick_the_wealthy_modifier }
+				OR = {
+					scope:gold = yes
+					scope:extortionate_gold = yes
+					scope:favor = yes
+					scope:hook = yes
+				}
+			}
+			desc = NICK_THE_WEALTHY_RANSOM_ACCEPTANCE_BONUS
 		}
 	}
 

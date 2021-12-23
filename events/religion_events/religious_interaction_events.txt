@@ -1486,6 +1486,17 @@ religious_interaction.2400 = {
 						multiply = 5
 					}
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = religious_interaction.2400.a.tt_success
 				hidden_effect = {
 					random_list = {
@@ -1581,6 +1592,17 @@ religious_interaction.2400 = {
 						multiply = -5
 					}
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:actor = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:actor = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = religious_interaction.2400.a.tt_fail
 				hidden_effect = {
 					random_list = {

@@ -257,6 +257,37 @@ marriage_ai_accept_modifier = {
 	# ATHA MODIFIERS #
 	##################
 
+	# Having the bastard nickname modifier lowers willingness to marry.
+	modifier = {
+		scope:secondary_actor = {
+			has_character_modifier = nick_the_bastard_modifier
+			this = scope:actor
+		}
+		add = -25
+		desc = NICK_THE_BASTARD_MARRIAGE_OFFER_PENALTY_SELF
+	}
+
+	# Having the bastard nickname modifier lowers willingness to marry.
+	modifier = {
+		scope:secondary_actor = {
+			has_character_modifier = nick_the_bastard_modifier
+			NOT = { this = scope:actor }
+		}
+		add = -25
+		desc = NICK_THE_BASTARD_MARRIAGE_OFFER_PENALTY_OTHER
+	}
+
+	# Having the overpromiser nickname modifier lowers willingness to betroth.
+	modifier = {
+		OR = {
+			scope:secondary_actor = { is_adult = no }
+			scope:secondary_recipient = { is_adult = no }
+		}
+		scope:actor = { has_character_modifier = nick_the_overpromiser_modifier }
+		add = -100
+		desc = NICK_THE_OVERPROMISER_BETROTH_ACCEPTANCE_PENALTY
+	}
+
 	# Holding Samothraike makes people a more likely match.
 	modifier = {
 		scope:actor.faith = { controls_holy_site = samothrake }

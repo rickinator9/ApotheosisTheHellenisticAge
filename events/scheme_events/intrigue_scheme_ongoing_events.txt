@@ -4741,6 +4741,17 @@ intrigue_scheme_ongoing.5026 = {
 					multiplier = 0.75
 					min = 0
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					root = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					root = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				root = {
 					send_interface_toast = {
 						title = intrigue_scheme_ongoing.5026.a.success
@@ -4774,6 +4785,17 @@ intrigue_scheme_ongoing.5026 = {
 					multiplier = -0.5
 					min = -14
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:court_chaplain = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:court_chaplain = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				root = {
 					send_interface_toast = {
 						title = intrigue_scheme_ongoing.5026.a.failure

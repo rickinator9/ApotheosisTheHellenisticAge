@@ -130,6 +130,17 @@ witch.1002 = { #by Mathilda Bjarnehed
 						scope:child = { has_trait = curious }
 						add = 20
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:guardian = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:guardian = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					desc = child_witch_conversion_success_effect.desc
 					child_witch_conversion_success_effect = yes
 				}
@@ -166,6 +177,17 @@ witch.1002 = { #by Mathilda Bjarnehed
 						scope:child = { has_trait = zealous }
 						add = 150
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:child = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:child = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					trigger = {
 						witch_1002_allow_reveal_outcome_trigger = yes
 					}
@@ -1388,6 +1410,17 @@ witch.3010 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 5
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				save_scope_value_as = {
 					name = grand_rite_ceremony_outcome
 					value = flag:great_translation
@@ -2746,6 +2779,17 @@ witch.4001 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 3
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				show_as_tooltip = { witch_4001_corruption_success_effect = yes }
 
 				trigger_event = {
@@ -2771,6 +2815,17 @@ witch.4001 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = -3
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:annoying_clergy = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:annoying_clergy = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				trigger_event = {
 					id = witch.4005
 					days = { 7 14 }

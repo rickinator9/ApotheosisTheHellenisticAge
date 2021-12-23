@@ -767,6 +767,17 @@ commission_epic.1004 = {
 					compare_modifier = {
 						value = scope:duel_value
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:composer = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:composer = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					root = {
 						send_interface_toast = {
 							title = commission_epic.1004.success
@@ -858,6 +869,17 @@ commission_epic.1004 = {
 				compare_modifier = {
 					value = scope:duel_value
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = commission_epic.1004.success
 					custom_tooltip = commission_epic.increased_chance

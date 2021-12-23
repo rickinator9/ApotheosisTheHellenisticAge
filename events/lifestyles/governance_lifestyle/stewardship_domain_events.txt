@@ -7259,6 +7259,17 @@ stewardship_domain_special.1510 = {
 					value = scope:duel_value
 					multiplier = 1
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = stewardship_domain_special.1510.c.success
 
 				#Increase survey quality due to thoroughness.
@@ -7275,6 +7286,17 @@ stewardship_domain_special.1510 = {
 					value = scope:duel_value
 					multiplier = -0.8
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:upset_priest = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:upset_priest = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = stewardship_domain_special.1510.c.failure
 
 				#Add the priest's holdings to the exclusion list, and lower the survey quality.

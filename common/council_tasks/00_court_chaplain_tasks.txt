@@ -866,7 +866,7 @@ task_fabricate_claim = {
 				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
 			}
 			add = {
-				value = scope:councillor.spymaster_find_secrets_nickname_political_poems_modifier_bonus
+				value = scope:councillor.court_chaplain_fabricate_claim_nickname_political_poems_modifier_bonus
 				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
 			}
 		}
@@ -907,6 +907,17 @@ task_fabricate_claim = {
 			multiply = {
 				value = scope:councillor.court_chaplain_fabricate_claim_vassal_penalty
 				desc = "COURT_CHAPLAIN_FABRICATE_CLAIM_VASSAL_COUNTY"
+			}
+		}
+
+		# ATHA bastard modifier.
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nick_the_bastard_modifier }
+			}
+			multiply = {
+				value = scope:councillor.court_chaplain_fabricate_claim_nick_the_bastard_modifier_penalty
+				desc = NICK_THE_BASTARD_FABRICATE_CLAIM_PENALTY
 			}
 		}
 	}

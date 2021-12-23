@@ -831,6 +831,17 @@ claim_throne_ongoing.1009 = {
 					add = 5
 					has_trait = education_intrigue_2
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					left_icon = root
 					title = tooltip.claim_throne_ongoing.1009.b.duel_success
@@ -847,6 +858,17 @@ claim_throne_ongoing.1009 = {
 					add = 5
 					has_trait = honest
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:fraud_catcher = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:fraud_catcher = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					left_icon = root
 					title = tooltip.claim_throne_ongoing.1009.b.duel_failure

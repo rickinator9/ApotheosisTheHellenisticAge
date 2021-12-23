@@ -170,11 +170,12 @@ has_incorrect_nickname = {
 			NOT = { can_get_nick_the_pious = yes }
 		}
 		AND = {
-			has_nickname = nick_the_poet
-			NOR = {
-				can_get_nick_the_poet_good = yes
-				can_get_nick_the_poet_bad = yes
-			}
+			has_nickname = nick_the_poet_bad
+			NOT = { can_get_nick_the_poet_bad = yes }
+		}
+		AND = {
+			has_nickname = nick_the_poet_good
+			NOT = { can_get_nick_the_poet_good = yes }
 		}
 		AND = {
 			has_nickname = nick_the_scholar

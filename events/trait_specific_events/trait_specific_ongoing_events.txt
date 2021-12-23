@@ -880,6 +880,17 @@ trait_specific_ongoing.2001 = { #by Mathilda Bjarnehed
 					scope:clergy = { has_trait = trusting }
 					add = 20
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = trait_specific_ongoing.2001.a.success
 				send_interface_toast = {
 					title = trait_specific_ongoing.2001.a.success
@@ -898,6 +909,17 @@ trait_specific_ongoing.2001 = { #by Mathilda Bjarnehed
 					opinion_target = root
 					multiplier = -0.5
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:clergy = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:clergy = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = trait_specific_ongoing.2001.a.failure
 				send_interface_toast = {
 					title = trait_specific_ongoing.2001.a.failure
