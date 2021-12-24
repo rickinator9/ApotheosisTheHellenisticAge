@@ -143,6 +143,10 @@
 			}
 			trigger_event = call_ally.0100
 		}
+
+		scope:target = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		}
 	}
 	
 	on_decline = {
@@ -185,6 +189,8 @@
 						set_called_to = scope:recipient
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_medium_decrease }
 			}
 			scope:actor = {
 				trigger_event = call_ally.0101

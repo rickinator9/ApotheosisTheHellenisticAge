@@ -167,3 +167,20 @@ net_war_wins = {
 		subtract = var:war_losses
 	}
 }
+
+truce_duration_5_years_days = {
+	value = 1825
+	if = {
+		limit = { has_perk = flexible_truces_perk }
+		multiply = 0.75
+	}
+	if = {
+		limit = { has_character_modifier = nick_the_great_modifier }
+		multiply = 0.5
+	}
+
+	#Rounds up to the closest number divisible by 5
+	divide = 5
+	ceiling = yes
+	multiply = 5
+}
