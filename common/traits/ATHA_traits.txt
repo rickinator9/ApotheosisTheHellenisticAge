@@ -293,6 +293,36 @@ deified = {
 	}
 }
 
+# Decision Traits
+
+ionian_revolt_leader = {
+	index = 1030
+	
+	fame = yes
+
+	martial = 2
+	prowess = 2
+	ionian_opinion = 15
+	dorian_opinion = 15
+	aeolian_opinion = 15
+	same_culture_mercenary_hire_cost_mult = -0.5
+	county_opinion_add = 10
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_ionian_revolt_leader_desc
+			}
+			desc = trait_ionian_revolt_leader_character_desc
+		}
+	}
+}
+
 ## LIFESTYLES ###################################
 
 kitharode_1 = {
@@ -443,4 +473,29 @@ pillager = {
 		}
 	}
 
+}
+
+## Intrigue Traits ###################################
+
+mithridatist = {
+	index = 2005
+	fame = yes
+
+	intrigue = 2
+	hostile_scheme_resistance_mult = 0.2
+	negate_health_penalty_add = 0.25
+	
+	ruler_designer_cost = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_mithridatist_desc
+			}
+			desc = trait_mithridatist_character_desc
+		}
+	}
 }

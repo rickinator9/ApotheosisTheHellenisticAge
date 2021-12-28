@@ -365,6 +365,16 @@ court_ongoing.0502 = { #by Mathilda Bjarnehed
 			}
 		}
 
+		if = {
+			limit = {
+				any_relation = {
+					type = soulmate
+					soulmate_relation_is_exclusive_trigger = yes
+				}
+			}
+			change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		}
+
 		ai_chance = {
 			base = 100
 
@@ -807,6 +817,9 @@ court_ongoing.1000 = { #by Mathilda Bjarnehed
 			arrogant = minor_stress_impact_gain
 			shy = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	#It was this other dude!
@@ -832,6 +845,8 @@ court_ongoing.1000 = { #by Mathilda Bjarnehed
 			compassionate = minor_stress_impact_gain
 			honest = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	
 	#Don't do anything
@@ -1063,6 +1078,8 @@ court_ongoing.1010 = { #by Mathilda Bjarnehed
 						opinion = 15
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 			}
 			20 = {
 				compare_modifier = {
@@ -1122,6 +1139,8 @@ court_ongoing.1010 = { #by Mathilda Bjarnehed
 			ai_vengefulness_target_modifier = { VALUE = -30 }
 			ai_boldness_target_modifier = { VALUE = -50 }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3324,6 +3343,8 @@ court_ongoing.1110 = {
 				ai_honor = -2
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Pay off
@@ -4074,6 +4095,8 @@ court_ongoing.1120 = { #by Mathilda Bjarnehed
 				ai_compassion = 2
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	# Distract them (boring)
@@ -4166,6 +4189,8 @@ court_ongoing.1120 = { #by Mathilda Bjarnehed
 				ai_honor = -1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Nothing can be done
@@ -4384,6 +4409,9 @@ court_ongoing.1121 = { #by Mathilda Bjarnehed
 			compassionate = minor_stress_impact_gain
 			forgiving = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Stay with unpleasant guest
@@ -4900,6 +4928,8 @@ court_ongoing.1221 = { #by Linnéa Thimrén
 					scope:target = { trigger_event = court_ongoing.1224 }
 					court_ongoing_1221_a_success_effect = yes
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_medium_decrease }
 			}
 			33 = {
 				desc = court_ongoing.1211.b.failure
@@ -4909,6 +4939,8 @@ court_ongoing.1221 = { #by Linnéa Thimrén
 					scope:target = { trigger_event = court_ongoing.1225 }
 					court_ongoing_1221_b_failure_effect = yes
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 			}
 		}
 
@@ -4933,6 +4965,8 @@ court_ongoing.1221 = { #by Linnéa Thimrén
 			modifier = refusal_opinion
 			opinion = -5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 }
 

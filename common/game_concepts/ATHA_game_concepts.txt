@@ -153,6 +153,16 @@ vassal_role = {
     parent = feudal_contract
 }
 
+autonomous_vassal = { 
+    alias = { autonomous }
+    parent = vassal_role
+}
+
+dependent_vassal = { 
+    alias = { dependent }
+    parent = vassal_role
+}
+
 imposed_franchise = { 
     parent = feudal_contract
 }
@@ -167,4 +177,33 @@ enforced_federalism = {
 
 spartan_dual_monarch = {
     alias = { spartan_dual_monarchs spartan_dual_basileus }
+}
+
+### ANCESTRY
+
+ancestry = {
+    texture = "gfx/interface/icons/modifiers/bloodline_3_positive.dds"
+}
+ancestry_modifier = {
+    alias = { ancestry_modifiers }
+    texture = "gfx/interface/icons/modifiers/bloodline_3_positive.dds"
+}
+claim_strength = {
+    parent = ancestry
+}
+claim_risk = {
+    parent = ancestry
+}
+
+aiakid_ancestry = {
+    alias = { aiakid aiakids aiakidai }
+}
+atreid_ancestry = {
+    alias = { atreid atreids atreidai }
+}
+heraklid_ancestry = {
+    alias = { heraklid heraklids heraklidai }
+}
+sapphic_ancestry = {
+    alias = { sapphic sapphics }
 }

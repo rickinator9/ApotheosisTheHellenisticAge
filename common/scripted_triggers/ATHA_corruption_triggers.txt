@@ -3,6 +3,7 @@
 }
 
 has_corruption_trigger = {
+	can_have_corruption_trigger = yes
 	trigger_if = {
 		limit = { exists = primary_title }
 		primary_title = { has_variable = city_state_corruption }
@@ -30,6 +31,7 @@ is_corrupt_trigger = {
 
 # Checks whether this character's city state has a low corruption level.
 has_low_corruption_level = {
+	can_have_corruption_trigger = yes
 	OR = {
 		NOT = { has_corruption_trigger = yes }
 		primary_title = { var:city_state_corruption < 25 }
@@ -64,4 +66,13 @@ has_critical_corruption_level = {
 		limit = { has_corruption_trigger = yes }
 		primary_title = { var:city_state_corruption >= 75 }
 	}
+}
+
+# Checks to see if a character is viable to passively reduce corruption
+has_corruption_reduction_trait_trigger = {
+    OR = {
+        ai_honor >= 50
+        has_trait = incorruptible
+        has_trait = just
+    }
 }

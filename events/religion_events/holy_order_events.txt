@@ -374,6 +374,7 @@ holy_order.0202 = {
 			}
 		}
 		execute_decision = repay_loan_decision
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 
 	option = { #Pretty please give me more time?
@@ -396,6 +397,7 @@ holy_order.0202 = {
 	option = { #no
 		name = holy_order.0202.c
 		flavor = holy_order.0202.c.tt
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	option = { #no
@@ -419,6 +421,7 @@ holy_order.0202 = {
 			add_piety_level = -1
 		}
 		remove_character_flag = borrow_from_holy_order
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
 	after = { #Consequences for not paying back

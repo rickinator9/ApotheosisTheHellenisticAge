@@ -613,6 +613,17 @@ task_promote_culture = {
 				desc = STEWARD_PROMOTE_CULTURE_ALLOWED_NOMAD_SETTLEMENT
 			}
 		}
+
+		# ATHA nickname modifier
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+			}
+			add = {
+				value = scope:councillor.steward_culture_conversion_nickname_political_poems_modifier_bonus
+				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+			}
+		}
 		
 		# Conversion speed game rules
 		if = {

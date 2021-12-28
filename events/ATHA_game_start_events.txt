@@ -787,3 +787,55 @@ ATHA_game_start.15 = {
 		trigger_event = ATHA_game_start.10
 	}
 }
+
+# Assign dynasty modifiers
+ATHA_game_start.16 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+    # Aiakid Ancestry
+		dynasty:epirotedyn002 = { # Aiakidas
+			add_dynasty_modifier = {
+				modifier = ancestry_aiakos_lvl_3_modifier # appears to have been well-established by this point
+			}
+		}
+    # Heraklid Ancestry
+		dynasty:macedoniandyn031 = { # Lynkestas
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_2_modifier # via their claimed descent from the Bacchiads
+			}
+		}
+		dynasty:macedoniandyn032 = { # Ptolemaion
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_1_modifier # it seems that claims of Argead descent emerged as propaganda under Keraunos or Philadelphos, but judging by later authors it never gained universal acceptance
+			}
+		}
+		dynasty:macedoniandyn039 = { # Temenidas
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_3_modifier # must have been well-established considering the Ptolemies (and possibly the later Antigonids) claimed Heraclid ancestry via the Temenids
+			}
+		}
+		dynasty:thessaliandyn002 = { # Aleuadas
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_2_modifier # via their claimed descent from Thessalos
+			}
+		}
+		dynasty:spartandyn001 = { # Agiadas
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_3_modifier # well-established even in the time of Herodotus
+			}
+		}
+		dynasty:spartandyn002 = { # Eurypontidas
+			add_dynasty_modifier = {
+				modifier = ancestry_herakles_lvl_3_modifier # well-established even in the time of Herodotus
+			}
+		}
+    # Sapphic Ancestry
+		dynasty:aeoliandyn006 = { # Larichides
+			add_dynasty_modifier = {
+				modifier = ancestry_sappho_lvl_3_modifier # their personal names are strikingly similar to those of Sappho's relatives - good evidence they belonged to the same family or at least claimed to
+			}
+		}
+	}
+}

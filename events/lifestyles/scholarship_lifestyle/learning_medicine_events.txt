@@ -289,6 +289,8 @@ learning_medicine.2001 = { #by Mathilda Bjarnehed
 			limit = { scope:herbalist = { is_pool_character = yes } }
 			add_visiting_courtier = scope:herbalist
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_gardener CHANGE = nickname_weight_small_increase }
 	}
 
 	#Help me pick a bouqet
@@ -364,6 +366,7 @@ learning_medicine.2001 = { #by Mathilda Bjarnehed
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	
 	after = {
@@ -461,6 +464,8 @@ learning_medicine.2002 = { #by Mathilda Bjarnehed
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 	}
 
 	#Investigate
@@ -637,6 +642,17 @@ learning_medicine.2010 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 1
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = learning_medicine.2010.a.success.desc
 				send_interface_toast = {
 					title = learning_medicine.2010.a.success.desc
@@ -665,6 +681,8 @@ learning_medicine.2010 = { #by Mathilda Bjarnehed
 			}
 		}
 		cynical_progression_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	#These books are bad, I know better ones
@@ -703,6 +721,7 @@ learning_medicine.2010 = { #by Mathilda Bjarnehed
 		}
 
 		zealous_progression_effect = yes
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -1429,6 +1448,9 @@ learning_medicine.2024 = { #by Mathilda Bjarnehed
 			ai_compassion_target_modifier = { VALUE = 50 }
 			ai_vengefulness_target_modifier = { VALUE = -50 }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	#Imprison
@@ -1448,6 +1470,10 @@ learning_medicine.2024 = { #by Mathilda Bjarnehed
 			ai_compassion_target_modifier = { VALUE = -30 }
 			ai_vengefulness_target_modifier = { VALUE = 100 }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2413,6 +2439,17 @@ learning_medicine.2050 = { #by Mathilda Bjarnehed
 							min = 10 #Guaranteed help
 						}
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						has_character_modifier = nick_the_scholar_modifier
+						factor = 1.25
+					}
+					modifier = {
+						has_character_modifier = nick_the_wise_modifier
+						factor = 1.1
+					}
+
 					show_as_tooltip = { medicine_2050_a_success_effect = yes }
 					trigger_event = learning_medicine.2051
 				}
@@ -2443,6 +2480,8 @@ learning_medicine.2050 = { #by Mathilda Bjarnehed
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Do it yourself
@@ -2464,8 +2503,21 @@ learning_medicine.2050 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 2
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				show_as_tooltip = { medicine_2050_b_success_effect = yes }
 				trigger_event = learning_medicine.2053
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 			}
 			40 = {
 				desc = learning_medicine.2050.b.failure
@@ -2485,6 +2537,8 @@ learning_medicine.2050 = { #by Mathilda Bjarnehed
 		ai_chance = {
 			base = 100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Let them die
@@ -2530,6 +2584,9 @@ learning_medicine.2050 = { #by Mathilda Bjarnehed
 			ai_compassion_target_modifier = { VALUE = -100 }
 			ai_vengefulness_target_modifier = { VALUE = 50 }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2928,12 +2985,14 @@ learning_medicine_special.2110 = {
 				faith = { trait_is_sin = gluttonous }
 			}
 			add_piety = minor_piety_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {	#Unless they like them, in which case you confuse and annoy people.
 			limit = {
 				faith = { trait_is_virtue = gluttonous }
 			}
 			add_piety = minor_piety_loss
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		else = { add_prestige = miniscule_prestige_gain }	#Otherwise you're just a bit of a neutral kill-joy, I guess.
 		stress_impact = {
@@ -3023,6 +3082,8 @@ learning_medicine_special.2110 = {
 				}
 			}
 			stress_impact = { zealous = minor_stress_impact_gain }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -3051,6 +3112,8 @@ learning_medicine_special.2110 = {
 				has_trait = shy
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 	option = {	#You and your vassal have it large.
 		name = {
@@ -3074,6 +3137,17 @@ learning_medicine_special.2110 = {
 					multiplier = 3.5
 					min = -49
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = learning_medicine.2110.c.tt_success
 				send_interface_toast = {
 					title = learning_medicine.2110.c.tt_success
@@ -3108,6 +3182,17 @@ learning_medicine_special.2110 = {
 					multiplier = -3.5
 					min = -49
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:hashish_vassal_or_liege = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:hashish_vassal_or_liege = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = learning_medicine.2110.c.tt_fail
 				send_interface_toast = {	
 					title = learning_medicine.2110.c.tt_fail
@@ -3148,7 +3233,9 @@ learning_medicine_special.2110 = {
 					trait_is_sin = gluttonous
 				}
 			}
+
 			stress_impact = { zealous = medium_stress_impact_gain }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -3177,6 +3264,8 @@ learning_medicine_special.2110 = {
 				has_trait = temperate
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3359,6 +3448,8 @@ learning_medicine_special.1002 = {
 		ai_chance = {
 			base = 75
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Back out
@@ -3408,12 +3499,25 @@ learning_medicine_special.1003 = {
 					value = scope:duel_value
 					multiplier = 1
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = learning_medicine_special.1003.a.good
 				show_as_tooltip = { add_learning_lifestyle_perk_points = 1 }
 				trigger_event = {
 					id = learning_medicine_special.1005
 					days = { 7 14 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_smelly CHANGE = nickname_weight_small_decrease }
 			}
 			5 = {
 				compare_modifier = {
@@ -3439,6 +3543,8 @@ learning_medicine_special.1003 = {
 					id = learning_medicine_special.1006
 					days = { 7 14 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_smelly CHANGE = nickname_weight_medium_increase }
 			}
 		}
 	}
@@ -3475,6 +3581,17 @@ learning_medicine_special.1103 = {
 					multiplier = 1
 					min = -14
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = learning_medicine_special.1003.a.good
 				show_as_tooltip = { add_learning_lifestyle_perk_points = 1 }
 				trigger_event = {
@@ -3831,6 +3948,17 @@ learning_medicine_special.2100 = {
 					multiplier = 3.5
 					min = -49
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = learning_medicine_special.2100.b.tt_success
 				send_interface_toast = {
 					title = learning_medicine_special.2100.b.tt_success
@@ -3866,6 +3994,17 @@ learning_medicine_special.2100 = {
 					multiplier = -3.5
 					min = -49
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:fish_alchemist = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:fish_alchemist = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = learning_medicine_special.2100.b.tt_fail
 				send_interface_toast = {	
 					title = learning_medicine_special.2100.b.tt_fail
@@ -3874,10 +4013,7 @@ learning_medicine_special.2100 = {
 						modifier = associates_with_strange_peasants_modifier
 						days = 3650
 					}
-					if = {
-						limit = { has_any_nickname = no }
-						give_nickname = nick_the_fishy
-					}
+					change_nickname_weight_effect = { NICKNAME = nick_the_smelly CHANGE = nickname_weight_large_increase }
 					custom_tooltip = learning_medicine_special.2100.b.tt_failure.tt
 					hidden_effect = {
 						scope:fish_alchemist = {
@@ -3902,6 +4038,8 @@ learning_medicine_special.2100 = {
 				}
 			}
 			stress_impact = { zealous = medium_stress_impact_gain }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		ai_chance = {
 			base = 50
@@ -3996,6 +4134,10 @@ learning_medicine_special.2100 = {
 				has_trait = sadistic
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	option = {	#Magic or no, get this commoner out of my good [faith] court.
 		name = learning_medicine_special.2100.d
@@ -4004,12 +4146,14 @@ learning_medicine_special.2100 = {
 				faith = { has_doctrine_parameter = witchcraft_shunned }
 			}
 			add_prestige = minor_prestige_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		else_if = {
 			limit = {
 				faith = { has_doctrine_parameter = witchcraft_illegal }
 			}
 			add_prestige = medium_prestige_gain
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 		add_character_modifier = {
 			modifier = aloof_from_the_commoners_modifier

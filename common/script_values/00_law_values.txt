@@ -36,6 +36,7 @@ natural_primitivism_modifier = 0.5
 
 #Crown Authority Change
 increase_crown_authority_prestige_base = 100
+nick_the_autocrat_prestige_cost_modifier = 0.5
 
 increase_crown_authority_prestige_cost = {
 	add = {
@@ -177,7 +178,16 @@ increase_crown_authority_prestige_cost = {
 			desc = "character_modifiers_law_cost_tooltip"
 			value = 1.1 # vassal_distrust_modifier = +10%
 		}
-	}	
+	}
+
+	# ATHA: Autocrat nickname
+	if = {
+		limit = { has_character_modifier = nick_the_autocrat_modifier }
+		multiply = {
+			value = nick_the_autocrat_prestige_cost_modifier
+			desc = NICK_THE_AUTOCRAT_CENTRALIZATION_TRIBAL_AUTHORITY_PRESTIGE_BONUS
+		}
+	}
 }
 
 #Tribal Authority Change
@@ -303,6 +313,15 @@ increase_tribal_authority_prestige_cost = {
 			value = 1.1 # vassal_distrust_modifier = +10%
 		}
 	}
+
+	# ATHA: Autocrat nickname
+	if = {
+		limit = { has_character_modifier = nick_the_autocrat_modifier }
+		multiply = {
+			value = nick_the_autocrat_prestige_cost_modifier
+			desc = NICK_THE_AUTOCRAT_CENTRALIZATION_TRIBAL_AUTHORITY_PRESTIGE_BONUS
+		}
+	}
 }
 
 #Succession Law Change
@@ -371,6 +390,15 @@ change_succession_law_prestige_cost = {
 			value = 0.9 # religious_legal_pronouncements_modifier = -0.1
 		}
 	}
+
+	# ATHA: Autocrat nickname
+	if = {
+		limit = { has_character_modifier = nick_the_autocrat_modifier }
+		multiply = {
+			value = nick_the_autocrat_prestige_cost_modifier
+			desc = NICK_THE_AUTOCRAT_CENTRALIZATION_TRIBAL_AUTHORITY_PRESTIGE_BONUS
+		}
+	}
 }
 
 change_title_succession_law_prestige_cost = {
@@ -435,6 +463,15 @@ change_title_succession_law_prestige_cost = {
 			multiply = 0.9 # religious_legal_pronouncements_modifier = -0.1
 		}
 	}
+
+	# ATHA: Autocrat nickname
+	if = {
+		limit = { has_character_modifier = nick_the_autocrat_modifier }
+		multiply = {
+			value = nick_the_autocrat_prestige_cost_modifier
+			desc = NICK_THE_AUTOCRAT_CENTRALIZATION_TRIBAL_AUTHORITY_PRESTIGE_BONUS
+		}
+	}
 }
 
 change_city_state_succession_law_prestige_cost = {
@@ -482,6 +519,15 @@ change_hre_title_succession_law_prestige_cost = {
 		multiply = {
 			desc = "rite_pronouncements_law_cost_tooltip"
 			value = 0.9 # religious_legal_pronouncements_modifier = -0.1
+		}
+	}
+
+	# ATHA: Autocrat nickname
+	if = {
+		limit = { has_character_modifier = nick_the_autocrat_modifier }
+		multiply = {
+			value = nick_the_autocrat_prestige_cost_modifier
+			desc = NICK_THE_AUTOCRAT_CENTRALIZATION_TRIBAL_AUTHORITY_PRESTIGE_BONUS
 		}
 	}
 }

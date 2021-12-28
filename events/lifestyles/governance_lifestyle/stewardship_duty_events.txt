@@ -291,6 +291,8 @@ stewardship_duty.0001 = {
 						}
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 			}
 			12 = {		
 				compare_modifier = {
@@ -1292,7 +1294,7 @@ stewardship_duty.1062 = {
 			#Re-save the scope to make the scripting for follow-up events more straightforward.
 			save_scope_as = client
 			hidden_effect = {
-				give_nickname = nick_the_gardener
+				set_nickname_with_cooldown_effect = { NICKNAME = nick_the_gardener }
 			}
 		}
 
@@ -1315,6 +1317,9 @@ stewardship_duty.1062 = {
 				ai_greed = -1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 	}
 
@@ -1335,7 +1340,7 @@ stewardship_duty.1062 = {
 			#Re-save the scope to make the scripting for follow-up events more straightforward.
 			save_scope_as = client
 			hidden_effect = {
-				give_nickname = nick_the_poet
+				set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet_good }
 			}
 		}
 
@@ -1357,6 +1362,8 @@ stewardship_duty.1062 = {
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 	}
 	
@@ -1377,7 +1384,7 @@ stewardship_duty.1062 = {
 			#Re-save the scope to make the scripting for follow-up events more straightforward.
 			save_scope_as = client
 			hidden_effect = {
-				give_nickname = nick_the_philosopher
+				set_nickname_with_cooldown_effect = { NICKNAME = nick_the_scholar }
 			}
 		}
 
@@ -1400,6 +1407,8 @@ stewardship_duty.1062 = {
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 
@@ -1428,6 +1437,8 @@ stewardship_duty.1062 = {
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -1450,6 +1461,9 @@ stewardship_duty.1062 = {
 			}
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -1497,6 +1511,8 @@ stewardship_duty.1063 = {
 			id = stewardship_duty.1063
 			days = 1820 #Just under 5 years, so we can fire it before our old buff expires.
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -1523,6 +1539,8 @@ stewardship_duty.1063 = {
 			id = stewardship_duty.1063
 			days = 1820 #Just under 5 years, so we can fire it before our old buff expires.
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
 	}
 	
 
@@ -1779,6 +1797,8 @@ stewardship_duty.1068 = {
 					target = scope:my_vassal
 					opinion = 25
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_gardener CHANGE = nickname_weight_small_increase }
 			}
 		}
 		else_if = {
@@ -2047,7 +2067,9 @@ stewardship_duty.1071 = {
 				ai_greed = -100
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Option B: Return the serfs to their lord, but chastise them for abusing their serfs.
@@ -2094,7 +2116,10 @@ stewardship_duty.1071 = {
 				ai_greed = -100
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 	
 	#Option C: Whether out of greed or compassion, settle the runaway serfs on your lands.
@@ -2229,6 +2254,9 @@ stewardship_duty.1071 = {
 				ai_greed = 300
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_medium_increase }
 	}
 }
 
@@ -2322,6 +2350,9 @@ stewardship_duty.1072 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Option B: Stand your ground and keep the serfs.
@@ -2425,7 +2456,7 @@ stewardship_duty.1072 = {
 
 		if = {
 			limit = { 
-				ANY = {
+				OR = {
 					has_trait = compassionate
 					has_trait = just
 				}
@@ -2435,6 +2466,10 @@ stewardship_duty.1072 = {
 		else_if = {
 			change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3121,6 +3156,7 @@ stewardship_duty.4012 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -3341,6 +3377,7 @@ stewardship_duty.4014 = {
 		}
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -3384,6 +3421,7 @@ stewardship_duty.4014 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -3716,6 +3754,7 @@ stewardship_duty.4040 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 
 	#Attempt to persuade your vassal.
@@ -3760,6 +3799,7 @@ stewardship_duty.4040 = {
 					days = { 7 11 }
 				}
 
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 			}
 			50 = {
 				desc = stewardship_duty.4040.b.failure
@@ -3786,6 +3826,8 @@ stewardship_duty.4040 = {
 					id = stewardship_duty.4042
 					days = { 7 11 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 			}
 		}
 
@@ -3829,7 +3871,8 @@ stewardship_duty.4040 = {
 						vassal_contract_increase_obligation_level = feudal_government_taxes
 					}
 					add_dread = minor_dread_gain
-					set_nickname_effect = { NICKNAME = nick_the_bully }
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 				}
 
 				trigger_event = {
@@ -3894,6 +3937,8 @@ stewardship_duty.4040 = {
 					id = stewardship_duty.4044
 					days = { 7 11 }
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 			}
 		}
 
@@ -3917,6 +3962,8 @@ stewardship_duty.4040 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Do not try to change the contract.
@@ -3949,6 +3996,7 @@ stewardship_duty.4040 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3975,6 +4023,7 @@ stewardship_duty.4041 = {
 		scope:my_vassal = {
 			vassal_contract_increase_obligation_level = feudal_government_taxes
 		}
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3995,7 +4044,6 @@ stewardship_duty.4042 = {
 		name = stewardship_duty.4042.a
 
 		add_stress = minor_stress_impact_gain
-
 	}
 }
 
@@ -4016,7 +4064,8 @@ stewardship_duty.4043 = {
 		name = stewardship_duty.4043.a
 
 		add_dread = minor_dread_gain
-		set_nickname_effect = { NICKNAME = nick_the_bully }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		scope:my_vassal = {
 			vassal_contract_increase_obligation_level = feudal_government_taxes
 		}
@@ -4639,6 +4688,8 @@ stewardship_duty.5021 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	
 	option = { #who cares?
@@ -4672,6 +4723,9 @@ stewardship_duty.5021 = {
 				ai_compassion = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -4837,6 +4891,7 @@ stewardship_duty.7001 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Option B: Respect your vassal's autonomy, they like you more.
@@ -4921,6 +4976,7 @@ stewardship_duty.7001 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -5170,6 +5226,7 @@ stewardship_duty.7023 = {
 		}
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	# Talk your way out of it
@@ -5278,6 +5335,7 @@ stewardship_duty.7023 = {
 		}
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	# Intimidate your way out of it
@@ -5408,6 +5466,8 @@ stewardship_duty.7023 = {
 		}
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}	
 
 	# Affirm that you still owe your favor.
@@ -5435,6 +5495,9 @@ stewardship_duty.7023 = {
 				ai_greed = -100
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -5670,10 +5733,10 @@ stewardship_duty.7025 = {
 				}
 				add = 100
 			}
-		}					
-	}
+		}
 
-	change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+	}
 
 	after = {
 		scope:hooked_ruler = {
@@ -6126,6 +6189,7 @@ stewardship_duty_special.1203 = {
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 	}
 	
 	option = { #Pay them off
@@ -7020,7 +7084,9 @@ stewardship_duty_special.2011 = {
 				add = 2
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -7260,7 +7326,9 @@ stewardship_duty_special.2013 = {
 			}
 		}
 		add_gold = medium_gold_value
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Side with vassal_2 (traiditon)
@@ -7603,7 +7671,9 @@ stewardship_duty_special.2015 = {
 		stress_impact = {
 			just = medium_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { # Vassal 2 has judgement right
@@ -7645,7 +7715,9 @@ stewardship_duty_special.2015 = {
 		stress_impact = {
 			arbitrary = medium_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -8382,7 +8454,9 @@ stewardship_duty_special.2026 = {
 		stress_impact = {
 			just = minor_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Into the dungeon!
@@ -8395,7 +8469,9 @@ stewardship_duty_special.2026 = {
 			modifier = statecraft_just_judgements_modifier
 			days = 1825
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 	
 	option = { #Oh well
@@ -8420,7 +8496,9 @@ stewardship_duty_special.2026 = {
 		stress_impact = {
 			just = major_stress_impact_gain
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 }
 

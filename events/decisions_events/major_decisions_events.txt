@@ -129,15 +129,18 @@ major_decisions.0100 = {
 		}
 		if = {
 			limit = {
+				# TODO: Does the faith support ruler cults?
 				root.faith.religious_head = root
 			}
-			set_nickname_effect = { NICKNAME = nick_the_divine }
+			change_nickname_weight_effect = { NICKNAME = nick_the_divine CHANGE = nickname_weight_medium_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_godlike CHANGE = nickname_weight_medium_increase }
 		}
 		if = { #Spiritual.
 			limit = {
+				# TODO: Does the faith not support ruler cults
 				NOT = { root.faith.religious_head = root }
 			}
-			set_nickname_effect = { NICKNAME = nick_the_anointed }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_increase }
 		}
 		declare_bloodline_holy_decision_effect = yes
 		every_player = {
@@ -375,8 +378,6 @@ major_decisions.0500 = { #by Mathilda Bjarnehed
 
 	option = {
 		name = major_decisions.0500.a
-
-		give_nickname = nick_the_blood_motherfather
 	}
 }
 
@@ -891,6 +892,9 @@ major_decisions.3001 = {
 
 	option = {
 		name = major_decisions.3001.a
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_gardener CHANGE = nickname_weight_small_increase }
 	}
 }
 

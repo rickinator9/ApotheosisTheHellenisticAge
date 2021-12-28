@@ -2,8 +2,13 @@
 # scope:wipe - Was this a wipe?
 on_combat_end_winner = {
 	events = {
-		combat_event.0001 # Victorious commander gains progress towards earning "The Undefeated" nickname (obtained after winning 100 victories without a loss).
 		combat_event.1001 # Winner imprisons commanders/knights on the losing side.
+
+		ATHA_nickname.0300 # Adjust battle counter for nicknames.
+	}
+	random_events = {
+		1 = ATHA_nickname.0302 # Assign nick_the_eagle for stackwipes.
+		99 = 0
 	}
 }
 
@@ -11,6 +16,6 @@ on_combat_end_winner = {
 # scope:wipe - Was this a wipe?
 on_combat_end_loser = {
 	events = {
-		combat_event.0002 # Defeated commander loses shot at getting 'The Undefeated' nickname.
+		ATHA_nickname.0301 # Adjust battle counter for nicknames.
 	}
 }

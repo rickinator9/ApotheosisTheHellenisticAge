@@ -509,6 +509,8 @@ stress_threshold.1001 = {
 		add_trait = contrite
 		trait = contrite
 
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+
 		contrite_get_secret_scopes_effect = yes # Get secrets before trying to reveal
 		contrite_reveal_secrets_effect = yes # Includes stress loss based on what secrets were revealed
 	}
@@ -543,6 +545,8 @@ stress_threshold.1001 = {
 
 		increase_wounds_effect = {REASON = whipping}
 		add_stress = medium_stress_impact_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	# Option C: Donate buckets of money to charity, medium stress loss.
@@ -953,6 +957,8 @@ stress_threshold.1011 = {
 		set_character_faith = scope:new_faith
 		add_piety = medium_piety_loss
 		add_stress = medium_stress_impact_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 
 	option = { # Option C-2: Convert to another Faith (different Religion), massive stress loss.
@@ -985,6 +991,8 @@ stress_threshold.1011 = {
 		add_piety = major_piety_loss
 		add_piety_level = -1
 		add_stress = major_stress_impact_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 
 	option = { # Option D: Exercise to burn off the desire, medium stress loss.
@@ -1963,6 +1971,8 @@ stress_threshold.1503 = {
 				has_trait = arbitrary
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 	option = { #Endure: Take Stress
 		name = stress_threshold.1503.e
@@ -3129,6 +3139,8 @@ stress_threshold.1601 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Gains Rakish
@@ -3404,6 +3416,8 @@ stress_threshold.1601 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Gains Improvident
@@ -3700,6 +3714,8 @@ stress_threshold.1602 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Gains Rakish
@@ -3973,6 +3989,8 @@ stress_threshold.1602 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Gains Improvident
@@ -6645,6 +6663,8 @@ stress_threshold.1721 = {
 		add_stress = major_stress_impact_loss
 
 		ai_chance = { base = 0 }	#AI should never opt for stress.
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_medium_increase }
 	}
 
 	after = {
@@ -7693,6 +7713,8 @@ stress_threshold.2001 = {
 			TARGET = scope:victim
 			IMPRISONER = root
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 
 		add_stress = medium_stress_impact_loss
 
@@ -10432,6 +10454,8 @@ stress_threshold.2321 = {
 				has_trait = comfort_eater
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 	
 	#Journaller: medium stress loss
@@ -12018,24 +12042,7 @@ stress_threshold.2341 = {
 		add_stress = medium_stress_impact_loss
 		
 		#Your feast gives you a poor nickname.
-		if = {
-			limit = { has_any_nickname = no }
-			custom_tooltip = stress_threshold.2341.c.comfort_eater.tt
-			hidden_effect = {
-				random_list = {	#nick_the_fat excluded from the list, as it feels a little too mean-spirited.
-					13 = { give_nickname = nick_the_greedy }
-					13 = { give_nickname = nick_the_unworthy }
-					13 = { give_nickname = nick_the_selfish }
-					12 = { give_nickname = nick_the_wicked }
-					13 = { give_nickname = nick_the_terrible }
-					12 = { give_nickname = nick_the_plump }
-					12 = { give_nickname = nick_the_little } #Ironically.
-					12 = { give_nickname = nick_the_wicked }
-				}
-			}
-		}
-		#... Or else just lost prestige.
-		else = { add_prestige = medium_prestige_loss }
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_medium_increase }
 
 		ai_chance = {
 			base = 25
@@ -13149,6 +13156,8 @@ stress_threshold.3001 = {
 		add_prestige = major_prestige_loss
 		add_prestige_level = -1
 		add_stress = major_stress_impact_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_small_increase }
 	}	
 	
 	after = {
@@ -13189,6 +13198,8 @@ stress_threshold.3101 = {
 
 		stress_get_victim_in_court_effect = yes
 		stress_threshold_event_post_immediate = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_small_increase }
 	}
 
 	# Option A: Kill a random courtier (preference for your heir or other children).
@@ -14873,6 +14884,7 @@ stress_threshold.3411 = {
 				NOT = { has_trait = one_eyed }
 			}
 			add_trait = one_eyed
+			add_character_flag = put_out_own_eye
 		}
 		else_if = {
 			limit = {

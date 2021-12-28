@@ -194,11 +194,26 @@
 					desc = CB_GAME_RULE_NO_COST
 				}
 			}
+
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
 		}
 	}
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	should_invalidate = {
@@ -264,6 +279,10 @@
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -315,6 +334,10 @@
 		
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -371,6 +394,10 @@
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	on_primary_attacker_death = inherit
@@ -637,11 +664,26 @@ individual_county_de_jure_cb = {
 					desc = CB_GAME_RULE_NO_COST
 				}
 			}
+
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
 		}
 	}
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -705,6 +747,10 @@ individual_county_de_jure_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -751,6 +797,10 @@ individual_county_de_jure_cb = {
 		
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -810,6 +860,10 @@ individual_county_de_jure_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	on_primary_attacker_death = inherit
@@ -1044,6 +1098,17 @@ individual_duchy_de_jure_cb = {
 					desc = CB_GAME_RULE_NO_COST
 				}
 			}
+
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
 		}
 	}
 
@@ -1089,6 +1154,9 @@ individual_duchy_de_jure_cb = {
 	on_declaration = {
 		on_declared_war = yes
 
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}	
 
 	on_victory_desc = {
@@ -1149,6 +1217,10 @@ individual_duchy_de_jure_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1195,6 +1267,10 @@ individual_duchy_de_jure_cb = {
 		
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1254,6 +1330,10 @@ individual_duchy_de_jure_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	on_primary_attacker_death = inherit

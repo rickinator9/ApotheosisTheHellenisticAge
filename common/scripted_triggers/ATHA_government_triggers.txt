@@ -4,30 +4,54 @@ can_build_tribal = {
 	government_has_flag = is_tribal_government
 }
 
-### Liege contract modification triggers
+### Government category triggers
 
-can_create_dependent_vassals = {
-	custom_description = {
-		text = "can_create_dependent_vassals"
-		NOR = {
-			has_government = federal_alliance_government
-			has_government = amphictyony_government
-			has_government = tribal_government
-		}	
+# Does the ruler have a government where they rule by themselves?
+has_autocratic_government = {
+	OR = {
+		has_government = feudal_government
+		has_government = clan_government
+		has_government = tribal_government
+		has_government = city_state_tyrannical_government
+		has_government = city_state_spartan_government
+		AND = {
+			has_hegemonic_government = yes
+			OR = {
+				has_realm_law = confederate_partition_succession_law
+				has_realm_law = partition_succession_law
+				has_realm_law = high_partition_succession_law
+				has_realm_law = single_heir_succession_law
+				has_realm_law = single_heir_succession_law_youngest
+				has_realm_law = single_heir_dynasty_house
+			}
+		}
 	}
 }
 
-can_create_bureaucratic_vassals = {
-	custom_description = {
-		text = "can_create_bureaucratic_vassals"
-		NOR = {
-			has_government = federal_alliance_government
-			has_government = federal_sympolity_government
-			has_government = amphictyony_government
-			has_government = tribal_government
-			has_government = clan_government
-		}
+has_city_state_government = { government_has_flag = is_city_state_government }
+has_bureaucracy_government = { government_has_flag = is_bureaucracy_government }
+has_coalition_government = { government_has_flag = is_coalition_government }
+has_hegemonic_government = { government_has_flag = is_hegemonic_government }
+has_federal_government = { government_has_flag = is_federal_government }
+
+### Liege contract modification triggers
+
+can_create_dependent_vassals = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = amphictyony_government
+		has_government = tribal_government
 	}	
+}
+
+can_create_bureaucratic_vassals = {
+	NOR = {
+		has_government = federal_alliance_government
+		has_government = federal_sympolity_government
+		has_government = amphictyony_government
+		has_government = tribal_government
+		has_government = clan_government
+	}
 }
 
 can_enforce_ritual_coronations = {
@@ -303,83 +327,83 @@ has_same_government_form_as = {
 	OR = {
 		AND = {
 			has_government = feudal_government
-			$CHAR$.has_government = feudal_government
+			$CHAR$ = { has_government = feudal_government }
 		}
 		AND = {
 			has_government = republic_government
-			$CHAR$.has_government = republic_government
+			$CHAR$ = { has_government = republic_government }
 		}
 		AND = {
 			has_government = theocracy_government
-			$CHAR$.has_government = theocracy_government
+			$CHAR$ = { has_government = theocracy_government }
 		}
 		AND = {
 			has_government = tribal_government
-			$CHAR$.has_government = tribal_government
+			$CHAR$ = { has_government = tribal_government }
 		}
 		AND = {
 			has_government = mercenary_government
-			$CHAR$.has_government = mercenary_government
+			$CHAR$ = { has_government = mercenary_government }
 		}
 		AND = {
 			has_government = holy_order_government
-			$CHAR$.has_government = holy_order_government
+			$CHAR$ = { has_government = holy_order_government }
 		}
 		AND = {
 			has_government = bureaucracy_military_government
-			$CHAR$.has_government = bureaucracy_military_government
+			$CHAR$ = { has_government = bureaucracy_military_government }
 		}
 		AND = {
 			has_government = bureaucracy_civil_government
-			$CHAR$.has_government = bureaucracy_civil_government
+			$CHAR$ = { has_government = bureaucracy_civil_government }
 		}
 		AND = {
 			has_government = city_state_democratic_government
-			$CHAR$.has_government = city_state_democratic_government
+			$CHAR$ = { has_government = city_state_democratic_government }
 		}
 		AND = {
 			has_government = city_state_tyrannical_government
-			$CHAR$.has_government = city_state_tyrannical_government
+			$CHAR$ = { has_government = city_state_tyrannical_government }
 		}
 		AND = {
 			has_government = city_state_oligarchic_government
-			$CHAR$.has_government = city_state_oligarchic_government
+			$CHAR$ = { has_government = city_state_oligarchic_government }
 		}
 		AND = {
 			has_government = city_state_aristocratic_government
-			$CHAR$.has_government = city_state_aristocratic_government
+			$CHAR$ = { has_government = city_state_aristocratic_government }
 		}
 		AND = {
 			has_government = city_state_spartan_government
-			$CHAR$.has_government = city_state_spartan_government
+			$CHAR$ = { has_government = city_state_spartan_government }
 		}
 		AND = {
 			has_government = federal_alliance_government
-			$CHAR$.has_government = federal_alliance_government
+			$CHAR$ = { has_government = federal_alliance_government }
 		}
 		AND = {
 			has_government = federal_sympolity_government
-			$CHAR$.has_government = federal_sympolity_government
+			$CHAR$ = { has_government = federal_sympolity_government }
 		}
 		AND = {
 			has_government = federal_league_government
-			$CHAR$.has_government = federal_league_government
+			$CHAR$ = { has_government = federal_league_government }
 		}
 		AND = {
 			has_government = amphictyony_government
-			$CHAR$.has_government = amphictyony_government
+			$CHAR$ = { has_government = amphictyony_government }
 		}
 		AND = {
 			has_government = hegemonic_alliance_government
-			$CHAR$.has_government = hegemonic_alliance_government
+			$CHAR$ = { has_government = hegemonic_alliance_government }
 		}
 		AND = {
 			has_government = hegemonic_sympolity_government
-			$CHAR$.has_government = hegemonic_sympolity_government
+			$CHAR$ = { has_government = hegemonic_sympolity_government }
 		}
 		AND = {
 			has_government = hegemonic_league_government
-			$CHAR$.has_government = hegemonic_league_government
+			$CHAR$ = { has_government = hegemonic_league_government }
 		}
 	}
 }

@@ -1,5 +1,5 @@
 name="Apotheosis: The Hellenistic Age"
-version="1.0.1"
+version="1.1.0"
 supported_version="1.4.*"
 path="mod/ApotheosisTheHellenisticAge"
 tags={
@@ -21,6 +21,7 @@ remote_file_id="2618149514"
 
 replace_path = "common/culture/cultures"
 replace_path = "common/culture/innovations"
+replace_path = "common/nicknames"
 replace_path = "common/religion/religions"
 
 replace_path = "history/characters"

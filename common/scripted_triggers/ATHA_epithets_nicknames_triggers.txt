@@ -1,0 +1,458 @@
+﻿# Does this character use greek localization for nicknames?
+uses_greek_for_nickname_localization_trigger = {
+	always = yes # We currently only have cultures that use Greek for nicknames.
+}
+
+# Did the ancestors of a character have a particular nickname?
+# - NICKNAME: The nickname to check.
+did_ancestors_have_nickname = {
+	save_temporary_scope_as = ancestor_nickname_check_char
+	any_close_family_member = {
+		OR = {
+			is_parent_of = root
+			is_grandparent_of = root
+			is_great_grandparent_of = root
+		}
+		has_nickname = $NICKNAME$
+	}
+}
+
+# Is this character allowed to get an epithet?
+is_allowed_epithet_trigger = {
+	is_independent_ruler = yes
+	has_autocratic_government = yes
+}
+
+# Can this character get an epithet right now?
+can_get_epithet_trigger = {
+	is_allowed_epithet_trigger = yes
+	NOR = {
+		has_any_nickname = yes
+		has_character_flag = refused_epithet
+	}
+}
+
+# Does this character have an epithet?
+has_epithet_trigger = {
+	OR = {
+		has_nickname = epithet_the_asian
+		has_nickname = epithet_the_autocrat
+		has_nickname = epithet_the_victorious
+		has_nickname = epithet_the_beautifully_triumphant
+		has_nickname = epithet_the_benefactor
+		has_nickname = epithet_the_divine
+		has_nickname = epithet_the_divine_manifest
+		has_nickname = epithet_the_father_loving
+		has_nickname = epithet_the_generous
+		has_nickname = epithet_the_illustrious
+		has_nickname = epithet_the_just
+		has_nickname = epithet_the_mother_loving
+		has_nickname = epithet_the_pious
+		has_nickname = epithet_the_saviour
+		has_nickname = epithet_the_sibling_loving
+		has_nickname = epithet_the_victor
+		has_nickname = epithet_the_wealthy
+		has_nickname = epithet_the_well_born
+	}
+}
+
+# Is this character allowed to get a nickname?
+is_allowed_nickname_trigger = {
+	OR = {
+		is_independent_ruler = yes
+		highest_held_title_tier = tier_duchy
+	}
+	has_autocratic_government = yes
+}
+
+# Can this character get a nickname right now?
+can_get_nickname_trigger = {
+	is_allowed_nickname_trigger = yes
+	NOT = { has_character_flag = nickname_cooldown }
+	OR = {
+		NOT = { has_nickname_trigger = yes }
+		has_incorrect_nickname = yes
+	}
+}
+
+# Does this character have a nickname that does not apply anymore?
+has_incorrect_nickname = {
+	NOT = { has_character_flag = has_permanent_nickname }
+	OR = {
+		# Once characters can get 'The Great', it should override any and all nicknames.
+		AND = {
+			NOT = { has_nickname = nick_the_great }
+			can_get_nick_the_great = yes
+		}
+
+		# If the character has an incorrect nickname.
+		AND = {
+			has_nickname = nick_the_autocrat
+			NOT = { can_get_nick_the_autocrat = yes }
+		}
+		AND = {
+			has_nickname = nick_the_bastard
+			NOT = { can_get_nick_the_bastard = yes }
+		}
+		AND = {
+			has_nickname = nick_the_bold
+			NOT = { can_get_nick_the_bold = yes }
+		}
+		AND = {
+			has_nickname = nick_the_benefactor
+			NOT = { can_get_nick_the_benefactor = yes }
+		}
+		AND = {
+			has_nickname = nick_the_builder
+			NOT = { can_get_nick_the_builder = yes }
+		}
+		AND = {
+			has_nickname = nick_the_cruel
+			NOT = { can_get_nick_the_cruel = yes }
+		}
+		AND = {
+			has_nickname = nick_the_clubfooted
+			NOT = { can_get_nick_the_clubfooted = yes }
+		}
+		AND = {
+			has_nickname = nick_the_devourer
+			NOT = { can_get_nick_the_devourer = yes }
+		}
+		# nick_the_eagle can never be replaced.
+		AND = {
+			has_nickname = nick_the_fair
+			NOT = { can_get_nick_the_fair = yes }
+		}
+		AND = {
+			has_nickname = nick_the_fat
+			NOT = { can_get_nick_the_fat = yes }
+		}
+		AND = {
+			has_nickname = nick_the_flayer
+			NOT = { can_get_nick_the_flayer = yes }
+		}
+		AND = {
+			has_nickname = nick_the_gardener
+			NOT = { can_get_nick_the_gardener = yes }
+		}
+		AND = {
+			has_nickname = nick_the_good
+			NOT = { can_get_nick_the_good = yes }
+		}
+		AND = {
+			has_nickname = nick_the_hawk
+			NOT = { can_get_nick_the_hawk = yes }
+		}
+		AND = {
+			has_nickname = nick_the_hunter
+			NOT = { can_get_nick_the_hunter = yes }
+		}
+		AND = {
+			has_nickname = nick_the_illustrious
+			NOT = { can_get_nick_the_illustrious = yes }
+		}
+		AND = {
+			has_nickname = nick_the_invincible
+			NOT = { can_get_nick_the_invincible = yes }
+		}
+		AND = {
+			has_nickname = nick_the_just
+			NOT = { can_get_nick_the_just = yes }
+		}
+		AND = {
+			has_nickname = nick_the_lame
+			NOT = { can_get_nick_the_lame = yes }
+		}
+		AND = {
+			has_nickname = nick_the_mad
+			NOT = { can_get_nick_the_mad = yes }
+		}
+		AND = {
+			has_nickname = nick_the_mindbreaker
+			NOT = { can_get_nick_the_mindbreaker = yes }
+		}
+		AND = {
+			has_nickname = nick_the_one_eyed
+			NOT = { can_get_nick_the_one_eyed = yes }
+		}
+		AND = {
+			has_nickname = nick_the_overpromiser
+			NOT = { can_get_nick_the_overpromiser = yes }
+		}
+		AND = {
+			has_nickname = nick_the_pious
+			NOT = { can_get_nick_the_pious = yes }
+		}
+		AND = {
+			has_nickname = nick_the_poet_bad
+			NOT = { can_get_nick_the_poet_bad = yes }
+		}
+		AND = {
+			has_nickname = nick_the_poet_good
+			NOT = { can_get_nick_the_poet_good = yes }
+		}
+		AND = {
+			has_nickname = nick_the_scholar
+			NOT = { can_get_nick_the_scholar = yes }
+		}
+		AND = {
+			has_nickname = nick_the_small
+			NOT = { can_get_nick_the_small = yes }
+		}
+		AND = {
+			has_nickname = nick_the_smelly
+			NOT = { can_get_nick_the_smelly = yes }
+		}
+		AND = {
+			has_nickname = nick_the_thin
+			NOT = { can_get_nick_the_thin = yes }
+		}
+		AND = {
+			has_nickname = nick_the_ugly
+			NOT = { can_get_nick_the_ugly = yes }
+		}
+		AND = {
+			has_nickname = nick_the_victor
+			NOT = { can_get_nick_the_victor = yes }
+		}
+		AND = {
+			has_nickname = nick_the_victorious
+			net_battle_wins <= 0
+		}
+		AND = {
+			has_nickname = nick_the_wealthy
+			NOT = { can_get_nick_the_wealthy = yes }
+		}
+		AND = {
+			has_nickname = nick_the_young
+			NOT = { can_get_nick_the_young = yes }
+		}
+	}
+} # TODO
+
+# Does this character have a nickname that is not an epithet?
+has_nickname_trigger = {
+	has_any_nickname = yes
+	NOT = { has_epithet_trigger = yes }
+}
+
+######### NICKNAME-SPECIFIC TRIGGERS ########
+
+can_get_nick_the_autocrat = {
+	has_variable = nick_the_autocrat_weight
+	var:nick_the_autocrat_weight >= 30
+}
+
+can_get_nick_the_bastard = {
+	OR = {
+		has_trait = bastard
+		has_trait = legitimized_bastard
+		has_trait = disputed_heritage
+	}
+}
+
+can_get_nick_the_bold = {
+	NOT = { has_trait = craven }
+	has_variable = nick_the_bold_weight
+	var:nick_the_bold_weight >= 30
+}
+
+can_get_nick_the_builder = {
+	has_variable = nick_the_builder_weight
+	var:nick_the_builder_weight >= 5
+}
+
+can_get_nick_the_benefactor = {
+	has_variable = nick_the_benefactor_weight
+	var:nick_the_benefactor_weight >= 30
+}
+
+can_get_nick_the_cruel = {
+	has_variable = nick_the_cruel_weight
+	var:nick_the_cruel_weight >= 30
+}
+
+can_get_nick_the_clubfooted = {
+	has_trait = clubfooted
+}
+
+can_get_nick_the_devourer = {
+	has_trait = cannibal
+}
+
+can_get_nick_the_eagle = {
+	always = yes
+}
+
+can_get_nick_the_fair = {
+	is_attractive_character_trigger = yes
+}
+
+can_get_nick_the_flayer = {
+	has_variable = nick_the_flayer_weight
+	var:nick_the_flayer_weight >= 30
+}
+
+can_get_nick_the_fat = {
+	has_variable = nick_the_fat_weight
+	OR = {
+		AND = {
+			has_character_modifier = obese_modifier
+			var:nick_the_fat_weight >= 10
+		}
+		var:nick_the_fat_weight >= 30
+	}
+}
+
+can_get_nick_the_gardener = {
+	has_variable = nick_the_gardener_weight
+	var:nick_the_gardener_weight >= 5
+}
+
+can_get_nick_the_good = {
+	has_variable = nick_the_good_weight
+	var:nick_the_good_weight >= 50
+}
+
+can_get_nick_the_great = {
+	is_independent_ruler = yes
+	can_get_nick_the_victor = yes
+	OR = {
+		can_get_nick_the_invincible = yes
+		can_get_nick_the_victorious = yes
+	}
+	calc_true_if = {
+		amount >= 4
+		can_get_nick_the_builder = yes
+		can_get_nick_the_benefactor = yes
+		can_get_nick_the_good = yes
+		can_get_nick_the_illustrious = yes
+		can_get_nick_the_just = yes
+		can_get_nick_the_pious = yes
+		can_get_nick_the_wealthy = yes
+	}
+}
+
+can_get_nick_the_hawk = {
+	has_variable = nick_the_hawk_weight
+	var:nick_the_hawk_weight >= 30
+}
+
+can_get_nick_the_hunter = {
+	has_variable = nick_the_hunter_weight
+	var:nick_the_hunter_weight >= 20
+}
+
+can_get_nick_the_illustrious = {
+	has_variable = nick_the_illustrious_weight
+	var:nick_the_illustrious_weight >= 30
+}
+
+can_get_nick_the_invincible = {
+	net_battle_wins >= 10
+	OR = {
+		NOT = { has_variable = battle_losses }
+		var:battle_losses = 0
+	}
+}
+
+can_get_nick_the_just = {
+	has_variable = nick_the_just_weight
+	var:nick_the_just_weight >= 20
+}
+
+can_get_nick_the_lame = {
+	OR = {
+		has_trait = incapable
+		has_trait = infirm
+		has_trait = maimed
+		has_trait = physique_bad
+		has_trait = hunchbacked
+		has_trait = spindly
+	}
+}
+
+can_get_nick_the_mad = {
+	has_variable = nick_the_mad_weight
+	var:nick_the_mad_weight >= 30
+}
+
+can_get_nick_the_mindbreaker = {
+	has_variable = nick_the_mindbreaker_weight
+	var:nick_the_mindbreaker_weight >= 3
+}
+
+can_get_nick_the_one_eyed = {
+	has_trait = one_eyed
+}
+
+can_get_nick_the_overpromiser = {
+	has_variable = nick_the_overpromiser_weight
+	var:nick_the_overpromiser_weight >= 20
+}
+
+can_get_nick_the_pious = {
+	has_variable = nick_the_pious_weight
+	var:nick_the_pious_weight >= 20
+}
+
+can_get_nick_the_poet_bad = {
+	net_nick_the_poet_value <= -5
+}
+
+can_get_nick_the_poet_good = {
+	net_nick_the_poet_value >= 5
+}
+
+can_get_nick_the_sacrificed = {
+	NOT = { can_get_nickname_trigger = yes }
+}
+
+can_get_nick_the_scholar = {
+	has_variable = nick_the_scholar_weight
+	var:nick_the_scholar_weight >= 20
+}
+
+can_get_nick_the_small = {
+	has_trait = dwarf
+}
+
+can_get_nick_the_smelly = {
+	has_variable = nick_the_smelly_weight
+	var:nick_the_smelly_weight >= 5
+}
+
+can_get_nick_the_thin = {
+	OR = {
+		has_trait = spindly
+		has_character_modifier = malnourished_modifier
+	}
+}
+
+can_get_nick_the_ugly = {
+	has_trait = beauty_bad
+}
+
+can_get_nick_the_victor = {
+	net_war_wins >= 10
+}
+
+can_get_nick_the_victorious = {
+	net_battle_wins >= 20
+	NOT = { can_get_nick_the_invincible = yes }
+}
+
+can_get_nick_the_wealthy = {
+	OR = {
+		has_nickname = nick_the_wealthy # If you already have the nickname, you can keep it unless you are in debt.
+		AND = {
+			gold >= 5_years_gold_value
+			gold >= 1000 # Initial absolute value.
+		}
+	}
+	NOT = { gold < 0 }
+}
+
+can_get_nick_the_young = {
+	NOT = { is_adult = yes }
+}

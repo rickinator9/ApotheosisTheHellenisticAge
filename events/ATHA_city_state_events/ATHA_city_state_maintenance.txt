@@ -118,10 +118,14 @@ city_state_maintenance.0006 = {
     hidden = yes
 
     immediate = {
-        every_held_title = {
-            limit = { tier = root.primary_title.tier }
+        if = {
+            limit = { can_have_corruption_trigger = yes }
 
-            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:rank_change_corruption }
+            every_held_title = {
+                limit = { tier = root.primary_title.tier }
+    
+                set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:rank_change_corruption }
+            }
         }
 
         remove_variable = rank_change_corruption
@@ -133,13 +137,17 @@ city_state_maintenance.0007 = {
     hidden = yes
 
     immediate = {
-        set_city_state_corruption_on_scope = { AMOUNT_ARG = root.var:city_state_corruption }
+        set_city_state_corruption = { AMOUNT_ARG = root.var:city_state_corruption }
     }
 }
 
 #Adds the corruption modifier to the heir after death
 city_state_maintenance.0008 = {
     hidden = yes
+
+    trigger = {
+        can_have_corruption_trigger = yes
+    }
 
     immediate = {
         primary_heir = {
@@ -152,12 +160,19 @@ city_state_maintenance.0008 = {
 	}
 }
 
-#Removes corruption if the character switches to an invalid government
+#Removes corruption if the character has corruption while they shouldn't.
 city_state_maintenance.0009 = {
     hidden = yes
 
     trigger = {
         can_have_corruption_trigger = no
+        OR = {
+            any_held_title = { has_variable = city_state_corruption }
+            has_character_modifier = low_corruption_modifier
+            has_character_modifier = mediocre_corruption_modifier
+            has_character_modifier = high_corruption_modifier
+            has_character_modifier = critical_corruption_modifier
+        }
     }
 
     immediate = {

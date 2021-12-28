@@ -130,6 +130,17 @@ witch.1002 = { #by Mathilda Bjarnehed
 						scope:child = { has_trait = curious }
 						add = 20
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:guardian = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:guardian = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					desc = child_witch_conversion_success_effect.desc
 					child_witch_conversion_success_effect = yes
 				}
@@ -166,6 +177,17 @@ witch.1002 = { #by Mathilda Bjarnehed
 						scope:child = { has_trait = zealous }
 						add = 150
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:child = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:child = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					trigger = {
 						witch_1002_allow_reveal_outcome_trigger = yes
 					}
@@ -459,6 +481,8 @@ witch.2002 = { #by Mathilda Bjarnehed
 			zealous = massive_stress_impact_gain
 			craven = medium_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 
 	#No I don't want to be a witch
@@ -489,6 +513,7 @@ witch.2002 = { #by Mathilda Bjarnehed
 				trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = liege.faith GENDER_CHARACTER = root }
 			}
 			change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 	}
 	
@@ -520,6 +545,7 @@ witch.2002 = { #by Mathilda Bjarnehed
 				trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = liege.faith GENDER_CHARACTER = root }
 			}
 			change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_increase }
 		}
 	}
 }	
@@ -1384,6 +1410,17 @@ witch.3010 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 5
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				save_scope_value_as = {
 					name = grand_rite_ceremony_outcome
 					value = flag:great_translation
@@ -1504,6 +1541,8 @@ witch.3010 = { #by Mathilda Bjarnehed
 		stress_impact = {
 			greedy = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -2704,6 +2743,7 @@ witch.4001 = { #by Mathilda Bjarnehed
 			craven = minor_stress_impact_gain
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	#Impress them
@@ -2739,6 +2779,17 @@ witch.4001 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = 3
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				show_as_tooltip = { witch_4001_corruption_success_effect = yes }
 
 				trigger_event = {
@@ -2764,6 +2815,17 @@ witch.4001 = { #by Mathilda Bjarnehed
 					value = scope:duel_value
 					multiplier = -3
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:annoying_clergy = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:annoying_clergy = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				trigger_event = {
 					id = witch.4005
 					days = { 7 14 }
@@ -3394,6 +3456,8 @@ witch.4010 = { #by Mathilda Bjarnehed
 			modifier = confident_scholar
 			years = 10
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 
 	#Ask for prowess

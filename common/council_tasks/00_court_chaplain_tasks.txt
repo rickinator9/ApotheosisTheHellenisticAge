@@ -671,6 +671,9 @@ task_conversion = {
 		scope:county = {
 			set_county_faith = scope:councillor.faith
 		}
+		liege = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
+		}
 		if = {
 			limit = {
 				scope:councillor = {
@@ -679,6 +682,8 @@ task_conversion = {
 			}
 			scope:councillor = {
 				start_default_task = yes
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 			}
 		}
 	}
@@ -854,6 +859,18 @@ task_fabricate_claim = {
 				desc = COURT_CHAPLAIN_FABRICATE_CLAIM_INNOVATION_BONUS_LAND_GRANTS
 			}
 		}
+
+		# ATHA nickname modifier
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+			}
+			add = {
+				value = scope:councillor.court_chaplain_fabricate_claim_nickname_political_poems_modifier_bonus
+				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+			}
+		}
+
 		if = {
 			limit = {
 				exists = scope:county
@@ -890,6 +907,17 @@ task_fabricate_claim = {
 			multiply = {
 				value = scope:councillor.court_chaplain_fabricate_claim_vassal_penalty
 				desc = "COURT_CHAPLAIN_FABRICATE_CLAIM_VASSAL_COUNTY"
+			}
+		}
+
+		# ATHA bastard modifier.
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nick_the_bastard_modifier }
+			}
+			multiply = {
+				value = scope:councillor.court_chaplain_fabricate_claim_nick_the_bastard_modifier_penalty
+				desc = NICK_THE_BASTARD_FABRICATE_CLAIM_PENALTY
 			}
 		}
 	}

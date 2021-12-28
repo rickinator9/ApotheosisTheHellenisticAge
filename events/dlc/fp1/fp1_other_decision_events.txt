@@ -190,6 +190,8 @@ fp1_other_decisions.0001 = {
 				has_trait = gregarious
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 	
 	# My whole domain.
@@ -258,6 +260,9 @@ fp1_other_decisions.0001 = {
 				has_trait = shy
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_increase }
 	}
 	
 	# My entire sub-realm.
@@ -320,6 +325,9 @@ fp1_other_decisions.0001 = {
 				has_trait = shy
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_large_increase }
 	}
 
 	# ... Actually, y'know what? Just no.
@@ -342,6 +350,9 @@ fp1_other_decisions.0001 = {
 			# If the AI has taken the decision, the AI should go through with the decision.
 			base = 0
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -515,6 +526,9 @@ fp1_other_decisions.0002 = {
 				has_trait = sadistic
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 	
 	# Animals only: magnificent.
@@ -584,6 +598,9 @@ fp1_other_decisions.0002 = {
 				has_trait = greedy
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 	
 	# Humans: regular.
@@ -652,6 +669,9 @@ fp1_other_decisions.0002 = {
 				has_trait = compassionate
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Humans: magnificent.
@@ -732,6 +752,9 @@ fp1_other_decisions.0002 = {
 				has_trait = compassionate
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	# Give players & hostile vassals a chance to opt out.
@@ -1118,6 +1141,8 @@ fp1_other_decisions.0003 = {
 						death_reason = death_sacrificed_to_gods
 					}
 				}
+
+				possibly_assign_nick_the_sacrificed_effect = { KILLER = scope:blotter }
 			}
 		}
 		## Naturally, if appropriate, you become a cannibal.
@@ -1417,6 +1442,8 @@ fp1_other_decisions.0003 = {
 				has_trait = cynical
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_increase }
 	}
 	
 	# Faithful: focus on the nobility.
@@ -2001,6 +2028,8 @@ fp1_other_decisions.0011 = {
 				has_trait = gregarious
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	# Will Become Cannibal: go, and enjoy the HumSac to the fullest.
@@ -2147,6 +2176,8 @@ fp1_other_decisions.0011 = {
 				has_trait = gregarious
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2427,6 +2458,8 @@ fp1_other_decisions.0012 = {
 				has_trait = vengeful
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2443,8 +2476,8 @@ scripted_effect gruesome_festivals_martyred_a_hof_effect = {
 			faith = { change_fervor = hof_humsacd_fervour_gain }
 			# Since the nickname is assigned elsewhere, if they've already gotten it, it's safe to show it again.
 			if = {
-				limit = { has_nickname = nick_the_martyr }
-				give_nickname = nick_the_martyr
+				limit = { has_nickname = nick_the_sacrificed }
+				set_permanent_nickname_effect = { NICKNAME = nick_the_sacrificed }
 			}
 		}
 	}
@@ -2730,6 +2763,8 @@ fp1_other_decisions.0024 = {
 	immediate = {
 		gruesome_festivals_martyred_a_hof_effect = { SACRIFICED_HOF = scope:unlucky_guest }
 		gruesome_festivals_own_faith_martyred_own_hof_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
 	}
 
 	# _What have I done?!_

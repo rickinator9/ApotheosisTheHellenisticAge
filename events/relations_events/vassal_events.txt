@@ -123,6 +123,7 @@ vassal.1001 = {
 				ai_zeal = 0.75
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -151,7 +152,9 @@ vassal.1001 = {
 				ai_greed = 0.75
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -199,7 +202,10 @@ vassal.1010 = {
 				type = favor_hook
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -280,7 +286,11 @@ vassal.1020 = {
 				zealous = medium_stress_impact_gain
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_decrease }
 	}
 
 	after = {
@@ -413,6 +423,7 @@ vassal.1101 = {
 				ai_zeal = 0.75
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -441,7 +452,9 @@ vassal.1101 = {
 				ai_greed = 0.75
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -488,7 +501,10 @@ vassal.1110 = {
 			}
 		}
 		add_piety = major_piety_gain
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -545,7 +561,11 @@ vassal.1120 = {
 		name = vassal.1120.a
 		custom_tooltip = vassal.1120.a.tt
 		add_piety = medium_piety_loss
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_decrease }
 	}
 
 	after = {
@@ -953,6 +973,8 @@ vassal.2110 = {
 
 	option = {
 		name = vassal.2110.a
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1008,6 +1030,9 @@ vassal.2120 = {
 
 	option = {
 		name = vassal.2120.a
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1126,7 +1151,9 @@ vassal.2201 = {
 				ai_boldness = 0.25
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #I will not!
@@ -1423,6 +1450,8 @@ vassal.2205 = {
 				ai_honor = 0.25
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Stop bothering me about this
@@ -1502,6 +1531,8 @@ vassal.2205 = {
 				ai_compassion = -0.25
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_decrease }
 	}
 
 	option = { #Last warning!!
@@ -1537,6 +1568,13 @@ vassal.2205 = {
 		}
 		ai_chance = {
 			base = 100
+		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_decrease }
+		if = {
+			limit = { has_character_flag = promised_repayment }
+			change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 		}
 	}
 }
@@ -1994,6 +2032,8 @@ vassal.2401 = {
 		ai_chance = {
 			base = 50
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 	}
 	
 	option = { #You can't have my gold!
@@ -2161,6 +2201,8 @@ vassal.2451 = {
 				gold <= minor_gold_value
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 	}
 	
 	option = { #You can't have a new contract!
@@ -2314,6 +2356,9 @@ vassal.2501 = {
 				ai_compassion = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Increase their obligations!
@@ -2343,6 +2388,9 @@ vassal.2501 = {
 				ai_vengefulness = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Nah
@@ -2641,6 +2689,9 @@ vassal.2610 = {
 
 	option = {
 		name = vassal.2610.a
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -2687,6 +2738,8 @@ vassal.2620 = {
 
 	option = {
 		name = vassal.2620.a
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3227,6 +3280,7 @@ vassal.2801 = {
 				modifier = respect_opinion
 				opinion = low_negative_opinion
 			}
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 		}
 		stress_impact = {
 			diligent = medium_stress_impact_gain
@@ -3249,6 +3303,8 @@ vassal.2801 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3496,7 +3552,9 @@ vassal.2910 = {
 				opinion = medium_positive_opinion
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -3548,7 +3606,9 @@ vassal.2911 = {
 		scope:claim_vassal = {
 			remove_variable = promised_title
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3986,7 +4046,10 @@ vassal.3002 = {
 				ai_honor = -0.25
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #I will give some... personal directions
@@ -4047,7 +4110,9 @@ vassal.3002 = {
 				ai_honor = -0.5
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -4273,6 +4338,8 @@ vassal.3003 = {
 			chaste = major_stress_impact_gain
 			zealous = medium_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #The audacity!
@@ -4298,6 +4365,8 @@ vassal.3003 = {
 			base = medium_stress_loss
 			lustful = medium_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -4497,7 +4566,9 @@ vassal.5010 = {
 			id = vassal.5020	# Check if promise is fulfilled
 			days = 180
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -4524,7 +4595,9 @@ vassal.5010 = {
 				opinion = -15
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -4576,7 +4649,10 @@ vassal.5020 = {
 				opinion = -15
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -4782,6 +4858,8 @@ vassal.5060 = {
 				opinion = -10
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 	}
 }

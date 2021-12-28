@@ -1648,6 +1648,16 @@ vassal_obligation_increase_tyranny_gain_multiplier = {
 vassal_obligation_increase_tyranny_gain = {
 	value = vassal_obligation_increase_tyranny_gain_base
 	multiply = vassal_obligation_increase_tyranny_gain_multiplier
+
+	if = {
+		limit = {
+			scope:actor = { has_character_modifier = nick_the_autocrat_modifier }
+		}
+		multiply = {
+			value = 0.5
+			desc = NICK_THE_AUTOCRAT_MODIFY_CONTRACT_TYRANNY_BONUS
+		}
+	}
 }
 
 #REALM SIZE

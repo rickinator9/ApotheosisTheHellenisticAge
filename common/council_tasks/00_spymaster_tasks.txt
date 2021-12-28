@@ -320,6 +320,18 @@ task_find_secrets = {
 				desc = ERUDITION_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
+
+		# ATHA nickname modifier
+		if = {
+			limit = {
+				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+			}
+			add = {
+				value = scope:councillor.spymaster_find_secrets_nickname_political_poems_modifier_bonus
+				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+			}
+		}
+
 		if = {
 			limit = {
 				exists = scope:target_character.cp:councillor_spymaster

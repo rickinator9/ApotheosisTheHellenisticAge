@@ -313,6 +313,9 @@ feast_default.1002 = {
 				modifier = annoying_glutton_at_feast_opinion
 			}
 		}
+
+		# Complaining about food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -380,6 +383,9 @@ feast_default.1003 = {
 				save_scope_as = other_guest
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wise CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I feel pretty good about that!
@@ -768,6 +774,8 @@ feast_default.1006 = {
 				add_to_list = table_companions
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -921,6 +929,9 @@ feast_default.1007 = {
 				ai_honor = 0.5
 			}
 		}
+		
+		# Clearly eating a lot of food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I'll eat them under the table!
@@ -952,6 +963,9 @@ feast_default.1007 = {
 				}
 			}
 		}
+		
+		# Clearly eating a LOT of food.
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_medium_increase }
 	}
 
 	after = {
@@ -1247,6 +1261,9 @@ feast_default.1010 = {
 				ai_rationality = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = {
@@ -1281,6 +1298,9 @@ feast_default.1010 = {
 				ai_boldness = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -1432,6 +1452,9 @@ feast_default.1011 = {
 						death = { death_reason = death_accident }
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+				change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 			}
 			10 = {
 				desc = feast_default.1011.a.failure
@@ -1444,6 +1467,8 @@ feast_default.1011 = {
 						EXPOSER = root
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		ai_chance = {
@@ -1460,6 +1485,7 @@ feast_default.1011 = {
 				}
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 	}
 
@@ -1510,6 +1536,8 @@ feast_default.1011 = {
 				intrigue >= medium_skill_rating
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Blame another guest
@@ -1539,6 +1567,9 @@ feast_default.1011 = {
 				intrigue >= high_skill_rating
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -1908,6 +1939,8 @@ feast_default.1013 = {
 				ai_boldness = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Kill attacker and convince people it had to be done
@@ -2102,7 +2135,9 @@ feast_default.1014 = {
 				}
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -2219,6 +2254,11 @@ feast_default.2001 = {
 				modifier = annoying_glutton_at_feast_opinion
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_decrease }
+		scope:glutton = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
+		}
 	}
 
 	option = { # Yeah, where's the food?!
@@ -2245,6 +2285,11 @@ feast_default.2001 = {
 				add = 100
 				stress >= high_medium_stress
 			}
+		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
+		scope:glutton = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 		}
 	}
 
@@ -3387,6 +3432,8 @@ feast_default.2008 = {
 				ai_boldness = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #You too?
@@ -3863,7 +3910,9 @@ feast_default.2012 = {
 				ai_compassion = 0.5
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -3894,6 +3943,8 @@ feast_default.2012 = {
 				ai_greed = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -4276,6 +4327,8 @@ feast_default.3004 = {
 				ai_compassion = -0.25
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Please leave my party
@@ -4311,6 +4364,8 @@ feast_default.3004 = {
 				ai_energy = 0.25
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -4478,6 +4533,11 @@ feast_default.3005 = {
 				ai_vengefulness = 1
 			}
 		}
+
+		register_battle_win_effect = yes
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #You lost - they injure you
@@ -4505,6 +4565,8 @@ feast_default.3005 = {
 				ai_boldness = 1
 			}
 		}
+
+		register_battle_loss_effect = yes
 	}
 
 	option = { #You lost - give up
@@ -4522,6 +4584,8 @@ feast_default.3005 = {
 		ai_chance = {
 			base = 100
 		}
+
+		register_battle_loss_effect = yes
 	}
 
 	option = { #You won - be an ass about it
@@ -4539,6 +4603,8 @@ feast_default.3005 = {
 		ai_chance = {
 			base = 100
 		}
+
+		register_battle_win_effect = yes
 	}
 
 	option = { #You lost - slit their Achilles tendon
@@ -4559,6 +4625,8 @@ feast_default.3005 = {
 		ai_chance = {
 			base = 500
 		}
+
+		register_battle_loss_effect = yes
 	}
 
 	after = {
@@ -4937,6 +5005,8 @@ feast_default.3006 = {
 				cynical = minor_stress_impact_gain
 				craven = minor_stress_impact_gain
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 		}
 		else = {
 			stress_impact = {
@@ -4976,6 +5046,25 @@ feast_default.3006 = {
 				ai_boldness = 0.5
 			}
 		}
+
+		if = {
+			limit = {
+				OR = {
+					trait_is_shunned_in_faith_trigger = {
+						TRAIT = adulterer
+						GENDER_CHARACTER = root
+						FAITH = root.faith
+					}
+					trait_is_criminal_in_faith_trigger = {
+						TRAIT = adulterer
+						GENDER_CHARACTER = root
+						FAITH = root.faith
+					}
+				}
+			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
+		}
 	}
 
 
@@ -4995,6 +5084,8 @@ feast_default.3006 = {
 				opinion_target = scope:spouse
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -5284,7 +5375,10 @@ feast_default.3007 = {
 				ai_boldness = 0.25
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Be quiet, I do as I please
@@ -5503,6 +5597,7 @@ feast_default.5002 = {
 		scope:activity = {
 			activity_owner = {
 				save_scope_as = lunatic_host
+				change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_medium_increase }
 			}
 		}
 	}
@@ -5556,6 +5651,8 @@ feast_default.5002 = {
 				ai_rationality = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Also lunatic, join in on the fun
@@ -5576,6 +5673,8 @@ feast_default.5002 = {
 		stress_impact = {
 			base = medium_stress_impact_loss
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -5724,7 +5823,12 @@ feast_default.5003 = {
 				}
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }	
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I'm too scared to intervene
@@ -5744,6 +5848,7 @@ feast_default.5003 = {
 			}
 		}
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Also sadistic, what a party!
@@ -5767,7 +5872,10 @@ feast_default.5003 = {
 		ai_chance = {
 			base = 100
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -5899,7 +6007,9 @@ feast_default.5004 = {
 			gluttonous = minor_stress_impact_gain
 			inappetetic = minor_stress_impact_loss
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Make yourself disappear
@@ -5924,7 +6034,9 @@ feast_default.5004 = {
 		ai_chance = {
 			base = 1000
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -6016,6 +6128,9 @@ feast_default.5005 = {
 		trait = intellect_good_3
 
 		add_prestige = medium_prestige_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wise CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Yes, more garum!
@@ -6026,6 +6141,8 @@ feast_default.5005 = {
 			modifier = feast_obsessed_with_garum_modifier
 			years = 10
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -6551,6 +6668,8 @@ feast_default.6101 = {
 				ai_boldness = 0.25
 			}
 		}
+	
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Mercilessly push them
@@ -6591,6 +6710,8 @@ feast_default.6101 = {
 				ai_boldness = 0.25
 			}
 		}
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #You save him
@@ -6635,6 +6756,9 @@ feast_default.6101 = {
 				ai_honor = 0.25
 			}
 		}
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -6829,6 +6953,10 @@ feast_default.6111 = {
 				ai_compassion = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -7020,6 +7148,9 @@ feast_default.6121 = {
 				ai_compassion = -0.25
 			}
 		}
+				
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #"Save" them
@@ -7040,6 +7171,10 @@ feast_default.6121 = {
 				ai_honor = 0.25
 			}
 		}
+	
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -7132,7 +7267,9 @@ feast_default.6231 = {
 				ai_compassion = 0.25
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #We all have to pitch in!
@@ -7149,7 +7286,10 @@ feast_default.6231 = {
 				ai_greed = 0.5
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #I have a private stash!
@@ -7171,7 +7311,10 @@ feast_default.6231 = {
 		ai_chance = {
 			base = 500
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	after = {
@@ -7280,6 +7423,8 @@ feast_default.6251 = {
 				ai_compassion = 0.75
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Rival
@@ -7502,7 +7647,10 @@ feast_default.6261 = {
 				}
 			}
 			add_trait = maimed
+			change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_medium_increase }
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_medium_increase }
 	}
 
 	option = { #Exposed cannibal - don't care about the guest
@@ -7779,6 +7927,8 @@ feast_default.8001 = {
 					flag = sent_relevant_death_event
 					days = 2
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_large_increase }
 			}
 			every_participant = {
 				limit = {
@@ -7829,6 +7979,9 @@ feast_default.8002 = {
 		name = feast_default.8002.a
 		add_dread = major_dread_gain
 		scope:activity = {
+			activity_owner = {
+				change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_large_increase }
+			}
 			every_participant = {
 				limit = {
 					murder_feast_default_participant_trigger = yes

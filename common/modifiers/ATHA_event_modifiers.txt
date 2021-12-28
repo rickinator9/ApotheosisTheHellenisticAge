@@ -63,6 +63,25 @@ newly_perioikic_modifier = {
 	monthly_county_control_change_factor = -0.25
 }
 
+athens_phoros_modifier = {
+	icon = county_modifier_development_positive
+	stacking = yes
+	development_growth = 0.1
+	build_gold_cost = -0.05
+	build_speed = -0.05
+}
+administrative_centre_modifier = {
+	icon = county_modifier_development_positive
+	development_growth = 0.1
+	build_gold_cost = -0.1
+	build_speed = -0.1
+}
+
+spartan_appreciation_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 25
+}
+
 ### Anatolia Major Decision Events
 
 bithynian_capital_modifier = {
@@ -70,4 +89,211 @@ bithynian_capital_modifier = {
 	county_opinion_add = 20
 	build_gold_cost = -0.1
 	build_speed = -0.2
+}
+
+maintaining_expeditionary_force_modifier = {
+	icon = martial_negative
+	levy_size = -0.1
+	garrison_size = -0.1
+	levy_reinforcement_rate = -0.25
+}
+
+# Deification modifiers
+
+recent_deification_modifier = {
+	icon = learning_negative
+	same_faith_opinion = -5
+	general_opinion = -5
+}
+
+recent_deification_illegal_modifier = {
+	icon = learning_negative
+	same_faith_opinion = -50
+	general_opinion = -5
+	county_opinion_add = -5
+}
+
+### Ancestry Events
+
+ancestry_looking_for_tomb_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.25
+	stress_gain_mult = 0.25
+}
+ancestry_hunting_bandits_modifier = {
+	icon = martial_positive
+	knight_effectiveness_mult = 0.1
+	county_opinion_add = 10
+	men_at_arms_maintenance = 0.15
+}
+
+### Nickname Events
+
+nickname_county_punishment_modifier = {
+	icon = economy_negative
+	county_opinion_add = -20
+	development_growth_factor = small_development_growth_loss
+}
+
+nickname_county_imprison_modifier = {
+	icon = economy_negative
+	county_opinion_add = -10
+	levy_size = -0.05
+}
+
+nickname_county_bribe_modifier = {
+	icon = economy_positive
+	county_opinion_add = 5
+	development_growth_factor = tiny_development_growth_gain
+}
+
+nickname_deceiver_modifier = {
+	icon = intrigue_negative
+	general_opinion = -5
+	stress_gain_mult = 0.1
+}
+
+nickname_humble_modifier = {
+	icon = diplomacy_positive
+	attraction_opinion = 5
+	county_opinion_add = 1
+}
+
+nickname_skeletons_in_closet_modifier = {
+	icon = dread_positive
+	dread_gain_mult = 0.25
+}
+
+nickname_can_take_a_joke_modifier = {
+	icon = dread_negative
+	dread_baseline_add = -5
+	general_opinion = 5
+}
+
+nickname_mysterious_dissapearance_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 5
+	monthly_prestige_gain_mult = -0.1
+}
+
+nickname_feasting_with_commoners_modifier = {
+	icon = feast_positive
+	vassal_opinion = -5
+	courtier_and_guest_opinion = -5
+	county_opinion_add = 10
+	scheme_resistance = -5
+}
+
+nickname_selling_poems_modifier = {
+	icon = stewardship_positive
+	tax_mult = 0.05
+}
+
+nickname_political_poems_modifier = {
+	icon = diplomacy_positive
+
+	# No basic effects. Instead, it modifies council tasks.
+	# - +10% Priest fabricate claims
+	# - +10% Chancellor integrate title
+	# - +10% Marshal increase control
+	# - +10% Steward culture conversion
+	# - +10% Spymaster found secrets
+}
+
+nickname_regrets_eye_flagellation_modifier = {
+	monthly_piety = -0.5
+	religious_vassal_opinion = -10
+}
+
+nickname_eye_gouging_threats_modifier = {
+	dread_gain_mult = 0.25
+	general_opinion = -5
+}
+
+nickname_cancel_lunatic_reforms_modifier = {
+	icon = diplomacy_negative
+	monthly_prestige_gain_mult = -0.2
+}
+
+nickname_retreat_from_public_life_modifier = {
+	icon = diplomacy_negative
+	monthly_county_control_change_add = -0.5
+	dread_baseline_add = -5
+}
+
+nickname_humble_in_victory_modifier = {
+	icon = diplomacy_positive
+	general_opinion = 5
+	monthly_prestige_gain_mult = 0.1
+}
+
+nickname_impassioned_recruitment_modifier = {
+	icon = martial_positive
+	levy_size = 0.1
+	men_at_arms_maintenance = -0.05
+}
+
+nickname_air_of_dread_modifier = {
+	icon = intrigue_positive
+	general_opinion = -5
+	dread_baseline_add = 5
+}
+
+nickname_restored_civil_liberties_modifier = {
+	icon = diplomacy_positive
+	general_opinion = 10
+}
+
+nickname_sudden_loss_of_benefaction_modifier = {
+	icon = stewardship_negative
+	general_opinion = -10
+	monthly_county_control_change_add = -0.1
+	development_growth = -0.2
+}
+
+nickname_commission_flayer_propaganda_modifier = {
+	icon = diplomacy_positive
+	dread_baseline_add = -10
+	general_opinion = 5
+}
+
+nickname_diminished_court_modifier = {
+	icon = diplomacy_negative
+	general_opinion = 5
+	courtier_and_guest_opinion = -20
+	domain_tax_mult = 0.1
+}
+
+nickname_public_apology_modifier = {
+	icon = diplomacy_negative
+	general_opinion = -10
+	dread_baseline_add = -10
+}
+
+nickname_empty_library_modifier = {
+	icon = learning_negative
+	cultural_head_fascination_mult = -0.25
+}
+
+nickname_dwarven_court_modifier = {
+	icon = diplomacy_negative
+	general_opinion = -5
+	monthly_prestige = 0.1
+}
+
+nickname_egyptian_fragrances_modifier = {
+	icon = diplomacy_positive
+	attraction_opinion = 5
+}
+
+nickname_county_ruler_statue_modifier = {
+	icon = rock_positive
+	county_opinion_add = 5
+	development_growth_factor = 0.05
+}
+
+nickname_county_provincial_investment_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 5
+	development_growth_factor = 0.15
 }

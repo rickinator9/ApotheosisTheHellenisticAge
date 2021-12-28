@@ -143,6 +143,10 @@
 			}
 			trigger_event = call_ally.0100
 		}
+
+		scope:target = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		}
 	}
 	
 	on_decline = {
@@ -185,6 +189,8 @@
 						set_called_to = scope:recipient
 					}
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_medium_decrease }
 			}
 			scope:actor = {
 				trigger_event = call_ally.0101
@@ -356,6 +362,13 @@
 			}
 			desc = WONT_ATTACK_RELIGIOUS_BRETHREN_REASON
 		}
+
+		# ATHA - overpromiser nick
+		modifier = {
+			add = -25
+			scope:actor = { has_character_modifier = nick_the_overpromiser_modifier }
+			desc = NICK_THE_OVERPROMISER_CALL_TO_ARMS_ACCEPTANCE_PENALTY
+		}
 	}
 
 	# Score above 0 means the AI will call this ally. Note that DESIRED_WAR_SIDE_STRENGTH still applies and can prevent calling the ally
@@ -422,6 +435,14 @@
 				is_allied_to = scope:recipient
 			}
 			factor = 0
+		}
+
+		# ATHA - overpromiser nick
+		modifier = {
+			add = -25
+			scope:actor = { has_character_modifier = nick_the_overpromiser_modifier }
+			scope:recipient = { is_ai = yes }
+			desc = NICK_THE_OVERPROMISER_CALL_TO_ARMS_ACCEPTANCE_PENALTY
 		}
 	}
 }
@@ -1193,6 +1214,23 @@ negotiate_alliance_interaction = {
 			}
 			add = -50
 			desc = IS_AT_WAR_REASON
+		}
+
+		# ATHA - the actor has loves their close kin.
+		modifier = {
+			add = 100
+			scope:actor = { has_character_modifier = nick_the_father_loving_modifier }
+			desc = NICK_THE_FATHER_LOVING_ALLIANCE_BONUS
+		}
+		modifier = {
+			add = 100
+			scope:actor = { has_character_modifier = nick_the_mother_loving_modifier }
+			desc = NICK_THE_MOTHER_LOVING_ALLIANCE_BONUS
+		}
+		modifier = {
+			add = 100
+			scope:actor = { has_character_modifier = nick_the_sibling_loving_modifier }
+			desc = NICK_THE_SIBLING_LOVING_ALLIANCE_BONUS
 		}
 	}
 

@@ -1380,11 +1380,8 @@ councillor_spouse_learning.1602 = {
 					chance = 20
 					set_relation_friend = scope:tutored_child
 				}
-				random_list = {
-					1 = { set_nickname_effect = { NICKNAME = nick_the_scholar } }
-					1 = { set_nickname_effect = { NICKNAME = nick_the_wise } }
-					10 = { }
-				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 			}
 		}
 	}
@@ -1969,15 +1966,8 @@ councillor_spouse_learning.2301 = {
 				}
 				add_piety = massive_piety_gain
 			}
-			if = {
-				limit = { is_ai = yes }
-				random_list = {
-					1 = { set_nickname_effect = { NICKNAME = nick_the_pious } }
-					1 = { set_nickname_effect = { NICKNAME = nick_the_blessed } }
-					1 = { set_nickname_effect = { NICKNAME = nick_the_holy } }
-					10 = { }
-				}
-			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		}
 	}
 
@@ -2067,6 +2057,8 @@ councillor_spouse_learning.2301 = {
 		}
 
 		ai_chance = { base = 1 }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	#Hook
@@ -2121,6 +2113,8 @@ councillor_spouse_learning.2301 = {
 			content = minor_stress_impact_gain
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -2131,6 +2125,8 @@ councillor_spouse_learning.2301 = {
 		remove_trait = excommunicated
 
 		ai_chance = { base = 100 }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	#Piety
@@ -2167,6 +2163,8 @@ councillor_spouse_learning.2301 = {
 			ambitious = minor_stress_impact_gain
 		}
 
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 }

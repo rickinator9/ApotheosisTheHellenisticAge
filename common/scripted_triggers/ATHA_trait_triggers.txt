@@ -1,0 +1,42 @@
+﻿# Does this character have an attractive body?
+has_attractive_body_trigger = {
+	has_trait = physique_good
+	NOR = {
+		has_trait = weak
+		has_trait = spindly
+		has_character_modifier = obese_modifier # While obesity has an effect on the face as well, it is much less profound than on the body.
+		# Malnourished may still be attractive enough in the eyes of the population.
+	}
+}
+
+# Does this character have an attractive face?
+has_attractive_face_trigger = {
+	has_trait = beauty_good
+	NOT = { has_trait = disfigured }
+}
+
+# Is this character attractive on the basis of genetic traits?
+is_attractive_character_trigger = {
+	NOR = { # The character does not have unfortunate traits that affect their entire body and visage.
+		has_trait = scaly
+		has_trait = hunchbacked
+		has_trait = beauty_bad
+		# Dwarfism is still barely ok, but will make the nickname event less likely to appear.
+	}
+	OR = {
+		has_attractive_face_trigger = yes
+		has_attractive_body_trigger = yes
+	}
+}
+
+# Is this character flawless on the basis of genetic traits?
+is_flawlessly_attractive_character_trigger = {
+	NOR = { # The character does not have unfortunate traits that affect their entire body and visage.
+		has_trait = scaly
+		has_trait = hunchbacked
+		has_trait = beauty_bad
+		# Dwarfism is still barely ok, but will make the nickname event less likely to appear.
+	}
+	has_attractive_face_trigger = yes
+	has_attractive_body_trigger = yes
+}

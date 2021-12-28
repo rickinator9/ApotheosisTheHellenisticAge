@@ -1,0 +1,37 @@
+﻿portrait_ATHA_spartan_clothing_trigger = {
+	culture = culture:dorian_south
+	OR = {
+		has_government = city_state_spartan_government
+		any_liege_or_above = { has_government = city_state_spartan_government }
+	}
+}
+
+portrait_ATHA_hellenistic_greek_clothing_trigger = {
+	OR = {
+		culture = culture:macedonian
+		culture = culture:epirote
+	}
+}
+
+portrait_ATHA_classical_greek_clothing_trigger = {
+	has_culture_group = culture_group:greek_group
+	NOR = {
+		portrait_ATHA_spartan_clothing_trigger = yes
+		portrait_ATHA_hellenistic_greek_clothing_trigger = yes
+	}
+}
+
+portrait_ATHA_greek_clothing_trigger = {
+	has_culture_group = culture_group:greek_group
+}
+
+portrait_ATHA_thracian_clothing_trigger = {
+	has_culture_group = culture_group:thracian_group
+}
+
+portrait_ATHA_anatolian_clothing_trigger = {
+	OR = {
+		has_culture_group = culture_group:anatolian_group
+		has_culture_group = culture_group:iranian_group
+	}
+}

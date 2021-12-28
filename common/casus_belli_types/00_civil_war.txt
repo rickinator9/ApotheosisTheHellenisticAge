@@ -97,7 +97,7 @@ independence_faction_war = {
 					}
 					add_truce_both_ways = {
 						character = scope:defender
-						days = 1825
+						days = truce_duration_5_years_days
 						war = root.war
 						result = victory
 					}
@@ -132,9 +132,14 @@ independence_faction_war = {
 				limit = { has_realm_law = crown_authority_3 }
 				add_realm_law = crown_authority_2
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 		resolve_title_and_vassal_change = scope:change
-	
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -169,7 +174,7 @@ independence_faction_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = white_peace
 				}
@@ -200,6 +205,10 @@ independence_faction_war = {
 		}
 
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -241,9 +250,15 @@ independence_faction_war = {
 				}
 			}
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 
 		on_lost_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -352,13 +367,15 @@ liberty_faction_war = {
 				flag = recent_liberty_faction_war
 				years = liberty_war_victory_cooldown
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
 		hidden_effect = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = victory
 				}
@@ -388,7 +405,11 @@ liberty_faction_war = {
 					}
 				}
 			}
-		}	
+		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }	
 	}
 
 	on_white_peace_desc = {
@@ -423,7 +444,7 @@ liberty_faction_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = white_peace
 				}
@@ -442,6 +463,10 @@ liberty_faction_war = {
 			}
 		}
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -473,8 +498,14 @@ liberty_faction_war = {
 			}
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -554,6 +585,8 @@ populist_war = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 		scope:defender = {
 			add_prestige_level = -1
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 		random_in_list = {
 			list = target_titles
@@ -567,7 +600,7 @@ populist_war = {
 					# Everyone involved gets a 5-year truce.
 					add_truce_both_ways = {
 						character = scope:defender
-						days = 1825
+						days = truce_duration_5_years_days
 						war = root.war
 						result = victory
 					}
@@ -581,6 +614,9 @@ populist_war = {
 			SOURCE_GOVERNMENT = scope:defender
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -622,13 +658,17 @@ populist_war = {
 					remove_variable = rebel_leader_peasants
 					add_truce_both_ways = {
 						character = scope:defender
-						days = 1825
+						days = truce_duration_5_years_days
 						war = root.war
 						result = victory
 					}
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 
@@ -667,6 +707,10 @@ populist_war = {
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -742,11 +786,14 @@ claimant_faction_war = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+		scope:defender = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		}
 		hidden_effect = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = victory
 				}
@@ -762,6 +809,9 @@ claimant_faction_war = {
 			#DEFENDER_PRESTIGE = -10
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -789,7 +839,7 @@ claimant_faction_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = white_peace
 				}
@@ -801,6 +851,10 @@ claimant_faction_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -815,7 +869,13 @@ claimant_faction_war = {
 		scope:defender = {
 			add_dread = medium_dread_gain
 			add_achievement_flag_effect = { FLAG = achievement_know_your_place_flag }
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	check_attacker_inheritance_validity = no
@@ -860,6 +920,10 @@ depose_war = {
 
 	on_declaration = {
 		#on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -879,7 +943,7 @@ depose_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = victory
 				}
@@ -896,9 +960,13 @@ depose_war = {
 			hidden_effect = { fp1_remove_humsac_offended_counties_effect = yes }
 			# Then our liege is deposed (but the imprisonment loss remains true for their heir).
 			depose = yes
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
-
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -926,6 +994,10 @@ depose_war = {
  			}
 		}
 		on_white_peace_faction_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -944,7 +1016,13 @@ depose_war = {
 		on_lost_faction_revolt_war = yes
 		scope:defender = {
 			add_dread = medium_dread_gain
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 	
 	on_invalidated_desc = msg_invalidate_war_title
@@ -1004,6 +1082,9 @@ refused_liege_demand_war = {
 	}
 
 	on_declaration = {
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1048,19 +1129,24 @@ refused_liege_demand_war = {
 
 			# Then our liege is deposed (but the imprisonment loss remains true for their heir).
 			depose = yes
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
 
 		hidden_effect = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = victory
 				}
 			}
 		}
 
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1092,13 +1178,17 @@ refused_liege_demand_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = white_peace
 				}
 			}
 		}
 		on_white_peace_request_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1120,8 +1210,14 @@ refused_liege_demand_war = {
 				years = 10
 			}
 			add_dread = medium_dread_gain
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		on_lost_request_revolt_war = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title
@@ -1334,6 +1430,17 @@ independence_war = {
 					desc = CB_GAME_RULE_NO_COST
 				}
 			}
+
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
 		}
 	}
 
@@ -1342,6 +1449,10 @@ independence_war = {
 		# Remove offending HumSac modifiers.
 		scope:attacker = {
 			hidden_effect = { fp1_remove_humsac_offended_counties_effect = yes }
+		}
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
 		}
 	}
 
@@ -1390,15 +1501,21 @@ independence_war = {
 				}
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = victory
 				}
 			}
 		}
+		scope:defender = {
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		}
 
 		resolve_title_and_vassal_change = scope:change
-	
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1432,7 +1549,7 @@ independence_war = {
 			scope:attacker = {
 				add_truce_both_ways = {
 					character = scope:defender
-					days = 1825
+					days = truce_duration_5_years_days
 					war = root.war
 					result = white_peace
 				}
@@ -1453,6 +1570,10 @@ independence_war = {
  				arrogant = medium_stress_impact_gain
  			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1488,6 +1609,8 @@ independence_war = {
 					multiply = 1.25
 				}
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		
 		scope:attacker = {
@@ -1502,6 +1625,10 @@ independence_war = {
 				}
 			}
 		}
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

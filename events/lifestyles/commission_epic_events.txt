@@ -180,6 +180,8 @@ commission_epic.0001 = {
 				short_term_gold <= minor_gold_value
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Scribes
@@ -619,7 +621,9 @@ commission_epic.1003 = {
 				ai_rationality = 1
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Chain them to their desk!
@@ -649,7 +653,10 @@ commission_epic.1003 = {
 				ai_vengefulness = 1
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -760,6 +767,17 @@ commission_epic.1004 = {
 					compare_modifier = {
 						value = scope:duel_value
 					}
+
+					# ATHA - scholar/wise nickname modifiers.
+					modifier = {
+						scope:composer = { has_character_modifier = nick_the_scholar_modifier }
+						factor = 1.25
+					}
+					modifier = {
+						scope:composer = { has_character_modifier = nick_the_wise_modifier }
+						factor = 1.1
+					}
+
 					root = {
 						send_interface_toast = {
 							title = commission_epic.1004.success
@@ -851,6 +869,17 @@ commission_epic.1004 = {
 				compare_modifier = {
 					value = scope:duel_value
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = commission_epic.1004.success
 					custom_tooltip = commission_epic.increased_chance
@@ -1123,7 +1152,9 @@ commission_epic.1006 = {
 				opinion_target = scope:vassal
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # You should serve me no matter what
@@ -1143,7 +1174,9 @@ commission_epic.1006 = {
 				has_trait = reclusive
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {
@@ -1269,6 +1302,7 @@ commission_epic.1007 = {
 				multiplier = -1
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 
@@ -1286,6 +1320,7 @@ commission_epic.1007 = {
 				ai_rationality = 0.5
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
@@ -1434,6 +1469,8 @@ commission_epic.2001 = {
 				ai_honor = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 
@@ -1632,7 +1669,10 @@ commission_epic.2003 = {
 				ai_zeal = 1
 			}
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # My ancestors made a mistake
@@ -1651,7 +1691,10 @@ commission_epic.2003 = {
 		ai_chance = {
 			base = 100
 		}
+
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	after = {

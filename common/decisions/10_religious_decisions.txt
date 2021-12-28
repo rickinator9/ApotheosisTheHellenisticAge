@@ -22,6 +22,8 @@
 			cynical = medium_stress_impact_gain
 			ambitious = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	
 	ai_check_interval = 120
@@ -65,6 +67,8 @@ renounce_vow_of_poverty_decision = {
 			zealous = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_decrease }
 	}
 	
 	ai_check_interval = 60
@@ -119,6 +123,11 @@ initiate_consolamentum_decision = {
 		death = { death_reason = death_suicide}
 		show_as_tooltip = {
 			add_piety_level = 1
+		}
+
+		if = {
+			limit = { can_get_nickname_trigger = yes }
+			set_permanent_nickname_effect = { NICKNAME = nick_the_pious }
 		}
 	}
 
@@ -484,6 +493,8 @@ encourage_confession_of_false_conversions_decision = {	#Ask that crypto-religion
 			custom_tooltip = encourage_confession_of_false_conversions_decision.desc.tt_coreligionist
 			custom_tooltip = revoke_false_conversion_decision.desc.tt_own_faith_counties
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	ai_potential = {
@@ -602,6 +613,8 @@ go_on_pilgrimage_decision = {
 		else = {
 			trigger_event = pilgrimage.0001
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 
 	ai_potential = {

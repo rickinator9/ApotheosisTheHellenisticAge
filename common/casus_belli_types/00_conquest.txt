@@ -149,6 +149,17 @@
 				}
 			}
 
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
+
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
@@ -329,6 +340,17 @@
 				}
 			}
 
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
+
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
@@ -388,6 +410,10 @@
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -456,6 +482,10 @@
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -505,6 +535,10 @@
 		}
 
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -577,6 +611,10 @@
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	transfer_behavior = transfer
@@ -790,6 +828,17 @@ duchy_conquest_cb = {
 				}
 			}
 
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
+
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
@@ -970,6 +1019,17 @@ duchy_conquest_cb = {
 				}
 			}
 
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
+
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
@@ -1029,6 +1089,10 @@ duchy_conquest_cb = {
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1115,6 +1179,10 @@ duchy_conquest_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_win_effect = yes }
+		scope:defender = { register_defensive_war_loss_effect = yes }
 	}
 
 	on_white_peace_desc = {
@@ -1154,6 +1222,10 @@ duchy_conquest_cb = {
 		}
 
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1226,6 +1298,10 @@ duchy_conquest_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	transfer_behavior = transfer
@@ -1536,6 +1612,17 @@ ducal_conquest_cb = {
 				}
 			}
 
+			# ATHA - victor nickname
+			if = {
+				limit = {
+					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
+				}
+				multiply = {
+					value = 0.85
+					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+				}
+			}
+
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
@@ -1595,6 +1682,10 @@ ducal_conquest_cb = {
 
 	on_declaration = {
 		on_declared_war = yes
+
+		scope:attacker = {
+			change_nick_the_bold_based_on_strength_ratio = { TARGET = scope:defender }
+		}
 	}
 
 	on_victory_desc = {
@@ -1677,6 +1768,10 @@ ducal_conquest_cb = {
 					}
 				}
 			}
+
+			# Keep track of war wins / losses
+			scope:attacker = { register_offensive_war_win_effect = yes }
+			scope:defender = { register_defensive_war_loss_effect = yes }
 		}
 
 		every_in_list = {
@@ -1774,6 +1869,10 @@ ducal_conquest_cb = {
 		}
 
 		add_truce_white_peace_effect = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_whitepeace_effect = yes }
+		scope:defender = { register_defensive_war_whitepeace_effect = yes }
 	}
 
 	on_defeat_desc = {
@@ -1846,6 +1945,10 @@ ducal_conquest_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# Keep track of war wins / losses
+		scope:attacker = { register_offensive_war_loss_effect = yes }
+		scope:defender = { register_defensive_war_win_effect = yes }
 	}
 
 	transfer_behavior = transfer

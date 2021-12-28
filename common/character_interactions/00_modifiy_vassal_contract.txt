@@ -243,6 +243,14 @@
 					#set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }
 				}
 			}
+
+			if = {
+				limit = { scope:recipient.count_obligation_improvements_for_vassal > 0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+			} else_if = {
+				limit = { scope:recipient.count_obligation_improvements_for_vassal < 0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+			}
 		}
 		scope:recipient = { invalidated_contract_notification_effect = yes }
 
@@ -479,6 +487,15 @@ vassal_modify_vassal_contract_interaction = {
 				#set_obligation_if_changed_effect = { OBLIGATION_TYPE = hereditary_rights }	
 			}
 		}
+		scope:recipient = {
+			if = {
+				limit = { scope:actor.count_obligation_improvements_for_vassal > 0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+			} else_if = {
+				limit = { scope:actor.count_obligation_improvements_for_vassal < 0 }
+				change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
+			}
+		}
 
 		trigger_vassal_contract_change_on_action = { LIEGE = scope:recipient VASSAL = scope:actor }
 	}
@@ -533,6 +550,7 @@ ai_only_liege_modify_vassal_contract_interaction = {
 			stress_impact = {
 				generous = minor_stress_impact_gain
 			}
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_increase }
 		}
 		
 		scope:recipient = {
@@ -605,6 +623,7 @@ ai_only_vassal_modify_vassal_contract_interaction = {
 
 		scope:recipient = {
 			trigger_event = char_interaction.0251
+			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
 		}
 
 		trigger_vassal_contract_change_on_action = { LIEGE = scope:recipient VASSAL = scope:actor }
