@@ -1,7 +1,11 @@
-﻿namespace = city_state_sparta
+﻿namespace = ATHA_death_maintainance
+
+##		##
+# SPARTA #
+##		##
 
 # On death, flag the next heir to become the second spartan monarch.
-city_state_sparta.0001 = {
+ATHA_death_maintainance.0001 = {
 	type = character_event
 	hidden = yes
 
@@ -49,7 +53,7 @@ city_state_sparta.0001 = {
 }
 
 # On title inheritance, try to assign the spartan monarch title to the inheritor.
-city_state_sparta.0002 = {
+ATHA_death_maintainance.0002 = {
 	type = character_event
 	hidden = yes
 
@@ -69,5 +73,41 @@ city_state_sparta.0002 = {
 		}
 
 		remove_variable = will_be_next_spartan_dual_monarch
+	}
+}
+
+##				##
+# FEMALE ORACLES #
+##				##
+
+# If a female oracle dies, generate a new one to prevent a male priest from taking over.
+ATHA_death_maintainance.0010 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		primary_title = { this = title:d_pythia }
+	}
+
+	immediate = {
+		# Create a new oracle character.
+		create_character = {
+			location = root.capital_province
+			template = female_oracle_character
+			save_scope_as = new_oracle
+		}
+
+		# Transfer the titles.
+		create_title_and_vassal_change = {
+			type = granted
+			save_scope_as = change
+		}		
+		every_held_title = {
+			change_title_holder = {
+				holder = scope:new_oracle
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
 	}
 }
