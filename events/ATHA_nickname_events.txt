@@ -1980,7 +1980,45 @@ ATHA_nickname.0106 = {
 }
 
 # nick_the_short_lived
-# ATHA_nickname.0107 = {
+ATHA_nickname.0107 = {
+	type = character_event
+	title = ATHA_nickname.0107.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ATHA_nickname.0107.desc_self
+				trigger = {
+					this = scope:nick_the_short_lived_receiver
+				}
+			}
+			desc = ATHA_nickname.0107.desc_other
+		}
+	}
+	theme = crown
+	left_portrait = scope:nick_the_short_lived_receiver
+	right_portrait = scope:new_holder
+
+	immediate = {
+		show_as_tooltip = {
+			scope:nick_the_short_lived_receiver = {
+				set_nickname_with_cooldown_effect = { NICKNAME = nick_the_short_lived }
+			}
+		}
+	}
+
+	option = { # Accept the nickname (nickname gainer).
+		name = ATHA_nickname.0107.a_self
+		trigger = {
+			this = scope:nick_the_short_lived_receiver
+		}
+	}
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0107.a_other
+		trigger = {
+			NOT = { this = scope:nick_the_short_lived_receiver }
+		}
+	}
+}
 
 # nick_the_one_eyed
 ATHA_nickname.0108 = {
@@ -8912,6 +8950,37 @@ ATHA_nickname.0302 = {
 
 		side_primary_participant = {
 			trigger_event = { id = ATHA_nickname.0103 }
+		}
+	}
+}
+
+# Pass-through event for nick_the_short_lived assignment.
+ATHA_nickname.0303 = {
+	hidden = yes
+
+	trigger = {
+		scope:old_holder = {
+			has_character_flag = nick_the_short_lived_enabled_flag
+			NOT = { has_any_nickname = yes }
+		}
+		scope:title = {
+			tier >= tier_kingdom
+		}
+	}
+
+	immediate = {
+		scope:title = {
+			holder = { save_scope_as = new_holder }
+		}
+
+		scope:old_holder = {
+			set_nickname_with_cooldown_effect = { NICKNAME = nick_the_short_lived }
+
+			save_scope_as = nick_the_short_lived_receiver
+			trigger_event = { id = ATHA_nickname.0107 }
+		}
+		scope:new_holder = {
+			trigger_event = { id = ATHA_nickname.0107 }
 		}
 	}
 }

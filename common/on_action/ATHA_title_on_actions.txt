@@ -14,3 +14,28 @@ on_title_granted_to_unlanded = {
 		ATHA_government.0204 # Set the government and vassal contracts of a newly landed count or above below a dynastic or bureaucratic realm.
 	}
 }
+
+# A character gains a title while before they were unlanded.
+#	root, scope:holder = the character who gained the title.
+#	scope:transfer_type = the transfer that occurred that caused the character to gain the title.
+on_first_title_gained = {
+	effect = {
+		scope:holder = {
+			add_character_flag = {
+				flag = nick_the_short_lived_enabled_flag
+				years = 2
+			}
+		}
+	}
+}
+
+# A character loses a title, causing them to go down in rank.
+#	root, scope:old_holder = the character who lost the title.
+#	scope:transfer_type = the transfer that occurred that caused the character to lose the title.
+#	scope:title = the title that was lost.
+on_significant_title_loss = {
+	events = {
+		delay = { days = {  7 21 } }
+		ATHA_nickname.0303
+	}
+}
