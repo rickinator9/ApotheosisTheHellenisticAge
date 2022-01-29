@@ -22,6 +22,22 @@ pastures_01 = {
 	province_modifier = {
 		monthly_income = poor_building_tax_tier_1
 	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.01
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_1
+		tax_mult = 0.01
+		levy_size = 0.01
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.01
+		levy_size = 0.01
+	}
 	
 	next_building = pastures_02
 
@@ -69,6 +85,22 @@ pastures_02 = {
 		monthly_income = poor_building_tax_tier_2
 		supply_limit = 500
 	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.02
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_2
+		tax_mult = 0.01
+		levy_size = 0.01
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.01
+		levy_size = 0.01
+	}
 	
 	next_building = pastures_03
 	
@@ -104,6 +136,22 @@ pastures_03 = {
 		monthly_income = poor_building_tax_tier_3
 		supply_limit = 500
 		levy_reinforcement_rate = 0.1
+	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.03
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_3
+		tax_mult = 0.02
+		levy_size = 0.02
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
+		levy_size = 0.02
 	}
 	
 	next_building = pastures_04
@@ -144,6 +192,22 @@ pastures_04 = {
 	county_modifier = {
 		development_growth_factor = 0.02
 	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.04
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_4
+		tax_mult = 0.02
+		levy_size = 0.02
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
+		levy_size = 0.02
+	}
 	
 	next_building = pastures_05
 	
@@ -180,6 +244,22 @@ pastures_05 = {
 		supply_limit = 500
 		levy_reinforcement_rate = 0.1
 		garrison_size = 0.05
+	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.05
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_5
+		tax_mult = 0.03
+		levy_size = 0.03
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
+		levy_size = 0.03
 	}
 	county_modifier = {
 		development_growth_factor = 0.02
@@ -224,6 +304,22 @@ pastures_06 = {
 	county_modifier = {
 		development_growth_factor = 0.02
 		county_opinion_add = 2
+	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.06
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_6
+		tax_mult = 0.03
+		levy_size = 0.03
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
+		levy_size = 0.03
 	}
 	
 	next_building = pastures_07
@@ -270,6 +366,22 @@ pastures_07 = {
 		light_cavalry_toughness_mult = 0.02
 		heavy_cavalry_toughness_mult = 0.04
 	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.07
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_7
+		tax_mult = 0.04
+		levy_size = 0.04
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
+		levy_size = 0.04
+	}
 	
 	next_building = pastures_08
 	
@@ -315,6 +427,22 @@ pastures_08 = {
 		light_cavalry_toughness_mult = 0.02
 		heavy_cavalry_toughness_mult = 0.04
 	}
+	character_culture_modifier = {
+		parameter = pastures_building_bonuses
+		light_cavalry_maintenance_mult = -0.08
+	}
+	province_culture_modifier = {
+		parameter = pastures_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_8
+		tax_mult = 0.04
+		levy_size = 0.04
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
+		levy_size = 0.04
+	}
 	
 	ai_value = {
 		base = 3
@@ -343,6 +471,14 @@ hunting_grounds_01 = {
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_1
 		monthly_income = poor_building_tax_tier_1
+	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.01
+		archers_recruitment_cost_mult = -0.01
+		archers_damage_mult = 0.01
+		archers_toughness_mult = 0.01
 	}
 	
 	character_modifier = {
@@ -406,6 +542,14 @@ hunting_grounds_02 = {
 		light_cavalry_screen_mult = 0.02
 		light_cavalry_toughness_mult = 0.02
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.01
+		archers_recruitment_cost_mult = -0.01
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.02
+	}
 	
 	next_building = hunting_grounds_03
 	
@@ -450,6 +594,14 @@ hunting_grounds_03 = {
 		light_cavalry_screen_mult = 0.02
 		light_cavalry_toughness_mult = 0.02
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.02
+		archers_recruitment_cost_mult = -0.02
+		archers_damage_mult = 0.03
+		archers_toughness_mult = 0.03
+	}
 	
 	next_building = hunting_grounds_04
 	
@@ -493,6 +645,14 @@ hunting_grounds_04 = {
 		light_cavalry_pursuit_mult = 0.08
 		light_cavalry_screen_mult = 0.04
 		light_cavalry_toughness_mult = 0.04
+	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.02
+		archers_recruitment_cost_mult = -0.02
+		archers_damage_mult = 0.04
+		archers_toughness_mult = 0.04
 	}
 	
 	next_building = hunting_grounds_05
@@ -539,6 +699,15 @@ hunting_grounds_05 = {
 		light_cavalry_toughness_mult = 0.04
 		men_at_arms_maintenance = -0.01
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.03
+		archers_recruitment_cost_mult = -0.03
+		archers_damage_mult = 0.05
+		archers_toughness_mult = 0.05
+	}
+	
 	
 	next_building = hunting_grounds_06
 	
@@ -584,6 +753,15 @@ hunting_grounds_06 = {
 		light_cavalry_toughness_mult = 0.06
 		men_at_arms_maintenance = -0.01
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.03
+		archers_recruitment_cost_mult = -0.03
+		archers_damage_mult = 0.06
+		archers_toughness_mult = 0.06
+	}
+	
 	
 	next_building = hunting_grounds_07
 	
@@ -629,6 +807,15 @@ hunting_grounds_07 = {
 		light_cavalry_toughness_mult = 0.06
 		men_at_arms_maintenance = -0.01
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.04
+		archers_recruitment_cost_mult = -0.04
+		archers_damage_mult = 0.07
+		archers_toughness_mult = 0.07
+	}
+	
 	
 	county_modifier = {
 		development_growth_factor = 0.02
@@ -678,6 +865,15 @@ hunting_grounds_08 = {
 		light_cavalry_toughness_mult = 0.08
 		men_at_arms_maintenance = -0.01
 	}
+
+	character_culture_modifier = {
+		parameter = hunting_archery_building_bonuses
+		archers_maintenance_mult = -0.04
+		archers_recruitment_cost_mult = -0.04
+		archers_damage_mult = 0.08
+		archers_toughness_mult = 0.08
+	}
+	
 	
 	county_modifier = {
 		development_growth_factor = 0.02
@@ -709,6 +905,11 @@ orchards_01 = {
 	levy = small_building_levy_tier_1
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.01
 	}
 	
 	next_building = orchards_02
@@ -742,6 +943,11 @@ orchards_02 = {
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_2
 		levy_reinforcement_rate = 0.1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
 	}
 	
 	next_building = orchards_03
@@ -779,6 +985,12 @@ orchards_03 = {
 		levy_reinforcement_rate = 0.1
 		supply_limit_mult = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
+		supply_limit_mult = 0.1
+	}
 	
 	next_building = orchards_04
 	
@@ -813,6 +1025,12 @@ orchards_04 = {
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_4
 		levy_reinforcement_rate = 0.1
+		supply_limit_mult = 0.1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
 		supply_limit_mult = 0.1
 	}
 	county_modifier = {
@@ -852,6 +1070,12 @@ orchards_05 = {
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_5
 		levy_reinforcement_rate = 0.1
+		supply_limit_mult = 0.1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.05
 		supply_limit_mult = 0.1
 	}
 	county_modifier = {
@@ -895,6 +1119,12 @@ orchards_06 = {
 		levy_reinforcement_rate = 0.1
 		supply_limit_mult = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.06
+		supply_limit_mult = 0.1
+	}
 	county_modifier = {
 		development_growth_factor = 0.02
 		levy_size = 0.02
@@ -934,6 +1164,12 @@ orchards_07 = {
 		monthly_income = normal_building_tax_tier_7
 		supply_limit = 1000
 		levy_reinforcement_rate = 0.1
+		supply_limit_mult = 0.1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.07
 		supply_limit_mult = 0.1
 	}
 	county_modifier = {
@@ -980,6 +1216,12 @@ orchards_08 = {
 		levy_reinforcement_rate = 0.1
 		supply_limit_mult = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.08
+		supply_limit_mult = 0.1
+	}
 	county_modifier = {
 		development_growth_factor = 0.05
 		levy_size = 0.02
@@ -1014,6 +1256,11 @@ farm_estates_01 = {
 	province_modifier = {
 		monthly_income = excellent_building_tax_tier_1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
+	}
 	
 	next_building = farm_estates_02
 
@@ -1046,6 +1293,11 @@ farm_estates_02 = {
 		monthly_income = excellent_building_tax_tier_2
 		supply_limit_mult = 0.15
 		supply_limit = 500
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
 	}
 	
 	next_building = farm_estates_03
@@ -1081,6 +1333,11 @@ farm_estates_03 = {
 		monthly_income = excellent_building_tax_tier_3
 		supply_limit_mult = 0.15
 		supply_limit = 500
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
 	}
 	
 	county_modifier = {
@@ -1120,6 +1377,11 @@ farm_estates_04 = {
 		monthly_income = excellent_building_tax_tier_4
 		supply_limit_mult = 0.15
 		supply_limit = 1000
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.05
 	}
 	
 	county_modifier = {
@@ -1161,6 +1423,11 @@ farm_estates_05 = {
 		levy_size = 0.05
 		supply_limit = 1000
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.06
+	}
 	
 	county_modifier = {
 		development_growth_factor = 0.02
@@ -1200,6 +1467,11 @@ farm_estates_06 = {
 		supply_limit_mult = 0.15
 		levy_size = 0.05
 		supply_limit = 1000
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.06
 	}
 	
 	county_modifier = {
@@ -1242,6 +1514,11 @@ farm_estates_07 = {
 		levy_size = 0.05
 		supply_limit = 1000
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.07
+	}
 	
 	county_modifier = {
 		development_growth_factor = 0.05
@@ -1283,6 +1560,11 @@ farm_estates_08 = {
 		supply_limit_mult = 0.15
 		levy_size = 0.05
 		supply_limit = 1000
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.08
 	}
 	county_modifier = {
 		development_growth_factor = 0.05
@@ -1669,6 +1951,7 @@ military_camps_08 = {
 		skirmishers_toughness_mult = 0.08
 		light_cavalry_toughness_mult = 0.02
 		pikemen_toughness_mult = 0.02
+		phalanx_toughness_mult = 0.02
 		heavy_infantry_toughness_mult = 0.02
 	}
 	
@@ -1790,11 +2073,11 @@ regimental_grounds_03 = {
 		men_at_arms_maintenance = -0.006
 		heavy_cavalry_damage_mult = 0.08
 		heavy_cavalry_toughness_mult = 0.04
-		heavy_infantry_damage_mult = 0.04
 		heavy_infantry_toughness_mult = 0.02
 		phalanx_damage_mult = 0.04
 		phalanx_toughness_mult = 0.02
 		pikemen_toughness_mult = 0.02
+		heavy_infantry_damage_mult = 0.04
 		pikemen_damage_mult = 0.04
 	}
 	
@@ -1840,11 +2123,11 @@ regimental_grounds_04 = {
 		men_at_arms_maintenance = -0.008
 		heavy_cavalry_damage_mult = 0.1
 		heavy_cavalry_toughness_mult = 0.06
-		heavy_infantry_damage_mult = 0.04
 		heavy_infantry_toughness_mult = 0.02
 		phalanx_damage_mult = 0.04
 		phalanx_toughness_mult = 0.02
 		pikemen_toughness_mult = 0.02
+		heavy_infantry_damage_mult = 0.04
 		pikemen_damage_mult = 0.04
 	}
 	
@@ -1891,11 +2174,11 @@ regimental_grounds_05 = {
 		men_at_arms_maintenance = -0.01
 		heavy_cavalry_damage_mult = 0.12
 		heavy_cavalry_toughness_mult = 0.06
-		heavy_infantry_damage_mult = 0.04
 		heavy_infantry_toughness_mult = 0.02
 		phalanx_damage_mult = 0.04
 		phalanx_toughness_mult = 0.02
 		pikemen_toughness_mult = 0.02
+		heavy_infantry_damage_mult = 0.04
 		pikemen_damage_mult = 0.04
 	}
 	
@@ -1943,11 +2226,11 @@ regimental_grounds_06 = {
 		men_at_arms_maintenance = -0.012
 		heavy_cavalry_damage_mult = 0.14
 		heavy_cavalry_toughness_mult = 0.08
-		heavy_infantry_damage_mult = 0.06
 		heavy_infantry_toughness_mult = 0.04
 		phalanx_damage_mult = 0.06
 		phalanx_toughness_mult = 0.04
 		pikemen_toughness_mult = 0.04
+		heavy_infantry_damage_mult = 0.06
 		pikemen_damage_mult = 0.06
 	}
 	
@@ -1995,11 +2278,11 @@ regimental_grounds_07 = {
 		men_at_arms_maintenance = -0.014
 		heavy_cavalry_damage_mult = 0.16
 		heavy_cavalry_toughness_mult = 0.08
-		heavy_infantry_damage_mult = 0.06
 		heavy_infantry_toughness_mult = 0.04
 		phalanx_damage_mult = 0.06
 		phalanx_toughness_mult = 0.04
 		pikemen_toughness_mult = 0.04
+		heavy_infantry_damage_mult = 0.06
 		pikemen_damage_mult = 0.06
 		knight_limit = 1
 	}
@@ -2048,11 +2331,11 @@ regimental_grounds_08 = {
 		men_at_arms_maintenance = -0.016
 		heavy_cavalry_damage_mult = 0.18
 		heavy_cavalry_toughness_mult = 0.1
-		heavy_infantry_damage_mult = 0.06
 		heavy_infantry_toughness_mult = 0.04
 		phalanx_damage_mult = 0.06
 		phalanx_toughness_mult = 0.04
 		pikemen_toughness_mult = 0.04
+		heavy_infantry_damage_mult = 0.06
 		pikemen_damage_mult = 0.06
 		knight_limit = 1
 		army_maintenance_mult = -0.01
@@ -2116,6 +2399,7 @@ ramparts_01 = {
 			factor = 5
 			free_building_slots <= 1
 		}
+		culture_likely_to_fortify_modifier = yes
 	}
 }
 
@@ -2147,6 +2431,14 @@ ramparts_02 = {
 	
 	ai_value = {
 		base = 9
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2183,6 +2475,14 @@ ramparts_03 = {
 	
 	ai_value = {
 		base = 8
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2222,6 +2522,14 @@ ramparts_04 = {
 	
 	ai_value = {
 		base = 7
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2265,6 +2573,14 @@ ramparts_05 = {
 	
 	ai_value = {
 		base = 6
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2309,6 +2625,14 @@ ramparts_06 = {
 	
 	ai_value = {
 		base = 5
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2354,6 +2678,14 @@ ramparts_07 = {
 	
 	ai_value = {
 		base = 4
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2397,6 +2729,14 @@ ramparts_08 = {
 	
 	ai_value = {
 		base = 3
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2429,6 +2769,14 @@ curtain_walls_01 = {
 	
 	ai_value = {
 		base = 10
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -2477,6 +2825,14 @@ curtain_walls_02 = {
 	
 	ai_value = {
 		base = 9
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2520,6 +2876,14 @@ curtain_walls_03 = {
 	
 	ai_value = {
 		base = 8
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2563,6 +2927,14 @@ curtain_walls_04 = {
 	
 	ai_value = {
 		base = 7
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2607,6 +2979,14 @@ curtain_walls_05 = {
 	
 	ai_value = {
 		base = 6
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2652,6 +3032,14 @@ curtain_walls_06 = {
 	
 	ai_value = {
 		base = 5
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2697,6 +3085,14 @@ curtain_walls_07 = {
 	
 	ai_value = {
 		base = 4
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2740,6 +3136,14 @@ curtain_walls_08 = {
 	
 	ai_value = {
 		base = 3
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
 	}
@@ -2773,6 +3177,14 @@ watchtowers_01 = {
 	
 	ai_value = {
 		base = 10
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -2821,6 +3233,14 @@ watchtowers_02 = {
 	
 	ai_value = {
 		base = 9
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2863,6 +3283,14 @@ watchtowers_03 = {
 	
 	ai_value = {
 		base = 8
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2906,6 +3334,14 @@ watchtowers_04 = {
 	
 	ai_value = {
 		base = 7
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2949,6 +3385,14 @@ watchtowers_05 = {
 	
 	ai_value = {
 		base = 6
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -2994,6 +3438,14 @@ watchtowers_06 = {
 	
 	ai_value = {
 		base = 5
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -3039,6 +3491,14 @@ watchtowers_07 = {
 	
 	ai_value = {
 		base = 4
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -3082,6 +3542,14 @@ watchtowers_08 = {
 	
 	ai_value = {
 		base = 3
+		modifier = {
+			add = 1
+			scope:holder = {
+				culture = {
+					has_cultural_parameter = ai_more_likely_to_fortify
+				}
+			}
+		}
 		ai_general_building_modifier = yes
 	}
 }
@@ -3104,6 +3572,11 @@ cereal_fields_01 = {
 	
 	province_modifier = {
 		monthly_income = good_building_tax_tier_1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
 	}
 	
 	next_building = cereal_fields_02
@@ -3150,6 +3623,11 @@ cereal_fields_02 = {
 	province_modifier = {
 		monthly_income = good_building_tax_tier_2
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
+	}
 	
 	county_modifier = {
 		tax_mult = 0.01
@@ -3186,6 +3664,11 @@ cereal_fields_03 = {
 	
 	province_modifier = {
 		monthly_income = good_building_tax_tier_3
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
 	}
 	
 	county_modifier = {
@@ -3225,6 +3708,11 @@ cereal_fields_04 = {
 	province_modifier = {
 		monthly_income = good_building_tax_tier_4
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.05
+	}
 	
 	county_modifier = {
 		tax_mult = 0.01
@@ -3263,6 +3751,11 @@ cereal_fields_05 = {
 	
 	province_modifier = {
 		monthly_income = good_building_tax_tier_5
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.06
 	}
 	
 	county_modifier = {
@@ -3304,6 +3797,11 @@ cereal_fields_06 = {
 	province_modifier = {
 		monthly_income = good_building_tax_tier_6
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.07
+	}
 	
 	county_modifier = {
 		tax_mult = 0.01
@@ -3344,6 +3842,11 @@ cereal_fields_07 = {
 	
 	province_modifier = {
 		monthly_income = good_building_tax_tier_7
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.08
 	}
 	
 	county_modifier = {
@@ -3387,6 +3890,11 @@ cereal_fields_08 = {
 	province_modifier = {
 		monthly_income = good_building_tax_tier_8
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.09
+	}
 	
 	county_modifier = {
 		levy_reinforcement_rate = 0.05
@@ -3423,6 +3931,18 @@ outposts_01 = {
 	levy = poor_building_levy_tier_1
 	province_modifier = {
 		defender_holding_advantage = normal_building_advantage_tier_1
+	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.01
+		archers_maintenance_mult = -0.01
+		skirmishers_recruitment_cost_mult = -0.01
+		archers_recruitment_cost_mult = -0.01
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_1
+		levy_size = 0.01
 	}
 	
 	next_building = outposts_02
@@ -3477,6 +3997,18 @@ outposts_02 = {
 	county_modifier = {
 		monthly_county_control_change_add = 0.1
 	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.02
+		archers_maintenance_mult = -0.02
+		skirmishers_recruitment_cost_mult = -0.02
+		archers_recruitment_cost_mult = -0.02
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_2
+		levy_size = 0.02
+	}
 	
 	next_building = outposts_03
 	
@@ -3515,6 +4047,18 @@ outposts_03 = {
 	}
 	character_modifier = {
 		skirmishers_damage_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.03
+		archers_maintenance_mult = -0.03
+		skirmishers_recruitment_cost_mult = -0.03
+		archers_recruitment_cost_mult = -0.03
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_3
+		levy_size = 0.03
 	}
 	
 	next_building = outposts_04
@@ -3556,6 +4100,18 @@ outposts_04 = {
 	character_modifier = {
 		skirmishers_damage_mult = 0.02
 		skirmishers_pursuit_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.04
+		archers_maintenance_mult = -0.04
+		skirmishers_recruitment_cost_mult = -0.04
+		archers_recruitment_cost_mult = -0.04
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_4
+		levy_size = 0.04
 	}
 	
 	next_building = outposts_05
@@ -3599,6 +4155,18 @@ outposts_05 = {
 		skirmishers_damage_mult = 0.02
 		skirmishers_pursuit_mult = 0.02
 	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.05
+		archers_maintenance_mult = -0.05
+		skirmishers_recruitment_cost_mult = -0.05
+		archers_recruitment_cost_mult = -0.05
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_5
+		levy_size = 0.05
+	}
 	
 	next_building = outposts_06
 	
@@ -3641,6 +4209,18 @@ outposts_06 = {
 		archers_damage_mult = 0.04
 		skirmishers_damage_mult = 0.02
 		skirmishers_pursuit_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.06
+		archers_maintenance_mult = -0.06
+		skirmishers_recruitment_cost_mult = -0.06
+		archers_recruitment_cost_mult = -0.06
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_6
+		levy_size = 0.06
 	}
 	
 	next_building = outposts_07
@@ -3686,6 +4266,18 @@ outposts_07 = {
 		skirmishers_pursuit_mult = 0.02
 		skirmishers_toughness_mult = 0.02
 		skirmishers_screen_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.07
+		archers_maintenance_mult = -0.07
+		skirmishers_recruitment_cost_mult = -0.07
+		archers_recruitment_cost_mult = -0.07
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_7
+		levy_size = 0.07
 	}
 	
 	next_building = outposts_08
@@ -3733,6 +4325,18 @@ outposts_08 = {
 		skirmishers_toughness_mult = 0.02
 		skirmishers_screen_mult = 0.02
 	}
+	character_culture_modifier = {
+		parameter = outposts_building_bonuses
+		skirmishers_maintenance_mult = -0.08
+		archers_maintenance_mult = -0.08
+		skirmishers_recruitment_cost_mult = -0.08
+		archers_recruitment_cost_mult = -0.08
+	}
+	province_culture_modifier = {
+		parameter = outposts_building_bonuses
+		monthly_income = super_poor_building_tax_tier_8
+		levy_size = 0.08
+	}
 	
 	ai_value = {
 		base = 3
@@ -3762,6 +4366,10 @@ barracks_01 = {
 		pikemen_damage_mult = 0.04
 		heavy_infantry_damage_mult = 0.04
 		phalanx_damage_mult = 0.04
+	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.1
 	}
 	
 	next_building = barracks_02
@@ -3812,6 +4420,10 @@ barracks_02 = {
 		heavy_infantry_toughness_mult = 0.04
 		phalanx_toughness_mult = 0.04
 	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.2
+	}
 	
 	next_building = barracks_03
 	
@@ -3850,6 +4462,10 @@ barracks_03 = {
 		pikemen_toughness_mult = 0.04
 		heavy_infantry_toughness_mult = 0.04
 		phalanx_toughness_mult = 0.04
+	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.3
 	}
 	
 	county_modifier = {
@@ -3893,6 +4509,10 @@ barracks_04 = {
 		pikemen_toughness_mult = 0.06
 		heavy_infantry_toughness_mult = 0.06
 		phalanx_toughness_mult = 0.06
+	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.4
 	}
 	
 	county_modifier = {
@@ -3941,6 +4561,10 @@ barracks_05 = {
 		heavy_infantry_toughness_mult = 0.06
 		phalanx_toughness_mult = 0.06
 	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.5
+	}
 	
 	next_building = barracks_06
 	
@@ -3984,6 +4608,10 @@ barracks_06 = {
 		heavy_infantry_toughness_mult = 0.08
 		phalanx_toughness_mult = 0.08
 	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.6
+	}
 	
 	next_building = barracks_07
 	
@@ -4026,6 +4654,10 @@ barracks_07 = {
 		pikemen_toughness_mult = 0.08
 		heavy_infantry_toughness_mult = 0.08
 		phalanx_toughness_mult = 0.08
+	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.7
 	}
 	
 	province_modifier = {
@@ -4073,6 +4705,10 @@ barracks_08 = {
 		pikemen_toughness_mult = 0.1
 		heavy_infantry_toughness_mult = 0.1
 		phalanx_toughness_mult = 0.1
+	}
+	character_culture_modifier = {
+		parameter = building_barracks_piety_bonuses
+		monthly_piety = 0.8
 	}
 	
 	province_modifier = {
@@ -4434,6 +5070,10 @@ camel_farms_08 = {
 		hostile_raid_time = 0.2
 	}
 
+	county_modifier = {
+		supply_limit = 200
+	}
+
 	type_icon = "icon_building_camel_farms.dds"
 	
 	ai_value = {
@@ -4461,6 +5101,16 @@ logging_camps_01 = {
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_1	
 		build_speed = good_building_build_speed_tier_1
+	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.02
+		skirmishers_damage_mult = 0.02
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.02
+		build_gold_cost = -0.01
 	}
 	
 	next_building = logging_camps_02
@@ -4506,6 +5156,16 @@ logging_camps_02 = {
 	county_modifier = {
 		church_holding_build_gold_cost = -0.05
 	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.04
+		skirmishers_damage_mult = 0.04
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.04
+		build_gold_cost = -0.02
+	}
 	
 	next_building = logging_camps_03
 	
@@ -4547,6 +5207,16 @@ logging_camps_03 = {
 	
 	county_modifier = {
 		church_holding_build_gold_cost = -0.05
+	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.06
+		skirmishers_damage_mult = 0.06
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.06
+		build_gold_cost = -0.03
 	}
 	
 	next_building = logging_camps_04
@@ -4590,6 +5260,16 @@ logging_camps_04 = {
 	county_modifier = {
 		church_holding_build_gold_cost = -0.05
 		supply_limit = 300
+	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.08
+		skirmishers_damage_mult = 0.08
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.08
+		build_gold_cost = -0.04
 	}
 	
 	next_building = logging_camps_05
@@ -4635,6 +5315,16 @@ logging_camps_05 = {
 		supply_limit = 300
 		tax_mult = 0.01
 	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.1
+		skirmishers_damage_mult = 0.1
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.1
+		build_gold_cost = -0.05
+	}
 	
 	next_building = logging_camps_06
 	
@@ -4679,6 +5369,16 @@ logging_camps_06 = {
 		supply_limit = 600
 		tax_mult = 0.01
 	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.12
+		skirmishers_damage_mult = 0.12
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.12
+		build_gold_cost = -0.06
+	}
 	
 	next_building = logging_camps_07
 	
@@ -4722,6 +5422,16 @@ logging_camps_07 = {
 		church_holding_build_gold_cost = -0.05
 		supply_limit = 600
 		tax_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.14
+		skirmishers_damage_mult = 0.14
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.14
+		build_gold_cost = -0.07
 	}
 	
 	next_building = logging_camps_08
@@ -4768,6 +5478,16 @@ logging_camps_08 = {
 		tax_mult = 0.02
 		development_growth_factor = 0.02
 	}
+	character_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		archers_damage_mult = 0.16
+		skirmishers_damage_mult = 0.16
+	}
+	county_culture_modifier = {
+		parameter = logging_camps_building_bonuses
+		build_speed = -0.16
+		build_gold_cost = -0.08
+	}
 	
 	ai_value = {
 		base = 3
@@ -4791,10 +5511,20 @@ peat_quarries_01 = {
 	}
 	
 	cost_gold = cheap_building_tier_1_cost
-	
+
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_1
 		build_speed = normal_building_build_speed_tier_1
+	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.02
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.02
+		build_gold_cost = -0.01
 	}
 	
 	next_building = peat_quarries_02
@@ -4828,9 +5558,19 @@ peat_quarries_02 = {
 		monthly_income = normal_building_tax_tier_2
 		build_speed = normal_building_build_speed_tier_2
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.03
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.04
+		build_gold_cost = -0.02
 	}
 	
 	next_building = peat_quarries_03
@@ -4866,10 +5606,20 @@ peat_quarries_03 = {
 		monthly_income = normal_building_tax_tier_3
 		build_speed = normal_building_build_speed_tier_3
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.04
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.05
 		supply_limit = 200
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.06
+		build_gold_cost = -0.03
 	}
 	
 	next_building = peat_quarries_04
@@ -4905,11 +5655,21 @@ peat_quarries_04 = {
 		monthly_income = normal_building_tax_tier_4
 		build_speed = normal_building_build_speed_tier_4
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.05
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.05
 		supply_limit = 200
 		supply_limit_mult = 0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.08
+		build_gold_cost = -0.04
 	}
 	
 	next_building = peat_quarries_05
@@ -4946,11 +5706,21 @@ peat_quarries_05 = {
 		build_speed = normal_building_build_speed_tier_5
 		hostile_raid_time = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.06
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.05
 		supply_limit = 200
 		supply_limit_mult = 0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.010
+		build_gold_cost = -0.05
 	}
 	
 	next_building = peat_quarries_06
@@ -4987,12 +5757,22 @@ peat_quarries_06 = {
 		build_speed = normal_building_build_speed_tier_6
 		hostile_raid_time = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.07
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.05
 		supply_limit = 200
 		supply_limit_mult = 0.05
 		development_growth_factor = 0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.12
+		build_gold_cost = -0.06
 	}
 	
 	next_building = peat_quarries_07
@@ -5029,12 +5809,22 @@ peat_quarries_07 = {
 		build_speed = normal_building_build_speed_tier_7
 		hostile_raid_time = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.08
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.1
 		supply_limit = 200
 		supply_limit_mult = 0.05
 		development_growth_factor = 0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.14
+		build_gold_cost = -0.07
 	}
 	
 	next_building = peat_quarries_08
@@ -5071,12 +5861,22 @@ peat_quarries_08 = {
 		build_speed = normal_building_build_speed_tier_8
 		hostile_raid_time = 0.1
 	}
+	province_terrain_modifier = {
+		parameter = coastal_agriculture_building_bonuses
+		is_coastal = yes
+		tax_mult = 0.09
+	}
 	
 	county_modifier = {
 		build_gold_cost = -0.1
 		supply_limit = 600
 		supply_limit_mult = 0.05
 		development_growth_factor = 0.05
+	}
+	county_culture_modifier = {
+		parameter = peat_quarries_building_bonuses
+		build_speed = -0.16
+		build_gold_cost = -0.08
 	}
 	
 	ai_value = {
@@ -5104,6 +5904,19 @@ hill_farms_01 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_1
+	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.01
+		counter_efficiency = 0.01
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_1
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.01
 	}
 	
 	next_building = hill_farms_02
@@ -5150,6 +5963,19 @@ hill_farms_02 = {
 	character_modifier = {
 		skirmishers_toughness_mult = 0.02
 	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.02
+		counter_efficiency = 0.02
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_2
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.01
+	}
 	
 	next_building = hill_farms_03
 	
@@ -5191,6 +6017,19 @@ hill_farms_03 = {
 	
 	character_modifier = {
 		skirmishers_toughness_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.03
+		counter_efficiency = 0.03
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_3
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.02
 	}
 	
 	next_building = hill_farms_04
@@ -5234,6 +6073,19 @@ hill_farms_04 = {
 	county_modifier = {
 		supply_limit = 300
 	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.04
+		counter_efficiency = 0.04
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_4
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.02
+	}
 	
 	next_building = hill_farms_05
 	
@@ -5276,6 +6128,19 @@ hill_farms_05 = {
 	
 	character_modifier = {
 		skirmishers_toughness_mult = 0.04
+	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.05
+		counter_efficiency = 0.05
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_5
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.03
 	}
 	
 	next_building = hill_farms_06
@@ -5321,6 +6186,19 @@ hill_farms_06 = {
 	character_modifier = {
 		skirmishers_toughness_mult = 0.04
 	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.06
+		counter_efficiency = 0.06
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_6
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.03
+	}
 	
 	next_building = hill_farms_07
 	
@@ -5364,6 +6242,19 @@ hill_farms_07 = {
 	
 	character_modifier = {
 		skirmishers_toughness_mult = 0.04
+	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.07
+		counter_efficiency = 0.07
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_7
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.04
 	}
 	
 	next_building = hill_farms_08
@@ -5409,6 +6300,19 @@ hill_farms_08 = {
 	character_modifier = {
 		skirmishers_toughness_mult = 0.04
 	}
+	character_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		knight_effectiveness_mult = 0.08
+		counter_efficiency = 0.08
+	}
+	province_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_8
+	}
+	county_culture_modifier = {
+		parameter = hill_farms_building_bonuses
+		levy_size = 0.04
+	}
 	
 	ai_value = {
 		base = 3
@@ -5439,8 +6343,12 @@ elephant_pens_01 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.02
-		heavy_cavalry_damage_mult = 0.04
 		knight_limit = 1
+		heavy_cavalry_damage_mult = 0.04
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.05
 	}
 	
 	next_building = elephant_pens_02
@@ -5476,8 +6384,12 @@ elephant_pens_02 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.04
-		heavy_cavalry_damage_mult = 0.08
 		knight_limit = 1
+		heavy_cavalry_damage_mult = 0.08
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.1
 	}
 	
 	next_building = elephant_pens_03
@@ -5515,12 +6427,16 @@ elephant_pens_03 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.06
-		heavy_cavalry_damage_mult = 0.12
 		knight_limit = 2
+		heavy_cavalry_damage_mult = 0.12
 		heavy_cavalry_toughness_mult = 0.08
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.15
 	}
 	
 	next_building = elephant_pens_04
@@ -5558,12 +6474,16 @@ elephant_pens_04 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.08
-		heavy_cavalry_damage_mult = 0.16
 		knight_limit = 2
+		heavy_cavalry_damage_mult = 0.16
 		heavy_cavalry_toughness_mult = 0.08
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.20
 	}
 	
 	next_building = elephant_pens_05
@@ -5601,12 +6521,16 @@ elephant_pens_05 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.10
-		heavy_cavalry_damage_mult = 0.2
 		knight_limit = 3
+		heavy_cavalry_damage_mult = 0.2
 		heavy_cavalry_toughness_mult = 0.08
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.25
 	}
 	
 	next_building = elephant_pens_06
@@ -5644,12 +6568,16 @@ elephant_pens_06 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.12
-		heavy_cavalry_damage_mult = 0.24
 		knight_limit = 3
+		heavy_cavalry_damage_mult = 0.24
 		heavy_cavalry_toughness_mult = 0.12
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.30
 	}
 	
 	next_building = elephant_pens_07
@@ -5687,13 +6615,17 @@ elephant_pens_07 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.14
-		heavy_cavalry_damage_mult = 0.28
 		knight_limit = 4
+		heavy_cavalry_damage_mult = 0.28
 		heavy_cavalry_toughness_mult = 0.12
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
 		development_growth_factor = 0.05
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.35
 	}
 	
 	next_building = elephant_pens_08
@@ -5731,13 +6663,17 @@ elephant_pens_08 = {
 	}
 	character_modifier = {
 		knight_effectiveness_mult = 0.16
-		heavy_cavalry_damage_mult = 0.32
 		knight_limit = 4
+		heavy_cavalry_damage_mult = 0.32
 		heavy_cavalry_toughness_mult = 0.12
 	}
 	county_modifier = {
 		build_gold_cost = -0.02
 		development_growth_factor = 0.05
+	}
+	county_culture_modifier = {
+		parameter = elephant_pens_building_bonuses
+		development_growth_factor = 0.40
 	}
 	
 	ai_value = {
@@ -5765,6 +6701,15 @@ plantations_01 = {
 	
 	province_modifier = {
 		monthly_income = poor_building_tax_tier_1
+	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.01
+		light_cavalry_recruitment_cost_mult = -0.01
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_1
 	}
 	
 	next_building = plantations_02
@@ -5826,6 +6771,15 @@ plantations_02 = {
 		monthly_income = poor_building_tax_tier_2
 		tax_mult = 0.01
 	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.02
+		light_cavalry_recruitment_cost_mult = -0.02
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_2
+	}
 	
 	next_building = plantations_03
 	
@@ -5863,6 +6817,15 @@ plantations_03 = {
 	character_modifier = {
 		light_cavalry_toughness_mult = 0.02
 	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.03
+		light_cavalry_recruitment_cost_mult = -0.03
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_3
+	}
 	
 	next_building = plantations_04
 	
@@ -5899,6 +6862,15 @@ plantations_04 = {
 	}
 	character_modifier = {
 		light_cavalry_toughness_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.04
+		light_cavalry_recruitment_cost_mult = -0.04
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_4
 	}
 	
 	next_building = plantations_05
@@ -5941,6 +6913,15 @@ plantations_05 = {
 	county_modifier = {
 		development_growth_factor = 0.02
 	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.05
+		light_cavalry_recruitment_cost_mult = -0.05
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_5
+	}
 	
 	next_building = plantations_06
 	
@@ -5981,6 +6962,15 @@ plantations_06 = {
 	}
 	county_modifier = {
 		development_growth_factor = 0.02
+	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.06
+		light_cavalry_recruitment_cost_mult = -0.06
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_6
 	}
 	
 	next_building = plantations_07
@@ -6023,6 +7013,15 @@ plantations_07 = {
 	county_modifier = {
 		development_growth_factor = 0.05
 	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.07
+		light_cavalry_recruitment_cost_mult = -0.07
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_7
+	}
 	
 	next_building = plantations_08
 	
@@ -6064,6 +7063,15 @@ plantations_08 = {
 	county_modifier = {
 		development_growth_factor = 0.05
 	}
+	character_culture_modifier = {
+		parameter = plantations_building_bonuses
+		light_cavalry_maintenance_mult = -0.08
+		light_cavalry_recruitment_cost_mult = -0.08
+	}
+	province_culture_modifier = {
+		parameter = plantations_building_bonuses
+		monthly_income = poor_building_extra_tax_tier_8
+	}
 	
 	ai_value = {
 		base = 3
@@ -6091,6 +7099,18 @@ quarries_01 = {
 	province_modifier = {
 		monthly_income = poor_building_tax_tier_1
 		build_speed = good_building_build_speed_tier_1
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.01
+		pikemen_maintenance_mult = -0.01
+		phalanx_maintenance_mult = -0.01
+		heavy_cavalry_maintenance_mult = -0.01
+		men_at_arms_recruitment_cost = -0.01
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.01
 	}
 	
 	next_building = quarries_02
@@ -6136,6 +7156,18 @@ quarries_02 = {
 	character_modifier = {
 		men_at_arms_maintenance = -0.01
 	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.02
+		pikemen_maintenance_mult = -0.02
+		phalanx_maintenance_mult = -0.02
+		heavy_cavalry_maintenance_mult = -0.02
+		men_at_arms_recruitment_cost = -0.02
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.02
+	}
 	
 	next_building = quarries_03
 	
@@ -6175,6 +7207,18 @@ quarries_03 = {
 	}
 	character_modifier = {
 		men_at_arms_maintenance = -0.01
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.03
+		pikemen_maintenance_mult = -0.03
+		phalanx_maintenance_mult = -0.03
+		heavy_cavalry_maintenance_mult = -0.03
+		men_at_arms_recruitment_cost = -0.03
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.03
 	}
 	
 	next_building = quarries_04
@@ -6217,6 +7261,18 @@ quarries_04 = {
 	character_modifier = {
 		men_at_arms_maintenance = -0.01
 	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.04
+		pikemen_maintenance_mult = -0.04
+		phalanx_maintenance_mult = -0.04
+		heavy_cavalry_maintenance_mult = -0.04
+		men_at_arms_recruitment_cost = -0.04
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.04
+	}
 	
 	next_building = quarries_05
 	
@@ -6257,6 +7313,18 @@ quarries_05 = {
 	}
 	character_modifier = {
 		men_at_arms_maintenance = -0.02
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.05
+		pikemen_maintenance_mult = -0.05
+		phalanx_maintenance_mult = -0.05
+		heavy_cavalry_maintenance_mult = -0.05
+		men_at_arms_recruitment_cost = -0.05
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.05
 	}
 	
 	next_building = quarries_06
@@ -6299,6 +7367,18 @@ quarries_06 = {
 	}
 	character_modifier = {
 		men_at_arms_maintenance = -0.02
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.06
+		pikemen_maintenance_mult = -0.06
+		phalanx_maintenance_mult = -0.06
+		heavy_cavalry_maintenance_mult = -0.06
+		men_at_arms_recruitment_cost = -0.06
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.06
 	}
 	
 	next_building = quarries_07
@@ -6343,6 +7423,19 @@ quarries_07 = {
 		men_at_arms_maintenance = -0.02
 		heavy_infantry_toughness_mult = 0.02
 		pikemen_toughness_mult = 0.02
+		phalanx_toughness_mult = 0.02
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.07
+		pikemen_maintenance_mult = -0.07
+		phalanx_maintenance_mult = -0.07
+		heavy_cavalry_maintenance_mult = -0.07
+		men_at_arms_recruitment_cost = -0.07
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.07
 	}
 	
 	next_building = quarries_08
@@ -6387,7 +7480,20 @@ quarries_08 = {
 		men_at_arms_maintenance = -0.02
 		heavy_infantry_toughness_mult = 0.04
 		pikemen_toughness_mult = 0.04
+		phalanx_toughness_mult = 0.04
 		heavy_cavalry_toughness_mult = 0.08
+	}
+	character_culture_modifier = {
+		parameter = quarries_building_bonuses
+		heavy_infantry_maintenance_mult = -0.08
+		pikemen_maintenance_mult = -0.08
+		phalanx_maintenance_mult = -0.08
+		heavy_cavalry_maintenance_mult = -0.08
+		men_at_arms_recruitment_cost = -0.08
+	}
+	county_culture_modifier = {
+		parameter = quarries_building_bonuses
+		levy_size = 0.08
 	}
 	
 	ai_value = {

@@ -1061,3 +1061,41 @@ show_pow_release_message_effect = {
 		}
 	}
 }
+
+add_prestige_war_defender_effect = {
+	add_prestige = {
+		value = $PRESTIGE_VALUE$
+		if = {
+			limit = {
+				culture = { has_innovation = innovation_imperial_distinguished_service }
+			}
+			multiply = 1.25
+		}
+		if = {
+			limit= {
+				scope:defender.culture = {
+					has_cultural_parameter = more_fame_for_successful_defensive_wars
+				}
+			}
+			multiply = 2
+		}
+	}
+}
+
+pay_short_term_gold_reparations_effect = {
+	pay_short_term_gold = {
+		gold = {
+			value = $GOLD_VALUE$
+			if = {
+				limit= {
+					scope:defender.culture = {
+						has_cultural_parameter = more_gold_for_successful_defensive_wars
+					}
+				}
+				multiply = 2
+			}
+		}
+		target = scope:defender
+		yearly_income = yes
+	}
+}

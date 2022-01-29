@@ -19,6 +19,8 @@ tags={
 picture="thumbnail.png"
 remote_file_id="2618149514"
 
+replace_path = "common/achievements"
+replace_path = "common/bookmark_portraits"
 replace_path = "common/culture/cultures"
 replace_path = "common/culture/innovations"
 replace_path = "common/nicknames"
