@@ -83,35 +83,34 @@
 		}
 	}
 	modifier = {
-		add = 20
+		add = 100
 		desc = tooltip_feudal_elector_vote_myself_ruler_choice
 		this = scope:candidate
 		this = scope:holder_candidate
 		is_adult = yes
 	}
 	modifier = {
-	 	desc = tooltip_feudal_elector_vote_myself_ruling_dynasty
-	 	this = scope:candidate
-	 	exists = this.dynasty
-	 	exists = scope:holder.dynasty
-	 	this.dynasty = scope:holder.dynasty
-	 	is_adult = yes
-	 	add = {
-	 		add = 10
-			if = {
-	 			limit = {
-	 				exists = scope:holder.house
-	 				this.house = scope:holder.house
-	 			}
-	 			multiply = 2
-	 		} 
+		desc = tooltip_feudal_elector_vote_myself_ruling_dynasty
+		this = scope:candidate
+		exists = this.dynasty
+		exists = scope:holder.dynasty
+		this.dynasty = scope:holder.dynasty
+		is_adult = yes
+		add = {
+			value = 40
 			if = {
 				limit = {
-					NOT = { scope:title = { has_title_law = democratic_succession_law } } # DEMOCRATS CARE LESS ABOUT DYNASTY.
+					scope:candidate.dynasty = { dynasty_prestige_level >= 10 }
 				}
-				divide = 2
+				add = 20
 			}
-	 	}
+			if = {
+				limit = {
+					scope:candidate.dynasty = { dynasty_prestige_level >= 7 }
+				}
+				add = 20
+			}
+		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_myself_sick
@@ -148,23 +147,23 @@
 	}
 	#Claims
 	modifier = {
-		add = 30
-	 	desc = tooltip_feudal_elector_vote_myself_claimant
-	 	this = scope:candidate
-	 	scope:candidate = {
-	 		OR = {
-	 			has_claim_on = scope:title
-	 			has_weak_claim_on = scope:title
-	 		}
-	 	}
-	 	add = {
-	 		if = {
-	 			limit = {
-	 				has_claim_on = scope:title
-	 			}
-	 			add = 30
-	 		}
-	 	}
+		add = {
+			value = 30
+			if = {
+				limit = {
+					has_strong_claim_on = scope:title
+				}
+				add = 30
+			}
+		}
+		desc = tooltip_feudal_elector_vote_myself_claimant
+		this = scope:candidate
+		scope:candidate = {
+			OR = {
+				has_strong_claim_on = scope:title
+				has_weak_claim_on = scope:title
+			}
+		}
 	}
 }
 
@@ -413,14 +412,14 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_stranger
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
 		NOT = { root.culture = scope:candidate.culture }
-		has_same_culture_group_as = scope:candidate
+		culture = { has_same_culture_heritage = scope:candidate.culture }
 		NOT = { is_close_family_of = scope:candidate }
 		add = -15
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_foreigner
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
-		NOT = { has_same_culture_group_as = scope:candidate }
+		NOT = { culture = { has_same_culture_heritage = scope:candidate.culture } }
 		NOT = { is_close_family_of = scope:candidate }
 		add = -30
 	}
@@ -429,7 +428,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		scope:candidate = {
 			this = scope:holder_candidate
 			NOT = { this.culture = root.culture }
-			has_same_culture_group_as = root
+			culture = { has_same_culture_heritage = root.culture }
 			this.culture = scope:holder.culture
 		}
 		NOT = { is_close_family_of = scope:candidate }
@@ -439,7 +438,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_foreigners_pet
 		scope:candidate = {
 			this = scope:holder_candidate
-			NOT = { has_same_culture_group_as = root }
+			NOT = { culture = { has_same_culture_heritage = root.culture } }
 			this.culture = scope:holder.culture
 		}
 		NOT = { is_close_family_of = scope:candidate }
@@ -726,7 +725,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		add = 30
 		desc = tooltip_feudal_elector_vote_strong_claimant
 		NOT = { this = scope:candidate }
-		scope:candidate = { has_claim_on = scope:title }
+		scope:candidate = { has_strong_claim_on = scope:title }
 		NOT = { scope:title = { has_title_law = democratic_succession_law } } # Democrats don't care about claims.
 	}
 	modifier = {
@@ -936,7 +935,7 @@ elector_voting_pattern_traits_elective_modifier = {
 				add = 5
 			}
 			multiply = ai_zeal #...Multiply by Elector Zeal.
-			multiply = 0.1 #Reduce overall to avoid extreme numbers.
+			multiply = 0.05 #Reduce overall to avoid extreme numbers.
 		}
 	}
 	#Excommunication
@@ -1468,24 +1467,25 @@ elector_voting_pattern_traits_elective_modifier = {
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured
 		this_is_martial_society_trigger = no
+		NOT = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
 		scope:candidate = { has_trait = disfigured }
-		add = {
-			value = -15
-			if = { # Someone who is severly disfigured propably is not a hit with the masses.
-				limit = { scope:title = { has_title_law = democratic_succession_law } }
-				multiply = 2
-			}
-		}
+		add = -15
+	}
+	modifier = {
+		desc = tooltip_feudal_elector_vote_disfigured_byzantine
+		culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
+		scope:candidate = { has_trait = disfigured }
+		add = -100
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured_warrior
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = disfigured }
 		add = {
-			value = -5
-			if = { # Someone who is severly disfigured propably is not a hit with the masses.
-				limit = { scope:title = { has_title_law = democratic_succession_law } }
-				multiply = 2
+			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 45
 			}
 		}
 	}
@@ -1500,6 +1500,13 @@ elector_voting_pattern_traits_elective_modifier = {
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = maimed }
 		add = -15
+	}
+	modifier = {
+		desc = tooltip_feudal_elector_vote_born_in_the_purple
+		NOT = { this = scope:candidate } #Do not judge yourself.
+		culture = { has_cultural_parameter = children_can_be_born_in_the_purple }
+		scope:candidate = { has_trait = born_in_the_purple }
+		add = 50
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_genius_diplomat
@@ -1733,7 +1740,13 @@ elector_voting_pattern_traits_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_clubfooted
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		scope:candidate = { has_trait = clubfooted }
-		add = -5
+		add = {
+			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 10
+			}
+		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_dwarf
@@ -1742,6 +1755,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 20
+			}
 			if = { # Dwarves are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1755,6 +1772,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 30
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Dwarves are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1768,6 +1789,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = {has_trait = hunchbacked }
 		add = {
 			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Hunchbacks are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1781,6 +1806,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = hunchbacked }
 		add = {
 			subtract = 30
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Hunchbacks are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1800,7 +1829,13 @@ elector_voting_pattern_traits_elective_modifier = {
 				has_trait = bleeder
 			}
 		}
-		add = -15
+		add = {
+			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 60
+			}
+		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_lisping
@@ -1808,6 +1843,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = lisping }
 		add = {
 			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 10
+			}
 			if = { # Lisping is pretty damn annoying during speeches.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 4
@@ -1938,14 +1977,26 @@ elector_voting_pattern_traits_elective_modifier = {
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = blind }
-		add = -10
+		add = {
+			subtract = 10
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 140
+			}
+		}
 	}
 	modifier = { #Shunned for being blind
 		desc = tooltip_feudal_elector_vote_blinded_negative_warrior
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = blind }
-		add = -20
+		add = {
+			subtract = 20
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 130
+			}
+		}
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative

@@ -10,19 +10,31 @@
 }
 
 has_graphical_mena_culture_group_trigger = {
-	has_graphical_culture = mena_building_gfx
+	has_building_gfx = mena_building_gfx
 }
 
 has_graphical_india_culture_group_trigger = {
-	has_graphical_culture = indian_building_gfx
+	has_building_gfx = indian_building_gfx
 }
 
 has_graphical_mediterranean_culture_group_trigger = {
-	has_graphical_culture = mediterranean_building_gfx
+	has_building_gfx = mediterranean_building_gfx
 }
 
 has_graphical_western_culture_group_trigger = {
-	has_graphical_culture = western_building_gfx
+	has_building_gfx = western_building_gfx
+}
+
+has_graphical_norse_culture_group_trigger = {
+	has_building_gfx = norse_building_gfx
+}
+
+has_graphical_african_culture_group_trigger = {
+	has_building_gfx = african_building_gfx
+}
+
+has_graphical_steppe_culture_group_trigger = {
+	has_building_gfx = steppe_building_gfx
 }
 
 graphical_wilderness_desert_trigger = {
@@ -30,14 +42,30 @@ graphical_wilderness_desert_trigger = {
 		terrain = desert
 		terrain = desert_mountains
 		terrain = oasis
+		AND = {
+			terrain = hills
+			OR = {
+				geographical_region = world_africa
+				geographical_region = world_middle_east_arabia
+			}
+		}
+		AND = {
+			terrain = floodplains
+			geographical_region = world_africa
+		}
 	}
 }
 
 graphical_wilderness_forest_pine_trigger = {
 	OR = {
 		terrain = taiga
-		terrain = forest
-		always = no
+		AND = {
+			terrain = forest
+			OR = {
+				geographical_region = world_europe_north
+				geographical_region = world_steppe
+			}
+		}
 	}
 }
 
@@ -48,6 +76,22 @@ graphical_wilderness_forest_trigger = {
 		terrain = farmlands
 		terrain = wetlands
 		terrain = plains
+		AND = {
+			terrain = hills
+			NOR = {
+				geographical_region = world_steppe
+				geographical_region = world_middle_east_persia
+				geographical_region = world_middle_east_jerusalem
+				geographical_region = world_africa
+				geographical_region = world_middle_east_arabia
+			}
+		}
+		AND = {
+			terrain = floodplains
+			NOT = {
+				geographical_region = world_africa
+			}
+		}
 	}
 }
 
@@ -60,6 +104,14 @@ graphical_wilderness_steppe_trigger = {
 	OR = {
 		terrain = steppe
 		terrain = drylands
+		AND = {
+			terrain = hills
+			OR = {
+				geographical_region = world_steppe
+				geographical_region = world_middle_east_persia
+				geographical_region = world_middle_east_jerusalem
+			}
+		}
 	}
 }
 

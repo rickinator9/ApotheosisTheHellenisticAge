@@ -23,6 +23,8 @@ replace_path = "common/achievements"
 replace_path = "common/bookmark_portraits"
 replace_path = "common/culture/cultures"
 replace_path = "common/culture/innovations"
+replace_path = "common/coat_of_arms/dynamic_definitions"
+replace_path = "common/men_at_arms_types"
 replace_path = "common/nicknames"
 replace_path = "common/religion/religions"
 

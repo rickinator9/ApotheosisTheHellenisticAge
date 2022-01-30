@@ -243,6 +243,11 @@ random_dummy_gender_landholder_effect = {
 						has_realm_law = female_only_law
 
 						# These cultures historically granted equal property rights to women.
+						culture = {
+							OR = {
+								has_cultural_parameter = gender_equal_inheritance
+							}
+						}
 					}
 				}
 				dummy_female = { save_scope_as = dummy_gender }

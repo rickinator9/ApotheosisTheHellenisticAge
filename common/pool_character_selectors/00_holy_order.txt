@@ -38,9 +38,19 @@
 			has_same_culture_as = scope:base
 		}
 		modifier = {
-			add = 10
-			has_same_culture_group_as = scope:base
+			add = 15
+			culture = { has_same_culture_heritage = scope:base.culture }
 		}
+		modifier = {
+			add = 10
+			culture = { has_same_culture_language = scope:base.culture }
+		}
+		modifier = {
+			add = 5
+			culture = { has_same_culture_ethos = scope:base.culture }
+		}
+		
+		# ATHA: Tenet
 		modifier = {
 			add = 10
 			AND = {
@@ -48,6 +58,7 @@
 				scope:base.faith = { has_doctrine_parameter = priests_are_eunuchs }
 			}
 		}
+
 		modifier = {
 			add = 50
 			age > 35

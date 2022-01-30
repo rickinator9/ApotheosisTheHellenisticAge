@@ -96,7 +96,7 @@ culture_ai_weight_skirmishers = {
 	if = { # Cultures that REALLY LIKE skirmishers
 		limit = {
 			OR = {
-				culture_group = culture_group:thracian_group # Thracian armies contained a lot of peltasts and javelinmen.
+				has_cultural_pillar = heritage_thracian # Thracian armies contained a lot of peltasts and javelinmen.
 			}
 		}
 		add = 60
@@ -104,7 +104,7 @@ culture_ai_weight_skirmishers = {
 	if = { # Cultures that favours skirmishers
 		limit = {
 			OR = {
-				culture_group = culture_group:greek_group # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
+				has_cultural_pillar = heritage_greek # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
 			}
 		}
 		add = 20
@@ -200,7 +200,7 @@ culture_ai_weight_heavy_infantry = {
 	if = { # Cultures that dislike heavy infantry
 		limit = {
 			OR = {
-				culture_group = culture_group:greek_group # Greeks will want to use Phalanx
+				has_cultural_pillar = heritage_greek # Greeks will want to use Phalanx
 			}
 		}
 		add = -60
@@ -227,12 +227,7 @@ culture_ai_weight_pikemen = {
 	
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
-			culture = {
-				OR = {
-					has_innovation = innovation_hoplon
-					has_innovation = innovation_sarissa
-				}
-			}
+			culture = { has_cultural_parameter = unlock_maa_hoplitai }
 		}
 		add = -100
 	}
@@ -251,7 +246,7 @@ culture_ai_weight_light_cavalry = {
 	if = { # Cultures that favours light cavalry
 		limit = {
 			OR = {
-				culture_group = culture_group:thracian_group # Thracian armies contained a lot of light javelin cavalry.
+				has_cultural_pillar = heritage_thracian # Thracian armies contained a lot of light javelin cavalry.
 			}
 		}
 		add = 40
@@ -259,7 +254,7 @@ culture_ai_weight_light_cavalry = {
 	if = { # Cultures that dislike light cavalry
 		limit = {
             OR = {
-				culture_group = culture_group:greek_group # While Greeks had some light cavalry (Tarantines), they were not known to use any.
+            	has_cultural_pillar = heritage_greek # While Greeks had some light cavalry (Tarantines), they were not known to use any.
 			}
 		}
 		add = -60
@@ -303,7 +298,7 @@ culture_ai_weight_heavy_cavalry = {
 			OR = {
 				# All Greeks apart from Thessalians should dislike using heavy cavalry (Macedonians have their own unique unit).
 				AND = {
-					culture_group = culture_group:greek_group
+					has_cultural_pillar = heritage_greek
 					NOT = { culture = culture:thessalian }
 				}
 			}

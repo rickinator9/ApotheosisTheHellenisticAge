@@ -1,6 +1,12 @@
 ﻿# Called from code after history generation
 # Empty scope
 on_game_start = {
+		historical_artifacts.0023			# Historical Artifacts Generator
+		#Guaranteed historical artifacts fixed spawning
+		debug_portraits.1 					# Debug portraits for animation testing
+		easteregg_event.0001				# Charna and Jakub duel.
+	}
+
 	effect = {
 		every_religion_global = {
 			every_faith = {
@@ -13,6 +19,22 @@ on_game_start = {
 					title_province = {
 						add_special_building_slot = holy_site_other_grand_temple_01
 					}
+				}
+			}
+		}
+		
+		#Royal Court: Set starting Grandeur to be the same as Expected
+		if = {
+			limit = {
+				has_dlc_feature = royal_court
+			}
+			every_character_with_royal_court = {
+				set_current_court_grandeur = court_grandeur_minimum_expected
+				apply_hold_court_grace_effect = yes
+				# Stops Hold Court reminders at game start
+				set_variable = {
+					name = last_hold_court_date
+					value = current_year
 				}
 			}
 		}
@@ -74,38 +96,13 @@ on_game_start_after_lobby = {
 				VALUE = yes
 			}
 		}
-			
-		### RULER DESIGNER ACHIEVEMENT BLOCKS ###
-		if = {
-			limit = {
-				num_virtuous_traits >= 3
-			}
-			add_achievement_flag_effect = { FLAG = rd_character_blocked_paragon_of_virtue_achievement_flag	}	
-		}
-		if = {
-			limit = {
-				any_child = {
-					count >= 10
-					is_alive = yes
-				}
-			}
-			add_achievement_flag_effect = { FLAG = rd_character_blocked_the_succession_is_safe_achievement_flag }	
-		}
-		if = {
-			limit = {
-				any_child = {
-					has_trait = inbred
-				}	
-			}
-			add_achievement_flag_effect = { FLAG = rd_character_blocked_keeping_it_in_the_family_achievement_flag }
-		}
 
-		if = {
-			limit = {
-				highest_held_title_tier >= tier_empire
-				should_be_naked_trigger = yes	
-			}
-			add_achievement_flag_effect = { FLAG = rd_character_blocked_the_emperors_new_clothes_achievement_flag }
+		### HOLD COURT STARTING GRACE
+		every_character_with_royal_court = {
+			set_variable = {
+				name = hold_court_cooldown
+	 			days = standard_hold_court_cooldown_time
+	 		}
 		}
 	}
 
