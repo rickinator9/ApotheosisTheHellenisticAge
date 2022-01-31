@@ -682,7 +682,7 @@ playdate.2001 = {
 			}
 		}
 
-		if  {
+		if = {
 			limit = {
 				NOT = {
 					exists = scope:portrait_1
@@ -766,6 +766,7 @@ playdate.2501 = {
 
 	immediate = {
 		play_music_cue = mx_cue_banquet
+		trigger_event = { on_action = playdate_event_selection days = 15 }
 	}
 
 	option = {
@@ -866,7 +867,7 @@ playdate.3001 = {
 			send_interface_toast = {
 				title = playdate.3001.a_injured
 				left_icon = root
-				increase_wounds_effect = { REASON = fight }
+				increase_wounds_no_death_effect = { REASON = fight }
 			}
 		}
 		stress_impact = {
@@ -928,7 +929,7 @@ playdate.3001 = {
 				modifier = cruelty_opinion
 				opinion = -30
 			}
-			increase_wounds_effect = { REASON = fight }
+			increase_wounds_no_death_effect = { REASON = fight }
 		}
 		stress_impact = {
 			rowdy = medium_stress_impact_loss
@@ -991,7 +992,7 @@ playdate.3002 = {
 			}
 			OR = {
 				activity_province.county.holder = {
-					any_courtier = {
+					any_courtier_or_guest = {
 						any_secret = {
 							playdate_3002_secret_trigger = yes
 						}
@@ -1020,7 +1021,7 @@ playdate.3002 = {
 				}
 				OR = {
 					activity_province.county.holder = {
-						any_courtier = {
+						any_courtier_or_guest = {
 							any_secret = {
 								playdate_3002_secret_trigger = yes
 							}
@@ -1068,7 +1069,7 @@ playdate.3002 = {
 			}
 			else = { #If no participant have a secret you get a random courtier's
 				activity_province.county.holder = {
-					random_courtier = {
+					random_courtier_or_guest = {
 						limit = {
 							any_secret = {
 								playdate_3002_secret_trigger = yes
@@ -1606,6 +1607,14 @@ playdate.3005 = {
 			any_participant = {
 				playdate_default_participant_trigger = yes
 				save_temporary_scope_as = guest_check
+				NOT = {
+					any_known_secret = {
+						OR = {
+							secret_owner = root
+							any_secret_knower = { this = root }
+						}
+					}
+				}
 			}
 		}
 		OR = {
@@ -2047,7 +2056,7 @@ playdate.3007 = {
 				send_interface_toast = {		
 					title = playdate.3007.a.failure
 					left_icon = root
-					increase_wounds_effect = { REASON = fall }
+					increase_wounds_no_death_effect = { REASON = fall }
 				}
 			}
 		}
@@ -2106,6 +2115,29 @@ playdate.3007 = {
 	}
 }
 
+scripted_trigger appropriate_drowning_target_trigger = {
+	playdate_default_participant_trigger = yes
+	OR = {
+		has_trait = wounded 
+		has_trait = maimed
+		has_trait = physique_bad
+		has_trait = weak
+		has_trait = spindly
+		has_trait = dwarf
+		has_trait = weak
+		has_trait = dull
+		has_trait = intellect_bad
+		has_trait = brave
+		prowess <= 1
+	}
+	NOT = {
+		any_sibling = {
+			even_if_dead = yes
+			is_alive = no
+			death_reason = death_drowned
+		}
+	}
+}
 
 # Going for a swim - someone is about to drown
 # by Linnéa Thimrén
@@ -2131,7 +2163,7 @@ playdate.3008 = {
 				}
 			}
 			any_participant = {
-				playdate_default_participant_trigger = yes
+				appropriate_drowning_target_trigger = yes
 			}
 		}
 	}
@@ -2144,7 +2176,7 @@ playdate.3008 = {
 		scope:activity = {
 			random_participant = {
 				limit = {
-					playdate_default_participant_trigger = yes
+					appropriate_drowning_target_trigger = yes
 				}
 				weight = {
 					base = 1
@@ -2163,6 +2195,8 @@ playdate.3008 = {
 				save_scope_as = participant
 			}
 		}
+
+		save_scope_as = host #in case of death notification event
 	}
 
 	option = { # Try to save them - might gain hook
@@ -2225,6 +2259,24 @@ playdate.3008 = {
 					title = playdate.3008.a.failure
 					left_icon = scope:participant
 					scope:participant = {
+						save_scope_as = drowned_participant
+						if = {
+							limit = {
+								any_parent = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+							}
+							every_parent = {
+								limit = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+								trigger_event = playdate.4000
+							}
+						}
 						death = { death_reason = death_drowned }
 					}
 				}
@@ -2239,6 +2291,24 @@ playdate.3008 = {
 					title = playdate.3008.a.critical_failure
 					left_icon = scope:participant				
 					scope:participant = {
+						save_scope_as = drowned_participant
+						if = {
+							limit = {
+								any_parent = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+							}
+							every_parent = {
+								limit = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+								trigger_event = playdate.4000
+							}
+						}
 						death = { death_reason = death_drowned }
 					}
 					add_character_modifier = {
@@ -2274,7 +2344,7 @@ playdate.3008 = {
 			years = 5
 		}
 		random_list = {
-			75 = {
+			80 = {
 				desc = playdate.3008.b.success
 				send_interface_toast = {	
 					title = playdate.3008.b.success
@@ -2288,12 +2358,30 @@ playdate.3008 = {
 					}
 				}
 			}
-			25 = {
+			20 = {
 				desc = playdate.3008.b.failure
 				send_interface_toast = {
 					title = playdate.3008.b.failure
 					left_icon = scope:participant
 					scope:participant = {
+						save_scope_as = drowned_participant
+						if = {
+							limit = {
+								any_parent = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+							}
+							every_parent = {
+								limit = {
+									is_ruler = yes
+									is_alive = yes
+									is_ai = no
+								}
+								trigger_event = playdate.4000
+							}
+						}
 						death = { death_reason = death_drowned }
 					}
 				}
@@ -2313,6 +2401,7 @@ playdate.3008 = {
 			ai_value_modifier = {
 				ai_boldness = -2
 				ai_energy = -0.5
+				ai_compassion = 0.5
 			}
 		}
 
@@ -2322,17 +2411,18 @@ playdate.3008 = {
 	option = { #No, I'll let them drown
 		name = playdate.3008.c
 		scope:participant = {
-			death = { death_reason = death_drowned }
 			#Their parents are not impressed
 			if = {
 				limit = {
 					any_parent = {
 						is_alive = yes
+						is_ai = yes
 					}
 				}
 				every_parent = {
 					limit = {
 						is_alive = yes
+						is_ai = no
 					}
 					root = { #We need to do these jumps for the tooltip to show correctly
 						progress_towards_rival_effect = {
@@ -2342,6 +2432,23 @@ playdate.3008 = {
 					}
 				}
 			}
+			save_scope_as = drowned_participant
+			if = {
+				limit = {
+					any_parent = {
+						is_alive = yes
+						is_ai = no
+					}
+				}
+				every_parent = {
+					limit = {
+						is_alive = yes
+						is_ai = no
+					}
+					trigger_event = playdate.4000
+				}
+			}
+			death = { death_reason = death_drowned }
 		}
 		stress_impact = {
 			base = medium_stress_impact_gain
@@ -2351,11 +2458,11 @@ playdate.3008 = {
 			curious = medium_stress_impact_loss
 		}
 		ai_chance = {
-			base = 100
+			base = 45
 			ai_value_modifier = {
 				ai_boldness = -2
 				ai_energy = -0.5
-				ai_compassion = -0.5
+				ai_compassion = -1
 			}
 		}
 
@@ -2504,7 +2611,7 @@ playdate.3009 = {
 				send_interface_toast = {
 					title = playdate.3009.a.failure
 					left_icon = scope:participant
-					increase_wounds_effect = { REASON = fight }
+					increase_wounds_no_death_effect = { REASON = fight }
 				}
 			}
 		}
@@ -2665,6 +2772,11 @@ playdate.3010 = {
 				playdate_default_participant_trigger = yes
 			}
 		}
+		NOT = {
+			any_character_artifact = {
+				has_variable = playdate_trinket
+			}
+		}
 	}
 
 	weight_multiplier = {
@@ -2772,6 +2884,10 @@ playdate.3010 = {
 
 	option = { # You have to give me stuff!! I'm a LORD
 		name = playdate.3010.b
+		
+		trigger = { # To not spawn too many artifacts on unlanded characters
+			is_ruler = yes
+		}
 
 		scope:activity.activity_province.county = {
 			add_county_modifier = {
@@ -2779,10 +2895,26 @@ playdate.3010 = {
 				years = 10
 			}
 		}
-
-		add_character_modifier = {
-			modifier = playdate_minor_trinket_modifier
-			years = 10
+		save_scope_as = owner
+		scope:owner = {
+			create_artifact = {
+				name = playdate_minor_trinket_modifier
+				description = playdate_minor_trinket_modifier_desc
+				template = child_toy_template
+				type = miscellaneous
+				visuals = small_box
+				modifier = artifact_monthly_prestige_1_modifier
+				modifier = artifact_child_opinion_2_modifier
+				save_scope_as = newly_created_artifact
+			}
+			
+			scope:newly_created_artifact = {
+				flag_as_trash_artifact = yes
+				set_variable = {
+					name = playdate_trinket
+					value = yes
+				}
+			}
 		}
 		stress_impact = {
 			honest = medium_stress_impact_gain
@@ -3218,7 +3350,7 @@ playdate.3012 = {
 				send_interface_toast = {
 					title = playdate.3012.a.failure
 					left_icon = scope:participant
-					increase_wounds_effect = { REASON = training_accident }
+					increase_wounds_no_death_effect = { REASON = training_accident }
 				}
 			}
 		}
@@ -3313,10 +3445,6 @@ playdate.3013 = {
 				is_witch_trigger = yes
 			}
 		}
-	}
-
-	weight_multiplier = { #Quite rare since it gives rare traits and secrets
-		base = 0.5
 	}
 
 	immediate = {
@@ -3513,6 +3641,7 @@ playdate.3013 = {
 					FAITH = root.faith
 				}
 			}
+			exists = scope:secret
 			scope:secret = {
 				can_be_exposed_by = root
 			}
@@ -3552,7 +3681,7 @@ playdate.3013 = {
 
 # Hang with a priest
 # by Linnéa Thimrén
-scripted_trigger playdate_3014_paticipant_trigger = {
+scripted_trigger playdate_3014_participant_trigger = {
 	playdate_default_participant_trigger = yes
 	OR = {
 		has_focus = education_learning
@@ -3586,7 +3715,7 @@ playdate.3014 = {
 		exists = cp:councillor_court_chaplain
 		scope:activity = {
 			any_participant = {
-				playdate_3014_paticipant_trigger = yes
+				playdate_3014_participant_trigger = yes
 			}
 		}
 	}
@@ -3601,7 +3730,7 @@ playdate.3014 = {
 			add = 0.50
 			scope:activity = {
 				any_participant = {
-					playdate_3014_paticipant_trigger = yes
+					playdate_3014_participant_trigger = yes
 				}
 			}
 		}
@@ -3780,6 +3909,238 @@ playdate.3014 = {
 	}
 }
 
+# Play date language barrier 
+# By Bianca Savazzi
+
+scripted_trigger playdate_4001_paticipant_trigger = {
+	playdate_default_participant_trigger = yes
+	is_ai = yes
+	NOT = {
+		knows_language_of_culture = root.culture
+	}
+}
+
+playdate.4001 = {
+	type = character_event
+	title = playdate.4001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+			    trigger = {
+					scope:participant = { has_trait_dominant_trigger = yes }
+			    }
+			    desc = playdate.4001.desc.rowdy
+			}
+			desc = playdate.4001.desc.pensive
+		}
+		desc = playdate.4001.desc
+	}
+	theme = playdate_activity
+	cooldown = {
+		years = 2
+	}
+	left_portrait = scope:participant
+	
+	trigger = {
+		scope:activity = {
+			any_participant = {
+				playdate_4001_paticipant_trigger = yes
+				root = { NOT = { knows_language_of_culture = prev.culture } }
+			}
+		}
+	}
+
+	weight_multiplier = { #Quite rare since it gives rare traits and secrets
+		base = 0.5
+		modifier = {
+			add = 0.25
+			has_focus = education_learning
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			if = {
+				limit = {
+					any_participant = {
+						playdate_4001_paticipant_trigger = yes
+						root = { NOT = { knows_language_of_culture = prev.culture } }
+					}
+				}
+				random_participant = {
+					limit = {
+						playdate_4001_paticipant_trigger = yes
+						root = { NOT = { knows_language_of_culture = prev.culture } }
+					}
+					save_scope_as = participant
+				}
+			}
+		}
+	}
+
+	option = { #I'll teach them
+		name = playdate.4001.a
+
+		scope:participant = {
+			if = {
+				limit = {
+					has_trait_dominant_trigger = yes 
+				}
+				add_opinion = {
+					modifier = annoyed_opinion
+					target = root
+					opinion = -10
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait_introverted_trigger = yes 
+				}
+				add_opinion = {
+					modifier = annoyed_opinion
+					target = root
+					opinion = -20
+				}
+			}
+			if = {
+				limit = {
+					can_start_scheme = {
+						type = learn_language
+						target = root
+					}
+				}
+				start_scheme = {
+					type = learn_language
+					target = root
+				}
+			}
+		}
+				
+		stress_impact = {
+			pensive = medium_stress_impact_loss
+			calm = medium_stress_impact_loss
+			charming = medium_stress_impact_loss
+			rowdy = minor_stress_impact_gain
+			base = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_rationality = 0.75
+				ai_energy = -0.25
+			}
+		}
+	}
+
+	option = { #I'll learn some
+		name = playdate.4001.b
+
+		scope:participant = {
+			if = {
+				limit = {
+					has_trait_dominant_trigger = yes 
+				}
+				add_opinion = {
+					modifier = annoyed_opinion
+					target = root
+					opinion = -20
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait_introverted_trigger = yes 
+				}
+				add_opinion = {
+					modifier = pleased_opinion
+					target = root
+					opinion = 20
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				can_start_scheme = {
+					type = learn_language
+					target = scope:participant
+				}
+			}
+			start_scheme = {
+				type = learn_language
+				target = scope:participant
+			}
+		}
+		
+		stress_impact = {
+			curious = medium_stress_impact_loss
+			rowdy = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = 0.50
+				ai_zeal = -0.25
+			}
+		}
+	}
+
+	option = { #I just wanna play...
+		name = playdate.4001.c
+		
+		scope:participant = {
+			if = {
+				limit = {
+					has_trait_dominant_trigger = yes 
+				}
+				add_opinion = {
+					modifier = pleased_opinion
+					target = root
+					opinion = 20
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait_extroverted_trigger = yes 
+				}
+				add_opinion = {
+					modifier = dismissive_opinion
+					target = root
+					opinion = -10
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait_introverted_trigger = yes 
+				}
+				add_opinion = {
+					modifier = pleased_opinion 
+					target = root
+					opinion = 10
+				}
+			}
+		}
+
+		stress_impact = {
+			base = medium_stress_impact_loss
+			curious = medium_stress_impact_gain
+			rowdy = major_stress_impact_loss
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = 0.50
+				ai_zeal = -0.25
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			playdate_wrap_up_or_fire_random_event_effect = yes
+		}
+	}
+}
+
 
 
 #################################
@@ -3936,6 +4297,51 @@ playdate.9002 = {
 		reverse_add_opinion = {
 			target = scope:host
 			modifier = attended_my_playdate_opinion
+		}
+	}
+}
+
+#Parent is notified that their child died during playdate
+playdate.4000 = {
+	type = character_event
+	title = playdate.4000.t
+	desc = playdate.4000.desc
+	theme = death
+
+	left_portrait = { 
+		character = scope:participant
+		animation = fear
+	}
+
+	lower_right_portrait = { 
+		character = scope:host
+	}
+
+	immediate = {
+		add_stress = major_stress_gain
+	}
+
+	option = { 
+		name = playdate.4000.a
+		reverse_add_opinion = {
+			target = scope:host
+			modifier = forgiven_opinion
+		}
+	}
+
+	option = {
+		name = playdate.4000.b
+		reverse_add_opinion = {
+			target = scope:host
+			modifier = shamed_me_opinion
+		}
+	}
+
+	option = {
+		name = playdate.4000.c
+		progress_towards_rival_effect = {
+			CHARACTER = scope:host
+			OPINION = yes
 		}
 	}
 }
