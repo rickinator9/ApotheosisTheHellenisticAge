@@ -65,7 +65,7 @@ major_decisions.0002 = { #by Linnéa Thimrén
 
 #####################################
 
-#Consecrating Family Decision, by Flavio Verna.
+#Consecrating Family Decision, by Flavio Verna & Bianca Savazzi
 
 major_decisions.0100 = {
 	type = character_event
@@ -102,6 +102,7 @@ major_decisions.0100 = {
 			save_scope_as = scoped_ruler
 			if = {
 				limit = {
+					exists = root.faith.religious_head
 					NOT = { root = root.faith.religious_head }
 				}
 				root.faith.religious_head = { save_scope_as = scoped_pope }
@@ -115,6 +116,7 @@ major_decisions.0100 = {
 		}
 	}
 	option = {
+		#Pick what text to display
 		name = { #Temporal.
 			trigger = {
 				root.faith.religious_head = root
@@ -127,6 +129,8 @@ major_decisions.0100 = {
 			}
 			text = major_decisions.0100.b
 		}
+
+		#Next, what nickname is given
 		if = {
 			limit = {
 				# TODO: Does the faith support ruler cults?
@@ -142,7 +146,9 @@ major_decisions.0100 = {
 			}
 			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_increase }
 		}
+		#All live descendants get the descendant trait
 		declare_bloodline_holy_decision_effect = yes
+		#Notifications
 		every_player = {
 			limit = {
 				faith = root.faith
@@ -173,7 +179,6 @@ major_decisions.0101 = {
 			AND = {
 				exists = mother
 				mother = {
-					faith = root.faith
 					OR = {
 						has_trait = savior
 						has_trait = paragon
@@ -185,7 +190,6 @@ major_decisions.0101 = {
 			AND = {
 				exists = father
 				father = {
-					faith = root.faith
 					OR = {
 						has_trait = savior
 						has_trait = paragon
@@ -217,7 +221,6 @@ major_decisions.0101 = {
 					AND = {
 						exists = mother
 						mother = {
-							faith = root.faith
 							OR = {
 								has_trait = savior
 								has_trait = divine_blood
@@ -227,7 +230,6 @@ major_decisions.0101 = {
 					AND = {
 						exists = father
 						father = {
-							faith = root.faith
 							OR = {
 								has_trait = savior
 								has_trait = divine_blood
@@ -355,6 +357,28 @@ major_decisions.0103 = {
 				NOT = { faith = scope:scoped_ruler.faith }
 			}
 			text = major_decisions.0103.b
+		}
+	}
+}
+
+##################################################
+# Convert to Tribalims
+##################################################
+
+major_decisions.0200 = {
+	type = character_event
+	title = major_decisions.0200.t
+	desc = major_decisions.0200.desc
+	theme = realm
+	left_portrait =	{
+		character = root
+		animation = personality_honorable
+	}
+
+	option = {
+		name = major_decisions.0200.a
+		ai_chance = {	#The AI should always do this.
+			base = 100
 		}
 	}
 }

@@ -142,6 +142,7 @@ yearly.4001 = {
 		NOT = { has_character_flag = had_event_yearly_4001 }
 		is_ai = no
 		any_vassal = {
+			is_adult = yes
 			is_powerful_vassal = yes
 			basic_is_available_ai = yes
 			add_to_temporary_list = potential_vassal
@@ -187,6 +188,7 @@ yearly.4001 = {
 		}
 		every_vassal = {
 			limit = {
+				is_adult = yes
 				is_powerful_vassal = yes
 				basic_is_available_ai = yes
 			}
@@ -658,16 +660,10 @@ scripted_trigger yearly_4011_potential_plot_conditions_trigger = {
 	}
 	NOR = {
 		scope:heir = {
-			any_scheme = {
-				scheme_type = murder
-				scheme_target = root
-			}
+			is_scheming_against = { target = root type = murder }
 		}
 		scope:vassal = {
-			any_scheme = {
-				scheme_type = murder
-				scheme_target = root
-			}
+			is_scheming_against = { target = root type = murder }
 		}
 	}
 	OR = {
@@ -1161,6 +1157,9 @@ yearly.4014 = {
 			scope:heir = {
 				if = {
 					limit = {
+						scope:murder_friends_scheme = {
+							NOT = { scheme_is_character_agent = prev }
+						}
 						is_valid_as_agent_in_scheme = scope:murder_friends_scheme
 					}
 					force_add_to_scheme = {
@@ -1195,6 +1194,9 @@ yearly.4014 = {
 			scope:vassal = {
 				if = {
 					limit = {
+						scope:murder_friends_scheme = {
+							NOT = { scheme_is_character_agent = prev }
+						}
 						is_valid_as_agent_in_scheme = scope:murder_friends_scheme
 					}
 					force_add_to_scheme = {
@@ -2108,6 +2110,7 @@ yearly.4051 = {
 	
 	trigger = {
 		NOT = { has_character_flag = had_event_yearly_4051 }
+		highest_held_title_tier >= tier_county
 		any_neighboring_realm_same_rank_owner = {
 			is_ai = yes
 			NOR = {
@@ -2150,7 +2153,7 @@ yearly.4051 = {
 			modifier = has_plush_carpet_modifier
 			days = 3650
 		}
-
+			
 		ai_chance = {
 			base = 1
 			ai_value_modifier = {
@@ -2180,478 +2183,5 @@ yearly.4051 = {
 				has_trait = paranoid
 			}
 		}
-	}
-}
-
-
-
-#######################
-# A wise man visits your court
-# by Linnéa Thimrén
-#######################
-
-yearly.4061 = {
-	type = character_event
-	title = yearly.4061.t
-	desc = {
-		desc = yearly.4061.desc_opening
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					exists = scope:guard
-				}
-				desc = yearly.4061.desc_guard
-			}
-			desc = yearly.4061.desc
-		}
-		desc = yearly.4061.desc_ending
-	}
-	theme = learning
-	override_background = {
-		event_background = throne_room
-	}
-	left_portrait = scope:hodja
-	right_portrait = {
-		character = scope:guard
-		animation = dismissal
-	}
-	
-	trigger = {
-		always = no
-		NOT = { has_character_flag = had_event_yearly_4061 }
-		NOT = { has_character_modifier = useful_insights_modifier }
-	}
-
-	immediate = {
-		add_character_flag = {
-			flag = had_event_yearly_4061
-			years = 10
-		}
-		create_character = {
-			location = root.capital_province
-			template = scholar_character
-			faith = root.faith
-			culture = root.culture
-			gender_female_chance = 0
-			save_scope_as = hodja
-		}
-		if = {
-			limit = {
-				any_knight = {
-					is_available_healthy_ai_adult = yes
-				}
-			}
-			random_knight = {
-				limit = {
-					is_available_healthy_ai_adult = yes
-				}
-				save_scope_as = guard
-			}
-		}
-	}
-
-	option = { #Teach me!
-		name = yearly.4061.a
-		random_list = {
-			80 = {
-				show_chance = no
-				desc = yearly.4061.a_success
-				send_interface_toast = {
-					left_icon = scope:hodja
-					title = yearly.4061.a_success
-
-					add_character_modifier = {
-						modifier = useful_insights_modifier
-						years = 5
-					}
-				}
-			}
-			20 = {
-				show_chance = no
-				desc = yearly.4061.a_failure
-				send_interface_toast = {
-					left_icon = scope:hodja
-					title = yearly.4061.a_failure
-
-					add_character_modifier = {
-						modifier = confused_modifier
-						years = 5
-					}
-				}	
-			}
-		}
-		scope:hodja = {
-			add_opinion = {
-				target = root
-				modifier = friendliness_opinion
-				opinion = 10
-			}
-		}
-
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_honor = 0.5
-			}
-		}
-	}
-
-	option = { #Stay at my court
-		name = yearly.4061.b
-		scope:hodja = {
-			add_opinion = {
-				target = root
-				modifier = friendliness_opinion
-				opinion = 20
-			}
-		}
-		add_courtier = scope:hodja
-		ai_chance = {
-			base = 50
-			modifier = {
-				add = 100
-				NOT = { exists = cp:councillor_court_chaplain }
-			}
-		}
-	}
-
-	option = { #Go away
-		name = yearly.4061.c
-		custom_tooltip = yearly.4061.c.tt
-		scope:hodja = {
-			add_opinion = {
-				target = root
-				modifier = refusal_opinion
-				opinion = -10
-			}
-		}
-		ai_chance = {
-			base = 50
-		}
-	}
-
-	option = { #You're a fool and I will treat you like one
-		name = yearly.4061.d
-		custom_tooltip = yearly.4061.d.tt
-		add_prestige = minor_prestige_gain
-		scope:hodja = {
-			add_opinion = {
-				target = root
-				modifier = insult_opinion
-				opinion = -20
-			}
-		}
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_vengefulness = 0.5
-			}
-		}
-	}
-}
-
-
-#######################
-# You're very educated!
-# by Linnéa Thimrén
-#######################
-
-yearly.4071 = {
-	type = character_event
-	title = yearly.4071.t
-	desc = {
-		desc = yearly.4071.desc
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					has_any_lifestyle_focus_trigger = yes
-				}
-				desc = yearly.4071.desc_focus
-			}
-			desc = yearly.4071.desc_no_focus
-		}
-		desc = yearly.4071.desc_ending
-	}
-	theme = learning
-	override_background = {
-		event_background = throne_room
-	}
-	left_portrait = {
-		character = scope:councillor
-		animation = happiness
-	}
-	
-	trigger = {
-		always = no
-		exists = cp:councillor_court_chaplain
-		NOT = { has_character_flag = had_event_yearly_4071 }
-		learning >= medium_skill_rating
-		NOT = { has_character_modifier = useful_insights_modifier }
-	}
-
-	weight_multiplier = {
-		base = 0.75
-		modifier = {
-			add = 0.5
-			learning >= high_skill_rating
-		}
-	}
-
-	immediate = {
-		add_character_flag = {
-			flag = had_event_yearly_4071
-			years = 10
-		}
-		cp:councillor_court_chaplain = {
-			save_scope_as = councillor
-		}
-	}
-
-	option = { #Study the books
-		name = yearly.4071.a
-		add_piety = medium_piety_gain
-		add_character_modifier = {
-			modifier = useful_insights_modifier
-			years = 5
-		}
-		stress_impact = {
-			cynical = medium_stress_impact_gain
-		}
-		ai_chance = {
-			base = 50
-			modifier = {
-				add = 100
-				piety <= 0
-			}
-			modifier = {
-				add = 50
-				has_trait = zealous
-			}
-		}
-	}
-
-	option = { #Give books to courtiers
-		name = yearly.4071.b
-		add_prestige = medium_prestige_gain
-		every_courtier = {
-			custom = councillor_spouse_stewardship_1006_every_courtier
-			add_opinion = {
-				target = root
-				modifier = grateful_opinion
-				opinion = 10
-			}
-		}
-		ai_chance = {
-			base = 50
-			modifier = {
-				add = 100
-				prestige <= 0
-			}
-			modifier = {
-				add = 50
-				has_trait = arrogant
-			}
-		}
-	}
-}
-
-
-#######################
-# Sponsor the translation of a book from Greek
-# by Linnéa Thimrén
-#######################
-
-yearly.4081 = {
-	type = character_event
-	title = yearly.4081.t
-	desc = yearly.4081.desc
-	theme = learning
-	override_background = {
-		event_background = throne_room
-	}
-	left_portrait = scope:councillor
-	
-	trigger = {
-		always = no
-		has_culture_group = culture_group:arabic_group
-		exists = cp:councillor_court_chaplain
-		NOT = { has_character_flag = had_event_yearly_4081 }
-		learning >= medium_skill_rating
-		short_term_gold >= medium_gold_value
-	}
-
-	weight_multiplier = {
-		base = 0.75
-		modifier = {
-			add = 0.5
-			learning >= high_skill_rating
-		}
-	}
-
-	immediate = {
-		add_character_flag = {
-			flag = had_event_yearly_4081
-			years = 10
-		}
-		cp:councillor_court_chaplain = {
-			save_scope_as = councillor
-		}
-		if = {
-			limit = {
-				any_relation = {
-					type = court_physician
-					count >= 1
-				}
-			}
-			random_relation = {
-				type = court_physician
-				save_scope_as = court_physician
-			}
-		}
-	}
-
-	option = { #De materia Medica - medicine
-		name = yearly.4081.a
-		custom_tooltip = yearly.4081.a.tt
-		trigger = {
-			exists = scope:court_physician
-		}
-		remove_short_term_gold = medium_gold_value
-		scope:court_physician = {
-			physician_lifestyle_rank_up_effect = yes
-		}
-		ai_chance = {
-			base = 100
-			modifier = {
-				add = -100
-				scope:court_physician = {
-					has_trait_rank = {
-						trait = lifestyle_physician
-						rank = 3
-					}
-				}
-			}
-			modifier = {
-				add = 50
-				OR = {
-					has_treatable_disease_trigger = yes
-					any_courtier = {
-						has_treatable_disease_trigger = yes
-					}
-				}
-			}
-		}
-	}
-
-	option = { #On Ascensions - astronomy
-		name = yearly.4081.b
-		custom_tooltip = yearly.4081.b.tt
-		remove_short_term_gold = medium_gold_value
-		add_character_modifier = {
-			modifier = sponsored_translation_astronomy_modifier
-			years = 10
-		}
-		ai_chance = {
-			base = 50
-		}
-	}
-
-	option = { #Elements - math
-		name = yearly.4081.c
-		custom_tooltip = yearly.4081.c.tt
-		remove_short_term_gold = medium_gold_value
-		add_character_modifier = {
-			modifier = sponsored_translation_math_modifier
-			years = 10
-		}
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_greed = 0.75
-			}
-		}
-	}
-
-	option = { #Nah
-		name = yearly.4081.d
-		custom_tooltip = yearly.4081.d.tt
-		ai_chance = {
-			base = 25
-		}
-	}
-}
-
-
-#######################
-# Your ward and you visit scholars
-# by Linnéa Thimrén
-#######################
-
-yearly.4091 = {
-	type = character_event
-	title = yearly.4091.t
-	desc = {
-		desc = yearly.4091.desc_opening
-		first_valid = {
-			desc = yearly.4091.desc_no_house
-		}
-		desc = yearly.4091.desc
-	}
-	theme = learning
-	left_portrait = scope:ward
-	
-	trigger = {
-		always = no
-		NOT = { has_character_flag = had_event_yearly_4091 }
-		any_relation = {
-			type = ward
-			is_available_ai_child = yes
-			has_education_focus_trigger = yes
-		}
-	}
-
-	immediate = {
-		add_character_flag = {
-			flag = had_event_yearly_4091
-			years = 10
-		}
-		random_relation = {
-			type = ward
-			limit = {
-				is_available_ai_child = yes
-			}
-			save_scope_as = ward
-		}
-		capital_province = {
-			save_scope_as = capital
-		}
-	}
-
-	option = { #Ward learns
-		name = yearly.4091.a
-		custom_tooltip = yearly.4091.a.tt
-		scope:ward = {
-			hidden_effect = {
-				education_point_acquisition_effect = yes
-			}
-
-			change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
-		}
-		ai_chance = {
-			base = 50
-		}
-	}
-
-	option = { #I'll learn
-		name = yearly.4091.b
-		add_character_modifier = {
-			modifier = diligent_student
-			years = 3
-		}
-		ai_chance = {
-			base = 50
-		}
-
-		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_small_increase }
 	}
 }

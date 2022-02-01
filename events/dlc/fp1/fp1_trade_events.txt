@@ -51,8 +51,10 @@ fp1_trade_events.0001 = {
 			NOT = { has_character_flag = had_event_fp1_trade_events_0002 }
 			# Must be either river-capable raiders, or have invested in a suitable dynasty legacy.
 			OR = {
-				# culture = { has_innovation = innovation_longboats }
-				dynasty = { has_dynasty_perk = fp1_adventure_legacy_2 }
+				AND = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = fp1_adventure_legacy_2 }
+				}
 			}
 			# Must be at peace; not strictly, but this is the easiest way to reduce edge cases.
 			is_at_war = no
@@ -65,13 +67,6 @@ fp1_trade_events.0001 = {
 	immediate = {
 		random = {
 			chance = 20
-			# modifier = {
-			# 	add = 20
-			# 	scope:raider = {
-			# 		culture_group = culture_group:north_germanic_group
-			# 		dynasty = { has_dynasty_perk = fp1_adventure_legacy_2 }
-			# 	}
-			# }
 			save_scope_as = raid_army
 			scope:raider = { trigger_event = fp1_trade_events.0002 }
 		}

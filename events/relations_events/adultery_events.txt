@@ -2218,7 +2218,10 @@ adultery.2001 = {
 							any_relation = {
 								type = lover
 								count >= 1
-								NOT = { has_secret_relation_lover = scope:adultery_spouse }
+								NOR = {
+									has_secret_relation_lover = scope:adultery_spouse
+									this = root
+								}
 							}
 							any_secret = {
 								secret_type = secret_lover
@@ -2446,7 +2449,10 @@ adultery.2001 = {
 			scope:child_check.mother = {
 				any_relation = {
 					type = lover
-					NOT = { has_secret_relation_lover = prev }
+					NOR = {
+						has_secret_relation_lover = prev
+						this = root
+					}
 				}
 			}
 		}
@@ -2498,19 +2504,7 @@ adultery.2001 = {
 				days = 3650
 			}
 			save_scope_as = adultery_child
-			if = {
-				limit = {
-					has_mother = yes
-				}
-				mother = {
-					if = {
-						limit = {
-							is_consort_of = root
-						}
-						save_scope_as = adultery_spouse
-					}
-				}
-			}
+			mother = { save_scope_as = adultery_spouse }
 		}
 	}
 
@@ -2544,6 +2538,7 @@ adultery.2001 = {
 							modifier = spied_on_me_opinion
 						}
 					}
+					
 				}
 			}
 		}
@@ -2703,41 +2698,41 @@ adultery.2002 = {
 						modifier = angry_opinion
 						opinion = -30
 					}
-				}	
-			}
-			hidden_effect = {
-				duel = {
-					skill = intrigue
-					target = scope:adultery_spouse
-	
-					60 = {
-						compare_modifier = {
-							value = scope:duel_value
-							multiplier = 0.5
-						}
-						trigger = {
-							NOT = {
-								scope:adultery_child.real_father = root
-							}
-						}
-						trigger_event = {
-							id = adultery.2003
-							days = { 10 20 }
+				}
+			}	
+		}
+		hidden_effect = {
+			duel = {
+				skill = intrigue
+				target = scope:adultery_spouse
+
+				60 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.5
+					}
+					trigger = {
+						NOT = {
+							scope:adultery_child.real_father = root
 						}
 					}
-	
-					40 = {
-						compare_modifier = {
-							value = scope:duel_value
-							multiplier = -0.5
-						}
-						trigger_event = {
-							id = adultery.2009
-							days = { 10 20 }
-						}
+					trigger_event = {
+						id = adultery.2003
+						days = { 10 20 }
 					}
-				}				
-			}
+				}
+
+				40 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = -0.5
+					}
+					trigger_event = {
+						id = adultery.2009
+						days = { 10 20 }
+					}
+				}
+			}				
 		}
 	}
 
@@ -3260,13 +3255,16 @@ adultery.4001 = { #by Mathilda Bjarnehed
 								desc = adultery.4001.stallion.desc
 							}
 							triggered_desc = {
+								trigger = { capital_province = { geographical_region = world_europe } }
+								desc = adultery.4001.deer.desc
+							}
+							triggered_desc = {
 								trigger = {
 									capital_province = {
 										OR = {
-											geographical_region = world_africa
-											geographical_region = world_middle_east
 											geographical_region = world_india
-											# geographical_region = world_sicily # TODO
+											geographical_region = world_africa_west
+											geographical_region = world_africa_east
 										}
 									}
 								}
