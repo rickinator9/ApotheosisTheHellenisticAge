@@ -10,6 +10,7 @@ achaean = {
 	traditions = { 
 		tradition_astute_diplomats
 		tradition_pastoralists
+		tradition_equitable
 	}
 
 	name_list = name_list_achaean
@@ -32,9 +33,13 @@ aeolian = {
 	language = language_greek
 	martial_custom = martial_custom_male_only
 	traditions = { 
-		tradition_culture_blending
 		tradition_music_theory
 		tradition_maritime_mercantilism
+	}
+	
+	dlc_tradition = {
+		trait = tradition_culture_blending
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_aeolian
@@ -57,8 +62,9 @@ arcadian = {
 	language = language_greek
 	martial_custom = martial_custom_male_only
 	traditions = { 
-		tradition_sacred_mountains
 		tradition_agrarian
+		tradition_isolationist
+		tradition_sacred_hunts
 	}
 
 	name_list = name_list_arcadian
@@ -124,6 +130,32 @@ boeotian = {
 	}	
 }
 
+cretan = {
+	color = { 0.55 0.22 0.1 }
+
+	ethos = ethos_communal
+	heritage = heritage_greek
+	language = language_greek
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_practiced_pirates
+		tradition_sacred_mountains
+		tradition_hit_and_run
+		tradition_swords_for_hire
+	}
+
+	name_list = name_list_laconian # TODO
+
+	coa_gfx = { spartan_coa_gfx greek_group_coa_gfx }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { byzantine_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
+
 dorian = {
 	color = { 0.176 0.317 0.611 }
 
@@ -176,32 +208,6 @@ dorian_northwest = {
 	}	
 }
 
-dorian_south = {
-	color = { 0.65 0.15 0.15 }
-
-	ethos = ethos_bellicose
-	heritage = heritage_greek
-	language = language_greek
-	martial_custom = martial_custom_male_only
-	traditions = { 
-		tradition_warrior_culture
-		tradition_only_the_strong
-		tradition_staunch_traditionalists
-		tradition_ruling_caste
-	}
-
-	name_list = name_list_dorian_south
-
-	coa_gfx = { spartan_coa_gfx greek_group_coa_gfx }
-	building_gfx = { western_building_gfx }
-	clothing_gfx = { byzantine_clothing_gfx }
-	unit_gfx = { eastern_unit_gfx }
-	
-	ethnicities = {
-		10 = mediterranean_byzantine
-	}	
-}
-
 epirote = {
 	color = { 0.239 0.403 0.019 }
 
@@ -236,14 +242,49 @@ ionian = {
 	martial_custom = martial_custom_male_only
 	traditions = { 
 		tradition_maritime_mercantilism
-		tradition_culture_blending
 		tradition_fervent_temple_builders
 		tradition_philosopher_culture
+	}
+	
+	dlc_tradition = {
+		trait = tradition_culture_blending
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_ionian
 
 	coa_gfx = { greek_group_coa_gfx }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { byzantine_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
+
+laconian = {
+	color = { 0.65 0.15 0.15 }
+
+	ethos = ethos_bellicose
+	heritage = heritage_greek
+	language = language_greek
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_warrior_culture
+		tradition_only_the_strong
+		tradition_ruling_caste
+	}
+	
+	dlc_tradition = {
+		trait = tradition_staunch_traditionalists
+		requires_dlc_flag = hybridize_culture
+		fallback = tradition_spartan
+	}
+
+	name_list = name_list_laconian
+
+	coa_gfx = { spartan_coa_gfx greek_group_coa_gfx }
 	building_gfx = { western_building_gfx }
 	clothing_gfx = { byzantine_clothing_gfx }
 	unit_gfx = { eastern_unit_gfx }
@@ -271,6 +312,30 @@ macedonian = {
 	name_list = name_list_macedonian
 
 	coa_gfx = { macedonian_coa_gfx hellenistic_coa_gfx greek_group_coa_gfx }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { byzantine_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
+
+messenian = {
+	color = { 0.97 0.41 0.12 }
+
+	ethos = ethos_stoic
+	heritage = heritage_greek
+	language = language_greek
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_mystical_ancestors
+		tradition_stalwart_defenders
+	}
+
+	name_list = name_list_laconian # TODO
+
+	coa_gfx = { spartan_coa_gfx greek_group_coa_gfx }
 	building_gfx = { western_building_gfx }
 	clothing_gfx = { byzantine_clothing_gfx }
 	unit_gfx = { eastern_unit_gfx }

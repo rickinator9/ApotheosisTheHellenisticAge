@@ -121,7 +121,7 @@ culture_ai_weight_skirmishers = {
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
 			OR = {
-				is_cretan = yes # Cretans should use archers instead.
+				culture = culture:cretan # Cretans should use archers instead.
 				is_rhodian = yes # Rhodians should use slingers instead.
 			}
 		}
@@ -136,7 +136,7 @@ culture_ai_weight_archers = {
 	if = { # Cultures that favours archers
 		limit = {
             OR = {
-				is_cretan = yes # Cretans will prefer archers.
+				culture = culture:cretan # Cretans will prefer archers.
 			}
 		}
 		add = 40
@@ -181,7 +181,7 @@ culture_ai_weight_slingers = {
 	
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
-			is_cretan = yes # Cretans should use archers instead.
+			culture = culture:cretan # Cretans should use archers instead.
 		}
 		add = -100
 	}

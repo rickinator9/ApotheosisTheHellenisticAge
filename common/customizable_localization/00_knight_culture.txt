@@ -3,14 +3,23 @@
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus
 	}
@@ -26,19 +35,26 @@
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites
 	}
@@ -53,14 +69,23 @@ KnightCulturePlural = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_plural
 	}
@@ -76,19 +101,26 @@ KnightCulturePlural = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_plural
 	}
@@ -103,14 +135,23 @@ KnightCultureNoTooltip = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip
 	}
@@ -126,19 +167,26 @@ KnightCultureNoTooltip = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
 	}
@@ -153,14 +201,23 @@ KnightCulturePluralNoTooltip = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_plural
 	}
@@ -176,19 +233,26 @@ KnightCulturePluralNoTooltip = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_plural
 	}
@@ -203,14 +267,23 @@ KnightCultureNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase
 	}
@@ -226,19 +299,26 @@ KnightCultureNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase
 	}
@@ -253,14 +333,23 @@ KnightCulturePluralNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural
 	}
@@ -276,19 +365,26 @@ KnightCulturePluralNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural
 	}
@@ -303,14 +399,23 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural_possessive
 	}
@@ -326,19 +431,26 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural_possessive
 	}
@@ -353,14 +465,23 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			has_culture = culture:laconian
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_adjective
 	}
@@ -376,19 +497,26 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
+			# Doric
 				culture = culture:achaean
-				culture = culture:arcadian
+				culture = culture:cretan
 				culture = culture:dorian
 				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+				culture = culture:laconian
+				culture = culture:messenian
+			# Aeolic
+				culture = culture:aeolian
+				culture = culture:boeotian
+				culture = culture:thessalian
+			# Arcado-Cypriot
+				culture = culture:arcadian
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_adjective
 	}

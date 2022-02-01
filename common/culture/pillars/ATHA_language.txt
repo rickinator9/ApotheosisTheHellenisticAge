@@ -1,22 +1,4 @@
-﻿language_anatolian = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_anatolian
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_anatolian }
-			multiply = 10
-		}
-	}
-	
-	color = { 127 133 200 }
-}
-
-language_greek = {
+﻿language_greek = {
 	type = language
 	is_shown = {
 		language_is_shown_trigger = {
@@ -31,7 +13,7 @@ language_greek = {
 		}
 	}
 	
-	color = { 27 88 200 }
+	color = dorian
 }
 
 language_iranian = {
@@ -57,10 +39,30 @@ language_iranian = {
 		}
 	}
 	
-	color = { 0.65 0.12 0.46 }
+	color = persian
 }
 
-language_thracian = {
+#Geto-Thracian Languages
+
+language_getic = { # Includes Moesian, Getic & Dacian
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_getic
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_getic }
+			multiply = 10
+		}
+	}
+	
+	color = { 0.5 0.5 0.5 }
+}
+
+language_thracian = { # Includes Thynian, Bessic & Triballian
 	type = language
 	is_shown = {
 		language_is_shown_trigger = {
@@ -76,4 +78,96 @@ language_thracian = {
 	}
 	
 	color = { 0.71 0.81 0.47 }
+}
+
+#Anatolian Languages
+
+language_capadocian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_capadocian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_capadocian }
+			multiply = 10
+		}
+	}
+	
+	color = { 0.5 0.5 0.5 }
+}
+
+language_luwic = { # Carian, Isaurian, Lycian, Solymian, Pamphylian, Pisidian, Cilician etc.
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_luwic
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_luwic }
+			multiply = 10
+		}
+	}
+	
+	color = carian
+}
+
+language_lydian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_lydian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_lydian }
+			multiply = 10
+		}
+	}
+	
+	color = lydian
+}
+
+language_palaic = { # Pamphylian
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_palaic
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_palaic }
+			multiply = 10
+		}
+	}
+	
+	color =  { 0.5 0.5 0.5 }
+}
+
+language_phrygian = { # includes Mysian & Phrygian
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_phrygian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_phrygian }
+			multiply = 10
+		}
+	}
+	
+	color = phrygian
 }
