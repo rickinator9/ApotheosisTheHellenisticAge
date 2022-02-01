@@ -1,0 +1,35 @@
+﻿##################################
+# ATHA REALM CULTURAL TRADITIONS #
+##################################
+
+tradition_servile_class = {
+	category = realm
+
+	layers = {
+		1 = mena
+		4 = tools.dds
+	}
+
+	# Represents groups that formed a servile class under foreign subjugation (e.g. helots, penestae, Mariandyni). Only historical cultures may start with it.
+	is_shown = { always = no }
+	can_pick = { always = no }
+	
+	parameters = {
+		peasant_and_populist_factions_more_common = yes
+	}
+	character_modifier = {
+		monthly_prestige_gain_mult = -0.5
+	}
+	county_modifier = {
+		monthly_county_control_change_add = 0.2
+		county_opinion_add = -10
+		development_growth_factor = -0.3
+	}
+	province_modifier = {
+		fort_level = -1
+		tax_mult = 0.1
+	}
+	
+	cost = { prestige = 9999 }
+	ai_will_do = { value = 0 }
+}
