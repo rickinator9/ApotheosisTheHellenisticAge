@@ -1,0 +1,207 @@
+﻿################################
+# ATHA MAA CULTURAL TRADITIONS #
+################################
+
+tradition_chosen_companions = { # Macedonian Unique Tradition, replaces Prolific Hunters, unlocks MAA innovation, guardianship acceptance bonus
+	category = regional
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = soldiers.dds
+	}
+	
+	is_shown = {
+		NOT = { has_cultural_tradition = tradition_hunters }
+		OR = {
+			this = culture:macedonian
+			any_parent_culture_or_above = {
+				this = culture:macedonian
+			}
+		}
+	}
+	can_pick = {
+		NOT = { has_cultural_tradition = tradition_hunters }
+		OR = {
+			this = culture:macedonian
+			any_parent_culture_or_above = {
+				this = culture:macedonian
+			}
+		}
+	}
+	
+	parameters = {
+		unlock_hetairoi_innovation = yes
+		#unproven_commander_replaces_short_reign_penalty = yes #TODO: add unproven commander penalty
+		guardianship_acceptance_bonus = yes
+		more_frequent_hunts = yes
+		hunting_traits_more_valued = yes
+		hunting_traits_more_common = yes
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						any_in_list = { list = traits this = flag:ethos_bellicose }
+						any_in_list = { list = traits this = flag:ethos_courtly }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_or_courtly_desc
+				}
+			}
+			if = {
+				limit = {
+					trigger_if = {
+						limit = {
+							scope:character = {
+								is_ai = no
+							}
+						}
+						NOT = {
+							any_ruler = {
+								count >= 5
+								culture = prev
+								primary_title.tier >= tier_county
+								has_trait = lifestyle_hunter
+							}
+						}
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = rulers_with_hunter_lifestyle_desc
+				}
+			}			
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				scope:character = {
+					NOT = { has_government = feudal_government }
+				}
+			}
+			multiply = 0
+		}
+	}
+}
+
+tradition_agoge = { # Laconian Unique Tradition, replaces Only the Strong, unlocks Spartiatai Hoplitai MaA
+	category = regional
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = swords.dds
+	}
+	
+	is_shown = {
+		OR = {
+			this = culture:laconian
+			any_parent_culture_or_above = {
+				this = culture:laconian
+			}
+		}
+	}
+	can_pick = {
+		scope:character = {
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
+		}
+	}
+	
+	parameters = {
+		unlock_maa_spartiatai_hoplitai = yes
+		minimum_prowess_for_knights = yes
+		blademaster_trait_bonuses = yes
+		prowess_from_martial_education = yes
+	}
+	province_modifier = {
+		levy_size = -0.25
+	}
+	character_modifier = {
+		men_at_arms_recruitment_cost = 0.25
+		knight_effectiveness_mult = 1
+		knight_limit = 2
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						any_in_list = { list = traits this = flag:ethos_bellicose }
+						any_in_list = { list = traits this = flag:ethos_stoic }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_or_stoic_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						scope:character = {
+							any_knight = {
+								count >= 6
+								prowess >= 12
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = knights_with_prowess_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				scope:character = {
+					NOR = {
+						prowess >= 12
+						has_trait = strong
+						has_trait = physique_good
+					}
+				}
+			}
+			multiply = 0.25
+		}
+	}
+}

@@ -405,7 +405,7 @@ educate_child_interaction = {
 			}
 		}
 	}
-	### TODO, COULD BE USED TO SEND A CHILD TO ANOTHER CITY FOR EDUCATION? - RICK
+	### ATHA: TODO, COULD BE USED TO SEND A CHILD TO ANOTHER CITY FOR EDUCATION? - RICK
 	send_option = {
 		is_shown = {
 			scope:recipient = {
@@ -1624,6 +1624,13 @@ offer_guardianship_interaction = {
 	
 	ai_accept = {
 		base = -50
+
+		#ATHA: Bonus from Chosen Companions Tradition
+		modifier = {
+			scope:actor.culture = { has_cultural_parameter = guardianship_acceptance_bonus }
+			add = 100
+			desc = TRADITION_CHOSEN_COMPANIONS_ACCEPTANCE_MODIFIER
+		}
 
 		#Weak hook: extra points
 		modifier = {
