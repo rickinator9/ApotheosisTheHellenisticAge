@@ -797,12 +797,17 @@ marry_off_interaction = {
 
 	populate_recipient_list = {
 		scope:secondary_actor = {
-			every_spouse_candidate = {
+			if = {
 				limit = {
-					NAND = {
-						is_landless_ruler = yes
-						faith.religious_head = this
-						NOT = { scope:secondary_actor.faith = faith }
+					allowed_to_marry_same_sex_trigger = yes
+				}
+				every_opposite_sex_spouse_candidate = {
+					limit = {
+						NAND = {
+							is_landless_ruler = yes
+							faith.religious_head = this
+							NOT = { scope:secondary_actor.faith = faith }
+						}
 					}
 					add_to_list = characters
 				}

@@ -192,12 +192,14 @@ coalition.0002 = {
 			# for each character.culture != liege.culture add X join-score
 			modifier = {
 				add = 25
-				has_same_culture_heritage = liege.culture
+				culture = { has_same_culture_heritage = liege.culture }
 				NOT = { culture = liege.culture }
 			}
 			modifier = {
 				add = 50
-				NOT = { has_same_culture_heritage = liege.culture }
+				NOT = {
+					culture = { has_same_culture_heritage = liege.culture }
+				}
 			}
 			# Electors are less likely to declare independence, if they're the same faith
 			modifier = { 
