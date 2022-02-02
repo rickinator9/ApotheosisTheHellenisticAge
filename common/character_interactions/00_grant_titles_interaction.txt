@@ -268,6 +268,43 @@
 				}
 			}
 		}
+		# ATHA Former Slaves tradition
+		if = {
+			limit = {
+				any_in_list = {
+					list = target_titles
+					tier >= tier_county
+				}
+				scope:actor.culture = { has_cultural_parameter = landing_same_culture_lowborns_gives_renown }
+				scope:actor.culture = scope:recipient.culture
+				scope:recipient = { is_lowborn = yes }
+			}
+			scope:actor.dynasty = {
+				add_dynasty_prestige = {
+					value = 0
+					every_in_list = {
+						list = target_titles
+						limit = { tier = tier_empire }
+						add = massive_dynasty_prestige_gain
+					}
+					every_in_list = {
+						list = target_titles
+						limit = { tier = tier_kingdom }
+						add = major_dynasty_prestige_gain
+					}
+					every_in_list = {
+						list = target_titles
+						limit = { tier = tier_duchy }
+						add = medium_dynasty_prestige_gain
+					}
+					every_in_list = {
+						list = target_titles
+						limit = { tier = tier_county }
+						add = minor_dynasty_prestige_gain
+					}
+				}
+			}
+		}
 		every_in_list = {
 			list = target_titles
 			save_temporary_scope_as = this_title

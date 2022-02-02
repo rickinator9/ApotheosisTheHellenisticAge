@@ -272,8 +272,9 @@ laconian = {
 	martial_custom = martial_custom_male_only
 	traditions = { 
 		tradition_warrior_culture
-		tradition_only_the_strong
+		tradition_agoge
 		tradition_ruling_caste
+		tradition_stand_and_fight
 	}
 	
 	dlc_tradition = {
@@ -302,7 +303,7 @@ macedonian = {
 	language = language_greek
 	martial_custom = martial_custom_male_only
 	traditions = { 
-		tradition_hunters
+		tradition_chosen_companions
 		tradition_religion_blending
 		tradition_festivities
 		tradition_formation_fighting
@@ -321,16 +322,19 @@ macedonian = {
 	}	
 }
 
-messenian = {
+messenian = { # A mixture of liberated helots, Messenian exiles and non-Messenian immigrants
 	color = { 0.97 0.41 0.12 }
+	created = 3290.1.1 # 464 BC, approximate. The helot revolt at Ithome was a key trigger for Messenian ethnogenesis.
+	parents = { laconian } # Prior to Messenian independence there was little difference between Messenia and Laconia in terms of material culture, language & cults
 
-	ethos = ethos_stoic
+	ethos = ethos_communal # Representing the former helot communities
 	heritage = heritage_greek
 	language = language_greek
 	martial_custom = martial_custom_male_only
 	traditions = { 
-		tradition_mystical_ancestors
-		tradition_stalwart_defenders
+		tradition_mystical_ancestors # They used cults and written histories to strengthen their ties to pre-Spartan Messenia
+		tradition_stalwart_defenders # The helots managed to hold out on Ithome for ten years
+		tradition_former_slaves # Liberated by Epaminondas after the Battle of Leuctra
 	}
 
 	name_list = name_list_laconian # TODO

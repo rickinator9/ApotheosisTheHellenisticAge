@@ -1,7 +1,23 @@
 ﻿l_english: 
  # Traditions
+ tradition_chosen_companions_name:0 "Chosen Companions"
+ tradition_chosen_companions_desc:0 "The adolescent children of this culture's aristocracy are accustomed to serve and hunt with their liege, preparing them for a life of close companionship both in peacetime and on the battlefield."
+ tradition_agoge_name:0 "Agōgá"
+ tradition_agoge_desc:0 "From a young age, children belonging to this culture are put through a rigorous and often brutal training regime, making them into fearsome warriors who will choose death before dishonour."
  tradition_servile_class_name:0 "Servile Class"
  tradition_servile_class_desc:0 "Members of this culture have spent many generations under foreign subjugation, and have been reduced to a humiliating servitude. Nevertheless, their desire for freedom remains stronger than ever..."
+ tradition_former_slaves_name:0 "Slaves no More"
+ tradition_former_slaves_desc:0 "Members of this culture once toiled as slaves under foreign rule, but have since been able to secure their freedom and establish a new identity for themselves."
 
  # Tradition effects
- culture_parameter_peasant_and_populist_factions_more_common:0 "[counties|E] with this [culture|E] are more likely to join [peasant_factions|E] and [popular_factions|E] against a foreign [liege|E]"
+ culture_parameter_unlock_hetairoi_innovation:0 "This tradition allows a [culture|E] to unlock the $innovation_companion_cavalry$ [innovation|E] in the $culture_era_classical$ [era]" 
+ culture_parameter_unproven_commander_replaces_short_reign_penalty:0 "[rulers|E] receive an unproven commander penalty instead of a [short_reign|E] penalty" #TODO: Update once unproven_commander game concept is added
+ culture_parameter_guardianship_acceptance_bonus:0 "[guardianship|UE] Acceptance: #P +100#!"
+ culture_parameter_unlock_maa_spartiatai_hoplitai:0 "Rulers with the [GetGovernment( 'city_state_spartan_government' ).GetName] [government|E] can recruit [GetMaA('spartiatai_hoplitai').GetName] as [men_at_arms|E]" 
+ culture_parameter_peasant_and_populist_factions_more_common:0 "[counties|E] and [rulers|E] of this [culture|E] are more likely to join [peasant_factions|E] and [popular_factions|E] against a foreign [liege|E]"
+ culture_parameter_landing_same_culture_lowborns_gives_renown:0 "Gain [dynasty_prestige_i][dynasty_prestige|E] when granting titles to [commoners|E] of your [culture|E]" 
+ 
+ # Triggers and Tooltips
+ TRADITION_CHOSEN_COMPANIONS_ACCEPTANCE_MODIFIER:1 "$tradition_chosen_companions_name$ [tradition|E]: $VALUE|=+0$"
+
+ not_bellicose_or_courtly_desc:0 "The [culture|E] does not have the $ethos_bellicose_name$ or $ethos_courtly_name$ [ethos|E]"
