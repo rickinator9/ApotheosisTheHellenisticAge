@@ -472,7 +472,13 @@ revive_spartan_faith_decision_effects = {
 	}
 	#Finally, give spartan_faith a hefty fervour boost, just so that they don't immediately convert back.
 	hidden_effect = {
-		faith:spartan_faith = { change_fervor = 100 }
+		faith:spartan_faith = {
+			save_scope_as = revived_faith
+			change_fervor = {
+				value = 100
+				desc = fervor_gain_faith_revived
+			}
+		}
 	}
 }
 
