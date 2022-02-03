@@ -387,9 +387,11 @@ concubine_offer_on_accept_effect = {
 									allowed_to_marry_same_sex_trigger = no
 									scope:recipient = { sex_same_as = scope:secondary_actor }
 								}
-								OR = {
-									has_doctrine = doctrine_pluralism_righteous
-									has_doctrine = doctrine_pluralism_fundamentalist
+								faith = {
+									OR = {
+										has_doctrine = doctrine_pluralism_righteous
+										has_doctrine = doctrine_pluralism_fundamentalist
+									}
 								}
 							}
 						}
