@@ -144,6 +144,18 @@ income_multiplier_50_years_value = 600
 
 # Wars / Battles
 
+total_battles_fought = {
+	value = 0
+	if = {
+		limit = { has_variable = battle_wins }
+		add = var:battle_wins
+	}
+	if = {
+		limit = { has_variable = battle_losses }
+		add = var:battle_losses
+	}
+}
+
 net_battle_wins = {
 	value = 0
 	if = {
