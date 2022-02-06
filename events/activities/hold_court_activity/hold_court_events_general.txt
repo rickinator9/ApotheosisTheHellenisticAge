@@ -14711,7 +14711,7 @@ hold_court.6120 = {
 			save_scope_as = steward
 			court_event_character_flag_effect = yes
 		}
-		else_if = {
+		if = {
 			limit = {
 				employs_court_position = seneschal_court_position
 				any_court_position_holder = {
@@ -27968,7 +27968,7 @@ hold_court.8071 = {
 
 scripted_trigger hold_court_8080_mayor_trigger = { # Check mayor's culture, and city wealth
 	hold_court_available_mayor_trigger = yes
-	culture = { has_innovation = innovation_development_02 }
+	culture = { has_innovation = innovation_classical_hippodamian_plan }
 	primary_title = {
 		de_jure_liege = {
 			NOT = { this = root.capital_county }
@@ -28046,7 +28046,7 @@ hold_court.8080 = {
 	trigger = {
 		NOT = { has_character_flag = has_had_county_request_event }
 		is_independent_ruler = yes
-		culture = { has_innovation = innovation_development_02 }
+		culture = { has_innovation = innovation_classical_hippodamian_plan }
 		any_vassal = { hold_court_8080_mayor_trigger = yes }
 		NOT = {
 			any_sub_realm_county = {
@@ -35266,64 +35266,6 @@ scripted_trigger hold_court_8180_lord_trigger = {
 
 # Increase the relevant contract
 scripted_effect hold_court_8180_grant_contract_effect = {
-	switch = {
-		trigger = var:hc_8180_contract_var
-		1 = { # Religious
-			vassal_contract_set_obligation_level = {
-				type = religious_rights
-				level = 1
-			}
-		}
-		2 = { # Fortification
-			vassal_contract_set_obligation_level = {
-				type = fortification_rights
-				level = 1
-			}
-		}
-		3 = { # Coinage
-			vassal_contract_set_obligation_level = {
-				type = coinage_rights
-				level = 1
-			}
-		}
-		4 = { # War Declaration
-			vassal_contract_set_obligation_level = {
-				type = war_declaration_rights
-				level = 1
-			}
-		}
-		5 = { # Council Rights
-			vassal_contract_set_obligation_level = {
-				type = council_rights
-				level = 1
-			}
-		}
-		6 = { # Title Revocation
-			vassal_contract_set_obligation_level = {
-				type = title_revocation_rights
-				level = 1
-			}
-		}
-		7 = { # Scutage
-			vassal_contract_set_obligation_level = {
-				type = special_contract
-				level = 1
-			}
-		}
-		8 = { # March
-			vassal_contract_set_obligation_level = {
-				type = special_contract
-				level = 2
-			}
-		}
-		9 = { # Palatinate
-			vassal_contract_set_obligation_level = {
-				type = special_contract
-				level = 3
-			}
-		}
-	}
-	hidden_effect = { set_vassal_contract_modification_blocked = yes }
 }
 
 # A vassal wants a contract buff
@@ -35507,10 +35449,6 @@ hold_court.8180 = {
 				base = 1
 				modifier = {
 					factor = 2
-					NOT = { vassal_contract_obligation_level_can_be_decreased = special_contract } # No existing special contract
-				}
-				modifier = {
-					factor = 2
 					is_powerful_vassal = yes
 				}
 				modifier = {
@@ -35600,33 +35538,9 @@ hold_court.8180 = {
 							years = 20 # cooldown for this character
 						}
 					}
-					1 = { # Fortification Rights / 2
-						trigger = {
-							liege.culture = { has_innovation = innovation_battlements }
-							vassal_contract_obligation_level_can_be_increased = fortification_rights
-						}
-						modifier = {
-							factor = 2
-							any_sub_realm_county = { hold_court_8010_county_trigger = yes }
-						}
-						modifier = {
-							factor = 2
-							has_education_martial_trigger = yes
-						}
-						modifier = {
-							factor = 2
-							has_martial_lifestyle_trait_trigger = yes
-						}
-						modifier = { factor = 2 } # contract relative value
-						set_variable = {
-							name = hc_8180_contract_var
-							value = 2
-							years = 20 # cooldown for this character
-						}
-					}
 					1 = { # Coinage Rights / 3
 						trigger = {
-							liege.culture = { has_innovation = innovation_currency_02 }
+							liege.culture = { has_innovation = innovation_classical_monetary_standards }
 							vassal_contract_obligation_level_can_be_increased = coinage_rights
 						}
 						modifier = {
@@ -35721,80 +35635,6 @@ hold_court.8180 = {
 						set_variable = {
 							name = hc_8180_contract_var
 							value = 6
-							years = 20 # cooldown for this character
-						}
-					}
-					1 = { # Scutage / 7
-						trigger = {
-							liege.culture = {
-								has_innovation = innovation_scutage
-							}
-							NOT = { vassal_contract_obligation_level_can_be_decreased = special_contract } # No existing special contract
-						}
-						modifier = {
-							factor = 2
-							OR = {
-								has_education_martial_trigger = yes
-								has_martial_lifestyle_trait_trigger = yes
-							}
-						}
-						modifier = { factor = 3 } # contract relative value
-						set_variable = {
-							name = hc_8180_contract_var
-							value = 7
-							years = 20 # cooldown for this character
-						}
-					}
-					1 = { # March / 8
-						trigger = {
-							liege.culture = {
-								has_innovation = innovation_burhs
-							}
-							NOT = { vassal_contract_obligation_level_can_be_decreased = special_contract } # No existing special contract
-						}
-						modifier = {
-							factor = 2
-							has_education_martial_trigger = yes
-						}
-						modifier = {
-							factor = 2
-							has_martial_lifestyle_trait_trigger = yes
-						}
-						modifier = { factor = 3 } # contract relative value
-						set_variable = {
-							name = hc_8180_contract_var
-							value = 8
-							years = 20 # cooldown for this character
-						}
-					}
-					1 = { # Palatinate / 9
-						trigger = {
-							liege.culture = {
-								has_innovation = innovation_divine_right
-							}
-							is_powerful_vassal = yes
-							NOT = { vassal_contract_obligation_level_can_be_decreased = special_contract } # No existing special contract
-						}
-						modifier = {
-							factor = 2
-							has_education_diplomacy_trigger = yes
-						}
-						modifier = {
-							factor = 2
-							has_diplomacy_lifestyle_trait_trigger = yes
-						}
-						modifier = {
-							factor = 2
-							has_trait = arrogant
-						}
-						modifier = {
-							factor = 2
-							dynasty.dynasty_prestige_level >= liege.dynasty.dynasty_prestige_level
-						}
-						modifier = { factor = 5 } # contract relative value
-						set_variable = {
-							name = hc_8180_contract_var
-							value = 9
 							years = 20 # cooldown for this character
 						}
 					}
@@ -42503,7 +42343,6 @@ hold_court.8270 = {
 scripted_trigger nomadic_cultural_traditions_trigger = {
 	culture = {
 		OR = {
-			has_cultural_tradition = tradition_horse_lords
 			has_cultural_tradition = tradition_pastoralists
 		}
 	}
@@ -42619,7 +42458,8 @@ hold_court.8280 = {
 					holder.top_liege = {
 						NOT = { this = root }
 						has_government = tribal_government
-						culture = { has_cultural_tradition = tradition_horse_lords }
+						always = no
+						# culture = { has_cultural_tradition = tradition_horse_lords }
 					}
 					hold_court_8280_nomad_county_trigger = yes
 				}

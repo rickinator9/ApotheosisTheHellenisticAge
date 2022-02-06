@@ -875,60 +875,6 @@ inspiration_adventure_create_artifact_effect = {
 									}
 								}
 							}
-							2 = { #Ark of the covenant
-								modifier = {
-									OR = {
-										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-										AND = {
-											exists = scope:inspiration_owner.var:artifact_quality
-											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-										}
-									}
-									add = 5
-								}
-								trigger = {
-									NOT = {
-										any_artifact = {
-											has_variable = ark_of_the_covenant
-										}
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = world_middle_east
-											geographical_region = world_africa_north_east
-											geographical_region = world_africa_east
-										}
-									}
-								}
-								create_artifact_sculpture_ark_of_covenant_effect = { OWNER = root }
-							}
-							2 = { #Babr E Bayan
-								modifier = {
-									OR = {
-										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-										AND = {
-											exists = scope:inspiration_owner.var:artifact_quality
-											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-										}
-									}
-									add = 5
-								}
-								trigger = {
-									NOT = {
-										any_artifact = {
-											has_variable = babr_e_bayan
-										}
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = world_persian_empire
-											#geographical_region = world_steppe
-											culture = { has_cultural_pillar = heritage_iranian }
-										}
-									}
-								}
-								create_artifact_sculpture_babr_e_bayan_effect = { OWNER = root }
-							}
 							10 = {
 								modifier = {
 									OR = {
@@ -982,87 +928,6 @@ inspiration_adventure_create_artifact_effect = {
 									}
 								}
 								create_artifact_wall_banner_kaviani_effect = { OWNER = root }
-							}
-							10 = {
-								modifier = {
-									OR = {
-										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-										AND = {
-											exists = scope:inspiration_owner.var:artifact_quality
-											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-										}
-									}
-									add = 5
-								}
-								trigger = {
-									NOT = {
-										any_artifact = {
-											has_variable = banner_edessa
-										}
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = world_middle_east
-											geographical_region = world_asia_minor
-										}
-									}
-								}
-								create_artifact_wall_banner_edessa_effect = { OWNER = root }
-							}
-							10 = {
-								modifier = {
-									OR = {
-										scope:adventurer.adventure_inspiration_average_skill_value >= medium_inspiration_skill
-										AND = {
-											exists = scope:inspiration_owner.var:artifact_quality
-											scope:inspiration_owner.var:artifact_quality > medium_adventurer_epic_quality_level #Cumulative event choices
-										}
-									}
-									add = 5
-								}
-								trigger = {
-									current_year >= 1097
-									NOT = {
-										any_artifact = {
-											has_variable = sword_cid
-										}
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = world_middle_east
-											geographical_region = world_asia_minor
-										}
-									}
-								}
-								create_artifact_wall_cid_sword_effect = { OWNER = root }
-							}
-							10 = {
-								modifier = {
-									OR = {
-										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-										AND = {
-											exists = scope:inspiration_owner.var:artifact_quality
-											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-										}
-									}
-									add = 5
-								}
-								trigger = {
-									NOT = {
-										any_artifact = {
-											has_variable = sword_attila
-										}
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = custom_south_slavia
-											geographical_region = custom_carpathia
-											geographical_region = ghw_region_crimea
-											geographical_region = custom_bavaria
-										}
-									}
-								}
-								create_artifact_wall_sword_attila_effect = { OWNER = root }
 							}
 							15 = { #Excalibur
 								modifier = {
@@ -1307,22 +1172,6 @@ inspiration_adventure_create_artifact_effect = {
 									}
 								}
 								create_artifact_zomorrodnegar_effect = { OWNER = ROOT }
-							}
-							15 = { #Muhammads epistles
-								trigger = {
-									any_artifact = {
-										count < 12
-										has_variable = muhammads_epistles
-									}
-									scope:location.title_province = {
-										OR = {
-											geographical_region = world_asia_minor
-											geographical_region = world_middle_east
-											geographical_region = world_middle_east_persia
-										}
-									}
-								}
-								create_artifact_muhammads_epistles_effect = { OWNER = ROOT }
 							}
 							10 = { #Kave's Apron
 								modifier = {

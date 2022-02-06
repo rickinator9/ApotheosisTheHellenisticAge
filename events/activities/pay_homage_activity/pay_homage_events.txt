@@ -371,8 +371,8 @@ scripted_effect pay_homage_select_nickname_effect = {
 							trigger = {
 								scope:homage_vassal = { is_male = yes }
 							}
-							ep1_pay_homage_nickname_taken_modifier = { NICK = the_stud }
-							save_scope_value_as = { name = homage_nickname value = flag:the_stud }
+							ep1_pay_homage_nickname_taken_modifier = { NICK = the_fair }
+							save_scope_value_as = { name = homage_nickname value = flag:the_fair }
 						}
 						2 = {
 							ep1_pay_homage_nickname_taken_modifier = { NICK = the_blushing }
@@ -428,16 +428,16 @@ scripted_effect pay_homage_give_nickname_effect = {
 		scope:homage_vassal = {
 			switch = {
 				trigger = scope:homage_nickname
-				flag:the_foreigner = { set_permanent_nickname = { NICKNAME = nick_the_foreigner } }
-				flag:the_clumsy = { set_permanent_nickname = { NICKNAME = nick_the_clumsy } }
-				flag:the_graceful = { set_permanent_nickname = { NICKNAME = nick_the_graceful } }
-				flag:the_heart_throb = { set_permanent_nickname = { NICKNAME = nick_the_heart_throb } }
-				flag:the_stud = { set_permanent_nickname = { NICKNAME = nick_the_fair } }
-				flag:the_blushing = { set_permanent_nickname = { NICKNAME = nick_the_blushing } }
-				flag:the_stutterer = { set_permanent_nickname = { NICKNAME = nick_the_stutterer } }
-				flag:the_stammerer = { set_permanent_nickname = { NICKNAME = nick_the_stammerer } }
-				flag:the_slow = { set_permanent_nickname = { NICKNAME = nick_the_slow } }
-				flag:the_eloquent = { set_permanent_nickname = { NICKNAME = nick_the_eloquent } }
+				flag:the_foreigner = { set_permanent_nickname_effect = { NICKNAME = nick_the_foreigner } }
+				flag:the_clumsy = { set_permanent_nickname_effect = { NICKNAME = nick_the_clumsy } }
+				flag:the_graceful = { set_permanent_nickname_effect = { NICKNAME = nick_the_graceful } }
+				flag:the_heart_throb = { set_permanent_nickname_effect = { NICKNAME = nick_the_heart_throb } }
+				flag:the_fair = { set_permanent_nickname_effect = { NICKNAME = nick_the_fair } }
+				flag:the_blushing = { set_permanent_nickname_effect = { NICKNAME = nick_the_blushing } }
+				flag:the_stutterer = { set_permanent_nickname_effect = { NICKNAME = nick_the_stutterer } }
+				flag:the_stammerer = { set_permanent_nickname_effect = { NICKNAME = nick_the_stammerer } }
+				flag:the_slow = { set_permanent_nickname_effect = { NICKNAME = nick_the_slow } }
+				flag:the_eloquent = { set_permanent_nickname_effect = { NICKNAME = nick_the_eloquent } }
 			}
 		}
 	}
