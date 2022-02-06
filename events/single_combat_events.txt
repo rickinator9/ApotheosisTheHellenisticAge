@@ -634,17 +634,6 @@ scripted_effect select_special_tier_move_effect = {
 			trigger = {
 				NOT = { exists = local_var:combat_move_stoic_veteran_flag }
 				has_trait = varangian
-				# Can't use the Varangian trait against the Eastern Roman Emperor, as that's just not cricket.
-				NOR = {
-					AND = {
-						this = scope:sc_defender
-						scope:sc_attacker = { has_title = title:e_byzantium }
-					}
-					AND = {
-						this = scope:sc_attacker
-						scope:sc_defender = { has_title = title:e_byzantium }
-					}
-				}
 				# Block special moves twice in a row.
 				NOR = {
 					AND = {

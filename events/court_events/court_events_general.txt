@@ -486,7 +486,6 @@ scripted_effect spawn_foreign_prince_effect = {
 			1 = { add_gold = 2500 }
 		}
 		set_relation_lover = scope:available_child
-		give_nickname = nick_fabulous_she_he
 		visit_court_of = root
 	}
 }
@@ -540,19 +539,6 @@ court.0108 = {
 			}
 		}
 		court_grandeur_current_level >= medium_court_grandeur_level
-	}
-	
-	weight_multiplier = {
-		base = 1
-		modifier = {
-			add = 1
-			root.faith = {
-				OR = {
-					religion_tag = islam_religion
-					has_doctrine_parameter = islamic_syncretic_actor_opinion_active
-				}
-			}
-		}
 	}
 
 	immediate = {
@@ -1031,7 +1017,7 @@ court.0109 = {
 	 		opinion = -5
 	 	}
 	 	scope:executioner = {
-	 		give_nickname = nick_health_god_mercy
+			change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_medium_increase }
 	 	}
 		ai_chance = {
 			base = 50
@@ -6908,7 +6894,7 @@ court.4400 = {
 		}
 		hidden_effect = {
 			scope:the_headless = {
-				give_nickname = nick_the_headless
+				set_permanent_nickname_effect = { NICKNAME = nick_the_headless }
 			}
 		}
 		cp:councillor_court_chaplain = {
@@ -7374,7 +7360,7 @@ court.4402 = {
 							death_reason = death_decapitated
 							killer = scope:head_chasing_monk
 						}
-						set_nickname_effect = { NICKNAME = nick_the_headless }
+						set_permanent_nickname_effect = { NICKNAME = nick_the_headless }
 					}
 				}
 			}
@@ -7410,7 +7396,7 @@ court.4402 = {
 				}
 				custom_tooltip = court.4402.c3.tt
 				
-				set_nickname_effect = { NICKNAME = nick_the_headless }
+				set_permanent_nickname_effect = { NICKNAME = nick_the_headless }
 			}		
 		}
 		ai_chance = {
@@ -7464,36 +7450,13 @@ scripted_trigger ravenous_libido_trigger = {
 	}
 }
 
-scripted_trigger holy_needle_trigger = {
-	NOR = {
-		has_trait = bleeder
-		ravenous_libido_trigger = yes
-		cuckoldry_psalter_trigger = yes
-	}
-	religion = religion:christianity_religion	
-	religion = { exists = var:variable_ghw_unlocked }
-}
-
 scripted_trigger dead_chicken_trigger = {
 	NOR = {
 		has_trait = bleeder
 		ravenous_libido_trigger = yes
 		cuckoldry_psalter_trigger = yes
-		holy_needle_trigger = yes
 	}
 	has_trait = craven
-}
-
-scripted_trigger finger_bones_trigger = {
-	NOR = {
-		has_trait = bleeder
-		ravenous_libido_trigger = yes
-		cuckoldry_psalter_trigger = yes
-		holy_needle_trigger = yes
-		dead_chicken_trigger = yes
-	}
-	religion = religion:christianity_religion
-	NOT = { religion = { exists = var:variable_ghw_unlocked } }
 }
 
 scripted_trigger worm_on_a_string_trigger = {
@@ -7501,8 +7464,6 @@ scripted_trigger worm_on_a_string_trigger = {
 		has_trait = bleeder
 		ravenous_libido_trigger = yes
 		cuckoldry_psalter_trigger = yes
-		holy_needle_trigger = yes
-		finger_bones_trigger = yes
 		dead_chicken_trigger = yes
 	}
 }
@@ -7526,16 +7487,8 @@ court.4500 = {
 				desc = court.4500.chastity_belt
 			}
 			triggered_desc = {
-				trigger = { holy_needle_trigger = yes }
-				desc = court.4500.holy_needle
-			}
-			triggered_desc = {
 				trigger = { dead_chicken_trigger = yes }
 				desc = court.4500.dead_chicken
-			}
-			triggered_desc = {
-				trigger = { finger_bones_trigger = yes }
-				desc = court.4500.finger_bones
 			}
 			triggered_desc = {
 				trigger = { worm_on_a_string_trigger = yes }
@@ -7565,8 +7518,6 @@ court.4500 = {
 			has_trait = bleeder
 			cuckoldry_psalter_trigger = yes
 			ravenous_libido_trigger = yes
-			holy_needle_trigger = yes
-			finger_bones_trigger = yes
 			dead_chicken_trigger = yes
 			worm_on_a_string_trigger = yes
 		}
@@ -7612,15 +7563,6 @@ court.4500 = {
 		}
 		else = {
 			dummy_male = { save_scope_as = dummy_gender }
-		}
-		if = { # RPing finger bones being harvested from the peasants
-			limit = { finger_bones_trigger = yes }
-			root.capital_province.county = {
-				add_county_modifier = {
-					modifier = nine_fingered_peasants_modifier
-					years = 5
-				}
-			}
 		}
 	}
 	option = {
@@ -7706,36 +7648,6 @@ court.4500 = {
 		trigger = { ravenous_libido_trigger = yes }
 		add_prestige = minor_prestige_gain
 	}
-
-	option = { # if you aren't cynical and genuinely believe in the holy needle, this is the acceptance option
-		name = court.4500.e
-		show_unlock_reason = no
-		trigger = {
-			holy_needle_trigger = yes
-			NOR = {
-				has_trait = cynical
-				should_be_naked_trigger = no
-			}
-		}
-		create_artifact = {	
-			name = holy_needle_name
-			description = holy_needle_description
-			type = sword
-			visuals = small_box
-			modifier = artifact_prowess_1_negative_modifier
-			modifier = artifact_monthly_piety_2_modifier
-			creator = scope:artifact_peddler
-			save_scope_as = holy_needle
-		}
-		scope:holy_needle = {
-			flag_as_trash_artifact = yes
-			flag_as_cursed_artifact = yes
-			hidden_effect = {
-				add_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_negative_modifier
-			}
-		}
-		remove_short_term_gold = minor_gold_value
-	}
 	
 	option = { # a generic rejection for the psalter and needle
 		name = court.4500.f
@@ -7743,13 +7655,6 @@ court.4500 = {
 		trigger = {
 			OR = {
 				cuckoldry_psalter_trigger = yes
-				holy_needle_trigger = yes
-			}
-		}
-		if = { 
-			limit = { holy_needle_trigger = yes }
-			stress_impact = {
-				zealous = medium_stress_gain
 			}
 		}
 		if = { # spouse will cheat on you now, if they can
@@ -7793,7 +7698,6 @@ court.4500 = {
 		show_unlock_reason = no
 		trait = cynical
 		trigger = { 
-			holy_needle_trigger = yes
 			has_trait = cynical
 			should_be_naked_trigger = no
 		}
@@ -7813,37 +7717,6 @@ court.4500 = {
 			hidden_effect = {
 				add_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_negative_modifier
 			}
-		}
-		remove_short_term_gold = minor_gold_value
-	}
-	
-	option = { # picking up on where the finger bones are coming from
-		name = court.4500.h
-		show_unlock_reason = no
-		trigger = { finger_bones_trigger = yes }
-		stress_impact = {
-			zealous = medium_stress_gain
-		}
-		add_prestige = minor_prestige_gain
-	}
-	
-	option = { # accept the finger bones
-		name = court.4500.i
-		show_unlock_reason = no
-		trigger = { finger_bones_trigger = yes }
-		create_artifact = {
-			name = finger_bones_name
-			creator = scope:artifact_peddler
-			description = finger_bones_description
-			visuals = small_box
-			modifier = artifact_monthly_piety_1_modifier
-			type = miscellaneous
-			creator = scope:artifact_peddler
-			save_scope_as = finger_bones
-		}	
-		scope:finger_bones = {
-			flag_as_trash_artifact = yes
-			flag_as_cursed_artifact = yes
 		}
 		remove_short_term_gold = minor_gold_value
 	}
@@ -9414,9 +9287,7 @@ court.4701 = {
 ##################################################
 
 scripted_trigger pope_joan_trigger = {
-	faith = faith:catholic
-	is_female = yes
-	any_held_title = { is_head_of_faith = no }
+	always = no
 }
 
 scripted_trigger lady_godiva_trigger = {
@@ -9443,30 +9314,7 @@ scripted_trigger sinbad_trigger = {
 }
 
 scripted_trigger caligula_trigger = {
-	OR = {
-		has_trait = sadistic
-		has_trait = torturer
-		has_focus = intrigue_intimidation_focus
-		has_trait = deviant
-		has_trait = lunatic_1
-	}
-	OR = {
-		has_title = title:k_italy
-		has_title = title:k_romagna
-		has_title = title:k_sardinia
-		has_title = title:e_italy
-		has_title = title:e_roman_empire
-		capital_province = {
-			geographical_region = world_europe_west_britannia
-			geographical_region = world_europe_west_germania
-			geographical_region = world_europe_west_francia
-			geographical_region = world_europe_west_iberia
-			geographical_region = world_europe_west
-			geographical_region = world_europe_south_italy
-			geographical_region = world_europe_south
-		}
-		culture = { has_cultural_pillar = heritage_byzantine }
-	}
+	always = no
 }
 
 scripted_trigger nasreddin_trigger = {
@@ -10680,7 +10528,7 @@ court.4803 = {
 		trait = poet
 		if = {
 			limit = { has_any_nickname = no }
-			give_nickname = nick_the_poet	
+			change_nickname_weight_effect = { NICKNAME = nick_the_poet_good CHANGE = nickname_weight_large_increase }
 		}
 		set_relation_potential_rival = scope:court_poet
 		add_prestige = medium_prestige_gain
@@ -11222,14 +11070,6 @@ court.4806 = {
 	desc = {
 		desc = court.4806.intro
 		first_valid = {
-			triggered_desc = {
-				trigger = { primary_title = title:e_hre }
-				desc = court.4806.hre_desc
-			}
-			triggered_desc = {
-				trigger = { primary_title = title:e_byzantium }
-				desc = court.4806.byzantine_desc
-			}
 			desc = court.4806.general_desc
 		}
 	}
@@ -11334,42 +11174,6 @@ court.4806 = {
 	}
 
 	option = {
-		name = court.4806.b
-		trigger = { primary_title = title:e_hre }
-		scope:adoring_fan = {
-			set_artifact_rarity_common = yes
-			create_artifact = {	
-				name = fake_reichskrone_name
-				description = fake_reichskrone_description
-				type = helmet
-				visuals = hre_crown
-				modifier = artifact_attraction_opinion_1_modifier
-				modifier = artifact_monthly_prestige_penalty_modifier
-				save_scope_as = fake_reichskrone
-			}
-		}
-		scope:fake_reichskrone = {
-			set_owner = root
-		}
-		stress_impact = {
-			arrogant = minor_stress_gain
-			generous = minor_stress_gain
-		}
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_greed = 0.5
-				ai_rationality = -0.5
-				ai_boldness = 0.5
-			}
-		}
-	}
-
-	option = {
-		name = {
-			trigger = { primary_title = title:e_byzantium }
-			text = court.4806.c.byz
-		}
 		name = court.4806.c
 		change_current_court_grandeur = miniscule_court_grandeur_loss
 		add_prestige = minor_prestige_loss
@@ -11392,49 +11196,7 @@ court.4806 = {
 		}
 	}
 	option = {
-		name = court.4806.d
-		trigger = { primary_title = title:e_byzantium }
-		scope:adoring_fan = {
-			set_artifact_rarity_common = yes
-			create_artifact = {
-				name = purple_underwear_name
-				description = purple_underwear_description
-				type = miscellaneous
-				visuals = pouch
-				modifier = artifact_attraction_opinion_2_modifier
-				save_scope_as = purple_underwear
-			}
-		}
-		scope:purple_underwear = {
-			set_owner = root
-			add_artifact_modifier = artifact_monthly_prestige_2_modifier
-		}
-		add_prestige = minor_prestige_gain
-		rightfully_imprison_character_effect = {
-			TARGET = scope:adoring_fan
-			IMPRISONER = root
-		}
-		stress_impact = {
-			compassionate = minor_stress_gain
-			humble = minor_stress_gain
-			generous = minor_stress_gain
-		}
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_vengefulness = 0.75
-				ai_boldness = 0.5
-			}
-		}
-	}
-	option = {
 		name = court.4806.e
-		trigger = {
-			NOR = {
-				primary_title = title:e_hre
-				primary_title = title:e_byzantium
-			}
-		}
 		reverse_add_opinion = {
 			target = scope:adoring_fan
 			opinion = -20
@@ -15157,106 +14919,9 @@ court.6020 = {
 		}
 	}
 
-	# Option A: Court chaplain exorcizes them - limited to christians
-	option = {
-		name = court.6020.a
-		trigger = {
-			exists = scope:court_chaplain
-			scope:court_chaplain.religion = religion:christianity_religion
-			root.religion = religion:christianity_religion
-		}
-		add_piety = minor_piety_gain
-		scope:court_chaplain = {
-			duel = {
-				skill = learning
-				target = scope:possessed_char
-				10 = {
-					desc = court.6020.a.success
-					compare_modifier = {
-						value = scope:duel_value
-						multiplier = 1
-					}
-					send_interface_toast = {
-						title = court.6020.a.success
-						custom_tooltip = court.6020.a.success.tt
-					}
-					every_courtier_or_guest = {
-						limit = {
-							religion = religion:christianity_religion
-						}
-						custom = court_6020_all_courtiers_and_guests_christian
-						add_opinion = {
-							target = root
-							modifier = pious_opinion
-							opinion = 15
-						}
-					}
-					every_courtier_or_guest = {
-						limit = {
-							religion = religion:christianity_religion
-						}
-						custom = court_6020_all_courtiers_and_guests_christian
-						add_opinion = {
-							target = scope:possessed_char
-							modifier = trust_opinion
-							opinion = 10
-						}
-					}
-					root = {
-						if = {
-							limit = {
-								has_court_type = court_scholarly
-							}
-							change_current_court_grandeur = major_court_grandeur_gain
-						}
-						else = { change_current_court_grandeur = medium_court_grandeur_gain }
-					}
-				}
-				15 = {
-					desc = court.6020.a.failure
-					compare_modifier = {
-						value = scope:duel_value
-						multiplier = -1
-					}
-					send_interface_toast = {
-						title = court.6020.a.failure
-						custom_tooltip = court.6020.a.failure.tt
-					}
-					every_courtier_or_guest = {
-						custom = court_6000_all_courtiers_and_guests
-						add_opinion = {
-							target = root
-							modifier = disappointed_opinion
-							opinion = -15
-						}
-					}
-					root = { change_current_court_grandeur = medium_court_grandeur_loss }
-				}
-			}
-		}
-		ai_chance = {
-			base = 150
-			modifier = {
-				has_trait = zealous
-				add = 50
-			}
-			modifier = {
-				has_trait = cynical
-				add = -100
-			}
-		}
-	}
-
 	# Option B: it is a sign of the favor of the gods - limited to non-monotheistic
 	option = {
 		name = court.6020.b
-		trigger = {
-			NOR = {
-				root.religion = { is_in_family = rf_abrahamic }
-				scope:court_chaplain.religion = { is_in_family = rf_abrahamic }
-				has_trait = cynical
-			}
-		}
 		add_piety = medium_piety_gain
 		scope:possessed_char = {
 			add_character_modifier = possessed_prophetic_visions
@@ -15398,50 +15063,6 @@ court.6020 = {
 				scope:court_physician = { has_trait = lifestyle_herbalist }
 				add = 100
 			}
-			modifier = {
-				has_trait = zealous
-				add = -100
-			}
-		}
-	}
-
-	# Option E: it's just a disease - limited to islamic and indian
-	option = {
-		name = court.6020.e
-		trigger = {
-			OR = {
-				root.religion = religion:islam_religion
-				root.religion = { is_in_family = rf_eastern }
-			}				
-		}
-		if = {
-			limit = {
-				OR = { 
-					has_trait = education_learning
-					has_lifestyle = learning_lifestyle
-				}
-			}
-			add_learning_lifestyle_xp = major_lifestyle_xp
-		}
-		scope:possessed_char = {
-			add_character_modifier = court_possessed_improved_condition_modifier
-		}
-		scope:possessed_char = {
-			add_opinion = {
-				target = root
-				modifier = grateful_opinion
-				opinion = 60
-			}
-		}
-		if = {
-			limit = {
-				has_court_type = court_scholarly
-			}
-			change_current_court_grandeur = major_court_grandeur_gain
-		}
-		else = { change_current_court_grandeur = medium_court_grandeur_gain }
-		ai_chance = {
-			base = 150
 			modifier = {
 				has_trait = zealous
 				add = -100
@@ -15943,424 +15564,6 @@ court.6050 = {
 # by Claudia Baldassi	#
 # 6060					#
 #########################
-
-# Your chaplain preaches against wine; your physician (and the court drunkard!) disagrees #
-	
-court.6060 = {
-	type = court_event
-	title = court.6060.t
-	desc = {
-		desc = court.6060.desc_opening
-		triggered_desc = {
-			trigger = {
-				exists = scope:courtier_drunkard
-			}
-			desc = court.6060.desc_drunkard_courtier
-		}
-		desc = court.6060.desc_ending
-	}
-	theme = court
-
-	court_scene = {
-		button_position_character = scope:court_chaplain
-		roles = {
-			scope:court_chaplain = {
-				group = event_group
-				animation = disapproval
-			}
-			scope:courtier_drunkard = {
-				group = event_group
-				animation = rage
-			}
-			scope:court_physician = {
-				group = event_group
-				animation = anger
-			}
-		}
-	}
-
-	trigger = {
-		is_adult = yes
-		OR = {
-			religion = religion:christianity_religion
-			AND = {
-				religion = religion:islam_religion
-				culture = { has_cultural_pillar = heritage_iranian }
-			}
-		}
-		employs_court_position = court_physician_court_position
-		employs_court_position = court_tutor_court_position
-		exists = cp:councillor_court_chaplain
-		cp:councillor_court_chaplain = {
-			has_court_event_flag = no
-			NOT = { has_court_position = court_physician_court_position }
-		}
-		court_position:court_tutor_court_position = { has_court_event_flag = no }
-	}
-
-	weight_multiplier = {
-		base = 1
-
-		# Court weightings.
-		ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_scholarly }
-	}
-
-	immediate = {
-		cp:councillor_court_chaplain = {
-			save_scope_as = court_chaplain
-		}
-		save_court_physician_as_effect = { SCOPE_NAME = court_physician }
-		scope:court_physician = {
-			court_event_character_flag_effect = yes
-		}
-		if = {
-			limit = {
-				any_courtier_or_guest = {
-					has_trait = drunkard
-					NOR = {
-						this = scope:court_physician
-						this = scope:court_chaplain
-					}
-				}
-			}
-			random_courtier_or_guest = {
-				limit = {
-					has_trait = drunkard
-					NOR = {
-						this = scope:court_physician
-						this = scope:court_chaplain
-					}
-				}
-				save_scope_as = courtier_drunkard
-				court_event_character_flag_effect = yes
-			}
-		}
-	}
-
-	#Option A: side with the chaplain
-	option = {
-		name = court.6060.a
-		scope:court_chaplain = {
-			add_opinion = {
-				target = root
-				modifier = pleased_opinion
-				opinion = 30
-			}
-		}
-		scope:court_physician = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -15
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:courtier_drunkard
-			}
-			scope:courtier_drunkard = {
-				add_opinion = {
-					target = root
-					modifier = disappointed_opinion
-					opinion = -30
-				}
-			}
-		}
-		add_character_modifier = {
-			modifier = court_no_wine_modifier
-			days = 3650
-		}
-		add_piety = medium_piety_gain
-		stress_impact = {
-			cynical = medium_stress_impact_gain
-			gluttonous = major_stress_impact_gain
-			reveler_1 = major_stress_impact_gain
-			reveler_2 = major_stress_impact_gain
-			reveler_3 = major_stress_impact_gain
-			drunkard = massive_stress_impact_gain
-		}
-		ai_chance = {
-			base = 100
-			modifier = {
-				has_trait = cynical
-				add = -25
-			}
-			modifier = {
-				has_trait = gluttonous
-				add = -50
-			}
-			modifier = {
-				has_trait = lifestyle_reveler
-				add = -75
-			}
-			modifier = {
-				has_trait = drunkard
-				add = -100
-			}
-		}
-	}
-
-	#Option B: side with the physician
-	option = {
-		name = court.6060.b
-		scope:court_physician = {
-			add_opinion = {
-				target = root
-				modifier = pleased_opinion
-				opinion = 30
-			}
-		}
-		scope:court_chaplain = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -15
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:courtier_drunkard
-			}
-			scope:courtier_drunkard = {
-				add_opinion = {
-					target = root
-					modifier = disappointed_opinion
-					opinion = -15
-				}
-			}
-		}
-		add_character_modifier = {
-			modifier = court_moderate_drinking_modifier
-			days = 3650
-		}
-		add_prestige = medium_prestige_gain
-		stress_impact = {
-			zealous = medium_stress_impact_gain
-			gluttonous = medium_stress_impact_gain
-			reveler_1 = medium_stress_impact_gain
-			reveler_2 = medium_stress_impact_gain
-			reveler_3 = medium_stress_impact_gain
-			drunkard = major_stress_impact_gain
-		}
-		ai_chance = {
-			base = 100
-			modifier = {
-				has_trait = zealous
-				add = -25
-			}
-			modifier = {
-				has_trait = gluttonous
-				add = -25
-			}
-			modifier = {
-				has_trait = lifestyle_reveler
-				add = -25
-			}
-			modifier = {
-				has_trait = drunkard
-				add = -75
-			}
-			modifier = {
-				has_trait = lifestyle_physician
-				add = 75
-			}
-			modifier = {
-				has_trait = temperate
-				add = 75
-			}
-		}
-	}
-
-	#Option C: side with the drunkard
-	option = {
-		name = court.6060.c
-		trigger = {
-			exists = scope:courtier_drunkard
-		}
-		if = {
-			limit = {
-				can_be_drunkard = yes
-			}
-			random = {
-				chance = 25
-				add_trait = drunkard
-			}
-		}
-		scope:courtier_drunkard = {
-			add_opinion = {
-				target = root
-				modifier = pleased_opinion
-				opinion = 30
-			}
-		}
-		if = {
-			limit = {
-			    NOT = { has_relation_friend = scope:courtier_drunkard }
-			}
-			progress_towards_friend_effect = {
-			    CHARACTER = scope:courtier_drunkard
-			    OPINION = no
-			}
-		}
-		scope:court_chaplain = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		scope:court_physician = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		stress_impact = {
-			base = medium_stress_impact_loss
-			zealous = medium_stress_impact_gain
-			temperate = major_stress_impact_gain
-			physician_1 = major_stress_impact_gain
-			physician_2 = major_stress_impact_gain
-			physician_3 = major_stress_impact_gain
-		}
-		ai_chance = {
-			base = 100
-			modifier = {
-				has_trait = drunkard
-				add = 100
-			}
-			modifier = {
-				has_trait = zealous
-				add = -25
-			}
-			modifier = {
-				has_trait = temperate
-				add = -50
-			}
-			modifier = {
-				has_trait = lifestyle_physician
-				add = -50
-			}
-		}
-	}
-
-	#Option D: you are already a drunkard
-	option = {
-		name = court.6060.d
-		trigger = {
-			has_trait = drunkard
-			NOT = {
-				exists = scope:courtier_drunkard
-			}
-		}
-		scope:court_chaplain = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		scope:court_physician = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		stress_impact = {
-			base = medium_stress_impact_loss
-			zealous = medium_stress_impact_gain
-			temperate = major_stress_impact_gain
-			physician_1 = major_stress_impact_gain
-			physician_2 = major_stress_impact_gain
-			physician_3 = major_stress_impact_gain
-		}
-		ai_chance = {
-			base = 200
-			modifier = {
-				has_trait = zealous
-				add = -25
-			}
-			modifier = {
-				has_trait = temperate
-				add = -50
-			}
-			modifier = {
-				has_trait = lifestyle_physician
-				add = -50
-			}
-		}
-	}
-
-	#Option E: no drunkards, but might become one!
-	option = {
-		name = court.6060.d
-		trigger = {
-			NOR = {
-				exists = scope:courtier_drunkard
-				has_trait = drunkard
-			}
-		}
-		random = {
-			chance = 25
-			add_trait = drunkard
-		}
-		scope:court_chaplain = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		scope:court_physician = {
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -30
-			}
-		}
-		stress_impact = {
-			base = medium_stress_impact_loss
-			zealous = medium_stress_impact_gain
-			temperate = major_stress_impact_gain
-			physician_1 = major_stress_impact_gain
-			physician_2 = major_stress_impact_gain
-			physician_3 = major_stress_impact_gain
-		}
-		ai_chance = {
-			base = 200
-			modifier = {
-				has_trait = zealous
-				add = -25
-			}
-			modifier = {
-				has_trait = temperate
-				add = -50
-			}
-			modifier = {
-				has_trait = lifestyle_physician
-				add = -50
-			}
-		}
-	}
-	after = {
-		if = {
-			limit = {
-				exists = scope:courtier_drunkard
-			}
-			scope:courtier_drunkard = {
-				clear_court_event_participation = yes
-			}
-		}
-		scope:court_chaplain = {
-			clear_court_event_participation = yes
-		}
-		scope:court_physician = {
-			clear_court_event_participation = yes
-		}
-	}
-}
 
 #############################
 # The Value of Letters		#
@@ -23195,9 +22398,7 @@ court.8070 = {
 			flag:court_gardener = { move_and_grant_court_position_effect = { POS = court_gardener_court_position } }
 			flag:court_artificer = { move_and_grant_court_position_effect = { POS = court_artificer_court_position } }
 			flag:cultural_emissary = { move_and_grant_court_position_effect = { POS = cultural_emissary_court_position } }
-			flag:chief_qadi = { move_and_grant_court_position_effect = { POS = chief_qadi_court_position } }
 			flag:garuda = { move_and_grant_court_position_effect = { POS = garuda_court_position } }
-			flag:keeper_of_swans = { move_and_grant_court_position_effect = { POS = keeper_of_swans_court_position } }
 		}
 		reverse_add_opinion = {
 			target = scope:parent

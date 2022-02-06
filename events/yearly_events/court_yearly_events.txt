@@ -2024,18 +2024,6 @@ court_yearly.6030 = {
 			}
 			add_stress = medium_stress_gain
 		}
-		random = {
-			chance = 15
-			if = {
-				limit = {
-					is_female = yes
-				}
-				give_nickname = nick_garlic_queen
-			}
-			else = {
-				give_nickname = nick_the_garlic
-			}
-		}
 		ai_chance = {
 			base = 50
 			ai_value_modifier = {
@@ -2170,18 +2158,6 @@ court_yearly.6030 = {
 			}
 		}
 		add_prestige = medium_prestige_loss
-		random = {
-			chance = 15
-			if = {
-				limit = {
-					is_female = yes
-				}
-				give_nickname = nick_garlic_queen
-			}
-			else = {
-				give_nickname = nick_the_garlic
-			}
-		}
 		every_courtier_or_guest = {
 			custom = court_6000_all_courtiers_and_guests
 			add_opinion = {
@@ -3106,13 +3082,6 @@ court_yearly.4800 = {
 					is_available_ai_adult = yes
 				}
 			}
-			AND = {
-				employs_court_position = keeper_of_swans_court_position
-				any_court_position_holder = {
-					type = keeper_of_swans_court_position
-					is_available_ai_adult = yes
-				}
-			}
 		}
 	}
 	left_portrait = {
@@ -3146,12 +3115,6 @@ court_yearly.4800 = {
 			}
 			random_court_position_holder = {
 				type = court_jester_court_position
-				save_scope_as = defenestrated_character
-			}
-		}
-		else = {
-			random_court_position_holder = {
-				type = keeper_of_swans_court_position
 				save_scope_as = defenestrated_character
 			}
 		}
@@ -3425,7 +3388,6 @@ scripted_effect event_0101_spawn_criminal_effect = {
 					}
 					replace_with_learning_trait_effect = yes
 					add_trait = lifestyle_herbalist
-					give_nickname = nick_the_angel_of_death 
 				}
 				10 = { #Devil worshiper
 					add_character_flag = {

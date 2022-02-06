@@ -2989,92 +2989,11 @@ scripted_trigger artifact_4070_valid_relic_trigger = {
 	has_variable = relic
 	trigger_if = {
 		limit = {
-			var:relic = flag:christian
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:christianity_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:islamic
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:islam_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:buddhism
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:buddhism_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
 			var:relic = flag:zoroastr
 		}
 		exists = previous_owner
 		previous_owner = {
 			NOT = { faith.religion = religion:zoroastrianism_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:jainism
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:jainism_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:germanic
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:germanic_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:slavic
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:slavic_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:boog
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:west_african_roog_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:hinduism
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:hinduism_religion }
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			var:relic = flag:finno_ugric_religion
-		}
-		exists = previous_owner
-		previous_owner = {
-			NOT = { faith.religion = religion:finno_ugric_religion }
 		}
 	}
 	trigger_else = {

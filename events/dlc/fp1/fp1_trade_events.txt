@@ -380,11 +380,6 @@ scripted_effect fp1_set_prime_trade_partner_effect = {
 		value = scope:recipient
 		days = fp1_trade_events_truce_length_value
 	}
-	# Fire off the renewal event from the date of expiry.
-	trigger_event = {
-		id = fp1_trade_events.0011
-		days = fp1_trade_events_truce_renewal_date_value
-	}
 	# Trigger the on_action.
 	if = {
 		limit = {

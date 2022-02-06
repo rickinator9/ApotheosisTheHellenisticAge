@@ -3233,7 +3233,6 @@ hold_court.3070 = {
 			}
 		}
 		name = hold_court.3070.b
-		give_nickname = nick_the_child_killer
 		add_dread = massive_dread_gain
 		every_vassal = {
 			custom = custom.every_non_callous_or_sadistic_vassal
@@ -3280,6 +3279,8 @@ hold_court.3070 = {
 				ai_compassion = -0.5 # compassionate don't want to slice kid
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_large_increase }
 	}
 
 	# Option C: Favour the younger woman
@@ -5256,7 +5257,7 @@ hold_court.4200 = {
 		}
 		scope:fleeing_ally.primary_heir = {
 			save_scope_as = usurping_heir
-			give_nickname = nick_the_usurper
+			change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 		}
 		scope:fleeing_ally = {
 			hidden_effect = { break_alliance = root }
@@ -5383,9 +5384,6 @@ hold_court.4200 = {
 	option = {
 		name = hold_court.4200.b
 		add_courtier = scope:fleeing_ally
-		scope:fleeing_ally = {
-			give_nickname = nick_the_footstool
-		}
 		add_prestige = medium_prestige_gain
 		add_hook = {
 			target = scope:fleeing_ally
@@ -6589,7 +6587,7 @@ hold_court.4500 = {
 		}
 		hidden_effect = {
 			scope:demanding_poet = {
-				give_nickname = nick_the_poet
+				change_nickname_weight_effect = { NICKNAME = nick_the_poet_good CHANGE = nickname_weight_small_decrease }
 				court_event_character_flag_effect = yes
 			} 
 		}
@@ -7066,7 +7064,6 @@ hold_court.4600 = {
 				days = { 30 40 }
 			}
 		}
-		give_nickname = nick_the_child_of_devilgod
 		add_piety = medium_piety_loss
 		ai_chance = {
 			base = 25
@@ -9333,39 +9330,6 @@ hold_court.5020 = {
 				}
 				else = {
 					save_scope_as = portrait_3
-				}
-			}
-			hidden_effect = { #What do they think caused the mania?
-				random_list = {
-					10 = {
-						trigger = {
-							faith = { religion_tag = christianity_religion }
-				    		scope:court_chaplain = { faith = { religion_tag = christianity_religion } }
-						}
-						save_scope_value_as = {
-							name = john
-							value = yes
-						}
-					}
-					10 = {
-						trigger = {
-							faith = { religion_tag = christianity_religion }
-				    		scope:court_chaplain = { faith = { religion_tag = christianity_religion } }
-						}
-						save_scope_value_as = {
-							name = vitus
-							value = yes
-						}
-					}
-					10 = {
-						trigger = {
-							NOT = {
-								faith = { religion_tag = christianity_religion }
-				    			scope:court_chaplain = { faith = { religion_tag = christianity_religion } }
-							}
-						}
-						#If you're not Christian they will just mention HighGod
-					}
 				}
 			}
 		}
@@ -11640,12 +11604,9 @@ hold_court.6040 = {
 # The tomb of a local saint has been growing in popularity. The devotees of the saint are now asking for a land grant to support the growing religious establishment there. #
 
 scripted_trigger hold_court_6050_religion_trigger = {
-	OR = {
-		religion = religion:christianity_religion
-		religion = religion:islam_religion
-		religion = religion:buddhism_religion
-		religion = religion:hinduism_religion
-	}
+	# TODO: Maybe cool for Thracians?
+	
+	always = no
 }
 
 hold_court.6050 = {
@@ -14750,25 +14711,6 @@ hold_court.6120 = {
 			save_scope_as = steward
 			court_event_character_flag_effect = yes
 		}
-		if = {
-			limit = {
-				employs_court_position = keeper_of_swans_court_position
-				any_court_position_holder = {
-					type = keeper_of_swans_court_position
-					has_court_event_flag = no
-					is_available_ai_adult = yes
-				}
-			}
-			random_court_position_holder = {
-				type = keeper_of_swans_court_position
-				limit = {
-					has_court_event_flag = no
-					is_available_ai_adult = yes
-				}
-				save_scope_as = keeper_swans
-				court_event_character_flag_effect = yes
-			}
-		}
 		else_if = {
 			limit = {
 				employs_court_position = seneschal_court_position
@@ -16352,42 +16294,6 @@ hold_court.6150 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith.religion = religion:christianity_religion
-				}
-				desc = hold_court.6150.desc_christianism
-			}
-			triggered_desc = {
-				trigger = {
-					faith.religion = religion:buddhism_religion
-				}
-				desc = hold_court.6150.desc_buddhism
-			}
-			triggered_desc = {
-				trigger = {
-					faith.religion = religion:islam_religion
-				}
-				desc = hold_court.6150.desc_islam
-			}
-			triggered_desc = {
-				trigger = {
-					faith.religion = religion:judaism_religion
-				}
-				desc = hold_court.6150.desc_judaism
-			}
-			triggered_desc = {
-				trigger = {
-					faith.religion = religion:germanic_religion
-				}
-				desc = hold_court.6150.desc_germanic
-			}
-			triggered_desc = {
-				trigger = {
-					faith.religion = religion:hinduism_religion
-				}
-				desc = hold_court.6150.desc_hinduism
-			}
-			triggered_desc = {
-				trigger = {
 					faith.religion = religion:zoroastrianism_religion
 				}
 				desc = hold_court.6150.desc_zoroastrianism
@@ -16487,12 +16393,6 @@ hold_court.6150 = {
 		modifier = {
 			factor = 1.5
 			culture = { has_cultural_tradition = tradition_mendicant_mystics}
-		}
-		modifier = {
-			factor = 2
-			faith.religion = religion:christianity_religion
-			current_year < 1001
-			current_year >= 990
 		}
 
 		# Court weightings.
@@ -20194,34 +20094,6 @@ hold_court.6230 = {
 	#Option F: kill the elephants
 	option = {
 		name = hold_court.6230.f
-		trigger = {
-			NOT = { faith.religion = religion:hinduism_religion }
-		}
-		if = {
-			limit = {
-				scope:6230_vassal = {
-					faith.religion = religion:hinduism_religion
-				}
-			}
-			reverse_add_opinion = {
-				target = scope:6230_vassal
-				modifier = impious_opinion
-				opinion = -20
-			}
-		}
-		if = {
-			limit = {
-				scope:6230_province.county = {
-					faith.religion = religion:hinduism_religion
-				}
-			}
-			scope:6230_province.county = {
-				add_county_modifier = {
-					modifier = 6230_elephant_slayer_county_modifier
-					years = 5
-				}
-			}
-		}
 		change_current_court_grandeur = medium_court_grandeur_gain
 		stress_impact = {
 			compassionate = medium_stress_impact_gain
@@ -20238,29 +20110,6 @@ hold_court.6230 = {
 			modifier = {
 				has_trait = sadistic
 				add = 50
-			}
-		}
-	}
-
-	#Option D: Ganesh leads them
-	option = {
-		name = hold_court.6230.d
-		trigger = {
-			faith.religion = religion:hinduism_religion
-		}
-		add_piety = major_piety_gain
-		reverse_add_opinion = {
-			target = scope:6230_vassal
-			modifier = disappointed_opinion
-			opinion = -10
-		}
-		stress_impact = {
-			cynical = major_stress_impact_gain
-		}
-		ai_chance = {
-			base = 100
-			ai_value_modifier = {
-				ai_zeal = 1
 			}
 		}
 	}
@@ -20934,25 +20783,6 @@ hold_court.7000 = {
 					}
 				}
 			}
-			else_if = { # Force my spouse to undergo penance
-				limit = { 
-					faith = { religion_tag = christianity_religion } # Only Christians can do penance
-					OR = {
-						has_character_flag = hold_court_7000_criminal_spouse
-						has_character_flag = hold_court_7000_lustful_spouse
-					}
-				}
-				add_piety = medium_piety_value
-				scope:controversial_spouse = {
-					hold_court_7000_penance_effect = yes
-					add_opinion = {
-						modifier = hold_court_7000_forced_penance
-						target = root
-						opinion = -30
-					}
-				}
-
-			}
 			else_if = { # I can't do anything about this!
 				limit = { has_character_flag = hold_court_7000_lowborn_spouse }
 				dynasty = { add_dynasty_prestige = minor_dynasty_prestige_loss }
@@ -21286,68 +21116,7 @@ hold_court.7010 = {
 
 		scope:frontier_hero = {
 			add_prestige = medium_prestige_gain
-			if = {
-				limit = { has_character_flag = frontier_hero_byzantine }
-				give_nickname = nick_akritis
-			}
-			else_if = {
-				limit = { 
-					has_character_flag = frontier_hero_reconquista
-				}
-				if = {
-					limit = {
-						culture = { has_cultural_pillar = heritage_iberian }
-					}
-					give_nickname = nick_the_conquistador
-				}
-				else_if = {
-					limit = { has_culture = culture:andalusian }
-					give_nickname = nick_al_mansur
-				}
-			}
-			else_if = {
-				limit = { has_character_flag = frontier_hero_anglofranco }
-				if = {
-					limit = { has_cultural_pillar = heritage_west_germanic }
-					give_nickname = nick_the_chevalier
-				}
-				else_if = {
-					limit = { has_cultural_pillar = heritage_frankish }
-					give_nickname = nick_the_irreproachable
-				}
-			}
-			else = {
-				if = {
-					limit = {
-						var:nickname = flag:nick_the_bold
-					}
-					give_nickname = nick_the_bold 
-				}
-				else_if = {
-					limit = {
-						var:nickname = flag:nick_the_valiant
-					}
-					give_nickname = nick_the_valiant
-				}
-				else_if = {
-					limit = {
-						var:nickname = flag:nick_the_chivalrous 
-					}
-					give_nickname = nick_the_chivalrous
-				}
-				else_if = {
-					limit = {
-						var:nickname = flag:nick_the_fearless
-					}
-					give_nickname = nick_the_fearless
-				}
-				else_if = {
-					limit = {
-						var:nickname = flag:nick_the_brave
-					}
-					give_nickname = nick_the_brave 
-				}
-			}
+			set_permanent_nickname_effect = { NICKNAME = nick_the_victorious }
 		}
 	}
 	
@@ -23529,300 +23298,6 @@ hold_court.7060 = {
 # 7070 - 7079
 ##################################################
 
-scripted_trigger hold_court_7070_modifiers_trigger = {
-	OR = {
-		has_character_modifier = hold_court_7070_defended_peasantry
-		has_character_modifier = hold_court_7070_defended_church
-		has_character_modifier = hold_court_7070_undermined_church
-	}
-}
-
-# Tithe Barn suffers theft
-hold_court.7070 = {
-	type = court_event
-	title = hold_court.7070.title
-	desc = hold_court.7070.desc
-	theme = court
-	court_scene = {
-		button_position_character = scope:irritated_bishop
-		court_event_force_open = yes
-		show_timeout_info = no
-		should_pause_time = yes
-		roles = {
-			scope:irritated_bishop = {
-				group = petitioners_group
-				animation = anger
-			}
-			scope:hapless_thief = {
-				group = petitioners_group
-				animation = fear
-			}
-		}
-	}
-
-	widget = {
-		gui = "event_window_widget_event_chain_progress"
-		container = "custom_widgets_container"
-		controller = event_chain_progress
-	}
-
-	weight_multiplier = {
-		base = 1
-
-		# Court weightings.
-		ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_administrative }
-	} 
-
-	trigger = {
-		NOT = { has_character_flag = had_hold_court_7070 }
-		hold_court_7070_modifiers_trigger = no
-		# Must be have clerical taxation doctrine
-		faith = { religion_tag = christianity_religion }
-		faith = { has_doctrine = doctrine_clerical_function_taxation }
-		# A valid bishop exists
-		any_theocratic_vassal = {
-			has_court_event_flag = no
-			faith = root.faith
-			is_landed = yes
-			is_available_healthy_ai_adult = yes
-		}
-	}
-
-	immediate = {
-		add_character_flag = had_hold_court_7070
-		# Trigger next event in chain.
-		hold_court_queue_next_event_effect = yes
-		# Generate thief - scope:hapless_thief
-		create_character = {
-			location = root.capital_province
-			template = generic_peasant_character
-			save_scope_as = hapless_thief
-		}
-		scope:hapless_thief = {
-			court_event_character_flag_effect = yes
-		}
-		# Select bishop - scope:irritated_bishop
-		random_theocratic_vassal = {
-			limit = {
-				has_court_event_flag = no
-				is_available_healthy_ai_adult = yes
-				faith = root.faith
-				is_landed = yes
-			}
-			save_scope_as = irritated_bishop
-			court_event_character_flag_effect = yes
-		}
-		scope:irritated_bishop = {
-			capital_province = {
-				save_scope_as = tithe_province
-			}
-		}
-	}
-
-	option = { # Just option - thievery is wrong but extortionate tithes are too
-		name = hold_court.7070.a
-		flavor = hold_court.7070.a.tt
-
-		stress_impact = {
-			just = major_stress_impact_loss
-			greedy = major_stress_impact_gain
-		}
-		add_character_modifier = {
-			modifier = hold_court_7070_defended_peasantry
-			years = 10
-		}
-
-		scope:irritated_bishop = {
-			add_opinion = {
-				modifier = angry_opinion
-				target = root
-				opinion = -20
-			}
-		}
-
-		# Cleanup
-		scope:hapless_thief = {
-			silent_disappearance_effect = yes
-		}
-		ai_chance = {
-			base = 30
-			ai_value_modifier = {
-				ai_honor = 50
-				ai_compassion = 50
-				ai_rationality = 20
-				ai_zeal = -100
-			}
-		}
-	}
-
-	option = { # Zealous option - I will not abide the Church being maltreated
-		name = hold_court.7070.b
-		flavor = hold_court.7070.b.tt
-
-		trigger = {
-			has_trait = zealous
-		}
-
-		stress_impact = {
-			zealous = medium_stress_impact_loss
-			sadistic = minor_stress_impact_loss
-			callous =  minor_stress_impact_loss
-			compassionate = major_stress_impact_gain
-		}
-
-		scope:hapless_thief = {
-			death = {
-				death_reason = death_execution
-				killer = root
-			}
-		}
-
-		add_character_modifier = {
-			modifier = hold_court_7070_defended_church
-			years = 10
-		}
-
-		scope:irritated_bishop = {
-			add_opinion = {
-				modifier = pious_opinion
-				target = root
-				opinion = 20
-			}
-		}
-		ai_chance = {
-			base = 30
-			ai_value_modifier = {
-				ai_honor = -20
-				ai_compassion = -50
-				ai_zeal = 100
-			}
-		}
-	}
-
-	option = { # Compassionate option - the peasants are starving, let them eat food!
-		name = hold_court.7070.c
-		flavor = hold_court.7070.c.tt
-
-		trigger = {
-			scope:irritated_bishop = {
-				scope:tithe_province = {
-					OR = {
-						free_building_slots > 1
-						has_existing_farming_building_trigger = yes
-					}
-				}
-			}
-		}
-
-		stress_impact = {
-			compassionate = medium_stress_impact_loss
-			sadistic = major_stress_impact_loss
-			callous =  major_stress_impact_loss
-		}
-
-		scope:irritated_bishop = {
-			scope:tithe_province = {
-				upgrade_farm_building = yes
-			}
-			add_opinion = {
-				modifier = angry_opinion
-				target = root
-				opinion = -35
-			}
-		}
-		scope:hapless_thief = {
-			silent_disappearance_effect = yes
-		}
-		add_character_modifier = {
-			modifier = hold_court_7070_undermined_church
-			years = 5
-		}
-		ai_chance = {
-			base = 20
-			ai_value_modifier = {
-				ai_honor = 10
-				ai_compassion = 100
-				ai_rationality = 10
-				ai_zeal = -50
-			}
-		}
-	}
-
-	option = { # A thief is a thief
-		name = hold_court.7070.d
-
-		stress_impact = {
-			forgiving = major_stress_impact_gain
-			arbitrary = minor_stress_impact_loss
-			vengeful = medium_stress_impact_loss
-		}
-
-		imprison = {
-			target = scope:hapless_thief
-			type = dungeon
-		}
-		ai_chance = {
-			base = 20
-			ai_value_modifier = {
-				ai_honor = 10
-				ai_compassion = -50
-				ai_rationality = 20
-				ai_zeal = 20
-				ai_energy = -10
-			}
-		}
-	}
-
-	option = { # Greedy option - Taxes are mine to collect, not the Church's!
-		name = hold_court.7070.e
-		flavor = hold_court.7070.e.tt
-
-		trigger = {
-			has_trait = greedy
-		}
-
-		stress_impact = {
-			zealous = massive_stress_impact_gain
-			just = major_stress_impact_gain
-			generous = major_stress_impact_gain
-			greedy = minor_stress_impact_loss
-			cynical = minor_stress_impact_loss
-		}
-
-		add_gold = medium_gold_value
-
-		scope:irritated_bishop = {
-			progress_towards_rival_effect = {
-				CHARACTER = root
-				OPINION = yes
-			}
-
-			imprison = {
-				target = scope:hapless_thief
-				type = dungeon
-			}
-		}
-		ai_chance = {
-			base = 20
-			ai_value_modifier = {
-				ai_greed = 500
-				ai_zeal = -100
-			}
-		}
-	}
-
-	after = {
-		scope:hapless_thief = {
-			clear_court_event_participation = yes
-		}
-		scope:irritated_bishop = {
-			clear_court_event_participation = yes
-		}
-		# Finish up the chain if relevant.
-		hold_court_queue_post_event_effect = yes
-	}
-}
-
 
 
 
@@ -24331,32 +23806,11 @@ hold_court.8001 = {
 ##################################################
 
 scripted_trigger hold_court_8010_lord_trigger = {
-	has_court_event_flag = no
-	is_available_ai_adult = yes
-	primary_title.tier >= tier_county
-	has_government = feudal_government
-	vassal_contract_is_blocked_from_modification = no
-	OR = {
-		vassal_contract_obligation_level_can_be_increased = fortification_rights
-		NOT = { vassal_contract_has_flag = has_march_contract }
-	}
+	always = no
 }
 
 scripted_trigger hold_court_8010_contract_trigger = {
-	scope:frontier_lord = {
-		has_government = feudal_government
-		vassal_contract_has_modifiable_obligations = yes
-		OR = {
-			AND = {
-				root.culture = { has_innovation = innovation_battlements }
-				vassal_contract_obligation_level_can_be_increased = fortification_rights
-			}
-			AND = {
-				root.culture = { has_innovation = innovation_burhs }
-				NOT = { vassal_contract_has_flag = has_march_contract }
-			}
-		}
-	}
+	always = no
 }
 
 # A vassal bordering a powerful neighbor is worried
@@ -24458,62 +23912,6 @@ hold_court.8010 = {
 					de_jure_liege = { save_scope_as = neighboring_duchy }
 					holder.top_liege = { save_scope_as = neighboring_enemy }
 				}
-			}
-		}
-	}
-
-	option = { # Give vassal defensive contract (March/Fortification Rights)
-		name = hold_court.8010.a
-		trigger = { hold_court_8010_contract_trigger = yes }
-		scope:frontier_lord = {
-			if = {
-				limit = {
-					AND = {
-						root.culture = { has_innovation = innovation_battlements }
-						vassal_contract_obligation_level_can_be_increased = fortification_rights
-					}
-				}
-				vassal_contract_set_obligation_level = {
-					type = fortification_rights
-					level = 1
-				}
-			}
-			else = {
-				vassal_contract_set_obligation_level = {
-					type = special_contract
-					level = 2
-				}
-			}
-			add_opinion = {
-				modifier = grateful_opinion
-				target = root
-				opinion = 20
-			}
-		}
-		if = {
-			limit = {
-				can_add_hook = {
-					target = scope:frontier_lord
-					type = indebted_hook
-				}
-			}
-			add_hook = {
-				target = scope:frontier_lord
-				type = indebted_hook
-			}
-		}
-		stress_impact = {
-			greedy = medium_stress_impact_gain
-		}
-		ai_chance = {
-			base = 100
-			ai_value_modifier = {
-				ai_greed = -0.5
-				ai_compassion = 0.5
-			}
-			modifier = {	#Weight down for stress.
-				add = -30
-				has_trait = greedy
 			}
 		}
 	}
@@ -24886,25 +24284,7 @@ hold_court.8020 = {
 			court_event_character_flag_effect = yes
 		}
 		hidden_effect = {
-			if = {
-				limit = { religion = religion:christianity_religion }
-				create_artifact_pedestal_reliquary_christian_effect = { OWNER = scope:bishop }
-			}
-			else_if = {
-				limit = { religion = religion:islam_religion }
-				create_artifact_pedestal_reliquary_islam_effect = { OWNER = scope:bishop }
-			}
-			else_if = {
-				limit = { religion = religion:buddhism_religion }
-				create_artifact_pedestal_reliquary_buddhism_effect = { OWNER = scope:bishop }
-			}
-			else_if = {
-				limit = { religion = religion:judaism_religion }
-				create_artifact_pedestal_reliquary_judaism_effect = { OWNER = scope:bishop }
-			}
-			else = {
 				create_artifact_sculpture_religious_effect = { OWNER = scope:bishop }
-			}
 			scope:newly_created_artifact = { save_scope_as = bishop_relic }
 		}
 		if = {
@@ -29044,9 +28424,7 @@ scripted_effect hold_court_8090_position_grant_effect = { # Which position?
 		flag:court_gardener = { hold_court_8090_grant_effect = { POS = court_gardener_court_position } } # Gardener
 		flag:court_artificer = { hold_court_8090_grant_effect = { POS = court_artificer_court_position } } # Court Artificer
 		flag:cultural_emissary = { hold_court_8090_grant_effect = { POS = cultural_emissary_court_position } } # Cultural Emissary
-		flag:chief_qadi = { hold_court_8090_grant_effect = { POS = chief_qadi_court_position } } # Chief Qadi
 		flag:garuda = { hold_court_8090_grant_effect = { POS = garuda_court_position } } # Garuda
-		flag:keeper_of_swans = { hold_court_8090_grant_effect = { POS = keeper_of_swans_court_position } } # Keeper of Swans
 	}
 }
 
@@ -29065,24 +28443,6 @@ scripted_trigger hold_court_8090_eunuch_trigger = {
 scripted_trigger hold_court_8090_emissary_trigger = {
 	liege = { can_employ_court_position_type = cultural_emissary_court_position }
 	diplomacy >= 8
-}
-
-scripted_trigger hold_court_8090_qadi_trigger = {
-	liege = { can_employ_court_position_type = chief_qadi_court_position }
-	has_religion = religion:islam_religion
-	has_trait = education_learning
-	trigger_if = {
-		limit = {
-			liege.faith = { has_doctrine = doctrine_gender_male_dominated }
-		}
-		is_male = yes
-	}
-	trigger_if = {
-		limit = {
-			liege.faith = { has_doctrine = doctrine_gender_female_dominated }
-		}
-		is_female = yes
-	}
 }				
 
 scripted_trigger hold_court_8090_garuda_trigger = {
@@ -29092,8 +28452,7 @@ scripted_trigger hold_court_8090_garuda_trigger = {
 }
 
 scripted_trigger hold_court_8090_swans_trigger = {
-	liege = { can_employ_court_position_type = keeper_of_swans_court_position }
-	is_vassal_of = liege
+	always = no
 }
 
 scripted_effect hold_court_8090_hook_effect = {
@@ -29217,16 +28576,8 @@ hold_court.8090 = {
 				desc = hold_court_8090_emissary
 			}
 			triggered_desc = {
-				trigger = { scope:vassal.var:hold_court_8090_position = flag:chief_qadi }
-				desc = hold_court_8090_qadi
-			}
-			triggered_desc = {
 				trigger = { scope:vassal.var:hold_court_8090_position = flag:garuda }
 				desc = hold_court_8090_garuda
-			}
-			triggered_desc = {
-				trigger = { scope:vassal.var:hold_court_8090_position = flag:keeper_of_swans }
-				desc = hold_court_8090_keeper_of_swans
 			}
 		}
 		first_valid = {
@@ -29270,7 +28621,6 @@ hold_court.8090 = {
 							scope:vassal.var:hold_court_8090_position = flag:royal_architect
 							scope:vassal.var:hold_court_8090_position = flag:seneschal
 							scope:vassal.var:hold_court_8090_position = flag:court_gardener
-							scope:vassal.var:hold_court_8090_position = flag:keeper_of_swans
 							scope:vassal.stewardship > scope:old_holder.stewardship
 						}
 						AND = { # Learning roles
@@ -29279,7 +28629,6 @@ hold_court.8090 = {
 							scope:vassal.var:hold_court_8090_position = flag:court_physician
 							scope:vassal.var:hold_court_8090_position = flag:antiquarian
 							scope:vassal.var:hold_court_8090_position = flag:court_artificer
-							scope:vassal.var:hold_court_8090_position = flag:chief_qadi
 							scope:vassal.learning > scope:old_holder.learning
 						}
 						AND = { # Martial roles
@@ -29516,24 +28865,10 @@ hold_court.8090 = {
 			}
 			triggered_desc = {
 				trigger = {
-					scope:vassal.var:hold_court_8090_position = flag:chief_qadi
-					scope:vassal = { has_trait = scholar }
-				}
-				desc = hold_court_8090_interest_qadi
-			}
-			triggered_desc = {
-				trigger = {
 					scope:vassal.var:hold_court_8090_position = flag:garuda
 					scope:vassal = { has_trait = lifestyle_blademaster }
 				}
 				desc = hold_court_8090_interest_garuda
-			}
-			triggered_desc = {
-				trigger = {
-					scope:vassal.var:hold_court_8090_position = flag:keeper_of_swans
-					scope:vassal = { has_trait = lifestyle_hunter }
-				}
-				desc = hold_court_8090_interest_keeper_of_swans
 			}
 			triggered_desc = {
 				trigger = { has_relation_soulmate = scope:vassal }
@@ -30039,23 +29374,6 @@ hold_court.8090 = {
 					}
 					hold_court_8090_old_holder_effect = { POS = cultural_emissary_court_position }
 				}
-				2 = { # CHIEF QADI
-					trigger = { hold_court_8090_qadi_trigger = yes }
-					modifier = {
-						add = 25
-						has_trait = scholar
-					}
-					modifier = {
-						factor = 0.5
-						root = { employs_court_position = chief_qadi_court_position }
-					}
-					modifier = { factor = learning }
-					set_variable = {
-						name = hold_court_8090_position
-						value = flag:chief_qadi
-					}
-					hold_court_8090_old_holder_effect = { POS = chief_qadi_court_position }
-				}
 				2 = { # GARUDA
 					trigger = { hold_court_8090_garuda_trigger = yes }
 					modifier = {
@@ -30072,23 +29390,6 @@ hold_court.8090 = {
 						value = flag:garuda
 					}
 					hold_court_8090_old_holder_effect = { POS = garuda_court_position }
-				}
-				2 = { # KEEPER OF SWANS
-					trigger = { hold_court_8090_swans_trigger = yes }
-					modifier = {
-						add = 25
-						has_trait = lifestyle_hunter
-					}
-					modifier = {
-						factor = 0.5
-						root = { employs_court_position = keeper_of_swans_court_position }
-					}
-					modifier = { factor = stewardship }
-					set_variable = {
-						name = hold_court_8090_position
-						value = flag:keeper_of_swans
-					}
-					hold_court_8090_old_holder_effect = { POS = keeper_of_swans_court_position }
 				}
 			}
 			grant_random_empty_court_position_effect = { POSITIONER = root CANDIDATE = scope:vassal }
@@ -30225,9 +29526,7 @@ hold_court.8090 = {
 			flag:court_gardener = { move_and_grant_court_position_effect = { POS = court_gardener_court_position } }
 			flag:court_artificer = { move_and_grant_court_position_effect = { POS = court_artificer_court_position } }
 			flag:cultural_emissary = { move_and_grant_court_position_effect = { POS = cultural_emissary_court_position } }
-			flag:chief_qadi = { move_and_grant_court_position_effect = { POS = chief_qadi_court_position } }
 			flag:garuda = { move_and_grant_court_position_effect = { POS = garuda_court_position } }
-			flag:keeper_of_swans = { move_and_grant_court_position_effect = { POS = keeper_of_swans_court_position } }
 		}
 		if = {
 			limit = { exists = scope:vassal_advocate }
@@ -31697,32 +30996,6 @@ hold_court.8110 = {
 # 8120
 ##################################################
 
-scripted_trigger hold_court_8120_syncretic_faith_trigger = {
-	NOT = { scope:peasant.religion = root.religion }
-	OR = {
-		AND = { # Eastern
-			scope:peasant.faith.religion = { is_in_family = rf_eastern }
-			faith = { has_doctrine = tenet_eastern_syncretism }
-		}
-		AND = { # Pagan
-			scope:peasant.faith = { has_doctrine = unreformed_faith_doctrine }
-			faith = { has_doctrine = tenet_unreformed_syncretism }
-		}
-		AND = { # Christian
-			scope:peasant.religion = religion:christianity_religion
-			faith = { has_doctrine = tenet_christian_syncretism }
-		}
-		AND = { # Islam
-			scope:peasant.religion = religion:islam_religion
-			faith = { has_doctrine = tenet_islamic_syncretism }
-		}
-		AND = { # Judaism
-			scope:peasant.religion = religion:judaism_religion
-			faith = { has_doctrine = tenet_jewish_syncretism }
-		}
-	}
-}
-
 scripted_effect hold_court_8120_stop_effect = {
 	set_variable = {
 		name = hold_court_8120_religion_block
@@ -31845,7 +31118,6 @@ hold_court.8120 = {
 
 	option = { # Stop the priests - unsyncretic
 		name = hold_court.8120.a
-		trigger = { hold_court_8120_syncretic_faith_trigger = no }
 		if = {
 			limit = {
 				faith = {
@@ -31879,65 +31151,6 @@ hold_court.8120 = {
 			}
 			add_piety = miniscule_piety_loss
 		}
-		hold_court_8120_stop_effect = yes
-		ai_chance = {
-			base = 100
-			ai_value_modifier = {
-				ai_compassion = 0.5
-				ai_zeal = -1
-			}
-			modifier = {	#Weight down for stress.
-				add = -30
-				has_trait = callous
-			}
-			modifier = {	#Weight down for stress.
-				add = -30
-				has_trait = zealous
-			}
-		}
-	}
-
-	option = { # Stop the priests - syncretic
-		name = hold_court.8120.b
-		trigger = { hold_court_8120_syncretic_faith_trigger = yes }
-		if = {
-			limit = {
-				AND = { 
-					scope:peasant.faith.religion = { is_in_family = rf_eastern }
-					faith = { has_doctrine = tenet_eastern_syncretism }
-				}
-			}
-			custom_tooltip = hold_court.8120.b.tt_eastern # Eastern
-		}
-		else_if = {
-			limit = {
-				AND = { 
-					scope:peasant.faith = { has_doctrine = unreformed_faith_doctrine }
-					faith = { has_doctrine = tenet_unreformed_syncretism }
-				}
-			}
-			custom_tooltip = hold_court.8120.b.tt_pagan # Pagan
-		}
-		else_if = {
-			limit = {
-				AND = { 
-					scope:peasant.religion = religion:christianity_religion
-					faith = { has_doctrine = tenet_christian_syncretism }
-				}
-			}
-			custom_tooltip = hold_court.8120.b.tt_christianity # Christian
-		}
-		else_if = {
-			limit = {
-				AND = { 
-					scope:peasant.religion = religion:islam_religion
-					faith = { has_doctrine = tenet_islamic_syncretism }
-				}
-			}
-			custom_tooltip = hold_court.8120.b.tt_islam # Islam
-		}
-		else = { custom_tooltip = hold_court.8120.b.tt_judaism } # Judaism
-		add_piety = medium_piety_gain
 		hold_court_8120_stop_effect = yes
 		ai_chance = {
 			base = 100
@@ -36048,61 +35261,7 @@ hold_court.8171 = {
 
 # Is there a duke or higher vassal has room for a positive contract change?
 scripted_trigger hold_court_8180_lord_trigger = {
-	has_court_event_flag = no
-	is_available_ai_adult = yes
-	primary_title.tier >= tier_duchy
-	has_government = feudal_government
-	vassal_contract_is_blocked_from_modification = no
-	NOT = { has_variable = hc_8180_contract_var }
-	NOT = { has_hook = root }
-	OR = {
-		AND = {
-			NOT = { faith = liege.faith }
-			vassal_contract_obligation_level_can_be_increased = religious_rights # Religious
-		}
-		AND = {
-			liege.culture = { has_innovation = innovation_battlements }
-			vassal_contract_obligation_level_can_be_increased = fortification_rights # Fortification
-		}
-		AND = {
-			liege.culture = { has_innovation = innovation_currency_02 }
-			vassal_contract_obligation_level_can_be_increased = coinage_rights # Coinage
-		}
-		AND = {
-			liege = { 
-				OR = { # Only relevant if war declaration is limited
-					has_realm_law = crown_authority_2
-					has_realm_law = crown_authority_3
-				}
-			}
-			vassal_contract_obligation_level_can_be_increased = war_declaration_rights # War Declaration
-		}
-		vassal_contract_obligation_level_can_be_increased = council_rights # Council
-		AND = {
-			NOT = {
-				liege = { has_realm_law = crown_authority_0 } # Only relevant if revocation is possible
-			}
-			vassal_contract_obligation_level_can_be_increased = title_revocation_rights # Title Revocation
-		}
-		AND = { # Scutage
-			liege.culture = {
-				has_innovation = innovation_scutage
-			}
-			NOT = { vassal_contract_has_flag = has_scutage_contract }
-		}
-		AND = { # March
-			liege.culture = {
-				has_innovation = innovation_burhs
-			}
-			NOT = { vassal_contract_has_flag = has_march_contract }
-		}
-		AND = { # Palatinate
-			liege.culture = {
-				has_innovation = innovation_divine_right
-			}
-			NOT = { vassal_contract_has_flag = has_palatinate_contract }
-		}
-	}
+	always = no
 }
 
 # Increase the relevant contract
@@ -37636,28 +36795,6 @@ hold_court.8190 = {
 scripted_trigger hold_court_8200_infidel_trigger = {
 	is_available_ai_adult = yes
 	NOT = { faith = root.faith }
-	NOR = {
-		AND = { # Eastern
-			religion = { is_in_family = rf_eastern }
-			root.faith = { has_doctrine = tenet_eastern_syncretism }
-		}
-		AND = { # Pagan
-			faith = { has_doctrine = unreformed_faith_doctrine }
-			root.faith = { has_doctrine = tenet_unreformed_syncretism }
-		}
-		AND = { # Christian
-			religion = religion:christianity_religion
-			root.faith = { has_doctrine = tenet_christian_syncretism }
-		}
-		AND = { # Islam
-			religion = religion:islam_religion
-			root.faith = { has_doctrine = tenet_islamic_syncretism }
-		}
-		AND = { # Judaism
-			religion = religion:judaism_religion
-			root.faith = { has_doctrine = tenet_jewish_syncretism }
-		}
-	}
 	NAND = {
 		has_government = theocracy_government
 		primary_title = { is_head_of_faith = yes }
