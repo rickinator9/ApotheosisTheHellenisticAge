@@ -74,6 +74,7 @@ beards = {
                 OR = {
                     portrait_western_clothing_trigger = yes
                     portrait_byzantine_clothing_trigger = yes
+                    portrait_greek_clothing_trigger = yes
                 }
             }
             modifier = {
@@ -115,6 +116,7 @@ beards = {
                 OR = {
                     portrait_western_clothing_trigger = yes
                     portrait_byzantine_clothing_trigger = yes
+                    portrait_greek_clothing_trigger = yes
                 }
             }
             modifier = {
@@ -564,6 +566,84 @@ beards = {
                     }            
                 }
                 portrait_fp1_norse_clothing_trigger = yes
+            }
+            modifier = {
+                add = -100
+                exists = this
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_historical_scripted_appearance = yes
+                }
+            }
+        }
+    }
+
+    # ATHA
+
+    greek_straight = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = western_beards_straight
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        # outfit_tags = { no_clothes }
+        weight = {
+            base = 0
+            modifier = {
+                add = 70
+                OR = {
+                    NOT = { exists = this }
+                    has_gene = {
+                        category = gene_hair_type
+                        template = hair_straight
+                    }       
+                    has_gene = {
+                        category = gene_hair_type
+                        template = hair_wavy
+                    }            
+                }
+                portrait_greek_clothing_trigger = yes
+            }
+            modifier = {
+                add = -100
+                exists = this
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_historical_scripted_appearance = yes
+                }
+            }
+        }
+    }
+
+    greek_curly = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = western_beards_curly
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        # outfit_tags = { no_clothes }
+        weight = {
+            base = 0
+            modifier = {
+                add = 70
+                OR = {
+                    NOT = { exists = this }
+                     has_gene = {
+                        category = gene_hair_type
+                        template = hair_wavy
+                    }       
+                     has_gene = {
+                        category = gene_hair_type
+                        template = hair_curly
+                    }            
+                }
+                portrait_greek_clothing_trigger = yes
             }
             modifier = {
                 add = -100

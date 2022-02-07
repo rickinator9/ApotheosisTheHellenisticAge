@@ -65,6 +65,7 @@ clothes = {
 				portrait_byzantine_clothing_trigger = no
 				portrait_northern_clothing_trigger = no
 				portrait_western_clothing_trigger = no
+				portrait_greek_clothing_trigger = no
             }
 		}
 	}
@@ -143,6 +144,7 @@ clothes = {
 				portrait_byzantine_clothing_trigger = no
 				portrait_northern_clothing_trigger = no
 				portrait_western_clothing_trigger = no
+				portrait_greek_clothing_trigger = no
             }
 		}
     }
@@ -3561,6 +3563,184 @@ clothes = {
 
 ## ATHA
 
+	nightgown_greek = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_sickness
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+				template = bust_clothes
+			}
+
+		}
+		outfit_tags = { no_clothes }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				should_show_nudity = no
+				should_be_naked_trigger = yes
+			}
+			modifier = {
+				add = -1000
+				should_show_nudity = yes
+			}
+			modifier = {
+				add = -50
+				portrait_greek_clothing_trigger = no
+			}
+		}
+	}
+
+	poverty_robes_greek = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_sickness
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+				template = bust_clothes
+			}
+
+		}
+		weight = {
+			base = 0
+			# Boring clothes for characters with an active Vow of Poverty
+			modifier = {
+				add = 100
+				exists = this
+				has_character_modifier = vow_of_poverty_modifier
+				# Should still wear armor when going to war
+				NOT = { portrait_wear_armor_trigger = yes }
+			}
+			modifier = {
+				add = -50
+				portrait_greek_clothing_trigger = no
+			}
+		}
+	}
+
+	greek_prison = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_prison
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+				template = bust_clothes
+			}
+
+		}	
+		outfit_tags = { beggar_rags }
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				exists = this
+				portrait_has_trait_trigger = { TRAIT = peasant_leader }
+				OR = {
+					is_ruler = no
+					is_leading_faction_type = peasant_faction
+					AND = {
+						is_ruler = yes
+						is_landed = no
+						OR = {
+							has_government = feudal_government
+							has_government = clan_government
+						}
+					}
+				}
+				
+				NOR = {
+					portrait_mena_clothing_trigger = yes
+					portrait_indian_clothing_trigger = yes
+					portrait_steppe_clothing_trigger = yes
+					portrait_african_clothing_trigger = yes
+				}
+			}
+			modifier = {
+				add = 120
+				exists = this
+				is_imprisoned = yes
+				is_in_prison_type = dungeon
+				portrait_greek_clothing_trigger = yes
+			}
+		}
+	}
+
+	greek_sickness = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_sickness
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+				template = bust_clothes
+			}
+
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				exists = this
+				OR = {
+					has_short_disease_trigger = yes #affliction that would plausibly leave them bedridden for treatment
+					has_character_flag = use_sickness_clothes
+				}
+				portrait_greek_clothing_trigger = yes
+			}
+		}
+	}
+
+	greek_stealth = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_stealth
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+				template = bust_clothes
+			}
+
+		}	
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				exists = this
+				has_character_flag = use_stealth_clothes
+				portrait_greek_clothing_trigger = yes
+			}
+		}
+	}
+
 	greek_commoners = {
 		dna_modifiers = {
 			accessory = {
@@ -3588,7 +3768,7 @@ clothes = {
 					}
 					AND = { is_ruler = yes has_government = theocracy_government }
 				}
-				portrait_ATHA_greek_clothing_trigger = yes
+				portrait_greek_clothing_trigger = yes
 			}
 		}
 	}
@@ -3623,7 +3803,7 @@ clothes = {
 							}
 							AND = { is_ruler = yes has_government = theocracy_government }
 						}
-						portrait_ATHA_greek_clothing_trigger = yes
+						portrait_greek_clothing_trigger = yes
 					}
 					AND = {
 						exists = primary_spouse
@@ -3641,7 +3821,7 @@ clothes = {
 								}
 								AND = { is_ruler = yes has_government = theocracy_government }
 							}
-							portrait_ATHA_greek_clothing_trigger = yes
+							portrait_greek_clothing_spouse_trigger = yes
 						}
 					}
 				}
@@ -3680,7 +3860,7 @@ clothes = {
 							AND = { is_ruler = yes has_government = theocracy_government }
 						}
 						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						portrait_ATHA_greek_clothing_trigger = yes
+						portrait_greek_clothing_trigger = yes
 					}
 					AND = {
 						exists = primary_spouse
@@ -3697,7 +3877,7 @@ clothes = {
 								}
 								AND = { is_ruler = yes has_government = theocracy_government }
 							}
-							portrait_ATHA_greek_clothing_trigger = yes
+							portrait_greek_clothing_spouse_trigger = yes
 						}
 					}
 				}
@@ -3726,9 +3906,8 @@ clothes = {
 			modifier = {
 				add = 111
 				portrait_wear_armor_trigger = yes
-				portrait_ATHA_greek_clothing_trigger = yes
+				portrait_greek_clothing_trigger = yes
 			}
 		}
 	}
-
 }

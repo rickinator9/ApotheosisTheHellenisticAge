@@ -3505,6 +3505,50 @@ headgear = {
         }
 	}
 
+	# ATHA
+
+	greek_royalty = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = greek_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}		
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+				exists = this
+				portrait_can_use_noble_headgear_trigger = yes
+				OR = {
+					AND = {
+						OR = {
+							highest_held_title_tier >= tier_kingdom
+							AND = { is_ruler = yes has_government = theocracy_government }
+						}
+						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+						NOT = { has_government = republic_government }
+						portrait_greek_clothing_trigger = yes
+					}
+					AND = {
+						exists = primary_spouse
+						is_ruler = no
+						primary_spouse = {
+							OR = {
+								highest_held_title_tier >= tier_kingdom
+								AND = { is_ruler = yes has_government = theocracy_government }
+							}
+							portrait_greek_clothing_spouse_trigger = yes
+						}
+					}
+				}
+
+			}
+		}
+	}
+
 	ATHA_spartan_war = {
 		dna_modifiers = {
 			accessory = {
