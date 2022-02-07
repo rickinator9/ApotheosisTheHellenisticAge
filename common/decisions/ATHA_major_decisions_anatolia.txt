@@ -14,7 +14,14 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 	selection_tooltip = form_k_bithynia_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:bithynian
+		culture = {
+			OR = {
+				this = culture:bithynian
+				any_parent_culture_or_above = {
+					this = culture:bithynian
+				}
+			}
+		}
 		highest_held_title_tier <= tier_duchy
 		OR = {
 			has_government = feudal_government
@@ -101,10 +108,19 @@ form_k_ionia_decision = { # aka: Unite the poleis of the Ionian coast
 	selection_tooltip = form_k_ionia_decision_tooltip
 
 	is_shown = {
-		OR = {
-			has_culture = culture:dorian
-			has_culture = culture:ionian
-			has_culture = culture:aeolian
+		culture = {
+			OR = {
+				this = culture:dorian
+				this = culture:ionian
+				this = culture:aeolian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+					}
+				}
+			}
 		}
 
 		#Must be duke-tier or lower with capital in Ionian region, or be k_ionia
@@ -203,10 +219,19 @@ liberate_k_ionia_decision = { # aka: Liberate the Ionian coast
 
 	is_shown = {
 		#Must have a culture belonging to the region
-		OR = {
-			has_culture = culture:dorian
-			has_culture = culture:ionian
-			has_culture = culture:aeolian
+		culture = {
+			OR = {
+				this = culture:dorian
+				this = culture:ionian
+				this = culture:aeolian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+					}
+				}
+			}
 		}
 
 		#Primary title must be one of the liberated kingdoms in the Greater Ionia region
@@ -301,10 +326,19 @@ form_k_troas_decision = { # aka: Unite the poleis of the Troadic coast
 	selection_tooltip = form_k_troas_decision_tooltip
 
 	is_shown = {
-		OR = {
-			has_culture = culture:dorian
-			has_culture = culture:ionian
-			has_culture = culture:aeolian
+		culture = {
+			OR = {
+				this = culture:dorian
+				this = culture:ionian
+				this = culture:aeolian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+					}
+				}
+			}
 		}
 
 		capital_province = { geographical_region = custom_troas }
@@ -395,10 +429,19 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 
 	is_shown = {
 		#Must have a culture belonging to the region
-		OR = {
-			has_culture = culture:dorian
-			has_culture = culture:ionian
-			has_culture = culture:aeolian
+		culture = {
+			OR = {
+				this = culture:dorian
+				this = culture:ionian
+				this = culture:aeolian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+					}
+				}
+			}
 		}
 
 		#Primary title must be one of the liberated kingdoms in the Greater Ionia region
@@ -505,10 +548,19 @@ ionian_revolt_decision = { # aka: The Ionian Revolt
 		#Top liege must be a foreign king or emperor
 		top_liege = {
 			highest_held_title_tier >= tier_kingdom
-			NOR = {
-				culture = culture:dorian
-				culture = culture:ionian
-				culture = culture:aeolian
+			culture = {
+				NOR = {
+					this = culture:dorian
+					this = culture:ionian
+					this = culture:aeolian
+					any_parent_culture_or_above = {
+						OR = {
+							this = culture:dorian
+							this = culture:ionian
+							this = culture:aeolian
+						}
+					}
+				}
 			}
 		}
 
