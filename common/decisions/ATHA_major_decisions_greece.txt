@@ -92,7 +92,14 @@ form_k_athenai_decision = { # aka: Establish the Third Athenian League
 	selection_tooltip = form_k_athenai_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 		highest_held_title_tier <= tier_duchy
 		
 		#Can only do it once
@@ -203,7 +210,14 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 	selection_tooltip = form_e_athenai_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 		highest_held_title_tier <= tier_kingdom
 		capital_province = { geographical_region = custom_athenian_empire }
 		
@@ -300,7 +314,14 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 	selection_tooltip = form_k_insular_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -401,7 +422,14 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 	selection_tooltip = form_k_ionian_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -502,7 +530,14 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 	selection_tooltip = form_k_thracian_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -603,7 +638,14 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 	selection_tooltip = form_k_hellespontine_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -954,7 +996,7 @@ revive_spartan_faith_decision = { # aka: Honour the Laws of Lykourgos
 	desc = revive_spartan_faith_decision_desc
 	selection_tooltip = revive_spartan_faith_decision_tooltip
 
-	is_shown = { # TODO: Update conditions once we implement Spartan culture
+	is_shown = {
 		is_landed = yes
 		has_culture = culture:laconian
 		OR = { 
