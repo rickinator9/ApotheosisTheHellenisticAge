@@ -22,6 +22,17 @@ e_egypt = {
 	}
 	3472.5.1 = { # 282 BC
 		holder = macedonian03215 # Ptolemaios II
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_scholarly
+				}
+			}
+		}
 	}
 }
 
@@ -67,5 +78,16 @@ e_asia = {
 	}
 	3473.9.1 = { # 281 BC
 		holder = macedonian02904 # Antiochos I
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_administrative
+				}
+			}
+		}
 	}
 }
