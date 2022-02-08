@@ -1178,3 +1178,26 @@ ionian_revolt_0008_tt_effects = {
 		} 
 	}
 }
+
+liberate_culture_decision_effects = {
+	# Get some renown as a reward
+	dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
+
+	# Award some piety
+	add_piety = major_piety_value
+
+	# Award some prestige
+	add_prestige = major_prestige_value
+	
+	# Replace Servile Class tradition with Slaves no More
+	culture = {
+		if = {
+			limit = { has_cultural_tradition = tradition_servile_class }
+			remove_culture_tradition = tradition_servile_class
+		}
+		add_culture_tradition = tradition_former_slaves
+	}
+
+	# You get a fancy nickname
+	set_permanent_nickname_effect = { NICKNAME = nick_the_liberator }
+}
