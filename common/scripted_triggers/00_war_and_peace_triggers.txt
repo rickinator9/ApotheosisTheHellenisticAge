@@ -638,11 +638,9 @@ coastal_or_neighboring_county_trigger = {
 # Non-vikings will for the AI just assert it's legal, as the target titles should already have fallen back to only allowing land and sea borders
 neighboring_county_or_viking_conquest_trigger = {
 	OR = {
-		trigger_if = {
-			limit = {
-				$CHARACTER$ = {
-					can_use_viking_invasion_cbs_trigger = yes
-				}
+		AND = {
+			$CHARACTER$ = {
+				can_use_viking_invasion_cbs_trigger = yes
 			}
 			is_coastal_county = yes
 			OR = {
@@ -661,9 +659,6 @@ neighboring_county_or_viking_conquest_trigger = {
 					}
 				}
 			}
-		}
-		trigger_else = {
-			$CHARACTER$ = { is_ai = no }
 		}
 		any_neighboring_county = {
 			holder = {

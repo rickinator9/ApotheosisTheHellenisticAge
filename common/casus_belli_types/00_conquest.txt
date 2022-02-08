@@ -21,24 +21,6 @@
 	target_title_tier = county
 	ignore_effect = change_title_holder
 
-	ai_can_target_all_titles = {
-		can_use_viking_invasion_cbs_trigger = yes
-	}
-	ai_score_mult = {
-		value = viking_conquest_ai_score_value
-
-		# As a feudal gov, do not attack owner of tribal holdings  if you have a tribal holding to convert already
-		add = {
-			every_in_list = {
-				list = target_titles
-				if = {
-					limit = { feudal_clan_tribal_conquest_constraints = yes }
-					add = -1000
-				}
-			}
-		}		
-	}
-
 	valid_to_start = {
 		scope:target = {
 			neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
@@ -695,24 +677,6 @@ duchy_conquest_cb = {
 	target_title_tier = duchy
 	target_de_jure_regions_above = yes
 	ignore_effect = change_title_holder
-
-	ai_can_target_all_titles = {
-		can_use_viking_invasion_cbs_trigger = yes
-	}
-	ai_score_mult = {
-		value = viking_conquest_ai_score_value
-
-		# As a feudal gov, do not attack tribal
-		add = {
-			every_in_list = {
-				list = target_titles
-				if = {
-					limit = { feudal_clan_tribal_conquest_constraints = yes }
-					add = -1000
-				}
-			}
-		}		
-	}
 
 	valid_to_start = {
 		scope:target = {
