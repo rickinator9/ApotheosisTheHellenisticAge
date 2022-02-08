@@ -1549,12 +1549,12 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 80
-				exists = this
-				portrait_can_use_noble_headgear_trigger = no
-				portrait_mena_clothing_trigger = yes
-			}
+			# modifier = {
+			# 	add = 80
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = no
+			# 	portrait_mena_clothing_trigger = yes
+			# }
 			modifier = { # Non-european jesters should not use the jester hat
 				add = 1000
 				has_court_position = court_jester_court_position
@@ -1565,22 +1565,22 @@ headgear = {
 					portrait_northern_clothing_trigger = yes
 				}
 			}
-			modifier = {
-				add = 20
-				exists = this
-				highest_held_title_tier < tier_county
-				NOR = {
-					AND = {
-						exists = primary_spouse
-						primary_spouse = {
-							highest_held_title_tier > tier_county
-						}
-					}
-					has_government = republic_government
-					AND = { is_ruler = yes has_government = theocracy_government }
-				}
-				portrait_mena_clothing_spouse_trigger = yes
-			}
+			# modifier = {
+			# 	add = 20
+			# 	exists = this
+			# 	highest_held_title_tier < tier_county
+			# 	NOR = {
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			primary_spouse = {
+			# 				highest_held_title_tier > tier_county
+			# 			}
+			# 		}
+			# 		has_government = republic_government
+			# 		AND = { is_ruler = yes has_government = theocracy_government }
+			# 	}
+			# 	portrait_mena_clothing_spouse_trigger = yes
+			# }
 		}
 	}
 
@@ -1595,13 +1595,13 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 60
-				exists = this
-				highest_held_title_tier < tier_county
-				has_government = republic_government
-				portrait_mena_clothing_trigger = yes
-			}
+			# modifier = {
+			# 	add = 60
+			# 	exists = this
+			# 	highest_held_title_tier < tier_county
+			# 	has_government = republic_government
+			# 	portrait_mena_clothing_trigger = yes
+			# }
 		}
 	}
 
@@ -1616,45 +1616,45 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						highest_held_title_tier = tier_county
-						NOR = {
-							# has_dynasty = no
-							AND = {
-								has_government = republic_government
-								primary_title.tier > 1
-							}
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						portrait_mena_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							highest_held_title_tier = tier_county
-							NOR = {
-								# has_dynasty = no
-								AND = {
-									has_government = republic_government
-									primary_title.tier > 1
-								}
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							portrait_mena_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			highest_held_title_tier = tier_county
+			# 			NOR = {
+			# 				# has_dynasty = no
+			# 				AND = {
+			# 					has_government = republic_government
+			# 					primary_title.tier > 1
+			# 				}
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			portrait_mena_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				highest_held_title_tier = tier_county
+			# 				NOR = {
+			# 					# has_dynasty = no
+			# 					AND = {
+			# 						has_government = republic_government
+			# 						primary_title.tier > 1
+			# 					}
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				portrait_mena_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 	}
 
@@ -1669,44 +1669,44 @@ headgear = {
 		}		
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						OR = {
-							highest_held_title_tier = tier_duchy
-							AND = {
-								has_government = republic_government
-								primary_title.tier > 2
-							}
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						portrait_mena_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							OR = {
-								highest_held_title_tier = tier_duchy
-								AND = {
-									has_government = republic_government
-									primary_title.tier > 2
-								}
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							portrait_mena_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			OR = {
+			# 				highest_held_title_tier = tier_duchy
+			# 				AND = {
+			# 					has_government = republic_government
+			# 					primary_title.tier > 2
+			# 				}
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 			portrait_mena_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				OR = {
+			# 					highest_held_title_tier = tier_duchy
+			# 					AND = {
+			# 						has_government = republic_government
+			# 						primary_title.tier > 2
+			# 					}
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				portrait_mena_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 	}
 
@@ -1721,39 +1721,39 @@ headgear = {
 		}		
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						OR = {
-							highest_held_title_tier = tier_kingdom
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						NOT = { has_government = republic_government }
-						portrait_mena_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							OR = {
-								highest_held_title_tier = tier_kingdom
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-							NOT = { has_government = republic_government }
-							portrait_mena_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			OR = {
+			# 				highest_held_title_tier = tier_kingdom
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 			NOT = { has_government = republic_government }
+			# 			portrait_mena_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				OR = {
+			# 					highest_held_title_tier = tier_kingdom
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 				NOT = { has_government = republic_government }
+			# 				portrait_mena_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 	}
 
@@ -1768,40 +1768,40 @@ headgear = {
 		}		
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						OR = {
-							highest_held_title_tier = tier_kingdom
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						NOT = { has_government = republic_government }
-						portrait_mena_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						is_male = yes
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							OR = {
-								highest_held_title_tier = tier_kingdom
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-							NOT = { has_government = republic_government }
-							portrait_mena_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			OR = {
+			# 				highest_held_title_tier = tier_kingdom
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 			NOT = { has_government = republic_government }
+			# 			portrait_mena_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			is_male = yes
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				OR = {
+			# 					highest_held_title_tier = tier_kingdom
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 				NOT = { has_government = republic_government }
+			# 				portrait_mena_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 			modifier = {
 				factor = 0
 				NOT = {
@@ -1822,18 +1822,18 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				highest_held_title_tier = tier_empire
-				NOR = {
-					AND = { is_ruler = yes has_government = mercenary_government  }
-					has_government = republic_government
-					AND = { is_ruler = yes has_government = theocracy_government }
-				}
-				portrait_mena_clothing_trigger = yes
-			}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	highest_held_title_tier = tier_empire
+			# 	NOR = {
+			# 		AND = { is_ruler = yes has_government = mercenary_government  }
+			# 		has_government = republic_government
+			# 		AND = { is_ruler = yes has_government = theocracy_government }
+			# 	}
+			# 	portrait_mena_clothing_trigger = yes
+			# }
 			modifier = {
 				factor = 0
 				exists = this
@@ -1919,22 +1919,22 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 20
-				exists = this
-				 highest_held_title_tier < tier_county
-				 NOR = {
-					AND = {
-						exists = primary_spouse
-						primary_spouse = {
-							highest_held_title_tier > tier_county
-						}
-					}
-				 	has_government = republic_government
-				 	AND = { is_ruler = yes has_government = theocracy_government }
-				}
-				portrait_dde_abbasid_clothing_spouse_trigger = yes
-			}
+			# modifier = {
+			# 	add = 20
+			# 	exists = this
+			# 	 highest_held_title_tier < tier_county
+			# 	 NOR = {
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			primary_spouse = {
+			# 				highest_held_title_tier > tier_county
+			# 			}
+			# 		}
+			# 	 	has_government = republic_government
+			# 	 	AND = { is_ruler = yes has_government = theocracy_government }
+			# 	}
+			# 	portrait_dde_abbasid_clothing_spouse_trigger = yes
+			# }
 		}
 	}
 
@@ -1949,44 +1949,44 @@ headgear = {
 		}		
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						OR = {
-							highest_held_title_tier = tier_duchy
-							AND = {
-								has_government = republic_government
-								primary_title.tier > 2
-							}
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						portrait_dde_abbasid_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							OR = {
-								highest_held_title_tier = tier_duchy
-								AND = {
-									has_government = republic_government
-									primary_title.tier > 2
-								}
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							portrait_dde_abbasid_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			OR = {
+			# 				highest_held_title_tier = tier_duchy
+			# 				AND = {
+			# 					has_government = republic_government
+			# 					primary_title.tier > 2
+			# 				}
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 			portrait_dde_abbasid_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				OR = {
+			# 					highest_held_title_tier = tier_duchy
+			# 					AND = {
+			# 						has_government = republic_government
+			# 						primary_title.tier > 2
+			# 					}
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				portrait_dde_abbasid_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 	}
 
@@ -2001,39 +2001,39 @@ headgear = {
 		}		
 		weight = {
 			base = 0
-			modifier = {
-				add = 50
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				OR = {
-					AND = {
-						OR = {
-							highest_held_title_tier = tier_kingdom
-							AND = { is_ruler = yes has_government = theocracy_government }
-						}
-						NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-						NOT = { has_government = republic_government }
-						portrait_dde_abbasid_clothing_trigger = yes
-					}
-					AND = {
-						exists = primary_spouse
-						OR = {
-							is_ruler = no
-							highest_held_title_tier = tier_barony
-						}
-						primary_spouse = {
-							OR = {
-								highest_held_title_tier = tier_kingdom
-								AND = { is_ruler = yes has_government = theocracy_government }
-							}
-							NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
-							NOT = { has_government = republic_government }
-							portrait_dde_abbasid_clothing_spouse_trigger = yes
-						}
-					}
-				}
+			# modifier = {
+			# 	add = 50
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	OR = {
+			# 		AND = {
+			# 			OR = {
+			# 				highest_held_title_tier = tier_kingdom
+			# 				AND = { is_ruler = yes has_government = theocracy_government }
+			# 			}
+			# 			NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 			NOT = { has_government = republic_government }
+			# 			portrait_dde_abbasid_clothing_trigger = yes
+			# 		}
+			# 		AND = {
+			# 			exists = primary_spouse
+			# 			OR = {
+			# 				is_ruler = no
+			# 				highest_held_title_tier = tier_barony
+			# 			}
+			# 			primary_spouse = {
+			# 				OR = {
+			# 					highest_held_title_tier = tier_kingdom
+			# 					AND = { is_ruler = yes has_government = theocracy_government }
+			# 				}
+			# 				NOT = { AND = { is_ruler = yes has_government = mercenary_government  } } # Blocked for mercenaries
+			# 				NOT = { has_government = republic_government }
+			# 				portrait_dde_abbasid_clothing_spouse_trigger = yes
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 	}
 
@@ -2048,18 +2048,18 @@ headgear = {
 		}	
 		weight = {
 			base = 0
-			modifier = {
-				add = 100 # pick over mena
-				exists = this
-				portrait_can_use_noble_headgear_trigger = yes
-				highest_held_title_tier = tier_empire
-				NOR = {
-					AND = { is_ruler = yes has_government = mercenary_government  }
-					has_government = republic_government
-					AND = { is_ruler = yes has_government = theocracy_government }
-				}
-				portrait_dde_abbasid_clothing_trigger = yes
-			}
+			# modifier = {
+			# 	add = 100 # pick over mena
+			# 	exists = this
+			# 	portrait_can_use_noble_headgear_trigger = yes
+			# 	highest_held_title_tier = tier_empire
+			# 	NOR = {
+			# 		AND = { is_ruler = yes has_government = mercenary_government  }
+			# 		has_government = republic_government
+			# 		AND = { is_ruler = yes has_government = theocracy_government }
+			# 	}
+			# 	portrait_dde_abbasid_clothing_trigger = yes
+			# }
 		}
 	}
 
