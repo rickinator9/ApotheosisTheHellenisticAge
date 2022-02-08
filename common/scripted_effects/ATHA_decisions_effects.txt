@@ -72,27 +72,27 @@ form_e_athenai_decision_effects = {
 
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_military_settlers }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_military_settlers }
+		culture = { add_innovation = innovation_hellenistic_military_settlers }
 	}
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_postal_system }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_postal_system }
+		culture = { add_innovation = innovation_hellenistic_postal_system }
 	}
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_land_survey }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_land_survey }
+		culture = { add_innovation = innovation_hellenistic_land_survey }
 	}
 }
 
@@ -546,25 +546,25 @@ form_k_bithynia_decision_effects = {
 	# Innovations
 	if = {
 		limit = {
-			culture:bithynian = {
+			culture = {
 				NOT = {
 					has_innovation = innovation_classical_monetary_standards
 				}
 			}
 		}
-		culture:bithynian = {
+		culture = {
 			add_innovation = innovation_classical_monetary_standards
 		}
 	}
 	if = {
 		limit = {
-			culture:bithynian = {
+			culture = {
 				NOT = {
 					has_innovation = innovation_classical_bureaucracy
 				}
 			}
 		}
-		culture:bithynian = {
+		culture = {
 			add_innovation = innovation_classical_bureaucracy
 		}
 	}
@@ -591,12 +591,12 @@ found_bithynian_capital_scripted_effect = {
 			modifier = bithynian_capital_modifier
 			years = 20
 		}
-		#If this county doesn't have Bithynian culture, make it so
+		#If this county doesn't have the founder's culture, make it so
 		if = {
 			limit = { 
-				NOT = { culture = culture:bithynian }
+				NOT = { culture = ROOT.culture }
 			}
-			set_county_culture = culture:bithynian
+			set_county_culture = ROOT.culture
 		}
 		#If this county isn't the de jure capital of k_bithynia, make it so.
 		if = {
@@ -700,21 +700,27 @@ form_k_ionia_decision_effects = {
 
 		#Rename title based on culture
 		if = {
-			limit = { has_culture = culture:ionian }
+			limit = { 
+				culture = { has_name_list = name_list_ionian }
+			}
 			# Rename the title to Ionie
 			hidden_effect = {
 				title:k_ionia = { set_title_name = cn_ionia_ionic }
 			}
 		}
 		else_if = {
-			limit = { has_culture = culture:aeolian }
+			limit = { 
+				culture = { has_name_list = name_list_aeolian }
+			}
 			# Rename the title to Aiolis
 			hidden_effect = {
 				title:k_ionia = { set_title_name = d_aiolis }
 			}
 		}
 		else_if = {
-			limit = { has_culture = culture:dorian }
+			limit = { 
+				culture = { has_name_list = name_list_dorian }
+			}
 			# Rename the title to Doris
 			hidden_effect = {
 				title:k_ionia = { set_title_name = d_doris }
@@ -857,16 +863,23 @@ ionian_revolt_decision_effects = {
 	#Prevent AI liege from just transferring you back to your old liege
 	add_character_flag = ai_should_not_transfer
 
-	#Adjust culture if not Ionian/Aeolian/Dorian
+	#Adjust culture if not Ionian/Aeolian/Dorian (or a derivative culture)
 	if = {
 		limit = {
 			NOR = {
 				has_culture = culture:aeolian
 				has_culture = culture:dorian
 				has_culture = culture:ionian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:aeolian
+						this = culture:dorian
+						this = culture:ionian
+					}
+				}
 			}
 		}
-		#If capital is Ionian/Aeolian/Dorian, swap to your capital's culture
+		#If capital is Ionian/Aeolian/Dorian (or a derivative culture), swap to your capital's culture
 		if = {
 			limit = {
 				capital_province.culture = {
@@ -874,6 +887,13 @@ ionian_revolt_decision_effects = {
 						this = culture:aeolian
 						this = culture:dorian
 						this = culture:ionian
+						any_parent_culture_or_above = {
+							OR = {
+								this = culture:aeolian
+								this = culture:dorian
+								this = culture:ionian
+							}
+						}
 					}
 				}
 			}

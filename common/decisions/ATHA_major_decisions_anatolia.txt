@@ -15,6 +15,7 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 
 	is_shown = {
 		culture = {
+			has_cultural_pillar = heritage_thracian
 			OR = {
 				this = culture:bithynian
 				any_parent_culture_or_above = {
@@ -109,6 +110,7 @@ form_k_ionia_decision = { # aka: Unite the poleis of the Ionian coast
 
 	is_shown = {
 		culture = {
+			has_cultural_pillar = heritage_greek
 			OR = {
 				this = culture:dorian
 				this = culture:ionian
@@ -220,6 +222,7 @@ liberate_k_ionia_decision = { # aka: Liberate the Ionian coast
 	is_shown = {
 		#Must have a culture belonging to the region
 		culture = {
+			has_cultural_pillar = heritage_greek
 			OR = {
 				this = culture:dorian
 				this = culture:ionian
@@ -327,6 +330,7 @@ form_k_troas_decision = { # aka: Unite the poleis of the Troadic coast
 
 	is_shown = {
 		culture = {
+			has_cultural_pillar = heritage_greek
 			OR = {
 				this = culture:dorian
 				this = culture:ionian
@@ -430,6 +434,7 @@ liberate_k_troas_decision = { # aka: Liberate the Troadic coast
 	is_shown = {
 		#Must have a culture belonging to the region
 		culture = {
+			has_cultural_pillar = heritage_greek
 			OR = {
 				this = culture:dorian
 				this = culture:ionian
@@ -548,16 +553,19 @@ ionian_revolt_decision = { # aka: The Ionian Revolt
 		#Top liege must be a foreign king or emperor
 		top_liege = {
 			highest_held_title_tier >= tier_kingdom
-			culture = {
-				NOR = {
-					this = culture:dorian
-					this = culture:ionian
-					this = culture:aeolian
-					any_parent_culture_or_above = {
-						OR = {
-							this = culture:dorian
-							this = culture:ionian
-							this = culture:aeolian
+			NOT = {
+				culture = {
+					has_cultural_pillar = heritage_greek
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+						any_parent_culture_or_above = {
+							OR = {
+								this = culture:dorian
+								this = culture:ionian
+								this = culture:aeolian
+							}
 						}
 					}
 				}
