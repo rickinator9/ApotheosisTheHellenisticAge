@@ -1055,6 +1055,9 @@ pilgrimage.2007 = {
 	
 	trigger = {
 		exists = scope:activity
+		NOR = {
+			exists = scope:activity.var:had_pilgrimage_2007
+		}
 
 	}
 
@@ -2662,8 +2665,6 @@ pilgrimage.3301 = {
 		character = scope:wanderer
 		animation = personality_zealous
 		outfit_tags = { monk_outfit }
-		remove_default_outfit = yes
-		#hide_info = yes
 	}
 
 	trigger = {
@@ -2761,6 +2762,10 @@ pilgrimage.4001 = {
 		character = root
 		animation = ecstasy
 	}
+	artifact = {
+		target = scope:christian_saint_bone_scope
+		position = lower_right_portrait
+	}
 
 	trigger = {
 		exists = scope:activity
@@ -2768,6 +2773,7 @@ pilgrimage.4001 = {
 
 	immediate = {
 		save_holy_site_for_loc_effect = yes
+		christian_saint_bone_creation_effect = yes
 		play_music_cue = "mx_cue_epic_sacral_moment"
 	}
 	

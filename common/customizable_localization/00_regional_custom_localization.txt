@@ -315,6 +315,80 @@ TerrainType = {
 	}
 }
 
+TerrainTypeProvince = {
+	type = province
+
+	text = {	
+		trigger = { terrain = plains }
+		localization_key = terrain_plains
+	}
+
+	text = {	
+		trigger = { terrain = farmlands }
+		localization_key = terrain_farmlands
+	}
+
+	text = {	
+		trigger = { terrain = hills }
+		localization_key = terrain_hills
+	}
+
+	text = {	
+		trigger = {
+			OR = {
+				terrain = mountains
+				terrain = desert_mountains
+			}
+		}
+		localization_key = terrain_mountains
+	}
+
+	text = {	
+		trigger = { terrain = desert }
+		localization_key = terrain_desert
+	}
+
+	text = {	
+		trigger = { terrain = oasis }
+		localization_key = terrain_oasis
+	}
+
+	text = {	
+		trigger = { terrain = jungle }
+		localization_key = terrain_jungle
+	}
+
+	text = {	
+		trigger = { terrain = forest }
+		localization_key = terrain_forest
+	}
+
+	text = {	
+		trigger = { terrain = taiga }
+		localization_key = terrain_taiga
+	}
+
+	text = {	
+		trigger = { terrain = wetlands }
+		localization_key = terrain_wetlands
+	}
+
+	text = {	
+		trigger = { terrain = steppe }
+		localization_key = terrain_steppe
+	}
+
+	text = {	
+		trigger = { terrain = floodplains }
+		localization_key = terrain_floodplains
+	}
+
+	text = {	
+		trigger = { terrain = drylands }
+		localization_key = terrain_drylands
+	}
+}
+
 LocalAnimal = {
 	type = character
 
@@ -383,6 +457,13 @@ LocalAnimal = {
 	}
 
 	text = {
+		localization_key = animal_lynx
+		trigger = {
+			var:local_animal = flag:lynx
+		}
+	}
+
+	text = {
 		localization_key = animal_unicorn
 		trigger = {
 			var:local_animal = flag:unicorn
@@ -426,6 +507,13 @@ LocalAnimalMultiple = {
 		localization_key = animal_wolfs
 		trigger = {
 			var:local_animal = flag:wolf
+		}
+	}
+
+	text = {
+		localization_key = animal_lynxes
+		trigger = {
+			var:local_animal = flag:lynx
 		}
 	}
 
@@ -587,7 +675,7 @@ Abortifacient = {
 
 	text = {
 		localization_key = abortifacient_broadleaf_sage
-		#Mediterrenean
+		#Mediterranean
 	}
 
 	text = {
@@ -603,13 +691,13 @@ Abortifacient = {
 	text = {
 		localization_key = abortifacient_bishops_lace
 		#Christian only
-		#Europe and Soutwest Asia
+		#Europe and Southwest Asia
 	}
 
 	text = {
 		localization_key = abortifacient_wild_carrot
 		#Same as Bishop's Lace
-		#Europe and Soutwest Asia
+		#Europe and Southwest Asia
 	}
 
 	text = {
@@ -619,7 +707,7 @@ Abortifacient = {
 
 	text = {
 		localization_key = abortifacient_nutmeg
-		#Moluccas/Indonesia, India
+		#India
 	}
 
 	text = {
@@ -1220,3 +1308,561 @@ CulturalCurse = {
 	}
 
 }
+
+GetOldBook = {
+	type = character
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = old_book_general
+	}
+}
+
+get_region_dog_type = {
+	type = character 
+	random_valid = yes
+
+	# Europe
+	text = {
+		trigger = {
+			capital_province = { geographical_region = world_europe_south }
+		}
+		localization_key = dog_type_molossian # Molossus
+	}
+	# Generic
+	text = {
+		trigger = { always = yes }
+		localization_key = dog_type_hound # Hound
+	}
+}
+
+get_region_flower_type = {
+	type = character 
+	random_valid = yes
+
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_middle_east
+					geographical_region = world_africa_west
+					geographical_region = world_africa_east
+				}
+			}
+		}
+		localization_key = flower_type_hibiscus # Hibiscus
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_africa_west
+					geographical_region = world_africa_east
+				}
+			}
+		}
+		localization_key = flower_type_gardenia # Gardenia
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_steppe_east
+					geographical_region = world_steppe_tarim
+					geographical_region = world_himalaya
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_lotus # Lotus
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_steppe_east
+					geographical_region = world_steppe_tarim
+					geographical_region = world_himalaya
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_chrysanthemum # Chrysanthemum
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_jasmine # Jasmine
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+					geographical_region = world_africa
+				}
+			}
+		}
+		localization_key = flower_type_delphinium # Delphinium
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_violet # Violet/Pansy
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_peony # Peony
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_lavender # Lavender
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_lily # Lily
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_geranium # Geranium
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_iris # Iris
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_foxglove # Foxglove/Digitalis
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_carnation # Carnation/Dianthus
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_snapdragon # Snapdragon/Antirrhinum
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_narcissus # Narcissus/Daffodil
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_crocus # Crocus
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_tulip # Tulip
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_poppy # Poppy
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_rose # Rose
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_orchid # Orchid
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_aster # Aster/Daisy
+	}
+}
+
+get_region_flower_type_plural = {
+	type = character 
+	random_valid = yes
+
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_middle_east
+					geographical_region = world_africa_west
+					geographical_region = world_africa_east
+				}
+			}
+		}
+		localization_key = flower_type_hibiscus_plural # Hibiscuses
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_africa_west
+					geographical_region = world_africa_east
+				}
+			}
+		}
+		localization_key = flower_type_gardenia_plural # Gardenias
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_steppe_east
+					geographical_region = world_steppe_tarim
+					geographical_region = world_himalaya
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_lotus_plural # Lotuses
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_steppe_east
+					geographical_region = world_steppe_tarim
+					geographical_region = world_himalaya
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_chrysanthemum_plural # Chrysanthemums
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_india
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_jasmine # Jasmine
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+					geographical_region = world_africa
+				}
+			}
+		}
+		localization_key = flower_type_delphinium_plural # Delphiniums
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_violet_plural # Violets/Pansies
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_peony_plural # Peonies
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_lavender # Lavender
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+					geographical_region = world_india
+				}
+			}
+		}
+		localization_key = flower_type_lily_plural # Lilies
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_geranium_plural # Geraniums
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_iris_plural # Irises
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_asia_minor
+					geographical_region = world_steppe_west
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_foxglove_plural # Foxgloves/Digitalises
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_carnation_plural # Carnations/Dianthuses
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+				}
+			}
+		}
+		localization_key = flower_type_snapdragon_plural # Snapdragons/Antirrhinums
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_narcissus_plural # Narcissuses/Daffodils
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_crocus_plural # Crocuses
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe_west
+				}
+			}
+		}
+		localization_key = flower_type_tulip_plural # Tulips
+	}
+	text = {
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = world_europe_south
+					geographical_region = world_africa_north
+					geographical_region = world_asia_minor
+					geographical_region = world_middle_east
+					geographical_region = world_steppe
+				}
+			}
+		}
+		localization_key = flower_type_poppy_plural # Poppies
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_rose_plural # Roses
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_orchid_plural # Orchids
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = flower_type_aster_plural # Asters/Daisies
+	}
+}
+

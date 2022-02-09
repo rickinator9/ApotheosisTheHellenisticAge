@@ -1,0 +1,231 @@
+﻿# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region. 
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+# world_europe
+# > world_europe_west
+# >> world_europe_west_britannia
+# >> world_europe_west_germania
+# >> world_europe_west_francia
+# >> world_europe_west_iberia
+# > world_europe_north
+# > world_europe_south
+# >> world_europe_south_east
+# >> world_europe_south_italy
+# > world_europe_east
+
+# world_asia_minor
+
+# world_middle_east
+# > world_middle_east_jerusalem
+# > world_middle_east_arabia
+# > world_middle_east_persia
+
+# world_india
+# > world_india_deccan
+# > world_india_bengal
+# > world_india_rajastan
+
+# world_africa
+# > world_africa_north
+# >> world_africa_north_west
+# >> world_africa_north_east
+# > world_africa_west
+# > world_africa_east
+
+# world_steppe
+# > world_steppe_tarim
+# > world_steppe_west
+# > world_steppe_east
+
+# Duchies associated with Hellas. To be used with other regions.
+ATHA_hellas = {
+	duchies = {
+		d_lakedaimon d_messenia d_elis d_achaia
+		d_arcadia d_argolis d_korinthia d_attike
+		d_boiotia d_phokis d_locris d_aitolia
+		d_akarnania d_ionioi_nesoi d_euboia d_kyklades
+	}
+}
+
+# Duchies associated with Thessalia. To be used with other regions.
+ATHA_thessalia = {
+	duchies = {
+		d_magnesia d_malis d_achaia_phthiotis d_pelasgiotis
+		d_thessaliotis d_hestiaiotis d_perrhaibia
+	}
+}
+
+# Duchies associated with Epeiros. To be used with other regions.
+ATHA_epeiros = {
+	duchies = {
+		d_dryopis d_athamania d_thesprotia d_molossis
+		d_chaonia d_parauaia d_tymphaia d_orestis
+	}
+}
+
+# Duchies associated with Makedonia. To be used with other regions.
+ATHA_makedonia = {
+	duchies = {
+		d_bottiaia d_elimiotis d_eordaia d_lynkestis
+		d_pelagonia d_amphaxitis d_chalkidike d_parastrymonia
+	}
+}
+
+# Duchies associated with Krete. To be used with other regions.
+ATHA_krete = {
+	duchies = {
+		d_eteokrete d_kretaieis d_kydonia
+	}
+}
+
+# Duchies associated with Propontis. To be used with other regions.
+ATHA_propontis = {
+	duchies = {
+		d_briantike d_apsinthis d_astike
+	}
+}
+
+# Custom
+
+custom_athenian_empire = {
+	duchies = { 
+		 d_attike
+		#Thracian District
+		 d_chalkidike
+		 d_briantike
+		#Hellespontine District
+		 d_apsinthis
+		 d_astike
+		 d_troas
+		 d_mysia
+		 d_askania
+		#Ionian District
+		 d_ionia
+		 d_aiolis
+		#Carian District
+		 d_doris
+		#Islands District
+		 d_kyklades
+		 d_euboia
+		#Other
+		 d_ionioi_nesoi # allied with Athens during the Peloponnesian War; members of the Second Athenian League
+	}
+	counties = { 
+		#Thracian District
+		 c_pydna
+		 c_thessalonike
+		 c_kalindoia # belonged to the Bottiaians, who were members of the Delian League
+		 c_arethousa # member of the Second Athenian League
+		 c_amphipolis
+		 c_tragilos
+		 c_berge
+		 c_philippoi
+		#Hellespontine District
+		 c_zeleia
+		 c_astakos
+		 c_chalkedon
+		#Carian District
+		 c_alexandreia_karia
+		#Islands District
+		 c_aigina
+		 c_sporades
+		#Pontic District
+		 c_herakleia_pontica
+		#Other
+		 c_demetrias # not a member of the Delian League, but its strategic significance in the Hellenistic Period as one of the "fetters of Greece" justifies its inclusion as a required province
+		 c_naupaktos # loyal ally to Athens during the Peloponnesian War 
+	}
+}
+custom_insular_phoros = {
+	duchies = { 
+		d_euboia
+		d_kyklades
+		d_magnesia
+	}
+	#counties = { c_aigina } # commented out as region should only include provinces that become de jure
+}
+custom_ionian_phoros = {
+	duchies = { 
+		d_doris
+		d_ionia
+		d_aiolis
+	}
+}
+custom_thracian_phoros = {
+	duchies = { 
+		d_briantike
+		d_parastrymonia
+		d_chalkidike
+		d_amphaxitis
+	}
+	#counties = { c_pydna } # commented out as region should only include provinces that become de jure
+}
+custom_hellespontine_phoros = {
+	duchies = { 
+		d_troas
+		d_mysia
+		d_astike
+		d_apsinthis
+		d_zeleia
+		d_askania
+		d_bithynia
+	}
+}
+custom_peloponnese = {
+	duchies = { 
+		d_lakedaimon
+		d_messenia
+		d_arcadia
+		d_elis
+		d_achaia
+		d_argolis
+		d_korinthia
+	}
+}
+custom_ionia = {
+	duchies = { 
+		d_doris
+		d_ionia
+		d_aiolis
+	}
+	counties = { 
+		c_adramyttion
+		c_atarneus
+	}
+}
+custom_troas = {
+	duchies = { 
+		d_troas
+		d_mysia
+		d_askania
+	}
+	counties = { 
+		c_zeleia
+		c_astakos
+		c_chalkedon
+	}
+}
+custom_coastal_asia = {
+	regions = { 
+		custom_ionia
+		custom_troas
+	}
+}
+
+custom_the_asian_epithet = {
+	regions = {
+		world_asia_minor
+		world_middle_east
+		world_india
+	}
+}

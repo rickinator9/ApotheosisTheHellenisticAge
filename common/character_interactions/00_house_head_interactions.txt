@@ -51,7 +51,7 @@ call_house_member_to_war_interaction = {
 			JOINER = scope:recipient
 		}
 	}
-	
+
 	is_valid_showing_failures_only = {
 		custom_description = {
 			text = "is_already_in_all_wars"
@@ -314,6 +314,7 @@ legitimize_bastard_interaction = {
 			has_trait = bastard
 			OR = {
 				father = scope:actor
+				mother = scope:actor
 				scope:actor.house.house_head = scope:actor
 			}
 			OR = {
@@ -325,7 +326,7 @@ legitimize_bastard_interaction = {
 					}
 					has_dynasty = no
 				}
-			}		
+			}
 		}
 		scope:actor = {
 			is_lowborn = no

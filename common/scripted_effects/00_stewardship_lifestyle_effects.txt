@@ -242,7 +242,7 @@ stewardship_duty_1062_get_client_effect = {
 				province = root.capital_province
 				has_character_flag = $FLAG$
 				faith = root.faith
-				has_same_culture_group_as = root
+				culture = { has_same_culture_heritage = root.culture }
 				age < 45
 				NOT = { has_character_flag = stewardship_duty_1062_already_being_considered }
 			}
@@ -252,7 +252,7 @@ stewardship_duty_1062_get_client_effect = {
 			limit = {
 				has_character_flag = $FLAG$
 				faith = root.faith
-				has_same_culture_group_as = root
+				culture = { has_same_culture_heritage = root.culture }
 				age < 45
 				NOT = { has_character_flag = stewardship_duty_1062_already_being_considered }
 			}
@@ -325,6 +325,7 @@ stewardship_duty_1062_create_poet_effect = {
 		trait = education_diplomacy_2
 		trait = gregarious
 		trait = zealous
+		trait = poet
 		faith = root.faith
 		culture = root.culture
 		diplomacy = { 10 12 }

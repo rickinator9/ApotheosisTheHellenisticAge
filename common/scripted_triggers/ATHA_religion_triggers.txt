@@ -1,0 +1,19 @@
+﻿# Checks whether the two religions are part of the same religious family.
+#	RELIGION1 = The first religion.
+#	RELIGION2 = The second religion.
+is_in_same_religious_family = {
+	OR = {
+		AND = {
+			$RELIGION1$ = { is_in_family = rf_hellenic }
+			$RELIGION2$ = { is_in_family = rf_hellenic }
+		}
+		AND = {
+			$RELIGION1$ = { is_in_family = rf_great_mother }
+			$RELIGION2$ = { is_in_family = rf_great_mother }
+		}
+		AND = {
+			$RELIGION1$ = { is_in_family = rf_anatolian }
+			$RELIGION2$ = { is_in_family = rf_anatolian }
+		}
+	}
+}
