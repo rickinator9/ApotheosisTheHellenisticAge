@@ -1,0 +1,1225 @@
+﻿# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region. 
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+# Regions provide the following modifiers:
+# key + _development_growth
+# key + _development_growth_factor
+# This requires "generate_modifiers = yes" in the region
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+# world_europe
+# > world_europe_west
+# >> world_europe_west_britannia
+# >> world_europe_west_germania
+# >> world_europe_west_francia
+# >> world_europe_west_iberia
+# > world_europe_north
+# > world_europe_south
+# >> world_europe_south_east
+# >> world_europe_south_italy
+# > world_europe_east
+
+# world_asia_minor
+
+# world_middle_east
+# > world_middle_east_jerusalem
+# > world_middle_east_arabia
+# > world_middle_east_persia
+
+# world_india
+# > world_india_deccan
+# > world_india_bengal
+# > world_india_rajastan
+
+# world_africa
+# > world_africa_north
+# >> world_africa_north_west
+# >> world_africa_north_east
+# > world_africa_west
+# > world_africa_east
+
+# world_steppe
+# > world_steppe_tarim
+# > world_steppe_west
+# > world_steppe_east
+
+ 
+world_europe_west_britannia = {
+}
+world_europe_west_germania = {
+}
+world_europe_west_francia = {
+}
+world_europe_west_iberia = {
+}
+world_europe_west = {
+	regions = {
+		world_europe_west_iberia world_europe_west_francia world_europe_west_germania world_europe_west_britannia
+	}
+}
+world_europe_north = {
+}
+world_europe_south_east = {
+	duchies = {
+		# Hellas
+		d_lakedaimon d_messenia d_elis d_achaia d_arcadia d_argolis d_korinthia d_attike d_boiotia d_phokis d_locris d_aitolia d_akarnania d_ionioi_nesoi d_euboia d_kyklades
+		# Epeiros
+		d_dryopis d_athamania d_thesprotia d_molossis d_chaonia d_parauaia d_tymphaia d_orestis
+		# Krete
+		d_eteokrete d_kretaieis d_kydonia
+		# Illyria
+		d_illyria
+		# Makedonia
+		d_bottiaia d_elimiotis d_eordaia d_lynkestis d_pelagonia d_amphaxitis d_chalkidike d_parastrymonia
+		# Propontis
+		d_briantike d_apsinthis d_astike
+		# Thessalia
+		d_magnesia d_malis d_achaia_phthiotis d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia
+	}
+}
+world_europe_south_italy = {
+}
+world_europe_south = {
+	regions = {
+		world_europe_south_east world_europe_south_italy
+	}
+}
+world_europe_east = {
+}
+world_asia_minor = {
+	duchies = {
+		# Hellespontos
+		d_troas d_pergamon d_mysia d_zeleia d_temnis d_abrettene d_askania d_bithynia d_mariandynia d_sangarios
+		# Lydia
+		d_ionia d_aiolis d_kaystros d_maionia d_katakekaumene d_mokadene d_hyrgaleon
+		# Karia
+		d_doris d_idrias d_maiandros d_salbake
+	}
+}
+world_middle_east_jerusalem = {
+}
+world_middle_east_arabia = {
+}
+world_middle_east_persia = { 
+	# Persia, minus duchies which already exist in world_middle_east
+}
+world_india_deccan = {
+}
+world_india_bengal = {
+}
+world_india_rajastan = {
+}
+world_africa_north_west = {
+}
+world_africa_north_east = {
+}
+world_africa_sahara = {
+}
+world_africa_north = {
+	regions = {
+		world_africa_north_west world_africa_north_east
+	}
+}
+world_africa_west = {
+}
+world_africa_east = {
+}
+world_africa = {
+	regions = {
+		world_africa_north world_africa_west world_africa_east world_africa_sahara
+	}
+}
+world_steppe_tarim = {
+}
+world_steppe_west = {
+}
+world_steppe_east = {
+}
+world_tibet = {
+}
+world_himalaya = {
+}
+world_burma = {
+}
+world_steppe = {
+	generate_modifiers = yes
+	regions = {
+		world_steppe_west world_steppe_east world_steppe_tarim
+	}
+}
+world_europe = {
+	regions = {
+		world_europe_west world_europe_south world_europe_east world_europe_north
+	}
+}
+world_middle_east = {
+	regions = {
+		world_middle_east_arabia world_middle_east_jerusalem
+	}
+}
+world_india = {
+	regions = {
+		world_india_deccan world_india_bengal world_india_rajastan
+	}
+}
+
+
+###########################################################################
+# Material Regions
+###########################################################################
+
+ # Widespread Regional - Elm (Found all over Europe except southern Spain, Italy, and Greece)
+material_wood_elm = {
+	regions = {
+		world_europe_west_britannia
+		world_europe_west_germania
+		world_europe_west_francia
+		world_europe_north
+		world_europe_south_east
+		world_europe_east
+		world_himalaya
+	}
+}
+
+ # Widespread Regional - Walnut (found all over Europe excluding Scotland and Scandinavia, but including Northern Anatolia/Persia)
+material_wood_walnut = {
+	regions = {
+		world_europe_west_germania
+		world_europe_west_iberia
+		world_europe_south
+		world_europe_east
+		world_middle_east_persia
+		world_asia_minor
+		world_himalaya
+		world_europe_west_francia
+	}
+}
+
+ # Widespread Regional - Maple (found all over Europe excluding Scotland and northern Scandinavia, as well as northern Morocco/Tunisia/Persia and all of Anatolia)
+material_wood_maple = {
+	regions = {
+		world_europe_west_germania
+		world_europe_west_iberia
+		world_europe_south
+		world_europe_east
+		world_asia_minor
+		world_transoxiana
+		world_himalaya
+	}
+}
+
+# Widespread Regional - Pines and Firs (found all over continental Europe excluding northern France/Germany and the Balkans, but exists in Scotland and spreads East through Anatolia, Scandinavia, Russia, China, and Tibet)
+material_woods_pine_and_fir = {
+	regions = {
+		world_europe_west_iberia
+		world_europe_north
+		world_europe_south
+		world_europe_east
+		world_asia_minor
+		world_steppe_tarim
+		world_steppe_west
+		world_steppe_east
+		world_europe_west_francia
+	}
+}
+
+# Widespread Regional - Subsaharan Africa
+material_woods_subsaharan = {
+	regions = {
+		world_africa_west
+		world_africa_east
+		world_africa_sahara
+	}
+
+
+}
+
+material_woods_padauk = {
+	regions = {
+		material_woods_subsaharan
+		world_india
+		world_burma
+	}
+}
+
+# Widespread Regional - India
+material_woods_india = {
+	regions = {
+		world_india_deccan
+		world_india_bengal
+		world_india_rajastan
+	}
+}
+
+material_woods_india_burma = {
+	regions = {
+		world_india
+		world_burma
+	}
+}
+
+material_woods_ebony = {
+	regions = {
+		material_woods_sri_lanka
+	}
+}
+
+# Regional - France, England, Wales, Ireland
+material_wood_yew = {
+	
+	regions = {
+		world_europe_south_east
+	}
+}
+
+# Regional - Mediterranean
+material_woods_mediterranean = {
+	regions = {
+		world_africa_north
+		world_europe_west_iberia
+		world_europe_south
+		world_asia_minor
+		world_middle_east_jerusalem
+	}
+}
+
+# Regional - Sri Lanka
+material_woods_sri_lanka = {
+	regions = {
+		world_india_deccan
+	}
+}
+
+
+material_cloth_no_silk = {
+	regions = {
+		world_africa_west
+		world_africa_east
+	}
+}
+
+material_cloth_linen = {
+	regions = {
+		world_europe_west
+		world_europe_north
+		world_europe_south
+		world_europe_east
+	}
+}
+
+material_cloth_cotton = {
+	regions = {
+		world_africa_north_east
+		world_africa_east		
+	}
+}
+
+material_metal_wootz = {
+	regions = {
+		world_india_deccan
+		world_india_bengal
+		world_india_rajastan
+		world_burma
+	}
+}
+
+material_metal_damascus = {
+	regions = {
+		world_middle_east_jerusalem
+		world_middle_east_arabia
+		world_middle_east_persia
+		world_asia_minor
+		world_africa_north_east
+	}
+}
+
+material_metal_bulat = {
+	regions = {
+		world_europe_east
+		world_steppe_tarim
+		world_steppe_west
+		world_steppe_east
+	}
+}
+
+material_hsb_camel_bone = {
+	regions = {
+		world_middle_east_jerusalem
+		world_middle_east_arabia
+		world_middle_east_persia
+		world_africa_north
+		world_africa_west
+		world_africa_east
+		world_africa_sahara
+		world_india_rajastan
+		world_steppe_tarim
+	}
+}
+
+material_hsb_deer_antler = {
+	regions = {
+		world_europe_west
+		world_europe_north
+		world_europe_south
+		world_europe_east
+		world_asia_minor
+		world_middle_east_jerusalem
+		world_middle_east_persia
+		world_india_deccan
+		world_india_bengal
+		world_india_rajastan
+		world_steppe_tarim
+		world_steppe_west
+		world_steppe_east
+		world_tibet
+		world_burma
+		world_mesopotamia
+		world_jazira
+	}
+}
+
+material_hsb_boar_tusk = {
+	regions = {
+		world_europe_west
+		world_europe_north
+		world_europe_south
+		world_europe_east
+		world_asia_minor
+		world_middle_east_jerusalem
+		world_middle_east_persia
+		world_india_deccan
+		world_india_bengal
+		world_india_rajastan
+		world_steppe_west
+		world_steppe_east
+		world_africa_north
+		world_steppe_tarim
+		world_burma
+		world_mesopotamia
+		world_jazira
+	}
+}
+
+material_hsb_ivory_imported = {
+	regions = {
+		world_europe_west
+		world_europe_south
+		world_asia_minor
+		world_middle_east_jerusalem
+		world_middle_east_persia
+		world_steppe_west
+		world_steppe_east
+		world_steppe_tarim
+		world_africa_north
+		world_middle_east_arabia
+		world_tibet
+	}
+}
+
+material_hsb_ivory_native = {
+	regions = {
+		world_india_deccan
+		world_india_bengal
+		world_india_rajastan
+		world_africa_west
+		world_africa_east
+		world_burma
+	}
+}
+
+material_hsb_mother_of_pearl = {
+	regions = {
+		world_africa_north
+		world_europe_south_italy
+		world_india_deccan
+		world_burma
+		world_middle_east_arabia
+		world_africa_east
+		world_europe_west_iberia
+	}
+}
+
+material_hsb_tortoiseshell = {
+	regions = {
+		world_africa_north
+		world_europe_south_italy
+		world_asia_minor
+		
+		ATHA_hellas
+		ATHA_thessalia
+		ATHA_epeiros
+		ATHA_makedonia
+		ATHA_krete
+		ATHA_propontis
+	}
+}
+
+material_hsb_seashell = {
+	regions = {
+		world_africa_north
+		world_africa_east
+		world_europe_south_italy
+		world_europe_west_iberia
+		world_europe_west_francia
+		world_burma
+		world_middle_east
+		world_middle_east_persia
+		world_india
+		world_asia_minor
+		
+		ATHA_hellas
+		ATHA_thessalia
+		ATHA_epeiros
+		ATHA_makedonia
+		ATHA_krete
+		ATHA_propontis
+	}
+}
+
+###########################################################################
+# Custom Regions
+###########################################################################
+
+
+world_persian_empire = { 
+	regions = {
+		world_persia
+		world_khorasan
+		world_daylam
+		world_transoxiana
+		world_makran
+		world_kabulistan
+		#world_khiva
+		world_mesopotamia
+		world_jazira
+	}
+}
+custom_eastern_baltic = {
+}
+custom_frisia = {
+}
+custom_latvia = {
+}
+custom_lotharingia = {
+}
+custom_bavaria = {
+}
+custom_germany = {
+}
+custom_rhineland = {
+}
+custom_northern_italy = {
+}
+custom_netherlands = {
+}
+custom_england = {
+}
+custom_wales = {
+}
+custom_castilian = {
+}
+custom_asturleonese = {
+}
+custom_aragonese = {
+}
+custom_navarra = {
+}
+custom_catalan = {
+}
+custom_portuguese = {
+}
+custom_occitan = {
+}
+custom_andalusian = {
+}
+custom_swedish = {
+}
+custom_danish = {
+}
+custom_norwegian = {
+}
+custom_scotland = {
+}
+custom_burgundy = { #Expanded dejure.
+}
+custom_roman_empire = { #Only the provinces needed to restore the Empire, not the full borders.
+}
+custom_roman_syria_palestina = {
+}
+custom_roman_aegyptus = {
+}
+custom_roman_cyrenaica = {
+}
+custom_roman_africa = {
+}
+custom_roman_illyricum = {
+}
+custom_roman_hispania = {
+}
+custom_roman_mauretania = {
+}
+custom_roman_mesopotamia = {
+}
+custom_roman_caledonia = {
+}
+custom_roman_hibernia = {
+}
+custom_roman_full_borders = {
+	regions = { #Hispania #Francia #England #Wales #North-Africa #Jerusalem #Europe South (Italy+ERE) #Asia Minor 
+		world_europe_west_iberia world_europe_west_francia custom_england custom_wales world_africa_north world_middle_east_jerusalem world_europe_south world_asia_minor 
+	}
+}
+custom_eastern_roman_empire = {
+	regions = {
+		world_middle_east_jerusalem world_europe_south world_asia_minor
+	}
+}
+custom_outremer = {
+}
+custom_sicily = { 
+}
+custom_hungary = { 
+}
+custom_carpathia = { 
+}
+custom_europe_western_germany = {
+}
+custom_europe_eastern_germany = {
+}
+
+custom_ganges_plain = {
+}
+
+custom_bactria = {
+} 
+
+custom_west_francia_minus_mediterranean = {
+}
+
+custom_south_francia = {
+}
+
+custom_southern_england = {
+}
+
+custom_northern_england = {
+}
+
+custom_slavia = {
+}
+
+custom_west_slavia = {
+}
+
+custom_south_slavia = {
+}
+
+custom_greater_armenia = {
+}
+
+custom_normandy_and_adjacent = {
+}
+
+custom_ireland = {
+}
+
+custom_k_epirus = {
+}
+
+custom_k_thessalonika = {
+}
+
+custom_k_hellas = {
+}
+
+custom_sahara_proper = {
+}
+
+custom_sahel_proper = {
+}
+
+custom_sub_saharan_africa_immediate = {
+}
+
+custom_carolingian_francia = {
+}
+
+custom_carolingian_iberia = {
+}
+
+custom_carolingian_germany = {
+}
+
+custom_core_switzerland = {
+}
+
+custom_core_austria = {
+}
+
+custom_stretch_austria = {
+}
+
+#Used in global.0011
+custom_fennoscandia = {
+}
+
+custom_iceland = {
+	#Just Iceland
+}
+
+
+###########################################################################
+# Graphical Regions
+###########################################################################
+
+graphical_western = {
+	graphical = yes
+	color = { 255 0 0 }
+	regions = {
+		custom_west_francia_minus_mediterranean
+		world_europe_west_germania world_europe_west_britannia world_europe_east world_europe_north
+	}
+}
+
+graphical_mena = {
+	graphical = yes
+	color = { 255 255 0 }
+	regions = {
+		world_africa world_middle_east world_middle_east_persia
+	}
+}
+
+graphical_india = {
+	graphical = yes
+	color = { 0 255 0 }
+	regions = {
+		world_india world_tibet world_burma
+	}
+}
+
+graphical_mediterranean = {
+	graphical = yes
+	color = { 0 0 255 }
+	regions = {
+		world_europe_west_iberia world_europe_south custom_south_francia custom_burgundy world_asia_minor
+	}
+}
+
+graphical_steppe = {
+	graphical = yes
+	color = { 0 255 255 }
+	regions = {
+		world_steppe
+	}
+}
+
+##############################
+# Misc
+###############################
+
+world_innovation_elephants = {
+	generate_modifiers = yes
+	regions = {
+		world_india world_burma
+	}
+}
+
+world_innovation_camels = {
+	generate_modifiers = yes
+	regions = {
+		world_middle_east world_africa_east world_africa_sahara world_middle_east_persia world_africa_north
+	}
+}
+
+#Are these persia regions really used? They overlap with regular world regions. should they be named custom?
+#Persian Kingdoms and Empire.
+world_persia = { #k_persia
+}
+world_khorasan = { #k_khorasan
+}
+world_daylam = { #k_daylam
+}
+world_transoxiana = { #k_transoxiana
+}
+world_makran = { #k_makran
+}
+world_kabulistan = { #k_kabulistan
+}
+#world_khiva = { #k_khiva
+#	duchies = {
+#		d_khiva d_samarkand d_dihistan
+#	}
+#}
+world_mesopotamia = { #k_mesopotamia
+}
+world_jazira = { #k_jazira
+}
+
+#####################
+# Special Regions
+#####################
+
+### Mongol Conquest regions
+
+# Start area
+special_mongol_empire_start_region = {
+}
+
+# The Eastern Steppes
+special_mongol_empire_conquest_region_prio_1 = {
+}
+
+# Bactria + Daylam
+special_mongol_empire_conquest_region_prio_2 = {
+}
+
+# Central Steppes + Caucasus + Moldavia
+special_mongol_empire_conquest_region_prio_3 = {
+}
+
+# Persia + Western Steppes + Tibet
+special_mongol_empire_conquest_region_prio_4 = {
+}
+
+# Russia + Anatolia
+special_mongol_empire_conquest_region_prio_5 = {
+}
+
+# Border cleanup
+special_mongol_empire_conquest_region_cleanup = {
+}
+
+special_mongol_empire_conquest_all_regions = {
+}
+
+# Mongol successor empires
+special_mongol_empire_ilkhanate_region = {
+}
+
+special_mongol_empire_chagatai_region = {
+}
+
+special_mongol_empire_golden_horde_region = {
+}
+
+special_mongol_empire_black_horde_region = {
+}
+
+special_mongol_empire_white_horde_region = {
+	regions = {
+		world_europe_west_germania
+	}
+}
+
+special_mongol_empire_aarlud_khanate_region = {
+	regions = {
+		world_europe_west_britannia
+		world_europe_north
+	}
+}
+
+special_mongol_empire_togskol_khanate_region = {
+	regions = {
+		world_europe_south_italy
+		world_europe_west_francia
+		world_europe_west_iberia
+	}
+}
+
+special_mongol_empire_baruun_khanate_region = {
+	regions = {
+		world_africa
+	}
+}
+### END Mongol Conquest regions
+
+
+### Special Sicilian Culture region
+special_sicilian_culture_region = {
+}
+
+
+### Special Cagot region
+special_cagot_region = {
+}
+
+#####################
+# GHW Targeting Regions
+#####################
+
+#Neutral GHW Target Regions
+ghw_region_northern_italy = { 
+}
+ghw_region_thessalonika = {
+	duchies = {
+		# Makedonia
+		d_bottiaia d_elimiotis d_eordaia d_lynkestis d_pelagonia d_amphaxitis d_chalkidike d_parastrymonia
+		# Propontis
+		d_briantike d_apsinthis d_astike
+		# Thessalia
+		d_magnesia d_malis d_achaia_phthiotis d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia
+	}
+}
+ghw_region_france = {
+}
+ghw_region_germany = {
+}
+ghw_region_greece = {
+	duchies = {
+		# Hellas
+		d_lakedaimon d_messenia d_elis d_achaia d_arcadia d_argolis d_korinthia d_attike d_boiotia d_phokis d_locris d_aitolia d_akarnania d_ionioi_nesoi d_euboia d_kyklades
+		# Epeiros
+		d_dryopis d_athamania d_thesprotia d_molossis d_chaonia d_parauaia d_tymphaia d_orestis
+		# Makedonia
+		d_bottiaia d_elimiotis d_eordaia d_lynkestis d_pelagonia d_amphaxitis d_chalkidike d_parastrymonia
+		# Thessalia
+		d_magnesia d_malis d_achaia_phthiotis d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia
+	}
+}
+ghw_region_england = {
+}
+ghw_region_caucasus = {
+}
+ghw_region_anatolia = {
+	duchies = {
+		# Hellespontos
+		d_troas d_pergamon d_mysia d_zeleia d_temnis d_abrettene d_askania d_bithynia d_mariandynia d_sangarios
+		# Lydia
+		d_ionia d_aiolis d_kaystros d_maionia d_katakekaumene d_mokadene d_hyrgaleon
+		# Karia
+		d_doris d_idrias d_maiandros d_salbake
+	}
+}
+ghw_region_near_east = {
+}
+ghw_region_mediterranean = {
+	duchies = {
+		# Krete
+		d_eteokrete d_kretaieis d_kydonia
+	}
+}
+ghw_region_balkans = {
+}
+ghw_region_holy_land = {
+}
+ghw_region_iberia = {
+}
+ghw_region_celtic = {
+}
+ghw_region_germanic = {
+}
+ghw_region_central_european = {
+}
+ghw_region_baltic = {
+}
+ghw_region_arabia = {
+}
+ghw_region_egypt = {
+}
+ghw_region_egypt_et_al = {
+	regions = {
+		ghw_region_egypt
+	}
+}
+ghw_region_persia = {
+}
+ghw_region_kurdistan = {
+}
+ghw_region_southern_middle_east = {
+}
+ghw_region_eastern_middle_east = {
+}
+ghw_region_caspian_steppe = {
+}
+ghw_region_north_africa = {
+}
+ghw_region_sicily = {
+}
+ghw_region_afghanistan = {
+}
+ghw_region_ethiopia = {
+}
+ghw_region_horn_of_africa = {
+}
+ghw_region_the_sahel = {
+}
+ghw_region_north_african_interior = {
+}
+ghw_region_subsahelian_africa = {
+}
+ghw_region_western_sahara = {
+}
+ghw_region_eastern_sahara = {
+}
+ghw_region_western_india = {
+}
+ghw_region_southern_france = {
+}
+ghw_region_mongolia = {
+}
+ghw_region_scandinavia = {
+}
+
+ghw_region_britannia = {
+}
+ghw_region_saxony = {
+}
+ghw_region_russia = {
+}
+ghw_region_poland = {
+}
+ghw_region_steppe = {
+}
+ghw_region_hungary = {
+}
+ghw_region_wendish_lands = {
+}
+ghw_region_mainland_greece = {
+	duchies = {
+		# Hellas
+		d_lakedaimon d_messenia d_elis d_achaia d_arcadia d_argolis d_korinthia d_attike d_boiotia d_phokis d_locris d_aitolia d_akarnania
+		# Epeiros
+		d_dryopis d_athamania d_thesprotia d_molossis d_chaonia d_parauaia d_tymphaia d_orestis
+		# Makedonia
+		d_bottiaia d_elimiotis d_eordaia d_lynkestis d_pelagonia d_amphaxitis d_chalkidike d_parastrymonia
+		# Propontis
+		d_briantike d_apsinthis d_astike
+		# Thessalia
+		d_magnesia d_malis d_achaia_phthiotis d_pelasgiotis d_thessaliotis d_hestiaiotis d_perrhaibia
+	}
+}
+ghw_region_italy = {
+}
+ghw_region_finland_&_estonia = {
+}
+ghw_region_northern_russia = {
+}
+ghw_region_southern_russia = {
+}
+ghw_region_siberia = {
+}
+ghw_region_transoxiana = {
+}
+ghw_region_tibet = {
+}
+ghw_region_crimea = {
+}
+ghw_region_poland_bohemia_bavaria = {
+}
+ghw_region_northern_india = {
+}
+ghw_region_khotan = {
+}
+ghw_region_southern_india = {
+}
+ghw_region_southwestern_india = {
+}
+
+ghw_region_the_ganges = {
+}
+ghw_region_non_ganges_india = {
+}
+ghw_region_gujarat_&_rajputana = {
+}
+ghw_region_non_gujarat_or_rajputana_india = {
+}
+ghw_region_lanka_&_bengal = {
+}
+ghw_region_middle_india = {
+}
+ghw_region_north_eastern_india = {
+}
+
+### END GHW Regions
+
+#####################
+# The Northern Lords Regions
+#####################
+
+dlc_fp1_region_core_north_sea = {
+}
+
+dlc_fp1_region_mysterious_stranger_locations = {
+}
+
+dlc_fp1_region_western_adventure_targets_iceland_isles = {
+}
+
+dlc_fp1_region_western_adventure_targets_scotland_isles = {
+}
+dlc_fp1_region_western_adventure_targets_ireland = {
+}
+dlc_fp1_region_western_adventure_targets_northern_england = {
+}
+dlc_fp1_region_western_adventure_targets_northern_france_brittany = {
+}
+dlc_fp1_region_western_adventure_targets_pomerania_prussia = {
+}
+dlc_fp1_region_western_adventure_targets_frisia = {
+}
+
+dlc_fp1_region_eastern_adventure_targets_novgorod = {
+}
+dlc_fp1_region_eastern_adventure_targets_white_rus = {
+}
+dlc_fp1_region_eastern_adventure_targets_vladimir = {
+}
+dlc_fp1_region_eastern_adventure_targets_ruthenia = {
+}
+dlc_fp1_region_eastern_adventure_targets_estonia = {
+}
+dlc_fp1_region_eastern_adventure_targets_zaporizhia = {
+}
+
+dlc_fp1_region_western_scandinavia_pool = {
+}
+
+dlc_fp1_region_eastern_scandinavia_pool = {
+}
+
+dlc_fp1_region_russian_steppe = {
+	regions = {
+		world_steppe_west world_steppe_east
+	}
+}
+
+dlc_fp1_region_core_mainland_scandinavia = {
+}
+
+dlc_fp1_region_non_scandinavian_southern_baltic = {
+}
+
+dlc_fp1_region_colonial_eastern_europe = {
+}
+
+dlc_fp1_achievement_far_from_home = {
+}
+
+dlc_fp1_achievement_king_of_all_the_isles = {
+}
+
+dlc_fp1_achievement_vladimirs_second_choice = {
+}
+
+### END TNL Regions
+
+
+#####################
+# Achievements - 1.4
+#####################
+
+dlc_ep1_achievement_rise_of_the_ghurids = {
+}
+
+### END 1.4 Achievements Regions
+
+################
+# RoCo Regions #
+################
+
+dlc_ep1_region_south_east_europe = {
+}
+
+dlc_ep1_hansa_trade_region = {
+	regions = {
+		world_europe_west_britannia world_europe_west_germania world_europe_north
+	}
+}
+
+dlc_ep1_dutch_trade_region = {
+	regions = {
+		world_europe_west_britannia world_europe_west_francia
+	}
+}
+
+dlc_ep1_russia_trade_region = {
+	regions = {
+		world_europe_west_germania world_europe_north world_europe_east
+	}
+}
+
+dlc_ep1_varangian_trade_region = {
+	regions = {
+		world_europe_east world_steppe_west
+	}
+}
+
+dlc_ep1_mongol_trade_region = { # Silk Road
+	regions = {
+		world_steppe_west world_steppe_east world_steppe_tarim
+	}
+}
+
+dlc_ep1_iberia_trade_region = {
+	regions = {
+		world_europe_west_iberia
+	}
+}
+
+dlc_ep1_italian_trade_region = {
+	regions = {
+		world_europe_south world_asia_minor
+	}
+}
+
+dlc_ep1_levant_trade_region = {
+	regions = {
+		world_middle_east_jerusalem
+	}
+}
+
+dlc_ep1_arab_trade_region = {
+	regions = {
+		world_africa_north_east world_middle_east_arabia
+	}
+}
+
+dlc_ep1_persian_trade_region = { # Silk Road
+	regions = {
+		world_middle_east_persia
+	}
+}
+
+dlc_ep1_north_africa_trade_region = {
+	regions = {
+		world_africa_north_west
+	}
+}
+
+dlc_ep1_east_africa_trade_region = {
+	regions = {
+		world_africa_east
+	}
+}
+
+dlc_ep1_west_africa_trade_region = {
+	regions = {
+		world_africa_west world_africa_sahara
+	}
+}
+
+dlc_ep1_indian_trade_region = { # Silk Road
+	regions = {
+		world_india_deccan world_india_bengal world_india_rajastan
+	}
+}
+
+dlc_ep1_southwest_silk_road_trade_region = { # Silk Road
+	regions = {
+		world_burma world_tibet
+	}
+}
+
+### END RC Regions
+
+divergence_island_regions = {
+}

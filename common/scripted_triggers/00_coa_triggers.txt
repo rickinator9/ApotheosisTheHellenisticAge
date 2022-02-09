@@ -2,22 +2,13 @@
 
 coa_classical_greek_trigger = {
 	scope:culture = {
-		has_graphical_culture = greek_group_coa_gfx
-		NOT = { has_graphical_culture = spartan_coa_gfx }
-		NOT = { has_graphical_culture = hellenistic_coa_gfx }
+		has_coa_gfx = greek_group_coa_gfx
+		NOT = { has_coa_gfx = spartan_coa_gfx }
+		NOT = { has_coa_gfx = hellenistic_coa_gfx }
 	}
 }
 
 coa_spartan_trigger = {
-	AND = {
-		scope:culture = { has_graphical_culture = spartan_coa_gfx }
-		AND = {
-			exists = scope:title
-			scope:title = {
-				any_this_title_or_de_jure_above = {
-					this = title:d_lakedaimon
-				}
-			}
-		}
-	}
+	scope:culture = { has_coa_gfx = spartan_coa_gfx }
+	is_spartan = yes
 }

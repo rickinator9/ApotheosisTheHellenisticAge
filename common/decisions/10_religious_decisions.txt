@@ -29,6 +29,9 @@
 	ai_check_interval = 120
 
 	ai_potential = {
+		faith = {
+			has_doctrine_parameter = vows_of_poverty_active
+		}
 		# AI considers taking if their income exceeds their expenses * 1.4 (decision will reduce it by 20%).
 		monthly_character_income > monthly_character_expenses_plus_fourty_percent
 	}
@@ -74,6 +77,7 @@ renounce_vow_of_poverty_decision = {
 	ai_check_interval = 60
 
 	ai_potential = {
+		has_character_modifier = vow_of_poverty_modifier
 		# AI will consider if we're spending more money than we're making, and their treasury is low.
 		monthly_character_expenses > monthly_character_income
 		short_term_gold < minor_gold_value
@@ -189,6 +193,10 @@ seek_aid_of_the_spirits_decision = {
 	effect = {
 		custom_tooltip = seek_aid_of_the_spirits_decision_effect.tt
 		trigger_event = religious_decision.0001
+		add_character_flag = {
+			flag = flag_sought_aid_of_spirits
+			days = 1825
+			}
 	}
 
 	ai_check_interval = 60
@@ -248,6 +256,8 @@ meditate_in_seclusion_decision = {
 
 give_sky_burial_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	
+	sort_order = 75
 
 	desc = give_sky_burial_decision_desc
 	selection_tooltip = give_sky_burial_decision_tooltip
@@ -296,6 +306,7 @@ give_sky_burial_decision = {
 	}
 
 	ai_check_interval = 36
+	cooldown = { months = 12 }
 	
 	ai_potential = {
 		always = yes
@@ -534,6 +545,8 @@ encourage_confession_of_false_conversions_decision = {	#Ask that crypto-religion
 go_on_pilgrimage_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
 	ai_check_interval = 60
+	
+	sort_order = 64
 
 	desc = go_on_pilgrimage_decision_desc
 	selection_tooltip = go_on_pilgrimage_decision_tooltip
@@ -619,6 +632,8 @@ go_on_pilgrimage_decision = {
 
 	ai_potential = {
 		is_landed = yes
+		is_available_adult = yes
+		short_term_gold > pilgrimage_minimum_cost
 	}
 
 	ai_will_do = {

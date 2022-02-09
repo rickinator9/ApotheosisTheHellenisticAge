@@ -246,7 +246,6 @@ can_have_single_heir_youngest_succession_law_trigger = {
 	culture = {
 		has_innovation = innovation_imperial_latifundia
 	}
-
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
@@ -359,8 +358,10 @@ _has_specific_locked_government = {
 }
 
 _has_ai_government = {
-	can_have_bishop_theocratic_succession_law_trigger = yes
-	can_have_holy_order_succession_law_trigger = yes
-	can_have_mercenary_succession_law_trigger = yes
-	can_have_city_succession_law_trigger = yes
+	OR = {
+		can_have_bishop_theocratic_succession_law_trigger = yes
+		can_have_holy_order_succession_law_trigger = yes
+		can_have_mercenary_succession_law_trigger = yes
+		can_have_city_succession_law_trigger = yes
+	}
 }

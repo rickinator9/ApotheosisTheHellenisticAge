@@ -1,0 +1,41 @@
+﻿NCamera = {
+	ZOOM_STEPS = { 50 80 111 145 173 204 229 260 300 350 405 461 518 578 643 714 793 881 981 1092 1218 1360 1521 1703 1903 2116 2341 2573 2809 3047 3282 3512 3733 }	# Zoom steps
+}
+
+NMapName = {
+	ZOOM_STEPS_VISIBLE_SCALES = {	# Each map-name has a scale. This list contains min-max values for each zoom step. If a name's scale is outside that range it will not be visible
+		# min (hides names that are too small)
+		# max (hides names when they get to large)
+		0.0		0.0 	#50		0	Closest zoomed in
+		0.0		0.0 	#75		1
+		0.0		50.0	#100 	2
+		0.0		50.0	#150 	3
+		0.0		50.0	#200 	4
+		0.0		50.0	#275 	5
+		0.0		50.0	#375 	6
+		0.0		50.0	#500 	7
+		0.0		50.0	#650 	8
+		0.0		50.0	#850 	9
+		0.11	50.0	#1100 	10
+		0.12	50.0	#1400 	11	Flat map
+		0.13	50.0	#1750 	12
+		0.14	50.0	#2150 	13
+		0.15	50.0	#2600 	14
+		0.17	50.0	#3050 	15
+		0.19	50.0	#3500 	16
+		0.21	50.0	#4000 	17
+		0.23	50.0	#4500 	18
+		0.27	50.0	#5000	19	Farthest out
+	}
+}
+
+NUnitGraphics = {
+	# Unit scale depending on zoom step. Note that if it is 0, all other dynamic map objects are also hidden.
+	UNIT_SCALE_PER_ZOOM_STEP = { 0.4 0.4 0.44 0.48  0.56  0.64  0.72  0.8 0.88  0.96  1.04  1.12  0.84  0.56  0.28  0.0  0.0  0.0  0.0  0.0 }
+}
+
+NMainMenu = {
+	DEFAULT_MAIN_BOOKMARK_CHARACTER = "bookmark_greece_antigonus_gonatas"
+	DEFAULT_HEIR_BOOKMARK_CHARACTER = "bookmark_greece_areus"
+	DEFAULT_SECONDARY_BOOKMARK_CHARACTER = "bookmark_greece_pyrrhus_of_epirus"
+}

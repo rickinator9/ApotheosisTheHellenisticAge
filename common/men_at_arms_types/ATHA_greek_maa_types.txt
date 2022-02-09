@@ -128,6 +128,10 @@ hoplitai = {
 	pursuit = 3
 	screen = 0
 
+	can_recruit = {
+		culture = { has_cultural_parameter = unlock_maa_hoplitai }
+	}
+
 	terrain_bonus = {
 		mountains = { damage = -5 }
 		desert_mountains = { damage = -5 }
@@ -289,3 +293,51 @@ hetairoi = {
 # 	ai_quality = { value = culture_ai_weight_skirmishers }
 # 	icon = skirmishers
 # }
+
+# Spartan hoplites
+spartiatai_hoplitai = {
+	type = phalanx
+
+	damage = 36
+	toughness = 40
+	pursuit = 3
+	screen = 0
+
+	can_recruit = {
+		culture = { has_cultural_parameter = unlock_maa_spartiatai_hoplitai }
+		OR = { 
+			has_government = city_state_spartan_government
+			AND = { 
+				has_government = hegemonic_league_government
+				OR = {
+					dynasty = dynasty:spartandyn001
+					dynasty = dynasty:spartandyn002
+				}
+			}
+		}
+	}
+
+	terrain_bonus = {
+		mountains = { damage = -5 }
+		desert_mountains = { damage = -5 }
+		wetlands = { damage = -10 }
+		forest = { damage = -10 }
+		taiga = { damage = -10 }
+		jungle = { damage = -10 }
+	}
+
+	# Due to the lack of flexibility, Phalanxes do not counter any MaA.
+	counters = {
+	}
+
+	buy_cost = { gold = spartiatai_hoplitai_recruitment_cost }
+	low_maintenance_cost = { gold = spartiatai_hoplitai_low_maint_cost }
+	high_maintenance_cost = { gold = spartiatai_hoplitai_high_maint_cost }
+	
+	mercenary_fallback = yes
+	holy_order_fallback = yes
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = pikemen
+}

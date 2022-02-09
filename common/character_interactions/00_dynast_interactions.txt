@@ -1,6 +1,7 @@
 ﻿#Interactions relating to the head of the dynasty
 
 disinherit_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_hostile
 	interface_priority = 60
 
@@ -19,6 +20,15 @@ disinherit_interaction = {
 			NOT = {
 				has_trait = disinherited
 			}
+		}
+	}
+
+	is_valid = {
+		custom_description = {
+			scope:actor.culture = {
+				NOT = { has_cultural_parameter = cannot_disherit }
+			}
+			text = "mystical_ancestors_disinherit"
 		}
 	}
 
@@ -283,6 +293,7 @@ disinherit_interaction = {
 }
 
 restore_inheritance_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_friendly
 	desc = restore_inheritance_interaction_desc
 
@@ -392,6 +403,7 @@ restore_inheritance_interaction = {
 }
 
 denounce_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_hostile
 	interface_priority = 60
 
@@ -634,6 +646,7 @@ denounce_interaction = {
 }
 
 forgive_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_friendly
 	interface_priority = 60
 
@@ -744,6 +757,7 @@ forgive_interaction = {
 }
 
 call_dynasty_member_to_war_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_diplomacy
 	interface_priority = 60
 
@@ -779,6 +793,10 @@ call_dynasty_member_to_war_interaction = {
 			}
 		}
 	}
+	
+	has_valid_target = {
+		exists = scope:target
+	}
 
 	has_valid_target_showing_failures_only = {
 		scope:target = {
@@ -792,6 +810,10 @@ call_dynasty_member_to_war_interaction = {
 
 	is_valid_showing_failures_only = {
 		scope:actor.dynasty = { dynasty_prestige >= medium_dynasty_prestige_value }
+		scope:recipient = {
+			NOT = { has_government = mercenary_government }
+			NOT = { has_government = holy_order_government }
+		}
 		custom_description = {
 			text = "is_already_in_all_wars"
 			scope:actor = {
@@ -1045,6 +1067,7 @@ call_dynasty_member_to_war_interaction = {
 }
 
 dynast_claim_title_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_diplomacy
 	desc = dynast_claim_title_interaction_desc
 	target_type = title
@@ -1114,6 +1137,7 @@ dynast_claim_title_interaction = {
 }
 
 dynast_end_dynasty_wars_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_diplomacy
 	desc = dynast_end_dynasty_wars_interaction_desc
 
@@ -1175,6 +1199,7 @@ dynast_end_dynasty_wars_interaction = {
 }
 
 dynast_legitimize_bastard_interaction = {
+	icon = icon_dynasty
 	category = interaction_category_diplomacy
 	desc = dynast_legitimize_bastard_interaction_desc
 
@@ -1257,180 +1282,3 @@ dynast_legitimize_bastard_interaction = {
 		}
 	}
 }
-
-### COULD AT SOME POINT BE USED AS A BASE FOR MERCENARIES? - RICK
-# send_to_varangian_guard_interaction = {
-# 	category = interaction_category_friendly
-# 	interface_priority = 60
-
-# 	desc = send_to_varangian_guard_interaction_desc
-# 	use_diplomatic_range = no
-# 	common_interaction = yes
-	
-# 	is_shown = {
-# 		NOT = { scope:recipient = scope:actor }
-
-# 		scope:actor = {
-# 			is_dynast = yes
-# 			dynasty = scope:recipient.dynasty
-			
-# 			dynasty = {
-# 				has_dynasty_perk = fp1_adventure_legacy_1
-# 			}
-			
-# 			exists = title:e_byzantium.holder
-# 			NOR = {
-# 				faith = {
-# 					has_doctrine_parameter = pacifist_opinion_active
-# 				}
-# 				this = title:e_byzantium.holder
-# 				has_truce = title:e_byzantium.holder
-# 				is_at_war_with = title:e_byzantium.holder
-# 			}
-# 		}
-# 	}
-	
-# 	cooldown = { years = 2 }
-
-# 	is_valid_showing_failures_only = {
-# 		scope:actor = {
-# 			is_at_war = no
-# 			NOT = {
-# 				has_relation_rival = title:e_byzantium.holder
-# 			}
-# 		}
-# 		scope:recipient = {
-# 			is_diplomatically_available = yes
-# 			is_ruler = no
-# 			is_adult = yes
-# 			is_married = no
-# 			NOT = {
-# 				has_trait = varangian
-# 			}
-# 		}
-# 		trigger_if = {
-# 			limit = {
-# 				scope:recipient = {
-# 					is_adult = yes
-# 					NOT = {
-# 						can_be_knight_trigger = {
-# 							ARMY_OWNER = title:e_byzantium.holder
-# 						}
-# 					}
-# 				}
-# 			}
-# 			custom_description = {
-# 				scope:recipient = {
-# 					can_be_knight_trigger = {
-# 						ARMY_OWNER = title:e_byzantium.holder
-# 					}
-# 				}
-# 				text = "not_allowed_in_varangian_guard"
-# 			}
-# 		}
-# 		trigger_if = {
-# 			limit = {
-# 				scope:recipient = {
-# 					NOR = {
-# 						is_child_of = scope:actor
-# 						is_grandchild_of = scope:actor
-# 						is_great_grandchild_of = scope:actor
-# 					}
-# 				}
-# 			}
-# 			custom_description = {
-# 				scope:recipient.top_liege = scope:actor.top_liege
-# 				text = "same_realm_as"
-# 			}
-# 		}
-# 	}
-	
-# 	on_accept = {
-
-# 		title:e_byzantium.holder = {
-# 			save_scope_as = emperor
-# 			if = {
-# 				limit = { capital_county = title:c_byzantion }
-# 				set_local_variable = {
-# 					name = to_miklagard
-# 					value = yes
-# 				}
-# 			}
-# 		}
-		
-# 		scope:actor = {
-# 			stress_impact = {
-# 				paranoid = minor_stress_impact_gain
-# 			}
-# 			hidden_effect = {
-# 				send_interface_toast = {
-# 					title = send_to_varangian_guard_interaction_toast
-
-# 					left_icon = scope:recipient					
-# 					right_icon = scope:emperor
-					
-# 					custom_tooltip = send_to_varangian_guard_interaction_toast_desc
-# 				}
-# 			}
-# 		}
-
-# 		scope:recipient = {
-# 			save_scope_as = varangian_candidate
-			
-# 		}
-		
-# 		show_as_tooltip = {
-# 			scope:varangian_candidate = {
-# 				visit_court_of = scope:emperor
-# 				add_trait = varangian
-# 				custom_description_no_bullet = {
-# 					text = send_to_varangian_guard_interaction_effect
-# 				}
-# 			}
-# 		}
-# 		hidden_effect = {
-# 			scope:emperor = {
-# 				trigger_event = varangian.0003
-# 			}
-# 		}
-		
-# 	}
-	
-# 	cost = {
-# 		prestige = {
-# 			value = 350
-# 		}
-# 	}
-	
-# 	auto_accept = yes
-
-# 	ai_potential = {
-# 		is_at_war = no
-# 		is_dynast = yes
-		
-# 		dynasty = {
-# 			has_dynasty_perk = fp1_adventure_legacy_1
-# 		}
-		
-# 		exists = title:e_byzantium.holder
-# 		NOR = {
-# 			faith = {
-# 				has_doctrine_parameter = pacifist_opinion_active
-# 			}
-# 			this = title:e_byzantium.holder
-# 			has_truce = title:e_byzantium.holder
-# 			is_at_war_with = title:e_byzantium.holder
-# 		}
-# 	}
-	
-# 	ai_targets = {
-# 		ai_recipients = children
-# 		max = 10
-# 	}
-	
-# 	ai_frequency = 120
-	
-# 	ai_will_do = {
-# 		base = 100
-# 	}
-# }

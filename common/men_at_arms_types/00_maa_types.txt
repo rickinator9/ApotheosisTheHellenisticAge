@@ -117,6 +117,8 @@ pikemen_unit = {
 	counters = {
 		light_cavalry = 1
 		heavy_cavalry = 1
+		camel_cavalry = 1
+		elephant_cavalry = 1
 	}
 
 	buy_cost = { gold = pikemen_recruitment_cost }
@@ -199,6 +201,12 @@ armored_horsemen = {
 # Special
 house_guard = {
 	type = heavy_infantry
+	can_recruit = {
+		exists = dynasty
+		dynasty = {
+			has_dynasty_perk = warfare_legacy_5
+		}
+	}
 	
 	damage = 40
 	toughness = 32

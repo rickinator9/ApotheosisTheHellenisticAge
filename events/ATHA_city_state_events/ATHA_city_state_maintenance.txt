@@ -74,13 +74,17 @@ city_state_maintenance.0004 = {
         can_have_corruption_trigger = yes
     }
 
-    immediate = {     
-        primary_heir = {
-            set_city_state_corruption_on_scope = { AMOUNT_ARG = root.primary_title.var:city_state_corruption }
+    immediate = {
+        if = {
+            limit = { exists = primary_heir }
 
-            trigger_event = { 
-                id = city_state_maintenance.0007
-                days = 1
+            primary_heir = {
+                set_city_state_corruption_on_scope = { AMOUNT_ARG = root.primary_title.var:city_state_corruption }
+
+                trigger_event = {
+                    id = city_state_maintenance.0007
+                    days = 1
+                }
             }
         }
 
@@ -150,8 +154,12 @@ city_state_maintenance.0008 = {
     }
 
     immediate = {
-        primary_heir = {
-            invoke_corruption_change_with_delay_effect = yes
+        if = {
+            limit = { exists = primary_heir }
+
+            primary_heir = {
+                invoke_corruption_change_with_delay_effect = yes
+            }
         }
 
         every_heir = {

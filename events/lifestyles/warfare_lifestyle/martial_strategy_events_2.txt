@@ -201,6 +201,7 @@ martial_strategy.4010 = { #by Ewan Cowhig Croft
 		event_background = study
 	}
 	left_portrait = root
+	right_portrait = scope:r_architect
 
 	trigger = {
 		is_at_war = no
@@ -239,6 +240,21 @@ martial_strategy.4010 = { #by Ewan Cowhig Croft
 			county = { save_scope_as = crumbling_county }
 			barony = { save_scope_as = crumbling_holding }
 		}
+		if = {
+			limit = {
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
+			}
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = { is_available_ai_adult = yes }
+				save_scope_as = r_architect
+			}
+		}
 	}
 
 	option = {
@@ -268,6 +284,12 @@ martial_strategy.4010 = { #by Ewan Cowhig Croft
 	}
 	option = {
 		name = martial_strategy.4010.b
+		trigger = {
+			OR = {
+				has_ep1_court_positions_dlc_trigger = no
+				NOT = { exists = scope:r_architect }
+			}
+		}
 		duel = {
 			skill = stewardship
 			value = high_skill_rating
@@ -346,6 +368,70 @@ martial_strategy.4010 = { #by Ewan Cowhig Croft
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
 	}
+
+	option = {
+		name = martial_strategy.4010.d
+		trigger = {
+			exists = scope:r_architect
+		}
+		scope:r_architect = {
+			duel = {
+				skill = stewardship
+				value = high_skill_rating
+				10 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2.0
+					}
+					desc = martial_strategy.4010.d.tt_crit_success
+					send_interface_toast = {
+						title = martial_strategy.4010.d.tt_crit_success
+						left_icon = scope:crumbling_county
+						scope:crumbling_county = {
+							add_county_modifier = {
+								modifier = strategy_successfully_supervised_walls_modifier
+								years = 100
+							}
+						}
+					}
+				}
+				10 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.2
+					}
+					desc = martial_strategy.4010.d.tt_success
+					send_interface_toast = {
+						title = martial_strategy.4010.d.tt_success
+						left_icon = scope:crumbling_county
+						scope:crumbling_county = {
+							add_county_modifier = {
+								modifier = strategy_successfully_supervised_walls_modifier
+								years = 20
+							}
+						}
+					}
+				}
+				5 = {
+					desc = martial_strategy.4010.d.tt_botch
+					send_interface_toast = {
+						title = martial_strategy.4010.d.tt_botch
+						left_icon = scope:crumbling_county
+						scope:crumbling_county = {
+							add_county_modifier = {
+								modifier = strategy_botched_supervised_walls_modifier
+								years = 20
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
 	option = {
 		name = martial_strategy.4010.c
 		scope:crumbling_county = {

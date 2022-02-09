@@ -11,8 +11,8 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 	desc = form_k_lakedaimon_decision_desc
 	selection_tooltip = form_k_lakedaimon_decision_tooltip
 
-	is_shown = { # TODO: Update conditions once we implement Spartan culture
-		has_culture = culture:dorian_south
+	is_shown = {
+		has_culture = culture:laconian
 		OR = { 
 			has_government = city_state_spartan_government
 			AND = { 
@@ -92,7 +92,15 @@ form_k_athenai_decision = { # aka: Establish the Third Athenian League
 	selection_tooltip = form_k_athenai_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 		highest_held_title_tier <= tier_duchy
 		
 		#Can only do it once
@@ -203,7 +211,15 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 	selection_tooltip = form_e_athenai_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 		highest_held_title_tier <= tier_kingdom
 		capital_province = { geographical_region = custom_athenian_empire }
 		
@@ -300,7 +316,15 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 	selection_tooltip = form_k_insular_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -349,7 +373,7 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 
 		#Should be centralised
 		custom_description = {
-		text = form_phoros_decision_centralisation.tt
+			text = "form_phoros_decision_centralisation.tt"
 			OR = { 
 				has_realm_law = crown_authority_2 
 				has_realm_law = crown_authority_3
@@ -401,7 +425,15 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 	selection_tooltip = form_k_ionian_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -450,7 +482,7 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 
 		#Should be centralised
 		custom_description = {
-		text = form_phoros_decision_centralisation.tt
+			text = "form_phoros_decision_centralisation.tt"
 			OR = { 
 				has_realm_law = crown_authority_2 
 				has_realm_law = crown_authority_3
@@ -502,7 +534,15 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 	selection_tooltip = form_k_thracian_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -551,7 +591,7 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 
 		#Should be centralised
 		custom_description = {
-		text = form_phoros_decision_centralisation.tt
+			text = "form_phoros_decision_centralisation.tt"
 			OR = { 
 				has_realm_law = crown_authority_2 
 				has_realm_law = crown_authority_3
@@ -603,7 +643,15 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 	selection_tooltip = form_k_hellespontine_phoros_decision_tooltip
 
 	is_shown = {
-		has_culture = culture:athenian
+		culture = {
+			has_cultural_pillar = heritage_greek
+			OR = {
+				this = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
 
 		#Should either hold e_athenai or be a direct vassal with a capital in the region
 		OR = {
@@ -652,7 +700,7 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 
 		#Should be centralised
 		custom_description = {
-		text = form_phoros_decision_centralisation.tt
+			text = "form_phoros_decision_centralisation.tt"
 			OR = { 
 				has_realm_law = crown_authority_2 
 				has_realm_law = crown_authority_3
@@ -708,7 +756,7 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 	selection_tooltip = form_k_peloponnesos_decision_tooltip
 
 	is_shown = {
-		has_culture_group = culture_group:greek_group
+		culture = { has_cultural_pillar = heritage_greek }
 		OR = {
 			highest_held_title_tier <= tier_duchy
 			has_primary_title = title:k_lakedaimon
@@ -740,7 +788,7 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 		#Primary title must be one of the Peloponnesian duchies, or k_lakedaimon
 		OR = {
 			custom_description = {
-	   			text = form_k_peloponnesos_decision_primary.tt
+	   			text = "form_k_peloponnesos_decision_primary.tt"
 				OR = {
 					has_primary_title = title:d_lakedaimon
 					has_primary_title = title:d_messenia
@@ -756,7 +804,7 @@ form_k_peloponnesos_decision = { # aka: Reform the Peloponnesian League
 
 		# And must completely control any two duchies within the Peloponnese
 		custom_description = {
-			text = form_k_peloponnesos_decision_controlled_duchies.tt
+			text = "form_k_peloponnesos_decision_controlled_duchies.tt"
 			any_held_title = {
 				count >= 2
 				tier = tier_duchy
@@ -833,7 +881,7 @@ unite_k_peloponnesos_decision = { # aka: Unite the Peloponnese
 	selection_tooltip = unite_k_peloponnesos_decision_tooltip
 
 	is_shown = {
-		has_culture_group = culture_group:greek_group
+		culture = { has_cultural_pillar = heritage_greek }
 		OR = {
 			highest_held_title_tier <= tier_duchy
 			has_primary_title = title:k_peloponnesos
@@ -954,9 +1002,9 @@ revive_spartan_faith_decision = { # aka: Honour the Laws of Lykourgos
 	desc = revive_spartan_faith_decision_desc
 	selection_tooltip = revive_spartan_faith_decision_tooltip
 
-	is_shown = { # TODO: Update conditions once we implement Spartan culture
+	is_shown = {
 		is_landed = yes
-		has_culture = culture:dorian_south
+		has_culture = culture:laconian
 		OR = { 
 			dynasty = dynasty:spartandyn001
 			dynasty = dynasty:spartandyn002
@@ -995,7 +1043,7 @@ revive_spartan_faith_decision = { # aka: Honour the Laws of Lykourgos
 
 		#Should be centralised
 		custom_description = {
-		text = revive_spartan_faith_decision_centralisation.tt
+			text = "revive_spartan_faith_decision_centralisation.tt"
 			OR = { 
 				has_realm_law = crown_authority_2 
 				has_realm_law = crown_authority_3

@@ -1,0 +1,22 @@
+﻿is_spartan = {
+	has_culture = culture:laconian
+	OR = {
+		capital_county = { THIS = title:c_sparta }
+		any_liege_or_above = { capital_county = { THIS = title:c_sparta } }
+	}
+}
+
+is_rhodian = {
+	has_culture = culture:dorian
+	OR = {
+		capital_county = { THIS = title:c_rhodos }
+		any_liege_or_above = { capital_county = { THIS = title:c_rhodos } }
+	}
+}
+
+is_culture_head = {
+	custom_description = {
+		text = is_culture_head
+		culture.culture_head = ROOT
+	}
+}

@@ -323,16 +323,16 @@
 			}
 		}
 
-		# is_shown = {
-		# 	NOR = {
+		is_shown = {
+			NOR = {
 		# 		religion_tag = judaism_religion
-		# 		religion_tag = zoroastrianism_religion
+				religion_tag = zoroastrianism_religion
 		# 		AND = {
 		# 			has_doctrine = pagan_hostility_doctrine
 		# 			NOT = { religion_tag = kushitism_religion }
 		# 		}
-		# 	}
-		# }
+			}
+		}
 
 		parameters = {
 			consolamentum_active = yes
@@ -400,11 +400,10 @@
 		piety_cost = {
 			if = {
 				limit = {
-					always = no
-					# OR = {
+					OR = {
 					# 	religion_tag = dualism_religion
-					# 	religion_tag = zoroastrianism_religion
-					# }
+						religion_tag = zoroastrianism_religion
+					}
 				}
 				value = faith_tenet_cost_low
 			}
@@ -445,12 +444,17 @@
 
 		parameters = {
 			hostility_override_tenet_gnosticism = 0
+			hostility_override_special_doctrine_is_gnostic_faith = 0
 			granting_titles_gives_stress = yes
 		}
 
 		character_modifier = {
 			learning = 2
 			stewardship = -2
+		}
+
+		is_shown = {
+			NOT = { has_doctrine = special_doctrine_is_gnostic_faith } # Can't be Gnostic if ye already are Gnostic
 		}
 	}
 
@@ -473,7 +477,7 @@
 				limit = {
 					OR = {
 						# religion_tag = hinduism_religion
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -548,7 +552,7 @@
 			else_if = {
 				limit = {
 					OR = {
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -647,7 +651,7 @@
 		character_modifier = {
 			domain_limit = 1
 			ai_war_chance = -0.25
-			ai_war_cooldown = 0.25
+			ai_war_cooldown = 5
 		}
 	}
 
@@ -670,10 +674,9 @@
 			if = {
 				limit = {
 					OR = {
-						always = no
 						# religion_tag = christianity_religion
 						# religion_tag = hinduism_religion
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 					}
 				}
 				value = faith_tenet_cost_mid
@@ -697,7 +700,7 @@
 		}
 
 		parameters = {
-			fervor_per_holy_site = 0.1
+			fervor_per_holy_site = 1
 			pilgrimage_decision_active = yes
 		}
 	}
@@ -763,7 +766,7 @@
 			else_if = {
 				limit = {
 					OR = {
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -910,7 +913,7 @@
 					OR = {
 						# religion_tag = hinduism_religion
 						# religion_tag = jainism_religion
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -954,11 +957,10 @@
 			}
 			else_if = {
 				limit = {
-					always = no
-					# OR = {
+					OR = {
 					# 	religion_tag = judaism_religion
-					# 	religion_tag = zoroastrianism_religion
-					# }
+						religion_tag = zoroastrianism_religion
+					}
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1053,13 +1055,13 @@
 			}
 		}
 
-		# is_shown = {
-		# 	NOR = {
+		is_shown = {
+			NOR = {
 		# 		religion_tag = christianity_religion
 		# 		religion_tag = judaism_religion
-		# 		religion_tag = zoroastrianism_religion
-		# 	}
-		# }
+				religion_tag = zoroastrianism_religion
+			}
+		}
 
 		parameters = {
 			reincarnation_resistance_to_conversion = yes
@@ -1075,7 +1077,7 @@
 					OR = {
 						# religion_tag = christianity_religion
 						# religion_tag = hinduism_religion
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -1165,10 +1167,9 @@
 			}
 			else_if = {
 				limit = {
-					always = no
-					# OR = {
-					# 	religion_tag = zoroastrianism_religion
-					# }
+					OR = {
+						religion_tag = zoroastrianism_religion
+					}
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1243,7 +1244,7 @@
 			if = {
 				limit = {
 					OR = {
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -1329,7 +1330,7 @@
 		icon = core_tenet_dharmawheel
 		is_shown = {
 			has_doctrine = eastern_hostility_doctrine
-			# NOT = { religion_tag = zoroastrianism_religion }
+			NOT = { religion_tag = zoroastrianism_religion }
 		}
 
 		piety_cost = {
@@ -1399,7 +1400,7 @@
 
 		is_shown = {
 			has_doctrine = eastern_hostility_doctrine
-			# NOT = { religion_tag = zoroastrianism_religion }
+			NOT = { religion_tag = zoroastrianism_religion }
 		}
 
 		piety_cost = {
@@ -1554,7 +1555,7 @@
 			else_if = {
 				limit = {
 					OR = {
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -1712,6 +1713,11 @@
 			human_sacrifice_active = yes
 			flower_war_cb_active = yes
 		}
+
+		character_modifier = {
+			ai_war_chance = 1
+			ai_war_cooldown = -0.5
+		}
 	}
 
 	tenet_mystical_birthright = {
@@ -1749,7 +1755,7 @@
 				limit = {
 					OR = {
 						# religion_tag = hinduism_religion
-						# religion_tag = zoroastrianism_religion
+						religion_tag = zoroastrianism_religion
 						has_doctrine = pagan_hostility_doctrine
 					}
 				}
@@ -2008,7 +2014,9 @@
 		piety_cost = {
 			# If you've already got human sacrifice, this is a nice and easy jump.
 			if = {
-				limit = { has_doctrine = tenet_human_sacrifice }
+				limit = { 
+					has_doctrine = tenet_human_sacrifice
+				}
 				value = faith_tenet_cost_low
 			}
 			# Otherwise, follow the same pricing tiers as tenet_human_sacrifice.
@@ -2125,7 +2133,11 @@
 			}
 		}
 		parameters = {
-			hostility_override_eastern_hostility_doctrine = 2
+			hostility_override_eastern_hostility_doctrine = 1
+			#For loc:
+			is_eastern_faith_bilateral_loc_override = 1
+			eastern_syncretic_actor_opinion_active = yes
+			opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 		traits = {
 			virtues = { honest }

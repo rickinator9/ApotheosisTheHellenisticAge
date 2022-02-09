@@ -60,6 +60,12 @@ greece_decisions.0001 = {
 		title:d_messenia = {
 			save_scope_as = messenia
 		}
+		culture:laconian = {
+			save_scope_as = actor_culture
+		}
+		culture:messenian = {
+			save_scope_as = target_culture
+		}
 	}
 	
 	option = { # Enslave the Messenians!
@@ -85,6 +91,7 @@ greece_decisions.0001 = {
 				limit = {
 					faith = faith:pythian_faith
 					NOR = { # fellow Spartans don't care
+						has_culture = culture:laconian
 						dynasty = dynasty:spartandyn001
 						dynasty = dynasty:spartandyn002
 					}
@@ -103,8 +110,22 @@ greece_decisions.0001 = {
 			custom = every_county_d_messenia
 			add_county_modifier = {
 				modifier = helot_population_modifier
-				years = 20 # TODO: turn this into a permanent modifier which the province holder can pay to remove via decision
+				years = 20
 			}
+		}
+		culture:laconian = {
+			change_cultural_acceptance = {
+				target = culture:messenian
+				value = -30
+				desc = cultural_acceptance_enslavement
+			}
+		}
+		culture:messenian = {
+			if = {
+				limit = { has_cultural_tradition = tradition_former_slaves }
+				remove_culture_tradition = tradition_former_slaves
+			}
+			add_culture_tradition = tradition_servile_class
 		}
 
 		every_player = {
@@ -165,6 +186,13 @@ greece_decisions.0001 = {
 			add_county_modifier = {
 				modifier = newly_perioikic_modifier
 				years = 20
+			}
+		}
+		culture:laconian = {
+			change_cultural_acceptance = {
+				target = culture:messenian
+				value = 5
+				desc = cultural_acceptance_perioikic_status
 			}
 		}
 
@@ -479,7 +507,7 @@ greece_decisions.0003 = {
 				}
 				else_if = {
 					limit = { 
-						has_culture = culture:athenian
+						has_same_culture_as = scope:k_athenai_founder
 						government_has_flag = is_bureaucracy_government
 					}
 					add_character_flag = federal_athenian_vassal
@@ -598,7 +626,7 @@ greece_decisions.0004 = {
 		name = greece_decisions.0004.a 
 
 		trigger = { 
-			has_culture = culture:athenian
+			has_same_culture_as = scope:k_athenai_founder
 			NOR = { 
 				has_character_flag = federal_athenian_vassal 
 				has_character_flag = extorted_vassal 
@@ -686,7 +714,7 @@ greece_decisions.0004 = {
 		trigger = { 
 			NOR = {
 				has_character_flag = extorted_vassal
-				has_culture = culture:athenian
+				has_same_culture_as = scope:k_athenai_founder
 				AND = {
 					has_culture = culture:macedonian
 					is_independent_ruler = yes

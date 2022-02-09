@@ -1,0 +1,71 @@
+﻿
+GetRegionalArcherMAA = {
+	type = character
+	
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = bowmen
+	}
+}
+
+GetRegionalInfantryMAA = {
+	type = character
+	random_valid = yes
+	
+	text = {
+		trigger = {
+			culture = { has_cultural_parameter = unlock_maa_spartiatai_hoplitai }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
+		}
+		localization_key = spartiatai_hoplitai
+	}
+	text = {
+		trigger = { culture = { has_innovation = innovation_sarissa } }
+		localization_key = pezhetairoi
+	}
+	text = {
+		trigger = { culture = { has_cultural_parameter = unlock_maa_hoplitai } }
+		localization_key = hoplitai
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = infantry
+	}
+}
+
+GetRegionalCavalryMAA = {
+	type = character
+	random_valid = yes
+	
+	text = {
+		trigger = { culture = { has_innovation = innovation_companion_cavalry } }
+		localization_key = hetairoi
+	}
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = cavalry
+	}
+}
+
+GetRegionalSkirmisherMAA = {
+	type = character
+	random_valid = yes
+	
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = light_footmen
+	}
+}
