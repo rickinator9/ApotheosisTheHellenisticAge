@@ -192,13 +192,13 @@ coalition.0002 = {
 			# for each character.culture != liege.culture add X join-score
 			modifier = {
 				add = 25
-				has_same_culture_group_as = liege
+				culture = { has_same_culture_heritage = liege.culture }
 				NOT = { culture = liege.culture }
 			}
 			modifier = {
 				add = 50
-				NOT = {
-					has_same_culture_group_as = liege
+				NOT = { 
+					culture = { has_same_culture_heritage = liege.culture }
 				}
 			}
 			# Electors are less likely to declare independence, if they're the same faith
@@ -318,7 +318,13 @@ coalition.0003 = {
 
 		show_as_tooltip = { # Actually happens in coalition.0002
 			scope:seceding_vassal = {
-				becomes_independent = {}
+				create_title_and_vassal_change = {
+					type = independency 
+					save_scope_as = change
+				}
+				becomes_independent = {
+					change = scope:change
+				}
 			}
 			add_unpressed_claim = scope:seceding_vassal.primary_title
 			add_opinion = {

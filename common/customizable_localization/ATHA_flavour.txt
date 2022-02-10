@@ -34,8 +34,12 @@
 	}
 	text = {
 		localization_key = battle_salamis # Greek Coalition Victory over Persia, 480 BC
-		trigger = {
-			NOT = { has_culture = culture:dorian_south } # Spartans / Cretans probably do not care too much about a naval victory.
+		trigger = { 
+			NOR = { # Spartans / Cretans probably do not care too much about a naval victory.
+				has_culture = culture:cretan 
+				has_culture = culture:laconian 
+				has_culture = culture:messenian 
+			} 
 		}
 	}
 	text = {
@@ -43,8 +47,12 @@
 	}
 	text = {
 		localization_key = battle_mykale # Greek Coalition Victory over Persia, 479 BC
-		trigger = {
-			NOT = { has_culture = culture:dorian_south } # Spartans / Cretans probably do not care too much about a naval victory.
+		trigger = { 
+			NOR = { # Spartans / Cretans probably do not care too much about a naval victory.
+				has_culture = culture:cretan 
+				has_culture = culture:laconian 
+				has_culture = culture:messenian 
+			} 
 		}
 	}
 	text = {
@@ -64,7 +72,7 @@
 		trigger = {
 			OR = {
 				has_culture = culture:boeotian
-				has_culture = culture:dorian_south
+				has_culture = culture:laconian
 			}
 		}
 	}
@@ -77,7 +85,7 @@
 	text = {
 		localization_key = battle_amphipolis # Spartan Victory over the Athenians, 422 BC
 		trigger = {
-			has_culture = culture:dorian_south
+			has_culture = culture:laconian
 		}
 	}
 	text = {
@@ -95,7 +103,7 @@
 	text = {
 		localization_key = battle_aigospotamoi # Spartan Victory over Athens, 405 BC
 		trigger = {
-			has_culture = culture:dorian_south
+			has_culture = culture:laconian
 		}
 	}
 	text = {

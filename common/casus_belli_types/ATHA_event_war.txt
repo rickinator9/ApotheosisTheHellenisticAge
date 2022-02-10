@@ -108,21 +108,27 @@ ionian_revolt_cb = {
 
 			#Rename k_ionia title based on culture
 			if = {
-				limit = { has_culture = culture:ionian }
+				limit = { 
+					culture = { has_name_list = name_list_ionian }
+				}
 				# Rename the title to Ionie
 				hidden_effect = {
 					title:k_ionia = { set_title_name = cn_ionia_ionic }
 				}
 			}
 			else_if = {
-				limit = { has_culture = culture:aeolian }
+				limit = { 
+					culture = { has_name_list = name_list_aeolian }
+				}
 				# Rename the title to Aiolis
 				hidden_effect = {
 					title:k_ionia = { set_title_name = d_aiolis }
 				}
 			}
 			else_if = {
-				limit = { has_culture = culture:dorian }
+				limit = { 
+					culture = { has_name_list = name_list_dorian }
+				}
 				# Rename the title to Doris
 				hidden_effect = {
 					title:k_ionia = { set_title_name = d_doris }

@@ -227,7 +227,7 @@ vassal_interaction.0001 = {
 	option = { #Refuse
 		name = vassal_interaction.0001.d
 		trigger = {
-			NOT = { has_hook = scope:actor }
+			NOT = { has_usable_hook = scope:actor }
 		}
 		show_as_tooltip = {
 			scope:actor = {
@@ -257,7 +257,7 @@ vassal_interaction.0001 = {
 	option = { #Refuse - you have a hook!
 		name = vassal_interaction.0001.e
 		trigger = {
-			has_hook = scope:actor
+			has_usable_hook = scope:actor
 		}
 		show_as_tooltip = {
 			use_hook = scope:actor
@@ -406,7 +406,7 @@ vassal_interaction.0003 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 		}
 		use_hook = scope:recipient
 		scope:target = {
@@ -506,7 +506,7 @@ vassal_interaction.0004 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 		}
 		use_hook = scope:recipient
 		scope:target = {
@@ -550,7 +550,7 @@ vassal_interaction.0005 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 			NOT = { exists = scope:vassal_used_hook }
 		}
 		use_hook = scope:recipient
@@ -870,7 +870,7 @@ vassal_interaction.0011 = {
 	option = { #Refuse
 		name = vassal_interaction.0011.d
 		trigger = {
-			NOT = { has_hook = scope:actor }
+			NOT = { has_usable_hook = scope:actor }
 		}
 		show_as_tooltip = {
 			scope:actor = {
@@ -900,7 +900,7 @@ vassal_interaction.0011 = {
 	option = { #Refuse - you have a hook!
 		name = vassal_interaction.0011.d
 		trigger = {
-			has_hook = scope:actor
+			has_usable_hook = scope:actor
 		}
 		show_as_tooltip = {
 			use_hook = scope:actor
@@ -1039,7 +1039,7 @@ vassal_interaction.0013 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 		}
 		use_hook = scope:recipient
 		scope:target = {
@@ -1125,7 +1125,7 @@ vassal_interaction.0014 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 		}
 		use_hook = scope:recipient
 		scope:target = {
@@ -1157,7 +1157,7 @@ vassal_interaction.0015 = {
 		name = vassal_interaction.you_owe_me
 		trigger = {
 			scope:recipient = { is_ai = yes }
-			has_hook = scope:recipient
+			has_usable_hook = scope:recipient
 		}
 		use_hook = scope:recipient
 		scope:target = {
@@ -1333,5 +1333,28 @@ vassal_interaction.0030 = {
 
 	option = {
 		name = vassal_interaction.0030.a
+	}
+}
+
+#####################
+# A Vassal has claimed one of my titles
+# by Alexander Oltner
+#####################
+vassal_interaction.0040 = {
+	type = letter_event
+	opening = {
+		desc = char_interaction.0020.opening
+	}
+	desc = vassal_interaction.0040.desc
+		
+	sender = scope:actor
+
+	option = {
+		name = vassal_interaction.0040.a
+		show_as_tooltip = {
+			scope:actor = {
+				add_unpressed_claim = scope:target
+			}
+		}
 	}
 }

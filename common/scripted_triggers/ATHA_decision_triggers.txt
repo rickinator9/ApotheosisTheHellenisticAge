@@ -1,7 +1,7 @@
 ﻿### Assuming that we have a character who can take the decision to form k_peloponnesos, is there anyone eligible to join the league?
 form_k_peloponnesos_decision_potential_vassal_trigger = {
 	#Has to be a Greek ruler
-	has_culture_group = culture_group:greek_group
+	culture = { has_cultural_pillar = heritage_greek }
 
 	#Duchy tier or lower
 	highest_held_title_tier <= tier_duchy
@@ -34,27 +34,64 @@ ionian_revolt_proximity_1_trigger = {
 		vassal_contract_has_flag = has_autonomous_contract
 		has_government = feudal_government # has to be reiterated so dynastic vassals are counted
 	}
+	culture = { has_cultural_pillar = heritage_greek }	
 	OR = {
 		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:dorian }
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:dorian 
+					any_parent_culture_or_above = { this = culture:dorian }
+				}
+			}
 			OR = {
 				has_culture = culture:dorian
-				has_culture = culture:dorian_south
+				has_culture = culture:laconian
+				has_culture = culture:messenian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:laconian
+						this = culture:messenian
+					}
+				}
 			}
 		}
 		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:ionian }
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:ionian 
+					any_parent_culture_or_above = { this = culture:ionian }
+				}
+			}
 			OR = {
 				has_culture = culture:ionian
 				has_culture = culture:athenian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:ionian
+						this = culture:athenian
+					}
+				}
 			}
 		}
 		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:aeolian }
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:aeolian 
+					any_parent_culture_or_above = { this = culture:aeolian }
+				}
+			}
 			OR = {
 				has_culture = culture:aeolian
 				has_culture = culture:boeotian
 				has_culture = culture:thessalian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:aeolian
+						this = culture:boeotian
+						this = culture:thessalian
+					}
+				}
 			}
 		}
 	}
@@ -64,10 +101,18 @@ ionian_revolt_proximity_2_trigger = {
 	OR = {
 		#Have an appropriate culture & government with land in one of the coastal regions or adjacent to the Ionian region
 		AND = {
+			culture = { has_cultural_pillar = heritage_greek }
 			OR = {
 				has_culture = culture:dorian
 				has_culture = culture:ionian
 				has_culture = culture:aeolian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:dorian
+						this = culture:ionian
+						this = culture:aeolian
+					}
+				}
 			}
 			OR = {
 				has_city_state_government = yes
@@ -107,23 +152,66 @@ ionian_revolt_proximity_3_trigger = {
 }
 
 ionian_revolt_should_support_trigger = {
+	culture = { has_cultural_pillar = heritage_greek }
 	OR = {
 		has_culture = culture:dorian
 		has_culture = culture:ionian
 		has_culture = culture:aeolian
-		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:dorian }
-			has_culture = culture:dorian_south
+		any_parent_culture_or_above = {
+			OR = {
+				this = culture:dorian
+				this = culture:ionian
+				this = culture:aeolian
+			}
 		}
 		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:ionian }
-			has_culture = culture:athenian
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:dorian 
+					any_parent_culture_or_above = { this = culture:dorian }
+				}
+			}
+			OR = {
+				has_culture = culture:laconian
+				has_culture = culture:messenian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:laconian
+						this = culture:messenian
+					}
+				}
+			}
 		}
 		AND = {
-			scope:ionian_revolt_leader = { has_culture = culture:aeolian }
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:ionian 
+					any_parent_culture_or_above = { this = culture:ionian }
+				}
+			}
+			OR = {
+				has_culture = culture:athenian
+				any_parent_culture_or_above = {
+					this = culture:athenian
+				}
+			}
+		}
+		AND = {
+			scope:ionian_revolt_leader = { 
+				OR = {
+					has_culture = culture:aeolian 
+					any_parent_culture_or_above = { this = culture:aeolian }
+				}
+			}
 			OR = {
 				has_culture = culture:boeotian
 				has_culture = culture:thessalian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:boeotian
+						this = culture:thessalian
+					}
+				}
 			}
 		}
 	}

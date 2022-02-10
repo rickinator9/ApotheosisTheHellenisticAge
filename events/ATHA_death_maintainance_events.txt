@@ -1,0 +1,113 @@
+﻿namespace = ATHA_death_maintainance
+
+##		##
+# SPARTA #
+##		##
+
+# On death, flag the next heir to become the second spartan monarch.
+ATHA_death_maintainance.0001 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		trigger_if = {
+			limit = { exists = liege }
+			liege = {
+				cp:councillor_spartan_dual_monarch = {
+					this = root
+				}
+			}
+		}
+	}
+
+	immediate = {
+
+		# If this character is landed, the player heir is unlanded and can command, they are a fine candidate.
+		if = {
+			limit = {
+				is_landed = yes
+				player_heir = {
+					OR = {
+						is_landed = no
+						liege = {
+							this = root.liege
+						}
+					}
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root.liege }
+				}
+			}
+
+			player_heir = {
+				set_variable = {
+					name = will_be_next_spartan_dual_monarch
+					value = yes
+				}
+			}
+		}
+
+		# TODO: Needs some extra cases in a later release (focussing on Sparta perhaps?):
+		# - What happens when the heir is already landed elsewhere?
+		# - What happens when the heir is unlanded and in someone elses court when this character is also unlanded?
+		# - In the last resort, we will just have to yank a random dynasty member from elsewhere to become the spartan monarch. Perhaps this could be tied into the flavour to create a Leonidas_II who was criticised from his non-spartan manners?
+	}
+}
+
+# On title inheritance, try to assign the spartan monarch title to the inheritor.
+ATHA_death_maintainance.0002 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		has_variable = will_be_next_spartan_dual_monarch
+		liege = {
+			has_government = city_state_spartan_government
+		}
+	}
+
+	immediate = {
+		liege = {
+			assign_councillor_type = {
+				type = councillor_spartan_dual_monarch
+				target = root
+			}
+		}
+
+		remove_variable = will_be_next_spartan_dual_monarch
+	}
+}
+
+##				##
+# FEMALE ORACLES #
+##				##
+
+# If a female oracle dies, generate a new one to prevent a male priest from taking over.
+ATHA_death_maintainance.0010 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		primary_title = { this = title:d_pythia }
+	}
+
+	immediate = {
+		# Create a new oracle character.
+		create_character = {
+			location = root.capital_province
+			template = female_oracle_character
+			save_scope_as = new_oracle
+		}
+
+		# Transfer the titles.
+		create_title_and_vassal_change = {
+			type = granted
+			save_scope_as = change
+		}		
+		every_held_title = {
+			change_title_holder = {
+				holder = scope:new_oracle
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}

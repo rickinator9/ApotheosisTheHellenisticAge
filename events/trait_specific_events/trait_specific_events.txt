@@ -1270,13 +1270,12 @@ trait_specific.9001 = {
 				add = 20
 				has_trait = arrogant
 			}
-			# modifier = {
-			# 	add = 100
-			# 	OR = {
-			# 		culture_group = culture_group:north_germanic_group
-			# 		religion = religion:germanic_religion
-			# 	}
-			# }
+			modifier = {
+				add = 100
+				culture = {
+					has_cultural_parameter = poet_trait_more_common
+				}
+			}
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_poet_good CHANGE = nickname_weight_small_increase }
@@ -1359,6 +1358,7 @@ trait_specific.9001 = {
 #	Poet generation error suppression.
 trait_specific.9002 = {
 	hidden = yes
+	orphan = yes
 
 	immediate = {
 		save_scope_value_as = {

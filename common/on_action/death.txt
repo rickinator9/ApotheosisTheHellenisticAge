@@ -10,17 +10,86 @@ on_death = {
 
 		if = {
 			limit = {
-				is_ai = no
 				exists = player_heir
 			}
 			player_heir = {
-				add_character_flag = {
-					flag = tutorial_reactive_advice_succession
+				apply_hold_court_grace_effect = yes
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				player_heir = {
+					add_character_flag = {
+						flag = tutorial_reactive_advice_succession
+					}
+				}
+				if = {
+					limit = {
+						has_royal_court = yes
+						any_sponsored_inspiration = { count >= 1 }
+					}
+					save_scope_as = old_ruler
+					every_sponsored_inspiration = { add_to_list = inherited_inspiration_list }
+					player_heir = {
+						trigger_event = { id = fund_inspiration.9005 days = 5 }
+					}
+				}
+			}
+		}
+		
+		if = { # Lower Grandeur a little bit on death
+			limit = {
+				has_royal_court = yes
+				exists = primary_heir
+				primary_heir = {
+					has_royal_court = no
+				}
+			}
+			change_current_court_grandeur = grandeur_loss_on_succession_value
+		}
+		
+		if = { # Grandeur in elective realms
+			limit = {
+				has_royal_court = yes
+				exists = primary_heir
+				primary_heir = {
+					has_royal_court = no
+				}
+				primary_title = {
+					has_order_of_succession = election
+				}
+			}
+			primary_heir = {
+				set_variable = {
+					name = previous_holder_grandeur_value
+					value = prev.court_grandeur_current
 				}
 			}
 		}
 
 		invalidate_claimant_factions_on_death_effect = yes
+
+		if = {
+			limit = { has_royal_court = yes }
+			# Clear pay homage once-per-liege grace
+			every_vassal = {
+				if = {
+					limit = { has_variable = homage_type }
+					remove_variable = homage_type
+				}
+			}
+			# Check equipped artifacts
+			if = {
+				limit = {
+					any_equipped_character_artifact = { ep1_artifact_is_court_artifact_trigger = yes }
+				}
+				every_equipped_character_artifact = {
+					limit = { ep1_artifact_is_court_artifact_trigger = yes }
+					set_variable = equipped_court_succession
+				}
+			}
+		}
 	}
 	events = {
 		death_management.0096	# Updates marriage opinions of other spouses if relevant.

@@ -72,27 +72,27 @@ form_e_athenai_decision_effects = {
 
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_military_settlers }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_military_settlers }
+		culture = { add_innovation = innovation_hellenistic_military_settlers }
 	}
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_postal_system }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_postal_system }
+		culture = { add_innovation = innovation_hellenistic_postal_system }
 	}
 	if = {
 		limit = {
-			culture:athenian = {
+			culture = {
 				NOT = { has_innovation = innovation_hellenistic_land_survey }
 			}
 		}
-		culture:athenian = { add_innovation = innovation_hellenistic_land_survey }
+		culture = { add_innovation = innovation_hellenistic_land_survey }
 	}
 }
 
@@ -432,7 +432,7 @@ revive_spartan_faith_decision_effects = {
 			every_in_de_facto_hierarchy = {
 				limit = {
 					tier = tier_county
-					culture = culture:dorian_south # TODO: update to Spartan once culture is added
+					culture = culture:laconian
 				}
 				#Provinces in de jure d_lakedaimonia remember the old ways best, and have a high chance to flip.
 				if = {
@@ -472,7 +472,13 @@ revive_spartan_faith_decision_effects = {
 	}
 	#Finally, give spartan_faith a hefty fervour boost, just so that they don't immediately convert back.
 	hidden_effect = {
-		faith:spartan_faith = { change_fervor = 100 }
+		faith:spartan_faith = {
+			save_scope_as = revived_faith
+			change_fervor = {
+				value = 100
+				desc = fervor_gain_faith_revived
+			}
+		}
 	}
 }
 
@@ -540,25 +546,25 @@ form_k_bithynia_decision_effects = {
 	# Innovations
 	if = {
 		limit = {
-			culture:bithynian = {
+			culture = {
 				NOT = {
 					has_innovation = innovation_classical_monetary_standards
 				}
 			}
 		}
-		culture:bithynian = {
+		culture = {
 			add_innovation = innovation_classical_monetary_standards
 		}
 	}
 	if = {
 		limit = {
-			culture:bithynian = {
+			culture = {
 				NOT = {
 					has_innovation = innovation_classical_bureaucracy
 				}
 			}
 		}
-		culture:bithynian = {
+		culture = {
 			add_innovation = innovation_classical_bureaucracy
 		}
 	}
@@ -585,12 +591,12 @@ found_bithynian_capital_scripted_effect = {
 			modifier = bithynian_capital_modifier
 			years = 20
 		}
-		#If this county doesn't have Bithynian culture, make it so
+		#If this county doesn't have the founder's culture, make it so
 		if = {
 			limit = { 
-				NOT = { culture = culture:bithynian }
+				NOT = { culture = ROOT.culture }
 			}
-			set_county_culture = culture:bithynian
+			set_county_culture = ROOT.culture
 		}
 		#If this county isn't the de jure capital of k_bithynia, make it so.
 		if = {
@@ -694,21 +700,27 @@ form_k_ionia_decision_effects = {
 
 		#Rename title based on culture
 		if = {
-			limit = { has_culture = culture:ionian }
+			limit = { 
+				culture = { has_name_list = name_list_ionian }
+			}
 			# Rename the title to Ionie
 			hidden_effect = {
 				title:k_ionia = { set_title_name = cn_ionia_ionic }
 			}
 		}
 		else_if = {
-			limit = { has_culture = culture:aeolian }
+			limit = { 
+				culture = { has_name_list = name_list_aeolian }
+			}
 			# Rename the title to Aiolis
 			hidden_effect = {
 				title:k_ionia = { set_title_name = d_aiolis }
 			}
 		}
 		else_if = {
-			limit = { has_culture = culture:dorian }
+			limit = { 
+				culture = { has_name_list = name_list_dorian }
+			}
 			# Rename the title to Doris
 			hidden_effect = {
 				title:k_ionia = { set_title_name = d_doris }
@@ -851,16 +863,23 @@ ionian_revolt_decision_effects = {
 	#Prevent AI liege from just transferring you back to your old liege
 	add_character_flag = ai_should_not_transfer
 
-	#Adjust culture if not Ionian/Aeolian/Dorian
+	#Adjust culture if not Ionian/Aeolian/Dorian (or a derivative culture)
 	if = {
 		limit = {
 			NOR = {
 				has_culture = culture:aeolian
 				has_culture = culture:dorian
 				has_culture = culture:ionian
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:aeolian
+						this = culture:dorian
+						this = culture:ionian
+					}
+				}
 			}
 		}
-		#If capital is Ionian/Aeolian/Dorian, swap to your capital's culture
+		#If capital is Ionian/Aeolian/Dorian (or a derivative culture), swap to your capital's culture
 		if = {
 			limit = {
 				capital_province.culture = {
@@ -868,6 +887,13 @@ ionian_revolt_decision_effects = {
 						this = culture:aeolian
 						this = culture:dorian
 						this = culture:ionian
+						any_parent_culture_or_above = {
+							OR = {
+								this = culture:aeolian
+								this = culture:dorian
+								this = culture:ionian
+							}
+						}
 					}
 				}
 			}
@@ -904,11 +930,11 @@ ionian_revolt_decision_effects = {
 	start_war = {
 		casus_belli = ionian_revolt_cb
 		target = scope:ionian_revolt_defender
-		target_title = d_aiolis
-		target_title = d_ionia
-		target_title = d_doris
-		target_title = c_atarneus
-		target_title = c_adramyttion
+		target_title = title:d_aiolis
+		target_title = title:d_ionia
+		target_title = title:d_doris
+		target_title = title:c_atarneus
+		target_title = title:c_adramyttion
 	}
 
 	custom_tooltip = anatolia_decisions.0005.tt_aid
@@ -1171,4 +1197,27 @@ ionian_revolt_0008_tt_effects = {
 			object = scope:ionian_revolt_leader
 		} 
 	}
+}
+
+liberate_culture_decision_effects = {
+	# Get some renown as a reward
+	dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
+
+	# Award some piety
+	add_piety = major_piety_value
+
+	# Award some prestige
+	add_prestige = major_prestige_value
+	
+	# Replace Servile Class tradition with Slaves no More
+	culture = {
+		if = {
+			limit = { has_cultural_tradition = tradition_servile_class }
+			remove_culture_tradition = tradition_servile_class
+		}
+		add_culture_tradition = tradition_former_slaves
+	}
+
+	# You get a fancy nickname
+	set_permanent_nickname_effect = { NICKNAME = nick_the_liberator }
 }

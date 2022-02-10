@@ -64,19 +64,17 @@ MilitaryGenderPlural = {
 	text = {
 		localization_key = men
 		trigger = {
-			faith = { has_doctrine_parameter = combatant_must_be_male }
+			culture = { has_cultural_parameter = martial_custom_male_only_combatant }
 		}
 	}
 	text = {
 		localization_key = women
 		trigger = {
-			faith = { has_doctrine_parameter = combatant_must_be_female }
+			culture = { has_cultural_parameter = martial_custom_female_only_combatant }
 		}
 	}
 	text = {
 		localization_key = people
-		trigger = {
-			faith = { has_doctrine_parameter = combatant_can_be_either_gender }
-		}
+		fallback = yes
 	}
 }

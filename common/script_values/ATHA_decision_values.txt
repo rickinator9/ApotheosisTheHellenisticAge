@@ -276,12 +276,54 @@ k_peloponnesos_acceptance_value_modifier = {
 		}
 		multiply = 0
 	}
-	#Culture differences slightly reduce acceptance
+	#Cultural Acceptance
 	if = {
 		limit = {
-			NOT = { culture = scope:k_peloponnesos_founder.culture }
+			NOT = { has_same_culture_as = scope:k_peloponnesos_founder }
 		}
-		multiply = 0.9
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = { target = scope:k_peloponnesos_founder.culture value <= 10 }
+				}
+			}
+			multiply = 0.4
+		}
+		else_if = {
+			limit = {
+				culture = {
+					cultural_acceptance = { target = scope:k_peloponnesos_founder.culture value <= 20 }
+				}
+			}
+			multiply = 0.5
+		}
+		else_if = {
+			limit = {
+				culture = {
+					cultural_acceptance = { target = scope:k_peloponnesos_founder.culture value <= 30 }
+				}
+			}
+			multiply = 0.6
+		}
+		else_if = {
+			limit = {
+				culture = {
+					cultural_acceptance = { target = scope:k_peloponnesos_founder.culture value <= 40 }
+				}
+			}
+			multiply = 0.7
+		}
+		else_if = {
+			limit = {
+				culture = {
+					cultural_acceptance = { target = scope:k_peloponnesos_founder.culture value <= 50 }
+				}
+			}
+			multiply = 0.8
+		}
+		else = {
+			multiply = 0.9
+		}		
 	}
 }
 

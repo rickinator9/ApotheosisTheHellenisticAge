@@ -3,285 +3,152 @@
 # set name inheritance chances
 # add CoA templates
 
-anatolian_group = { 
-	graphical_cultures = {
-		greek_group_coa_gfx # TEMP
+cabalian = {
+	color = cabalian
+
+	ethos = ethos_egalitarian
+	heritage = heritage_anatolian
+	language = language_luwic
+	martial_custom = martial_custom_male_only
+	traditions = { 
+	}
+	
+	dlc_tradition = {
+		trait = tradition_culture_blending
+		requires_dlc_flag = hybridize_culture
+	}
+
+	name_list = name_list_cabalian
+
+	coa_gfx = {
 		anatolian_group_coa_gfx
-		western_building_gfx
-		mena_clothing_gfx
-		mena_unit_gfx
+		greek_group_coa_gfx # Temporary
+	}
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { mena_clothing_gfx }
+	unit_gfx = { mena_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
+
+carian = {
+	color = carian
+
+	ethos = ethos_spiritual
+	heritage = heritage_anatolian
+	language = language_luwic
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_ruling_caste
+		tradition_religious_patronage
+		tradition_swords_for_hire
+		tradition_seafaring
 	}
 
-	cabalian = {
-		color = { 0.43 0.86 0.73 }
+	name_list = name_list_carian
 
-		cadet_dynasty_names = {
-			"dynn_Phrygios" # TEMP
-		}
-
-		dynasty_names = {
-			"dynn_Phrygios" # TEMP
-		}
-
-		male_names = {
-			# NAMING SHEET (Phrygian-Lycian)
-			Arteimas Kendaibes Masas Moles Molesis Trokhondas																																																																																												# Very Reliable
-			Akhetas Alikhres Apartatis Apeimas Ardamoas Arteimos Artimas_1 Attas_1 Attes Babas Ges Dlikhilpos Eilas Enas Erpias Iagoas Kathon Kbamoas Kidramouas Kloinizoas Kloiniziraios Kodikhos Kodipos Kourales Manes Maramotes Mariosas Mausolos Minnion Mnandrasis Mokheltes Mollesis Ogollis Opramis Opramoas Ouaouas Ouasemis Oubasis Papes Papies Pigasis Pleuros Semias_1 Stoubiskhos Toalios Toallis	# Reliable
-		}
-		female_names = {
-			# NAMING SHEET (Phrygian-Lycian)
-			Armasta Ge Eia Nanne Tateis 																																																							# Very Reliable
-			Akhierous Amiadi Appas Apphias Apionitheis Armapia Arsasis Bile Ena Enas Thyathyia Kiles Koutis Latis Mas Mana Meis Nas Nana_1 Nanas_1 Nanos Naneles Nanodeis Nannelis Nason Obandis Ouaya Ouoouas Papoustis Poua Pouas Tata Tate Tatis Tatias Tation_1	# Reliable
-			Anna_1 Mano																																																												# Unreliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	coa_gfx = {
+		anatolian_group_coa_gfx
+		greek_group_coa_gfx # Temporary
 	}
-	carian = {
-		color = { 0.87 0.22 0.23 }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { mena_clothing_gfx }
+	unit_gfx = { mena_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
 
-		cadet_dynasty_names = {
-			"dynn_Alindeus"
-			"dynn_Qliurqyn"
-			"dynn_Ylarmi"
-			"dynn_Kar"
-		}
+lydian = {
+	color = lydian
 
-		dynasty_names = {
-			"dynn_Alindeus"
-			"dynn_Qliurqyn"
-			"dynn_Ylarmi"
-			"dynn_Kar"
-		}
-
-		male_names = {
-			# NAMING SHEET
-			Arlissis Arlisis Arrhisis Artimes Attes Hekatomnos Hekatomnon Thyssos Idagygos Korrhis Lyxes Manes Maussollos Maussolos Minnion Paktyes Panamyes Paos Papias_1 Papion Paparion Peldemos Pixodaros Sibilos Tymnes Hyssallomos Hyssollos 	# Very Reliable
-			Abersi Akhasson Akhtanassis Akhtanssollos Alganis Alleas Ammaios Andarsodos Apphias Atoukhos Arbessis Arbesis Ardyberos Andolos Arliomos Arrhissis Arteimes Arteumos Artyassis Arphyassis Aryassis Athyasis								# Reliable
-			Bakkhas Bellon Bryaxis Bryassis Brolos Eugenous Pitakolos Dersomanes Hekamyes Hermapis Zonzolos Thyaldis Ibanollis Idakhos Idbelas Idyssollos Imbareldos Imbrasis Imbrassis Imbarsis Innion												# Reliable
-			Kalbalas Karxas Karrheis Karysoldos Kasbollis Kasesis Kasesys Kbondiassis Kbodes Keldnassis Kemptys Kendebes Kendebpsoros Ketambissis Killes Killios Kinximos Koboldos Koibilos Phoibillos Koidos Kokhos_1 Koldobas						# Reliable
-			Kololdos Kondmalas Kosinas Kostollis Kouldois Koureos Kouron Ktouboldos Kyaremos Kyatbes Kytbelemis Kytpis Kobes Koglos Kokhas																											# Reliable
-			Latarses Logdamis Makos Mandalos Malosoos Manitas Mareus Maros Masanorados Massares Matis Mausollos Memakos Minnas Minnis Miskos Miskos_1 Moagetes Moennos Mois Mokoldes Moles Monnes Motolon											# Reliable
-			Nanas Narbas Nonnon Notrassis Oletas Oliatos Ortassis Oseas Oassassis Obrokas Ouokes Pagados Papiades Papianos Pappias Paparos Paryssoldos Paraussollos Parausollos Parnos Pedoldos Pelkhisis Perbilas Pedisas Pigassos Pigres Pittas	# Reliable
-			Samassis Sambaktys Samoos Sangos Sanamos Sanortos Sanys Sassomos Saskos Saskos_1 Seskhonnos Sesoles Sidylemis Sydylemis Silbos Skoaranos Spareudigos Syskos Tatas Tendessis Tobororos Tounobos Tryses Tryoles 							# Reliable
-			Hyliatos Hyrgosos Hyssaldomos Hysseldomos Hyssoldos Hyssolos Khasbos																																									# Reliable
-		}
-		female_names = {
-			# NAMING SHEET
-			Aba Abas_1 Ada_1 Adas Ammia_1 Ammion Ammias Apphias Apphion Geis Minnis Nana_1 Nanas_1 Nannion_1 Tata Tatias Tation_1			# Very Reliable
-			Abbas Alaota Amias Appa Aphion Berthas Bryallis Kendebeis Killane Mamalon Nanne Nonne Paruinna Tate Tatas Tateis Treionminna	# Reliable
-			Amme Arosis Thalsia Kaphene Kosinas Metebis Minne Nane Nannis Paryo Taro Tatia Tatarion											# Unreliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	ethos = ethos_bureaucratic
+	heritage = heritage_anatolian
+	language = language_lydian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_religion_blending
+		tradition_loyal_soldiers
+		tradition_horse_breeder
+		tradition_gardening
 	}
-	lydian = {
-		color = { 0.53 0.62 0.43 }
-
-		cadet_dynasty_names = {
-			"Lydos" # TEMP
-		}
-
-		dynasty_names = {
-			"Lydos" # TEMP
-		}
-
-		male_names = {
-			# NAMING SHEET
-			Thamasios Kroisos Manes Minnos Papes Papias_1 Papianos Tyios																																																																																																													# Very Reliable
-			Adyattes Akhiamos Alyattes Amias Ammios Ammias Armanandas Artimes Artymes Atis_1 Atys Beletros Bertes Boios Bryaxis Hekatomnos Kadoas Kados_1 Karous_1 Kerasi Kizon Kinabalos Koies Kolenes Kondas Koreis Kroukhras Kokhas Kokhos Lolous Malios Meles Minnion Mogetes Molesis Morstos Mytalis Ninos Ninnaros Opinas Ottalos Ouatias Pakhtyes Pagtyes Papion Pappas Pappos Paparos Paparion Partaras Pigres Poikhes Progyos Sandanis Sandokhes Saplas Saplous Sasas Sisines Tas Tamatis Tatos Tettaiios Troglos	# Reliable
-		}
-		female_names = {
-			# NAMING SHEET
-			Amias Ammion Ammias Apphias Apphion Tatias Tation_1 																															# Very Reliable
-			Ada_1 Amia Amma Ammia_1 Ammas Apphein Appharion Aphion Apphe Apphion Aryenis Babis Inde Korrhe Mas Mania_1 Marieme Minne Nanis Nanne Ninis Nonne Sabaithis Seddis Tatas Tates	# Reliable
-			Amion Amin Ammei Ammi Appheia Aphias Aphiades Apphein Ena Mamale Manias Nia Nitonis Tata Tateis Tatia Tateua Tatarion Toudo														# Unreliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	
+	dlc_tradition = {
+		trait = tradition_artisans
+		requires_dlc_flag = royal_court
 	}
-	mariandynian = {
-		color = { 0.35 0.26 0.34 }
 
-		cadet_dynasty_names = {
-			"dynn_Mariandynos" # TEMP
-		}
+	name_list = name_list_lydian
 
-		dynasty_names = {
-			"dynn_Mariandynos" # TEMP
-		}
-
-		male_names = {
-			# NAMING SHEET (Paphlagonian & Pontic)
-			Ainiates Mamas 																																			# Very Reliable
-			Gleris Zardokhes Maes_1 Manes Neis Ninos Sandanis Saroandes Tes Tibios Tougas 																	# Reliable
-			Apphous Atotas Athotes Babuttes Bagas Dadeas Thys Korylas Mimios Morzios Morsolis Onzikhos Papas_1 Papos Rhatotes Sasas Sibenokhtos Sousounis  	# Unreliable
-		}
-		female_names = {
-			# NAMING SHEET (Paphlagonian & Pontic)
-			Amme 														# Very Reliable
-			Appas Boa Gaga Gomida Eia Mata_Mariandynian Nanna Tateis	# Reliable
-			Kouleis Koulia Mation_Mariandynian Moathernes Sisouna		# Unreliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	coa_gfx = {
+		anatolian_group_coa_gfx
+		greek_group_coa_gfx # Temporary
 	}
-	mysian = {
-		color = { 0.68 0.45 0.61 }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { mena_clothing_gfx }
+	unit_gfx = { mena_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
 
-		cadet_dynasty_names = {
-			"Mysos" # TEMP
-		}
+mysian = {
+	color = mysian
 
-		dynasty_names = {
-			"Mysos" # TEMP
-		}
-
-		male_names = {
-			# NAMING SHEET
-			Manes Papias_1																																# Very Reliable
-			Akhes Algoumis Ammios Apphias Apphous Atyanas Bokhedes Deidas_1 Kandion Killes Kokhos Lalos Minnas Minnos Molesis Papas_1 Papos Paparion Tatanos	# Reliable
-			Kausilos Kotas Ordobetes Sariandes Tateion  																										# Unreliable
-		}
-		female_names = {
-			# NAMING SHEET
-			Apphion 																			# Very Reliable
-			Akkha Ammia_1 Ammion Anda Appha Apphon Inna Manakhon Nannis Taitis Tata Tation_1	# Reliable
-			Akkhis Amion Amma Ammias Appas Appe Mania_1 Nana_1 Tatis Tatia Tatarion				# Unreliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	ethos = ethos_stoic
+	heritage = heritage_anatolian
+	language = language_phrygian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_sacred_mountains
+		tradition_hit_and_run
+		tradition_hill_dwellers
 	}
-	phrygian = {
-		color = { 0.94 0.68 0.37 }
 
-		cadet_dynasty_names = {
-			"dynn_Phrygios" # TEMP
-		}
+	name_list = name_list_mysian
 
-		dynasty_names = {
-			"dynn_Phrygios" # TEMP
-		}
-
-		male_names = {
-			# NAMING SHEET
-			Apas Attas_1 Dades Delas Kokhos Manes Nanas_1 Papas_1 Papias_1 Tatas																															# Very reliable
-			Alenpates Alpos Amias Ammios Ammalios Aphiamos Arotaos Artimmes Attapinis Babys Barthas Bestes Boas Gokhas																						# Reliable
-			Dadas Dadon_1 Deoueias Dormagles Dorykhanos Doudas Doumetaos Zourzas Thakheas Thiarallos Iassos Iman Imas Eimas Irdis																			# Reliable
-			Kandes Katmaros Kosbylos Koulas Kouriles Koussou Krimeinos Krouleus Kodalos Lasamos Mamas Mamios Manis Manos Manosas Maris Mason Meilas Midas_1 Midakas Mimogas Moles Mordios Mosis Mounzoures	# Reliable
-			Nannas Neis Nimos Omasos Ouenaoanias Ourpalos Papianos Paparrhion Piateros Ratoupates Ratophates Sisines Sisinnos Soulos Sousou Sousous Sousos Sossones											# Reliable
-			Tas Tantamanos Tarazis Tates Tieos Tinou Tyndianos																																				# Reliable
-		}
-		female_names = {
-			# NAMING SHEET
-			Amia Amion Ammia_1 Ammion Ammias Appas Appe Apheion Ba Babou Babeis Dada Mania_1 Mateis Nana_1 Nanas_1 Papia Tata Tatas Tateis Tation_1															# Very reliable
-			Ama Amie Amias Amma Ammeia Ammea Anion Apes Appes Appesiane Apphe Apphion Apphein Aphias Aphion Aphilla Bas_1 Boula Ges Ge																		# Reliable
-			Da Das Dadas Dode Douda Doudes Doudousa Drouma Eia Ia Ionas Kakheis Kamma Lala Liliana Louliane Louleiane Mama Mame Manosou Maroula Masa Masgaris Matis Meilasia Meilias_1 Mimbias Mnea Mouna	# Reliable
-			Nada Nenyeria Nona None Nonna Nonne Seuna Oida Ouenauia Ouenauie Pousa Pribis Prieis Sabis Tatis Tatias Titin Toa																				# Reliable
-		}
-
-		dynasty_of_location_prefix = ""
-
-		# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
-		pat_grf_name_chance = 45 # TEMP
-		mat_grf_name_chance = 45 # TEMP
-		father_name_chance = 5 # TEMP
-		
-		# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
-		pat_grm_name_chance = 45 # TEMP
-		mat_grm_name_chance = 5 # TEMP
-		mother_name_chance = 45 # TEMP
-		
-		ethnicities = {
-			10 = mediterranean_byzantine
-		}
-
-		mercenary_names = {
-		}	
+	coa_gfx = {
+		anatolian_group_coa_gfx
+		greek_group_coa_gfx # Temporary
 	}
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { mena_clothing_gfx }
+	unit_gfx = { mena_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
+}
+
+phrygian = {
+	color = phrygian
+
+	ethos = ethos_spiritual
+	heritage = heritage_anatolian
+	language = language_phrygian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_religious_patronage
+		tradition_sacred_mountains
+		tradition_loyal_soldiers
+		tradition_music_theory
+	}
+
+	name_list = name_list_phrygian
+
+	coa_gfx = {
+		anatolian_group_coa_gfx
+		greek_group_coa_gfx # Temporary
+	}
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { mena_clothing_gfx }
+	unit_gfx = { mena_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}	
 }

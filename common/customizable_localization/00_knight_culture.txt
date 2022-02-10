@@ -3,22 +3,31 @@
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax
@@ -26,19 +35,26 @@
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites
 	}
@@ -59,22 +75,31 @@ KnightCulturePlural = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_plural
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_plural
@@ -82,19 +107,26 @@ KnightCulturePlural = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_plural
 	}
@@ -115,22 +147,31 @@ KnightCultureNoTooltip = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip
@@ -138,19 +179,26 @@ KnightCultureNoTooltip = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip
 	}
@@ -165,22 +213,31 @@ KnightCulturePluralNoTooltip = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_plural
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip_plural
@@ -188,19 +245,26 @@ KnightCulturePluralNoTooltip = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_plural
 	}
@@ -215,22 +279,31 @@ KnightCultureNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip_lowercase
@@ -238,19 +311,26 @@ KnightCultureNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase
 	}
@@ -265,22 +345,31 @@ KnightCulturePluralNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip_lowercase_plural
@@ -288,19 +377,26 @@ KnightCulturePluralNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural
 	}
@@ -315,22 +411,31 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_plural_possessive
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip_lowercase_plural_possessive
@@ -338,19 +443,26 @@ KnightCulturePluralPossessiveNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_plural_possessive
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_plural_possessive
 	}
@@ -365,22 +477,31 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 
 	text = {
 		trigger = {
-			has_culture_group = culture_group:thracian_group
+			culture = { has_cultural_pillar = language_thracian }
 		}
 		localization_key = knight_zibythides_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
-			primary_title = title:d_lakedaimon
-			culture = culture:dorian_south
+			culture = { has_name_list = name_list_laconian }
+			OR = { 
+				has_government = city_state_spartan_government
+				AND = { 
+					has_government = hegemonic_league_government
+					OR = {
+						dynasty = dynasty:spartandyn001
+						dynasty = dynasty:spartandyn002
+					}
+				}
+			}
 		}
 		localization_key = knight_hippeus_no_tooltip_lowercase_adjective
 	}
 	text = { # Epirotes and Macedonians use Somatophylakes.
 		trigger = {
 			OR = {
-				culture = culture:macedonian
-				culture = culture:epirote
+				culture = { has_name_list = name_list_macedonian }
+				culture = { has_name_list = name_list_epirote }
 			}
 		}
 		localization_key = knight_somatophylax_no_tooltip_lowercase_adjective
@@ -388,19 +509,26 @@ KnightCultureAdjectiveNoTooltipLowercase = {
 	text = {
 		trigger = {
 			OR = {
-				# Doric or Arcado-Cypriot only
-				culture = culture:achaean
-				culture = culture:arcadian
-				culture = culture:dorian
-				culture = culture:dorian_northwest
-				culture = culture:dorian_south
+			# Doric
+				culture = { has_name_list = name_list_achaean }
+				culture = { has_name_list = name_list_cretan }
+				culture = { has_name_list = name_list_dorian }
+				culture = { has_name_list = name_list_dorian_northwest }
+				culture = { has_name_list = name_list_laconian }
+				culture = { has_name_list = name_list_messenian }
+			# Aeolic
+				culture = { has_name_list = name_list_aeolian }
+				culture = { has_name_list = name_list_boeotian }
+				culture = { has_name_list = name_list_thessalian }
+			# Arcado-Cypriot
+				culture = { has_name_list = name_list_arcadian }
 			}
 		}
 		localization_key = knight_epilektos_hoplitas_no_tooltip_lowercase_adjective
 	}
 	text = {
 		trigger = {
-			has_culture_group = culture_group:greek_group
+			culture = { has_cultural_pillar = language_greek }
 		}
 		localization_key = knight_epilektos_hoplites_no_tooltip_lowercase_adjective
 	}

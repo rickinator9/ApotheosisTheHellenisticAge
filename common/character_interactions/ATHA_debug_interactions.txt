@@ -39,3 +39,20 @@ debug_add_emergency = {
 	
 	auto_accept = yes
 }
+
+debug_abdicate = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	is_shown = {
+		debug_only = yes
+		scope:recipient = scope:actor
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			depose = yes
+		}
+	}
+	
+	auto_accept = yes
+}
