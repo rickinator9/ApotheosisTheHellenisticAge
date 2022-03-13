@@ -1879,13 +1879,9 @@ clothes = {
 				value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
 				template = bust_clothes
 			}
-			morph = {
-				mode = modify_multiply
-				gene = gene_bs_body_shape
-				value = 1.0
-				template = body_shape_average_clothed
-			}
-		}	
+
+		}
+		outfit_tags = { military_outfit }
 		weight = {
 			base = 0
 			modifier = {
@@ -3218,6 +3214,7 @@ clothes = {
 				value = 1.0
 				template = bust_clothes_light
 			}
+
 	    }
 	    outfit_tags = { priest_outfit }
 	    weight = {
@@ -3450,6 +3447,20 @@ clothes = {
 	#     }
 	# }	
 
+	william_the_bastard = { 
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = western_high_nobility_clothes
+				value = 0.7
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+
 	debbie_lane = { # To make sure Debbie gets the nicer looking clothes!
 		dna_modifiers = {
 			accessory = {
@@ -3470,6 +3481,7 @@ clothes = {
 			base = 0
 		}
 	}
+
 	isabella_welch = { # To make sure Isabella gets the nicer looking clothes!
 		dna_modifiers = {
 			accessory = {

@@ -483,6 +483,8 @@ common_join_faction_blockers = {
 		save_temporary_opinion_value_as = { name = target_opinion target = $FACTION_TARGET$ }
 		scope:target_opinion >= 80
 	}
+
+	
 }
 
 common_faction_modifiers = {
@@ -800,14 +802,12 @@ claimant_faction_modifiers = {
 				faith = { has_doctrine = doctrine_gender_female_dominated }
 				$FACTION_CLAIMANT$ = {
 					is_male = yes
-					faith = root.faith
 				}
 			}
 			AND = {
 				faith = { has_doctrine = doctrine_gender_male_dominated }
 				$FACTION_CLAIMANT$ = {
 					is_female = yes
-					faith = root.faith
 				}
 			}
 		}
@@ -851,27 +851,38 @@ claimant_faction_modifiers = {
 
 	# They do not like the claimant more than their liege, unless its a claimant of their own culture
 	modifier = {
-		add = -25
+		add = -50
 		NOT = {	$FACTION_CLAIMANT$ = root }
 		NAND = {
 			culture = $FACTION_CLAIMANT$.culture
 			NOT = {
-				culture =  $FACTION_TARGET$.culture
+				culture = $FACTION_TARGET$.culture
 			}
 		}
 		save_temporary_opinion_value_as = { name = opinion_of_current_liege target = $FACTION_TARGET$ }
 		opinion = { target = $FACTION_CLAIMANT$ value < scope:opinion_of_current_liege }
 	}
-
-	# Opinion of the potential Claimant (not self)
-	opinion_modifier = {
-		trigger = {
-			NOT = { $FACTION_CLAIMANT$ = root }
+	
+	modifier = { # If you like the Claimant better than your liege, increase the score
+		NOT = {	$FACTION_CLAIMANT$ = root }
+		save_temporary_opinion_value_as = { name = opinion_of_current_liege target = $FACTION_TARGET$ }
+		save_temporary_opinion_value_as = { name = opinion_of_claimant target = $FACTION_CLAIMANT$ }
+		scope:opinion_of_claimant > liege_opinion_value
+		scope:opinion_of_claimant > 0
+		add = {
+			value = scope:opinion_of_claimant
+			multiply = 1.5
+			subtract = scope:opinion_of_current_liege
 		}
-		who = root
-		opinion_target = $FACTION_CLAIMANT$
-		multiplier = 1.5
 	}
+	
+	opinion_modifier = { # Reduce likelihood of joining if you have positive opinion of your liege
+		who = root
+		opinion_target = $FACTION_TARGET$
+		multiplier = -0.5
+		max = 0
+	}
+	
 	modifier = {
 		add = { # Claimant is too old
 			value = $FACTION_CLAIMANT$.age
@@ -1068,6 +1079,54 @@ claimant_faction_modifiers = {
 		}
 	}
 
+	modifier = {
+		add = -25
+		NOT = { faith = $FACTION_CLAIMANT$.faith }
+		faith = {
+			faith_hostility_level = {
+				target = $FACTION_CLAIMANT$.faith
+				value = faith_astray_level
+			}
+		}
+		NOT = {
+			culture = {
+				has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+			}
+		}
+	}
+
+	modifier = {
+		add = -250
+		NOT = { faith = $FACTION_CLAIMANT$.faith }
+		faith = {
+			faith_hostility_level = {
+				target = $FACTION_CLAIMANT$.faith
+				value = faith_hostile_level
+			}
+		}
+		NOT = {
+			culture = {
+				has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+			}
+		}
+	}
+
+	modifier = {
+		add = -1000
+		NOT = { faith = $FACTION_CLAIMANT$.faith }
+		faith = {
+			faith_hostility_level = {
+				target = $FACTION_CLAIMANT$.faith
+				value = faith_evil_level
+			}
+		}
+		NOT = {
+			culture = {
+				has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+			}
+		}
+	}
+
 	# Don't support claims against the liege's lower tier titles
 	modifier = {
 		add = -500
@@ -1076,11 +1135,11 @@ claimant_faction_modifiers = {
 	}
 
 	# If I'm de jure of the Claimant, I want to support them
-	 modifier = {
+	modifier = {
 		add = 100
 		is_rightful_liege_of_trigger = {
 			VASSAL = root
-			LIEGE = $FACTION_TARGET$
+			LIEGE = $FACTION_CLAIMANT$
 		}
 	}
 

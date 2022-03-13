@@ -836,7 +836,7 @@ martial_chivalry.1021 = {
 	}
 	left_portrait = {
 		character = root
-		animation = pain
+		animation = duel_wield_weapon
 	}
 	
 	trigger = {
@@ -885,6 +885,10 @@ martial_chivalry.1021 = {
 		add_character_flag = {
 			flag = had_stressful_battle_event
 			days = 3650
+		}
+		add_character_flag  = {
+			flag = single_combat_duel_armor
+			days = 30 # just in case
 		}
 	}
 
@@ -965,6 +969,7 @@ martial_chivalry.1021 = {
 		}
 	}
 
+	after = { remove_character_flag = single_combat_duel_armor }
 }
 
 #Practice duel
@@ -1305,7 +1310,7 @@ martial_chivalry.2012 = {
 	}
 	left_portrait = {
 		character = scope:challenger
-		animation = war_over_win
+		animation = duel_celebrate
 	}
 
 	immediate = {
@@ -1393,7 +1398,7 @@ martial_chivalry.2013 = {
 	}
 	left_portrait = {
 		character = scope:challenger
-		animation = schadenfreude
+		animation = duel_celebrate
 	}
 	
 	option = {
@@ -1446,7 +1451,7 @@ martial_chivalry.2015 = {
 	}
 	left_portrait = {
 		character = scope:challenger
-		animation = personality_bold
+		animation = duel_celebrate
 	}
 	
 	option = {

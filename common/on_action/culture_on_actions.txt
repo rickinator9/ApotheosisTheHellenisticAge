@@ -140,7 +140,10 @@ on_culture_created = {
 						days = 0
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						in_diplomatic_range = scope:founder
+					}
 					trigger_event = {
 						id = culture_notification.1001
 						days = 0

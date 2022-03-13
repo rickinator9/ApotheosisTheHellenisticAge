@@ -572,7 +572,6 @@ invite_to_court_interaction = {
 		}
 	}
 
-
 	is_valid_showing_failures_only = {
 		can_recruit_character_to_court_trigger = {
 			RECRUITER = scope:actor
@@ -828,6 +827,26 @@ invite_to_court_interaction = {
  				patrilinear_marriage = yes
  				host = scope:recipient.host
  			}
+ 		}
+
+ 		modifier = {
+ 			add = -50
+ 			desc = AI_INSPIRED
+ 			exists = inspiration
+			inspiration = {
+				NOT = {
+					exists = inspiration_sponsor
+				}
+			}
+ 		}
+
+ 		modifier = {
+ 			add = -500
+ 			desc = AI_SPONSORED_INSPIRATION
+ 			exists = inspiration
+			inspiration = {
+				exists = inspiration_sponsor
+			}
  		}
 
  		modifier = {

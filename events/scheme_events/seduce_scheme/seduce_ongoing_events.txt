@@ -2849,6 +2849,7 @@ seduce_ongoing.4005 = {
 			triggered_desc = {
 				trigger = {
 					exists = scope:spouse
+					scope:scheme = { NOT = { has_variable = seduce_ongoing_4001_court_musician_var } }
 				}
 				desc = seduce_ongoing.4005.spouse
 			}
@@ -5276,6 +5277,14 @@ seduce_ongoing.1601 = {
 						}
 					}
 				}
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:target.location
+			}
+			scope:target.location = {
+				save_scope_as = location
 			}
 		}
 		set_random_religious_text_effect = yes
