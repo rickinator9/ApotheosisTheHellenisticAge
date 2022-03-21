@@ -1,5 +1,5 @@
 name="Apotheosis: The Hellenistic Age"
-version="1.1.0"
+version="1.1.1"
 supported_version="1.5.1"
 path="mod/ApotheosisTheHellenisticAge"
 tags={
