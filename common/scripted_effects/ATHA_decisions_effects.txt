@@ -533,13 +533,16 @@ form_k_bithynia_decision_effects = {
 		}
 	}
 
-	# De jure shifts.
-	title:d_bithynia = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_mariandynia = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_askania = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_sangarios = { set_de_jure_liege_title = title:k_bithynia }
-
+	# De jure shifts
 	hidden_effect = {
+		title:d_bithynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_thynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_herakleotis = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_mariandynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_sangaritis = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_rhebantia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_askania = { set_de_jure_liege_title = title:k_bithynia }
+
 		title:k_bithynia = { set_de_jure_liege_title = title:e_asia }
 	}
 
@@ -572,14 +575,20 @@ form_k_bithynia_decision_effects = {
 
 found_bithynian_capital_scripted_effect = {
 	scope:new_bithynian_capital = {
-		#Boost local development pretty heavily, tiering according to how much development the capital already has.
+		#Boost local development a few levels; majority of development gain is handled in the modifiers now.
 		if = {
-			limit = { development_level >= 20 }
-			change_development_level = 4
+			limit = { development_level < 12 }
+			change_development_level = {
+				value = 12
+				subtract = scope:new_bithynian_capital.development_level
+			}
 		}
 		else_if = {
-			limit = { development_level < 20 }
-			change_development_level = 8
+			limit = { development_level < 16 }
+			change_development_level = {
+				value = 16
+				subtract = scope:new_bithynian_capital.development_level
+			}
 		}
 		#If control is less than full, boost it to full.
 		if = {

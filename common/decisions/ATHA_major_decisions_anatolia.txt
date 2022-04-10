@@ -42,22 +42,39 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 		# Should have a decent prestige level
 		prestige_level >= high_prestige_level
 
-		# Must control d_bithynia, and at least one of the other component duchies
+		# Must control d_bithynia, and at least two of the other component duchies
 		has_primary_title = title:d_bithynia
+		custom_description = {
+			text = "form_k_bithynia_decision_controlled_duchies.tt"
+			any_held_title = {
+				count >= 2
+				OR = {
+					this = title:d_thynia
+					this = title:d_herakleotis
+					this = title:d_mariandynia
+					this = title:d_sangaritis
+					this = title:d_rhebantia
+					this = title:d_askania
+				}
+			}
+		}
+		# Should have a capital in the region
+		custom_description = {
+			text = "form_k_bithynia_decision_capital.tt"
+			capital_province = { geographical_region = custom_bithynia }
+		}
+
+		# Should have control at least one of the main cities of the Bithynian peninsula
 		OR = {
-			has_title = title:d_mariandynia
-			has_title = title:d_askania
-			has_title = title:d_sangarios
+			completely_controls = title:c_astakos
+			completely_controls = title:c_chalkedon
 		}
-		# Must personally hold a city in d_bithynia that can serve as the new capital
-		OR = {			
-			has_title = title:c_astakos
-			has_title = title:c_chalkedon
-		}
+
 		# Should also have asserted dominance over at least one of the other main cities in the broader region
 		OR = {
 			completely_controls = title:c_nikaia
-			completely_controls = title:c_herakleia_pontica
+			completely_controls = title:c_herakleia_pontike
+			completely_controls = title:c_kios
 		}
 	}
 
@@ -69,12 +86,15 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 
 	effect = {
 		save_scope_as = k_bithynia_founder
+		capital_county = { save_scope_as = new_bithynian_capital }
 
 		show_as_tooltip = { form_k_bithynia_decision_effects = yes } # Actually applied in anatolia_decisions.0001 - de-jure, title etc
+		show_as_tooltip = { found_bithynian_capital_scripted_effect = yes } # Actually applied in anatolia_decisions.0001 - de-jure, title etc
+		custom_tooltip = form_k_bithynia_decision_effects_de_jure.tt
 		custom_tooltip = form_k_bithynia_decision_effect_tooltip
 
 		#Events
-		trigger_event = anatolia_decisions.0001 # Ruler invests in new capital
+		trigger_event = anatolia_decisions.0001 # Ruler decides how to govern the new kingdom
 	}
 
 	cost = {
