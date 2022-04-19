@@ -1066,3 +1066,18 @@ ATHA_game_start.17 = {
     	}
 	}
 }
+
+# Assign splendour levels to dead dynasties (so the Argeads don't show up in title histories as an obscure dynasty)
+ATHA_game_start.18 = {
+	type = empty
+	hidden = yes
+
+    immediate = {
+    	if = {
+    		limit { current_date = 3479.9.1 } # 1 September 275 BC
+	        dynasty:macedoniandyn039 = {
+	        	add_dynasty_prestige_level = 3
+	        }
+    	}
+    }
+}
