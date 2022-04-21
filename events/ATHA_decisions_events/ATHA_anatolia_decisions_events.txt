@@ -26,65 +26,225 @@ anatolia_decisions.0001 = {
 	immediate = {
 		play_music_cue = "mx_cue_epic_sacral_moment"
 		form_k_bithynia_decision_effects = yes
-
-		title:c_astakos = { save_scope_as = astakos }
-		title:c_chalkedon = { save_scope_as = chalkedon }
+		found_bithynian_capital_scripted_effect = yes
+		found_bithynian_capital_barony_scripted_effect = yes
 	}
+
+	#TODO: Once we've expanded to include Thrace and the rest of Anatolia, we should make these options dynamic
 	
-	option = { # I choose Astakos
+	option = { # Macedonian influence (dynastic & scholarly)
 		name = anatolia_decisions.0001.a
 
-		trigger = {
-			title:c_astakos.holder = scope:k_bithynia_founder
-		}
-		title:c_astakos = {
-			save_scope_as = new_bithynian_capital
-			found_bithynian_capital_scripted_effect = yes
-		}
-		title:b_astakos_astakos = { 
-			save_scope_as = new_bithynian_capital_barony 
-			found_bithynian_capital_barony_scripted_effect = yes
+		# Government changes
+		if = {
+			limit = { has_government = clan_government }
+			change_government_form = { GOVERNMENT = feudal_government }
 		}
 
-		every_player = {
-			limit = {
-				NOT = { this = scope:k_bithynia_founder }
-				is_within_diplo_range = { CHARACTER = scope:k_bithynia_founder }
+		# Traditions
+		if = {
+			limit = { 
+				has_dlc_feature = hybridize_culture
+				NOR = {
+					culture = { has_cultural_tradition = tradition_staunch_traditionalists }
+					culture = { has_cultural_tradition = tradition_culture_blending }
+				}
 			}
-			trigger_event = anatolia_decisions.0002
+			culture = { add_culture_tradition = tradition_culture_blending }
 		}
+
+		# Innovations
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_monetary_standards }
+				}
+			}
+			culture = { add_innovation = innovation_classical_monetary_standards }
+		}
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_bureaucracy }
+				}
+			}
+			culture = { add_innovation = innovation_classical_bureaucracy }
+		}
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_public_honours }
+				}
+			}
+			culture = { add_innovation = innovation_classical_public_honours }
+		}
+
+		# Court setup
+		hidden_effect = { set_court_type = court_scholarly }
+		custom_tooltip = set_court_type_scholarly_first
+		set_court_language = language_greek
 
 		ai_chance = {
-			# The AI should prefer this option, since Chalcedon has significantly higher development 
+			# The AI should prefer this option as it is the historical outcome
 			base = 100
 		}
 	}
-	option = { # I choose Chalkedon
+	option = { # Greek influence (dynastic and diplomatic)
 		name = anatolia_decisions.0001.b
-
-		trigger = {
-			title:c_chalkedon.holder = scope:k_bithynia_founder
-		}
-		title:c_chalkedon = {
-			save_scope_as = new_bithynian_capital
-			found_bithynian_capital_scripted_effect = yes
-		}
-		title:b_chalkedon_chalkedon = { 
-			save_scope_as = new_bithynian_capital_barony 
-			found_bithynian_capital_barony_scripted_effect = yes
+		
+		# Government changes
+		if = {
+			limit = { has_government = clan_government }
+			change_government_form = { GOVERNMENT = feudal_government }
 		}
 
-		every_player = {
+		# Traditions
+		if = {
+			limit = { 
+				has_dlc_feature = hybridize_culture
+				NOR = {
+					culture = { has_cultural_tradition = tradition_staunch_traditionalists }
+					culture = { has_cultural_tradition = tradition_culture_blending }
+				}
+			}
+			culture = { add_culture_tradition = tradition_culture_blending }
+		}
+
+		# Innovations
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_monetary_standards }
+				}
+			}
+			culture = { add_innovation = innovation_classical_monetary_standards }
+		}
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_constitution }
+				}
+			}
+			culture = { add_innovation = innovation_classical_constitution }
+		}
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_public_honours }
+				}
+			}
+			culture = { add_innovation = innovation_classical_public_honours }
+		}
+
+		# Court setup
+		hidden_effect = { set_court_type = court_diplomatic }
+		custom_tooltip = set_court_type_diplomatic_first
+		set_court_language = language_greek
+	}
+	option = { # Greco-Odrysian influence (dynastic and warlike)
+		name = anatolia_decisions.0001.c
+		
+		# Government changes
+		if = {
+			limit = { has_government = clan_government }
+			change_government_form = { GOVERNMENT = feudal_government }
+		}
+
+		# Innovations
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_monetary_standards }
+				}
+			}
+			culture = { add_innovation = innovation_classical_monetary_standards }
+		}
+
+		# Court setup
+		hidden_effect = { set_court_type = court_warlike }
+		custom_tooltip = set_court_type_warlike_first
+		set_court_language = language_greek
+	}
+	option = { # Persian influence (dynastic and bureaucratic)
+		name = anatolia_decisions.0001.d
+		
+		# Government changes
+		if = {
+			limit = { has_government = clan_government }
+			change_government_form = { GOVERNMENT = feudal_government }
+		}
+
+		# Traditions
+		if = {
+			limit = { 
+				has_dlc_feature = hybridize_culture
+				NOR = {
+					culture = { has_cultural_tradition = tradition_staunch_traditionalists }
+					culture = { has_cultural_tradition = tradition_culture_blending }
+				}
+			}
+			culture = { add_culture_tradition = tradition_culture_blending }
+		}
+
+		# Innovations
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_monetary_standards }
+				}
+			}
+			culture = { add_innovation = innovation_classical_monetary_standards }
+		}
+		if = {
+			limit = {
+				culture = {
+					NOT = { has_innovation = innovation_classical_bureaucracy }
+				}
+			}
+			culture = { add_innovation = innovation_classical_bureaucracy }
+		}
+		#TODO: possibly give access to a Persian-specific innovation? (e.g. Paridaizas)
+
+		# Court setup
+		hidden_effect = { set_court_type = court_administrative }
+		custom_tooltip = set_court_type_administrative_first
+		set_court_language = language_iranian
+	}
+
+	option = { # traditional approach (clan and tribal)
+		name = anatolia_decisions.0001.e
+
+		#Your dynasty will be remembered for forging its own path
+		dynasty = { add_dynasty_prestige = major_dynasty_prestige_gain }
+
+		# Traditions
+		if = {
+			limit = { 
+				has_dlc_feature = hybridize_culture
+				NOR = {
+					culture = { has_cultural_tradition = tradition_staunch_traditionalists }
+					culture = { has_cultural_tradition = tradition_culture_blending }
+				}
+			}
+			culture = { add_culture_tradition = tradition_staunch_traditionalists }
+		}
+
+		# Court setup
+		hidden_effect = { set_court_type = court_tribal }
+		custom_tooltip = set_court_type_tribal_first
+		set_court_language = language_thracian
+	}
+
+	after = {
+		every_ruler = {
 			limit = {
 				NOT = { this = scope:k_bithynia_founder }
 				is_within_diplo_range = { CHARACTER = scope:k_bithynia_founder }
 			}
-			trigger_event = anatolia_decisions.0002
-		}
-
-		ai_chance = {
-			# The AI should prefer this option, since Chalcedon has significantly higher development 
-			base = 1000
+			trigger_event = {
+				id = anatolia_decisions.0002
+				days = 7
+			}
 		}
 	}
 }
@@ -93,7 +253,27 @@ anatolia_decisions.0001 = {
 anatolia_decisions.0002 = {
 	type = character_event
 	title = anatolia_decisions.0002.t
-	desc = anatolia_decisions.0002.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					culture = { this = scope:k_bithynia_founder.culture }
+				}
+				desc = {
+					first_valid = {
+						triggered_desc = {
+							trigger = {
+								any_liege_or_above = { this = scope:k_bithynia_founder }
+							}
+							desc = anatolia_decisions.0002.desc.bithynian
+						}
+						desc = anatolia_decisions.0002.desc.bithynian_independent
+					}
+				}
+			}
+			desc = anatolia_decisions.0002.desc
+		}
+	}
 	theme = realm
 	left_portrait = {
 		character = scope:k_bithynia_founder
@@ -104,6 +284,13 @@ anatolia_decisions.0002 = {
 	}
 
 	option = { # okay
+		name = {
+			trigger = {
+				culture = { this = scope:k_bithynia_founder.culture }
+				any_liege_or_above = { this = scope:k_bithynia_founder }
+			}
+			text = anatolia_decisions.0002.a_bithynian
+		}
 		name = anatolia_decisions.0002.a
 	}
 }
