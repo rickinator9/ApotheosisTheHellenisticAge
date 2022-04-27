@@ -1,4 +1,4 @@
-## TITULAR ###################################
+﻿## TITULAR ###################################
 
 ### Aegean
 #k_aegean = {
@@ -367,5 +367,48 @@ k_karia = {
 		liege = e_egypt
 		holder = macedonian03215 # Ptolemaios II
 		government = feudal_government
+	}
+}
+
+### Tribalia
+k_triballia = {
+	3369.1.1 = { # 385 BC, speculative
+		holder = triballian00101 # Khales
+		government = feudal_government
+	}
+	3382.1.1 = { # 372 BC, made up
+		holder = triballian00102 # Skaris
+	}
+	3392.1.1 = { # 362 BC, made up
+		holder = triballian00103 # Rigozis
+	}
+	3408.1.1 = { # 346 BC, made up
+		holder = triballian00104 # Piruros
+	}
+	3413.1.1 = { # 341 BC, Philip's Campaign
+		liege = e_makedonia 
+	}
+	3415.1.1 = { # 339 BC, speculative
+		holder = triballian00105 # Syrmos
+	}
+	3419.1.1 = { # 335 BC, speculative
+		holder = triballian00106 # Sporis
+	}
+	3445.1.1 = { # 309 BC, Murder of Alexander IV, end of the Macedonian Empire
+		liege = 0
+	}
+	3469.1.1 = { # 285 BC, made up
+		holder = triballian00107 # Bendikos
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+		}
 	}
 }

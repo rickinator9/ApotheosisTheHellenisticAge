@@ -3014,6 +3014,122 @@ thermopylai_02 = {
 }
 
 ##########
+# Ritual Pits of Betzas
+##########
+
+ritual_pits_of_betzas_01 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_peat_quarries.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	is_enabled = {
+		custom_description = {
+			text = NOT_holy_site_thracian_or_holy_site_trigger
+			OR = {
+				scope:holder = {
+					religion = religion:thracian_religion
+				}
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
+				}
+			}
+		}
+	}
+	
+	cost_gold = 3000
+
+	character_modifier = {
+		monthly_piety_gain_mult = 0.1
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_county_control_change_factor = 0.1
+		same_faith_opinion = 5
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.2
+		development_growth = 0.2
+	}
+	province_modifier = {
+		monthly_income = 2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+##########
+# Perkebellon
+##########
+
+perkebellon_01 = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_stonehenge.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	can_construct = {
+		scope:holder.culture = {
+			has_innovation = innovation_imperial_threadwheel_crane
+		}
+	}
+
+	is_enabled = {
+		custom_description = {
+			text = NOT_holy_site_thracian_or_holy_site_trigger
+			OR = {
+				scope:holder = {
+					religion = religion:thracian_religion
+				}
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
+				}
+			}
+		}
+	}
+	
+	cost_gold = 1000
+
+	character_modifier = {
+		monthly_piety = 1
+		monthly_dynasty_prestige_mult = 0.05
+		learning_per_piety_level = 2
+		religious_vassal_opinion = 10
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.3
+		development_growth = 0.2
+	}
+	province_modifier = {
+		monthly_income = 3
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+##########
 # Mines of Laúreion
 ##########
 
