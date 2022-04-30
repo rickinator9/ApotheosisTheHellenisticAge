@@ -1,0 +1,54 @@
+﻿restore_tithanos_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+
+	desc = restore_tithanos_decision_desc
+	selection_tooltip = restore_tithanos_decision_tooltip
+	major = yes
+
+	ai_check_interval = 120
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		faith = faith:tithanism_faith
+		NOT = { faith = { exists = religious_head } }
+		highest_held_title_tier > 3 #Only Kings and Emperors
+	}
+
+	is_valid = {
+		completely_controls = title:c_kabessos
+		completely_controls = title:d_almia
+		piety_level >= high_piety_level
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		custom_tooltip = restore_tithanos_decision_effect_tooltip
+		show_as_tooltip = {
+			restore_tithanos_scripted_effect = yes
+		}
+		trigger_event = {
+			id = thrace_decisions.0001
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = { #Always do it when possible.
+		base = 100
+		ai_value_modifier = {
+			ai_zeal = 1.0
+		}
+		modifier = {
+			factor = 0
+			has_trait = cynical
+		}
+	}
+}

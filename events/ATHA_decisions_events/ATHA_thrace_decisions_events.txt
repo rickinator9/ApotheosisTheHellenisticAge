@@ -1,0 +1,91 @@
+﻿namespace = thrace_decisions
+
+##################################################
+# Restoring the Tithanos
+##################################################
+
+thrace_decisions.0001 = {
+	type = character_event
+	title = thrace_decisions.0001.t
+	desc = thrace_decisions.0001.desc
+	theme = faith
+	left_portrait = {
+		character = scope:reformer
+		animation = personality_zealous
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		restore_tithanos_scripted_effect = yes
+	}
+
+	option = {
+		name = thrace_decisions.0001.a
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				faith.religion = faith:tithanism_faith.religion
+			}
+			trigger_event = thrace_decisions.0002 # Notification.
+		}
+	}
+}
+
+# Players notified.
+thrace_decisions.0002 = {
+	type = character_event
+	title = thrace_decisions.0001.t
+	desc = {
+		first_valid = {
+			# tithanism Reaction
+			triggered_desc = {
+				trigger = {
+					root.faith = faith:tithanism_faith
+				}
+				desc = thrace_decisions.0002.desc.tithanism_faith
+			}
+			#Everyone Else
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						root.faith = faith:tithanism_faith
+					}
+
+				}
+				desc = thrace_decisions.0002.desc.other
+			}
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:reformer
+		animation = personality_zealous
+	}
+
+	immediate = {
+		#Praise Be!
+		if = {
+			limit = {
+				faith = { religion_tag = thracian_religion }
+			}
+			play_music_cue = "mx_cue_faith_conversion"
+		}
+		#Probably trouble?
+		else = { play_music_cue = "mx_cue_combat_2" }
+	}
+
+	option = {
+		name = thrace_decisions.0002.a
+		trigger = {
+			root.faith = faith:tithanism_faith
+		}
+	}
+	option = {
+		name = thrace_decisions.0002.b
+		trigger = {
+			NOT = {
+				root.faith = faith:tithanism_faith
+			}
+		}
+	}
+}
