@@ -402,6 +402,7 @@ slay_character_interaction = {
 	auto_accept = yes
 }
 
+
 give_bubonic_plague_interaction = {
 	category = interaction_debug_main
 	use_diplomatic_range = no
@@ -547,7 +548,7 @@ add_artifact_interaction = {
 		flag = trinket
 		localization = add_artifact_interaction_trinket
 	}
-	
+
 	on_accept = {
 		custom_tooltip = add_artifact_interaction
 
@@ -702,6 +703,44 @@ add_artifact_interaction = {
 			}
 		}
 	}
+	auto_accept = yes
+}
+
+take_artifact_interaction = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	icon = artifact
+
+	target_type = artifact
+	target_filter = recipient_artifacts
+
+	is_shown = {
+		debug_only = yes
+		scope:recipient = {
+			any_character_artifact = { exists = this }
+		}
+		NOT = {
+			scope:recipient = scope:actor
+		}
+	}
+	
+	is_highlighted = {
+		always = yes
+	}
+
+	on_accept = {
+		scope:target = {
+			set_owner = scope:actor
+		}
+	}
+
+	auto_accept = yes
+	
+	ai_accept = {
+		base = 100
+	}
+	
 	auto_accept = yes
 }
 
@@ -1242,4 +1281,22 @@ give_criminal_trait_interaction = {
 	}
 	
 	auto_accept = yes
+}
+
+generate_artifact_with_history_interaction = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		debug_only = yes
+		NOT = { scope:recipient = scope:actor }
+	}
+	
+	on_accept = {
+		scope:actor = { trigger_event = debug.400 }
+	}
+	
+	auto_accept = yes
+	
 }

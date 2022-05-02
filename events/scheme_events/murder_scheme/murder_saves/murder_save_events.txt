@@ -14,6 +14,9 @@ namespace = murder_save
 # 0010 - Family Connections (Murder Save)
 # 0011 - Saved from poisoned food by cat
 # 0012 - Saved from poisoned food by dog
+# 0013 - Gluttonous trait saved you
+# 0014 - Language saved you
+# 0015 - Artifact saved you
 
 
 #############################
@@ -1325,6 +1328,91 @@ murder_save.0013 = {
 }
 
 #############################
+# Saved from assassin by LINGUISTICS
+# by Daniel Moore
+#############################
+murder_save.0014 = {
+	type = character_event
+	title = murder_save.0014.t
+	desc = murder_save.0014.desc
+	
+	theme = murder_scheme
+	left_portrait = {
+		character = scope:target
+		animation = shock
+	}
+	widget = {
+		gui = "event_window_widget_scheme"
+		container = "custom_widgets_container"
+	}
+	
+	trigger = {
+		scope:murder_method = flag:hired_assassin
+		scope:target = {
+			knows_language_of_culture = scope:owner.culture
+			NOT = {
+				scope:target.culture = {
+					has_same_culture_language = scope:owner.culture
+				}
+			}
+		}
+	}
+
+	immediate = {
+		save_scope_value_as = {
+			name = murder_saved
+			value = flag:language_save
+		}
+		murder_failure_effect = yes # Fires the response for the target
+	}
+
+	option = {
+		name = murder_save.0001.a
+		show_as_tooltip = {
+			if = {
+				limit = { exists = scope:scheme_discovered }
+				add_dread = medium_dread_gain
+			}
+			scope:scheme = {
+				end_scheme = yes
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = murder_save.0001.b
+		show_as_tooltip = {
+			if = {
+				limit = { exists = scope:scheme_discovered }
+				add_dread = medium_dread_gain
+			}
+			start_scheme = {
+				type = murder
+				target = scope:target
+			}
+		}
+		hidden_effect = {
+			save_scope_value_as = {
+				name = restart_scheme
+				value = yes
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			trigger_event = murder_outcome.9999
+		}
+	}
+}
+
+#############################
 # Saved from assassin by artifact
 # by Daniel Moore
 #############################
@@ -1363,9 +1451,6 @@ murder_save.0015 = {
 	}
 
 	immediate = {
-		ROOT = {
-			save_scope_as = target
-		}
 		save_scope_value_as = {
 			name = murder_saved
 			value = flag:artifact_save
@@ -1382,9 +1467,11 @@ murder_save.0015 = {
 			}
 		}
 		scope:this_artifact = {
-			add_durability = {
-	    		value = scope:this_artifact.artifact_durability
-	    		multiply = -0.45
+			show_as_tooltip = {
+				add_durability = {
+					value = scope:this_artifact.artifact_durability
+					multiply = -0.25
+				}
 			}
 
 			set_variable = saved_from_assassination
@@ -2318,7 +2405,6 @@ murder_save.1011 = {
 	}
 }
 
-
 #Dog saves you from poison
 murder_save.1012 = {
 	type = character_event
@@ -2450,8 +2536,64 @@ murder_save.1013 = {
 	}
 }
 
-#Artifact saves you
+#Language saved you
+murder_save.1014 = {
+	type = character_event
+	title = murder_save.0014.t
+	desc = murder_save.1014.desc
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:owner_revealed
+		animation = rage
+	}
+	theme = intrigue
 
+	trigger = {
+		exists = scope:murder_saved
+		scope:murder_saved = flag:language_save
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				exists = scope:scheme_discovered
+			}
+			scope:owner = {
+				save_scope_as = owner_revealed
+			}
+		}
+	}
+
+	option = { #Who could do such a thing?
+		name = murder_save.1014.a
+		trigger = {
+			NOT = {
+				exists = scope:scheme_discovered
+			}
+		}
+		custom_tooltip = murder_save.failure_unknown_owner_tt
+	}
+
+	option = { #Vengeance!
+		name = murder_save.1001.b
+		trigger = {
+			exists = scope:scheme_discovered
+		}
+		custom_tooltip = murder_save.failure_known_owner_tt
+	}
+
+	after = {
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+	}
+}
+
+#Artifact saved you
 murder_save.1015 = {
 	type = character_event
 	title = murder_save.0015.t
@@ -2474,7 +2616,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.strangling_artifact.desc
 			}
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2488,7 +2629,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.small_artifact.desc
 			}
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2497,7 +2637,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.throne_artifact.desc
 			}
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2506,7 +2645,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.throne_special_artifact.desc
 			}
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2518,7 +2656,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.sculpture_artifact.desc
 			}
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2527,8 +2664,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.chest_artifact.desc
 			}
-
-
 			triggered_desc = {
 				trigger = {
 					scope:this_artifact = {
@@ -2537,7 +2672,6 @@ murder_save.1015 = {
 				}
 				desc = murder_save.1015.actual_weapon_artifact.desc
 			}
-
 			triggered_desc = {
 				desc = murder_save.1015.blunt_artifact.desc
 			}
@@ -2548,12 +2682,10 @@ murder_save.1015 = {
 		character = root
 		animation = anger
 	}
-
 	right_portrait = {
 		character = scope:attempted_assassin
 		animation = loss_1
 	}
-
 	artifact = {
         target = scope:this_artifact
         position = lower_center_portrait
@@ -2565,33 +2697,28 @@ murder_save.1015 = {
 	}
 
 	immediate = {
-
 		ROOT = {
 			save_scope_as = target
 		}
 		scope:this_artifact = {
-			add_durability = {
-	    		value = scope:this_artifact.artifact_durability
-	    		multiply = -0.25
-			}
-
 			set_variable = saved_from_assassination
 		}
 		if = {
 			limit = {
 				any_pool_guest = {
 					has_no_particular_noble_roots_trigger = yes
+					is_available_ai_adult = yes
 				}
 			}
 
 			random_pool_guest = {
 				limit = {
 					has_no_particular_noble_roots_trigger = yes
+					is_available_ai_adult = yes
 				}
 				save_scope_as = attempted_assassin
 			}
 		}
-
 		else = {
 			create_character = {
 				gender_female_chance = 50
@@ -2600,7 +2727,6 @@ murder_save.1015 = {
 				save_scope_as = attempted_assassin
 			}
 		}
-
 		scope:attempted_assassin = {
 			hidden_effect = {
 				add_trait = peasant_leader
@@ -2623,9 +2749,6 @@ murder_save.1015 = {
 				}
 			}
 		}
-		
-
-	
 		if = {
 			limit = {
 				exists = scope:scheme_discovered
@@ -2641,6 +2764,12 @@ murder_save.1015 = {
 		trigger = {
 			NOT = {
 				exists = scope:scheme_discovered
+			}
+		}
+		scope:this_artifact = {
+			add_durability = {
+				value = scope:this_artifact.artifact_durability
+				multiply = -0.25
 			}
 		}
 		custom_tooltip = murder_save.failure_unknown_owner_tt
@@ -2659,7 +2788,6 @@ murder_save.1015 = {
 			modifier = watchful_modifier
 			days = watchful_modifier_duration
 		}
-
 		scope:attempted_assassin = {
 			death = {
 				death_reason = death_murder
@@ -2667,7 +2795,6 @@ murder_save.1015 = {
 				artifact = scope:this_artifact
 			}
 		}
-
 		if = {
 			limit = {
 				scope:target = {
@@ -2686,7 +2813,6 @@ murder_save.1015 = {
 					}
 					set_artifact_description = new_artifact_loc_banner
 				}
-
 				else = {
 					set_artifact_description = new_artifact_loc
 				}

@@ -24,16 +24,12 @@ colony_01 = {
 		barony_cannot_construct_holding = no
 	}
 	
-	can_construct = {	
-		OR = {
-			culture = {
-				has_innovation = innovation_hellenistic_military_settlers
-			}
-			scope:holder = { 
-				custom_description = {
-					text = "has_colony_rights_contract"
-					vassal_contract_has_flag = has_colony_rights
-				}
+	can_construct = {
+		scope:holder = { 
+			culture = { has_innovation = innovation_hellenistic_military_settlers }
+			custom_description = {
+				text = "has_colony_rights_contract"
+				vassal_contract_has_flag = has_colony_rights
 			}
 		}
 	}

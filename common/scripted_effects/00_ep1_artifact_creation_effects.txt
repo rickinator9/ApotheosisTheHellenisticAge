@@ -9367,26 +9367,53 @@ get_pressed_flower_species_effect = {
 create_artifact_pressed_flower_effect = {
 	# Get the character the artifact is being made for.
 	$OWNER$ = { save_scope_as = owner }
-	# Get artifact quality and wealth
-	get_artifact_quality_effect = yes
-	get_artifact_wealth_effect = yes
+	hidden_effect = {
+		# Get artifact quality and wealth
+		get_artifact_quality_effect = yes
+		get_artifact_wealth_effect = yes
 
-	#Get flower 
-	get_animal_hunt_location_effect = yes #not hunting, but need the location in a similar way
-	get_pressed_flower_species_effect = yes
+		#Get flower 
+		get_animal_hunt_location_effect = yes #not hunting, but need the location in a similar way
+		get_pressed_flower_species_effect = yes
+	}
 	
 	# Create the artifact
-	create_artifact = {	
-		name = artifact_pressed_flower_name
-		description = placeholder #properly set later
-		creator = scope:owner
-		visuals = flowers
-		type = miscellaneous
-		modifier = artifact_placeholder_modifier
-		wealth = scope:wealth
-		quality = scope:quality
-		save_scope_as = newly_created_artifact
+		scope:owner = {
+			if = {
+				limit = {
+					exists = scope:flower_picker
+				}
+				# Create the artifact
+				create_artifact = {	
+					name = artifact_pressed_flower_name
+					description = placeholder #properly set later
+					creator = scope:flower_picker
+					visuals = flowers
+					type = miscellaneous
+					modifier = artifact_placeholder_modifier
+					wealth = scope:wealth
+					quality = scope:quality
+					save_scope_as = newly_created_artifact
+				}
+			}
+			else = {
+				# Create the artifact
+				create_artifact = {	
+					name = artifact_pressed_flower_name
+					description = placeholder #properly set later
+					creator = scope:owner
+					visuals = flowers
+					type = miscellaneous
+					modifier = artifact_placeholder_modifier
+					wealth = scope:wealth
+					quality = scope:quality
+					save_scope_as = newly_created_artifact
+				}
+		}
 	}
+
+
+	
 
 	hidden_effect_new_artifact = {
 		scope:newly_created_artifact = {
@@ -9435,32 +9462,33 @@ create_artifact_pressed_flower_effect = {
 	}
 }
 
-
 #### HOW TO generate_trinket_effect ####
 #Use this template to make the generate_trinket_effect work
 # generate_trinket_effect = {
 # 	TRINKET_RECEIVER = scope:your_receiving_character
 # 	TRINKET_GIVER = scope:your_giving_character
-#	GRAB_ALL = yes/no
+#	GRAB_ALL_TRINKETS = yes/no
+#	HISTORY_TYPE = given_unknown/given/discovered_for/stolen_unknown/stolen/created_unknown/created/inherited_unknown/inherited/reforged/conquest/taken_in_siege
 # }
-
-#GRAB_ALL - if you are not discerned with what trinkets you generate, put this as a "yes". Otherwise put it as a "no" and set your own flags.
-
+#====================================
+#TRINKET_RECEIVER/TRINKET_GIVER - if you don't have a giver and/or receiver, set the same character as both
+#GRAB_ALL_TRINKETS - if you are not discerned with what trinkets you generate, put this as a "yes". Otherwise put it as a "no" and set your own flags.
 #If you _are_ discerning and you want to choose which trinkets you want to be able to generate:
-#	> Set an add_character_flag = { flag = used_in_stewardship_general.2001 }
+#	> Set an add_character_flag = { flag = used_in_stewardship_general.2001 } on your TRINKET_RECEIVER-character
 #	> Refer to this flag in the trigger of the trinket below
 #	> Remember to remove_character_flag = used_in_stewardship_general.2001 in your after = { ... } 
+#HISTORY_TYPE - pick one that fits the interaction in which you get the trinket
+#====================================
 generate_trinket_effect = {
 	$TRINKET_RECEIVER$ = { save_scope_as = trinket_receiver }
 	$TRINKET_GIVER$ = { save_scope_as = trinket_giver }
 	scope:trinket_receiver = {
 		set_variable = {
 			name = grab_all_trinkets
-			value = flag:$GRAB_ALL$
+			value = flag:$GRAB_ALL_TRINKETS$
 		}
+		#TODO:FGK Add Rarity check	
 	}
-
-
 	random_list = {
 		#BAD
 		##Bad 01
@@ -9471,17 +9499,17 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###Let's not get trash if we outwitted the merchant
 						AND = {
 							has_character_flag = used_in_stewardship_general.2001
 							NOT = { has_character_flag = free_outcome_stewardship_general.2001 }
 						}
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -9502,9 +9530,7 @@ generate_trinket_effect = {
 				scope:trinket_receiver = { has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001 }
 				add = -25
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = gilded_rats_tail
@@ -9516,14 +9542,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 5
 				quality = 5
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 10
+				generate_history = no
 			}
 			scope:new_trinket = {
 				flag_as_trash_artifact = yes
@@ -9539,17 +9559,17 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###Let's not get trash if we outwitted the merchant
 						AND = {
 							has_character_flag = used_in_stewardship_general.2001
 							NOT = { has_character_flag = free_outcome_stewardship_general.2001 }
 						}
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -9570,9 +9590,7 @@ generate_trinket_effect = {
 				scope:trinket_receiver = { has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001 }
 				add = -25
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = quail_eggshell_gem
@@ -9584,14 +9602,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 5
 				quality = 5
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 10
+				generate_history = no
 			}
 			scope:new_trinket = {
 				flag_as_trash_artifact = yes
@@ -9607,17 +9619,17 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###Let's not get trash if we outwitted the merchant
 						AND = {
 							has_character_flag = used_in_stewardship_general.2001
 							NOT = { has_character_flag = free_outcome_stewardship_general.2001 }
 						}
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -9638,9 +9650,7 @@ generate_trinket_effect = {
 				scope:trinket_receiver = { has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001 }
 				add = -25
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = stained_glass_shard
@@ -9652,14 +9662,10 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 5
 				quality = 5
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				wealth = 5
+				quality = 5
+				max_durability = 10
+				generate_history = no
 			}
 			scope:new_trinket = {
 				flag_as_trash_artifact = yes
@@ -9675,22 +9681,20 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###Let's not get trash if we outwitted the merchant
 						AND = {
 							has_character_flag = used_in_stewardship_general.2001
 							NOT = { has_character_flag = free_outcome_stewardship_general.2001 }
 						}
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
-
-
 			#MODIFIERS
 			##stewardship_general.2001
 			###We didn't choose the CHEAP option
@@ -9708,9 +9712,7 @@ generate_trinket_effect = {
 				scope:trinket_receiver = { has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001 }
 				add = -25
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = xylospongium
@@ -9722,14 +9724,10 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 5
 				quality = 5
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				wealth = 5
+				quality = 5
+				max_durability = 10
+				generate_history = no
 			}
 			scope:new_trinket = {
 				flag_as_trash_artifact = yes
@@ -9746,13 +9744,13 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -9773,9 +9771,7 @@ generate_trinket_effect = {
 				}
 				add = -40
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other trigger flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = st_davids_morsel
@@ -9786,14 +9782,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 15
 				quality = 15
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 30
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = st_davids_morsel_trinket
@@ -9812,20 +9802,18 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						###stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
 			#MODIFIERS
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = platypus_figurine
@@ -9836,13 +9824,9 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 25
 				quality = 25
-				decaying = yes
-				creator = scope:trinket_giver
+				max_durability = 30
 				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
+					type = created_before_history
 				}
 			}
 			scope:new_trinket = {
@@ -9857,18 +9841,16 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
 						##Add more/other trigger flags below
-
-
 					}
 				}
 			}
-
-
 			#MODIFIERS
 			##stewardship_general.2001
 			###Less likely if we have our steward to help and chose the helpful option
@@ -9886,9 +9868,7 @@ generate_trinket_effect = {
 				}
 				add = -50
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = terracotta_toy_fowl
@@ -9899,15 +9879,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 15
 				quality = 15
-				decaying = yes
-				creator = scope:trinket_giver
-				template = child_toy_template
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 30
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = terracotta_toy_fowl_trinket
@@ -9922,18 +9895,16 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
 						##Add more/other trigger flags below
-
-
 					}
 				}
 			}
-
-
 			#MODIFIERS
 			##stewardship_general.2001
 			###More likely if we have our chaplain to help and chose the helpful option
@@ -9951,9 +9922,7 @@ generate_trinket_effect = {
 				}
 				add = -60
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			faith = {
 				random_holy_site = { save_scope_as = trinket_holy_site }
@@ -9967,14 +9936,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 15
 				quality = 15
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 30
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = potsherd_trinket
@@ -9989,13 +9952,13 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10018,9 +9981,7 @@ generate_trinket_effect = {
 				}
 				add = -40
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = small_bell_beaker
@@ -10031,14 +9992,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 15
 				quality = 15
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 30
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = small_bell_beaker_trinket
@@ -10053,13 +10008,13 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10082,9 +10037,7 @@ generate_trinket_effect = {
 				}
 				add = -40
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = serpentine_budai
@@ -10094,15 +10047,9 @@ generate_trinket_effect = {
 				modifier = artifact_stress_gain_1_modifier
 				save_scope_as = new_trinket
 				wealth = 15
-				quality = 25
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				quality = 15
+				max_durability = 30
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = serpentine_budai_trinket
@@ -10118,13 +10065,15 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10145,9 +10094,7 @@ generate_trinket_effect = {
 				}
 				add = -35
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			set_up_horned_mythical_creature_effect = yes
 			create_artifact = {
@@ -10159,14 +10106,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = mythical_horn_trinket
@@ -10180,13 +10121,15 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10198,9 +10141,7 @@ generate_trinket_effect = {
 				}
 				add = -35
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			set_up_trinket_adjective_effect = yes
 			set_up_regional_mythical_creature_effect = yes
@@ -10213,14 +10154,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = mythical_creature_figurine_trinket
@@ -10238,24 +10173,24 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						AND = {
 							###Only if we have our chaplain to help and chose the helpful option
 							has_character_flag = has_helpful_chaplain_stewardship_general.2001
 							has_character_flag = helpful_option_stewardship_general.2001
 						}
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
 			#MODIFIERS
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = st_davids_taper
@@ -10267,14 +10202,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = st_davids_taper_trinket
@@ -10292,13 +10221,15 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10307,27 +10238,19 @@ generate_trinket_effect = {
 				scope:trinket_receiver = { has_character_flag = less_than_decent_learning_stewardship_general.2001 }
 				add = 30
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = jira_stick
 				description = jira_stick.desc
 				type = miscellaneous
-				visuals = bone
+				visuals = regalia
 				modifier = artifact_learning_1_modifier
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = jira_stick_trinket
@@ -10341,13 +10264,15 @@ generate_trinket_effect = {
 				scope:trinket_receiver = {
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10378,9 +10303,7 @@ generate_trinket_effect = {
 				}
 				add = -35
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = lucky_coin
@@ -10391,14 +10314,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = lucky_coin_trinket
@@ -10416,20 +10333,20 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						has_character_flag = used_in_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
 			#MODIFIERS
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = lavender_jade_pendant
@@ -10440,14 +10357,8 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 45
 				quality = 45
-				decaying = yes
-				creator = scope:trinket_giver
-				history = {
-					type = given
-					actor = scope:trinket_giver
-					recipient = scope:trinket_receiver
-					location = scope:trinket_receiver.location
-				}
+				max_durability = 60
+				generate_history = no
 			}
 			scope:new_trinket = {
 				set_variable = lavender_jade_pendant_trinket
@@ -10466,14 +10377,16 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###If we have extremely high stewardship skill
 						has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
@@ -10486,9 +10399,7 @@ generate_trinket_effect = {
 				}
 				add = -25
 			}
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = sekhmet_ring
@@ -10500,7 +10411,6 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 65
 				quality = 65
-				decaying = yes
 				history = {
 					type = created_before_history
 				}
@@ -10521,8 +10431,10 @@ generate_trinket_effect = {
 					}
 					OR = {
 						##If we are flagged to grab all trinkets
-						var:grab_all_trinkets = flag:yes
-
+						AND = { 
+							exists = var:grab_all_trinkets
+							var:grab_all_trinkets = flag:yes
+						}
 						##stewardship_general.2001
 						###If we have extremely high stewardship skill, took the expensive option or had a helpful councillor
 						has_character_flag = has_extremely_high_stewardship_skill_stewardship_general.2001
@@ -10531,16 +10443,14 @@ generate_trinket_effect = {
 							has_character_flag = has_helpful_chaplain_stewardship_general.2001
 							has_character_flag = helpful_option_stewardship_general.2001
 						}
-						##Add more/other trigger flags below
-
-
+						##feast_default.1016
+						has_character_flag = used_in_feast_default.1016
+						##^^Add more/other trigger flags above^^##
 					}
 				}
 			}
 			#MODIFIERS
-			##Add more/other modifier flags below
-
-
+			##^^Add more/other modifier flags above^^##
 			#DO NOT edit this part##
 			create_artifact = {
 				name = scarab_brooch
@@ -10552,7 +10462,6 @@ generate_trinket_effect = {
 				save_scope_as = new_trinket
 				wealth = 65
 				quality = 65
-				decaying = yes
 				history = {
 					type = created_before_history
 				}
@@ -10561,14 +10470,171 @@ generate_trinket_effect = {
 				set_variable = ancient_scarab_brooch_trinket
 			}
 		}
-		
 	}
+	if = { 
+		limit = { exists = scope:new_trinket }
 
+		scope:new_trinket = {
+			#Check what our history is
+			save_scope_value_as = {
+				name = artifact_history
+				value = flag:$HISTORY_TYPE$
+			}
+			##Given to scope:trinket_receiver
+			if = {
+				limit = {
+					exists = scope:artifact_history
+					scope:artifact_history = flag:given_unknown
+				}
+				add_artifact_history = {
+					type = given
+					actor = scope:trinket_receiver 		#Having the receiver in both generates the CoA on the right-hand side of the entry
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Given to scope:trinket_receiver (scope:trinket_giver is the left-hand portrait)
+			else_if = {
+				limit = {
+					exists = scope:artifact_history
+					scope:artifact_history = flag:given
+				}
+				add_artifact_history = {
+					type = given
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Discovered by scope:trinket_giver for scope:trinket_receiver at scope:trinket_giver.location
+			else_if = {
+				limit = {
+					exists = scope:artifact_history
+					scope:artifact_history = flag:discovered
+				}
+				add_artifact_history = {
+					type = discovered
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+					location = scope:trinket_giver.location
+				}
+			}
+			##Stolen by scope:trinket_receiver (scope:trinket_receiver's Coat of Arms is the right-hand portrait)
+			else_if = {
+				limit = {
+					exists = scope:artifact_history
+					scope:artifact_history = flag:stolen_unknown
+				}
+				add_artifact_history = {
+					type = stolen
+					actor = scope:trinket_receiver
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Stolen by scope:trinket_receiver (scope:trinket_giver is the right-hand portrait)
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:stolen 
+				}
+				add_artifact_history = {
+					type = stolen
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Created by an unknown benefactor for scope:trinket_receiver at scope:trinket_receiver.location
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:created_unknown
+				}
+				add_artifact_history = {
+					type = created
+					recipient = scope:trinket_receiver
+					location = scope:trinket_receiver.location
+				}
+			}
+			##Created by scope:trinket_giver for scope:trinket_receiver at scope:trinket_receiver.location
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:created
+				}
+				add_artifact_history = {
+					type = created
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+					location = scope:trinket_receiver.location
+				}
+			}
+			##Inherited by scope:trinket_receiver
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:inherited_unknown
+				}
+				add_artifact_history = {
+					type = inherited
+					actor = scope:trinket_receiver
+					recipient = scope:trinket_receiver
+				}
+			}
+			#Inherited by scope:trinket_receiver
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:inherited
+				}
+				add_artifact_history = {
+					type = inherited
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Reforged by scope:trinket_receiver in scope:trinket_receiver.location
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:reforged
+				}
+				add_artifact_history = {
+					type = reforged
+					recipient = scope:trinket_receiver
+					location = scope:trinket_receiver.location
+				}
+			}
+			##Conquered by scope:trinket_receiver in a war against scope:trinket_giver
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:conquest
+				}
+				add_artifact_history = {
+					type = conquest
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+				}
+			}
+			##Conquered by scope:trinket_receiver after the siege of scope:trinket_giver.location
+			else_if = {
+				limit = { 
+					exists = scope:artifact_history
+					scope:artifact_history = flag:taken_in_siege
+				}
+				add_artifact_history = {
+					type = taken_in_siege
+					actor = scope:trinket_giver
+					recipient = scope:trinket_receiver
+					location = scope:trinket_giver.location
+				}
+			}
+			##TODO:FGK Taken in battle
+			##TODO:FGK Won in duel
+		}
+	}
 	#Clean up the grab all flag, in case it was used
 	scope:trinket_receiver = {
 		remove_variable = grab_all_trinkets
 	}
-
 	#Clean up trinket variables
 	if = {
 		limit = { exists = var:horned_mythical_creature }
@@ -10582,5 +10648,4 @@ generate_trinket_effect = {
 		limit = { exists = var:trinket_adjective_followup }
 		remove_variable = trinket_adjective_followup
 	}
-
 }

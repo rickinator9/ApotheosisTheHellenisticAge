@@ -172,6 +172,7 @@ select_local_animal_effect = {
 
 #Used to find a local big animal
 big_animal_effect = {
+	location.county = { save_scope_as = location }
 	hidden_effect = {
 		random_list = {
 			40 = {
@@ -211,17 +212,8 @@ big_animal_effect = {
 			}
 			5 = {
 				# not in africa
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = {
-							exists = location
-						}
-						AND = {
-							exists = location
-							location = { geographical_region = world_africa }
-						}
-					}
+				trigger = {
+					artifact_feature_animal_bear_trigger = yes
 				}
 				set_variable = {
 					name = local_animal
@@ -230,21 +222,8 @@ big_animal_effect = {
 			}
 			5 = {
 				# not in europe
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = {
-							exists = location
-						}
-						AND = {
-							exists = location
-							location = {
-								NOR = {  # TODO: Once we expand, update this.
-									geographical_region = world_europe_south_east
-								}
-							}
-						}
-					}
+				trigger = {
+					artifact_feature_animal_lion_trigger = yes
 				}
 				set_variable = {
 					name = local_animal
@@ -253,17 +232,8 @@ big_animal_effect = {
 			}
 			5 = {
 				# india only
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = {
-							exists = location
-						}
-						AND = {
-							exists = location
-							location = { always = yes } # TODO: Once we expand, update this. 
-						}
-					}
+				trigger = {
+					artifact_feature_animal_tiger_trigger = yes
 				}
 				set_variable = {
 					name = local_animal
@@ -294,6 +264,7 @@ big_animal_effect = {
 			}
 		}
 	}
+	clear_saved_scope = location
 }
 
 #Used to find a local dangerous animal

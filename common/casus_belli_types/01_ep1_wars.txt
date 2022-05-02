@@ -17,6 +17,16 @@
 					exists = scope:attacker.house
 					house = {
 						any_house_claimed_artifact = {
+							trigger_if ={
+								limit = {
+									scope:attacker = { is_ai = yes }
+								}
+								NOT = { has_variable = cursed_artifact }
+								artifact_rarity >= 4 #More than masterwork
+								scope:attacker = {
+									can_benefit_from_artifact = prev
+								}
+							}
 							artifact_owner = {
 								OR = {
 									AND = { # Not the same House
@@ -168,6 +178,16 @@
 		scope:attacker = {
 			every_personal_claimed_artifact = {
 				limit = {
+					trigger_if ={
+						limit = {
+							scope:attacker = { is_ai = yes }
+						}
+						NOT = { has_variable = cursed_artifact }
+						artifact_rarity >= 4 #More than masterwork
+						scope:attacker = {
+							can_benefit_from_artifact = prev
+						}
+					}
 					artifact_owner = {
 						is_ruler = yes
 						target_is_same_character_or_above = scope:defender

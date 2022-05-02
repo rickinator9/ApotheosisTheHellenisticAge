@@ -188,10 +188,10 @@ councillor_spouse_diplomacy.1002 = {
 			has_character_flag = had_event_councillor_spouse_diplomacy_1002
 		}
 		any_child = {
-			NOT = { this = cp:councillor_spouse }
+			NOT = { this = root.cp:councillor_spouse }
 			any_relation = {
 				type = rival
-				NOT = { this = cp:councillor_spouse }
+				NOT = { this = root.cp:councillor_spouse }
 				is_child_of = root
 			}
 		}
@@ -284,7 +284,7 @@ councillor_spouse_diplomacy.1002 = {
 
 scripted_trigger councillor_spouse_diplomacy_1003_child_trigger = {
 	NOR = {
-		this = cp:councillor_spouse
+		this = root.cp:councillor_spouse
 		is_player_heir_of_trigger = { CHARACTER = root }
 		has_relation_rival = root.player_heir
 		has_relation_potential_rival = root.player_heir
@@ -701,7 +701,7 @@ councillor_spouse_diplomacy.1007 = {
 		}
 		NOT = { has_character_flag = had_event_councillor_spouse_diplomacy_1007 }
 		any_close_or_extended_family_member = {
-			NOT = { this = cp:councillor_spouse }
+			NOT = { this = root.cp:councillor_spouse }
 			has_any_bad_relationship_with_root_trigger = no
 			opinion = {
 				target = root
@@ -801,7 +801,7 @@ councillor_spouse_diplomacy.1008 = {
 		exists = dynasty
 		dynasty = {
 			any_dynasty_member = {
-				NOT = { this = cp:councillor_spouse }
+				NOT = { this = root.cp:councillor_spouse }
 				is_house_head = no
 				has_any_bad_relationship_with_root_trigger = no
 				opinion = {
