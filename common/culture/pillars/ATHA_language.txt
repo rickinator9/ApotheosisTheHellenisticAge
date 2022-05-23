@@ -42,7 +42,7 @@ language_iranian = {
 	color = persian
 }
 
-#Geto-Thracian Languages
+#Balkan Languages
 
 language_getic = { # Includes Moesian, Getic & Dacian
 	type = language
@@ -80,6 +80,60 @@ language_thracian = { # Includes Thynian, Bessic & Triballian
 	color = strymonian
 }
 
+language_paeonian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_paeonian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_paeonian }
+			multiply = 10
+		}
+	}
+	
+	color = paeonian
+}
+
+language_illyrian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_illyrian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_illyrian }
+			multiply = 10
+		}
+	}
+	
+	color = liburnian
+}
+
+language_liburnian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_liburnian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_liburnian }
+			multiply = 10
+		}
+	}
+	
+	color = liburnian
+}
+
 #Anatolian Languages
 
 language_capadocian = {
@@ -97,7 +151,7 @@ language_capadocian = {
 		}
 	}
 	
-	color = { 0.5 0.5 0.5 }
+	color = { 0.5 0.5 0.5 } #TODO
 }
 
 language_luwic = { # Carian, Isaurian, Lycian, Solymian, Pamphylian, Pisidian, Cilician etc.
@@ -151,7 +205,7 @@ language_palaic = { # Pamphylian
 		}
 	}
 	
-	color =  { 0.5 0.5 0.5 }
+	color =  { 0.5 0.5 0.5 } #TODO
 }
 
 language_phrygian = { # includes Mysian & Phrygian
@@ -172,6 +226,8 @@ language_phrygian = { # includes Mysian & Phrygian
 	color = phrygian
 }
 
+#Celtic Languages
+
 language_celtic = {
 	type = language
 	is_shown = {
@@ -188,44 +244,4 @@ language_celtic = {
 	}
 
 	color = celtic
-}
-
-#Liburnian Language
-
-language_liburnian = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_liburnian
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_liburnian }
-			multiply = 10
-		}
-	}
-	
-	color = liburnian
-}
-
-#Illyrian Language
-
-language_illyrian = {
-	type = language
-	is_shown = {
-		language_is_shown_trigger = {
-			LANGUAGE = language_illyrian
-		}
-	}
-	ai_will_do = {
-		value = 10
-		if = {
-			limit = { has_cultural_pillar = language_illyrian }
-			multiply = 10
-		}
-	}
-	
-	color = liburnian
 }
