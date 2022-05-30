@@ -164,6 +164,26 @@ hairstyles_scripted_characters = {
         }
     }
 
+    male_hair_indian_01 = { # Short Pompadour
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = scripted_character_hairstyles_01
+                value = 0.54 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = this
+                exists = character:macedonian03940 # Philip II of Macedonia
+                this = character:macedonian03940 # Philip II of Macedonia
+            }
+        }
+    }
+
     male_hair_fp1_01 = { # Medium short center part
         dna_modifiers = {
             accessory = {

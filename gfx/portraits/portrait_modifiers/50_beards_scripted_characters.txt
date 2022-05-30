@@ -5,6 +5,26 @@ beards_scripted_characters = {
     usage = game
     selection_behavior = weighted_random
 
+    male_beard_western_01 = { # Standard full beard
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.04 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = this
+                exists = character:macedonian03940 # Philip II of Macedonia
+                this = character:macedonian03940 # Philip II of Macedonia
+            }
+        }
+    }
+
     male_beard_western_03 = { # Short beard
         dna_modifiers = {
             accessory = {
