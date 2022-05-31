@@ -5,6 +5,26 @@ beards_scripted_characters = {
     usage = game
     selection_behavior = weighted_random
 
+    male_beard_western_01 = { # Standard full beard
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.04 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = this
+                exists = character:macedonian03940 # Philip II of Macedonia
+                this = character:macedonian03940 # Philip II of Macedonia
+            }
+        }
+    }
+
     male_beard_western_03 = { # Short beard
         dna_modifiers = {
             accessory = {
@@ -23,6 +43,15 @@ beards_scripted_characters = {
 				this = character:spartan00147 # Areus I of Sparta
             }
         }
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = this
+                exists = character:spartan00241 # Eudamidas II of Sparta
+                this = character:spartan00241 # Eudamidas II of Sparta
+            }
+        }
     }
 
     male_beard_western_08 = { # Big with fancy mustache
@@ -39,8 +68,28 @@ beards_scripted_characters = {
             modifier = {
                 add = 200
                 exists = this
-                exists = character:athenian00206 #Kallippos of Eleusis
-                this = character:athenian00206 #Kallippos of Eleusis
+                exists = character:athenian00206 # Kallippos of Eleusis
+                this = character:athenian00206 # Kallippos of Eleusis
+            }
+        }
+    }
+
+    male_beard_mena_01 = { # Very curly medium length full beard
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.35 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = this
+                exists = character:macedonian00204 # Krateros of Corinth
+                this = character:macedonian00204 # Krateros of Corinth
             }
         }
     }
@@ -59,8 +108,8 @@ beards_scripted_characters = {
             modifier = {
                 add = 200
 				exists = this
-                exists = character:spartan00143 # Kleonymos
-                this = character:spartan00143 # Kleonymos
+                exists = character:spartan00143 # Kleonymos of Sparta
+                this = character:spartan00143 # Kleonymos of Sparta
             }
         }
     }
