@@ -675,6 +675,11 @@ found_cadet_house_decision_effect = {
                     	NOT = { this = root }
            				in_diplomatic_range = root
                     }
+                    NOT = {
+                    	any_artifact_house_claimant = {
+                    		this = scope:new_house
+                    	}
+                	}
                 }
 			}
 			random_artifact = {
@@ -682,6 +687,11 @@ found_cadet_house_decision_effect = {
 					exists = var:banner_dynasty
                     var:banner_dynasty = root.dynasty
                     artifact_owner = { in_diplomatic_range = root }
+                    NOT = {
+                    	any_artifact_house_claimant = {
+                    		this = scope:new_house
+                    	}
+                	}
 				}
 				save_scope_as = new_branch_dynasty_banner
 			}

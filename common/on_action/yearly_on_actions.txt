@@ -9,6 +9,30 @@ yearly_global_pulse = {
 # Called from code once a year for "playable" (count+) characters.
 # Root is the character
 yearly_playable_pulse = {
+	effect = {
+		if = {
+			limit = {
+				has_government = mercenary_government
+				culture = {
+					has_cultural_parameter = mercenary_courtiers_gain_extra_skills
+				}
+			}
+			knight_increase_prowess_chance_effect = yes
+			every_courtier = {
+				limit = {
+					is_knight = yes
+				}
+				knight_increase_prowess_chance_effect = yes
+			}
+		}
+		# Assign or level up court type trait for courtiers in a royal court
+		if = {
+			limit = {
+				has_royal_court = yes
+			}
+			assign_court_type_traits_to_courtiers_effect = yes
+		}
+	}
 	events = {
 		adultery.0001 #Suspected spouse/soulmate of cheating (increased chance when there is a lover, but can also trigger otherwise)
 		hold_court.3050 #Warning the ruler that it's been some time since they Held Court
@@ -48,7 +72,7 @@ five_year_playable_pulse = {
 						is_available_ai = yes
 						age > 6
 						NOT = {
-							knows_court_language_of = liege
+							knows_court_language_of = host
 						}
 					}
 					random = {
@@ -63,7 +87,7 @@ five_year_playable_pulse = {
 							}
 							if = {
 								limit = {
-									liege = {
+									host = {
 										employs_court_position = court_tutor_court_position
 									}
 								}
@@ -71,7 +95,7 @@ five_year_playable_pulse = {
 							}
 							if = {
 								limit = {
-									liege = {
+									host = {
 										has_court_type = court_diplomatic
 									}
 								}
@@ -79,14 +103,14 @@ five_year_playable_pulse = {
 							}
 							if = {
 								limit = {
-									liege = {
+									host = {
 										has_court_type = court_scholarly
 									}
 								}
 								add = 4
 							}
 						}
-						learn_court_language_of = liege
+						learn_court_language_of = host
 					}
 				}
 				if = {
@@ -182,8 +206,8 @@ five_year_playable_pulse = {
 quarterly_playable_pulse = {
 	on_actions = {
 		realm_maintenance_quarterly_pulse
-		reduce_corruption_quarterly_pulse
-		#Event pools
+
+		# Event pools
 		stewardship_lifestyle_progress_pulse
 		intrigue_lifestyle_progress_pulse
 		diplomacy_lifestyle_progress_pulse
@@ -198,6 +222,9 @@ quarterly_playable_pulse = {
 
 		# EP1 maintenance pulses
 		inspiration_maintenance_quarterly_pulse
+		
+		# ATHA
+		reduce_corruption_quarterly_pulse
 	}
 
 	events = {
@@ -224,6 +251,7 @@ random_yearly_playable_pulse = {
 		}
 		5 = on_yearly_events
 		4 = fp1_yearly_events
+		3 = fp2_yearly_events
 	}
 	on_actions = {
 		delay = { days = { 45 75 } }
@@ -727,5 +755,26 @@ on_yearly_events = {
 
 		#Trait Events
 		100 = trait_specific.8501 #Someone mocks your lisp
+		
+		# FP2 - Fate of Iberia Events
+		180 = fp2_yearly.2020	# Horchata colonialism event
+		160 = fp2_yearly.8000	# Burning the Vineyards
+		180 = fp2_yearly.8001	# Assembling the Cortes
+		180 = fp2_struggle.1002	# Xenophilic Advancment
+		160 = fp2_struggle.1050	# Dreams of Destruction
+		150 = fp2_struggle.2000	# Disorderly Market
+		140 = fp2_struggle.2008	# Misdeeds of the Councillor
+		200 = fp2_struggle.2013	# The Secret to Freedom
+		130 = fp2_struggle.2015	# Letter on the Back
+		#100 = fp2_yearly.2017	# Chess for Friends (TODO_FP2_POLISH Fix possible OOO bug)
+		180 = fp2_yearly.2025	# Suffering from Success
+		150 = fp2_yearly.4001	# You fancy a little siesta
+		150 = fp2_yearly.4002	# A county is increasingly religiously intertwined
+		150 = fp2_yearly.4003	# The road to Santiago is under threat from bandits
+		150 = fp2_yearly.4007 	#Finding a shell on the road to Santiago
+		150 = fp2_yearly.4008 	#Folk stories around the fireside
+		300 = fp2_yearly.4009 	#Visiting the Malato Tree
+		150 = fp2_yearly.4010 	#Finding a Verraco
+		300 = fp2_flavor.0001 	# Neighboring Muslims are growing rice, adopt the practice yourself?
 	}
 }

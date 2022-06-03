@@ -736,6 +736,16 @@ found_empire_decision = {
 			}
 		}
 		NOT = { has_game_rule = off_custom_kingdoms }
+
+		trigger_if = {
+			limit = {
+				OR = {
+					fp2_character_interloper_in_struggle_trigger = yes
+					fp2_character_involved_in_struggle_trigger = yes
+				}
+			}
+			always = no
+		}
 	}
 
 	is_valid = {

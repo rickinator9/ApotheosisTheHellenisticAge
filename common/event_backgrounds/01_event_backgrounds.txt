@@ -67,6 +67,23 @@
 # FP1 Tribal Corridor 		[event:/DLC/FP1/SFX/Events/event_tribal_corridor]
 # FP1 Viking Feast 			[event:/DLC/FP1/SFX/Events/event_viking_feast]
 
+### FP2 ##
+
+# FP2 corridor_day		[event:/DLC/FP2/SFX/Events/corridor_day]
+# FP2 corridor_night		[event:/DLC/FP2/SFX/Events/corridor_night]
+# FP2 courtyard			[event:/DLC/FP2/SFX/Events/courtyard]
+# FP2 garden			[event:/DLC/FP2/SFX/Events/garden]
+# FP2 prison			[event:/DLC/FP2/SFX/Events/prison]
+# FP2 relaxing_room		[event:/DLC/FP2/SFX/Events/relaxing_room]
+# FP2 temple			[event:/DLC/FP2/SFX/Events/temple]
+# FP2 throneroom		[event:/DLC/FP2/SFX/Events/throneroom]
+
+### Iberian Struggle ###
+
+# fp2_fullscreen_intro 
+# fp2_fullscreen_hostility
+# fp2_fullscreen_compromise 
+# fp2_fullscreen_conciliation 
 
 ### TOMB ###
 tomb = {
@@ -114,16 +131,10 @@ battlefield = {
 
 ### TEMPLE ###
 temple = {
-	# background = {
-	# 	trigger = {
-	# 		faith = { religion = religion:christianity_religion }
-	# 	}
-	# 	reference = "gfx/interface/illustrations/event_scenes/church.dds"
-	# 	environment = "environment_event_church"
-	# 	ambience = "event:/SFX/Events/Backgrounds/temple_christian"
-	# }
 	background = { # FP1
-		trigger = { fp1_should_use_norse_graphics_trigger = yes }
+		trigger = { 
+			culture = { has_building_gfx = norse_building_gfx } 
+		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_tribal_temple.dds"
 		environment = "environment_event_fp1_tribal_temple"
 		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
@@ -136,16 +147,10 @@ temple = {
 }
 
 temple_scope = {
-	# background = {
-	# 	trigger = {
-	# 		scope:background_temple_scope = { religion = religion:christianity_religion }
-	# 	}
-	# 	reference = "gfx/interface/illustrations/event_scenes/church.dds"
-	# 	environment = "environment_event_church"
-	# 	ambience = "event:/SFX/Events/Backgrounds/temple_christian"
-	# }
 	background = { # FP1
-		trigger = { fp1_should_use_norse_graphics_trigger = yes }
+		trigger = { 
+			culture = { has_building_gfx = norse_building_gfx } 
+		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_tribal_temple.dds"
 		environment = "environment_event_fp1_tribal_temple"
 		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
@@ -186,8 +191,8 @@ corridor_night = {
 	background = {	#FP1
 		trigger = {
 			OR = {
-				fp1_should_use_norse_graphics_trigger = yes
-				fp1_should_use_extra_tribal_graphics_trigger = yes
+				culture = { has_building_gfx = norse_building_gfx }
+				should_use_tribal_realm_palace_graphics_trigger = yes
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_tribal_corridor.dds"
@@ -205,8 +210,8 @@ corridor_day = {
 	background = {	#FP1
 		trigger = {
 			OR = {
-				fp1_should_use_norse_graphics_trigger = yes
-				fp1_should_use_extra_tribal_graphics_trigger = yes
+				culture = { has_building_gfx = norse_building_gfx }
+				should_use_tribal_realm_palace_graphics_trigger = yes
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_tribal_corridor.dds"
@@ -231,7 +236,7 @@ council_chamber = {
 
 ### COURTYARD ###
 courtyard = {
-	background = {
+	background = { #Fallback
 		reference = "gfx/interface/illustrations/event_scenes/courtyard.dds"
 		environment = "environment_event_courtyard"
 		ambience = "event:/SFX/Events/Backgrounds/castle_courtyard_western"
@@ -243,8 +248,8 @@ dungeon = {
 	background = {	#Tribal Prison
 		trigger = {
 			OR = {
-				fp1_should_use_norse_graphics_trigger = yes
-				fp1_should_use_extra_tribal_graphics_trigger = yes
+				culture = { has_building_gfx = norse_building_gfx }
+				should_use_tribal_realm_palace_graphics_trigger = yes
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_tribal_prison.dds"
@@ -677,8 +682,8 @@ feast = {
 	background = {	# FP1
 		trigger = {
 			OR = {
-				fp1_should_use_norse_graphics_trigger = yes
-				fp1_should_use_extra_tribal_graphics_trigger = yes
+				culture = { has_building_gfx = norse_building_gfx }
+				should_use_tribal_realm_palace_graphics_trigger = yes
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_viking_feast.dds"
@@ -712,6 +717,21 @@ garden = {
 
 ### MARKET ###
 market = {
+
+	background = { #Eastern
+		trigger = {
+			capital_province = {
+				OR = {
+					geographical_region = graphical_mena
+					geographical_region = graphical_india
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/market_east.dds"
+		environment = "environment_event_market_east"
+		ambience = "event:/SFX/Events/Backgrounds/town_market_middleeastern_day"
+	}
+
 	background = { #Tribal
 		trigger = {
 			OR = {
@@ -729,20 +749,7 @@ market = {
 		ambience = "event:/SFX/Events/Backgrounds/townmarket_day_tribal_pagan"
 	}
 
-	background = { #Eastern
-		trigger = {
-			capital_province = {
-				OR = {
-					geographical_region = graphical_mena
-					geographical_region = graphical_india
-				}
-			}
-		}
-		reference = "gfx/interface/illustrations/event_scenes/market_east.dds"
-		environment = "environment_event_market_east"
-		ambience = "event:/SFX/Events/Backgrounds/town_market_middleeastern_day"
-	}
-
+	
 
 	background = { #Western (standard/fallback)
 		reference = "gfx/interface/illustrations/event_scenes/market_west.dds"
@@ -815,8 +822,8 @@ study = {
 	background = {	#Tribal Study
 		trigger = {
 			OR = {
-				fp1_should_use_norse_graphics_trigger = yes
-				fp1_should_use_extra_tribal_graphics_trigger = yes
+				culture = { has_building_gfx = norse_building_gfx }
+				should_use_tribal_realm_palace_graphics_trigger = yes
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_steward_study.dds"
@@ -855,7 +862,7 @@ tavern = {
 throne_room = {
 	background = { #FP1 Tribal
 		trigger = {
-			fp1_should_use_norse_graphics_trigger = yes
+			culture = { has_building_gfx = norse_building_gfx }
 			has_government = tribal_government
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_throneroom_tribal.dds"
@@ -872,7 +879,7 @@ throne_room = {
 
 	background = {	#FP1 Non-Tribal
 		trigger = {
-			fp1_should_use_norse_graphics_trigger = yes
+			culture = { has_building_gfx = norse_building_gfx }
 			NOT = { has_government = tribal_government }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_throneroom_nontribal.dds"
@@ -917,7 +924,7 @@ throne_room = {
 throne_room_scope = {
 	background = { #FP1 Tribal
 		trigger = {
-			fp1_should_use_norse_graphics_trigger = yes
+			culture = { has_building_gfx = norse_building_gfx }
 			has_government = tribal_government
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_throneroom_tribal.dds"
@@ -942,7 +949,7 @@ throne_room_scope = {
 
 	background = {	#FP1 Non-Tribal
 		trigger = {
-			fp1_should_use_norse_graphics_trigger = yes
+			culture = { has_building_gfx = norse_building_gfx }
 			NOT = { has_government = tribal_government }
 		}
 		reference = "gfx/interface/illustrations/event_scenes/fp1_throneroom_nontribal.dds"
@@ -952,7 +959,7 @@ throne_room_scope = {
 
 	background = {
 		trigger = {
-			scope:background_throne_room_scope = {
+			scope:background_throne_room_scope.culture = {
 				has_graphical_mena_culture_group_trigger = yes
 			}
 		}
@@ -963,7 +970,7 @@ throne_room_scope = {
 
 	background = {
 		trigger = {
-			scope:background_throne_room_scope = {
+			scope:background_throne_room_scope.culture = {
 				has_graphical_india_culture_group_trigger = yes
 			}
 		}
@@ -974,7 +981,7 @@ throne_room_scope = {
 
 	background = {
 		trigger = {
-			scope:background_throne_room_scope = {
+			scope:background_throne_room_scope.culture = {
 				has_graphical_mediterranean_culture_group_trigger = yes
 			}
 		}
@@ -1122,4 +1129,44 @@ fp1_tribal_prison = {
 	}
 }
 
+fp2_test = {
+	background = {	# Prison
+		reference = "gfx/interface/illustrations/event_scenes/fp2_throneroom.dds"
+		environment = "environment_event_fp2_throneroom"
+		ambience = "event:/DLC/FP2/SFX/Events/prison"
+	}
+}
+#### FP2 Fullscreen Backgrounds ####
+
+fp2_fullscreen_intro = {
+	background = {	# Intro
+		reference = "gfx/interface/illustrations/event_story/fp2_struggle_start.dds"
+		environment = "environment_event_study_physician" # added because it is expected in events
+		ambience = "event:/DLC/FP2/SFX/UI/fp2_struggle_start_loop"
+	}
+}
+
+fp2_fullscreen_hostility = {
+	background = {	# Intro
+		reference = "gfx/interface/illustrations/event_story/fp2_hostility.dds"
+		environment = "environment_event_study_physician" # added because it is expected in events
+		ambience = "event:/DLC/FP2/SFX/UI/fp2_struggle_end_loop_hostility"
+	}
+}
+
+fp2_fullscreen_compromise = {
+	background = {	# Intro
+		reference = "gfx/interface/illustrations/event_story/fp2_compromise.dds"
+		environment = "environment_event_study_physician" # added because it is expected in events
+		ambience = "event:/DLC/FP2/SFX/UI/fp2_struggle_end_loop_compromise"
+	}
+}
+
+fp2_fullscreen_conciliation = {
+	background = {	# Intro
+		reference = "gfx/interface/illustrations/event_story/fp2_conciliation.dds"
+		environment = "environment_event_study_physician" # added because it is expected in events
+		ambience = "event:/DLC/FP2/SFX/UI/fp2_struggle_end_loop_conciliation"
+	}
+}
 
