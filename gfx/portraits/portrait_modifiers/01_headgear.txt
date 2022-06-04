@@ -89,6 +89,14 @@ headgear = {
 				# Should still wear armor when going to war
 				NOT = { portrait_wear_armor_trigger = yes }
 			}
+			# No headgear for characters who sold their crown
+			modifier = {
+				add = 100
+				exists = this
+				has_character_flag = sold_crown_charmod
+				# Should still wear armor when going to war
+				NOT = { portrait_wear_armor_trigger = yes }
+			}
 		}
 	}
 
@@ -2445,12 +2453,14 @@ headgear = {
 			base = 0
 			modifier = {
 				add = 100
+				exists = this
 				portrait_wear_helmet_trigger = yes
 				portrait_northern_clothing_trigger = yes
 			}
 		}
 	}
 	
+
 ## FP1 NORSE ##
 
 	fp1_norse_commoners = {
