@@ -264,7 +264,7 @@ culture_ai_weight_skirmishers = {
 	if = { # Cultures that REALLY LIKE skirmishers
 		limit = {
 			OR = {
-				has_cultural_pillar = heritage_thracian # Thracian armies contained a lot of peltasts and javelinmen.
+				culture = { has_cultural_pillar = heritage_thracian } # Thracian armies contained a lot of peltasts and javelinmen.
 			}
 		}
 		add = 60
@@ -273,7 +273,7 @@ culture_ai_weight_skirmishers = {
 		limit = {
 			culture = {
 				OR = {
-					has_cultural_pillar = heritage_greek # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
+					culture = { has_cultural_pillar = heritage_greek } # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
 				}
 			}
 		}
@@ -382,7 +382,7 @@ culture_ai_weight_heavy_infantry = {
 	if = { # Cultures that dislike heavy infantry
 		limit = {
 			OR = {
-				has_cultural_pillar = heritage_greek # Greeks will want to use Phalanx
+				culture = { has_cultural_pillar = heritage_greek } # Greeks will want to use Phalanx
 			}
 		}
 		add = -60
@@ -435,7 +435,7 @@ culture_ai_weight_light_cavalry = {
 	if = { # Cultures that favours light cavalry
 		limit = {
 			OR = {
-				has_cultural_pillar = heritage_thracian # Thracian armies contained a lot of light javelin cavalry.
+				culture = { has_cultural_pillar = heritage_thracian } # Thracian armies contained a lot of light javelin cavalry.
 			}
 		}
 		add = 40
@@ -443,7 +443,7 @@ culture_ai_weight_light_cavalry = {
 	if = { # Cultures that dislike light cavalry
 		limit = {
             OR = {
-            	has_cultural_pillar = heritage_greek # While Greeks had some light cavalry (Tarantines), they were not known to use any.
+            	culture = { has_cultural_pillar = heritage_greek } # While Greeks had some light cavalry (Tarantines), they were not known to use any.
 			}
 		}
 		add = -60
@@ -489,7 +489,7 @@ culture_ai_weight_heavy_cavalry = {
 			OR = {
 				# All Greeks apart from Thessalians should dislike using heavy cavalry (Macedonians have their own unique unit).
 				AND = {
-					has_cultural_pillar = heritage_greek
+					culture = { has_cultural_pillar = heritage_greek }
 					NOT = { culture = culture:thessalian }
 				}
 			}

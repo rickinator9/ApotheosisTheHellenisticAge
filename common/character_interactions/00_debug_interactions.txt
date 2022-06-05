@@ -1324,39 +1324,6 @@ give_criminal_trait_interaction = {
 	auto_accept = yes
 }
 
-generate_artifact_with_history_interaction = {
-	category = interaction_debug_main
-	use_diplomatic_range = no
-	ignores_pending_interaction_block = yes
-
-	is_shown = {
-		debug_only = yes
-		NOT = { scope:recipient = scope:actor }
-	}
-	
-	on_accept = {
-		scope:actor = { trigger_event = debug.400 }
-	}
-	
-	auto_accept = yes
-	
-}
-
-# Have (or trigger the aftermath of) sex with the target character
-debug_sex_interaction = { # Sleep With Character
-	icon = seducer
-	category = interaction_debug_main
-	use_diplomatic_range = no
-	ignores_pending_interaction_block = yes
-	is_shown = {
-		debug_only = yes
-		NOT = { scope:recipient = scope:actor }
-	}
-	
-	on_accept = { scope:actor = { trigger_event = debug.410 } }
-	auto_accept = yes
-}
-
 debug_change_every_county = {
 	category = interaction_debug_main
 	use_diplomatic_range = no

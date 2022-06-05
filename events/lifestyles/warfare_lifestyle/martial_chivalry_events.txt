@@ -1623,12 +1623,6 @@ martial_chivalry.4000 = {
 	option = { # Drink up!
 		name = fp2_struggle.2023.d
 
-		if = { # If the player's faith forbids drinking, notify the player to ensure they are not confused about why the cost is there
-			limit = { religion = religion:islam_religion }
-			custom_tooltip = action_considered_haram_warning
-			add_piety = medium_piety_loss
-		}
-
 		duel = {
 			skill = prowess
 			value = scope:fp2_2023_enemy_knight.prowess
@@ -1658,18 +1652,6 @@ martial_chivalry.4000 = {
 
 					add_prestige = medium_prestige_loss
 					remove_short_term_gold = minor_gold_value
-					hidden_effect = {
-						if = {
-							limit = { 
-								has_any_nickname = no
-								has_trait = drunkard 
-							}
-							random = {
-								chance = 45
-								give_nickname  = nick_the_drunkard # A drunk who can not hold their ale will be made mockery of, good sire!
-							}	
-						}
-					}
 				}
 			}
 			10 = { # Success Outcome
