@@ -728,14 +728,10 @@ faith_conversion_cost_mult = {
 	# More expensive if you convert to a faith outside of your religion's family
 	if = {
 		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_hellenic }
-					}
+			NOT = {
+				is_in_same_religious_family = {
+					RELIGION1 = scope:new_faith.religion
+					RELIGION2 = scope:character.faith.religion
 				}
 			}
 		}
@@ -748,51 +744,6 @@ faith_conversion_cost_mult = {
 			}
 		}
 	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_great_mother }
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1
-			add = {
-				desc = faith_conversion_cost_other_religion_family
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 2
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_anatolian }
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1
-			add = {
-				desc = faith_conversion_cost_other_religion_family
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 2
-			}
-		}
-	}
-	# TODO: Add religion families as we expand.
 	
 	# Unreformed Faiths have an easier way converting to Organized faiths
 	if = {
@@ -821,13 +772,13 @@ faith_conversion_cost_mult = {
 	# More expensive to convert to something inside your religion family that's not the same religion
 	if = {
 		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
+			is_in_same_religious_family = {
+				RELIGION1 = scope:new_faith.religion
+				RELIGION2 = scope:character.faith.religion
 			}
 			scope:character = {
 				faith = {
 					religion = {
-						is_in_family = rf_hellenic
 						NOT = { this = scope:new_faith.religion}
 					}
 				}
@@ -842,53 +793,6 @@ faith_conversion_cost_mult = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						is_in_family = rf_great_mother
-						NOT = { this = scope:new_faith.religion}
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1
-			add = {
-				desc = faith_conversion_cost_inside_religion_family
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 1
-			}
-		}
-	}
-	if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						is_in_family = rf_anatolian
-						NOT = { this = scope:new_faith.religion}
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1
-			add = {
-				desc = faith_conversion_cost_inside_religion_family
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 1
-			}
-		}
-	}
-	# TODO: Add religion families as we expand.
 
 	#######################################
 	# Misc penalties #
@@ -1049,15 +953,13 @@ faith_conversion_cost_mult = {
 	# Cheaper if the religion is present near/in your borders
 	if = {
 		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
+			NOT = {
+				is_in_same_religious_family = {
+					RELIGION1 = scope:new_faith.religion
+					RELIGION2 = scope:character.faith.religion
+				}
 			}
 			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_hellenic }
-					}
-				}
 				OR = {
 					any_neighboring_top_liege_realm_owner = {
 						faith = scope:new_faith
@@ -1094,103 +996,6 @@ faith_conversion_cost_mult = {
 			}
 		}
 	}
-	# Cheaper if the religion is present near/in your borders
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_great_mother }
-					}
-				}
-				OR = {
-					any_neighboring_top_liege_realm_owner = {
-						faith = scope:new_faith
-					}
-					any_vassal = {
-						faith = scope:new_faith
-					}
-					any_realm_province = {
-						faith = scope:new_faith
-					}
-					AND = {
-						exists = liege
-						liege = {
-							faith = scope:new_faith
-						}
-					}
-					AND = {
-						exists = liege
-						liege = {	
-							any_vassal = {
-								faith = scope:new_faith
-							}
-						}
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1 
-			subtract = {
-				desc = faith_conversion_cost_present
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.9
-			}
-		}
-	}
-	# Cheaper if the religion is present near/in your borders
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_anatolian }
-					}
-				}
-				OR = {
-					any_neighboring_top_liege_realm_owner = {
-						faith = scope:new_faith
-					}
-					any_vassal = {
-						faith = scope:new_faith
-					}
-					any_realm_province = {
-						faith = scope:new_faith
-					}
-					AND = {
-						exists = liege
-						liege = {
-							faith = scope:new_faith
-						}
-					}
-					AND = {
-						exists = liege
-						liege = {	
-							any_vassal = {
-								faith = scope:new_faith
-							}
-						}
-					}
-				}
-			}
-		}
-		multiply = {
-			value = 1 
-			subtract = {
-				desc = faith_conversion_cost_present
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.9
-			}
-		}
-	}
-	# TODO: Add religion families as we expand.
 	else_if = {
 		limit = {
 			scope:character = {
