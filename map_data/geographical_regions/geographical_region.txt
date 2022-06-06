@@ -39,6 +39,7 @@
 # > world_india_deccan
 # > world_india_bengal
 # > world_india_rajastan
+# > custom_lanka
 
 # world_africa
 # > world_africa_north
@@ -51,6 +52,11 @@
 # > world_steppe_tarim
 # > world_steppe_west
 # > world_steppe_east
+
+# world_tibet
+
+# world_burma
+# > custom_arakan_mountains
 
  
 world_europe_west_britannia = {
@@ -118,6 +124,8 @@ world_india_bengal = {
 }
 world_india_rajastan = {
 }
+custom_lanka = {
+}
 world_africa_north_west = {
 }
 world_africa_north_east = {
@@ -149,6 +157,8 @@ world_tibet = {
 world_himalaya = {
 }
 world_burma = {
+}
+custom_arakan_mountains = {
 }
 world_steppe = {
 	generate_modifiers = yes
@@ -676,6 +686,9 @@ custom_iceland = {
 	#Just Iceland
 }
 
+custom_polabia = {
+}
+
 
 ###########################################################################
 # Graphical Regions
@@ -1058,7 +1071,7 @@ ghw_region_north_eastern_india = {
 ### END GHW Regions
 
 #####################
-# The Northern Lords Regions
+# FP1 Regions
 #####################
 
 dlc_fp1_region_core_north_sea = {
@@ -1126,8 +1139,34 @@ dlc_fp1_achievement_king_of_all_the_isles = {
 dlc_fp1_achievement_vladimirs_second_choice = {
 }
 
-### END TNL Regions
+### END FP1 Regions
 
+#####################
+# FP2 Regions
+#####################
+
+dlc_fp2_old_vasconia = {	
+}
+
+dlc_fp2_old_vasconia_pushed = {
+}
+
+
+dlc_fp2_mediterranean_shoreline = { # Then check is_coastal_county = yes
+
+	regions = { world_europe_south_italy }
+}
+
+dlc_fp2_caucasian_iberia = { # Next to Georgia (Due to how counties are partitioned, and some warping, it does not match actual maps)
+}
+
+dlc_fp2_form_aragon_region = {
+}
+
+dlc_fp2_lyonese_monk_region = {
+}
+
+### END FP2 Regions
 
 #####################
 # Achievements - 1.4
@@ -1233,6 +1272,9 @@ dlc_ep1_southwest_silk_road_trade_region = { # Silk Road
 	regions = {
 		world_burma world_tibet
 	}
+}
+
+dlc_ep1_arthurian_heartlands_region = {
 }
 
 ### END RC Regions

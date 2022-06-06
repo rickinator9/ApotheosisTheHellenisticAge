@@ -33,11 +33,11 @@ artifact.0011 = {
 			}
 		}
 		hidden_effect = {
-				if = {
-					limit = { has_variable = desecrated_artifact_var }
-					remove_variable = desecrated_artifact_var
-				}
+			if = {
+				limit = { has_variable = desecrated_artifact_var }
+				remove_variable = desecrated_artifact_var
 			}
+		}
 	}
 }
 
@@ -422,7 +422,13 @@ artifact.1001 = {
 
 	option = { 
 		name = artifact.1001.a
-		remove_short_term_gold = medium_gold_value
+		# Flag that this is free for DLC artefacts that could become courtly ones...
+		if = {
+			limit = { exists = scope:this_artifact.var:dlc_potential_court_artefact }
+			custom_tooltip = artifact.1001.a.tt.free
+		}
+		# ... or else costs a nominal fee.
+		else = { remove_short_term_gold = medium_gold_value }
 		scope:this_artifact = {
 			reforge_as_court_artifact_effect = yes 
 		}
@@ -3469,6 +3475,7 @@ artifact.6000 = {
 		combat.location = {
 			save_scope_as = combat_location
 		}
+
 		side_primary_participant = {
 			trigger_event = { id = artifact.6001 }
 		}
@@ -3504,6 +3511,12 @@ artifact.6001 = {
 	artifact = { # To display the artifact in the event-window
 	    target = scope:newly_created_artifact
 	    position = lower_center_portrait
+	}
+
+	trigger = {
+		# based on where the scope is set, they might not exist when the event is fired
+		exists = scope:enemy_commander
+		exists = scope:friendly_commander
 	}
 	
 	immediate = {

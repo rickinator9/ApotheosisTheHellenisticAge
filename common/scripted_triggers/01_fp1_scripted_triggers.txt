@@ -4,35 +4,14 @@
 
 eligible_for_fp1_dynasty_legacies_trigger = {
 	always = no
-
-	# has_fp1_dlc_trigger = yes
-	# OR = {
-	# 	# Technically, we could hardscript this to North Germanics/Normans/Estonians, but eh.
-	# 	culture = { has_innovation = innovation_longboats }
-	# 	# Converts should also get a chance to get in on the fun.
-	# 	religion = religion:germanic_religion
-	# }
 }
 
 fp1_can_raise_stele_trigger = {
 	always = no
-
-	# OR = {
-	# 	culture_group = culture_group:north_germanic_group
-	# 	has_character_modifier = embraced_local_traditions_modifier
-	# }
-	# culture = {
-	# 	NOT = { has_cultural_era_or_later = culture_era_high_medieval }
-	# }
 }
 
 fp1_can_raise_stele_title_scope_trigger = {
 	always = no
-
-	# culture_group = culture_group:north_germanic_group
-	# culture = {
-	# 	NOT = { has_cultural_era_or_later = culture_era_high_medieval }
-	# }
 }
 
 fp1_county_has_stele_trigger = {
@@ -46,16 +25,15 @@ fp1_county_has_stele_trigger = {
 	}
 }
 
+fp1_eligible_for_yearly_events_trigger = {
+	always = no
+}
+
 ##################################################
 # Cultural & Regional Triggers
 
 fp1_is_norse = {
 	always = no
-
-	# OR = {
-	# 	culture_group = culture_group:north_germanic_group
-	# 	culture = culture:norman
-	# }
 }
 
 fp1_is_norse_tribal = {
@@ -96,11 +74,15 @@ fp1_remove_stele_new_holder_trigger = {
 	# And would the new holder want to tear down the stele?
 	$NEW_HOLDER$ = {
 		OR = {
-			# E.g., because they're a different family and won't maintain it.
-			NOT = { dynasty = $PREVIOUS_HOLDER$.dynasty }
+			AND = {
+				exists = dynasty
+				# E.g., because they're a different family and won't maintain it.
+				NOT = { dynasty = $PREVIOUS_HOLDER$.dynasty }
+			}
 			# Or because they're subject of the runestone, which means it's memorialising their defeat.
 			## ... Unless they're a ghost. Damned proctors, I guess.
 			AND = {
+				NOT = { scope:stele_type = flag:promotion } # We don't want to compare a character with a title
 				exists = $TITLE$.var:stele_container
 				this = $TITLE$.var:stele_container
 			}
@@ -117,15 +99,6 @@ is_vaguely_danish_bhakti_trigger = {
 
 fp1_va_eligible_for_scandinavian_troops_trigger = {
 	always = no
-
-	# # We only give these to North Germanics. I realise we check this elsewhere, but it makes it a bit easier to hijack the CB for other cultures via modding without weirdness.
-	# culture_group = culture_group:north_germanic_group
-	# # Who hold at least one county in the initial de jure of the mainland Norse kingdoms.
-	# any_sub_realm_county = {
-	# 	title_province = { geographical_region = dlc_fp1_region_core_mainland_scandinavia }
-	# 	culture = scope:attacker.culture
-	# 	faith = scope:attacker.faith
-	# }
 }
 
 ##################################################
@@ -133,9 +106,6 @@ fp1_va_eligible_for_scandinavian_troops_trigger = {
 
 fp1_should_use_norse_graphics_trigger = {
 	always = no
-
-	# has_fp1_dlc_trigger = yes
-	# culture = { has_graphical_culture = norse_building_gfx }
 }
 
 fp1_should_use_extra_tribal_graphics_trigger = {
@@ -172,11 +142,6 @@ suitable_shieldmaiden_gaoler_trigger = {
 
 basic_can_have_trial_by_combat_trigger = {
 	always = no
-	# TODO: Which cultures can have trials by combat?
-	# OR = {
-	# 	culture_group = culture_group:north_germanic_group
-	# 	culture = culture:norman
-	# }
 }
 
 can_have_trial_by_combat_trigger = {
