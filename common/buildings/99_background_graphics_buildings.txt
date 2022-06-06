@@ -15,7 +15,7 @@ walls_00 = {
 	}
 }
 
-# Any city or tribal holding that must be sieged gets the basic walls
+# Any city that must be sieged gets the basic walls
 walls_01_tribal = {
 	is_graphical_background = yes
 
@@ -32,7 +32,7 @@ walls_01_tribal = {
 			fort_level > 0
 		}
 		NOR = {
-			has_building_or_higher = "castle_01"
+			# disabling this level of walled graphics for holdings with special walls and other fortifications so that they always look appropriately fortified. Note: If any of these buildings are given unique 3D assets, this should be looked at again.
 			has_building_or_higher = "palisades_01"
 			has_building_or_higher = "curtain_walls_01"
 			has_building_or_higher = "hill_forts_01"
@@ -43,7 +43,6 @@ walls_01_tribal = {
 }
 
 # Here the Fort Level building chains take control of the visuals
-# Castle holding walls start at this level
 walls_01 = {
 	is_graphical_background = yes
 	asset = {
@@ -65,7 +64,7 @@ walls_01 = {
 	
 	is_enabled = {
 		OR = {
-			has_building_or_higher = "castle_01"
+			# These buildings will trigger the visual "upgrade" to this wall asset
 			has_building_or_higher = "palisades_01"
 			has_building_or_higher = "curtain_walls_01"
 			has_building_or_higher = "hill_forts_01"
@@ -73,6 +72,7 @@ walls_01 = {
 			has_building_or_higher = "watchtowers_01"
 		}
 		NOR = {
+			# Disabling this level of walled graphics for holdings with special walls and other fortifications so that they always look appropriately fortified. Note: If any of these buildings are given unique 3D assets, this should be looked at again.
 			has_building_or_higher = "palisades_02"
 			has_building_or_higher = "curtain_walls_02"
 			has_building_or_higher = "hill_forts_02"
@@ -104,6 +104,7 @@ walls_02 = {
 	
 	is_enabled = {
 		OR = {
+			# These buildings will trigger the visual "upgrade" to this wall asset
 			has_building_or_higher = "palisades_02"
 			has_building_or_higher = "curtain_walls_02"
 			has_building_or_higher = "hill_forts_02"
@@ -111,6 +112,7 @@ walls_02 = {
 			has_building_or_higher = "watchtowers_02"
 		}
 		NOR = {
+			# Disabling this level of walled graphics for holdings with special walls and other fortifications so that they always look appropriately fortified. Note: If any of these buildings are given unique 3D assets, this should be looked at again.
 			has_building_or_higher = "curtain_walls_03"
 			has_building_or_higher = "hill_forts_03"
 			has_building_or_higher = "ramparts_03"
@@ -144,10 +146,18 @@ walls_03 = {
 			NOT = { has_government = tribal_government }
 		}
 		OR = {
+			# These buildings will trigger the visual "upgrade" to this wall asset
 			has_building_or_higher = "curtain_walls_03"
 			has_building_or_higher = "hill_forts_03"
 			has_building_or_higher = "ramparts_03"
 			has_building_or_higher = "watchtowers_03"
+		}
+		NOR = {
+			# Disabling this level of walled graphics for holdings with special walls and other fortifications so that they always look appropriately fortified. Note: If any of these buildings are given unique 3D assets, this should be looked at again.
+			has_building_or_higher = "curtain_walls_06"
+			has_building_or_higher = "hill_forts_06"
+			has_building_or_higher = "ramparts_06"
+			has_building_or_higher = "watchtowers_06"
 		}
 	}
 }
@@ -177,6 +187,7 @@ walls_04 = {
 			NOT = { has_government = tribal_government }
 		}
 		OR = {
+			# These buildings will trigger the visual "upgrade" to this wall asset
 			has_building_or_higher = "curtain_walls_06"
 			has_building_or_higher = "hill_forts_06"
 			has_building_or_higher = "ramparts_06"

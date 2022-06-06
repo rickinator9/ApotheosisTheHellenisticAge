@@ -25,8 +25,20 @@
 			}
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						}
 					}
 				}
 				piety_level >= -1
@@ -38,8 +50,20 @@
 		trigger_else = {
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						}
 					}
 				}
 				piety_level >= 0
@@ -72,6 +96,18 @@
 	valid_to_start = {
 		scope:target = {
 			tier = tier_county
+		}
+		# Filter for struggles
+		trigger_if = {
+			limit = {
+				scope:defender = {
+					any_character_struggle = {
+						involvement = involved
+					}
+				}
+			}
+			are_holy_wars_disabled_in_struggle_phase_trigger = yes
+			are_holy_wars_disabled_by_struggle_conciliation_trigger = no # Disabled against other involved faiths in FP2 Conciliation ending
 		}
 	}
 
@@ -138,6 +174,18 @@
 	
 	ai_score_mult = {
 		value = 1
+		# Increase odds if the character is a vassal with Ghazi Contract
+		add = {
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
+					}
+				}
+				add = 1
+			}
+		}
 		# Holy War are limited to connected neighbour to limit big empire expansions over weak realms.
 		add = {
 			if = {
@@ -145,6 +193,9 @@
 				add = -1000
 			}
 		}
+
+		# AI in struggles act insularly for wars that don't have a familial or legal basis.
+		multiply = struggle_wars_prioritise_struggle_targets_value
 	}
 
 	cost = {
@@ -153,143 +204,8 @@
 				value = 100
 				desc = CB_BASE_COST
 			}
-			# Faith Doctrine Piety Discounts
-			if = {
-				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = divine_destiny_holy_war_cost_reduction
-					}
-				}
-				multiply = {
-					value = 0.5
-					desc = CB_DIVINE_DESTINY_COST
-				}
-			}
-
-			if = {
-				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = cheaper_holy_wars_active
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = CB_REDUCED_HOLY_WAR_COST
-				}
-			}
-
-			# Innovation Piety Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_hellenistic_just_war
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_RECONQUISTA_COST
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			# Someone in the target region sacrificed your HoF.
-			if = {
-				limit = {
-					scope:defender = {
-						has_variable_list = humsacd_hofs
-						is_target_in_variable_list = {
-							name = humsacd_hofs
-							target = scope:attacker.faith
-						}
-					}
-				}
-				multiply = {
-					value = religious_cb_piety_discount_against_hof_humsac
-					desc = "CB_ATTACKER_HOF_HUMSACD"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			multiply = common_cb_piety_cost_multiplier
+			multiply = holy_war_cb_piety_cost_multiplier
 		}
 	}
 
@@ -353,20 +269,13 @@
 
 		resolve_title_and_vassal_change = scope:change
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = religious_cb_ally_prestige_county
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Piety Progress for the Attacker
@@ -432,20 +341,13 @@
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender # Not important as the scales are identical
+			FAME_BASE = religious_cb_ally_prestige_county
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Truce
@@ -477,13 +379,6 @@
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
 		scope:attacker = {
 			every_vassal = {
 				limit = { faith = scope:attacker.faith }
@@ -495,12 +390,13 @@
 			}
 		}
 
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_county
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = religious_cb_ally_prestige_county
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# piety change
@@ -608,8 +504,20 @@ religious_war = {
 			}
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						}
 					}
 				}
 				piety_level >= 0
@@ -621,8 +529,20 @@ religious_war = {
 		trigger_else = {
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						}
 					}
 				}
 				piety_level >= 1
@@ -655,6 +575,18 @@ religious_war = {
 	valid_to_start = {
 		scope:target = {
 			tier = tier_duchy
+		}
+		# Filter for struggles
+		trigger_if = {
+			limit = {
+				scope:defender = {
+					any_character_struggle = {
+						involvement = involved
+					}
+				}
+			}
+			are_holy_wars_disabled_in_struggle_phase_trigger = yes
+			are_holy_wars_disabled_by_struggle_conciliation_trigger = no # Disabled against other involved faiths in FP2 Conciliation ending
 		}
 	}
 
@@ -725,141 +657,47 @@ religious_war = {
 				value = 200
 				desc = CB_BASE_COST
 			}
-			# Faith Doctrine Piety Discounts
+			multiply = common_cb_piety_cost_multiplier
+			multiply = holy_war_cb_piety_cost_multiplier
+			# Half price for mean Iberians
 			if = {
 				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = divine_destiny_holy_war_cost_reduction
-					}
-				}
-				multiply = {
-					value = 0.5
-					desc = CB_DIVINE_DESTINY_COST
-				}
-			}
-
-			if = {
-				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = cheaper_holy_wars_active
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = CB_REDUCED_HOLY_WAR_COST
-				}
-			}
-
-			# Innovation Piety Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_hellenistic_just_war
+					scope:attacker.house = {
+						OR = {
+							has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+							has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 						}
 					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_faith_list
+						this = scope:attacker.faith
+					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_faith_list
+						this = scope:defender.faith
+					}
 				}
-				multiply = {
-					value = 0.9
-					desc = CB_RECONQUISTA_COST
+				divide = {
+					value = 2
+					desc = CB_COST_FP2_STRUGGLE_HOSTILITY_FAITH_DISCOUNT
 				}
 			}
-
-			# Bellum Justum Perk
+			# Double price for failure Iberians
 			if = {
 				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
+					has_global_variable = fp2_struggle_compromise_ending
+					any_in_global_list = {
+						variable = fp2_struggle_ending_faith_list
+						this = scope:attacker.faith
+					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_faith_list
+						this = scope:defender.faith
 					}
 				}
 				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			# Someone in the target region sacrificed your HoF.
-			if = {
-				limit = {
-					scope:defender = {
-						has_variable_list = humsacd_hofs
-						is_target_in_variable_list = {
-							name = humsacd_hofs
-							target = scope:attacker.faith
-						}
-					}
-				}
-				multiply = {
-					value = religious_cb_piety_discount_against_hof_humsac
-					desc = "CB_ATTACKER_HOF_HUMSACD"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+					value = 2
+					desc = CB_COST_FP2_STRUGGLE_COMPROMISE_MULTIPLIER
 				}
 			}
 		}
@@ -926,20 +764,13 @@ religious_war = {
 
 		resolve_title_and_vassal_change = scope:change
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = religious_cb_ally_prestige_duchy
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Piety Progress for the Attacker
@@ -1005,20 +836,13 @@ religious_war = {
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # Not important as the scales are identical
+			FAME_BASE = religious_cb_ally_prestige_duchy
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Truce
@@ -1050,20 +874,13 @@ religious_war = {
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_duchy
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = religious_cb_ally_prestige_duchy
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# piety change
@@ -1156,6 +973,18 @@ religious_war = {
 
 	ai_score_mult = {
 		value = 1
+		# Increase odds if the character is a vassal with Ghazi Contract
+		add = {
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
+					}
+				}
+				add = 1
+			}
+		}
 		# Holy War are limited to connected neighbour to limit big empire expansions over weak realms.
 		add = {
 			if = {
@@ -1163,6 +992,9 @@ religious_war = {
 				add = -1000
 			}
 		}
+
+		# AI in struggles act insularly for wars that don't have a familial or legal basis.
+		multiply = struggle_wars_prioritise_struggle_targets_value
 	}
 }
 
@@ -1193,8 +1025,20 @@ major_religious_war = {
 			}
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						}
 					}
 				}
 				piety_level >= 2
@@ -1206,8 +1050,20 @@ major_religious_war = {
 		trigger_else = {
 			trigger_if = {
 				limit = {
-					culture = {
-						has_cultural_parameter = cb_lower_piety_level_requirement
+					OR = {
+						culture = {
+							has_cultural_parameter = cb_lower_piety_level_requirement
+						}
+						# Iberian Struggle Hostility Reward
+						AND = {
+							exists = house
+							house = {
+								OR = {
+									has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+									has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+								}
+							}
+						} 
 					}
 				}
 				piety_level >= 3
@@ -1253,6 +1109,18 @@ major_religious_war = {
 	valid_to_start = {
 		scope:target = {
 			tier = tier_kingdom
+		}
+		# Filter for struggles
+		trigger_if = {
+			limit = {
+				scope:defender = {
+					any_character_struggle = {
+						involvement = involved
+					}
+				}
+			}
+			are_holy_wars_disabled_in_struggle_phase_trigger = yes
+			are_holy_wars_disabled_by_struggle_conciliation_trigger = no # Disabled against other involved faiths in FP2 Conciliation ending
 		}
 	}
 
@@ -1323,143 +1191,8 @@ major_religious_war = {
 				value = 750
 				desc = CB_BASE_COST
 			}
-			# Faith Doctrine Piety Discounts
-			if = {
-				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = divine_destiny_holy_war_cost_reduction
-					}
-				}
-				multiply = {
-					value = 0.5
-					desc = CB_DIVINE_DESTINY_COST
-				}
-			}
-
-			if = {
-				limit = {
-					scope:attacker.faith = {
-						has_doctrine_parameter = cheaper_holy_wars_active
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = CB_REDUCED_HOLY_WAR_COST
-				}
-			}
-
-			# Innovation Piety Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_hellenistic_just_war
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_RECONQUISTA_COST
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			# Someone in the target region sacrificed your HoF.
-			if = {
-				limit = {
-					scope:defender = {
-						has_variable_list = humsacd_hofs
-						is_target_in_variable_list = {
-							name = humsacd_hofs
-							target = scope:attacker.faith
-						}
-					}
-				}
-				multiply = {
-					value = religious_cb_piety_discount_against_hof_humsac
-					desc = "CB_ATTACKER_HOF_HUMSACD"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			multiply = common_cb_piety_cost_multiplier
+			multiply = holy_war_cb_piety_cost_multiplier
 		}
 	}
 
@@ -1527,20 +1260,13 @@ major_religious_war = {
 
 		resolve_title_and_vassal_change = scope:change
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = religious_cb_ally_prestige_kingdom
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Piety Progress for the Attacker
@@ -1606,20 +1332,13 @@ major_religious_war = {
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # Not important as the scales are identical
+			FAME_BASE = religious_cb_ally_prestige_kingdom
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		scope:attacker = {
@@ -1651,20 +1370,13 @@ major_religious_war = {
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = religious_cb_ally_prestige_kingdom
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = religious_cb_ally_prestige_kingdom
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# piety change
@@ -1757,6 +1469,18 @@ major_religious_war = {
 
 	ai_score_mult = {
 		value = 1
+		# Increase odds if the character is a vassal with Ghazi Contract
+		add = {
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
+					}
+				}
+				add = 1
+			}
+		}
 		# Holy War are limited to connected neighbour to limit big empire expansions over weak realms.
 		add = {
 			if = {
@@ -1764,6 +1488,9 @@ major_religious_war = {
 				add = -1000
 			}
 		}
+
+		# AI in struggles act insularly for wars that don't have a familial or legal basis.
+		multiply = struggle_wars_prioritise_struggle_targets_value
 	}
 }
 
@@ -2014,6 +1741,18 @@ excommunication_war = {
 
 	ai_score_mult = {
 		value = 1
+		# Increase odds if the character is a vassal with Ghazi Contract
+		add = {
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
+					}
+				}
+				add = 1
+			}
+		}
 		# Holy War are limited to connected neighbour to limit big empire expansions over weak realms.
 		add = {
 			if = {

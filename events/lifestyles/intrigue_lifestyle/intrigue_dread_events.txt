@@ -3826,6 +3826,12 @@ intrigue_dread.4201 = {
 		desc = intrigue_dread.4201.desc.outro
 	}
 	
+	trigger = { # Redundancy check -h
+		OR = {
+			exists = capital_county
+			exists = top_liege.capital_county
+		}
+	}
 	theme = intrigue_intimidation_focus
 	override_background = { event_background = battlefield }
 	left_portrait = {
@@ -3835,42 +3841,69 @@ intrigue_dread.4201 = {
 
 	option = {
 		name = intrigue_dread.4201.a
+		set_permanent_nickname = { NICKNAME = nick_the_flayer }
 		if = {
-			limit = {
-				OR = {
-					has_any_nickname = no
-					has_bad_nickname = yes
+			limit = { exists = capital_county }
+			if = {
+				limit = {
+					has_character_flag = large_forest_flag
+				}
+				capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_3_modifier
+						years = 5
+					}
 				}
 			}
-			give_nickname = nick_the_impaler
-		}
-		if = {
-			limit = {
-				has_character_flag = large_forest_flag
-			}
-			capital_county = {
-				add_county_modifier = {
-					modifier = forest_of_corpses_3_modifier
-					years = 5
+			else_if = {
+				limit = {
+					has_character_flag = medium_forest_flag
+				}
+				capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_2_modifier
+						years = 5
+					}
 				}
 			}
-		}
-		else_if = {
-			limit = {
-				has_character_flag = medium_forest_flag
-			}
-			capital_county = {
-				add_county_modifier = {
-					modifier = forest_of_corpses_2_modifier
-					years = 5
+			else = {
+				capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_1_modifier
+						years = 5
+					}
 				}
 			}
 		}
 		else = {
-			capital_county = {
-				add_county_modifier = {
-					modifier = forest_of_corpses_1_modifier
-					years = 5
+			if = {
+				limit = {
+					has_character_flag = large_forest_flag
+				}
+				top_liege.capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_3_modifier
+						years = 5
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_character_flag = medium_forest_flag
+				}
+				top_liege.capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_2_modifier
+						years = 5
+					}
+				}
+			}
+			else = {
+				top_liege.capital_county = {
+					add_county_modifier = {
+						modifier = forest_of_corpses_1_modifier
+						years = 5
+					}
 				}
 			}
 		}

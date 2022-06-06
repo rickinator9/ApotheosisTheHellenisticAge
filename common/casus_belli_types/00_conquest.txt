@@ -21,10 +21,34 @@
 	target_title_tier = county
 	ignore_effect = change_title_holder
 
+	ai_can_target_all_titles = {
+		can_use_viking_invasion_cbs_trigger = yes
+	}
+	ai_score_mult = {
+		value = viking_conquest_ai_score_value
+
+		# As a feudal gov, do not attack owner of tribal holdings  if you have a tribal holding to convert already
+		add = {
+			every_in_list = {
+				list = target_titles
+				if = {
+					limit = { feudal_clan_tribal_conquest_constraints = yes }
+					add = -1000
+				}
+			}
+		}
+
+		# AI in struggles act insularly for wars that don't have a familial or legal basis.
+		multiply = struggle_wars_prioritise_struggle_targets_value
+	}
+
 	valid_to_start = {
 		scope:target = {
 			neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
 		}
+
+		# Struggle constraint
+		struggle_blocks_invasion_conquest_cb_trigger = yes
 	}
 
 	should_invalidate = {
@@ -61,101 +85,7 @@
 				}
 			}
 
-			#Innovation Piety Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_hellenistic_just_war
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_JUST_WAR_COST
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			multiply = common_cb_piety_cost_multiplier
 
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
@@ -223,145 +153,7 @@
 					desc = CB_COST_DIFFERENT_FAITH
 				}
 			}
-
-			#Innovation Prestige Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_classical_historical_method
-							has_innovation = innovation_hellenistic_just_war
-							has_innovation = innovation_imperial_codices
-						}
-					}
-				}
-				multiply = {
-					value = 0.7
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-			else_if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-							}
-							OR = {
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_imperial_codices
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-			else_if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			multiply = common_cb_prestige_cost_multiplier
 
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
@@ -473,20 +265,13 @@
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Truce
@@ -524,20 +309,13 @@
  			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # Not important as the scales are identical
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		scope:defender = {
@@ -593,20 +371,13 @@
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		add_truce_attacker_defeat_effect = yes
@@ -678,6 +449,27 @@ duchy_conquest_cb = {
 	target_de_jure_regions_above = yes
 	ignore_effect = change_title_holder
 
+	ai_can_target_all_titles = {
+		can_use_viking_invasion_cbs_trigger = yes
+	}
+	ai_score_mult = {
+		value = viking_conquest_ai_score_value
+
+		# As a feudal gov, do not attack tribal
+		add = {
+			every_in_list = {
+				list = target_titles
+				if = {
+					limit = { feudal_clan_tribal_conquest_constraints = yes }
+					add = -1000
+				}
+			}
+		}
+
+		# AI in struggles act insularly for wars that don't have a familial or legal basis.
+		multiply = struggle_wars_prioritise_struggle_targets_value
+	}
+
 	valid_to_start = {
 		scope:target = {
 			any_in_de_jure_hierarchy = {
@@ -685,6 +477,9 @@ duchy_conquest_cb = {
 				neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
 			}
 		}
+
+		# Struggle constraint
+		struggle_blocks_invasion_conquest_cb_trigger = yes
 	}
 
 	should_invalidate = {
@@ -702,48 +497,13 @@ duchy_conquest_cb = {
 	}
 
 	on_invalidated_desc = msg_religious_war_invalidation_region_message
-	
+
 	on_invalidated = {
 	}
 
 	cost = {
 		piety = {
-			if = { # Attacking your HoF is impious
-				limit = {
-					exists = scope:attacker.faith.religious_head
-					scope:attacker.faith.religious_head = scope:defender
-				}
-				if = {
-					limit = {
-						scope:attacker.faith = {
-							has_doctrine = doctrine_spiritual_head
-						}
-					}
-					add = {
-						value = massive_piety_value
-						desc = CB_ATTACKER_HOF
-					}
-				}
-				else = {
-					add = {
-						value = medium_piety_value
-						desc = CB_ATTACKER_HOF
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:attacker.faith = scope:defender.faith
-					scope:defender = {
-						has_government = theocracy_government
-					}
-				}
-				add = {
-					value = medium_piety_value
-					desc = CB_ATTACKER_THEOCRACY
-				}
-			}
-			value = 0
+			add = common_cb_impious_piety_cost
 			if = {
 				limit = {
 					scope:defender.faith = scope:attacker.faith
@@ -753,102 +513,7 @@ duchy_conquest_cb = {
 					desc = CB_SAME_FAITH_COST
 				}
 			}
-
-			#Innovation Piety Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_hellenistic_just_war
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_JUST_WAR_COST
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			multiply = common_cb_piety_cost_multiplier
 
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
@@ -916,143 +581,44 @@ duchy_conquest_cb = {
 					desc = CB_COST_DIFFERENT_FAITH
 				}
 			}
-
-			#Innovation Prestige Discounts
+			multiply = common_cb_prestige_cost_multiplier
 			if = {
 				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_classical_historical_method
-							has_innovation = innovation_hellenistic_just_war
-							has_innovation = innovation_imperial_codices
+					scope:attacker.house = {
+						OR = {
+							has_house_modifier = fp2_struggle_hostility_house_culture_modifier 
+							has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 						}
 					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_culture_list
+						this = scope:attacker.culture
+					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_culture_list
+						this = scope:defender.culture
+					}
 				}
-				multiply = {
-					value = 0.7
-					desc = CB_ATTACKER_INNOVATIONS
+				divide = {
+					value = 2
+					desc = CB_COST_FP2_STRUGGLE_HOSTILITY_CULTURE_DISCOUNT
 				}
 			}
-			else_if = {
+			if = {
 				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-							}
-							OR = {
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_imperial_codices
-							}
-						}
+					has_global_variable = fp2_struggle_compromise_ending
+					any_in_global_list = {
+						variable = fp2_struggle_ending_culture_list
+						this = scope:attacker.culture
+					}
+					any_in_global_list = {
+						variable = fp2_struggle_ending_culture_list
+						this = scope:defender.culture
 					}
 				}
 				multiply = {
-					value = 0.8
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-			else_if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
+					value = 2
+					desc = CB_COST_FP2_STRUGGLE_COMPROMISE_MULTIPLIER
 				}
 			}
 
@@ -1184,20 +750,13 @@ duchy_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Truce
@@ -1279,21 +838,15 @@ duchy_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # not impactful as the scale are identical
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
 
 		add_truce_white_peace_effect = yes
 
@@ -1342,20 +895,13 @@ duchy_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = medium_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		add_truce_attacker_defeat_effect = yes
@@ -1429,6 +975,8 @@ ducal_conquest_cb = {
 				}
 			}
 		}
+		# Struggle constraint
+		struggle_blocks_invasion_conquest_cb_trigger = yes
 	}
 
 	should_invalidate = {
@@ -1456,41 +1004,7 @@ ducal_conquest_cb = {
 	cost = {
 		piety = {
 			value = 0
-			if = { # Attacking your HoF is impious
-				limit = {
-					exists = scope:attacker.faith.religious_head
-					scope:attacker.faith.religious_head = scope:defender
-				}
-				if = {
-					limit = {
-						scope:attacker.faith = {
-							has_doctrine = doctrine_spiritual_head
-						}
-					}
-					add = {
-						value = massive_piety_value
-						desc = CB_ATTACKER_HOF
-					}
-				}
-				else = {
-					add = {
-						value = medium_piety_value
-						desc = CB_ATTACKER_HOF
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:attacker.faith = scope:defender.faith
-					scope:defender = {
-						has_government = theocracy_government
-					}
-				}
-				add = {
-					value = medium_piety_value
-					desc = CB_ATTACKER_THEOCRACY
-				}
-			}
+			add = common_cb_impious_piety_cost
 
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
@@ -1564,145 +1078,8 @@ ducal_conquest_cb = {
 					desc = CB_BASE_COST
 				}
 			}
-
-			#Innovation Prestige Discounts
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_innovation = innovation_classical_historical_method
-							has_innovation = innovation_hellenistic_just_war
-							has_innovation = innovation_imperial_codices
-						}
-					}
-				}
-				multiply = {
-					value = 0.7
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-			else_if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-							}
-							OR = {
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_imperial_codices
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-			else_if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							OR = {
-								has_innovation = innovation_classical_historical_method
-								has_innovation = innovation_hellenistic_just_war
-								has_innovation = innovation_imperial_codices
-							}
-						}
-					}
-				}
-				multiply = {
-					value = 0.9
-					desc = CB_ATTACKER_INNOVATIONS
-				}
-			}
-
-			# Bellum Justum Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_perk = bellum_justum_perk
-					}
-				}
-				multiply = {
-					add = bellum_justum_discount_percentage
-					divide = 100
-					desc = CB_ATTACKER_BELLUM_JUSTUM
-				}
-			}
-
-			# Dynasty Warfare Perk
-			if = {
-				limit = {
-					scope:attacker = {
-						has_dynasty = yes
-						dynasty = {
-							has_dynasty_perk = warfare_legacy_2
-						}
-					}
-				}
-				multiply = {
-					value = warfare_legacy_2_discount
-					desc = CB_ATTACKER_DYNASTY_WARFARE
-				}
-			}
-
-			# Culture
-			if = {
-				limit = {
-					scope:attacker = {
-						culture = {
-							has_cultural_parameter = cheaper_cbs
-						}
-					}
-				}
-				multiply = {
-					value = 0.8
-					desc = "CB_ATTACKER_CULTURE"
-				}
-			}
-
-			# Vassal contract in-realm cost reduction
-			if = {
-				limit = {
-					scope:attacker = {
-						is_independent_ruler = no
-						vassal_contract_has_flag = vassal_contract_war_override
-						liege = scope:defender.liege
-					}
-				}
-				multiply = {
-					value = war_declaration_rights_allowed_cost_reduction
-					desc = "CB_ATTACKER_VASSAL_CONTRACT"
-				}
-			}
-
-			if = {
-				limit = {
-					has_game_rule = no_cost_casus_belli_costs
-				}
-				multiply = {
-					value = 0
-					desc = CB_GAME_RULE_NO_COST
-				}
-			}
-
-			# ATHA - victor nickname
-			if = {
-				limit = {
-					scope:attacker = { has_character_modifier = nick_the_victor_modifier }
-				}
-				multiply = {
-					value = 0.85
-					desc = NICK_THE_VICTOR_WARDEC_COST_MODIFIER
-				}
-			}
+			
+			multiply = common_cb_prestige_cost_multiplier
 
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
@@ -1890,20 +1267,13 @@ ducal_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		# Truce
@@ -1933,20 +1303,13 @@ ducal_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # not important as scale values are identical
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		add_truce_white_peace_effect = yes
@@ -1996,20 +1359,13 @@ ducal_conquest_cb = {
 			}
 		}
 
-		# Prestige for the attacker's war allies
-		add_from_contribution_attackers = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
-		}
-
-		# Prestige for the defender's war allies
-		add_from_contribution_defenders = {
-			prestige = minor_prestige_value
-			opinion = {
-				modifier = contributed_in_war
-			}
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = minor_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
 		}
 
 		add_truce_attacker_defeat_effect = yes
@@ -2023,8 +1379,6 @@ ducal_conquest_cb = {
 		scope:attacker = { register_offensive_war_loss_effect = yes }
 		scope:defender = { register_defensive_war_win_effect = yes }
 	}
-
-	on_invalidated_desc = msg_county_conquest_war_invalidated_message
 
 	transfer_behavior = transfer
 

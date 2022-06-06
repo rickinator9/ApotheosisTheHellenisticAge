@@ -5,12 +5,13 @@
 @illustration_islamic = "gfx/interface/illustrations/holding_types/temple_islamic.dds"
 @illustration_orthodox = "gfx/interface/illustrations/holding_types/temple_orthodox.dds"
 @illustration_northern_pagan = "gfx/interface/illustrations/holding_types/temple_northern_pagan.dds"
+@illustration_iberian_christian = "gfx/interface/illustrations/holding_types/fp2_temple_iberian_christian.dds"
+@illustration_iberian_islamic = "gfx/interface/illustrations/holding_types/fp2_temple_iberian_islamic.dds"
 
 @illustration_greek = "gfx/interface/illustrations/holding_types/temple_greek.dds"
 
 temple_01 = {
 	construction_time = slow_construction_time
-	
 	
 	### GENERIC ###
 	asset = {
@@ -84,6 +85,40 @@ temple_01 = {
 			}
 			county.holder.dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
 		}
+		if = {
+			limit = {
+				county.holder.culture = {
+					has_cultural_parameter = extra_piety_from_temple_construction
+				}
+			}
+			county.holder = { add_piety = omega_piety_gain }
+		}
+		else = {
+			county.holder = { add_piety = massive_piety_gain }
+		}
+		save_scope_as = temple_location
+		if = {
+			limit = {
+				county.holder.culture = {
+					has_cultural_parameter = more_fervor_on_church_construction
+				}
+			}
+			county.holder.faith = {
+				change_fervor = {
+					value = 5
+					desc = fervor_gain_built_temple_holding
+				}
+			}
+		}
+		else = {
+			county.holder.faith = {
+				change_fervor = {
+					value = 1
+					desc = fervor_gain_built_temple_holding
+				}
+			}
+		}
+
 		# Mountain Sanctuaries Tenet
 		if = {
 			limit = { 
@@ -192,7 +227,6 @@ temple_01 = {
 temple_02 = {
 	construction_time = slow_construction_time
 	
-
 	### GENERIC ###
 	asset = {
 		type = pdxmesh
@@ -228,7 +262,7 @@ temple_02 = {
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_4
 	}
-
+	
 	province_terrain_modifier = {
 		parameter = coastal_holding_bonuses
 		is_coastal = yes
@@ -273,7 +307,7 @@ temple_02 = {
 			}
 		}
 	}
-
+	
 	ai_value = {
 		base = 6		
 		modifier = {
@@ -286,7 +320,6 @@ temple_02 = {
 temple_03 = {
 	construction_time = slow_construction_time
 	
-
 	### GENERIC ###
 	asset = {
 		type = pdxmesh
@@ -379,7 +412,6 @@ temple_03 = {
 temple_04 = {
 	construction_time = slow_construction_time
 	
-
 	### GENERIC ###
 	asset = {
 		type = pdxmesh

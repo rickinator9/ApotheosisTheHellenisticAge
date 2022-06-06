@@ -28,6 +28,15 @@
 on_title_destroyed = {
 	events = {
 	}
+
+	# remove existing claims
+	effect = {
+		scope:landed_title = {
+			every_claimant = {
+				remove_claim = prev
+			}
+		}
+	}
 }
 
 # A title is transferred to a new character
@@ -145,7 +154,6 @@ on_title_gain = {
 		}
 	}
 	events = {
-		# Vanilla
 		religious_decision.0312		# Base game: new holder of a county with a runestone
 		fp1_other_decisions.0113	# FP1: new holder of a county with a runestone
 
@@ -156,9 +164,6 @@ on_title_gain = {
 
 
 		delay = { days = 1 }
-
-
-		# Vanilla
 		realm_maintenance.2001		#Big notification about inheriting emperor tier title
 	}
 }
@@ -273,7 +278,10 @@ on_title_lost = {
 # A claim is gained by a character
 # root = the claimant
 # scope:title = the title that is claimed
+# scope:transfer_type = flag:inheritance or none
 on_explicit_claim_gain = {
+	effect = {
+	}
 }
 
 # A claim is lost by a character
@@ -365,6 +373,39 @@ on_rank_down = { # Will not fire during history execution or for dying character
 # scope:vassal = vassal being gained
 # scope:old_liege = the previous liege of the vassal. Might be the null character (vassal used to be a non-ruler or independent), so make sure to use "exists" checks where relevant
 on_vassal_gained = {
+	effect = {
+		# Struggle Catalyst
+		if = {
+			limit = {
+				# Verify if vassal used to be independent
+				NOT = { exists = scope:old_liege }
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_vassalize_independent_ruler
+							CHAR = scope:vassal
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_vassalize_independent_ruler
+							CHAR = scope:vassal
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_vassalize_independent_ruler
+						character = root
+					}
+				}
+			}
+		}
+	}
 	events = {
 		realm_maintenance.1000 # Notify vassals of new liege
 	}

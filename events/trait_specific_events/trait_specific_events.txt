@@ -1431,18 +1431,6 @@ scripted_effect lisp_mocking_reaction_effect = {
 			}
 			add_character_flag = lisp_mocking_reaction_cannibal
 		}
-
-		10 = {
-			trigger = {
-				has_trait = theologian
-				NOT = {
-					faith = {
-						religion_tag = islam_religion
-					}
-				}
-			}	
-			add_character_flag = lisp_mocking_reaction_theologian
-		}
 	}
 }
 
@@ -1488,7 +1476,8 @@ trait_specific.8501 = {
 				is_available_ai_adult = yes
 				NOT = {
 					has_trait = lisping
-					is_ai = no
+					has_trait = compassionate
+					has_trait = shy
 				}
 			}
 			save_scope_as = mean_courtier

@@ -638,9 +638,11 @@ coastal_or_neighboring_county_trigger = {
 # Non-vikings will for the AI just assert it's legal, as the target titles should already have fallen back to only allowing land and sea borders
 neighboring_county_or_viking_conquest_trigger = {
 	OR = {
-		AND = {
-			$CHARACTER$ = {
-				can_use_viking_invasion_cbs_trigger = yes
+		trigger_if = {
+			limit = {
+				$CHARACTER$ = {
+					can_use_viking_invasion_cbs_trigger = yes
+				}
 			}
 			is_coastal_county = yes
 			OR = {
@@ -660,11 +662,20 @@ neighboring_county_or_viking_conquest_trigger = {
 				}
 			}
 		}
+		trigger_else = {
+			$CHARACTER$ = { is_ai = no }
+		}
 		any_neighboring_county = {
 			holder = {
 				target_is_same_character_or_above = $CHARACTER$
 			}
 		}
+	}
+}
+
+valid_struggle_cb_target_trigger = {
+	any_neighboring_county = {
+		holder = { target_is_same_character_or_above = $CHARACTER$ }
 	}
 }
 
@@ -700,6 +711,15 @@ prisoners_of_war_trigger = {
 	}
 }
 
+# Used for checking if a captured combatant is worth war-score.
+character_is_potential_important_hostage = {
+	OR = {
+		this = scope:primary_siege_attacker
+		this = scope:primary_siege_defender
+		is_heir_of = scope:primary_siege_attacker
+		is_heir_of = scope:primary_siege_defender
+	}
+}
 
 religious_war_vassals_constraints = {
 	trigger_if = {
