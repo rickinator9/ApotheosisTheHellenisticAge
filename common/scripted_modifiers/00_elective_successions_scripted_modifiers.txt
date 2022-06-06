@@ -666,6 +666,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 	#Educational preferences
 	modifier = { # Warrior society prefers warriors
 		desc = tooltip_feudal_elector_vote_martial_education
+		NOT = { this = scope:candidate }
 		this_is_martial_society_trigger = yes
 		scope:candidate = {
 			martial >= 10
@@ -681,6 +682,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 	modifier = { # Diplomatic society prefers stewards and diplomats
 		add = 15
 		desc = tooltip_feudal_elector_vote_diplomatic_education
+		NOT = { this = scope:candidate }
 		this_is_diplomatic_society_trigger = yes
 		scope:candidate = {
 			OR = {
@@ -708,6 +710,7 @@ elector_voting_pattern_circumstances_elective_modifier = {
 	modifier = { # Spiritual society prefers scholars
 		add = 15
 		desc = tooltip_feudal_elector_vote_spiritual_education
+		NOT = { this = scope:candidate }
 		this_is_spiritual_society_trigger = yes
 		scope:candidate = {
 			learning >= 10

@@ -616,16 +616,30 @@ found_witch_coven_decision = {
 				}
 			}
 			house = {
+				custom_tooltip = {
+					text = found_witch_coven_house_member_count_tt
+					any_adult_house_member = {
+						count >= found_witch_coven_member_count_value
+						is_witch_known_by_trigger = { CHARACTER = root }
+					}
+				}
 				any_adult_house_member = {
-					count >= 4
+					count >= found_witch_coven_member_count_value
 					is_witch_known_by_trigger = { CHARACTER = root }
 				}
 			}
 		}
 		trigger_else = {
 			house = {
+				custom_tooltip = {
+					text = found_witch_coven_house_member_percent_tt
+					any_adult_house_member = {
+						percent >= found_witch_coven_member_percent_value
+						is_witch_known_by_trigger = { CHARACTER = root }
+					}
+				}
 				any_adult_house_member = {
-					percent >= 0.6
+					percent >= found_witch_coven_member_percent_value
 					is_witch_known_by_trigger = { CHARACTER = root }
 				}
 			}
@@ -722,6 +736,16 @@ found_empire_decision = {
 			}
 		}
 		NOT = { has_game_rule = off_custom_kingdoms }
+
+		trigger_if = {
+			limit = {
+				OR = {
+					fp2_character_interloper_in_struggle_trigger = yes
+					fp2_character_involved_in_struggle_trigger = yes
+				}
+			}
+			always = no
+		}
 	}
 
 	is_valid = {
@@ -1250,6 +1274,7 @@ convert_to_tribalism_decision = { #by Maxence Voleau
 
 	is_shown = {
 		is_landed = yes
+		primary_title.tier >= tier_county
 		NOT = {
 			any_held_title = {
 				tier = tier_county

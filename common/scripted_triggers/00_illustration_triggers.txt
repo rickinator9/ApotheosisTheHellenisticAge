@@ -1,11 +1,10 @@
 ﻿should_use_tribal_realm_palace_graphics_trigger = {
-	OR = {
-		has_government = clan_government
-		has_government = tribal_government
-	}
+	has_government = tribal_government
 	culture = {
 		has_graphical_india_culture_group_trigger = no
 		has_graphical_mena_culture_group_trigger = no
+		has_graphical_steppe_culture_group_trigger = no
+		has_graphical_african_culture_group_trigger = no
 	}
 }
 
@@ -36,6 +35,11 @@ has_graphical_african_culture_group_trigger = {
 has_graphical_steppe_culture_group_trigger = {
 	always = no
 }
+
+has_graphical_iberian_culture_group_trigger = {
+	always = no
+}
+
 
 graphical_wilderness_desert_trigger = {
 	OR = {
@@ -361,3 +365,45 @@ has_graphical_western_region_trigger = {
 	}
 	trigger_else = { always = yes }
 }
+
+#Has graphical region Iberia trigger
+has_graphical_iberia_region_trigger = {
+	trigger_if = {
+		limit = {
+			exists = capital_province
+		}
+		capital_province = {
+			geographical_region = world_europe_west_iberia
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			NOT = { exists = capital_province }
+		}
+		trigger_if = { 
+			limit = { exists = host.capital_province }
+			host.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = liege.capital_province
+			}
+			liege.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = location.province_owner.capital_province
+			}
+			location.province_owner.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else = { always = yes }
+	}
+	trigger_else = { always = yes }
+}
+

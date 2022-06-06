@@ -20,6 +20,7 @@ cloaks = {
 				add = 100
 				OR = {
 					portrait_western_clothing_trigger = yes
+					portrait_dde_hre_clothing_trigger = yes
 					AND = {
 						portrait_northern_clothing_trigger = yes
 						OR = {
@@ -217,7 +218,8 @@ cloaks = {
 				template = ep1_cloak_adventurer
 				range = { 0 1 }
 			}
-		}	
+		}
+		outfit_tags = { ep1_adventurer_cloak }
 		weight = {
 			base = 0
 			modifier = {
@@ -269,8 +271,9 @@ cloaks = {
 #				NAND = {
 #					is_ruler = yes
 #					primary_title = {
-#						exists = controlled_faith
-#						controlled_faith = faith:catholic
+#						any_controlled_faith = {
+#							this = faith:catholic
+#						}
 #					}
 #				}
 #	        }
@@ -332,5 +335,5 @@ cloaks = {
 	# 			}
 	# 		}
 	# 	}
-	# } 
+	# }	
 }

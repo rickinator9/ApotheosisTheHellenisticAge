@@ -23,9 +23,16 @@ headgear = {
 			base = 0
 			modifier = {
 				add = 1000
-				AND = {
+				OR = {
 					# Deliberately not the "fully naked" one since dropping your crown's intended even if nudity is disabled
 					should_be_naked_trigger = yes
+					AND = {
+						highest_held_title_tier < tier_duchy # Should wear ducal or royal crown instead.
+						OR = {
+							has_short_disease_trigger = yes #affliction that would plausibly leave them bedridden for treatment
+							has_character_flag = use_sickness_clothes
+						}
+					}
 				}
 			}
 			# Refuses to wear a crown due to HighGod.
@@ -79,6 +86,14 @@ headgear = {
 				add = 100
 				exists = this
 				has_character_modifier = vow_of_poverty_modifier
+				# Should still wear armor when going to war
+				NOT = { portrait_wear_armor_trigger = yes }
+			}
+			# No headgear for characters who sold their crown
+			modifier = {
+				add = 100
+				exists = this
+				has_character_flag = sold_crown_charmod
 				# Should still wear armor when going to war
 				NOT = { portrait_wear_armor_trigger = yes }
 			}
@@ -2438,12 +2453,14 @@ headgear = {
 			base = 0
 			modifier = {
 				add = 100
+				exists = this
 				portrait_wear_helmet_trigger = yes
 				portrait_northern_clothing_trigger = yes
 			}
 		}
 	}
 	
+
 ## FP1 NORSE ##
 
 	fp1_norse_commoners = {

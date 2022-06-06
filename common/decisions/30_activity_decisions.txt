@@ -1,4 +1,4 @@
-﻿host_feast_decision = {
+﻿	host_feast_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_misc.dds"
 	ai_check_interval = 60
 	
@@ -172,11 +172,18 @@
 			}
 		}
 
-		#Prestige gain from Tradition
+		#Prestige gain from Tradition or Struggle
 		if = {
 			limit = {
-				culture = {
-					has_cultural_parameter = refined_feasts
+				OR = {
+					culture = {
+						has_cultural_parameter = refined_feasts
+					}
+					any_character_struggle = {
+						involvement = involved
+						is_struggle_type = iberian_struggle
+						has_struggle_phase_parameter = struggle_prestige_from_feast
+					}
 				}
 			}
 			add_prestige = {
@@ -215,6 +222,16 @@
 						amenity_level = { type = court_food_quality value <= 1 }
 					}
 					multiply = 0.5
+				}
+				if = {
+					limit = {
+						any_character_struggle = {
+							involvement = involved
+							is_struggle_type = iberian_struggle
+							has_struggle_phase_parameter = struggle_prestige_from_feast
+						}
+					}
+					multiply = 1.25
 				}
 			}
 		}
@@ -333,6 +350,76 @@
 		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
+
+	ai_potential = {
+		short_term_gold > standard_activity_cost
+		NOT = {
+			has_trait = reclusive
+		}
+	}
+
+	ai_will_do = {
+		base = 35
+
+		ai_value_modifier = {
+			ai_sociability = 1
+			ai_greed = -0.5
+		}
+
+		modifier = {
+			add = 30 # Has Greed of 20, so this is only (-10 + 30 = +20)
+			has_trait = gluttonous
+		}
+		modifier = {
+			add = 12.5 # Has Greed of 5, so this is only (-2.5 + 12.5 = +10)
+			has_trait = comfort_eater
+		}
+		modifier = {
+			add = 47.5 # Has Greed of 75, so this is only (-37.5 + 45 = +10)
+			has_trait = ambitious
+		}
+
+		modifier = {
+			add = 35
+			stress > low_stress
+		}
+
+		modifier = {
+			add = 35
+			faith = {
+				has_doctrine = tenet_ritual_celebrations
+			}
+		}
+
+		modifier = {
+			add = 35
+			faith = {
+				has_doctrine = tenet_hedonistic
+			}
+		}
+		
+		modifier = {
+			any_character_struggle = {
+				involvement = involved
+				phase_has_catalyst = catalyst_invite_diff_faith_culture_to_feast
+			}
+			add = {
+				value = 0
+				if = {
+					limit = {
+						has_character_flag = agenda_towards_escalation
+					}
+					add = -25
+				}
+				else_if = {
+					limit = {
+						has_character_flag = agenda_towards_deescalation
+					}
+					add = 50
+				}
+			}
+		}
+	}
 }
 
 start_hunt_decision = {
@@ -436,6 +523,7 @@ start_hunt_decision = {
 		if = {
 			limit = {
 				has_royal_court = yes
+				NOT = { has_government = tribal_government }
 				amenity_level = {
 					type = court_servants
 					value <= medium_amenity_level
@@ -447,6 +535,7 @@ start_hunt_decision = {
 		if = {
 			limit = {
 				has_royal_court = yes
+				NOT = { has_government = tribal_government }
 				amenity_level = {
 					type = court_servants
 					value >= very_high_amenity_level
@@ -517,7 +606,7 @@ start_hunt_decision = {
 }
 
 hold_court_decision = {
-	ai_check_interval = 0
+	ai_check_interval = 96
 	picture = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
 	major = yes
 	is_invisible = yes
@@ -574,10 +663,12 @@ hold_court_decision = {
 	}
 	
 	ai_potential = {
+		is_at_war = no
+		gold >= minor_gold_value
 	}
 
 	ai_will_do = {
-		base = 0
+		base = 100
 	}
 }
 
@@ -604,12 +695,79 @@ petition_liege_decision = {
 		is_available_adult = yes
 		liege = { is_available_adult = yes }
 		is_at_war_with_liege = no
+		custom_tooltip = {
+			text = petition_liege_council_no_petition_valid_tt
+			OR = {
+				# Council
+				AND = {
+					scope:petition_liege_council_seat = yes
+					is_councillor = no
+				}
+				# Pay Debt
+				gold <= -100
+				# War Aid
+				AND = {
+					petition_liege_war_aid_trigger = yes
+					petition_liege_war_aid_share_trigger = yes
+					petition_war_aid_liege_ally_value >= petition_war_aid_rebels_value
+					petition_liege_war_liege_involvement_trigger = yes
+				}
+				# Vassal War
+				petition_liege_vassal_war_trigger = yes
+				# Faction War
+				any_targeting_faction = { target_of_powerful_faction_trigger = yes }
+				# Bailiffs
+				any_held_title = { petition_liege_county_control_trigger = yes }
+				# Convert
+				AND = {
+					faith = liege.faith
+					any_held_title = { petition_liege_county_convert_trigger = yes }
+				}
+				# Opinions
+				any_held_title = { petition_liege_county_opinion_trigger = yes }
+				AND = {
+					any_held_title = { petition_liege_fortify_border_trigger = yes }
+					NOT = { liege.gold < 0 }
+				}
+				# Liege Title
+				any_claim = { petition_liege_title_liege_trigger = yes }
+				# Vassal Title
+				AND = {
+					NOR = { # Only relevant if revocation is possible
+						liege = { has_realm_law = crown_authority_0 }
+						liege = { has_realm_law = tribal_authority_1 }
+						liege = { has_realm_law = tribal_authority_1 }
+					}
+					any_claim = { petition_liege_title_vassal_trigger = yes }
+				}
+				# Construct City
+				AND = {
+					any_held_title = { petition_liege_construct_city_trigger = yes }
+					liege.gold > main_building_tier_1_cost
+				}
+				# Construct Temple
+				AND = {
+						any_held_title = { petition_liege_construct_temple_trigger = yes }
+						liege.gold > main_building_tier_1_cost
+				}
+				liege.capital_province.county.development_level >= petitioner_development_difference_decision_value
+			}
+		}
+
+		trigger_if = {
+			limit = {
+				is_ai = no
+				has_royal_court = yes
+			}
+			has_spawned_court_events = no # should only be used for human players
+		}
 
 		trigger_if = { # Council
 			limit = { 
 				AND = {
 					scope:petition_liege_council_seat = yes 
 					is_councillor = no 
+
 				}
 			}
 			custom_tooltip = {
@@ -877,7 +1035,7 @@ petition_liege_decision = {
 			icon = "gfx/interface/icons/message_feed/war.dds"
 			ai_chance = { value = 0 } # Currently unused
 		}
-		### Counties/Council
+		### Counties
 		item = { # Control
 			value = petition_liege_county_control
 			is_valid = {
@@ -1163,6 +1321,14 @@ pay_homage_decision = {
 		liege = { is_available_adult = yes }
 		is_at_war_with_liege = no
 		trigger_if = {
+			limit = {
+				is_ai = no
+				has_royal_court = yes
+			}
+			has_spawned_court_events = no # should only be used for human players
+		}
+		
+		trigger_if = {
 			limit = { has_variable = pay_homage_grace } # Has not paid homage to this liege before
 			custom_tooltip = {
 				text = pay_homage_grace_tt
@@ -1170,7 +1336,9 @@ pay_homage_decision = {
 			}
 		}
 		trigger_if = {
-			limit = { is_ai = yes }
+			limit = {
+				is_ai = yes
+			}
 			NOT = {
 				liege = { has_variable = pay_homage_cooldown }
 			}
@@ -1190,8 +1358,15 @@ pay_homage_decision = {
 			current_description = pay_homage_submission_desc
 			localization = pay_homage_decision_option_submission
 			icon = "gfx/interface/icons/icon_liege.dds"
-			ai_chance = { # Most likely
+			ai_chance = { # Always likely
 				value = 50
+				if = { # Generous vassals want to give gold if they can!
+					limit = {
+						ai_greed <= -50
+						gold >= medium_gold_value
+					}
+					add = -50
+				}
 			}
 		}
 
@@ -1209,10 +1384,20 @@ pay_homage_decision = {
 			localization = pay_homage_decision_option_hook
 			icon = "gfx/interface/icons/message_feed/hook.dds"
 			ai_chance = { # More likely if family
-				value = 10
+				value = 25
 				if = {
 					limit = { is_close_or_extended_family_of = liege }
-					add = 20
+					add = 25
+				}
+				if = { # Certain AI's really do not want to be indebted
+					limit = {
+						OR = {
+							has_trait = paranoid
+							has_trait = arrogant
+							ai_greed >= 50
+						}
+					}
+					add = -50
 				}
 			}
 		}
@@ -1245,7 +1430,7 @@ pay_homage_decision = {
 							vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_low_level
 						}
 					}
-					add = 10
+					add = 40
 				}
 				else_if = {
 					limit = {
@@ -1254,7 +1439,18 @@ pay_homage_decision = {
 							vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_exempt_level
 						}
 					}
-					add = 20
+					add = 90
+				}
+				
+				if = { # Certain AI's really do not want increased obligations
+					limit = {
+						OR = {
+							has_trait = ambitious
+							has_trait = arrogant
+							ai_greed >= 50
+						}
+					}
+					add = -50
 				}
 			}
 		}
@@ -1271,10 +1467,17 @@ pay_homage_decision = {
 			localization = pay_homage_decision_option_gold
 			icon = "gfx/interface/icons/message_feed/money.dds"
 			ai_chance = { # More likely if rich
-				value = 10
+				value = 50
 				if = {
 					limit = { gold > major_gold_value }
-					add = 10
+					add = 50
+				}
+				
+				if = { # Certain AI's really do not want to part with gold
+					limit = {
+						ai_greed >= 50
+					}
+					add = -100
 				}
 			}
 		}
@@ -1367,14 +1570,14 @@ pay_homage_decision = {
 					}
 					set_variable = { # To stop AI vassals taking decision all at once
 						name = pay_homage_cooldown
-						years = 3
+						years = 2
 					}
 				}
 				else = {
 					remove_variable = pay_homage_cooldown
 					set_variable = { # To stop AI vassals taking decision all at once
 						name = pay_homage_cooldown
-						years = 3
+						years = 2
 					}
 				}
 			}
@@ -1382,7 +1585,7 @@ pay_homage_decision = {
 	}
 	
 	ai_potential = {
-		always = yes
+		is_at_war = no
 	}
 
 	ai_will_do = {
@@ -1390,6 +1593,12 @@ pay_homage_decision = {
 		modifier = {
 			add = 50
 			prestige > standard_activity_cost
+		}
+		modifier = { # AI's who can give gold are more likely
+			add = 50
+			gold >= medium_gold_value
+			ai_greed < 50
+			primary_title.tier > tier_county
 		}
 		modifier = {
 			add = -50

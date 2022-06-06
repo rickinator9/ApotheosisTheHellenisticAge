@@ -1,7 +1,10 @@
 ﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
-@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
 @holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
 @holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
+@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
+@holding_illustration_norse = "gfx/interface/illustrations/holding_types/fp1_city_norse.dds"
+@holding_illustration_iberian = "gfx/interface/illustrations/holding_types/fp2_city_iberian.dds"
+@holding_illustration_grass = "gfx/interface/illustrations/holding_types/tribe_grass.dds"
 
 @holding_illustration_greek = "gfx/interface/illustrations/event_scenes/farms.dds"
 
@@ -70,7 +73,7 @@ city_01 = {
 		parameter = city_buildings_less_control
 		monthly_county_control_change_factor = -0.25
 	}
-
+	
 	province_terrain_modifier = {
 		parameter = coastal_holding_bonuses
 		is_coastal = yes
@@ -81,6 +84,11 @@ city_01 = {
 		parameter = coastal_holdings_give_defensive_bonus
 		is_coastal = yes
 		defender_holding_advantage = 2
+	}
+	
+	county_dynasty_modifier = {
+		county_holder_dynasty_perk = fp2_urbanism_legacy_1 # check if the dynasty of the county holder has a specific perk
+    	development_growth_factor = fp2_urbanism_legacy_1_bonus_value
 	}
 
 	flag = city
@@ -197,6 +205,11 @@ city_02 = {
 		defender_holding_advantage = 3
 	}
 
+	county_dynasty_modifier = {
+		county_holder_dynasty_perk = fp2_urbanism_legacy_1 # check if the dynasty of the county holder has a specific perk
+    	development_growth_factor = fp2_urbanism_legacy_1_bonus_value
+	}
+	
 	flag = city
 	next_building = city_03
 	ai_value = {
@@ -204,6 +217,10 @@ city_02 = {
 		modifier = {
 			add = 1
 			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_city }
+		}	
+		modifier = {
+			factor = 2
+			scope:holder.capital_province = this
 		}
 	}
 }
@@ -282,12 +299,21 @@ city_03 = {
 		defender_holding_advantage = 4
 	}
 
+	county_dynasty_modifier = {
+		county_holder_dynasty_perk = fp2_urbanism_legacy_1 # check if the dynasty of the county holder has a specific perk
+    	development_growth_factor = fp2_urbanism_legacy_1_bonus_value
+	}
+	
 	flag = city
 	ai_value = {
 		base = 5
 		modifier = {
 			add = 1
 			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_city }
+		}	
+		modifier = {
+			factor = 2
+			scope:holder.capital_province = this
 		}
 	}
 }
@@ -364,12 +390,21 @@ city_04 = {
 		defender_holding_advantage = 5
 	}
 
+	county_dynasty_modifier = {
+		county_holder_dynasty_perk = fp2_urbanism_legacy_1 # check if the dynasty of the county holder has a specific perk
+    	development_growth_factor = fp2_urbanism_legacy_1_bonus_value
+	}
+	
 	flag = city
 	ai_value = {
 		base = 4
 		modifier = {
 			add = 1
 			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_city }
+		}	
+		modifier = {
+			factor = 2
+			scope:holder.capital_province = this
 		}
 	}
 }
@@ -663,7 +698,7 @@ guild_halls_07 = {
 
 guild_halls_08 = {
 	construction_time = standard_construction_time
-	
+
 	can_construct = {
 		has_building_or_higher = city_04
 		culture = {
