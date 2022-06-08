@@ -25,881 +25,1044 @@
 ##################
 # WINTER VALUES
 ##################
-@light_coverage = 0.0 # Barely covers the province.
-@medium_coverage = 0.0 # Intermittently covers the province.
-@heavy_coverage = 0.0 # Barely any grass is visible.
-@full_coverage = 0.0 # Near-full coverage. For our mod, this will only happen in Russia.
+@light_coverage = 0.2 # Barely covers the province.
+@medium_coverage = 0.4 # Intermittently covers the province.
+@heavy_coverage = 0.6 # Barely any grass is visible.
+@full_coverage = 0.8 # Near-full coverage.
+
+
+#####################
+# SPECIAL PROVINCES #
+#####################
+
+# 0 = { winter_severity_bias = 0.0 }
+# 76 = { winter_severity_bias = 0.0 } # WORLD
 
 ##################
-# NORMAL PROVINCES
+##### HELLAS #####
 ##################
 
-0 = { winter_severity_bias = 0.0 }
-76 = { winter_severity_bias = 0.0 } # WORLD
+## HELLAS ###################################
+### LAKEDAIMON
+# 9 = { winter_severity_bias = 0.0 } # b_krokeai_sparta
+# 10 = { winter_severity_bias = 0.0 } # b_sparta_sparta
+# 11 = { winter_severity_bias = 0.0 } # b_sellasia_sparta
+# 1 = { winter_severity_bias = 0.0 } # b_maleatas_prasiai
+# 2 = { winter_severity_bias = 0.0 } # b_prasiai_prasiai
+# 3 = { winter_severity_bias = 0.0 } # b_kyphanta_prasiai
+# 6 = { winter_severity_bias = 0.0} # b_epidauros_limen_epidauros_limen
+# 7 = { winter_severity_bias = 0.0 } # b_geronthrai_epidauros_limen
+# 8 = { winter_severity_bias = 0.0 } # b_gytheion_gytheion
+# 13 = { winter_severity_bias = 0.0 } # b_tainaron_gytheion
+# 4 = { winter_severity_bias = 0.0 } # b_kythera_kythera
+# 5 = { winter_severity_bias = 0.0 } # b_boiai_kythera
+# 14 = { winter_severity_bias = 0.0 } # b_kardamyle_limnai
+# 631 = { winter_severity_bias = 0.0 } # b_limnai_limnai
 
-### HELLAS
-1 = { winter_severity_bias = 0.0 } # b_maleatas_prasiai
-2 = { winter_severity_bias = 0.0 } # b_prasiai_prasiai
-3 = { winter_severity_bias = 0.0 } # b_kyphanta_prasiai
-4 = { winter_severity_bias = 0.0 } # b_kythera_kythera
-5 = { winter_severity_bias = 0.0 } # b_boiai_kythera
-6 = { winter_severity_bias = 0.0 } # b_epidauros_limen_epidauros_limen
-7 = { winter_severity_bias = 0.0 } # b_geronthrai_epidauros_limen
-8 = { winter_severity_bias = 0.0 } # b_gytheion_gytheion
-9 = { winter_severity_bias = 0.0 } # b_krokeai_sparta
-10 = { winter_severity_bias = 0.0 } # b_sparta_sparta
-11 = { winter_severity_bias = 0.0 } # b_sellasia_sparta
-12 = { winter_severity_bias = 0.0 } # b_athenaion_megalopolis
-13 = { winter_severity_bias = 0.0 } # b_tainaron_gytheion
-14 = { winter_severity_bias = 0.0 } # b_kardamyle_limnai
-17 = { winter_severity_bias = 0.0 } # b_pherai_thouria
-18 = { winter_severity_bias = 0.0 } # b_thouria_thouria
-19 = { winter_severity_bias = 0.0 } # b_karnasion_messene
-20 = { winter_severity_bias = 0.0 } # b_kyparissia_messene
-21 = { winter_severity_bias = 0.0 } # b_messene_messene
-22 = { winter_severity_bias = 0.0 } # b_korone_messene
-23 = { winter_severity_bias = 0.0 } # b_erana_methone
-24 = { winter_severity_bias = 0.0 } # b_pylos_methone
-25 = { winter_severity_bias = 0.0 } # b_methone_methone
-26 = { winter_severity_bias = 0.0 } # b_lepreon_triphylia
-27 = { winter_severity_bias = 0.0 } # b_epitalion_triphylia
-28 = { winter_severity_bias = 0.0 } # b_makistos_triphylia
-29 = { winter_severity_bias = 0.0 } # b_kikysion_pisatis
-30 = { winter_severity_bias = 0.0 } # b_olympia_pisatis
-31 = { winter_severity_bias = 0.0 } # b_pylos_koile_elis
-32 = { winter_severity_bias = 0.0 } # b_pheia_pisatis
-33 = { winter_severity_bias = 0.0 } # b_kyllene_koile_elis
-34 = { winter_severity_bias = 0.0 } # b_elis_koile_elis
-35 = { winter_severity_bias = 0.0 } # b_myrtountion_koile_elis
-36 = { winter_severity_bias = 0.0 } # b_dyme_dyme
-37 = { winter_severity_bias = 0.0 } # b_tritaia_dyme
-38 = { winter_severity_bias = 0.0 } # b_pharai_patrai
-39 = { winter_severity_bias = 0.0 } # b_patrai_patrai
-40 = { winter_severity_bias = 0.0 } # b_aigion_aigion
-41 = { winter_severity_bias = 0.0 } # b_leontion_aigion
-42 = { winter_severity_bias = 0.0 } # b_kynaithai_aigion
-43 = { winter_severity_bias = 0.0 } # b_keryneia_keryneia
-44 = { winter_severity_bias = 0.0 } # b_boura_keryneia
-45 = { winter_severity_bias = 0.0 } # b_aigeira_pellene
-46 = { winter_severity_bias = 0.0 } # b_pellene_pellene
-50 = { winter_severity_bias = 0.0 } # b_megalopolis_megalopolis
-51 = { winter_severity_bias = 0.0 } # b_lykosoura_megalopolis
-52 = { winter_severity_bias = 0.0 } # b_gortys_megalopolis
-53 = { winter_severity_bias = 0.0 } # b_heraia_heraia
-54 = { winter_severity_bias = 0.0 } # b_paos_heraia
-55 = { winter_severity_bias = 0.0 } # b_kleitor_kleitor
-56 = { winter_severity_bias = 0.0 } # b_pheneos_kleitor
-57 = { winter_severity_bias = 0.0 } # b_torthyneion_orchomenos
-58 = { winter_severity_bias = 0.0 } # b_orchomenos_orchomenos
-59 = { winter_severity_bias = 0.0 } # b_mantineia_mantineia
-60 = { winter_severity_bias = 0.0 } # b_tegea_tegea
-61 = { winter_severity_bias = 0.0 } # b_dipaia_tegea
-64 = { winter_severity_bias = 0.0 } # b_troizen_troizen
-65 = { winter_severity_bias = 0.0 } # b_hermione_hermione
-66 = { winter_severity_bias = 0.0 } # b_epidauros_epidauros
-67 = { winter_severity_bias = 0.0 } # b_didymoi_hermione
-68 = { winter_severity_bias = 0.0 } # b_asklepieion_epidauros
-69 = { winter_severity_bias = 0.0 } # b_asine_argos
-70 = { winter_severity_bias = 0.0 } # b_heraion_argos
-71 = { winter_severity_bias = 0.0 } # b_argos_argos
-72 = { winter_severity_bias = 0.0 } # b_lerna_argos
-73 = { winter_severity_bias = 0.0 } # b_eua_thyreatis
-74 = { winter_severity_bias = 0.0 } # b_anthana_thyreatis
-75 = { winter_severity_bias = 0.0 } # b_aigina_aigina
-77 = { winter_severity_bias = 0.0 } # b_isthmia_korinthos
-78 = { winter_severity_bias = 0.0 } # b_korinthos_korinthos
-79 = { winter_severity_bias = 0.0 } # b_boukephalos_korinthos
-80 = { winter_severity_bias = 0.0 } # b_kleonai_kleonai
-81 = { winter_severity_bias = 0.0 } # b_nemea_kleonai
-82 = { winter_severity_bias = 0.0 } # b_sikyon_sikyon
-83 = { winter_severity_bias = 0.0 } # b_titane_sikyon
-84 = { winter_severity_bias = 0.0 } # b_phleious_phleious
-85 = { winter_severity_bias = 0.0 } # b_stymphalos_mantineia
-86 = { winter_severity_bias = 0.0 } # b_megara_megara
-87 = { winter_severity_bias = 0.0 } # b_eleutherai_eleusis
-88 = { winter_severity_bias = 0.0 } # b_eleusis_eleusis
-89 = { winter_severity_bias = 0.0 } # b_salamis_athenai
-90 = { winter_severity_bias = 0.0 } # b_peiraieus_athenai
-91 = { winter_severity_bias = 0.0 } # b_athenai_athenai
-92 = { winter_severity_bias = 0.0 } # b_pallene_athenai
-93 = { winter_severity_bias = 0.0 } # b_anagyros_thorikos
-94 = { winter_severity_bias = 0.0 } # b_thorikos_thorikos
-95 = { winter_severity_bias = 0.0 } # b_myrrinous_thorikos
-96 = { winter_severity_bias = 0.0 } # b_marathon_marathon
-97 = { winter_severity_bias = 0.0 } # b_rhamnous_marathon
-98 = { winter_severity_bias = 0.0 } # b_oropos_tanagra
-99 = { winter_severity_bias = 0.0 } # b_tanagra_tanagra
-100 = { winter_severity_bias = 0.0 } # b_anthedon_thebai
-101 = { winter_severity_bias = 0.0 } # b_akraiphiai_thebai
-102 = { winter_severity_bias = 0.0 } # b_thebai_thebai
-103 = { winter_severity_bias = 0.0 } # b_thespiai_thespiai
-104 = { winter_severity_bias = 0.0 } # b_plataia_tanagria
-105 = { winter_severity_bias = 0.0 } # b_thisbe_thespiai
-106 = { winter_severity_bias = 0.0 } # b_koroneia_thespiai
-107 = { winter_severity_bias = 0.0 } # b_chaironeia_orchomenos_boiotia
-108 = { winter_severity_bias = 0.0 } # b_orchomenos_orchomenos_boiotia
-110 = { winter_severity_bias = 0.0 } # b_medeon_antikyra
-111 = { winter_severity_bias = 0.0 } # b_antikyra_antikyra
-112 = { winter_severity_bias = 0.0 } # b_delphi_delphi
-113 = { winter_severity_bias = 0.0 } # b_daulis_antikyra
-114 = { winter_severity_bias = 0.0 } # b_elateia_elateia
-115 = { winter_severity_bias = 0.0 } # b_daphnous_elateia
-116 = { winter_severity_bias = 0.0 } # b_lilaia_elateia
-117 = { winter_severity_bias = 0.0 } # b_erineos_doris
-120 = { winter_severity_bias = 0.0 } # b_halai_opous
-121 = { winter_severity_bias = 0.0 } # b_opous_opous
-122 = { winter_severity_bias = 0.0 } # b_thronion_thronion
-123 = { winter_severity_bias = @light_coverage } # b_amphissa_amphissa
-124 = { winter_severity_bias = 0.0 } # b_oiantheia_amphissa
-125 = { winter_severity_bias = 0.0 } # b_naupaktos_naupaktos
-127 = { winter_severity_bias = @light_coverage } # b_kallion_kallion
-128 = { winter_severity_bias = 0.0 } # b_teichion_kallion
-129 = { winter_severity_bias = 0.0 } # b_thermon_thermon
-130 = { winter_severity_bias = 0.0 } # b_trichonion_thermon
-131 = { winter_severity_bias = 0.0 } # b_kalydon_kalydon
-132 = { winter_severity_bias = 0.0 } # b_paianion_lysimacheia_aitolia
-133 = { winter_severity_bias = 0.0 } # b_agrinion_thermon
-134 = { winter_severity_bias = 0.0 } # b_pras_pras
-135 = { winter_severity_bias = @medium_coverage } # b_oichalia_aperantia
-137 = { winter_severity_bias = 0.0 } # b_stratos_stratos
-138 = { winter_severity_bias = 0.0 } # b_alyzeia_oiniadai
-139 = { winter_severity_bias = 0.0 } # b_oiniadai_oiniadai
-140 = { winter_severity_bias = 0.0 } # b_thyrreion_anaktorion
-141 = { winter_severity_bias = 0.0 } # b_anaktorion_anaktorion
-142 = { winter_severity_bias = 0.0 } # b_leukas_leukas
-145 = { winter_severity_bias = 0.0 } # b_ktimene_dolopia
-146 = { winter_severity_bias = 0.0 } # b_same_kephallenia
-147 = { winter_severity_bias = 0.0 } # b_pale_kephallenia
-148 = { winter_severity_bias = 0.0 } # b_zakynthos_zakynthos
-149 = { winter_severity_bias = 0.0 } # b_aidepsos_oreos
-150 = { winter_severity_bias = 0.0 } # b_oreos_oreos
-151 = { winter_severity_bias = 0.0 } # b_kerinthos_chalkis
-152 = { winter_severity_bias = 0.0 } # b_aigai_chalkis
-153 = { winter_severity_bias = 0.0 } # b_chalkis_chalkis
-154 = { winter_severity_bias = 0.0 } # b_eretria_eretria
-155 = { winter_severity_bias = 0.0 } # b_tamynai_eretria
-156 = { winter_severity_bias = 0.0 } # b_teleidai_eretria
-157 = { winter_severity_bias = 0.0 } # b_styra_eretria
-158 = { winter_severity_bias = 0.0 } # b_karystos_karystos
-380 = { winter_severity_bias = 0.0 } # b_pagai_megara
-381 = { winter_severity_bias = 0.0 } # b_peparethos_sporades
-382 = { winter_severity_bias = 0.0 } # b_skyros_sporades
-383 = { winter_severity_bias = 0.0 } # b_andros_andros
-384 = { winter_severity_bias = 0.0 } # b_keos_andros
-385 = { winter_severity_bias = 0.0 } # b_kythnos_andros
-386 = { winter_severity_bias = 0.0 } # b_tenos_delos
-387 = { winter_severity_bias = 0.0 } # b_syra_delos
-388 = { winter_severity_bias = 0.0 } # b_delos_delos
-389 = { winter_severity_bias = 0.0 } # b_seriphos_paros
-390 = { winter_severity_bias = 0.0 } # b_siphnos_paros
-391 = { winter_severity_bias = 0.0 } # b_melos_melos
-392 = { winter_severity_bias = 0.0 } # b_pholegandros_melos
-393 = { winter_severity_bias = 0.0 } # b_paros_paros
-394 = { winter_severity_bias = 0.0 } # b_naxos_naxos
-395 = { winter_severity_bias = 0.0 } # b_ios_naxos
-396 = { winter_severity_bias = 0.0 } # b_amorgos_naxos
-397 = { winter_severity_bias = 0.0 } # b_thera_thera
-398 = { winter_severity_bias = 0.0 } # b_anaphe_thera
-492 = { winter_severity_bias = 0.0 } # b_marmarion_karystos
-631 = { winter_severity_bias = @light_coverage } # b_limnai_limnai
-834 = { winter_severity_bias = 0.0 } # b_oinoe_korinthos
-835 = { winter_severity_bias = 0.0 } # b_hyettos_thebai
-836 = { winter_severity_bias = 0.0 } # b_panakton_eleusis
-837 = { winter_severity_bias = 0.0 } # b_acharnai_athenai
-838 = { winter_severity_bias = 0.0 } # b_aphidna_marathon
+### MESSENIA
+# 19 = { winter_severity_bias = 0.0 } # b_karnasion_messene
+# 20 = { winter_severity_bias = 0.0 } # b_kyparissia_messene
+# 21 = { winter_severity_bias = 0.0 } # b_messene_messene
+# 22 = { winter_severity_bias = 0.0 } # b_korone_messene
+# 17 = { winter_severity_bias = 0.0 } # b_pherai_thouria
+# 18 = { winter_severity_bias = 0.0 } # b_thouria_thouria
+# 23 = { winter_severity_bias = 0.0 } # b_erana_methone
+# 24 = { winter_severity_bias = 0.0 } # b_pylos_methone
+# 25 = { winter_severity_bias = 0.0 } # b_methone_methone
 
-### THESSALY
-159 = { winter_severity_bias = 0.0 } # DIRPHYS MONS
-160 = { winter_severity_bias = 0.0 } # b_phalara_lamia
-161 = { winter_severity_bias = 0.0 } # b_lamia_lamia
-162 = { winter_severity_bias = 0.0 } # b_herakleia_trachinia_trachis
-163 = { winter_severity_bias = 0.0 } # b_hypata_ainis
-164 = { winter_severity_bias = @light_coverage } # b_spercheiai_ainis
-167 = { winter_severity_bias = 0.0 } # b_olizon_demetrias
-168 = { winter_severity_bias = 0.0 } # b_korope_demetrias
-169 = { winter_severity_bias = 0.0 } # b_demetrias_demetrias
-170 = { winter_severity_bias = 0.0 } # b_boibe_demetrias
-171 = { winter_severity_bias = 0.0 } # b_meliboia_meliboia
-172 = { winter_severity_bias = 0.0 } # b_sykyrion_meliboia
-174 = { winter_severity_bias = 0.0 } # b_larissa_kremaste_larissa_kremaste
-175 = { winter_severity_bias = 0.0 } # b_halos_larissa_kremaste
-176 = { winter_severity_bias = 0.0 } # b_itonos_thebai_phthiotides
-177 = { winter_severity_bias = 0.0 } # b_thebai_phthiotides_thebai_phthiotides
-178 = { winter_severity_bias = 0.0 } # b_pyrasos_thebai_phthiotides
-179 = { winter_severity_bias = 0.0 } # b_eretria_thebai_phthiotides
-180 = { winter_severity_bias = 0.0 } # b_proerna_proerna
-181 = { winter_severity_bias = 0.0 } # b_melitaia_melitaia
-182 = { winter_severity_bias = 0.0 } # b_thaumakoi_proerna
-183 = { winter_severity_bias = 0.0 } # b_ekarra_proerna
-185 = { winter_severity_bias = 0.0 } # b_pherai_pherai_pelasgiotis
-186 = { winter_severity_bias = 0.0 } # b_armenion_pherai_pelasgiotis
-187 = { winter_severity_bias = 0.0 } # b_skotoussa_pherai_pelasgiotis
-188 = { winter_severity_bias = 0.0 } # b_krannon_krannon
-189 = { winter_severity_bias = 0.0 } # b_atrax_krannon
-190 = { winter_severity_bias = 0.0 } # b_larissa_larissa
-191 = { winter_severity_bias = 0.0 } # b_chalkai_larissa
-192 = { winter_severity_bias = 0.0 } # b_gyrtone_larissa
-193 = { winter_severity_bias = 0.0 } # b_angeia_dolopia
-194 = { winter_severity_bias = 0.0 } # b_philia_kierion
-195 = { winter_severity_bias = 0.0 } # b_kierion_kierion
-196 = { winter_severity_bias = 0.0 } # b_limnaion_pharsalos
-197 = { winter_severity_bias = 0.0 } # b_euhydrion_pharsalos
-198 = { winter_severity_bias = 0.0 } # b_thetonion_pharsalos
-199 = { winter_severity_bias = 0.0 } # b_pharsalos_pharsalos
-200 = { winter_severity_bias = 0.0 } # b_metropolis_metropolis
-201 = { winter_severity_bias = 0.0 } # b_gomphoi_metropolis
-202 = { winter_severity_bias = 0.0 } # b_pialeia_trikka
-203 = { winter_severity_bias = 0.0 } # b_trikka_trikka
-204 = { winter_severity_bias = 0.0 } # b_pelinna_trikka
-205 = { winter_severity_bias = 0.0 } # b_pharkadon_trikka
-206 = { winter_severity_bias = 0.0 } # b_homolion_meliboia
-207 = { winter_severity_bias = 0.0 } # b_gonnoi_gonnoi
-208 = { winter_severity_bias = 0.0 } # b_askyris_gonnoi
-209 = { winter_severity_bias = 0.0 } # b_kondaia_argoura
-210 = { winter_severity_bias = 0.0 } # b_argoura_argoura
-211 = { winter_severity_bias = 0.0 } # b_phalanna_olooson
-212 = { winter_severity_bias = 0.0 } # b_chyretiai_olooson
-213 = { winter_severity_bias = 0.0 } # b_malloia_olooson
-214 = { winter_severity_bias = 0.0 } # b_azoros_tripolis
-215 = { winter_severity_bias = 0.0 } # b_olooson_olooson
-493 = { winter_severity_bias = @medium_coverage } # b_pyra_trachis
-696 = { winter_severity_bias = 0.0 } # b_doliche_tripolis
-697 = { winter_severity_bias = 0.0 } # b_pythion_tripolis
-872 = { winter_severity_bias = @medium_coverage } # b_tetraphylia_tetraphylia
-875 = { winter_severity_bias = @medium_coverage } # b_aithikia_tetraphylia
-879 = { winter_severity_bias = 0.0 } # b_methylion_kierion
-881 = { winter_severity_bias = 0.0 } # b_peuma_melitaia
-882 = { winter_severity_bias = 0.0 } # b_tripolis_larissa
+### ELIS
+# 31 = { winter_severity_bias = 0.0 } # b_pylos_koile_elis
+# 33 = { winter_severity_bias = 0.0 } # b_kyllene_koile_elis
+# 34 = { winter_severity_bias = 0.0 } # b_elis_koile_elis
+# 35 = { winter_severity_bias = 0.0 } # b_myrtountion_koile_elis
+# 26 = { winter_severity_bias = 0.0 } # b_lepreon_triphylia
+# 27 = { winter_severity_bias = 0.0 } # b_epitalion_triphylia
+# 28 = { winter_severity_bias = 0.0 } # b_makistos_triphylia
+# 29 = { winter_severity_bias = 0.0 } # b_kikysion_pisatis
+# 30 = { winter_severity_bias = 0.0 } # b_olympia_pisatis
+# 32 = { winter_severity_bias = 0.0 } # b_pheia_pisatis
 
-### EPEIROS
-218 = { winter_severity_bias = @light_coverage } # b_argithaia_argithaia
-219 = { winter_severity_bias = @light_coverage } # b_theudoria_chalkis_athamania
-220 = { winter_severity_bias = 0.0 } # b_argos_amphilochia
-221 = { winter_severity_bias = 0.0 } # b_idomene_amphilochia
-222 = { winter_severity_bias = 0.0 } # b_ambrakos_ambrakia
-223 = { winter_severity_bias = 0.0 } # b_ambrakia_ambrakia
-224 = { winter_severity_bias = 0.0 } # b_batiai_kassope
-225 = { winter_severity_bias = 0.0 } # b_kassope_kassope
-226 = { winter_severity_bias = 0.0 } # b_onopernoi_dodona
-227 = { winter_severity_bias = 0.0 } # b_elea_kichyros
-228 = { winter_severity_bias = 0.0 } # b_elinia_gitana
-229 = { winter_severity_bias = 0.0 } # b_kichyros_kichyros
-230 = { winter_severity_bias = 0.0 } # b_korkyra_korkyra
-231 = { winter_severity_bias = 0.0 } # b_kassiope_korkyra
-234 = { winter_severity_bias = 0.0 } # b_dodona_dodona
-235 = { winter_severity_bias = 0.0 } # b_eurymenai_passaron
-236 = { winter_severity_bias = @light_coverage } # b_bouneima_trampya
-237 = { winter_severity_bias = 0.0 } # b_passaron_passaron
-238 = { winter_severity_bias = 0.0 } # b_ilion_phanota
-239 = { winter_severity_bias = 0.0 } # b_helikranon_passaron
-243 = { winter_severity_bias = 0.0 } # b_gitana_gitana
-244 = { winter_severity_bias = 0.0 } # b_bouthroton_phoinike
-245 = { winter_severity_bias = 0.0 } # b_phoinike_phoinike
-246 = { winter_severity_bias = @light_coverage } # b_phanota_phanota
-247 = { winter_severity_bias = @light_coverage } # b_antigoneia_antigoneia
-248 = { winter_severity_bias = @light_coverage } # b_panormos_orikon
-249 = { winter_severity_bias = @light_coverage } # b_orikon_orikon
-250 = { winter_severity_bias = 0.0 } # b_aulon_amantia
-251 = { winter_severity_bias = 0.0 } # b_amantia_amantia
-252 = { winter_severity_bias = 0.0 } # b_hekatompedon_antigoneia
-253 = { winter_severity_bias = 0.0 } # b_eriboia_paroraia
-264 = { winter_severity_bias = 0.0 } # b_phrourion_pyrrhou_triphylia
-265 = { winter_severity_bias = @light_coverage } # b_artichia_triphylia
-266 = { winter_severity_bias = @light_coverage  } # b_paroraia_paroraia
-267 = { winter_severity_bias = @medium_coverage } # b_chrysondyon_chrysondyon
-268 = { winter_severity_bias = @medium_coverage } # b_gerous_chrysondyon
-494 = { winter_severity_bias = 0.0 } # b_xyniai_melitaia
-495 = { winter_severity_bias = 0.0 } # b_horraon_ambrakia
-499 = { winter_severity_bias = @medium_coverage } # b_chalkis_chalkis_athamania
-500 = { winter_severity_bias = @medium_coverage } # b_athenaion_argithaia
-501 = { winter_severity_bias = @light_coverage } # b_herakleia_argithaia
-504 = { winter_severity_bias = @medium_coverage } # b_trampya_trampya
+### ACHAIA
+# 40 = { winter_severity_bias = 0.0 } # b_aigion_aigion
+# 41 = { winter_severity_bias = 0.0 } # b_leontion_aigion
+# 42 = { winter_severity_bias = 0.0 } # b_kynaithai_aigion
+# 36 = { winter_severity_bias = 0.0 } # b_dyme_dyme
+# 37 = { winter_severity_bias = 0.0 } # b_tritaia_dyme
+# 38 = { winter_severity_bias = 0.0 } # b_pharai_patrai
+# 39 = { winter_severity_bias = 0.0 } # b_patrai_patrai
+# 43 = { winter_severity_bias = 0.0 } # b_keryneia_keryneia
+# 44 = { winter_severity_bias = 0.0 } # b_boura_keryneia
+# 45 = { winter_severity_bias = 0.0 } # b_aigeira_pellene
+# 46 = { winter_severity_bias = 0.0 } # b_pellene_pellene
 
-### MAKEDONIA
-274 = { winter_severity_bias = 0.0 } # b_leibethra_dion
-275 = { winter_severity_bias = 0.0 } # b_dion_dion
-276 = { winter_severity_bias = 0.0 } # b_aigai_aigai
-277 = { winter_severity_bias = 0.0 } # b_pydna_pydna
-278 = { winter_severity_bias = 0.0 } # b_methone_pydna
-279 = { winter_severity_bias = 0.0 } # b_berroia_berroia
-280 = { winter_severity_bias = 0.0 } # b_edessa_edessa
-281 = { winter_severity_bias = 0.0 } # b_kyrros_edessa
-282 = { winter_severity_bias = 0.0 } # b_europos_almopia
-283 = { winter_severity_bias = 0.0 } # b_pella_pella
-284 = { winter_severity_bias = 0.0 } # b_allante_pella
-285 = { winter_severity_bias = 0.0 } # b_chalastra_thessalonike
-286 = { winter_severity_bias = 0.0 } # b_sindos_thessalonike
-287 = { winter_severity_bias = 0.0 } # b_thessalonike_thessalonike
-292 = { winter_severity_bias = @light_coverage } # b_oblostos_aiane
-293 = { winter_severity_bias = @light_coverage } # b_aiane_aiane
-294 = { winter_severity_bias = @light_coverage } # b_arkynia_arkynia
-295 = { winter_severity_bias = @medium_coverage } # b_euia_euia
-296 = { winter_severity_bias = @light_coverage } # b_arnisa_arnisa
-297 = { winter_severity_bias = @light_coverage } # b_kormestai_arnisa
-298 = { winter_severity_bias = @medium_coverage } # b_kellai_bokeria
-299 = { winter_severity_bias = @light_coverage } # b_bokeria_bokeria
+### ARCADIA
+# 12 = { winter_severity_bias = 0.0 } # b_athenaion_megalopolis
+# 50 = { winter_severity_bias = 0.0 } # b_megalopolis_megalopolis
+# 51 = { winter_severity_bias = 0.0 } # b_lykosoura_megalopolis
+# 52 = { winter_severity_bias = 0.0 } # b_gortys_megalopolis
+# 53 = { winter_severity_bias = 0.0 } # b_heraia_heraia
+# 54 = { winter_severity_bias = 0.0 } # b_paos_heraia
+# 55 = { winter_severity_bias = 0.0 } # b_kleitor_kleitor
+# 56 = { winter_severity_bias = 0.0 } # b_pheneos_kleitor
+# 57 = { winter_severity_bias = 0.0 } # b_torthyneion_orchomenos
+# 58 = { winter_severity_bias = 0.0 } # b_orchomenos_orchomenos
+# 59 = { winter_severity_bias = 0.0 } # b_mantineia_mantineia
+# 85 = { winter_severity_bias = 0.0 } # b_stymphalos_mantineia
+# 60 = { winter_severity_bias = 0.0 } # b_tegea_tegea
+# 61 = { winter_severity_bias = 0.0 } # b_dipaia_tegea
+
+### ARGOLIS
+# 69 = { winter_severity_bias = 0.0 } # b_asine_argos
+# 70 = { winter_severity_bias = 0.0 } # b_heraion_argos
+# 71 = { winter_severity_bias = 0.0 } # b_argos_argos
+# 72 = { winter_severity_bias = 0.0 } # b_lerna_argos
+# 64 = { winter_severity_bias = 0.0 } # b_troizen_troizen
+# 65 = { winter_severity_bias = 0.0 } # b_hermione_hermione
+# 67 = { winter_severity_bias = 0.0 } # b_didymoi_hermione
+# 66 = { winter_severity_bias = 0.0 } # b_epidauros_epidauros
+# 68 = { winter_severity_bias = 0.0 } # b_asklepieion_epidauros
+# 73 = { winter_severity_bias = 0.0 } # b_eua_thyreatis
+# 74 = { winter_severity_bias = 0.0 } # b_anthana_thyreatis
+# 75 = { winter_severity_bias = 0.0 } # b_aigina_aigina
+# 80 = { winter_severity_bias = 0.0 } # b_kleonai_kleonai
+# 81 = { winter_severity_bias = 0.0 } # b_nemea_kleonai
+# 84 = { winter_severity_bias = 0.0 } # b_phleious_phleious
+
+### KORINTHOS
+# 77 = { winter_severity_bias = 0.0 } # b_isthmia_korinthos
+# 78 = { winter_severity_bias = 0.0 } # b_korinthos_korinthos
+# 79 = { winter_severity_bias = 0.0 } # b_boukephalos_korinthos
+# 834 = { winter_severity_bias = 0.0 } # b_oinoe_korinthos
+# 82 = { winter_severity_bias = 0.0 } # b_sikyon_sikyon
+# 83 = { winter_severity_bias = 0.0 } # b_titane_sikyon
+# 86 = { winter_severity_bias = 0.0 } # b_megara_megara
+# 380 = { winter_severity_bias = 0.0 } # b_pagai_megara
+
+### ATTIKE
+# 91 = { winter_severity_bias = 0.0 } # b_athenai_athenai
+# 92 = { winter_severity_bias = 0.0 } # b_pallene_athenai
+# 837 = { winter_severity_bias = 0.0 } # b_acharnai_athenai
+# 838 = { winter_severity_bias = 0.0 } # b_aphidna_athenai
+# 89 = { winter_severity_bias = 0.0 } # b_salamis_peiraieus
+# 90 = { winter_severity_bias = 0.0 } # b_peiraieus_peiraieus
+# 87 = { winter_severity_bias = 0.0 } # b_eleutherai_eleusis
+# 88 = { winter_severity_bias = 0.0 } # b_eleusis_eleusis
+# 836 = { winter_severity_bias = 0.0 } # b_panakton_eleusis
+# 93 = { winter_severity_bias = 0.0 } # b_anagyros_thorikos
+# 94 = { winter_severity_bias = 0.0 } # b_thorikos_thorikos
+# 95 = { winter_severity_bias = 0.0 } # b_myrrinous_thorikos
+# 96 = { winter_severity_bias = 0.0 } # b_marathon_marathon
+# 97 = { winter_severity_bias = 0.0 } # b_rhamnous_marathon
+
+### BOIOTIA
+# 103 = { winter_severity_bias = 0.0 } # b_thespiai_thespiai
+# 105 = { winter_severity_bias = 0.0 } # b_thisbe_thespiai
+# 106 = { winter_severity_bias = 0.0 } # b_koroneia_thespiai
+# 100 = { winter_severity_bias = 0.0 } # b_anthedon_thebai
+# 101 = { winter_severity_bias = 0.0 } # b_akraiphiai_thebai
+# 102 = { winter_severity_bias = 0.0 } # b_thebai_thebai
+# 835 = { winter_severity_bias = 0.0 } # b_hyettos_thebai
+# 107 = { winter_severity_bias = 0.0 } # b_chaironeia_orchomenos_boiotia
+# 108 = { winter_severity_bias = 0.0 } # b_orchomenos_orchomenos_boiotia
+# 98 = { winter_severity_bias = 0.0 } # b_oropos_tanagra
+# 99 = { winter_severity_bias = 0.0 } # b_tanagra_tanagra
+# 104 = { winter_severity_bias = 0.0 } # b_plataia_tanagra
+
+### PHOKIS
+# 114 = { winter_severity_bias = 0.0 } # b_elateia_elateia
+# 115 = { winter_severity_bias = 0.0 } # b_daphnous_elateia
+# 116 = { winter_severity_bias = 0.0 } # b_lilaia_elateia
+# 110 = { winter_severity_bias = 0.0 } # b_medeon_antikyra
+# 111 = { winter_severity_bias = 0.0 } # b_antikyra_antikyra
+# 113 = { winter_severity_bias = 0.0 } # b_daulis_antikyra
+# 117 = { winter_severity_bias = 0.0 } # b_erineos_doris
+# 112 = { winter_severity_bias = 0.0 } # b_delphi_delphi
+
+### LOCRIS
+# 123 = { winter_severity_bias = 0.0 } # b_amphissa_amphissa
+# 124 = { winter_severity_bias = 0.0 } # b_oiantheia_amphissa
+# 125 = { winter_severity_bias = 0.0 } # b_naupaktos_naupaktos
+# 856 = { winter_severity_bias = 0.0 } # b_poteidania_naupaktos
+# 857 = { winter_severity_bias = 0.0 } # b_makyneia_naupaktos
+# 120 = { winter_severity_bias = 0.0 } # b_halai_opous
+# 121 = { winter_severity_bias = 0.0 } # b_opous_opous
+# 122 = { winter_severity_bias = 0.0 } # b_thronion_thronion
+
+### AITOLIA
+# 129 = { winter_severity_bias = 0.0 } # b_thermon_thermon
+# 130 = { winter_severity_bias = 0.0 } # b_trichonion_thermon
+# 133 = { winter_severity_bias = 0.0 } # b_agrinion_thermon
+# 127 = { winter_severity_bias = 0.0 } # b_kallion_kallion
+# 128 = { winter_severity_bias = 0.0 } # b_teichion_kallion
+# 131 = { winter_severity_bias = 0.0 } # b_kalydon_kalydon
+# 859 = { winter_severity_bias = 0.0 } # b_pleuron_kalydon
+# 132 = { winter_severity_bias = 0.0 } # b_paianion_lysimacheia_aitolia
+# 860 = { winter_severity_bias = 0.0 } # b_lysimacheia_lysimacheia_aitolia
+# 861 = { winter_severity_bias = 0.0 } # b_eiteia_eurytania
+# 862 = { winter_severity_bias = 0.0 } # b_eurytania_eurytania
+# 134 = { winter_severity_bias = 0.0 } # b_pras_agraia
+# 863 = { winter_severity_bias = 0.0 } # b_ephyra_agraia
+# 135 = { winter_severity_bias = 0.0 } # b_oichalia_aperantia
+# 867 = { winter_severity_bias = 0.0 } # b_aperantia_aperantia
+
+### AKARNANIA
+# 140 = { winter_severity_bias = 0.0 } # b_thyrreion_anaktorion
+# 141 = { winter_severity_bias = 0.0 } # b_anaktorion_anaktorion
+# 137 = { winter_severity_bias = 0.0 } # b_stratos_stratos
+# 864 = { winter_severity_bias = 0.0 } # b_limnaia_stratos
+# 865 = { winter_severity_bias = 0.0 } # b_phoitiai_stratos
+# 138 = { winter_severity_bias = 0.0 } # b_alyzeia_oiniadai
+# 139 = { winter_severity_bias = 0.0 } # b_oiniadai_oiniadai
+# 142 = { winter_severity_bias = 0.0 } # b_leukas_leukas
+# 866 = { winter_severity_bias = 0.0 } # b_hellomenon_leukas
+
+### IONIA NESOI
+# 230 = { winter_severity_bias = 0.0 } # b_korkyra_korkyra
+# 231 = { winter_severity_bias = 0.0 } # b_kassiope_korkyra
+# 146 = { winter_severity_bias = 0.0 } # b_same_kephallenia
+# 147 = { winter_severity_bias = 0.0 } # b_pale_kephallenia
+# 148 = { winter_severity_bias = 0.0 } # b_zakynthos_zakynthos
+
+### EUBOIA
+# 151 = { winter_severity_bias = 0.0 } # b_kerinthos_chalkis
+# 152 = { winter_severity_bias = 0.0 } # b_aigai_chalkis
+# 153 = { winter_severity_bias = 0.0 } # b_chalkis_chalkis
+# 154 = { winter_severity_bias = 0.0 } # b_eretria_eretria
+# 155 = { winter_severity_bias = 0.0 } # b_tamynai_eretria
+# 156 = { winter_severity_bias = 0.0 } # b_teleidai_eretria
+# 157 = { winter_severity_bias = 0.0 } # b_styra_eretria
+# 149 = { winter_severity_bias = 0.0 } # b_aidepsos_oreos
+# 150 = { winter_severity_bias = 0.0 } # b_oreos_oreos
+# 158 = { winter_severity_bias = 0.0 } # b_karystos_karystos
+# 492 = { winter_severity_bias = 0.0 } # b_marmarion_karystos
+
+### KYKLADES
+# 386 = { winter_severity_bias = 0.0 } # b_tenos_delos
+# 387 = { winter_severity_bias = 0.0 } # b_syra_delos
+# 388 = { winter_severity_bias = 0.0 } # b_delos_delos
+# 383 = { winter_severity_bias = 0.0 } # b_andros_andros
+# 384 = { winter_severity_bias = 0.0 } # b_keos_andros
+# 385 = { winter_severity_bias = 0.0 } # b_kythnos_andros
+# 391 = { winter_severity_bias = 0.0 } # b_melos_melos
+# 392 = { winter_severity_bias = 0.0 } # b_pholegandros_melos
+# 389 = { winter_severity_bias = 0.0 } # b_seriphos_paros
+# 390 = { winter_severity_bias = 0.0 } # b_siphnos_paros
+# 393 = { winter_severity_bias = 0.0 } # b_paros_paros
+# 394 = { winter_severity_bias = 0.0 } # b_naxos_naxos
+# 395 = { winter_severity_bias = 0.0 } # b_ios_naxos
+# 396 = { winter_severity_bias = 0.0 } # b_amorgos_naxos
+# 397 = { winter_severity_bias = 0.0 } # b_thera_thera
+# 398 = { winter_severity_bias = 0.0 } # b_anaphe_thera
+# 399 = { winter_severity_bias = 0.0 } # b_astypalaia_astypalaia
+
+## THESSALY ###################################
+### MAGNESIA
+# 167 = { winter_severity_bias = 0.0 } # b_olizon_demetrias
+# 168 = { winter_severity_bias = 0.0 } # b_korope_demetrias
+# 169 = { winter_severity_bias = 0.0 } # b_demetrias_demetrias
+# 170 = { winter_severity_bias = 0.0 } # b_boibe_demetrias
+# 171 = { winter_severity_bias = 0.0 } # b_meliboia_meliboia
+# 172 = { winter_severity_bias = 0.0 } # b_sykyrion_meliboia
+# 206 = { winter_severity_bias = 0.0 } # b_homolion_meliboia
+# 381 = { winter_severity_bias = 0.0 } # b_peparethos_sporades
+# 382 = { winter_severity_bias = 0.0 } # b_skyros_sporades
+
+### MALIS
+# 160 = { winter_severity_bias = 0.0 } # b_phalara_lamia
+# 161 = { winter_severity_bias = 0.0 } # b_lamia_lamia
+# 162 = { winter_severity_bias = 0.0 } # b_herakleia_trachinia_trachis
+# 493 = { winter_severity_bias = 0.0 } # b_pyra_trachis
+# 163 = { winter_severity_bias = 0.0 } # b_hypata_ainis
+# 164 = { winter_severity_bias = 0.0 } # b_spercheiai_ainis
+# 145 = { winter_severity_bias = 0.0 } # b_ktimene_dolopia
+# 193 = { winter_severity_bias = 0.0 } # b_angeia_dolopia
+
+### ACHAIA PHTHIOTIS
+# 176 = { winter_severity_bias = 0.0 } # b_itonos_thebai_phthiotides
+# 177 = { winter_severity_bias = 0.0 } # b_thebai_phthiotides_thebai_phthiotides
+# 178 = { winter_severity_bias = 0.0 } # b_pyrasos_thebai_phthiotides
+# 179 = { winter_severity_bias = 0.0 } # b_eretria_thebai_phthiotides
+# 174 = { winter_severity_bias = 0.0 } # b_larissa_kremaste_larissa_kremaste
+# 175 = { winter_severity_bias = 0.0 } # b_halos_larissa_kremaste
+# 180 = { winter_severity_bias = 0.0 } # b_proerna_proerna
+# 182 = { winter_severity_bias = 0.0 } # b_thaumakoi_proerna
+# 183 = { winter_severity_bias = 0.0 } # b_ekarra_proerna
+# 181 = { winter_severity_bias = 0.0 } # b_melitaia_melitaia
+# 494 = { winter_severity_bias = 0.0 } # b_xyniai_melitaia
+# 881 = { winter_severity_bias = 0.0 } # b_peuma_melitaia
+
+### PELASGIOTIS
+# 190 = { winter_severity_bias = 0.0 } # b_larissa_larissa
+# 191 = { winter_severity_bias = 0.0 } # b_chalkai_larissa
+# 192 = { winter_severity_bias = 0.0 } # b_gyrtone_larissa
+# 882 = { winter_severity_bias = 0.0 } # b_tripolis_larissa
+# 209 = { winter_severity_bias = 0.0 } # b_kondaia_argoura
+# 210 = { winter_severity_bias = 0.0 } # b_argoura_argoura
+# 185 = { winter_severity_bias = 0.0 } # b_pherai_pherai_pelasgiotis
+# 186 = { winter_severity_bias = 0.0 } # b_armenion_pherai_pelasgiotis
+# 187 = { winter_severity_bias = 0.0 } # b_skotoussa_pherai_pelasgiotis
+# 188 = { winter_severity_bias = 0.0 } # b_krannon_krannon
+# 189 = { winter_severity_bias = 0.0 } # b_atrax_krannon
+
+### THESSALIOTIS
+# 196 = { winter_severity_bias = 0.0 } # b_limnaion_pharsalos
+# 197 = { winter_severity_bias = 0.0 } # b_euhydrion_pharsalos
+# 198 = { winter_severity_bias = 0.0 } # b_thetonion_pharsalos
+# 199 = { winter_severity_bias = 0.0 } # b_pharsalos_pharsalos
+# 194 = { winter_severity_bias = 0.0 } # b_philia_kierion
+# 195 = { winter_severity_bias = 0.0 } # b_kierion_kierion
+# 879 = { winter_severity_bias = 0.0 } # b_methylion_kierion
+
+### HESTIAIOTIS
+# 202 = { winter_severity_bias = 0.0 } # b_pialeia_trikka
+# 203 = { winter_severity_bias = 0.0 } # b_trikka_trikka
+# 204 = { winter_severity_bias = 0.0 } # b_pelinna_trikka
+# 205 = { winter_severity_bias = 0.0 } # b_pharkadon_trikka
+# 200 = { winter_severity_bias = 0.0 } # b_metropolis_metropolis
+# 201 = { winter_severity_bias = 0.0 } # b_gomphoi_metropolis
 303 = { winter_severity_bias = @light_coverage } # b_phaloreia_phaloreia
 304 = { winter_severity_bias = @light_coverage } # b_oxyneia_phaloreia
+
+### PERRHAIBIA
+211 = { winter_severity_bias = @light_coverage } # b_phalanna_olooson
+212 = { winter_severity_bias = @light_coverage } # b_chyretiai_olooson
+213 = { winter_severity_bias = @light_coverage } # b_malloia_olooson
+215 = { winter_severity_bias = @light_coverage } # b_olooson_olooson
+# 207 = { winter_severity_bias = 0.0 } # b_gonnoi_gonnoi
+208 = { winter_severity_bias = @light_coverage } # b_askyris_gonnoi
+214 = { winter_severity_bias = @light_coverage } # b_azoros_tripolis
+696 = { winter_severity_bias = @light_coverage } # b_doliche_tripolis
+697 = { winter_severity_bias = @light_coverage } # b_pythion_tripolis
+
+## EPEIROS ###################################
+### DRYOPIS
+222 = { winter_severity_bias = @light_coverage } # b_ambrakos_ambrakia
+223 = { winter_severity_bias = @light_coverage } # b_ambrakia_ambrakia
+495 = { winter_severity_bias = @light_coverage } # b_horraon_ambrakia
+# 220 = { winter_severity_bias = 0.0 } # b_argos_amphilochia
+221 = { winter_severity_bias = @light_coverage } # b_idomene_amphilochia
+
+### ATHAMANIA
+218 = { winter_severity_bias = @light_coverage } # b_argithaia_argithaia
+500 = { winter_severity_bias = @light_coverage } # b_athenaion_argithaia
+501 = { winter_severity_bias = @light_coverage } # b_herakleia_argithaia
+219 = { winter_severity_bias = @light_coverage } # b_theudoria_chalkis_athamania
+499 = { winter_severity_bias = @light_coverage } # b_chalkis_chalkis_athamania
+872 = { winter_severity_bias = @light_coverage } # b_tetraphylia_tetraphylia
+875 = { winter_severity_bias = @light_coverage } # b_aithikia_tetraphylia
+
+### THESPROTIA
+227 = { winter_severity_bias = @light_coverage } # b_elea_kichyros
+229 = { winter_severity_bias = @light_coverage } # b_kichyros_kichyros
+224 = { winter_severity_bias = @light_coverage } # b_batiai_kassope
+225 = { winter_severity_bias = @light_coverage } # b_kassope_kassope
+228 = { winter_severity_bias = @light_coverage } # b_elinia_gitana
+243 = { winter_severity_bias = @light_coverage } # b_gitana_gitana
+
+### MOLOSSIS
+234 = { winter_severity_bias = @light_coverage } # b_dodona_dodona
+226 = { winter_severity_bias = @light_coverage } # b_onopernoi_dodona
+235 = { winter_severity_bias = @light_coverage } # b_eurymenai_passaron
+237 = { winter_severity_bias = @light_coverage } # b_passaron_passaron
+239 = { winter_severity_bias = @light_coverage } # b_helikranon_passaron
+238 = { winter_severity_bias = @light_coverage } # b_ilion_phanota
+246 = { winter_severity_bias = @light_coverage } # b_phanota_phanota
+
+### CHAONIA
+244 = { winter_severity_bias = @light_coverage } # b_bouthroton_phoinike
+245 = { winter_severity_bias = @light_coverage } # b_phoinike_phoinike
+247 = { winter_severity_bias = @medium_coverage } # b_antigoneia_antigoneia
+252 = { winter_severity_bias = @medium_coverage } # b_hekatompedon_antigoneia
+248 = { winter_severity_bias = @light_coverage } # b_panormos_orikon
+249 = { winter_severity_bias = @light_coverage } # b_orikon_orikon
+250 = { winter_severity_bias = @light_coverage } # b_aulon_amantia
+251 = { winter_severity_bias = @light_coverage } # b_amantia_amantia
+
+### PARAUAIA
+253 = { winter_severity_bias = @medium_coverage } # b_eriboia_paroraia
+266 = { winter_severity_bias = @medium_coverage } # b_paroraia_paroraia
+264 = { winter_severity_bias = @medium_coverage } # b_phrourion_pyrrhou_triphylia
+265 = { winter_severity_bias = @medium_coverage } # b_artichia_triphylia
+
+### TYMPHAIA
 305 = { winter_severity_bias = @light_coverage } # b_herkeia_aiginion
-306 = { winter_severity_bias = @light_coverage } # b_tela_eratyra
 307 = { winter_severity_bias = @light_coverage } # b_aiginion_aiginion
 308 = { winter_severity_bias = @light_coverage } # b_genoaioi_aiginion
-309 = { winter_severity_bias = @light_coverage } # b_eratyra_eratyra
-310 = { winter_severity_bias = @light_coverage } # b_hekateion_ethnestai
+236 = { winter_severity_bias = @light_coverage } # b_bouneima_trampya
+504 = { winter_severity_bias = @light_coverage } # b_trampya_trampya
+
+### ORESTIS
 311 = { winter_severity_bias = @medium_coverage } # b_argos_orestikon_argos_orestikon
+854 = { winter_severity_bias = @medium_coverage } # b_battyna_argos_orestikon
 312 = { winter_severity_bias = @medium_coverage } # b_keletron_keletron
-313 = { winter_severity_bias = @medium_coverage } # b_pelion_pelion
-314 = { winter_severity_bias = @medium_coverage } # b_psarades_pelion
 315 = { winter_severity_bias = @medium_coverage } # b_lyke_keletron
-319 = { winter_severity_bias = @medium_coverage } # b_melitonous_melitonous
-320 = { winter_severity_bias = @medium_coverage } # b_artemision_melitonous
-321 = { winter_severity_bias = @medium_coverage } # b_herakleia_lynkestis_herakleia_lynkestis
-322 = { winter_severity_bias = @medium_coverage } # b_parembole_herakleia_lynkestis
-323 = { winter_severity_bias = @medium_coverage } # b_dostoneoi_dostoneoi
-324 = { winter_severity_bias = @medium_coverage } # b_pluinna_dostoneoi
-325 = { winter_severity_bias = @medium_coverage } # b_pelagonia_stymbara
-326 = { winter_severity_bias = @medium_coverage } # b_stymbara_stymbara
-327 = { winter_severity_bias = @medium_coverage } # b_kolobaise_stymbara
-333 = { winter_severity_bias = 0.0 } # b_europos_pella
-334 = { winter_severity_bias = 0.0 } # b_moryllos_moryllos
-335 = { winter_severity_bias = 0.0 } # b_gortyna_eidomene
-336 = { winter_severity_bias = 0.0 } # b_eidomene_eidomene
-337 = { winter_severity_bias = 0.0 } # b_bragylai_moryllos
-338 = { winter_severity_bias = 0.0 } # b_ioros_moryllos
-341 = { winter_severity_bias = 0.0 } # b_anthemous_kalindoia
-342 = { winter_severity_bias = 0.0 } # b_kalindoia_kalindoia
-343 = { winter_severity_bias = 0.0 } # b_apollonia_arethousa
-344 = { winter_severity_bias = 0.0 } # b_arethousa_arethousa
-347 = { winter_severity_bias = 0.0 } # b_aineia_thessalonike
-348 = { winter_severity_bias = 0.0 } # b_spartolos_spartolos
-349 = { winter_severity_bias = 0.0 } # b_olynthos_olynthos
-350 = { winter_severity_bias = 0.0 } # b_kassandreia_kassandreia
-351 = { winter_severity_bias = 0.0 } # b_mende_kassandreia
-352 = { winter_severity_bias = 0.0 } # b_torone_torone
-353 = { winter_severity_bias = 0.0 } # b_singos_torone
-354 = { winter_severity_bias = 0.0 } # b_sermylia_olynthos
-355 = { winter_severity_bias = 0.0 } # b_akanthos_akanthos
-356 = { winter_severity_bias = 0.0 } # b_stageira_akanthos
-357 = { winter_severity_bias = 0.0 } # b_ouranopolis_akrothooi
-358 = { winter_severity_bias = 0.0 } # b_akrothooi_akrothooi
-359 = { winter_severity_bias = 0.0 } # b_lete_lete
-360 = { winter_severity_bias = 0.0 } # b_physka_lete
-361 = { winter_severity_bias = 0.0 } # b_arrolos_tragilos
-362 = { winter_severity_bias = 0.0 } # b_tragilos_tragilos
-363 = { winter_severity_bias = 0.0 } # b_mieza_berroia
-364 = { winter_severity_bias = 0.0 } # b_skotoussa_sirra
-365 = { winter_severity_bias = 0.0 } # b_berge_berge
-366 = { winter_severity_bias = 0.0 } # b_sirra_sirra
-367 = { winter_severity_bias = 0.0 } # b_gazoros_berge
-368 = { winter_severity_bias = 0.0 } # b_argilos_amphipolis
-369 = { winter_severity_bias = 0.0 } # b_amphipolis_amphipolis
-370 = { winter_severity_bias = 0.0 } # b_methone_amphipolis
-371 = { winter_severity_bias = 0.0 } # b_oisyme_amphipolis
-372 = { winter_severity_bias = 0.0 } # b_neapolis_philippoi
-373 = { winter_severity_bias = 0.0 } # b_philippoi_philippoi
-374 = { winter_severity_bias = 0.0 } # b_tripolis_philippoi
-375 = { winter_severity_bias = 0.0 } # b_domeros_philippoi
-842 = { winter_severity_bias = 0.0 } # b_petra_dion
-843 = { winter_severity_bias = 0.0 } # b_phylakai_dion
-846 = { winter_severity_bias = 0.0 } # b_aloros_aigai
+310 = { winter_severity_bias = @medium_coverage } # b_hekateion_ethnestai
+853 = { winter_severity_bias = @medium_coverage } # b_ethnestai_ethnestai
+
+## MAKEDONIA ###################################
+### BOTTIAIA
+283 = { winter_severity_bias = @light_coverage } # b_pella_pella
+284 = { winter_severity_bias = @light_coverage } # b_allante_pella
+333 = { winter_severity_bias = @light_coverage } # b_europos_pella
+276 = { winter_severity_bias = @light_coverage } # b_aigai_aigai
+846 = { winter_severity_bias = @light_coverage } # b_aloros_aigai
+279 = { winter_severity_bias = @light_coverage } # b_berroia_berroia
+363 = { winter_severity_bias = @light_coverage } # b_mieza_berroia
+890 = { winter_severity_bias = @light_coverage } # b_kyneoi_berroia
+280 = { winter_severity_bias = @light_coverage } # b_edessa_edessa
+281 = { winter_severity_bias = @light_coverage } # b_kyrros_edessa
+888 = { winter_severity_bias = @light_coverage } # b_skydra_edessa
+282 = { winter_severity_bias = @light_coverage } # b_europos_almopia
+889 = { winter_severity_bias = @light_coverage } # b_horma_almopia
+274 = { winter_severity_bias = @light_coverage } # b_leibethra_dion
+275 = { winter_severity_bias = @light_coverage } # b_dion_dion
+842 = { winter_severity_bias = @light_coverage } # b_petra_dion
+843 = { winter_severity_bias = @light_coverage } # b_phylakai_dion
+277 = { winter_severity_bias = @light_coverage } # b_pydna_pydna
+278 = { winter_severity_bias = @light_coverage } # b_methone_pydna
+335 = { winter_severity_bias = @light_coverage } # b_gortyna_eidomene
+336 = { winter_severity_bias = @light_coverage } # b_eidomene_eidomene
+
+### ELIMIOTIS
+292 = { winter_severity_bias = @light_coverage } # b_oblostos_aiane
+293 = { winter_severity_bias = @light_coverage } # b_aiane_aiane
 847 = { winter_severity_bias = @light_coverage } # b_alebaia_aiane
 848 = { winter_severity_bias = @light_coverage } # b_balla_aiane
+294 = { winter_severity_bias = @light_coverage } # b_arkynia_arkynia
 849 = { winter_severity_bias = @light_coverage } # b_megara_arkynia
-850 = { winter_severity_bias = @light_coverage } # b_greia_euia
+306 = { winter_severity_bias = @light_coverage } # b_tela_eratyra
+309 = { winter_severity_bias = @medium_coverage } # b_eratyra_eratyra
+
+### EORDAIA
+296 = { winter_severity_bias = @light_coverage } # b_arnisa_arnisa
+297 = { winter_severity_bias = @light_coverage } # b_kormestai_arnisa
 851 = { winter_severity_bias = @light_coverage } # b_krannestai_arnisa
-852 = { winter_severity_bias = @medium_coverage } # b_bryne_bokeria
-853 = { winter_severity_bias = @light_coverage } # b_ethnestai_ethnestai
-854 = { winter_severity_bias = @medium_coverage } # b_battyna_argos_orestikon
-868 = { winter_severity_bias = 0.0 } # b_tinde_spartolos
-856 = { winter_severity_bias = 0.0 } # b_poteidania_naupaktos
-857 = { winter_severity_bias = 0.0 } # b_makyneia_naupaktos
-859 = { winter_severity_bias = 0.0 } # b_pleuron_kalydon
-860 = { winter_severity_bias = 0.0 } # b_lysimacheia_lysimacheia_aitolia
-861 = { winter_severity_bias = 0.0 } # b_eiteia_eurytania
-862 = { winter_severity_bias = @light_coverage } # b_eurytania_eurytania
-863 = { winter_severity_bias = 0.0 } # b_ephyra_agraia
-864 = { winter_severity_bias = 0.0 } # b_limnaia_stratos
-865 = { winter_severity_bias = 0.0 } # b_phoitiai_stratos
-866 = { winter_severity_bias = 0.0 } # b_hellomenon_leukas
-867 = { winter_severity_bias = @light_coverage } # b_aperantia_aperantia
-888 = { winter_severity_bias = 0.0 } # b_skydra_edessa
-889 = { winter_severity_bias = 0.0 } # b_horma_almopia
-890 = { winter_severity_bias = 0.0 } # b_kyneoi_berroia
-897 = { winter_severity_bias = 0.0 } # b_stolos_olynthos
-898 = { winter_severity_bias = 0.0 } # b_ossa_ossa
-899 = { winter_severity_bias = 0.0 } # b_xylopolis_lete
-900 = { winter_severity_bias = 0.0 } # b_gareskos_gareskos
-901 = { winter_severity_bias = 0.0 } # b_kallipolis_gareskos
-902 = { winter_severity_bias = 0.0 } # b_bedyndia_ossa
-903 = { winter_severity_bias = 0.0 } # b_euporia_tragilos
+298 = { winter_severity_bias = @light_coverage } # b_kellai_bokeria
+299 = { winter_severity_bias = @light_coverage } # b_bokeria_bokeria
+852 = { winter_severity_bias = @light_coverage } # b_bryne_bokeria
+295 = { winter_severity_bias = @light_coverage } # b_euia_euia
+850 = { winter_severity_bias = @light_coverage } # b_greia_euia
 
-### KRETA
-399 = { winter_severity_bias = 0.0 } # b_astypalaia_astypalaia
-400 = { winter_severity_bias = 0.0 } # b_itanos_itanos
-401 = { winter_severity_bias = 0.0 } # b_praisos_praisos
-402 = { winter_severity_bias = 0.0 } # b_hierapytna_hierapytna
-403 = { winter_severity_bias = 0.0 } # b_olous_lyktos
-404 = { winter_severity_bias = 0.0 } # b_priansos_hierapytna
-406 = { winter_severity_bias = 0.0 } # b_lyktos_lyktos
-407 = { winter_severity_bias = 0.0 } # b_arkades_hierapytna
-408 = { winter_severity_bias = 0.0 } # b_rhaukos_knossos
-409 = { winter_severity_bias = 0.0 } # b_gortyn_gortyn
-410 = { winter_severity_bias = 0.0 } # b_idaion_antron_gortyn
-411 = { winter_severity_bias = 0.0 } # b_sybrita_eleutherna
-412 = { winter_severity_bias = 0.0 } # b_kaudos_gortyn
-413 = { winter_severity_bias = 0.0 } # b_knossos_knossos
-414 = { winter_severity_bias = 0.0 } # b_axos_knossos
-415 = { winter_severity_bias = 0.0 } # b_eleutherna_eleutherna
-417 = { winter_severity_bias = 0.0 } # b_phoinix_oreia
-418 = { winter_severity_bias = 0.0 } # b_lappa_lappa
-419 = { winter_severity_bias = 0.0 } # b_aptera_lappa
-420 = { winter_severity_bias = 0.0 } # b_kydonia_kydonia
-421 = { winter_severity_bias = 0.0 } # b_diktynnaion_polyrhen
-422 = { winter_severity_bias = 0.0 } # b_polyrhen_polyrhen
-423 = { winter_severity_bias = 0.0 } # b_kantanos_polyrhen
-424 = { winter_severity_bias = 0.0 } # b_hyrtakina_oreia
-698 = { winter_severity_bias = 0.0 } # b_keraia_kydonia
-699 = { winter_severity_bias = 0.0 } # b_phaistos_gortyn
-700 = { winter_severity_bias = 0.0 } # b_stalai_praisos
-701 = { winter_severity_bias = 0.0 } # b_eleia_itanos
+### LYNKESTIS
+321 = { winter_severity_bias = @medium_coverage } # b_herakleia_lynkestis_herakleia_lynkestis
+322 = { winter_severity_bias = @medium_coverage } # b_parembole_herakleia_lynkestis
+319 = { winter_severity_bias = @medium_coverage } # b_melitonous_melitonous
+320 = { winter_severity_bias = @medium_coverage } # b_artemision_melitonous
 
-### PROPONTIS
-452 = { winter_severity_bias = 0.0 } # b_alyke_thasos
-453 = { winter_severity_bias = 0.0 } # b_thasos_thasos
-454 = { winter_severity_bias = 0.0 } # b_pistyros_thasos
-455 = { winter_severity_bias = 0.0 } # b_abdera_abdera
-457 = { winter_severity_bias = 0.0 } # b_bergepolis_abdera
-458 = { winter_severity_bias = 0.0 } # b_dikaia_abdera
-459 = { winter_severity_bias = 0.0 } # b_stryme_maroneia
-461 = { winter_severity_bias = 0.0 } # b_maroneia_maroneia
-464 = { winter_severity_bias = 0.0 } # b_samothrake_samothrake
-465 = { winter_severity_bias = 0.0 } # b_zone_samothrake
-466 = { winter_severity_bias = 0.0 } # b_sale_samothrake
-467 = { winter_severity_bias = 0.0 } # b_ainos_ainos
-468 = { winter_severity_bias = 0.0 } # b_kolla_ainos
-469 = { winter_severity_bias = 0.0 } # b_deris_ainos
-470 = { winter_severity_bias = 0.0 } # b_lysimachia_chersonesos_thrace
-471 = { winter_severity_bias = 0.0 } # b_sestos_chersonesos_thrace
-472 = { winter_severity_bias = 0.0 } # b_alopekonnesos_chersonesos_thrace
-473 = { winter_severity_bias = 0.0 } # b_elaious_chersonesos_thrace
-474 = { winter_severity_bias = 0.0 } # b_kobrys_bisanthe
-475 = { winter_severity_bias = 0.0 } # b_neapolis_herakleia_bisanthe
-476 = { winter_severity_bias = 0.0 } # b_bisanthe_bisanthe
-477 = { winter_severity_bias = 0.0 } # b_heraion_perinthos
-478 = { winter_severity_bias = 0.0 } # b_perinthos_perinthos
-479 = { winter_severity_bias = 0.0 } # b_daunion_teichos_perinthos
-480 = { winter_severity_bias = 0.0 } # b_selymbria_selymbria
-481 = { winter_severity_bias = 0.0 } # b_kallon_selymbria
-482 = { winter_severity_bias = 0.0 } # b_statuas_selymbria
-483 = { winter_severity_bias = 0.0 } # b_athyras_byzantion
-484 = { winter_severity_bias = 0.0 } # b_melantias_byzantion
-485 = { winter_severity_bias = 0.0 } # b_byzantion_byzantion
-486 = { winter_severity_bias = 0.0 } # b_timaia_byzantion
-487 = { winter_severity_bias = 0.0 } # b_delkos_byzantion
+### AMPHAXITIS
+285 = { winter_severity_bias = @light_coverage } # b_chalastra_thessalonike
+286 = { winter_severity_bias = @light_coverage } # b_sindos_thessalonike
+287 = { winter_severity_bias = @light_coverage } # b_thessalonike_thessalonike
+347 = { winter_severity_bias = @light_coverage } # b_aineia_thessalonike
+900 = { winter_severity_bias = @light_coverage } # b_gareskos_gareskos
+901 = { winter_severity_bias = @light_coverage } # b_kallipolis_gareskos
+334 = { winter_severity_bias = @light_coverage } # b_moryllos_moryllos
+337 = { winter_severity_bias = @light_coverage } # b_bragylai_moryllos
+338 = { winter_severity_bias = @light_coverage } # b_ioros_moryllos
+341 = { winter_severity_bias = @light_coverage } # b_anthemous_kalindoia
+342 = { winter_severity_bias = @light_coverage } # b_kalindoia_kalindoia
+343 = { winter_severity_bias = @light_coverage } # b_apollonia_arethousa
+344 = { winter_severity_bias = @light_coverage } # b_arethousa_arethousa
+359 = { winter_severity_bias = @light_coverage } # b_lete_lete
+360 = { winter_severity_bias = @light_coverage } # b_physka_lete
+899 = { winter_severity_bias = @light_coverage } # b_xylopolis_lete
 
-### PHRYGIA
-505 = { winter_severity_bias = 0.0 } # b_myrina_lemnos
-506 = { winter_severity_bias = 0.0 } # b_hephaistia_lemnos
-507 = { winter_severity_bias = 0.0 } # b_imbros_lemnos
-508 = { winter_severity_bias = 0.0 } # b_gargara_assos
-509 = { winter_severity_bias = 0.0 } # b_assos_assos
-510 = { winter_severity_bias = 0.0 } # b_larisa_alexandria_troas
-511 = { winter_severity_bias = 0.0 } # b_alexandria_troas_alexandria_troas
-512 = { winter_severity_bias = 0.0 } # b_kebren_alexandria_troas
-513 = { winter_severity_bias = 0.0 } # b_tenedos_ilion
-514 = { winter_severity_bias = 0.0 } # b_ilion_ilion
-515 = { winter_severity_bias = 0.0 } # b_skamandreia_ilion
-516 = { winter_severity_bias = 0.0 } # b_gergis_skepsis
-517 = { winter_severity_bias = 0.0 } # b_skepsis_skepsis
-518 = { winter_severity_bias = 0.0 } # b_kenchreai_skepsis
-519 = { winter_severity_bias = 0.0 } # b_dardanos_abydos
-520 = { winter_severity_bias = 0.0 } # b_kremaste_abydos
-521 = { winter_severity_bias = 0.0 } # b_abydos_abydos
-522 = { winter_severity_bias = 0.0 } # b_perkote_lampsakos
-523 = { winter_severity_bias = 0.0 } # b_lampsakos_lampsakos
-524 = { winter_severity_bias = 0.0 } # b_kolonai_lampsakos
-526 = { winter_severity_bias = 0.0 } # b_antandros_assos
-527 = { winter_severity_bias = 0.0 } # b_lyrnessos_adramyttion
-528 = { winter_severity_bias = 0.0 } # b_adramyttion_adramyttion
-533 = { winter_severity_bias = 0.0 } # b_perperene_pergamon
-534 = { winter_severity_bias = 0.0 } # b_teuthrania_pergamon
-535 = { winter_severity_bias = 0.0 } # b_pergamon_pergamon
-707 = { winter_severity_bias = 0.0 } # b_parion_parion
-708 = { winter_severity_bias = 0.0 } # b_priapos_parion
-709 = { winter_severity_bias = 0.0 } # b_didymateiche_parion
-710 = { winter_severity_bias = 0.0 } # b_kale_peuke_karesene
-711 = { winter_severity_bias = 0.0 } # b_argyria_argyria
-712 = { winter_severity_bias = 0.0 } # b_argiza_argyria
-713 = { winter_severity_bias = 0.0 } # b_karesos_karesene
-714 = { winter_severity_bias = 0.0 } # b_zeleia_zeleia
-715 = { winter_severity_bias = 0.0 } # b_baris_zeleia
-716 = { winter_severity_bias = 0.0 } # b_poimanenon_daskyleion
-717 = { winter_severity_bias = 0.0 } # b_daskyleion_daskyleion
-718 = { winter_severity_bias = 0.0 } # b_miletouteichos_miletopolis
-719 = { winter_severity_bias = 0.0 } # b_kyzikos_kyzikos
-720 = { winter_severity_bias = 0.0 } # b_artake_kyzikos
-721 = { winter_severity_bias = 0.0 } # b_prokonnesos_kyzikos
-722 = { winter_severity_bias = 0.0 } # b_plakia_kyzikos
-723 = { winter_severity_bias = 0.0 } # b_apollonia_apollonia_rhyndakon
-724 = { winter_severity_bias = 0.0 } # b_daphnous_apollonia_rhyndakon
-725 = { winter_severity_bias = 0.0 } # b_miletopolis_miletopolis
-726 = { winter_severity_bias = 0.0 } # b_tibbai_nakrason
-727 = { winter_severity_bias = 0.0 } # b_nakrason_nakrason
-728 = { winter_severity_bias = 0.0 } # b_hiera_germe_hiera_germe
-729 = { winter_severity_bias = 0.0 } # b_gambreion_gambreion
-730 = { winter_severity_bias = 0.0 } # b_parthenion_gambreion
-731 = { winter_severity_bias = 0.0 } # b_pioniai_pioniai
-732 = { winter_severity_bias = 0.0 } # b_apias_pioniai
-733 = { winter_severity_bias = 0.0 } # b_gergitha_attea
-734 = { winter_severity_bias = 0.0 } # b_attea_attea
-735 = { winter_severity_bias = 0.0 } # b_laneion_pericharaxis
-736 = { winter_severity_bias = 0.0 } # b_pericharaxis_pericharaxis
-740 = { winter_severity_bias = 0.0 } # b_mekestaleia_abbaiatis
-741 = { winter_severity_bias = 0.0 } # b_zeus_thimenos_ariste
-742 = { winter_severity_bias = 0.0 } # b_kybele_ariste
-743 = { winter_severity_bias = 0.0 } # b_ariste_ariste
-744 = { winter_severity_bias = 0.0 } # b_sittena_skodrena
-745 = { winter_severity_bias = 0.0 } # b_zeus_kersoullos_olympene
-746 = { winter_severity_bias = 0.0 } # b_dagoutene_olympene
-747 = { winter_severity_bias = 0.0 } # b_kybele_palox
-748 = { winter_severity_bias = 0.0 } # b_palox_palox
-749 = { winter_severity_bias = 0.0 } # b_aliana_synaos
-750 = { winter_severity_bias = 0.0 } # b_akrokos_synaos
-751 = { winter_severity_bias = 0.0 } # b_skodrena_skodrena
-752 = { winter_severity_bias = 0.0 } # b_synaos_synaos
-753 = { winter_severity_bias = 0.0 } # b_ankyra_abbaiatis
-754 = { winter_severity_bias = 0.0 } # b_helge_myrleia
-756 = { winter_severity_bias = 0.0 } # b_tataula_sarkotyle
-757 = { winter_severity_bias = 0.0 } # b_sarkotyle_sarkotyle
-758 = { winter_severity_bias = 0.0 } # b_myrleia_myrleia
-759 = { winter_severity_bias = 0.0 } # b_kios_kios
-760 = { winter_severity_bias = 0.0 } # b_triton_pylai
-762 = { winter_severity_bias = 0.0 } # b_charmidea_kios
-763 = { winter_severity_bias = 0.0 } # b_pythopolis_kios
-764 = { winter_severity_bias = 0.0 } # b_otroia_otroia
-765 = { winter_severity_bias = 0.0 } # b_terbos_nikaia
-766 = { winter_severity_bias = 0.0 } # b_nikaia_nikaia
-767 = { winter_severity_bias = 0.0 } # b_tetrakomia_kios
-768 = { winter_severity_bias = 0.0 } # b_diolkides_astakos
-769 = { winter_severity_bias = 0.0 } # b_prainetos_nikaia
-770 = { winter_severity_bias = 0.0 } # b_pylai_pylai
-772 = { winter_severity_bias = 0.0 } # b_astakos_astakos
-773 = { winter_severity_bias = 0.0 } # b_kassa_kassa
-774 = { winter_severity_bias = 0.0 } # b_prindea_kassa
-775 = { winter_severity_bias = 0.0 } # b_charax_astakos
-776 = { winter_severity_bias = 0.0 } # b_libyssa_astakos
-777 = { winter_severity_bias = 0.0 } # b_chalkedon_chalkedon
-778 = { winter_severity_bias = 0.0 } # b_chrysopolis_chalkedon
-779 = { winter_severity_bias = 0.0 } # b_hieron_chalkedon
-780 = { winter_severity_bias = 0.0 } # b_artanes_artanes
-781 = { winter_severity_bias = 0.0 } # b_psarela_kypra
-782 = { winter_severity_bias = 0.0 } # b_psillion_artanes
-783 = { winter_severity_bias = 0.0 } # b_kypra_kypra
-784 = { winter_severity_bias = 0.0 } # b_trikomia_kypra
-785 = { winter_severity_bias = 0.0 } # b_kalpe_kalpe
-786 = { winter_severity_bias = 0.0 } # b_chelai_kalpe
-793 = { winter_severity_bias = 0.0 } # b_tarsos_hypios
-794 = { winter_severity_bias = 0.0 } # b_hypios_hypios
-795 = { winter_severity_bias = 0.0 } # b_kieros_kieros
-796 = { winter_severity_bias = 0.0 } # b_embolos_kieros
-797 = { winter_severity_bias = 0.0 } # b_bithynion_salon
-798 = { winter_severity_bias = 0.0 } # b_dadokome_salon
-799 = { winter_severity_bias = 0.0 } # b_diospolis_kieros
-800 = { winter_severity_bias = 0.0 } # b_elaios_herakleia_pontica
-801 = { winter_severity_bias = 0.0 } # b_kales_herakleia_pontica
-802 = { winter_severity_bias = 0.0 } # b_herakleia_herakleia_pontica
-803 = { winter_severity_bias = 0.0 } # b_oxinas_herakleia_pontica
-804 = { winter_severity_bias = 0.0 } # b_sandarake_tios
-805 = { winter_severity_bias = 0.0 } # b_tios_tios
-806 = { winter_severity_bias = 0.0 } # b_kizoura_nikaia
-807 = { winter_severity_bias = 0.0 } # b_erakla_tattaios
-808 = { winter_severity_bias = 0.0 } # b_agrilion_otroia
-809 = { winter_severity_bias = 0.0 } # b_dabla_trikomia
-810 = { winter_severity_bias = 0.0 } # b_lamounia_trikomia
-811 = { winter_severity_bias = 0.0 } # b_trikomia_trikomia
-814 = { winter_severity_bias = 0.0 } # b_gordioukome_gordioukome
-815 = { winter_severity_bias = 0.0 } # b_dadastana_gordioukome
-816 = { winter_severity_bias = 0.0 } # b_apsoda_gordioukome
-817 = { winter_severity_bias = 0.0 } # b_katapaspanas_ontoraita
-818 = { winter_severity_bias = 0.0 } # b_cenon_gallicanon_ontoraita
-819 = { winter_severity_bias = 0.0 } # b_modra_gallos
-820 = { winter_severity_bias = 0.0 } # b_gallos_gallos
-821 = { winter_severity_bias = 0.0 } # b_ontoraita_ontoraita
-822 = { winter_severity_bias = 0.0 } # b_tattaios_tattaios
-823 = { winter_severity_bias = 0.0 } # b_thebe_adramyttion
-824 = { winter_severity_bias = 0.0 } # b_kisthene_atarneus
-825 = { winter_severity_bias = 0.0 } # b_atarneus_atarneus
-827 = { winter_severity_bias = 0.0 } # b_halisarna_pergamon
-828 = { winter_severity_bias = 0.0 } # b_apollonia_hiera_germe
+### CHALKIDIKE
+# 350 = { winter_severity_bias = 0.0 } # b_kassandreia_kassandreia
+# 351 = { winter_severity_bias = 0.0 } # b_mende_kassandreia
+348 = { winter_severity_bias = @light_coverage } # b_spartolos_spartolos
+868 = { winter_severity_bias = @light_coverage } # b_tinde_spartolos
+# 352 = { winter_severity_bias = 0.0 } # b_torone_torone
+# 353 = { winter_severity_bias = 0.0 } # b_singos_torone
+349 = { winter_severity_bias = @light_coverage } # b_olynthos_olynthos
+354 = { winter_severity_bias = @light_coverage } # b_sermylia_olynthos
+897 = { winter_severity_bias = @light_coverage } # b_stolos_olynthos
+355 = { winter_severity_bias = @light_coverage } # b_akanthos_akanthos
+356 = { winter_severity_bias = @light_coverage } # b_stageira_akanthos
+# 357 = { winter_severity_bias = 0.0 } # b_ouranopolis_akrothooi
+# 358 = { winter_severity_bias = 0.0 } # b_akrothooi_akrothooi
 
-### LYDIA
-529 = { winter_severity_bias = 0.0 } # b_nasos_mytilene
-530 = { winter_severity_bias = 0.0 } # b_mytilene_mytilene
-531 = { winter_severity_bias = 0.0 } # b_methymna_methymna
-532 = { winter_severity_bias = 0.0 } # b_eresos_methymna
-536 = { winter_severity_bias = 0.0 } # b_elaia_elaia
-537 = { winter_severity_bias = 0.0 } # b_phokaia_phokaia
-538 = { winter_severity_bias = 0.0 } # b_kyllene_phokaia
-539 = { winter_severity_bias = 0.0 } # b_kyme_kyme
-540 = { winter_severity_bias = 0.0 } # b_aigai_kyme
-541 = { winter_severity_bias = 0.0 } # b_temnos_kyme
-546 = { winter_severity_bias = 0.0 } # b_smyrna_klazomenai
-547 = { winter_severity_bias = 0.0 } # b_metropolis_klazomenai
-548 = { winter_severity_bias = 0.0 } # b_klazomenai_klazomenai
-549 = { winter_severity_bias = 0.0 } # b_erythrai_erythrai
-550 = { winter_severity_bias = 0.0 } # b_polichna_erythrai
-551 = { winter_severity_bias = 0.0 } # b_boutheia_erythrai
-552 = { winter_severity_bias = 0.0 } # b_chios_chios
-553 = { winter_severity_bias = 0.0 } # b_phanai_chios
-554 = { winter_severity_bias = 0.0 } # b_teos_kolophon
-555 = { winter_severity_bias = 0.0 } # b_lebedos_kolophon
-556 = { winter_severity_bias = 0.0 } # b_kolophon_kolophon
-557 = { winter_severity_bias = 0.0 } # b_ephesos_ephesos
-558 = { winter_severity_bias = 0.0 } # b_priene_ephesos
-560 = { winter_severity_bias = 0.0 } # b_anaia_samos
-561 = { winter_severity_bias = 0.0 } # b_samos_samos
-562 = { winter_severity_bias = 0.0 } # b_kalamoi_samos
-563 = { winter_severity_bias = 0.0 } # b_therma_ikaros
-564 = { winter_severity_bias = 0.0 } # b_oinoe_ikaros
-570 = { winter_severity_bias = 0.0 } # b_maiandros_ephesos
-621 = { winter_severity_bias = 0.0 } # b_attouda_kolossai
-622 = { winter_severity_bias = 0.0 } # b_laodikeia_kolossai
-623 = { winter_severity_bias = 0.0 } # b_kolossai_kolossai
-641 = { winter_severity_bias = 0.0 } # b_nysa_magnesia_lydia
-642 = { winter_severity_bias = 0.0 } # b_euanthia_magnesia_lydia
-643 = { winter_severity_bias = 0.0 } # b_magnesia_magnesia_lydia
-644 = { winter_severity_bias = 0.0 } # b_anokome_anokome
-645 = { winter_severity_bias = 0.0 } # b_chondra_anokome
-646 = { winter_severity_bias = 0.0 } # b_siklia_hypaipa
-647 = { winter_severity_bias = 0.0 } # b_hypaipa_hypaipa
-648 = { winter_severity_bias = 0.0 } # b_kleimaka_hypaipa
-649 = { winter_severity_bias = 0.0 } # b_kaira_kaira
-650 = { winter_severity_bias = 0.0 } # b_palaiapolis_kaira
-651 = { winter_severity_bias = 0.0 } # b_koloe_koloe
-652 = { winter_severity_bias = 0.0 } # b_tarigya_koloe
-653 = { winter_severity_bias = 0.0 } # b_mostene_magnesia_sipylon
-654 = { winter_severity_bias = 0.0 } # b_troketta_sardis
-655 = { winter_severity_bias = 0.0 } # b_tmolos_sardis
-656 = { winter_severity_bias = 0.0 } # b_sardis_sardis
-657 = { winter_severity_bias = 0.0 } # b_daldis_daldis
-658 = { winter_severity_bias = 0.0 } # b_tomara_sardis
-659 = { winter_severity_bias = 0.0 } # b_maiboza_sardis
-660 = { winter_severity_bias = 0.0 } # b_thyateira_thyateira
-661 = { winter_severity_bias = 0.0 } # b_kamai_thyateira
-662 = { winter_severity_bias = 0.0 } # b_hierokome_thyateira
-663 = { winter_severity_bias = 0.0 } # b_hyrkanis_magnesia_sipylon
-664 = { winter_severity_bias = 0.0 } # b_magnesia_magnesia_sipylon
-666 = { winter_severity_bias = 0.0 } # b_gordos_daldis
-667 = { winter_severity_bias = 0.0 } # b_antigonios_saittai
-668 = { winter_severity_bias = 0.0 } # b_sabazios_silandos
-669 = { winter_severity_bias = 0.0 } # b_odon_saittai
-670 = { winter_severity_bias = 0.0 } # b_saittai_saittai
-671 = { winter_severity_bias = 0.0 } # b_silandos_silandos
-672 = { winter_severity_bias = 0.0 } # b_bagis_tabala
-673 = { winter_severity_bias = 0.0 } # b_tabala_tabala
-674 = { winter_severity_bias = 0.0 } # b_kastolos_tabala
-675 = { winter_severity_bias = 0.0 } # b_satala_philadelphaia
-676 = { winter_severity_bias = 0.0 } # b_maionia_philadelphaia
-677 = { winter_severity_bias = 0.0 } # b_philadelphaia_philadelphaia
-678 = { winter_severity_bias = 0.0 } # b_phileis_apollonos
-679 = { winter_severity_bias = 0.0 } # b_apollonos_apollonos
-680 = { winter_severity_bias = 0.0 } # b_lyendos_temenouthyrai
-681 = { winter_severity_bias = 0.0 } # b_asteles_temenouthyrai
-682 = { winter_severity_bias = 0.0 } # b_temenouthyrai_temenouthyrai
-683 = { winter_severity_bias = 0.0 } # b_blaundos_blaundos
-684 = { winter_severity_bias = 0.0 } # b_sebaste_blaundos
-685 = { winter_severity_bias = 0.0 } # b_dioskome_blaundos
-686 = { winter_severity_bias = 0.0 } # b_akmonia_akmonia
-687 = { winter_severity_bias = 0.0 } # b_panasion_akmonia
-688 = { winter_severity_bias = 0.0 } # b_lankena_akmonia
-689 = { winter_severity_bias = 0.0 } # b_dionysoupolis_mossyna
-690 = { winter_severity_bias = 0.0 } # b_motella_mossyna
-691 = { winter_severity_bias = 0.0 } # b_mossyna_mossyna
-692 = { winter_severity_bias = 0.0 } # b_thiounta_thiounta
-693 = { winter_severity_bias = 0.0 } # b_saloudeia_thiounta
-694 = { winter_severity_bias = 0.0 } # b_tripolis_tripolis_lydia
-695 = { winter_severity_bias = 0.0 } # b_hierapolis_tripolis_lydia
-826 = { winter_severity_bias = 0.0 } # b_pitane_elaia
-829 = { winter_severity_bias = 0.0 } # b_pyrrha_mytilene
-830 = { winter_severity_bias = 0.0 } # b_antissa_methymna
+### PARASTRYMONIA
+368 = { winter_severity_bias = @light_coverage } # b_argilos_amphipolis
+369 = { winter_severity_bias = @light_coverage } # b_amphipolis_amphipolis
+370 = { winter_severity_bias = @light_coverage } # b_methone_amphipolis
+371 = { winter_severity_bias = @light_coverage } # b_oisyme_amphipolis
+898 = { winter_severity_bias = @light_coverage } # b_ossa_ossa
+902 = { winter_severity_bias = @light_coverage } # b_bedyndia_ossa
+361 = { winter_severity_bias = @light_coverage } # b_arrolos_tragilos
+362 = { winter_severity_bias = @light_coverage } # b_tragilos_tragilos
+903 = { winter_severity_bias = @light_coverage } # b_euporia_tragilos
+365 = { winter_severity_bias = @light_coverage } # b_berge_berge
+367 = { winter_severity_bias = @light_coverage } # b_gazoros_berge
+364 = { winter_severity_bias = @light_coverage } # b_skotoussa_sirra
+366 = { winter_severity_bias = @light_coverage } # b_sirra_sirra
+372 = { winter_severity_bias = @light_coverage } # b_neapolis_philippoi
+373 = { winter_severity_bias = @light_coverage } # b_philippoi_philippoi
+374 = { winter_severity_bias = @light_coverage } # b_tripolis_philippoi
+375 = { winter_severity_bias = @light_coverage } # b_domeros_philippoi
 
-### KARIA
-559 = { winter_severity_bias = 0.0 } # b_myous_miletos
-571 = { winter_severity_bias = 0.0 } # b_ioniapolis_miletos
-572 = { winter_severity_bias = 0.0 } # b_miletos_miletos
-573 = { winter_severity_bias = 0.0 } # b_teichioussa_miletos
-574 = { winter_severity_bias = 0.0 } # b_lepsia_miletos
-575 = { winter_severity_bias = 0.0 } # b_kalymna_kos
-576 = { winter_severity_bias = 0.0 } # b_kos_kos
-577 = { winter_severity_bias = 0.0 } # b_astypalaia_kos
-578 = { winter_severity_bias = 0.0 } # b_mylasa_mylasa
-579 = { winter_severity_bias = 0.0 } # b_bargylia_mylasa
-580 = { winter_severity_bias = 0.0 } # b_hydissos_mylasa
-581 = { winter_severity_bias = 0.0 } # b_halikarnassos_halikarnassos
-582 = { winter_severity_bias = 0.0 } # b_theangela_halikarnassos
-583 = { winter_severity_bias = 0.0 } # b_keramos_halikarnassos
-584 = { winter_severity_bias = 0.0 } # b_idyma_idyma
-585 = { winter_severity_bias = 0.0 } # b_kyllandos_idyma
-586 = { winter_severity_bias = 0.0 } # b_physkos_idyma
-587 = { winter_severity_bias = 0.0 } # b_loryma_loryma
-588 = { winter_severity_bias = 0.0 } # b_syme_loryma
-589 = { winter_severity_bias = 0.0 } # b_kaunos_kaunos
-590 = { winter_severity_bias = 0.0 } # b_kalynda_kaunos
-591 = { winter_severity_bias = 0.0 } # b_stadia_knidos
-592 = { winter_severity_bias = 0.0 } # b_knidos_knidos
-593 = { winter_severity_bias = 0.0 } # b_telos_rhodos
-594 = { winter_severity_bias = 0.0 } # b_rhodos_rhodos
-595 = { winter_severity_bias = 0.0 } # b_kamiros_rhodos
-596 = { winter_severity_bias = 0.0 } # b_lindos_rhodos
-597 = { winter_severity_bias = 0.0 } # b_karpathos_karpathos
-598 = { winter_severity_bias = 0.0 } # b_kasos_karpathos
-603 = { winter_severity_bias = 0.0 } # b_amyzon_alexandreia_karia
-604 = { winter_severity_bias = 0.0 } # b_alexandreia_karia_alexandreia_karia
-605 = { winter_severity_bias = 0.0 } # b_alabanda_alabanda
-606 = { winter_severity_bias = 0.0 } # b_euhippe_alabanda
-607 = { winter_severity_bias = 0.0 } # b_gerga_alabanda
-608 = { winter_severity_bias = 0.0 } # b_chrysaoris_chrysaoris
-609 = { winter_severity_bias = 0.0 } # b_pisye_chrysaoris
-610 = { winter_severity_bias = 0.0 } # b_hyllarima_bargasa
-611 = { winter_severity_bias = 0.0 } # b_bargasa_bargasa
-612 = { winter_severity_bias = 0.0 } # b_harpasa_antiocheia_karia
-613 = { winter_severity_bias = 0.0 } # b_antiocheia_antiocheia_karia
-614 = { winter_severity_bias = 0.0 } # b_aphrodisias_aphrodisias
-615 = { winter_severity_bias = 0.0 } # b_herakleia_salbakes
-616 = { winter_severity_bias = 0.0 } # b_apollonia_salbakes
-617 = { winter_severity_bias = 0.0 } # b_plarasa_aphrodisias
-618 = { winter_severity_bias = 0.0 } # b_tabai_apollonia_salbakes
-619 = { winter_severity_bias = 0.0 } # b_kidrama_skiritis
-620 = { winter_severity_bias = 0.0 } # b_mokolda_skiritis
+## KRETA ###################################
+### ETEOKRETE
+# 402 = { winter_severity_bias = 0.0 } # b_hierapytna_hierapytna
+# 404 = { winter_severity_bias = 0.0 } # b_priansos_hierapytna
+# 407 = { winter_severity_bias = 0.0 } # b_arkades_hierapytna
+# 400 = { winter_severity_bias = 0.0 } # b_itanos_itanos
+# 701 = { winter_severity_bias = 0.0 } # b_eleia_itanos
+# 401 = { winter_severity_bias = 0.0 } # b_praisos_praisos
+# 700 = { winter_severity_bias = 0.0 } # b_stalai_praisos
+# 403 = { winter_severity_bias = 0.0 } # b_olous_lyktos
+# 406 = { winter_severity_bias = 0.0 } # b_lyktos_lyktos
+
+### KRETAIEIS
+# 409 = { winter_severity_bias = 0.0 } # b_gortyn_gortyn
+# 410 = { winter_severity_bias = 0.0 } # b_idaion_antron_gortyn
+# 412 = { winter_severity_bias = 0.0 } # b_kaudos_gortyn
+# 699 = { winter_severity_bias = 0.0 } # b_phaistos_gortyn
+# 411 = { winter_severity_bias = 0.0 } # b_sybrita_eleutherna
+# 415 = { winter_severity_bias = 0.0 } # b_eleutherna_eleutherna
+# 408 = { winter_severity_bias = 0.0 } # b_rhaukos_knossos
+# 413 = { winter_severity_bias = 0.0 } # b_knossos_knossos
+# 414 = { winter_severity_bias = 0.0 } # b_axos_knossos
+
+### KYDONIA
+# 421 = { winter_severity_bias = 0.0 } # b_diktynnaion_polyrhen
+# 422 = { winter_severity_bias = 0.0 } # b_polyrhen_polyrhen
+# 423 = { winter_severity_bias = 0.0 } # b_kantanos_polyrhen
+# 420 = { winter_severity_bias = 0.0 } # b_kydonia_kydonia
+# 698 = { winter_severity_bias = 0.0 } # b_keraia_kydonia
+# 418 = { winter_severity_bias = 0.0 } # b_lappa_lappa
+# 419 = { winter_severity_bias = 0.0 } # b_aptera_lappa
+# 417 = { winter_severity_bias = 0.0 } # b_phoinix_oreia
+# 424 = { winter_severity_bias = 0.0 } # b_hyrtakina_oreia
+
+## PROPONTIS ###################################
+### BRIANTIKE
+# 452 = { winter_severity_bias = 0.0 } # b_alyke_thasos
+# 453 = { winter_severity_bias = 0.0 } # b_thasos_thasos
+454 = { winter_severity_bias = @light_coverage } # b_pistyros_thasos
+455 = { winter_severity_bias = @light_coverage } # b_abdera_abdera
+457 = { winter_severity_bias = @light_coverage } # b_bergepolis_abdera
+458 = { winter_severity_bias = @light_coverage } # b_dikaia_abdera
+459 = { winter_severity_bias = @light_coverage } # b_stryme_maroneia
+461 = { winter_severity_bias = @light_coverage } # b_maroneia_maroneia
+# 464 = { winter_severity_bias = 0.0 } # b_samothrake_samothrake
+465 = { winter_severity_bias = @light_coverage } # b_zone_samothrake
+466 = { winter_severity_bias = @light_coverage } # b_sale_samothrake
+# 505 = { winter_severity_bias = 0.0 } # b_myrina_lemnos
+# 506 = { winter_severity_bias = 0.0 } # b_hephaistia_lemnos
+# 507 = { winter_severity_bias = 0.0 } # b_imbros_lemnos
+
+### APSINTHIS
+470 = { winter_severity_bias = @light_coverage } # b_lysimachia_chersonesos_thrace
+471 = { winter_severity_bias = @light_coverage } # b_sestos_chersonesos_thrace
+472 = { winter_severity_bias = @light_coverage } # b_alopekonnesos_chersonesos_thrace
+473 = { winter_severity_bias = @light_coverage } # b_elaious_chersonesos_thrace
+467 = { winter_severity_bias = @light_coverage } # b_ainos_ainos
+482 = { winter_severity_bias = @light_coverage } # b_doriskos_ainos
+1777 = { winter_severity_bias = @light_coverage } # b_sarpedon_ainos
+468 = { winter_severity_bias = @light_coverage } # b_mende_deris
+469 = { winter_severity_bias = @light_coverage } # b_deris_deris
+475 = { winter_severity_bias = @light_coverage } # b_ganos_bisanthe
+476 = { winter_severity_bias = @light_coverage } # b_bisanthe_bisanthe
+474 = { winter_severity_bias = @light_coverage } # b_teiristasis_neapolis_herakleia
+1780 = { winter_severity_bias = @light_coverage } # b_neapolis_neapolis_herakleia
+
+### FAKE ASTIKE
+# 483 = { winter_severity_bias = 0.0 } # b_athyras_byzantion
+# 484 = { winter_severity_bias = 0.0 } # b_melantias_byzantion
+# 485 = { winter_severity_bias = 0.0 } # b_byzantion_byzantion
+# 486 = { winter_severity_bias = 0.0 } # b_timaia_byzantion
+# 487 = { winter_severity_bias = 0.0 } # b_delkos_byzantion
+477 = { winter_severity_bias = @light_coverage } # b_heraion_perinthos
+478 = { winter_severity_bias = @light_coverage } # b_perinthos_perinthos
+# 479 = { winter_severity_bias = 0.0 } # b_daunion_teichos_perinthos
+# 480 = { winter_severity_bias = 0.0 } # b_selymbria_selymbria
+# 481 = { winter_severity_bias = 0.0 } # b_kallon_selymbria
+
+##################
+###### ASIA ######
+##################
+
+## HELESPONTOS ###################################
+### TROAS
+# 508 = { winter_severity_bias = 0.0 } # b_gargara_assos
+# 509 = { winter_severity_bias = 0.0 } # b_assos_assos
+# 526 = { winter_severity_bias = 0.0 } # b_antandros_assos
+# 513 = { winter_severity_bias = 0.0 } # b_tenedos_ilion
+# 514 = { winter_severity_bias = 0.0 } # b_ilion_ilion
+# 515 = { winter_severity_bias = 0.0 } # b_skamandreia_ilion
+# 510 = { winter_severity_bias = 0.0 } # b_larisa_alexandria_troas
+# 511 = { winter_severity_bias = 0.0 } # b_alexandria_troas_alexandria_troas
+# 512 = { winter_severity_bias = 0.0 } # b_kebren_alexandria_troas
+# 516 = { winter_severity_bias = 0.0 } # b_gergis_skepsis
+# 517 = { winter_severity_bias = 0.0 } # b_skepsis_skepsis
+# 518 = { winter_severity_bias = 0.0 } # b_kenchreai_skepsis
+# 519 = { winter_severity_bias = 0.0 } # b_dardanos_abydos
+# 520 = { winter_severity_bias = 0.0 } # b_kremaste_abydos
+# 521 = { winter_severity_bias = 0.0 } # b_abydos_abydos
+# 522 = { winter_severity_bias = 0.0 } # b_perkote_lampsakos
+# 523 = { winter_severity_bias = 0.0 } # b_lampsakos_lampsakos
+# 524 = { winter_severity_bias = 0.0 } # b_kolonai_lampsakos
+# 707 = { winter_severity_bias = 0.0 } # b_parion_parion
+# 708 = { winter_severity_bias = 0.0 } # b_priapos_parion
+# 709 = { winter_severity_bias = 0.0 } # b_didymateiche_parion
+
+### PERGAMON
+# 533 = { winter_severity_bias = 0.0 } # b_perperene_pergamon
+# 534 = { winter_severity_bias = 0.0 } # b_teuthrania_pergamon
+535 = { winter_severity_bias = @light_coverage } # b_pergamon_pergamon
+827 = { winter_severity_bias = @light_coverage } # b_halisarna_pergamon
+729 = { winter_severity_bias = @light_coverage} # b_gambreion_gambreion
+730 = { winter_severity_bias = @light_coverage } # b_parthenion_gambreion
+728 = { winter_severity_bias = @light_coverage } # b_hiera_germe_hiera_germe
+828 = { winter_severity_bias = @light_coverage } # b_apollonia_hiera_germe
+# 824 = { winter_severity_bias = 0.0 } # b_kisthene_atarneus
+# 825 = { winter_severity_bias = 0.0 } # b_atarneus_atarneus
+527 = { winter_severity_bias = @light_coverage } # b_lyrnessos_adramyttion
+# 528 = { winter_severity_bias = 0.0 } # b_adramyttion_adramyttion
+823 = { winter_severity_bias = @light_coverage } # b_thebe_adramyttion
+
+### MYSIA
+719 = { winter_severity_bias = @light_coverage } # b_kyzikos_kyzikos
+720 = { winter_severity_bias = @light_coverage } # b_artake_kyzikos
+721 = { winter_severity_bias = @light_coverage } # b_prokonnesos_kyzikos
+722 = { winter_severity_bias = @light_coverage } # b_plakia_kyzikos
+716 = { winter_severity_bias = @light_coverage } # b_poimanenon_daskyleion
+717 = { winter_severity_bias = @light_coverage } # b_daskyleion_daskyleion
+718 = { winter_severity_bias = @light_coverage } # b_miletouteichos_miletopolis
+725 = { winter_severity_bias = @light_coverage } # b_miletopolis_miletopolis
+
+### ZELEIA
+714 = { winter_severity_bias = @light_coverage } # b_zeleia_zeleia
+715 = { winter_severity_bias = @light_coverage } # b_baris_zeleia
+# 710 = { winter_severity_bias = 0.0 } # b_kale_peuke_karesene
+713 = { winter_severity_bias = @light_coverage } # b_karesos_karesene
+711 = { winter_severity_bias = @light_coverage } # b_argyria_argyria
+712 = { winter_severity_bias = @light_coverage } # b_argiza_argyria
+
+### TEMNIS
+731 = { winter_severity_bias = @light_coverage } # b_pioniai_pioniai
+732 = { winter_severity_bias = @light_coverage } # b_apias_pioniai
+735 = { winter_severity_bias = @light_coverage } # b_laneion_pericharaxis
+736 = { winter_severity_bias = @light_coverage } # b_pericharaxis_pericharaxis
+733 = { winter_severity_bias = @light_coverage } # b_gergitha_attea
+734 = { winter_severity_bias = @light_coverage } # b_attea_attea
+
+### ABRETENNE
+740 = { winter_severity_bias = @light_coverage } # b_mekestaleia_abbaiatis
+753 = { winter_severity_bias = @light_coverage } # b_ankyra_abbaiatis
+741 = { winter_severity_bias = @light_coverage } # b_zeus_thimenos_ariste
+742 = { winter_severity_bias = @light_coverage } # b_kybele_ariste
+743 = { winter_severity_bias = @light_coverage } # b_ariste_ariste
+744 = { winter_severity_bias = @light_coverage } # b_sittena_skodrena
+751 = { winter_severity_bias = @light_coverage } # b_skodrena_skodrena
+745 = { winter_severity_bias = @light_coverage } # b_zeus_kersoullos_olympene
+746 = { winter_severity_bias = @light_coverage } # b_dagoutene_olympene
+747 = { winter_severity_bias = @light_coverage } # b_kybele_palox
+748 = { winter_severity_bias = @light_coverage } # b_palox_palox
+749 = { winter_severity_bias = @light_coverage } # b_aliana_synaos
+750 = { winter_severity_bias = @light_coverage } # b_akrokos_synaos
+752 = { winter_severity_bias = @light_coverage } # b_synaos_synaos
+
+### BITHYNIA
+# 768 = { winter_severity_bias = 0.0 } # b_olbia_astakos
+# 769 = { winter_severity_bias = 0.0 } # b_megarikon_astakos
+# 772 = { winter_severity_bias = 0.0 } # b_astakos_astakos
+# 1260 = { winter_severity_bias = 0.0 } # b_kalasyrta_astakos
+# 775 = { winter_severity_bias = 0.0 } # b_libyssa_libyssa
+# 776 = { winter_severity_bias = 0.0 } # b_charax_libyssa
+# 1257 = { winter_severity_bias = 0.0 } # b_dakibyza_libyssa
+# 777 = { winter_severity_bias = 0.0 } # b_chalkedon_chalkedon
+# 778 = { winter_severity_bias = 0.0 } # b_chrysopolis_chalkedon
+# 779 = { winter_severity_bias = 0.0 } # b_hieron_chalkedon
+# 723 = { winter_severity_bias = 0.0 } # b_kassa_prindea
+# 724 = { winter_severity_bias = 0.0 } # b_prindea_prindea
+# 781 = { winter_severity_bias = 0.0 } # b_byzapena_petrozetoi
+# 783 = { winter_severity_bias = 0.0 } # b_deramoska_petrozetoi
+# 784 = { winter_severity_bias = 0.0 } # b_petrazetoi_petrazetoi
+
+### THYNIA
+# 785 = { winter_severity_bias = 0.0 } # b_kalpe_thynias
+# 786 = { winter_severity_bias = 0.0 } # b_rhakela_thynias
+# 1290 = { winter_severity_bias = 0.0 } # b_thynias_thynias
+# 1250 = { winter_severity_bias = 0.0 } # b_triknaita_triknaita
+# 1251 = { winter_severity_bias = 0.0 } # b_pouropai_triknaita
+# 1252 = { winter_severity_bias = 0.0 } # b_morzapena_triknaita
+# 782 = { winter_severity_bias = 0.0 } # b_psillion_psillion
+# 1253 = { winter_severity_bias = 0.0 } # b_tenba_psillion
+# 780 = { winter_severity_bias = 0.0 } # b_artanes_artanes
+# 1254 = { winter_severity_bias = 0.0 } # b_chelaita_artanes
+# 1255 = { winter_severity_bias = 0.0 } # b_mandrai_rhebas
+# 1256 = { winter_severity_bias = 0.0 } # b_rhebas_rhebas
+
+### HERAKLEOTIS
+# 801 = { winter_severity_bias = 0.0 } # b_kales_herakleia_pontica
+# 802 = { winter_severity_bias = 0.0 } # b_herakleia_herakleia_pontica
+# 803 = { winter_severity_bias = 0.0 } # b_oxinas_herakleia_pontica
+# 1242 = { winter_severity_bias = 0.0 } # b_kynna_herakleia_pontike
+# 804 = { winter_severity_bias = 0.0 } # b_sandarake_tios
+# 805 = { winter_severity_bias = 0.0 } # b_tios_tios
+# 799 = { winter_severity_bias = 0.0 } # b_dia_elaios
+# 800 = { winter_severity_bias = 0.0 } # b_elaios_elaios
+# 794 = { winter_severity_bias = 0.0 } # b_leada_leada
+# 1246 = { winter_severity_bias = 0.0 } # b_pouzane_leada
+1243 = { winter_severity_bias = @light_coverage } # b_arkiroessa_arkiroessa
+1244 = { winter_severity_bias = @light_coverage } # b_priola_arkiroessa
+
+### MARIANDYNIA
+797 = { winter_severity_bias = @light_coverage } # b_bithynion_salon
+798 = { winter_severity_bias = @light_coverage } # b_dadokome_salon
+1288 = { winter_severity_bias = @light_coverage } # b_kouslanka_salon
+795 = { winter_severity_bias = @light_coverage } # b_kieros_kieros
+796 = { winter_severity_bias = @light_coverage } # b_embolos_kieros
+# 1286 = { winter_severity_bias = 0.0 } # b_lausos_kieros
+819 = { winter_severity_bias = @light_coverage } # b_modra_modrene
+1289 = { winter_severity_bias = @light_coverage } # b_tmatea_modrene
+818 = { winter_severity_bias = @light_coverage } # b_kadossia_kadossia
+820 = { winter_severity_bias = @light_coverage } # b_kersine_kadossia
+# 793 = { winter_severity_bias = 0.0 } # b_tarsos_tarsos
+# 1284 = { winter_severity_bias = 0.0 } # b_kybena_tarsos
+# 1285 = { winter_severity_bias = 0.0 } # b_biztinianas_tarsos
+# 1282 = { winter_severity_bias = 0.0 } # b_simana_zipoition
+# 1283 = { winter_severity_bias = 0.0 } # b_zipoition_zipoition
+
+### SANGARITIS
+765 = { winter_severity_bias = @light_coverage } # b_terbos_nikaia
+# 766 = { winter_severity_bias = 0.0 } # b_nikaia_nikaia
+806 = { winter_severity_bias = @light_coverage } # b_kizoura_nikaia
+1280 = { winter_severity_bias = @light_coverage } # b_kabia_nikaia
+# 1291 = { winter_severity_bias = 0.0 } # b_liada_nikaia
+807 = { winter_severity_bias = @light_coverage } # b_erakla_tattaios
+822 = { winter_severity_bias = @light_coverage } # b_tattaios_tattaios
+1281 = { winter_severity_bias = @light_coverage } # b_chogeae_tattaios
+816 = { winter_severity_bias = @light_coverage } # b_apsoda_dableis
+817 = { winter_severity_bias = @light_coverage } # b_dableis_dableis
+821 = { winter_severity_bias = @light_coverage } # b_ontoraita_dableis
+1277 = { winter_severity_bias = @light_coverage } # b_gallika_gallika
+1278 = { winter_severity_bias = @light_coverage } # b_boleia_gallika
+1279 = { winter_severity_bias = @light_coverage } # b_lamneis_gallika
+814 = { winter_severity_bias = @light_coverage } # b_ceratae_dadastana
+815 = { winter_severity_bias = @light_coverage } # b_dadastana_dadastana
+811 = { winter_severity_bias = @light_coverage } # b_oka_oka
+1276 = { winter_severity_bias = @light_coverage } # b_hiaraza_oka
+
+### RHEBANTIA
+756 = { winter_severity_bias = @light_coverage } # b_tataula_kalydnion
+757 = { winter_severity_bias = @light_coverage } # b_sarkotyle_kalydnion
+1265 = { winter_severity_bias = @light_coverage } # b_kalydnion_kalydnion
+764 = { winter_severity_bias = @light_coverage } # b_otroia_otroia
+1266 = { winter_severity_bias = @light_coverage } # b_takomis_otroia
+# 808 = { winter_severity_bias = 0.0 } # b_agrilion_agrilion
+# 1271 = { winter_severity_bias = 0.0 } # b_kaloukome_agrilion
+1267 = { winter_severity_bias = @light_coverage } # b_mygdum_plassyene
+1268 = { winter_severity_bias = @light_coverage } # b_plassye_plassyene
+809 = { winter_severity_bias = @light_coverage } # b_pronnoia_pronnoia
+810 = { winter_severity_bias = @light_coverage } # b_pithekas_pronnoia
+
+### ASKANIA
+# 759 = { winter_severity_bias = 0.0 } # b_kios_kios
+# 762 = { winter_severity_bias = 0.0 } # b_charmidea_kios
+# 763 = { winter_severity_bias = 0.0 } # b_pythopolis_kios
+# 767 = { winter_severity_bias = 0.0 } # b_tetrakomia_kios
+# 760 = { winter_severity_bias = 0.0 } # b_triton_pylai
+# 770 = { winter_severity_bias = 0.0 } # b_pylai_pylai
+# 1261 = { winter_severity_bias = 0.0 } # b_strobilos_pylai
+754 = { winter_severity_bias = @light_coverage } # b_helge_myrleia
+758 = { winter_severity_bias = @light_coverage } # b_myrleia_myrleia
+1262 = { winter_severity_bias = @light_coverage } # b_eikote_myrleia
+1263 = { winter_severity_bias = @light_coverage } # b_daskyleion_daskyleion_propontis
+1264 = { winter_severity_bias = @light_coverage } # b_artaiou_teichos_daskyleion_propontis
+773 = { winter_severity_bias = @light_coverage } # b_kassa_kassa
+774 = { winter_severity_bias = @light_coverage } # b_prindea_kassa
+
+## LYDIA ###################################
+### IONIA
+# 557 = { winter_severity_bias = 0.0 } # b_ephesos_ephesos
+# 558 = { winter_severity_bias = 0.0 } # b_priene_ephesos
+# 570 = { winter_severity_bias = 0.0 } # b_maiandros_ephesos
+# 546 = { winter_severity_bias = 0.0 } # b_smyrna_klazomenai
+# 547 = { winter_severity_bias = 0.0 } # b_metropolis_klazomenai
+# 548 = { winter_severity_bias = 0.0 } # b_klazomenai_klazomenai
+# 549 = { winter_severity_bias = 0.0 } # b_erythrai_erythrai
+# 550 = { winter_severity_bias = 0.0 } # b_polichna_erythrai
+# 551 = { winter_severity_bias = 0.0 } # b_boutheia_erythrai
+# 552 = { winter_severity_bias = 0.0 } # b_chios_chios
+# 553 = { winter_severity_bias = 0.0 } # b_phanai_chios
+# 554 = { winter_severity_bias = 0.0 } # b_teos_kolophon
+# 555 = { winter_severity_bias = 0.0 } # b_lebedos_kolophon
+# 556 = { winter_severity_bias = 0.0 } # b_kolophon_kolophon
+# 560 = { winter_severity_bias = 0.0 } # b_anaia_samos
+# 561 = { winter_severity_bias = 0.0 } # b_samos_samos
+# 562 = { winter_severity_bias = 0.0 } # b_kalamoi_samos
+# 563 = { winter_severity_bias = 0.0 } # b_therma_ikaros
+# 564 = { winter_severity_bias = 0.0 } # b_oinoe_ikaros
+
+### AIOLIS
+# 529 = { winter_severity_bias = 0.0 } # b_nasos_mytilene
+# 530 = { winter_severity_bias = 0.0 } # b_mytilene_mytilene
+# 829 = { winter_severity_bias = 0.0 } # b_pyrrha_mytilene
+# 531 = { winter_severity_bias = 0.0 } # b_methymna_methymna
+# 532 = { winter_severity_bias = 0.0 } # b_eresos_methymna
+# 830 = { winter_severity_bias = 0.0 } # b_antissa_methymna
+# 537 = { winter_severity_bias = 0.0 } # b_phokaia_phokaia
+# 538 = { winter_severity_bias = 0.0 } # b_kyllene_phokaia
+# 539 = { winter_severity_bias = 0.0 } # b_kyme_kyme
+# 540 = { winter_severity_bias = 0.0 } # b_aigai_kyme
+# 541 = { winter_severity_bias = 0.0 } # b_temnos_kyme
+# 536 = { winter_severity_bias = 0.0 } # b_elaia_elaia
+# 826 = { winter_severity_bias = 0.0 } # b_pitane_elaia
+
+### KAYSTROS
+641 = { winter_severity_bias = @light_coverage } # b_nysa_magnesia_lydia
+642 = { winter_severity_bias = @light_coverage } # b_euanthia_magnesia_lydia
+# 643 = { winter_severity_bias = 0.0 } # b_magnesia_magnesia_lydia
+# 644 = { winter_severity_bias = 0.0 } # b_anokome_anokome
+# 645 = { winter_severity_bias = 0.0 } # b_chondra_anokome
+646 = { winter_severity_bias = @light_coverage } # b_siklia_hypaipa
+647 = { winter_severity_bias = @light_coverage } # b_hypaipa_hypaipa
+648 = { winter_severity_bias = @light_coverage } # b_kleimaka_hypaipa
+649 = { winter_severity_bias = @light_coverage } # b_kaira_kaira
+650 = { winter_severity_bias = @light_coverage } # b_palaiapolis_kaira
+651 = { winter_severity_bias = @light_coverage } # b_koloe_koloe
+652 = { winter_severity_bias = @light_coverage } # b_tarigya_koloe
+
+### MAIONIA
+654 = { winter_severity_bias = @light_coverage } # b_troketta_sardis
+655 = { winter_severity_bias = @light_coverage } # b_tmolos_sardis
+656 = { winter_severity_bias = @light_coverage } # b_sardis_sardis
+658 = { winter_severity_bias = @light_coverage } # b_tomara_sardis
+659 = { winter_severity_bias = @light_coverage } # b_maiboza_sardis
+653 = { winter_severity_bias = @light_coverage } # b_mostene_magnesia_sipylon
+663 = { winter_severity_bias = @light_coverage } # b_hyrkanis_magnesia_sipylon
+664 = { winter_severity_bias = @light_coverage } # b_magnesia_magnesia_sipylon
+660 = { winter_severity_bias = @light_coverage } # b_thyateira_thyateira
+661 = { winter_severity_bias = @light_coverage } # b_kamai_thyateira
+662 = { winter_severity_bias = @light_coverage } # b_hierokome_thyateira
+726 = { winter_severity_bias = @light_coverage } # b_tibbai_nakrason
+727 = { winter_severity_bias = @light_coverage } # b_nakrason_nakrason
+
+### KATAKEKAUMENE
+675 = { winter_severity_bias = @light_coverage } # b_satala_philadelphaia
+676 = { winter_severity_bias = @light_coverage } # b_maionia_philadelphaia
+677 = { winter_severity_bias = @light_coverage } # b_philadelphaia_philadelphaia
+657 = { winter_severity_bias = @light_coverage } # b_daldis_daldis
+666 = { winter_severity_bias = @light_coverage } # b_gordos_daldis
+667 = { winter_severity_bias = @light_coverage } # b_antigonios_saittai
+669 = { winter_severity_bias = @light_coverage } # b_odon_saittai
+670 = { winter_severity_bias = @light_coverage } # b_saittai_saittai
+668 = { winter_severity_bias = @light_coverage } # b_sabazios_silandos
+671 = { winter_severity_bias = @light_coverage } # b_silandos_silandos
+672 = { winter_severity_bias = @medium_coverage } # b_bagis_tabala
+673 = { winter_severity_bias = @light_coverage } # b_tabala_tabala
+674 = { winter_severity_bias = @light_coverage } # b_kastolos_tabala
+678 = { winter_severity_bias = @light_coverage } # b_phileis_apollonos
+679 = { winter_severity_bias = @light_coverage } # b_apollonos_apollonos
+
+### MOKADENE
+680 = { winter_severity_bias = @medium_coverage } # b_lyendos_temenouthyrai
+681 = { winter_severity_bias = @medium_coverage } # b_asteles_temenouthyrai
+682 = { winter_severity_bias = @medium_coverage } # b_temenouthyrai_temenouthyrai
+683 = { winter_severity_bias = @medium_coverage } # b_blaundos_blaundos
+684 = { winter_severity_bias = @medium_coverage } # b_sebaste_blaundos
+685 = { winter_severity_bias = @medium_coverage } # b_dioskome_blaundos
+686 = { winter_severity_bias = @medium_coverage } # b_akmonia_akmonia
+687 = { winter_severity_bias = @medium_coverage } # b_panasion_akmonia
+688 = { winter_severity_bias = @medium_coverage } # b_lankena_akmonia
+
+### HYRGALEON
+621 = { winter_severity_bias = @light_coverage } # b_attouda_kolossai
+622 = { winter_severity_bias = @light_coverage } # b_laodikeia_kolossai
+623 = { winter_severity_bias = @light_coverage } # b_kolossai_kolossai
+689 = { winter_severity_bias = @medium_coverage } # b_dionysoupolis_mossyna
+690 = { winter_severity_bias = @medium_coverage } # b_motella_mossyna
+691 = { winter_severity_bias = @medium_coverage } # b_mossyna_mossyna
+692 = { winter_severity_bias = @light_coverage } # b_thiounta_thiounta
+693 = { winter_severity_bias = @light_coverage } # b_saloudeia_thiounta
+694 = { winter_severity_bias = @light_coverage } # b_tripolis_tripolis_lydia
+695 = { winter_severity_bias = @light_coverage } # b_hierapolis_tripolis_lydia
+
+## KARIA ###################################
+### DORIS
+# 559 = { winter_severity_bias = 0.0 } # b_myous_miletos
+# 571 = { winter_severity_bias = 0.0 } # b_ioniapolis_miletos
+# 572 = { winter_severity_bias = 0.0 } # b_miletos_miletos
+# 573 = { winter_severity_bias = 0.0 } # b_teichioussa_miletos
+# 574 = { winter_severity_bias = 0.0 } # b_lepsia_miletos
+# 575 = { winter_severity_bias = 0.0 } # b_kalymna_kos
+# 576 = { winter_severity_bias = 0.0 } # b_kos_kos
+# 577 = { winter_severity_bias = 0.0 } # b_astypalaia_kos
+# 578 = { winter_severity_bias = 0.0 } # b_mylasa_mylasa
+# 579 = { winter_severity_bias = 0.0 } # b_bargylia_mylasa
+# 580 = { winter_severity_bias = 0.0 } # b_hydissos_mylasa
+# 581 = { winter_severity_bias = 0.0 } # b_halikarnassos_halikarnassos
+# 582 = { winter_severity_bias = 0.0 } # b_theangela_halikarnassos
+# 583 = { winter_severity_bias = 0.0 } # b_keramos_halikarnassos
+584 = { winter_severity_bias = @light_coverage } # b_idyma_idyma
+585 = { winter_severity_bias = @light_coverage } # b_kyllandos_idyma
+# 586 = { winter_severity_bias = 0.0 } # b_physkos_idyma
+# 587 = { winter_severity_bias = 0.0 } # b_loryma_loryma
+# 588 = { winter_severity_bias = 0.0 } # b_syme_loryma
+589 = { winter_severity_bias = @light_coverage } # b_kaunos_kaunos
+590 = { winter_severity_bias = @light_coverage } # b_kalynda_kaunos
+# 591 = { winter_severity_bias = 0.0 } # b_stadia_knidos
+# 592 = { winter_severity_bias = 0.0 } # b_knidos_knidos
+# 593 = { winter_severity_bias = 0.0 } # b_telos_rhodos
+# 594 = { winter_severity_bias = 0.0 } # b_rhodos_rhodos
+# 595 = { winter_severity_bias = 0.0 } # b_kamiros_rhodos
+# 596 = { winter_severity_bias = 0.0 } # b_lindos_rhodos
+# 597 = { winter_severity_bias = 0.0 } # b_karpathos_karpathos
+# 598 = { winter_severity_bias = 0.0 } # b_kasos_karpathos
+
+### IDRIAS
+603 = { winter_severity_bias = @light_coverage } # b_amyzon_alexandreia_karia
+604 = { winter_severity_bias = @light_coverage } # b_alexandreia_karia_alexandreia_karia
+605 = { winter_severity_bias = @light_coverage } # b_alabanda_alabanda
+606 = { winter_severity_bias = @light_coverage } # b_euhippe_alabanda
+607 = { winter_severity_bias = @light_coverage } # b_gerga_alabanda
+608 = { winter_severity_bias = @light_coverage } # b_chrysaoris_chrysaoris
+609 = { winter_severity_bias = @light_coverage } # b_pisye_chrysaoris
+
+### SALBAKE
+610 = { winter_severity_bias = @light_coverage } # b_hyllarima_bargasa
+611 = { winter_severity_bias = @light_coverage } # b_bargasa_bargasa
+612 = { winter_severity_bias = @light_coverage } # b_harpasa_antiocheia_karia
+613 = { winter_severity_bias = @light_coverage } # b_antiocheia_antiocheia_karia
+614 = { winter_severity_bias = @light_coverage } # b_aphrodisias_aphrodisias
+617 = { winter_severity_bias = @light_coverage } # b_plarasa_aphrodisias
+615 = { winter_severity_bias = @light_coverage } # b_herakleia_salbakes
+616 = { winter_severity_bias = @light_coverage } # b_apollonia_salbakes
+618 = { winter_severity_bias = @light_coverage } # b_tabai_apollonia_salbakes
+619 = { winter_severity_bias = @light_coverage } # b_kidrama_skiritis
+620 = { winter_severity_bias = @light_coverage } # b_mokolda_skiritis
 
 ### TRIBALLIA
-904 = { winter_severity_bias = @heavy_coverage } # b_lederata_lederata
-905 = { winter_severity_bias = @heavy_coverage } # b_kounisapara_lederata
-906 = { winter_severity_bias = @heavy_coverage } # b_kouppai_lederata
-907 = { winter_severity_bias = @heavy_coverage } # b_oulkopara_lederata
-908 = { winter_severity_bias = @heavy_coverage } # b_kantabaza_kantabaza
-909 = { winter_severity_bias = @heavy_coverage } # b_rerapara_kantabaza
-910 = { winter_severity_bias = @heavy_coverage } # b_kalsapa_kantabaza
-912 = { winter_severity_bias = @heavy_coverage } # b_kipipene_verzapara
-913 = { winter_severity_bias = @heavy_coverage } # b_verzapara_verzapara
-914 = { winter_severity_bias = @heavy_coverage } # b_amoulo_verzapara
-915 = { winter_severity_bias = @heavy_coverage } # b_gavaballon_kametas
-916 = { winter_severity_bias = @heavy_coverage } # b_kametas_kametas
-917 = { winter_severity_bias = @heavy_coverage } # b_merphaia_kametas
-918 = { winter_severity_bias = @heavy_coverage } # b_borbrega_parnousta
-919 = { winter_severity_bias = @heavy_coverage } # b_parnousta_parnousta
-920 = { winter_severity_bias = @medium_coverage } # b_skaripara_skaripara
-921 = { winter_severity_bias = @medium_coverage } # b_idimon_skaripara
-922 = { winter_severity_bias = @medium_coverage } # b_stendas_timakon
-923 = { winter_severity_bias = @medium_coverage } # b_timakon_timakon
-924 = { winter_severity_bias = @medium_coverage } # b_moutzipara_timakon
-925 = { winter_severity_bias = @heavy_coverage } # b_tzoutrato_klemades
-926 = { winter_severity_bias = @heavy_coverage } # b_gribo_klemades
-927 = { winter_severity_bias = @heavy_coverage } # b_klemades_klemades
-928 = { winter_severity_bias = @medium_coverage } # b_merioponte_timakiolon
-929 = { winter_severity_bias = @medium_coverage } # b_gembero_timakiolon
-930 = { winter_severity_bias = @medium_coverage } # b_timakiolon_timakiolon
-931 = { winter_severity_bias = @heavy_coverage } # b_stendas_neos
-932 = { winter_severity_bias = @heavy_coverage } # b_taliata_neos
-933 = { winter_severity_bias = @heavy_coverage } # b_neos_neos
-934 = { winter_severity_bias = @heavy_coverage } # b_gerulata_arganokella
-935 = { winter_severity_bias = @heavy_coverage } # b_arganokella_arganokella
-936 = { winter_severity_bias = @heavy_coverage } # b_doukepratou_arganokella
-937 = { winter_severity_bias = @medium_coverage } # b_zanes_zanes
-938 = { winter_severity_bias = @medium_coverage } # b_egeta_zanes
-939 = { winter_severity_bias = @medium_coverage } # b_meridios_akouai
-940 = { winter_severity_bias = @medium_coverage } # b_akouai_akouai
-947 = { winter_severity_bias = @medium_coverage } # b_braiola_akouai
-948 = { winter_severity_bias = @medium_coverage } # b_iasen_dunonia
-949 = { winter_severity_bias = @medium_coverage } # b_dunonia_dunonia
-950 = { winter_severity_bias = @medium_coverage } # b_razaria_dunonia
-951 = { winter_severity_bias = @medium_coverage } # b_setlota_dortikon
-952 = { winter_severity_bias = @medium_coverage } # b_dortikon_dortikon
-953 = { winter_severity_bias = @medium_coverage } # b_perkeballon_perkeballon
-954 = { winter_severity_bias = @medium_coverage } # b_skoumbro_perkeballon
-955 = { winter_severity_bias = @medium_coverage } # b_bidzo_perkeballon
-956 = { winter_severity_bias = @medium_coverage } # b_klevora_perkeballon
-957 = { winter_severity_bias = @medium_coverage } # b_artanes_betzas
-958 = { winter_severity_bias = @medium_coverage } # b_mokatiana_betzas
-959 = { winter_severity_bias = @medium_coverage } # b_betzas_betzas
-960 = { winter_severity_bias = @medium_coverage } # b_pomodiana_onos
-961 = { winter_severity_bias = @medium_coverage } # b_onos_onos
-962 = { winter_severity_bias = @medium_coverage } # b_zetnoukortou_orgame
-963 = { winter_severity_bias = @medium_coverage } # b_orgame_orgame
-964 = { winter_severity_bias = @medium_coverage } # b_bouteries_orgame
-965 = { winter_severity_bias = @medium_coverage } # b_arkounes_arkounes
-966 = { winter_severity_bias = @medium_coverage } # b_douries_arkounes
-967 = { winter_severity_bias = @medium_coverage } # b_ardeia_arkounes
-968 = { winter_severity_bias = @medium_coverage } # b_vorovon_tautiomosis
-969 = { winter_severity_bias = @medium_coverage } # b_tautiomosis_tautiomosis
-970 = { winter_severity_bias = @medium_coverage } # b_koutzousoura_badziania
-971 = { winter_severity_bias = @medium_coverage } # b_badziania_badziania
-972 = { winter_severity_bias = @medium_coverage } # b_bougapra_aedaba
-973 = { winter_severity_bias = @medium_coverage } # b_regianon_aedaba
-974 = { winter_severity_bias = @medium_coverage } # b_aedaba_aedaba
-975 = { winter_severity_bias = @medium_coverage } # b_banes_tousoudias
-976 = { winter_severity_bias = @medium_coverage } # b_bimeros_tousoudias
-977 = { winter_severity_bias = @medium_coverage } # b_tousoudias_tousoudias
-978 = { winter_severity_bias = @medium_coverage } # b_skoptito_kabessos
-979 = { winter_severity_bias = @heavy_coverage } # b_kabessos_kabessos
-980 = { winter_severity_bias = @heavy_coverage } # b_stamazo_kabessos
-981 = { winter_severity_bias = @heavy_coverage } # b_bineos_kabessos
-986 = { winter_severity_bias = @medium_coverage } # b_salebries_kounai
-987 = { winter_severity_bias = @medium_coverage } # b_trullension_kounai
-988 = { winter_severity_bias = @medium_coverage } # b_kounai_kounai
-989 = { winter_severity_bias = @medium_coverage } # b_bitzimaias_bitzimaias
-990 = { winter_severity_bias = @medium_coverage } # b_skentoudies_bitzimaias
-991 = { winter_severity_bias = @medium_coverage } # b_skares_bitzimaias
-992 = { winter_severity_bias = @medium_coverage } # b_skouanes_oiskos
-993 = { winter_severity_bias = @medium_coverage } # b_oiskos_oiskos
-994 = { winter_severity_bias = @medium_coverage } # b_bregedaba_oiskos
-995 = { winter_severity_bias = @medium_coverage } # b_triromphaipara_arbatias
-996 = { winter_severity_bias = @medium_coverage } # b_arbatias_arbatias
-997 = { winter_severity_bias = @medium_coverage } # b_storgosia_arbatias
-998 = { winter_severity_bias = @medium_coverage } # b_kamistron_bemastes
-999 = { winter_severity_bias = @medium_coverage } # b_tourikla_bemastes
-1000 = { winter_severity_bias = @medium_coverage } # b_bemastes_bemastes
-1001 = { winter_severity_bias = @medium_coverage } # b_saldovissos_longinopara
-1002 = { winter_severity_bias = @medium_coverage } # b_longinopara_longinopara
-1003 = { winter_severity_bias = @medium_coverage } # b_itadeba_longinopara
-1004 = { winter_severity_bias = @medium_coverage } # b_sostra_sostra
-1005 = { winter_severity_bias = @medium_coverage } # b_odriouzo_sostra
-1006 = { winter_severity_bias = @medium_coverage } # b_deizabria_sostra
-1007 = { winter_severity_bias = @medium_coverage } # b_aspoidiza_melta
-1008 = { winter_severity_bias = @medium_coverage } # b_melta_melta
-1009 = { winter_severity_bias = @medium_coverage } # b_doriones_melta
-1010 = { winter_severity_bias = @medium_coverage } # b_giridava_giridava
-1011 = { winter_severity_bias = @medium_coverage } # b_krobyzon_giridava
-1012 = { winter_severity_bias = @medium_coverage } # b_zetraipara_giridava
-1013 = { winter_severity_bias = @medium_coverage } # b_dimension_dimon
-1014 = { winter_severity_bias = @medium_coverage } # b_asamos_dimon
-1015 = { winter_severity_bias = @medium_coverage } # b_sekouriska_dimon
-1016 = { winter_severity_bias = @medium_coverage } # b_dimon_dimon
-1017 = { winter_severity_bias = @medium_coverage } # b_pinkos_danedebai;x
-1018 = { winter_severity_bias = @medium_coverage } # b_tourgourias_danedebai;x
-1019 = { winter_severity_bias = @medium_coverage } # b_danedebai_danedebai;x
-1020 = { winter_severity_bias = @medium_coverage } # b_ardeia_horreon_margi;x
-1021 = { winter_severity_bias = @medium_coverage } # b_horreon_margi_horreon_margi;x
-1022 = { winter_severity_bias = @medium_coverage } # b_idimon_horreon_margi;x
+904 = { winter_severity_bias = 0.0 } # b_lederata_lederata
+905 = { winter_severity_bias = 0.0 } # b_kounisapara_lederata
+906 = { winter_severity_bias = 0.0 } # b_kouppai_lederata
+907 = { winter_severity_bias = 0.0 } # b_oulkopara_lederata
+908 = { winter_severity_bias = 0.0 } # b_kantabaza_kantabaza
+909 = { winter_severity_bias = 0.0 } # b_rerapara_kantabaza
+910 = { winter_severity_bias = 0.0 } # b_kalsapa_kantabaza
+912 = { winter_severity_bias = 0.0 } # b_kipipene_verzapara
+913 = { winter_severity_bias = 0.0 } # b_verzapara_verzapara
+914 = { winter_severity_bias = 0.0 } # b_amoulo_verzapara
+915 = { winter_severity_bias = 0.0 } # b_gavaballon_kametas
+916 = { winter_severity_bias = 0.0 } # b_kametas_kametas
+917 = { winter_severity_bias = 0.0 } # b_merphaia_kametas
+918 = { winter_severity_bias = 0.0 } # b_borbrega_parnousta
+919 = { winter_severity_bias = 0.0 } # b_parnousta_parnousta
+920 = { winter_severity_bias = 0.0 } # b_skaripara_skaripara
+921 = { winter_severity_bias = 0.0 } # b_idimon_skaripara
+922 = { winter_severity_bias = 0.0 } # b_stendas_timakon
+923 = { winter_severity_bias = 0.0 } # b_timakon_timakon
+924 = { winter_severity_bias = 0.0 } # b_moutzipara_timakon
+925 = { winter_severity_bias = 0.0 } # b_tzoutrato_klemades
+926 = { winter_severity_bias = 0.0 } # b_gribo_klemades
+927 = { winter_severity_bias = 0.0 } # b_klemades_klemades
+928 = { winter_severity_bias = 0.0 } # b_merioponte_timakiolon
+929 = { winter_severity_bias = 0.0 } # b_gembero_timakiolon
+930 = { winter_severity_bias = 0.0 } # b_timakiolon_timakiolon
+931 = { winter_severity_bias = 0.0 } # b_stendas_neos
+932 = { winter_severity_bias = 0.0 } # b_taliata_neos
+933 = { winter_severity_bias = 0.0 } # b_neos_neos
+934 = { winter_severity_bias = 0.0 } # b_gerulata_arganokella
+935 = { winter_severity_bias = 0.0 } # b_arganokella_arganokella
+936 = { winter_severity_bias = 0.0 } # b_doukepratou_arganokella
+937 = { winter_severity_bias = 0.0 } # b_zanes_zanes
+938 = { winter_severity_bias = 0.0 } # b_egeta_zanes
+939 = { winter_severity_bias = 0.0 } # b_meridios_akouai
+940 = { winter_severity_bias = 0.0 } # b_akouai_akouai
+947 = { winter_severity_bias = 0.0 } # b_braiola_akouai
+948 = { winter_severity_bias = 0.0 } # b_iasen_dunonia
+949 = { winter_severity_bias = 0.0 } # b_dunonia_dunonia
+950 = { winter_severity_bias = 0.0 } # b_razaria_dunonia
+951 = { winter_severity_bias = 0.0 } # b_setlota_dortikon
+952 = { winter_severity_bias = 0.0 } # b_dortikon_dortikon
+953 = { winter_severity_bias = 0.0 } # b_perkeballon_perkeballon
+954 = { winter_severity_bias = 0.0 } # b_skoumbro_perkeballon
+955 = { winter_severity_bias = 0.0 } # b_bidzo_perkeballon
+956 = { winter_severity_bias = 0.0 } # b_klevora_perkeballon
+957 = { winter_severity_bias = 0.0 } # b_artanes_betzas
+958 = { winter_severity_bias = 0.0 } # b_mokatiana_betzas
+959 = { winter_severity_bias = 0.0 } # b_betzas_betzas
+960 = { winter_severity_bias = 0.0 } # b_pomodiana_onos
+961 = { winter_severity_bias = 0.0 } # b_onos_onos
+962 = { winter_severity_bias = 0.0 } # b_zetnoukortou_orgame
+963 = { winter_severity_bias = 0.0 } # b_orgame_orgame
+964 = { winter_severity_bias = 0.0 } # b_bouteries_orgame
+965 = { winter_severity_bias = 0.0 } # b_arkounes_arkounes
+966 = { winter_severity_bias = 0.0 } # b_douries_arkounes
+967 = { winter_severity_bias = 0.0 } # b_ardeia_arkounes
+968 = { winter_severity_bias = 0.0 } # b_vorovon_tautiomosis
+969 = { winter_severity_bias = 0.0 } # b_tautiomosis_tautiomosis
+970 = { winter_severity_bias = 0.0 } # b_koutzousoura_badziania
+971 = { winter_severity_bias = 0.0 } # b_badziania_badziania
+972 = { winter_severity_bias = 0.0 } # b_bougapra_aedaba
+973 = { winter_severity_bias = 0.0 } # b_regianon_aedaba
+974 = { winter_severity_bias = 0.0 } # b_aedaba_aedaba
+975 = { winter_severity_bias = 0.0 } # b_banes_tousoudias
+976 = { winter_severity_bias = 0.0 } # b_bimeros_tousoudias
+977 = { winter_severity_bias = 0.0 } # b_tousoudias_tousoudias
+978 = { winter_severity_bias = 0.0 } # b_skoptito_kabessos
+979 = { winter_severity_bias = 0.0 } # b_kabessos_kabessos
+980 = { winter_severity_bias = 0.0 } # b_stamazo_kabessos
+981 = { winter_severity_bias = 0.0 } # b_bineos_kabessos
+986 = { winter_severity_bias = 0.0 } # b_salebries_kounai
+987 = { winter_severity_bias = 0.0 } # b_trullension_kounai
+988 = { winter_severity_bias = 0.0 } # b_kounai_kounai
+989 = { winter_severity_bias = 0.0 } # b_bitzimaias_bitzimaias
+990 = { winter_severity_bias = 0.0 } # b_skentoudies_bitzimaias
+991 = { winter_severity_bias = 0.0 } # b_skares_bitzimaias
+992 = { winter_severity_bias = 0.0 } # b_skouanes_oiskos
+993 = { winter_severity_bias = 0.0 } # b_oiskos_oiskos
+994 = { winter_severity_bias = 0.0 } # b_bregedaba_oiskos
+995 = { winter_severity_bias = 0.0 } # b_triromphaipara_arbatias
+996 = { winter_severity_bias = 0.0 } # b_arbatias_arbatias
+997 = { winter_severity_bias = 0.0 } # b_storgosia_arbatias
+998 = { winter_severity_bias = 0.0 } # b_kamistron_bemastes
+999 = { winter_severity_bias = 0.0 } # b_tourikla_bemastes
+1000 = { winter_severity_bias = 0.0 } # b_bemastes_bemastes
+1001 = { winter_severity_bias = 0.0 } # b_saldovissos_longinopara
+1002 = { winter_severity_bias = 0.0 } # b_longinopara_longinopara
+1003 = { winter_severity_bias = 0.0 } # b_itadeba_longinopara
+1004 = { winter_severity_bias = 0.0 } # b_sostra_sostra
+1005 = { winter_severity_bias = 0.0 } # b_odriouzo_sostra
+1006 = { winter_severity_bias = 0.0 } # b_deizabria_sostra
+1007 = { winter_severity_bias = 0.0 } # b_aspoidiza_melta
+1008 = { winter_severity_bias = 0.0 } # b_melta_melta
+1009 = { winter_severity_bias = 0.0 } # b_doriones_melta
+1010 = { winter_severity_bias = 0.0 } # b_giridava_giridava
+1011 = { winter_severity_bias = 0.0 } # b_krobyzon_giridava
+1012 = { winter_severity_bias = 0.0 } # b_zetraipara_giridava
+1013 = { winter_severity_bias = 0.0 } # b_dimension_dimon
+1014 = { winter_severity_bias = 0.0 } # b_asamos_dimon
+1015 = { winter_severity_bias = 0.0 } # b_sekouriska_dimon
+1016 = { winter_severity_bias = 0.0 } # b_dimon_dimon
+1017 = { winter_severity_bias = 0.0 } # b_pinkos_danedebai;x
+1018 = { winter_severity_bias = 0.0 } # b_tourgourias_danedebai;x
+1019 = { winter_severity_bias = 0.0 } # b_danedebai_danedebai;x
+1020 = { winter_severity_bias = 0.0 } # b_ardeia_horreon_margi;x
+1021 = { winter_severity_bias = 0.0 } # b_horreon_margi_horreon_margi;x
+1022 = { winter_severity_bias = 0.0 } # b_idimon_horreon_margi;x
 
 ### PANNONIA
-1023 = { winter_severity_bias = @heavy_coverage } # b_baos_douiana;x
-1024 = { winter_severity_bias = @heavy_coverage } # b_douiana_douiana;x
-1025 = { winter_severity_bias = @heavy_coverage } # b_koumodina_douiana;x
-1026 = { winter_severity_bias = @heavy_coverage } # b_vrelo_bottes;x
-1027 = { winter_severity_bias = @heavy_coverage } # b_tzimes_bottes;x
-1028 = { winter_severity_bias = @heavy_coverage } # b_bottes_bottes;x
-1029 = { winter_severity_bias = @heavy_coverage } # b_margos_viminikion;x
-1030 = { winter_severity_bias = @heavy_coverage } # b_viminikion_viminikion;x
-1031 = { winter_severity_bias = @heavy_coverage } # b_vinkeia_viminikion;x
-1032 = { winter_severity_bias = @heavy_coverage } # b_sextos_artuas_viminikion;x
-1033 = { winter_severity_bias = @heavy_coverage } # b_landaseno_ollonsta;x
-1034 = { winter_severity_bias = @heavy_coverage } # b_ollonsta_ollonsta;x
-1035 = { winter_severity_bias = @heavy_coverage } # b_oinosta_ollonsta;x
-1036 = { winter_severity_bias = @heavy_coverage } # b_ambibriga_singidunon;x
-1037 = { winter_severity_bias = @heavy_coverage } # b_avala_singidunon;x
-1038 = { winter_severity_bias = @heavy_coverage } # b_singidunon_singidunon;x
-1039 = { winter_severity_bias = @heavy_coverage } # b_oktabon_singidunon;x
+1023 = { winter_severity_bias = 0.0 } # b_baos_douiana;x
+1024 = { winter_severity_bias = 0.0 } # b_douiana_douiana;x
+1025 = { winter_severity_bias = 0.0 } # b_koumodina_douiana;x
+1026 = { winter_severity_bias = 0.0 } # b_vrelo_bottes;x
+1027 = { winter_severity_bias = 0.0 } # b_tzimes_bottes;x
+1028 = { winter_severity_bias = 0.0 } # b_bottes_bottes;x
+1029 = { winter_severity_bias = 0.0 } # b_margos_viminikion;x
+1030 = { winter_severity_bias = 0.0 } # b_viminikion_viminikion;x
+1031 = { winter_severity_bias = 0.0 } # b_vinkeia_viminikion;x
+1032 = { winter_severity_bias = 0.0 } # b_sextos_artuas_viminikion;x
+1033 = { winter_severity_bias = 0.0 } # b_landaseno_ollonsta;x
+1034 = { winter_severity_bias = 0.0 } # b_ollonsta_ollonsta;x
+1035 = { winter_severity_bias = 0.0 } # b_oinosta_ollonsta;x
+1036 = { winter_severity_bias = 0.0 } # b_ambibriga_singidunon;x
+1037 = { winter_severity_bias = 0.0 } # b_avala_singidunon;x
+1038 = { winter_severity_bias = 0.0 } # b_singidunon_singidunon;x
+1039 = { winter_severity_bias = 0.0 } # b_oktabon_singidunon;x
 
 ### RHODOPE
 456 = { winter_severity_bias = 0.0 } # b_topeiros_topeiros
@@ -918,18 +1081,18 @@
 1053 = { winter_severity_bias = 0.0 } # b_skaptopara_iamphorina
 
 ### LIBURNIA
-1147 = { winter_severity_bias = @light_coverage } # b_albona_flanona
-1148 = { winter_severity_bias = @light_coverage } # b_flanona_flanona
-1149 = { winter_severity_bias = @light_coverage } # b_atrokolnos_flanona
-1150 = { winter_severity_bias = @light_coverage } # b_tarsatika_tarsatika
-1151 = { winter_severity_bias = @light_coverage } # b_velkera_tarsatika
-1152 = { winter_severity_bias = @light_coverage } # b_kaukos_tarsatika
-1153 = { winter_severity_bias = @light_coverage } # b_senia_senia
-1154 = { winter_severity_bias = @light_coverage } # b_lopsika_senia
-1155 = { winter_severity_bias = @light_coverage } # b_ortopla_ortopla
-1156 = { winter_severity_bias = @light_coverage } # b_vegion_ortopla
-1157 = { winter_severity_bias = @light_coverage } # b_argurunton_ortopla
-1158 = { winter_severity_bias = @light_coverage } # b_torpeios_aenona
+1147 = { winter_severity_bias = 0.0 } # b_albona_flanona
+1148 = { winter_severity_bias = 0.0 } # b_flanona_flanona
+1149 = { winter_severity_bias = 0.0 } # b_atrokolnos_flanona
+1150 = { winter_severity_bias = 0.0 } # b_tarsatika_tarsatika
+1151 = { winter_severity_bias = 0.0 } # b_velkera_tarsatika
+1152 = { winter_severity_bias = 0.0 } # b_kaukos_tarsatika
+1153 = { winter_severity_bias = 0.0 } # b_senia_senia
+1154 = { winter_severity_bias = 0.0 } # b_lopsika_senia
+1155 = { winter_severity_bias = 0.0 } # b_ortopla_ortopla
+1156 = { winter_severity_bias = 0.0 } # b_vegion_ortopla
+1157 = { winter_severity_bias = 0.0 } # b_argurunton_ortopla
+1158 = { winter_severity_bias = 0.0 } # b_torpeios_aenona
 1159 = { winter_severity_bias = 0.0 } # b_aenona_aenona
 1160 = { winter_severity_bias = 0.0 } # b_idassa_idassa
 1161 = { winter_severity_bias = 0.0 } # b_nedinon_idassa
@@ -938,257 +1101,257 @@
 1164 = { winter_severity_bias = 0.0 } # b_arausa_skardon
 1165 = { winter_severity_bias = 0.0 } # b_skardon_skardon
 1166 = { winter_severity_bias = 0.0 } # b_varvaria_skardon
-1167 = { winter_severity_bias = @light_coverage } # b_geriotegos_promona
-1168 = { winter_severity_bias = @light_coverage } # b_promona_promona
-1169 = { winter_severity_bias = @light_coverage } # b_burnon_burnon
-1170 = { winter_severity_bias = @light_coverage } # b_ninia_burnon
-1171 = { winter_severity_bias = @light_coverage } # b_korinion_asseria
+1167 = { winter_severity_bias = 0.0 } # b_geriotegos_promona
+1168 = { winter_severity_bias = 0.0 } # b_promona_promona
+1169 = { winter_severity_bias = 0.0 } # b_burnon_burnon
+1170 = { winter_severity_bias = 0.0 } # b_ninia_burnon
+1171 = { winter_severity_bias = 0.0 } # b_korinion_asseria
 1172 = { winter_severity_bias = 0.0 } # b_asseria_asseria
-1173 = { winter_severity_bias = @light_coverage } # b_sidrona_sidrona
-1174 = { winter_severity_bias = @light_coverage } # b_ekon_sidrona
+1173 = { winter_severity_bias = 0.0 } # b_sidrona_sidrona
+1174 = { winter_severity_bias = 0.0 } # b_ekon_sidrona
 1175 = { winter_severity_bias = 0.0 } # b_vaston_vaston
 1176 = { winter_severity_bias = 0.0 } # b_ausiogron_vaston
 1177 = { winter_severity_bias = 0.0 } # b_armentos_mentorides
-1178 = { winter_severity_bias = @light_coverage } # b_kissa_mentorides
-1179 = { winter_severity_bias = @light_coverage } # b_arba_mentorides
-1180 = { winter_severity_bias = @light_coverage } # b_brevategos_elektrides
-1181 = { winter_severity_bias = @light_coverage } # b_kurikon_elektrides
-1182 = { winter_severity_bias = @light_coverage } # b_krexa_apsartides
-1183 = { winter_severity_bias = @light_coverage } # b_apsaros_apsartides
-1184 = { winter_severity_bias = @light_coverage } # b_blotensla_apsartides
+1178 = { winter_severity_bias = 0.0 } # b_kissa_mentorides
+1179 = { winter_severity_bias = 0.0 } # b_arba_mentorides
+1180 = { winter_severity_bias = 0.0 } # b_brevategos_elektrides
+1181 = { winter_severity_bias = 0.0 } # b_kurikon_elektrides
+1182 = { winter_severity_bias = 0.0 } # b_krexa_apsartides
+1183 = { winter_severity_bias = 0.0 } # b_apsaros_apsartides
+1184 = { winter_severity_bias = 0.0 } # b_blotensla_apsartides
 
 ### IAPODIA
-1185 = { winter_severity_bias = @heavy_coverage } # b_klambetis_klambetis
-1186 = { winter_severity_bias = @heavy_coverage } # b_ausankalion_klambetis
-1187 = { winter_severity_bias = @heavy_coverage } # b_korbavion_klambetis
-1188 = { winter_severity_bias = @heavy_coverage } # b_branaro_ulka
-1189 = { winter_severity_bias = @heavy_coverage } # b_metuteuta_ulka
-1190 = { winter_severity_bias = @heavy_coverage } # b_ulka_ulka
-1191 = { winter_severity_bias = @heavy_coverage } # b_magpaturon_ardotion
-1192 = { winter_severity_bias = @heavy_coverage } # b_ankos_ardotion
-1193 = { winter_severity_bias = @heavy_coverage } # b_ardotion_ardotion
-1194 = { winter_severity_bias = @full_coverage } # b_dizeros_arupion
-1195 = { winter_severity_bias = @heavy_coverage } # b_epidotion_arupion
-1196 = { winter_severity_bias = @heavy_coverage } # b_arupion_arupion
-1197 = { winter_severity_bias = @heavy_coverage } # b_avendon_monetion
-1198 = { winter_severity_bias = @heavy_coverage } # b_monetion_monetion
-1199 = { winter_severity_bias = @heavy_coverage } # b_kladarmos_monetion
-1200 = { winter_severity_bias = @heavy_coverage } # b_terponos_metoulon
-1201 = { winter_severity_bias = @light_coverage } # b_tetrapones_metoulon
-1202 = { winter_severity_bias = @light_coverage } # b_metoulon_metoulon
-1203 = { winter_severity_bias = @heavy_coverage } # b_breva_metoulon
-1204 = { winter_severity_bias = @heavy_coverage } # b_erkos_kolnis
-1205 = { winter_severity_bias = @heavy_coverage } # b_keieskosinon_kolnis
-1206 = { winter_severity_bias = @heavy_coverage } # b_kolnis_kolnis
-1207 = { winter_severity_bias = @light_coverage } # b_deivospelta_bosona
-1208 = { winter_severity_bias = @light_coverage } # b_bosona_bosona
-1209 = { winter_severity_bias = @light_coverage } # b_oramontis_bosona
-1210 = { winter_severity_bias = @heavy_coverage } # b_velon_segestika
-1211 = { winter_severity_bias = @heavy_coverage } # b_akmon_segestika
-1212 = { winter_severity_bias = @heavy_coverage } # b_segestika_segestika
-1213 = { winter_severity_bias = @heavy_coverage } # b_aiga_segestika
-1214 = { winter_severity_bias = @heavy_coverage } # b_gerlauntios_andautonia
-1215 = { winter_severity_bias = @heavy_coverage } # b_andautonia_andautonia
-1216 = { winter_severity_bias = @heavy_coverage } # b_oinogautis_andautonia
-1217 = { winter_severity_bias = @heavy_coverage } # b_klopnis_ageron
-1218 = { winter_severity_bias = @heavy_coverage } # b_leuderonemos_ageron
-1219 = { winter_severity_bias = @heavy_coverage } # b_ageron_ageron
-1220 = { winter_severity_bias = @light_coverage } # b_upotelsos_opna
-1221 = { winter_severity_bias = @light_coverage } # b_opna_opna
-1222 = { winter_severity_bias = @light_coverage } # b_savos_neunomon
-1223 = { winter_severity_bias = @light_coverage } # b_neunomon_neunomon
-1224 = { winter_severity_bias = @light_coverage } # b_knoukon_neunomon
-1225 = { winter_severity_bias = @heavy_coverage } # b_antion_komvorion
-1226 = { winter_severity_bias = @heavy_coverage } # b_komvorion_komvorion
-1227 = { winter_severity_bias = @heavy_coverage } # b_kelga_komvorion
-1228 = { winter_severity_bias = @light_coverage } # b_enplovion_enplovion
-1229 = { winter_severity_bias = @light_coverage } # b_vaton_enplovion
-1230 = { winter_severity_bias = @light_coverage } # b_kasterlon_kasterlon
-1231 = { winter_severity_bias = @heavy_coverage } # b_kuddron_kasterlon
-1232 = { winter_severity_bias = @light_coverage } # b_drogon_drogon
-1233 = { winter_severity_bias = @light_coverage } # b_neukleion_drogon
-1234 = { winter_severity_bias = @light_coverage } # b_deuleva_drogon
-1235 = { winter_severity_bias = @heavy_coverage } # b_astron_astron
-1236 = { winter_severity_bias = @heavy_coverage } # b_karkron_astron
-1237 = { winter_severity_bias = @heavy_coverage } # b_kolnkonon_plorinos
-1238 = { winter_severity_bias = @light_coverage } # b_sonom_plorinos
-1239 = { winter_severity_bias = @heavy_coverage } # b_plorinos_plorinos
-1240 = { winter_severity_bias = @heavy_coverage } # b_treveson_treveson
-1241 = { winter_severity_bias = @heavy_coverage } # b_sikabrigon_treveson
-1247 = { winter_severity_bias = @light_coverage } # b_vesteuta_neuverion
-1248 = { winter_severity_bias = @light_coverage } # b_antion_neuverion
-1249 = { winter_severity_bias = @heavy_coverage } # b_neuverion_neuverion
+1185 = { winter_severity_bias = 0.0 } # b_klambetis_klambetis
+1186 = { winter_severity_bias = 0.0 } # b_ausankalion_klambetis
+1187 = { winter_severity_bias = 0.0 } # b_korbavion_klambetis
+1188 = { winter_severity_bias = 0.0 } # b_branaro_ulka
+1189 = { winter_severity_bias = 0.0 } # b_metuteuta_ulka
+1190 = { winter_severity_bias = 0.0 } # b_ulka_ulka
+1191 = { winter_severity_bias = 0.0 } # b_magpaturon_ardotion
+1192 = { winter_severity_bias = 0.0 } # b_ankos_ardotion
+1193 = { winter_severity_bias = 0.0 } # b_ardotion_ardotion
+1194 = { winter_severity_bias = 0.0 } # b_dizeros_arupion
+1195 = { winter_severity_bias = 0.0 } # b_epidotion_arupion
+1196 = { winter_severity_bias = 0.0 } # b_arupion_arupion
+1197 = { winter_severity_bias = 0.0 } # b_avendon_monetion
+1198 = { winter_severity_bias = 0.0 } # b_monetion_monetion
+1199 = { winter_severity_bias = 0.0 } # b_kladarmos_monetion
+1200 = { winter_severity_bias = 0.0 } # b_terponos_metoulon
+1201 = { winter_severity_bias = 0.0 } # b_tetrapones_metoulon
+1202 = { winter_severity_bias = 0.0 } # b_metoulon_metoulon
+1203 = { winter_severity_bias = 0.0 } # b_breva_metoulon
+1204 = { winter_severity_bias = 0.0 } # b_erkos_kolnis
+1205 = { winter_severity_bias = 0.0 } # b_keieskosinon_kolnis
+1206 = { winter_severity_bias = 0.0 } # b_kolnis_kolnis
+1207 = { winter_severity_bias = 0.0 } # b_deivospelta_bosona
+1208 = { winter_severity_bias = 0.0 } # b_bosona_bosona
+1209 = { winter_severity_bias = 0.0 } # b_oramontis_bosona
+1210 = { winter_severity_bias = 0.0 } # b_velon_segestika
+1211 = { winter_severity_bias = 0.0 } # b_akmon_segestika
+1212 = { winter_severity_bias = 0.0 } # b_segestika_segestika
+1213 = { winter_severity_bias = 0.0 } # b_aiga_segestika
+1214 = { winter_severity_bias = 0.0 } # b_gerlauntios_andautonia
+1215 = { winter_severity_bias = 0.0 } # b_andautonia_andautonia
+1216 = { winter_severity_bias = 0.0 } # b_oinogautis_andautonia
+1217 = { winter_severity_bias = 0.0 } # b_klopnis_ageron
+1218 = { winter_severity_bias = 0.0 } # b_leuderonemos_ageron
+1219 = { winter_severity_bias = 0.0 } # b_ageron_ageron
+1220 = { winter_severity_bias = 0.0 } # b_upotelsos_opna
+1221 = { winter_severity_bias = 0.0 } # b_opna_opna
+1222 = { winter_severity_bias = 0.0 } # b_savos_neunomon
+1223 = { winter_severity_bias = 0.0 } # b_neunomon_neunomon
+1224 = { winter_severity_bias = 0.0 } # b_knoukon_neunomon
+1225 = { winter_severity_bias = 0.0 } # b_antion_komvorion
+1226 = { winter_severity_bias = 0.0 } # b_komvorion_komvorion
+1227 = { winter_severity_bias = 0.0 } # b_kelga_komvorion
+1228 = { winter_severity_bias = 0.0 } # b_enplovion_enplovion
+1229 = { winter_severity_bias = 0.0 } # b_vaton_enplovion
+1230 = { winter_severity_bias = 0.0 } # b_kasterlon_kasterlon
+1231 = { winter_severity_bias = 0.0 } # b_kuddron_kasterlon
+1232 = { winter_severity_bias = 0.0 } # b_drogon_drogon
+1233 = { winter_severity_bias = 0.0 } # b_neukleion_drogon
+1234 = { winter_severity_bias = 0.0 } # b_deuleva_drogon
+1235 = { winter_severity_bias = 0.0 } # b_astron_astron
+1236 = { winter_severity_bias = 0.0 } # b_karkron_astron
+1237 = { winter_severity_bias = 0.0 } # b_kolnkonon_plorinos
+1238 = { winter_severity_bias = 0.0 } # b_sonom_plorinos
+1239 = { winter_severity_bias = 0.0 } # b_plorinos_plorinos
+1240 = { winter_severity_bias = 0.0 } # b_treveson_treveson
+1241 = { winter_severity_bias = 0.0 } # b_sikabrigon_treveson
+1247 = { winter_severity_bias = 0.0 } # b_vesteuta_neuverion
+1248 = { winter_severity_bias = 0.0 } # b_antion_neuverion
+1249 = { winter_severity_bias = 0.0 } # b_neuverion_neuverion
 
 ### BREUKIA
-1292 = { winter_severity_bias = @light_coverage } # b_anion_klandate
-1293 = { winter_severity_bias = @heavy_coverage } # b_klandate_klandate
-1294 = { winter_severity_bias = @light_coverage } # b_budmenon_klandate
-1301 = { winter_severity_bias = @heavy_coverage } # b_heromon_heromon
-1302 = { winter_severity_bias = @light_coverage } # b_dolon_heromon
-1303 = { winter_severity_bias = @light_coverage } # b_prodoron_prodoron
-1304 = { winter_severity_bias = @light_coverage } # b_hekmoneuson_prodoron
-1305 = { winter_severity_bias = @light_coverage } # b_splonon_splonon
-1306 = { winter_severity_bias = @light_coverage } # b_herdarion_splonon
-1307 = { winter_severity_bias = @heavy_coverage } # b_aimate_kanabai
-1308 = { winter_severity_bias = @heavy_coverage } # b_heiovasson_kanabai
-1309 = { winter_severity_bias = @heavy_coverage } # b_kanabai_kanabai
-1295 = { winter_severity_bias = @light_coverage } # b_kreparion_peron
-1296 = { winter_severity_bias = @light_coverage } # b_peron_peron
-1297 = { winter_severity_bias = @light_coverage } # b_iotagerdon_peron
-1298 = { winter_severity_bias = @light_coverage } # b_iumion_servition
-1299 = { winter_severity_bias = @light_coverage } # b_servition_servition
-1300 = { winter_severity_bias = @light_coverage } # b_balkis_servition
-1395 = { winter_severity_bias = @light_coverage } # b_oion_kaputon
-1396 = { winter_severity_bias = @light_coverage } # b_domeon_kaputon
-1397 = { winter_severity_bias = @light_coverage } # b_kaputon_kaputon
-1398 = { winter_severity_bias = @heavy_coverage } # b_menneianai_bruion
-1399 = { winter_severity_bias = @light_coverage } # b_bruion_bruion
-1400 = { winter_severity_bias = @light_coverage } # b_kveiton_bruion
-1408 = { winter_severity_bias = @heavy_coverage } # b_ludon_inkeron
-1409 = { winter_severity_bias = @heavy_coverage } # b_inkeron_inkeron
-1410 = { winter_severity_bias = @heavy_coverage } # b_mothon_inkeron
-1310 = { winter_severity_bias = @heavy_coverage } # b_mapulon_zorveiron
-1311 = { winter_severity_bias = @light_coverage } # b_zorveiron_zorveiron
-1312 = { winter_severity_bias = @heavy_coverage } # b_hevinurion_zorveiron
-1318 = { winter_severity_bias = @heavy_coverage } # b_groukisnos_groukisnos
-1319 = { winter_severity_bias = @heavy_coverage } # b_sekavikon_groukisnos
-1320 = { winter_severity_bias = @heavy_coverage } # b_drukenon_drukaion
-1321 = { winter_severity_bias = @heavy_coverage } # b_drukaion_drukaion
-1322 = { winter_severity_bias = @heavy_coverage } # b_herbon_drukaion
-1323 = { winter_severity_bias = @heavy_coverage } # b_sneigon_hounion
-1324 = { winter_severity_bias = @heavy_coverage } # b_gounebriga_hounion
-1325 = { winter_severity_bias = @heavy_coverage } # b_hounion_hounion
-1326 = { winter_severity_bias = @heavy_coverage } # b_nieraron_nieraron
-1327 = { winter_severity_bias = @heavy_coverage } # b_spikon_nieraron
-1328 = { winter_severity_bias = @heavy_coverage } # b_marbriga_nieraron
-1313 = { winter_severity_bias = @light_coverage } # b_urbate_urbate
-1314 = { winter_severity_bias = @light_coverage } # b_grounon_urbate
-1315 = { winter_severity_bias = @light_coverage } # b_domai_kaminos
-1316 = { winter_severity_bias = @light_coverage } # b_kaminos_kaminos
-1317 = { winter_severity_bias = @light_coverage } # b_giateron_kaminos
-1387 = { winter_severity_bias = @light_coverage } # b_stravianis_pikentinon
-1388 = { winter_severity_bias = @heavy_coverage } # b_pikentinon_pikentinon
-1389 = { winter_severity_bias = @light_coverage } # b_leukonon_pikentinon
-1390 = { winter_severity_bias = @heavy_coverage } # b_kirtisa_kirtisa
-1391 = { winter_severity_bias = @heavy_coverage } # b_boson_kirtisa
-1392 = { winter_severity_bias = @heavy_coverage } # b_piravikon_marsonia
-1393 = { winter_severity_bias = @heavy_coverage } # b_leukonon_marsonia
-1394 = { winter_severity_bias = @heavy_coverage } # b_marsonia_marsonia
+1292 = { winter_severity_bias = 0.0 } # b_anion_klandate
+1293 = { winter_severity_bias = 0.0 } # b_klandate_klandate
+1294 = { winter_severity_bias = 0.0 } # b_budmenon_klandate
+1301 = { winter_severity_bias = 0.0 } # b_heromon_heromon
+1302 = { winter_severity_bias = 0.0 } # b_dolon_heromon
+1303 = { winter_severity_bias = 0.0 } # b_prodoron_prodoron
+1304 = { winter_severity_bias = 0.0 } # b_hekmoneuson_prodoron
+1305 = { winter_severity_bias = 0.0 } # b_splonon_splonon
+1306 = { winter_severity_bias = 0.0 } # b_herdarion_splonon
+1307 = { winter_severity_bias = 0.0 } # b_aimate_kanabai
+1308 = { winter_severity_bias = 0.0 } # b_heiovasson_kanabai
+1309 = { winter_severity_bias = 0.0 } # b_kanabai_kanabai
+1295 = { winter_severity_bias = 0.0 } # b_kreparion_peron
+1296 = { winter_severity_bias = 0.0 } # b_peron_peron
+1297 = { winter_severity_bias = 0.0 } # b_iotagerdon_peron
+1298 = { winter_severity_bias = 0.0 } # b_iumion_servition
+1299 = { winter_severity_bias = 0.0 } # b_servition_servition
+1300 = { winter_severity_bias = 0.0 } # b_balkis_servition
+1395 = { winter_severity_bias = 0.0 } # b_oion_kaputon
+1396 = { winter_severity_bias = 0.0 } # b_domeon_kaputon
+1397 = { winter_severity_bias = 0.0 } # b_kaputon_kaputon
+1398 = { winter_severity_bias = 0.0 } # b_menneianai_bruion
+1399 = { winter_severity_bias = 0.0 } # b_bruion_bruion
+1400 = { winter_severity_bias = 0.0 } # b_kveiton_bruion
+1408 = { winter_severity_bias = 0.0 } # b_ludon_inkeron
+1409 = { winter_severity_bias = 0.0 } # b_inkeron_inkeron
+1410 = { winter_severity_bias = 0.0 } # b_mothon_inkeron
+1310 = { winter_severity_bias = 0.0 } # b_mapulon_zorveiron
+1311 = { winter_severity_bias = 0.0 } # b_zorveiron_zorveiron
+1312 = { winter_severity_bias = 0.0 } # b_hevinurion_zorveiron
+1318 = { winter_severity_bias = 0.0 } # b_groukisnos_groukisnos
+1319 = { winter_severity_bias = 0.0 } # b_sekavikon_groukisnos
+1320 = { winter_severity_bias = 0.0 } # b_drukenon_drukaion
+1321 = { winter_severity_bias = 0.0 } # b_drukaion_drukaion
+1322 = { winter_severity_bias = 0.0 } # b_herbon_drukaion
+1323 = { winter_severity_bias = 0.0 } # b_sneigon_hounion
+1324 = { winter_severity_bias = 0.0 } # b_gounebriga_hounion
+1325 = { winter_severity_bias = 0.0 } # b_hounion_hounion
+1326 = { winter_severity_bias = 0.0 } # b_nieraron_nieraron
+1327 = { winter_severity_bias = 0.0 } # b_spikon_nieraron
+1328 = { winter_severity_bias = 0.0 } # b_marbriga_nieraron
+1313 = { winter_severity_bias = 0.0 } # b_urbate_urbate
+1314 = { winter_severity_bias = 0.0 } # b_grounon_urbate
+1315 = { winter_severity_bias = 0.0 } # b_domai_kaminos
+1316 = { winter_severity_bias = 0.0 } # b_kaminos_kaminos
+1317 = { winter_severity_bias = 0.0 } # b_giateron_kaminos
+1387 = { winter_severity_bias = 0.0 } # b_stravianis_pikentinon
+1388 = { winter_severity_bias = 0.0 } # b_pikentinon_pikentinon
+1389 = { winter_severity_bias = 0.0 } # b_leukonon_pikentinon
+1390 = { winter_severity_bias = 0.0 } # b_kirtisa_kirtisa
+1391 = { winter_severity_bias = 0.0 } # b_boson_kirtisa
+1392 = { winter_severity_bias = 0.0 } # b_piravikon_marsonia
+1393 = { winter_severity_bias = 0.0 } # b_leukonon_marsonia
+1394 = { winter_severity_bias = 0.0 } # b_marsonia_marsonia
 
 ### IASIA
-1380 = { winter_severity_bias = @heavy_coverage } # b_volkon_mursa
-1381 = { winter_severity_bias = @heavy_coverage } # b_mursa_mursa
-1382 = { winter_severity_bias = @heavy_coverage } # b_mursella_mursa
-1383 = { winter_severity_bias = @heavy_coverage } # b_iovalia_mursa
-1384 = { winter_severity_bias = @heavy_coverage } # b_bromagon_kelon
-1385 = { winter_severity_bias = @heavy_coverage } # b_kelon_kelon
-1386 = { winter_severity_bias = @light_coverage } # b_malliasion_kelon
-1411 = { winter_severity_bias = @light_coverage } # b_hekmobergon_hekmobergon
-1412 = { winter_severity_bias = @light_coverage } # b_bruogon_hekmobergon
-1413 = { winter_severity_bias = @light_coverage } # b_permargon_hekmobergon
-1414 = { winter_severity_bias = @light_coverage } # b_delion_serena
-1415 = { winter_severity_bias = @heavy_coverage } # b_vereis_serena
-1416 = { winter_severity_bias = @light_coverage } # b_serena_serena
-1417 = { winter_severity_bias = @light_coverage } # b_maurianis_serena
-1418 = { winter_severity_bias = @light_coverage } # b_karrodunon_karrodunon
-1419 = { winter_severity_bias = @light_coverage } # b_serota_karrodunon
-1420 = { winter_severity_bias = @light_coverage } # b_lentulis_karrodunon
-1421 = { winter_severity_bias = @light_coverage } # b_iovista_karrodunon
-1401 = { winter_severity_bias = @light_coverage } # b_varianis_varianis
-1402 = { winter_severity_bias = @light_coverage } # b_steigion_varianis
-1403 = { winter_severity_bias = @light_coverage } # b_gotision_varianis
-1404 = { winter_severity_bias = @light_coverage } # b_iasorvenses_varianis
-1405 = { winter_severity_bias = @light_coverage } # b_balissai_balissai
-1406 = { winter_severity_bias = @light_coverage } # b_steibergon_balissai
-1407 = { winter_severity_bias = @heavy_coverage } # b_drukenon_balissai
-1431 = { winter_severity_bias = @heavy_coverage } # b_nevorosion_demsareon
-1432 = { winter_severity_bias = @heavy_coverage } # b_demsareon_demsareon
-1433 = { winter_severity_bias = @light_coverage } # b_elekaputon_demsareon
-1434 = { winter_severity_bias = @light_coverage } # b_pion_pion
-1435 = { winter_severity_bias = @light_coverage } # b_heusteron_pion
-1436 = { winter_severity_bias = @heavy_coverage } # b_remeon_pion
-1422 = { winter_severity_bias = @light_coverage } # b_louta_lentulos
-1423 = { winter_severity_bias = @heavy_coverage } # b_lentulos_lentulos
-1424 = { winter_severity_bias = @heavy_coverage } # b_piretis_lentulos
-1425 = { winter_severity_bias = @heavy_coverage } # b_sonista_iovia
-1426 = { winter_severity_bias = @heavy_coverage } # b_iovia_iovia
-1427 = { winter_severity_bias = @heavy_coverage } # b_brigaventos_iovia
-1428 = { winter_severity_bias = @heavy_coverage } # b_sukon_vesubona
-1429 = { winter_severity_bias = @heavy_coverage } # b_brigatrion_vesubona
-1430 = { winter_severity_bias = @heavy_coverage } # b_vesubona_vesubona
-1443 = { winter_severity_bias = @heavy_coverage } # b_eron_iasion
-1444 = { winter_severity_bias = @heavy_coverage } # b_pyrri_iasion
-1445 = { winter_severity_bias = @heavy_coverage } # b_pekudomion_iasion
-1446 = { winter_severity_bias = @heavy_coverage } # b_iasion_iasion
-1447 = { winter_severity_bias = @heavy_coverage } # b_dunon_viva
-1448 = { winter_severity_bias = @heavy_coverage } # b_viva_viva
-1449 = { winter_severity_bias = @heavy_coverage } # b_giannion_viva
-1437 = { winter_severity_bias = @heavy_coverage } # b_longobona_brigion
-1438 = { winter_severity_bias = @light_coverage } # b_brigion_brigion
-1439 = { winter_severity_bias = @light_coverage } # b_borvanalon_brigion
-1440 = { winter_severity_bias = @heavy_coverage } # b_kaktion_velibona
-1441 = { winter_severity_bias = @heavy_coverage } # b_velibona_velibona
-1442 = { winter_severity_bias = @heavy_coverage } # b_batraxon_velibona
-1450 = { winter_severity_bias = @heavy_coverage } # b_laboron_laboron
-1451 = { winter_severity_bias = @heavy_coverage } # b_senaston_laboron
-1452 = { winter_severity_bias = @heavy_coverage } # b_lopherdomon_lopherdomon
-1453 = { winter_severity_bias = @heavy_coverage } # b_margon_lopherdomon
-1454 = { winter_severity_bias = @heavy_coverage } # b_vivai_tribrigon
-1455 = { winter_severity_bias = @heavy_coverage } # b_tribrigon_tribrigon
-1456 = { winter_severity_bias = @heavy_coverage } # b_amargon_tribrigon
+1380 = { winter_severity_bias = 0.0 } # b_volkon_mursa
+1381 = { winter_severity_bias = 0.0 } # b_mursa_mursa
+1382 = { winter_severity_bias = 0.0 } # b_mursella_mursa
+1383 = { winter_severity_bias = 0.0 } # b_iovalia_mursa
+1384 = { winter_severity_bias = 0.0 } # b_bromagon_kelon
+1385 = { winter_severity_bias = 0.0 } # b_kelon_kelon
+1386 = { winter_severity_bias = 0.0 } # b_malliasion_kelon
+1411 = { winter_severity_bias = 0.0 } # b_hekmobergon_hekmobergon
+1412 = { winter_severity_bias = 0.0 } # b_bruogon_hekmobergon
+1413 = { winter_severity_bias = 0.0 } # b_permargon_hekmobergon
+1414 = { winter_severity_bias = 0.0 } # b_delion_serena
+1415 = { winter_severity_bias = 0.0 } # b_vereis_serena
+1416 = { winter_severity_bias = 0.0 } # b_serena_serena
+1417 = { winter_severity_bias = 0.0 } # b_maurianis_serena
+1418 = { winter_severity_bias = 0.0 } # b_karrodunon_karrodunon
+1419 = { winter_severity_bias = 0.0 } # b_serota_karrodunon
+1420 = { winter_severity_bias = 0.0 } # b_lentulis_karrodunon
+1421 = { winter_severity_bias = 0.0 } # b_iovista_karrodunon
+1401 = { winter_severity_bias = 0.0 } # b_varianis_varianis
+1402 = { winter_severity_bias = 0.0 } # b_steigion_varianis
+1403 = { winter_severity_bias = 0.0 } # b_gotision_varianis
+1404 = { winter_severity_bias = 0.0 } # b_iasorvenses_varianis
+1405 = { winter_severity_bias = 0.0 } # b_balissai_balissai
+1406 = { winter_severity_bias = 0.0 } # b_steibergon_balissai
+1407 = { winter_severity_bias = 0.0 } # b_drukenon_balissai
+1431 = { winter_severity_bias = 0.0 } # b_nevorosion_demsareon
+1432 = { winter_severity_bias = 0.0 } # b_demsareon_demsareon
+1433 = { winter_severity_bias = 0.0 } # b_elekaputon_demsareon
+1434 = { winter_severity_bias = 0.0 } # b_pion_pion
+1435 = { winter_severity_bias = 0.0 } # b_heusteron_pion
+1436 = { winter_severity_bias = 0.0 } # b_remeon_pion
+1422 = { winter_severity_bias = 0.0 } # b_louta_lentulos
+1423 = { winter_severity_bias = 0.0 } # b_lentulos_lentulos
+1424 = { winter_severity_bias = 0.0 } # b_piretis_lentulos
+1425 = { winter_severity_bias = 0.0 } # b_sonista_iovia
+1426 = { winter_severity_bias = 0.0 } # b_iovia_iovia
+1427 = { winter_severity_bias = 0.0 } # b_brigaventos_iovia
+1428 = { winter_severity_bias = 0.0 } # b_sukon_vesubona
+1429 = { winter_severity_bias = 0.0 } # b_brigatrion_vesubona
+1430 = { winter_severity_bias = 0.0 } # b_vesubona_vesubona
+1443 = { winter_severity_bias = 0.0 } # b_eron_iasion
+1444 = { winter_severity_bias = 0.0 } # b_pyrri_iasion
+1445 = { winter_severity_bias = 0.0 } # b_pekudomion_iasion
+1446 = { winter_severity_bias = 0.0 } # b_iasion_iasion
+1447 = { winter_severity_bias = 0.0 } # b_dunon_viva
+1448 = { winter_severity_bias = 0.0 } # b_viva_viva
+1449 = { winter_severity_bias = 0.0 } # b_giannion_viva
+1437 = { winter_severity_bias = 0.0 } # b_longobona_brigion
+1438 = { winter_severity_bias = 0.0 } # b_brigion_brigion
+1439 = { winter_severity_bias = 0.0 } # b_borvanalon_brigion
+1440 = { winter_severity_bias = 0.0 } # b_kaktion_velibona
+1441 = { winter_severity_bias = 0.0 } # b_velibona_velibona
+1442 = { winter_severity_bias = 0.0 } # b_batraxon_velibona
+1450 = { winter_severity_bias = 0.0 } # b_laboron_laboron
+1451 = { winter_severity_bias = 0.0 } # b_senaston_laboron
+1452 = { winter_severity_bias = 0.0 } # b_lopherdomon_lopherdomon
+1453 = { winter_severity_bias = 0.0 } # b_margon_lopherdomon
+1454 = { winter_severity_bias = 0.0 } # b_vivai_tribrigon
+1455 = { winter_severity_bias = 0.0 } # b_tribrigon_tribrigon
+1456 = { winter_severity_bias = 0.0 } # b_amargon_tribrigon
 
 ### AMANTINIA
-1329 = { winter_severity_bias = @heavy_coverage } # b_oeiron_ardrouknon
-1330 = { winter_severity_bias = @heavy_coverage } # b_ardrouknon_ardrouknon
-1331 = { winter_severity_bias = @heavy_coverage } # b_karsnaron_ardrouknon
-1332 = { winter_severity_bias = @heavy_coverage } # b_ianon_ianon
-1333 = { winter_severity_bias = @light_coverage } # b_drudaton_ianon
-1334 = { winter_severity_bias = @heavy_coverage } # b_knoukon_breukon
-1335 = { winter_severity_bias = @heavy_coverage } # b_breukon_breukon
-1342 = { winter_severity_bias = @light_coverage } # b_phalaines_orron
-1343 = { winter_severity_bias = @heavy_coverage } # b_orron_orron
-1336 = { winter_severity_bias = @light_coverage } # b_nueon_drinon
-1337 = { winter_severity_bias = @light_coverage } # b_drinon_drinon
-1338 = { winter_severity_bias = @light_coverage } # b_diniadamon_drinon
-1339 = { winter_severity_bias = @light_coverage } # b_phournos_salinai
-1340 = { winter_severity_bias = @heavy_coverage } # b_salinai_salinai
-1341 = { winter_severity_bias = @heavy_coverage } # b_neukai_salinai
-1344 = { winter_severity_bias = @heavy_coverage } # b_sphakon_stigon
-1345 = { winter_severity_bias = @heavy_coverage } # b_stigon_stigon
-1346 = { winter_severity_bias = @heavy_coverage } # b_oimon_belbriga
-1347 = { winter_severity_bias = @light_coverage } # b_belbriga_belbriga
-1348 = { winter_severity_bias = @light_coverage } # b_bandera_belbriga
-1349 = { winter_severity_bias = @light_coverage } # b_paloukon_paloukon
-1350 = { winter_severity_bias = @light_coverage } # b_skela_paloukon
-1351 = { winter_severity_bias = @light_coverage } # b_novikiana_paloukon
-1352 = { winter_severity_bias = @light_coverage } # b_altina_taurounon
-1353 = { winter_severity_bias = @light_coverage } # b_taurounon_taurounon
-1354 = { winter_severity_bias = @heavy_coverage } # b_burgenis_taurounon
-1355 = { winter_severity_bias = @heavy_coverage } # b_bassiana_bassiana
-1356 = { winter_severity_bias = @heavy_coverage } # b_idiminion_bassiana
-1357 = { winter_severity_bias = @heavy_coverage } # b_rittion_akoumikon
-1358 = { winter_severity_bias = @heavy_coverage } # b_akoumikon_akoumikon
-1359 = { winter_severity_bias = @heavy_coverage } # b_karron_kouson
-1360 = { winter_severity_bias = @heavy_coverage } # b_kouson_kouson
-1361 = { winter_severity_bias = @heavy_coverage } # b_phossai_sirmion
-1362 = { winter_severity_bias = @light_coverage } # b_sirmion_sirmion
-1363 = { winter_severity_bias = @light_coverage } # b_budalia_sirmion
-1364 = { winter_severity_bias = @heavy_coverage } # b_oioson_sirmion
-1365 = { winter_severity_bias = @light_coverage } # b_malata_kouson
-1366 = { winter_severity_bias = @light_coverage } # b_koukkion_koukkion
-1367 = { winter_severity_bias = @heavy_coverage } # b_spaneta_koukkion
-1368 = { winter_severity_bias = @heavy_coverage } # b_ulmos_koukkion
-1369 = { winter_severity_bias = @heavy_coverage } # b_bobriga_bobriga
-1370 = { winter_severity_bias = @light_coverage } # b_gardon_bobriga
-1371 = { winter_severity_bias = @heavy_coverage } # b_saldis_bobriga
-1372 = { winter_severity_bias = @heavy_coverage } # b_basante_klouaon
-1373 = { winter_severity_bias = @light_coverage } # b_klouaon_klouaon
-1374 = { winter_severity_bias = @light_coverage } # b_kausilena_klouaon
-1375 = { winter_severity_bias = @light_coverage } # b_volkos_teutobourgion
-1376 = { winter_severity_bias = @light_coverage } # b_teutobourgion_teutobourgion
-1377 = { winter_severity_bias = @light_coverage } # b_labores_teutobourgion
-1378 = { winter_severity_bias = @light_coverage } # b_leutuoano_kibalis
-1379 = { winter_severity_bias = @light_coverage } # b_kibalis_kibalis
+1329 = { winter_severity_bias = 0.0 } # b_oeiron_ardrouknon
+1330 = { winter_severity_bias = 0.0 } # b_ardrouknon_ardrouknon
+1331 = { winter_severity_bias = 0.0 } # b_karsnaron_ardrouknon
+1332 = { winter_severity_bias = 0.0 } # b_ianon_ianon
+1333 = { winter_severity_bias = 0.0 } # b_drudaton_ianon
+1334 = { winter_severity_bias = 0.0 } # b_knoukon_breukon
+1335 = { winter_severity_bias = 0.0 } # b_breukon_breukon
+1342 = { winter_severity_bias = 0.0 } # b_phalaines_orron
+1343 = { winter_severity_bias = 0.0 } # b_orron_orron
+1336 = { winter_severity_bias = 0.0 } # b_nueon_drinon
+1337 = { winter_severity_bias = 0.0 } # b_drinon_drinon
+1338 = { winter_severity_bias = 0.0 } # b_diniadamon_drinon
+1339 = { winter_severity_bias = 0.0 } # b_phournos_salinai
+1340 = { winter_severity_bias = 0.0 } # b_salinai_salinai
+1341 = { winter_severity_bias = 0.0 } # b_neukai_salinai
+1344 = { winter_severity_bias = 0.0 } # b_sphakon_stigon
+1345 = { winter_severity_bias = 0.0 } # b_stigon_stigon
+1346 = { winter_severity_bias = 0.0 } # b_oimon_belbriga
+1347 = { winter_severity_bias = 0.0 } # b_belbriga_belbriga
+1348 = { winter_severity_bias = 0.0 } # b_bandera_belbriga
+1349 = { winter_severity_bias = 0.0 } # b_paloukon_paloukon
+1350 = { winter_severity_bias = 0.0 } # b_skela_paloukon
+1351 = { winter_severity_bias = 0.0 } # b_novikiana_paloukon
+1352 = { winter_severity_bias = 0.0 } # b_altina_taurounon
+1353 = { winter_severity_bias = 0.0 } # b_taurounon_taurounon
+1354 = { winter_severity_bias = 0.0 } # b_burgenis_taurounon
+1355 = { winter_severity_bias = 0.0 } # b_bassiana_bassiana
+1356 = { winter_severity_bias = 0.0 } # b_idiminion_bassiana
+1357 = { winter_severity_bias = 0.0 } # b_rittion_akoumikon
+1358 = { winter_severity_bias = 0.0 } # b_akoumikon_akoumikon
+1359 = { winter_severity_bias = 0.0 } # b_karron_kouson
+1360 = { winter_severity_bias = 0.0 } # b_kouson_kouson
+1361 = { winter_severity_bias = 0.0 } # b_phossai_sirmion
+1362 = { winter_severity_bias = 0.0 } # b_sirmion_sirmion
+1363 = { winter_severity_bias = 0.0 } # b_budalia_sirmion
+1364 = { winter_severity_bias = 0.0 } # b_oioson_sirmion
+1365 = { winter_severity_bias = 0.0 } # b_malata_kouson
+1366 = { winter_severity_bias = 0.0 } # b_koukkion_koukkion
+1367 = { winter_severity_bias = 0.0 } # b_spaneta_koukkion
+1368 = { winter_severity_bias = 0.0 } # b_ulmos_koukkion
+1369 = { winter_severity_bias = 0.0 } # b_bobriga_bobriga
+1370 = { winter_severity_bias = 0.0 } # b_gardon_bobriga
+1371 = { winter_severity_bias = 0.0 } # b_saldis_bobriga
+1372 = { winter_severity_bias = 0.0 } # b_basante_klouaon
+1373 = { winter_severity_bias = 0.0 } # b_klouaon_klouaon
+1374 = { winter_severity_bias = 0.0 } # b_kausilena_klouaon
+1375 = { winter_severity_bias = 0.0 } # b_volkos_teutobourgion
+1376 = { winter_severity_bias = 0.0 } # b_teutobourgion_teutobourgion
+1377 = { winter_severity_bias = 0.0 } # b_labores_teutobourgion
+1378 = { winter_severity_bias = 0.0 } # b_leutuoano_kibalis
+1379 = { winter_severity_bias = 0.0 } # b_kibalis_kibalis
 
 #####################
 # IMPASSABLE TERRAIN
@@ -1244,21 +1407,21 @@
 447 = { winter_severity_bias = 0.0 } # PROPONTIS SEA
 
 ### Hellas
-15 = { winter_severity_bias = @medium_coverage } # PARNON MONS
-16 = { winter_severity_bias = @medium_coverage } # TAYGETOS MONS SOUTH
-47 = { winter_severity_bias = @medium_coverage } # WESTERN ACHAEAN MOUNTAINS
-48 = { winter_severity_bias = @medium_coverage } # SOUTHERN ACHAEAN MOUNTAINS
-49 = { winter_severity_bias = @medium_coverage } # EASTERN ACHAEAN MOUNTAINS
-62 = { winter_severity_bias = @medium_coverage } # CENTRAL ARCADIAN MOUNTAINS
-63 = { winter_severity_bias = @medium_coverage } # EASTERN ARCADIAN MOUNTAINS
+15 = { winter_severity_bias = 0.0 } # PARNON MONS
+16 = { winter_severity_bias = 0.0 } # TAYGETOS MONS SOUTH
+47 = { winter_severity_bias = 0.0 } # WESTERN ACHAEAN MOUNTAINS
+48 = { winter_severity_bias = 0.0 } # SOUTHERN ACHAEAN MOUNTAINS
+49 = { winter_severity_bias = 0.0 } # EASTERN ACHAEAN MOUNTAINS
+62 = { winter_severity_bias = 0.0 } # CENTRAL ARCADIAN MOUNTAINS
+63 = { winter_severity_bias = 0.0 } # EASTERN ARCADIAN MOUNTAINS
 109 = { winter_severity_bias = 0.0 } # HELIKON MONS
-118 = { winter_severity_bias = @light_coverage } # PARNASSOS MONS
+118 = { winter_severity_bias = 0.0 } # PARNASSOS MONS
 165 = { winter_severity_bias = 0.0 } # KNEMIS MONS
-496 = { winter_severity_bias = @medium_coverage } # OZOLIAN LOCRIS MOUNTAINS
-497 = { winter_severity_bias = @heavy_coverage } # KORAX MOUNTAINS
+496 = { winter_severity_bias = 0.0 } # OZOLIAN LOCRIS MOUNTAINS
+497 = { winter_severity_bias = 0.0 } # KORAX MOUNTAINS
 489 = { winter_severity_bias = 0.0 } # CITHAERON MOUNTAINS
 490 = { winter_severity_bias = 0.0 } # PARNES MOUNTAINS
-632 = { winter_severity_bias = @medium_coverage } # TAYGETOS MONS NORTH
+632 = { winter_severity_bias = 0.0 } # TAYGETOS MONS NORTH
 831 = { winter_severity_bias = 0.0 } # APESAS MOUNTAIN
 832 = { winter_severity_bias = 0.0 } # ARACHNAION MOUNTAIN
 833 = { winter_severity_bias = 0.0 } # AIGIPLANKTOS MOUNTAIN
@@ -1268,61 +1431,62 @@
 858 = { winter_severity_bias = 0.0 } # KALYDON MOUNTAIN
 
 ### THESSALY
+159 = { winter_severity_bias = 0.0 } # DIRPHYS MONS
 166 = { winter_severity_bias = 0.0 } # OTHRYS MONS
-216 = { winter_severity_bias = @medium_coverage } # PERRHAIBIA-MACEDONIA MOUNTAINS WEST
-217 = { winter_severity_bias = @light_coverage } # OSSA MONS
-491 = { winter_severity_bias = @medium_coverage } # MALIS MOUNTAIN
-498 = { winter_severity_bias = @light_coverage } # DOLOPIA MOUNTAINS
-869 = { winter_severity_bias = @medium_coverage } # PERRHAIBIA-MACEDONIA MOUNTAINS CENTRAL
-870 = { winter_severity_bias = @light_coverage } # PERRHAIBIA-MACEDONIA MOUNTAINS EAST
-876 = { winter_severity_bias = @light_coverage } # TRIKKA MOUNTAIN
+216 = { winter_severity_bias = 0.0 } # PERRHAIBIA-MACEDONIA MOUNTAINS WEST
+217 = { winter_severity_bias = 0.0 } # OSSA MONS
+491 = { winter_severity_bias = 0.0 } # MALIS MOUNTAIN
+498 = { winter_severity_bias = 0.0 } # DOLOPIA MOUNTAINS
+869 = { winter_severity_bias = 0.0 } # PERRHAIBIA-MACEDONIA MOUNTAINS CENTRAL
+870 = { winter_severity_bias = 0.0 } # PERRHAIBIA-MACEDONIA MOUNTAINS EAST
+876 = { winter_severity_bias = 0.0 } # TRIKKA MOUNTAIN
 877 = { winter_severity_bias = 0.0 } # PHARKADON MOUNTAIN
 878 = { winter_severity_bias = 0.0 } # OLOOSON MOUNTAIN
 880 = { winter_severity_bias = 0.0 } # PROERNA MOUNTAIN
 
 ### EPEIROS
-126 = { winter_severity_bias = @heavy_coverage } # CENTER PINDUS MOUNTAINS
-232 = { winter_severity_bias = @light_coverage } # THESPROTIA MONS
-233 = { winter_severity_bias = @heavy_coverage } # DRYOPIS MONS
-240 = { winter_severity_bias = @medium_coverage } # TOMAROS MONS
-241 = { winter_severity_bias = @medium_coverage } # PASSARON MONS
-242 = { winter_severity_bias = @heavy_coverage } # NORTH MOLOSSIS MONS
-254 = { winter_severity_bias = @medium_coverage } # KERAUNOS MONS
-255 = { winter_severity_bias = @medium_coverage } # MEROPOS MONS
-256 = { winter_severity_bias = @medium_coverage } # ASNAUS MONS
-257 = { winter_severity_bias = @medium_coverage } # PHOINIKE MONS
-258 = { winter_severity_bias = @medium_coverage } # OMPHALES MONS
-259 = { winter_severity_bias = @medium_coverage } # OROPOS MONS
-261 = { winter_severity_bias = @medium_coverage } # BOUTHROTON MONS
-269 = { winter_severity_bias = @heavy_coverage } # BOION MONS
-270 = { winter_severity_bias = @medium_coverage } # KONITSA MONS
-271 = { winter_severity_bias = @medium_coverage } # LANGARIKA MONS
-272 = { winter_severity_bias = @heavy_coverage } # AMYRON MONS
-273 = { winter_severity_bias = @heavy_coverage } # ORESTIS WEST MOUNTAIN
-502 = { winter_severity_bias = @medium_coverage } # SOUTHERN PINDUS MOUNTAINS
-503 = { winter_severity_bias = @heavy_coverage } # NORTHERN PINDUS MOUNTAINS
-871 = { winter_severity_bias = @medium_coverage } # ATHAMANIA SOUTH-CENTRAL MOUNTAIN
-873 = { winter_severity_bias = @heavy_coverage } # TETRAPHYLIA WEST MOUNTAIN
-874 = { winter_severity_bias = @medium_coverage } # TETRAPHYLIA EAST MOUNTAIN
+126 = { winter_severity_bias = 0.0 } # CENTER PINDUS MOUNTAINS
+232 = { winter_severity_bias = 0.0 } # THESPROTIA MONS
+233 = { winter_severity_bias = 0.0 } # DRYOPIS MONS
+240 = { winter_severity_bias = 0.0 } # TOMAROS MONS
+241 = { winter_severity_bias = 0.0 } # PASSARON MONS
+242 = { winter_severity_bias = 0.0 } # NORTH MOLOSSIS MONS
+254 = { winter_severity_bias = 0.0 } # KERAUNOS MONS
+255 = { winter_severity_bias = 0.0 } # MEROPOS MONS
+256 = { winter_severity_bias = 0.0 } # ASNAUS MONS
+257 = { winter_severity_bias = 0.0 } # PHOINIKE MONS
+258 = { winter_severity_bias = 0.0 } # OMPHALES MONS
+259 = { winter_severity_bias = 0.0 } # OROPOS MONS
+261 = { winter_severity_bias = 0.0 } # BOUTHROTON MONS
+269 = { winter_severity_bias = 0.0 } # BOION MONS
+270 = { winter_severity_bias = 0.0 } # KONITSA MONS
+271 = { winter_severity_bias = 0.0 } # LANGARIKA MONS
+272 = { winter_severity_bias = 0.0 } # AMYRON MONS
+273 = { winter_severity_bias = 0.0 } # ORESTIS WEST MOUNTAIN
+502 = { winter_severity_bias = 0.0 } # SOUTHERN PINDUS MOUNTAINS
+503 = { winter_severity_bias = 0.0 } # NORTHERN PINDUS MOUNTAINS
+871 = { winter_severity_bias = 0.0 } # ATHAMANIA SOUTH-CENTRAL MOUNTAIN
+873 = { winter_severity_bias = 0.0 } # TETRAPHYLIA WEST MOUNTAIN
+874 = { winter_severity_bias = 0.0 } # TETRAPHYLIA EAST MOUNTAIN
 
 ### MAKEDONIA
-288 = { winter_severity_bias = @medium_coverage } # PARORBELIA MOUNTAINS
-290 = { winter_severity_bias = @medium_coverage } # BARNOUS MONS
-291 = { winter_severity_bias = @medium_coverage } # BORA MONS
-300 = { winter_severity_bias = @medium_coverage } # EMIMEIOTIS MOUNTAINS
-301 = { winter_severity_bias = @heavy_coverage } # EORDAIA MOUNTAINS NORTH
-318 = { winter_severity_bias = @heavy_coverage } # SFIKA MONS
-328 = { winter_severity_bias = @heavy_coverage } # EASTERN PELAGONIA MOUNTAINS
-329 = { winter_severity_bias = @heavy_coverage } # NORTHERN PELAGONIA MOUNTAINS
-330 = { winter_severity_bias = @heavy_coverage } # WESTERN PELAGONIA MOUNTAINS
-331 = { winter_severity_bias = @heavy_coverage } # HERAKLEIA LYNKESTIS MOUNTAIN
-332 = { winter_severity_bias = @heavy_coverage } # SKIRTIANA MOUNTAINS
-376 = { winter_severity_bias = @medium_coverage } # SAPAIKE MONS
-377 = { winter_severity_bias = @medium_coverage } # ORBELOS MONS
-379 = { winter_severity_bias = @light_coverage } # PANGAION MONS
-844 = { winter_severity_bias = @light_coverage } # AIGAI MOUNTAIN
-845 = { winter_severity_bias = @light_coverage } # EUIA MOUNTAIN
-855 = { winter_severity_bias = @medium_coverage } # EORDAIA MOUNTAINS SOUTH
+288 = { winter_severity_bias = 0.0 } # PARORBELIA MOUNTAINS
+290 = { winter_severity_bias = 0.0 } # BARNOUS MONS
+291 = { winter_severity_bias = 0.0 } # BORA MONS
+300 = { winter_severity_bias = 0.0 } # EMIMEIOTIS MOUNTAINS
+301 = { winter_severity_bias = 0.0 } # EORDAIA MOUNTAINS NORTH
+318 = { winter_severity_bias = 0.0 } # SFIKA MONS
+328 = { winter_severity_bias = 0.0 } # EASTERN PELAGONIA MOUNTAINS
+329 = { winter_severity_bias = 0.0 } # NORTHERN PELAGONIA MOUNTAINS
+330 = { winter_severity_bias = 0.0 } # WESTERN PELAGONIA MOUNTAINS
+331 = { winter_severity_bias = 0.0 } # HERAKLEIA LYNKESTIS MOUNTAIN
+332 = { winter_severity_bias = 0.0 } # SKIRTIANA MOUNTAINS
+376 = { winter_severity_bias = 0.0 } # SAPAIKE MONS
+377 = { winter_severity_bias = 0.0 } # ORBELOS MONS
+379 = { winter_severity_bias = 0.0 } # PANGAION MONS
+844 = { winter_severity_bias = 0.0 } # AIGAI MOUNTAIN
+845 = { winter_severity_bias = 0.0 } # EUIA MOUNTAIN
+855 = { winter_severity_bias = 0.0 } # EORDAIA MOUNTAINS SOUTH
 
 ### KRETA
 405 = { winter_severity_bias = 0.0 } # AIGAION MONS
@@ -1380,24 +1544,41 @@
 813 = { winter_severity_bias = 0.0 } # GORDIANE MOUNTAINS
 
 ### THRACE
-911 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-941 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-942 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-943 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-944 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-945 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-946 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-982 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-983 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-984 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
-985 = { winter_severity_bias = @heavy_coverage } # HAEMUS MOUNTAINS
+911 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+941 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+942 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+943 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+944 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+945 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+946 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+982 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+983 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+984 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
+985 = { winter_severity_bias = 0.0 } # HAEMUS MOUNTAINS
 
 ### LIBURNIA
-1139 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 1
-1140 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 2
-1141 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 3
-1142 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 4
-1143 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 5
-1144 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 6
-1145 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 7 
-1146 = { winter_severity_bias = @heavy_coverage } # DALMATIAN ALPS 8
+1139 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 1
+1140 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 2
+1141 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 3
+1142 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 4
+1143 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 5
+1144 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 6
+1145 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 7 
+1146 = { winter_severity_bias = 0.0 } # DALMATIAN ALPS 8
+
+
+
+
+
+
+
+######## HELP ME I'M LOST ##########
+313 = { winter_severity_bias = @medium_coverage } # b_pelion_pelion
+314 = { winter_severity_bias = @medium_coverage } # b_psarades_pelion
+323 = { winter_severity_bias = @medium_coverage } # b_dostoneoi_dostoneoi
+324 = { winter_severity_bias = @medium_coverage } # b_pluinna_dostoneoi
+325 = { winter_severity_bias = @medium_coverage } # b_pelagonia_stymbara
+326 = { winter_severity_bias = @medium_coverage } # b_stymbara_stymbara
+327 = { winter_severity_bias = @medium_coverage } # b_kolobaise_stymbara
+267 = { winter_severity_bias = @medium_coverage } # b_chrysondyon_chrysondyon
+268 = { winter_severity_bias = @medium_coverage } # b_gerous_chrysondyon
