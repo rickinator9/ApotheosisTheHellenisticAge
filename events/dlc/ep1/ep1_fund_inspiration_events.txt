@@ -3219,40 +3219,40 @@ fund_inspiration.0043 = {
 	option = { # Dynasty
 		name = fund_inspiration.0043.option_dynasty
 		trigger = {
-            AND = {
-                OR = {
-                    this = dynasty.dynast # Dynasty Head
-                    any_parent = { # Parent landless
-                        employer = prev
-                        dynasty = prev.dynasty
-                        this = dynasty.dynast
-                    }
-                }
-                NOR = {
-                    any_artifact = {
-                    	trigger_if = {
-                        	limit = { exists = var:banner_dynasty }
-                        	var:banner_dynasty = root.dynasty
-                        }
-                        trigger_else = { always = no }
-                        OR = {
-                            artifact_owner = root
-                            artifact_owner = { in_diplomatic_range = root }
-                        }
-                    }
-                    any_inspiration = {
-                    	inspiration_sponsor.dynasty = root.dynasty
-                    	inspiration_owner = {
-                    		has_variable = banner_commission
-                    		trigger_if = {
-	                        	limit = { exists = var:artifact_banner_type }
-	                        	var:artifact_banner_type = flag:dynasty
-	                        }
-	                        trigger_else = { always = no }
-                    	}
-                    }
-                }
-            }
+			AND = {
+				OR = {
+					this = dynasty.dynast # Dynasty Head
+					any_parent = { # Parent landless
+						employer = prev
+						dynasty = prev.dynasty
+						this = dynasty.dynast
+					}
+				}
+				NOR = {
+					any_artifact = {
+						trigger_if = {
+							limit = { exists = var:banner_dynasty }
+							var:banner_dynasty = root.dynasty
+						}
+						trigger_else = { always = no }
+						OR = {
+							artifact_owner = root
+							artifact_owner = { in_diplomatic_range = root }
+						}
+					}
+					any_inspiration = {
+						inspiration_sponsor.dynasty = root.dynasty
+						inspiration_owner = {
+							has_variable = banner_commission
+							trigger_if = {
+								limit = { exists = var:artifact_banner_type }
+								var:artifact_banner_type = flag:dynasty
+							}
+							trigger_else = { always = no }
+						}
+					}
+				}
+			}
 		}
 		scope:inspiration_owner = {
 			set_variable = {
@@ -4474,6 +4474,8 @@ scripted_trigger fund_inspiration_0061_option_throne_trigger = {
 scripted_trigger fund_inspiration_0061_option_scientific_apparatus_trigger = {
 	# Currently the only available apparatus is DLC-locked - mildly rework this trigger if we add more.
 	has_fp2_dlc_trigger = yes
+	# We need to verify that the character is eligible
+	eligible_for_scientific_apparatus_armillary_sphere_trigger = { CHARACTER = root }
 	NOT = { exists = scope:artisan_type_scientific_apparatus_option }
 }
 scripted_effect fund_inspiration_0061_pick_options_to_show_effect = {
