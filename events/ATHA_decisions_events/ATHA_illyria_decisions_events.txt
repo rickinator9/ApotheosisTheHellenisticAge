@@ -1,0 +1,46 @@
+##############################
+# Form k_liburnia		 	 #
+##############################
+
+# I formed k_liburnia
+illyria_decisions.0001 = {
+	type = character_event
+	title = illyria_decisions.0001.t
+	desc = illyria_decisions.0001.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_liburnia_founder
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		form_k_liburnia_decision_effects = yes
+	}
+	
+	option = { #Centralize the government
+		name = illyria_decisions.0001.a
+		add_character_flag = founder_centralized_power
+	}
+
+	option = { #Maintain the old ways
+		name = illyria_decisions.0001.b
+		add_character_flag = founder_maintained_status_quo
+	}
+}
+
+# Someone else formed k_liburnia
+illyria_decisions.0002 = {
+	type = character_event
+	title = illyria_decisions.0002.t
+	desc = illyria_decisions.0002.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_liburnia_founder
+		animation = personality_honorable
+	}
+
+	option = { 
+		name = illyria_decisions.0002.a
+	}
+}

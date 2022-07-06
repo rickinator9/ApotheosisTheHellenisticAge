@@ -57,6 +57,17 @@ fort_01 = {
 		fort_level = great_building_fort_level_tier_1
 		defender_holding_advantage = normal_building_advantage_tier_1
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 5
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.1
+		monthly_dynasty_prestige = 0.1
+	}
 		
 	flag = fort
 
@@ -85,6 +96,10 @@ fort_01 = {
 					}
 				}
 			}
+		}
+		modifier = {
+			factor = 5
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }
@@ -136,6 +151,17 @@ fort_02 = {
 		fort_level = great_building_fort_level_tier_2
 		defender_holding_advantage = normal_building_advantage_tier_2
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 10
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.1
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 	
@@ -150,6 +176,10 @@ fort_02 = {
 			factor = 0.2
 			combined_building_level <= 4
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }
@@ -201,6 +231,17 @@ fort_03 = {
 		fort_level = great_building_fort_level_tier_3
 		defender_holding_advantage = normal_building_advantage_tier_3
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 15
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.2
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 	
@@ -215,6 +256,10 @@ fort_03 = {
 			factor = 0.2
 			combined_building_level <= 9
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }
@@ -265,6 +310,17 @@ fort_04 = {
 		fort_level = great_building_fort_level_tier_4
 		defender_holding_advantage = normal_building_advantage_tier_4
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 20
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.2
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 
@@ -281,6 +337,10 @@ fort_04 = {
 			factor = 0.2
 			combined_building_level <= 12
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }

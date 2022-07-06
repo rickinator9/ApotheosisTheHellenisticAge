@@ -62,3 +62,97 @@ tradition_former_slaves = {
 	cost = { prestige = 9999 }
 	ai_will_do = { value = 0 }
 }
+
+tradition_abundant_hillforts = {
+	category = realm
+
+	layers = {
+		0 = martial
+		1 = western
+		4 = city.dds
+	}
+	
+	can_pick = {
+		custom_tooltip = {
+			scope:character = {
+				OR = {
+					has_government = feudal_government
+					has_government = clan_government
+					has_government = tribal_government
+				}
+			}
+			text = must_be_feudal_or_clan_or_tribal
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_city_keepers
+			NOR = { 
+				any_in_list = { list = traits this = flag:tradition_city_keepers }
+				any_in_list = { list = traits this = flag:tradition_castle_keepers }
+			}
+		}
+	}
+	
+	parameters = {
+		fort_fortifications_increase = yes
+		fort_grant_prestige = yes
+		architect_trait_prestige = yes
+		ai_more_likely_to_fort = yes
+		ai_more_likely_to_fortify = yes
+	}
+	character_modifier = {
+		fort_holding_holding_build_speed = 0.1
+		fort_holding_holding_build_gold_cost = 0.2
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			# Ethos requirements.
+			if = {
+				limit = {
+					NOR = {
+						any_in_list = { list = traits this = flag:ethos_bellicose }
+						any_in_list = { list = traits this = flag:ethos_stoic }
+						any_in_list = { list = traits this = flag:ethos_bureaucratic }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_stoic_or_bureaucratic_desc
+				}
+			}
+			# Requires mustering grounds innovation.
+			if = {
+				limit = {
+					NOT = { has_innovation = innovation_classical_mustering_grounds }
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = lacks_classical_mustering_grounds_innovation_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = { 
+		value = 100 
+		if = {
+			limit = {
+				NOT = { has_innovation = innovation_classical_mustering_grounds }
+			}
+			multiply = 0
+		}
+		if = {
+			limit = {
+				scope:character = { ai_boldness >= 0 }
+			}
+			multiply = 0.25
+		}
+	}
+}
