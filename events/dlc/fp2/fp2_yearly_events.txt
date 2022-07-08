@@ -140,9 +140,8 @@ fp2_yearly.1002 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
-		any_courtier = {
-			is_available_healthy_ai_adult = yes
-		}
+		is_adult = yes
+		any_courtier = { is_available_healthy_ai_adult = yes }
 
 		NOT = {
 			has_character_flag = fp2_yearly.1002 
@@ -151,7 +150,6 @@ fp2_yearly.1002 = {
 
 	immediate = {
 		add_character_flag = fp2_yearly.1002
-
 
 		random_courtier = {
 			limit = {
@@ -165,10 +163,7 @@ fp2_yearly.1002 = {
 			}
 
 			save_scope_as = deviant_courtier
-		
 		}
-	
-		
 
 
 		if = {
@@ -184,12 +179,8 @@ fp2_yearly.1002 = {
 					give_deviant_secret_or_trait_effect = yes
 					save_scope_as = deviant_courtier
 				}
-			}
-			
+			}	
 		}
-
-
-
 
 		scope:deviant_courtier = {
 			
@@ -202,11 +193,8 @@ fp2_yearly.1002 = {
 				flag = temporarily_blinded
 				days = 1
 			}
-
 		}
-	
 	}
-
 	
 
 	option = { 
