@@ -164,7 +164,6 @@ fp2_struggle_compromise_duchies_to_kingdoms_effect = {
 fp2_struggle_compromise_transfer_duchies_effect = {
 }
 
-
 # Creates a new de jure empire from a kingdom
 fp2_struggle_compromise_create_new_empire_effect = {
 	add_to_list = kingdom_empire
@@ -175,6 +174,7 @@ fp2_struggle_compromise_create_new_empire_effect = {
 	}
 	scope:old_title = { set_de_jure_liege_title = scope:new_title }
 	scope:new_title = {
+		add_to_list = new_empire_list
 		set_coa = scope:old_title
 		set_color_from_title = scope:old_title
 		set_capital_county = scope:old_title.title_capital_county

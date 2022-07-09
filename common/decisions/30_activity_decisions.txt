@@ -39,16 +39,7 @@
 	}
 
 	cost = {
-		gold = {
-			value = feast_activity_cost
-			if = {
-				limit = {
-					exists = var:protected_alcohol_stores
-					var:protected_alcohol_stores > 0
-				}
-				multiply = 0.5
-			}
-		}
+		gold = feast_activity_cost
 	}
 
 
@@ -429,42 +420,7 @@ start_hunt_decision = {
 	sort_order = 68
 
 	cost = {
-		gold = {
-			add = standard_activity_cost
-			divide = 1.5
-			if = {
-				limit = {
-					has_character_flag = free_hunt
-				}
-				multiply = 0
-			}
-			if = {
-				limit = {
-					has_character_modifier = peregrine_falcon
-				}
-				multiply = 0.9
-			}
-			# Done like this so that it stacks
-			if = {
-				limit = {
-					has_character_modifier = master_of_hunt_activity_bonus
-				}
-				multiply = 0.9
-			}
-			
-			# ATHA: Holy sites.
-			if = {
-				limit = {
-					root.faith = {
-						controls_holy_site = diktynnaion
-					}
-					title:b_diktynnaion_polyrhen = {
-						is_holy_site_of = root.faith
-					}
-				}
-				multiply = 0.8
-			}
-		}
+		gold = hunt_activity_cost
 	}
 
 	cooldown = { days = standard_hunting_cooldown_time }

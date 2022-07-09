@@ -2,6 +2,7 @@
 @holding_illustration_mena = "gfx/interface/illustrations/holding_types/castle_mena.dds"
 @holding_illustration_india = "gfx/interface/illustrations/holding_types/castle_india.dds"
 @holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/castle_mediterranean.dds"
+@holding_illustration_norse = "gfx/interface/illustrations/holding_types/fp1_castle_norse.dds"
 
 fort_01 = {
 	construction_time = slow_construction_time
@@ -17,6 +18,16 @@ fort_01 = {
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mediterranean_castle" soundparameter = { "Tier" = 0 } }
 		graphical_cultures = { mediterranean_building_gfx }
+	}
+	### FP1 Norse ###
+	asset = {
+		type = pdxmesh
+		names = {
+			"fp1_building_norse_castle_01_mesh"}
+		requires_dlc_flag = the_northern_lords
+		illustration = @holding_illustration_norse
+		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_castle_tier_01" }
+		graphical_cultures = { norse_building_gfx }
 	}
 	
 	
@@ -45,6 +56,17 @@ fort_01 = {
 		monthly_income = poor_building_tax_tier_2
 		fort_level = great_building_fort_level_tier_1
 		defender_holding_advantage = normal_building_advantage_tier_1
+	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 5
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.1
+		monthly_dynasty_prestige = 0.1
 	}
 		
 	flag = fort
@@ -75,6 +97,10 @@ fort_01 = {
 				}
 			}
 		}
+		modifier = {
+			factor = 5
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
+		}
 	}
 }
 
@@ -91,6 +117,17 @@ fort_02 = {
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mediterranean_castle" soundparameter = { "Tier" = 1 } }
 		graphical_cultures = { mediterranean_building_gfx }
+	}
+	### FP1 Norse ###
+	asset = {
+		type = pdxmesh
+		names = {
+			"fp1_building_norse_castle_02_mesh"
+		}
+		requires_dlc_flag = the_northern_lords
+		illustration = @holding_illustration_norse
+		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_castle_tier_02" }
+		graphical_cultures = { norse_building_gfx }
 	}
 	
 	
@@ -114,6 +151,17 @@ fort_02 = {
 		fort_level = great_building_fort_level_tier_2
 		defender_holding_advantage = normal_building_advantage_tier_2
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 10
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.1
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 	
@@ -128,6 +176,10 @@ fort_02 = {
 			factor = 0.2
 			combined_building_level <= 4
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }
@@ -145,7 +197,18 @@ fort_03 = {
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mediterranean_castle" soundparameter = { "Tier" = 2 } }
 		graphical_cultures = { mediterranean_building_gfx }
-	}	
+	}
+	### FP1 Norse ###
+	asset = {
+		type = pdxmesh
+		names = {
+			"fp1_building_norse_castle_03_mesh"
+		}
+		requires_dlc_flag = the_northern_lords
+		illustration = @holding_illustration_norse
+		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_castle_tier_03" }
+		graphical_cultures = { norse_building_gfx }
+	}
 	
 	
 	can_construct_potential = {
@@ -168,6 +231,17 @@ fort_03 = {
 		fort_level = great_building_fort_level_tier_3
 		defender_holding_advantage = normal_building_advantage_tier_3
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 15
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.2
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 	
@@ -182,6 +256,10 @@ fort_03 = {
 			factor = 0.2
 			combined_building_level <= 9
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }
@@ -199,6 +277,17 @@ fort_04 = {
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mediterranean_castle" soundparameter = { "Tier" = 3 } }
 		graphical_cultures = { mediterranean_building_gfx }
+	}
+	### FP1 Norse ###	
+	asset = {
+		type = pdxmesh
+		names = {
+			"fp1_building_norse_castle_04_mesh"
+		}
+		requires_dlc_flag = the_northern_lords
+		illustration = @holding_illustration_norse
+		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_castle_tier_04" }
+		graphical_cultures = { norse_building_gfx }
 	}	
 
 	
@@ -221,6 +310,17 @@ fort_04 = {
 		fort_level = great_building_fort_level_tier_4
 		defender_holding_advantage = normal_building_advantage_tier_4
 	}
+
+	province_culture_modifier = {
+		parameter = fort_fortifications_increase
+		defender_holding_advantage = 20
+	}
+
+	character_culture_modifier = {
+		parameter = fort_grant_prestige
+		monthly_prestige = 0.2
+		monthly_dynasty_prestige = 0.1
+	}
 	
 	flag = fort
 
@@ -237,6 +337,10 @@ fort_04 = {
 			factor = 0.2
 			combined_building_level <= 12
 			years_from_game_start >= 1
+		}
+		modifier = {
+			add = 1
+			scope:holder.culture = { has_cultural_parameter = ai_more_likely_to_fort }
 		}
 	}
 }

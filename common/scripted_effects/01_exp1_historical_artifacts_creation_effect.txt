@@ -95,6 +95,19 @@ create_artifact_pedestal_christian_relic_effect_hist = {
 			trigger = {
 				NOT = {
 					any_artifact = {
+						has_variable = christian_lance
+					}
+				}
+			}
+			save_scope_value_as = {
+				name = christian_relic_name
+				value = flag:lance
+			}
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					any_artifact = {
 						count > 5
 						has_variable = christian_skull
 					}
@@ -142,19 +155,6 @@ create_artifact_pedestal_christian_relic_effect_hist = {
 			trigger = {
 				NOT = {
 					any_artifact = {
-						has_variable = christian_spear
-					}
-				}
-			}
-			save_scope_value_as = {
-				name = christian_relic_name
-				value = flag:spear
-			}
-		}
-		10 = {
-			trigger = {
-				NOT = {
-					any_artifact = {
 						has_variable = christian_crown
 					}
 				}
@@ -183,11 +183,32 @@ create_artifact_pedestal_christian_relic_effect_hist = {
 	if = {
 		limit = {
 			exists = scope:christian_relic_name
+			scope:christian_relic_name = flag:lance
+		}
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {	
+			name = artifact_pedestal_spear_destiny_name
+			description = artifact_pedestal_spear_destiny
+			type = pedestal
+			template = christian_artifact_template
+			visuals = pedestal_longinus
+			wealth = scope:wealth
+			quality = scope:quality
+			history = {
+				type = created_before_history
+			}
+			modifier = artifact_placeholder_modifier
+			save_scope_as = newly_created_artifact
+			decaying = no
+		}
+	}
+	else_if = {
+		limit = {
+			exists = scope:christian_relic_name
 			OR = {
 				scope:christian_relic_name = flag:sandals
 				scope:christian_relic_name = flag:girdle
 				scope:christian_relic_name = flag:loincloth
-				scope:christian_relic_name = flag:spear
 				scope:christian_relic_name = flag:crown
 				scope:christian_relic_name = flag:veronica
 			}
@@ -275,9 +296,9 @@ create_artifact_pedestal_christian_relic_effect_hist = {
 		else_if = {
 			limit = {
 				exists = scope:christian_relic_name
-				scope:christian_relic_name = flag:spear
+				scope:christian_relic_name = flag:lance
 			}
-			set_variable = christian_spear
+			set_variable = christian_lance
 		}
 		else_if = {
 			limit = {
@@ -2525,7 +2546,7 @@ create_artifact_angelicas_ring_effect = {
 		description = artifact_ring_angelica_description
 		template = general_unique_template
 		type = pedestal
-		visuals = ring
+		visuals = ring_court
 		wealth = scope:wealth
 		quality = scope:quality
 		history = {
@@ -2912,8 +2933,8 @@ create_artifact_spear_of_the_prophet_effect = {
 create_artifact_mantle_of_the_prophet_effect = {
 }
 
-create_artifact_sculpture_babr_e_bayan_effect = {	
+create_artifact_sculpture_babr_e_bayan_effect = {
 }
 
-create_artifact_pedestal_justinian_effect = {	
+create_artifact_pedestal_justinian_effect = {
 }

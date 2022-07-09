@@ -41,6 +41,17 @@ d_pythia = {
 	destroy_if_invalid_heir = yes
 }
 
+d_tithanos = {
+	color = { 255 255 255 }
+	color2 = { 0 0 0 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	always_follows_primary_heir = yes
+	destroy_if_invalid_heir = yes
+	can_be_named_after_dynasty = no
+}
+
 ### Created by decision
 
 e_athenai = {
@@ -223,6 +234,16 @@ k_peloponnesos = {
 	# ARCADO-CYPRIOT
 		name_list_arcadian = cn_peloponnesos_doric
 	}
+	
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+}
+k_liburnia = {
+	color = { 122 46 58 }
+	color2 = { 0 0 0 }
+
+	capital = c_skardon
 	
 	ai_primary_priority = {
 		add = @always_primary_score

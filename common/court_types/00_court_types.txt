@@ -520,11 +520,17 @@ court_tribal = {
 	background = "gfx/interface/icons/culture_pillars/ethos_stoic.dds"
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			has_government = tribal_government
+			has_government = clan_government
+		}
 	}
 	
 	is_valid = {
-		has_government = tribal_government
+		OR = {
+			has_government = tribal_government
+			has_government = clan_government
+		}
 	}
 	
 	cost = {
@@ -591,6 +597,17 @@ court_tribal = {
 					}
 				}
 				add = martial
+				
+				#if = {
+				#	limit = {
+				#		OR = {
+				#			culture = { has_cultural_pillar = heritage_turkic }
+				#			culture = { has_cultural_pillar = heritage_mongolic }
+				#		}
+				#	}
+				#	add = 25
+				#}
+
 				if = {
 					limit = {
 						has_trait = wrathful
