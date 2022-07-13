@@ -45,7 +45,7 @@ sphendonetai = {
     }
 
     counters = {
-        heavy_footmen = 1
+        heavy_infantry = 1
     }
 
     buy_cost = { gold = 40 }
@@ -76,7 +76,7 @@ toxotai = {
     }
 
     counters = {
-        light_footmen = 1
+        skirmishers = 1
         slingers = 1
     }
 
@@ -102,7 +102,7 @@ phalangitai = {
 
     terrain_bonus = {
         farmlands = { damage = 5 }
-        valleypass = { damage = 5 }
+        valley = { damage = 5 }
         mountains = { toughness = -5 }
         desert_mountains = { toughness = -5 }
     }
@@ -124,7 +124,7 @@ phalangitai = {
 }
 
 hoplitai = {
-    type = heavy_footmen
+    type = heavy_infantry
 
     damage = 30
     toughness = 40
@@ -133,7 +133,7 @@ hoplitai = {
 
     terrain_bonus = {
         farmlands = { toughness = 5 }
-        valleypass = { toughness = 5 }
+        valley = { toughness = 5 }
         mountains = { damage = -5 }
         desert_mountains = { damage = -5 }
     }
@@ -151,7 +151,7 @@ hoplitai = {
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_footmen
+    icon = heavy_infantry
 }
 
 prodomoi = {
@@ -170,7 +170,7 @@ prodomoi = {
     }
 
     counters = {
-        pikemen = 1
+        archers = 1
     }
 
     buy_cost = { gold = 100 }
@@ -201,7 +201,7 @@ hippeis = {
     }
 
     counters = {
-        heavy_footmen = 1
+        archers = 1
     }
 
     buy_cost = { gold = 200 }
@@ -211,25 +211,21 @@ hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 75
     ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = heavy_cavalry
 }
 
 #Innovation
 thorakitai = {
-    type = heavy_footmen
+    type = heavy_infantry
 
-    damage = 30
-    toughness = 30
+    damage = 40
+    toughness = 40
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valleypass = { toughness = 5 }
-        farmlands = { damage = 5 }
-        valleypass = { damage = 5 }
     }
 
     counters = {
@@ -246,7 +242,7 @@ thorakitai = {
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_footmen
+    icon = heavy_infantry
 }
 
 #Innovation
@@ -255,22 +251,18 @@ thureophoroi = {
 
     damage = 30
     toughness = 30
-    pursuit = 10
-    screen = 10
+    pursuit = 20
+    screen = 20
 
     terrain_bonus = {
-        hills = { damage = 5 }
-        mountains = { damage = 5 }
-        hills = { toughness = 5 }
-        mountains = { toughness = 5 }
     }
 
     counters = {
         pikemen = 1
-        heavy_footmen = 1
+        heavy_infantry = 1
     }
 
-    buy_cost = { gold = 100 }
+    buy_cost = { gold = 120 }
     low_maintenance_cost = { gold = 0.3 }
     high_maintenance_cost = { gold = 0.6 }
     
@@ -284,7 +276,7 @@ thureophoroi = {
 
 #Elite
 epilektoi_hoplitai = {
-    type = heavy_footmen
+    type = heavy_infantry
 
     damage = 50
     toughness = 60
@@ -293,7 +285,7 @@ epilektoi_hoplitai = {
 
     terrain_bonus = {
         farmlands = { toughness = 5 }
-        valleypass = { toughness = 5 }
+        valley = { toughness = 5 }
         mountains = { damage = -5 }
         desert_mountains = { damage = -5 }
     }
@@ -313,12 +305,12 @@ epilektoi_hoplitai = {
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_footmen
+    icon = heavy_infantry
 }
 
 #Lakedaemonian
 hypomeiones_hoplitai = {
-    type = heavy_footmen
+    type = heavy_infantry
 
     damage = 40
     toughness = 30
@@ -327,7 +319,7 @@ hypomeiones_hoplitai = {
 
     terrain_bonus = {
         farmlands = { toughness = 5 }
-        valleypass = { toughness = 5 }
+        valley = { toughness = 5 }
     }
 
     counters = {
@@ -344,7 +336,7 @@ hypomeiones_hoplitai = {
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_footmen
+    icon = heavy_infantry
 }
 
 #Lakedaemonian
@@ -364,7 +356,7 @@ mothakes_prodomoi = {
     }
 
     counters = {
-        pikemen = 1
+        archers = 1
     }
 
     buy_cost = { gold = 100 }
@@ -396,7 +388,7 @@ trophimoi_hippeis = {
     }
 
     counters = {
-        heavy_footmen = 1
+        archers = 1
     }
 
     buy_cost = { gold = 200 }
@@ -406,14 +398,14 @@ trophimoi_hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 75
     ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = heavy_cavalry
 }
 
 #Elite#Lakedaemonian
 homoioi_hippeis = {
-    type = heavy_footmen
+    type = heavy_infantry
 
     damage = 65
     toughness = 75
@@ -422,7 +414,7 @@ homoioi_hippeis = {
 
     terrain_bonus = {
         farmlands = { toughness = 5 }
-        valleypass = { toughness = 5 }
+        valley = { toughness = 5 }
         mountains = { damage = -5 }
         desert_mountains = { damage = -5 }
     }
@@ -442,10 +434,10 @@ homoioi_hippeis = {
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_footmen
+    icon = heavy_infantry
 }
 
-#Elite#Lakedaemonian#Arkadian
+#Elite#Regional#Lakedaemonian#Arkadian
 skiritai_peltastai = {
     type = skirmishers
 
@@ -465,7 +457,7 @@ skiritai_peltastai = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 40 }
+    buy_cost = { gold = 60 }
     low_maintenance_cost = { gold = 0 }
     high_maintenance_cost = { gold = 1 }
 
@@ -473,6 +465,501 @@ skiritai_peltastai = {
     
     mercenary_fallback = no
     holy_order_fallback = no
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Elite#Boiotioi
+heiros_lokhos = {
+    type = heavy_infantry
+
+    damage = 60
+    toughness = 70
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_infantry
+}
+
+#Thessalikoi
+thessalikoi_prodomoi = {
+    type = light_cavalry
+
+    damage = 20
+    toughness = 20
+    pursuit = 30
+    screen = 30
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 110 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 1.0 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = light_cavalry
+}
+
+
+#Thessalikoi
+thessalikoi_hippeis = {
+    type = heavy_cavalry
+
+    damage = 70
+    toughness = 50
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 210 }
+    low_maintenance_cost = { gold = 0.9 }
+    high_maintenance_cost = { gold = 1.2 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 75
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_cavalry
+}
+
+#Regional#Dorian
+rodioi_sphendonetai = {
+    type = skirmishers
+
+    damage = 20
+    toughness = 10
+    pursuit = 20
+    screen = 20
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Kretan
+kretikoi_toxotai = {
+    type = archers
+
+    damage = 40
+    toughness = 25
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        mountains = { damage = 5 }
+        desert_mountains = { damage = 5 }
+        hills = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        skirmishers = 1
+        slingers = 1
+    }
+
+    buy_cost = { gold = 70 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.5 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = archers
+}
+
+#Kretan
+kretikoi_peltastai = {
+    type = skirmishers
+
+    damage = 25
+    toughness = 25
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Makedonikoi
+makedonikoi_peltastai = {
+    type = skirmishers
+
+    damage = 15
+    toughness = 25
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Makedonikoi
+chalkaspides = {
+    type = pikemen
+
+    damage = 50
+    toughness = 40
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 90 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Elite#Makedonikoi
+hypaspistai = {
+    type = heavy_infantry
+
+    damage = 55
+    toughness = 65
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_infantry
+}
+
+#Elite#Makedonikoi
+agema_phalangitai = {
+    type = pikemen
+
+    damage = 65
+    toughness = 55
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Elite#Makedonikoi
+hiera_ile = {
+    type = heavy_cavalry
+
+    damage = 80
+    toughness = 60
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 75
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_cavalry
+}
+
+#Regional#Oxylian
+arkarnanioi_sphendonetai = {
+    type = skirmishers
+
+    damage = 15
+    toughness = 15
+    pursuit = 20
+    screen = 20
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Elite#Epirote
+molosson_agema = {
+    type = heavy_cavalry
+
+    damage = 85
+    toughness = 65
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 75
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_cavalry
+}
+
+#Elite#Epirote
+chaeonion_agema = {
+    type = pikemen
+
+    damage = 60
+    toughness = 50
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Elite#Epirote
+chaeonion_logades = {
+    type = skirmishers
+
+    damage = 35
+    toughness = 35
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0 }
+    high_maintenance_cost = { gold = 1 }
+
+    max_sub_regiments = 1
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
