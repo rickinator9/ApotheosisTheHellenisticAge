@@ -1,0 +1,50 @@
+can_recruit_maa_euzonoi_natively = {
+  culture = { has_cultural_pillar = heritage_greek }
+  NOR = {
+    can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_euzonoi_as_foreigner = {
+  NOT = { can_recruit_maa_euzonoi_natively = yes }
+  any_realm_province = {
+    can_recruit_maa_euzonoi_natively = yes
+  }
+}
+
+can_recruit_maa_makedonikoi_peltastai_natively_trigger = {
+  any_parent_culture_or_above = { this = culture:macedonian }
+}
+
+can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+  }
+}
+
+####################################
+can_recruit_maa_hoplitai_natively = {
+  culture = { has_cultural_pillar = heritage_greek }
+  NOR = {
+    can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_hoplitai_as_foreigner = {
+  NOT = { can_recruit_maa_hoplitai_natively = yes }
+  any_realm_province = {
+    can_recruit_maa_hoplitai_natively = yes
+  }
+}
+
+can_recruit_maa_hypomeiones_hoplitai_natively_trigger = {
+  any_parent_culture_or_above = { this = culture:laconian }
+}
+
+can_recruit_maa_hypomeiones_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
+  }
+}
