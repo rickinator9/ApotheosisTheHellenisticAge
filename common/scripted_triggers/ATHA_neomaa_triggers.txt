@@ -1,6 +1,9 @@
+###civilized#skirmishers###
+
 can_recruit_maa_euzonoi_natively = {
   culture = { has_cultural_pillar = heritage_greek }
   NOR = {
+    can_recruit_maa_kretikoi_peltastai_natively_trigger = yes
     can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
   }
 }
@@ -12,14 +15,51 @@ can_recruit_maa_euzonoi_as_foreigner = {
   }
 }
 
-can_recruit_maa_makedonikoi_peltastai_natively_trigger = {
+can_recruit_maa_kretikoi_peltastai_trigger = {
+  OR = {
+  culture = culture:cretan
+  any_parent_culture_or_above = { this = culture:cretan }
+  }
+}
+
+can_recruit_maa_kretikoi_peltastai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_kretikoi_peltastai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_kretikoi_peltastai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_makedonikoi_peltastai_trigger = {
+  OR = {
+  culture = culture:macedonian
   any_parent_culture_or_above = { this = culture:macedonian }
+  }
 }
 
 can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+  }
+}
+
+###civilized#elite#skirmishers###
+
+can_recruit_elite_maa = {
+  is_independent_ruler = yes
+}
+
+can_recruit_maa_skiritai_peltastai_natively_trigger = {
+  OR = {
+  culture = culture:laconian
+  any_parent_culture_or_above = { this = culture:laconian }
+  }
+}
+
+can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_skiritai_peltastai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_skiritai_peltastai_natively_trigger = yes
   }
 }
 
@@ -46,5 +86,38 @@ can_recruit_maa_hypomeiones_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
+  }
+}
+
+########################################################
+can_recruit_elite_maa = {
+  is_independent_ruler = yes
+}
+
+can_recruit_maa_epilektoi_hoplitai_natively = {
+  culture = { has_cultural_pillar = heritage_greek }
+  NOR = {
+    can_recruit_maa_homoioi_hippeis_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_epilektoi_hoplitai_as_foreigner = {
+  NOT = { can_recruit_maa_epilektoi_hoplitai_natively = yes }
+  any_realm_province = {
+    can_recruit_maa_epilektoi_hoplitai_natively = yes
+  }
+}
+
+can_recruit_maa_homoioi_hippeis_natively_trigger = {
+  OR = {
+  culture = culture:laconian
+  any_parent_culture_or_above = { this = culture:laconian }
+  }
+}
+
+can_recruit_maa_homoioi_hippeis_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_homoioi_hippeis_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_homoioi_hippeis_natively_trigger = yes
   }
 }
