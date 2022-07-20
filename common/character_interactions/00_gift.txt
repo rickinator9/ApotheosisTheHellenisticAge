@@ -125,6 +125,18 @@ gift_interaction = {
 					gold = gift_value
 					target = scope:recipient
 				}
+				if = {
+					limit = {
+						culture = { has_cultural_parameter = send_gift_prestige_gain }
+					}
+					add_prestige = {
+						value = gift_value
+						multiply = {
+							value = 0.01
+							multiply = tradition_ceremonial_generosity_gift_prestige_percentage
+						}
+					}
+				}
 				stress_impact = {
 					greedy = medium_stress_impact_gain
 					generous = medium_stress_impact_loss
