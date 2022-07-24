@@ -1085,6 +1085,19 @@ send_gift_opinion = {
 		}
 		multiply = 2
 	}
+	if = {
+		limit = {
+			scope:send_ceremonial_gift = yes
+			NOT = {
+				scope:recipient = {
+					culture = { 
+						has_cultural_parameter = send_gift_ceremonial_gift
+					}
+				}
+			}
+		}
+		multiply = tradition_ceremonial_generosity_gift_opinion_factor
+	}
 }
 
 gift_artifact_opinion = {
