@@ -1,4 +1,6 @@
-﻿###civilized#skirmishers###
+﻿###CIVILIZED#NEOMAA###
+
+###civilized#skirmishers###
 
 can_recruit_maa_euzonoi_natively_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
@@ -321,3 +323,131 @@ can_recruit_maa_chaeonion_agema_as_foreigner_trigger = {
 #############################
 
 ###civilized#light_cavalry###
+
+can_recruit_maa_prodomoi_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
+  NOR = {
+    can_recruit_maa_mothakes_prodomoi_natively_trigger = yes
+    can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_prodomoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_prodomoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_prodomoi_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_mothakes_prodomoi_natively_trigger = {
+  OR = {
+    culture = culture:laconian
+    any_parent_culture_or_above = { this = culture:laconian }
+  }
+}
+
+can_recruit_maa_mothakes_prodomoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_mothakes_prodomoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_mothakes_prodomoi_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_thessalikoi_prodomoi_natively_trigger = {
+  OR = {
+    culture = culture:thessalian
+    any_parent_culture_or_above = { this = culture:thessalian }
+  }
+}
+
+can_recruit_maa_thessalikoi_prodomoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes
+  }
+}
+
+#############################
+
+###civilized#heavy_cavalry###
+
+can_recruit_maa_hippeis_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
+  NOR = {
+    can_recruit_maa_trophimoi_hippeis_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_hippeis_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hippeis_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_hippeis_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_trophimoi_hippeis_natively_trigger = {
+  OR = {
+    culture = culture:laconian
+    any_parent_culture_or_above = { this = culture:laconian }
+  }
+}
+
+can_recruit_maa_trophimoi_hippeis_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_trophimoi_hippeis_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_trophimoi_hippeis_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_thessalikoi_hippeis_natively_trigger = {
+  OR = {
+    culture = culture:thessalian
+    any_parent_culture_or_above = { this = culture:thessalian }
+  }
+}
+
+can_recruit_maa__thessalikoi_hippeis_foreigner_trigger = {
+  NOT = { can_recruit_maa_thessalikoi_hippeis_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thessalikoi_hippeis_natively_trigger = yes
+  }
+}
+
+###civilized#elite#heavy_cavalry###
+
+can_recruit_elite_maa = {
+  is_independent_ruler = yes
+}
+
+can_recruit_maa_hiera_ile_natively_trigger = {
+  OR = {
+    culture = culture:macedonian
+    any_parent_culture_or_above = { this = culture:macedonian }
+  }
+}
+
+can_recruit_maa_hiera_ile_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hiera_ile_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_hiera_ile_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_molosson_agema_natively_trigger = {
+  OR = {
+    culture = culture:epirote
+    any_parent_culture_or_above = { this = culture:epirote }
+  }
+}
+
+can_recruit_maa_molosson_agema_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_molosson_agema_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_molosson_agema_natively_trigger = yes
+  }
+}
+
+###CIVILIZED#NEOMAA###
+
+###BARBARIAN#NEOMAA###
+
