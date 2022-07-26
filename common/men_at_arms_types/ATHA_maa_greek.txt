@@ -1,4 +1,10 @@
-﻿euzonoi = {
+﻿# standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+@cultural_maa_extra_ai_score = 60 # Equivalent to having 6 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+euzonoi = {
     type = skirmishers
 
     can_recruit = {
@@ -41,8 +47,8 @@ sphendonetai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_sphendonetai_natively = yes
-            can_recruit_maa_sphendonetai_as_foreigner = yes
+            can_recruit_maa_sphendonetai_natively_trigger = yes
+            can_recruit_maa_sphendonetai_as_foreigner_trigger = yes
         }
     }
 
@@ -79,8 +85,8 @@ toxotai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_toxotai_natively = yes
-            can_recruit_maa_toxotai_as_foreigner = yes
+            can_recruit_maa_toxotai_natively_trigger = yes
+            can_recruit_maa_toxotai_as_foreigner_trigger = yes
         }
     }
 
@@ -118,8 +124,8 @@ phalangitai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_phalangitai_natively = yes
-            can_recruit_maa_phalangitai_as_foreigner = yes
+            can_recruit_maa_phalangitai_natively_trigger = yes
+            can_recruit_maa_phalangitai_as_foreigner_trigger = yes
         }
     }
 
@@ -194,8 +200,8 @@ prodomoi = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_prodomoi_natively = yes
-            can_recruit_maa_prodomoi_as_foreigner = yes
+            can_recruit_maa_prodomoi_natively_trigger = yes
+            can_recruit_maa_prodomoi_as_foreigner_trigger = yes
         }
     }
 
@@ -232,8 +238,8 @@ hippeis = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_hippeis_natively = yes
-            can_recruit_maa_hippeis_as_foreigner = yes
+            can_recruit_maa_hippeis_natively_trigger = yes
+            can_recruit_maa_hippeis_as_foreigner_trigger = yes
         }
     }
 
@@ -352,8 +358,8 @@ epilektoi_hoplitai = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -409,8 +415,8 @@ mothakes_prodomoi = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_mothakes_prodomoi_natively = yes
-            can_recruit_maa_mothakes_prodomoi_as_foreigner = yes
+            can_recruit_maa_mothakes_prodomoi_natively_trigger = yes
+            can_recruit_maa_mothakes_prodomoi_as_foreigner_trigger = yes
         }
     }
 
@@ -448,8 +454,8 @@ trophimoi_hippeis = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_trophimoi_hippeis_natively = yes
-            can_recruit_maa_trophimoi_hippeis_as_foreigner = yes
+            can_recruit_maa_trophimoi_hippeis_natively_trigger = yes
+            can_recruit_maa_trophimoi_hippeis_as_foreigner_trigger = yes
         }
     }
 
@@ -510,8 +516,8 @@ homoioi_hippeis = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -552,8 +558,8 @@ skiritai_peltastai = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -568,6 +574,14 @@ skiritai_peltastai = {
 #Elite#Boiotioi
 heiros_lokhos = {
     type = heavy_infantry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_heiros_lokhos_natively_trigger = yes
+            can_recruit_maa_heiros_lokhos_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
 
     damage = 60
     toughness = 70
@@ -605,8 +619,8 @@ thessalikoi_prodomoi = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_thessalikoi_prodomoi_natively = yes
-            can_recruit_maa_thessalikoi_prodomoi_as_foreigner = yes
+            can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes
+            can_recruit_maa_thessalikoi_prodomoi_as_foreigner_trigger = yes
         }
     }
 
@@ -645,8 +659,8 @@ thessalikoi_hippeis = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_thessalikoi_hippeis_natively = yes
-            can_recruit_maa_thessalikoi_hippeis_as_foreigner = yes
+            can_recruit_maa_thessalikoi_hippeis_natively_trigger = yes
+            can_recruit_maa_thessalikoi_hippeis_as_foreigner_trigger = yes
         }
     }
 
@@ -682,6 +696,13 @@ thessalikoi_hippeis = {
 rodioi_sphendonetai = {
     type = slingers
 
+    can_recruit = {
+        OR = {
+            can_recruit_maa_rodioi_sphendonetai_natively_trigger = yes
+            can_recruit_maa_rodioi_sphendonetai_as_foreigner_trigger = yes
+        }
+    }
+
     damage = 20
     toughness = 10
     pursuit = 20
@@ -716,8 +737,8 @@ kretikoi_toxotai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_kretikoi_toxotai_natively = yes
-            can_recruit_maa_kretikoi_toxotai_as_foreigner = yes
+            can_recruit_maa_kretikoi_toxotai_natively_trigger = yes
+            can_recruit_maa_kretikoi_toxotai_as_foreigner_trigger = yes
         }
     }
 
@@ -833,8 +854,8 @@ chalkaspides = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_chalkaspides_natively = yes
-            can_recruit_maa_chalkaspides_as_foreigner = yes
+            can_recruit_maa_chalkaspides_natively_trigger = yes
+            can_recruit_maa_chalkaspides_as_foreigner_trigger = yes
         }
     }
 
@@ -870,6 +891,14 @@ chalkaspides = {
 hypaspistai = {
     type = heavy_infantry
 
+    can_recruit = {
+        OR = {
+            can_recruit_maa_hypaspistai_natively_trigger = yes
+            can_recruit_maa_hypaspistai_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
+
     damage = 55
     toughness = 65
     pursuit = 0
@@ -887,8 +916,8 @@ hypaspistai = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -903,6 +932,14 @@ hypaspistai = {
 #Elite#Makedonikoi
 agema_phalangitai = {
     type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_agema_phalangitai_natively_trigger = yes
+            can_recruit_maa_agema_phalangitai_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
 
     damage = 65
     toughness = 55
@@ -921,8 +958,8 @@ agema_phalangitai = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -937,6 +974,14 @@ agema_phalangitai = {
 #Elite#Makedonikoi
 hiera_ile = {
     type = heavy_cavalry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_hiera_ile_natively_trigger = yes
+            can_recruit_maa_hiera_ile_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
 
     damage = 80
     toughness = 60
@@ -955,8 +1000,8 @@ hiera_ile = {
     }
 
     buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -971,6 +1016,13 @@ hiera_ile = {
 #Regional#Oxylian
 arkarnanioi_sphendonetai = {
     type = slingers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = yes
+            can_recruit_maa_arkarnanioi_sphendonetai_as_foreigner_trigger = yes
+        }
+    }
 
     damage = 15
     toughness = 15
@@ -1004,6 +1056,14 @@ arkarnanioi_sphendonetai = {
 molosson_agema = {
     type = heavy_cavalry
 
+    can_recruit = {
+        OR = {
+            can_recruit_maa_molosson_agema_natively_trigger = yes
+            can_recruit_maa_molosson_agema_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
+
     damage = 85
     toughness = 65
     pursuit = 10
@@ -1021,8 +1081,8 @@ molosson_agema = {
     }
 
     buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -1037,6 +1097,14 @@ molosson_agema = {
 #Elite#Epirote
 chaeonion_agema = {
     type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_chaeonion_agema_natively_trigger = yes
+            can_recruit_maa_chaeonion_agema_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
 
     damage = 60
     toughness = 50
@@ -1055,8 +1123,8 @@ chaeonion_agema = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -1071,6 +1139,14 @@ chaeonion_agema = {
 #Elite#Epirote
 chaeonion_logades = {
     type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_chaeonion_logades_natively_trigger = yes
+            can_recruit_maa_chaeonion_logades_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
 
     damage = 35
     toughness = 35
@@ -1089,8 +1165,8 @@ chaeonion_logades = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -1109,8 +1185,8 @@ peltenai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_peltenai_natively = yes
-            can_recruit_maa_peltenai_as_foreigner = yes
+            can_recruit_maa_peltenai_natively_trigger = yes
+            can_recruit_maa_peltenai_as_foreigner_trigger = yes
         }
     }
 
@@ -1147,8 +1223,8 @@ asanai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_asanai_natively = yes
-            can_recruit_maa_asanai_as_foreigner = yes
+            can_recruit_maa_asanai_natively_trigger = yes
+            can_recruit_maa_asanai_as_foreigner_trigger = yes
         }
     }
 
@@ -1185,8 +1261,8 @@ anganai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_anganai_natively = yes
-            can_recruit_maa_anganai_as_foreigner = yes
+            can_recruit_maa_anganai_natively_trigger = yes
+            can_recruit_maa_anganai_as_foreigner_trigger = yes
         }
     }
 
@@ -1224,8 +1300,8 @@ tarypeltenai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_tarypeltenai_natively = yes
-            can_recruit_maa_tarypeltenai_as_foreigner = yes
+            can_recruit_maa_tarypeltenai_natively_trigger = yes
+            can_recruit_maa_tarypeltenai_as_foreigner_trigger = yes
         }
     }
 
@@ -1260,8 +1336,8 @@ skalmanai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_skalmanai_natively = yes
-            can_recruit_maa_skalmanai_as_foreigner = yes
+            can_recruit_maa_skalmanai_natively_trigger = yes
+            can_recruit_maa_skalmanai_as_foreigner_trigger = yes
         }
     }
 
@@ -1296,8 +1372,8 @@ mezenai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_mezenai_natively = yes
-            can_recruit_maa_mezenai_as_foreigner = yes
+            can_recruit_maa_mezenai_natively_trigger = yes
+            can_recruit_maa_mezenai_as_foreigner_trigger = yes
         }
     }
 
@@ -1332,8 +1408,8 @@ moukamezenai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_moukamezenai_natively = yes
-            can_recruit_maa_moukamezenai_as_foreigner = yes
+            can_recruit_maa_moukamezenai_natively_trigger = yes
+            can_recruit_maa_moukamezenai_as_foreigner_trigger = yes
         }
     }
 
@@ -1369,8 +1445,8 @@ dioi_machairaphoroi = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_dioi_machairaphoroi_natively = yes
-            can_recruit_maa_dioi_machairaphoroi_as_foreigner = yes
+            can_recruit_maa_dioi_machairaphoroi_natively_trigger = yes
+            can_recruit_maa_dioi_machairaphoroi_as_foreigner_trigger = yes
         }
     }
 
@@ -1407,6 +1483,14 @@ dioi_machairaphoroi = {
 rompaianai = {
     type = heavy_infantry
 
+    can_recruit = {
+        OR = {
+            can_recruit_maa_rompaianai_natively_trigger = yes
+            can_recruit_maa_rompaianai_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
+
     damage = 50
     toughness = 50
     pursuit = 0
@@ -1422,8 +1506,8 @@ rompaianai = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
     
     mercenary_fallback = no
     holy_order_fallback = no
@@ -1441,8 +1525,8 @@ zibutai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_zibutai_natively = yes
-            can_recruit_maa_zibutai_as_foreigner = yes
+            can_recruit_maa_zibutai_natively_trigger = yes
+            can_recruit_maa_zibutai_as_foreigner_trigger = yes
         }
     }
 
@@ -1478,8 +1562,8 @@ agrianikoi_peltenai = {
 
     can_recruit = {
         OR = {
-            can_recruit_maa_agrianikoi_peltenai_natively = yes
-            can_recruit_maa_agrianikoi_peltenai_as_foreigner = yes
+            can_recruit_maa_agrianikoi_peltenai_natively_trigger = yes
+            can_recruit_maa_agrianikoi_peltenai_as_foreigner_trigger = yes
         }
     }
 
