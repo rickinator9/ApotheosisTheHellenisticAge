@@ -285,7 +285,7 @@ thorakitai = {
 
     counters = {
         light_cavalry = 1
-        pikemen = 1
+        heavy_cavalry = 1
     }
 
     buy_cost = { gold = 120 }
@@ -383,18 +383,19 @@ hypomeiones_hoplitai = {
     }
 
     damage = 40
-    toughness = 30
+    toughness = 50
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
         farmlands = { toughness = 5 }
         valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
     }
 
     counters = {
         light_cavalry = 1
-        pikemen = 1
     }
 
     buy_cost = { gold = 90 }
@@ -410,42 +411,42 @@ hypomeiones_hoplitai = {
 }
 
 #Lakedaemonian
-mothakes_prodomoi = {
-    type = light_cavalry
+neodamodeis_phalangitai = {
+    type = pikemen
 
     can_recruit = {
         OR = {
-            can_recruit_maa_mothakes_prodomoi_natively_trigger = yes
-            can_recruit_maa_mothakes_prodomoi_as_foreigner_trigger = yes
+            can_recruit_maa_neodamodeis_phalangitai_natively_trigger = yes
+            can_recruit_maa_neodamodeis_phalangitai_as_foreigner_trigger = yes
         }
     }
 
-    damage = 10
-    toughness = 10
-    pursuit = 30
-    screen = 30
+    damage = 60
+    toughness = 30
+    pursuit = 0
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 5 }
-        drylands = { damage = 5 }
-        hills = { toughness = -5 }
-        wetlands = { toughness = -5 }
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
     }
 
     counters = {
-        archers = 1
+        heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1.0 }
+    buy_cost = { gold = 90 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = light_cavalry
+    icon = pikemen
 }
 
 #Lakedaemonian
@@ -600,8 +601,8 @@ heiros_lokhos = {
     }
 
     buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0 }
-    high_maintenance_cost = { gold = 1 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.5 }
 
     max_sub_regiments = 1
     
@@ -664,8 +665,8 @@ thessalikoi_hippeis = {
         }
     }
 
-    damage = 70
-    toughness = 50
+    damage = 80
+    toughness = 40
     pursuit = 10
     screen = 10
 
@@ -742,7 +743,7 @@ kretikoi_toxotai = {
         }
     }
 
-    damage = 40
+    damage = 45
     toughness = 25
     pursuit = 0
     screen = 0
@@ -750,7 +751,6 @@ kretikoi_toxotai = {
     terrain_bonus = {
         mountains = { damage = 5 }
         desert_mountains = { damage = 5 }
-        hills = { damage = 5 }
         plains = { toughness = -5 }
         drylands = { toughness = -5 }
     }
@@ -983,8 +983,8 @@ hiera_ile = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 80
-    toughness = 60
+    damage = 85
+    toughness = 65
     pursuit = 10
     screen = 10
 
@@ -1064,8 +1064,8 @@ molosson_agema = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 85
-    toughness = 65
+    damage = 80
+    toughness = 60
     pursuit = 10
     screen = 10
 
