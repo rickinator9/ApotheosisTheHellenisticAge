@@ -229,7 +229,7 @@ can_recruit_elite_maa = {
   is_independent_ruler = yes
 }
 
-can_recruit_maa_epilektoi_hoplitai_natively = {
+can_recruit_maa_epilektoi_hoplitai_natively_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   NOR = {
     can_recruit_maa_homoioi_hippeis_natively_trigger = yes
@@ -238,10 +238,10 @@ can_recruit_maa_epilektoi_hoplitai_natively = {
   }
 }
 
-can_recruit_maa_epilektoi_hoplitai_as_foreigner = {
-  NOT = { can_recruit_maa_epilektoi_hoplitai_natively = yes }
+can_recruit_maa_epilektoi_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_epilektoi_hoplitai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_epilektoi_hoplitai_natively = yes
+    can_recruit_maa_epilektoi_hoplitai_natively_trigger = yes
   }
 }
 
