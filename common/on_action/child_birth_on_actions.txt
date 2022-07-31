@@ -225,6 +225,20 @@ on_birth_child = {
 			add_trait = child_of_concubine_male
 		}
 
+		if = {
+			limit = {
+				scope:father = {
+					culture = {
+						has_cultural_pillar = celtic_language
+					}
+				}
+			}
+			add_to_global_variable_list = {
+				name = celtic_name_support
+				target = scope:father
+			}
+		}
+
 		hidden_effect = {
 			every_parent = {
 				limit = { has_perk = sound_foundations_perk	}
