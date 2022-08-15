@@ -3195,6 +3195,29 @@
 		}
 	}
 
+	tenet_divine_inhumation = {
+		icon = core_tenet_adorcism
+
+		piety_cost = {
+			value = faith_tenet_cost_high
+
+			if = {
+				limit = { has_doctrine = tenet_divine_inhumation }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			always = yes
+		}
+
+		parameters = {
+			can_build_tomb = yes
+			can_sacrifice_at_tomb = yes
+			will_slay_spouse_upon_death_of_ruler = yes
+		}
+	}
+
 	#############################
 	# Empty Template Tenet 		#
 	#############################

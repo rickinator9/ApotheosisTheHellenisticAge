@@ -1,0 +1,143 @@
+﻿build_tomb_interaction = {
+	category = interaction_category_friendly
+	common_interaction = yes
+
+	desc = build_tomb_interaction_desc
+
+	target_type = title
+	target_filter = actor_domain_titles
+	interface_priority = 60
+
+	is_shown = {
+		scope:actor = scope:recipient # Personal interaction
+		scope:actor = {
+			is_adult = yes
+			is_at_war = no
+			faith = {
+				has_doctrine_parameter = can_build_tomb
+			}
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			custom_description = {
+				text = is_county
+				tier = tier_county
+			}
+			custom_description = {
+				text = has_no_unoccupied_tomb
+				OR = {
+					NOT = { has_country_modifier = built_tomb_modifier }
+					has_variable = tomb_buried_person
+				}
+			}
+		}
+		scope:actor = {
+			custom_description = {
+				text = character_already_has_tomb
+				NOT = { has_variable = tomb_location }
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = massive_gold_value
+		}
+	}
+
+	on_accept = {
+		if = {
+			limit = {
+				scope:target = {
+					has_country_modifier = built_tomb_modifier
+					has_variable = tomb_buried_person
+				}
+			}
+
+			custom_tooltip = BUILD_TOMB_WILL_REMOVE_EXISTING_TOMB
+			hidden_effect = {
+				scope:target = { clear_tomb_effect = yes }
+			}
+		}
+
+		custom_tooltip = BUILDS_TOMB_AT_LOCATION
+		hidden_effect = {
+			build_tomb_effect = { BUILDER = scope:actor LOCATION = scope:target }
+		}
+	}
+}
+
+sacrifice_at_tomb_interaction = {
+	category = interaction_category_friendly
+	common_interaction = yes
+
+	desc = sacrifice_at_tomb_interaction_desc
+
+	target_type = title
+	target_filter = actor_domain_titles
+	interface_priority = 60
+
+	is_shown = {
+		scope:actor = scope:recipient
+		scope:actor = {
+			is_adult = yes
+			is_at_war = no
+			any_held_title = {
+				tier = tier_county
+				has_county_modifier = built_tomb_modifier
+				has_variable = tomb_buried_person
+			}
+			faith = {
+				has_doctrine_parameter = can_sacrifice_at_tomb
+			}
+		}
+	}
+
+	is_valid = {
+		scope:actor = {
+			custom_description = {
+				text = can_sacrifice_at_tomb_due_to_prior_sacrifices
+				NOT = { has_character_flag = has_sacrificed_at_tomb }
+			}
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			custom_description = {
+				text = is_county
+				tier = tier_county
+			}
+			custom_description = {
+				text = has_tomb_with_buried_character
+				has_county_modifier = built_tomb_modifier
+				has_variable = tomb_buried_person
+			}
+		}
+	}
+
+	on_accept = {
+		if = {
+			limit = {
+				scope:actor = {
+					faith = { has_doctrine_parameter = human_sacrifice_active }
+				}
+			}
+
+			custom_tooltip = SACRIFICE_TO_TOMB_CHARACTER_WITH_HUMAN_SACRIFICE_TOOLTIP
+		} else = {
+			custom_tooltip = SACRIFICE_TO_TOMB_CHARACTER_TOOLTIP
+		}
+		hidden_effect = {
+			scope:actor = {
+				add_character_flag = {
+					flag = has_sacrificed_at_tomb
+					years = 5
+				}
+				trigger_event = ATHA_religious.0101
+			}
+		}
+	}
+}
