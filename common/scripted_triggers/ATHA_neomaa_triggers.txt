@@ -410,13 +410,17 @@ can_recruit_maa_hiera_ile_as_foreigner_trigger = {
 }
 
 can_recruit_maa_molosson_agema_natively_trigger = {
-  can_recruit_macedonian_maa_natively_trigger = yes
+  can_recruit_epirote_maa_natively_trigger = yes
+  any_realm_province = {
+    geographical_region = ATHA_aor_molosson_agema
+  }
 }
 
 can_recruit_maa_molosson_agema_as_foreigner_trigger = {
   NOT = { can_recruit_maa_molosson_agema_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_molosson_agema_natively_trigger = yes
+    can_recruit_epirote_maa_natively_trigger = yes
+    geographical_region = ATHA_aor_molosson_agema
   }
 }
 
