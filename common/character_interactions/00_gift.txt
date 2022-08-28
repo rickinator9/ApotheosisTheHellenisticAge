@@ -125,6 +125,15 @@ gift_interaction = {
 					gold = gift_value
 					target = scope:recipient
 				}
+				if = {
+					limit = {
+						culture = { has_cultural_parameter = send_gift_prestige_gain }
+					}
+					add_prestige = {
+						value = gift_value
+						multiply = tradition_ceremonial_generosity_gift_prestige_factor
+					}
+				}
 				stress_impact = {
 					greedy = medium_stress_impact_gain
 					generous = medium_stress_impact_loss
@@ -136,6 +145,45 @@ gift_interaction = {
 						opinion = send_gift_opinion
 					}
 				}
+				if = {
+					limit = {
+						will_have_to_reciprocate_ceremonial_gift_trigger = { RECIPIENT = scope:recipient }
+						NOT = { has_relation_ceremonial_gift_giver = scope:recipient }
+					}
+					scope:recipient = {
+						custom_description = {
+							text = start_ceremonial_gift_receiver_effect
+							set_ceremonial_gift_receiver_effect = { GIVER = scope:actor }
+						}
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_variable = pay_back_ceremonial_gift_amount
+					var:pay_back_ceremonial_gift_amount > gift_value
+					has_relation_ceremonial_gift_giver = scope:recipient
+				}
+
+				custom_description = {
+					text = contributes_to_ceremonial_gift_obligation_effect
+					change_variable = {
+						name = pay_back_ceremonial_gift_amount
+						subtract = gift_value
+					}
+					add_character_flag = {
+						flag = ceremonial_gift_partial_payment
+						years = 1
+					}
+				}
+			} else_if = {
+				limit = {
+					has_variable = pay_back_ceremonial_gift_amount
+					has_relation_ceremonial_gift_giver = scope:recipient
+				}
+
+				clean_ceremonial_gift_receiver_effect = yes
 			}
 
 			if = { # for tutorial purposes
@@ -158,12 +206,114 @@ gift_interaction = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 		}
 	}
+
+	on_decline = {
+		if = {
+			limit = {
+				will_have_to_reciprocate_ceremonial_gift_trigger = { RECIPIENT = scope:recipient }
+			}
+
+			scope:recipient = {
+				add_prestige = {
+					value = medium_prestige_gain
+					multiply = -1
+				}
+				add_piety = {
+					value = minor_piety_value
+					multiply = -1
+				}
+			}
+		}
+	}
 	
 	ai_accept = {
 		base = 0
 		modifier = {
-			add = 100
+			add = {
+				value = 30
+				if = {
+					limit = {
+						scope:recipient = { has_trait = greedy }
+					}
+
+					multiply = 2
+				}
+				if = {
+					limit = {
+						scope:recipient = { has_trait = generous }
+					}
+
+					multiply = 0.5
+				}
+			}
 			desc = GOLD_REASON
+		}
+
+		modifier = {
+			desc = CEREMONIAL_GIFT_CANNOT_RECIPROCATE_MODIFIER
+			scope:recipient = {
+				NOT = { gold >= ceremonial_gift_repayment_remainder_value }
+			}
+			add = {
+				value = -50
+				if = {
+					limit = {
+						scope:recipient = {
+							OR = {
+								has_trait = education_stewardship
+								has_trait = arrogant
+							}
+						}
+					}
+
+					multiply = 2
+				}
+				if = {
+					limit = {
+						scope:recipient = {
+							has_trait = impatient
+							has_trait = content
+						}
+					}
+
+					multiply = 0.5
+				}
+			}
+		}
+
+		modifier = {
+			desc = CEREMONIAL_GIFT_RESPECTS_TRADITIONS_MODIFIER
+			scope:recipient = {
+				OR = {
+					has_trait = honest
+					has_trait = zealous
+					has_trait = education_learning
+				}
+				NOT = { has_trait = cynical }
+			}
+			add = 40
+		}
+
+		modifier = {
+			desc = CEREMONIAL_GIFT_GOOD_RELATIONSHIP_MODIFIER
+			scope:recipient = {
+				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:actor }
+			}
+			add = 30
+		}
+
+		modifier = {
+			desc = CEREMONIAL_GIFT_BAD_RELATIONSHIP_MODIFIER
+			scope:recipient = {
+				has_any_bad_relationship_with_character_trigger = { CHARACTER = scope:actor }
+			}
+			add = -40
+		}
+
+		modifier = {
+			desc = CEREMONIAL_GIFT_DYNASTY_MEMBER_MODIFIER
+			scope:actor.dynasty = scope:recipient.dynasty
+			add = 20
 		}
 
 		# Struggle motive
@@ -201,6 +351,56 @@ gift_interaction = {
 			}
 		}
 	}
+
+	send_option = {
+		is_shown = {
+			scope:actor = {
+				culture = { 
+					has_cultural_parameter = send_gift_ceremonial_gift
+				}
+			}
+		}
+		is_valid = {
+			scope:recipient = {
+				custom_description = {
+					text = SEND_GIFT_CEREMONIAL_GIFT_OPTION_RECENTLY_RECEIVED
+					NOT = {
+						has_character_flag = received_ceremonial_gift
+					}
+				}
+			}
+		}
+		flag = send_ceremonial_gift
+		localization = SEND_GIFT_CEREMONIAL_GIFT_OPTION
+		current_description = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						scope:recipient = {
+							culture = { 
+								has_cultural_parameter = send_gift_ceremonial_gift
+							}
+						}
+					}
+					desc = SEND_GIFT_CEREMONIAL_GIFT_OPTION_EXPECTING_GIFT
+				}
+				triggered_desc = {
+					trigger = {
+						NOT = {
+							scope:recipient = {
+								culture = { 
+									has_cultural_parameter = send_gift_ceremonial_gift
+								}
+							}
+						}
+					}
+					desc = SEND_GIFT_CEREMONIAL_GIFT_OPTION_OPINION_BONUS
+				}
+			}
+		}
+	}
+
+	send_options_exclusive = no
 	
 	ai_potential = {
 		is_adult = yes
@@ -216,6 +416,9 @@ gift_interaction = {
 		custom_description = {
 			text = auto_accept_interaction_ai	
 			object = scope:recipient
+			NOT = { 
+				will_have_to_reciprocate_ceremonial_gift_trigger = { RECIPIENT = scope:recipient }
+			}
 			scope:recipient = {
 				is_ai = yes
 			}

@@ -1,0 +1,720 @@
+﻿namespace = ATHA_religious
+
+### RELIGIOUS EVENTS INDEX                 #
+# 0001-0100 TOMB CONSTRUCTION EVENTS       #
+# 0101-0200 THRACIAN TOMB SACRIFICE EVENTS #
+############################################
+
+#######################
+# TOMB CONSTRUCTION   #
+#######################
+
+##################################
+# THRACIAN TOMB SACRIFICE EVENTS #
+##################################
+
+ATHA_religious.0101 = {
+	type = character_event
+	title = ATHA_religious.0101.title
+	desc = ATHA_religious.0101.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+
+	immediate = {
+		scope:target = {
+			var:tomb_buried_person = {
+				save_scope_as = tomb_owner
+			}
+		}
+
+		random_character_artifact = {
+			save_scope_as = sacrificed_artifact
+		}
+		random_prisoner = {
+			save_scope_as = potential_human_sacrifice
+		}
+	}
+
+	# Money
+	option = {
+		name = ATHA_religious.0101.a
+		trigger = {
+			OR = {
+				gold >= 0
+				debt_level <= 2
+			}
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = generous
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = profligate
+			}
+		}
+		stress_impact = {
+			greedy = major_stress_impact_gain
+			generous = minor_stress_impact_loss
+		}
+
+		# Pay the gold to deposit.
+		remove_short_term_gold = major_gold_value
+
+		# Blessing / Curse chances
+		custom_tooltip = ATHA_RELIGIOUS_0101_GOLD_SACRIFICE_TT
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							has_trait = greedy
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.1
+						scope:tomb_owner = {
+							has_trait = avaricious
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_blessing
+						months = { 3 6 }
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = generous
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = content
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = cynical
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = cynical
+						}
+					}
+					modifier = {
+						factor = 1.1
+						scope:tomb_owner = {
+							has_trait = profligate
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_curse
+						months = { 3 6 }
+					}
+				}
+			}
+		}
+	}
+
+	# Food
+	option = {
+		name = ATHA_religious.0101.b
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				factor = 1.5
+				has_trait = gluttonous
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = lifestyle_reveler
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = temperate
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = inappetetic
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = education_stewardship
+			}
+		}
+
+		# Add modifier to county indicating that food will be diverted to the tomb.
+		scope:target = {
+			add_county_modifier = {
+				modifier = sacrificed_food_to_tomb_modifier
+				years = 5
+			}
+		}
+
+		# Blessing / Curse chances
+		custom_tooltip = ATHA_RELIGIOUS_0101_FOOD_SACRIFICE_TT
+		hidden_effect = {
+			random_list = {
+				45 = {
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							has_trait = gluttonous
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = lifestyle_reveler
+						}
+					}
+					modifier = {
+						factor = 1.15
+						scope:tomb_owner = {
+							has_trait = drunkard
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = zealous
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_blessing
+						months = { 3 6 }
+					}
+				}
+				55 = {
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							has_trait = inappetetic
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = temperate
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = content
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = cynical
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = cynical
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_curse
+						months = { 3 6 }
+					}
+				}
+			}
+		}
+	}
+
+	# Artifact
+	option = {
+		name = ATHA_religious.0101.c
+		trigger = { exists = scope:sacrificed_artifact }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.25
+				scope:sacrificed_artifact = {
+					is_equipped = yes
+				}
+			}
+			modifier = {
+				factor = 0.25
+				scope:sacrificed_artifact = {
+					rarity = illustrious
+				}
+			}
+			modifier = {
+				factor = 0.5
+				scope:sacrificed_artifact = {
+					rarity = famed
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = zealous
+			}
+		}
+
+		# 'Deposit' the artifact.
+		scope:sacrificed_artifact = {
+			destroy_artifact = this
+		}
+
+		# Blessing / Curse chances
+		custom_tooltip = ATHA_RELIGIOUS_0101_ARTIFACT_SACRIFICE_TT
+		hidden_effect = {
+			random_list = {
+				60 = {
+					modifier = {
+						factor = 1.5
+						scope:tomb_owner = {
+							has_trait = arrogant
+						}
+					}
+					modifier = {
+						factor = 1.5
+						scope:sacrificed_artifact = {
+							rarity = illustrious
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:sacrificed_artifact = {
+							rarity = famed
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.1
+						scope:tomb_owner = {
+							has_trait = greedy
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = zealous
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_blessing
+						months = { 3 6 }
+					}
+				}
+				40 = {
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							NOR = {
+								has_trait = generous
+								has_trait = arrogant
+							}
+						}
+						scope:sacrificed_artifact = {
+							rarity = common
+						}
+					}
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							has_trait = arrogant
+						}
+						scope:sacrificed_artifact = {
+							rarity = common
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = content
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = cynical
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = cynical
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_curse
+						months = { 3 6 }
+					}
+				}
+			}
+		}
+	}
+
+	# Human Sacrifice
+	option = {
+		name = ATHA_religious.0101.d
+		trigger = {
+			exists = scope:potential_human_sacrifice
+			faith = { has_doctrine_parameter = human_sacrifice_active }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 2
+				OR = {
+					has_relation_rival = scope:potential_human_sacrifice
+					has_relation_nemesis = scope:potential_human_sacrifice
+				}
+			}
+			modifier = {
+				factor = 2
+				has_trait = sadistic
+			}
+			modifier = {
+				factor = 0.25
+				OR = {
+					has_relation_friend = scope:potential_human_sacrifice
+					has_relation_best_friend = scope:potential_human_sacrifice
+					has_relation_lover = scope:potential_human_sacrifice
+					has_relation_soulmate = scope:potential_human_sacrifice
+				}
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = compassionate
+			}
+		}
+		stress_impact = {
+			sadistic = medium_stress_impact_loss
+			compassionate = major_stress_impact_gain
+		}
+
+		# Sort opinions and kinslaying.
+		add_kinslayer_trait_or_nothing_effect = { VICTIM = scope:potential_human_sacrifice }
+		execute_opinion_effect = {
+			VICTIM = scope:potential_human_sacrifice
+			EXECUTIONER = root
+		}
+		scope:potential_human_sacrifice = {
+			death = {
+				death_reason = death_sacrificed_to_gods
+				killer = root
+			}
+		}
+
+		# Blessing / Curse chances
+		custom_tooltip = ATHA_RELIGIOUS_0101_HUMAN_SACRIFICE_TT
+		hidden_effect = {
+			random_list = {
+				70 = {
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							has_trait = sadistic
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.1
+						scope:tomb_owner = {
+							has_trait = avaricious
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_blessing
+						months = { 3 6 }
+					}
+				}
+				30 = {
+					modifier = {
+						factor = 2
+						scope:tomb_owner = {
+							faith = {
+								NOT = { has_doctrine_parameter = human_sacrifice_active }
+							}
+							has_trait = zealous
+						}
+					}
+					modifier = {
+						factor = 1.5
+						scope:tomb_owner = {
+							faith = {
+								NOT = { has_doctrine_parameter = human_sacrifice_active }
+							}
+							NOT = { has_trait = zealous }
+						}
+					}
+					modifier = {
+						factor = 2
+						has_trait = compassionate
+					}
+					modifier = {
+						factor = 2
+						scope:potential_human_sacrifice = {
+							is_close_family_of = scope:tomb_owner
+						}
+						scope:tomb_owner = {
+							NOT = { has_trait = kinslayer }
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:potential_human_sacrifice = {
+							NOT = { is_close_family_of = scope:tomb_owner }
+							dynasty = scope:tomb_owner.dynasty
+						}
+						scope:tomb_owner = {
+							NOT = { has_trait = kinslayer }
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = content
+						}
+					}
+					modifier = {
+						factor = 1.25
+						scope:tomb_owner = {
+							has_trait = cynical
+						}
+					}
+					modifier = {
+						factor = 1.1
+						root = {
+							has_trait = cynical
+						}
+					}
+
+					trigger_event = {
+						on_action = on_tomb_sacrifice_curse
+						months = { 3 6 }
+					}
+				}
+			}	
+		}
+	}
+
+	after = {
+		stress_impact = { zealous = minor_stress_impact_loss }
+	}
+}
+
+scripted_trigger ATHA_religious_0111_valid_courtier = {
+	is_available_ai_adult = yes
+	is_attracted_to_gender_of = root
+	OR = {
+		has_trait = lustful
+		has_trait = ambitious
+		has_trait = arbitrary
+	}
+	accepts_incest_with_trigger = { CHARACTER = root } #No incest or 100% ok with incest
+	NOR = {
+		has_relation_lover = root
+		is_consort_of = root
+		has_trait = celibate
+	}
+}
+
+ATHA_religious.0111 = {
+	type = character_event
+	title = ATHA_religious.0111.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:sex_courtier
+				}
+				desc = ATHA_religious.0111.desc_with_courtier
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:sex_courtier }
+				}
+				desc = ATHA_religious.0111.desc_without_courtier
+			}
+		}
+	}
+	theme = love
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:sex_courtier
+		animation = admiration
+	}
+
+	immediate = {
+		random_courtier_or_guest = {	#Select a suitable non-entity for this.
+			limit = { ATHA_religious_0111_valid_courtier = yes }
+			weight = {
+				base = 1
+				modifier = {
+					add = 20
+					has_trait = lustful
+				}
+				modifier = {
+					factor = 1.2
+					age <= 20
+				}
+				modifier = {
+					factor = 1.1
+					age <= 25
+				}
+				modifier = {
+					factor = 1.1
+					age <= 30
+				}
+				modifier = {
+					factor = 1.1
+					age <= 35
+				}
+			}
+			save_scope_as = sex_courtier
+		}
+	}
+
+	option = {
+		name = ATHA_religious.0111.a
+		trigger = {
+			exists = scope:sex_courtier
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 2
+				has_trait = lustful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = beauty_bad
+			}
+			modifier = { # Has no children.
+				factor = 1.5
+				any_child = {
+					count = 0
+					is_alive = yes
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = chaste
+			}
+			modifier = {
+				factor = 0
+				has_trait = celibate
+			}
+		}
+
+		had_sex_with_effect = {
+			CHARACTER = scope:sex_courtier
+			PREGNANCY_CHANCE = pregnancy_chance
+		}
+
+		stress_impact = {
+			base = minor_stress_impact_loss
+			lustful = medium_stress_impact_loss
+			chaste = medium_stress_impact_gain
+			celibate = major_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = ATHA_religious.0111.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 4
+				has_trait = zealous
+			}
+			modifier = { # Ambitious characters will choose piety if they are below an acceptable level.
+				factor = 2
+				has_trait = ambitious
+				piety_level < 0
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = cynical
+			}
+		}
+		
+		add_piety = medium_piety_gain
+
+		stress_impact = {
+			zealous = medium_stress_impact_loss
+			cynical = minor_stress_impact_gain
+		}
+	}
+
+	after = {
+		add_character_modifier = {
+			modifier = tomb_blessing_sex_appeal_modifier
+			years = 3
+		}
+	}
+}

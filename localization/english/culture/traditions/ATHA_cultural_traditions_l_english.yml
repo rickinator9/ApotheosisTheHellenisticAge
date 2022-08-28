@@ -10,6 +10,8 @@
  tradition_former_slaves_desc:0 "Members of this culture once toiled as slaves under foreign rule, but have since been able to secure their freedom and establish a new identity for themselves."
  tradition_abundant_hillforts_name:0 "Abundant Hillforts"
  tradition_abundant_hillforts_desc:1 "It is a chaotic world out there. This culture attempts to create some order with a simple rule: when in doubt, build another hillfort."
+ tradition_ceremonial_generosity_name:0 "Ceremonial Generosity"
+ tradition_ceremonial_generosity_desc:0 "The only thing better than receiving a gift, is giving one to others! This culture has enshrined generously giving to others as an important part of ceremonies and parties. Not only are the members expected to give to others, but also to reciprocate when receiving gifts."
 
  # Tradition effects
  culture_parameter_unlock_hetairoi_innovation:0 "This tradition allows a [culture|E] to unlock the $innovation_companion_cavalry$ [innovation|E] in the $culture_era_classical$ [era]"
@@ -22,11 +24,14 @@
  culture_parameter_fort_fortifications_increase:1 "[forts|E] in [counties|E] of this [culture|E] provide an additional #V 5#! $MOD_DEFENDER_HOLDING_ADVANTAGE$ per [holding|E] level"
  culture_parameter_fort_grant_prestige:0 "[rulers|E] of this [culture|E] gain [prestige_i][prestige|E] and [dynasty_prestige_i][dynasty_prestige|E] from [fort|E] [holdings|E]"
  culture_parameter_ai_more_likely_to_fort:0 "[rulers|E] of this [culture|E] are more likely to construct [fort|E] [holdings|E]"
+ culture_parameter_send_gift_prestige_gain:0 "[characters|E] of this [culture|E] will receive [prestige_i][prestige|E] equal to #P [EmptyScope.ScriptValue('tradition_ceremonial_generosity_gift_prestige_percentage')|0]%#! of the gift amount when using the $gift_interaction$ interaction."
+ culture_parameter_send_gift_ceremonial_gift:0 "[characters|E] of this [culture|E] may give a Ceremonial Gift, doubling the gift amount for the following benefits:\n$TAB$$EFFECT_LIST_BULLET$If the [culture|E] of the recipient of the gift has the same tenet, they will be expected to give back a greater gift within 6 months. If they fail to do so, they will be forced to give a [weak_hook|E] or an [artifact|E].\n$TAB$$EFFECT_LIST_BULLET$If the [culture|E] of the recipient of the gift does not have the same tenet, their opinion will be increased by an additional #P [EmptyScope.ScriptValue('tradition_ceremonial_generosity_gift_opinion_percentage')|0]%#!."
  
  # Triggers and Tooltips
  TRADITION_CHOSEN_COMPANIONS_ACCEPTANCE_MODIFIER:1 "$tradition_chosen_companions_name$ [tradition|E]: $VALUE|=+0$"
 
  not_bellicose_or_courtly_desc:0 "The [culture|E] does not have the $ethos_bellicose_name$ or $ethos_courtly_name$ [ethos|E]"
+ not_courtly_desc:0 "The [culture|E] does not have the $ethos_courtly_name$ [ethos|E]"
 
  lacks_classical_mustering_grounds_innovation_desc:0 "The [culture|E] has not discovered the #high $innovation_classical_mustering_grounds$#! [innovation|E]"
  lacks_classical_constitution_innovation_desc:0 "The [culture|E] has not discovered the #high $innovation_classical_constitution$#! [innovation|E]"

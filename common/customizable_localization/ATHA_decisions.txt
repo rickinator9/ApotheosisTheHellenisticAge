@@ -26,3 +26,28 @@
 		}
 	}
 }
+
+TombText = {
+	type = character
+
+	text = {
+		localization_key = tomb_intro
+	}
+}
+
+TombBurialText = {
+	type = character
+	
+	text = {
+		localization_key = tomb_burial_text
+		trigger = {
+			scope:second = {
+				has_variable = tomb_buried_person
+			}
+		}
+	}
+	text = {
+		localization_key = EMPTY_STRING
+		fallback = yes
+	}
+}
