@@ -280,11 +280,10 @@ epilektoi_hoplitai = {
             can_recruit_maa_epilektoi_hoplitai_natively_trigger = yes
             can_recruit_maa_epilektoi_hoplitai_as_foreigner_trigger = yes
         }
-        can_recruit_elite_maa = yes
     }
 
-    damage = 70
-    toughness = 80
+    damage = 50
+    toughness = 60
     pursuit = 0
     screen = 0
 
@@ -299,19 +298,138 @@ epilektoi_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 220 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 2 }
+    buy_cost = { gold = 160 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = no
-    holy_order_fallback = no
+    mercenary_fallback = yes
+    holy_order_fallback = yes
     
     stack = 300
     ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = heavy_infantry
 }
 
-#Lakedaemonian#Cultural
+#Elite
+agema_phalangitai = {
+    type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_agema_phalangitai_natively_trigger = yes
+            can_recruit_maa_agema_phalangitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 60
+    toughness = 50
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 160 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+##########################################################
+
+#Lakedaemonian#Superior
+perioikoi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_perioikoi_hoplitai_natively_trigger = yes
+            can_recruit_maa_perioikoi_hoplitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 33
+    toughness = 43
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_infantry
+}
+
+#Lakedaemonian#Superior
+neodamodeis_phalangitai = {
+    type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_neodamodeis_phalangitai_natively_trigger = yes
+            can_recruit_maa_neodamodeis_phalangitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 43
+    toughness = 33
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Lakedaemonian#Elite
 hypomeiones_hoplitai = {
     type = heavy_infantry
 
@@ -338,7 +456,7 @@ hypomeiones_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 120 }
+    buy_cost = { gold = 160 }
     low_maintenance_cost = { gold = 0.5 }
     high_maintenance_cost = { gold = 1 }
     
@@ -350,86 +468,7 @@ hypomeiones_hoplitai = {
     icon = heavy_infantry
 }
 
-#Lakedaemonian#Cultural
-neodamodeis_phalangitai = {
-    type = pikemen
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_neodamodeis_phalangitai_natively_trigger = yes
-            can_recruit_maa_neodamodeis_phalangitai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 70
-    toughness = 40
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        heavy_cavalry = 1
-    }
-
-    buy_cost = { gold = 120 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = pikemen
-}
-
-#Elite#Lakedaemonian
-homoioi_hippeis = {
-    type = heavy_infantry
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_homoioi_hippeis_natively_trigger = yes
-            can_recruit_maa_homoioi_hippeis_as_foreigner_trigger = yes
-        }
-        can_recruit_elite_maa = yes
-    }
-
-    damage = 85
-    toughness = 95
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
-        mountains = { damage = -5 }
-        desert_mountains = { damage = -5 }
-    }
-
-    counters = {
-        light_cavalry = 1
-    }
-
-    buy_cost = { gold = 220 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 2.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_infantry
-}
-
-#Elite#Regional#Lakedaemonian#Arkadian
+#Lakedaemonian#Elite
 skiritai_peltastai = {
     type = skirmishers
 
@@ -438,11 +477,10 @@ skiritai_peltastai = {
             can_recruit_maa_skiritai_peltastai_natively_trigger = yes
             can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = yes
         }
-        can_recruit_elite_maa = yes
     }
 
-    damage = 60
-    toughness = 60
+    damage = 35
+    toughness = 35
     pursuit = 10
     screen = 10
 
@@ -457,32 +495,32 @@ skiritai_peltastai = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 200 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 2.0 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.0 }
     
-    mercenary_fallback = no
-    holy_order_fallback = no
+    mercenary_fallback = yes
+    holy_order_fallback = yes
     
     stack = 300
     ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = skirmishers
 }
 
-#Elite#Boiotioi
-heiros_lokhos = {
+#Lakedaemonian#Guard
+homoioi_hippeis = {
     type = heavy_infantry
 
     can_recruit = {
         OR = {
-            can_recruit_maa_heiros_lokhos_natively_trigger = yes
-            can_recruit_maa_heiros_lokhos_as_foreigner_trigger = yes
+            can_recruit_maa_homoioi_hippeis_natively_trigger = yes
+            can_recruit_maa_homoioi_hippeis_as_foreigner_trigger = yes
         }
         can_recruit_elite_maa = yes
     }
 
-    damage = 80
-    toughness = 90
+    damage = 70
+    toughness = 80
     pursuit = 0
     screen = 0
 
@@ -497,7 +535,7 @@ heiros_lokhos = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 220 }
+    buy_cost = { gold = 260 }
     low_maintenance_cost = { gold = 1.0 }
     high_maintenance_cost = { gold = 2.0 }
     
@@ -509,7 +547,86 @@ heiros_lokhos = {
     icon = heavy_infantry
 }
 
-#Thessalikoi#Cultural
+#Boiotioi#Superior
+boiotioi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_boiotioi_hoplitai_natively_trigger = yes
+            can_recruit_maa_boiotioi_hoplitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 33
+    toughness = 43
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_infantry
+}
+
+#Boiotioi#Guard
+heiros_lokhos = {
+    type = heavy_infantry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_heiros_lokhos_natively_trigger = yes
+            can_recruit_maa_heiros_lokhos_as_foreigner_trigger = yes
+        }
+        can_recruit_elite_maa = yes
+    }
+
+    damage = 70
+    toughness = 80
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 260 }
+    low_maintenance_cost = { gold = 1.0 }
+    high_maintenance_cost = { gold = 2.0 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_infantry
+}
+
+#Thessalikoi#Superior
 thessalikoi_prodomoi = {
     type = light_cavalry
 
@@ -520,10 +637,10 @@ thessalikoi_prodomoi = {
         }
     }
 
-    damage = 30
-    toughness = 30
-    pursuit = 30
-    screen = 30
+    damage = 20
+    toughness = 20
+    pursuit = 23
+    screen = 23
 
     terrain_bonus = {
         plains = { damage = 5 }
@@ -536,8 +653,8 @@ thessalikoi_prodomoi = {
         archers = 1
     }
 
-    buy_cost = { gold = 140 }
-    low_maintenance_cost = { gold = 0.5 }
+    buy_cost = { gold = 105 }
+    low_maintenance_cost = { gold = 0.7 }
     high_maintenance_cost = { gold = 1 }
     
     mercenary_fallback = yes
@@ -549,7 +666,7 @@ thessalikoi_prodomoi = {
 }
 
 
-#Thessalikoi#Cultural
+#Thessalikoi#Superior
 thessalikoi_hippeis = {
     type = heavy_cavalry
 
@@ -560,8 +677,8 @@ thessalikoi_hippeis = {
         }
     }
 
-    damage = 90
-    toughness = 50
+    damage = 63
+    toughness = 43
     pursuit = 10
     screen = 10
 
@@ -576,9 +693,9 @@ thessalikoi_hippeis = {
         archers = 1
     }
 
-    buy_cost = { gold = 160 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
+    buy_cost = { gold = 145 }
+    low_maintenance_cost = { gold = 0.9 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -588,7 +705,7 @@ thessalikoi_hippeis = {
     icon = heavy_cavalry
 }
 
-#Dorian#Cultural
+#Dorian#Superior
 rodioi_sphendonetai = {
     type = slingers
 
@@ -599,10 +716,10 @@ rodioi_sphendonetai = {
         }
     }
 
-    damage = 25
-    toughness = 15
-    pursuit = 25
-    screen = 25
+    damage = 10
+    toughness = 10
+    pursuit = 18
+    screen = 18
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -615,9 +732,9 @@ rodioi_sphendonetai = {
         heavy_infantry = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -627,7 +744,7 @@ rodioi_sphendonetai = {
     icon = skirmishers
 }
 
-#Kretan#Cultural
+#Kretan#Superior
 kretikoi_toxotai = {
     type = archers
 
@@ -638,8 +755,8 @@ kretikoi_toxotai = {
         }
     }
 
-    damage = 55
-    toughness = 35
+    damage = 33
+    toughness = 23
     pursuit = 0
     screen = 0
 
@@ -655,9 +772,9 @@ kretikoi_toxotai = {
         slingers = 1
     }
 
-    buy_cost = { gold = 110 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.5 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -678,6 +795,45 @@ kretikoi_peltastai = {
         }
     }
 
+    damage = 18
+    toughness = 18
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Makedonikoi#Elite
+makedonikoi_peltastai = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+            can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = yes
+        }
+    }
+
     damage = 35
     toughness = 35
     pursuit = 10
@@ -694,7 +850,7 @@ kretikoi_peltastai = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 100 }
+    buy_cost = { gold = 140 }
     low_maintenance_cost = { gold = 0.5 }
     high_maintenance_cost = { gold = 1 }
     
@@ -706,46 +862,7 @@ kretikoi_peltastai = {
     icon = skirmishers
 }
 
-#Makedonikoi#Cultural
-makedonikoi_peltastai = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
-            can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 25
-    toughness = 35
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = skirmishers
-}
-
-#Makedonikoi#Cultural
+#Makedonikoi#Superior
 chalkaspides = {
     type = pikemen
 
@@ -756,8 +873,8 @@ chalkaspides = {
         }
     }
 
-    damage = 60
-    toughness = 50
+    damage = 43
+    toughness = 33
     pursuit = 0
     screen = 0
 
@@ -772,9 +889,9 @@ chalkaspides = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 120 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -784,7 +901,7 @@ chalkaspides = {
     icon = pikemen
 }
 
-#Elite#Makedonikoi
+#Makedonikoi#Guard
 hypaspistai = {
     type = heavy_infantry
 
@@ -796,8 +913,8 @@ hypaspistai = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 75
-    toughness = 85
+    damage = 70
+    toughness = 80
     pursuit = 0
     screen = 0
 
@@ -812,7 +929,7 @@ hypaspistai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 220 }
+    buy_cost = { gold = 260 }
     low_maintenance_cost = { gold = 1 }
     high_maintenance_cost = { gold = 2 }
     
@@ -824,47 +941,7 @@ hypaspistai = {
     icon = heavy_infantry
 }
 
-#Elite#Makedonikoi
-agema_phalangitai = {
-    type = pikemen
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_agema_phalangitai_natively_trigger = yes
-            can_recruit_maa_agema_phalangitai_as_foreigner_trigger = yes
-        }
-        can_recruit_elite_maa = yes
-    }
-
-    damage = 85
-    toughness = 75
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        heavy_cavalry = 1
-    }
-
-    buy_cost = { gold = 220 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 2 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = pikemen
-}
-
-#Elite#Makedonikoi
+#Guard#Makedonikoi
 hiera_ile = {
     type = heavy_cavalry
 
@@ -876,8 +953,8 @@ hiera_ile = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 105
-    toughness = 85
+    damage = 100
+    toughness = 80
     pursuit = 10
     screen = 10
 
@@ -892,7 +969,7 @@ hiera_ile = {
         archers = 1
     }
 
-    buy_cost = { gold = 280 }
+    buy_cost = { gold = 310 }
     low_maintenance_cost = { gold = 1 }
     high_maintenance_cost = { gold = 2 }
     
@@ -904,7 +981,7 @@ hiera_ile = {
     icon = heavy_cavalry
 }
 
-#Regional#Oxylian#Cultural
+#Oxylian#Superior
 arkarnanioi_sphendonetai = {
     type = slingers
 
@@ -915,10 +992,10 @@ arkarnanioi_sphendonetai = {
         }
     }
 
-    damage = 20
-    toughness = 20
-    pursuit = 20
-    screen = 20
+    damage = 10
+    toughness = 10
+    pursuit = 18
+    screen = 18
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -931,9 +1008,9 @@ arkarnanioi_sphendonetai = {
         heavy_infantry = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1 }
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -943,8 +1020,47 @@ arkarnanioi_sphendonetai = {
     icon = skirmishers
 }
 
-#Elite#Epirote
-molosson_agema = {
+#Epirote#Superior
+epirotoi_phalangitai = {
+    type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_epirotoi_phalangitai_natively_trigger = yes
+            can_recruit_maa_epirotoi_phalangitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 43
+    toughness = 33
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Epirote#Guard
+basilikoi_agema = {
     type = heavy_cavalry
 
     can_recruit = {
@@ -971,7 +1087,7 @@ molosson_agema = {
         archers = 1
     }
 
-    buy_cost = { gold = 280 }
+    buy_cost = { gold = 310 }
     low_maintenance_cost = { gold = 1 }
     high_maintenance_cost = { gold = 2 }
     
@@ -983,7 +1099,46 @@ molosson_agema = {
     icon = heavy_cavalry
 }
 
-#Elite#Epirote
+#Epirote#Superior
+molosson_hippeis = {
+    type = heavy_cavalry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_molosson_agema_natively_trigger = yes
+            can_recruit_maa_molosson_agema_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 63
+    toughness = 43
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 145 }
+    low_maintenance_cost = { gold = 1 }
+    high_maintenance_cost = { gold = 2 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = heavy_cavalry
+}
+
+#Epirote#Elite
 chaeonion_agema = {
     type = pikemen
 
@@ -992,11 +1147,10 @@ chaeonion_agema = {
             can_recruit_maa_chaeonion_agema_natively_trigger = yes
             can_recruit_maa_chaeonion_agema_as_foreigner_trigger = yes
         }
-        can_recruit_elite_maa = yes
     }
 
-    damage = 80
-    toughness = 70
+    damage = 60
+    toughness = 50
     pursuit = 0
     screen = 0
 
@@ -1011,19 +1165,19 @@ chaeonion_agema = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 220 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 2 }
+    buy_cost = { gold = 160 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = no
-    holy_order_fallback = no
+    mercenary_fallback = yes
+    holy_order_fallback = yes
     
     stack = 300
     ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = pikemen
 }
 
-#Elite#Epirote
+#Epirote#Elite
 chaeonion_logades = {
     type = skirmishers
 
@@ -1032,11 +1186,10 @@ chaeonion_logades = {
             can_recruit_maa_chaeonion_logades_natively_trigger = yes
             can_recruit_maa_chaeonion_logades_as_foreigner_trigger = yes
         }
-        can_recruit_elite_maa = yes
     }
 
-    damage = 55
-    toughness = 55
+    damage = 35
+    toughness = 35
     pursuit = 10
     screen = 10
 
@@ -1051,12 +1204,12 @@ chaeonion_logades = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 200 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 2 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = no
-    holy_order_fallback = no
+    mercenary_fallback = yes
+    holy_order_fallback = yes
     
     stack = 300
     ai_quality = { value = @cultural_maa_extra_ai_score }
@@ -1095,7 +1248,7 @@ peltenai = {
     low_maintenance_cost = { gold = 0.1 }
     high_maintenance_cost = { gold = 0.4 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1133,7 +1286,7 @@ asanai = {
     low_maintenance_cost = { gold = 0.1 }
     high_maintenance_cost = { gold = 0.4 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1172,7 +1325,7 @@ anganai = {
     low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.5 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1208,7 +1361,7 @@ tarypeltenai = {
     low_maintenance_cost = { gold = 0.3 }
     high_maintenance_cost = { gold = 0.6 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1244,7 +1397,7 @@ skalmanai = {
     low_maintenance_cost = { gold = 0.3 }
     high_maintenance_cost = { gold = 0.6 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1280,7 +1433,7 @@ mezenai = {
     low_maintenance_cost = { gold = 0.7 }
     high_maintenance_cost = { gold = 1.0 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1316,7 +1469,7 @@ moukamezenai = {
     low_maintenance_cost = { gold = 0.9 }
     high_maintenance_cost = { gold = 1.2 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 150
@@ -1356,7 +1509,7 @@ dioi_machairaphoroi = {
     low_maintenance_cost = { gold = 1 }
     high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 300
@@ -1431,8 +1584,8 @@ zibutai = {
     low_maintenance_cost = { gold = 1 }
     high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = yes
-    holy_order_fallback = yes
+    mercenary_fallback = no
+    holy_order_fallback = no
     
     stack = 150
     ai_quality = { value = @cultural_maa_extra_ai_score }
@@ -1471,8 +1624,8 @@ agrianikoi_peltenai = {
     low_maintenance_cost = { gold = 0.5 }
     high_maintenance_cost = { gold = 1 }
     
-    mercenary_fallback = yes
-    holy_order_fallback = yes
+    mercenary_fallback = no
+    holy_order_fallback = no
     
     stack = 300
     ai_quality = { value = @cultural_maa_extra_ai_score }
