@@ -12,6 +12,22 @@ ATHA_on_game_start = {
         ATHA_game_start.17 # Assign lifestyle perks
         ATHA_game_start.18 # Assign splendour levels to dead dynasties
     }
+
+    effect = {
+        every_living_character = {
+            limit = {
+				culture = {
+                    has_cultural_pillar = celtic_language
+                }
+                is_male = yes
+			}
+            save_scope_as = celtic_father
+			add_to_global_variable_list = {
+				name = celtic_name_support
+				target = scope:celtic_father
+			}
+        }
+    }
 }
 
 # Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are

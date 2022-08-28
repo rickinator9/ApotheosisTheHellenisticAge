@@ -88,13 +88,6 @@ ATHA_krete = {
 	}
 }
 
-# Duchies associated with Propontis. To be used with other regions.
-ATHA_propontis = {
-	duchies = {
-		d_briantike d_apsinthis d_fake_astike
-	}
-}
-
 # Custom
 
 custom_athenian_empire = {
@@ -102,16 +95,15 @@ custom_athenian_empire = {
 		 d_attike
 		#Thracian District
 		 d_chalkidike
-		 d_briantike
 		#Hellespontine District
-		 d_apsinthis
-		 d_fake_astike
-		 d_troas
-		 d_mysia
+		 d_chersonesos
+		 d_propontis
 		 d_askania
+		 d_mysia
+		 d_troas
 		#Ionian District
-		 d_ionia
 		 d_aiolis
+		 d_ionia
 		#Carian District
 		 d_doris
 		#Islands District
@@ -130,16 +122,25 @@ custom_athenian_empire = {
 		 c_tragilos
 		 c_berge
 		 c_philippoi
+		 c_thasos
+		 c_abdera
+		 c_maroneia
+		 c_samothrake
+		 c_ainos
 		#Hellespontine District
-		 c_zeleia
-		 c_astakos
 		 c_chalkedon
+		 c_astakos
+		 c_zeleia
 		#Carian District
 		 c_alexandreia_karia
 		#Islands District
 		 c_aigina
 		 c_sporades
 		#Pontic District
+		 c_apollonia_pontike
+		 c_mesambria
+		 c_kallatis
+		 c_orgame_thrace
 		 c_herakleia_pontike
 		#Other
 		 c_demetrias # not a member of the Delian League, but its strategic significance in the Hellenistic Period as one of the "fetters of Greece" justifies its inclusion as a required province
@@ -163,22 +164,25 @@ custom_ionian_phoros = {
 }
 custom_thracian_phoros = {
 	duchies = { 
-		d_briantike
-		d_parastrymonia
-		d_chalkidike
 		d_amphaxitis
+		d_chalkidike
+		d_parastrymonia
+		d_sapaike
+		d_priantike
+		d_korpilike
 	}
 	#counties = { c_pydna } # commented out as region should only include provinces that become de jure
 }
 custom_hellespontine_phoros = {
 	duchies = { 
-		d_troas
-		d_mysia
-		d_fake_astike
-		d_apsinthis
-		d_zeleia
-		d_askania
+		d_chersonesos
+		d_kainike
+		d_propontis
 		d_bithynia
+		d_askania
+		d_mysia
+		d_zeleia
+		d_troas
 	}
 }
 custom_peloponnese = {
@@ -219,11 +223,10 @@ custom_troas = {
 		d_troas
 		d_mysia
 		d_askania
+		d_bithynia
 	}
 	counties = { 
 		c_zeleia
-		c_astakos
-		c_chalkedon
 	}
 }
 custom_coastal_asia = {

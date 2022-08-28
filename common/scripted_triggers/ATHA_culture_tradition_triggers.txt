@@ -1,0 +1,15 @@
+﻿# Will this character have to gift back a ceremonial gift? RECIPIENT = character that will receive the gift.
+will_have_to_reciprocate_ceremonial_gift_trigger = {
+	scope:send_ceremonial_gift = yes
+	$RECIPIENT$ = {
+		culture = { has_cultural_parameter = send_gift_ceremonial_gift }
+	}
+}
+
+# Can this artifact be used to repay a ceremonial gift?
+is_valid_artifact_for_ceremonial_gift_repayment_trigger = {
+	OR = {
+		artifact_medium_rarity_trigger = yes
+		artifact_high_rarity_trigger = yes
+	}
+}
