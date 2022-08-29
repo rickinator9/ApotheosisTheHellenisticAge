@@ -65,6 +65,42 @@ can_recruit_oxylian_maa_natively_trigger = {
   }
 }
 
+can_recruit_ionian_maa_natively_trigger = {
+  culture = {
+    OR = {
+      this = culture:ionian
+      any_parent_culture_or_above = { this = culture:ionian }
+    }
+  }
+}
+
+can_recruit_athenian_maa_natively_trigger = {
+  culture = {
+    OR = {
+      this = culture:athenian
+      any_parent_culture_or_above = { this = culture:athenian }
+    }
+  }
+}
+
+can_recruit_dorian_maa_natively_trigger = {
+  culture = {
+    OR = {
+      this = culture:dorian
+      any_parent_culture_or_above = { this = culture:dorian }
+    }
+  }
+}
+
+can_recruit_achaean_maa_natively_trigger = {
+  culture = {
+    OR = {
+      this = culture:achaean
+      any_parent_culture_or_above = { this = culture:achean }
+    }
+  }
+}
+
 ###civilized#skirmishers###
 
 can_recruit_maa_euzonoi_natively_trigger = {
@@ -97,6 +133,17 @@ can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_ionioi_leistoi_natively_trigger = {
+  can_recruit_ionian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_ionioi_leistoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_ionioi_leistoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_ionioi_leistoi_natively_trigger = yes
   }
 }
 
@@ -175,6 +222,17 @@ can_recruit_maa_arkarnanioi_sphendonetai_as_foreigner_trigger = {
   }
 }
 
+can_recruit_maa_akhaioi_sphendonetai_natively_trigger = {
+  can_recruit_achaean_maa_natively_trigger = yes
+}
+
+can_recruit_maa_akhaioi_sphendonetai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_akhaioi_sphendonetai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_akhaioi_sphendonetai_natively_trigger = yes
+  }
+}
+
 ########################
 
 ###civilized#archers###
@@ -198,6 +256,28 @@ can_recruit_maa_kretikoi_toxotai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_kretikoi_toxotai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_kretikoi_toxotai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_athenai_epibatoi_natively_trigger = {
+  can_recruit_athenian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_athenai_epibatoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_athenai_epibatoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_athenai_epibatoi_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_ionioi_epibatoi_natively_trigger = {
+  can_recruit_ionian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_ionioi_epibatoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_ionioi_epibatoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_ionioi_epibatoi_natively_trigger = yes
   }
 }
 
@@ -354,7 +434,7 @@ can_recruit_elite_maa = {
 }
 
 can_recruit_maa_agema_phalangitai_natively_trigger = {
-  can_recruit_macedonian_maa_natively_trigger = yes
+  culture = { has_cultural_pillar = heritage_greek }
 }
 
 can_recruit_maa_agema_phalangitai_as_foreigner_trigger = {
