@@ -307,17 +307,6 @@ can_recruit_maa_thorakitai_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_hypomeiones_hoplitai_natively_trigger = {
-  can_recruit_laconian_maa_natively_trigger = yes
-}
-
-can_recruit_maa_hypomeiones_hoplitai_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
-  }
-}
-
 can_recruit_maa_perioikoi_hoplitai_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
 }
@@ -340,11 +329,7 @@ can_recruit_maa_boiotioi_hoplitai_as_foreigner_trigger = {
   }
 }
 
-###civilized#heavy_infantry#Guard###
-
-can_recruit_elite_maa = {
-  is_independent_ruler = yes
-}
+###civilized#heavy_infantry#elite###
 
 can_recruit_maa_epilektoi_hoplitai_natively_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
@@ -357,15 +342,21 @@ can_recruit_maa_epilektoi_hoplitai_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_epilektoi_thorakitai_natively_trigger = {
-  culture = { has_cultural_pillar = heritage_greek }
+can_recruit_maa_hypomeiones_hoplitai_natively_trigger = {
+  can_recruit_laconian_maa_natively_trigger = yes
 }
 
-can_recruit_maa_epilektoi_thorakitai_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_epilektoi_thorakitai_natively_trigger = yes }
+can_recruit_maa_hypomeiones_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_epilektoi_thorakitai_natively_trigger = yes
+    can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
   }
+}
+
+###civilized#heavy_infantry#guard###
+
+can_recruit_elite_maa = {
+  is_independent_ruler = yes
 }
 
 can_recruit_maa_homoioi_hippeis_natively_trigger = {

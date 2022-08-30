@@ -384,43 +384,6 @@ agema_phalangitai = {
     icon = pikemen
 }
 
-#Elite
-epilektoi_thorakitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_epilektoi_thorakitai_natively_trigger = yes
-            can_recruit_maa_epilektoi_thorakitai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 50
-    toughness = 50
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
-    }
-
-    counters = {
-        light_cavalry = 1
-    }
-
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 500
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = heavy_infantry
-}
-
 ##########################################################
 
 #Lakedaemonian#Superior
