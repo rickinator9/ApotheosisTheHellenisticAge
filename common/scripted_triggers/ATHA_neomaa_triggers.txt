@@ -147,12 +147,6 @@ can_recruit_maa_ionioi_leistoi_as_foreigner_trigger = {
   }
 }
 
-###civilized#elite#skirmishers###
-
-can_recruit_elite_maa = {
-  is_independent_ruler = yes
-}
-
 can_recruit_maa_skiritai_peltastai_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
 }
@@ -162,6 +156,12 @@ can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = {
   any_realm_province = {
     can_recruit_maa_skiritai_peltastai_natively_trigger = yes
   }
+}
+
+###civilized#elite#skirmishers###
+
+can_recruit_elite_maa = {
+  is_independent_ruler = yes
 }
 
 can_recruit_maa_chaeonion_logades_natively_trigger = {
@@ -296,6 +296,17 @@ can_recruit_maa_hoplitai_as_foreigner_trigger = {
   }
 }
 
+can_recruit_maa_thorakitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
+}
+
+can_recruit_maa_thorakitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_thorakitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thorakitai_natively_trigger = yes
+  }
+}
+
 can_recruit_maa_hypomeiones_hoplitai_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
 }
@@ -329,7 +340,7 @@ can_recruit_maa_boiotioi_hoplitai_as_foreigner_trigger = {
   }
 }
 
-###civilized#heavy_infantry#elite###
+###civilized#heavy_infantry#Guard###
 
 can_recruit_elite_maa = {
   is_independent_ruler = yes
@@ -343,6 +354,17 @@ can_recruit_maa_epilektoi_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_epilektoi_hoplitai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_epilektoi_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_thorakitai_hoplitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
+}
+
+can_recruit_maa_thorakitai_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_thorakitai_hoplitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thorakitai_hoplitai_natively_trigger = yes
   }
 }
 
@@ -478,6 +500,17 @@ can_recruit_maa_thessalikoi_prodomoi_as_foreigner_trigger = {
   NOT = { can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_thessalikoi_prodomoi_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_skiritai_prodomoi_natively_trigger = {
+  can_recruit_laconian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_skiritai_prodomoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_skiritai_prodomoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_skiritai_prodomoi_natively_trigger = yes
   }
 }
 
