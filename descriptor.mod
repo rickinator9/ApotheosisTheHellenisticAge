@@ -1,6 +1,6 @@
 name="Apotheosis: The Hellenistic Age"
 version="1.3.2"
-supported_version="1.6.1"
+supported_version="1.6.1.2"
 path="mod/ApotheosisTheHellenisticAge"
 tags={
     "Bookmarks"
