@@ -125,6 +125,17 @@ can_recruit_maa_kretikoi_peltastai_as_foreigner_trigger = {
   }
 }
 
+can_recruit_maa_katoikoi_thraikes_natively_trigger = {
+  can_recruit_macedonian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_katoikoi_thraikes_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_katoikoi_thraikes_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_katoikoi_thraikes_natively_trigger = yes
+  }
+}
+
 can_recruit_maa_makedonikoi_peltastai_natively_trigger = {
   can_recruit_macedonian_maa_natively_trigger = yes
 }
