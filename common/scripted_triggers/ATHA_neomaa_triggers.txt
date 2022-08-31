@@ -206,7 +206,7 @@ can_recruit_maa_rodioi_sphendonetai_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = {
+can_recruit_maa_arkananioi_sphendonetai_natively_trigger = {
   culture = {
     OR = {
       this = culture:oxylian
@@ -215,10 +215,10 @@ can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = {
   }
 }
 
-can_recruit_maa_arkarnanioi_sphendonetai_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = yes }
+can_recruit_maa_arkananioi_sphendonetai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_arkananioi_sphendonetai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = yes
+    can_recruit_maa_arkananioi_sphendonetai_natively_trigger = yes
   }
 }
 
@@ -459,6 +459,17 @@ can_recruit_maa_chaeonion_agema_as_foreigner_trigger = {
   NOT = { can_recruit_maa_chaeonion_agema_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_chaeonion_agema_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_argyraspides_natively_trigger = {
+  can_recruit_macedonian_maa_natively_trigger = yes
+}
+
+can_recruit_maa_argyraspides_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_argyraspides_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_argyraspides_natively_trigger = yes
   }
 }
 

@@ -205,17 +205,14 @@ thorakitai = {
     }
 
     damage = 40
-    toughness = 30
-    pursuit = 0
-    screen = 0
+    toughness = 40
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
     }
 
     counters = {
-        light_cavalry = 1
     }
 
     buy_cost = { gold = 70 }
@@ -397,8 +394,8 @@ perioikoi_hoplitai = {
         }
     }
 
-    damage = 32
-    toughness = 42
+    damage = 34
+    toughness = 44
     pursuit = 0
     screen = 0
 
@@ -514,8 +511,8 @@ skiritai_peltastai = {
         }
     }
 
-    damage = 17
-    toughness = 17
+    damage = 21
+    toughness = 21
     pursuit = 10
     screen = 10
 
@@ -553,8 +550,8 @@ hypomeiones_hoplitai = {
         }
     }
 
-    damage = 50
-    toughness = 60
+    damage = 52
+    toughness = 62
     pursuit = 0
     screen = 0
 
@@ -593,8 +590,8 @@ homoioi_hippeis = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 70
-    toughness = 80
+    damage = 74
+    toughness = 84
     pursuit = 0
     screen = 0
 
@@ -632,8 +629,8 @@ athenai_epibatoi = {
         }
     }
 
-    damage = 32
-    toughness = 22
+    damage = 34
+    toughness = 24
     pursuit = 5
     screen = 5
 
@@ -710,8 +707,8 @@ aetolioi_peiratoi = {
         }
     }
 
-    damage = 17
-    toughness = 17
+    damage = 19
+    toughness = 19
     pursuit = 10
     screen = 10
 
@@ -789,8 +786,8 @@ heiros_lokhos = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 70
-    toughness = 80
+    damage = 72
+    toughness = 82
     pursuit = 0
     screen = 0
 
@@ -830,8 +827,8 @@ akhaioi_sphendonetai = {
 
     damage = 10
     toughness = 10
-    pursuit = 17
-    screen = 17
+    pursuit = 19
+    screen = 19
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -869,8 +866,8 @@ thessalikoi_prodomoi = {
 
     damage = 20
     toughness = 20
-    pursuit = 22
-    screen = 22
+    pursuit = 24
+    screen = 24
 
     terrain_bonus = {
         plains = { damage = 5 }
@@ -907,8 +904,8 @@ thessalikoi_hippeis = {
         }
     }
 
-    damage = 52
-    toughness = 32
+    damage = 54
+    toughness = 34
     pursuit = 5
     screen = 5
 
@@ -948,8 +945,8 @@ rodioi_sphendonetai = {
 
     damage = 10
     toughness = 10
-    pursuit = 17
-    screen = 17
+    pursuit = 21
+    screen = 21
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -985,8 +982,8 @@ kretikoi_toxotai = {
         }
     }
 
-    damage = 32
-    toughness = 22
+    damage = 36
+    toughness = 26
     pursuit = 5
     screen = 5
 
@@ -1024,6 +1021,45 @@ kretikoi_peltastai = {
         }
     }
 
+    damage = 23
+    toughness = 23
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 40 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = skirmishers
+}
+
+#Makedonikoi#Superior
+makedonikoi_peltastai = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
+            can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = yes
+        }
+    }
+
     damage = 17
     toughness = 17
     pursuit = 10
@@ -1052,45 +1088,6 @@ kretikoi_peltastai = {
     icon = skirmishers
 }
 
-#Makedonikoi#Elite
-makedonikoi_peltastai = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_makedonikoi_peltastai_natively_trigger = yes
-            can_recruit_maa_makedonikoi_peltastai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 35
-    toughness = 35
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 0.8 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = skirmishers
-}
-
 #Makedonikoi#Superior
 chalkaspides = {
     type = pikemen
@@ -1102,8 +1099,8 @@ chalkaspides = {
         }
     }
 
-    damage = 42
-    toughness = 32
+    damage = 46
+    toughness = 36
     pursuit = 0
     screen = 0
 
@@ -1121,6 +1118,45 @@ chalkaspides = {
     buy_cost = { gold = 60 }
     low_maintenance_cost = { gold = 0.3 }
     high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = @cultural_maa_extra_ai_score }
+    icon = pikemen
+}
+
+#Makedonikoi#Elite
+argyraspides = {
+    type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_argyraspides_natively_trigger = yes
+            can_recruit_maa_argyraspides_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 64
+    toughness = 54
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1182,8 +1218,8 @@ hiera_ile = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 90
-    toughness = 70
+    damage = 92
+    toughness = 72
     pursuit = 5
     screen = 5
 
@@ -1211,13 +1247,13 @@ hiera_ile = {
 }
 
 #Oxylian#Superior
-arkarnanioi_sphendonetai = {
+arkananioi_sphendonetai = {
     type = skirmishers
 
     can_recruit = {
         OR = {
-            can_recruit_maa_arkarnanioi_sphendonetai_natively_trigger = yes
-            can_recruit_maa_arkarnanioi_sphendonetai_as_foreigner_trigger = yes
+            can_recruit_maa_arkananioi_sphendonetai_natively_trigger = yes
+            can_recruit_maa_arkananioi_sphendonetai_as_foreigner_trigger = yes
         }
     }
 
@@ -1260,8 +1296,8 @@ epirotoi_phalangitai = {
         }
     }
 
-    damage = 42
-    toughness = 32
+    damage = 44
+    toughness = 34
     pursuit = 0
     screen = 0
 
@@ -1378,8 +1414,8 @@ chaeonion_agema = {
         }
     }
 
-    damage = 60
-    toughness = 50
+    damage = 62
+    toughness = 52
     pursuit = 0
     screen = 0
 
