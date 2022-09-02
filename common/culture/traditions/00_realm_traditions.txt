@@ -1732,6 +1732,12 @@ tradition_pastoralists = {
 		4 = horses.dds
 	}
 	
+	#ATHA: Mutually exclusive with Transhumant Shepherds
+	is_shown = {
+		NOT = {
+			has_cultural_tradition = tradition_transhumant_shepherds
+		}
+	}
 	can_pick = {
 		custom_tooltip = {
 			text = culture_in_plains_or_steppe_terrain_desc
