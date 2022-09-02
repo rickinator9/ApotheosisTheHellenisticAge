@@ -6,8 +6,28 @@
 				has_cultural_pillar = language_celtic
 			}
             is_landed = yes
+            has_any_nickname = yes
+		}
+		localization_key = UIName_landed_celtic_nickname
+	}
+	text = {
+		trigger = {
+			culture = {
+				has_cultural_pillar = language_celtic
+			}
+            is_landed = yes
 		}
 		localization_key = UIName_landed_celtic
+	}
+    text = {
+		trigger = {
+			culture = {
+				has_cultural_pillar = language_celtic
+			}
+            is_landed = no
+            has_any_nickname = yes
+		}
+		localization_key = UIName_unlanded_celtic_nickname
 	}
     text = {
 		trigger = {
@@ -25,7 +45,29 @@
 }
 #  ^^^^ need one for each used 'GetName'
 
-
+UiNameCheck = {
+    type = character
+    text = {
+        trigger = {
+            exists = father
+            culture = {
+				has_cultural_pillar = language_celtic
+			}
+            father = {
+                save_temporary_scope_as = daddy #we want to check that the dad has support
+                any_in_global_list = { #longer lists for lowborns
+                    variable = celtic_name_support
+                    this = scope:daddy
+                }
+            }
+        }
+        localization_key = ATHA_name_with_patronymic
+    }
+    text = {
+        fallback = yes
+        localization_key = ATHA_first_name_only
+    }
+}
 NameCheck = {
     type = character
     text = {
