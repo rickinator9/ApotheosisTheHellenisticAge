@@ -201,6 +201,8 @@ can_recruit_maa_sphendonetai_as_foreigner_trigger = {
   }
 }
 
+###civilized#slingers#superior###
+
 can_recruit_maa_rodioi_sphendonetai_natively_trigger = {
   culture = {
     OR = {
@@ -259,6 +261,8 @@ can_recruit_maa_toxotai_as_foreigner_trigger = {
   }
 }
 
+###civilized#archers#superior###
+
 can_recruit_maa_kretikoi_toxotai_natively_trigger = {
   can_recruit_cretan_maa_natively_trigger = yes
 }
@@ -281,17 +285,6 @@ can_recruit_maa_athenai_epibatoi_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_ionioi_epibatoi_natively_trigger = {
-  can_recruit_ionian_maa_natively_trigger = yes
-}
-
-can_recruit_maa_ionioi_epibatoi_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_ionioi_epibatoi_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_ionioi_epibatoi_natively_trigger = yes
-  }
-}
-
 ##############################
 
 ###civilized#heavy_infantry###
@@ -304,6 +297,50 @@ can_recruit_maa_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_hoplitai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_hoplitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_illyrian }
+}
+
+can_recruit_maa_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hoplitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_hoplitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_anatolian }
+}
+
+can_recruit_maa_hoplitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_hoplitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_thorakitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_illyrian }
+}
+
+can_recruit_maa_thorakitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_thorakitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thorakitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_thorakitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_anatolian }
+}
+
+can_recruit_maa_thorakitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_thorakitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_thorakitai_natively_trigger = yes
   }
 }
 
@@ -329,6 +366,8 @@ can_recruit_maa_thureophoroi_as_foreigner_trigger = {
   }
 }
 
+###civilized#heavy_infantry#superior###
+
 can_recruit_maa_perioikoi_hoplitai_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
 }
@@ -348,6 +387,17 @@ can_recruit_maa_boiotioi_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_boiotioi_hoplitai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_boiotioi_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_galatikoi_Katoikoi_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_anatolian }
+}
+
+can_recruit_maa_galatikoi_Katoikoi_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_galatikoi_Katoikoi_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_galatikoi_Katoikoi_natively_trigger = yes
   }
 }
 
@@ -372,6 +422,17 @@ can_recruit_maa_hypomeiones_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_hypomeiones_hoplitai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_epilektoi_thorakitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
+}
+
+can_recruit_maa_epilektoi_thorakitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_epilektoi_thorakitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_epilektoi_thorakitai_natively_trigger = yes
   }
 }
 
