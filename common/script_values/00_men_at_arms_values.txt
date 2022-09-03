@@ -373,6 +373,35 @@ culture_ai_weight_slingers = {
 	}
 }
 
+culture_ai_weight_medium_infantry = {
+	value = 0
+	
+    # TODO: Add medium infantry cultures	
+	if = { # Cultures that favours medium infantry
+		limit = {
+            always = no
+		}
+		add = 40
+	}
+	if = { # Cultures that dislike medium infantry
+		limit = {
+			OR = {
+				culture = { has_cultural_pillar = heritage_greek } # Greeks will want to use Phalanx
+			}
+		}
+		add = -60
+	}
+	
+	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
+		limit = {
+			culture = {
+				culture_has_medium_infantry_maa = yes
+			}
+		}
+		add = -500
+	}
+}
+
 culture_ai_weight_heavy_infantry = {
 	value = 0
 	

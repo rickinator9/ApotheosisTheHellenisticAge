@@ -4,6 +4,44 @@
 @maa_high_maintenance_cost = 5.0
 @cultural_maa_extra_ai_score = 60 # Equivalent to having 6 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
 
+euzonoi = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_euzonoi_natively_trigger = yes
+            can_recruit_maa_euzonoi_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 10
+    toughness = 20
+    pursuit = 15
+    screen = 5
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 40 }
+    low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    icon = skirmishers
+}
+
 sphendonetai = {
     type = slingers
 
@@ -38,7 +76,7 @@ sphendonetai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
@@ -114,8 +152,120 @@ toxotai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = bowmen
+    ai_quality = { value = ATHA_ai_weight_archers }
+    icon = archers
+}
+
+phalangitai = {
+    type = pikemen
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_phalangitai_natively_trigger = yes
+            can_recruit_maa_phalangitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 40
+    toughness = 30
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
+        desert_mountains = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_pikemen }
+    icon = pikemen
+}
+
+hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_hoplitai_natively_trigger = yes
+            can_recruit_maa_hoplitai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 30
+    toughness = 40
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    icon = heavy_infantry
+}
+
+thureophoroi = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_thureophoroi_natively_trigger = yes
+            can_recruit_maa_thureophoroi_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 20
+    toughness = 20
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+        mountains = { damage = 5 }
+        desert_mountains = { damage = 5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.5 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    icon = skirmishers
 }
 
 thorakitai = {
@@ -150,7 +300,7 @@ thorakitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
@@ -264,7 +414,7 @@ prodomoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
 
@@ -302,7 +452,7 @@ hippeis = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -343,7 +493,7 @@ epilektoi_hoplitai = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -384,7 +534,7 @@ agema_phalangitai = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -423,7 +573,7 @@ epilektoi_thorakitai = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
@@ -464,7 +614,7 @@ perioikoi_hoplitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -503,7 +653,7 @@ neodamodeis_phalangitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -542,7 +692,7 @@ skiritai_peltastai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -624,7 +774,7 @@ homoioi_hoplitai = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -666,7 +816,7 @@ homoioi_hippeis = {
     max_sub_regiments = 4
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -705,8 +855,8 @@ athenai_epibatoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = bowmen
+    ai_quality = { value = ATHA_ai_weight_archers }
+    icon = archers
 }
 
 #Ionian#Superior#Level1
@@ -744,7 +894,7 @@ aetolioi_peiratoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -783,7 +933,7 @@ boiotioi_hoplitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -825,7 +975,7 @@ heiros_lokhos = {
     max_sub_regiments = 4
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -864,7 +1014,7 @@ akhaioi_sphendonetai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
@@ -903,7 +1053,7 @@ thessalikoi_prodomoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
 
@@ -943,7 +1093,7 @@ thessalikoi_hippeis = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -982,7 +1132,7 @@ rodioi_sphendonetai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
@@ -1021,8 +1171,8 @@ kretikoi_toxotai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
-    icon = bowmen
+    ai_quality = { value = ATHA_ai_weight_archers }
+    icon = archers
 }
 
 #Kretan#Superior#Level3
@@ -1060,7 +1210,7 @@ kretikoi_peltastai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -1097,7 +1247,7 @@ katoikoi_thraikes = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
@@ -1138,7 +1288,7 @@ makedonikoi_peltastai = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -1177,7 +1327,7 @@ chalkaspides = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -1218,7 +1368,7 @@ argyraspides = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -1260,7 +1410,7 @@ hypaspistai = {
     max_sub_regiments = 4
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -1302,7 +1452,7 @@ hiera_ile = {
     max_sub_regiments = 4
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -1341,7 +1491,7 @@ arkananioi_sphendonetai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
@@ -1380,7 +1530,7 @@ epirotoi_phalangitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -1422,7 +1572,7 @@ basilikoi_agema = {
     max_sub_regiments = 4
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -1461,7 +1611,7 @@ molosson_hippeis = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -1502,7 +1652,7 @@ chaeonion_agema = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -1543,7 +1693,7 @@ chaeonion_logades = {
     max_sub_regiments = 8
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -1580,7 +1730,7 @@ galatikoi_Katoikoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
@@ -1620,7 +1770,7 @@ peltenai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -1658,7 +1808,7 @@ asanai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -1696,7 +1846,7 @@ anganai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_archers }
     icon = archers
 }
 
@@ -1732,7 +1882,7 @@ tarypeltenai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -1768,7 +1918,7 @@ skalmanai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -1804,7 +1954,7 @@ mezenai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
 
@@ -1840,7 +1990,7 @@ moukamezenai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -1880,7 +2030,7 @@ dioi_machairaphoroi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -1918,7 +2068,7 @@ rompaianai = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
@@ -1955,7 +2105,7 @@ zibutai = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -1995,6 +2145,6 @@ agrianikoi_peltenai = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
