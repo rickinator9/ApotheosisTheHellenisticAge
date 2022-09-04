@@ -4,44 +4,6 @@
 @maa_high_maintenance_cost = 5.0
 @cultural_maa_extra_ai_score = 60 # Equivalent to having 6 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
 
-euzonoi = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_euzonoi_natively_trigger = yes
-            can_recruit_maa_euzonoi_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 10
-    toughness = 20
-    pursuit = 15
-    screen = 5
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.4 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
 sphendonetai = {
     type = slingers
 
@@ -114,7 +76,7 @@ euzonoi = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -154,118 +116,6 @@ toxotai = {
     stack = 300
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = bowmen
-}
-
-phalangitai = {
-    type = pikemen
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_phalangitai_natively_trigger = yes
-            can_recruit_maa_phalangitai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 40
-    toughness = 30
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        heavy_cavalry = 1
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_pikemen }
-    icon = pikemen
-}
-
-hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_hoplitai_natively_trigger = yes
-            can_recruit_maa_hoplitai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 30
-    toughness = 40
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
-        mountains = { damage = -5 }
-        desert_mountains = { damage = -5 }
-    }
-
-    counters = {
-        light_cavalry = 1
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
-    icon = heavy_infantry
-}
-
-thureophoroi = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_thureophoroi_natively_trigger = yes
-            can_recruit_maa_thureophoroi_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 20
-    toughness = 20
-    pursuit = 5
-    screen = 5
-
-    terrain_bonus = {
-        mountains = { damage = 5 }
-        desert_mountains = { damage = 5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.5 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
 }
 
 thorakitai = {
@@ -338,7 +188,7 @@ phalangitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
@@ -376,7 +226,7 @@ hoplitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
