@@ -462,6 +462,8 @@ perioikoi_hoplitai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -501,6 +503,8 @@ neodamodeis_phalangitai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -540,50 +544,11 @@ skiritai_peltastai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-#Laconian#Elite#
-skiritai_lokhoi = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_skiritai_lokhoi_natively_trigger = yes
-            can_recruit_maa_skiritai_lokhoi_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 10
-    toughness = 45
-    pursuit = 45
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.9 }
-    high_maintenance_cost = { gold = 1.0 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-
-    max_sub_regiments = 8
-    
-    stack = 300
-    ai_quality = { value = @cultural_maa_extra_ai_score }
     icon = skirmishers
 }
 
@@ -663,7 +628,7 @@ homoioi_hippeis = {
     mercenary_fallback = no
     holy_order_fallback = no
 
-    max_sub_regiments = 4
+    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -703,6 +668,8 @@ athenai_epibatoi = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_archers }
@@ -742,6 +709,8 @@ aetolioi_peiratoi = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
@@ -781,6 +750,8 @@ boiotioi_hoplitai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -822,7 +793,7 @@ heiros_lokhos = {
     mercenary_fallback = no
     holy_order_fallback = no
 
-    max_sub_regiments = 4
+    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -862,6 +833,8 @@ akhaioi_sphendonetai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
@@ -901,6 +874,8 @@ thessalikoi_prodomoi = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
@@ -941,6 +916,8 @@ thessalikoi_hippeis = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
@@ -980,6 +957,8 @@ rodioi_sphendonetai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
@@ -1019,6 +998,8 @@ kretikoi_toxotai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_archers }
@@ -1058,6 +1039,8 @@ kretikoi_peltastai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
@@ -1095,13 +1078,15 @@ katoikoi_thraikes = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
-#Makedonikoi#Elite#Level1
+#Makedonikoi#Elite#
 makedonikoi_peltastai = {
     type = skirmishers
 
@@ -1113,8 +1098,8 @@ makedonikoi_peltastai = {
     }
 
     damage = 10
-    toughness = 47
-    pursuit = 47
+    toughness = 45
+    pursuit = 45
     screen = 10
 
     terrain_bonus = {
@@ -1175,6 +1160,8 @@ chalkaspides = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -1257,7 +1244,7 @@ hypaspistai = {
     mercenary_fallback = no
     holy_order_fallback = no
 
-    max_sub_regiments = 4
+    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -1299,7 +1286,7 @@ hiera_ile = {
     mercenary_fallback = no
     holy_order_fallback = no
 
-    max_sub_regiments = 4
+    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
@@ -1339,6 +1326,8 @@ arkananioi_sphendonetai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
@@ -1378,6 +1367,8 @@ epirotoi_phalangitai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -1419,7 +1410,7 @@ basilikoi_agema = {
     mercenary_fallback = no
     holy_order_fallback = no
 
-    max_sub_regiments = 4
+    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
@@ -1459,6 +1450,8 @@ molosson_hippeis = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
@@ -1578,10 +1571,53 @@ galatikoi_Katoikoi = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
+
+    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
+}
+
+#Makedonikoi#Elite#Level1
+hyperaspistai = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_hyperaspistai_natively_trigger = yes
+            can_recruit_maa_hyperaspistai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 10
+    toughness = 47
+    pursuit = 47
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 1.0 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+
+    max_sub_regiments = 8
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    icon = skirmishers
 }
 
 ###Barbarians###
