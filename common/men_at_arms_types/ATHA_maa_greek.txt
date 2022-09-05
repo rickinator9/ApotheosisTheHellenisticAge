@@ -17,7 +17,7 @@ sphendonetai = {
     damage = 15
     toughness = 10
     pursuit = 10
-    screen = 15
+    screen = 10
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -54,7 +54,7 @@ euzonoi = {
 
     damage = 10
     toughness = 15
-    pursuit = 15
+    pursuit = 10
     screen = 10
 
     terrain_bonus = {
@@ -90,8 +90,8 @@ toxotai = {
         }
     }
 
-    damage = 30
-    toughness = 20
+    damage = 20
+    toughness = 15
     pursuit = 5
     screen = 5
 
@@ -108,7 +108,7 @@ toxotai = {
 
     buy_cost = { gold = 50 }
     low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -118,32 +118,30 @@ toxotai = {
     icon = bowmen
 }
 
-thorakitai = {
+thureophoroi = {
     type = phalanx
 
     can_recruit = {
         OR = {
-            can_recruit_maa_thorakitai_natively_trigger = yes
-            can_recruit_maa_thorakitai_as_foreigner_trigger = yes
+            can_recruit_maa_thureophoroi_natively_trigger = yes
+            can_recruit_maa_thureophoroi_as_foreigner_trigger = yes
         }
     }
 
-    damage = 30
-    toughness = 30
-    pursuit = 0
-    screen = 0
+    damage = 15
+    toughness = 20
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
     }
 
     counters = {
         skirmishers = 1
     }
 
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
@@ -164,8 +162,8 @@ phalangitai = {
         }
     }
 
-    damage = 50
-    toughness = 30
+    damage = 25
+    toughness = 20
     pursuit = 0
     screen = 0
 
@@ -180,9 +178,9 @@ phalangitai = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 0.7 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -202,8 +200,8 @@ hoplitai = {
         }
     }
 
-    damage = 30
-    toughness = 50
+    damage = 20
+    toughness = 25
     pursuit = 0
     screen = 0
 
@@ -218,9 +216,9 @@ hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 0.7 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -240,7 +238,7 @@ prodomoi = {
         }
     }
 
-    damage = 15
+    damage = 20
     toughness = 15
     pursuit = 30
     screen = 30
@@ -257,8 +255,8 @@ prodomoi = {
     }
 
     buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 0.8 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 1.0 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -278,9 +276,9 @@ hippeis = {
         }
     }
 
-    damage = 60
-    toughness = 30
-    pursuit = 10
+    damage = 100
+    toughness = 35
+    pursuit = 20
     screen = 0
 
     terrain_bonus = {
@@ -294,14 +292,14 @@ hippeis = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 200 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -317,8 +315,8 @@ epilektoi_hoplitai = {
         }
     }
 
-    damage = 60
-    toughness = 80
+    damage = 40
+    toughness = 45
     pursuit = 0
     screen = 0
 
@@ -333,14 +331,12 @@ epilektoi_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 1.3 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -358,8 +354,8 @@ agema_phalangitai = {
         }
     }
 
-    damage = 80
-    toughness = 60
+    damage = 45
+    toughness = 40
     pursuit = 0
     screen = 0
 
@@ -374,14 +370,12 @@ agema_phalangitai = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 1.3 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -389,7 +383,7 @@ agema_phalangitai = {
 }
 
 #Elite
-epilektoi_thorakitai = {
+epilektoi_thureophoroi = {
     type = phalanx
 
     can_recruit = {
@@ -399,28 +393,24 @@ epilektoi_thorakitai = {
         }
     }
 
-    damage = 60
-    toughness = 60
-    pursuit = 0
-    screen = 0
+    damage = 35
+    toughness = 40
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
     }
 
     counters = {
         skirmishers = 1
     }
 
-    buy_cost = { gold = 120 }
-    low_maintenance_cost = { gold = 0.9 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 130 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
@@ -440,8 +430,8 @@ perioikoi_hoplitai = {
         }
     }
 
-    damage = 42
-    toughness = 62
+    damage = 27
+    toughness = 32
     pursuit = 0
     screen = 0
 
@@ -456,21 +446,19 @@ perioikoi_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
-#Laconian#Superior#Level1
+#Laconian#Superior#
 neodamodeis_phalangitai = {
     type = pikemen
 
@@ -481,8 +469,8 @@ neodamodeis_phalangitai = {
         }
     }
 
-    damage = 62
-    toughness = 42
+    damage = 30
+    toughness = 25
     pursuit = 0
     screen = 0
 
@@ -497,21 +485,19 @@ neodamodeis_phalangitai = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
-#Laconian#Superior#Level2
+#Laconian#Superior#Level1
 skiritai_peltastai = {
     type = skirmishers
 
@@ -523,8 +509,8 @@ skiritai_peltastai = {
     }
 
     damage = 10
-    toughness = 29
-    pursuit = 29
+    toughness = 22
+    pursuit = 17
     screen = 10
 
     terrain_bonus = {
@@ -539,13 +525,11 @@ skiritai_peltastai = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
@@ -563,8 +547,8 @@ homoioi_hoplitai = {
         }
     }
 
-    damage = 62
-    toughness = 82
+    damage = 42
+    toughness = 47
     pursuit = 0
     screen = 0
 
@@ -579,14 +563,12 @@ homoioi_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 1.3 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -605,8 +587,8 @@ homoioi_hippeis = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 84
-    toughness = 104
+    damage = 64
+    toughness = 69
     pursuit = 0
     screen = 0
 
@@ -621,21 +603,19 @@ homoioi_hippeis = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 170 }
-    low_maintenance_cost = { gold = 1.4 }
-    high_maintenance_cost = { gold = 1.7 }
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 1.1 }
+    high_maintenance_cost = { gold = 3.3 }
     
     mercenary_fallback = no
     holy_order_fallback = no
-
-    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
-#Athenian#Superior#Level1
+#Athenian#Superior#
 athenai_epibatoi = {
     type = archers
 
@@ -646,8 +626,8 @@ athenai_epibatoi = {
         }
     }
 
-    damage = 42
-    toughness = 32
+    damage = 25
+    toughness = 20
     pursuit = 5
     screen = 5
 
@@ -663,20 +643,18 @@ athenai_epibatoi = {
     }
 
     buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 0.7 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = bowmen
 }
 
-#Ionian#Superior#Level1
+#Ionian#Superior#
 aetolioi_peiratoi = {
     type = skirmishers
 
@@ -688,8 +666,8 @@ aetolioi_peiratoi = {
     }
 
     damage = 10
-    toughness = 27
-    pursuit = 27
+    toughness = 20
+    pursuit = 15
     screen = 10
 
     terrain_bonus = {
@@ -704,13 +682,11 @@ aetolioi_peiratoi = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
@@ -728,8 +704,8 @@ boiotioi_hoplitai = {
         }
     }
 
-    damage = 40
-    toughness = 60
+    damage = 25
+    toughness = 30
     pursuit = 0
     screen = 0
 
@@ -744,14 +720,12 @@ boiotioi_hoplitai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -770,8 +744,8 @@ heiros_lokhos = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 82
-    toughness = 102
+    damage = 62
+    toughness = 67
     pursuit = 0
     screen = 0
 
@@ -786,21 +760,19 @@ heiros_lokhos = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 170 }
-    low_maintenance_cost = { gold = 1.4 }
-    high_maintenance_cost = { gold = 1.7 }
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 1.1 }
+    high_maintenance_cost = { gold = 3.3 }
     
     mercenary_fallback = no
     holy_order_fallback = no
-
-    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = heavy_infantry
 }
 
-#Achean#Superior#Level2###################################
+#Achean#Superior#Level1###################################
 akhaioi_sphendonetai = {
     type = slingers
 
@@ -811,10 +783,10 @@ akhaioi_sphendonetai = {
         }
     }
 
-    damage = 29
+    damage = 22
     toughness = 10
     pursuit = 10
-    screen = 29
+    screen = 17
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -828,20 +800,18 @@ akhaioi_sphendonetai = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
-#Thessalikoi#Superior#Level1#############################
+#Thessalikoi#Superior###############################
 thessalikoi_prodomoi = {
     type = light_cavalry
 
@@ -852,10 +822,10 @@ thessalikoi_prodomoi = {
         }
     }
 
-    damage = 15
+    damage = 20
     toughness = 15
-    pursuit = 42
-    screen = 42
+    pursuit = 30
+    screen = 30
 
     terrain_bonus = {
         plains = { damage = 5 }
@@ -869,13 +839,11 @@ thessalikoi_prodomoi = {
     }
 
     buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1.0 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
@@ -883,7 +851,7 @@ thessalikoi_prodomoi = {
 }
 
 
-#Thessalikoi#Superior#Level2
+#Thessalikoi#Superior#
 thessalikoi_hippeis = {
     type = heavy_cavalry
 
@@ -894,9 +862,9 @@ thessalikoi_hippeis = {
         }
     }
 
-    damage = 74
-    toughness = 44
-    pursuit = 10
+    damage = 105
+    toughness = 40
+    pursuit = 20
     screen = 0
 
     terrain_bonus = {
@@ -910,21 +878,19 @@ thessalikoi_hippeis = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 110 }
+    buy_cost = { gold = 220 }
     low_maintenance_cost = { gold = 0.8 }
-    high_maintenance_cost = { gold = 1.1 }
+    high_maintenance_cost = { gold = 2.4 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
-#Dorian#Superior#Level3##################################
+#Dorian#Superior#Level2##################################
 rodioi_sphendonetai = {
     type = slingers
 
@@ -935,10 +901,10 @@ rodioi_sphendonetai = {
         }
     }
 
-    damage = 31
+    damage = 19
     toughness = 10
     pursuit = 10
-    screen = 31
+    screen = 14
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -952,20 +918,18 @@ rodioi_sphendonetai = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
-#Kretan#Superior#Level2##################################
+#Kretan#Superior#Level1##################################
 kretikoi_toxotai = {
     type = archers
 
@@ -976,8 +940,8 @@ kretikoi_toxotai = {
         }
     }
 
-    damage = 44
-    toughness = 34
+    damage = 27
+    toughness = 22
     pursuit = 5
     screen = 5
 
@@ -992,21 +956,19 @@ kretikoi_toxotai = {
         slingers = 1
     }
 
-    buy_cost = { gold = 70 }
+    buy_cost = { gold = 80 }
     low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = bowmen
 }
 
-#Kretan#Superior#Level3
+#Kretan#Superior#Level2
 kretikoi_peltastai = {
     type = skirmishers
 
@@ -1018,8 +980,8 @@ kretikoi_peltastai = {
     }
 
     damage = 10
-    toughness = 31
-    pursuit = 31
+    toughness = 24
+    pursuit = 19
     screen = 10
 
     terrain_bonus = {
@@ -1034,20 +996,18 @@ kretikoi_peltastai = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
-#Makedonikoi#Superior#Level1#############################
+#Makedonikoi#Superior##############################
 katoikoi_thraikes = {
     type = phalanx
 
@@ -1058,35 +1018,31 @@ katoikoi_thraikes = {
         }
     }
 
-    damage = 42
-    toughness = 42
-    pursuit = 0
-    screen = 0
+    damage = 20
+    toughness = 25
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
     }
 
     counters = {
         skirmishers = 1
     }
 
-    buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 0.8 }
+    buy_cost = { gold = 70 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
 }
 
-#Makedonikoi#Elite#
+#Makedonikoi#Elite#Level2
 makedonikoi_peltastai = {
     type = skirmishers
 
@@ -1098,8 +1054,8 @@ makedonikoi_peltastai = {
     }
 
     damage = 10
-    toughness = 45
-    pursuit = 45
+    toughness = 39
+    pursuit = 34
     screen = 10
 
     terrain_bonus = {
@@ -1113,21 +1069,19 @@ makedonikoi_peltastai = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1.0 }
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
-#Makedonikoi#Superior#Level3
+#Makedonikoi#Superior#Level2
 chalkaspides = {
     type = pikemen
 
@@ -1138,8 +1092,8 @@ chalkaspides = {
         }
     }
 
-    damage = 66
-    toughness = 46
+    damage = 34
+    toughness = 29
     pursuit = 0
     screen = 0
 
@@ -1154,14 +1108,12 @@ chalkaspides = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -1179,8 +1131,8 @@ argyraspides = {
         }
     }
 
-    damage = 84
-    toughness = 64
+    damage = 49
+    toughness = 44
     pursuit = 0
     screen = 0
 
@@ -1195,14 +1147,12 @@ argyraspides = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 1.3 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -1221,8 +1171,8 @@ hypaspistai = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 80
-    toughness = 100
+    damage = 60
+    toughness = 65
     pursuit = 0
     screen = 0
 
@@ -1237,14 +1187,12 @@ hypaspistai = {
         light_cavalry = 1
     }
 
-    buy_cost = { gold = 170 }
-    low_maintenance_cost = { gold = 1.4 }
-    high_maintenance_cost = { gold = 1.7 }
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 1.1 }
+    high_maintenance_cost = { gold = 3.3 }
     
     mercenary_fallback = no
     holy_order_fallback = no
-
-    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
@@ -1263,9 +1211,9 @@ hiera_ile = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 110
-    toughness = 80
-    pursuit = 10
+    damage = 140
+    toughness = 75
+    pursuit = 20
     screen = 0
 
     terrain_bonus = {
@@ -1279,21 +1227,19 @@ hiera_ile = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 190 }
-    low_maintenance_cost = { gold = 1.6 }
-    high_maintenance_cost = { gold = 1.9 }
+    buy_cost = { gold = 360 }
+    low_maintenance_cost = { gold = 1.5 }
+    high_maintenance_cost = { gold = 4.5 }
     
     mercenary_fallback = no
     holy_order_fallback = no
-
-    max_sub_regiments = 6
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
-#Oxylian#Superior#Level1#################################
+#Oxylian#Superior########################################
 arkananioi_sphendonetai = {
     type = slingers
 
@@ -1304,10 +1250,10 @@ arkananioi_sphendonetai = {
         }
     }
 
-    damage = 27
+    damage = 20
     toughness = 10
     pursuit = 10
-    screen = 27
+    screen = 15
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -1321,20 +1267,18 @@ arkananioi_sphendonetai = {
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
+    low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
-#Epirote#Superior#Level2#################################
+#Epirote#Superior#Level1#################################
 epirotoi_phalangitai = {
     type = pikemen
 
@@ -1345,8 +1289,8 @@ epirotoi_phalangitai = {
         }
     }
 
-    damage = 64
-    toughness = 44
+    damage = 32
+    toughness = 27
     pursuit = 0
     screen = 0
 
@@ -1361,14 +1305,12 @@ epirotoi_phalangitai = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
@@ -1387,9 +1329,9 @@ basilikoi_agema = {
         can_recruit_elite_maa = yes
     }
 
-    damage = 112
-    toughness = 82
-    pursuit = 10
+    damage = 142
+    toughness = 77
+    pursuit = 20
     screen = 0
 
     terrain_bonus = {
@@ -1403,21 +1345,19 @@ basilikoi_agema = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 190 }
-    low_maintenance_cost = { gold = 1.6 }
-    high_maintenance_cost = { gold = 1.9 }
+    buy_cost = { gold = 320 }
+    low_maintenance_cost = { gold = 1.5 }
+    high_maintenance_cost = { gold = 4.5 }
     
     mercenary_fallback = no
     holy_order_fallback = no
-
-    max_sub_regiments = 6
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
-#Epirote#Superior#Level1
+#Epirote#Superior#
 molosson_hippeis = {
     type = heavy_cavalry
 
@@ -1428,9 +1368,9 @@ molosson_hippeis = {
         }
     }
 
-    damage = 72
-    toughness = 42
-    pursuit = 10
+    damage = 105
+    toughness = 40
+    pursuit = 20
     screen = 0
 
     terrain_bonus = {
@@ -1444,16 +1384,14 @@ molosson_hippeis = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 110 }
+    buy_cost = { gold = 220 }
     low_maintenance_cost = { gold = 0.8 }
-    high_maintenance_cost = { gold = 1.1 }
+    high_maintenance_cost = { gold = 2.4 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1469,8 +1407,8 @@ chaeonion_agema = {
         }
     }
 
-    damage = 82
-    toughness = 62
+    damage = 47
+    toughness = 42
     pursuit = 0
     screen = 0
 
@@ -1485,21 +1423,19 @@ chaeonion_agema = {
         heavy_cavalry = 1
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1.0 }
-    high_maintenance_cost = { gold = 1.3 }
+    buy_cost = { gold = 140 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = pikemen
 }
 
-#Epirote#Elite#Level2
+#Epirote#Elite#
 chaeonion_logades = {
     type = skirmishers
 
@@ -1511,8 +1447,8 @@ chaeonion_logades = {
     }
 
     damage = 10
-    toughness = 49
-    pursuit = 49
+    toughness = 35
+    pursuit = 30
     screen = 10
 
     terrain_bonus = {
@@ -1526,21 +1462,19 @@ chaeonion_logades = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1.0 }
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
-#Anatolian#Superior#Level2###############################
+#Anatolian#Superior#Level1###############################
 galatikoi_Katoikoi = {
     type = phalanx
 
@@ -1551,28 +1485,24 @@ galatikoi_Katoikoi = {
         }
     }
 
-    damage = 44
-    toughness = 44
-    pursuit = 0
-    screen = 0
+    damage = 22
+    toughness = 27
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
     }
 
     counters = {
         skirmishers = 1
     }
 
-    buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 0.8 }
+    buy_cost = { gold = 70 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 12
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
@@ -1591,8 +1521,8 @@ hyperaspistai = {
     }
 
     damage = 10
-    toughness = 47
-    pursuit = 47
+    toughness = 37
+    pursuit = 32
     screen = 10
 
     terrain_bonus = {
@@ -1606,14 +1536,12 @@ hyperaspistai = {
         pikemen = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 1.0 }
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-
-    max_sub_regiments = 8
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
