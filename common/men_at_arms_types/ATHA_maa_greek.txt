@@ -1509,9 +1509,9 @@ galatikoi_Katoikoi = {
     icon = heavy_infantry
 }
 
-#Makedonikoi#Elite#Level1
+#Anatolian#Elite#
 hyperaspistai = {
-    type = skirmishers
+    type = phalanx
 
     can_recruit = {
         OR = {
@@ -1520,10 +1520,10 @@ hyperaspistai = {
         }
     }
 
-    damage = 10
-    toughness = 37
-    pursuit = 32
-    screen = 10
+    damage = 35
+    toughness = 40
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -1533,7 +1533,46 @@ hyperaspistai = {
     }
 
     counters = {
-        pikemen = 1
+        skirmishers = 1
+    }
+
+    buy_cost = { gold = 130 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
+}
+
+#Illyrian#Elite
+skaplinai = {
+    type = slingers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_skaplinai_natively_trigger = yes
+            can_recruit_maa_skaplinai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 35
+    toughness = 10
+    pursuit = 10
+    screen = 30
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_infantry = 1
     }
 
     buy_cost = { gold = 120 }
@@ -1544,7 +1583,7 @@ hyperaspistai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    ai_quality = { value = ATHA_ai_weight_slingers }
     icon = skirmishers
 }
 
