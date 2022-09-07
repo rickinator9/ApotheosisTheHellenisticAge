@@ -114,6 +114,17 @@ can_recruit_maa_euzonoi_as_foreigner_trigger = {
   }
 }
 
+can_recruit_maa_peltenai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_illyrian }
+}
+
+can_recruit_maa_peltenai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_peltenai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_peltenai_natively_trigger = yes
+  }
+}
+
 can_recruit_maa_kretikoi_peltastai_natively_trigger = {
   can_recruit_cretan_maa_natively_trigger = yes
 }
@@ -155,6 +166,17 @@ can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_skiritai_peltastai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_maa_skiritai_peltastai_natively_trigger = yes
+  }
+}
+
+can_recruit_maa_ardiaian_thorakitai_natively_trigger = {
+  culture = { has_cultural_pillar = heritage_illyrian }
+}
+
+can_recruit_maa_ardiaian_thorakitai_as_foreigner_trigger = {
+  NOT = { can_recruit_maa_ardiaian_thorakitai_natively_trigger = yes }
+  any_realm_province = {
+    can_recruit_maa_ardiaian_thorakitai_natively_trigger = yes
   }
 }
 
@@ -324,49 +346,7 @@ can_recruit_maa_hoplitai_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_hoplitai_natively_trigger = {
-  culture = { has_cultural_pillar = heritage_illyrian }
-}
-
-can_recruit_maa_hoplitai_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_hoplitai_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_hoplitai_natively_trigger = yes
-  }
-}
-
-can_recruit_maa_hoplitai_natively_trigger = {
-  culture = { has_cultural_pillar = heritage_anatolian }
-}
-
-can_recruit_maa_hoplitai_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_hoplitai_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_hoplitai_natively_trigger = yes
-  }
-}
-
-can_recruit_maa_thureophoroi_natively_trigger = {
-  culture = { has_cultural_pillar = heritage_illyrian }
-}
-
-can_recruit_maa_thureophoroi_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_thureophoroi_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_thureophoroi_natively_trigger = yes
-  }
-}
-
-can_recruit_maa_thureophoroi_natively_trigger = {
-  culture = { has_cultural_pillar = heritage_anatolian }
-}
-
-can_recruit_maa_thureophoroi_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_thureophoroi_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_maa_thureophoroi_natively_trigger = yes
-  }
-}
+#############################################################
 
 can_recruit_maa_thureophoroi_natively_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
