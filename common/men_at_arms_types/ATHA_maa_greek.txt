@@ -1395,8 +1395,44 @@ molosson_hippeis = {
     icon = heavy_cavalry
 }
 
+#Odrysian#Superior#Level1
+zibutai = {
+    type = heavy_cavalry
 
-#Thessalikoi#Superior#Level1
+    can_recruit = {
+        OR = {
+            can_recruit_maa_zibutai_natively_trigger = yes
+            can_recruit_maa_zibutai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 107
+    toughness = 42
+    pursuit = 20
+    screen = 0
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 220 }
+    low_maintenance_cost = { gold = 0.8 }
+    high_maintenance_cost = { gold = 2.4 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
+    icon = heavy_cavalry
+}
+
+#Thessalikoi#Superior#Level2
 thessalikoi_hippeis = {
     type = heavy_cavalry
 
@@ -1407,8 +1443,8 @@ thessalikoi_hippeis = {
         }
     }
 
-    damage = 107
-    toughness = 42
+    damage = 109
+    toughness = 44
     pursuit = 20
     screen = 0
 
@@ -1779,7 +1815,7 @@ dioi_machairaphoroi = {
     icon = heavy_infantry
 }
 
-#Elite#Rhodopian#Level1
+#Rhodopian#Superior
 rompaianai = {
     type = phalanx
 
@@ -1790,8 +1826,8 @@ rompaianai = {
         }
     }
 
-    damage = 37
-    toughness = 42
+    damage = 30
+    toughness = 15
     pursuit = 5
     screen = 5
 
@@ -1802,9 +1838,9 @@ rompaianai = {
         skirmishers = 1
     }
 
-    buy_cost = { gold = 210 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 2 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1812,43 +1848,6 @@ rompaianai = {
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = heavy_infantry
-}
-
-#Odrysian#Cultural
-zibutai = {
-    type = heavy_cavalry
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_zibutai_natively_trigger = yes
-            can_recruit_maa_zibutai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 60
-    toughness = 30
-    pursuit = 25
-    screen = 25
-
-    terrain_bonus = {
-        plains = { damage = 5 }
-        drylands = { damage = 5 }
-    }
-
-    counters = {
-        archers = 1
-    }
-
-    buy_cost = { gold = 200 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 1 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
-    icon = heavy_cavalry
 }
 
 #Agrianikoi#Superior#
