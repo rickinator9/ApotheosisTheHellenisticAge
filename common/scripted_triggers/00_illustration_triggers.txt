@@ -9,11 +9,11 @@
 }
 
 has_graphical_mena_culture_group_trigger = {
-	always = no
+	has_building_gfx = mena_building_gfx
 }
 
 has_graphical_india_culture_group_trigger = {
-	always = no
+	has_building_gfx = indian_building_gfx
 }
 
 has_graphical_mediterranean_culture_group_trigger = {
@@ -25,19 +25,19 @@ has_graphical_western_culture_group_trigger = {
 }
 
 has_graphical_norse_culture_group_trigger = {
-	always = no
+	has_building_gfx = norse_building_gfx
 }
 
 has_graphical_african_culture_group_trigger = {
-	always = no
+	has_building_gfx = african_building_gfx
 }
 
 has_graphical_steppe_culture_group_trigger = {
-	always = no
+	has_building_gfx = steppe_building_gfx
 }
 
 has_graphical_iberian_culture_group_trigger = {
-	always = no
+	has_building_gfx = iberian_building_gfx
 }
 
 
@@ -52,10 +52,6 @@ graphical_wilderness_desert_trigger = {
 				geographical_region = world_africa
 				geographical_region = world_middle_east_arabia
 			}
-		}
-		AND = {
-			terrain = floodplains
-			geographical_region = world_africa
 		}
 	}
 }
@@ -75,39 +71,18 @@ graphical_wilderness_forest_pine_trigger = {
 
 graphical_wilderness_forest_trigger = {
 	OR = {
-		terrain = jungle
 		terrain = forest
 		terrain = farmlands
-		terrain = wetlands
-		terrain = plains
-		AND = {
-			terrain = hills
-			NOR = {
-				geographical_region = world_steppe
-				geographical_region = world_middle_east_persia
-				geographical_region = world_middle_east_jerusalem
-				geographical_region = world_africa
-				geographical_region = world_middle_east_arabia
-			}
-		}
-		AND = {
-			terrain = floodplains
-			NOT = {
-				geographical_region = world_africa
-			}
-		}
 	}
 }
 
 graphical_wilderness_mountains_trigger = {
 	terrain = mountains
-	terrain = valley
 }
 
 graphical_wilderness_steppe_trigger = {
 	OR = {
 		terrain = steppe
-		terrain = drylands
 		AND = {
 			terrain = hills
 			OR = {
@@ -117,6 +92,39 @@ graphical_wilderness_steppe_trigger = {
 			}
 		}
 	}
+}
+
+graphical_drylands_trigger = {
+	terrain = drylands
+}
+
+graphical_wilderness_wetlands_trigger = {
+	OR = {
+		terrain = wetlands
+		terrain = floodplains
+	}
+}
+
+graphical_wilderness_jungle_trigger = {
+	OR = {
+		terrain = jungle
+		AND = {
+			terrain = hills
+			geographical_region = graphical_india
+		}
+	}
+}
+
+graphical_plains_trigger = {
+	terrain = plains
+}
+
+graphical_wilderness_ocean_trigger = {
+	is_sea_province = yes
+}
+
+graphical_hills_trigger = {
+	terrain = hills
 }
 
 ### Scripted illustrations

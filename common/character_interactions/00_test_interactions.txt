@@ -122,7 +122,7 @@ make_lover_interaction = {
 
 	on_accept = {
 		scope:actor = {
-			set_relation_lover = scope:recipient
+			set_relation_lover = { reason = test_lover_desc target = scope:recipient }
 		}
 	}
 }
@@ -149,7 +149,7 @@ make_soulmate_interaction = {
 
 	on_accept = {
 		scope:actor = {
-			set_relation_soulmate = scope:recipient
+			set_relation_soulmate = { reason = test_soulmate_desc copy_reason = lover target = scope:actor }
 		}
 	}
 }
@@ -178,7 +178,10 @@ make_rival_interaction = {
 
 	on_accept = {
 		scope:actor = {
-			set_relation_rival = scope:recipient
+			set_relation_rival = {
+				target = scope:recipient
+				reason = rival_debug
+			}
 		}
 	}
 }
@@ -205,7 +208,11 @@ make_nemesis_interaction = {
 
 	on_accept = {
 		scope:actor = {
-			set_relation_nemesis = scope:recipient
+			set_relation_nemesis = {
+				reason = test_nemesis_desc
+				copy_reason = rival
+				target = scope:recipient
+			}
 		}
 	}
 }
@@ -257,7 +264,7 @@ make_friend_interaction = {
 
 	on_accept = {
 		scope:actor = {
-			set_relation_friend = scope:recipient
+			set_relation_friend = { reason = test_friend_desc target = scope:recipient }
 		}
 	}
 }
@@ -487,6 +494,39 @@ take_realm_interaction = {
 	}
 }
 
+start_pregnancy_interaction = {
+	category = interaction_debug_main
+	
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	icon = pregnant
+
+	is_shown = {
+		debug_only = yes
+		scope:recipient = { is_adult = yes }
+		scope:actor = { is_adult = yes }
+		scope:recipient = { is_pregnant = no }
+		scope:actor = { is_pregnant = no }
+
+		OR = {
+			AND = {
+				scope:recipient = { is_female = yes }
+				scope:actor = { is_male = yes }
+			}
+			AND = {
+				scope:recipient = { is_male = yes }
+				scope:actor = { is_female = yes }
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = { trigger_event = debug.0002 }
+	}
+	
+	auto_accept = yes
+}
+
 get_claim_interaction = {
 	category = interaction_debug_main
 	
@@ -683,4 +723,22 @@ create_betrothal_interaction = {
 			}
 		}
 	}
+}
+
+set_relation_interaction = {
+	category = interaction_debug_main
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		debug_only = yes
+		NOT = { scope:recipient = scope:actor }
+		always = no # deprecated
+	}
+
+	on_accept = {
+		scope:actor = { trigger_event = debug.350 }
+	}
+
+	auto_accept = yes
 }

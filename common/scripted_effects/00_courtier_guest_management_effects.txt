@@ -988,7 +988,43 @@ pool_character_development_effect = {
 					}
 					add_trait = strong
 				}
+				1 = {
+					trigger = {
+						NOT = {
+							has_trait = loyal
+						}
+					}
+					add_trait = loyal
+				}
+				1 = {
+					trigger = {
+						NOT = {
+							has_trait = disloyal
+						}
+					}
+					add_trait = disloyal
+				}
 			}
+		}
+
+		# GET LOYAL/DISLOYAL
+		10 = {
+			trigger = {
+				culture = {
+					has_cultural_parameter = loyal_trait_more_common
+				}
+				NOT = { has_trait = loyal }
+			}
+			add_trait = loyal
+		}
+		10 = {
+			trigger = {
+				culture = {
+					has_cultural_parameter = disloyal_trait_more_common
+				}
+				NOT = { has_trait = disloyal }
+			}
+			add_trait = disloyal
 		}
 
 		# GET A SECRET
@@ -1239,7 +1275,7 @@ pool_character_development_effect = {
 					save_temporary_scope_as = new_friend
 				}
 				add_prestige = major_prestige_value
-				set_relation_friend = scope:new_friend
+				set_random_friendship_reason = { TARGET = scope:new_friend }
 				pay_short_term_gold = {
 					target = scope:new_friend
 					gold = 500
