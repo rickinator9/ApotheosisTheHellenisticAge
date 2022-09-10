@@ -37,3 +37,499 @@ hetairoi_high_maint_cost = @[heavy_cavalry_high_maint_cost * hetairoi_mult]
 spartiatai_hoplitai_recruitment_cost = @[phalanx_recruitment_cost * 1.6]
 spartiatai_hoplitai_low_maint_cost = @[phalanx_low_maint_cost * 1.6]
 spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
+
+###########
+# WEIGHTS #
+###########
+
+ATHA_ai_weight_already_has_type = 1000
+
+ATHA_ai_weight_skirmishers = {
+	value = culture_ai_weight_skirmishers
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = skirmishers
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = skirmishers
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = skirmishers
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = skirmishers
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = skirmishers
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_archers = {
+	value = culture_ai_weight_archers
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = archers
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = archers
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = archers
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = archers
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = archers
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_slingers = {
+	value = culture_ai_weight_slingers
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = slingers
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = slingers
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = slingers
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = slingers
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = slingers
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_medium_infantry = {
+	value = culture_ai_weight_heavy_infantry
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = phalanx
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = phalanx
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = phalanx
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = phalanx
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = phalanx
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_heavy_infantry = {
+	value = culture_ai_weight_heavy_infantry
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_infantry
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_infantry
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_infantry
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_infantry
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_infantry
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_pikemen = {
+	value = culture_ai_weight_pikemen
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = pikemen
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = pikemen
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = pikemen
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = pikemen
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = pikemen
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_light_cavalry = {
+	value = culture_ai_weight_light_cavalry
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = light_cavalry
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = light_cavalry
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = light_cavalry
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = light_cavalry
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = light_cavalry
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_heavy_cavalry = {
+	value = culture_ai_weight_heavy_cavalry
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_cavalry
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_cavalry
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_cavalry
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_cavalry
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = heavy_cavalry
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_camels = {
+	value = culture_ai_weight_camels
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = camel_cavalry
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = camel_cavalry
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = camel_cavalry
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = camel_cavalry
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = camel_cavalry
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
+
+ATHA_ai_weight_elephants = {
+	value = culture_ai_weight_elephants
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = elephant_cavalry
+	# 			value > 0
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = elephant_cavalry
+	# 			value > 1
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = elephant_cavalry
+	# 			value > 2
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = elephant_cavalry
+	# 			value > 3
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+	# if = {
+	# 	limit = {
+	# 		number_maa_regiments_of_base_type = {
+	# 			type = elephant_cavalry
+	# 			value > 4
+	# 		}
+	# 	}
+	# 	subtract = ATHA_ai_weight_already_has_type
+	# }
+}
