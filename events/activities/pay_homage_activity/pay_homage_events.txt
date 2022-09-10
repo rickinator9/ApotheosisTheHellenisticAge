@@ -19,6 +19,7 @@ scripted_effect pay_homage_0001_refuse_homage_effect = {
 		}
 		progress_towards_rival_effect = {
 			CHARACTER = scope:homage_liege
+			REASON = rival_refuse_homage
 			OPINION = no
 		}
 	}
@@ -277,6 +278,7 @@ scripted_effect pay_homage_vassal_reward_effect = {
 					}
 					progress_towards_rival_effect = {
 						CHARACTER = scope:homage_liege
+						REASON = rival_faux_pas
 						OPINION = no
 					}
 				}
@@ -341,7 +343,7 @@ scripted_effect pay_homage_select_nickname_effect = {
 				trigger = exists
 				scope:homage_faux_pas_language = {
 					random_list = {
-						6 = {
+						2 = {
 							ep1_pay_homage_nickname_taken_modifier = { NICK = the_foreigner }
 							save_scope_value_as = { name = homage_nickname value = flag:the_foreigner }
 						}
@@ -350,11 +352,11 @@ scripted_effect pay_homage_select_nickname_effect = {
 				}
 				scope:homage_faux_pas_clumsy = {
 					random_list = {
-						3 = {
+						2 = {
 							ep1_pay_homage_nickname_taken_modifier = { NICK = the_clumsy }
 							save_scope_value_as = { name = homage_nickname value = flag:the_clumsy }
 						}
-						3 = {
+						2 = {
 							ep1_pay_homage_nickname_taken_modifier = { NICK = the_graceful }
 							save_scope_value_as = { name = homage_nickname value = flag:the_graceful }
 						}

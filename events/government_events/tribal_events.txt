@@ -1200,7 +1200,45 @@ tribal.1101 = {
 
 	option = { #I challenge thee!
 		name = tribal.1101.a
-		
+		duel = {
+			skill = prowess
+			target = scope:rival
+			20 = {
+				desc = tribal.1101.a_success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+				}
+				show_as_tooltip = {
+					scope:rival = {
+						add_prestige_level = -1
+						death = {
+							death_reason = death_duel
+							killer = root
+						}
+					}
+					add_prestige = medium_prestige_gain
+				}
+				trigger_event = tribal.1102
+			}
+			10 = {
+				desc = tribal.1101.a_failure
+				show_as_tooltip = {
+					increase_wounds_effect = { REASON = fight }
+					root = { add_prestige = minor_prestige_loss }
+				}
+				trigger_event = tribal.1104
+			}
+		}
+		show_as_tooltip = {
+			scope:rival = {
+				add_opinion = {
+					target = root
+					modifier = hate_opinion
+					opinion = -20
+				}
+			}
+		}
 	}
 
 	option = { #My friend challenges thee! Easier challenge
@@ -1208,11 +1246,75 @@ tribal.1101 = {
 		trigger = {
 			exists = scope:friend
 		}
-		
+		scope:friend = {
+			duel = {
+				skill = prowess
+				target = scope:rival
+				50 = {
+					desc = tribal.1101.b_success
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 4
+					}
+					show_as_tooltip = {
+						scope:rival = {
+							add_prestige_level = -1
+							death = {
+								death_reason = death_duel
+								killer = scope:friend
+							}
+						}
+						root = { add_prestige = medium_prestige_gain }
+					}
+					root = {
+						trigger_event = tribal.1103
+					}
+				}
+				10 = {
+					desc = tribal.1101.b_failure
+					show_as_tooltip = {
+						increase_wounds_effect = { REASON = fight }
+						root = { add_prestige = minor_prestige_loss }
+					}
+					root = {
+						trigger_event = tribal.1105
+					}
+				}
+			}
+			show_as_tooltip = {
+				scope:rival = {
+					add_opinion = {
+						target = scope:friend
+						modifier = hate_opinion
+						opinion = -20
+					}
+				}
+				scope:rival = {
+					add_opinion = {
+						target = root
+						modifier = hate_opinion
+						opinion = -20
+					}
+				}
+			}
+		}
+		save_scope_value_as = {
+			name = used_friend
+			value = yes
+		}
+		trigger_event = tribal.1102
 	}
 
 	option = { #Do nothing
 		name = tribal.1101.c
+		scope:victim = {
+			add_opinion = {
+				target = root
+				modifier = weak_opinion
+				opinion = -10
+			}
+		}
+		add_prestige = major_prestige_loss
 	}
 }
 
@@ -1786,6 +1888,7 @@ tribal.1203 = {
 			progress_towards_friend_effect = {
 				CHARACTER = scope:racer
 				OPINION = yes
+				REASON = friend_helped_during_horse_race
 			}
 			scope:racer = {
 				add_character_modifier = {
@@ -1801,6 +1904,7 @@ tribal.1203 = {
 			progress_towards_friend_effect = {
 				CHARACTER = scope:villain_racer
 				OPINION = yes
+				REASON = friend_helped_during_horse_race
 			}
 			scope:villain_racer = {
 				add_character_modifier = {
@@ -1949,6 +2053,7 @@ tribal.1203 = {
 			}
 		}
 		progress_towards_rival_effect = {
+			REASON = rival_jump_to_rivals_horse
 			CHARACTER = scope:villain_racer
 			OPINION = yes
 		}

@@ -418,7 +418,7 @@ intrigue_temptation.3000 = {
 						is_available_ai_adult = yes
 						can_set_relation_friend_trigger = { CHARACTER = scope:guest_lover }
 					}
-					set_relation_friend = scope:guest_lover
+					set_random_friendship_reason = { TARGET = scope:guest_lover }
 					save_scope_as = guest_lovers_friend
 				}
 			}
@@ -439,7 +439,7 @@ intrigue_temptation.3000 = {
 			opinion = 50
 		}
 
-		set_relation_lover = scope:guest_lover
+		set_relation_lover = { reason = lover_manipulated_guest target = scope:guest_lover }
 		
 		ai_chance = {
 			base = 100
@@ -590,10 +590,13 @@ intrigue_temptation.3000 = {
 			PREGNANCY_CHANCE = pregnancy_chance
 		}
 		
+		scope:guest_lover = { save_scope_as = relationship_reason_involved_character }
 		progress_towards_friend_effect = {
 			CHARACTER = scope:guest_lovers_friend
 			OPINION = 35
+			REASON = friend_lovers_friend
 		}
+		clear_saved_scope = relationship_reason_involved_character
 		
 		ai_chance = {
 			base = 100
@@ -1108,11 +1111,11 @@ intrigue_temptation.3011 = { #by Mathilda Bjarnehed
 	option = {
 		name = intrigue_temptation.3011.a
 
-		set_relation_lover = scope:bar_servant
+		set_relation_lover = { reason = lover_wingman_introduction target = scope:bar_servant involved_character = scope:wingman province = root.capital_province }
 		had_sex_with_effect = {
-				CHARACTER = scope:bar_servant
-				PREGNANCY_CHANCE = pregnancy_chance
-			}
+			CHARACTER = scope:bar_servant
+			PREGNANCY_CHANCE = pregnancy_chance
+		}
 	}
 
 	# One night stand
@@ -1137,6 +1140,7 @@ intrigue_temptation.3011 = { #by Mathilda Bjarnehed
 		hidden_effect = {
 			progress_towards_lover_effect = {
 				CHARACTER = scope:bar_servant
+				REASON = lover_bar_servant
 				OPINION = no
 			}
 		}
@@ -1706,6 +1710,7 @@ intrigue_temptation.3021 = { #by Mathilda Bjarnehed
 scripted_effect intrigue_temptation_3022_great_outcome_effect = {
 	progress_towards_lover_effect = {
 		CHARACTER = root
+		REASON = lover_written_poetry
 		OPINION = 20
 	}	
 }
@@ -3264,10 +3269,13 @@ intrigue_temptation_special.1005 = {
 		#Opinions & follow-up
 		hidden_effect = {
 			scope:wants_love = {
+				root = { save_scope_as = relationship_reason_involved_character }
 				progress_towards_lover_effect = {
 					CHARACTER = scope:chosen_match
+					REASON = lover_making_match
 					OPINION = 50
 				}
+				clear_saved_scope = relationship_reason_involved_character
 			}
 
 			#If triggers are passed, they become lovers
@@ -3298,10 +3306,13 @@ intrigue_temptation_special.1005 = {
 		add_intrigue_lifestyle_xp = major_lifestyle_xp
 		hidden_effect = {
 			scope:wants_love = {
+				root = { save_scope_as = relationship_reason_involved_character }
 				progress_towards_lover_effect = {
 					CHARACTER = scope:chosen_match
+					REASON = lover_making_match
 					OPINION = 25
 				}
+				clear_saved_scope = relationship_reason_involved_character
 			}
 
 			#If triggers are passed, they become lovers
@@ -3425,8 +3436,8 @@ intrigue_temptation_special.1007 = {
 				limit = {
 					can_set_relation_lover_trigger = { CHARACTER = scope:chosen_match }
 				}
+				set_relation_lover = { reason = lover_matchmaker target = scope:chosen_match involved_character = root }
 			}
-			set_relation_lover = scope:chosen_match
 		}
 	}
 
