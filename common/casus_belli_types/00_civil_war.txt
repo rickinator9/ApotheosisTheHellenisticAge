@@ -858,6 +858,24 @@ populist_war = {
 			remove_variable = rebel_leader_peasants
 		}
 		on_lost_faction_revolt_war = yes # Imprison all faction members, including the faction leader.
+		scope:attacker = { # Imprison any war participant that isn't already in the faction.
+			every_character_war = {
+				limit = {
+					is_defender = scope:defender
+				}
+				every_war_attacker = {
+					limit = {
+						is_imprisoned = no
+					}
+					hidden_effect = {
+						hard_imprison_character_effect = {
+							TARGET = this
+							IMPRISONER = scope:defender
+						}
+					}
+				}
+			}
+		}
 		hidden_effect = {
 			scope:attacker = {
 				if = {
@@ -1992,18 +2010,22 @@ nation_fracturing_faction_war = {
 
 			change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
 		}
-
 		resolve_title_and_vassal_change = scope:change
 
 		scope:defender = {
 			every_held_title = {
 				limit = {
-					NOT = { this = prev.primary_title }
 					tier = prev.primary_title.tier
 				}
-				prev = { destroy_title = this }
+				add_to_temporary_list = titles_to_destroy
 			}
-			destroy_title = primary_title
+		}
+
+		every_in_list = {
+			list = titles_to_destroy
+			scope:attacker = {
+				destroy_title = prev
+			}
 		}
 
 		# Keep track of war wins / losses

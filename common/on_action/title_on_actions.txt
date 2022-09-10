@@ -223,6 +223,21 @@ on_title_lost = {
 	}
 
 	effect = {
+		#Make sure nobody ever has only the Kingdom of Fashion
+		if = {
+			limit = {
+				scope:title = { tier = tier_kingdom }
+				has_title = title:k_fashion
+				NOT = {
+					any_held_title = { # Only trigger if you don't have any kingdom titles other than Fashion and the kingdom you just lost. Double negative is confusing but it's the only way I could think to script it
+						tier = tier_kingdom
+						NOT = { this = title:k_fashion }
+						NOT = { this = scope:title }
+					}
+				}
+			}
+			destroy_title = title:k_fashion
+		}
 		#To remove concubines if a character becomes unlanded
 		if = {
 			limit = {
@@ -268,6 +283,33 @@ on_title_lost = {
 					stress_impact = { 
 						base = medium_stress_loss
 						vengeful = medium_stress_loss
+					}
+				}
+			}
+		}
+		
+		# Memories
+		# Lost a significant title
+		if = {
+			limit = {
+				scope:title.tier >= highest_held_title_tier
+				exists = scope:new_holder
+			}
+			
+			root = {
+				create_character_memory = {
+					type = lost_title_memory
+					
+					participants = {
+						new_holder = scope:new_holder
+					}
+				}
+				
+				scope:new_memory = {
+					save_scope_as = lost_title_memory
+					set_variable = {
+						name = landed_title
+						value = scope:title
 					}
 				}
 			}

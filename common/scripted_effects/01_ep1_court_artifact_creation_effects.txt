@@ -1031,15 +1031,13 @@ create_artifact_wall_banner_effect = {
 	hidden_effect_new_artifact = {
 		if = {
 			limit = { has_variable = epic_battle_location }
-			var:epic_battle_location = {
-				save_scope_as = epic_battle_location
-			}
+			var:epic_battle_location = { save_scope_as = epic_battle_location }
+			remove_variable = epic_battle_location
 		}
 		if = {
 			limit = { has_variable = epic_loser }
-			var:epic_loser = {
-				save_scope_as = epic_loser
-			}
+			var:epic_loser = { save_scope_as = epic_loser }
+			remove_variable = epic_loser
 		}
 		# Dynasty banner rarity determined by Dynasty Splendor
 		if = { 
@@ -1067,32 +1065,7 @@ create_artifact_wall_banner_effect = {
 		}
 
 		scope:owner = {
-			if = { # For banners looted after a battle
-				limit = {
-					has_variable = epic_battle_location
-					has_variable = epic_loser
-				}
-				create_artifact = {
-					name = artifact_wall_banner_battle_name
-					creator = scope:creator
-					description = artifact_wall_banner_battle_description
-					visuals = banner
-					visuals_source = scope:target
-					type = wall_big
-					modifier = artifact_placeholder_modifier
-					quality = conquered_banner_value
-					wealth = conquered_banner_value
-					decaying = no
-					save_scope_as = newly_created_artifact
-					history = {
-						location = scope:epic_battle_location
-						actor = scope:epic_loser
-						recipient = scope:owner
-						type = conquest
-					}
-				}
-			}
-			else_if = { #Dynasty Banner
+			if = { #Dynasty Banner
 				limit = { has_variable = banner_from_dynasty }
 				if = { #Startup Banner
 					limit = { has_variable = startup_banner }
@@ -1189,6 +1162,31 @@ create_artifact_wall_banner_effect = {
 					}
 				}
 				remove_variable = banner_from_house
+			}
+			else_if = { # For banners looted after a battle
+				limit = {
+					exists = scope:epic_battle_location
+					exists = scope:epic_loser
+				}
+				create_artifact = {
+					name = artifact_wall_banner_battle_name
+					creator = scope:creator
+					description = artifact_wall_banner_battle_description
+					visuals = banner
+					visuals_source = scope:target
+					type = wall_big
+					modifier = artifact_placeholder_modifier
+					quality = conquered_banner_value
+					wealth = conquered_banner_value
+					decaying = no
+					save_scope_as = newly_created_artifact
+					history = {
+						location = scope:epic_battle_location
+						actor = scope:epic_loser
+						recipient = scope:owner
+						type = conquest
+					}
+				}
 			}
 			else = { #Royal Banner
 				create_artifact = {
@@ -6503,6 +6501,34 @@ create_artifact_philosophers_stone_effect = {
 			}
 			add_scaled_artifact_modifier_scholarship_effect = yes
 			add_scaled_artifact_modifier_prestige_effect = yes
+		}
+	}
+}
+
+create_artifact_poetry_effect = {
+	$OWNER$ = { save_scope_as = owner }
+
+	hidden_effect_new_artifact = {
+		get_artifact_quality_effect = yes
+		get_artifact_wealth_effect = yes
+
+		scope:owner = {
+			create_artifact = {
+				name = artifact_poetry_name
+				creator = scope:owner
+				description = artifact_poetry_description
+				visuals = scroll
+				type = miscellaneous
+				modifier = artifact_monthly_minor_prestige_1_modifier
+				save_scope_as = newly_created_artifact
+				wealth = scope:wealth
+				quality = scope:quality
+			}
+		}
+
+		scope:newly_created_artifact = {
+			add_scaled_artifact_modifier_minor_prestige_effect = yes
+			add_scaled_artifact_modifier_majesty_effect = yes
 		}
 	}
 }
