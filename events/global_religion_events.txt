@@ -17,9 +17,15 @@ global_religion.0001 = {
 	immediate = {
 		random_list = {
 			7 = {
+				trigger = {
+					any_neighboring_top_liege_realm_owner = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
+				}
 				modifier = {
 					add = 1
 					any_neighboring_top_liege_realm_owner = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						OR = {
 							has_government = clan_government
 							has_government = feudal_government
@@ -28,25 +34,31 @@ global_religion.0001 = {
 				}
 				random_neighboring_top_liege_realm_owner = {
 					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						OR = {
 							has_government = clan_government
 							has_government = feudal_government
 						}
+					}
+					alternative_limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 					}
 					save_scope_as = actor #for the effect to work properly
 				}
 			}
 			5 = {
 				trigger = {
-					any_spouse = {
+					any_consort = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						NOR = {
 							has_relation_potential_rival = root
 							has_relation_rival = root
 						}
 					}
 				}
-				random_spouse = {
+				random_consort = {
 					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						NOR = {
 							has_relation_potential_rival = root
 							has_relation_rival = root
@@ -59,10 +71,14 @@ global_religion.0001 = {
 				trigger = {
 					any_relation = {
 						type = soulmate
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 					}
 				}
 				random_relation = {
 					type = soulmate
+					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
 					save_scope_as = actor #for the effect to work properly
 				}
 			}
@@ -70,19 +86,76 @@ global_religion.0001 = {
 				trigger = {
 					any_relation = {
 						type = friend
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 					}
 				}
 				modifier = {
 					add = 2
 					any_relation = {
 						type = friend
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						has_relation_best_friend = root
 					}
 				}
 				random_relation = {
 					type = friend
 					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 						has_relation_best_friend = root
+					}
+					alternative_limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
+					save_scope_as = actor #for the effect to work properly
+				}
+			}
+			2 = {
+				trigger = {
+					any_relation = {
+						type = lover
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
+				}
+				modifier = {
+					add = 2
+					any_relation = {
+						type = lover
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+						has_relation_best_friend = root
+					}
+				}
+				random_relation = {
+					type = lover
+					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+						has_relation_best_friend = root
+					}
+					alternative_limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
+					save_scope_as = actor #for the effect to work properly
+				}
+			}
+			2 = {
+				trigger = {
+					any_councillor = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+					}
+				}
+				modifier = {
+					add = 2
+					any_councillor = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+						has_relation_best_friend = root
+					}
+				}
+				random_councillor = {
+					limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
+						has_relation_best_friend = root
+					}
+					alternative_limit = {
+						faith = { NOT = { has_doctrine_parameter = unreformed } }
 					}
 					save_scope_as = actor #for the effect to work properly
 				}
@@ -94,6 +167,28 @@ global_religion.0001 = {
 				exists = scope:actor
 			}
 			save_scope_as = recipient #for the effect to work properly
+			
+			every_vassal = {
+				limit = {
+					faith = root.faith
+				}
+
+				demand_conversion_interaction_effect = yes
+
+				if = { #If you converted to a neighboring faith your government and capital county also converts
+					limit = {
+						root = {
+							any_neighboring_top_liege_realm_owner = {
+								this = scope:recipient
+							}
+						}
+					}
+					change_government_form = { GOVERNMENT = feudal_government }
+					capital_county = {
+						set_county_faith = prev.faith
+					}
+				}
+			}
 
 			demand_conversion_interaction_effect = yes
 
@@ -103,7 +198,7 @@ global_religion.0001 = {
 						this = scope:recipient
 					}
 				}
-				#change_government_form = { GOVERNMENT = feudal_government }
+				change_government_form = { GOVERNMENT = feudal_government }
 				capital_county = {
 					set_county_faith = root.faith
 				}
