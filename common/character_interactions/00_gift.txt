@@ -302,19 +302,6 @@ gift_interaction = {
 							has_trait = loyal
 						}
 					}
-					AND = { # Zealous characters want to support the defending side in GHW's
-						gold < 200
-						any_character_war = {
-							OR = {
-								using_cb = undirected_great_holy_war
-								using_cb = directed_great_holy_war
-							}
-							primary_defender = scope:recipient
-						}
-						scope:actor = {
-							ai_zeal >= 50
-						}
-					}
 					AND = { # Powerful vassals should be considered
 						is_powerful_vassal_of = scope:actor
 						opinion = {

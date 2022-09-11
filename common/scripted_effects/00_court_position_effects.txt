@@ -772,23 +772,6 @@ court_position_target_variable_effect = {
 			}
 			court_position_old_holder_effect = { POS = cultural_emissary_court_position EMPLOYER = $EMPLOYER$ }
 		}
-		2 = { # CHIEF QADI
-			trigger = { court_position_qadi_trigger = yes }
-			modifier = {
-				add = 25
-				has_trait = scholar
-			}
-			modifier = {
-				factor = 0.5
-				$EMPLOYER$ = { employs_court_position = chief_qadi_court_position }
-			}
-			modifier = { factor = learning }
-			set_variable = {
-				name = target_court_position
-				value = flag:chief_qadi
-			}
-			court_position_old_holder_effect = { POS = chief_qadi_court_position EMPLOYER = $EMPLOYER$ }
-		}
 		2 = { # GARUDA
 			trigger = { court_position_garuda_trigger = yes }
 			modifier = {
@@ -805,23 +788,6 @@ court_position_target_variable_effect = {
 				value = flag:garuda
 			}
 			court_position_old_holder_effect = { POS = garuda_court_position EMPLOYER = $EMPLOYER$ }
-		}
-		2 = { # KEEPER OF SWANS
-			trigger = { court_position_swans_trigger = yes }
-			modifier = {
-				add = 25
-				has_trait = lifestyle_hunter
-			}
-			modifier = {
-				factor = 0.5
-				$EMPLOYER$ = { employs_court_position = keeper_of_swans_court_position }
-			}
-			modifier = { factor = stewardship }
-			set_variable = {
-				name = target_court_position
-				value = flag:keeper_of_swans
-			}
-			court_position_old_holder_effect = { POS = keeper_of_swans_court_position EMPLOYER = $EMPLOYER$ }
 		}
 	}
 }

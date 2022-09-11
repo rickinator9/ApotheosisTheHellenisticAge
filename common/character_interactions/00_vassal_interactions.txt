@@ -652,11 +652,6 @@ retract_vassal_interaction = {
 					is_imprisoned_by = scope:actor
 				}
 			}
-			scope:actor = { # The HRE doesn't need endless civil wars
-				NOT = {
-					primary_title = title:e_hre
-				}
-			}
 			exists = scope:actor.primary_title.title_capital_county
 			OR = {
 				scope:actor = {

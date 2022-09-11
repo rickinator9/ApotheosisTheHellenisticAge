@@ -536,11 +536,6 @@ successful_popular_revolt_outcome_effect = {
 								}
 							}
 						}
-						# Special block to stop populist factions from creating Germany if the HRE is still alive and kicking.
-						NAND = {
-							this = title:k_east_francia
-							exists = title:e_hre.holder
-						}
 					}
 				}
 			}
@@ -1095,11 +1090,11 @@ spawn_popular_revolt_troops = {
 	# Spawn Siege Weapons depending on discovered innovations
 	if = {
 		limit = {
-			culture = { has_innovation = innovation_bombard }
+			culture = { has_innovation = innovation_imperial_siege_engineers }
 		}
 		spawn_army = {
 			men_at_arms = {
-				type = bombard
+				type = siege_engineers
 				stacks = 1
 			}
 			location = scope:local_center_of_rebellion
@@ -1109,11 +1104,11 @@ spawn_popular_revolt_troops = {
 	}
 	else_if = {
 		limit = {
-			culture = { has_innovation = innovation_trebuchet }
+			culture = { has_innovation = innovation_hellenistic_ballista }
 		}
 		spawn_army = {
 			men_at_arms = {
-				type = trebuchet
+				type = ballista
 				stacks = 1
 			}
 			location = scope:local_center_of_rebellion
@@ -1124,11 +1119,11 @@ spawn_popular_revolt_troops = {
 	}
 	else_if = {
 		limit = {
-			culture = { has_innovation = innovation_mangonel }
+			culture = { has_innovation = innovation_classical_siege_towers }
 		}
 		spawn_army = {
 			men_at_arms = {
-				type = mangonel
+				type = siege_tower
 				stacks = 1
 			}
 			location = scope:local_center_of_rebellion
@@ -1138,11 +1133,11 @@ spawn_popular_revolt_troops = {
 	}
 	else_if = {
 		limit = {
-			culture = { has_innovation = innovation_catapult }
+			culture = { has_innovation = innovation_archaic_battering_ram }
 		}
 		spawn_army = {
 			men_at_arms = {
-				type = onager
+				type = battering_ram
 				stacks = 1
 			}
 			location = scope:local_center_of_rebellion
