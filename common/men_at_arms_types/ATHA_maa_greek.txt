@@ -82,6 +82,45 @@ rodioi_sphendonetai = {
     icon = skirmishers
 }
 
+#other#Superior#
+balearim_sphendonetai = {
+    type = slingers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_rodioi_sphendonetai_natively_trigger = yes
+            can_recruit_maa_rodioi_sphendonetai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 30
+    toughness = 10
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        forest = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_slingers }
+    icon = skirmishers
+}
+
 #Illyrian#Elite
 skaplinai = {
     type = slingers
@@ -234,47 +273,6 @@ kretikoi_peltastai = {
     
     mercenary_fallback = yes
     holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-#Epirote#Elite#
-chaeonion_logades = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_chaeonion_logades_natively_trigger = yes
-            can_recruit_maa_chaeonion_logades_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 30
-    toughness = 35
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 120 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1.2 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-
-    max_sub_regiments = 6
     
     stack = 300
     ai_quality = { value = ATHA_ai_weight_skirmishers }
@@ -1048,6 +1046,44 @@ thessalikoi_prodomoi = {
 
     damage = 25
     toughness = 20
+    pursuit = 30
+    screen = 30
+
+    terrain_bonus = {
+        plains = { damage = 5 }
+        drylands = { damage = 5 }
+        hills = { toughness = -5 }
+        wetlands = { toughness = -5 }
+    }
+
+    counters = {
+        archers = 1
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
+    icon = light_cavalry
+}
+
+tarantinoi_hippeis = {
+    type = light_cavalry
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_tarantinoi_hippeis_natively_trigger = yes
+            can_recruit_maa_tarantinoi_hippeis_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 30
+    toughness = 30
     pursuit = 30
     screen = 30
 
