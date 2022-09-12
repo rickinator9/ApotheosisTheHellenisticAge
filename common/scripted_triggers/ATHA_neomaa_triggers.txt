@@ -412,12 +412,16 @@ can_recruit_maa_machairophoroi_as_foreigner_trigger = {
 
 can_recruit_maa_perioikoi_hoplitai_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
+  any_realm_province = {
+    geographical_region = ATHA_aor_spartan
+  }
 }
 
 can_recruit_maa_perioikoi_hoplitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_perioikoi_hoplitai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_perioikoi_hoplitai_natively_trigger = yes
+    can_recruit_laconian_maa_natively_trigger = yes
+    geographical_region = ATHA_aor_spartan
   }
 }
 
