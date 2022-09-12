@@ -10,6 +10,7 @@ macedonianlowborn1 = {
 	3364.1.1 = { # made up
 		birth = yes # 390 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3380.1.1 = { # 374 BC, made up
 	#	add_spouse = macedonian00201 # Alexandros
 	#}
@@ -28,6 +29,7 @@ macedonianlowborn2 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3479.1.1 = { # 275 BC, made up
 	#	add_spouse = macedonian00205 # Alexandros
 	#}
@@ -76,8 +78,8 @@ macedonian00101 = {
 	#}
 	3433.1.1 = { # 321 BC
 		effect = {
-			set_relation_best_friend = {
-				target = character:macedonian00102 # was extremely close to Demetrius 
+			set_relation_best_friend = { # was extremely close to his son Demetrius
+				target = character:macedonian00102 # Demetrios
 				reason = best_friend_historical
 			}
 		}
@@ -121,7 +123,19 @@ macedonian00102 = {
 	3418.1.1 = { # approximate
 		birth = yes # January/February 336 BC
 	}
-	# 321 BC, Demetrius was very close to his mother and father; meaning a best friend relationship.
+	## Redundant code - preserved for documentation purposes
+	#3433.1.1 = { # 321 BC
+	#	effect = {
+	#		set_relation_best_friend = { # was extremely close to his father
+	#			target = character:macedonian00101 # Antigonos
+	#			reason = best_friend_historical
+	#		}
+	#		set_relation_friend = { # was also close to his mother
+	#			target = character:... # Stratonike
+	#			reason = friend_historical
+	#		}
+	#	}
+	#}
 	#3434.1.1 = { # 320 BC, approximate
 	#	add_spouse = ... # Phila
 	#}
@@ -230,15 +244,23 @@ macedonian00104 = {
 		}
 		birth = yes # 319 BC
 	}
-	# 304 BC, approximate, becomes friends with the philosopher Menedemos
+	## Redundant code - preserved for documentation purposes
+	#3450.1.1 = { # 304 BC, approximate
+	#	effect = {
+	#		set_relation_friend = { # was good friends with the philosopher Menedemos
+	#			target = character:euboean00102 # Menedemos
+	#			reason = friend_historical
+	#		}
+	#	}
+	#}
 	3474.1.1 = { # 280 BC
-		effect = {
+		effect = { # loyally supported by his half-brother Craterus throughout
 			set_relation_friend = {
-				target = character:macedonian00204 # loyally supported by his half-brother Craterus throughout
+				target = character:macedonian00204 # Krateros
 				reason = friend_loyal_support
 			}
 			add_hook = {
-				target = character:macedonian00204
+				target = character:macedonian00204 # Krateros
 				type = loyalty_hook
 			}
 		}
@@ -295,7 +317,15 @@ macedonian00106 = {
 	#3505.1.1 = { # 249 BC
 	#	add_spouse = ... # Berenike
 	#}
-	# 248 BC, begins an affair with his mother-in-law Apame
+	## Redundant code - preserved for documentation purposes
+	#3506.1.1 = { # 248 BC
+	#	effect = {
+	#		set_relation_lover = { # begins an affair with his mother-in-law Apame
+	#			target = character:macedonian02908 # Apame
+	#			reason = lover_historical_demetrius_the_fair
+	#		}
+	#	}
+	#}
 	3507.1.1 = { # 247 BC
 		death = { 
 			death_reason = death_murder_known # supposedly murdered on the orders of Berenice
@@ -353,6 +383,7 @@ macedonian00109 = {
 	3437.1.1 = { # approximate
 		birth = yes # 317 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3456.1.1 = { # 298 BC, approximate
 	#	add_spouse = macedonian02902 # Seleukos
 	#}
@@ -426,10 +457,10 @@ macedonian00112 = {
 		add_spouse = epirote00228 # Phthia
 		remove_spouse = macedonian02911 # Stratonike
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian02911 # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+			set_relation_rival = { # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+				target = character:macedonian02911 # Stratonike
 				reason = rival_polygamous_marriage
-				involved_character = epirote00228
+				involved_character = epirote00228 # Phthia
 			}
 		}
 	}
@@ -584,7 +615,15 @@ macedonian00117 = {
 	3540.1.1 = { # made up
 		birth = yes # 214 BC
 	}
-	# 180 BC, becomes rival with Perseus over Demetrius' murder
+	## Redundant code - preserved for documentation purposes
+	#3574.1.1 = { # 180 BC
+	#	effect = {
+	#		set_relation_rival = { # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+	#			target = character:macedonian00118 # Perseus
+	#			reason = rival_murderer
+	#		}
+	#	}
+	#}
 	3575.12.1 = { # December 179 BC, approximate
 		death = { 
 			death_reason = death_execution # put to death by Perseus following his seizure of the throne
@@ -608,13 +647,21 @@ macedonian00118 = {
 	3542.1.1 = {
 		birth = yes # 212 BC
 	}
-	# 182 BC, a rivalry develops between Perseus and Demetrius
+	## Redundant code - preserved for documentation purposes
+	#3572.1.1 = { # 182 BC
+	#	effect = {
+	#		set_relation_rival = { # a rivalry develops between Perseus and Demetrius
+	#			target = character:macedonian00119 # Demetrios
+	#			reason = rival_heir_wants_throne
+	#		}
+	#	}
+	#}
 	3574.1.1 = { # 180 BC
 		trait = murderer
 		trait = kinslayer_3 # although he didn't order the murder of Demetrius, he was more or less the mastermind of the whole affair
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian00117 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+			set_relation_rival = { # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+				target = character:macedonian00117 # Antigonos
 				reason = rival_murderer
 			}
 		}
@@ -648,8 +695,8 @@ macedonian00119 = {
 	}
 	3572.1.1 = { # 182 BC
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian00118 # a rivalry develops between Perseus and Demetrius
+			set_relation_rival = { # a rivalry develops between Perseus and Demetrius
+				target = character:macedonian00118 # Perseus
 				reason = rival_heir_wants_throne
 			}
 		}
@@ -870,7 +917,13 @@ macedonian00204 = {
 	3433.1.1 = {
 		birth = yes # 321 BC
 	}
-	# 280 BC, becomes friend with Antigonos Gonatas and loyally supported him.
+	## Redundant code - preserved for documentation purposes
+	#3474.1.1 = { # 280 BC
+	#	set_relation_friend = { # loyally supported his half-brother Antigonus
+	#		target = character:macedonian00104 # Antigonos
+	#		reason = friend_loyal_support
+	#	}
+	#}
 	3501.1.1 = { # speculative
 		death = yes # 253 BC
 	}
@@ -2109,7 +2162,7 @@ macedonian02401 = {
 			create_alliance = {
 				target = character:macedonian02902 # Seleukos
 				allied_through_owner = root
-				allied_through_target = character:macedonian02906
+				allied_through_target = character:macedonian02906 # Laodike
 			}
 		}
 	}
@@ -2118,14 +2171,18 @@ macedonian02401 = {
 			create_alliance = {
 				target = character:macedonian02904 # Antiochos I
 				allied_through_owner = root
-				allied_through_target = character:macedonian02906
+				allied_through_target = character:macedonian02906 # Laodike
 			}
 		}
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
 			add_character_flag = has_gift_estate_rights # granted estates in Asia Minor
-			# Becomes friends with Antiochus. The extensive grants he received from Antiochus I suggests they may have had a close personal relationship
+			## Redundant code - preserved for documentation purposes
+			#set_relation_friend = { # the extensive grants he received from Antiochus I suggests they may have had a close personal relationship
+			#	target = character:macedonian02904 # Antiochos
+			#	reason = friend_historical_antiochos_i_achaios
+			#}
 		}	
 	}
 	3490.1.1 = { # made up
@@ -2156,6 +2213,7 @@ macedonian02402 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3478.1.1 = { # 276 BC, approximate
 	#	add_spouse = macedonian01707 # Attalos
 	#}
@@ -2411,8 +2469,8 @@ macedonian02904 = {
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
-			set_relation_friend = {
-				target = character:macedonian02401 # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+			set_relation_friend = { # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+				target = character:macedonian02401 # Achaios
 				reason = friend_historical_antiochos_i_achaios
 			}
 		}	
@@ -2480,6 +2538,7 @@ macedonian02906 = {
 	3435.1.1 = { # Made up
 		birth = yes # 319 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3462.1.1 = { # 292 BC, made up
 	#	add_spouse = macedonian02401 # Achaios
 	#}
@@ -2498,6 +2557,7 @@ macedonian02907 = {
 	3459.1.1 = { # Made up, but had to have happened between 298 and 293 BC.
 		birth = yes # 295 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3478.1.1 = { # 276 BC, approximate
 	#	add_spouse = macedonian00104 # Antigonos
 	#}
@@ -2522,9 +2582,9 @@ macedonian02908 = {
 	# TODO: Marries Magas of Cyrene in 275 BC.
 	3506.1.1 = { # 248 BC
 		effect = {
-			set_relation_lover = {
-				target = character:macedonian00106
-				reason = lover_historical_demetrius_the_fair # begins an affair with her son-in-law Demetrius the Fair
+			set_relation_lover = { # begins an affair with her son-in-law Demetrius the Fair
+				target = character:macedonian00106 # Demetrios
+				reason = lover_historical_demetrius_the_fair
 			}
 		}
 	}
@@ -2688,6 +2748,7 @@ macedonian03105 = {
 	3320.1.1 = { # made up
 		birth = yes # 434 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3337.1.1 = { # 417 BC, made up
 	#	add_spouse = macedonian03103 # Sirrhas
 	#}
@@ -2768,6 +2829,7 @@ macedonian03109 = {
 	3342.1.1 = { # approximate
 		birth = yes # 412 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3362.1.1 = { # 392 BC, approximate
 	#	add_spouse = macedonian03936 # Amyntas
 	#}
@@ -2965,6 +3027,7 @@ macedonian031w01 = {
 	3314.1.1 = { # made up
 		birth = yes # 440 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
 	#	add_spouse = macedonian03917 # Perdikkas
 	#}
@@ -3257,6 +3320,7 @@ macedonian03211 = {
 	3442.1.1 = { # Made up.
 		birth = yes # 312 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3455.1.1 = { # 299 BC, approximate
 	#	effect = {
 	#		create_betrothal = character:macedonian00102 # Engaged to Demetrius I, possibly too young to be married immediately
@@ -3310,6 +3374,7 @@ macedonian03213 = {
 	}
 	# Marries Lysimachus in 299 BC.
 
+	## Redundant code - preserved for documentation purposes
 	#3474.1.1 = { # 280 BC
 	#	add_spouse = macedonian03207 # Ptolemaios
 	#}
@@ -3317,6 +3382,7 @@ macedonian03213 = {
 	#	remove_spouse = macedonian03207 # divorces Ceraunus a month later and flees after he kills her sons
 	#}
 	3481.1.1 = { # Marries Ptolemy II in 273 BC and becomes part of the Ptolemaic ruler cult.
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03215 # Ptolemaios
 		religion = alexandrian_faith
 		effect = {
@@ -3470,6 +3536,7 @@ macedonian03217 = {
 		birth = yes # 279 BC
 	}
 	3502.6.1 = { # summer 252 BC, marries Antiochus II. She was well known for her downry.
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian02910 # Antiochos
 		effect = {
 			set_permanent_nickname_effect = { NICKNAME = nick_the_dowry_bearer }
@@ -3540,6 +3607,7 @@ macedonian03220 = {
 	3455.1.1 = { # She was old enough to marry Pyrrhus in 280 BC, so probably born before 295 BC.
 		birth = yes # 299 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3474.1.1 = { # 280 BC
 	#	add_spouse = epirote00215 # Pyrrhos
 	#}
@@ -4226,6 +4294,7 @@ macedonian03919 = {
 	3297.1.1 = { # made up
 		birth = yes # 457 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3325.1.1 = { # 429 BC 
 	#	add_spouse = odrysian00106 # Seuthes 
 	#}
@@ -4460,6 +4529,7 @@ macedonian03932 = {
 	3337.1.1 = { # made up
 		birth = yes # 417 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3354.1.1 = { # 400 BC, approximate
 	#	add_spouse = macedonian03931 # Amyntas 
 	#}
@@ -4617,6 +4687,9 @@ macedonian03940 = {
 	3395.1.1 = { # winter/spring 360/359 BC, approximate
 		add_spouse = dardanian00103 # Audata
 	}
+	#3395.6.1 = { # summer 359 BC, approximate
+	#	add_spouse = .... # Phila
+	#}
 	3396.12.1 = { # autumn/winter 358 BC, approximate
 		add_spouse = thessalian002a04 # Philinna
 	}
@@ -4704,7 +4777,7 @@ macedonian03943 = {
 # Line of Perdikkas III
 
 macedonian03944 = {
-	name = "Amyntas" # Amyntas IV, unlikely he actually ever served as king	
+	name = "Amyntas" # Amyntas IV, unlikely he actually ever reigned as king	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
@@ -4738,6 +4811,7 @@ macedonian03945 = {
 	3433.1.1 = { # 321 BC
 		name = "Eurydike" # adopts the name Eurydike on her marriage with Arrhidaeus
 		give_nickname = nick_hadea
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03945 # Arrhidaios
 	}
 	3437.10.1 = { # October 317 BC
@@ -4762,6 +4836,7 @@ macedonian03946 = {
 		birth = yes # 358 BC
 	}
 	3416.1.1 = { # 338 BC, made up (more likely occurred in 337 BC while Alexander was in exile, but we want Adea-Eurydice to be at least 16 when she marries Philip Arrhidaeus in 321 BC)
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03944 # Amyntas
 	}
 	3432.1.1 = { # 322 BC, approximate
@@ -4869,6 +4944,7 @@ macedonian03949 = {
 	3400.1.1 = { # approximate (probably born in the period 355-353 BC)
 		birth = yes # 354 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3418.10.1 = { # October 336 BC
 	#	add_spouse = epirote00207 # Alexandros
 	#}
@@ -5031,6 +5107,7 @@ macedonian039v03 = {
 	3368.1.1 = { # made up
 		birth = yes # 386 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3387.1.1 = { # 367 BC, approximate
 	#	add_spouse = macedonian03201 # Lagos
 	#}
@@ -5052,6 +5129,7 @@ macedonian039w01 = {
 	3345.1.1 = { # made up
 		birth = yes # 409 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3362.1.1 = { # 392 BC, speculative (if Gygaia is indeed an Argead, then her marriage to Amyntas could have occurred shortly after he usurped the throne)
 	#	add_spouse = macedonian03936 # Amyntas
 	#}
