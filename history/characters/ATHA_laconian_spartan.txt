@@ -429,7 +429,10 @@ spartan00122 = {
 	3200.1.1 = { # 554 BC, made up
 		add_spouse = spartan00128 # Euonyma
 		effect = {
-			set_relation_lover = character:spartan00128 # refused to divorce his first wife because of his love for her
+			set_relation_lover = {
+				target = character:spartan00128 # refused to divorce his first wife because of his love for her
+				reason = lover_historical_anaxandridas
+			}
 		}
 	}
 	#3212.1.1 = { # 542 BC, made up # forced by the Ephors to take a second wife due to the lack of an heir
@@ -468,11 +471,7 @@ spartan00124 = {
 	3214.1.1 = { # approximate
 		birth = yes # 540 BC
 	}
-	3234.1.1 = { # 520 BC, approximate
-		effect = {
-			set_relation_rival = character:spartan00127 # unsuccessfully challenges his half-brother Kleomenes for the throne
-		}
-	}
+	# 520 BC, approximate, unsuccessfully challenges his half-brother Kleomenes for the throne. They become rivals as a result.
 	3244.1.1 = { # 510 BC
 		death = { 
 			death_reason = death_battle # died in battle against the Carthaginians and Segestaeans
@@ -543,12 +542,18 @@ spartan00127 = {
 	}
 	3234.1.1 = { # 520 BC, approximate
 		effect = {
-			set_relation_rival = character:spartan00124 # is challenged by his half-brother Dorieus for the throne
+			set_relation_rival = {
+				target = character:spartan00124 # is challenged by his half-brother Dorieus for the throne
+				reason = rival_claimed_throne_failed
+			}
 		}
 	}
 	5249.1.1 = { # 507 BC
 		effect = {
-			set_relation_rival = character:spartan002b01 # he and Demaratus constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+			set_relation_rival = {
+				target = character:spartan002b01 # he and Demaratus constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+				reason = rival_constant_interference
+			}
 		}
 	}
 	3267.1.1 = { # 487 BC
@@ -567,12 +572,7 @@ spartan00128 = {
 	3183.1.1 = { # made up
 		birth = yes # 571 BC
 	}
-	3200.1.1 = { # 554 BC, made up
-		#add_spouse = spartan00122 # Anaxandridas
-		effect = {
-			set_relation_lover = character:spartan00122 # Anaxandridas refused to divorce her despite being under pressure from the ephors
-		}
-	}
+	# 554 BC, made up, marries Anaxandridas and becomes his lover.
 	3252.1.1 = { # made up
 		death = yes # 502 BC
 	}
@@ -830,9 +830,17 @@ spartan00143 = {
 	}
 	3479.1.1 = { # 275 BC, approximate
 		effect = {
-			set_relation_rival = character:spartan00152 # learns that Acrotatus has seduced his wife
-			set_relation_rival = character:spartan00147 # Areus
-			set_relation_rival = character:spartan002a04 # Chilonis
+			# Becomes rivals with Chilonis.
+			set_relation_rival = {
+				target = character:spartan00152 # learns that Acrotatus has seduced his wife
+				reason = rival_seduced_spouse
+				involved_character = character:spartan002a04
+			}
+			set_relation_rival = {
+				target = character:spartan00147 # Areus
+				reason = rival_encouraged_spouse_seduction
+				involved_character = character:spartan00152
+			}
 		}
 		add_pressed_claim = title:d_lakedaimon # Cleonymus leaves Sparta and swears vengeance
 		trait = denounced
@@ -931,11 +939,7 @@ spartan00147 = {
 	3440.1.1 = { # speculative
 		birth = yes # 314 BC
 	}
-	3479.1.1 = { # 275 BC, approximate
-		effect = {
-			set_relation_rival = character:spartan00143 # rivalry with Cleonymus
-		}
-	}
+	# 275 BC, approximate, becomes rivals with Cleonymus.
 	3489.1.1 = { # 265 BC
 		death = { 
 			death_reason = death_battle # died in battle against Antigonus Gonatas
@@ -1051,14 +1055,14 @@ spartan00152 = {
 	}
 	3478.1.1 = { # 276 BC, approximate
 		effect = {
-			set_relation_lover = character:spartan002a04 # begins an affair with Chilonis
+			set_relation_lover = {
+				target = character:spartan002a04 # begins an affair with Chilonis
+				reason = lover_web_of_intrigue
+				involved_character = character:spartan00152 # Cleonymus
+			}
 		}
 	}
-	3479.1.1 = { # 275 BC, approximate
-		effect = {
-			set_relation_rival = character:spartan00143 # Cleonymus learns of the affair
-		}
-	}
+	# 275 BC, approximate, becomes rivals with Cleonymus
 	3483.1.1 = { # 271 BC, approximate
 		add_spouse = spartan002a04 # Chilonis
 	}
@@ -1579,7 +1583,10 @@ spartan00226 = {
 	}
 	3239.1.1 = { # 515 BC, made up
 		effect = {
-			set_relation_rival = character:spartan002b01 # Demaratus steals and marries the woman Latychidas was betrothed to
+			set_relation_rival = {
+				target = character:spartan002b01 # Demaratus steals and marries the woman Latychidas was betrothed to
+				reason = rival_historical_demaratus_leotychidas
+			}
 		}
 	}
 	#3262.1.1 = { # 492 BC, made up
@@ -2245,13 +2252,15 @@ spartan002a04 = {
 	}
 	3478.1.1 = { # 276 BC, approximate
 		#add_spouse = spartan00143 # Kleonymos
-		effect = {
-			set_relation_lover = character:spartan00152 # begins an affair with Acrotatus
-		}
+		# Becomes lovers with Acrotatus.
 	}
 	3479.1.1 = { # 275 BC, approximate
 		effect = {
-			set_relation_rival = character:spartan00143
+			set_relation_rival = {
+				target = character:spartan00143 # Cleonymus
+				reason = rival_cuckold
+				involved_character = character:spartan00152
+			}
 			add_opinion = {
 				target = character:spartan00143 # according to Plutarch, Chilonis was prepared to die before falling into Cleonymus' hands
 				modifier = hate_opinion
@@ -2289,15 +2298,9 @@ spartan002b01 = {
 	}
 	3239.1.1 = { # 515 BC, made up
 		#add_spouse = ... # Perkalon
-		effect = {
-			set_relation_rival = character:spartan00226 # Demaratus steals and marries the woman Leotychidas was betrothed to
-		}
+		# Becomes rivals with Leotychidas.
 	}
-	5249.1.1 = { # 507 BC
-		effect = {
-			set_relation_rival = character:spartan00127 # he and Cleomenes constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
-		}
-	}
+	# 507 BC, rivals Cleomenes, he and Cleomenes constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens
 	#3239.1.1 = { # 491 BC
 	#	employer = ... # flees to the court of Xerxes
 	#}

@@ -76,7 +76,10 @@ macedonian00101 = {
 	#}
 	3433.1.1 = { # 321 BC
 		effect = {
-			set_relation_best_friend = character:macedonian00102 # was extremely close to Demetrius 
+			set_relation_best_friend = {
+				target = character:macedonian00102 # was extremely close to Demetrius 
+				reason = best_friend_historical
+			}
 		}
 		trait = confider
 	}
@@ -118,12 +121,7 @@ macedonian00102 = {
 	3418.1.1 = { # approximate
 		birth = yes # January/February 336 BC
 	}
-	3433.1.1 = { # 321 BC
-		effect = {
-			set_relation_best_friend = character:macedonian00101 # was extremely close to his father
-			#set_relation_friend = character:... # was also close to his mother
-		}
-	}
+	# 321 BC, Demetrius was very close to his mother and father; meaning a best friend relationship.
 	#3434.1.1 = { # 320 BC, approximate
 	#	add_spouse = ... # Phila
 	#}
@@ -232,14 +230,13 @@ macedonian00104 = {
 		}
 		birth = yes # 319 BC
 	}
-	3450.1.1 = { # 304 BC, approximate
-		effect = {
-			set_relation_friend = character:euboean00102 # was good friends with the philosopher Menedemos
-		}
-	}
+	# 304 BC, approximate, becomes friends with the philosopher Menedemos
 	3474.1.1 = { # 280 BC
 		effect = {
-			set_relation_friend = character:macedonian00204 # loyally supported by his half-brother Craterus throughout
+			set_relation_friend = {
+				target = character:macedonian00204 # loyally supported by his half-brother Craterus throughout
+				reason = friend_loyal_support
+			}
 			add_hook = {
 				target = character:macedonian00204
 				type = loyalty_hook
@@ -298,11 +295,7 @@ macedonian00106 = {
 	#3505.1.1 = { # 249 BC
 	#	add_spouse = ... # Berenike
 	#}
-	3506.1.1 = { # 248 BC
-		effect = {
-			set_relation_lover = character:macedonian02908 # begins an affair with his mother-in-law Apame
-		}
-	}
+	# 248 BC, begins an affair with his mother-in-law Apame
 	3507.1.1 = { # 247 BC
 		death = { 
 			death_reason = death_murder_known # supposedly murdered on the orders of Berenice
@@ -433,7 +426,11 @@ macedonian00112 = {
 		add_spouse = epirote00228 # Phthia
 		remove_spouse = macedonian02911 # Stratonike
 		effect = {
-			set_relation_rival = character:macedonian02911 # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+			set_relation_rival = {
+				target = character:macedonian02911 # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+				reason = rival_polygamous_marriage
+				involved_character = epirote00228
+			}
 		}
 	}
 	3522.1.1 = { # 232 BC, speculative
@@ -587,11 +584,7 @@ macedonian00117 = {
 	3540.1.1 = { # made up
 		birth = yes # 214 BC
 	}
-	3574.1.1 = { # 180 BC
-		effect = {
-			set_relation_rival = character:macedonian00118 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
-		}
-	}
+	# 180 BC, becomes rival with Perseus over Demetrius' murder
 	3575.12.1 = { # December 179 BC, approximate
 		death = { 
 			death_reason = death_execution # put to death by Perseus following his seizure of the throne
@@ -615,16 +608,15 @@ macedonian00118 = {
 	3542.1.1 = {
 		birth = yes # 212 BC
 	}
-	3572.1.1 = { # 182 BC
-		effect = {
-			set_relation_rival = character:macedonian00119 # a rivalry develops between Perseus and Demetrius
-		}
-	}
+	# 182 BC, a rivalry develops between Perseus and Demetrius
 	3574.1.1 = { # 180 BC
 		trait = murderer
 		trait = kinslayer_3 # although he didn't order the murder of Demetrius, he was more or less the mastermind of the whole affair
 		effect = {
-			set_relation_rival = character:macedonian00117 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+			set_relation_rival = {
+				target = character:macedonian00117 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+				reason = rival_murderer
+			}
 		}
 	}
 	3575.1.1 = { # 179 BC
@@ -656,7 +648,10 @@ macedonian00119 = {
 	}
 	3572.1.1 = { # 182 BC
 		effect = {
-			set_relation_rival = character:macedonian00118 # a rivalry develops between Perseus and Demetrius
+			set_relation_rival = {
+				target = character:macedonian00118 # a rivalry develops between Perseus and Demetrius
+				reason = rival_heir_wants_throne
+			}
 		}
 	}
 	3574.1.1 = { # 180 BC
@@ -875,11 +870,7 @@ macedonian00204 = {
 	3433.1.1 = {
 		birth = yes # 321 BC
 	}
-	3474.1.1 = { # 280 BC
-		effect = {
-			set_relation_friend = character:macedonian00104 # loyally supported his half-brother Antigonus
-		}
-	}
+	# 280 BC, becomes friend with Antigonos Gonatas and loyally supported him.
 	3501.1.1 = { # speculative
 		death = yes # 253 BC
 	}
@@ -2134,7 +2125,7 @@ macedonian02401 = {
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
 			add_character_flag = has_gift_estate_rights # granted estates in Asia Minor
-			set_relation_friend = character:macedonian02904 # the extensive grants he received from Antiochus I suggests they may have had a close personal relationship
+			# Becomes friends with Antiochus. The extensive grants he received from Antiochus I suggests they may have had a close personal relationship
 		}	
 	}
 	3490.1.1 = { # made up
@@ -2420,7 +2411,10 @@ macedonian02904 = {
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
-			set_relation_friend = character:macedonian02401 # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+			set_relation_friend = {
+				target = character:macedonian02401 # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+				reason = friend_historical_antiochos_i_achaios
+			}
 		}	
 	}
 	3479.1.1 = { # 275 BC. Becomes Soter after the battle against the Galatians.
@@ -2528,7 +2522,10 @@ macedonian02908 = {
 	# TODO: Marries Magas of Cyrene in 275 BC.
 	3506.1.1 = { # 248 BC
 		effect = {
-			set_relation_lover = character:macedonian00106 # begins an affair with her son-in-law Demetrius the Fair
+			set_relation_lover = {
+				target = character:macedonian00106
+				reason = lover_historical_demetrius_the_fair # begins an affair with her son-in-law Demetrius the Fair
+			}
 		}
 	}
 	3510.1.1 = { # made up
@@ -2579,7 +2576,10 @@ macedonian02910 = {
 		add_spouse = macedonian02404 # Laodike
 		effect = { 	# Antiochus seems to have had a deeper relationship with Laodike since he came back
 					# to her after divorcing her. He also gave her much land after the divorce.
-			set_relation_lover = character:macedonian02404
+			set_relation_lover = {
+				target = character:macedonian02404
+				reason = lover_history
+			}
 		}
 	}
 	3496.1.1 = { # 258 BC after killing Timarchus of Miletus.

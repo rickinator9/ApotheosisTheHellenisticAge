@@ -108,3 +108,89 @@ tradition_ceremonial_generosity = {
 		}
 	}
 }
+
+tradition_headhunting = {
+	category = societal
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = battle.dds
+	}
+
+	is_shown = {
+		NOT = { has_cultural_tradition = tradition_pacifism }
+		has_cultural_pillar = heritage_celtic
+	}
+	can_pick = { #This replaces Battlefield Looters
+		trigger_if = {
+			limit = {
+				OR = {
+					NOT = { exists = scope:replacing }
+					NOT = { scope:replacing = flag:tradition_battlefield_looters }
+				}
+			}
+			NOT = { has_cultural_tradition = tradition_battlefield_looters } #To prevent stacking after hybridization
+		}
+	}
+
+	parameters = {
+		unlock_headhunting = yes #TODO
+		gain_gold_from_battles = yes
+		less_prestige_from_battles = yes
+	}
+	character_modifier = {
+		max_loot_mult = 0.5
+	}
+
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						any_in_list = { list = traits this = flag:ethos_bellicose }
+						any_in_list = { list = traits this = flag:ethos_bureaucratic }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_or_bureaucratic_desc
+				}
+			}
+			if = {
+				limit = {
+					trigger_if = {
+						limit = {
+							scope:character = {
+								is_ai = no
+							}
+						}
+						NOT = {
+							any_ruler = {
+								count >= 3
+								culture = prev
+								primary_title.tier >= tier_county
+								OR = {
+									has_trait = reaver
+								}
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = rulers_with_reaver_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+
+	ai_will_do = { value = 100 }
+}

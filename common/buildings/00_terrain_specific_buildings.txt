@@ -38,6 +38,16 @@ pastures_01 = {
 		tax_mult = 0.01
 		levy_size = 0.01
 	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.01
+		slingers_recruitment_cost_mult = -0.01
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_1
+	}
 	
 	next_building = pastures_02
 
@@ -45,6 +55,8 @@ pastures_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -101,6 +113,16 @@ pastures_02 = {
 		tax_mult = 0.01
 		levy_size = 0.01
 	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.02
+		slingers_recruitment_cost_mult = -0.02
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_2
+	}
 	
 	next_building = pastures_03
 	
@@ -108,6 +130,10 @@ pastures_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -152,6 +178,16 @@ pastures_03 = {
 		is_coastal = yes
 		tax_mult = 0.02
 		levy_size = 0.02
+	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.03
+		slingers_recruitment_cost_mult = -0.03
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_3
 	}
 	
 	next_building = pastures_04
@@ -207,6 +243,16 @@ pastures_04 = {
 		is_coastal = yes
 		tax_mult = 0.02
 		levy_size = 0.02
+	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.04
+		slingers_recruitment_cost_mult = -0.04
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_4
 	}
 	
 	next_building = pastures_05
@@ -264,6 +310,16 @@ pastures_05 = {
 	county_modifier = {
 		development_growth_factor = 0.02
 	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.05
+		slingers_recruitment_cost_mult = -0.05
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_5
+	}
 	
 	next_building = pastures_06
 	
@@ -320,6 +376,16 @@ pastures_06 = {
 		is_coastal = yes
 		tax_mult = 0.03
 		levy_size = 0.03
+	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.06
+		slingers_recruitment_cost_mult = -0.06
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_6
 	}
 	
 	next_building = pastures_07
@@ -382,6 +448,16 @@ pastures_07 = {
 		tax_mult = 0.04
 		levy_size = 0.04
 	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.07
+		slingers_recruitment_cost_mult = -0.07
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_7
+	}
 	
 	next_building = pastures_08
 	
@@ -443,6 +519,16 @@ pastures_08 = {
 		tax_mult = 0.04
 		levy_size = 0.04
 	}
+	#ATHA: Bonuses for Transhumant Shepherds tradition
+	character_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		slingers_maintenance_mult = -0.08
+		slingers_recruitment_cost_mult = -0.08
+	}
+	province_culture_modifier = {
+		parameter = pastures_shepherd_building_bonuses
+		defender_holding_advantage = normal_building_advantage_tier_8
+	}
 	
 	ai_value = {
 		base = 3
@@ -494,6 +580,8 @@ hunting_grounds_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -562,6 +650,10 @@ hunting_grounds_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -940,7 +1032,9 @@ orchards_01 = {
 	type_icon = "icon_building_orchards.dds"
 	
 	ai_value = {
-		base = 10
+		base = 15 # Significantly higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -979,6 +1073,10 @@ orchards_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -1290,7 +1388,9 @@ farm_estates_01 = {
 	type_icon = "icon_building_farm_estates.dds"
 	
 	ai_value = {
-		base = 10
+		base = 15 # Significantly higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -1329,6 +1429,10 @@ farm_estates_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -1632,6 +1736,7 @@ military_camps_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -1711,6 +1816,10 @@ military_camps_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2020,7 +2129,8 @@ regimental_grounds_01 = {
 	type_icon = "icon_building_regimental_grounds.dds"
 	
 	ai_value = {
-		base = 10
+		base = 11 # One of the best buildings, a slight nudge
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			add = -99
@@ -2067,6 +2177,10 @@ regimental_grounds_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2408,6 +2522,7 @@ ramparts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -2463,6 +2578,10 @@ ramparts_02 = {
 			}
 		}
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2792,6 +2911,8 @@ curtain_walls_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		modifier = {
 			add = 1
 			scope:holder = {
@@ -2858,6 +2979,10 @@ curtain_walls_02 = {
 		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3200,6 +3325,7 @@ watchtowers_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		modifier = {
 			add = 1
 			scope:holder = {
@@ -3265,6 +3391,10 @@ watchtowers_02 = {
 			}
 		}
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3607,7 +3737,9 @@ cereal_fields_01 = {
 	type_icon = "icon_building_cereal_fields.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -3662,6 +3794,10 @@ cereal_fields_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3974,6 +4110,7 @@ outposts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4038,6 +4175,10 @@ outposts_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -4401,6 +4542,7 @@ barracks_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4453,6 +4595,10 @@ barracks_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -4775,6 +4921,7 @@ camel_farms_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4782,6 +4929,10 @@ camel_farms_01 = {
 			NOT = {
 				has_building_or_higher = regimental_grounds_01
 			}
+		}
+		modifier = {
+			add = -9
+			has_building_or_higher = city_01
 		}
 	}
 }
@@ -4825,6 +4976,10 @@ camel_farms_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5171,7 +5326,9 @@ logging_camps_01 = {
 	type_icon = "icon_building_logging_camps.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -5226,6 +5383,10 @@ logging_camps_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5585,7 +5746,9 @@ peat_quarries_01 = {
 	type_icon = "icon_building_peat_quarries.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -5632,6 +5795,10 @@ peat_quarries_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5978,6 +6145,8 @@ hill_farms_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -6036,6 +6205,10 @@ hill_farms_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -6414,7 +6587,9 @@ elephant_pens_01 = {
 	type_icon = "icon_building_elephant_pens.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -6461,6 +6636,10 @@ elephant_pens_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -6819,6 +6998,8 @@ plantations_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -6890,6 +7071,10 @@ plantations_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -7233,7 +7418,9 @@ quarries_01 = {
 	type_icon = "icon_building_quarries.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -7290,6 +7477,10 @@ quarries_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -7646,6 +7837,7 @@ hill_forts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -7694,6 +7886,10 @@ hill_forts_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 

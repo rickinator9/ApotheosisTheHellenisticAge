@@ -8,7 +8,10 @@
 @illustration_iberian_christian = "gfx/interface/illustrations/holding_types/fp2_temple_iberian_christian.dds"
 @illustration_iberian_islamic = "gfx/interface/illustrations/holding_types/fp2_temple_iberian_islamic.dds"
 
+#ATHA
 @illustration_greek = "gfx/interface/illustrations/holding_types/temple_greek.dds"
+@illustration_dacian = "gfx/interface/illustrations/holding_types/temple_dacian.dds"
+@illustration_dacian_2 = "gfx/interface/illustrations/holding_types/temple_dacian_2.dds"
 
 temple_01 = {
 	construction_time = slow_construction_time
@@ -34,7 +37,7 @@ temple_01 = {
 	asset = {
 		type = pdxmesh
 		name = "building_western_temple_pagan_01_mesh"
-		illustration = @illustration_northern_pagan
+		illustration = @illustration_dacian_2
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
 		graphical_cultures = { norse_building_gfx } #TODO: Update once thracian_gfx is created
 	}
@@ -249,7 +252,7 @@ temple_02 = {
 	asset = {
 		type = pdxmesh
 		name = "building_western_temple_pagan_01_mesh"
-		illustration = @illustration_northern_pagan
+		illustration = @illustration_dacian_2
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 0 } }
 		graphical_cultures = { norse_building_gfx } #TODO: Update once thracian_gfx is created
 	}
@@ -351,7 +354,7 @@ temple_03 = {
 	asset = {
 		type = pdxmesh
 		name = "building_western_temple_pagan_02_mesh"
-		illustration = @illustration_northern_pagan
+		illustration = @illustration_dacian_2
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
 		graphical_cultures = { norse_building_gfx } #TODO: Update once thracian_gfx is created
 	}
@@ -452,7 +455,7 @@ temple_04 = {
 	asset = {
 		type = pdxmesh
 		name = "building_western_temple_pagan_02_mesh"
-		illustration = @illustration_northern_pagan
+		illustration = @illustration_dacian_2
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Temples/pagan_temple" soundparameter = { "Tier" = 1 } }
 		graphical_faiths = { "pagan_gfx" } #TODO: Update once thracian_gfx is created
 	}
@@ -574,6 +577,7 @@ monastic_schools_01 = {
 	
 	ai_value = {
 		base = 500
+		ai_tier_1_building_modifier = yes
 		modifier = {
 			add = 500
 			scope:holder = {
@@ -856,6 +860,7 @@ megalith_01 = {
 	
 	ai_value = {
 		base = 500
+		ai_tier_1_building_modifier = yes
 		modifier = {
 			add = 500
 			scope:holder = {

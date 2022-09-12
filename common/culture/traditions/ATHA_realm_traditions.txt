@@ -48,6 +48,7 @@ tradition_former_slaves = {
 	
 	parameters = {
 		landing_same_culture_lowborns_gives_renown = yes # Represents the creation of a new elite in the gap left by their former masters
+		cheaper_guest_recruitment = yes # Representing the flock of exiles and immigrants joining the community
 	}
 	character_modifier = {
 		opinion_of_liege = -10 # People of this culture want to remain free, and any liege lording over them is an obstacle for them
@@ -57,6 +58,7 @@ tradition_former_slaves = {
 	county_modifier = {
 		development_growth_factor = 0.2 # The locals now have the freedom and resources to develop their lands, and are inviting exiles and immigrants to join them
 		county_opinion_add = 10 # The people of this culture are happy and grateful for their freedom
+		monthly_county_control_change_add = -0.2 # The locals are less keen on centralised authority
 	}
 	
 	cost = { prestige = 9999 }
@@ -153,6 +155,122 @@ tradition_abundant_hillforts = {
 				scope:character = { ai_boldness >= 0 }
 			}
 			multiply = 0.25
+		}
+	}
+}
+
+tradition_transhumant_shepherds = {
+	category = realm
+
+	layers = {
+		0 = steward
+		1 = western
+		4 = mountain.dds
+	}
+	
+	is_shown = {
+		NOT = {
+			has_cultural_tradition = tradition_pastoralists
+		}
+	}
+	can_pick = {
+		custom_tooltip = {
+			text = culture_in_hills_or_mountains_terrain_desc
+			any_culture_county = {
+				percent >= 0.4
+				any_county_province = {
+					OR = {
+						terrain = hills
+						terrain = valley
+						terrain = mountains
+						terrain = desert_mountains
+					}
+				}
+			}
+		}
+	}
+	
+	parameters = {
+		pastures_shepherd_building_bonuses = yes # cheaper slingers and extra defender advantage
+		hunting_traits_more_common = yes # accustomed to hunting predators
+	}
+	county_modifier = {
+		monthly_county_control_change_add = -0.2 # more difficult to control a migratory population
+	}
+	character_modifier = {
+		prowess = 1 # extra prowess from defending their flocks from predators
+		slingers_damage_mult = 0.05 # the sling was historically the weapon of shepherds
+		slingers_screen_mult = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						any_in_list = { list = traits this = flag:ethos_bellicose }
+						any_in_list = { list = traits this = flag:ethos_stoic }
+						any_in_list = { list = traits this = flag:ethos_communal }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_stoic_or_communal_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_culture_county = {
+							percent >= 0.6
+							any_county_province = {
+								OR = {
+									terrain = hills
+									terrain = valley
+									terrain = mountains
+									terrain = desert_mountains
+								}
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_in_hills_or_mountains_terrain_percentage_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				NOT = {
+					scope:character = {
+						any_sub_realm_county = {
+							percent >= 0.6
+							culture = scope:character.culture
+							any_county_province = {
+								OR = {
+									terrain = hills
+									terrain = valley
+									terrain = mountains
+									terrain = desert_mountains
+								}
+							}
+						}
+					}
+				}
+			}
+			multiply = 0
 		}
 	}
 }

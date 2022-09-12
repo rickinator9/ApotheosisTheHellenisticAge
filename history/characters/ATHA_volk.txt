@@ -1,0 +1,38 @@
+﻿# Bathanatti - Broggia
+
+volk00101 = {
+	name = "Bathanattos" # Leader of some survivors of the attack on the Temple of Delphi, considered the founder of the Skordiski
+	dynasty = volkdyn001 # Bathanatti
+	religion = skordism_faith
+	culture = volk
+	trait = education_martial_3 # To get his people home and build a Skordiskian hegemony, Bathanattos would have needed a sound strategic mind
+	trait = brave # Bathanattos is praised for his bravery in successfully leading his people home after the Delphi disaster
+	trait = patient # Papazoglu suggests that Bathanattos' success in leading his people home safely was in not taking the fastest route
+	trait = gregarious # Bathanattos is credited with using diplomacy to unit the disparate Celtic raider bands into the Skordiskian federation
+	diplomacy = 8
+	martial = 8
+	stewardship = 7
+	intrigue = 7
+	learning = 6
+	prowess = 10
+	3441.1.1 = { # 313 BC, made up
+		birth = yes
+	}
+	3476.1.1 = { # 278 BC. Successfully leads his people home after the Delphi disaster
+		effect = {
+			set_permanent_nickname_effect = { NICKNAME = nick_the_saviour }
+		}
+		
+   		# Temporary buff to enable him to form the Skoridiski easier
+    	add_gold = 300
+		spawn_army = {
+			name = event_troop_default_name
+			levies = 500
+			location = province:1038
+			origin = province:1038
+		}
+	}
+	3504.1.1 = { # 250 BC, made up
+		death = yes
+	}
+}

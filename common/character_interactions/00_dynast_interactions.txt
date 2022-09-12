@@ -46,7 +46,7 @@ disinherit_interaction = {
 		scope:actor.dynasty = {
 			dynasty_prestige >= medium_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
 		trigger_if = {
 			limit = {
@@ -343,7 +343,7 @@ disinherit_children_interaction = {
 		scope:actor = {
 			prestige >= major_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
 		trigger_if = {
 			limit = {
@@ -596,7 +596,7 @@ restore_inheritance_interaction = {
 		scope:actor.dynasty ={
 			dynasty_prestige >= miniscule_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 	}
 
 	on_auto_accept = {
@@ -709,7 +709,7 @@ denounce_interaction = {
 		scope:actor.dynasty = {
 			dynasty_prestige >= minor_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
 	}
 
@@ -950,7 +950,7 @@ forgive_interaction = {
 		scope:actor.dynasty = {
 			dynasty_prestige >= miniscule_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 	}
 
 	on_auto_accept = {
@@ -1462,7 +1462,7 @@ dynast_end_dynasty_wars_interaction = {
 		scope:actor.dynasty = {
 			dynasty_prestige >= medium_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		scope:actor = {
 			NOT = {
 				is_at_war_with = scope:recipient
@@ -1518,7 +1518,7 @@ dynast_legitimize_bastard_interaction = {
 		scope:actor.dynasty = {
 			dynasty_prestige >= medium_dynasty_prestige_value
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 	}
 
 	auto_accept = yes
