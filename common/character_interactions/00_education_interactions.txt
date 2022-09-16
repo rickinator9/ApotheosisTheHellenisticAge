@@ -2390,6 +2390,23 @@ offer_guardianship_interaction = {
 			}
 			desc = GRANDEUR_REASON
 		}
+
+		modifier = {
+			add = -200
+			exists = scope:secondary_recipient.house
+			scope:recipient = {
+				exists = house.house_head
+				house = scope:secondary_recipient.house
+				house.house_head = {
+					any_owned_story = {
+						story_type = story_cycle_house_feud
+						exists = var:house_feud_house
+						var:house_feud_house = scope:actor.house
+					}
+				}
+			}
+			desc = AI_GUARDIAN_FEUD_HESITANCE
+		}
 	}
 	
 	send_option = {

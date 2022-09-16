@@ -2487,6 +2487,11 @@ bp1_yearly.5601 = {
 						has_trait = callous
 						has_trait = vengeful
 					}
+					NOT = { #Make sure he's actually buried
+						scope:bp1_yearly_5601_dead_nemesis.faith = { 
+							has_doctrine_parameter = sky_burials_active 
+						}
+					}
 				}
 				desc = bp1_yearly.5601.bodysnatcher
 			}
@@ -2504,7 +2509,86 @@ bp1_yearly.5601 = {
 		character = scope:dead_nemesis_spouse
 		animation = grief
 	}
-	override_background = { event_background = alley_day }
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_europe }
+			}
+		}
+		event_background = alley_day
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_asia_minor }
+			}
+		}
+		event_background = bp1_courtyard_mena
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_middle_east }
+			}
+		}
+		event_background = garden
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_india }
+			}
+		}
+		event_background = bp1_courtyard_indian
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_africa }
+			}
+		}
+		event_background = drylands
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = {
+					OR = { 
+						geographical_region = world_tibet 
+						geographical_region = world_burma
+					}
+				}
+			}
+		}
+		event_background = market_east
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = { geographical_region = world_steppe }
+			}
+		}
+		event_background = wilderness_steppe
+	}
+	override_background = {
+		trigger = {
+			root.capital_county = {
+				title_province = {
+					NOT = {
+						geographical_region = world_tibet 
+						geographical_region = world_burma
+						geographical_region = world_africa
+						geographical_region = world_india
+						geographical_region = world_middle_east
+						geographical_region = world_asia_minor
+						geographical_region = world_europe
+						geographical_region = world_steppe
+					}
+				}
+			}
+		}
+		event_background = courtyard
+	}
 	
 	cooldown = { years = 50 }
 	
@@ -2794,7 +2878,7 @@ bp1_yearly.5704 = {
 		any_relation = {
 			type = rival
 			is_attracted_to_gender_of = root
-			is_ai = yes
+			is_available_ai_adult = yes
 		}
 	}
 
@@ -2803,7 +2887,7 @@ bp1_yearly.5704 = {
 			type = rival
 				limit = {
 					is_attracted_to_gender_of = root
-					is_ai = yes
+					is_available_ai_adult = yes
 				}
 			save_scope_as = seduced_rival
 		}
@@ -4571,6 +4655,9 @@ bp1_yearly.5713 = {
 		any_spouse = {
 			is_available_ai_adult = yes
 		}
+
+		# You have enough money to afford this
+		gold >= medium_gold_value
 	}
 
 	immediate = {
