@@ -164,16 +164,12 @@ can_recruit_maa_peltenai_as_foreigner_trigger = {
 
 can_recruit_maa_kretikoi_peltastai_natively_trigger = {
   can_recruit_cretan_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_cretan
-  }
 }
 
 can_recruit_maa_kretikoi_peltastai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_kretikoi_peltastai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_cretan_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_cretan
   }
 }
 
@@ -193,7 +189,12 @@ can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = {
 }
 
 can_recruit_maa_agrianikoi_pelekephoroi_natively_trigger = {
-  can_recruit_maa_natively_trigger = yes
+  culture = {
+    OR = {
+      this = culture:agrianian
+      any_parent_culture_or_above = { this = culture:agrianian }
+    }
+  }
   any_realm_province = {
     geographical_region = ATHA_aor_agrianes
   }
@@ -202,30 +203,30 @@ can_recruit_maa_agrianikoi_pelekephoroi_natively_trigger = {
 can_recruit_maa_agrianikoi_pelekephoroi_as_foreigner_trigger = {
   NOT = { can_recruit_maa_agrianikoi_pelekephoroi_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_natively_trigger = yes
+    culture = {
+      OR = {
+        this = culture:agrianian
+        any_parent_culture_or_above = { this = culture:agrianian }
+      }
+    }
     geographical_region = ATHA_aor_agrianes
   }
 }
 
 can_recruit_maa_rompaianai_natively_trigger = {
   can_recruit_rhodopian_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_rhodopian
-  }
 }
 
 can_recruit_maa_rompaianai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_rompaianai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_rhodopian_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_rhodopian
   }
 }
 
 ###civilized#elite#skirmishers###
-
 can_recruit_maa_hyperaspistai_natively_trigger = {
-  can_recruit_maa_natively_trigger = yes
+  culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
     geographical_region = ATHA_aor_hellenic_asia
   }
@@ -234,7 +235,7 @@ can_recruit_maa_hyperaspistai_natively_trigger = {
 can_recruit_maa_hyperaspistai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_hyperaspistai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_natively_trigger = yes
+    culture = { has_cultural_pillar = heritage_greek }
     geographical_region = ATHA_aor_hellenic_asia
   }
 }
@@ -261,7 +262,12 @@ can_recruit_elite_maa = {
 }
 
 can_recruit_maa_ardiaian_thorakitai_natively_trigger = {
-  can_recruit_maa_natively_trigger = yes
+  culture = {
+    OR = {
+      this = culture:dassian
+      any_parent_culture_or_above = { this = culture:dassian }
+    }
+  }
   any_realm_province = {
     geographical_region = ATHA_aor_ardinei
   }
@@ -270,7 +276,12 @@ can_recruit_maa_ardiaian_thorakitai_natively_trigger = {
 can_recruit_maa_ardiaian_thorakitai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_ardiaian_thorakitai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_natively_trigger = yes
+    culture = {
+      OR = {
+        this = culture:dassian
+        any_parent_culture_or_above = { this = culture:dassian }
+      }
+    }
     geographical_region = ATHA_aor_ardinei
   }
 }
@@ -308,34 +319,45 @@ can_recruit_maa_asanai_as_foreigner_trigger = {
 ###civilized#slingers#superior###
 
 can_recruit_maa_rodioi_sphendonetai_natively_trigger = {
-  can_recruit_maa_natively_trigger = yes
+  culture = {
+    OR = {
+      this = culture:dorian
+      any_parent_culture_or_above = { this = culture:dorian }
+    }
+  }
   any_realm_province = {
-    geographical_region = ATHA_aor_dorian
+    geographical_region = ATHA_aor_rhodian
   }
 }
 
 can_recruit_maa_rodioi_sphendonetai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_rodioi_sphendonetai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_dorian
+    culture = {
+      OR = {
+        this = culture:dorian
+        any_parent_culture_or_above = { this = culture:dorian }
+      }
+    }
+    geographical_region = ATHA_aor_rhodian
   }
 }
 
 ###civilized#slingers#elite###
 
 can_recruit_maa_skaplinai_natively_trigger = {
-  can_recruit_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_paeonia
+  culture = {
+    OR = {
+      this = culture:paeonian
+      any_parent_culture_or_above = { this = culture:paeonian }
+    }
   }
 }
 
 can_recruit_maa_skaplinai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_skaplinai_natively_trigger = yes }
   any_realm_province = {
-    can_recruit_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_paeonia
+    can_recruit_maa_skaplinai_natively_trigger = yes
   }
 }
 
@@ -380,16 +402,12 @@ can_recruit_maa_anganai_as_foreigner_trigger = {
 
 can_recruit_maa_kretikoi_toxotai_natively_trigger = {
   can_recruit_cretan_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_cretan
-  }
 }
 
 can_recruit_maa_kretikoi_toxotai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_kretikoi_toxotai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_cretan_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_cretan
   }
 }
 
@@ -400,8 +418,9 @@ can_recruit_maa_kretikoi_toxotai_as_foreigner_trigger = {
 can_recruit_maa_hoplitai_natively_trigger = {
   culture = {
     OR = {
+      this = culture:mathian
+      any_parent_culture_or_above = { this = culture:mathian }
       has_cultural_pillar = heritage_greek
-      has_cultural_pillar = heritage_illyrian
       has_cultural_pillar = heritage_anatolian
     }
   }
@@ -419,8 +438,9 @@ can_recruit_maa_hoplitai_as_foreigner_trigger = {
 can_recruit_maa_thureophoroi_natively_trigger = {
   culture = {
     OR = {
+      this = culture:mathian
+      any_parent_culture_or_above = { this = culture:mathian }
       has_cultural_pillar = heritage_greek
-      has_cultural_pillar = heritage_illyrian
       has_cultural_pillar = heritage_anatolian
       has_cultural_pillar = heritage_thracian
     }
@@ -469,32 +489,16 @@ can_recruit_maa_perioikoi_hoplitai_as_foreigner_trigger = {
   }
 }
 
-can_recruit_maa_galatikoi_Katoikoi_natively_trigger = {
-  can_recruit_epirote_maa_natively_trigger = yes
+can_recruit_maa_galatikoi_Katoikoi_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
     geographical_region = ATHA_aor_galatikoi
   }
 }
 
-can_recruit_maa_galatikoi_Katoikoi_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_galatikoi_Katoikoi_natively_trigger = yes }
+can_recruit_maa_katoikoi_thraikes_trigger = {
+  culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
-    can_recruit_epirote_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_galatikoi
-  }
-}
-
-can_recruit_maa_katoikoi_thraikes_natively_trigger = {
-  can_recruit_epirote_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_macedonian_katoikoi
-  }
-}
-
-can_recruit_maa_katoikoi_thraikes_as_foreigner_trigger = {
-  NOT = { can_recruit_maa_katoikoi_thraikes_natively_trigger = yes }
-  any_realm_province = {
-    can_recruit_epirote_maa_natively_trigger = yes
     geographical_region = ATHA_aor_macedonian_katoikoi
   }
 }
@@ -532,10 +536,6 @@ can_recruit_maa_homoioi_hoplitai_as_foreigner_trigger = {
 }
 
 ###civilized#heavy_infantry#guard###
-
-can_recruit_elite_maa = {
-  is_independent_ruler = yes
-}
 
 can_recruit_maa_homoioi_hippeis_natively_trigger = {
   can_recruit_laconian_maa_natively_trigger = yes
@@ -649,10 +649,6 @@ can_recruit_maa_argyraspides_as_foreigner_trigger = {
 }
 
 ###civilized#pikemen#elite###
-
-can_recruit_elite_maa = {
-  is_independent_ruler = yes
-}
 
 #############################
 
@@ -773,24 +769,16 @@ can_recruit_maa_molosson_hippeis_as_foreigner_trigger = {
 
 can_recruit_maa_zibutai_natively_trigger = {
   can_recruit_odrysian_maa_natively_trigger = yes
-  any_realm_province = {
-    geographical_region = ATHA_aor_odrysian
-  }
 }
 
 can_recruit_maa_zibutai_as_foreigner_trigger = {
   NOT = { can_recruit_maa_zibutai_natively_trigger = yes }
   any_realm_province = {
     can_recruit_odrysian_maa_natively_trigger = yes
-    geographical_region = ATHA_aor_odrysian
   }
 }
 
 ###civilized#elite#heavy_cavalry###
-
-can_recruit_elite_maa = {
-  is_independent_ruler = yes
-}
 
 can_recruit_maa_hiera_ile_natively_trigger = {
   can_recruit_macedonian_maa_natively_trigger = yes
