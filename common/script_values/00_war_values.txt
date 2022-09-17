@@ -188,15 +188,6 @@ viking_conquest_ai_score_value = {
 				}
 				multiply = 10
 			}
-			if = { # Norsemen should not rush the Pope...
-				limit = {
-					scope:attacker.faith.religion = faith:norse_pagan.religion
-					scope:defender = {
-						has_title = title:k_papal_state
-					}
-				}
-				multiply = 0.01
-			}
 		}
 	}
 }
