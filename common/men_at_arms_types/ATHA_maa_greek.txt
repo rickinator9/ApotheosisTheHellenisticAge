@@ -174,8 +174,8 @@ skiritai_peltastai = {
         }
     }
 
-    damage = 25
-    toughness = 10
+    damage = 20
+    toughness = 15
     pursuit = 10
     screen = 10
 
@@ -184,6 +184,42 @@ skiritai_peltastai = {
         forest = { damage = 5 }
         plains = { toughness = -5 }
         drylands = { toughness = -5 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    icon = skirmishers
+}
+
+#Anatolian#Superior#
+anatolikoi_phyletai = {
+    type = skirmishers
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_anatolikoi_phyletai_natively_trigger = yes
+            can_recruit_maa_anatolikoi_phyletai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 25
+    toughness = 10
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        hills = { damage = 10 }
     }
 
     counters = {
