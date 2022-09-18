@@ -142,4 +142,24 @@ beards_scripted_characters = {
             }
         }
     }
+
+    male_beard_northern_01 = { # Big wild
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.48 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 999
+                exists = this
+                exists = character:odrysian00157 # Seuthes III
+                this = character:odrysian00157 # Seuthes III
+            }
+        }
+    }
 }
