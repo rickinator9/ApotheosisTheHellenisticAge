@@ -3130,6 +3130,80 @@ perkebellon_01 = {
 }
 
 ##########
+# Palace of Rhizon
+##########
+
+rhizon_palace_01 = {
+
+	construction_time = very_slow_construction_time
+	
+	type_icon = "icon_structure_university_of_siena.dds" 
+	
+	can_construct_potential = {
+	}
+	
+	cost_gold = 3000
+	
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.025
+	}
+	max_garrison = good_building_max_garrison_tier_1
+	province_modifier = {
+		defender_holding_advantage = normal_building_advantage_tier_2
+		fort_level = good_building_fort_level_tier_1
+	}
+	county_modifier = {
+		tax_mult = 0.025
+		monthly_county_control_change_add = 0.25
+	}
+
+	next_building = rhizon_palace_02
+	
+	ai_value = {
+		base = 100
+		culture_likely_to_fortify_modifier = yes
+	}
+	
+	type = special
+}
+
+rhizon_palace_02 = {
+
+	construction_time = very_slow_construction_time
+	
+	type_icon = "icon_structure_university_of_siena.dds" 
+	
+	can_construct = {
+		scope:holder.culture = {
+			has_innovation = innovation_hellenistic_compound_pulley
+		}
+	}
+	
+	cost_gold = 1000
+	
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		diplomacy_per_prestige_level = 1
+	}
+	max_garrison = good_building_max_garrison_tier_2
+	province_modifier = {
+		defender_holding_advantage = normal_building_advantage_tier_3
+		fort_level = good_building_fort_level_tier_2
+	}
+	county_modifier = {
+		tax_mult = 0.05
+		monthly_county_control_change_add = 0.5
+	}
+	
+	ai_value = {
+		base = 100
+		culture_likely_to_fortify_modifier = yes
+	}
+	
+	type = special
+}
+
+##########
 # Mines of Laúreion
 ##########
 
