@@ -163,45 +163,6 @@ euzonoi = {
     icon = skirmishers
 }
 
-#Laconian#Superior#
-skiritai_peltastai = {
-    type = skirmishers
-
-    can_recruit = {
-        OR = {
-            can_recruit_maa_skiritai_peltastai_natively_trigger = yes
-            can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = yes
-        }
-    }
-
-    damage = 25
-    toughness = 10
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
 #Agrianes#Superior#
 agrianikoi_pelekephoroi = {
     type = skirmishers
@@ -250,7 +211,7 @@ kretikoi_peltastai = {
         }
     }
 
-    damage = 20
+    damage = 15
     toughness = 20
     pursuit = 10
     screen = 10
@@ -330,8 +291,8 @@ toxotai = {
         }
     }
 
-    damage = 25
-    toughness = 10
+    damage = 20
+    toughness = 15
     pursuit = 0
     screen = 0
 
@@ -470,6 +431,45 @@ thureophoroi = {
     icon = heavy_infantry
 }
 
+#Laconian#Superior#
+skiritai_peltastai = {
+    type = phalanx
+
+    can_recruit = {
+        OR = {
+            can_recruit_maa_skiritai_peltastai_natively_trigger = yes
+            can_recruit_maa_skiritai_peltastai_as_foreigner_trigger = yes
+        }
+    }
+
+    damage = 20
+    toughness = 20
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+        hills = { damage = 5 }
+        mountains = { damage = 5 }
+        desert_mountains = { damage = 5 }
+    }
+
+    counters = {
+        pikemen = 0.5
+        heavy_infantry = 0.5
+    }
+
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
+}
+
 #Makedonikoi#Superior#
 katoikoi_thraikes = {
     type = phalanx
@@ -480,12 +480,13 @@ katoikoi_thraikes = {
         }
     }
 
-    damage = 20
-    toughness = 20
+    damage = 15
+    toughness = 25
     pursuit = 5
     screen = 5
 
     terrain_bonus = {
+        farmlands = { toughness = 5 }
     }
 
     counters = {
