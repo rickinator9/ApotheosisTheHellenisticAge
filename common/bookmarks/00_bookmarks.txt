@@ -228,7 +228,7 @@ bm_275_thrace = {
 		religion = sabazaic_faith
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
 		history_id = odrysian00159
-		position = { 320 560 }
+		position = { 360 560 }
 
 		animation = paranoia
 	
@@ -257,8 +257,8 @@ bm_275_thrace = {
 		birth = 3441.1.1
 		title = k_tylis
 		government = tribal_government
-		religion = skordism_faith
 		culture = danuian
+		religion = skordism_faith
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
 		history_id = danuian00201
 		position = { 500 280 }
@@ -272,8 +272,8 @@ bm_275_thrace = {
 			dynasty = danuiandyn002 # Tylios
 			type = male
 			birth = 3477.1.1
-			religion = skordism_faith
 			culture = danuian
+			religion = skordism_faith
 			history_id = danuian00202
 			animation = personality_bold
 		}
@@ -290,8 +290,8 @@ bm_275_thrace = {
 		birth = 3446.1.1
 		title = d_zelakarsis
 		government = clan_government
-		religion = zalmoxian_faith
 		culture = krobyzoian
+		religion = zalmoxian_faith
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
 		history_id = krobyzoian00101
 		position = { 1145 250 }
@@ -328,8 +328,8 @@ bm_275_thrace = {
 		birth = 3445.1.1
 		title = d_propontis
 		government = hegemonic_sympolity_government
-		religion = pythian_faith
 		culture = dorian
+		religion = pythian_faith
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
 		history_id = megarian00301
 		position = { 1175 770 }
@@ -343,10 +343,129 @@ bm_275_thrace = {
 			dynasty = megariandyn003 # Byzantios
 			type = male
 			birth = 3473.1.1
-			religion = pythian_faith
 			culture = dorian
+			religion = pythian_faith
 			history_id = megarian00302
 			animation = personality_bold
 		}
+	}
+}
+
+
+bm_275_illyria = {
+	start_date = 3479.9.1 # 275 BC
+	is_playable = yes
+
+	# Monounios of the Taulantii (Illyris), ID: mathian00202
+	character = {
+		name = "bookmark_illyria_monounios"
+		dynasty = mathiandyn002 # Taulantos
+		dynasty_splendor_level = 2
+		type = male
+		birth = 3417.1.1
+		title = k_illyris
+		government = clan_government
+		culture = mathian
+		religion = illyrian_faith
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
+		history_id = mathian00202
+		position = { 705 800 }
+
+		animation = paranoia
+	
+		# Mytilos, Illyrian king who was probably his son and immediate successor, ID: mathian00203
+		character = {
+			name = "bookmark_illyria_monounios_alt_mytilos"
+			relation = "BOOKMARK_RELATION_SON"
+			dynasty = mathiandyn002 # Taulantos
+			type = male
+			birth = 3453.1.1
+			culture = mathian
+			religion = illyrian_faith
+			history_id = mathian00203
+			animation = personality_bold
+		}
+
+		# Titos, possible brother mentioned in a strategem of Polyaenus
+	}
+
+	# Leon of Paeonia (Paionia), ID: paeonian00108
+	character = {
+		name = "bookmark_illyria_leon_of_paeonia"
+		dynasty = paeoniandyn001 # Derronaios
+		dynasty_splendor_level = 2
+		type = male
+		birth = 3444.1.1
+		title = k_paionia
+		government = clan_government
+		culture = paeonian
+		religion = paeonian_faith
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = paeonian00108
+		position = { 1185 420 }
+
+		animation = rage
+	
+		# Ariston, prince (and elder brother?) who was deposed by Lysimachus and fled to the Dardanians, ID: paeonian00107
+		character = {
+			name = "bookmark_illyria_leon_of_paeonia_alt_ariston"
+			relation = "BOOKMARK_RELATION_BROTHER"
+			dynasty = paeoniandyn001 # Derronaios
+			type = male
+			birth = 3444.1.1
+			culture = paeonian
+			religion = paeonian_faith
+			history_id = paeonian00107
+			animation = personality_bold
+		}
+	
+		# Dropion, son who became king of Paeonia ca. 250 BC, ID: paeonian00109
+		character = {
+			name = "bookmark_illyria_leon_of_paeonia_alt_dropion"
+			relation = "BOOKMARK_RELATION_SON"
+			dynasty = paeoniandyn001 # Derronaios
+			type = male
+			birth = 3475.1.1
+			culture = paeonian
+			religion = paeonian_faith
+			history_id = paeonian00109
+			animation = personality_bold
+		}
+	}
+
+	# Bathanattos of the Scordisci (Broggos), ID: volk00101
+	character = {
+		name = "bookmark_illyria_bathanattos"
+		dynasty = volkdyn001 # Bathanatti
+		dynasty_splendor_level = 1
+		type = male
+		birth = 3441.1.1
+		title = d_broggos
+		government = clan_government
+		culture = volk
+		religion = skordism_faith
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
+		history_id = volk00101
+		position = { 720 160 }
+
+		animation = personality_rational
+	}
+
+	# Ballaios (Ardiaiste), ID: dassian00101
+	character = {
+		name = "bookmark_illyria_ballaios"
+		dynasty = dassiandyn001 # Ardiaios
+		dynasty_splendor_level = 1
+		type = male
+		birth = 3448.1.1
+		title = d_ardiaiste
+		government = tribal_government
+		culture = dassian
+		religion = illyrian_faith
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
+		history_id = dassian00101
+		position = { 395 440 }
+
+		animation = personality_bold
 	}
 }
