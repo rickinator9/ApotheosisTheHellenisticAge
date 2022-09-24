@@ -14,8 +14,8 @@ euzonoi = {
 
     damage = 10
     toughness = 15
-    pursuit = 10
-    screen = 15
+    pursuit = 15
+    screen = 10
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -87,8 +87,8 @@ agrianikoi_pelekephoroi = {
 
     damage = 17
     toughness = 13
-    pursuit = 15
-    screen = 15
+    pursuit = 16
+    screen = 14
 
     terrain_bonus = {
         mountains = { damage = 8 }
@@ -120,10 +120,10 @@ anatolikoi_phyletai = {
         can_recruit_maa_anatolikoi_phyletai_trigger = yes
     }
 
-    damage = 15
-    toughness = 15
-    pursuit = 10
-    screen = 20
+    damage = 18
+    toughness = 12
+    pursuit = 12
+    screen = 18
 
     terrain_bonus = {
         hills = { damage = 10 }
@@ -147,7 +147,7 @@ anatolikoi_phyletai = {
 }
 
 #Epirote#Superior#
-arkananioi_sphendonetai = {
+akarnanioi_sphendonetai = {
     type = skirmishers
 
     can_recruit = {
@@ -156,8 +156,8 @@ arkananioi_sphendonetai = {
 
     damage = 20
     toughness = 10
-    pursuit = 10
-    screen = 20
+    pursuit = 14
+    screen = 16
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -229,8 +229,8 @@ makedonikoi_peltastai = {
 
     damage = 20
     toughness = 25
-    pursuit = 20
-    screen = 25
+    pursuit = 25
+    screen = 20
 
     terrain_bonus = {
         hills = { damage = 5 }
@@ -302,8 +302,8 @@ toxotai = {
 
     damage = 15
     toughness = 10
-    pursuit = 15
-    screen = 10
+    pursuit = 10
+    screen = 15
 
     terrain_bonus = {
         mountains = { damage = 5 }
@@ -790,7 +790,7 @@ hoplitai = {
 }
 
 #Laconian#Superior#
-perioikoi_hoplitai = {
+eparitoi_hoplitai = {
     type = heavy_infantry
 
     can_recruit = {
@@ -811,6 +811,43 @@ perioikoi_hoplitai = {
 
     counters = {
         light_cavalry = 1
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    icon = heavy_infantry
+}
+
+#Laconian#Superior#
+perioikoi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_perioikoi_hoplitai_trigger = yes
+    }
+
+    damage = 20
+    toughness = 35
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        valley = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+        pikemen = 0.5
     }
 
     buy_cost = { gold = 85 }
@@ -1345,12 +1382,14 @@ tarypeltenai = {
         can_recruit_maa_tarypeltenai_trigger = yes
     }
 
-    damage = 20
-    toughness = 20
+    damage = 30
+    toughness = 15
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
+        mountains = { damage = -10 }
+        forest = { damage = 10 }
     }
 
     counters = {

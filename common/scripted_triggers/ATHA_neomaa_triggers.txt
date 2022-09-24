@@ -186,13 +186,13 @@ can_recruit_maa_hyperaspistai_trigger = {
 can_recruit_maa_makedonikoi_peltastai_trigger = {
   OR = {
     AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+      culture = { has_cultural_pillar = heritage_greek }
       any_realm_province = {
         geographical_region = ATHA_aor_peltastai_logades
       }
     }
     any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+      culture = { has_cultural_pillar = heritage_greek }
       geographical_region = ATHA_aor_peltastai_logades
     }
   }
@@ -222,14 +222,44 @@ can_recruit_maa_ardiaian_thorakitai_trigger = {
 can_recruit_maa_rodioi_sphendonetai_trigger = {
   OR = {
     AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:dorian }
+      culture = { has_cultural_pillar = heritage_greek }
       any_realm_province = {
         geographical_region = ATHA_aor_rhodian
       }
     }
     any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:dorian }
+      culture = { has_cultural_pillar = heritage_greek }
       geographical_region = ATHA_aor_rhodian
+    }
+  }
+}
+
+can_recruit_maa_anatolikoi_phyletai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_anatolian }
+      any_realm_province = {
+        geographical_region = ATHA_aor_anatolikoi
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_anatolian }
+      geographical_region = ATHA_aor_anatolikoi
+    }
+  }
+}
+
+can_recruit_maa_akarnanioi_sphendonetai_trigger = {
+  OR = {
+    AND = {
+      has_culture_or_parent_culture = { CULTURE = culture:epirote }
+      any_realm_province = {
+        geographical_region = ATHA_aor_akarnania
+      }
+    }
+    any_realm_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:epirote }
+      geographical_region = ATHA_aor_akarnania
     }
   }
 }
@@ -361,6 +391,22 @@ can_recruit_maa_epilektoi_hoplitai_trigger = {
   }
 }
 
+can_recruit_maa_eparitoi_hoplitai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_greek }
+      any_realm_province = {
+        geographical_region = ATHA_aor_akhaia
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_greek }
+      geographical_region = ATHA_aor_akhaia
+    }
+  }
+}
+
+
 can_recruit_maa_homoioi_hoplitai_trigger = {
   can_recruit_spartan_maa_trigger = yes
 }
@@ -443,17 +489,17 @@ can_recruit_maa_agema_phalangitai_trigger = {
   OR = {
     AND = {
       culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
+        culture = { has_cultural_pillar = heritage_greek }
         has_innovation = innovation_sarissa
       }
       any_realm_province = { geographical_region = ATHA_aor_macedonian }
     }
     any_realm_province = {
       culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
+        culture = { has_cultural_pillar = heritage_greek }
         has_innovation = innovation_sarissa
       }
-      geographical_region = ATHA_aor_macedonian
+      geographical_region = ATHA_aor_agema_p
     }
   }
 }
