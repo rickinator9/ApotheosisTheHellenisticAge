@@ -122,6 +122,12 @@ can_recruit_maa_peltenai_trigger = {
   }
 }
 
+can_recruit_maa_rompaianai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+  }
+}
+
 can_recruit_maa_kretikoi_peltastai_trigger = {
   can_recruit_cretan_maa_trigger = yes
 }
@@ -154,15 +160,6 @@ can_recruit_maa_agrianikoi_pelekephoroi_trigger = {
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:agrianian }
-    }
-  }
-}
-
-can_recruit_maa_rompaianai_trigger = {
-  OR = {
-    culture = { has_innovation = innovation_rhomphaia }
-    any_realm_province = {
-      culture = { has_innovation = innovation_rhomphaia }
     }
   }
 }
