@@ -198,6 +198,21 @@ can_recruit_maa_makedonikoi_peltastai_trigger = {
   }
 }
 
+can_recruit_maa_aristoi_rompaianai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_thracian }
+      any_realm_province = {
+        geographical_region = ATHA_aor_rhodopian
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_thracian }
+      geographical_region = ATHA_aor_rhodopian
+    }
+  }
+}
+
 ########################
 
 can_recruit_maa_ardiaian_thorakitai_trigger = {
@@ -363,14 +378,14 @@ can_recruit_maa_perioikoi_hoplitai_trigger = {
 can_recruit_maa_galatikoi_Katoikoi_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
-    geographical_region = ATHA_aor_galatikoi
+    geographical_region = ATHA_aor_hellenic_asia
   }
 }
 
 can_recruit_maa_katoikoi_thraikes_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
-    geographical_region = ATHA_aor_macedonian_katoikoi
+    geographical_region = ATHA_aor_macedonian
   }
 }
 
