@@ -93,6 +93,8 @@ agrianikoi_pelekephoroi = {
     terrain_bonus = {
         mountains = { damage = 8 }
         desert_mountains = { damage = 8 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
     }
 
     counters = {
@@ -127,6 +129,8 @@ anatolikoi_phyletai = {
 
     terrain_bonus = {
         hills = { damage = 10 }
+        plains = { toughness = -5 }
+        drylands = { toughness = 5 }
     }
 
     counters = {
@@ -200,6 +204,8 @@ kretikoi_peltastai = {
         hills = { damage = 5 }
         mountains = { damage = 5 }
         desert_mountains = { damage = 5 }
+        plains = { toughness = -5 }
+        drylands = { toughness = -5 }
     }
 
     counters = {
@@ -342,6 +348,7 @@ kretikoi_toxotai = {
     screen = 15
 
     terrain_bonus = {
+        hills = { damage = 5 }
         mountains = { damage = 5 }
         desert_mountains = { damage = 5 }
         plains = { toughness = -5 }
@@ -497,39 +504,6 @@ galatikoi_Katoikoi = {
     buy_cost = { gold = 70 }
     low_maintenance_cost = { gold = 0.3 }
     high_maintenance_cost = { gold = 0.9 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-#Anatolian#Elite#
-hyperaspistai = {
-    type = phalanx
-
-    can_recruit = {
-        can_recruit_maa_hyperaspistai_trigger = yes
-    }
-
-    damage = 30
-    toughness = 35
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        pikemen = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 105 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1.5 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -884,6 +858,44 @@ epilektoi_hoplitai = {
 
     counters = {
         light_cavalry = 1
+    }
+
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    icon = heavy_infantry
+}
+
+#Elite#West#Anatolia
+hyperaspistai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_hyperaspistai_trigger = yes
+    }
+
+    damage = 50
+    toughness = 25
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { toughness = 5 }
+        hills = { toughness = 5 }
+        mountains = { damage = -5 }
+        desert_mountains = { damage = -5 }
+    }
+
+    counters = {
+        light_cavalry = 1
+        archers = 0.5
+        skirmishers = 0.5
     }
 
     buy_cost = { gold = 120 }
