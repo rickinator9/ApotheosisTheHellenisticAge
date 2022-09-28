@@ -42,494 +42,263 @@ spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
 # WEIGHTS #
 ###########
 
+ATHA_ai_maa_cultural_weight_like = 240
+ATHA_ai_maa_cultural_weight_dislike = -240
+
 ATHA_ai_weight_already_has_type = 1000
 
+ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
+
 ATHA_ai_weight_skirmishers = {
-	value = culture_ai_weight_skirmishers
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = skirmishers
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = skirmishers
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = skirmishers
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = skirmishers
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = skirmishers
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
 }
 
 ATHA_ai_weight_archers = {
-	value = culture_ai_weight_archers
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = archers
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = archers
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = archers
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = archers
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = archers
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-}
-
-ATHA_ai_weight_slingers = {
-	value = culture_ai_weight_slingers
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = slingers
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = slingers
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = slingers
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = slingers
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = slingers
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
 }
 
 ATHA_ai_weight_medium_infantry = {
-	value = culture_ai_weight_heavy_infantry
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = phalanx
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = phalanx
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = phalanx
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = phalanx
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = phalanx
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-}
-
-ATHA_ai_weight_heavy_infantry = {
-	value = culture_ai_weight_heavy_infantry
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_infantry
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_infantry
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_infantry
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_infantry
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_infantry
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
 }
 
 ATHA_ai_weight_pikemen = {
-	value = culture_ai_weight_pikemen
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = pikemen
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = pikemen
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = pikemen
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = pikemen
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = pikemen
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	}
+}
+
+ATHA_ai_weight_heavy_infantry = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	}
 }
 
 ATHA_ai_weight_light_cavalry = {
-	value = culture_ai_weight_light_cavalry
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = light_cavalry
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = light_cavalry
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = light_cavalry
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = light_cavalry
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = light_cavalry
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
 }
 
 ATHA_ai_weight_heavy_cavalry = {
-	value = culture_ai_weight_heavy_cavalry
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_cavalry
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_cavalry
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_cavalry
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_cavalry
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = heavy_cavalry
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	}
 }
 
-ATHA_ai_weight_camels = {
-	value = culture_ai_weight_camels
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = camel_cavalry
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = camel_cavalry
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = camel_cavalry
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = camel_cavalry
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = camel_cavalry
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+ATHA_ai_weight_generic_skirmishers = {
+	value = ATHA_ai_weight_skirmishers
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_rodioi_sphendonetai_trigger = yes
+				can_recruit_maa_agrianikoi_pelekephoroi_trigger = yes
+				can_recruit_maa_anatolikoi_phyletai_trigger = yes
+				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
+				can_recruit_maa_kretikoi_peltastai_trigger = yes
+				can_recruit_maa_makedonikoi_peltastai_trigger = yes
+				can_recruit_maa_skaplinai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
 }
 
-ATHA_ai_weight_elephants = {
-	value = culture_ai_weight_elephants
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = elephant_cavalry
-	# 			value > 0
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = elephant_cavalry
-	# 			value > 1
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = elephant_cavalry
-	# 			value > 2
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = elephant_cavalry
-	# 			value > 3
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_base_type = {
-	# 			type = elephant_cavalry
-	# 			value > 4
-	# 		}
-	# 	}
-	# 	subtract = ATHA_ai_weight_already_has_type
-	# }
+ATHA_ai_weight_generic_archers = {
+	value = ATHA_ai_weight_archers
+	if = {
+		limit = {
+			can_recruit_maa_kretikoi_toxotai_trigger = yes
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
 }
