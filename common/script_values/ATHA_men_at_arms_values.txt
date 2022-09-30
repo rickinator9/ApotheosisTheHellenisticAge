@@ -44,9 +44,12 @@ spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
 
 ATHA_ai_maa_cultural_weight_like = 240
 ATHA_ai_maa_cultural_weight_dislike = -240
+ATHA_ai_maa_terrain_weight_like = 120
+ATHA_ai_maa_terrain_weight_dislike = -120
 
 ATHA_ai_weight_already_has_type = 1000
 
+ATHA_ai_weight_obsolescence = -120
 ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
 
 ATHA_ai_weight_skirmishers = {
@@ -81,6 +84,36 @@ ATHA_ai_weight_skirmishers = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = steppe
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = wetlands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -122,6 +155,46 @@ ATHA_ai_weight_archers = {
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+						terrain = floodplains
+						terrain = drylands
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = hills
+						terrain = mountains
+						terrain = desert_mountains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
 }
 
 ATHA_ai_weight_medium_infantry = {
@@ -138,6 +211,24 @@ ATHA_ai_weight_medium_infantry = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_mountains
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountain
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
 	}
 }
 
@@ -174,6 +265,47 @@ ATHA_ai_weight_pikemen = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = hills
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -219,6 +351,70 @@ ATHA_ai_weight_heavy_infantry = {
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
 	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_hoplite = {
+	value = ATHA_ai_weight_heavy_infantry
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_sarissa }
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_classical_thyreos}
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_hellenistic_chainmail }
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
 }
 
 ATHA_ai_weight_light_cavalry = {
@@ -242,6 +438,51 @@ ATHA_ai_weight_light_cavalry = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:odrysian }				
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = mountains
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = steppe
+						terrain = floodplains
+						terrain = drylands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -271,6 +512,46 @@ ATHA_ai_weight_heavy_cavalry = {
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
 	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = hills
+						terrain = mountains
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = steppe
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
 }
 
 ATHA_ai_weight_generic_skirmishers = {
@@ -297,6 +578,82 @@ ATHA_ai_weight_generic_archers = {
 	if = {
 		limit = {
 			can_recruit_maa_kretikoi_toxotai_trigger = yes
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_medium_infantry = {
+	value = ATHA_ai_weight_medium_infantry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_skiritai_peltastai_trigger = yes
+				can_recruit_maa_aristoi_rompaianai_trigger = yes
+				can_recruit_maa_ardiaian_thorakitai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_pikemen = {
+	value = ATHA_ai_weight_pikemen
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_chalkaspides_trigger = yes
+				can_recruit_maa_argyraspides_trigger = yes
+				can_recruit_maa_agema_phalangitai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_hoplite = {
+	value = ATHA_ai_weight_hoplite
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_eparitoi_hoplitai_trigger = yes
+				can_recruit_maa_epilektoi_hoplitai_trigger = yes
+				can_recruit_maa_homoioi_hoplitai_trigger = yes
+				can_recruit_maa_homoioi_hippeis_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_light_cavalry = {
+	value = ATHA_ai_weight_light_cavalry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_thessalikoi_prodomoi_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_heavy_cavalry = {
+	value = ATHA_ai_weight_heavy_cavalry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_molosson_hippeis_trigger = yes
+				can_recruit_maa_zibutai_trigger = yes
+				can_recruit_maa_thessalikoi_hippeis_trigger = yes
+				can_recruit_maa_hiera_ile_trigger = yes
+				can_recruit_maa_basilikoi_agema_trigger = yes
+			}
 		}
 
 		add = ATHA_ai_weight_malus_cultural_maa
