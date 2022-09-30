@@ -48,6 +48,15 @@ can_recruit_thracian_maa_trigger = {
   }
 }
 
+can_recruit_celtic_maa_trigger = {
+  OR = {
+    culture = { has_cultural_pillar = heritage_celtic }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_celtic }
+    }
+  }
+}
+
 can_recruit_cretan_maa_trigger = {
   OR = {
     has_culture_or_parent_culture = { CULTURE = culture:cretan }
@@ -106,7 +115,7 @@ can_recruit_thessalian_maa_trigger = {
   }
 }
 
-###civilized#skirmishers### ardiaian_thorakitai
+###civilized#skirmishers### 
 
 can_recruit_maa_euzonoi_trigger = {
   OR = {
@@ -128,11 +137,17 @@ can_recruit_maa_rompaianai_trigger = {
   }
 }
 
+can_recruit_maa_batoroi_trigger = {
+  OR = {
+    can_recruit_celtic_maa_trigger = yes
+  }
+}
+
 can_recruit_maa_kretikoi_peltastai_trigger = {
   can_recruit_cretan_maa_trigger = yes
 }
 
-can_recruit_maa_skiritai_peltastai_trigger = {
+can_recruit_maa_skiritai_trigger = {
   can_recruit_spartan_maa_trigger = yes
 }
 
@@ -216,14 +231,14 @@ can_recruit_maa_ardiaian_thorakitai_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:dassian }
-      culture = { has_innovation = innovation_hellenistic_chainmail }
+      culture = { has_innovation = innovation_classical_thyreos }
       any_realm_province = {
         geographical_region = ATHA_aor_ardinei
       }
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:dassian }
-      culture = { has_innovation = innovation_hellenistic_chainmail }
+      culture = { has_innovation = innovation_classical_thyreos }
       geographical_region = ATHA_aor_ardinei
     }
   }
@@ -261,6 +276,66 @@ can_recruit_maa_anatolikoi_phyletai_trigger = {
   }
 }
 
+can_recruit_maa_uazali_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_anatolian }
+      any_realm_province = {
+        geographical_region = ATHA_aor_uazali
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_anatolian }
+      geographical_region = ATHA_aor_uazali
+    }
+  }
+}
+
+can_recruit_maa_mandonai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_illyrian }
+      any_realm_province = {
+        geographical_region = ATHA_aor_mandonai
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_illyrian }
+      geographical_region = ATHA_aor_mandonai
+    }
+  }
+}
+
+can_recruit_maa_gargokladioi_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_celtic }
+      any_realm_province = {
+        geographical_region = ATHA_aor_stranded_celtic
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_celtic }
+      geographical_region = ATHA_aor_stranded_celtic
+    }
+  }
+}
+
+can_recruit_maa_galathraikes_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_celtic }
+      any_realm_province = {
+        geographical_region = ATHA_aor_stranded_celtic
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_celtic }
+      geographical_region = ATHA_aor_stranded_celtic
+    }
+  }
+}
+
 can_recruit_maa_akarnanioi_sphendonetai_trigger = {
   OR = {
     AND = {
@@ -272,6 +347,21 @@ can_recruit_maa_akarnanioi_sphendonetai_trigger = {
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:epirote }
       geographical_region = ATHA_aor_akarnania
+    }
+  }
+}
+
+can_recruit_maa_drapanai_trigger = {
+  OR = {
+    AND = {
+      has_culture_or_parent_culture = { CULTURE = culture:getic }
+      any_realm_province = {
+        geographical_region = ATHA_aor_drapanai
+      }
+    }
+    any_realm_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:getic }
+      geographical_region = ATHA_aor_drapanai
     }
   }
 }
@@ -342,6 +432,31 @@ can_recruit_maa_hoplitai_trigger = {
 #############################################################
 
 can_recruit_maa_thureophoroi_trigger = {
+  OR = {
+    culture = {
+      OR = {
+        is_culture_or_parent_culture = { CULTURE = culture:mathian }
+        has_cultural_pillar = heritage_greek
+        has_cultural_pillar = heritage_anatolian
+        has_cultural_pillar = heritage_thracian
+      }
+      has_innovation = innovation_classical_thyreos
+    }
+    any_realm_province = {
+      culture = {
+        OR = {
+          is_culture_or_parent_culture = { CULTURE = culture:mathian }
+          has_cultural_pillar = heritage_greek
+          has_cultural_pillar = heritage_anatolian
+          has_cultural_pillar = heritage_thracian
+        }
+        has_innovation = innovation_classical_thyreos
+      }
+    }
+  }
+}
+
+can_recruit_maa_thorakitai_trigger = {
   OR = {
     culture = {
       OR = {

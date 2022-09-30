@@ -91,22 +91,6 @@ ATHA_ai_weight_skirmishers = {
 			capital_county = {
 				title_province = {
 					OR = {
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = steppe
-						terrain = floodplains
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
 						terrain = wetlands
 					}
 				}
@@ -249,7 +233,6 @@ ATHA_ai_weight_pikemen = {
 			OR = {
 				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
 				has_culture_or_parent_culture = { CULTURE = culture:epirote }
-				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
@@ -511,6 +494,11 @@ ATHA_ai_weight_heavy_cavalry = {
 			has_culture_or_parent_culture = { CULTURE = culture:cretan }
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:thessalian }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
 	}
 
 	if = {
@@ -564,6 +552,8 @@ ATHA_ai_weight_generic_skirmishers = {
 				can_recruit_maa_anatolikoi_phyletai_trigger = yes
 				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
 				can_recruit_maa_kretikoi_peltastai_trigger = yes
+				can_recruit_maa_skiritai_trigger = yes
+				can_recruit_maa_uazali_trigger = yes
 				can_recruit_maa_makedonikoi_peltastai_trigger = yes
 				can_recruit_maa_skaplinai_trigger = yes
 			}
@@ -589,7 +579,7 @@ ATHA_ai_weight_generic_medium_infantry = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_skiritai_peltastai_trigger = yes
+				can_recruit_maa_drapanai_trigger = yes
 				can_recruit_maa_aristoi_rompaianai_trigger = yes
 				can_recruit_maa_ardiaian_thorakitai_trigger = yes
 			}
@@ -636,6 +626,7 @@ ATHA_ai_weight_generic_light_cavalry = {
 		limit = {
 			OR = {
 				can_recruit_maa_thessalikoi_prodomoi_trigger = yes
+				can_recruit_maa_mandonai_trigger = yes
 			}
 		}
 
@@ -648,7 +639,6 @@ ATHA_ai_weight_generic_heavy_cavalry = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_molosson_hippeis_trigger = yes
 				can_recruit_maa_zibutai_trigger = yes
 				can_recruit_maa_thessalikoi_hippeis_trigger = yes
 				can_recruit_maa_hiera_ile_trigger = yes
