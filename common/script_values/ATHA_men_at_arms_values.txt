@@ -39,6 +39,698 @@ spartiatai_hoplitai_low_maint_cost = @[phalanx_low_maint_cost * 1.6]
 spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
 
 ###########
+# LIMITS  #
+###########
+
+ATHA_maa_elite_remaining = {
+	value = ATHA_maa_elite_maximum
+	subtract = ATHA_maa_elite_count
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		subtract = 1
+	}
+
+}
+
+ATHA_maa_elite_maximum = {
+	value = 1
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		add = 1
+	}
+}
+
+ATHA_maa_elite_count = {
+	value = 0
+	add = ATHA_maa_makedonikoi_peltastai_count
+	add = ATHA_maa_skaplinai_count
+	add = ATHA_maa_aristoi_rompaianai_count
+	add = ATHA_maa_ardiaian_thorakitai_count
+	add = ATHA_maa_epilektoi_hoplitai_count
+	add = ATHA_maa_hyperaspistai_count
+	add = ATHA_maa_homoioi_hoplitai_count
+	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_homoioi_hoplitai_count
+	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_homoioi_hippeis_count
+	add = ATHA_maa_agema_phalangitai_count
+	add = ATHA_maa_hiera_ile_count
+	add = ATHA_maa_basilikoi_agema_count
+}
+
+ATHA_maa_makedonikoi_peltastai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_skaplinai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = skaplinai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = skaplinai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = skaplinai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = skaplinai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = skaplinai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_aristoi_rompaianai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = aristoi_rompaianai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = aristoi_rompaianai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = aristoi_rompaianai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = aristoi_rompaianai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = aristoi_rompaianai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_ardiaian_thorakitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thorakitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thorakitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thorakitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thorakitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thorakitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_epilektoi_hoplitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hyperaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_homoioi_hoplitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hypaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_homoioi_hippeis_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_agema_phalangitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hiera_ile_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_basilikoi_agema_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+###########
 # WEIGHTS #
 ###########
 
@@ -51,6 +743,17 @@ ATHA_ai_weight_already_has_type = 1000
 
 ATHA_ai_weight_obsolescence = -120
 ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
+ATHA_ai_weight_elite_bonus = 240
+
+ATHA_ai_weight_elite = {
+	value = 0
+	if = {
+		limit = {
+			ATHA_maa_elite_remaining <= 0
+		}
+		add = ATHA_ai_weight_elite_bonus
+	}
+}
 
 ATHA_ai_weight_skirmishers = {
 	value = 0

@@ -4,7 +4,6 @@
 @maa_high_maintenance_cost = 5.0
 @cultural_maa_extra_ai_score = 60 # Equivalent to having 6 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
 
-
 euzonoi = {
     type = skirmishers
 
@@ -329,7 +328,10 @@ makedonikoi_peltastai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    ai_quality = {
+        value = ATHA_ai_weight_skirmishers
+        add = ATHA_ai_weight_elite
+    }
     icon = skirmishers
 }
 
@@ -366,7 +368,10 @@ skaplinai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    ai_quality = {
+        value = ATHA_ai_weight_skirmishers
+        add = ATHA_ai_weight_elite
+    }
     icon = skirmishers
 }
 
@@ -614,7 +619,10 @@ aristoi_rompaianai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    ai_quality = {
+        value = ATHA_ai_weight_medium_infantry
+        add = ATHA_ai_weight_elite
+    }
     icon = heavy_infantry
 }
 
@@ -685,7 +693,10 @@ ardiaian_thorakitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    ai_quality = {
+        value = ATHA_ai_weight_heavy_infantry
+        add = ATHA_ai_weight_elite
+    }
     icon = heavy_infantry
 }
 
@@ -903,7 +914,10 @@ homoioi_hoplitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
+    ai_quality = {
+        value = ATHA_ai_weight_hoplite
+        add = ATHA_ai_weight_elite
+    }
     icon = spartiatai
 }
 
@@ -913,7 +927,6 @@ hypaspistai = {
 
     can_recruit = {
         can_recruit_maa_hypaspistai_trigger = yes
-        can_recruit_elite_maa = yes
     }
 
     damage = 35
@@ -940,7 +953,10 @@ hypaspistai = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    ai_quality = {
+        value = ATHA_ai_weight_heavy_infantry
+        add = ATHA_ai_weight_elite
+    }
     icon = heavy_infantry
 }
 
@@ -950,7 +966,6 @@ homoioi_hippeis = {
 
     can_recruit = {
         can_recruit_maa_homoioi_hippeis_trigger = yes
-        can_recruit_elite_maa = yes
     }
 
     damage = 25
@@ -977,7 +992,10 @@ homoioi_hippeis = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
+    ai_quality = {
+        value = ATHA_ai_weight_heavy_infantry
+        add = ATHA_ai_weight_elite
+    }
     icon = spartiatai
 }
 
@@ -1123,11 +1141,12 @@ agema_phalangitai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_pikemen }
+    ai_quality = {
+        value = ATHA_ai_weight_pikemen
+        add = ATHA_ai_weight_elite
+    }
     icon = phalangitai_elite
 }
-
-
 
 ########################################################################################################
 
@@ -1365,7 +1384,6 @@ hiera_ile = {
 
     can_recruit = {
         can_recruit_maa_hiera_ile_trigger = yes
-        can_recruit_elite_maa = yes
     }
 
     damage = 80
@@ -1393,7 +1411,10 @@ hiera_ile = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
+    ai_quality = {
+        value = ATHA_ai_weight_heavy_cavalry
+        add = ATHA_ai_weight_elite
+    }
     icon = heavy_cavalry
 }
 
@@ -1403,7 +1424,6 @@ basilikoi_agema = {
 
     can_recruit = {
         can_recruit_maa_basilikoi_agema_trigger = yes
-        can_recruit_elite_maa = yes
     }
 
     damage = 85
@@ -1431,7 +1451,10 @@ basilikoi_agema = {
     holy_order_fallback = no
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
+    ai_quality = {
+        value = ATHA_ai_weight_heavy_cavalry
+        add = ATHA_ai_weight_elite
+    }
     icon = heavy_cavalry
 }
 
