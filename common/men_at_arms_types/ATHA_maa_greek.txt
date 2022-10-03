@@ -227,7 +227,7 @@ skiritai = {
         can_recruit_maa_skiritai_trigger = yes
     }
 
-    damage = 10
+    damage = 15
     toughness = 20
     pursuit = 20
     screen = 10
@@ -315,7 +315,7 @@ makedonikoi_peltastai = {
         heavy_infantry = 1
     }
 
-    buy_cost = { gold = 90 }
+    buy_cost = { gold = 80 }
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
@@ -355,7 +355,7 @@ skaplinai = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 90 }
+    buy_cost = { gold = 80 }
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
@@ -476,6 +476,37 @@ thureophoroi = {
     icon = heavy_infantry
 }
 
+machairaphoroi = {
+    type = phalanx
+
+    can_recruit = {
+        can_recruit_maa_machairaphoroi_trigger = yes
+    }
+
+    damage = 17
+    toughness = 13
+    pursuit = 7
+    screen = 3
+
+    terrain_bonus = {
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.15 }
+    high_maintenance_cost = { gold = 0.35 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
+}
+
 #Makedonikoi#Superior#
 katoikoi_thraikes = {
     type = phalanx
@@ -531,6 +562,7 @@ galatikoi_Katoikoi = {
 
     counters = {
         pikemen = 1
+        skirmishers = 1
     }
 
     buy_cost = { gold = 55 }
@@ -564,7 +596,7 @@ drapanai = {
 
     counters = {
         skirmishers = 1
-        phalanx = 1
+        archers = 1
     }
 
     buy_cost = { gold = 55 }
@@ -603,7 +635,7 @@ aristoi_rompaianai = {
         heavy_infantry = 1
     }
 
-    buy_cost = { gold = 95 }
+    buy_cost = { gold = 85 }
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
@@ -677,7 +709,7 @@ ardiaian_thorakitai = {
         phalanx = 1
     }
 
-    buy_cost = { gold = 120 }
+    buy_cost = { gold = 110 }
     low_maintenance_cost = { gold = 0.6 }
     high_maintenance_cost = { gold = 1.8 }
     
@@ -859,7 +891,7 @@ hyperaspistai = {
 
     counters = {
         phalanx = 1
-        skirmishers = 0.5
+        pikemen = 1
     }
 
     buy_cost = { gold = 90 }
@@ -1161,14 +1193,11 @@ prodomoi = {
     terrain_bonus = {
         plains = { damage = 10 }
         drylands = { damage = 10 }
-        mountains = { pursuit = -5 }
-        mountains = { screen = -5 }
-        desert_mountains = { pursuit = -5 }
-        desert_mountains = { screen = -5 }
+        mountains = { pursuit = -5 screen = -5 }
+        desert_mountains = { pursuit = -5 screen = -5 }
     }
 
     counters = {
-        skirmishers = 1
         archers = 1
     }
 
@@ -1200,14 +1229,11 @@ thessalikoi_prodomoi = {
     terrain_bonus = {
         plains = { damage = 10 }
         drylands = { damage = 10 }
-        mountains = { pursuit = -5 }
-        mountains = { screen = -5 }
-        desert_mountains = { pursuit = -5 }
-        desert_mountains = { screen = -5 }
+        mountains = { pursuit = -5 screen = -5 }
+        desert_mountains = { pursuit = -5 screen = -5 }
     }
 
     counters = {
-        skirmishers = 1
         archers = 1
     }
 
@@ -1239,14 +1265,11 @@ mandonai = {
     terrain_bonus = {
         plains = { damage = 10 }
         drylands = { damage = 10 }
-        mountains = { pursuit = -5 }
-        mountains = { screen = -5 }
-        desert_mountains = { pursuit = -5 }
-        desert_mountains = { screen = -5 }
+        mountains = { pursuit = -5 screen = -5 }
+        desert_mountains = { pursuit = -5 screen = -5 }
     }
 
     counters = {
-        skirmishers = 1
         archers = 1
     }
 
@@ -1399,7 +1422,7 @@ hiera_ile = {
         archers = 1
     }
 
-    buy_cost = { gold = 330 }
+    buy_cost = { gold = 310 }
     low_maintenance_cost = { gold = 1.2 }
     high_maintenance_cost = { gold = 3.6 }
     
@@ -1439,7 +1462,7 @@ basilikoi_agema = {
         archers = 1
     }
 
-    buy_cost = { gold = 330 }
+    buy_cost = { gold = 310 }
     low_maintenance_cost = { gold = 1.2 }
     high_maintenance_cost = { gold = 3.6 }
     
@@ -1477,7 +1500,6 @@ peltenai = {
 
     counters = {
         heavy_infantry = 1
-        pikemen = 1
     }
 
     buy_cost = { gold = 40 }
@@ -1512,7 +1534,7 @@ anganai = {
     }
 
     counters = {
-        phalanx = 1
+        skirmishers = 1
     }
 
     buy_cost = { gold = 40 }
@@ -1546,6 +1568,7 @@ tarypeltenai = {
 
     counters = {
         heavy_cavalry = 1
+        light_cavalry = 1
     }
 
     buy_cost = { gold = 55 }
@@ -1575,14 +1598,11 @@ mezenai = {
     terrain_bonus = {
         plains = { damage = 10 }
         drylands = { damage = 10 }
-        mountains = { pursuit = -5 }
-        mountains = { screen = -5 }
-        desert_mountains = { pursuit = -5 }
-        desert_mountains = { screen = -5 }
+        mountains = { pursuit = -5 screen = -5 }
+        desert_mountains = { pursuit = -5 screen = -5 }
     }
 
     counters = {
-        skirmishers = 1
         archers = 1
     }
 
@@ -1634,7 +1654,7 @@ moukamezenai = {
     icon = heavy_cavalry
 }
 
-#Thracian#
+#Thracian#Superior
 rompaianai = {
     type = phalanx
 
@@ -1644,8 +1664,8 @@ rompaianai = {
         }
     }
 
-    damage = 20
-    toughness = 10
+    damage = 25
+    toughness = 15
     pursuit = 5
     screen = 5
 
@@ -1656,11 +1676,11 @@ rompaianai = {
     }
 
     counters = {
-        skirmishers = 0.5
-        light_cavalry = 0.5
+        skirmishers = 1
+        light_cavalry = 1
     }
 
-    buy_cost = { gold = 45 }
+    buy_cost = { gold = 55 }
     low_maintenance_cost = { gold = 0.15 }
     high_maintenance_cost = { gold = 0.35 }
     

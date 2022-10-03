@@ -132,9 +132,10 @@ can_recruit_maa_peltenai_trigger = {
   }
 }
 
-can_recruit_maa_rompaianai_trigger = {
+can_recruit_maa_machairaphoroi_trigger = {
   OR = {
     can_recruit_thracian_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
   }
 }
 
@@ -226,6 +227,21 @@ can_recruit_maa_aristoi_rompaianai_trigger = {
     }
   }
   can_recruit_elite_maa = yes
+}
+
+can_recruit_maa_rompaianai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_thracian }
+      any_realm_province = {
+        geographical_region = ATHA_aor_rhodopian
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_thracian }
+      geographical_region = ATHA_aor_rhodopian
+    }
+  }
 }
 
 ########################
@@ -442,7 +458,6 @@ can_recruit_maa_thureophoroi_trigger = {
         is_culture_or_parent_culture = { CULTURE = culture:mathian }
         has_cultural_pillar = heritage_greek
         has_cultural_pillar = heritage_anatolian
-        has_cultural_pillar = heritage_thracian
       }
       has_innovation = innovation_classical_thyreos
     }
@@ -452,7 +467,6 @@ can_recruit_maa_thureophoroi_trigger = {
           is_culture_or_parent_culture = { CULTURE = culture:mathian }
           has_cultural_pillar = heritage_greek
           has_cultural_pillar = heritage_anatolian
-          has_cultural_pillar = heritage_thracian
         }
         has_innovation = innovation_classical_thyreos
       }
