@@ -1602,46 +1602,6 @@ task_convince_dejure = {
 				desc = ERUDITION_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
-		
-		# ATHA modifiers
-		if = {
-			limit = {
-				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
-			}
-			add = {
-				value = scope:councillor.steward_culture_conversion_nickname_political_poems_modifier_bonus
-				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
-			}
-		}
-
-		# ATHA colony holding
-		if = {
-			limit = {
-				exists = scope:county
-				scope:county = {
-					title_province = {
-						has_holding_type = colony_holding
-					}
-				}
-			}
-			multiply = {
-				value = klerouchy_culture_conversion_factor
-				desc = KLEROUCHY_HOLDING_CULTURE_CONVERSION_FACTOR_DESC
-			}
-		}
-
-		# ATHA colony rights contract
-		if = {
-			limit = {
-				scope:councillor_liege = {
-					vassal_contract_has_flag = city_state_encouraged_culture_flipping
-				}
-			}
-			multiply = {
-				value = klerouchy_culture_conversion_factor
-				desc = KLEROUCHY_CONTRACT_CULTURE_CONVERSION_FACTOR_DESC
-			}
-		}
 	}
 
 	#Unlocked at Court Grandeur level 6

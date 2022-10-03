@@ -1225,3 +1225,141 @@ form_k_liburnia_decision_effects = {
 
 	add_prestige = major_prestige_gain
 }
+
+restore_k_paionia_borders_decision_effects = {
+	# Get some renown as a reward
+	dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
+
+	# Add some prestige
+	add_prestige = major_prestige_gain
+
+	# De jure shifts
+	custom_tooltip = restore_k_paionia_borders_decision_effects.de_jure.tt
+	hidden_effect = {
+		title:d_amphaxitis = { set_de_jure_liege_title = title:k_paionia }
+		title:d_parastrymonia = { set_de_jure_liege_title = title:k_paionia }
+		title:d_chalkidike = { set_de_jure_liege_title = title:k_paionia }
+		title:d_maidike = { set_de_jure_liege_title = title:k_paionia }
+	}
+	title:c_eidomene = { set_de_jure_liege_title = title:d_amphaxitis }
+}
+
+create_d_lower_paionia_scripted_effect = {
+	# Usurp Pella if not held personally
+	if = { 
+		limit = {
+			NOT = { title:c_pella.holder = { this = root } }
+		}
+		create_title_and_vassal_change = {
+			type = returned
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:c_pella = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+
+	# Create Lower Paionia duchy
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:d_lower_paionia = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# Transfer vassals if possible
+	hidden_effect = {
+		every_vassal_or_below = {
+			limit = {
+				highest_held_title_tier = tier_county
+				OR = {
+					has_title = title:c_eidomene
+					has_title = title:c_moryllos
+					has_title = title:c_gareskos
+				}
+			}
+			create_title_and_vassal_change = {
+				type = revoked
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:change
+			}
+
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	# De jure shifts
+	custom_tooltip = create_d_lower_paionia_scripted_effect.tt
+
+	hidden_effect = {
+		title:c_pella = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_eidomene = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_moryllos = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_gareskos = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:d_lower_paionia = { set_de_jure_liege_title = title:k_paionia }
+	}
+
+	# Amphaxitis becomes known as Mygdonia
+	hidden_effect = {
+		title:d_amphaxitis = { set_title_name = d_mygdonia }
+	}
+
+	# Bottiaia replaced with Makedonis
+	hidden_effect = {
+		title:d_bottiaia = {
+			every_claimant = {
+				remove_claim = title:d_bottiaia
+				add_unpressed_claim = title:d_makedonis
+			}
+			if = {
+				limit = { exists = this.holder }
+				holder = {
+					create_title_and_vassal_change = {
+						type = created
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					title:d_makedonis = {
+						change_title_holder = {
+							holder = prev
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+			}
+		}
+		title:d_makedonis = {
+			copy_title_history = title:d_bottiaia
+			set_coa = d_bottiaia
+		}
+
+		destroy_title = title:d_bottiaia
+
+		title:c_aigai = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_berroia = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_edessa = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_almopia = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_pydna = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_dion = { set_de_jure_liege_title = title:d_makedonis }
+		title:d_makedonis = { set_de_jure_liege_title = title:k_makedonia }
+	}
+
+	# Aigai becomes capital of Macedonia
+	title:k_makedonia = { set_capital_county = title:c_aigai }
+}

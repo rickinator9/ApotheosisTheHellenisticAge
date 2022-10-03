@@ -73,3 +73,82 @@ form_k_liburnia_decision = { # aka: Establish the Liburnian Thalassocracy
 		base = 100
 	}
 }
+
+##############################
+# Restore k_paionia borders  #
+##############################
+
+restore_k_paionia_borders_decision = { # aka: Reclaim the Greater Paionian Lands
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+
+	ai_check_interval = 120
+
+	desc = restore_k_paionia_borders_decision_desc
+	selection_tooltip = restore_k_paionia_borders_decision_tooltip
+
+	is_shown = {
+		culture = { has_cultural_pillar = heritage_paeonian	}
+		has_title = title:k_paionia
+
+		#Can only do it once
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				#target = flag:restore_k_paionia_borders_decision
+			}
+		}
+	}
+
+	is_valid = {
+		#Must be independent
+		is_independent_ruler = yes
+		
+		#Should be the current ruler of Paeonia
+		has_primary_title = title:k_paionia
+
+		#Should have a good prestige level
+		prestige_level >= very_high_prestige_level
+
+		#Must completely control the lands formerly inhabited by Paeonian tribes
+		completely_controls_region = custom_greater_paeonia
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:restore_k_paionia_borders_decision
+		}
+
+		save_scope_as = k_paionia_restorer
+
+		show_as_tooltip = { restore_k_paionia_borders_decision_effects = yes } # Actually applied in ...
+
+		#Event for player
+		trigger_event = illyria_decisions.0003
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = illyria_decisions.0004
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

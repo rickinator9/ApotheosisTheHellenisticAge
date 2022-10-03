@@ -46,3 +46,133 @@ illyria_decisions.0002 = {
 		name = illyria_decisions.0002.a
 	}
 }
+
+##############################
+# Restore k_paionia borders	 #
+##############################
+
+# I restored k_paionia borders
+illyria_decisions.0003 = {
+	type = character_event
+	title = illyria_decisions.0003.t
+	desc = illyria_decisions.0003.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_paionia_restorer
+		animation = personality_honorable
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+
+		restore_k_paionia_borders_decision_effects = yes
+	}
+	
+	option = { # Consolidate & resettle the old tribal lands
+		name = illyria_decisions.0003.a
+		add_character_flag = restorer_is_administrator
+
+		create_d_lower_paionia_scripted_effect = yes
+
+		# Culture conversion
+		every_sub_realm_county = {
+			limit = {
+				NOT = {
+					culture = { has_cultural_pillar = heritage_paeonian }
+				}
+				title_province = { geographical_region = custom_greater_paeonia }
+			}
+			custom = restore_k_paionia_borders_decision_effects.custom
+			add_county_modifier = {
+				modifier = greater_paeonia_culture_modifier
+				years = 50
+			}
+		}
+
+		#minor cultural acceptance penalty
+		#gain bureaucratic tradition/ethos
+		#nickame (the settler?) that gives the following effects:
+			#stewardship bonus
+			#cheaper colony holdings/buildings
+			#reduced tyranny penalty
+	}
+	
+	option = { # Posture as an enlightened and cosmopolitan Hellenistic monarch 
+		name = illyria_decisions.0003.a
+		add_character_flag = restorer_is_cosmopolitan
+
+		#cultural acceptance boost with all vassal cultures
+		#nickame that gives the following effects:	
+			#different culture vassal opinion boost
+			#cheaper guest recruitment
+			#learning bonus
+		#gain cosmopolitan tradition/ethos
+		#gain random Macedonian innovations (or maybe even random innovation from every culture in the realm)
+
+	}
+
+	option = { # I will not rest until every Macedonian dynast lies dead at my feet 
+		name = illyria_decisions.0003.c
+		add_character_flag = restorer_is_warlike
+
+		#Note: if we end up creating a struggle for the diadochi, this option should cause the Paeonian culture to become involved
+
+		#nickame (diadochos?) that gives the following effects:
+			#invasion CB against independent Macedonian rulers
+			#cheaper same-culture merc recruitment
+			#cheaper MAA upkeep
+		#opinion penalty with independent Macedonian rulers
+		#one time army spawn
+		#cool house/title CoA?
+		#very stressful if not ambitious or brave
+	}
+
+	option = { # Avenge Abydon and all the other cities the Macedonians razed and depopulated
+		name = illyria_decisions.0003.d
+		add_character_flag = restorer_is_vengeful
+
+		#gold scaled to how many Macedonian counties you control (and raze)
+		#lots of dread
+		#razed counties get hefty development and control penalties
+		#hefty cultural acceptance penalty
+		#rulers of razed counties are very unhappy
+		#nickame (Makedonikos) that gives the following effects:
+			#negative Macedonian opinion
+			#dread gain/decay?
+			#cheaper MaA upkeep
+		#very stressful if not vengeful, callous, greedy or sadistic
+		#stress loss for sadistic, greedy & vengeful
+
+	option = { # Claim that you were Greek all along
+		name = illyria_decisions.0003.d
+		add_character_flag = restorer_is_philhellene
+
+		#learning challenge
+			#if successful:
+				#culture gets Greek heritage
+				#weak dynasty ancestry modifier?
+
+		#culture gets random innovations/traditions from Macedonians or other vassal Greek culture?
+		#nickame (Philhellene) that gives the following effects:
+			#opinion bonus with Greeks
+			#diplo/learning bonus?
+			#cultural fascination bonus?
+
+	}
+}
+
+# Someone else formed k_liburnia
+illyria_decisions.0004 = {
+	type = character_event
+	title = illyria_decisions.0004.t
+	desc = illyria_decisions.0004.desc
+	theme = realm
+	left_portrait = {
+		character = scope:k_liburnia_founder
+		animation = personality_honorable
+	}
+
+	option = { 
+		name = illyria_decisions.0004.a
+	}
+}

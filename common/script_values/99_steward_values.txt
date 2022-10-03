@@ -526,27 +526,6 @@ steward_promote_culture_contextual_bonuses = {
 			desc = STRUGGLE_EASIER_TO_CULTURE_CONVERT_DUE_TO_STRUGGLE_PHASE_MODIFIER
 		}
 	}
-	# Decisions
-	if = {
-		limit = {
-			OR = {
-				scope:councillor_liege.culture = { has_cultural_pillar = heritage_goidelic }
-				scope:councillor_liege.culture = { has_cultural_pillar = heritage_brythonic }
-			}
-			exists = scope:county
-			scope:county = {
-				has_county_modifier = reclaim_britannia_culture_modifier
-				NOR= {
-					culture = { has_cultural_pillar = heritage_goidelic }
-					culture = { has_cultural_pillar = heritage_brythonic }
-				}
-			}
-		}
-		add = {
-			value = promote_culture_reclaimed_brittania_bonus
-			desc = STEWARD_PROMOTE_CULTURE_RECLAIMING_BRITANNIA
-		}
-	}
 	# Events
 	if = { 
 		limit = {
@@ -595,6 +574,61 @@ steward_promote_culture_contextual_bonuses = {
 		add = {
 			value = scope:councillor.court_8190_vassal_modifier_value
 			desc = COURT_CHAPLAIN_CONVERSION_LOCAL_COUNTY_MODIFIERS
+		}
+	}
+
+	# ATHA modifiers
+	if = {
+		limit = {
+			scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
+		}
+		add = {
+			value = scope:councillor.steward_culture_conversion_nickname_political_poems_modifier_bonus
+			desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
+		}
+	}
+	# ATHA greater Paeonia decision
+	if = {
+		limit = {
+			scope:councillor_liege.culture = { has_cultural_pillar = heritage_paeonian }
+			exists = scope:county
+			scope:county = {
+				has_county_modifier = greater_paeonia_culture_modifier
+				NOT= {
+					culture = { has_cultural_pillar = heritage_paeonian }
+				}
+			}
+		}
+		add = {
+			value = promote_culture_greater_paeonia_bonus
+			desc = STEWARD_PROMOTE_CULTURE_GREATER_PAEONIA
+		}
+	}
+	# ATHA colony holding
+	if = {
+		limit = {
+			exists = scope:county
+			scope:county = {
+				title_province = {
+					has_holding_type = colony_holding
+				}
+			}
+		}
+		add = {
+			value = klerouchy_culture_conversion_factor
+			desc = KLEROUCHY_HOLDING_CULTURE_CONVERSION_FACTOR_DESC
+		}
+	}
+	# ATHA colony rights contract
+	if = {
+		limit = {
+			scope:councillor_liege = {
+				vassal_contract_has_flag = city_state_encouraged_culture_flipping
+			}
+		}
+		add = {
+			value = klerouchy_culture_conversion_factor
+			desc = KLEROUCHY_CONTRACT_CULTURE_CONVERSION_FACTOR_DESC
 		}
 	}
 }
