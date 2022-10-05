@@ -42,6 +42,35 @@ spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
 # LIMITS  #
 ###########
 
+ATHA_maa_guard_remaining = {
+	value = ATHA_maa_guard_maximum
+	subtract = ATHA_maa_guard_count
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		subtract = 1
+	}
+}
+
+ATHA_maa_guard_maximum = {
+	value = 1
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		add = 1
+	}
+}
+
+ATHA_maa_guard_count = {
+	value = 0
+	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_homoioi_hippeis_count
+	add = ATHA_maa_hiera_ile_count
+	add = ATHA_maa_basilikoi_agema_count
+}
+
 ATHA_maa_elite_remaining = {
 	value = ATHA_maa_elite_maximum
 	subtract = ATHA_maa_elite_count
@@ -51,7 +80,6 @@ ATHA_maa_elite_remaining = {
 		}
 		subtract = 1
 	}
-
 }
 
 ATHA_maa_elite_maximum = {
@@ -74,12 +102,7 @@ ATHA_maa_elite_count = {
 	add = ATHA_maa_hyperaspistai_count
 	add = ATHA_maa_homoioi_hoplitai_count
 	add = ATHA_maa_hypaspistai_count
-	add = ATHA_maa_homoioi_hoplitai_count
-	add = ATHA_maa_hypaspistai_count
-	add = ATHA_maa_homoioi_hippeis_count
 	add = ATHA_maa_agema_phalangitai_count
-	add = ATHA_maa_hiera_ile_count
-	add = ATHA_maa_basilikoi_agema_count
 }
 
 ATHA_maa_makedonikoi_peltastai_count = {
@@ -744,12 +767,23 @@ ATHA_ai_weight_already_has_type = 1000
 ATHA_ai_weight_obsolescence = -120
 ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
 ATHA_ai_weight_elite_bonus = 240
+ATHA_ai_weight_guard_bonus = 300
 
-ATHA_ai_weight_elite = {
-	value = 0
+ATHA_ai_weight_guard = {
+	value = -80
 	if = {
 		limit = {
-			ATHA_maa_elite_remaining <= 0
+			ATHA_maa_guard_remaining > 0
+		}
+		add = ATHA_ai_weight_guard_bonus
+	}
+}
+
+ATHA_ai_weight_elite = {
+	value = -80
+	if = {
+		limit = {
+			ATHA_maa_elite_remaining > 0
 		}
 		add = ATHA_ai_weight_elite_bonus
 	}
