@@ -35,4 +35,9 @@ replace_path = "history/provinces"
 replace_path = "history/titles"
 replace_path = "history/wars"
 
+replace_path = "music"
+replace_path = "dlc/dlc003_fp1/music"
+replace_path = "dlc/dlc004_ep1/music"
+replace_path = "dlc/dlc005_fp2/music"
+
 replace_path = "tests"
