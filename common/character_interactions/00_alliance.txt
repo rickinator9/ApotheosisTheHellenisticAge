@@ -6,6 +6,7 @@
 	special_interaction = call_ally_interaction
 	popup_on_receive = yes
 	pause_on_receive = yes
+	icon = alliance
 
 	greeting = positive
 	notification_text = CALL_ALLY_NOTIFICATION
@@ -92,12 +93,6 @@
 					any_war_attacker = { this = scope:recipient }
 					any_war_defender = { this = scope:recipient }
 				}
-			}
-
-			# block the call for Border Raid
-			custom_tooltip = {
-				text = no_call_ally_for_this_war_tt
-				NOT = { using_cb = fp2_border_raid }
 			}
 		}
 	}
@@ -230,6 +225,22 @@
 	
 	ai_accept = {
 		base = 20
+
+		modifier = {  # Refuse call to conflicts of little benefit
+			add = -1000
+			desc = WONT_FIGHT_MEANINGLESS_REASON
+			trigger_if = {
+				limit = { exists = scope:target }
+				scope:target = { using_cb = fp2_border_raid }
+				scope:recipient = { # Unless they like going on raids
+					NOR = {
+						has_trait = viking
+						has_trait = reaver
+					}
+				}
+			}
+			trigger_else = { always = no }
+		}
 
 		modifier = {  # Refuse call against Heir
 			add = -1000
@@ -672,6 +683,7 @@ negotiate_alliance_interaction = {
 	category = interaction_category_diplomacy
 	ai_min_reply_days = 4
 	ai_max_reply_days = 9
+	icon = alliance
 
 	send_name = negotiate_alliance_interaction
 
@@ -709,7 +721,7 @@ negotiate_alliance_interaction = {
 				is_at_war_with = scope:recipient
 			}
 		}
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		custom_description = {
 			text = "has_already_rejected_renegotiation"
 			subject = scope:recipient
@@ -1342,10 +1354,10 @@ negotiate_alliance_interaction = {
 		modifier = {
 	  	  	add = {
 				value = 1
-					subtract = {
-					value = scope:recipient.max_military_strength
-					divide = { value = scope:actor.max_military_strength min = 1 }
-					}
+				subtract = {
+					value = scope:recipient.max_military_strength # For foreign diplomacy, consider recipients max
+					divide = { value = scope:actor.current_military_strength min = 1 }
+				}
 				multiply = 10
 	  		}
 			desc = offer_vassalization_interaction_aibehavior_power_tt
@@ -1448,6 +1460,50 @@ negotiate_alliance_interaction = {
 			scope:actor.culture = { has_cultural_parameter = facilitate_alliance_acceptance }
 			add = 50 #should be in a file 00_traditions_values
 			desc = TRADITION_ASTUTE_DIPLOMATS_ACCEPTANCE_MODIFIER
+		}
+
+		# The AI doesn't want to form alliances with AI vassals within its capital duchy, so it can revoke them
+		modifier = {
+			scope:actor = {
+				is_ai = yes
+				is_vassal_or_below_of = scope:recipient
+				any_held_title = {
+					tier = tier_county
+					de_jure_liege = scope:actor.primary_title.title_capital_county.de_jure_liege
+				}
+			}
+			scope:recipient = {
+				is_ai = yes
+			}
+			add = -5000
+		}
+
+		# Rivalry
+		modifier = { # Say no to rivals
+			add = -55
+			scope:recipient = {
+				has_relation_rival = scope:actor
+			}
+			desc = "ACTOR_RIVAL_TO_ME_REASON"
+		}
+		modifier = { # Say no to nemesis
+			add = -300
+			scope:recipient = {
+				has_relation_nemesis = scope:actor
+			}
+			desc = "ACTOR_NEMESIS_TO_ME_REASON"
+		}
+
+		# Feud
+		modifier = {
+			add = -25
+			scope:recipient = {
+				exists = house
+				house.house_head = {
+					house_feud_target_house_trigger = { HOUSE = scope:actor.house }
+				}
+			}
+			desc = MARRY_FAMILY_FEUD_REASON
 		}
 
 		# ATHA - the actor has loves their close kin.
@@ -1568,7 +1624,7 @@ perk_alliance_interaction = {
 			is_imprisoned = no
 		}
 		
-		scope:recipient = { is_diplomatically_available = yes }
+		scope:recipient = { is_busy_in_events_localised = yes }
 		
 		custom_description = {
 			text = "has_already_rejected_renegotiation"
@@ -1943,10 +1999,10 @@ perk_alliance_interaction = {
 		modifier = {
 	  	  	add = {
 				value = 1
-					subtract = {
-					value = scope:recipient.max_military_strength
-					divide = { value = scope:actor.max_military_strength min = 1 }
-					}
+				subtract = {
+					value = scope:recipient.max_military_strength # For foreign diplomacy, consider recipients max
+					divide = { value = scope:actor.current_military_strength min = 1 }
+				}
 				multiply = 10
 	  		}
 			desc = offer_vassalization_interaction_aibehavior_power_tt
@@ -2032,6 +2088,33 @@ perk_alliance_interaction = {
 			}
 			add = -100
 			desc = DECLARED_WAR_REASON
+		}
+
+		#Rivalry
+		modifier = { # Say no to rivals
+			add = -55
+			scope:recipient = {
+				has_relation_rival = scope:actor
+			}
+			desc = "ACTOR_RIVAL_TO_ME_REASON"
+		}
+		modifier = { # Say no to nemesis
+			add = -300
+			scope:recipient = {
+				has_relation_nemesis = scope:actor
+			}
+			desc = "ACTOR_NEMESIS_TO_ME_REASON"
+		}
+		# Feud
+		modifier = {
+			add = -25
+			scope:recipient = {
+				exists = house
+				house.house_head = {
+					house_feud_target_house_trigger = { HOUSE = scope:actor.house }
+				}
+			}
+			desc = MARRY_FAMILY_FEUD_REASON
 		}
 	}
 
@@ -2377,6 +2460,7 @@ join_war_interaction = {
 				progress_towards_friend_effect = {
 					CHARACTER = scope:actor
 					OPINION = no
+					REASON = friend_alliance
 				}
 			}
 			else = {
@@ -2407,5 +2491,3 @@ join_war_interaction = {
 		base = 100 # everyone wants help
 	}
 }
-
-

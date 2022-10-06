@@ -45,6 +45,8 @@ pastures_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -108,6 +110,10 @@ pastures_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -494,6 +500,8 @@ hunting_grounds_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -562,6 +570,10 @@ hunting_grounds_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -940,7 +952,9 @@ orchards_01 = {
 	type_icon = "icon_building_orchards.dds"
 	
 	ai_value = {
-		base = 10
+		base = 15 # Significantly higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -979,6 +993,10 @@ orchards_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -1290,7 +1308,9 @@ farm_estates_01 = {
 	type_icon = "icon_building_farm_estates.dds"
 	
 	ai_value = {
-		base = 10
+		base = 15 # Significantly higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -1329,6 +1349,10 @@ farm_estates_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -1632,6 +1656,7 @@ military_camps_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -1711,6 +1736,10 @@ military_camps_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2020,7 +2049,8 @@ regimental_grounds_01 = {
 	type_icon = "icon_building_regimental_grounds.dds"
 	
 	ai_value = {
-		base = 10
+		base = 11 # One of the best buildings, a slight nudge
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			add = -99
@@ -2067,6 +2097,10 @@ regimental_grounds_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2408,6 +2442,7 @@ ramparts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -2463,6 +2498,10 @@ ramparts_02 = {
 			}
 		}
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -2792,6 +2831,8 @@ curtain_walls_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		modifier = {
 			add = 1
 			scope:holder = {
@@ -2858,6 +2899,10 @@ curtain_walls_02 = {
 		}
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3200,6 +3245,7 @@ watchtowers_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		modifier = {
 			add = 1
 			scope:holder = {
@@ -3265,6 +3311,10 @@ watchtowers_02 = {
 			}
 		}
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3607,7 +3657,9 @@ cereal_fields_01 = {
 	type_icon = "icon_building_cereal_fields.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're just that good
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -3662,6 +3714,10 @@ cereal_fields_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -3974,6 +4030,7 @@ outposts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4038,6 +4095,10 @@ outposts_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -4401,6 +4462,7 @@ barracks_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4453,6 +4515,10 @@ barracks_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -4775,6 +4841,7 @@ camel_farms_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -4782,6 +4849,10 @@ camel_farms_01 = {
 			NOT = {
 				has_building_or_higher = regimental_grounds_01
 			}
+		}
+		modifier = {
+			add = -9
+			has_building_or_higher = city_01
 		}
 	}
 }
@@ -4825,6 +4896,10 @@ camel_farms_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5171,7 +5246,9 @@ logging_camps_01 = {
 	type_icon = "icon_building_logging_camps.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -5226,6 +5303,10 @@ logging_camps_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5585,7 +5666,9 @@ peat_quarries_01 = {
 	type_icon = "icon_building_peat_quarries.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -5632,6 +5715,10 @@ peat_quarries_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -5978,6 +6065,8 @@ hill_farms_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -6036,6 +6125,10 @@ hill_farms_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -6414,7 +6507,9 @@ elephant_pens_01 = {
 	type_icon = "icon_building_elephant_pens.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 	}
 }
@@ -6461,6 +6556,10 @@ elephant_pens_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -6819,6 +6918,8 @@ plantations_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -6890,6 +6991,10 @@ plantations_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -7233,7 +7338,9 @@ quarries_01 = {
 	type_icon = "icon_building_quarries.dds"
 	
 	ai_value = {
-		base = 10
+		base = 12 # A little bit higher than normal, they're very handy for further development
+		ai_tier_1_building_modifier = yes
+		ai_tier_1_economical_building_preference_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 0
@@ -7290,6 +7397,10 @@ quarries_02 = {
 		base = 9
 		ai_general_building_modifier = yes
 		ai_economical_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 
@@ -7646,6 +7757,7 @@ hill_forts_01 = {
 	
 	ai_value = {
 		base = 10
+		ai_tier_1_building_modifier = yes
 		ai_general_building_modifier = yes
 		modifier = {
 			factor = 5
@@ -7694,6 +7806,10 @@ hill_forts_02 = {
 	ai_value = {
 		base = 9
 		ai_general_building_modifier = yes
+		modifier = { # Fill all building slots before going for upgrades
+			factor = 0
+			free_building_slots > 0
+		}
 	}
 }
 

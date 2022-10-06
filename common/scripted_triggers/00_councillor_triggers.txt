@@ -13,7 +13,11 @@
 can_be_councillor_basics_trigger = {
 	is_capable_adult = yes
 	is_imprisoned = no
-	is_at_war_with_liege = no	
+	is_at_war_with_liege = no
+	trigger_if = {
+		limit = { has_variable = block_hire_councillor }
+		NOT = { var:block_hire_councillor = liege }
+	}
 }
 
 can_be_chancellor_trigger = {
@@ -800,4 +804,44 @@ councillor_liege_has_family_business_bonus = {
 	scope:councillor = {
 		is_close_family_of = scope:councillor_liege
 	}
+}
+
+councillor_is_unskilled_trigger = {
+	trigger_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_chancellor }
+		diplomacy < mediocre_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_steward }
+		stewardship < mediocre_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_marshal }
+		martial < mediocre_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_spymaster }
+		intrigue < mediocre_skill_rating
+	}
+	trigger_else = { learning < mediocre_skill_rating }
+}
+
+councillor_is_skilled_trigger = {
+	trigger_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_chancellor }
+		diplomacy > decent_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_steward }
+		stewardship > decent_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_marshal }
+		martial > decent_skill_rating
+	}
+	trigger_else_if = {
+		limit = { this = $EMPLOYER$.cp:councillor_spymaster }
+		intrigue > decent_skill_rating
+	}
+	trigger_else = { learning > decent_skill_rating }
 }

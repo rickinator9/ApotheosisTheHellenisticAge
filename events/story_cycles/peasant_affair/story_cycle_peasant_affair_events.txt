@@ -2007,7 +2007,7 @@ peasant_affair.3003 = {
 	#Yes, of course!
 	option = {
 		name = peasant_affair.3003.a
-		set_relation_lover = scope:peasant_character
+		set_relation_lover = { reason = lover_longing target = scope:peasant_character }
 		stress_impact = {
 			paranoid = minor_stress_impact_gain
 			honest = medium_stress_impact_gain
@@ -2153,10 +2153,10 @@ peasant_affair.3004 = {
 		trigger = {
 			can_set_relation_lover_trigger = { CHARACTER = scope:peasant_character }
 		}
-		set_relation_lover = scope:peasant_character
+		set_relation_lover = { reason = lover_longing target = scope:peasant_character }
 	}
 
-	#We can be lovers instead
+	#Take as concubine
 	option = {
 		name = peasant_affair.3004.c
 		trigger = {

@@ -834,7 +834,10 @@ intrigue_scheme_ongoing.1008 = {
 	title = intrigue_scheme_ongoing.1008.t
 	desc = intrigue_scheme_ongoing.1008.desc
 	theme = generic_intrigue_scheme
-	left_portrait = scope:agent
+	left_portrait = {
+		character = scope:agent
+		animation = scheme
+	}
 	right_portrait = scope:defender
 	lower_right_portrait = scope:spymaster
 	widget = {
@@ -1392,7 +1395,10 @@ intrigue_scheme_ongoing.2003 = {
 		}
 	}
 	theme = generic_intrigue_scheme
-	left_portrait = scope:agent
+	left_portrait = {
+		character = scope:agent
+		animation = scheme
+	}
 	right_portrait = scope:other_secret_target
 	lower_right_portrait = scope:secret_target
 	widget = {
@@ -2955,6 +2961,7 @@ intrigue_scheme_ongoing.5001 = {
 		scope:target = {
 			is_landed = yes
 			is_ai = yes # We don't want to spontaneously create mystery servant characters for players
+			is_adult = yes
 		}
 	}
 

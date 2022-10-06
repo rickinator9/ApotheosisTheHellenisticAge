@@ -1197,7 +1197,7 @@ commission_epic.1006 = {
 			limit = {
 				NOT = { has_relation_friend = scope:vassal }
 			}
-			set_relation_friend = scope:vassal
+			set_relation_friend = { reason = friend_epic_vassal_inspiration target = scope:vassal }
 		}
 		else = {
 			reverse_add_opinion = {
@@ -1350,7 +1350,10 @@ commission_epic.1007 = {
 
 	option = { # How dare you?!
 		name = commission_epic.1007.a
-		set_relation_rival = scope:vassal
+		set_relation_rival = {
+			target = scope:vassal
+			reason = rival_left_out_of_chronicle
+		}
 		stress_impact = {
 			gregarious = medium_stress_impact_gain
 			forgiving = medium_stress_impact_gain
@@ -3214,6 +3217,7 @@ commission_epic.9000 = {
 				progress_towards_friend_effect = {
 					CHARACTER = scope:composer
 					OPINION = no
+					REASON = friend_composer_epic
 				}
 				random = {
 					chance = 50
@@ -3317,7 +3321,7 @@ commission_epic.9101 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_epic target = scope:composer }
 		}
 		add_courtier = scope:composer
 		ai_chance = {
@@ -3334,7 +3338,7 @@ commission_epic.9101 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_epic target = scope:composer }
 		}
 		scope:composer = {
 			select_and_move_to_pool_effect = yes
@@ -3416,7 +3420,7 @@ commission_epic.9102 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_epic target = scope:composer }
 		}
 		scope:composer = {
 			add_opinion = {
@@ -3440,7 +3444,7 @@ commission_epic.9102 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_epic target = scope:composer }
 		}
 		scope:composer = {
 			select_and_move_to_pool_effect = yes
@@ -3476,7 +3480,7 @@ commission_epic.9103 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_stories target = scope:composer }
 		}
 		scope:composer = {
 			add_opinion = {
@@ -3521,7 +3525,7 @@ commission_epic.9104 = {
 			limit = {
 				can_set_relation_friend_trigger = { CHARACTER = scope:composer }
 			}
-			set_relation_friend = scope:composer
+			set_relation_friend = { reason = friend_composer_epic target = scope:composer }
 		}
 	}
 

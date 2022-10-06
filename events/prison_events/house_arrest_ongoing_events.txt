@@ -194,6 +194,7 @@ house_arrest_ongoing.0003 = {
 			days = 1000
 		}
 		imprisoner = {
+			save_scope_as = imprisoner_scope
 			random_prisoner = {
 				limit = {
 					OR = {
@@ -359,7 +360,7 @@ house_arrest_ongoing.0003 = {
 			limit = {
 				has_character_flag = friend
 			}
-			set_relation_friend = scope:friendly_prisoner
+			set_relation_friend = { reason = friend_prisoners target = scope:friendly_prisoner involved_character = scope:imprisoner_scope }
 		}
 	}
 
@@ -374,7 +375,7 @@ house_arrest_ongoing.0003 = {
 			limit = {
 				has_character_flag = lover
 			}
-			set_relation_lover = scope:friendly_prisoner
+			set_relation_lover = { reason = lover_prison target = scope:friendly_prisoner involved_character = scope:imprisoner_scope }
 		}
 	}
 

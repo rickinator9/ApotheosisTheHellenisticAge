@@ -380,6 +380,11 @@ scripted_effect fp1_set_prime_trade_partner_effect = {
 		value = scope:recipient
 		days = fp1_trade_events_truce_length_value
 	}
+	# Fire off the renewal event from the date of expiry.
+	trigger_event = {
+		id = fp1_trade_events.0011
+		days = fp1_trade_events_truce_renewal_date_value
+	}
 	# Trigger the on_action.
 	if = {
 		limit = {
@@ -588,6 +593,7 @@ scripted_effect fp1_trade_events_trade_renewed_raider_perspective_effect = {
 	progress_towards_friend_effect = {
 		CHARACTER = scope:recipient
 		OPINION = 30
+		REASON = friend_fp1_renewed_trade_deal
 	}
 	# Gain some prestige.
 	add_prestige = major_prestige_gain
@@ -613,6 +619,7 @@ scripted_effect fp1_trade_events_trade_renewed_defender_perspective_effect = {
 		progress_towards_friend_effect = {
 			CHARACTER = scope:raider
 			OPINION = 30
+			REASON = friend_fp1_renewed_trade_deal
 		}
 	}
 	# Since prestige is the independence reward, we give a little bit of static cash.
@@ -914,6 +921,7 @@ scripted_effect fp1_trade_events_0021_acquire_courtier_effect = {
 	progress_towards_friend_effect = {
 		CHARACTER = $SELECTION$
 		OPINION = 100
+		REASON = friend_accepted_courtier
 	}
 	# Ditch the rest.
 	hidden_effect = {
@@ -1249,6 +1257,7 @@ fp1_trade_events.0031 = {
 		progress_towards_friend_effect = {
 			CHARACTER = scope:warrior
 			OPINION = 100
+			REASON = friend_accepted_courtier
 		}
 
 		stress_impact = {
@@ -1395,6 +1404,7 @@ scripted_effect fp1_trade_events_0041_offer_consultation_deal_raider_perspective
 	progress_towards_friend_effect = {
 		CHARACTER = scope:partner
 		OPINION = 30
+		REASON = friend_fp1_renewed_trade_deal
 	}
 	# Scope:partner gets some help with raiding.
 	custom_tooltip = fp1_trade_events.0041.partner_gets_raid_aid.tt
@@ -1446,6 +1456,7 @@ scripted_effect fp1_trade_events_0041_offer_consultation_deal_partner_perspectiv
 		progress_towards_friend_effect = {
 			CHARACTER = scope:raider
 			OPINION = 30
+			REASON = friend_fp1_renewed_trade_deal
 		}
 	}
 	# Scope:raider gets help with civic works.
@@ -1943,7 +1954,7 @@ fp1_trade_events.1171 = {
 		root.var:fp1_prime_trade_deal = { is_available_adult_or_is_commanding = yes }
 		# Must be of a disorganised faith and separate religion.
 		faith = {
-			has_doctrine = unreformed_faith_doctrine
+			has_doctrine_parameter = unreformed
 			NOT = { religion = root.var:fp1_prime_trade_deal.religion }
 			# For that matter, either root must be unmarried, or scope:partner can't have syncretic folk traditions (and so respect for their marriage.)
 			OR = {
@@ -2021,6 +2032,7 @@ fp1_trade_events.1171 = {
 		progress_towards_friend_effect = {
 			CHARACTER = scope:partner
 			OPINION = 50
+			REASON = friend_fp1_converted_faith_married
 		}
 
 		stress_impact = {
@@ -2071,7 +2083,7 @@ fp1_trade_events.1171 = {
 		hidden_effect = { fp1_trade_events_1171_marry_partner_child_effect = yes }
 		custom_tooltip = fp1_trade_events.1171.b.tt
 		# Also, become best friends.
-		set_relation_best_friend = scope:partner
+		set_relation_best_friend = { reason = best_friend_coverted_and_saved_my_soul copy_reason = friend target = scope:partner }
 
 		stress_impact = {
 			cynical = minor_stress_impact_loss

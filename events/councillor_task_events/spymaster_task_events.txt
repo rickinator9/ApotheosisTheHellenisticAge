@@ -1647,11 +1647,21 @@ spymaster_task.0381 = {
 			honest = medium_stress_impact_gain
 		}
 		ai_chance = {
-			base = 100
-			ai_value_modifier = {
-				ai_honor = -1
-				ai_greed = -0.5
+			base = 0
+			modifier = {
+				add = 100
+				scope:character_to_hook = {
+					is_vassal_of = root
+				}
 			}
+			modifier = {
+				factor = 0
+				short_term_gold <= major_gold_value
+			}
+			#ai_value_modifier = {
+			#	ai_honor = -1
+			#	ai_greed = -0.5
+			#}
 		}
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
@@ -1668,9 +1678,9 @@ spymaster_task.0381 = {
 		}
 		ai_chance = {
 			base = 20
-			ai_value_modifier = {
-				ai_compassion = 0.5
-			}
+			#ai_value_modifier = {
+			#	ai_compassion = 0.5
+			#}
 		}
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
