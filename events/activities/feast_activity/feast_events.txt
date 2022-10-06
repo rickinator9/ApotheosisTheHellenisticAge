@@ -262,7 +262,7 @@ feast.1501 = {
 					has_doctrine_parameter = mandatory_feast_attendance
 				}
 			}
-			add_piety_level = medium_piety_loss
+			add_piety = medium_piety_loss
 		}
 		ai_chance = {
 			base = 10
@@ -274,6 +274,19 @@ feast.1501 = {
 				faith = {
 					has_doctrine_parameter = mandatory_feast_attendance
 				}
+			}
+
+			# ATHA - The sender is known for their great feasts!
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_fat_modifier }
+			}
+
+			# ATHA - The sender is known for their eating of human flesh and I am a cannibal.
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_devourer_modifier }
+				is_cannibal_trigger = yes
 			}
 		}
 	}
@@ -299,7 +312,7 @@ feast.1501 = {
 					has_doctrine_parameter = mandatory_feast_attendance
 				}
 			}
-			add_piety_level = medium_piety_loss
+			add_piety = medium_piety_loss
 		}
 		ai_chance = {
 			base = 10
@@ -312,6 +325,19 @@ feast.1501 = {
 				faith = {
 					has_doctrine_parameter = mandatory_feast_attendance
 				}
+			}
+
+			# ATHA - The sender is known for their great feasts!
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_fat_modifier }
+			}
+
+			# ATHA - The sender is known for their eating of human flesh and I am a cannibal.
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_devourer_modifier }
+				is_cannibal_trigger = yes
 			}
 		}
 	}
@@ -399,6 +425,19 @@ feast.1502 = {
 			}
 			ai_value_modifier = {
 				ai_boldness = 0.2
+			}
+
+			# ATHA - The sender is known for their great feasts!
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_fat_modifier }
+			}
+
+			# ATHA - The sender is known for their eating of human flesh and I am a cannibal.
+			modifier = {
+				factor = 0.5
+				scope:sender = { has_character_modifier = nick_the_devourer_modifier }
+				is_cannibal_trigger = yes
 			}
 		}
 		scope:activity = {

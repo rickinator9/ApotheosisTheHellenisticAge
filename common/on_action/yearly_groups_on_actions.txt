@@ -1,21 +1,9 @@
 ﻿fp1_yearly_events = {
 	trigger = {
 		always = no
-		# has_fp1_dlc_trigger = yes
-		# OR = {
-		# 	has_culture_group = culture_group:north_germanic_group
-		# 	religion = religion:germanic_religion
-		# }
 	}
 	weight_multiplier = {
 		base = 1
-		# modifier = {
-		# 	factor = 0.33
-		# 	religion = religion:germanic_religion
-		# 	NOT = {
-		# 		has_culture_group = culture_group:north_germanic_group
-		# 	}
-		# }
 	}
 
 	random_events = {
@@ -24,5 +12,48 @@
 		
 		# Other Events
 		200 = trait_specific.9001 # Become Poet
+	}
+}
+
+fp2_yearly_events = {
+	trigger = {
+		has_fp2_dlc_trigger = yes
+		
+		any_realm_county = { # Most events are geographical in nature
+			any_county_province = { geographical_region = world_europe_west_iberia }
+		}
+	}
+	weight_multiplier = {
+		base = 1
+		modifier = { # Reduces frequency for characters with non-matching cultures
+			factor = 0.33
+		}
+		modifier = { # Reduces chance after recently having had an event from this pulse
+			factor = 0.2
+			has_character_flag = recently_got_fp2_event
+		}
+		modifier = { # Reduces frequency for having both sets of FP events valid
+			factor = 0.5
+			fp1_eligible_for_yearly_events_trigger = yes
+		}
+	}
+
+	random_events = {
+		200 = 0
+		
+		# FP2 - Fate of Iberia Events
+		160 = fp2_yearly.1001   # Chess Two 
+		10 = fp2_yearly.1002   # A Compromising Position
+		#100 = fp2_yearly.2017	# Chess for Friends (TODO_FP2_POLISH Fix possible OOO bug)
+		180 = fp2_yearly.2025	# Suffering from Success
+	}
+	
+	effect = {
+		root = {
+			add_character_flag = {
+				flag = recently_got_fp2_event
+				days = 1095 # 3 years
+			}
+		}
 	}
 }

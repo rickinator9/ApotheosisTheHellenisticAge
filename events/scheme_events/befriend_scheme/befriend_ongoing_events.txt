@@ -2474,8 +2474,18 @@ befriend_ongoing.4060 = {
 	desc = befriend_ongoing.4060.desc
 	theme = befriend_scheme
 
-	left_portrait = root
-	right_portrait = scope:target
+	override_background = {
+		event_background = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:target
+		animation = marshal
+	}
+	
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
@@ -2514,8 +2524,17 @@ befriend_ongoing.4062 = {
 		exists = scope:scheme
 	}
 	
-	left_portrait = scope:owner
-	right_portrait = root
+	override_background = {
+		event_background = courtyard
+	}
+	left_portrait = {
+		character = scope:owner
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:target
+		animation = marshal
+	}
 
 	option = {
 		name = befriend_ongoing.4062.a	# Yes, respect
@@ -2588,8 +2607,18 @@ befriend_ongoing.4064 = {
 	}
 	theme = befriend_scheme
 
-	left_portrait = root
-	right_portrait = scope:target
+	override_background = {
+		event_background = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:target
+		animation = marshal
+	}
+	
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
@@ -4444,6 +4473,17 @@ befriend_ongoing.5007 = {
 					multiplier = 1
 					min = -19
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = befriend_ongoing.5007.a.success
 					scope:scheme = {

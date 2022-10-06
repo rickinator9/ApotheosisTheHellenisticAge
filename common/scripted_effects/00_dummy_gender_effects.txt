@@ -243,6 +243,11 @@ random_dummy_gender_landholder_effect = {
 						has_realm_law = female_only_law
 
 						# These cultures historically granted equal property rights to women.
+						culture = {
+							OR = {
+								has_cultural_parameter = gender_equal_inheritance
+							}
+						}
 					}
 				}
 				dummy_female = { save_scope_as = dummy_gender }
@@ -268,10 +273,10 @@ random_dummy_gender_landholder_effect = {
 					OR = {
 						# These cultures historically prevented women from owning/inheriting land.
 						NOR = {
-							has_culture_group = culture_group:anatolian_group
-							has_culture_group = culture_group:greek_group
-							has_culture_group = culture_group:iranian_group
-							has_culture_group = culture_group:thracian_group
+							culture = { has_cultural_pillar = heritage_anatolian }
+							culture = { has_cultural_pillar = heritage_greek }
+							culture = { has_cultural_pillar = heritage_iranian }
+							culture = { has_cultural_pillar = heritage_thracian }
 						}
 						# But if their legal system changes to allow it, women should gain full ownership/inheritance rights.
 						has_realm_law = equal_law

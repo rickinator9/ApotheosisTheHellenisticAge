@@ -18,8 +18,13 @@ scripted_effect calculate_stress_gain_loss_from_deceased_character_effect = {
 	save_scope_value_as = {
 		name = deceased_character_stress
 		value = {
+			# Dying characters was the centre of this character's world.
 			if = {
-				# Dying character was extremely close to this character.
+				limit = { has_character_flag = dead_ritual_best_friend }
+				value = monumental_stress_gain
+			}
+			# Dying character was extremely close to this character.
+			else_if = {
 				limit = {
 					OR = {
 						has_relation_soulmate = $DYING_CHARACTER$
@@ -28,22 +33,25 @@ scripted_effect calculate_stress_gain_loss_from_deceased_character_effect = {
 				}
 				value = major_stress_gain
 			}
+			# Dying character was close and/or otherwise important to this character.
 			else_if = {
-				# Dying character was close and/or otherwise important to this character.
 				limit = {
 					OR = {
 						has_relation_lover = $DYING_CHARACTER$
 						has_relation_friend = $DYING_CHARACTER$
-						reverse_opinion = {
-							target = $DYING_CHARACTER$
-							value >= 75
+						AND = {
+							reverse_opinion = {
+								target = $DYING_CHARACTER$
+								value >= 75
+							}
+							NOT = { has_relation_rival = $DYING_CHARACTER$ }
 						}
 					}
 				}
 				value = medium_stress_gain
 			}
+			# Dying character was strongly disliked, rivaled, or was an obstacle to this character's ambitions.
 			else_if = {
-				# Dying character was strongly disliked, rivaled, or was an obstacle to this character's ambitions.
 				limit = {
 					OR = {
 						has_relation_rival = $DYING_CHARACTER$
@@ -56,20 +64,19 @@ scripted_effect calculate_stress_gain_loss_from_deceased_character_effect = {
 							ai_greed >= 50
 						}
 					}
-					AND = {
-						NOT = {
-							has_trait = forgiving
-						}
-					}
 				}
-				value = minor_stress_loss
+				if = {
+					limit = {
+						NOT = { has_trait = forgiving }
+					}
+					value = minor_stress_loss
+				}
 			}
+			# Dying character was only moderately important to this character (siblings who weren't very close, for example).
+			## Characters who are less important than this shouldn't gain/lose stress at all (councillors, vassals, lieges, etc.).
 			else = {
-				# Dying character was only moderately important to this character (siblings who weren't very close, for example).
-				# Characters who are less important than this shouldn't gain/lose stress at all (councillors, vassals, lieges, etc.).
 				value = minor_stress_gain
 			}
-
 			# Callous characters are less affected by the deaths of others, both positively and negatively.
 			if = {
 				limit = { has_trait = callous }
@@ -239,24 +246,6 @@ death_management.0001 = {
 			}
 		}
 
-		#To make the court physician stay in service
-		if = {
-			limit = {
-				any_relation = {
-					type = court_physician
-					count >= 1
-				}
-				exists = player_heir
-			}
-			random_relation = {
-				type = court_physician
-				save_scope_as = physician
-			}
-			player_heir = {
-				set_relation_court_physician = scope:physician
-			}
-		}
-
 		#ATHA: Inherit flags
 		if = {
 			limit = {
@@ -413,12 +402,15 @@ death_management.0001 = {
 			add_to_list = send_death_management_0002_friend
 			add_to_list = send_death_management_0002
 		}
-		#Send event about relevant death to friends
+		#Send event about relevant death to best friends
 		every_relation = {
 			type = best_friend
 			limit = {
 				is_alive = yes
-				death_management_0001_valid_for_death_event_trigger = yes
+				OR = {
+					death_management_0001_valid_for_death_event_trigger = yes
+					has_character_flag = dead_ritual_best_friend
+				}
 			}
 			add_to_list = send_death_management_0002_best_friend
 			add_to_list = send_death_management_0002
@@ -955,7 +947,7 @@ death_management.0002 = {
 			}
 		}
 	}
-}	
+}
 
 
 ######################################################
@@ -1295,6 +1287,7 @@ death_management.1001 = {
 # Sound Foundations stat removal
 death_management.1002 = {
 	hidden = yes
+	orphan = yes # TODO [CD] - Figure out why
 
 	immediate = {
 		every_parent = { sound_foundations_random_removal_effect = yes }
@@ -1337,9 +1330,7 @@ death_management.1004 = {
 	option = {
 		name = death_management.1004.a
 
-		stress_impact = {
-			base = minor_stress_impact_gain
-		}
+		add_stress = scope:deceased_character_stress
 		stress_save_deceased_character_for_mental_break = {
 			TARGET = scope:dead_character
 			FLAG = lover
@@ -1359,24 +1350,36 @@ death_management.1004 = {
 	}
 }
 
-#Dead friend
+#Dead best friend
 death_management.1005 = {
 	type = character_event
 	title = death_management.1005.t
-	desc = death_management.1005.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:dead_ritual_best_friend }
+				desc = death_management.1005.desc.ritual_best_friend
+			}
+			desc = death_management.1005.desc
+		}
+	}
 	theme = death
 	left_portrait = scope:dead_character
 
 	immediate = {
 		play_music_cue = mx_cue_death
+		# Remove the best friend flag, if it's around, but note that it was here for loc.
+		if = {
+			limit = { has_character_flag = dead_ritual_best_friend }
+			remove_character_flag = dead_ritual_best_friend
+			save_scope_as = dead_ritual_best_friend
+		}
 	}
 	
 	option = {
 		name = death_management.1005.a
 
-		stress_impact = {
-			base = minor_stress_impact_gain
-		}
+		add_stress = scope:deceased_character_stress
 		stress_save_deceased_character_for_mental_break = {
 			TARGET = scope:dead_character
 			FLAG = friend
@@ -1410,9 +1413,7 @@ death_management.1006 = {
 	option = {
 		name = death_management.1000.c
 
-		stress_impact = {
-			base = medium_stress_impact_loss
-		}
+		add_stress = scope:deceased_character_stress
 	}
 
 	after = {
@@ -4213,34 +4214,22 @@ death_management.0097 = {
 
 	immediate = {
 		save_scope_as = dead_character
-		every_parent = {
-			limit = {
-				NOT = { is_in_list = loved_ones_left_behind }
-				NOT = { has_trait = callous }
-				exists = player_heir
-				player_heir = scope:dead_character
-				OR = {
-					opinion = {
-						target = scope:dead_character
-						value >= 70
-					}
-					reverse_opinion = {
-						target = scope:dead_character
-						value >= 70
-					}
-				}
-				NOR = {
-					has_relation_rival = scope:dead_character
-					has_relation_potential_rival = scope:dead_character
-				}
-			}
-			add_to_list = loved_ones_left_behind
-		}
 		every_relation = {
 			type = soulmate
 			limit = {
 				NOT = { is_in_list = loved_ones_left_behind }
 				NOT = { has_trait = callous }
+			}
+			add_to_list = loved_ones_left_behind
+			set_variable = {
+				name = mourning_soulmate
+				value = scope:dead_character
+			}
+		}
+		every_parent = {
+			limit = {
+				NOT = { is_in_list = loved_ones_left_behind }
+				NOT = { has_trait = callous }
 				OR = {
 					opinion = {
 						target = scope:dead_character
@@ -4257,28 +4246,26 @@ death_management.0097 = {
 				}
 			}
 			add_to_list = loved_ones_left_behind
+			set_variable = {
+				name = mourning_parent
+				value = scope:dead_character
+			}
 		}
 		every_relation = {
 			type = best_friend
 			limit = {
 				NOT = { is_in_list = loved_ones_left_behind }
 				NOT = { has_trait = callous }
-				OR = {
-					opinion = {
-						target = scope:dead_character
-						value >= 70
-					}
-					reverse_opinion = {
-						target = scope:dead_character
-						value >= 70
-					}
-				}
 				NOR = {
 					has_relation_rival = scope:dead_character
 					has_relation_potential_rival = scope:dead_character
 				}
 			}
 			add_to_list = loved_ones_left_behind
+			set_variable = {
+				name = mourning_friend
+				value = scope:dead_character
+			}
 		}
 
 		#Add flag
@@ -4347,6 +4334,10 @@ death_management.9998 = {
 ### NATURAL DEATH BY EVENT
 death_management.9999 = {
 	hidden = yes
+
+	trigger = {
+		is_alive = yes
+	}
 
 	immediate = {
 		death = natural

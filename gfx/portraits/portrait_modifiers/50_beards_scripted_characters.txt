@@ -3,7 +3,7 @@
 beards_scripted_characters = {
 
     usage = game
-    selection_behavior = weighted_random
+    selection_behavior = max
 
     male_beard_western_03 = { # Short beard
         dna_modifiers = {
@@ -17,7 +17,8 @@ beards_scripted_characters = {
         weight = {
             base = 0
             modifier = {
-                add = 200
+                add = 999
+				exists = this
 				exists = character:spartan00147 # Areus I of Sparta
 				this = character:spartan00147 # Areus I of Sparta
             }
@@ -36,7 +37,8 @@ beards_scripted_characters = {
         weight = {
             base = 0
             modifier = {
-                add = 200
+                add = 999
+                exists = this
                 exists = character:athenian00206 #Kallippos of Eleusis
                 this = character:athenian00206 #Kallippos of Eleusis
             }
@@ -55,7 +57,8 @@ beards_scripted_characters = {
         weight = {
             base = 0
             modifier = {
-                add = 200
+                add = 999
+				exists = this
                 exists = character:spartan00143 # Kleonymos
                 this = character:spartan00143 # Kleonymos
             }

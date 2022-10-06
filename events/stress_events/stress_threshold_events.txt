@@ -544,7 +544,12 @@ stress_threshold.1001 = {
 		trait = flagellant
 
 		increase_wounds_effect = {REASON = whipping}
-		add_stress = medium_stress_impact_loss
+		if = { #To check that you didn't just die
+			limit = {
+				is_alive = yes
+			}
+			add_stress = medium_stress_impact_loss
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
@@ -838,6 +843,40 @@ stress_threshold.1011 = {
 
 			add_character_flag = stress_threshold_option_conversion
 			# Only faiths where Lustful is a sin qualify for this conversion (which is brought on by lustful thoughts).
+			hidden_effect = {
+				random_list = {
+					20 = {
+						trigger = {
+							NOR = {
+								faith = faith:lydian_faith
+								faith = faith:propitiatism_faith
+							}
+						}
+						faith:lydian_faith = { save_scope_as = new_faith }
+					}
+					20 = {
+						trigger = {
+							NOR = {
+								faith = faith:lydian_faith
+								faith = faith:propitiatism_faith
+							}
+						}
+						faith:propitiatism_faith = { save_scope_as = new_faith }
+					}
+					20 = {
+						trigger = {
+							NOT = { faith = faith:bormus_faith }
+						}
+						faith:bormus_faith = { save_scope_as = new_faith }
+					}
+					20 = {
+						trigger = {
+							NOT = { faith = faith:idaean_faith }
+						}
+						faith:idaean_faith = { save_scope_as = new_faith }
+					}
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3598,7 +3637,7 @@ stress_threshold.1602 = {
 		character = root
 		animation = worry
 	}
-	lower_right_portrait scope:friend
+	lower_right_portrait = scope:friend
 
 	widget = {
 		gui = "event_window_widget_stress"
@@ -4773,10 +4812,22 @@ stress_threshold.1701 = {
 				limit = {
 					this = scope:friend
 				}
-				add_relation_flag = {
-					target = root
-					relation = friend
-					flag = has_been_confided_in
+				if = {
+					limit = {
+						this = { has_relation_best_friend = root }
+					}
+					add_relation_flag = {
+						target = root
+						relation = best_friend
+						flag = has_been_confided_in
+					}
+				}
+				else = {
+					add_relation_flag = {
+						target = root
+						relation = friend
+						flag = has_been_confided_in
+					}
 				}
 			}
 		}
@@ -5593,7 +5644,7 @@ stress_threshold.1711 = {
 
 	after = {
 		stress_threshold_event_aftereffects = yes #Perform stress threshold event clean-up and preparation for future stress threshold events.
-		
+
 
 		if = {
 			limit = {
@@ -8244,10 +8295,6 @@ stress_threshold.2202 = {
 		character = scope:stress_character
 		animation = anger
 	}
-	right_portrait = {
-		character = root
-		animation = anger
-	}
 
 	immediate = {
 		if = {
@@ -8739,6 +8786,7 @@ stress_threshold.2301 = {
 
 	after = {
 		stress_threshold_event_aftereffects = yes #Perform stress threshold event clean-up and preparation for future stress threshold events.
+
 		if = {
 			limit = {
 				is_alive = yes
@@ -10176,12 +10224,12 @@ stress_threshold.2321 = {
 			every_in_list = {
 				list = affected_by_outburst
 				limit = {
+					is_alive = yes
 					NOR = {
 						has_trait = wrathful
 						has_trait = callous
 						has_trait = sadistic
 					}
-					is_alive = yes
 				}
 				custom = stress_threshold.2321.a.irritable.list
 				add_opinion = {
@@ -13018,55 +13066,61 @@ stress_threshold.2351 = {
 	after = {
 		stress_threshold_event_aftereffects = yes #Perform stress threshold event clean-up and preparation for future stress threshold events.
 		
-		#Set-up appropriate desc.
 		if = {
 			limit = {
-				has_trait = content
-				NOT = { has_character_flag = had_stress_threshold_2351_desc_content }
+				is_alive = yes
 			}
-			add_character_flag = {
-				flag = had_stress_threshold_2351_desc_content
-				years = 10
+
+			# Add blocker to prevent us from getting the same event option multiple times in short succession.
+			if = {
+				limit = {
+					has_trait = content
+					NOT = { has_character_flag = had_stress_threshold_2351_desc_content }
+				}
+				add_character_flag = {
+					flag = had_stress_threshold_2351_desc_content
+					years = 10
+				}
 			}
-		}
-		else_if = {
-			limit = {
-				has_trait = cynical
-				NOT = { has_character_flag = had_stress_threshold_2351_desc_cynical }
+			else_if = {
+				limit = {
+					has_trait = cynical
+					NOT = { has_character_flag = had_stress_threshold_2351_desc_cynical }
+				}
+				add_character_flag = {
+					flag = had_stress_threshold_2351_desc_cynical
+					years = 10
+				}
 			}
-			add_character_flag = {
-				flag = had_stress_threshold_2351_desc_cynical
-				years = 10
+			else_if = {
+				limit = {
+					has_trait = paranoid
+					NOT = { has_character_flag = had_stress_threshold_2351_desc_paranoid }
+				}
+				add_character_flag = {
+					flag = had_stress_threshold_2351_desc_paranoid
+					years = 10
+				}
 			}
-		}
-		else_if = {
-			limit = {
-				has_trait = paranoid
-				NOT = { has_character_flag = had_stress_threshold_2351_desc_paranoid }
+			else_if = {
+				limit = {
+					has_trait = sadistic
+					NOT = { has_character_flag = had_stress_threshold_2351_desc_sadistic }
+				}
+				add_character_flag = {
+					flag = had_stress_threshold_2351_desc_sadistic
+					years = 10
+				}
 			}
-			add_character_flag = {
-				flag = had_stress_threshold_2351_desc_paranoid
-				years = 10
-			}
-		}
-		else_if = {
-			limit = {
-				has_trait = sadistic
-				NOT = { has_character_flag = had_stress_threshold_2351_desc_sadistic }
-			}
-			add_character_flag = {
-				flag = had_stress_threshold_2351_desc_sadistic
-				years = 10
-			}
-		}
-		else_if = {
-			limit = {
-				has_trait = vengeful
-				NOT = { has_character_flag = had_stress_threshold_2351_desc_vengeful }
-			}
-			add_character_flag = {
-				flag = had_stress_threshold_2351_desc_vengeful
-				years = 10
+			else_if = {
+				limit = {
+					has_trait = vengeful
+					NOT = { has_character_flag = had_stress_threshold_2351_desc_vengeful }
+				}
+				add_character_flag = {
+					flag = had_stress_threshold_2351_desc_vengeful
+					years = 10
+				}
 			}
 		}
 	}

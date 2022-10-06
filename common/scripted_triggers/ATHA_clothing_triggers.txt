@@ -1,5 +1,12 @@
 ﻿portrait_ATHA_spartan_clothing_trigger = {
-	culture = culture:dorian_south
+	OR = {
+		culture = culture:laconian
+		culture = {
+			any_parent_culture_or_above = {
+				this = culture:laconian
+			}
+		}
+	}
 	OR = {
 		has_government = city_state_spartan_government
 		any_liege_or_above = { has_government = city_state_spartan_government }
@@ -10,11 +17,19 @@ portrait_ATHA_hellenistic_greek_clothing_trigger = {
 	OR = {
 		culture = culture:macedonian
 		culture = culture:epirote
+		culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:macedonian
+					this = culture:epirote
+				}
+			}
+		}
 	}
 }
 
 portrait_ATHA_classical_greek_clothing_trigger = {
-	has_culture_group = culture_group:greek_group
+	culture = { has_cultural_pillar = heritage_greek }
 	NOR = {
 		portrait_ATHA_spartan_clothing_trigger = yes
 		portrait_ATHA_hellenistic_greek_clothing_trigger = yes
@@ -22,16 +37,32 @@ portrait_ATHA_classical_greek_clothing_trigger = {
 }
 
 portrait_ATHA_greek_clothing_trigger = {
-	has_culture_group = culture_group:greek_group
+	culture = { has_cultural_pillar = heritage_greek }
+}
+
+portrait_greek_clothing_trigger = {
+	scope:culture = {
+		portrait_greek_clothing_contents_trigger = yes
+	}
+}
+
+portrait_greek_clothing_spouse_trigger = {
+	culture = {
+		portrait_greek_clothing_contents_trigger = yes
+	}
+}
+
+portrait_greek_clothing_contents_trigger = {
+	has_clothing_gfx = greek_clothing_gfx
 }
 
 portrait_ATHA_thracian_clothing_trigger = {
-	has_culture_group = culture_group:thracian_group
+	culture = { has_cultural_pillar = heritage_thracian }
 }
 
 portrait_ATHA_anatolian_clothing_trigger = {
 	OR = {
-		has_culture_group = culture_group:anatolian_group
-		has_culture_group = culture_group:iranian_group
+		culture = { has_cultural_pillar = heritage_anatolian }
+		culture = { has_cultural_pillar = heritage_iranian }
 	}
 }

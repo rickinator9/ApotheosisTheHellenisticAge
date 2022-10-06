@@ -200,6 +200,17 @@ bishop.1001 = {
 					value = scope:duel_value
 					multiplier = 0.5
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = bishop.1001.c.success
 					left_icon = scope:spouse
@@ -213,6 +224,17 @@ bishop.1001 = {
 					value = scope:duel_value
 					multiplier = -0.75
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:bishop = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:bishop = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = bishop.1001.c.failure
 					left_icon = scope:spouse
@@ -842,6 +864,17 @@ bishop.2001 = {
 							value = scope:duel_value
 							multiplier = 1.5
 						}
+
+						# ATHA - scholar/wise nickname modifiers.
+						modifier = {
+							has_character_modifier = nick_the_scholar_modifier
+							factor = 1.25
+						}
+						modifier = {
+							has_character_modifier = nick_the_wise_modifier
+							factor = 1.1
+						}
+
 					root = {
 							add_prestige = medium_prestige_loss
 						}

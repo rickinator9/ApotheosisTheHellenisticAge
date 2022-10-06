@@ -723,22 +723,23 @@ garrison_rights = {
 				scope:liege.culture = {
 					has_innovation = innovation_classical_garrisons
 				}
-				scope:vassal = { 
-					OR = {
-						trigger_if = {
-							limit = { government_has_flag = is_city_state_government }
-							custom_description = {
-								text = "has_dependent_city_state_contract"
-								vassal_contract_has_flag = has_dependent_city_state_contract 
-							}
+				scope:vassal = {
+					trigger_if = {
+						limit = { government_has_flag = is_city_state_government }
+						custom_description = {
+							text = "has_dependent_city_state_contract"
+							vassal_contract_has_flag = has_dependent_city_state_contract 
 						}
-						trigger_else_if = {
-							limit = { government_has_flag = is_coalition_government }
-							custom_description = {
-								text = "has_dependent_coalition_contract"
-								vassal_contract_has_flag = has_dependent_coalition_contract 
-							}
+					}
+					trigger_else_if = {
+						limit = { government_has_flag = is_coalition_government }
+						custom_description = {
+							text = "has_dependent_coalition_contract"
+							vassal_contract_has_flag = has_dependent_coalition_contract 
 						}
+					}
+					trigger_else = {
+						always = no
 					}
 				}
 			}

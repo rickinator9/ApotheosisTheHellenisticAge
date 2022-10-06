@@ -494,9 +494,14 @@ spy_on_mother_pregnancy_adultery_effect = {
 	}
 	hidden_effect = {
 		scope:mother = {
-			add_character_flag = {
-				flag = father_suspects_this_pregnancy
-				months = 8
+			if = {
+				limit = {
+					is_alive = yes
+				}
+				add_character_flag = {
+					flag = father_suspects_this_pregnancy
+					months = 8
+				}
 			}
 		}
 

@@ -60,7 +60,38 @@ murder_consequences_known_or_exposed_effect = {
 				}
 			}
 		}
-	}	
+	}
+
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			$VICTIM$ = { is_vip_struggle_character = yes }
+			$MURDERER$ = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_discovery_of_very_important_murder
+						CHAR = scope:victim
+					}
+				}
+			}
+		}
+		$MURDERER$ = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_discovery_of_very_important_murder
+						CHAR = scope:victim
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_discovery_of_very_important_murder
+					character = $MURDERER$
+				}
+			}
+		}
+	}
 }
 
 unknown_murder_effect = {
@@ -130,6 +161,33 @@ unknown_cannibal_murder_effect = {
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_medium_increase }
+	}
+}
+
+#Your head is turned into a bell chime
+unknown_bell_murder_effect = {
+	$VICTIM$ = {
+		death = {
+			death_reason = death_mysterious
+			killer = $MURDERER$
+		}
+	}
+	$MURDERER$ = {
+		add_secret = {
+			type = secret_murder
+			target = $VICTIM$
+		}
+		random_secret = {
+			limit = {
+				secret_type = secret_murder
+				secret_target = $VICTIM$
+			}
+			save_scope_as = bell_secret
+			set_variable = { #To set the right death reason if the secret is revealed
+				name = was_turned_into_bell_chime 
+				value = yes
+			}
+		}
 	}
 }
 
@@ -331,8 +389,13 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_india }
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					NOT = {
+						location = { geographical_region = world_india }
+					}
 				}
 			}
 		}
@@ -343,11 +406,16 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_africa_north
-						geographical_region = world_middle_east_jerusalem
-						geographical_region = world_middle_east_persia
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_africa_north
+							geographical_region = world_middle_east_jerusalem
+							geographical_region = world_middle_east_persia
+						}
 					}
 				}
 			}
@@ -359,10 +427,15 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_middle_east
-						geographical_region = world_africa_north_east
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_middle_east
+							geographical_region = world_africa_north_east
+						}
 					}
 				}
 			}
@@ -374,11 +447,16 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_europe_north
-						geographical_region = world_europe_east
-						geographical_region = world_europe_south_east
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_europe_north
+							geographical_region = world_europe_east
+							geographical_region = world_europe_south_east
+						}
 					}
 				}
 			}
@@ -390,8 +468,13 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_africa_west }
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					NOT = {
+						location = { geographical_region = world_africa_west }
+					}
 				}
 			}
 		}
@@ -402,8 +485,13 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_africa_west }
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					NOT = {
+						location = { geographical_region = world_africa_west }
+					}
 				}
 			}
 		}
@@ -414,10 +502,15 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_india
-						geographical_region = world_burma
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_india
+							geographical_region = world_burma
+						}
 					}
 				}
 			}
@@ -429,8 +522,13 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
-					location = { geographical_region = world_india }
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					NOT = {
+						location = { geographical_region = world_india }
+					}
 				}
 			}
 		}
@@ -441,11 +539,16 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_africa_north
-						geographical_region = world_middle_east
-						geographical_region = world_india
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_africa_north
+							geographical_region = world_middle_east
+							geographical_region = world_india
+						}
 					}
 				}
 			}
@@ -457,10 +560,15 @@ set_local_venomous_creature_effect = {
 			}
 			modifier = {
 				factor = 0
-				location = {
-					NOR = {
-						geographical_region = world_india
-						geographical_region = world_burma
+				trigger_if = {
+					limit = {
+						exists = location
+					}
+					location = {
+						NOR = {
+							geographical_region = world_india
+							geographical_region = world_burma
+						}
 					}
 				}
 			}

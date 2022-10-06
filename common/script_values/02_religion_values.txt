@@ -48,6 +48,8 @@ faith_changed_doctrine_cost_mult_two_step = 1.50
 faith_changed_doctrine_cost_mult_three_step = 2.25
 faith_changed_doctrine_cost_mult_four_step = 3.50
 
+faith_tenet_discount_mountain_background_value = 0.75
+
 hostility_multiplier_pluralism = 0.5
 hostility_multiplier_righteous = 1
 hostility_multiplier_fundamentalist = 2
@@ -419,7 +421,7 @@ ghw_target_stretch = 10
 ghw_target_has_holy_site = 50
 #Targets that should always be priorities if not controlled:
 ghw_target_key_religious_holding = 100
-ghw_target_religious_vengeance = 75
+ghw_target_religious_vengeance = 150
 #Distance modifiers stack:
 ghw_target_distance_01_reduction = 0.8
 ghw_target_distance_02_reduction = 0.8
@@ -429,372 +431,9 @@ ghw_target_distance_02_threshold = 1445000
 ghw_target_distance_03_threshold = 2167500
 
 # Referenced by code when building list of ghw targets
-#Logic reworked by Ewan Cowhig Croft
+# Logic reworked by Ewan Cowhig Croft
 great_holy_war_target_kingdom_weight = {
-	#WEIGHTING PROCESS
-	#1. Check how many individual counties within a de jure kingdom have a top-liege with an eligible faith for GHWing. Boost the count a little for kingdoms with existing same-faith monarchs.
-	#2. Modify the count by region location & relative importance to the Faith (is this kingdom in the heartlands of the faith, or one of an increasing gradiant of frontier regions?).
-	#3. Modify the count by region distance from the HoF's capital, or a fallback holy site.
-	#4. Weight up kingdoms containing holy sites directly.
-	#5. Weight up special priority targets (e.g., Jerusalem, Mecca) directly.
-
-	### 1 ###
-	#Is the target kingdom a viable GHW target?
-	every_in_de_jure_hierarchy = {
-		continue = { tier > tier_county }	#Check individual counties within the potential target de jure kingdom.
-		limit = {	#For every county with a GHWable liege...
-			tier = tier_county
-			scope:the_faith = {
-					is_hostile_enough_for_holy_war_trigger = { FAITH = prev.holder.top_liege.faith }
-			}
-		}
-		add = 1	#... Add 1 to the weighting.
-	}
-	#Weight up the kingdom if it either has an existing same-faith holder, or at least a same-faith claimant.
-	if = {
-		limit = {
-			OR = {
-				AND = {
-					exists = holder
-					holder.faith = scope:the_faith
-				}
-				any_claimant = {
-					exists = this
-					faith = scope:the_faith
-					is_available_adult = no
-				}
-			}
-		}
-		multiply = ghw_target_existing_same_faith_ruler
-	}
-	
-	### 2 ###
-	###Abrahamics & Zoroastrians
-	#Documentation = {
-		#Avoid adding lots of reckless GHW stretch goals, as it'll mess up the targeting if every religion has a dozen apiece.
-
-		#Below is an organised, prioritised list of the different target regions for each religion. Update it as you make changes.
-		#Christianity
-		#ghw_region_northern_italy					#heartlands
-		#ghw_region_thessalonika					#heartlands
-		#ghw_region_ethiopia						#heartlands
-		#ghw_region_france							#heartlands
-		#ghw_region_germany							#heartlands
-		#ghw_region_greece							#heartlands
-		#ghw_region_england							#heartlands
-		#ghw_region_caucasus						#heartlands
-		#ghw_region_anatolia						#frontier
-		#ghw_region_near_east						#frontier
-		#ghw_region_mediterranean					#frontier
-		#ghw_region_balkans							#frontier
-		#ghw_region_holy_land						#frontier
-		#ghw_region_iberia							#frontier
-		#ghw_region_celtic							#fringe
-		#ghw_region_germanic						#fringe
-		#ghw_region_central_european				#fringe
-		#ghw_region_baltic							#stretch
-		
-		#Islam
-		#ghw_region_holy_land						#heartlands
-		#ghw_region_arabia							#heartlands
-		#ghw_region_near_east						#heartlands
-		#ghw_region_egypt							#heartlands
-		#ghw_region_persia							#heartlands
-		#ghw_region_north_africa					#heartlands
-		#ghw_region_sicily							#frontier
-		#ghw_region_iberia							#frontier
-		#ghw_region_anatolia						#frontier
-		#ghw_region_afghanistan						#frontier
-		#ghw_region_the_sahel						#fringe
-		#ghw_region_mediterranean					#fringe
-		#ghw_region_western_india					#fringe
-		#ghw_region_southern_france					#fringe
-
-		#Yazidism
-		#ghw_region_kurdistan						#heartlands
-		#ghw_region_southern_middle_east			#frontier
-		#ghw_region_eastern_middle_east				#frontier
-		#ghw_region_caucasus						#frontier
-		#ghw_region_caspian_steppe					#fringe
-		#ghw_region_arabia							#fringe
-		#ghw_region_holy_land						#fringe
-
-		#Judaism
-		#ghw_region_holy_land						#heartlands
-		#ghw_region_arabia							#frontier
-		#ghw_region_near_east						#frontier
-		#ghw_region_egypt							#frontier
-		#ghw_region_anatolia						#fringe
-		#ghw_region_persia							#fringe
-		#ghw_region_ethiopia						#fringe
-
-		#Zoroastrianism/Dualism
-		#ghw_region_persia							#heartlands
-		#ghw_region_afghanistan						#frontier
-		#ghw_region_near_east						#frontier
-		#ghw_region_arabia							#fringe
-		#ghw_region_holy_land						#fringe
-		#ghw_region_anatolia						#fringe
-		#ghw_region_mongolia						#fringe
-		#ghw_region_western_india					#fringe
-
-		#Norse Paganism
-		#ghw_region_scandinavia						#heartlands
-		#ghw_region_britannia						#frontier
-		#ghw_region_saxony							#frontier
-		#ghw_region_russia							#frontier
-		#ghw_region_baltic							#fringe
-		#ghw_region_poland							#fringe
-		#ghw_region_thessalonika					#stretch
-
-		#Baltic Paganism
-		#ghw_region_baltic							#heartlands
-		#ghw_region_poland							#frontier
-		#ghw_region_russia							#frontier
-		#ghw_region_scandinavia						#fringe
-		#ghw_region_steppe							#fringe
-		#ghw_region_hungary							#fringe
-
-		#Slavic Paganism
-		#ghw_region_wendish_lands					#heartlands
-		#ghw_region_balkans							#heartlands
-		#ghw_region_russia							#heartlands
-		#ghw_region_hungary							#frontier
-		#ghw_region_steppe							#frontier
-		#ghw_region_mainland_greece					#fringe
-		#ghw_region_germany							#fringe
-		#ghw_region_italy							#stretch
-
-		#Finnish Paganism
-		#ghw_region_finland_&_estonia				#heartlands
-		#ghw_region_northern_russia					#heartlands
-		#ghw_region_steppe							#heartlands
-		#ghw_region_scandinavia						#frontier
-		#ghw_region_baltic							#frontier
-		#ghw_region_southern_russia					#frontier
-		#ghw_region_siberia							#frontier
-		#ghw_region_transoxiana						#fringe
-		#ghw_region_mongolia						#fringe
-
-		#Tengri Paganism
-		#ghw_region_mongolia						#heartlands
-		#ghw_region_siberia							#heartlands
-		#ghw_region_steppe							#heartlands
-		#ghw_region_russia							#frontier
-		#ghw_region_transoxiana						#frontier
-		#ghw_region_hungary							#frontier
-		#ghw_region_tibet							#fringe
-		#ghw_region_wendish_lands					#fringe
-
-		#Magyar Paganism
-		#ghw_region_hungary							#heartlands
-		#ghw_region_balkans							#frontier
-		#ghw_region_crimea							#frontier
-		#ghw_region_poland_bohemia_bavaria			#frontier
-		#ghw_region_southern_russia					#frontier
-		#ghw_region_mainland_greece					#fringe
-		#ghw_region_baltic							#fringe
-
-		#Bon Paganism, Qiangicism, Donyipoloism, & Mundhumism
-		#ghw_region_tibet							#heartlands
-		#ghw_region_northern_india					#frontier
-		#ghw_region_khotan							#frontier
-		#ghw_region_mongolia						#fringe
-		#ghw_region_transoxiana						#fringe
-		#ghw_region_southern_india					#stretch
-
-		#Mande Paganism & Senegambian Paganism
-		#ghw_region_the_sahel						#heartlands
-		#ghw_region_subsahelian_africa				#frontier
-		#ghw_region_north_african_interior			#frontier
-		#ghw_region_western_sahara					#frontier
-		#ghw_region_north_africa					#fringe
-
-		#Hausan Paganism
-		#ghw_region_north_african_interior			#heartlands
-		#ghw_region_the_sahel						#frontier
-		#ghw_region_subsahelian_africa				#frontier
-		#ghw_region_ethiopia						#frontier
-		#ghw_region_eastern_sahara					#frontier
-		#ghw_region_horn_of_africa					#fringe
-		#ghw_region_egypt_et_al						#fringe
-		#ghw_region_north_africa					#fringe
-
-		#Akan Paganism & Yoruba Paganism
-		#ghw_region_subsahelian_africa				#heartlands
-		#ghw_region_the_sahel						#frontier
-		#ghw_region_north_african_interior			#frontier
-		#ghw_region_western_sahara					#frontier
-		#ghw_region_north_africa					#fringe
-
-		#Kushite Paganism
-		#ghw_region_egypt_et_al						#heartlands
-		#ghw_region_north_african_interior			#frontier
-		#ghw_region_ethiopia						#frontier
-		#ghw_region_horn_of_africa					#frontier
-		#ghw_region_the_sahel						#fringe
-		#ghw_region_subsahelian_africa				#fringe
-		#ghw_region_eastern_sahara					#fringe
-		#ghw_region_north_africa					#fringe
-		#ghw_region_holy_land						#stretch
-		#ghw_region_arabia							#stretch
-
-		#Waaqi Paganism
-		#ghw_region_horn_of_africa					#heartlands
-		#ghw_region_ethiopia						#frontier
-		#ghw_region_egypt_et_al						#frontier
-		#ghw_region_arabia							#frontier
-		#ghw_region_north_african_interior			#fringe
-		#ghw_region_holy_land						#fringe
-
-		#Zunist Paganism
-		#ghw_region_afghanistan						#heartlands
-		#ghw_region_western_india					#frontier
-		#ghw_region_persia							#frontier
-		#ghw_region_transoxiana						#frontier
-		#ghw_region_caucasus						#fringe
-		#ghw_region_holy_land						#fringe
-		#ghw_region_near_east						#fringe
-		#ghw_region_southwestern_india				#fringe
-		#ghw_region_egypt							#stretch
-
-		#Hellenic Paganism
-		#ghw_region_mainland_greece					#heartlands
-		#ghw_region_italy							#heartlands
-		#ghw_region_anatolia						#frontier
-		#ghw_region_balkans							#frontier
-		#ghw_region_near_east						#frontier
-		#ghw_region_holy_land						#fringe
-		#ghw_region_egypt							#fringe
-		#ghw_region_north_africa					#fringe
-		#ghw_region_southern_france					#fringe
-
-		#Hinduism
-		#Hinduism prioritises the Sacred River above the rest of the sub-continent.
-		#ghw_region_the_ganges						#heartlands
-		#ghw_region_non_ganges_india				#frontier
-		#ghw_region_tibet							#fringe
-		#ghw_region_afghanistan						#fringe
-		#ghw_region_persia							#fringe
-
-		#Jainism
-		#How did you even *manage* to get a game that needs this?
-		#ghw_region_gujarat_&_rajputana				#heartlands
-		#ghw_region_non_gujarat_or_rajputana_india	#frontier
-		#ghw_region_tibet							#fringe
-		#ghw_region_afghanistan						#fringe
-		#ghw_region_persia							#fringe
-
-		#Buddhism Theravada
-		#ghw_region_lanka_&_bengal					#heartlands
-		#ghw_region_middle_india					#frontier
-		#ghw_region_western_india					#fringe
-
-		#Buddhism Mahayana & Vajrayana
-		#ghw_region_tibet							#heartlands
-		#ghw_region_mongolia						#heartlands
-		#ghw_region_khotan							#frontier
-		#ghw_region_siberia							#frontier
-		#ghw_region_transoxiana						#fringe
-		#ghw_region_afghanistan						#fringe
-
-		#Taoism
-		#ghw_region_mongolia						#heartlands
-		#ghw_region_siberia							#frontier
-		#ghw_region_tibet							#frontier
-		#ghw_region_north_eastern_india				#fringe
-	#}
-
-	### 3 ###
-	#Factor in the potential target's distance from the faith.
-	#Distance: Rome to Jerusalem-ish
-	#If the HoF is landed, use them.
-	if = {
-		limit = {
-			scope:the_faith.religious_head = { is_landed = yes }
-		}
-		if = {
-			limit = {
-				title_capital_county = {
-					squared_distance >= {
-						target = scope:the_faith.religious_head.capital_county
-						value = ghw_target_distance_01_threshold
-					}
-				}
-			}
-			multiply = ghw_target_distance_01_reduction
-		}
-	}
-	#Distance: Rome to Afghanistan-ish
-	#If the HoF is landed, use them.
-	if = {
-		limit = {
-			scope:the_faith.religious_head = { is_landed = yes }
-		}
-		if = {
-			limit = {
-				title_capital_county = {
-					squared_distance >= {
-						target = scope:the_faith.religious_head.capital_county
-						value = ghw_target_distance_02_threshold
-					}
-				}
-			}
-			multiply = ghw_target_distance_02_reduction
-		}
-	}
-	#Distance: Rome to Bengal-ish
-	#If the HoF is landed, use them.
-	if = {
-		limit = {
-			scope:the_faith.religious_head = { is_landed = yes }
-		}
-		if = {
-			limit = {
-				title_capital_county = {
-					squared_distance >= {
-						target = scope:the_faith.religious_head.capital_county
-						value = ghw_target_distance_03_threshold
-					}
-				}
-			}
-			multiply = ghw_target_distance_03_reduction
-		}
-	}
-
-	### 4 ###
-	if = {	#Always weight-up kingdoms containing holy sites.
-		limit = {
-			any_in_de_jure_hierarchy = {
-				tier = tier_barony
-				continue = { tier > tier_barony }
-				is_holy_site_of = scope:the_faith
-			}
-		}
-		multiply = ghw_target_has_holy_site
-	}
-
-	### 5 ###
-	#A defender in the region HumSac'd your HoF
-	if = {
-		limit = {
-			any_in_de_jure_hierarchy = {
-				continue = { tier > tier_county }
-				tier = tier_county
-				holder = {
-					AND = {
-						has_variable_list = humsacd_hofs
-						is_target_in_variable_list = {
-							name = humsacd_hofs
-							target = scope:the_faith
-						}
-					}
-					is_hostile_enough_for_holy_war_trigger = { FAITH = top_liege.faith }
-				}
-			}
-		}
-		multiply = ghw_target_religious_vengeance
-	}
+	value = 0
 }
 
 great_holy_war_pledge_amount = {
@@ -863,63 +502,92 @@ faith_creation_cost_mult = {
 # The returned value is interpreted as a multiplicative modifier (e.g. 0.5 means +50% cost).
 # scope:character = the converting character
 # scope:new_faith = the faith the character is converting to
+# There should be no subtract equal or higher than 1
 faith_conversion_cost_mult = {
-	add = {
-		value = scope:new_faith.faith_conversion_fervor_mult
-		subtract = scope:character.faith.faith_conversion_fervor_mult
-		desc = "faith_conversion_cost_fervor_difference"
-		format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-	}
 	
+	#Adding 1 to apply properly the following multipliers
+	add = {
+		value = 1
+	}
+
+	# Try to always be cheaper than creating a new faith
 	if = {
 		limit = {
 			scope:character.learning > 0
 		}
-		subtract = {  # Try to always be cheaper than creating a new faith
-			desc = "learning_modifier"
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = scope:character.learning
-			divide = 100
+		multiply = {
+			value = 1
+			subtract = {
+				desc = "learning_modifier"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = scope:character.learning
+				divide = 100
+			}
 		}
 	}
-	
+	if = {
+		multiply = {
+			value = 1
+			add = {
+				value = scope:new_faith.faith_conversion_fervor_mult
+				subtract = scope:character.faith.faith_conversion_fervor_mult
+				desc = "faith_conversion_cost_fervor_difference"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+			}
+		}	
+	}
+	# Try to always be cheaper than creating a new faith
 	if = {
 		limit = {
 			scope:new_faith.religion = scope:character.faith.religion
 		}
-		subtract = {  # Try to always be cheaper than creating a new faith
-			desc = "faith_conversion_cost_existing_faith"
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.5
+		multiply = {
+			value = 1
+			subtract = {
+				desc = "faith_conversion_cost_existing_faith"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.5
+			}
 		}
 	}
+	# Try to always be cheaper than creating a new faith
 	else = {
-		subtract = {  # Try to always be cheaper than creating a new faith
-			desc = "faith_conversion_cost_existing_faith"
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.35
+		multiply = {
+			value = 1
+			subtract = {
+				desc = "faith_conversion_cost_existing_faith"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.35
+			}
 		}
 	}
-	
+	# Pluralistic faiths have it easier converting to each other
 	if = {
 		limit = {
 			scope:new_faith = { has_doctrine = doctrine_pluralism_pluralistic }
 			scope:character.faith = { has_doctrine = doctrine_pluralism_pluralistic }
 		}
-		subtract = {  # Pluralistic faiths have it easier converting to each other
-			desc = "faith_conversion_cost_pluralists"
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.25
+		multiply = {
+			value = 1
+			subtract = {
+				desc = "faith_conversion_cost_pluralists"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.25
+			}
 		}
 	}
+	# Pluralistic faiths have it easier converting
 	else_if = {
 		limit = {
 			scope:character.faith = { has_doctrine = doctrine_pluralism_pluralistic }
 		}
-		subtract = {  # Pluralistic faiths have it easier converting
-			desc = "faith_conversion_cost_pluralist"
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.15
+		multiply = {
+			value = 1
+			subtract = {
+				desc = "faith_conversion_cost_pluralist"
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.15
+			}
 		}
 	}
 
@@ -942,10 +610,13 @@ faith_conversion_cost_mult = {
 					}
 				}
 			}
-			add = {
-				desc = "faith_conversion_cost_reformed_converting_to_unreformed"
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 5
+			multiply = {
+				value = 1
+				add = {
+					desc = "faith_conversion_cost_reformed_converting_to_unreformed"
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 5
+				}
 			}
 			
 		}
@@ -954,16 +625,16 @@ faith_conversion_cost_mult = {
 		if = {
 			limit = {
 				scope:character = {
-					OR = {
-						has_government = clan_government
-						has_government = republic_government
-					}
+					has_government = clan_government
 				}
 			}
-			add = {
-				desc = "faith_conversion_cost_clan_converting_to_unreformed"
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.25
+			multiply = {
+				value = 1
+				add = {
+					desc = "faith_conversion_cost_clan_converting_to_unreformed"
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.25
+				}
 			}
 		}
 		else_if = {
@@ -972,10 +643,13 @@ faith_conversion_cost_mult = {
 					government_has_flag = is_bureaucracy_government
 				}
 			}
-			add = {
-				desc = "faith_conversion_cost_feudal_converting_to_unreformed"
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.5
+			multiply = {
+				value = 1
+				add = {
+					desc = "faith_conversion_cost_feudal_converting_to_unreformed"
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.5
+				}
 			}
 		}
 		else_if = {
@@ -984,21 +658,25 @@ faith_conversion_cost_mult = {
 					OR = {
 						government_has_flag = is_city_state_government
 						government_has_flag = is_coalition_government	
-					}					
+					}
 				}
 			}
-			add = {
-				desc = "faith_conversion_cost_republic_converting_to_unreformed"
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.75
+			multiply = {
+				value = 1
+				add = {
+					desc = "faith_conversion_cost_republic_converting_to_unreformed"
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.75
+				}
 			}
 		}
 	}
 
 	##################################
-	# Dead Religion penalty(s) 		 #
+	# Dead Religion/Faith penalty(s) #
 	##################################
-	if = { #More expensive to convert to a dead religion
+	#More expensive to convert to a dead religion
+	if = {
 		limit = {
 			scope:new_faith = {
 				religion = {
@@ -1009,10 +687,13 @@ faith_conversion_cost_mult = {
 				}
 			}
 		}
-		add = {
-			desc = faith_conversion_cost_dead_religion
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 5
+		multiply = {
+			value = 1
+			add = {
+				desc = faith_conversion_cost_dead_religion
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 5
+			}
 		}
 	}
 
@@ -1021,77 +702,48 @@ faith_conversion_cost_mult = {
 	##################################
 	if = { #More expensive to convert to a dead faith
 		limit = {
-			scope:new_faith = { has_followers_trigger = no }
+			scope:new_faith = {
+				has_followers_trigger = no
+				religion = {
+					any_faith = {
+						count = all
+						has_followers_trigger = yes
+					}
+				}
+			}
 		}
-		add = {
-			desc = faith_conversion_cost_dead_faith
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.2
+		multiply = {
+			value = 1
+			add = {
+				desc = faith_conversion_cost_dead_faith
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 5
+			}
 		}
 	}
 
 	#######################################
 	# Switching religion/family penalties #
 	#######################################
-	#More expensive if you convert to a faith outside of your religion's family
+	# More expensive if you convert to a faith outside of your religion's family
 	if = {
 		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_hellenic }
-					}
+			NOT = {
+				is_in_same_religious_family = {
+					RELIGION1 = scope:new_faith.religion
+					RELIGION2 = scope:character.faith.religion
 				}
 			}
 		}
-		add = {
-			desc = faith_conversion_cost_other_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2
+		multiply = {
+			value = 1
+			add = {
+				desc = faith_conversion_cost_other_religion_family
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 2
+			}
 		}
 	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_great_mother }
-					}
-				}
-			}
-		}
-		add = {
-			desc = faith_conversion_cost_other_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2
-		}
-	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_anatolian }
-					}
-				}
-			}
-		}
-		add = {
-			desc = faith_conversion_cost_other_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2
-		}
-	}
-	# TODO: Add religion families as we expand.
 	
 	# Unreformed Faiths have an easier way converting to Organized faiths
 	if = {
@@ -1107,80 +759,44 @@ faith_conversion_cost_mult = {
 				}
 			}
 		}
-		add = {
-			desc = faith_conversion_cost_unreformed_to_organized
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = -2.25
+		multiply = {
+			value = 1
+			subtract = {
+				desc = faith_conversion_cost_unreformed_to_organized
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.9
+			}
 		}
 	}
 	
-	#More expensive to convert to something inside your religion family that's not the same religion
+	# More expensive to convert to something inside your religion family that's not the same religion
 	if = {
 		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
+			is_in_same_religious_family = {
+				RELIGION1 = scope:new_faith.religion
+				RELIGION2 = scope:character.faith.religion
 			}
 			scope:character = {
 				faith = {
 					religion = {
-						is_in_family = rf_hellenic
 						NOT = { this = scope:new_faith.religion}
 					}
 				}
 			}
 		}
-		add = {
-			desc = faith_conversion_cost_inside_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+		multiply = {
 			value = 1
+			add = {
+				desc = faith_conversion_cost_inside_religion_family
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 1
+			}
 		}
 	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						is_in_family = rf_great_mother
-						NOT = { this = scope:new_faith.religion}
-					}
-				}
-			}
-		}
-		add = {
-			desc = faith_conversion_cost_inside_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 1
-		}
-	}
-	else_if = {
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						is_in_family = rf_anatolian
-						NOT = { this = scope:new_faith.religion}
-					}
-				}
-			}
-		}
-		add = {
-			desc = faith_conversion_cost_inside_religion_family
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 1
-		}
-	}
-	# TODO: Add religion families as we expand.
 
 	#######################################
 	# Misc penalties #
 	#######################################
-
 	# More expensive to convert to a faith who's HoF you HumSac'D/to a faith on good terms with one who's HoF you HumSac'd, unless they're chill with HumSac.
 	if = {
 		limit = {
@@ -1199,18 +815,21 @@ faith_conversion_cost_mult = {
 				NOT = { has_doctrine_parameter = human_sacrifice_active }
 			}
 		}
-		add = {
-			desc = faith_conversion_cost_sacrificed_hof
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 5
+		multiply = {
+			value = 1
+			add = {
+				desc = faith_conversion_cost_sacrificed_hof
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 5
+			}
 		}
 	}
 
 	########################
 	# Conversion Discounts #
 	########################
-
-	if = { #Cheaper if you are targeted by the new Faith in a defensive Holy War
+	# Cheaper if you are targeted by the new Faith in a defensive Holy War
+	if = {
 		limit = {
 			scope:character = {
 				any_character_war = {
@@ -1230,21 +849,28 @@ faith_conversion_cost_mult = {
 					}
 				}
 			}
-			subtract = {
-				desc = faith_conversion_cost_unreformed_holy_war
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 2.5
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_unreformed_holy_war
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.9
+				}
 			}
 		}
 		else = { # But still a sizable discount otherwise.
-			subtract = {
-				desc = faith_conversion_cost_holy_war
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.5
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_holy_war
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.5
+				}
 			}
 		}
 	}
-	if = { #Cheaper if your spouse is of the faith
+	# Cheaper if your spouse is of the faith
+	if = {
 		limit = {
 			scope:character = {
 				any_spouse = {
@@ -1263,21 +889,28 @@ faith_conversion_cost_mult = {
 					}
 				}
 			}
-			subtract = {
-				desc = faith_conversion_cost_unreformed_spouse
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 2.5
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_unreformed_spouse
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.9
+				}
 			}
 		}
 		else = { # But still a sizable discount otherwise.		
-			subtract = {
-				desc = faith_conversion_cost_spouse
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.5
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_spouse
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.5
+				}
 			}
 		}
 	}
-	else_if = { #Does a concubine have the right religion?
+	# Does a concubine have the right religion?
+	else_if = {
 		limit = {
 			scope:character = {
 				any_concubine = {
@@ -1296,153 +929,73 @@ faith_conversion_cost_mult = {
 					}
 				}
 			}
-			subtract = {
-				desc = faith_conversion_cost_unreformed_concubine
-				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 2.25
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_unreformed_concubine
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.9
+				}
 			}
 		}
 		else = { # But still a sizable discount otherwise.
+			
+			multiply = {
+				value = 1 
+				subtract = {
+					desc = faith_conversion_cost_concubine
+					format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+					value = 0.25
+				}
+			}
+		}
+	}
+	# Cheaper if the religion is present near/in your borders
+	if = {
+		limit = {
+			NOT = {
+				is_in_same_religious_family = {
+					RELIGION1 = scope:new_faith.religion
+					RELIGION2 = scope:character.faith.religion
+				}
+			}
+			scope:character = {
+				OR = {
+					any_neighboring_top_liege_realm_owner = {
+						faith = scope:new_faith
+					}
+					any_vassal = {
+						faith = scope:new_faith
+					}
+					any_realm_province = {
+						faith = scope:new_faith
+					}
+					AND = {
+						exists = liege
+						liege = {
+							faith = scope:new_faith
+						}
+					}
+					AND = {
+						exists = liege
+						liege = {	
+							any_vassal = {
+								faith = scope:new_faith
+							}
+						}
+					}
+				}
+			}
+		}
+		multiply = {
+			value = 1 
 			subtract = {
-				desc = faith_conversion_cost_concubine
+				desc = faith_conversion_cost_present
 				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-				value = 0.25
+				value = 0.9
 			}
 		}
 	}
-	if = { #Cheaper if the religion is present near/in your borders
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_hellenic }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_hellenic }
-					}
-				}
-				OR = {
-					any_neighboring_top_liege_realm_owner = {
-						faith = scope:new_faith
-					}
-					any_vassal = {
-						faith = scope:new_faith
-					}
-					any_realm_province = {
-						faith = scope:new_faith
-					}
-					AND = {
-						exists = liege
-						liege = {
-							faith = scope:new_faith
-						}
-					}
-					AND = {
-						exists = liege
-						liege = {	
-							any_vassal = {
-								faith = scope:new_faith
-							}
-						}
-					}
-				}
-			}
-		}
-		subtract = {
-			desc = faith_conversion_cost_present
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2.5
-		}
-	}
-	else_if = { #Cheaper if the religion is present near/in your borders
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_great_mother }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_great_mother }
-					}
-				}
-				OR = {
-					any_neighboring_top_liege_realm_owner = {
-						faith = scope:new_faith
-					}
-					any_vassal = {
-						faith = scope:new_faith
-					}
-					any_realm_province = {
-						faith = scope:new_faith
-					}
-					AND = {
-						exists = liege
-						liege = {
-							faith = scope:new_faith
-						}
-					}
-					AND = {
-						exists = liege
-						liege = {	
-							any_vassal = {
-								faith = scope:new_faith
-							}
-						}
-					}
-				}
-			}
-		}
-		subtract = {
-			desc = faith_conversion_cost_present
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2.5
-		}
-	}
-	else_if = { #Cheaper if the religion is present near/in your borders
-		limit = {
-			scope:new_faith = {
-				religion = { is_in_family = rf_anatolian }
-			}
-			scope:character = {
-				faith = {
-					religion = {
-						NOT = { is_in_family = rf_anatolian }
-					}
-				}
-				OR = {
-					any_neighboring_top_liege_realm_owner = {
-						faith = scope:new_faith
-					}
-					any_vassal = {
-						faith = scope:new_faith
-					}
-					any_realm_province = {
-						faith = scope:new_faith
-					}
-					AND = {
-						exists = liege
-						liege = {
-							faith = scope:new_faith
-						}
-					}
-					AND = {
-						exists = liege
-						liege = {	
-							any_vassal = {
-								faith = scope:new_faith
-							}
-						}
-					}
-				}
-			}
-		}
-		subtract = {
-			desc = faith_conversion_cost_present
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 2.5
-		}
-	}
-	# TODO: Add religion families as we expand.
 	else_if = {
 		limit = {
 			scope:character = {
@@ -1473,12 +1026,70 @@ faith_conversion_cost_mult = {
 				}
 			}
 		}
-		subtract = {
-			desc = faith_conversion_cost_present
-			format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
-			value = 0.5
+		multiply = {
+			value = 1 
+			subtract = {
+				desc = faith_conversion_cost_present
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.5
+			}
 		}
 	}
+	# Cheaper if you're an interloper in a struggle converting to an involved faith.
+	if = {
+		limit = {
+			scope:character = {
+				any_character_struggle = {
+					involvement = interloper
+					has_struggle_phase_parameter = cheaper_to_convert_to_struggle_faith
+					is_faith_involved_in_struggle = scope:new_faith
+				}
+			}
+		}
+		multiply = {
+			value = 1 
+			subtract = {
+				desc = struggle_parameter_cheaper_to_convert_to_struggle_faith
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.5
+			}
+		}
+	}
+
+	########################################
+	# Conversion Discounts from Traditions #
+	########################################
+	# scope:new_faith.religion = scope:character.faith.religion
+
+	# Pacifism Tenet
+	if = {
+		limit = {
+			AND = {
+				scope:character= {
+					culture = {
+						has_cultural_parameter = reduced_cost_for_conversion_to_pacifist_faith
+					}
+				}
+				scope:new_faith = {
+					has_doctrine = tenet_pacifism 
+				}
+			}
+		}
+		multiply = {
+			value = 1 
+			subtract = {
+				desc = faith_conversion_cost_tradition
+				format = "BREAKDOWN_FORMAT_PIETY_PERCENTAGE_POSITIVE_IS_BAD"
+				value = 0.25
+			}
+		}
+	}
+
+	# Removing 1 to offset the value and present it as expected by the code
+	subtract = {
+		value = 1
+	}
+
 }
 
 reincarnation_chance = 4

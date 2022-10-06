@@ -533,6 +533,7 @@ religious_interaction.6 = { # Faith head divorce event via Dynast (divorce_chara
 #Religious Legal Pronouncements
 religious_interaction.1001 = {
 	type = character_event
+	orphan = yes # TODO [CD] - Figure out why
 	title = {
 		first_valid = {
 			triggered_desc = {
@@ -646,6 +647,7 @@ religious_interaction.1020 = {
 #Excommunicated (Pope's own initiative)
 religious_interaction.1021 = {
 	type = letter_event
+	orphan = yes # TODO [CD] - Figure out why
 	opening = {
 		desc = religious_interaction.1.opening
 	}
@@ -1036,7 +1038,7 @@ religious_interaction.2011 = {
 				}
 			}
 		}
-
+		
 		ai_chance = {
 			base = 10
 			modifier = {
@@ -1104,9 +1106,19 @@ religious_interaction.2012 = {
 	option = {
 		name = religious_interaction.2012.a
 		scope:recipient = {
-			add_hook = {
-				target = root
-				type = favor_hook
+			if = { # Check that they don't already have a hook on root
+				limit = {
+					NOT = {
+						has_hook_of_type = {
+							target = root
+							type = favor_hook
+						}
+					}
+				}
+				add_hook = {
+					target = root
+					type = favor_hook
+				}
 			}
 		}
 		demand_conversion_interaction_effect = yes
@@ -1486,6 +1498,17 @@ religious_interaction.2400 = {
 						multiply = 5
 					}
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = religious_interaction.2400.a.tt_success
 				hidden_effect = {
 					random_list = {
@@ -1581,6 +1604,17 @@ religious_interaction.2400 = {
 						multiply = -5
 					}
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:actor = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:actor = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = religious_interaction.2400.a.tt_fail
 				hidden_effect = {
 					random_list = {

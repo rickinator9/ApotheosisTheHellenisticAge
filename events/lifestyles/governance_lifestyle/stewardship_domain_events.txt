@@ -166,7 +166,6 @@ stewardship_domain.1041 = {
 							days = 3650
 						}
 					}
-
 				}
 			}
 			50 = {
@@ -491,6 +490,12 @@ stewardship_domain.1052 = {
 	desc = stewardship_domain.1052.desc
 	theme = stewardship_domain_focus
 	left_portrait = root
+	lower_right_portrait = {
+		trigger = {
+			exists = scope:almoner
+		}
+		character = scope:almoner
+	}
 	
 	trigger = {
 		#Only feudal governments have serfs and freemen.
@@ -525,6 +530,17 @@ stewardship_domain.1052 = {
 				county_control <= 80
 			}
 			save_scope_as = target_county
+		}
+		if = {
+			limit = {
+				any_court_position_holder = {
+					type = high_almoner_court_position
+				}
+			}
+			random_court_position_holder = {
+				type = high_almoner_court_position
+				save_scope_as = almoner
+			}
 		}
 	}
 
@@ -569,6 +585,7 @@ stewardship_domain.1052 = {
 				is_ai = no
 				short_term_gold >= medium_gold_value
 			}
+			NOT = { exists = scope:almoner }
 		}
 
 		remove_short_term_gold = medium_gold_value
@@ -602,6 +619,43 @@ stewardship_domain.1052 = {
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
+	}
+
+	#Be generous and give the troubled freefolk some charity through your High Almoner
+	option = {
+		name = stewardship_domain.1052.d
+		trigger = {
+			OR = {
+				is_ai = no
+				short_term_gold >= medium_gold_value
+			}
+			exists = scope:almoner
+		}
+
+		remove_short_term_gold = medium_gold_value
+		add_piety = medium_piety_gain
+		scope:target_county = {
+			add_county_modifier = {
+				modifier = governance_1052_grateful_freefolk_modifier
+				days = 1825
+			}
+		}
+
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+			sadistic = medium_stress_impact_gain
+			callous = minor_stress_impact_gain
+			gluttonous = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_compassion = 100
+				ai_greed = -100
+			}
+		}
 	}
 	
 	#Lean on the church to aid the troubled freefolk.
@@ -959,7 +1013,10 @@ stewardship_domain.1073 = {
 	#Option A: Convince the county to adopt your culture instead.
 	option = {
 		name = stewardship_domain.1073.a
-
+		
+		trigger = { # This can cause culture-gore, so avoid the ai taking it
+			is_ai = no
+		}
 
 		add_stewardship_lifestyle_xp = medium_lifestyle_xp
 		duel = {
@@ -1020,27 +1077,6 @@ stewardship_domain.1073 = {
 		stress_impact = {
 			humble = minor_stress_impact_gain
 			compassionate = minor_stress_impact_gain
-		}
-		ai_chance = {
-			base = 50
-
-			# Rational characters know when they have a good chance of winning the duel
-			compare_modifier = {
-				trigger = {
-					ai_rationality >= 10
-				}
-				value = {
-					value = diplomacy
-					add = -10
-				}
-				multiplier = 1000 # -10,000 at 0 Stewardship, +0 at 10 Stewardship, +10,000 at 20 Stewardship
-			}
-
-			ai_value_modifier = {
-				ai_compassion = 200
-				ai_greed = 100
-				ai_boldness = 100
-			}
 		}
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
@@ -2166,7 +2202,7 @@ stewardship_domain_special.1002 = {
 			trigger = {
 				scope:vassal_reaction = flag:blaming			
 			}
-			animation = angry
+			animation = anger
 		}
 	}
 
@@ -7259,6 +7295,17 @@ stewardship_domain_special.1510 = {
 					value = scope:duel_value
 					multiplier = 1
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = stewardship_domain_special.1510.c.success
 
 				#Increase survey quality due to thoroughness.
@@ -7275,6 +7322,17 @@ stewardship_domain_special.1510 = {
 					value = scope:duel_value
 					multiplier = -0.8
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:upset_priest = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:upset_priest = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				desc = stewardship_domain_special.1510.c.failure
 
 				#Add the priest's holdings to the exclusion list, and lower the survey quality.
@@ -7285,7 +7343,7 @@ stewardship_domain_special.1510 = {
 
 					custom_tooltip = stewardship_domain_special.1510.b.tt
 					stewardship_domain_special_1500_decrease_quality_effect = yes
-				}
+				}	
 
 				change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 				change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
@@ -9048,7 +9106,7 @@ stewardship_domain_special.3012 = {
 				ai_boldness = 0.5
 				ai_rationality = 0.25
 			}
-		}	
+		}		
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
@@ -9093,7 +9151,7 @@ stewardship_domain_special.3012 = {
 			ai_value_modifier = {
 				ai_vengefulness = 0.5
 			}
-		}
+		}			
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
@@ -9127,7 +9185,7 @@ stewardship_domain_special.3012 = {
 			ai_value_modifier = {
 				ai_greed = -0.5
 			}
-		}
+		}			
 		
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}	
@@ -9263,7 +9321,7 @@ stewardship_domain_special.8001 = {
 	title = stewardship_domain_special.8001.t
 	desc = stewardship_domain_special.8001.desc
 	
-	left_portrait = cp:councillor_steward
+	left_portrait = scope:steward
 	theme = stewardship_domain_focus
 	
 	trigger = {
@@ -9276,6 +9334,9 @@ stewardship_domain_special.8001 = {
 			stewardship_domain_special_8001_county_trigger = yes
 		}
 		exists = cp:councillor_steward
+		cp:councillor_steward = {
+			is_available_ai_adult = yes
+		}
 	}
 
 	weight_multiplier = {
@@ -9283,8 +9344,27 @@ stewardship_domain_special.8001 = {
 	}
 
 	immediate = {
-
-		cp:councillor_steward = { save_scope_as = steward }
+		if = {
+			limit = {
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
+			}
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = steward
+			}
+		}
+		else = {
+			cp:councillor_steward = { save_scope_as = steward }
+		}
+		
 		# Standard special event effects
 		add_character_flag = {
 			flag = is_in_stewardship_domain_special_event
@@ -9379,10 +9459,27 @@ stewardship_domain_special.8011 = {
 	desc = stewardship_domain_special.8011.desc
 	
 	theme = stewardship_domain_focus
-	left_portrait = cp:councillor_steward
+	left_portrait = scope:steward
 
 	immediate = {
 		if = {
+			limit = {
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
+			}
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = steward
+			}
+		}
+		else_if = {
 			limit = {
 				exists = cp:councillor_steward
 			}
@@ -9546,7 +9643,7 @@ stewardship_domain_special.8012 = {
 	desc = stewardship_domain_special.8012.desc
 	
 	theme = stewardship_domain_focus
-	left_portrait = cp:councillor_steward
+	left_portrait = scope:steward
 
 	option = { #Fine, pay the cost
 		name = stewardship_domain_special.8012.a
@@ -9598,7 +9695,7 @@ stewardship_domain_special.8013 = {
 	desc = stewardship_domain_special.8013.desc
 	
 	theme = stewardship_domain_focus
-	left_portrait = cp:councillor_steward
+	left_portrait = scope:steward
 
 	option = { #I will manage matters more closely
 		name = stewardship_domain_special.8013.a
@@ -9638,7 +9735,7 @@ stewardship_domain_special.8013 = {
 					title = stewardship_domain_special.8001.slow_progress
 					left_icon = scope:county
 					
-						custom_tooltip = stewardship_domain_special.8001.project_continues
+					custom_tooltip = stewardship_domain_special.8001.project_continues
 				}
 				trigger_event = {
 					id = stewardship_domain_special.8023
@@ -9708,11 +9805,26 @@ stewardship_domain_special.8021 = {
 	immediate = {
 		if = {
 			limit = {
-				exists = cp:councillor_steward
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
 			}
-			cp:councillor_steward = {
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
 				save_scope_as = steward
 			}
+		}
+		else_if = {
+			limit = {
+				exists = cp:councillor_steward
+			}
+			cp:councillor_steward = { save_scope_as = steward }
 		}
 	}
 
@@ -9911,11 +10023,26 @@ stewardship_domain_special.8022 = {
 	immediate = {
 		if = {
 			limit = {
-				exists = cp:councillor_steward
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
 			}
-			cp:councillor_steward = {
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
 				save_scope_as = steward
 			}
+		}
+		else_if = {
+			limit = {
+				exists = cp:councillor_steward
+			}
+			cp:councillor_steward = { save_scope_as = steward }
 		}
 	}
 
@@ -10080,11 +10207,26 @@ stewardship_domain_special.8023 = {
 	immediate = {
 		if = {
 			limit = {
-				exists = cp:councillor_steward
+				has_royal_court = yes
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+					is_available_ai_adult = yes
+				}
 			}
-			cp:councillor_steward = {
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
 				save_scope_as = steward
 			}
+		}
+		else_if = {
+			limit = {
+				exists = cp:councillor_steward
+			}
+			cp:councillor_steward = { save_scope_as = steward }
 		}
 	}
 

@@ -150,6 +150,17 @@ k_epeiros = {
 	}
 	3459.1.1 = { # 295 BC
 		holder = epirote00215 # Pyrrhus I
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_diplomatic
+				}
+			}
+		}
 	}
 	3482.8.1 = { # August 272 BC, approximate
 		holder = epirote00224 # Alexander II
@@ -288,6 +299,17 @@ k_makedonia = {
 	3478.9.1 = { # September 276 BC, approximate (according to Porphyry, the anarchy in Macedonia lasted for 1 year and 2 months)
 		holder = macedonian00104 # Antigonus II Gonatas
 		government = feudal_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_scholarly
+				}
+			}
+		}
 	}
 }
 
@@ -319,6 +341,17 @@ k_lydia = {
 		liege = e_asia
 		holder = macedonian02401 # Achaios
 		government = feudal_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_administrative # TODO: Bureaucratic vassals probably shouldn't start with a royal court
+				}
+			}
+		}
 	}
 }
 

@@ -1,43 +1,75 @@
 ﻿should_use_tribal_realm_palace_graphics_trigger = {
-	OR = {
-		has_government = clan_government
-		has_government = tribal_government
-	}
+	has_government = tribal_government
 	culture = {
 		has_graphical_india_culture_group_trigger = no
 		has_graphical_mena_culture_group_trigger = no
+		has_graphical_steppe_culture_group_trigger = no
+		has_graphical_african_culture_group_trigger = no
 	}
 }
 
 has_graphical_mena_culture_group_trigger = {
-	has_graphical_culture = mena_building_gfx
+	always = no
 }
 
 has_graphical_india_culture_group_trigger = {
-	has_graphical_culture = indian_building_gfx
+	always = no
 }
 
 has_graphical_mediterranean_culture_group_trigger = {
-	has_graphical_culture = mediterranean_building_gfx
+	has_building_gfx = mediterranean_building_gfx
 }
 
 has_graphical_western_culture_group_trigger = {
-	has_graphical_culture = western_building_gfx
+	has_building_gfx = western_building_gfx
 }
+
+has_graphical_norse_culture_group_trigger = {
+	always = no
+}
+
+has_graphical_african_culture_group_trigger = {
+	always = no
+}
+
+has_graphical_steppe_culture_group_trigger = {
+	always = no
+}
+
+has_graphical_iberian_culture_group_trigger = {
+	always = no
+}
+
 
 graphical_wilderness_desert_trigger = {
 	OR = {
 		terrain = desert
 		terrain = desert_mountains
 		terrain = oasis
+		AND = {
+			terrain = hills
+			OR = {
+				geographical_region = world_africa
+				geographical_region = world_middle_east_arabia
+			}
+		}
+		AND = {
+			terrain = floodplains
+			geographical_region = world_africa
+		}
 	}
 }
 
 graphical_wilderness_forest_pine_trigger = {
 	OR = {
 		terrain = taiga
-		terrain = forest
-		always = no
+		AND = {
+			terrain = forest
+			OR = {
+				geographical_region = world_europe_north
+				geographical_region = world_steppe
+			}
+		}
 	}
 }
 
@@ -48,6 +80,22 @@ graphical_wilderness_forest_trigger = {
 		terrain = farmlands
 		terrain = wetlands
 		terrain = plains
+		AND = {
+			terrain = hills
+			NOR = {
+				geographical_region = world_steppe
+				geographical_region = world_middle_east_persia
+				geographical_region = world_middle_east_jerusalem
+				geographical_region = world_africa
+				geographical_region = world_middle_east_arabia
+			}
+		}
+		AND = {
+			terrain = floodplains
+			NOT = {
+				geographical_region = world_africa
+			}
+		}
 	}
 }
 
@@ -60,6 +108,14 @@ graphical_wilderness_steppe_trigger = {
 	OR = {
 		terrain = steppe
 		terrain = drylands
+		AND = {
+			terrain = hills
+			OR = {
+				geographical_region = world_steppe
+				geographical_region = world_middle_east_persia
+				geographical_region = world_middle_east_jerusalem
+			}
+		}
 	}
 }
 
@@ -309,3 +365,45 @@ has_graphical_western_region_trigger = {
 	}
 	trigger_else = { always = yes }
 }
+
+#Has graphical region Iberia trigger
+has_graphical_iberia_region_trigger = {
+	trigger_if = {
+		limit = {
+			exists = capital_province
+		}
+		capital_province = {
+			geographical_region = world_europe_west_iberia
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			NOT = { exists = capital_province }
+		}
+		trigger_if = { 
+			limit = { exists = host.capital_province }
+			host.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = liege.capital_province
+			}
+			liege.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = location.province_owner.capital_province
+			}
+			location.province_owner.capital_province = {
+				geographical_region = world_europe_west_iberia
+			}
+		}
+		trigger_else = { always = yes }
+	}
+	trigger_else = { always = yes }
+}
+

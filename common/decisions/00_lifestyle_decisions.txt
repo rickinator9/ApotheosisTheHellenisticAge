@@ -121,7 +121,17 @@ sale_of_titles_decision = {
 
 	is_shown = {
 		is_landed = yes
-		has_perk = at_any_cost_perk
+		OR = {
+			has_perk = at_any_cost_perk
+			AND = {
+				highest_held_title_tier >= tier_kingdom
+				any_character_struggle = {
+					involvement = involved
+					is_struggle_type = iberian_struggle
+					has_struggle_phase_parameter = unlocks_sell_minor_title_for_kings_and_higher
+				}
+			}
+		}
 	}
 
 	is_valid_showing_failures_only = {
@@ -129,7 +139,17 @@ sale_of_titles_decision = {
 	}
 
 	is_valid = {
-		has_perk = at_any_cost_perk
+		OR = {
+			has_perk = at_any_cost_perk
+			AND = {
+				highest_held_title_tier >= tier_kingdom
+				any_character_struggle = {
+					involvement = involved
+					is_struggle_type = iberian_struggle
+					has_struggle_phase_parameter = unlocks_sell_minor_title_for_kings_and_higher
+				}
+			}
+		}
 	}
 
 	cost = {
@@ -260,7 +280,17 @@ commission_epic_decision = {
 	is_shown = {
 		is_landed = yes
 		exists = house
-		has_perk = writing_history_perk
+		OR = {
+			has_perk = writing_history_perk
+			AND = {
+				is_independent_ruler = yes
+				any_character_struggle = {
+   					involvement = involved
+    				is_struggle_type = iberian_struggle
+    				has_struggle_phase_parameter = unlocks_epic_commission_for_independent_rulers
+     			}	
+			}
+		}
 	}
 
 	is_valid_showing_failures_only = {
@@ -277,15 +307,11 @@ commission_epic_decision = {
 		}
 		show_as_tooltip = {
 			add_prestige = medium_prestige_gain
-			add_character_modifier = {
-				modifier = commission_epic_modifier
-				years = 10
-			}
+			custom_tooltip = commission_epic_artifact_tt
 		}
 		custom_description_no_bullet = {
 			text = "commission_epic_potential_cost_effect"
 		}
-
 		trigger_event = commission_epic.0001
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }

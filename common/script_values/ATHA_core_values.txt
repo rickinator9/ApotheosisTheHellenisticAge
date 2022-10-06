@@ -144,6 +144,18 @@ income_multiplier_50_years_value = 600
 
 # Wars / Battles
 
+total_battles_fought = {
+	value = 0
+	if = {
+		limit = { has_variable = battle_wins }
+		add = var:battle_wins
+	}
+	if = {
+		limit = { has_variable = battle_losses }
+		add = var:battle_losses
+	}
+}
+
 net_battle_wins = {
 	value = 0
 	if = {
@@ -165,5 +177,60 @@ net_war_wins = {
 	if = {
 		limit = { has_variable = war_losses }
 		subtract = var:war_losses
+	}
+}
+
+# Temple built
+temple_build_completed_piety_gain = {
+	value = massive_piety_gain
+
+	if = {
+		limit = { 
+			terrain = mountains 
+			county.holder.faith = { has_doctrine = tenet_mountain_sanctuaries }
+		}
+
+		add = major_piety_value
+		add = major_piety_value
+	}
+	if = {
+		limit = {
+			county.holder.culture = { has_cultural_parameter = extra_piety_from_temple_construction }
+		}
+
+		add = massive_piety_gain
+		add = massive_piety_gain
+		add = massive_piety_gain
+	}
+}
+
+temple_build_completed_fervor_gain = {
+	value = 0
+
+	if = {
+		limit = {
+			terrain = mountains 
+			county.holder.faith = { has_doctrine = tenet_mountain_sanctuaries }
+		}
+
+		add = 5
+	}
+	if = {
+		limit = {
+			county.holder.culture = { has_cultural_parameter = more_fervor_on_church_construction }
+		}
+
+		add = 5
+	}
+	if = {
+		limit = {
+			NOR = {
+				AND = {
+					terrain = mountains 
+					county.holder.faith = { has_doctrine = tenet_mountain_sanctuaries }
+				}
+				county.holder.culture = { has_cultural_parameter = more_fervor_on_church_construction }
+			}
+		}
 	}
 }

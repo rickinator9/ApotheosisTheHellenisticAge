@@ -71,13 +71,7 @@
 			text = "has_sent_interaction_already"
 			subject = scope:recipient
 			scope:actor = {
-				OR = {
-					NOT = { exists = var:currently_blackmailing }
-					AND = {
-						exists = var:currently_blackmailing
-						NOT = { var:currently_blackmailing = scope:recipient }
-					}
-				}
+				NOT = { exists = var:currently_blackmailing }
 			}
 		}
 	}
@@ -89,6 +83,7 @@
 				set_variable = {
 					name = currently_blackmailing
 					value = scope:recipient
+					days = 30
 				}
 			}
 			scope:target = {
@@ -163,11 +158,13 @@
 				}
 			}
 		}
-		scope:actor = {
-			trigger_event = blackmail.0001
-		}
+		scope:actor = { trigger_event = blackmail.0001 }
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
+	}
+
+	on_blocked_effect = {
+		scope:actor = { remove_variable = currently_blackmailing }
 	}
 
 	ai_accept = {

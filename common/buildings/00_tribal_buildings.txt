@@ -8,14 +8,14 @@ tribe_01 = {
 	asset = {
 		type = pdxmesh
 		names = {
-			"building_western_tribal_01_a_mesh"
+			building_western_tribal_01_a_mesh
 		}
 		illustration = @holding_illustration_grass
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
 	}
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		always = no	#Tribes are set at game start.
@@ -31,6 +31,18 @@ tribe_01 = {
 	province_modifier = {
 		monthly_income = poor_building_tax_tier_1
 		fort_level = 1
+	}
+
+	province_terrain_modifier = {
+		parameter = tribal_holding_fort_level_in_jungle_bonus
+		terrain = jungle
+		additional_fort_level = tribal_holding_fort_level_in_jungle_bonus_value
+	}
+
+	province_terrain_modifier = {
+		parameter = coastal_holdings_give_defensive_bonus
+		is_coastal = yes
+		defender_holding_advantage = 2
 	}
 
 	flag = tribe
@@ -56,14 +68,14 @@ tribe_02 = {
 	asset = {
 		type = pdxmesh
 		names = {
-			"building_western_tribal_01_a_mesh"
+			building_western_tribal_01_a_mesh
 		}
 		illustration = @holding_illustration_grass
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
 	}
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 	}
@@ -81,6 +93,18 @@ tribe_02 = {
 		fort_level = 2
 	}
 
+	province_terrain_modifier = {
+		parameter = tribal_holding_fort_level_in_jungle_bonus
+		terrain = jungle
+		additional_fort_level = tribal_holding_fort_level_in_jungle_bonus_value
+	}
+
+	province_terrain_modifier = {
+		parameter = coastal_holdings_give_defensive_bonus
+		is_coastal = yes
+		defender_holding_advantage = 3
+	}
+
 	flag = tribe
 	
 	next_building = tribe_03
@@ -96,14 +120,14 @@ tribe_03 = {
 	asset = {
 		type = pdxmesh
 		names = {
-			"building_india_city_01_western_mesh"
+			building_india_city_01_western_mesh
 		}
 		illustration = @holding_illustration_grass
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
 	}
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 	}
@@ -139,14 +163,14 @@ tribe_04 = {
 	asset = {
 		type = pdxmesh
 		names = {
-			"building_india_city_01_western_mesh"
+			building_india_city_01_western_mesh
 		}
 		illustration = @holding_illustration_grass
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
 	}
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 	}
@@ -178,11 +202,11 @@ longhouses_01 = {
 	construction_time = slow_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
-	}
+	}	
 	
 	cost_prestige = expensive_building_tier_1_cost
 	cost_gold = tribal_building_tier_1_cost
@@ -209,7 +233,7 @@ longhouses_02 = {
 	construction_time = slow_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -243,7 +267,7 @@ war_camps_01 = {
 	construction_time = slow_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -261,6 +285,8 @@ war_camps_01 = {
 		skirmishers_toughness_mult = 0.02
 		heavy_infantry_damage_mult = 0.04
 		heavy_infantry_toughness_mult = 0.02
+		archer_cavalry_damage_mult = 0.04
+		archer_cavalry_toughness_mult = 0.02
 		phalanx_damage_mult = 0.04
 		phalanx_toughness_mult = 0.02
 	}
@@ -278,7 +304,7 @@ war_camps_02 = {
 	construction_time = slow_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -301,6 +327,8 @@ war_camps_02 = {
 		skirmishers_toughness_mult = 0.04
 		heavy_infantry_damage_mult = 0.08
 		heavy_infantry_toughness_mult = 0.04
+		archer_cavalry_damage_mult = 0.08
+		archer_cavalry_toughness_mult = 0.04
 		phalanx_damage_mult = 0.08
 		phalanx_toughness_mult = 0.04
 	}
@@ -316,11 +344,11 @@ palisades_01 = {
 	construction_time = standard_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
-	}	
+	}
 	
 	cost_prestige = expensive_building_tier_1_cost
 	cost_gold = tribal_building_tier_1_cost
@@ -352,7 +380,7 @@ palisades_02 = {
 	construction_time = standard_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -361,7 +389,7 @@ palisades_02 = {
 		scope:holder = {
 			culture = { has_innovation = innovation_classical_garrisons }
 		}
-	}
+	}	
 	
 	cost_prestige = expensive_building_tier_2_cost
 	cost_gold = tribal_building_tier_2_cost
@@ -391,11 +419,11 @@ market_villages_01 = {
 	construction_time = quick_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
-	}
+	}	
 	
 	cost_prestige = expensive_building_tier_1_cost
 	cost_gold = tribal_building_tier_1_cost
@@ -418,7 +446,7 @@ market_villages_02 = {
 	construction_time = quick_construction_time
 
 	is_enabled = {
-		scope:holder = { can_build_tribal = yes }
+		building_requirement_tribal = yes
 	}
 	can_construct_potential = {
 		has_building_or_higher = tribe_01
@@ -427,7 +455,7 @@ market_villages_02 = {
 		scope:holder = {
 			culture = { has_innovation = innovation_classical_winch_and_pulley }
 		}
-	}
+	}	
 	
 	cost_prestige = expensive_building_tier_2_cost
 	cost_gold = tribal_building_tier_2_cost

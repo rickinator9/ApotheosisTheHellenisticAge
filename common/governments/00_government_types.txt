@@ -2,10 +2,11 @@
 	create_cadet_branches = yes
 	rulers_should_have_dynasty = yes
 	dynasty_named_realms = yes
+	royal_court = yes
 
 	fallback = 2
 
-    valid_holdings = { castle_holding city_holding }
+    valid_holdings = { castle_holding city_holding colony_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract = {
@@ -19,6 +20,158 @@
 		council_rights
 		colony_rights
 		gift_estate_rights
+	}
+	
+	opinion_of_liege = {
+		if = {
+			limit = {
+				scope:vassal = {
+					culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+				}
+			}
+
+			if = {
+				limit = {
+					scope:liege = { total_battles_fought <= 10 }
+				}
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { total_battles_fought <= 20 }
+				}
+
+				value = -10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -5 }
+				}
+
+				value = -15
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -10 }
+				}
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -30 }
+				}
+
+				value = -40
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 10 }
+				}
+
+				value = 10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 20 }
+				}
+
+				value = 20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 35 }
+				}
+
+				value = 25
+			}
+		}
+	}
+	opinion_of_liege_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { total_battles_fought <= 10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_GREEN_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { total_battles_fought <= 20 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEXPERIENCED_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -5 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEPT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INCOMPETENT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -30 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_DISASTROUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_SUCCESSFUL_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 20 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_VICTORIOUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 35 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INVINCIBLE_LIEGE"
+			}
+		}
 	}
 	
 	flag = has_discrete_tax_contract
@@ -76,6 +229,7 @@ clan_government = {
 	dynasty_named_realms = yes
 	always_use_patronym = yes
 	regiments_prestige_as_gold = yes
+	royal_court = yes
 	
 	fallback = 3
 	
@@ -83,25 +237,72 @@ clan_government = {
 	valid_holdings = { castle_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	vassal_contract = { clan_government_obligations }
+	vassal_contract = {
+		clan_government_obligations
+		coinage_rights
+		religious_rights
+		title_revocation_rights
+		war_declaration_rights
+		council_rights
+		gift_estate_rights
+	}
 	
 	opinion_of_liege = {
-		scope:vassal = {
+		if = {
+			limit = {
+				scope:vassal = {
+					culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+				}
+			}
+
 			if = {
 				limit = {
-					NOT = {
-						is_allied_to = scope:liege
-					}
+					scope:liege = { total_battles_fought <= 10 }
 				}
-				if = {
-					limit = {
-						is_powerful_vassal = yes
-					}
-					value = -30
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { total_battles_fought <= 20 }
 				}
-				else = {
-					value = -15
+
+				value = -10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -5 }
 				}
+
+				value = -15
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -10 }
+				}
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -30 }
+				}
+
+				value = -40
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 10 }
+				}
+
+				value = 10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 20 }
+				}
+
+				value = 20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 35 }
+				}
+
+				value = 25
 			}
 		}
 	}
@@ -110,30 +311,100 @@ clan_government = {
 			triggered_desc = {
 				trigger = {
 					scope:vassal = {
-						NOT = {
-							is_allied_to = scope:liege
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
 						}
-						is_powerful_vassal = yes
+						scope:liege = { total_battles_fought <= 10 }
 					}
 				}
-				desc = "GOVERNMENT_CLAN_NOT_ALLIED_POWERFUL"
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_GREEN_LIEGE"
 			}
 			triggered_desc = {
 				trigger = {
 					scope:vassal = {
-						NOT = {
-							is_allied_to = scope:liege
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
 						}
-						is_powerful_vassal = no
+						scope:liege = { total_battles_fought <= 20 }
 					}
 				}
-				desc = "GOVERNMENT_CLAN_NOT_ALLIED"
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEXPERIENCED_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -5 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEPT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INCOMPETENT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -30 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_DISASTROUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_SUCCESSFUL_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 20 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_VICTORIOUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 35 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INVINCIBLE_LIEGE"
 			}
 		}
 	}
 	
 	flag = government_can_raid_rule
 	flag = is_tribal_government
+	
+	flag = has_coinage_rights_contract
+	flag = has_religious_rights_contract
+	flag = has_title_revocation_rights_contract
 	color = hsv { 0.07 0.65 0.76 }
 }
 
@@ -142,6 +413,7 @@ tribal_government = {
 	affected_by_development = no
 	regiments_prestige_as_gold = yes
 	supply_limit_mult_for_others = -0.5
+	royal_court = yes
 
 	primary_holding = tribal_holding
 	valid_holdings = { castle_holding }
@@ -150,6 +422,158 @@ tribal_government = {
 	always_use_patronym = yes	
 
 	vassal_contract = { tribal_government_obligations }
+	
+	opinion_of_liege = {
+		if = {
+			limit = {
+				scope:vassal = {
+					culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+				}
+			}
+
+			if = {
+				limit = {
+					scope:liege = { total_battles_fought <= 10 }
+				}
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { total_battles_fought <= 20 }
+				}
+
+				value = -10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -5 }
+				}
+
+				value = -15
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -10 }
+				}
+
+				value = -20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins <= -30 }
+				}
+
+				value = -40
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 10 }
+				}
+
+				value = 10
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 20 }
+				}
+
+				value = 20
+			} else_if = {
+				limit = {
+					scope:liege = { net_battle_wins >= 35 }
+				}
+
+				value = 25
+			}
+		}
+	}
+	opinion_of_liege_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { total_battles_fought <= 10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_GREEN_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { total_battles_fought <= 20 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEXPERIENCED_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -5 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INEPT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INCOMPETENT_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins <= -30 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_DISASTROUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 10 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_SUCCESSFUL_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 20 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_VICTORIOUS_LIEGE"
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal = {
+						scope:vassal = {
+							culture = { has_cultural_parameter = military_experience_replaces_short_long_reign_opinion_modifier }
+						}
+						scope:liege = { net_battle_wins >= 35 }
+					}
+				}
+				desc = "GOVERNMENT_MILITARY_EXPERIENCE_INVINCIBLE_LIEGE"
+			}
+		}
+	}
 	
 	character_modifier = {
 		title_creation_cost_mult = -0.5

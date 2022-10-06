@@ -81,6 +81,10 @@ convert_to_feudalism_liege_converted_decision = { #by Linnéa Thimrén
 			has_realm_law = tribal_authority_2
 			has_realm_law = tribal_authority_3
 		}
+		custom_description = {
+			text = recent_conversion_to_tribalism
+			NOT = { has_character_flag = just_converted_to_tribalism }
+		}
 	}
 
 	cost = {
@@ -182,9 +186,6 @@ convert_whole_realm_to_feudalism_decision = { #by Linnéa Thimrén
 				}
 			}
 		}
-	}
-
-	ai_potential = {
 	}
 
 	ai_will_do = {
@@ -615,16 +616,30 @@ found_witch_coven_decision = {
 				}
 			}
 			house = {
+				custom_tooltip = {
+					text = found_witch_coven_house_member_count_tt
+					any_adult_house_member = {
+						count >= found_witch_coven_member_count_value
+						is_witch_known_by_trigger = { CHARACTER = root }
+					}
+				}
 				any_adult_house_member = {
-					count >= 4
+					count >= found_witch_coven_member_count_value
 					is_witch_known_by_trigger = { CHARACTER = root }
 				}
 			}
 		}
 		trigger_else = {
 			house = {
+				custom_tooltip = {
+					text = found_witch_coven_house_member_percent_tt
+					any_adult_house_member = {
+						percent >= found_witch_coven_member_percent_value
+						is_witch_known_by_trigger = { CHARACTER = root }
+					}
+				}
 				any_adult_house_member = {
-					percent >= 0.6
+					percent >= found_witch_coven_member_percent_value
 					is_witch_known_by_trigger = { CHARACTER = root }
 				}
 			}
@@ -678,6 +693,20 @@ found_kingdom_decision = {
 
 	effect = {
 		create_custom_kingdom_effect = yes
+		if = {
+			limit = {
+				is_ai = no
+				NOT = { exists = global_var:found_kingdom_decision  }
+			}
+			set_global_variable = {
+				name = found_kingdom_decision
+				value = root
+			}
+			set_global_variable = {
+				name = found_kingdom_decision_kingdom
+				value = root.primary_title
+			}
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_large_increase }
 	}
@@ -707,6 +736,16 @@ found_empire_decision = {
 			}
 		}
 		NOT = { has_game_rule = off_custom_kingdoms }
+
+		trigger_if = {
+			limit = {
+				OR = {
+					fp2_character_interloper_in_struggle_trigger = yes
+					fp2_character_involved_in_struggle_trigger = yes
+				}
+			}
+			always = no
+		}
 	}
 
 	is_valid = {
@@ -740,6 +779,20 @@ found_empire_decision = {
 
 	effect = {
 		create_custom_empire_effect = yes
+		if = {
+			limit = {
+				is_ai = no
+				NOT = { exists = global_var:found_empire_decision  }
+			}
+			set_global_variable = {
+				name = found_empire_decision
+				value = root
+			}
+			set_global_variable = {
+				name = found_empire_decision_empire
+				value = root.primary_title
+			}
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_large_increase }
 	}
@@ -877,9 +930,6 @@ adopt_special_succession_decision = { #by Ewan Cowhig Croft
 	ai_check_interval = 36
 
 	is_shown = {
-		OR = {	#Must be eligible for a special succession type.
-			always = no
-		}
 		AND = {
 			highest_held_title_tier >= tier_kingdom
 			has_realm_law_flag = partition_succession_law
@@ -1171,12 +1221,12 @@ tribal_challenge_ruler_decision = { #by Linnéa Thimrén
 				10 = {
 					show_chance = no
 					desc = tribal_challenge_ruler_desc_success
-					tribal_1001_transfer_liege_title_effect = yes
+					tribal_transfer_liege_title_effect = yes
 				}
 				10 = {
 					show_chance = no
 					desc = tribal_challenge_ruler_desc_failure
-					tribal_1001_challenger_lost_effect = yes
+					tribal_challenger_lost_effect = yes
 				}
 			}
 		}
@@ -1211,5 +1261,59 @@ tribal_challenge_ruler_decision = { #by Linnéa Thimrén
 			add = -50
 			liege = { is_ai = no }
 		}
+	}
+}
+
+#
+convert_to_tribalism_decision = { #by Maxence Voleau
+	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	major = yes
+	desc = convert_to_tribalism_decision_desc
+
+	ai_check_interval = 36
+
+	is_shown = {
+		is_landed = yes
+		primary_title.tier >= tier_county
+		NOT = {
+			any_held_title = {
+				tier = tier_county
+				title_province = {
+					NOT = { has_holding_type = tribal_holding }
+				}
+			}
+		}
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+
+	is_valid = {
+		
+	}
+
+
+	effect = {
+		trigger_event = major_decisions.0200
+		change_government = tribal_government
+		add_prestige = {
+			add = -150
+		}
+
+		hidden_effect = {
+			add_character_flag = {
+				flag = just_converted_to_tribalism
+				years = 5
+			}
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
 	}
 }

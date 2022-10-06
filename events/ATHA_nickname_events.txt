@@ -987,9 +987,7 @@ ATHA_nickname.0001 = {
 #### NICKNAMES ####
 
 scripted_effect select_nickname_county_effect = {
-	random_held_title = { # Used in localization.
-		limit = { tier = tier_county }
-
+	random_held_county = { # Used in localization.
 		save_scope_as = nickname_county
 	}
 }
@@ -1119,6 +1117,12 @@ scripted_effect select_independent_ruler_effect = {
 	random_independent_ruler = {
 		limit = {
 			NOT = { this = ROOT }
+			NOR = {
+				has_government = republic_government
+				has_government = theocracy_government
+				has_government = mercenary_government
+				has_government = holy_order_government
+			}
 		}
 
 		save_scope_as = nickname_ruler_1
@@ -1133,6 +1137,12 @@ scripted_effect select_two_independent_rulers_effect = {
 	random_independent_ruler = {
 		limit = {
 			NOT = { this = ROOT }
+			NOR = {
+				has_government = republic_government
+				has_government = theocracy_government
+				has_government = mercenary_government
+				has_government = holy_order_government
+			}
 		}
 
 		save_scope_as = nickname_ruler_1
@@ -1146,6 +1156,10 @@ scripted_effect select_two_independent_rulers_effect = {
 			NOR = {
 				this = ROOT
 				this = scope:nickname_ruler_1
+			}
+			NOR = {
+				has_government = mercenary_government
+				has_government = holy_order_government
 			}
 		}
 
@@ -1165,6 +1179,8 @@ scripted_effect prevent_nickname_by_county_bribe_effect = {
 			years = 1
 		}
 	}
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 }
 
 scripted_effect prevent_nickname_by_county_deceit_effect = {
@@ -1185,6 +1201,8 @@ scripted_effect prevent_nickname_by_county_punishment_effect = {
 	}
 	add_dread = minor_dread_gain
 	add_piety = medium_piety_loss
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 }
 
 scripted_effect prevent_nickname_by_county_imprison_effect = {
@@ -1196,6 +1214,8 @@ scripted_effect prevent_nickname_by_county_imprison_effect = {
 	}
 	add_dread = minor_dread_gain
 	add_piety = minor_piety_loss
+
+	change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 }
 
 # nick_the_bastard
@@ -1203,8 +1223,7 @@ ATHA_nickname.0100 = {
 	type = character_event
 	title = ATHA_nickname.0100.t
 	desc = ATHA_nickname.0100.desc
-	theme = crown
-	override_background = { event_background = market }
+	theme = bastardy
 	left_portrait = root
 
 	trigger = {
@@ -1215,6 +1234,16 @@ ATHA_nickname.0100 = {
 		set_nickname_cooldown_effect = yes
 
 		select_nickname_county_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+		
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_bastard }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -1335,7 +1364,7 @@ ATHA_nickname.0101 = {
 	type = character_event
 	title = ATHA_nickname.0101.t
 	desc = ATHA_nickname.0101.desc
-	theme = crown
+	theme = unfriendly
 	left_portrait = root
 
 	trigger = {
@@ -1347,6 +1376,16 @@ ATHA_nickname.0101 = {
 
 		select_nickname_county_effect = yes
 		select_nickname_councillor_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_clubfooted }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -1559,7 +1598,10 @@ ATHA_nickname.0104 = {
 	type = character_event
 	title = ATHA_nickname.0104.t
 	desc = ATHA_nickname.0104.desc
-	theme = feast_activity
+	theme = love
+	override_background = {
+		event_background = alley_day
+	}
 	left_portrait = root
 	right_portrait = scope:nickname_vassal
 
@@ -1629,6 +1671,13 @@ ATHA_nickname.0104 = {
 			factor = 2
 			has_variable = nick_the_fair_weight
 			var:nick_the_fair_weight >= 100
+		}
+
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_fair }
 		}
 	}
 
@@ -1832,6 +1881,8 @@ ATHA_nickname.0104 = {
 			modifier = nickname_skeletons_in_closet_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Loudly complain about the gathered crowd.
 		name = ATHA_nickname.0104.d
@@ -1880,6 +1931,7 @@ ATHA_nickname.0104 = {
 		}
 
 		add_prestige = medium_prestige_loss
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -1926,14 +1978,58 @@ ATHA_nickname.0106 = {
 }
 
 # nick_the_short_lived
-# ATHA_nickname.0107 = {
+ATHA_nickname.0107 = {
+	type = character_event
+	title = ATHA_nickname.0107.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ATHA_nickname.0107.desc_self
+				trigger = {
+					this = scope:nick_the_short_lived_receiver
+				}
+			}
+			desc = ATHA_nickname.0107.desc_other
+		}
+	}
+	theme = crown
+	left_portrait = scope:nick_the_short_lived_receiver
+	right_portrait = scope:new_holder
+
+	immediate = {
+		show_as_tooltip = {
+			scope:nick_the_short_lived_receiver = {
+				set_nickname_with_cooldown_effect = { NICKNAME = nick_the_short_lived }
+			}
+		}
+	}
+
+	option = { # Accept the nickname (nickname gainer).
+		name = ATHA_nickname.0107.a_self
+		trigger = {
+			this = scope:nick_the_short_lived_receiver
+		}
+	}
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0107.a_other
+		trigger = {
+			NOT = { this = scope:nick_the_short_lived_receiver }
+		}
+	}
+}
 
 # nick_the_one_eyed
 ATHA_nickname.0108 = {
 	type = character_event
 	title = ATHA_nickname.0108.t
 	desc = ATHA_nickname.0108.desc
-	theme = battle
+	theme = physical_health
+	override_background = {
+		trigger = {
+			NOT = { has_character_flag = put_out_own_eye }
+		}
+		event_background = battlefield
+	}
 	left_portrait = root
 
 	trigger = {
@@ -1946,6 +2042,12 @@ ATHA_nickname.0108 = {
 
 	weight_multiplier = {
 		base = 1
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_one_eyed }
+		}
 	}
 
 	option = { # Accept the nickname (flagellant).
@@ -1990,7 +2092,7 @@ ATHA_nickname.0108 = {
 	option = { # Accept the nickname (non-flagellant).
 		name = ATHA_nickname.0108.a
 		trigger = {
-			NOT = { has_character_flag = put_out_own_eye } 
+			NOT = { has_character_flag = put_out_own_eye }
 		}
 		ai_chance = { # Proof of bravery in battle.
 			base = 10
@@ -2062,6 +2164,8 @@ ATHA_nickname.0108 = {
 			modifier = nickname_regrets_eye_flagellation_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Threaten (non-flagellant)
 		name = ATHA_nickname.0108.b
@@ -2099,6 +2203,9 @@ ATHA_nickname.0108 = {
 			modifier = nickname_eye_gouging_threats_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Complain (both)
 		name = ATHA_nickname.0108.c
@@ -2152,11 +2259,39 @@ ATHA_nickname.0108 = {
 		add_gold = minor_gold_loss
 		add_prestige = minor_prestige_loss
 		add_piety = minor_piety_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
 # nick_the_great
-# ATHA_nickname.0109 = {
+ATHA_nickname.0109 = {
+	type = character_event
+	title = ATHA_nickname.0109.t
+	desc = ATHA_nickname.0109.desc
+	theme = realm
+	left_portrait = root
+
+	trigger = {
+		can_get_nick_the_great = yes
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_touching_moment" 
+	}
+
+	option = { # Accept the nickname.
+		name = ATHA_nickname.0109.a
+		stress_impact = {
+			base = massive_stress_impact_loss
+			humble = medium_stress_impact_gain
+		}
+
+		set_permanent_nickname_effect = { NICKNAME = nick_the_great }
+		add_prestige = massive_prestige_gain
+		dynasty = { add_dynasty_prestige = massive_dynasty_prestige_gain }
+	}
+}
 
 # nick_the_sacrificed
 # Triggered from events.
@@ -2208,7 +2343,7 @@ ATHA_nickname.0111 = {
 	type = character_event
 	title = ATHA_nickname.0111.t
 	desc = ATHA_nickname.0111.desc
-	theme = battle
+	theme = crown
 	left_portrait = root
 
 	trigger = {
@@ -2250,6 +2385,12 @@ ATHA_nickname.0111 = {
 		modifier = {
 			factor = 2
 			var:nick_the_autocrat_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_autocrat }
 		}
 	}
 
@@ -2333,6 +2474,9 @@ ATHA_nickname.0111 = {
 			modifier = nickname_air_of_dread_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Restore some civil liberties
 		name = ATHA_nickname.0111.c
@@ -2385,6 +2529,11 @@ ATHA_nickname.0111 = {
 			modifier = nickname_restored_civil_liberties_modifier
 			years = 10
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2407,7 +2556,7 @@ ATHA_nickname.0113 = {
 	type = character_event
 	title = ATHA_nickname.0113.t
 	desc = ATHA_nickname.0113.desc
-	theme = battle
+	theme = stewardship_wealth_focus
 	left_portrait = root
 
 	trigger = {
@@ -2449,6 +2598,12 @@ ATHA_nickname.0113 = {
 		modifier = {
 			factor = 2
 			var:nick_the_benefactor_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_benefactor }
 		}
 	}
 
@@ -2517,6 +2672,9 @@ ATHA_nickname.0113 = {
 
 		add_prestige = medium_prestige_gain
 		add_piety = major_piety_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Cash out investments.
 		name = ATHA_nickname.0113.c
@@ -2557,6 +2715,9 @@ ATHA_nickname.0113 = {
 			modifier = nickname_sudden_loss_of_benefaction_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2582,7 +2743,7 @@ ATHA_nickname.0116 = {
 	type = character_event
 	title = ATHA_nickname.0116.t
 	desc = ATHA_nickname.0116.desc
-	theme = battle
+	theme = war
 	left_portrait = root
 
 	trigger = {
@@ -2631,6 +2792,12 @@ ATHA_nickname.0116 = {
 		modifier = {
 			factor = 2
 			var:nick_the_bold_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_bold }
 		}
 	}
 
@@ -2728,6 +2895,8 @@ ATHA_nickname.0116 = {
 		}
 
 		add_prestige = medium_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -2736,7 +2905,7 @@ ATHA_nickname.0117 = {
 	type = character_event
 	title = ATHA_nickname.0117.t
 	desc = ATHA_nickname.0117.desc
-	theme = battle
+	theme = stewardship_domain_focus
 	left_portrait = root
 
 	trigger = {
@@ -2773,6 +2942,12 @@ ATHA_nickname.0117 = {
 		modifier = {
 			factor = 2
 			var:nick_the_builder_weight > 50
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_builder }
 		}
 	}
 
@@ -2842,6 +3017,8 @@ ATHA_nickname.0117 = {
 		}
 
 		add_prestige = medium_prestige_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -2850,7 +3027,7 @@ ATHA_nickname.0118 = {
 	type = character_event
 	title = ATHA_nickname.0118.t
 	desc = ATHA_nickname.0118.desc
-	theme = battle
+	theme = intrigue_intimidation_focus
 	left_portrait = root
 
 	trigger = {
@@ -2894,6 +3071,20 @@ ATHA_nickname.0118 = {
 		modifier = {
 			factor = 2
 			var:nick_the_cruel_weight > 100
+		}
+		modifier = { # In Greek, this is a play upon Euergetes.
+			factor = 2
+			uses_greek_for_nickname_localization_trigger = yes
+			OR = {
+				has_nickname = epithet_the_benefactor
+				has_nickname = nick_the_benefactor
+			}
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_cruel }
 		}
 	}
 
@@ -3001,9 +3192,10 @@ ATHA_nickname.0118 = {
 		}
 
 		add_prestige = medium_prestige_loss
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_large_decrease }
 	}
 	option = { # Shut them up.
-		name = ATHA_nickname.0118.b
+		name = ATHA_nickname.0118.c
 		ai_chance = {
 			base = 10
 
@@ -3033,18 +3225,16 @@ ATHA_nickname.0118 = {
 			arrogant = minor_stress_impact_gain
 		}
 
-		random_held_title = {
-			limit = { tier = tier_county }
-
-			title_province = {
-				add_province_modifier = {
-					modifier = nickname_county_punishment_modifier
-					years = 10
-				}
+		random_held_county = {
+			add_province_modifier = {
+				modifier = nickname_county_punishment_modifier
+				years = 10
 			}
 		}
 
 		add_prestige = medium_prestige_loss
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -3074,7 +3264,7 @@ ATHA_nickname.0121 = {
 			desc = ATHA_nickname.0121.desc_bad
 		}
 	}
-	theme = battle
+	theme = feast_activity
 	left_portrait = root
 
 	trigger = {
@@ -3087,6 +3277,12 @@ ATHA_nickname.0121 = {
 
 	weight_multiplier = {
 		base = 1
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_devourer }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -3189,6 +3385,7 @@ ATHA_nickname.0121 = {
 			comfort_eater = medium_stress_impact_gain
 		}
 
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_devourer }
 		add_prestige = medium_prestige_loss
 	}
 	option = { # Is it really right to eat people?
@@ -3262,6 +3459,9 @@ ATHA_nickname.0121 = {
 		}
 
 		remove_trait = cannibal
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_large_decrease }
 	}
 	option = { # Maybe I should ease up on meat. I am developing a belly...
 		name = ATHA_nickname.0121.c
@@ -3335,6 +3535,8 @@ ATHA_nickname.0121 = {
 		}
 
 		change_current_weight = -5
+		change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_fat CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -3367,6 +3569,12 @@ ATHA_nickname.0124 = {
 		modifier = {
 			factor = 1.5
 			var:nick_the_fat_weight > 50
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_fat }
 		}
 	}
 
@@ -3521,6 +3729,9 @@ ATHA_nickname.0124 = {
 			modifier = nickname_feasting_with_commoners_modifier
 			years = 3
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -3529,7 +3740,8 @@ ATHA_nickname.0125 = {
 	type = character_event
 	title = ATHA_nickname.0125.t
 	desc = ATHA_nickname.0125.desc
-	theme = battle
+	theme = death
+	override_background = { event_background = gallows }
 	left_portrait = root
 
 	trigger = {
@@ -3572,6 +3784,12 @@ ATHA_nickname.0125 = {
 		modifier = {
 			factor = 2
 			var:nick_the_flayer_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_flayer }
 		}
 	}
 
@@ -3658,6 +3876,9 @@ ATHA_nickname.0125 = {
 			modifier = nickname_commission_flayer_propaganda_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Reform.
 		name = ATHA_nickname.0125.c
@@ -3720,6 +3941,10 @@ ATHA_nickname.0125 = {
 			}
 		}
 		add_prestige = major_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -3734,7 +3959,8 @@ ATHA_nickname.0128 = {
 	type = character_event
 	title = ATHA_nickname.0128.t
 	desc = ATHA_nickname.0128.desc
-	theme = battle
+	theme = stewardship
+	override_background = { event_background = garden }
 	left_portrait = root
 
 	trigger = {
@@ -3773,6 +3999,12 @@ ATHA_nickname.0128 = {
 		modifier = {
 			factor = 2
 			var:nick_the_gardener_weight > 30
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_gardener }
 		}
 	}
 
@@ -3899,6 +4131,7 @@ ATHA_nickname.0128 = {
 					}
 
 					add_trait = hunter_1
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 				}
 				10 = {
 					trigger = {
@@ -4072,6 +4305,7 @@ ATHA_nickname.0128 = {
 		}
 
 		add_prestige = medium_prestige_loss
+		change_nickname_weight_effect = { NICKNAME = nick_the_gardener CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -4130,6 +4364,12 @@ ATHA_nickname.0130 = {
 		modifier = {
 			factor = 2
 			var:nick_the_good_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_good }
 		}
 	}
 
@@ -4217,6 +4457,9 @@ ATHA_nickname.0130 = {
 			modifier = nickname_humble_modifier
 			years = 10
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -4225,7 +4468,7 @@ ATHA_nickname.0131 = {
 	type = character_event
 	title = ATHA_nickname.0131.t
 	desc = ATHA_nickname.0131.desc
-	theme = battle
+	theme = intrigue
 	left_portrait = root
 
 	trigger = {
@@ -4280,6 +4523,12 @@ ATHA_nickname.0131 = {
 		modifier = {
 			factor = 2
 			var:nick_the_hawk_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_hawk }
 		}
 	}
 
@@ -4376,6 +4625,9 @@ ATHA_nickname.0131 = {
 		}
 
 		add_prestige = medium_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -4423,6 +4675,12 @@ ATHA_nickname.0132 = {
 		modifier = {
 			factor = 2
 			var:nick_the_hunter_weight > 50
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_hunter }
 		}
 	}
 
@@ -4481,6 +4739,13 @@ ATHA_nickname.0132 = {
 	}
 	option = { # Adopt a pet.
 		name = ATHA_nickname.0132.b
+		trigger = {
+			NAND = {
+				has_character_modifier = cat_story_modifier
+				has_character_modifier = dog_story_modifier
+				has_character_modifier = horse_story_modifier
+			}
+		}
 		ai_chance = {
 			base = 10
 
@@ -4551,6 +4816,8 @@ ATHA_nickname.0132 = {
 				start_warhorse_story_cycle_effect = yes
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -4601,6 +4868,12 @@ ATHA_nickname.0133 = {
 		modifier = {
 			factor = 2
 			var:nick_the_illustrious_weight > 60
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_illustrious }
 		}
 	}
 
@@ -4695,6 +4968,9 @@ ATHA_nickname.0133 = {
 			years = 5
 		}
 		add_prestige = medium_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -4759,6 +5035,12 @@ ATHA_nickname.0135 = {
 		modifier = {
 			factor = 2
 			is_commanding_army = yes
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_invincible }
 		}
 	}
 
@@ -4855,6 +5137,9 @@ ATHA_nickname.0135 = {
 			modifier = nickname_humble_in_victory_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Ramp up recruitment.
 		name = ATHA_nickname.0135.c
@@ -4905,7 +5190,7 @@ ATHA_nickname.0136 = {
 	type = character_event
 	title = ATHA_nickname.0136.t
 	desc = ATHA_nickname.0136.desc
-	theme = battle
+	theme = realm
 	left_portrait = root
 
 	trigger = {
@@ -4915,6 +5200,16 @@ ATHA_nickname.0136 = {
 
 	immediate = {
 		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_just }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -4983,6 +5278,9 @@ ATHA_nickname.0136 = {
 		}
 
 		add_piety = medium_piety_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Arbitrary approach.
 		name = ATHA_nickname.0136.c
@@ -5042,6 +5340,10 @@ ATHA_nickname.0136 = {
 				add_trait = arbitrary
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -5132,6 +5434,12 @@ ATHA_nickname.0138 = {
 		modifier = {
 			factor = 2
 			has_trait = spindly
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_lame }
 		}
 	}
 
@@ -5338,11 +5646,11 @@ ATHA_nickname.0138 = {
 				}
 				modifier = {
 					factor = 1.5
-					scope:nickname_physician = { has_trait = lifestyle_physician_2 }
+					scope:nickname_physician = { has_trait = physician_2 }
 				}
 				modifier = {
 					factor = 2
-					scope:nickname_physician = { has_trait = lifestyle_physician_3 }
+					scope:nickname_physician = { has_trait = physician_3 }
 				}
 				remove_trait = maimed
 			}
@@ -5378,11 +5686,11 @@ ATHA_nickname.0138 = {
 				}
 				modifier = {
 					factor = 1.5
-					scope:nickname_physician = { has_trait = lifestyle_physician_2 }
+					scope:nickname_physician = { has_trait = physician_2 }
 				}
 				modifier = {
 					factor = 2
-					scope:nickname_physician = { has_trait = lifestyle_physician_3 }
+					scope:nickname_physician = { has_trait = physician_3 }
 				}
 				remove_trait = hunchbacked
 			}
@@ -5418,11 +5726,11 @@ ATHA_nickname.0138 = {
 				}
 				modifier = {
 					factor = 1.5
-					scope:nickname_physician = { has_trait = lifestyle_physician_2 }
+					scope:nickname_physician = { has_trait = physician_2 }
 				}
 				modifier = {
 					factor = 2
-					scope:nickname_physician = { has_trait = lifestyle_physician_3 }
+					scope:nickname_physician = { has_trait = physician_3 }
 				}
 				remove_trait = spindly
 			}
@@ -5444,8 +5752,11 @@ ATHA_nickname.0138 = {
 			}
 			10 = { }
 		}
+
 		add_gold = minor_gold_loss
 		add_prestige = medium_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_medium_increase }
 	}
 }
 
@@ -5490,8 +5801,9 @@ ATHA_nickname.0139 = {
 			desc = ATHA_nickname.0139.desc_normal_after
 		}
 	}
-	theme = realm
+	theme = mental_health
 	left_portrait = root
+	right_portrait = scope:nickname_councillor
 
 	trigger = {
 		can_get_nick_the_mad = yes
@@ -5543,6 +5855,12 @@ ATHA_nickname.0139 = {
 		modifier = {
 			factor = 2
 			var:nick_the_mad_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_mad }
 		}
 	}
 
@@ -5645,6 +5963,9 @@ ATHA_nickname.0139 = {
 			modifier = nickname_cancel_lunatic_reforms_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_mad CHANGE = nickname_weight_medium_decrease }
 	}
 	option = { # Retreat from public life.
 		name = ATHA_nickname.0139.c
@@ -5685,7 +6006,7 @@ ATHA_nickname.0139 = {
 			}
 			modifier = {
 				factor = 0.5
-				has_trait = reveler
+				has_trait = lifestyle_reveler
 			}
 		}
 		stress_impact = {
@@ -5707,6 +6028,10 @@ ATHA_nickname.0139 = {
 			modifier = nickname_retreat_from_public_life_modifier
 			years = 3
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -5721,7 +6046,7 @@ ATHA_nickname.0142 = {
 	type = character_event
 	title = ATHA_nickname.0142.t
 	desc = ATHA_nickname.0142.desc
-	theme = realm
+	theme = intrigue_intimidation_focus
 	left_portrait = root
 
 	trigger = {
@@ -5762,6 +6087,12 @@ ATHA_nickname.0142 = {
 		modifier = {
 			factor = 2
 			var:nick_the_mindbreaker_weight > 20
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_mindbreaker }
 		}
 	}
 
@@ -5865,6 +6196,10 @@ ATHA_nickname.0142 = {
 			modifier = nickname_public_apology_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_mindbreaker CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Dread Response
 		name = ATHA_nickname.0142.c
@@ -5923,11 +6258,12 @@ ATHA_nickname.0142 = {
 			years = 5
 		}
 		add_piety = medium_piety_loss
-		random_held_title = {
-			limit = { tier = tier_county }
-
+		random_held_county = {
 			change_development_progress_with_overflow = -100
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -6002,7 +6338,7 @@ ATHA_nickname.0143 = {
 	type = character_event
 	title = ATHA_nickname.0143.t
 	desc = ATHA_nickname.0143.desc
-	theme = realm
+	theme = unfriendly
 	left_portrait = root
 
 	trigger = {
@@ -6047,6 +6383,12 @@ ATHA_nickname.0143 = {
 		modifier = {
 			factor = 2
 			var:nick_the_overpromiser_weight > 75
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_overpromiser }
 		}
 	}
 
@@ -6134,6 +6476,10 @@ ATHA_nickname.0143 = {
 		grant_favor_to_beneficiary_if_exists_effect = { BENEFICIARY = favor_beneficiary_1 }
 		grant_favor_to_beneficiary_if_exists_effect = { BENEFICIARY = favor_beneficiary_2 }
 		grant_favor_to_beneficiary_if_exists_effect = { BENEFICIARY = favor_beneficiary_3 }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_autocrat CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_overpromiser CHANGE = nickname_weight_large_decrease }
 	}
 }
 
@@ -6142,7 +6488,7 @@ ATHA_nickname.0144 = {
 	type = character_event
 	title = ATHA_nickname.0144.t
 	desc = ATHA_nickname.0144.desc
-	theme = realm
+	theme = faith
 	left_portrait = root
 
 	trigger = {
@@ -6184,6 +6530,12 @@ ATHA_nickname.0144 = {
 		modifier = {
 			factor = 2
 			var:nick_the_pious_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_pious }
 		}
 	}
 
@@ -6415,9 +6767,13 @@ ATHA_nickname.0144 = {
 					factor = 2
 					has_trait = education_martial_prowess
 				}
-				add_prowess_skill = 1
+				add_prowess_skill = 2
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -6473,7 +6829,7 @@ ATHA_nickname.0146 = {
 	type = character_event
 	title = ATHA_nickname.0146.t
 	desc = ATHA_nickname.0146.desc
-	theme = feast_activity
+	theme = party
 	left_portrait = root
 	right_portrait = scope:nickname_councillor
 
@@ -6487,6 +6843,12 @@ ATHA_nickname.0146 = {
 		modifier = {
 			factor = 2
 			has_trait = poet
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_poet_bad }
 		}
 	}
 
@@ -6542,7 +6904,7 @@ ATHA_nickname.0146 = {
 			depressed_genetic = minor_stress_impact_loss
 		}
 
-		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet }
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet_bad }
 		add_prestige = medium_prestige_loss
 	}
 	option = { # Quit poetry.
@@ -6656,8 +7018,13 @@ ATHA_nickname.0146 = {
 			modifier = nickname_can_take_a_joke_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
-	option = { # Invite the actors to your court to make them dissapear.
+	option = { # Invite the actors to your court to make them disappear.
 		name = ATHA_nickname.0146.d
 		custom_tooltip = ATHA_nickname_invite_play_sadistic_tt
 		ai_chance = {
@@ -6691,9 +7058,13 @@ ATHA_nickname.0146 = {
 		add_gold = minor_gold_loss
 		add_dread = 5
 		add_character_modifier = {
-			modifier = nickname_mysterious_dissapearance_modifier
+			modifier = nickname_mysterious_disappearance_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -6702,7 +7073,7 @@ ATHA_nickname.0147 = {
 	type = character_event
 	title = ATHA_nickname.0147.t
 	desc = ATHA_nickname.0147.desc
-	theme = feast_activity
+	theme = party
 	left_portrait = root
 
 	trigger = {
@@ -6715,6 +7086,12 @@ ATHA_nickname.0147 = {
 		modifier = {
 			factor = 2
 			has_trait = poet
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_poet_good }
 		}
 	}
 
@@ -6752,7 +7129,7 @@ ATHA_nickname.0147 = {
 			poet = major_stress_impact_loss
 		}
 
-		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet }
+		set_nickname_with_cooldown_effect = { NICKNAME = nick_the_poet_good }
 		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_gain }
 	}
 	option = { # Sell poetry for gold.
@@ -6789,6 +7166,9 @@ ATHA_nickname.0147 = {
 			modifier = nickname_selling_poems_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_poet_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Use poetry to pursue political goals.
 		name = ATHA_nickname.0147.c
@@ -6832,6 +7212,8 @@ ATHA_nickname.0147 = {
 			modifier = nickname_political_poems_modifier
 			years = 5
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -6846,7 +7228,7 @@ ATHA_nickname.0150 = {
 	type = character_event
 	title = ATHA_nickname.0150.t
 	desc = ATHA_nickname.0150.desc
-	theme = battle
+	theme = learning
 	left_portrait = root
 
 	trigger = {
@@ -6889,6 +7271,12 @@ ATHA_nickname.0150 = {
 		modifier = {
 			factor = 2
 			var:nick_the_scholar_weight > 100
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_scholar }
 		}
 	}
 
@@ -6960,6 +7348,9 @@ ATHA_nickname.0150 = {
 			modifier = nickname_humble_modifier
 			years = 3
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 	option = { # Sell off the scholarly works.
 		name = ATHA_nickname.0150.c
@@ -7000,6 +7391,10 @@ ATHA_nickname.0150 = {
 			years = 5
 		}
 		add_gold = major_gold_value
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_scholar CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -7032,7 +7427,7 @@ ATHA_nickname.0153 = {
 	type = character_event
 	title = ATHA_nickname.0153.t
 	desc = ATHA_nickname.0153.desc
-	theme = battle
+	theme = physical_health
 	left_portrait = root
 
 	trigger = {
@@ -7193,6 +7588,11 @@ ATHA_nickname.0153 = {
 			modifier = nickname_dwarven_court_modifier
 			years = 3
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_large_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_medium_decrease }
 	}
 	option = { # Counter propaganda.
 		name = ATHA_nickname.0153.c
@@ -7240,6 +7640,9 @@ ATHA_nickname.0153 = {
 				death = { death_reason = death_vanished }
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -7248,7 +7651,8 @@ ATHA_nickname.0154 = {
 	type = character_event
 	title = ATHA_nickname.0154.t
 	desc = ATHA_nickname.0154.desc
-	theme = battle
+	theme = unfriendly
+	override_background = { event_background = terrain }
 	left_portrait = root
 
 	trigger = {
@@ -7291,6 +7695,12 @@ ATHA_nickname.0154 = {
 		modifier = {
 			factor = 2
 			var:nick_the_smelly_weight > 30
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_smelly }
 		}
 	}
 
@@ -7362,6 +7772,8 @@ ATHA_nickname.0154 = {
 
 		remove_trait = athletic
 		add_prestige = medium_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Import Egyptian fragrances.
 		name = ATHA_nickname.0154.c
@@ -7396,6 +7808,8 @@ ATHA_nickname.0154 = {
 			modifier = nickname_egyptian_fragrances_modifier
 			years = 2
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -7422,7 +7836,7 @@ ATHA_nickname.0155 = {
 		}
 		desc = ATHA_nickname.0155.desc_ending
 	}
-	theme = battle
+	theme = physical_health
 	left_portrait = root
 
 	trigger = {
@@ -7446,6 +7860,12 @@ ATHA_nickname.0155 = {
 		modifier = {
 			factor = 2
 			has_character_modifier = malnourished_modifier
+		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_thin }
 		}
 	}
 
@@ -7568,11 +7988,11 @@ ATHA_nickname.0155 = {
 				}
 				modifier = {
 					factor = 1.5
-					scope:nickname_physician = { has_trait = lifestyle_physician_2 }
+					scope:nickname_physician = { has_trait = physician_2 }
 				}
 				modifier = {
 					factor = 2
-					scope:nickname_physician = { has_trait = lifestyle_physician_3 }
+					scope:nickname_physician = { has_trait = physician_3 }
 				}
 				remove_trait = spindly
 			}
@@ -7590,6 +8010,8 @@ ATHA_nickname.0155 = {
 
 		add_gold = minor_gold_loss
 		add_prestige = minor_prestige_loss
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_medium_increase }
 	}
 	option = { # Go into bulking mode.
 		name = ATHA_nickname.0155.c
@@ -7683,7 +8105,7 @@ ATHA_nickname.0156 = {
 	type = character_event
 	title = ATHA_nickname.0156.t
 	desc = ATHA_nickname.0156.desc
-	theme = battle
+	theme = unfriendly
 	left_portrait = root
 
 	trigger = {
@@ -7701,29 +8123,29 @@ ATHA_nickname.0156 = {
 			factor = 4
 			has_trait = beauty_bad_3
 		}
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_ugly }
+		}
 	}
 
 	immediate = {
 		set_nickname_cooldown_effect = yes
 
-		random_held_title = {
-			limit = {
-				tier = tier_county
-			}
-
+		random_held_county = {
 			add_to_list = statue_counties
 		}
-		random_held_title = {
+		random_held_county = {
 			limit = {
-				tier = tier_county
 				NOT = { is_in_list = statue_counties }
 			}
 
 			add_to_list = statue_counties
 		}
-		random_held_title = {
+		random_held_county = {
 			limit = {
-				tier = tier_county
 				NOT = { is_in_list = statue_counties }
 			}
 
@@ -7835,6 +8257,9 @@ ATHA_nickname.0156 = {
 
 		add_prestige = minor_prestige_loss
 		add_trait = celibate
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Threaten them.
 		name = ATHA_nickname.0156.c
@@ -7880,6 +8305,9 @@ ATHA_nickname.0156 = {
 			modifier = nickname_air_of_dread_modifier
 			years = 3
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	option = { # Propagandize.
 		name = ATHA_nickname.0156.d
@@ -7930,6 +8358,10 @@ ATHA_nickname.0156 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -7941,7 +8373,7 @@ ATHA_nickname.0158 = {
 	type = character_event
 	title = ATHA_nickname.0158.t
 	desc = ATHA_nickname.0158.desc
-	theme = battle
+	theme = war
 	left_portrait = root
 
 	trigger = {
@@ -7951,6 +8383,16 @@ ATHA_nickname.0158 = {
 
 	immediate = {
 		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_victor }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -8027,7 +8469,10 @@ ATHA_nickname.0158 = {
 			modifier = nickname_humble_modifier
 			years = 5
 		}
-		add_piety = medium_piety_gain 
+		add_piety = medium_piety_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -8060,6 +8505,16 @@ ATHA_nickname.0160 = {
 
 	immediate = {
 		set_nickname_cooldown_effect = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+		
+		# Decreased chance if ancestors had the same nickname.
+		modifier = {
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_victorious }
+		}
 	}
 
 	option = { # Accept the nickname.
@@ -8165,6 +8620,9 @@ ATHA_nickname.0160 = {
 				add_trait = humble
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_well_born CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -8187,7 +8645,7 @@ ATHA_nickname.0162 = {
 	type = character_event
 	title = ATHA_nickname.0162.t
 	desc = ATHA_nickname.0162.desc
-	theme = battle
+	theme = stewardship
 	left_portrait = root
 
 	trigger = {
@@ -8198,30 +8656,25 @@ ATHA_nickname.0162 = {
 	immediate = {
 		set_nickname_cooldown_effect = yes
 
-		random_held_title = {
-			limit = { tier = tier_county }
-
+		random_held_county = {
 			add_to_list = invested_counties
 		}
-		random_held_title = {
+		random_held_county = {
 			limit = {
-				tier = tier_county
 				NOT = { is_in_list = invested_counties }
 			}
 
 			add_to_list = invested_counties
 		}
-		random_held_title = {
+		random_held_county = {
 			limit = {
-				tier = tier_county
 				NOT = { is_in_list = invested_counties }
 			}
 
 			add_to_list = invested_counties
 		}
-		random_held_title = {
+		random_held_county = {
 			limit = {
-				tier = tier_county
 				NOT = { is_in_list = invested_counties }
 			}
 
@@ -8308,27 +8761,10 @@ ATHA_nickname.0162 = {
 			var:nickname_the_wealthy_weight >= 100
 		}
 
-		# Decreased chance if ancestors had the same nickname (I think it would be very common to see this in the late game otherwise).
+		# Decreased chance if ancestors had the same nickname.
 		modifier = {
-			factor = 0.5
-			any_close_family_member = {
-				is_parent_of = root
-				has_nickname = nick_the_wealthy
-			}
-		}
-		modifier = {
-			factor = 0.5
-			any_close_family_member = {
-				is_grandparent_of = root
-				has_nickname = nick_the_wealthy
-			}
-		}
-		modifier = {
-			factor = 0.5
-			any_close_family_member = {
-				is_great_grandparent_of = root
-				has_nickname = nick_the_wealthy
-			}
+			factor = 0.25
+			did_ancestors_have_nickname = { NICKNAME = nick_the_wealthy }
 		}
 	}
 
@@ -8426,6 +8862,10 @@ ATHA_nickname.0162 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -8491,6 +8931,37 @@ ATHA_nickname.0302 = {
 
 		side_primary_participant = {
 			trigger_event = { id = ATHA_nickname.0103 }
+		}
+	}
+}
+
+# Pass-through event for nick_the_short_lived assignment.
+ATHA_nickname.0303 = {
+	hidden = yes
+
+	trigger = {
+		scope:old_holder = {
+			has_character_flag = nick_the_short_lived_enabled_flag
+			NOT = { has_any_nickname = yes }
+		}
+		scope:title = {
+			tier >= tier_kingdom
+		}
+	}
+
+	immediate = {
+		scope:title = {
+			holder = { save_scope_as = new_holder }
+		}
+
+		scope:old_holder = {
+			set_nickname_with_cooldown_effect = { NICKNAME = nick_the_short_lived }
+
+			save_scope_as = nick_the_short_lived_receiver
+			trigger_event = { id = ATHA_nickname.0107 }
+		}
+		scope:new_holder = {
+			trigger_event = { id = ATHA_nickname.0107 }
 		}
 	}
 }

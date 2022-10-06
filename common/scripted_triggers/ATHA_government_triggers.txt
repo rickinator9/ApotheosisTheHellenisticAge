@@ -6,11 +6,58 @@ can_build_tribal = {
 
 ### Government category triggers
 
-has_city_state_government = { government_has_flag = is_city_state_government }
-has_bureaucracy_government = { government_has_flag = is_bureaucracy_government }
-has_coalition_government = { government_has_flag = is_coalition_government }
-has_hegemonic_government = { government_has_flag = is_hegemonic_government }
-has_federal_government = { government_has_flag = is_federal_government }
+# Does the ruler have a government where they rule by themselves?
+has_autocratic_government = {
+	OR = {
+		has_government = feudal_government
+		has_government = clan_government
+		has_government = tribal_government
+		has_government = city_state_tyrannical_government
+		has_government = city_state_spartan_government
+		AND = {
+			has_hegemonic_government = yes
+			OR = {
+				has_realm_law = confederate_partition_succession_law
+				has_realm_law = partition_succession_law
+				has_realm_law = high_partition_succession_law
+				has_realm_law = single_heir_succession_law
+				has_realm_law = single_heir_succession_law_youngest
+				has_realm_law = single_heir_dynasty_house
+			}
+		}
+	}
+}
+
+has_city_state_government = { 
+	custom_description = {
+		text = has_city_state_government
+		government_has_flag = is_city_state_government 
+	}
+}
+has_bureaucracy_government = { 
+	custom_description = {
+		text = has_bureaucracy_government
+		government_has_flag = is_bureaucracy_government 
+	}
+}
+has_coalition_government = { 
+	custom_description = {
+		text = has_coalition_government
+		government_has_flag = is_coalition_government 
+	}
+}
+has_hegemonic_government = { 
+	custom_description = {
+		text = has_hegemonic_government
+		government_has_flag = is_hegemonic_government 
+	}
+}
+has_federal_government = { 
+	custom_description = {
+		text = has_federal_government
+		government_has_flag = is_federal_government 
+	}
+}
 
 ### Liege contract modification triggers
 

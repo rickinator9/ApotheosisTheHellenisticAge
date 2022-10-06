@@ -1,6 +1,4 @@
-﻿#Events for intrigue schemes
-
-namespace = intrigue_scheme_ongoing
+﻿namespace = intrigue_scheme_ongoing
 
 # 1001-1999: Events triggered by agents
 # 2001-2999: Events triggered by the target
@@ -15,7 +13,7 @@ namespace = intrigue_scheme_ongoing
 # by Linnéa Thimrén and Petter Vilberg
 #######################
 # Can pay gold for scheme progress
-intrigue_scheme_ongoing.1001 = {
+ intrigue_scheme_ongoing.1001 = {
 	type = character_event
 	title = {
 		first_valid = {
@@ -30,6 +28,10 @@ intrigue_scheme_ongoing.1001 = {
 			triggered_desc = {
 				trigger = { scope:scheme = { scheme_type = elope } }
 				desc = elope_event_title
+			}
+			triggered_desc = {
+				trigger = { scope:scheme = { scheme_type = steal_back_artifact } }
+				desc = steal_back_artifact_event_title
 			}
 		}
 		desc = intrigue_scheme_ongoing.1001.t
@@ -55,6 +57,7 @@ intrigue_scheme_ongoing.1001 = {
 	right_portrait = scope:target
 
 	trigger = {
+		exists = scope:scheme
 		scope:scheme = {
 			scheme_number_of_agents > 0
 			any_scheme_agent = {
@@ -589,7 +592,7 @@ intrigue_scheme_ongoing.1006 = {
 				skill = intrigue
 				target = scope:target
 				20 = {		
-					desc = intrigue_scheme_ongoing.1008.a.success
+					desc = intrigue_scheme_ongoing.1006.a.success
 					compare_modifier = {
 						value = scope:duel_value
 						multiplier = 0.75
@@ -597,7 +600,7 @@ intrigue_scheme_ongoing.1006 = {
 					}
 					root = {
 						send_interface_toast = {
-							title = intrigue_scheme_ongoing.1008.a.success
+							title = intrigue_scheme_ongoing.1006.a.success
 							left_icon = scope:agent_in_question
 							scope:scheme = {
 								add_scheme_modifier = {
@@ -611,7 +614,7 @@ intrigue_scheme_ongoing.1006 = {
 					}
 				}
 				10 = {		
-					desc = intrigue_scheme_ongoing.1008.a.failure
+					desc = intrigue_scheme_ongoing.1006.a.failure
 					compare_modifier = {
 						value = scope:duel_value
 						multiplier = -0.5
@@ -619,7 +622,7 @@ intrigue_scheme_ongoing.1006 = {
 					}
 					root = {
 						send_interface_toast = {
-							title = intrigue_scheme_ongoing.1008.a.failure
+							title = intrigue_scheme_ongoing.1006.a.failure
 							left_icon = scope:agent_in_question
 							if = {
 								limit = {
@@ -1817,8 +1820,25 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 				}
 			}
 
-			# Can a friend help?
+			# Is there an available Master of the Hunt?
 			if = {
+				limit = {
+					NOT = { has_trait = lifestyle_hunter }
+					has_royal_court = yes
+					employs_court_position = master_of_hunt_court_position
+					any_court_position_holder = {
+						type = master_of_hunt_court_position
+						intrigue_scheme_ongoing_3003_hunter_friend_trigger = yes
+					}
+				}
+				random_court_position_holder = {
+					type = master_of_hunt_court_position
+					limit = { intrigue_scheme_ongoing_3003_hunter_friend_trigger = yes }
+					save_scope_as = hunter
+				}
+			}
+			# Can a friend help?
+			else_if = {
 				limit = {
 					NOT = { has_trait = lifestyle_hunter }
 					any_relation = {
@@ -1878,7 +1898,12 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 	# Bribe a hunter
 	option = {
 		name = intrigue_scheme_ongoing.3003.a
-		trigger = { NOT = { has_relation_friend = scope:hunter } }
+		trigger = {
+			NOT = {
+				has_relation_friend = scope:hunter
+				scope:hunter = { has_court_position = master_of_hunt_court_position }
+			}
+		}
 		
 		pay_short_term_gold = {
 			target = scope:hunter
@@ -1972,9 +1997,37 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 
+	#Ask your Master of the Hunt
+	option = {
+		trigger = {
+			scope:hunter = { has_court_position = master_of_hunt_court_position }
+		}
+		name = intrigue_scheme_ongoing.3003.e
+		add_internal_flag = special
+
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = intrigue_scheme_mapped_surroundings_modifier
+			}
+		}
+
+		stress_impact = {
+			lazy = medium_stress_impact_gain
+			craven = medium_stress_impact_gain
+			impatient = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
 	# Ask a friend
 	option = {
-		trigger = { has_relation_friend = scope:hunter }
+		trigger = {
+			has_relation_friend = scope:hunter
+			NOT = { scope:hunter = { has_court_position = master_of_hunt_court_position } }
+		}
 		name = intrigue_scheme_ongoing.3003.d
 		add_internal_flag = special
 
@@ -1999,7 +2052,7 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 		}
 
 		ai_chance = {
-				base = 100
+			base = 100
 		}
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
@@ -2152,7 +2205,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 			forgiving = major_stress_impact_gain
 			trusting = minor_stress_impact_gain
 			calm = minor_stress_impact_gain
-		}
+		}	
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
@@ -2236,7 +2289,10 @@ intrigue_scheme_ongoing.3005 = { #by Mathilda Bjarnehed
 	}
 	desc = intrigue_scheme_ongoing.3005.desc
 	theme = generic_intrigue_scheme
-	left_portrait = scope:pigeon_recipient
+	left_portrait = {
+		character = scope:pigeon_recipient
+		animation = scheme
+	}
 	right_portrait = scope:right_portrait
 	widget = {
 		gui = "event_window_widget_scheme"
@@ -2405,6 +2461,178 @@ intrigue_scheme_ongoing.3005 = { #by Mathilda Bjarnehed
 	}
 }
 
+#########################################
+# by Letter Translation by Daniel Moore #
+#########################################
+
+intrigue_scheme_ongoing.3010 = {
+	type = character_event
+	title = intrigue_scheme_ongoing.3010.t
+	desc = intrigue_scheme_ongoing.3010.desc
+	theme = generic_intrigue_scheme
+	left_portrait = {
+		character = root
+		animation = chancellor
+	}
+
+	trigger = {
+		scope:scheme = {
+			NOT = { 
+				has_variable = had_intrigue_scheme_ongoing_3010_event
+			}
+		}
+		knows_language_of_culture = scope:target.culture
+		NOT = {
+			scope:target.culture = {
+				has_same_culture_language = root.culture
+			}
+		}
+	}
+
+	immediate = {
+		scope:scheme = {
+			set_variable = {	
+				name = had_intrigue_scheme_ongoing_3010_event
+				value = yes
+			}
+		}
+	}
+
+	option = { #Do it yourself
+		name = intrigue_scheme_ongoing.3010.a
+		add_stress = minor_stress_gain
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = intrigue_scheme_personally_translating_letters_modifier
+			}
+			add_scheme_progress = 1
+		}
+		stress_impact = {
+			lazy = medium_stress_gain
+		}	
+
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = 0.5
+			}
+		}
+	}
+
+	option = { #Let the translators handle it
+		name = intrigue_scheme_ongoing.3010.b
+
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = -0.5
+			}
+		}
+	}
+
+	
+}
+
+###############################
+# Secret Code by Daniel Moore #
+###############################
+
+intrigue_scheme_ongoing.3011 = { #By Daniel Moore
+	type = character_event
+	title = intrigue_scheme_ongoing.3011.t
+	desc = intrigue_scheme_ongoing.3011.desc
+	theme = generic_intrigue_scheme
+	left_portrait = {
+		character = scope:multilingual_agent
+		animation = throne_room_writer
+	}
+
+	trigger = {
+		scope:scheme = {
+			NOT = { 
+				has_variable = had_intrigue_scheme_ongoing_3011_event
+			}
+
+			any_scheme_agent ={
+				num_of_known_languages > 2
+			}
+		}
+
+	}
+
+	immediate = {
+		scope:scheme = {
+			set_variable = {	
+				name = had_intrigue_scheme_ongoing_3011_event
+				value = yes
+			}
+
+			random_scheme_agent = {
+				limit = {
+					num_of_known_languages > 2
+				}
+				save_scope_as = multilingual_agent
+
+			}
+
+			random_culture_global = {
+				limit = {
+					scope:multilingual_agent = { knows_language_of_culture = prev }
+					NOT = { has_same_culture_language = scope:multilingual_agent.culture }
+				}
+
+				save_scope_as = language_culture
+			}
+
+			random_culture_global = {
+				limit = {
+					scope:multilingual_agent = { knows_language_of_culture = prev }
+					NOT = { has_same_culture_language = scope:multilingual_agent.culture }
+					NOT = { has_same_culture_language = scope:language_culture }
+				}
+
+				save_scope_as = language_culture_2
+			}
+		}
+	}
+
+	option = { #Excellent Idea
+		name = intrigue_scheme_ongoing.3011.a
+		#Lower discovery chance
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = intrigue_scheme_secret_code_modifier
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = 0.5
+			}
+		}
+
+	}
+
+	option = { #Our efforts are best spent elsewhere
+		name = intrigue_scheme_ongoing.3011.b
+		scope:scheme = {
+			add_scheme_progress = 1
+		}
+		scope:multilingual_agent = {
+			add_opinion = {
+				modifier = opinion_scheme_code_rejected
+				target = root
+			}	
+		}
+
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+		}
+	}
+}
 
 
 ###########################################################
@@ -2842,6 +3070,7 @@ intrigue_scheme_ongoing.5002 = {
 				}
 				send_interface_toast = {
 					title = intrigue_scheme_ongoing.5002.a.success
+					left_icon = scope:target
 					show_as_tooltip = {
 						scope:target = {
 							add_character_modifier = {
@@ -3960,7 +4189,10 @@ intrigue_scheme_ongoing.5019 = {
 	}
 	desc = intrigue_scheme_ongoing.5019.desc
 	theme = generic_intrigue_scheme
-	left_portrait = scope:agent
+	left_portrait = {
+		character = scope:agent
+		animation = scheme
+	}
 	right_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
@@ -4003,6 +4235,18 @@ intrigue_scheme_ongoing.5019 = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				employs_court_position = royal_architect_court_position
+				any_court_position_holder = {
+					type = royal_architect_court_position
+				}
+			}
+			random_court_position_holder = {
+				type = royal_architect_court_position
+				save_scope_as = architect
+			}
+		}
 	}
 
 	# Cool, let's use them!
@@ -4014,9 +4258,21 @@ intrigue_scheme_ongoing.5019 = {
 	# Inspiration for own rebuilding!
 	option = {
 		name = intrigue_scheme_ongoing.5019.b
-		add_character_modifier = {
-			modifier = hidden_nooks_and_crannies_modifier
-			years = 10
+		if = {
+			limit = {
+				exists = scope:architect
+			}
+			custom_tooltip = intrigue_scheme_ongoing.5019.b.tt
+			add_character_modifier = {
+				modifier = hidden_nooks_and_crannies_architect_modifier
+				years = 10
+			}
+		}
+		else = {
+			add_character_modifier = {
+				modifier = hidden_nooks_and_crannies_modifier
+				years = 10
+			}
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
@@ -4403,14 +4659,16 @@ intrigue_scheme_ongoing.5024 = {
 	}
 
 	immediate = {
-		if = {
-			limit = {
-				exists = capital_province
+		scope:target = {
+			if = {
+				limit = {
+					exists = capital_province
+				}
+				capital_province = { save_scope_as = province }
 			}
-			capital_province = { save_scope_as = province }
-		}
-		else = {
-			location = { save_scope_as = province }
+			else = {
+				location = { save_scope_as = province }
+			}
 		}
 		scope:scheme = {
 			random_scheme_agent = {
@@ -4741,6 +4999,17 @@ intrigue_scheme_ongoing.5026 = {
 					multiplier = 0.75
 					min = 0
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					root = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					root = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				root = {
 					send_interface_toast = {
 						title = intrigue_scheme_ongoing.5026.a.success
@@ -4774,6 +5043,17 @@ intrigue_scheme_ongoing.5026 = {
 					multiplier = -0.5
 					min = -14
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:court_chaplain = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:court_chaplain = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				root = {
 					send_interface_toast = {
 						title = intrigue_scheme_ongoing.5026.a.failure

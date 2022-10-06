@@ -19,7 +19,15 @@ call_house_member_to_war_interaction = {
 		NOT = { scope:recipient = scope:actor }
 
 		scope:actor = {
-			is_house_head = yes
+			OR = {
+				is_house_head = yes
+				AND = {
+					# DLC checking
+					has_fp2_dlc_trigger = yes
+					# Standard check
+					dynasty = { has_dynasty_perk = fp2_coterie_legacy_3 }
+				}
+			}
 			religion = scope:recipient.religion
 			house = scope:recipient.house
 			any_character_war = {
@@ -51,7 +59,7 @@ call_house_member_to_war_interaction = {
 			JOINER = scope:recipient
 		}
 	}
-	
+
 	is_valid_showing_failures_only = {
 		custom_description = {
 			text = "is_already_in_all_wars"
@@ -96,6 +104,19 @@ call_house_member_to_war_interaction = {
 			scope:actor = {
 				trigger_event = call_ally.0100
 			}
+		}
+
+		scope:actor = {
+			if = {
+				limit = { NOT = {  is_house_head = yes } }
+				add_prestige = medium_prestige_loss
+			}
+		}
+
+		# If the Dynasty has Unity, the reciptien is rewarded with some Prestige
+		if = {
+			limit = { scope:actor.dynasty = { has_dynasty_perk = fp2_coterie_legacy_3 } }
+			scope:recipient = {	add_prestige = medium_prestige_gain	}
 		}
 	}
 	
@@ -253,6 +274,12 @@ call_house_member_to_war_interaction = {
 			}
 			desc = WONT_ATTACK_RELIGIOUS_BRETHREN_REASON
 		}
+
+		modifier = { # Happy to gain Prestige thanks to the Unity perk
+			add = 50
+			dynasty = { has_dynasty_perk = fp2_coterie_legacy_3 }
+			desc = "UNITY_PERK_BONUS"
+		}
 	}
 
 	auto_accept = {
@@ -314,6 +341,7 @@ legitimize_bastard_interaction = {
 			has_trait = bastard
 			OR = {
 				father = scope:actor
+				mother = scope:actor
 				scope:actor.house.house_head = scope:actor
 			}
 			OR = {
@@ -325,7 +353,7 @@ legitimize_bastard_interaction = {
 					}
 					has_dynasty = no
 				}
-			}		
+			}
 		}
 		scope:actor = {
 			is_lowborn = no

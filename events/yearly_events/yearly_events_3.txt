@@ -141,7 +141,7 @@ yearly.3001 = {
 			yearly_3001_vassal_trigger = yes
 		}
 	}
-
+	
 	immediate = {
 		add_character_flag = {
 			flag = had_event_yearly_3001
@@ -199,7 +199,7 @@ yearly.3001 = {
 			}
 		}
 
-		#Let a Friend reccommend a course of action
+		#Let a Friend recommend a course of action
 		if = {
 			limit = {
 				any_relation = {
@@ -1102,6 +1102,7 @@ yearly.3011 = {
 	trigger = {
 		NOT = { has_character_flag = had_event_yearly_3011 }
 		is_independent_ruler = no
+		exists = liege
 		liege = {
 			yearly_3011_liege_trigger = yes
 		}
@@ -1433,6 +1434,9 @@ yearly.3012 = {
 		scope:liege = {
 			basic_is_available_ai = yes
 		}
+		scope:vassal = {
+			is_alive = yes
+		}
 	}
 
 	immediate = {
@@ -1533,6 +1537,9 @@ yearly.3013 = {
 	trigger = {
 		scope:liege = {
 			basic_is_available_ai = yes
+		}
+		scope:vassal = {
+			is_alive = yes
 		}
 	}
 
@@ -1637,6 +1644,9 @@ yearly.3014 = {
 	trigger = {
 		scope:liege = {
 			basic_is_available_ai = yes
+		}
+		scope:vassal = {
+			is_alive = yes
 		}
 	}
 
@@ -1869,6 +1879,7 @@ yearly.3031 = {
 	
 	trigger = {
 		is_independent_ruler = no
+		is_adult = yes
 		NOT = { has_character_flag = had_event_yearly_3031 }
 		NOR = {
 			has_trait = generous
@@ -2367,6 +2378,16 @@ yearly.3031 = {
 					multiplier = 0.25
 				}
 
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				show_as_tooltip = {
 					reverse_add_opinion = {
 						target = liege
@@ -2437,6 +2458,16 @@ yearly.3031 = {
 				desc = yearly.3031.b.success
 				compare_modifier = {
 					value = scope:duel_value
+				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
 				}
 
 				show_as_tooltip = {
@@ -2537,6 +2568,17 @@ yearly.3031 = {
 			}
 			10 = {
 				desc = yearly.3031.b.failure
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:fellow_vassal = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:fellow_vassal = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				show_as_tooltip = {
 					reverse_add_opinion = {
 						target = liege
@@ -2633,6 +2675,16 @@ yearly.3031 = {
 					multiplier = 0.25
 				}
 
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:fellow_vassal = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:fellow_vassal = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
 				show_as_tooltip = {
 					reverse_add_opinion = {
 						target = liege
@@ -2702,7 +2754,7 @@ yearly.3031 = {
 								exists = scope:gain_rival
 							}
 							progress_towards_rival_effect = {
-								CHARACTER = scope:gain_rival
+								CHARACTER = scope:fellow_vassal
 								OPINION = no
 							}
 						}

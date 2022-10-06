@@ -24,6 +24,27 @@
 #Can only be triggered through the decision "tribal_challenge_ruler_decision"
 
 scripted_effect tribal_1001_transfer_liege_title_effect = {
+	scope:title_being_fought_over.holder = {
+		# Only add it to the holder to the list if they don't have another title of the same tier
+		if = {
+			limit = {
+				any_held_title = {
+					count = 0
+					NOT = { this = scope:title_being_fought_over }
+					tier = scope:title_being_fought_over.tier
+				}
+			}
+			add_to_temporary_list = transfered_vassals
+		}
+		every_vassal = {
+			limit = {
+				NOT = {
+					this = scope:challenger
+				}
+			}
+			add_to_temporary_list = transfered_vassals
+		}
+	}
 	create_title_and_vassal_change = {
 		type = usurped
 		save_scope_as = change
@@ -34,6 +55,13 @@ scripted_effect tribal_1001_transfer_liege_title_effect = {
 			holder = scope:challenger
 			change = scope:change
 		}
+	}
+	every_in_list = {
+	 	list = transfered_vassals
+	 	change_liege = {
+	 		LIEGE = scope:challenger
+	 		CHANGE = scope:change
+	 	}
 	}
 	resolve_title_and_vassal_change = scope:change
 	if = {
@@ -98,6 +126,7 @@ scripted_effect tribal_1001_challenger_lost_effect = {
 		}
 	}
 }
+
 
 scripted_effect tribal_1001_challenger_backed_out_effect = {
 	add_prestige = major_prestige_loss
@@ -248,6 +277,19 @@ tribal.1001 = {
 			}
 			if = {
 				limit = {
+					any_court_position_holder = {
+						type = champion_court_position
+						tribal_1001_champion_check_trigger = yes
+					}
+				}
+				every_court_position_holder = {
+					type = champion_court_position
+					limit = { tribal_1001_champion_check_trigger = yes }
+					add_to_list = champion_candidates
+				}
+			}
+			if = {
+				limit = {
 					any_relation = {
 						type = friend
 						tribal_1001_champion_check_trigger = yes
@@ -302,7 +344,6 @@ tribal.1001 = {
 					}
 				}
 			}
-
 			#Save champion
 			if = {
 				limit = {
@@ -313,7 +354,14 @@ tribal.1001 = {
 				}
 				random_in_list = {
 					list = champion_candidates
-					limit = { prowess > high_skill_rating }
+					limit = { #We prioritize your champions
+						has_court_position = champion_court_position
+						is_court_position_employer = {
+							court_position = champion_court_position
+							who = root
+						}
+					}
+					alternative_limit = { prowess > high_skill_rating }
 					alternative_limit = { always = yes }
 					weight = {
 						base = 1
@@ -383,9 +431,8 @@ tribal.1001 = {
 
 	option = { #Ok, take it...
 		name = tribal.1001.c
-		trigger = { always = no }	#TODO_CD_ERCC_AZU; remove after testing
 		show_as_tooltip = {
-			tribal_1001_transfer_liege_title_effect = yes
+			tribal_transfer_liege_title_effect = yes
 		}
 		scope:challenger = {
 			trigger_event = tribal.1002
@@ -426,7 +473,7 @@ tribal.1002 = {
 	}
 
 	immediate = {
-		tribal_1001_transfer_liege_title_effect = yes
+		tribal_transfer_liege_title_effect = yes
 	}
 
 	option = {
@@ -536,6 +583,7 @@ tribal.1003 = {
 
 #Challenger won!
 tribal.1004 = {
+	orphan = yes
 	type = character_event
 	title = tribal.1001.t
 	desc = {
@@ -551,13 +599,14 @@ tribal.1004 = {
 	option = {
 		name = tribal.1004.a
 		scope:challenger = {
-			tribal_1001_transfer_liege_title_effect = yes
+			tribal_transfer_liege_title_effect = yes
 		}
 	}
 }
 
 #Challenger lost
 tribal.1005 = {
+	orphan = yes
 	type = character_event
 	title = tribal.1001.t
 	desc = {
@@ -574,7 +623,7 @@ tribal.1005 = {
 		name = tribal.1005.a
 		show_as_tooltip = {
 			scope:challenger = {
-				tribal_1001_challenger_lost_effect = yes
+				tribal_challenger_lost_effect = yes
 			}
 		}
 	}
@@ -582,6 +631,7 @@ tribal.1005 = {
 
 #Using champion - Challenger won!
 tribal.1014 = {
+	orphan = yes
 	type = character_event
 	title = tribal.1001.t
 	desc = {
@@ -601,13 +651,14 @@ tribal.1014 = {
 	option = {
 		name = tribal.1014.a
 		scope:challenger = {
-			tribal_1001_transfer_liege_title_effect = yes
+			tribal_transfer_liege_title_effect = yes
 		}
 	}
 }
 
 #Using champion - Challenger lost
 tribal.1015 = {
+	orphan = yes
 	type = character_event
 	title = tribal.1001.t
 	desc = {
@@ -628,7 +679,7 @@ tribal.1015 = {
 		name = tribal.1015.a
 		show_as_tooltip = {
 			scope:challenger = {
-				tribal_1001_challenger_lost_effect = yes
+				tribal_challenger_lost_effect = yes
 			}
 		}
 		scope:liege_champion = {
@@ -744,12 +795,32 @@ tribal.1006 = {
 			skill = learning
 			target = scope:liege_to_challenge
 			10 = {
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
+				# ATHA - poet nickname effects.
+				modifier = {
+					factor = 1.25
+					has_character_modifier = nick_the_poet_good_modifier
+				}
+				modifier = {
+					factor = 0.75
+					has_character_modifier = nick_the_poet_bad_modifier
+				}
+
 				desc = tribal.1006.a_success
 				send_interface_toast = {
 					title = tribal.1006.a_success
 					left_icon = scope:liege_to_challenge
 					show_as_tooltip = {
-						tribal_1001_transfer_liege_title_effect = yes
+						tribal_transfer_liege_title_effect = yes
 					}
 				}
 				scope:liege_to_challenge = {
@@ -764,10 +835,31 @@ tribal.1006 = {
 					value = scope:duel_value
 					multiplier = -2
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					scope:liege_to_challenge = { has_character_modifier = nick_the_scholar_modifier }
+					factor = 1.25
+				}
+				modifier = {
+					scope:liege_to_challenge = { has_character_modifier = nick_the_wise_modifier }
+					factor = 1.1
+				}
+
+				# ATHA - poet nickname effects.
+				modifier = {
+					factor = 1.25
+					scope:liege_to_challenge = { has_character_modifier = nick_the_poet_good_modifier }
+				}
+				modifier = {
+					factor = 0.75
+					scope:liege_to_challenge = { has_character_modifier = nick_the_poet_bad_modifier }
+				}
+
 				send_interface_toast = {
 					title = tribal.1006.a_failure
 					left_icon = scope:liege_to_challenge
-					tribal_1001_challenger_lost_effect = yes
+					tribal_challenger_lost_effect = yes
 				}
 				scope:liege_to_challenge = {
 					trigger_event = tribal.1008
@@ -852,7 +944,7 @@ tribal.1007 = {
 
 	immediate = {
 		scope:challenger = {
-			tribal_1001_transfer_liege_title_effect = yes
+			tribal_transfer_liege_title_effect = yes
 		}
 	}
 
@@ -924,7 +1016,7 @@ tribal.1008 = {
 	immediate = {
 		show_as_tooltip = {
 			scope:challenger = {
-				tribal_1001_challenger_lost_effect = yes
+				tribal_challenger_lost_effect = yes
 			}
 		}
 	}
@@ -1071,12 +1163,13 @@ scripted_trigger tribal_1101_victim_trigger = {
 	basic_is_available_ai = yes
 	is_in_the_same_court_as_or_guest = root
 	NOR = {
+		this = scope:rival
 		has_relation_lover = scope:rival
 		has_relation_friend = scope:rival
-	}
-	has_trait_rank = {
-		trait = wounded
-		rank <= 2
+		has_trait_rank = {
+			trait = wounded
+			rank >= 2
+		}
 	}
 }
 
@@ -1276,15 +1369,17 @@ tribal.1201 = {
 		has_government = tribal_government
 		# culture = { has_innovation = innovation_archaic_saddle }
 		NOT = { has_character_flag = had_event_tribal_1201 }
-		calc_true_if = {
-			amount >= 2
+		OR = {
 			any_vassal = {
+				count >= 2
 				is_available_ai_adult = yes
 			}
 			any_courtier = {
+				count >= 2
 				is_available_ai_adult = yes
 			}
 			any_neighboring_realm_same_rank_owner = {
+				count >= 2
 				is_available_ai_adult = yes
 				has_government = tribal_government
 				# culture = { has_innovation = innovation_archaic_saddle }
@@ -1382,6 +1477,9 @@ tribal.1201 = {
 				}
 			}
 			alternative_limit = {
+				has_court_position = master_of_horse_court_position
+			}
+			alternative_limit = {
 				is_of_major_interest_to_root_trigger = yes
 			}
 			alternative_limit = {
@@ -1411,6 +1509,10 @@ tribal.1201 = {
 				any_owned_story = {
 					story_type = story_cycle_martial_lifestyle_warhorse
 				}
+				NOT = { this = scope:racer }
+			}
+			alternative_limit = {
+				has_court_position = master_of_horse_court_position
 				NOT = { this = scope:racer }
 			}
 			alternative_limit = {
@@ -2070,26 +2172,108 @@ tribal.1301 = {
 	}
 	
 	trigger = {
-		always = no
+		is_available_adult = yes
+		has_government = tribal_government
+		capital_province = { geographical_region = world_africa }
+		NOT = { has_character_flag = had_event_tribal_1301 }
 	}
 
 	immediate = {
+		add_character_flag = {
+			flag = had_event_tribal_1301
+			years = 20
+		}
+		create_character = {
+			template = servant_character
+			dynasty = none
+			location = root.capital_province
+			gender_female_chance = 50
+			save_scope_as = peasant
+		}
+		hidden_effect = {
+			scope:peasant = {
+				add_trait = brave
+			}
+		}
+		capital_county = {
+			save_scope_as = capital
+		}
 	}
 
 	option = { #Thank you!! Have some gold
 		name = tribal.1301.a
+		trigger = {
+			short_term_gold >= minor_gold_value
+		}
+		scope:capital = {
+			add_county_modifier = {
+				modifier = invested_in_province_modifier
+				years = 5
+			}
+		}
+		remove_short_term_gold = minor_gold_value
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -100
+				has_trait = greedy
+			}
+			ai_value_modifier = {
+				ai_compassion = 0.5
+			}
+		}
 	}
 
 	option = { #Thank you, please come work for me
 		name = tribal.1301.b
+		add_courtier = scope:peasant
+		scope:peasant = {
+			add_opinion = {
+				target = root
+				modifier = loyal_servant
+			}
+			hidden_effect = {
+				set_relation_potential_friend = root
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = 0.5
+			}
+		}
 	}
 
 	option = { #Well... bye.
 		name = tribal.1301.c
+		add_character_modifier = {
+			modifier = drank_water_modifier
+			years = 1
+		}
+		hidden_effect = {
+			random = {
+				chance = 100
+				trigger_event = tribal.1302
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 25
+				has_trait = arrogant
+			}
+			ai_value_modifier = {
+				ai_compassion = -0.5
+			}
+		}
 	}
 
 	option = { #Thanks.
 		name = tribal.1301.d
+		custom_tooltip = tribal.1301.d.tt
+		ai_chance = {
+			base = 50
+		}
 	}
 }
 
@@ -2129,21 +2313,69 @@ tribal.1303 = {
 	left_portrait = scope:councillor
 	
 	trigger = {
-		always = no
+		is_available_adult = yes
+		has_government = tribal_government
+		capital_province = { geographical_region = world_africa }
+		exists = cp:councillor_steward
+		short_term_gold >= medium_gold_value
+		NOT = { has_character_flag = had_event_tribal_1301 }
 	}
 
 	immediate = {
+		add_character_flag = {
+			flag = had_event_tribal_1301
+			years = 10
+		}
+		cp:councillor_steward = {
+			save_scope_as = councillor
+		}
+		capital_county = {
+			save_scope_as = capital
+		}
 	}
 
 	option = { #Invest
 		name = tribal.1303.a
+		scope:capital = {
+			add_county_modifier = {
+				modifier = irrigated_oasis_modifier
+				years = 10
+			}
+		}
+		remove_short_term_gold = medium_gold_value
+
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = 0.75
+			}
+		}
 	}
 
 	option = { #They'll pay to get access!
 		name = tribal.1303.b
+		scope:capital = {
+			add_county_modifier = {
+				modifier = guarded_irrigated_oasis_modifier
+				years = 10
+			}
+		}
+		remove_short_term_gold = medium_gold_value
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_greed = 0.75
+			}
+		}
 	}
 
 	option = { #Leave it
 		name = tribal.1303.c
+		scope:capital = {
+			add_county_modifier = {
+				modifier = oasis_modifier
+				years = 10
+			}
+		}
 	}
 }

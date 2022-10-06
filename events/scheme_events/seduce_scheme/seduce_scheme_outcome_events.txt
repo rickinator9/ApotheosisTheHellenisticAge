@@ -1505,6 +1505,7 @@ seduce_outcome.2309 = {
 	}
 	
 	theme = seduce_scheme
+	override_background = { event_background = bedchamber }
 	left_portrait = {
 		character = scope:target
 		animation = flirtation_left
@@ -3066,6 +3067,7 @@ seduce_outcome.8101 = {
 
 	trigger = {
 		exists = scope:scheme
+		scope:owner = { is_alive = yes }
 	}
 
 	immediate = {
@@ -3169,6 +3171,17 @@ seduce_outcome.8101 = {
 
 	option = { #Leave me be!!
 		name = seduce_outcome.8101.a
+		trigger = {
+			trigger_if = {
+				limit = {
+					OR = {
+		           	 	faith = { has_doctrine = doctrine_consanguinity_unrestricted }
+		            	scope:owner = { has_perk = graceful_recovery_perk }
+				    }
+			    }
+			    is_ai = no
+			}
+		}
 		
 		reverse_add_opinion = {
 			target = scope:owner
@@ -3193,6 +3206,17 @@ seduce_outcome.8101 = {
 
 	option = { #I will tell everyone about this!
 		name = seduce_outcome.8101.c
+		trigger = {
+			trigger_if = {
+				limit = {
+		            scope:owner = { has_perk = graceful_recovery_perk }
+			    }
+			    is_ai = no
+			}
+			NOT = {
+				faith = { has_doctrine = doctrine_consanguinity_unrestricted }
+			}
+		}
 
 		reverse_add_opinion = {
 			target = scope:owner

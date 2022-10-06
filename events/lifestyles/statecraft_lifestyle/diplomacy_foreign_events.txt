@@ -1066,6 +1066,16 @@ diplomacy_foreign.3007 = {
   					multiplier = 3.5
 	  			}
 
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				send_interface_toast = {
 					title = diplomacy_foreign.3007.a_random_list_good
 					
@@ -1708,6 +1718,17 @@ diplomacy_foreign_special.1019 = {
 					value = scope:duel_value
 					multiplier = 1
 				}
+
+				# ATHA - scholar/wise nickname modifiers.
+				modifier = {
+					has_character_modifier = nick_the_scholar_modifier
+					factor = 1.25
+				}
+				modifier = {
+					has_character_modifier = nick_the_wise_modifier
+					factor = 1.1
+				}
+
 				desc = diplomacy_foreign_special.1019.a.success.tt
 				send_interface_toast = {
 					title = diplomacy_foreign_special.1019.a.success.tt
@@ -1838,6 +1859,7 @@ scripted_trigger diplomacy_foreign_special_1020_prefers_hunt_trigger = {
 		has_trait = lifestyle_hunter
 		ai_boldness > low_positive_boldness
 		ai_energy > low_positive_energy
+		has_court_position = master_of_hunt_court_position
 	}
 }
 
@@ -2593,6 +2615,7 @@ diplomacy_foreign_special.1022 = {
 						scope:private_dinner_response = flag:yes
 						root = { is_alive = yes }
 						scope:foreign_guest = { is_alive = yes }
+						exists = scope:private_dinner_outcome
 					}
 					diplomacy_foreign_special_1010_court_visit_interesting_relation_outcome_effect = yes #Sets all opinions, relationships & hooks
 				}

@@ -349,6 +349,10 @@ GetUnbelieverTerm = {
 		}
 		localization_key = unbeliever_heretic
 	}
+	text = {
+		trigger = { always = yes }
+		localization_key = unbeliever_unbeliever
+	}
 }
 
 GetUnbelieverTermAdjective = {
@@ -371,6 +375,10 @@ GetUnbelieverTermAdjective = {
 			is_heretic_trigger = { WHO = scope:second TARGET = root}
 		}
 		localization_key = unbeliever_heretic_adj
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = unbeliever_unbeliever_adj
 	}
 }
 
@@ -543,6 +551,7 @@ GetAfterLifeDestination = {
 	}
 }
 
+# GetActualBishopTitlePossessive should be updated synchronously with this
 GetActualBishopTitle = {
 	type = character
 
@@ -643,5 +652,25 @@ GetReligiousRite = {
 		}
 		fallback = yes
 		localization_key = rite_worship
+	}
+}
+
+# Doctrine Parameters
+GetRiteEcumenismFullOrEmpty = {
+	type = character
+
+	text = {
+		trigger = {
+			faith = { has_doctrine = special_doctrine_ecumenical_christian }
+		}
+		localization_key = GetRiteEcumenismFullOrEmpty_full
+	}
+	text = {
+		trigger = {
+			NOT = {
+				faith = { has_doctrine = special_doctrine_ecumenical_christian }
+			}
+		}
+		localization_key = GetRiteEcumenismFullOrEmpty_empty
 	}
 }
