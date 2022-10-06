@@ -131,21 +131,78 @@ illyria_decisions.0003 = {
 		name = illyria_decisions.0003.d
 		add_character_flag = restorer_is_vengeful
 
-		#gold scaled to how many Macedonian counties you control (and raze)
-		#lots of dread
-		#razed counties get hefty development and control penalties
-		#hefty cultural acceptance penalty
-		#rulers of razed counties are very unhappy
+		trigger = { 
+			any_realm_county = { culture = culture:macedonian } 
+		}
+
+		add_dread = major_dread_gain
+
+		culture:macedonian = {
+			save_scope_as = plunder_victim
+			change_cultural_acceptance = {
+				target = root.culture
+				value = -30
+				desc = cultural_acceptance_loss_plundered_lands
+			}
+		}
+
+		every_realm_county = {
+			limit = { culture = culture:macedonian }
+			custom = every_macedonian_county
+
+			#For calculating loot
+			add_to_list = sacked_counties
+
+			#Hefty penalty to control and development
+			change_development_level = -3
+			change_county_control = -50
+
+			#Temporary modifier that reduces popular opinion and kills development
+			add_county_modifier = { 
+				modifier = recently_devastated_modifier
+				years = 30 
+			}
+			#Permanent crippling modifier
+			add_county_modifier = { modifier = stripped_bare_modifier }
+
+			#Chance of province culture flipping
+			random = {
+				chance = 20
+				set_county_culture = root.culture
+			}
+
+			#Vassals aren't happy that you've looted their lands
+			holder = {
+				limit = { NOT = this:root }
+				custom_description_no_bullet = {
+					text = macedonian_county_holder
+				}
+				add_opinion = {
+					target = root
+					modifier = plundered_lands_opinion
+				}
+			}
+		}
+
+		add_gold = illyria_decisions.0003.d_loot
+
 		#nickame (Makedonikos) that gives the following effects:
 			#negative Macedonian opinion
 			#dread gain/decay?
 			#cheaper MaA upkeep
 		#very stressful if not vengeful, callous, greedy or sadistic
 		#stress loss for sadistic, greedy & vengeful
+		#this option is intended as a shot in the foot, and the rewards are outweighed by the consequences. Main purpose is to make RP more interesting by creating opportunities for rulers to stand out and leave a lasting legacy
+			#should also be incorporated into memories mechanics
+	}
 
 	option = { # Claim that you were Greek all along
-		name = illyria_decisions.0003.d
+		name = illyria_decisions.0003.e
 		add_character_flag = restorer_is_philhellene
+
+		title:k_paionia = { set_de_jure_liege_title = title:e_hellas }
+
+		paionia_vassal_innovations_effect = yes
 
 		#learning challenge
 			#if successful:
