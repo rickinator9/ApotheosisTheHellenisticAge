@@ -109,7 +109,20 @@ ancestry.0001 = {
         name = ancestry.0001.d
         custom_tooltip = ancestry.0001.d_tt
 
-        trigger_event = ancestry.0006
+        set_variable = {
+            name = ancestor_equipment_strong_evidence
+            value = yes
+            days = 8
+        }
+        set_variable = {
+            name = ancestor_equipment
+            value = flag:sword
+        }
+        create_ancestral_artifact_effect = { 
+            OWNER = root
+            TARGET = root.dynasty 
+            ANCESTOR = scope:ancestor
+        }
 
         stress_impact = {
             honest = medium_stress_impact_gain
@@ -1882,7 +1895,10 @@ ancestry.0009 = {
         else_if = {
             limit = { var:ancestry_0006_outcome = flag:success_wait }
             scope:bandit = {
-                death = { death_reason = death_duel }
+                death = { 
+                    killer = scope:marshal
+                    death_reason = death_duel 
+                }
             }
         }
     }
@@ -1922,7 +1938,10 @@ ancestry.0009 = {
             text = ancestry.0009.b_death_ironic
         }
         name = {
-            trigger = { exists = var:ancestor_equipment_contradictory_evidence }
+            trigger = {
+                var:ancestry_0006_outcome = flag:critical_failure_duel
+                exists = var:ancestor_equipment_contradictory_evidence
+            }
             text = ancestry.0009.b_death_futile
         }
         trigger = { ancestry_0009_success_trigger = no }
@@ -1941,7 +1960,10 @@ ancestry.0009 = {
                 desc = ancestry.0009.b_death_ironic.tt
             }
             triggered_desc = {
-                trigger = { exists = var:ancestor_equipment_contradictory_evidence }
+                trigger = {
+                    var:ancestry_0006_outcome = flag:critical_failure_duel
+                    exists = var:ancestor_equipment_contradictory_evidence
+                }
                 desc = ancestry.0009.b_death_futile.tt
             }
         }

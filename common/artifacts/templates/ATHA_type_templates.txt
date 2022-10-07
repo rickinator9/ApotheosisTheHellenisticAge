@@ -1,0 +1,12 @@
+﻿ancestral_artifact_template = {
+	can_equip = {}
+
+	can_benefit = {
+		scope:artifact = { exists = var:artifact_dynasty }
+		dynasty = scope:artifact.var:artifact_dynasty
+	}
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+		court_grandeur_baseline_add = 4
+	}
+}

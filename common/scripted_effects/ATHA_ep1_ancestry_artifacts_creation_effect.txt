@@ -1,0 +1,126 @@
+﻿# Ancestry Artifacts Creation #
+
+create_ancestral_artifact_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	$TARGET$ = { save_scope_as = target } #Owner dynasty
+	$ANCESTOR$ = { save_scope_as = ancestor } #Ancestral dynasty
+
+	#Compatible variables:
+	#ancestor_equipment_strong_evidence
+	#ancestor_equipment_weak_evidence
+	#ancestor_equipment_contradictory_evidence
+	#ancestor_equipment_different_ancestor
+
+	# For strong evidence, rarity will always be at masterwork or better (depending on Dynasty Splendour)
+	if = { 
+		limit = {
+			scope:owner = { 
+				OR = {
+					has_variable = ancestor_equipment_strong_evidence
+					has_variable = ancestor_equipment_different_ancestor
+				}
+			}
+		}
+		if = {
+			limit = { scope:owner.dynasty.dynasty_prestige_level >= high_dynasty_prestige_level }
+			set_artifact_rarity_illustrious = yes
+		}
+		else_if = {
+			limit = { scope:owner.dynasty.dynasty_prestige_level >= medium_dynasty_prestige_level }
+			set_artifact_rarity_famed = yes
+		}
+		else = { set_artifact_rarity_masterwork = yes }
+	}
+	# For weak or contradictory evidence, rarity is determined by Dynasty Splendour
+	else = { 
+		if = {
+			limit = { scope:owner.dynasty.dynasty_prestige_level = max_dynasty_prestige_level }
+			set_artifact_rarity_illustrious = yes
+		}
+		else_if = {
+			limit = { scope:owner.dynasty.dynasty_prestige_level >= high_dynasty_prestige_level }
+			set_artifact_rarity_famed = yes
+		}
+		else_if = {
+			limit = { scope:owner.dynasty.dynasty_prestige_level >= medium_dynasty_prestige_level }
+			set_artifact_rarity_masterwork = yes
+		}
+		else = { set_artifact_rarity_common = yes }
+	}
+
+	# Create the artifact
+	scope:owner = {
+		if = {
+			limit = { var:ancestor_equipment = flag:sword }
+			if = { # For strong evidence of heroic ties
+				limit = {
+					OR = {
+						has_variable = ancestor_equipment_strong_evidence
+						has_variable = ancestor_equipment_different_ancestor
+					}
+				}
+				create_artifact = {
+					name = artifact_ancestral_strong_evidence_name
+					description = artifact_ancestral_strong_evidence_description
+					template = ancestral_artifact_template
+					type = pedestal
+					visuals = wall_cid_sword
+					wealth = scope:wealth
+					quality = scope:quality
+					history = { type = created_before_history }
+					modifier = artifact_placeholder_modifier
+					save_scope_as = newly_created_artifact
+					decaying = no
+				}
+			}		
+			else_if = { # For contradictory evidence of heroic ties
+				limit = { has_variable = ancestor_equipment_contradictory_evidence }
+				create_artifact = {
+					name = artifact_ancestral_contradictory_evidence_name
+					description = artifact_ancestral_contradictory_evidence_description
+					template = ancestral_artifact_template
+					type = pedestal
+					visuals = wall_cid_sword
+					wealth = scope:wealth
+					quality = scope:quality
+					history = { type = created_before_history }
+					modifier = artifact_placeholder_modifier
+					save_scope_as = newly_created_artifact
+					decaying = no
+				}
+			}
+			else = { # For weak evidence of heroic ties
+				create_artifact = {
+					name = artifact_ancestral_weak_evidence_name
+					description = artifact_ancestral_weak_evidence_description
+					template = ancestral_artifact_template
+					type = pedestal
+					visuals = wall_cid_sword
+					wealth = scope:wealth
+					quality = scope:quality
+					history = { type = created_before_history }
+					modifier = artifact_placeholder_modifier
+					save_scope_as = newly_created_artifact
+					decaying = no
+				}
+			}
+		}
+
+		scope:newly_created_artifact = {
+			set_variable = { # Tracks dynasty
+				name = artifact_dynasty
+				value = scope:target
+			}
+			#grant_ancestral_artifact_claim_effect = yes
+
+			add_scaled_artifact_modifier_dynasty_prestige_effect = yes
+			add_scaled_artifact_modifier_prestige_effect = yes
+			add_scaled_artifact_modifier_rulership_effect = yes
+
+			remove_artifact_modifier = artifact_placeholder_modifier
+
+			set_variable = { name = historical_unique_artifact value = yes }
+			save_scope_as = epic
+		}
+	}
+}
