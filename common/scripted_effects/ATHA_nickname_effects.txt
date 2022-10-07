@@ -343,6 +343,8 @@ set_permanent_nickname_effect = {
 	give_nickname = $NICKNAME$
 	add_character_flag = has_permanent_nickname
 
+	add_character_flag = has_permanent_nickname
+
 	remove_nickname_modifier_effect = yes
 	
 	hidden_effect = {
@@ -463,4 +465,328 @@ change_nick_the_bold_based_on_strength_ratio = {
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_large_increase }
 	}
+}
+
+# Saves the specified cognomen
+save_cognomen_effect = {
+	if = {
+		limit = { always = yes }
+		if = {
+			limit = { has_nickname = nick_aitolikos }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_aitolikos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_andromachou }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_andromachou } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_arrhidaios }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_arrhidaios } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_gonatas }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_gonatas } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_hadea }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_hadea } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_ho_pyrrhos }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_pyrrhos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_kyniskos }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_kyniskos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_lakonikos }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_lakonikos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_stratonike }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_stratonike } }
+		}
+		# Major Decisions
+        else_if = {
+            limit = { has_nickname = nick_pelopidas }
+            house = { set_cognomen_effect = { COGNOMEN = cognomen_pelopidas } }
+        }
+        else_if = {
+            limit = { has_nickname = nick_macedonicus }
+            house = { set_cognomen_effect = { COGNOMEN = cognomen_makedonikos } }
+        }
+		else_if = {
+			limit = { has_nickname = nick_philhellene }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_philellen } }
+		}
+		# Vanilla Nicknames
+		else_if = {
+			limit = { has_nickname = nick_the_blushing }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_phoinikopareios } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_clumsy }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_eparisteros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_eloquent }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_euglossos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_foreigner }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_xenos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_graceful }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_euschemon } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_headless }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_akephalos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_heart_throb }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_erastes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_slow }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_bradynoos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_stammerer }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_battos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_stutterer }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_battaristes } }
+		}
+		# ATHA Nicknames
+		else_if = {
+			limit = { has_nickname = nick_the_autocrat }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_autokrator } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_bastard }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_nothos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_beautelse_ifully_triumphant }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_kallinikos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_benefactor }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_euergetes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_besieger }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_poliorketes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_bold }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_keraunos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_builder }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ktistes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_clubfooted }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_barypous } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_devourer }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_androboros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_divine }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_theos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_dowry_bearer }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_phernophoros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_eagle }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_aetos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_fair }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_kalos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_fat }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_physkon } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_father_loving }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_philopator } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_flautist }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_auletes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_flayer }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_the_flayer_greek } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_gardener }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_kepouros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_godbought }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_zabinas } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_godlike }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_theotropos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_good }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_chrestos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_great }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_megas } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_hawk }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_hierax } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_hunter }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_kynegos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_illustrious }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_epiphanes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_invincible }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_aniketos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_just }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_dikaios } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_lame }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_cholos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_mad }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_epimanes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_cruel }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_kakergetes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_mindbreaker }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_the_mindbreaker_greek } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_mother_loving }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_philometor } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_one_eyed }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_monophthalmos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_overpromiser }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_doson } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_pious }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_eusebes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_poet_good }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_poietes_good } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_poet_bad }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_poietes_bad } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_sacrelse_ificed }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_pharmakos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_saviour }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_soter } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_short_lived }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_etesias } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_scholar }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_philosophos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_sibling_loving }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_philadelphos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_slave }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_the_slave_greek } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_small }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_mikros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_smelly }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_kybiosaktes } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_thin }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_leptos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_ugly }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_grypos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_victor }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_nikator } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_victorious }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_nikephoros } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_untimely }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_akairos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_wealthy }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_tryphon } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_well_born }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_eupator } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_wise }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_ho_sophos } }
+		}
+		else_if = {
+			limit = { has_nickname = nick_the_young }
+			house = { set_cognomen_effect = { COGNOMEN = cognomen_neos } }
+		}
+	}
+}
+
+# Sets the specified cognomen
+	# COGNOMEN: The id of the cognomen to set.
+set_cognomen_effect = {
+	set_house_name = $COGNOMEN$
+	
+	#hidden_effect = {
+	#	add_house_modifier = { modifier = $COGNOMEN$_modifier }
+	#}
 }
