@@ -344,7 +344,10 @@ set_permanent_nickname_effect = {
 	add_character_flag = has_permanent_nickname
 
 	remove_nickname_modifier_effect = yes
-	add_character_modifier = { modifier = $NICKNAME$_modifier }
+	
+	hidden_effect = {
+		add_character_modifier = { modifier = $NICKNAME$_modifier }
+	}
 }
 
 # Removes any nickname modifiers if they are present.
@@ -360,7 +363,7 @@ remove_nickname_modifier_effect = {
 	remove_character_modifier_if_present = { MODIFIER = nick_pelopidas_modifier }
 	remove_character_modifier_if_present = { MODIFIER = nick_the_reformer_modifier }
 	remove_character_modifier_if_present = { MODIFIER = nick_the_liberator_modifier }
-	remove_character_modifier_if_present = { MODIFIER = nick_makedonikos_modifier }
+	remove_character_modifier_if_present = { MODIFIER = nick_macedonicus_modifier }
 	remove_character_modifier_if_present = { MODIFIER = nick_the_bastard_modifier }
 	remove_character_modifier_if_present = { MODIFIER = nick_the_clubfooted_modifier }
 	remove_character_modifier_if_present = { MODIFIER = nick_the_eagle_modifier }
