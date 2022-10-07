@@ -117,6 +117,9 @@ illyria_decisions.0003 = {
 
 		#Note: if we end up creating a struggle for the diadochi, this option should cause the Paeonian culture to become involved
 
+		# Get a funky nickname for vanquishing the Macedonians
+		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+
 		#nickame (diadochos?) that gives the following effects:
 			#invasion CB against independent Macedonian rulers
 			#cheaper same-culture merc recruitment
@@ -127,13 +130,18 @@ illyria_decisions.0003 = {
 		#very stressful if not ambitious or brave
 	}
 
-	option = { # Avenge Abydon and all the other cities the Macedonians razed and depopulated
+	option = { # Devastate and plunder Macedonia as revenge for the destruction of Abydon and other Paeonian cities
 		name = illyria_decisions.0003.d
 		add_character_flag = restorer_is_vengeful
+
+		#Note: this option is meant to be a shot in the foot, and the consequences will generally outweigh the benefits. A good way for rulers to leave a lasting legacy if they don't mind whether that legacy is positive or not
 
 		trigger = { 
 			any_realm_county = { culture = culture:macedonian } 
 		}
+
+		# Get a funky nickname for vanquishing the Macedonians
+		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
 
 		add_dread = major_dread_gain
 
@@ -186,14 +194,20 @@ illyria_decisions.0003 = {
 
 		add_gold = illyria_decisions.0003.d_loot
 
-		#nickame (Makedonikos) that gives the following effects:
-			#negative Macedonian opinion
-			#dread gain/decay?
-			#cheaper MaA upkeep
-		#very stressful if not vengeful, callous, greedy or sadistic
-		#stress loss for sadistic, greedy & vengeful
-		#this option is intended as a shot in the foot, and the rewards are outweighed by the consequences. Main purpose is to make RP more interesting by creating opportunities for rulers to stand out and leave a lasting legacy
-			#should also be incorporated into memories mechanics
+		stress_impact = {
+			base = major_stress_impact_gain
+			forgiving = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+			content = minor_stress_impact_gain
+			callous = medium_stress_impact_loss
+			arbitrary = medium_stress_impact_loss
+			greedy = medium_stress_impact_loss
+			vengeful = major_stress_impact_loss
+			sadistic = massive_stress_impact_loss
+		}
+
+		#TODO: incorporate into memories mechanics
 	}
 
 	option = { # Claim that you were Greek all along
@@ -203,6 +217,9 @@ illyria_decisions.0003 = {
 		title:k_paionia = { set_de_jure_liege_title = title:e_hellas }
 
 		paionia_vassal_innovations_effect = yes
+
+		# Get a nickname to show off your Philhellenism
+		set_permanent_nickname_effect = { NICKNAME = nick_philhellene }
 
 		#learning challenge
 			#if successful:
