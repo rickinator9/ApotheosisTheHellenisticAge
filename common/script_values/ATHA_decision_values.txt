@@ -354,3 +354,13 @@ illyria_decisions.0003.d_loot = {
 	}
 	multiply = 2
 }
+
+illyria_decisions.0003.e_innovation_count = {
+	value = 3
+	if = {
+		limit = {
+			scope:k_paionia_restorer = { has_character_flag = restorer_philhellene_success }
+		}
+		add = 2
+	}
+}
