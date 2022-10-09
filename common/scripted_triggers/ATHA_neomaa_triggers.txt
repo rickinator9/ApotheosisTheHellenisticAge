@@ -137,13 +137,6 @@ can_recruit_maa_peltenai_trigger = {
   }
 }
 
-can_recruit_maa_machairaphoroi_trigger = {
-  OR = {
-    can_recruit_thracian_maa_trigger = yes
-    can_recruit_illyrian_maa_trigger = yes
-  }
-}
-
 can_recruit_maa_batoroi_trigger = {
   OR = {
     can_recruit_celtic_maa_trigger = yes
@@ -456,26 +449,28 @@ can_recruit_maa_hoplitai_trigger = {
   }
 }
 
-#############################################################
+############################################################# 
 
 can_recruit_maa_thureophoroi_trigger = {
   OR = {
     culture = {
       OR = {
-        is_culture_or_parent_culture = { CULTURE = culture:mathian }
         has_cultural_pillar = heritage_greek
         has_cultural_pillar = heritage_anatolian
+        has_cultural_pillar = heritage_thracian
+        has_cultural_pillar = heritage_illyrian
       }
-      has_innovation = innovation_classical_thyreos
+    has_innovation = innovation_classical_thyreos  
     }
     any_realm_province = {
       culture = {
         OR = {
-          is_culture_or_parent_culture = { CULTURE = culture:mathian }
           has_cultural_pillar = heritage_greek
           has_cultural_pillar = heritage_anatolian
+          has_cultural_pillar = heritage_thracian
+          has_cultural_pillar = heritage_illyrian
         }
-        has_innovation = innovation_classical_thyreos
+      has_innovation = innovation_classical_thyreos  
       }
     }
   }
@@ -490,7 +485,7 @@ can_recruit_maa_thorakitai_trigger = {
         has_cultural_pillar = heritage_anatolian
         has_cultural_pillar = heritage_thracian
       }
-      has_innovation = innovation_classical_thyreos
+    has_innovation = innovation_classical_thyreos    
     }
     any_realm_province = {
       culture = {
@@ -500,7 +495,7 @@ can_recruit_maa_thorakitai_trigger = {
           has_cultural_pillar = heritage_anatolian
           has_cultural_pillar = heritage_thracian
         }
-        has_innovation = innovation_classical_thyreos
+      has_innovation = innovation_classical_thyreos    
       }
     }
   }
