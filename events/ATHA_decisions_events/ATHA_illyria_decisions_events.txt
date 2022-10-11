@@ -51,6 +51,12 @@ illyria_decisions.0002 = {
 # Restore k_paionia borders	 #
 ##############################
 
+scripted_trigger k_paeonia_invasion_candidate_trigger = {
+	culture = culture:macedonian
+	highest_held_title_tier >= tier_kingdom
+	in_diplomatic_range = scope:k_paionia_restorer
+}
+
 # I restored k_paionia borders
 illyria_decisions.0003 = {
 	type = character_event
@@ -76,6 +82,9 @@ illyria_decisions.0003 = {
 
 		add_character_flag = restorer_is_administrator
 
+		# Get a funky nickname for vanquishing the Macedonians
+		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+
 		# Create lower Paeonian duchy
 		create_d_lower_paionia_scripted_effect = yes
 
@@ -90,7 +99,7 @@ illyria_decisions.0003 = {
 			}
 			add_county_modifier = {
 				modifier = greater_paeonia_culture_modifier
-				years = 50
+				years = 30
 			}
 		}
 
@@ -105,18 +114,15 @@ illyria_decisions.0003 = {
 			text = illyria_decisions.0003.a_acceptance.tt
 			illyria_decisions.0003.a_acceptance_effect = yes
 		}
-
-		#gain bureaucratic tradition/ethos
-		#nickame (the settler?) that gives the following effects:
-			#stewardship bonus
-			#cheaper colony holdings/buildings
-			#reduced tyranny penalty
 	}
 	
 	option = { # Posture as an enlightened and cosmopolitan Hellenistic monarch 
 		name = illyria_decisions.0003.b
 
 		add_character_flag = restorer_is_cosmopolitan
+
+		# Get a funky nickname to show off how welcoming you are
+		set_permanent_nickname_effect = { NICKNAME = nick_the_hospitable }
 
 		# 2 x Civic Innovations
 		custom_tooltip = {
@@ -127,29 +133,56 @@ illyria_decisions.0003 = {
 			}
 		}
 
+		# Traditions
+		if = {
+			limit = { 
+				has_dlc_feature = hybridize_culture
+				NOR = {
+					culture = { has_cultural_tradition = tradition_staunch_traditionalists }
+					culture = { has_cultural_tradition = tradition_culture_blending }
+				}
+			}
+			culture = { add_culture_tradition = tradition_culture_blending }
+		}
+
 		# Cultural acceptance bonus with cultures in your realm
 		custom_tooltip = {
 			text = illyria_decisions.0003.b_acceptance.tt
 			paeonia_culture_acceptance_effect = { VALUE = 5 }
 		}
-
-		#nickame that gives the following effects:	
-			#different culture vassal opinion boost
-			#cheaper guest recruitment
-			#learning bonus
-		#gain cosmopolitan tradition/ethos
-
 	}
 
-	option = { # I will not rest until every Macedonian dynast lies dead at my feet 
+	option = { # go full postal on the diadochi
 		name = illyria_decisions.0003.c
 
 		add_character_flag = restorer_is_warlike
 
 		#Note: if we end up creating a struggle for the diadochi, this option should cause the Paeonian culture to become involved
 
+		# Must be at least one independent Macedonian king or emperor in diplo range who isn't an ally
+		trigger = {
+			any_independent_ruler = { k_paeonia_invasion_candidate_trigger = yes }
+			NOT = { is_allied_to = scope:k_paionia_restorer }
+		}
+
+		every_independent_ruler = {
+			limit = { k_paeonia_invasion_candidate_trigger = yes }
+			custom = illyria_decisions.0003.c_custom.tt
+			add_opinion = {
+				target = root
+				modifier = warmonger_opinion
+				years = 20
+			}
+		}
+
 		# Get a funky nickname for vanquishing the Macedonians
 		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+
+		# Modifier that grants unlimited Invasion CB against Macedonian kings & emperors
+		add_character_modifier = { modifier = great_ambitions_modifier }
+
+		#TODO - should be on_action to remove the modifier if you convert to another culture
+		#TODO - CB adjustments (so under the right conditions you don't get the flag preventing you from doing more invasions)
 
 		# Some Military Innovations to prepare you for the upcoming campaigns
 		custom_tooltip = {
@@ -191,6 +224,7 @@ illyria_decisions.0003 = {
 
 		#Note: this option is meant to be a shot in the foot, and the consequences will generally outweigh the benefits. A good way for rulers to leave a lasting legacy if they don't mind whether that legacy is positive or not
 
+		# Has to be at least one Macedonian county to ransack
 		trigger = { 
 			any_realm_county = { culture = culture:macedonian } 
 		}
@@ -198,8 +232,10 @@ illyria_decisions.0003 = {
 		# Get a funky nickname for vanquishing the Macedonians
 		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
 
+		# You're a dreadful person
 		add_dread = major_dread_gain
 
+		# Turns out invading a country isn't great for cross-cultural relations
 		culture:macedonian = {
 			save_scope_as = plunder_victim
 			change_cultural_acceptance = {
@@ -217,7 +253,14 @@ illyria_decisions.0003 = {
 			add_to_list = sacked_counties
 
 			#Hefty penalty to control and development
-			change_development_level = -3
+			custom_tooltip = {
+				text = illyria_decisions.0003.d_development.tt
+				change_development_level = {
+					subtract = this.development_level
+					multiply = 0.5
+					floor = yes
+				}
+			}
 			change_county_control = -50
 
 			#Temporary modifier that reduces popular opinion and kills development
@@ -270,10 +313,10 @@ illyria_decisions.0003 = {
 
 		flavor = illyria_decisions.0003.e.tt
 
-		#trigger = {
-		#	knows_language = language_greek
-		#	has_court_language = language_greek
-		#}
+		trigger = {
+			knows_language = language_greek
+			has_court_language = language_greek
+		}
 		add_internal_flag = special
 
 		# Get a nickname to show off your Philhellenism
