@@ -50,12 +50,7 @@ illyria_decisions.0002 = {
 ##############################
 # Restore k_paionia borders	 #
 ##############################
-
-scripted_trigger k_paeonia_invasion_candidate_trigger = {
-	culture = culture:macedonian
-	highest_held_title_tier >= tier_kingdom
-	in_diplomatic_range = scope:k_paionia_restorer
-}
+#TODO: incorporate into memories mechanics
 
 # I restored k_paionia borders
 illyria_decisions.0003 = {
@@ -80,10 +75,11 @@ illyria_decisions.0003 = {
 	option = { # Consolidate & resettle the old tribal lands
 		name = illyria_decisions.0003.a
 
-		add_character_flag = restorer_is_administrator
+		add_character_flag = k_paionia_restorer_is_administrator
 
-		# Get a funky nickname for vanquishing the Macedonians
+		# Get a funky nickname & CoA for vanquishing the Macedonians
 		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+		house = { set_coa = dynn_patraos }
 
 		# Create lower Paeonian duchy
 		create_d_lower_paionia_scripted_effect = yes
@@ -114,12 +110,34 @@ illyria_decisions.0003 = {
 			text = illyria_decisions.0003.a_acceptance.tt
 			illyria_decisions.0003.a_acceptance_effect = yes
 		}
+
+		stress_impact = {
+			lazy = minor_stress_impact_gain # Sounds like too much effort
+			diligent = minor_stress_impact_loss # Ah yes, a perfect opportunity for some micromanagement
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_energy = 1
+				ai_zeal = 0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = lazy
+			}
+			modifier = { # Weight up for stress.
+				add = 10
+				has_trait = diligent
+			}
+		}
 	}
 	
 	option = { # Posture as an enlightened and cosmopolitan Hellenistic monarch 
 		name = illyria_decisions.0003.b
 
-		add_character_flag = restorer_is_cosmopolitan
+		add_character_flag = k_paionia_restorer_is_cosmopolitan
 
 		# Get a funky nickname to show off how welcoming you are
 		set_permanent_nickname_effect = { NICKNAME = nick_the_hospitable }
@@ -150,23 +168,57 @@ illyria_decisions.0003 = {
 			text = illyria_decisions.0003.b_acceptance.tt
 			paeonia_culture_acceptance_effect = { VALUE = 5 }
 		}
+
+		stress_impact = {
+			arrogant = minor_stress_impact_gain # Foreigners in your court? It's more common than you think
+			content = minor_stress_impact_loss # Happy to accept the status quo more or less
+			compassionate = minor_stress_impact_loss # It's the kind thing to do
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_sociability = 1
+				ai_energy = -0.25
+				ai_compassion = 0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = arrogant
+			}
+			modifier = { # Weight up for stress.
+				add = 10
+				has_trait = content
+			}
+			modifier = { # Weight up for stress.
+				add = 10
+				has_trait = compassionate
+			}
+		}
 	}
 
 	option = { # go full postal on the diadochi
 		name = illyria_decisions.0003.c
 
-		add_character_flag = restorer_is_warlike
+		add_character_flag = k_paionia_restorer_is_warlike
 
 		#Note: if we end up creating a struggle for the diadochi, this option should cause the Paeonian culture to become involved
 
 		# Must be at least one independent Macedonian king or emperor in diplo range who isn't an ally
 		trigger = {
-			any_independent_ruler = { k_paeonia_invasion_candidate_trigger = yes }
-			NOT = { is_allied_to = scope:k_paionia_restorer }
+			any_independent_ruler = { 
+				k_paeonia_invasion_candidate_trigger = yes
+				in_diplomatic_range = scope:k_paionia_restorer
+				NOT = { is_allied_to = scope:k_paionia_restorer }
+			}
 		}
 
 		every_independent_ruler = {
-			limit = { k_paeonia_invasion_candidate_trigger = yes }
+			limit = { 
+				k_paeonia_invasion_candidate_trigger = yes 
+				in_diplomatic_range = scope:k_paionia_restorer
+			}
 			custom = illyria_decisions.0003.c_custom.tt
 			add_opinion = {
 				target = root
@@ -175,14 +227,12 @@ illyria_decisions.0003 = {
 			}
 		}
 
-		# Get a funky nickname for vanquishing the Macedonians
+		# Get a funky nickname & CoA for vanquishing the Macedonians
 		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+		house = { set_coa = dynn_patraos }
 
 		# Modifier that grants unlimited Invasion CB against Macedonian kings & emperors
 		add_character_modifier = { modifier = great_ambitions_modifier }
-
-		#TODO - should be on_action to remove the modifier if you convert to another culture
-		#TODO - CB adjustments (so under the right conditions you don't get the flag preventing you from doing more invasions)
 
 		# Some Military Innovations to prepare you for the upcoming campaigns
 		custom_tooltip = {
@@ -193,14 +243,70 @@ illyria_decisions.0003 = {
 			}
 		}
 
-		#nickame (diadochos?) that gives the following effects:
-			#invasion CB against independent Macedonian rulers
-			#cheaper same-culture merc recruitment
-			#cheaper MAA upkeep
-		#opinion penalty with independent Macedonian rulers
-		#one time army spawn
-		#cool house/title CoA?
-		#very stressful if not ambitious or brave
+		stress_impact = {
+			base = medium_stress_impact_gain # Invasions are stressful
+			content = medium_stress_impact_gain # I'm actually quite happy here
+			craven = medium_stress_impact_gain # Yeah, pissing off all my powerful neighbours sounds like a great idea
+			compassionate = minor_stress_impact_gain # But what if someone gets hurt?
+			lazy = minor_stress_impact_gain # So much effort though...
+			arrogant = minor_stress_impact_loss # Gotta feel important somehow
+			brave = medium_stress_impact_loss # Governing is boring, but conquering is fun!
+			stubborn = medium_stress_impact_loss # Can't stop now!
+			ambitious = major_stress_impact_loss # Can't stop, won't stop
+		}
+
+		ai_chance = {
+			base = 100	
+
+			ai_value_modifier = {
+				ai_greed = 0.25
+				ai_energy = 1
+				ai_vengefulness = 0.25
+				ai_boldness = 2
+				ai_compassion = -0.5
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = content
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = craven
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = compassionate
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = lazy
+			}
+			modifier = { # Weight up for stress.
+				add = 10
+				has_trait = arrogant
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = brave
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = greedy
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = stubborn
+			}
+			modifier = { # Weight up for stress.
+				add = 30
+				has_trait = ambitious
+			}
+			modifier = { # Rulers who are both brave and ambitious should always go for this
+				factor = 10
+				has_trait = brave
+				has_trait = ambitious
+			}
+		}
 	}
 
 	option = { # Devastate and plunder Macedonia as revenge for the destruction of Abydon and other Paeonian cities
@@ -220,7 +326,7 @@ illyria_decisions.0003 = {
 			}
 		}
 
-		add_character_flag = restorer_is_vengeful
+		add_character_flag = k_paionia_restorer_is_vengeful
 
 		#Note: this option is meant to be a shot in the foot, and the consequences will generally outweigh the benefits. A good way for rulers to leave a lasting legacy if they don't mind whether that legacy is positive or not
 
@@ -229,8 +335,9 @@ illyria_decisions.0003 = {
 			any_realm_county = { culture = culture:macedonian } 
 		}
 
-		# Get a funky nickname for vanquishing the Macedonians
+		# Get a funky nickname & CoA for vanquishing the Macedonians
 		set_permanent_nickname_effect = { NICKNAME = nick_macedonicus }
+		house = { set_coa = dynn_patraos }
 
 		# You're a dreadful person
 		add_dread = major_dread_gain
@@ -293,19 +400,78 @@ illyria_decisions.0003 = {
 		add_gold = illyria_decisions.0003.d_loot
 
 		stress_impact = {
-			base = major_stress_impact_gain
-			forgiving = medium_stress_impact_gain
-			just = medium_stress_impact_gain
-			compassionate = medium_stress_impact_gain
-			content = minor_stress_impact_gain
-			callous = medium_stress_impact_loss
-			arbitrary = medium_stress_impact_loss
-			greedy = medium_stress_impact_loss
-			vengeful = major_stress_impact_loss
-			sadistic = massive_stress_impact_loss
+			base = major_stress_impact_gain # Deep down you know this is a stupid fucking idea
+			forgiving = medium_stress_impact_gain # Goes without saying
+			just = medium_stress_impact_gain # At least give them a fair trial first!
+			compassionate = medium_stress_impact_gain # Pillaging and murder just isn't really in line with my values
+			content = minor_stress_impact_gain # Things are fine as they are
+			callous = medium_stress_impact_loss # I just want them to know how little I care about them
+			arbitrary = medium_stress_impact_loss # "I can do whatever the fuck I want"
+			greedy = medium_stress_impact_loss # Think of all the gold in those temples...
+			vengeful = major_stress_impact_loss # Vengeance is mine!
+			sadistic = massive_stress_impact_loss # It takes a special kind of person to actually enjoy this
 		}
 
-		#TODO: incorporate into memories mechanics
+		ai_chance = {
+			base = 20	
+
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_vengefulness = 1
+				ai_boldness = 0.25
+				ai_honor = -0.5
+				ai_compassion = -1
+				ai_rationality = -0.25
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = forgiving
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = forgiving
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = { # Weight down for stress.
+				add = -20
+				has_trait = compassionate
+			}
+			modifier = { # Weight down for stress.
+				add = -10
+				has_trait = content
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = callous
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = { # Weight up for stress.
+				add = 20
+				has_trait = greedy
+			}
+			modifier = { # Weight up for stress.
+				add = 30
+				has_trait = vengeful
+			}
+			modifier = { # Weight up for stress.
+				add = 40
+				has_trait = sadistic
+			}
+			modifier = { # Sadistic rulers should generally go for this
+				factor = 10
+				has_trait = sadistic
+				NAND = {
+					has_trait = brave
+					has_trait = ambitious
+				}
+			}
+		}
 	}
 
 	option = { # Claim that you were Greek all along
@@ -313,10 +479,10 @@ illyria_decisions.0003 = {
 
 		flavor = illyria_decisions.0003.e.tt
 
-		trigger = {
-			knows_language = language_greek
-			has_court_language = language_greek
-		}
+		#trigger = {
+		#	knows_language = language_greek
+		#	has_court_language = language_greek
+		#}
 		add_internal_flag = special
 
 		# Get a nickname to show off your Philhellenism
@@ -332,7 +498,7 @@ illyria_decisions.0003 = {
 					multiplier = 3.5
 					min = -49
 				}
-				add_character_flag = restorer_philhellene_success
+				add_character_flag = k_paionia_restorer_philhellene_success
 
 				# Get 5 random Greek innovations
 				custom_tooltip = {
@@ -365,7 +531,7 @@ illyria_decisions.0003 = {
 					multiplier = -1.5
 					min = -49
 				}
-				add_character_flag = restorer_philhellene_failure
+				add_character_flag = k_paionia_restorer_philhellene_failure
 
 				# Still get 3 random Greek innovations
 				custom_tooltip = {
@@ -378,6 +544,24 @@ illyria_decisions.0003 = {
 					text = illyria_decisions.0003.e_failure_acceptance.tt
 					paeonia_culture_acceptance_effect = { VALUE = 10 }
 				}
+			}
+		}
+
+		ai_chance = {
+			base = 50	
+
+			ai_value_modifier = {
+				ai_sociability = 1
+				ai_energy = 0.25
+				ai_boldness = 0.25
+			}
+			modifier = { # If they're already Philhellene they should seize the opportunity to be considered Greek
+				factor = 10
+				has_character_modifier = nick_the_philhellene_modifier
+			}
+			modifier = { # More likely to consider this if there's a good chance of succeeding
+				factor = 2
+				diplomacy >= high_skill_rating
 			}
 		}
 	}

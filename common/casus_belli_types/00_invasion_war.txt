@@ -11,9 +11,17 @@
 			faith = {
 				has_doctrine_parameter = invasion_cb_enabled
 			}
+			AND = {
+				has_character_flag = k_paionia_restorer_is_warlike
+				scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+			}
 		}
-		NOT = {
-			has_character_flag = used_lifetime_invasion
+		OR = {
+			NOT = { has_character_flag = used_lifetime_invasion }
+			AND = {
+				has_character_flag = k_paionia_restorer_is_warlike
+				scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+			}
 		}
 	}
 
@@ -110,7 +118,15 @@
 	on_declaration = {
 		on_declared_war = yes
 		scope:attacker = {
-			add_character_flag = used_lifetime_invasion
+			if = {
+				limit = {
+					NAND = {
+						has_character_flag = k_paionia_restorer_is_warlike
+						scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+					}
+				}
+				add_character_flag = used_lifetime_invasion
+			}
 		}
 
 		scope:attacker = {
@@ -122,13 +138,34 @@
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:attacker = { is_local_player = yes } }
-				desc = invasion_war_victory_desc_attacker
+				desc = clan_invasion_war_victory_desc_attacker
 			}
-			desc = invasion_war_victory_desc
+			desc = clan_invasion_war_victory_desc
 		}
-		triggered_desc = {
-			trigger = { scope:attacker = { is_local_player = yes } }
-			desc = invasion_war_warning_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+				desc = invasion_war_k_paionia_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+				}
+				desc = invasion_war_k_paionia_warning_desc
+			}
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_warning_desc
+			}
 		}
 	}
 	
@@ -301,7 +338,13 @@ clan_invasion_war = {
 	allowed_for_character = {
 		has_government = clan_government
 		NOR = {
-			has_character_flag = used_lifetime_invasion
+			AND = {
+				has_character_flag = used_lifetime_invasion
+				NAND = {
+					has_character_flag = k_paionia_restorer_is_warlike
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+			}
 			faith = { has_doctrine_parameter = invasion_cb_enabled }
 		}
 	}
@@ -392,7 +435,15 @@ clan_invasion_war = {
 	on_declaration = {
 		on_declared_war = yes
 		scope:attacker = {
-			add_character_flag = used_lifetime_invasion
+			if = {
+				limit = {
+					NAND = {
+						has_character_flag = k_paionia_restorer_is_warlike
+						scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+					}
+				}
+				add_character_flag = used_lifetime_invasion
+			}
 		}
 
 		scope:attacker = {
@@ -408,9 +459,30 @@ clan_invasion_war = {
 			}
 			desc = clan_invasion_war_victory_desc
 		}
-		triggered_desc = {
-			trigger = { scope:attacker = { is_local_player = yes } }
-			desc = invasion_war_warning_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+				desc = invasion_war_k_paionia_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+				}
+				desc = invasion_war_k_paionia_warning_desc
+			}
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_warning_desc
+			}
 		}
 	}
 	
