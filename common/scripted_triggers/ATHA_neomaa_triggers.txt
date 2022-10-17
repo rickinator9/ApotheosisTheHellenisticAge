@@ -263,6 +263,24 @@ can_recruit_maa_ardiaian_thorakitai_trigger = {
   can_recruit_elite_maa = yes
 }
 
+can_recruit_maa_epilektoi_thorakitai_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_greek }
+      culture = { has_innovation = innovation_classical_thyreos }
+      any_realm_province = {
+        geographical_region = ATHA_aor_achaean
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_greek }
+      culture = { has_innovation = innovation_classical_thyreos }
+      geographical_region = ATHA_aor_achaean
+    }
+  }
+  can_recruit_elite_maa = yes
+}
+
 ###civilized#slingers#superior###
 
 can_recruit_maa_rodioi_sphendonetai_trigger = {
@@ -510,14 +528,14 @@ can_recruit_maa_perioikoi_hoplitai_trigger = {
 can_recruit_maa_galatikoi_Katoikoi_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
-    geographical_region = ATHA_aor_hellenic_asia
+    geographical_region = ATHA_aor_katoikoi_asia
   }
 }
 
 can_recruit_maa_katoikoi_thraikes_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
-    geographical_region = ATHA_aor_macedonian
+    geographical_region = ATHA_aor_katoikoi_macedonian
   }
 }
 
@@ -581,6 +599,24 @@ can_recruit_maa_homoioi_hippeis_trigger = {
 can_recruit_maa_hypaspistai_trigger = {
   can_recruit_royal_macedonian_maa_trigger = yes
   can_recruit_guard_maa = yes
+}
+
+can_recruit_maa_nedes_nesamoi_trigger = {
+  OR = {
+    AND = {
+      culture = {
+        has_cultural_pillar = heritage_celtic
+      }
+      any_realm_province = { geographical_region = ATHA_aor_stranded_celtic }
+    }
+    any_realm_province = {
+      culture = {
+        has_cultural_pillar = heritage_celtic
+      }
+      geographical_region = ATHA_aor_stranded_celtic
+    }
+  }
+  can_recruit_elite_maa = yes
 }
 
 #######################
