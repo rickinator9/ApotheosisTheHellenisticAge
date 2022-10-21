@@ -343,21 +343,6 @@ can_recruit_maa_mandonai_trigger = {
   }
 }
 
-can_recruit_maa_gargokladioi_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_celtic }
-      any_realm_province = {
-        geographical_region = ATHA_aor_stranded_celtic
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_celtic }
-      geographical_region = ATHA_aor_stranded_celtic
-    }
-  }
-}
-
 can_recruit_maa_galathraikes_trigger = {
   OR = {
     AND = {
@@ -456,9 +441,32 @@ can_recruit_maa_kretikoi_toxotai_trigger = {
   can_recruit_cretan_maa_trigger = yes
 }
 
+can_recruit_maa_promakhoi_kretikoi_trigger = {
+  OR = {
+    AND = {
+      culture = { has_cultural_pillar = heritage_greek }
+      any_realm_province = {
+        geographical_region = ATHA_aor_cretan
+      }
+    }
+    any_realm_province = {
+      culture = { has_cultural_pillar = heritage_greek }
+      geographical_region = ATHA_aor_cretan
+    }
+  }
+  can_recruit_elite_maa = yes
+}
+
 ##############################
 
 ###civilized#heavy_infantry###
+
+can_recruit_maa_tarunai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+  }
+}
 
 can_recruit_maa_hoplitai_trigger = {
   OR = {
