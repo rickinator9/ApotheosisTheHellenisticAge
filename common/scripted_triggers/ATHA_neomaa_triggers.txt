@@ -90,17 +90,17 @@ can_recruit_spartan_maa_trigger = {
   }
 }
 
-can_recruit_royal_macedonian_maa_trigger = {
+can_recruit_macedonian_maa_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
       any_realm_province = {
-        geographical_region = ATHA_aor_royal_macedonian
+        geographical_region = ATHA_aor_macedonian
       }
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_royal_macedonian
+      geographical_region = ATHA_aor_macedonian
     }
   }
 }
@@ -581,7 +581,7 @@ can_recruit_maa_eparitoi_hoplitai_trigger = {
 }
 
 
-can_recruit_maa_homoioi_hoplitai_trigger = {
+can_recruit_maa_lakonikoi_hoplitai_trigger = {
   can_recruit_spartan_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
@@ -605,8 +605,8 @@ can_recruit_maa_homoioi_hippeis_trigger = {
 }
 
 can_recruit_maa_hypaspistai_trigger = {
-  can_recruit_royal_macedonian_maa_trigger = yes
-  can_recruit_guard_maa = yes
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
 }
 
 can_recruit_maa_nedes_nesamoi_trigger = {
@@ -794,11 +794,11 @@ can_recruit_maa_hiera_ile_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      any_realm_province = { geographical_region = ATHA_aor_royal_macedonian }
+      any_realm_province = { geographical_region = ATHA_aor_macedonian }
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_royal_macedonian
+      geographical_region = ATHA_aor_macedonian
     }
   }
   can_recruit_guard_maa = yes
