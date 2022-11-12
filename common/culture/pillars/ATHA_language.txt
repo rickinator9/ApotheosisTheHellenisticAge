@@ -263,3 +263,23 @@ language_celtic = {
 
 	color = celtic
 }
+
+#Scythian Languages
+
+language_scythian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_scythian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_scythian }
+			multiply = 10
+		}
+	}
+
+	color = scythian
+}
