@@ -90,17 +90,17 @@ can_recruit_spartan_maa_trigger = {
   }
 }
 
-can_recruit_royal_macedonian_maa_trigger = {
+can_recruit_macedonian_maa_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
       any_realm_province = {
-        geographical_region = ATHA_aor_royal_macedonian
+        geographical_region = ATHA_aor_macedonian
       }
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_royal_macedonian
+      geographical_region = ATHA_aor_macedonian
     }
   }
 }
@@ -185,12 +185,12 @@ can_recruit_maa_hyperaspistai_trigger = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
       any_realm_province = {
-        geographical_region = ATHA_aor_hellenic_asia
+        geographical_region = ATHA_aor_hyperas
       }
     }
     any_realm_province = {
       culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_hellenic_asia
+      geographical_region = ATHA_aor_hyperas
     }
   }
   can_recruit_elite_maa = yes
@@ -217,12 +217,12 @@ can_recruit_maa_aristoi_rompaianai_trigger = {
     AND = {
       culture = { has_cultural_pillar = heritage_thracian }
       any_realm_province = {
-        geographical_region = ATHA_aor_rhodopian
+        geographical_region = ATHA_aor_aristoi
       }
     }
     any_realm_province = {
       culture = { has_cultural_pillar = heritage_thracian }
-      geographical_region = ATHA_aor_rhodopian
+      geographical_region = ATHA_aor_aristoi
     }
   }
   can_recruit_elite_maa = yes
@@ -393,25 +393,9 @@ can_recruit_maa_drapanai_trigger = {
 can_recruit_maa_skaplinai_trigger = {
   OR = {
     culture = { has_cultural_pillar = heritage_paeonian }
-    AND = { # If you are a Paeonian-adjacent ruler ruling over Paeonian-adjacent provinces in the Paeonia region, you can recruit the MaA.
-      culture = {
-        OR = {
-          has_cultural_pillar = heritage_illyrian
-          has_cultural_pillar = heritage_thracian
         }
+        geographical_region = ATHA_aor_skaplinai
       }
-      any_realm_province = {
-        culture = {
-          OR = {
-            has_cultural_pillar = heritage_illyrian
-            has_cultural_pillar = heritage_thracian
-          }
-        }
-        geographical_region = ATHA_aor_paeonia
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_paeonian }
     }
   }
   can_recruit_elite_maa = yes
@@ -446,12 +430,12 @@ can_recruit_maa_promakhoi_kretikoi_trigger = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
       any_realm_province = {
-        geographical_region = ATHA_aor_cretan
+        geographical_region = ATHA_aor_cretan_chosen
       }
     }
     any_realm_province = {
       culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_cretan
+      geographical_region = ATHA_aor_cretan_chosen
     }
   }
   can_recruit_elite_maa = yes
@@ -462,6 +446,14 @@ can_recruit_maa_promakhoi_kretikoi_trigger = {
 ###civilized#heavy_infantry###
 
 can_recruit_maa_tarunai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+  }
+}
+
+can_recruit_maa_machairophoroi_trigger = {
   OR = {
     can_recruit_thracian_maa_trigger = yes
     can_recruit_illyrian_maa_trigger = yes
@@ -540,6 +532,13 @@ can_recruit_maa_galatikoi_Katoikoi_trigger = {
   }
 }
 
+can_recruit_maa_galathraikes_trigger = {
+  culture = { has_cultural_pillar = heritage_thracian }
+  any_realm_province = {
+    geographical_region = ATHA_aor_triballi
+  }
+}
+
 can_recruit_maa_katoikoi_thraikes_trigger = {
   culture = { has_cultural_pillar = heritage_greek }
   any_realm_province = {
@@ -554,12 +553,12 @@ can_recruit_maa_epilektoi_hoplitai_trigger = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
       any_realm_province = {
-        geographical_region = ATHA_aor_athens
+        geographical_region = ATHA_aor_epilektoi
       }
     }
     any_realm_province = {
       culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_athens
+      geographical_region = ATHA_aor_epilektoi
     }
   }
   can_recruit_elite_maa = yes
@@ -581,7 +580,7 @@ can_recruit_maa_eparitoi_hoplitai_trigger = {
 }
 
 
-can_recruit_maa_homoioi_hoplitai_trigger = {
+can_recruit_maa_lakonikoi_hoplitai_trigger = {
   can_recruit_spartan_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
@@ -601,11 +600,6 @@ can_recruit_maa_homoioi_hippeis_trigger = {
       geographical_region = ATHA_aor_royal_spartan
     }
   }
-  can_recruit_guard_maa = yes
-}
-
-can_recruit_maa_hypaspistai_trigger = {
-  can_recruit_royal_macedonian_maa_trigger = yes
   can_recruit_guard_maa = yes
 }
 
@@ -706,7 +700,7 @@ can_recruit_maa_argyraspides_trigger = {
       culture = {
         is_culture_or_parent_culture = { CULTURE = culture:macedonian }
       }
-      geographical_region = ATHA_aor_hellenic_asia
+      geographical_region = ATHA_aor_macedonian
     }
   }
 }
@@ -794,11 +788,25 @@ can_recruit_maa_hiera_ile_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      any_realm_province = { geographical_region = ATHA_aor_royal_macedonian }
+      any_realm_province = { geographical_region = ATHA_aor_macedonian_royal }
     }
     any_realm_province = {
       has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_royal_macedonian
+      geographical_region = ATHA_aor_macedonian_royal
+    }
+  }
+  can_recruit_guard_maa = yes
+}
+
+can_recruit_maa_hypaspistai_trigger = {
+  OR = {
+    AND = {
+      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+      any_realm_province = { geographical_region = ATHA_aor_macedonian_royal }
+    }
+    any_realm_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+      geographical_region = ATHA_aor_macedonian_royal
     }
   }
   can_recruit_guard_maa = yes
