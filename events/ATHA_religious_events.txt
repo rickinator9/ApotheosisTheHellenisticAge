@@ -24,12 +24,6 @@ ATHA_religious.0101 = {
 	}
 
 	immediate = {
-		scope:target = {
-			var:tomb_buried_person = {
-				save_scope_as = tomb_owner
-			}
-		}
-
 		random_character_artifact = {
 			save_scope_as = sacrificed_artifact
 		}
@@ -77,13 +71,13 @@ ATHA_religious.0101 = {
 				50 = {
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = greedy
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = zealous
 						}
 					}
@@ -95,7 +89,7 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.1
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = avaricious
 						}
 					}
@@ -108,19 +102,19 @@ ATHA_religious.0101 = {
 				50 = {
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = generous
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = content
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = cynical
 						}
 					}
@@ -132,7 +126,7 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.1
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = profligate
 						}
 					}
@@ -175,7 +169,7 @@ ATHA_religious.0101 = {
 		}
 
 		# Add modifier to county indicating that food will be diverted to the tomb.
-		scope:target = {
+		scope:tomb_location = {
 			add_county_modifier = {
 				modifier = sacrificed_food_to_tomb_modifier
 				years = 5
@@ -189,19 +183,19 @@ ATHA_religious.0101 = {
 				45 = {
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = gluttonous
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = lifestyle_reveler
 						}
 					}
 					modifier = {
 						factor = 1.15
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = drunkard
 						}
 					}
@@ -220,25 +214,25 @@ ATHA_religious.0101 = {
 				55 = {
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = inappetetic
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = temperate
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = content
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = cynical
 						}
 					}
@@ -304,7 +298,7 @@ ATHA_religious.0101 = {
 				60 = {
 					modifier = {
 						factor = 1.5
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = arrogant
 						}
 					}
@@ -322,13 +316,13 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = zealous
 						}
 					}
 					modifier = {
 						factor = 1.1
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = greedy
 						}
 					}
@@ -347,7 +341,7 @@ ATHA_religious.0101 = {
 				40 = {
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							NOR = {
 								has_trait = generous
 								has_trait = arrogant
@@ -359,7 +353,7 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = arrogant
 						}
 						scope:sacrificed_artifact = {
@@ -368,13 +362,13 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = content
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = cynical
 						}
 					}
@@ -453,13 +447,13 @@ ATHA_religious.0101 = {
 				70 = {
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = sadistic
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = zealous
 						}
 					}
@@ -471,7 +465,7 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.1
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = avaricious
 						}
 					}
@@ -484,7 +478,7 @@ ATHA_religious.0101 = {
 				30 = {
 					modifier = {
 						factor = 2
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							faith = {
 								NOT = { has_doctrine_parameter = human_sacrifice_active }
 							}
@@ -493,7 +487,7 @@ ATHA_religious.0101 = {
 					}
 					modifier = {
 						factor = 1.5
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							faith = {
 								NOT = { has_doctrine_parameter = human_sacrifice_active }
 							}
@@ -507,31 +501,31 @@ ATHA_religious.0101 = {
 					modifier = {
 						factor = 2
 						scope:potential_human_sacrifice = {
-							is_close_family_of = scope:tomb_owner
+							is_close_family_of = scope:tomb_occupant
 						}
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							NOT = { has_trait = kinslayer }
 						}
 					}
 					modifier = {
 						factor = 1.25
 						scope:potential_human_sacrifice = {
-							NOT = { is_close_family_of = scope:tomb_owner }
-							dynasty = scope:tomb_owner.dynasty
+							NOT = { is_close_family_of = scope:tomb_occupant }
+							dynasty = scope:tomb_occupant.dynasty
 						}
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							NOT = { has_trait = kinslayer }
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = content
 						}
 					}
 					modifier = {
 						factor = 1.25
-						scope:tomb_owner = {
+						scope:tomb_occupant = {
 							has_trait = cynical
 						}
 					}

@@ -127,28 +127,7 @@ ATHA_death_maintainance.0020 = {
 	immediate = {
 		save_temporary_scope_as = tomb_builder
 		var:tomb_location = {
-			set_variable = {
-				name = tomb_buried_person
-				value = root
-			}
-			remove_county_modifier = built_tomb_modifier
-
-			save_temporary_scope_as = tomb_location
-		}
-
-		scope:tomb_location = {
-			set_variable = {
-				name = tomb_builder
-				value = scope:tomb_builder
-			}
-			set_variable = {
-				name = tomb_location
-				value = scope:tomb_location
-			}
-			add_county_modifier = {
-				modifier = built_tomb_modifier
-				desc = built_tomb_modifier_custom_desc
-			}
+			set_primary_occupant_of_tomb_effect = { OCCUPANT = scope:tomb_builder }
 		}
 	}
 }

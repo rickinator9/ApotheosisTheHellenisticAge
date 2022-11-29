@@ -1,0 +1,68 @@
+﻿
+# Does the province in this scope have a tomb?
+province_has_tomb_trigger = {
+	has_variable = tomb_present
+}
+
+# Does the province have a looted tomb?
+province_has_looted_tomb_trigger = {
+	has_variable = tomb_looter
+}
+
+# Does the tomb in the province have occupants?
+province_has_tomb_occupants_trigger = {
+	OR = {
+		has_variable = tomb_primary_occupant
+		has_variable_list = tomb_secondary_occupants
+	}
+}
+
+# Should $BUILDER$ (the character that may want to build a tomb) have access to building tombs for the scoped province?
+# Check from province scope.
+build_tomb_potential = {
+	$BUILDER$ = {
+		faith = {
+			has_doctrine_parameter = can_build_tomb
+		}
+	}
+	NOT = { province_has_tomb_trigger = yes }
+	county.holder = {
+		this = $BUILDER$
+	}
+}
+
+# Should $BUILDER$ (the character that may want to build a tomb) be allowed to build a tomb for the scoped province?
+# Check from province scope.
+build_tomb_allow = {
+	$BUILDER$ = {
+		is_adult = yes
+		is_at_war = no
+		short_term_gold >= massive_gold_value
+	}
+}
+
+# Should $SACRIFICER$ have access to sacrificing to tomb occupants for the scoped province?
+# Check from province scope.
+sacrifice_to_tomb_occupant_potential = {
+	province_has_tomb_trigger = yes
+	province_has_tomb_occupants_trigger = yes
+	$SACRIFICER$ = {
+		faith = { has_doctrine_parameter = can_sacrifice_at_tomb }
+	}
+	county.holder = {
+		this = $SACRIFICER$
+	}
+}
+
+# Should $SACRIFICER$ be allowed to sacrifice to tomb occupants for the scoped province?
+# Check from province scope.
+sacrifice_to_tomb_occupant_allow = {
+	$SACRIFICER$ = {
+		is_adult = yes
+		is_at_war = no
+		custom_description = {
+			text = can_sacrifice_at_tomb_due_to_prior_sacrifices
+			NOT = { has_character_flag = has_sacrificed_at_tomb }
+		}
+	}
+}
