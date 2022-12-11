@@ -2240,7 +2240,7 @@ witch.3015 = { #by Mathilda Bjarnehed
 		progress_towards_lover_effect = {
 			CHARACTER = scope:sex_partner
 			REASON = lover_witch_sex_partner
-			OPINION = 15
+			OPINION = default_lover_opinion
 		}
 		had_sex_with_effect = { CHARACTER = scope:sex_partner PREGNANCY_CHANCE = 50 }
 	}
@@ -3641,7 +3641,7 @@ witch.4020 = { #by Mathilda Bjarnehed
 	option = {
 		name = witch.4020.a
 		
-		progress_towards_friend_effect = { CHARACTER = scope:prayer_witch_1 REASON = friend_prayed_for_witch OPINION = yes }
+		progress_towards_friend_effect = { CHARACTER = scope:prayer_witch_1 REASON = friend_prayed_for_witch OPINION = default_friend_opinion }
 		scope:prayer_witch_1 = {
 			add_character_modifier = {
 				modifier = clear_mind_modifier
@@ -3671,7 +3671,7 @@ witch.4020 = { #by Mathilda Bjarnehed
 		name = witch.4020.b
 		trigger = { exists = scope:prayer_witch_2 }
 
-		progress_towards_friend_effect = { CHARACTER = scope:prayer_witch_2 REASON = friend_prayed_for_witch OPINION = yes }
+		progress_towards_friend_effect = { CHARACTER = scope:prayer_witch_2 REASON = friend_prayed_for_witch OPINION = default_friend_opinion }
 		scope:prayer_witch_2 = {
 			add_character_modifier = {
 				modifier = clear_mind_modifier

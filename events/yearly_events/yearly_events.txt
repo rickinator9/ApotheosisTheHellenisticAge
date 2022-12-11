@@ -863,8 +863,8 @@ yearly.0003 = {
 					# Try to find relatives close to their own age.
 					modifier = {
 						OR = {
-							this.age <= { value = scope:child.age add = 10 }
-							this.age >= { value = scope:child.age subtract = 10 }
+							this.age <= scope:child.age_plus_10
+							this.age >= scope:child.age_minus_10
 						}
 						factor = 0.1
 					}

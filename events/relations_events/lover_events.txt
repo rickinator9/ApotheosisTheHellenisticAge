@@ -7479,6 +7479,12 @@ lover.7002 = {
 				}
 				set_relation_potential_lover = scope:proposing_friend
 			}
+			else_if = {
+				limit = {
+					can_set_relation_lover_trigger = { CHARACTER = scope:proposing_friend }
+				}
+				set_relation_lover = { reason = lover_friend_to_lover target = scope:proposing_friend }
+			}
 		}
 	}
 
@@ -7980,7 +7986,7 @@ lover.7006 = {
 		progress_towards_lover_effect = {
 			CHARACTER = scope:proposing_family
 			REASON = lover_family_love
-			OPINION = no
+			OPINION = 0
 		}
 	}
 

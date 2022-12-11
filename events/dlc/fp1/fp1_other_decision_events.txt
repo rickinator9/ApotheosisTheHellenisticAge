@@ -3185,6 +3185,12 @@ scripted_effect fp1_apply_stele_effects = {
 				value = root.var:ancestor_to_bury
 				years = fp1_stele_duration_value
 			}
+			# Plus we want to remember the _type_ of stele we've got, so we can check if it's a character or title in there later.
+			set_variable = {
+				name = stele_scope_type
+				value = flag:character
+				years = fp1_stele_duration_value
+			}
 			# Add the actual modifier.
 			## Stronger version for counties with stele-liking cultures.
 			if = {
@@ -3221,6 +3227,12 @@ scripted_effect fp1_apply_stele_effects = {
 				value = root.var:recent_conquest_victory
 				years = fp1_stele_duration_value
 			}
+			# Plus we want to remember the _type_ of stele we've got, so we can check if it's a character or title in there later.
+			set_variable = {
+				name = stele_scope_type
+				value = flag:character
+				years = fp1_stele_duration_value
+			}
 			# Add the actual modifier.
 			## Stronger version for counties with stele-liking cultures.
 			if = {
@@ -3255,6 +3267,12 @@ scripted_effect fp1_apply_stele_effects = {
 			set_variable = {
 				name = stele_container
 				value = root.var:recent_rank_increase
+				years = fp1_stele_duration_value
+			}
+			# Plus we want to remember the _type_ of stele we've got, so we can check if it's a character or title in there later.
+			set_variable = {
+				name = stele_scope_type
+				value = flag:title
 				years = fp1_stele_duration_value
 			}
 			# Add the actual modifier.

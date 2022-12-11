@@ -746,7 +746,6 @@ stress_threshold.1001 = {
 # by Sean Hughes			#
 # 1011						#
 #############################
-
 stress_threshold.1011 = {
 	type = character_event
 	title = stress_threshold.1011.t
@@ -841,7 +840,6 @@ stress_threshold.1011 = {
 				can_do_lustful_stress_conversion = yes
 			}
 
-			add_character_flag = stress_threshold_option_conversion
 			# Only faiths where Lustful is a sin qualify for this conversion (which is brought on by lustful thoughts).
 			hidden_effect = {
 				random_list = {
@@ -851,8 +849,10 @@ stress_threshold.1011 = {
 								faith = faith:lydian_faith
 								faith = faith:propitiatism_faith
 							}
+							does_religion_exist_in_world_region_trigger = { RELIGION = faith:lydian_faith.religion }
 						}
 						faith:lydian_faith = { save_scope_as = new_faith }
+						add_character_flag = stress_threshold_option_conversion
 					}
 					20 = {
 						trigger = {
@@ -860,20 +860,26 @@ stress_threshold.1011 = {
 								faith = faith:lydian_faith
 								faith = faith:propitiatism_faith
 							}
+							does_religion_exist_in_world_region_trigger = { RELIGION = faith:propitiatism_faith.religion }
 						}
 						faith:propitiatism_faith = { save_scope_as = new_faith }
+						add_character_flag = stress_threshold_option_conversion
 					}
 					20 = {
 						trigger = {
 							NOT = { faith = faith:bormus_faith }
+							does_religion_exist_in_world_region_trigger = { RELIGION = faith:bormus_faith.religion }
 						}
 						faith:bormus_faith = { save_scope_as = new_faith }
+						add_character_flag = stress_threshold_option_conversion
 					}
 					20 = {
 						trigger = {
 							NOT = { faith = faith:idaean_faith }
+							does_religion_exist_in_world_region_trigger = { RELIGION = faith:idaean_faith.religion }
 						}
 						faith:idaean_faith = { save_scope_as = new_faith }
+						add_character_flag = stress_threshold_option_conversion
 					}
 				}
 			}
@@ -4257,7 +4263,7 @@ scripted_effect jealousy_at_court_effect = {
 					progress_towards_rival_effect = {
 						REASON = rival_confider_mental_break
 						CHARACTER = scope:friend
-						OPINION = no
+						OPINION = 0
 					}
 				}
 			}
@@ -13493,7 +13499,7 @@ stress_threshold.3201 = {
 			}
 			remove_relation_potential_rival = scope:vassal
 		}
-		progress_towards_friend_effect = { CHARACTER = scope:vassal REASON = friend_confide_opposite OPINION = no }
+		progress_towards_friend_effect = { CHARACTER = scope:vassal REASON = friend_confide_opposite OPINION = 0 }
 
 		ai_chance = {
 			base = 50
