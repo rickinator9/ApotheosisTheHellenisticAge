@@ -792,6 +792,7 @@ tradition_female_only_inheritance = {
 	
 	can_pick = {
 		custom_tooltip = {
+			NOT = { has_cultural_tradition = tradition_nubian_warrior_queens }
 			OR = {
 				has_cultural_pillar = heritage_senegambian
 				has_cultural_pillar = heritage_akan
@@ -907,6 +908,7 @@ tradition_equal_inheritance = {
 	}
 
 	can_pick = {
+		NOT = { has_cultural_tradition = tradition_nubian_warrior_queens }
 	}
 	
 	parameters = {
@@ -1837,6 +1839,7 @@ tradition_parochialism = {
 	}
 
 	is_shown = { #Replaced by tradition_republican_legacy
+		NOT = { has_cultural_tradition = tradition_republican_legacy }
 		NOR ={
 			this = culture:roman
 			any_parent_culture_or_above = {
@@ -1851,6 +1854,7 @@ tradition_parochialism = {
 				this = culture:roman
 			}
 		}
+		NOT = { has_cultural_tradition = tradition_republican_legacy }
 	}
 	
 	parameters = {
@@ -2327,6 +2331,7 @@ tradition_mountain_homes = {
 	
 	is_shown = {
 		NOR = { #This is replaced by Himalayan Settlers, Mountaineer Ruralism and Mountain Herding. 
+			has_cultural_tradition = tradition_himalayan_settlers
 			has_cultural_tradition = tradition_mountaineer_ruralism
 			has_cultural_pillar = heritage_arabic
 			has_cultural_pillar = heritage_berber
