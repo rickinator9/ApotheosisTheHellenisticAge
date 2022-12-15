@@ -99,6 +99,12 @@ can_be_court_chaplain_trigger = {
 		}
 		NOT = { var:escaped_imprisonment_from = $COURT_OWNER$ }
 	}
+	trigger_if = { # An excommunicated ruler tolerate excommunicated bishops
+		limit = {
+			$COURT_OWNER$ = { NOT = { has_trait = excommunicated } }
+		}
+		NOT = { has_trait = excommunicated }
+	}
 }
 
 can_be_spouse_councillor_trigger = {

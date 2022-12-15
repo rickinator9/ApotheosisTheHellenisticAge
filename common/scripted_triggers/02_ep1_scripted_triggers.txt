@@ -106,19 +106,11 @@ ep1_extravagant_artifact_decorations_trigger = {
 }
 
 ep1_artifact_durability_lower_equal_percent_trigger = {
-	$PERCENT$  >= {
-	 	value = 0
-	 	add = artifact_durability
-	 	divide = artifact_max_durability
-	}
+	$PERCENT$  >= artifact_durability_percent
 }
 
 ep1_artifact_durability_higher_equal_percent_trigger = {
-	$PERCENT$  >= {
-	 	value = 0
-	 	add = artifact_durability
-	 	divide = artifact_max_durability
-	}
+	$PERCENT$  >= artifact_durability_percent
 }
 
 ep1_character_has_court_artifact_trigger = {
@@ -157,6 +149,10 @@ character_can_be_employed_in_a_court_position_trigger = {
 		AND = {
 			can_employ_court_position_type = master_of_hunt_court_position
 			$CHARACTER$ = { can_be_employed_as = master_of_hunt_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = keeper_of_swans_court_position
+			$CHARACTER$ = { can_be_employed_as = keeper_of_swans_court_position }
 		}
 		AND = {
 			can_employ_court_position_type = court_jester_court_position
@@ -218,6 +214,10 @@ character_can_be_employed_in_a_court_position_trigger = {
 			can_employ_court_position_type = executioner_court_position
 			$CHARACTER$ = { can_be_employed_as = executioner_court_position }
 		}
+		AND = {
+			can_employ_court_position_type = garuda_court_position
+			$CHARACTER$ = { can_be_employed_as = garuda_court_position }
+		}
 	}
 }
 
@@ -228,6 +228,7 @@ can_be_employed_in_any_court_position_trigger = {
 		can_be_employed_as = court_physician_court_position
 		can_be_employed_as = master_of_horse_court_position
 		can_be_employed_as = master_of_hunt_court_position
+		can_be_employed_as = keeper_of_swans_court_position
 		can_be_employed_as = court_jester_court_position
 		can_be_employed_as = high_almoner_court_position
 		can_be_employed_as = seneschal_court_position
@@ -243,6 +244,7 @@ can_be_employed_in_any_court_position_trigger = {
 		can_be_employed_as = champion_court_position
 		can_be_employed_as = food_taster_court_position
 		can_be_employed_as = executioner_court_position
+		can_be_employed_as = garuda_court_position
 	}
 }
 

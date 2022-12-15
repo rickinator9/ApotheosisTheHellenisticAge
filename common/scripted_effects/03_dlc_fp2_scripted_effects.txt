@@ -1089,7 +1089,7 @@ fp2_contract_assistance_war_pay_effect = {
 					scope:war = {
 						war_contribution = {
 							target = scope:contract_assistance_helper
-							value >= offer_assistance_interaction_war_contribution_value # 100
+							value >= scope:contract_assistance_helper.var:owed_contract_assistance_contribution
 						}
 					}
 				}
@@ -1101,7 +1101,7 @@ fp2_contract_assistance_war_pay_effect = {
 						custom_tooltip = contract_assistance_war_msg_hirer_paid_desc
 						pay_short_term_gold = {
 							target = scope:contract_assistance_helper
-							gold = offer_assistance_interaction_gold_value
+							gold = scope:contract_assistance_helper.var:owed_contract_assistance_gold
 						}
 					}
 				}
@@ -1115,7 +1115,7 @@ fp2_contract_assistance_war_pay_effect = {
 							scope:contract_assistance_hirer = {
 								pay_short_term_gold = {
 									target = scope:contract_assistance_helper
-									gold = offer_assistance_interaction_gold_value
+									gold = scope:contract_assistance_helper.var:owed_contract_assistance_gold
 								}
 							}
 						}
@@ -1144,6 +1144,8 @@ fp2_contract_assistance_war_pay_effect = {
 					}
 				}
 			}
+			remove_variable = owed_contract_assistance_contribution
+			remove_variable = owed_contract_assistance_gold
 		}
 	}
 }
@@ -1163,6 +1165,8 @@ fp2_contract_assistance_invalidated_effect = {
 				var:owed_contract_assistance_war = scope:war
 			}
 			remove_variable = owed_contract_assistance_war
+			remove_variable = owed_contract_assistance_contribution
+			remove_variable = owed_contract_assistance_gold
 			save_scope_as = contract_assistance_helper
 			if = {
 				limit = { is_attacker_in_war = scope:war }
@@ -1254,7 +1258,7 @@ gifting_leads_towards_friendship_effect = {
 		progress_towards_friend_effect = {
 			REASON = friend_struggle_gift
 			CHARACTER = scope:actor
-			OPINION = no
+			OPINION = 0
 		}
 	}
 }

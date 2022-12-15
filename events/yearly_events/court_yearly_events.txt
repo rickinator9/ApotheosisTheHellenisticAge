@@ -1847,7 +1847,7 @@ court_yearly.5020 = {
 			progress_towards_rival_effect = {
 				REASON = rival_deposed_for_cat
 				CHARACTER = scope:courtier
-				OPINION = yes
+				OPINION = default_rival_opinion
 			}
 		}
 		else = {
@@ -3123,6 +3123,13 @@ court_yearly.4800 = {
 					is_available_ai_adult = yes
 				}
 			}
+			AND = {
+				employs_court_position = keeper_of_swans_court_position
+				any_court_position_holder = {
+					type = keeper_of_swans_court_position
+					is_available_ai_adult = yes
+				}
+			}
 		}
 	}
 	left_portrait = {
@@ -3156,6 +3163,12 @@ court_yearly.4800 = {
 			}
 			random_court_position_holder = {
 				type = court_jester_court_position
+				save_scope_as = defenestrated_character
+			}
+		}
+		else = {
+			random_court_position_holder = {
+				type = keeper_of_swans_court_position
 				save_scope_as = defenestrated_character
 			}
 		}
@@ -3780,7 +3793,7 @@ court_yearly.0101 = {
 		}
 		progress_towards_friend_effect = {
 			CHARACTER = scope:executioner
-			OPINION = yes
+			OPINION = default_friend_opinion
 			REASON = friend_art_of_torture_punishment
 		}
 	}
@@ -3974,7 +3987,7 @@ court_yearly.0102 = {
 		name = court.0102.a
 		progress_towards_friend_effect = {
 			CHARACTER = scope:executioner
-			OPINION = yes
+			OPINION = default_friend_opinion
 			REASON = friend_took_pity
 		}
 		reverse_add_opinion = {
@@ -4359,7 +4372,7 @@ court_yearly.0104 = {
 		}
 		progress_towards_friend_effect = {
 			CHARACTER = scope:morbid_child
-			OPINION = yes
+			OPINION = default_friend_opinion
 			REASON = friend_torture_stories
 		}
 		reverse_add_opinion = {
@@ -4369,7 +4382,7 @@ court_yearly.0104 = {
 	 	}
 		progress_towards_friend_effect = {
 			CHARACTER = scope:executioner
-			OPINION = yes
+			OPINION = default_friend_opinion
 			REASON = friend_torture_stories
 		}
 		reverse_add_opinion = {
@@ -4380,7 +4393,7 @@ court_yearly.0104 = {
 	 	scope:morbid_child = {
 			progress_towards_friend_effect = {
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_friend_opinion
 				REASON = friend_torture_stories
 			}
 		}
@@ -4455,7 +4468,7 @@ court_yearly.0104 = {
 	 	scope:morbid_child = {
 			progress_towards_friend_effect = {
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_friend_opinion
 				REASON = friend_torture_stories
 			}
 		}
@@ -4573,7 +4586,7 @@ court_yearly.0106 = {
 			scope:executioner = { add_stress = major_stress_impact_loss }
 			progress_towards_friend_effect = {
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_friend_opinion
 				REASON = friend_shared_opinions_on_punishment
 			}
 		}
@@ -4587,7 +4600,7 @@ court_yearly.0106 = {
 			progress_towards_rival_effect = {
 				REASON = rival_go_hard_on_prisoners
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_rival_opinion
 			}
 		}
 		stress_impact = {
@@ -4617,7 +4630,7 @@ court_yearly.0106 = {
 			scope:executioner = { add_stress = major_stress_impact_loss }
 			progress_towards_friend_effect = {
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_friend_opinion
 				REASON = friend_shared_opinions_on_punishment
 			}
 		}
@@ -4631,7 +4644,7 @@ court_yearly.0106 = {
 			progress_towards_rival_effect = {
 				REASON = rival_go_easy_on_prisoners
 				CHARACTER = scope:executioner
-				OPINION = yes
+				OPINION = default_rival_opinion
 			}
 		}
 		stress_impact = {
@@ -4813,12 +4826,12 @@ court_yearly.0110 = {
 		progress_towards_rival_effect = {
 			REASON = rival_parent_imprisoned
 			CHARACTER = scope:parent
-			OPINION = yes
+			OPINION = default_rival_opinion
 		}
 		progress_towards_rival_effect = {
 			REASON = rival_parent_imprisoned
 			CHARACTER = cp:councillor_court_chaplain
-			OPINION = yes
+			OPINION = default_rival_opinion
 		}
 		imprison_character_effect = {
 			TARGET = scope:parent
@@ -5840,7 +5853,7 @@ court_yearly.8120 = {
 	        progress_towards_rival_effect = {
 	        	REASON = rival_refuted_faith
 				CHARACTER = scope:accuser
-				OPINION = no
+				OPINION = 0
 			}
         }
         else = {
