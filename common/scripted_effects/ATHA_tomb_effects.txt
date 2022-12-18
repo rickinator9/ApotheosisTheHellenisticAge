@@ -58,6 +58,10 @@ build_tomb_effect = {
 	add_province_modifier = {
 		modifier = built_tomb_modifier
 	}
+	set_variable = {
+		name = tomb_treasure
+		value = 0
+	}
 }
 
 ###
@@ -100,6 +104,10 @@ add_historical_tomb_with_date_effect = {
 	add_province_modifier = {
 		modifier = built_tomb_modifier
 		desc = built_tomb_modifier_custom_desc
+	}
+	set_variable = {
+		name = tomb_treasure
+		value = 0
 	}
 }
 
@@ -174,5 +182,16 @@ sacrifice_to_tomb_occupant_effect = {
 			}
 			trigger_event = ATHA_religious.0101
 		}
+	}
+}
+
+##
+# Adds gold to the local tomb (from province scope).
+# GOLD = the amount to deposit
+##
+deposit_gold_in_tomb_effect = {
+	change_variable = {
+		name = tomb_treasure
+		add = $GOLD$
 	}
 }
