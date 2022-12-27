@@ -17,19 +17,17 @@ euzonoi = {
     screen = 10
 
     terrain_bonus = {
-        hills = { damage = 5 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
+        hills = { toughness = 5 }
+        plains = { screen = -10 }
     }
 
     counters = {
         heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.15 }
+    high_maintenance_cost = { gold = 0.45 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -312,25 +310,24 @@ toxotai = {
         can_recruit_maa_toxotai_trigger = yes
     }
 
-    damage = 5
+    damage = 10
     toughness = 5
-    pursuit = 10
+    pursuit = 0
     screen = 10
 
     terrain_bonus = {
-        mountains = { pursuit = 5 }
-        desert_mountains = { pursuit = 5 }
-        plains = { screen = -5 }
-        drylands = { screen = -5 }
+        mountains = { toughness = 5 }
+        plains = { screen = -10 }
     }
 
     counters = {
         skirmishers = 0.5
+        horse_archers = 0.5
     }
 
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
+    buy_cost = { gold = 55 }
+    low_maintenance_cost = { gold = 0.25 }
+    high_maintenance_cost = { gold = 0.75 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -428,7 +425,7 @@ thureophoroi = {
         can_recruit_maa_thureophoroi_trigger = yes
     }
 
-    damage = 10
+    damage = 5
     toughness = 10
     pursuit = 5
     screen = 5
@@ -440,9 +437,9 @@ thureophoroi = {
         pikemen = 0.5
     }
 
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.35 }
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -673,29 +670,70 @@ hoplitai = {
     }
 
     damage = 5
-    toughness = 20
+    toughness = 15
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
+        farmlands = { damage = 10 }
+        valley = { damage = 10 }
+        plains = { toughness = 5 }
+        mountains = { toughness = -10 }
+        forest = { toughness = -10 }
+        hills = { toughness = -5 }
     }
 
     counters = {
         phalanx = 0.5
+        light_cavalry = 0.5
     }
 
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
     stack = 300
+    ai_quality = { value = ATHA_ai_weight_hoplite }
+    icon = hoplitai
+}
+
+epilektoi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_epilektoi_hoplita_trigger = yes
+    }
+
+    damage = 15
+    toughness = 25
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 10 }
+        valley = { damage = 10 }
+        plains = { toughness = 5 }
+        mountains = { toughness = -10 }
+        forest = { toughness = -10 }
+        hills = { toughness = -5 }
+    }
+
+    counters = {
+        phalanx = 1
+        light_cavalry = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = hoplitai
 }
@@ -735,49 +773,6 @@ eparitoi_hoplitai = {
     stack = 300
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = hoplitai_superior
-}
-
-#Elite
-epilektoi_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_epilektoi_hoplitai_trigger = yes
-    }
-
-    damage = 10
-    toughness = 25
-    pursuit = 0
-    screen = 20
-
-    terrain_bonus = {
-        farmlands = { toughness = 5 }
-        valley = { toughness = 5 }
-        mountains = { damage = -5 }
-        desert_mountains = { damage = -5 }
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.9 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = {
-        value = ATHA_ai_weight_hoplite
-        add = ATHA_ai_weight_elite
-    }
-    icon = hoplitai_elite
 }
 
 #Elite#West#Anatolia
@@ -919,26 +914,28 @@ phalangitai = {
         can_recruit_maa_phalangitai_trigger = yes
     }
 
-    damage = 15
-    toughness = 15
+    damage = 10
+    toughness = 10
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 5 toughness = 5 }
-        valley = { damage = 5 toughness = 5 }
+        farmlands = { damage = 10 toughness = 10 }
+        plains = { damage = 10 toughness = 10 }
         mountains = { toughness = -5 damage = -5 }
-        desert_mountains = { toughness = -5 damage = -5 }
+        forest = { toughness = -5 damage = -5 }
+        hills = { toughness = -5 damage = -5 }
+        wetlands = { toughness = -5 damage = -5 }
     }
 
     counters = {
+        elephant_cavalry = 0.5
         heavy_cavalry = 0.5
-        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1181,7 +1178,7 @@ prodomoi = {
     type = light_cavalry
 
     can_recruit = {
-        can_recruit_maa_prodomoi_trigger = yes
+        can_recruit_maa_rodomoi_trigger = yes
     }
 
     damage = 10
@@ -1190,24 +1187,21 @@ prodomoi = {
     screen = 20
 
     terrain_bonus = {
-        plains = { screen = 5 }
-        drylands = { screen = 5 }
-        mountains = { pursuit = -5 }
-        desert_mountains = { pursuit = -5 }
     }
 
     counters = {
         archers = 0.5
+        skirmishers = 0.5
     }
 
-    buy_cost = { gold = 70 }
+    buy_cost = { gold = 100 }
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -1254,19 +1248,15 @@ hippeis = {
     type = heavy_cavalry
 
     can_recruit = {
-        can_recruit_maa_hippeis_trigger = yes
+        can_recruit_maa_ippeis_trigger = yes
     }
 
-    damage = 60
-    toughness = 30
+    damage = 30
+    toughness = 20
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 5 }
-        drylands = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
     }
 
     counters = {
@@ -1274,14 +1264,14 @@ hippeis = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 170 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 2.1 }
+    buy_cost = { gold = 240 }
+    low_maintenance_cost = { gold = 1.2 }
+    high_maintenance_cost = { gold = 3.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 75
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1457,32 +1447,32 @@ basilikoi_agema = {
 
 ###Barbarians########################################################################
 
-peltenai = {
+peltanai = {
     type = skirmishers
 
     can_recruit = {
-        can_recruit_maa_peltenai_trigger = yes
+        can_recruit_maa_peltanai_trigger = yes
     }
 
-    damage = 10
+    damage = 5
     toughness = 5
     pursuit = 10
-    screen = 0
+    screen = 10
 
     terrain_bonus = {
-        hills = { toughness = 5 }
         forest = { toughness = 5 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
+        hills = { damage = 5 }
+        plains = { screen = -10 }
+        drylands = { screen = -10 }
     }
 
     counters = {
         heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
+    buy_cost = { gold = 45 }
+    low_maintenance_cost = { gold = 0.15 }
+    high_maintenance_cost = { gold = 0.45 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1499,25 +1489,26 @@ anganai = {
         can_recruit_maa_anganai_trigger = yes
     }
 
-    damage = 5
+    damage = 10
     toughness = 5
-    pursuit = 10
+    pursuit = 0
     screen = 10
 
     terrain_bonus = {
-        mountains = { pursuit = 5 }
-        desert_mountains = { pursuit = 5 }
-        plains = { screen = -5 }
-        drylands = { screen = -5 }
+        mountains = { toughness = 5 }
+        forest = { damage = 5 }
+        plains = { screen = -10 }
+        drylands = { screen = -10 }
     }
 
     counters = {
         skirmishers = 0.5
+        horse_archers = 0.5
     }
 
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
+    buy_cost = { gold = 55 }
+    low_maintenance_cost = { gold = 0.25 }
+    high_maintenance_cost = { gold = 0.75 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1535,20 +1526,27 @@ tarunai = {
     }
 
     damage = 10
-    toughness = 15
+    toughness = 10
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
+        forest = { damage = 5 }
+        hills = { damage = 5 }
+        valley = { damage = 5 }
+        farmlands = { damage = 5 }
+        mountains = { toughness = -5 damage = -5 }
+        drylands = { toughness = -5 damage = -5 }
     }
 
     counters = {
         phalanx = 0.5
+        light_cavalry = 0.5
     }
 
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1558,35 +1556,72 @@ tarunai = {
     icon = hoplitai
 }
 
-machairophoroi = {
-    type = phalanx
+tarypeltanai = {
+    type = heavy_infantry
 
     can_recruit = {
-        can_recruit_maa_machairophoroi_trigger = yes
+        can_recruit_maa_tarypeltanai_trigger = yes
     }
 
-    damage = 10
-    toughness = 10
-    pursuit = 5
-    screen = 5
+    damage = 15
+    toughness = 5
+    pursuit = 0
+    screen = 0
 
     terrain_bonus = {
+        forest = { toughness = 10 }
+        plains = { toughness = 10 }
+        mountains = { damage = -10 }
+        drylands = { damage = -10 }
     }
 
     counters = {
-        pikemen = 0.5
+        phalanx = 0.5
+        light_cavalry = 0.5
     }
 
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
+    ai_quality = { value = ATHA_ai_weight_hoplite }
+    icon = phalangitai
+}
+
+moukazenai = {
+    type = heavy_cavalry
+
+    can_recruit = {
+        can_recruit_maa_moukazenai_trigger = yes
+    }
+
+    damage = 30
+    toughness = 20
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+    }
+
+    counters = {
+        skirmishers = 0.5
+        archers = 0.5
+    }
+
+    buy_cost = { gold = 240 }
+    low_maintenance_cost = { gold = 1.2 }
+    high_maintenance_cost = { gold = 3.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 75
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
+    icon = heavy_cavalry
 }
 
 mezenai = {
@@ -1596,68 +1631,29 @@ mezenai = {
         can_recruit_maa_mezenai_trigger = yes
     }
 
-    damage = 15
-    toughness = 5
+    damage = 10
+    toughness = 10
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        plains = { screen = 5 }
-        drylands = { screen = 5 }
-        mountains = { pursuit = -5 }
-        desert_mountains = { pursuit = -5 }
     }
 
     counters = {
         archers = 0.5
+        skirmishers = 0.5
     }
 
-    buy_cost = { gold = 70 }
+    buy_cost = { gold = 100 }
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 150
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
-}
-
-moukamezenai = {
-    type = heavy_cavalry
-
-    can_recruit = {
-        can_recruit_maa_moukamezenai_trigger = yes
-    }
-
-    damage = 60
-    toughness = 20
-    pursuit = 20
-    screen = 20
-
-    terrain_bonus = {
-        plains = { damage = 5 }
-        drylands = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        skirmishers = 0.5
-        archers = 0.5
-    }
-
-    buy_cost = { gold = 170 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 2.1 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 150
-    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
-    icon = heavy_cavalry
 }
 
 #Celtic#superior#
@@ -1702,1387 +1698,4 @@ nedes_nesamoi = {
         add = ATHA_ai_weight_elite
     }
     icon = hoplitai_elite
-}
-
-###OffMapMercenaries###
-
-tarantinoi_hippeis = {
-    type = light_cavalry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_tarantinoi_hippeis_trigger = no
-    }
-
-    damage = 20
-    toughness = 20
-    pursuit = 20
-    screen = 20
-
-    terrain_bonus = {
-        plains = { screen = 5 }
-        drylands = { screen = 5 }
-        mountains = { pursuit = -5 }
-        desert_mountains = { pursuit = -5 }
-    }
-
-    counters = {
-        archers = 0.5
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 85 }
-    low_maintenance_cost = { gold = 0.55 }
-    high_maintenance_cost = { gold = 1.65 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_light_cavalry }
-    icon = light_cavalry
-}
-
-khaldilae = {
-    type = pikemen
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_khaldilae_trigger = no
-    }
-
-    damage = 20
-    toughness = 6
-    pursuit = 2
-    screen = 16
-
-    terrain_bonus = {
-        farmlands = { damage = 5 toughness = 5 }
-        mountains = { toughness = -5 damage = -5 }
-        desert_mountains = { toughness = 5 pursuit = 5 }
-        drylands = { toughness = 5 pursuit = 5 }
-    }
-
-    counters = {
-        heavy_cavalry = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_pikemen }
-    icon = phalangitai_superior
-}
-
-kolkhikoi_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_kolkhikoi_hoplitai_trigger = no
-    }
-
-    damage = 10
-    toughness = 10
-    pursuit = 0
-    screen = 20
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-katusages = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_katusages_trigger = no
-    }
-
-    damage = 9
-    toughness = 9
-    pursuit = 11
-    screen = 11
-
-    terrain_bonus = {
-        drylands = { screen = 9 pursuit = 9 }
-    }
-
-    counters = {
-        pikemen = 0.5
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.35 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-promakhoi_isauron = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_promakhoi_isauron_trigger = no
-    }
-
-    damage = 15
-    toughness = 5
-    pursuit = 5
-    screen = 15
-
-    terrain_bonus = {
-        mountains = { toughness = 5 }
-        desert_mountains = { toughness = 10 pursuit = 10 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
-    }
-
-    counters = {
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300    
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-balearim_sphendonetai = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_balearim_sphendonetai_trigger = yes
-    }
-
-    damage = 30
-    toughness = 5
-    pursuit = 15
-    screen = 15
-
-    terrain_bonus = {
-        hills = { toughness = 5 }
-        forest = { toughness = 5 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 1
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.9 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-uazali = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_uazali_trigger = no
-    }
-
-    damage = 8
-    toughness = 12
-    pursuit = 8
-    screen = 2
-
-    terrain_bonus = {
-        hills = { damage = 5 }
-        desert_mountains = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { screen = 12 }
-    }
-
-    counters = {
-        heavy_infantry = 0.5
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-parasim_numidim = {
-    type = light_cavalry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_parasim_numidim_trigger = no
-    }
-
-    damage = 5
-    toughness = 5
-    pursuit = 40
-    screen = 40
-
-    terrain_bonus = {
-        plains = { screen = 5 }
-        drylands = { screen = 5 }
-        mountains = { pursuit = -5 }
-        desert_mountains = { pursuit = -5 }
-    }
-
-    counters = {
-        archers = 1
-        horse_archers = 0.5
-    }
-
-    buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1.5 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_light_cavalry }
-    icon = light_cavalry
-}
-
-dorkim_shardanim = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_dorkim_shardanim_trigger = no
-    }
-
-    damage = 10
-    toughness = 5
-    pursuit = 0
-    screen = 20
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-appea_gaedotos = {
-    type = pikemen
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_appea_gaedotos_trigger = no
-    }
-
-    damage = 25
-    toughness = 10
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        mountains = { toughness = 15 }
-    }
-
-    counters = {
-        heavy_cavalry = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_pikemen }
-    icon = phalangitai_superior
-}
-
-kluddacorii = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_kluddacorii_trigger = no
-    }
-
-    damage = 20
-    toughness = 10
-    pursuit = 5
-    screen = 5
-
-    terrain_bonus = {
-        mountains = { pursuit = 5 screen = 5 }
-    }
-
-    counters = {
-        pikemen = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-kasatim_numidim = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_kasatim_numidim_trigger = no
-    }
-
-    damage = 20
-    toughness = 5
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        floodplains = { pursuit = 5 screen = 5 toughness = 5 }
-        plains = { screen = -5 }
-        drylands = { screen = -5 }
-    }
-
-    counters = {
-        skirmishers = 1
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-bastarnae = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_bastarnae_trigger = no
-    }
-
-    damage = 16
-    toughness = 6
-    pursuit = 8
-    screen = 8
-
-    terrain_bonus = {
-        taiga = { damage = 6 toughness = 6 }
-    }
-
-    counters = {
-        pikemen = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-woithiz_watha = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_woithiz_watha_trigger = no
-    }
-
-    damage = 20
-    toughness = 5
-    pursuit = 20
-    screen = 0
-
-    terrain_bonus = {
-        hills = { toughness = 5 }
-        forest = { toughness = 5 }
-        taiga = { toughness = 5 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-gaesatae = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_gaesatae_trigger = no
-    }
-
-    damage = 24
-    toughness = 12
-    pursuit = 8
-    screen = 10
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.9 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
-    icon = hoplitai_superior
-}
-
-aithiopikoi_machairophoroi = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_aithiopikoi_machairophoroi_trigger = no
-    }
-
-    damage = 10
-    toughness = 10
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        jungle = { damage = 5 toughness = 5 }
-        drylands = { screen = 5 pursuit = 5 }
-    }
-
-    counters = {
-        pikemen = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.35 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-thureopherontes_toxotai = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_thureopherontes_toxotai_trigger = no
-    }
-
-    damage = 10
-    toughness = 10
-    pursuit = 5
-    screen = 5
-
-    terrain_bonus = {
-        mountains = { pursuit = 5 }
-        desert_mountains = { pursuit = 5 }
-        plains = { screen = -5 }
-        drylands = { screen = -5 }
-    }
-
-    counters = {
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-massaliotai_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_massaliotai_hoplitai_trigger = no
-    }
-
-    damage = 10
-    toughness = 20
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-syrakosioi_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_syrakosioi_hoplitai_trigger = no
-    }
-
-    damage = 10
-    toughness = 25
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        phalanx = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-cypriotoi_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_cypriotoi_hoplitai_trigger = no
-    }
-
-    damage = 5
-    toughness = 20
-    pursuit = 0
-    screen = 10
-
-    terrain_bonus = {
-        farmlands = { damage = 5 }
-        valley = { damage = 5 }
-        mountains = { toughness = -5 }
-        desert_mountains = { toughness = -5 }
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-gaemile_liguriae = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_gaemile_liguriae_trigger = no
-    }
-
-    damage = 15
-    toughness = 15
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-linniluxtos = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_linniluxtos_trigger = no
-    }
-
-    damage = 10
-    toughness = 10
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        wetlands = { damage = 5 toughness = 5 pursuit = 5 screen = 5 }
-    }
-
-    counters = {
-        pikemen = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.35 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-dunaminica = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_dunaminica_trigger = no
-    }
-
-    damage = 20
-    toughness = 20
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_heavy_infantry }
-    icon = hoplitai_superior
-}
-
-druxtiz_xobugiska = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_druxtiz_xobugiska_trigger = no
-    }
-
-    damage = 5
-    toughness = 20
-    pursuit = 5
-    screen = 5
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.2 }
-    high_maintenance_cost = { gold = 0.6 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-saeraegwaekha = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_saeraegwaekha_trigger = no
-    }
-
-    damage = 15
-    toughness = 5
-    pursuit = 0
-    screen = 20
-
-    terrain_bonus = {
-        wetlands = { toughness = 5 }
-        forest = { toughness = 5 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 1
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-capadhara_yoddhr = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_capadhara_yoddhr_trigger = no
-    }
-
-    damage = 15
-    toughness = 5
-    pursuit = 0
-    screen = 20
-
-    terrain_bonus = {
-        jungle = { toughness = 5 screen = 10 }
-        plains = { screen = -5 }
-        drylands = { screen = -5 }
-    }
-
-    counters = {
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 45 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-boii_cingetos = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_boii_cingetos_trigger = no
-    }
-
-    damage = 13
-    toughness = 22
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-verkhana_kofyaren = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_verkhana_kofyaren_trigger = no
-    }
-
-    damage = 10
-    toughness = 10
-    pursuit = 0
-    screen = 10
-
-    terrain_bonus = {
-        hills = { damage = 5 toughness = 5 pursuit = 10 }
-        forest = { damage = 5 }
-        plains = { toughness = -5 }
-        drylands = { toughness = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 0.5
-    }
-
-    buy_cost = { gold = 40 }
-    low_maintenance_cost = { gold = 0.1 }
-    high_maintenance_cost = { gold = 0.3 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-tindanotae = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_tindanotae_trigger = no
-    }
-
-    damage = 26
-    toughness = 9
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 65 }
-    low_maintenance_cost = { gold = 0.35 }
-    high_maintenance_cost = { gold = 1.05 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-neruion_ueriudnakoi = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_neruion_ueriudnakoi_trigger = no
-    }
-
-    damage = 20
-    toughness = 15
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        forest = { screen = 10 }
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai_superior
-}
-
-iwzag_baragatae = {
-    type = light_cavalry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_iwzag_baragatae_trigger = no
-    }
-
-    damage = 18
-    toughness = 7
-    pursuit = 10
-    screen = 30
-
-    terrain_bonus = {
-        plains = { screen = 5 }
-        drylands = { screen = 5 }
-        mountains = { pursuit = -5 }
-        desert_mountains = { pursuit = -5 }
-    }
-
-    counters = {
-        archers = 0.5
-    }
-
-    buy_cost = { gold = 75 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_light_cavalry }
-    icon = light_cavalry
-}
-
-karotovas = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_karotovas_trigger = no
-    }
-
-    damage = 15
-    toughness = 5
-    pursuit = 10
-    screen = 10
-
-    terrain_bonus = {
-        hills = { toughness = 5 }
-        forest = { toughness = 5 }
-        plains = { damage = -5 }
-        drylands = { damage = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 0.5
-    }
-
-    buy_cost = { gold = 50 }
-    low_maintenance_cost = { gold = 0.15 }
-    high_maintenance_cost = { gold = 0.45 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-#####Rebellious#MAA#####
-
-renegates = {
-    type = phalanx
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_renegates_trigger = no
-    }
-
-    damage = 5
-    toughness = 5
-    pursuit = 5
-    screen = 5
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        pikemen = 0.5
-    }
-
-    buy_cost = { gold = 0 }
-    low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 0.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 500
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
-militia = {
-    type = pikemen
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_militia_trigger = no
-    }
-
-    damage = 10
-    toughness = 5
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        heavy_cavalry = 0.5
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 0 }
-    low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 0.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 500
-    ai_quality = { value = ATHA_ai_weight_pikemen }
-    icon = phalangitai
-}
-
-sellswords = {
-    type = heavy_infantry
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_sellswords_trigger = no
-    }
-
-    damage = 5
-    toughness = 10
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        phalanx = 0.5
-    }
-
-    buy_cost = { gold = 0 }
-    low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 0.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 500
-    ai_quality = { value = ATHA_ai_weight_hoplite }
-    icon = hoplitai
-}
-
-shepherds = {
-    type = archers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_shepherds_trigger = no
-    }
-
-    damage = 5
-    toughness = 5
-    pursuit = 0
-    screen = 10
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        skirmishers = 0.5
-    }
-
-    buy_cost = { gold = 0 }
-    low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 0.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 500
-    ai_quality = { value = ATHA_ai_weight_archers }
-    icon = toxotai
-}
-
-slave_rabble = {
-    type = skirmishers
-
-    can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
-        can_recruit_maa_slave_rubble_trigger = no
-    }
-
-    damage = 5
-    toughness = 5
-    pursuit = 10
-    screen = 0
-
-    terrain_bonus = {
-    }
-
-    counters = {
-        heavy_infantry = 0.5
-    }
-
-    buy_cost = { gold = 0 }
-    low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 0.0 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = no
-    
-    stack = 500
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
 }

@@ -3,6 +3,18 @@
 	# ATHA MODIFIERS #
 	##################
 
+	# Difficulty Modifiers
+	modifier = { # Hard
+		scope:actor = { has_game_rule = hard_difficulty }
+		add = -50
+		desc = HARD_DIFFICULTY_MARRIAGE_MODIFIER
+	}
+	modifier = { # Very Hard
+		scope:actor = { has_game_rule = very_hard_difficulty }
+		add = -100
+		desc = VERY_HARD_DIFFICULTY_MARRIAGE_MODIFIER
+	}
+
 	# Having the bastard nickname modifier lowers willingness to marry.
 	modifier = {
 		scope:secondary_actor = {
