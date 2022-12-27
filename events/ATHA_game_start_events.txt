@@ -1102,15 +1102,17 @@ ATHA_game_start.19 = {
 
 	immediate = {
 		province:276 = { # Aigai, Argead tomb.
+			# Following this study: https://www.pnas.org/doi/10.1073/pnas.1510906112
+		# Tomb I
 			add_historical_tomb_with_date_effect = { OCCUPANT = character:macedonian03940 DATE = 3418 } # Philip II
+			# TODO Cleopatra
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03950 } # Daughter of Philip II
+		# Tomb II
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03947 } # Philip Arrhidaios
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03945 } # Adea Eurydike
+		# Tomb III
 			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03953 } # Alexander IV
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:dardanian00103 } # Haha
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03954 } # Alexander IV
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03949 } # Alexander IV
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03950 } # Alexander IV
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03952 } # Alexander IV
-			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03951 } # Alexander IV
-			set_tomb_looted_historical_effect = { LOOTER = character:epirote00215 DATE = 3480 }
+
 			deposit_gold_in_tomb_effect = { GOLD = 150 } # Grave goods.
 		}
 		province:1744 = { # Seuthopolis, tomb of Seuthes III

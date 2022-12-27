@@ -193,26 +193,3 @@
 		}
 	}
 }
-
-build_tomb_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
-	desc = build_tomb_decision_desc
-	ai_check_interval = 60
-
-	is_shown = {
-		faith = {
-			has_doctrine_parameter = can_build_tomb
-		}
-	}
-
-	is_valid = {
-		# TODO
-	}
-
-	effect = {
-		custom_tooltip = build_tomb_decision_effect
-		custom_description = {
-			trigger_event = ATHA_religious.0001
-		}
-	}
-}

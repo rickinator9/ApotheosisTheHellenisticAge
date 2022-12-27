@@ -1,8 +1,8 @@
-﻿namespace = ATHA_religious
+﻿namespace = ATHA_tomb
 
 ### RELIGIOUS EVENTS INDEX                 #
 # 0001-0100 TOMB CONSTRUCTION EVENTS       #
-# 0101-0200 THRACIAN TOMB SACRIFICE EVENTS #
+# 0101-0500 THRACIAN TOMB SACRIFICE EVENTS #
 ############################################
 
 #######################
@@ -13,10 +13,10 @@
 # THRACIAN TOMB SACRIFICE EVENTS #
 ##################################
 
-ATHA_religious.0101 = {
+ATHA_tomb.0101 = {
 	type = character_event
-	title = ATHA_religious.0101.title
-	desc = ATHA_religious.0101.desc
+	title = ATHA_tomb.0101.title
+	desc = ATHA_tomb.0101.desc
 	theme = death
 	left_portrait = {
 		character = root
@@ -34,7 +34,7 @@ ATHA_religious.0101 = {
 
 	# Money
 	option = {
-		name = ATHA_religious.0101.a
+		name = ATHA_tomb.0101.a
 		trigger = {
 			OR = {
 				gold >= 0
@@ -68,7 +68,7 @@ ATHA_religious.0101 = {
 		}
 
 		# Blessing / Curse chances
-		custom_tooltip = ATHA_RELIGIOUS_0101_GOLD_SACRIFICE_TT
+		custom_tooltip = ATHA_TOMB_0101_GOLD_SACRIFICE_TT
 		hidden_effect = {
 			random_list = {
 				50 = {
@@ -145,7 +145,7 @@ ATHA_religious.0101 = {
 
 	# Food
 	option = {
-		name = ATHA_religious.0101.b
+		name = ATHA_tomb.0101.b
 		ai_chance = {
 			base = 100
 
@@ -180,7 +180,7 @@ ATHA_religious.0101 = {
 		}
 
 		# Blessing / Curse chances
-		custom_tooltip = ATHA_RELIGIOUS_0101_FOOD_SACRIFICE_TT
+		custom_tooltip = ATHA_TOMB_0101_FOOD_SACRIFICE_TT
 		hidden_effect = {
 			random_list = {
 				45 = {
@@ -257,7 +257,7 @@ ATHA_religious.0101 = {
 
 	# Artifact
 	option = {
-		name = ATHA_religious.0101.c
+		name = ATHA_tomb.0101.c
 		trigger = { exists = scope:sacrificed_artifact }
 		ai_chance = {
 			base = 100
@@ -295,7 +295,7 @@ ATHA_religious.0101 = {
 		}
 
 		# Blessing / Curse chances
-		custom_tooltip = ATHA_RELIGIOUS_0101_ARTIFACT_SACRIFICE_TT
+		custom_tooltip = ATHA_TOMB_0101_ARTIFACT_SACRIFICE_TT
 		hidden_effect = {
 			random_list = {
 				60 = {
@@ -393,7 +393,7 @@ ATHA_religious.0101 = {
 
 	# Human Sacrifice
 	option = {
-		name = ATHA_religious.0101.d
+		name = ATHA_tomb.0101.d
 		trigger = {
 			exists = scope:potential_human_sacrifice
 			faith = { has_doctrine_parameter = human_sacrifice_active }
@@ -444,7 +444,7 @@ ATHA_religious.0101 = {
 		}
 
 		# Blessing / Curse chances
-		custom_tooltip = ATHA_RELIGIOUS_0101_HUMAN_SACRIFICE_TT
+		custom_tooltip = ATHA_TOMB_0101_HUMAN_SACRIFICE_TT
 		hidden_effect = {
 			random_list = {
 				70 = {
@@ -553,7 +553,7 @@ ATHA_religious.0101 = {
 	}
 }
 
-scripted_trigger ATHA_religious_0111_valid_courtier = {
+scripted_trigger ATHA_tomb_0111_valid_courtier = {
 	is_available_ai_adult = yes
 	is_attracted_to_gender_of = root
 	OR = {
@@ -569,22 +569,22 @@ scripted_trigger ATHA_religious_0111_valid_courtier = {
 	}
 }
 
-ATHA_religious.0111 = {
+ATHA_tomb.0111 = {
 	type = character_event
-	title = ATHA_religious.0111.t
+	title = ATHA_tomb.0111.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
 					exists = scope:sex_courtier
 				}
-				desc = ATHA_religious.0111.desc_with_courtier
+				desc = ATHA_tomb.0111.desc_with_courtier
 			}
 			triggered_desc = {
 				trigger = {
 					NOT = { exists = scope:sex_courtier }
 				}
-				desc = ATHA_religious.0111.desc_without_courtier
+				desc = ATHA_tomb.0111.desc_without_courtier
 			}
 		}
 	}
@@ -600,7 +600,7 @@ ATHA_religious.0111 = {
 
 	immediate = {
 		random_courtier_or_guest = {	#Select a suitable non-entity for this.
-			limit = { ATHA_religious_0111_valid_courtier = yes }
+			limit = { ATHA_tomb_0111_valid_courtier = yes }
 			weight = {
 				base = 1
 				modifier = {
@@ -629,7 +629,7 @@ ATHA_religious.0111 = {
 	}
 
 	option = {
-		name = ATHA_religious.0111.a
+		name = ATHA_tomb.0111.a
 		trigger = {
 			exists = scope:sex_courtier
 		}
@@ -678,7 +678,7 @@ ATHA_religious.0111 = {
 	}
 
 	option = {
-		name = ATHA_religious.0111.b
+		name = ATHA_tomb.0111.b
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -712,6 +712,217 @@ ATHA_religious.0111 = {
 		add_character_modifier = {
 			modifier = tomb_blessing_sex_appeal_modifier
 			years = 3
+		}
+	}
+}
+
+#######################
+# TOMB LOOTING EVENTS #
+#######################
+
+# A raiding character has the chance to loot a tomb.
+ATHA_tomb.0501 = {
+	hidden = yes
+	type = empty
+	scope = army
+
+	trigger = {
+		#You must be leading your own forces.
+		scope:raider = {
+			is_at_location = scope:barony.title_province
+			NOT = { has_character_flag = had_event_ATHA_tomb_0502 }
+		}
+		#The province must have a tomb that has not been looted.
+		scope:barony.title_province = {
+			province_has_tomb_trigger = yes
+			province_has_tomb_occupants_trigger = yes
+			NOT = { province_has_looted_tomb_trigger = yes }
+		}
+	}
+
+	immediate = {
+		random = {
+			chance = 100
+			save_scope_as = raid_army
+			scope:raider = {
+				scope:barony.title_province = {
+					save_scope_as = tomb_location
+				}
+				trigger_event = ATHA_tomb.0502
+			}
+		}
+	}
+}
+
+# Actual triggered event.
+ATHA_tomb.0502 = {
+	type = character_event
+	title = ATHA_tomb.0502.title
+	desc = ATHA_tomb.0502.desc
+	theme = battle
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_event_ATHA_tomb_0502
+			days = 365
+		}
+
+		#For loc.
+		scope:tomb_location = {
+			var:tomb_primary_occupant = {
+				save_scope_as = tomb_occupant
+			}
+		}
+	}
+
+	# Steal all the gold!
+	option = {
+		name = ATHA_tomb.0502.a
+		ai_chance = {
+			base = 2000
+
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = just
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = generous
+			}
+			modifier = {
+				factor = 0.25
+				faith = { has_doctrine = tenet_divine_inhumation }
+				NOT = { has_trait = cynical }
+			}
+			modifier = {
+				factor = 0.5
+				scope:tomb_occupant = {	is_close_or_extended_family_of = root }
+			}
+		}
+
+		# Stress impact
+		stress_impact = {
+			wrathful = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+			greedy = major_stress_impact_loss
+			just = minor_stress_impact_gain
+			paranoid = minor_stress_impact_gain
+			compassionate = minor_stress_impact_gain
+		}
+		if = {
+			limit = {
+				faith = { has_doctrine = tenet_divine_inhumation }
+				NOT = { has_trait = cynical }
+			}
+
+			custom_description_no_bullet = {
+				text = gain_stress_looting_tombs_with_divine_inhumation_tenet_effect
+			}
+			add_stress = medium_stress_gain
+		}
+		if = {
+			limit = {
+				scope:tomb_occupant = {	is_close_or_extended_family_of = root }
+			}
+
+			custom_description_no_bullet = { text = gain_stress_looting_tombs_of_relatives_effect }
+			add_stress = minor_stress_gain
+		}
+
+		scope:tomb_location = {
+			loot_tomb_effect = { LOOTER = root }
+		}
+		scope:raid_army = { add_loot = scope:tomb_location.tomb_treasure }
+
+		add_prestige = minor_prestige_gain
+
+		# Trigger a notification event.
+		save_scope_as = tomb_looter
+		scope:tomb_location = {
+			county = {
+				holder = { trigger_event = ATHA_tomb.0503 }
+			}
+		}
+	}
+
+	# Leave it.
+	option = {
+		name = ATHA_tomb.0502.b
+
+		add_piety = minor_piety_gain
+	}
+}
+
+# Tomb province county holder is informed.
+ATHA_tomb.0503 = {
+	type = character_event
+	title = ATHA_tomb.0503.title
+	desc = ATHA_tomb.0503.desc
+	theme = battle
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:tomb_looter
+		animation = personality_bold
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			scope:tomb_location = {
+				loot_tomb_effect = { LOOTER = scope:tomb_looter }
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_tomb.0503.a
+
+		if = {
+			limit = {
+				is_close_or_extended_family_of = scope:tomb_occupant
+			}
+
+			scope:tomb_looter = {
+				progress_towards_rival_effect = {
+					CHARACTER = root
+					REASON = rival_looted_relative_tomb
+					OPINION = -20
+				}
+			}
 		}
 	}
 }

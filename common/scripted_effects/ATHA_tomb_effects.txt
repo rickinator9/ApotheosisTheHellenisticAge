@@ -1,7 +1,7 @@
-﻿###
+﻿##
 #  Builds an unoccupied tomb, including costs. Should be called from the province where the tomb should appear.
 #  BUILDER - the builder of the tomb, who will also likely occupy the tomb.
-###
+##
 
 build_tomb_in_province_effect = {
 	$BUILDER$ = {
@@ -26,10 +26,10 @@ build_tomb_in_province_effect = {
 	}
 }
 
-###
+##
 #	Builds an unoccupied tomb. Should be called from the province where the tomb should appear.
 #	BUILDER - the builder of the tomb, who will also likely occupy the tomb
-###
+##
 
 build_tomb_effect = {
 	save_scope_as = tomb_location
@@ -64,9 +64,9 @@ build_tomb_effect = {
 	}
 }
 
-###
+##
 # Clears a tomb from a province. Must be called from province scope.
-###
+##
 clear_tomb_effect = {
 	remove_variable = tomb_builder
 	remove_variable = tomb_location
@@ -75,11 +75,11 @@ clear_tomb_effect = {
 	remove_county_modifier = built_tomb_modifier
 }
 
-###
+##
 # Adds a historical tomb to the scope (province).
 # OCCUPANT - the primary occupant of the tomb.
 # DATE - the date when the tomb was constructed.
-###
+##
 
 add_historical_tomb_with_date_effect = {
 	set_variable = {
@@ -103,7 +103,6 @@ add_historical_tomb_with_date_effect = {
 	}
 	add_province_modifier = {
 		modifier = built_tomb_modifier
-		desc = built_tomb_modifier_custom_desc
 	}
 	set_variable = {
 		name = tomb_treasure
@@ -111,10 +110,10 @@ add_historical_tomb_with_date_effect = {
 	}
 }
 
-###
+##
 # Set the primary occupant of a tomb.
 # OCCUPANT - the occupant to set.
-###
+##
 
 set_primary_occupant_of_tomb_effect = {
 	set_variable = {
@@ -123,10 +122,10 @@ set_primary_occupant_of_tomb_effect = {
 	}
 }
 
-###
+##
 # Adds a secondary occupant to a tomb.
 # OCCUPANT - the occupant to add.
-###
+##
 
 add_secondary_occupant_to_tomb_effect = {
 	add_to_variable_list = {
@@ -135,11 +134,11 @@ add_secondary_occupant_to_tomb_effect = {
 	}
 }
 
-###
+##
 # Designates a tomb as being looted (with a historical date)
 # LOOTER - the looter of the tomb
-# DATE - the date when the tomb was looted
-###
+# DATE - the year when the tomb was looted
+##
 
 set_tomb_looted_historical_effect = {
 	set_variable = {
@@ -149,6 +148,38 @@ set_tomb_looted_historical_effect = {
 	set_variable = {
 		name = tomb_looted_date
 		value = $DATE$
+	}
+
+	remove_province_modifier = {
+		modifier = built_tomb_modifier
+	}
+}
+
+##
+# Designates a tomb as being looted. (province scope)
+# LOOTER - the looter of the tomb
+##
+
+loot_tomb_effect = {
+	# Save scopes for localization
+	custom_description = {
+		text = loot_tomb_effect
+		set_variable = {
+			name = tomb_looter
+			value = $LOOTER$
+		}
+		set_variable = {
+			name = tomb_looted_date
+			value = current_year
+		}
+		set_variable = {
+			name = tomb_treasure
+			value = 0
+		}
+
+		remove_province_modifier = {
+			modifier = built_tomb_modifier
+		}
 	}
 }
 
@@ -180,7 +211,7 @@ sacrifice_to_tomb_occupant_effect = {
 				flag = has_sacrificed_at_tomb
 				years = 5
 			}
-			trigger_event = ATHA_religious.0101
+			trigger_event = ATHA_tomb.0101
 		}
 	}
 }
