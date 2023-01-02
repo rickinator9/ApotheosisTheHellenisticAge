@@ -1,4 +1,4 @@
-namespace = illyria_decisions
+﻿namespace = illyria_decisions
 
 ##############################
 # Form k_liburnia		 	 #
@@ -386,13 +386,18 @@ illyria_decisions.0003 = {
 
 			#Vassals aren't happy that you've looted their lands
 			holder = {
-				limit = { NOT = this:root }
-				custom_description_no_bullet = {
-					text = macedonian_county_holder
-				}
-				add_opinion = {
-					target = root
-					modifier = plundered_lands_opinion
+				if = {
+					limit = { 
+						NOT = { this = root }
+					}
+
+					custom_description_no_bullet = {
+						text = macedonian_county_holder
+					}
+					add_opinion = {
+						target = root
+						modifier = plundered_lands_opinion
+					}
 				}
 			}
 		}

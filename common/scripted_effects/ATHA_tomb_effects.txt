@@ -10,8 +10,7 @@ build_tomb_in_province_effect = {
 
 	if = {
 		limit = {
-			has_country_modifier = built_tomb_modifier
-			has_variable = tomb_buried_person
+			has_variable = tomb_primary_occupant
 		}
 
 		custom_tooltip = BUILD_TOMB_WILL_REMOVE_EXISTING_TOMB
@@ -177,9 +176,7 @@ loot_tomb_effect = {
 			value = 0
 		}
 
-		remove_province_modifier = {
-			modifier = built_tomb_modifier
-		}
+		remove_province_modifier = built_tomb_modifier
 	}
 }
 
