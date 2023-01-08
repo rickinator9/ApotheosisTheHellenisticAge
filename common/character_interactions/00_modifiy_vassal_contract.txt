@@ -90,7 +90,7 @@
 				limit = {
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-					local_var:vassal_role < contract_vassal_role_coalition_autonomous
+					local_var:vassal_role < obligation_level_vassal_role_coalition_autonomous
 				}
 				scope:recipient = {
 					custom_description = {
@@ -105,8 +105,8 @@
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 					OR = {
-						local_var:vassal_role = contract_vassal_role_city_state_dependent
-						local_var:vassal_role = contract_vassal_role_coalition_dependent
+						local_var:vassal_role = obligation_level_vassal_role_city_state_dependent
+						local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 					}
 				}
 				scope:actor = { can_create_dependent_vassals = yes }
@@ -117,8 +117,8 @@
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 					OR = {
-						local_var:vassal_role = contract_vassal_role_coalition_autonomous
-						local_var:vassal_role = contract_vassal_role_coalition_dependent
+						local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+						local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 					}
 				}
 				scope:recipient = {
@@ -134,8 +134,8 @@
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 					OR = {
-						local_var:vassal_role = contract_vassal_role_coalition_autonomous
-						local_var:vassal_role = contract_vassal_role_coalition_dependent
+						local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+						local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 					}
 					scope:recipient = {
 						NOT = { vassal_contract_has_flag = has_dependent_coalition_contract }
@@ -148,7 +148,7 @@
 				limit = {
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-					local_var:vassal_role > contract_vassal_role_coalition_dependent
+					local_var:vassal_role > obligation_level_vassal_role_coalition_dependent
 				}
 				scope:actor = { can_create_bureaucratic_vassals = yes }
 			}
@@ -157,7 +157,7 @@
 				limit = {
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-					local_var:vassal_role = contract_vassal_role_bureaucracy_military
+					local_var:vassal_role = obligation_level_vassal_role_bureaucracy_military
 				}
 				scope:actor.culture = { has_innovation = innovation_classical_garrisons }
 			}
@@ -167,8 +167,8 @@
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 					OR = {
-						local_var:vassal_role = contract_vassal_role_bureaucracy_civil
-						local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+						local_var:vassal_role = obligation_level_vassal_role_bureaucracy_civil
+						local_var:vassal_role = obligation_level_vassal_role_bureaucracy_feudal
 					}
 				}
 				scope:actor.culture = { has_innovation = innovation_classical_bureaucracy }
@@ -178,7 +178,7 @@
 				limit = {
 					exists = local_var:vassal_role
 					local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+					local_var:vassal_role = obligation_level_vassal_role_bureaucracy_feudal
 				}
 				scope:recipient = {
 					custom_description = {
@@ -451,7 +451,7 @@ vassal_modify_vassal_contract_interaction = {
 			limit = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-				local_var:vassal_role < contract_vassal_role_coalition_autonomous
+				local_var:vassal_role < obligation_level_vassal_role_coalition_autonomous
 			}
 			scope:recipient = {
 				custom_description = {
@@ -466,8 +466,8 @@ vassal_modify_vassal_contract_interaction = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 				OR = {
-					local_var:vassal_role = contract_vassal_role_city_state_dependent
-					local_var:vassal_role = contract_vassal_role_coalition_dependent
+					local_var:vassal_role = obligation_level_vassal_role_city_state_dependent
+					local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 				}
 			}
 			scope:actor = { can_create_dependent_vassals = yes }
@@ -478,8 +478,8 @@ vassal_modify_vassal_contract_interaction = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 				OR = {
-					local_var:vassal_role = contract_vassal_role_coalition_autonomous
-					local_var:vassal_role = contract_vassal_role_coalition_dependent
+					local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+					local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 				}
 			}
 			scope:recipient = {
@@ -495,8 +495,8 @@ vassal_modify_vassal_contract_interaction = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 				OR = {
-					local_var:vassal_role = contract_vassal_role_coalition_autonomous
-					local_var:vassal_role = contract_vassal_role_coalition_dependent
+					local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+					local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 				}
 				scope:recipient = {
 					NOR = { 
@@ -512,7 +512,7 @@ vassal_modify_vassal_contract_interaction = {
 			limit = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-				local_var:vassal_role > contract_vassal_role_coalition_dependent
+				local_var:vassal_role > obligation_level_vassal_role_coalition_dependent
 			}
 			scope:actor = { can_create_bureaucratic_vassals = yes }
 		}
@@ -521,7 +521,7 @@ vassal_modify_vassal_contract_interaction = {
 			limit = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-				local_var:vassal_role = contract_vassal_role_bureaucracy_military
+				local_var:vassal_role = obligation_level_vassal_role_bureaucracy_military
 				NOT = { 
 					scope:recipient.culture = { has_innovation = innovation_classical_garrisons }
 				}
@@ -534,8 +534,8 @@ vassal_modify_vassal_contract_interaction = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
 				OR = {
-					local_var:vassal_role = contract_vassal_role_bureaucracy_civil
-					local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+					local_var:vassal_role = obligation_level_vassal_role_bureaucracy_civil
+					local_var:vassal_role = obligation_level_vassal_role_bureaucracy_feudal
 				}
 				NOT = { 
 					scope:recipient.culture = { has_innovation = innovation_classical_bureaucracy }
@@ -548,7 +548,7 @@ vassal_modify_vassal_contract_interaction = {
 			limit = {
 				exists = local_var:vassal_role
 				local_var:vassal_role != scope:obligation_check.vassal_contract_obligation_level:vassal_role
-				local_var:vassal_role = contract_vassal_role_bureaucracy_feudal
+				local_var:vassal_role = obligation_level_vassal_role_bureaucracy_feudal
 			}
 			scope:recipient = {
 				custom_description = {

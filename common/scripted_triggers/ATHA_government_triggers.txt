@@ -137,11 +137,11 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_coinage_rights_city_state"
-			local_var:vassal_role != contract_vassal_role_city_state_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_city_state_autonomous
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_coinage_rights_coalition"
-			local_var:vassal_role != contract_vassal_role_coalition_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_coalition_autonomous
 		}
 	}
 	# Make it impossible to modify religious rights when an autonomous contract is selected.
@@ -155,11 +155,11 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_religious_rights_city_state"
-			local_var:vassal_role != contract_vassal_role_city_state_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_city_state_autonomous
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_religious_rights_coalition"
-			local_var:vassal_role != contract_vassal_role_coalition_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_coalition_autonomous
 		}
 	}
 	# Make it impossible to modify title revocation rights when an autonomous contract is selected.
@@ -173,11 +173,11 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_title_revocation_rights_city_state"
-			local_var:vassal_role != contract_vassal_role_city_state_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_city_state_autonomous
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_title_revocation_rights_coalition"
-			local_var:vassal_role != contract_vassal_role_coalition_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_coalition_autonomous
 		}
 	}
 	# Make it impossible to modify garrison rights when an autonomous contract is selected.
@@ -191,18 +191,18 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_garrison_rights_city_state"
-			local_var:vassal_role != contract_vassal_role_city_state_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_city_state_autonomous
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_garrison_rights_coalition"
-			local_var:vassal_role != contract_vassal_role_coalition_autonomous
+			local_var:vassal_role != obligation_level_vassal_role_coalition_autonomous
 		}
 	}
 	# Make it impossible to modify ritual coronations, fortification rights and garrison rights when a bureaucratic contract is selected.
 	trigger_if = {
 		limit = {
 			exists = local_var:vassal_role
-			local_var:vassal_role >= contract_vassal_role_bureaucracy_civil
+			local_var:vassal_role >= obligation_level_vassal_role_bureaucracy_civil
 		}
 		trigger_if = {
 			limit = { exists = local_var:ritual_coronations_rights }
@@ -237,20 +237,20 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_colony_rights_bureaucracy_civil"
-			local_var:vassal_role != contract_vassal_role_bureaucracy_civil
+			local_var:vassal_role != obligation_level_vassal_role_bureaucracy_civil
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_colony_rights_coalition"
 			NOR = {
-				local_var:vassal_role = contract_vassal_role_coalition_autonomous
-				local_var:vassal_role = contract_vassal_role_coalition_dependent
+				local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+				local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 			}
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_colony_rights_city_state"
 			NOR = {
-				local_var:vassal_role = contract_vassal_role_city_state_autonomous
-				local_var:vassal_role = contract_vassal_role_city_state_dependent
+				local_var:vassal_role = obligation_level_vassal_role_city_state_autonomous
+				local_var:vassal_role = obligation_level_vassal_role_city_state_dependent
 			}
 		}
 	}
@@ -265,13 +265,13 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_imposed_franchise_bureaucracy"
-			local_var:vassal_role < contract_vassal_role_bureaucracy_civil
+			local_var:vassal_role < obligation_level_vassal_role_bureaucracy_civil
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_imposed_franchise_coalition"
 			NOR = {
-				local_var:vassal_role = contract_vassal_role_coalition_autonomous
-				local_var:vassal_role = contract_vassal_role_coalition_dependent
+				local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
+				local_var:vassal_role = obligation_level_vassal_role_coalition_dependent
 			}
 		}
 	}
@@ -281,12 +281,12 @@ vassal_contract_compatibility_trigger = {
 			AND = {
 				exists = local_var:vassal_role
 				exists = local_var:imposed_franchise
-				local_var:vassal_role = contract_vassal_role_city_state_autonomous
+				local_var:vassal_role = obligation_level_vassal_role_city_state_autonomous
 			}
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_imposed_franchise_city_state_autonomous"
-			local_var:imposed_franchise <= contract_imposed_franchise_democratic
+			local_var:imposed_franchise <= obligation_level_imposed_franchise_democratic
 		}
 	}
 	# Make it impossible to modify enforced centralisation when bureaucracy or city state contracts are selected.
@@ -300,11 +300,11 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_centralisation_bureaucracy"
-			local_var:vassal_role < contract_vassal_role_bureaucracy_civil
+			local_var:vassal_role < obligation_level_vassal_role_bureaucracy_civil
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_centralisation_city_state"
-			NOT = { local_var:vassal_role <= contract_vassal_role_city_state_dependent }
+			NOT = { local_var:vassal_role <= obligation_level_vassal_role_city_state_dependent }
 		}
 	}
 	# Make it impossible to modify enforced federalism when bureaucracy or city state contracts are selected.
@@ -318,18 +318,18 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_federalism_bureaucracy"
-			local_var:vassal_role < contract_vassal_role_bureaucracy_civil
+			local_var:vassal_role < obligation_level_vassal_role_bureaucracy_civil
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_federalism_city_state"
-			NOT = { local_var:vassal_role <= contract_vassal_role_city_state_dependent }
+			NOT = { local_var:vassal_role <= obligation_level_vassal_role_city_state_dependent }
 		}
 	}
 	# Make it impossible to modify enforced federalism and enforced centralisation to anything other than federal & low when autonomous coalition contract is selected.
 	trigger_if = {
 		limit = {
 			exists = local_var:vassal_role
-			local_var:vassal_role = contract_vassal_role_coalition_autonomous
+			local_var:vassal_role = obligation_level_vassal_role_coalition_autonomous
 			OR = {
 				local_var:enforced_federalism != scope:obligation_check.vassal_contract_obligation_level:enforced_federalism
 				local_var:enforced_centralisation != scope:obligation_check.vassal_contract_obligation_level:enforced_centralisation
@@ -337,11 +337,11 @@ vassal_contract_compatibility_trigger = {
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_federalism_coalition_autonomous"
-			local_var:enforced_federalism != contract_enforced_federalism_hegemonic
+			local_var:enforced_federalism != obligation_level_enforced_federalism_hegemonic
 		}
 		custom_description = {
 			text = "vassal_contract_cannot_modify_enforced_centralisation_coalition_autonomous"
-			local_var:enforced_centralisation < contract_enforced_centralisation_medium
+			local_var:enforced_centralisation < obligation_level_enforced_centralisation_medium
 		}
 	}
 }
