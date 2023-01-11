@@ -95,7 +95,7 @@ restore_k_paionia_borders_decision = { # aka: Reclaim the Greater Paionian Lands
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				#target = flag:restore_k_paionia_borders_decision
+				target = flag:restore_k_paionia_borders_decision
 			}
 		}
 	}
@@ -138,15 +138,6 @@ restore_k_paionia_borders_decision = { # aka: Reclaim the Greater Paionian Lands
 
 		#Event for player
 		trigger_event = illyria_decisions.0003
-
-		#Notify other players
-		every_player = {
-			limit = {
-				NOT = { this = root }
-				is_within_diplo_range = { CHARACTER = root }
-			}
-			trigger_event = illyria_decisions.0004
-		}
 	}
 	
 	ai_potential = {

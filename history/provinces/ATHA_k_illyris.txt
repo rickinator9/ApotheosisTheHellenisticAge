@@ -3,23 +3,23 @@
 ## Ardiaiste ###################################
 
 ### Epidauros
-2049 = { # b_raousin_epidauros_illyria	
-
-	# Misc
-	culture = dorian
-	religion = pythian_faith
-
-	holding = none
-
-	# History
-}
 2050 = { # b_epidauros_epidauros_illyria	
 
 	# Misc
-	culture = dorian
-	religion = pythian_faith
+	culture = dassian # Greek settlement probably only occurred later in the Hellenistic period
+	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	# History
+}
+2049 = { # b_raousin_epidauros_illyria	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = none
 
 	# History
 }
@@ -31,7 +31,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -53,7 +53,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -69,6 +69,16 @@
 }
 
 ### Birokrotson
+2068 = { # b_birokrotson_birokrotson	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	# History
+}
 2067 = { # b_tenion_birokrotson	
 
 	# Misc
@@ -79,45 +89,35 @@
 
 	# History
 }
-2068 = { # b_birokrotson_birokrotson	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = fort_holding
-
-	# History
-}
 2069 = { # b_salthua_birokrotson	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
 
 ### Baris
-2070 = { # b_anderva_varis	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = city_holding
-
-	# History
-}
 2071 = { # b_varis_varis	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
+
+	# History
+}
+2070 = { # b_anderva_varis	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = none
 
 	# History
 }
@@ -127,12 +127,37 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
 
 ### Rhizon
+2080 = { # b_rhizon_rhizon	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_04 } # There were cyclopean walls built in the 6th century and the city continued to grow in importance
+
+	# History 
+	2954.1.1 = {
+		special_building_slot = rhizon_palace_01
+	}
+
+	2954.1.1 = {
+		special_building = rhizon_palace_01
+	}
+
+	3494.1.1 = {
+		special_building = rhizon_palace_02
+	}
+
+	# Domestic textile production
+}
 2076 = { # b_ketigna_rhizon	
 
 	# Misc
@@ -163,31 +188,6 @@
 
 	# History
 }
-2080 = { # b_rhizon_rhizon	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = castle_holding
-
-	buildings = { castle_02 } # There were cyclopean walls built in the 6th century and the city continued to grow in importance
-
-	# History 
-	2954.1.1 = {
-		special_building_slot = rhizon_palace_01
-	}
-
-	2954.1.1 = {
-		special_building = rhizon_palace_01
-	}
-
-	3494.1.1 = {
-		special_building = rhizon_palace_02
-	}
-
-	# Domestic textile production
-}
 2081 = { # b_askrabion_rhizon	
 
 	# Misc
@@ -202,23 +202,25 @@
 ## Labeatis ###################################
 
 ### Doklia
-2073 = { # b_halata_doklia	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = city_holding
-
-	# History
-}
 2074 = { # b_doklia_doklia	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
+2073 = { # b_halata_doklia	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = none
 
 	# History
 }
@@ -237,10 +239,12 @@
 2082 = { # b_bouthoe_bouthoe	
 
 	# Misc
-	culture = dorian
-	religion = pythian_faith
+	culture = dassian # the few Greek remains are primarily from the Hellenistic-Roman cemetery (Papović and Popović Ljubiša (1996)) 
+	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
 
 	# History
 }
@@ -262,7 +266,9 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
 
 	# History
 }
@@ -278,6 +284,18 @@
 }
 
 ### Bassania	
+2154 = { # b_bassania_bassania	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_03 }
+
+	# History
+}
 2151 = { # b_berissa_bassania	
 
 	# Misc
@@ -294,17 +312,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
-
-	# History
-}
-2154 = { # b_bassania_bassania	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = castle_holding
+	holding = none
 
 	# History
 }
@@ -314,19 +322,33 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = fort_holding
+
+	buildings = { fort_02 }
 
 	# History
 }
 
 ### Medeon
+2158 = { # b_medeon_medeon	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
 2156 = { # b_sinna_medeon	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -336,17 +358,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
-
-	# History
-}
-2158 = { # b_medeon_medeon	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = castle_holding
+	holding = none
 
 	# History
 }
@@ -360,7 +372,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -370,7 +382,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -382,7 +394,7 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -402,45 +414,25 @@
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
 
 ### Daorson
-2053 = { # b_pardoua_daorson	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = city_holding
-
-	# History
-}
-2054 = { # b_dilounton_daorson	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = castle_holding
-
-	# History
-}
 2055 = { # b_daorson_daorson	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_04 }
 
 	# History
 }
-
-### Lagibalion
-2059 = { # b_venbra_lagibalion	
+2053 = { # b_pardoua_daorson	
 
 	# Misc
 	culture = dassian
@@ -450,13 +442,37 @@
 
 	# History
 }
-2060 = { # b_lagibalion_lagibalion	
+2054 = { # b_dilounton_daorson	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
 	holding = fort_holding
+
+	buildings = { fort_02 }
+
+	# History
+}
+
+### Lagibalion
+2060 = { # b_lagibalion_lagibalion	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	# History
+}
+2059 = { # b_venbra_lagibalion	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = none
 
 	# History
 }
@@ -472,6 +488,16 @@
 }
 
 ### Gakon
+2063 = { # b_gakon_gakon	
+
+	# Misc
+	culture = dassian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	# History
+}
 2062 = { # b_ausion_gakon	
 
 	# Misc
@@ -482,23 +508,13 @@
 
 	# History
 }
-2063 = { # b_gakon_gakon	
-
-	# Misc
-	culture = dassian
-	religion = illyrian_faith
-
-	holding = fort_holding
-
-	# History
-}
 2064 = { # b_semeron_gakon	
 
 	# Misc
 	culture = dassian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -538,17 +554,17 @@
 }
 
 ### Kreonion
-2109 = { # b_ouatron_kreonion	
+2110 = { # b_kreonion_kreonion	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
 
 	# History
 }
-2110 = { # b_kreonion_kreonion	
+2109 = { # b_ouatron_kreonion	
 
 	# Misc
 	culture = mathian
@@ -560,6 +576,16 @@
 }
 
 ### Antipatreia	
+2114 = { # b_antipatreia_antipatreia	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = castle_holding
+
+	# History
+}
 2112 = { # b_dermion_antipatreia	
 
 	# Misc
@@ -577,16 +603,6 @@
 	religion = illyrian_faith
 
 	holding = fort_holding
-
-	# History
-}
-2114 = { # b_antipatreia_antipatreia	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = castle_holding
 
 	# History
 }
@@ -608,7 +624,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -618,29 +634,33 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
 
 ### Parthos	
-2118 = { # b_kodrion_parthos	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = castle_holding
-
-	# History
-}
 2119 = { # b_parthos_parthos	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
+2118 = { # b_kodrion_parthos	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = fort_holding
+
+	buildings = { fort_03 }
 
 	# History
 }
@@ -650,12 +670,24 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
 
 ### Gertous	
+2123 = { # b_gertous_gertous	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
 2121 = { # b_henta_gertous	
 
 	# Misc
@@ -673,16 +705,6 @@
 	religion = illyrian_faith
 
 	holding = fort_holding
-
-	# History
-}
-2123 = { # b_gertous_gertous	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = castle_holding
 
 	# History
 }
@@ -718,7 +740,9 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
 
 	# History
 }
@@ -728,7 +752,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -752,6 +776,8 @@
 
 	holding = castle_holding
 
+	buildings = { castle_02 }
+
 	# History
 }
 2131 = { # b_kerax_lychnidos	
@@ -770,19 +796,31 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = city_holding
 
 	# History
 }
 
 ### Sesarethos	
+2139 = { # b_sesarethos_sesarethos	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_03 }
+
+	# History
+}
 2137 = { # b_grandavia_sesarethos	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = city_holding
+	holding = none
 
 	# History
 }
@@ -796,16 +834,6 @@
 
 	# History
 }
-2139 = { # b_sesarethos_sesarethos	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = castle_holding
-
-	# History
-}
 
 ## Drilon ###################################
 
@@ -816,7 +844,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 	
 	# History
 }
@@ -848,7 +876,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -868,7 +896,9 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = fort_holding
+
+	buildings = { fort_02 }
 
 	# History
 }
@@ -880,7 +910,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -908,16 +938,6 @@
 ## Epidamnia ###################################
 
 ### Epidamnos
-2100 = { # b_rhodon_epidamnos	
-
-	# Misc
-	culture = dorian
-	religion = pythian_faith
-
-	holding = fort_holding
-
-	# History
-}
 2101 = { # b_epidamnos_epidamnos	
 
 	# Misc
@@ -925,6 +945,18 @@
 	religion = pythian_faith
 
 	holding = castle_holding
+
+	buildings = { castle_02 }
+
+	# History
+}
+2100 = { # b_rhodon_epidamnos	
+
+	# Misc
+	culture = dorian
+	religion = pythian_faith
+
+	holding = city_holding
 
 	# History
 }
@@ -940,6 +972,18 @@
 }
 
 ### Apollonia
+2105 = { # b_apollonia_apollonia_illyria	
+
+	# Misc
+	culture = dorian
+	religion = pythian_faith
+
+	holding = castle_holding
+
+	buildings = { castle_02 }
+
+	# History
+}
 2103 = { # b_agrion_apollonia_illyria	
 
 	# Misc
@@ -960,49 +1004,51 @@
 
 	# History
 }
-2105 = { # b_apollonia_apollonia_illyria	
-
-	# Misc
-	culture = dorian
-	religion = pythian_faith
-
-	holding = castle_holding
-
-	# History
-}
 
 ## Mathis ###################################
 
 ### Nymphaion
+2087 = { # b_nymphaion_nymphaion_illyria	
+
+	# Misc
+	culture = mathian # Greek settlement seems to have only occurred later in the Hellenistic period
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
 2086 = { # b_kataphthinon_nymphaion_illyria	
 
 	# Misc
-	culture = dorian
-	religion = pythian_faith
+	culture = mathian
+	religion = illyrian_faith
 
 	holding = church_holding
 
 	# History
 }
-2087 = { # b_nymphaion_nymphaion_illyria	
-
-	# Misc
-	culture = dorian
-	religion = pythian_faith
-
-	holding = castle_holding
-
-	# History
-}
 
 ### Lissos
-2088 = { # b_akmopiton_lissos	
+2090 = { # b_lissos_lissos	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
 	holding = castle_holding
+
+	# History
+}
+2088 = { # b_akmopiton_lissos	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = city_holding
 
 	# History
 }
@@ -1016,18 +1062,20 @@
 
 	# History
 }
-2090 = { # b_lissos_lissos	
+
+### Albanopolis
+2093 = { # b_albanopolis_albanopolis	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = none
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
 
 	# History
 }
-
-### Albanopolis
 2091 = { # b_gelion_albanopolis	
 
 	# Misc
@@ -1048,16 +1096,6 @@
 
 	# History
 }
-2093 = { # b_albanopolis_albanopolis	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = castle_holding
-
-	# History
-}
 
 ### Bendabelos
 2095 = { # b_bendabelos_bendabelos	
@@ -1066,7 +1104,7 @@
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -1082,13 +1120,25 @@
 }
 
 ### Tirkan
+2099 = { # b_tirkan_tirkan	
+
+	# Misc
+	culture = mathian
+	religion = illyrian_faith
+
+	holding = tribal_holding
+
+	buildings = { tribe_02 }
+
+	# History
+}
 2097 = { # b_dhounti_tirkan	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = fort_holding
+	holding = tribal_holding
 
 	# History
 }
@@ -1102,18 +1152,18 @@
 
 	# History
 }
-2099 = { # b_tirkan_tirkan	
+
+### Perna
+2162 = { # b_perna_perna	
 
 	# Misc
 	culture = mathian
 	religion = illyrian_faith
 
-	holding = castle_holding
+	holding = tribal_holding
 
 	# History
 }
-
-### Perna
 2160 = { # b_agrona_perna	
 
 	# Misc
@@ -1131,16 +1181,6 @@
 	religion = illyrian_faith
 
 	holding = none
-
-	# History
-}
-2162 = { # b_perna_perna	
-
-	# Misc
-	culture = mathian
-	religion = illyrian_faith
-
-	holding = fort_holding
 
 	# History
 }
