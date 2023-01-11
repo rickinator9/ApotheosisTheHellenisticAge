@@ -720,6 +720,121 @@ ATHA_tomb.0111 = {
 # TOMB LOOTING EVENTS #
 #######################
 
+scripted_effect event_loot_tomb_effect = {
+	stress_impact = {
+		wrathful = minor_stress_impact_loss
+		vengeful = minor_stress_impact_loss
+		greedy = major_stress_impact_loss
+		just = minor_stress_impact_gain
+		paranoid = minor_stress_impact_gain
+		compassionate = minor_stress_impact_gain
+	}
+
+	# Uncynical characters following a faith with Divine Inhumation are committing a grave sin!
+	if = {
+		limit = {
+			faith = { has_doctrine = tenet_divine_inhumation }
+			NOT = { has_trait = cynical }
+		}
+
+		custom_description_no_bullet = {
+			text = looting_tombs_with_divine_inhumation_tenet_effect
+		}
+		add_stress = medium_stress_gain
+		add_piety = major_piety_loss
+	}
+
+	# If looting the tomb of relatives, it can cause a bit of stress as the respect of family members is broken.
+	if = {
+		limit = {
+			scope:tomb_occupant = {	is_close_or_extended_family_of = root }
+		}
+
+		custom_description_no_bullet = { text = looting_tombs_of_relatives_effect }
+		add_stress = minor_stress_gain
+		add_prestige = medium_prestige_loss
+	}
+
+	# The family of the tomb occupant are greatly disrespected!
+	scope:tomb_occupant = {
+		every_close_or_extended_family_member = {
+			custom = all_close_family_members
+			limit = { 
+				NOT = { this = root }
+			}
+
+			# Hate their family member's tomb being looted.
+			progress_towards_rival_effect = {
+				CHARACTER = root
+				REASON = rival_looted_relative_tomb
+				OPINION = -25
+			}
+		}
+	}
+
+	add_prestige = minor_prestige_gain
+	scope:tomb_location = {
+		loot_tomb_effect = { LOOTER = root }
+	}
+}
+
+scripted_effect had_tomb_looted_effect = {
+	show_as_tooltip = {
+		scope:tomb_location = {
+			loot_tomb_effect = { LOOTER = scope:tomb_looter }
+		}
+		scope:tomb_occupant = {
+			every_close_or_extended_family_member = {
+				custom = all_close_family_members
+				limit = { 
+					NOT = { this = scope:tomb_looter }
+				}
+
+				# Hate their family member's tomb being looted.
+				progress_towards_rival_effect = {
+					CHARACTER = scope:tomb_looter
+					REASON = rival_looted_relative_tomb
+					OPINION = -25
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			faith = { has_doctrine = tenet_divine_inhumation }
+		}
+
+		add_piety = medium_piety_loss
+	}
+	add_prestige = medium_prestige_loss
+	
+	scope:tomb_occupant = {
+		every_close_or_extended_family_member = {
+			custom = all_close_family_members
+			limit = { 
+				NOT = { this = scope:tomb_looter }
+			}
+
+			add_opinion = {
+				target = root
+				modifier = failed_to_protected_relatives_tomb_from_looting_opinion
+			}
+		}
+	}
+	every_held_county = {
+		custom = all_held_counties_practicing_divine_inhumation
+		limit = {
+			faith = { has_doctrine = tenet_divine_inhumation }
+		}
+
+		add_county_modifier = {
+			modifier = failed_to_prevent_tomb_looting_province_modifier
+			years = 15
+		}
+	}
+}
+
 # A raiding character has the chance to loot a tomb.
 ATHA_tomb.0501 = {
 	hidden = yes
@@ -730,7 +845,7 @@ ATHA_tomb.0501 = {
 		#You must be leading your own forces.
 		scope:raider = {
 			is_at_location = scope:barony.title_province
-			NOT = { has_character_flag = had_event_ATHA_tomb_0502 }
+			NOT = { has_character_flag = had_event_ATHA_tomb_0501 }
 		}
 		#The province must have a tomb that has not been looted.
 		scope:barony.title_province = {
@@ -742,7 +857,21 @@ ATHA_tomb.0501 = {
 
 	immediate = {
 		random = {
-			chance = 100
+			chance = 15
+			modifier = {
+				factor = 1.5
+				scope:raider = { has_trait = pillager }
+			}
+			modifier = {
+				factor = 1.5
+				scope:raider = { has_trait = reaver }
+			}
+
+			add_character_flag = {
+				flag = had_event_ATHA_tomb_0501
+				days = 365
+			}
+
 			save_scope_as = raid_army
 			scope:raider = {
 				scope:barony.title_province = {
@@ -770,6 +899,212 @@ ATHA_tomb.0502 = {
 	}
 
 	immediate = {
+		#For loc.
+		scope:tomb_location = {
+			var:tomb_primary_occupant = {
+				save_scope_as = tomb_occupant
+			}
+		}
+	}
+
+	# Steal all the gold!
+	option = {
+		name = ATHA_tomb.0502.a
+		ai_chance = {
+			base = 1
+
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.25
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = just
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 0.9
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				has_trait = generous
+			}
+			modifier = {
+				factor = 0.25
+				faith = { has_doctrine = tenet_divine_inhumation }
+				NOR = {
+					has_trait = cynical
+					has_trait = zealous
+				}
+			}
+			modifier = {
+				factor = 0.1
+				faith = { has_doctrine = tenet_divine_inhumation }
+				has_trait = zealous
+			}
+			modifier = {
+				factor = 0.5
+				scope:tomb_occupant = {	is_close_or_extended_family_of = root }
+			}
+		}
+
+		scope:raid_army = { add_loot = scope:tomb_location.tomb_treasure }
+		event_loot_tomb_effect = yes
+
+		# Trigger a notification event.
+		save_scope_as = tomb_looter
+		scope:tomb_location = {
+			county = {
+				holder = { trigger_event = ATHA_tomb.0503 }
+			}
+		}
+	}
+
+	# Leave it.
+	option = {
+		name = ATHA_tomb.0502.b
+		ai_chance = {
+			base = 1
+		}
+
+		add_piety = minor_piety_gain
+	}
+}
+
+# Tomb province county holder is informed.
+ATHA_tomb.0503 = {
+	type = character_event
+	title = ATHA_tomb.0503.title
+	desc = ATHA_tomb.0503.desc
+	theme = battle
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:tomb_looter
+		animation = personality_bold
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	immediate = {
+		had_tomb_looted_effect = yes
+	}
+
+	option = {
+		name = ATHA_tomb.0503.a
+	}
+}
+
+# Upon completing a siege, the victorious army commanders have a chance to loot a tomb.
+ATHA_tomb.0511 = {
+	hidden = yes
+
+	trigger = {
+		NOT = { has_character_flag = had_event_ATHA_tomb_0511 }
+
+		# There may be some situations where the occupation are caused by different actors than the occupier.
+		any_army = {
+			location = scope:barony.title_province
+		}
+		#The province must have a tomb that has not been looted.
+		scope:barony.title_province = {
+			province_has_tomb_trigger = yes
+			province_has_tomb_occupants_trigger = yes
+			NOT = { province_has_looted_tomb_trigger = yes }
+		}
+	}
+
+	immediate = {
+		every_army = {
+			limit = { location = scope:barony.title_province }
+			army_commander = {
+				add_to_list = potential_looters
+			}
+		}
+
+		random = {
+			chance = 10
+			modifier = {
+				add = 5
+				any_in_list = {
+					list = potential_looters
+					has_trait = pillager
+				}
+			}
+			modifier = {
+				add = 5
+				any_in_list = {
+					list = potential_looters
+					has_trait = reaver
+				}
+			}
+			modifier = {
+				factor = 1.5
+				any_in_list = { list = potential_looters count >= 5 }
+			}
+
+			add_character_flag = {
+				flag = had_event_ATHA_tomb_0511
+				days = 365
+			}			
+
+			save_scope_as = looter_employer
+			scope:barony.title_province = {
+				save_scope_as = tomb_location
+			}
+			random_in_list = {
+				list = potential_looters
+				weight = {
+					base = 100
+					modifier = {
+						factor = 1.5
+						has_trait = pillager
+					}
+					modifier = {
+						factor = 1.5
+						has_trait = reaver
+					}
+				}
+
+				save_scope_as = tomb_looter
+				trigger_event = ATHA_tomb.0512
+			}
+		}
+	}
+}
+
+# Actual triggered event.
+ATHA_tomb.0512 = {
+	type = character_event
+	title = ATHA_tomb.0512.title
+	desc = ATHA_tomb.0512.desc
+	theme = battle
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	immediate = {
 		add_character_flag = {
 			flag = had_event_ATHA_tomb_0502
 			days = 365
@@ -785,7 +1120,7 @@ ATHA_tomb.0502 = {
 
 	# Steal all the gold!
 	option = {
-		name = ATHA_tomb.0502.a
+		name = ATHA_tomb.0512.a
 		ai_chance = {
 			base = 2000
 
@@ -820,7 +1155,15 @@ ATHA_tomb.0502 = {
 			modifier = {
 				factor = 0.25
 				faith = { has_doctrine = tenet_divine_inhumation }
-				NOT = { has_trait = cynical }
+				NOR = {
+					has_trait = cynical
+					has_trait = zealous
+				}
+			}
+			modifier = {
+				factor = 0.1
+				faith = { has_doctrine = tenet_divine_inhumation }
+				has_trait = zealous
 			}
 			modifier = {
 				factor = 0.5
@@ -828,64 +1171,42 @@ ATHA_tomb.0502 = {
 			}
 		}
 
-		# Stress impact
-		stress_impact = {
-			wrathful = minor_stress_impact_loss
-			vengeful = minor_stress_impact_loss
-			greedy = major_stress_impact_loss
-			just = minor_stress_impact_gain
-			paranoid = minor_stress_impact_gain
-			compassionate = minor_stress_impact_gain
-		}
-		if = {
-			limit = {
-				faith = { has_doctrine = tenet_divine_inhumation }
-				NOT = { has_trait = cynical }
-			}
-
-			custom_description_no_bullet = {
-				text = gain_stress_looting_tombs_with_divine_inhumation_tenet_effect
-			}
-			add_stress = medium_stress_gain
-		}
-		if = {
-			limit = {
-				scope:tomb_occupant = {	is_close_or_extended_family_of = root }
-			}
-
-			custom_description_no_bullet = { text = gain_stress_looting_tombs_of_relatives_effect }
-			add_stress = minor_stress_gain
-		}
-
-		scope:tomb_location = {
-			loot_tomb_effect = { LOOTER = root }
-		}
-		scope:raid_army = { add_loot = scope:tomb_location.tomb_treasure }
-
-		add_prestige = minor_prestige_gain
+		add_gold = scope:tomb_location.tomb_treasure
+		event_loot_tomb_effect = yes
 
 		# Trigger a notification event.
 		save_scope_as = tomb_looter
 		scope:tomb_location = {
 			county = {
-				holder = { trigger_event = ATHA_tomb.0503 }
+				holder = { trigger_event = ATHA_tomb.0513 }
 			}
 		}
 	}
 
 	# Leave it.
 	option = {
-		name = ATHA_tomb.0502.b
+		name = ATHA_tomb.0512.b
+		ai_chance = {
+			base = 1
+		}
 
 		add_piety = minor_piety_gain
 	}
 }
 
 # Tomb province county holder is informed.
-ATHA_tomb.0503 = {
+ATHA_tomb.0513 = {
 	type = character_event
-	title = ATHA_tomb.0503.title
-	desc = ATHA_tomb.0503.desc
+	title = ATHA_tomb.0513.title
+	desc = {
+		desc = ATHA_tomb.0513.desc
+		triggered_desc = {
+			trigger = {
+				faith = { has_doctrine = tenet_divine_inhumation }
+			}
+			desc = ATHA_tomb.0513.a_divine_inhumation
+		}
+	}
 	theme = battle
 
 	left_portrait = {
@@ -901,28 +1222,10 @@ ATHA_tomb.0503 = {
 	}
 
 	immediate = {
-		show_as_tooltip = {
-			scope:tomb_location = {
-				loot_tomb_effect = { LOOTER = scope:tomb_looter }
-			}
-		}
+		had_tomb_looted_effect = yes
 	}
 
 	option = {
-		name = ATHA_tomb.0503.a
-
-		if = {
-			limit = {
-				is_close_or_extended_family_of = scope:tomb_occupant
-			}
-
-			scope:tomb_looter = {
-				progress_towards_rival_effect = {
-					CHARACTER = root
-					REASON = rival_looted_relative_tomb
-					OPINION = -20
-				}
-			}
-		}
+		name = ATHA_tomb.0513.a
 	}
 }
