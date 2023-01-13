@@ -635,7 +635,7 @@
 	# Three horizontal borders
 	thracian_pattern_template_03 = {
 		pattern = "pattern_solid.dds"
-		color1 = list "all_color_list"
+		color1 = list "normal_colors"
 		color2 = list "normal_colors"
 		color3 = list "metal_colors"
 		color4 = list "metal_colors"
@@ -648,7 +648,7 @@
 		colored_emblem = {
 			texture = list "thracian_border_base_list"
 			color1 = list "metal_colors"
-			color2 = list "normal_colors"
+			color2 = color2
 			color3 = list "normal_colors"
 			instance = { position = { 0.5 0.2 } scale = { 1 1 }  }	
 			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }	
@@ -656,41 +656,27 @@
 		colored_emblem = {
 			texture = list "thracian_border_pattern_list"
 			color1 = list "metal_colors"
-			color2 = list "normal_colors"
+			color2 = color1
 			color3 = list "metal_colors"
 			instance = { position = { 0.5 0.2 } scale = { 1 1 }  }	
-			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }	
+			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }		
 		}
 		colored_emblem = {
-			texture = list "thracian_border_edge_list"
-			color1 = list "metal_colors"
-			instance = { position = { 0.5 0.2 } scale = { 1 1 }  }	
-			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }	
-		}
-		colored_emblem = {
-			texture = list "thracian_border_behind_list"
-			color1 = list "normal_colors"
-		}
-		colored_emblem = {
-			texture = list "thracian_border_base_list"
+			texture = list "thracian_border_base_list_symmetrical"
 			color1 = list "normal_colors"
 			color2 = list "metal_colors"
 			color3 = list "metal_colors"
 		}
 		colored_emblem = {
 			texture = list "thracian_border_pattern_list"
-			color1 = list "normal_colors"
+			color1 = color2
 			color2 = list "metal_colors"
-			color3 = list "normal_colors"
-		}
-		colored_emblem = {
-			texture = list "thracian_border_edge_list"
-			color1 = list "normal_colors"
+			color3 = color3
 		}
 	}
 	thracian_pattern_template_03_inverted = {
 		pattern = "pattern_solid.dds"
-		color1 = list "all_color_list"
+		color1 = list "metal_colors"
 		color2 = list "metal_colors"
 		color3 = list "normal_colors"
 		color4 = list "normal_colors"
@@ -710,26 +696,16 @@
 		}
 		colored_emblem = {
 			texture = list "thracian_border_pattern_list"
-			color1 = list "normal_colors"
+			color1 = color3
 			color2 = list "metal_colors"
 			color3 = list "normal_colors"
 			instance = { position = { 0.5 0.2 } scale = { 1 1 }  }	
 			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }	
 		}
 		colored_emblem = {
-			texture = list "thracian_border_edge_list"
-			color1 = list "normal_colors"
-			instance = { position = { 0.5 0.2 } scale = { 1 1 }  }	
-			instance = { position = { 0.5 0.8 } scale = { 1 -1 }  }	
-		}
-		colored_emblem = {
-			texture = list "thracian_border_behind_list"
+			texture = list "thracian_border_base_list_symmetrical"
 			color1 = list "metal_colors"
-		}
-		colored_emblem = {
-			texture = list "thracian_border_base_list"
-			color1 = list "metal_colors"
-			color2 = list "normal_colors"
+			color2 = color3
 			color3 = list "normal_colors"
 		}
 		colored_emblem = {
@@ -738,11 +714,311 @@
 			color2 = list "normal_colors"
 			color3 = list "metal_colors"
 		}
+	}
+
+	# Three vertical borders
+	thracian_pattern_template_04 = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
 		colored_emblem = {
-			texture = list "thracian_border_edge_list"
+			texture = list "thracian_border_behind_list"
 			color1 = list "metal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_base_list"
+			color1 = list "metal_colors"
+			color2 = color2
+			color3 = list "normal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_pattern_list"
+			color1 = list "metal_colors"
+			color2 = color1
+			color3 = list "metal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }		
+		}
+		colored_emblem = {
+			texture = list "thracian_border_base_list_symmetrical"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1 1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_pattern_list"
+			color1 = color2
+			color2 = list "metal_colors"
+			color3 = color3
+			instance = { position = { 0.5 0.5 } scale = { 1 1 } rotation = 90 }	
 		}
 	}
+	thracian_pattern_template_04_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+		colored_emblem = {
+			texture = list "thracian_border_behind_list"
+			color1 = list "normal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_base_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_pattern_list"
+			color1 = color3
+			color2 = list "metal_colors"
+			color3 = list "normal_colors"
+			instance = { position = { 0.2 0.5 } scale = { 1 1 } rotation = 90 }	
+			instance = { position = { 0.8 0.5 } scale = { 1 -1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_base_list_symmetrical"
+			color1 = list "metal_colors"
+			color2 = color3
+			color3 = list "normal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1 1 } rotation = 90 }	
+		}
+		colored_emblem = {
+			texture = list "thracian_border_pattern_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 1 1 } rotation = 90 }	
+		}
+	}
+
+	# Metal charge above pair of symbols in bordered roundel
+	thracian_roundel_template_01 = {
+		pattern = "pattern_solid.dds"
+		color1 = list "all_color_list"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.375 0.675 } scale = { 0.25 0.25 } }	
+			instance = { position = { 0.625 0.675 } scale = { -0.25 0.25 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_animal_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.4 } scale = { 0.5 0.5 } }	
+		}
+	}
+	thracian_roundel_template_01_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "all_color_list"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "metal_colors"
+			color2 = color4
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = color4
+			color2 = color3
+			instance = { position = { 0.375 0.675 } scale = { 0.25 0.25 } }	
+			instance = { position = { 0.625 0.675 } scale = { -0.25 0.25 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_animal_list"
+			color1 = color3
+			color2 = color4
+			color3 = list "normal_colors"
+			instance = { position = { 0.5 0.4 } scale = { 0.5 0.5 } }	
+		}
+	}
+	# Metal charge below pair of symbols in bordered roundel
+	thracian_roundel_template_02 = {
+		pattern = "pattern_solid.dds"
+		color1 = list "all_color_list"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.375 0.325 } scale = { 0.25 -0.25 } }	
+			instance = { position = { 0.625 0.325 } scale = { -0.25 -0.25 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_animal_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			color3 = list "metal_colors"
+			instance = { position = { 0.5 0.625 } scale = { 0.5 0.5 } }	
+		}
+	}
+	thracian_roundel_template_02_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "all_color_list"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "metal_colors"
+			color2 = color4
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = color4
+			color2 = color3
+			instance = { position = { 0.375 0.325 } scale = { 0.25 -0.25 } }	
+			instance = { position = { 0.625 0.325 } scale = { -0.25 -0.25 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_animal_list"
+			color1 = color3
+			color2 = color4
+			color3 = list "normal_colors"
+			instance = { position = { 0.5 0.625 } scale = { 0.5 0.5 } }	
+		}
+	}
+
+	# Quadruple metal symbols in bordered roundel
+	thracian_roundel_template_03 = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = list "metal_colors"
+			color2 = list "metal_colors"
+			instance = { position = { 0.35 0.35 } scale = { 0.25 -0.25 } }	
+			instance = { position = { 0.65 0.35 } scale = { -0.25 -0.25 } }	
+			instance = { position = { 0.35 0.65 } scale = { 0.25 0.25 } }	
+			instance = { position = { 0.65 0.65 } scale = { -0.25 0.25 } }
+		}
+	}
+	thracian_roundel_template_03_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "all_color_list"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+		colored_emblem = {
+			texture = "ce_roundel.dds"
+			color1 = list "all_color_list"
+			instance = { position = { 0.5 0.5 } scale = { 0.94 0.94 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_roundel_list"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+		}
+		colored_emblem = {
+			texture = "ce_roundel_frame.dds"
+			color1 = list "metal_colors"
+			color2 = color4
+			instance = { position = { 0.5 0.5 } scale = { 0.825 0.825 } }	
+		}
+		colored_emblem = {
+			texture = list "thracian_decoration_list"
+			color1 = color4
+			color2 = color3
+			instance = { position = { 0.35 0.35 } scale = { 0.25 -0.25 } }	
+			instance = { position = { 0.65 0.35 } scale = { -0.25 -0.25 } }	
+			instance = { position = { 0.35 0.65 } scale = { 0.25 0.25 } }	
+			instance = { position = { 0.65 0.65 } scale = { -0.25 0.25 } }
+		}
 	}
 
 	### GREEK TEMPLATES ######################
