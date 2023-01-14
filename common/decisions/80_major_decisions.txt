@@ -56,6 +56,7 @@
 # Convert Realm to Feudalism/Clan through Liege
 # by Linnéa Thimrén
 ##################################################
+# ATHA edit: made available to clan governments as well
 
 # A more lenient decision to convert if your liege is feudal
 convert_to_feudalism_liege_converted_decision = {
@@ -66,11 +67,14 @@ convert_to_feudalism_liege_converted_decision = {
 	ai_check_interval = 36
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			has_government = tribal_government
+			has_government = clan_government
+		}
 		liege = {
 			OR = {
 				has_government = feudal_government
-				has_government = clan_government
+				#has_government = clan_government
 			}
 		}
 	}
@@ -80,6 +84,9 @@ convert_to_feudalism_liege_converted_decision = {
 			has_realm_law = tribal_authority_1
 			has_realm_law = tribal_authority_2
 			has_realm_law = tribal_authority_3
+			has_realm_law = crown_authority_1 #for clan realms
+			has_realm_law = crown_authority_2 #for clan realms
+			has_realm_law = crown_authority_3 #for clan realms
 		}
 		custom_description = {
 			text = recent_conversion_to_tribalism
@@ -118,6 +125,7 @@ convert_to_feudalism_liege_converted_decision = {
 # Convert Realm to Feudalism/Clan
 # by Linnéa Thimrén
 ##################################################
+# ATHA edit: made available to clan governments as well
 
 # A decision to feudalize the entire realm (wow!)
 convert_whole_realm_to_feudalism_decision = {
@@ -128,7 +136,10 @@ convert_whole_realm_to_feudalism_decision = {
 	ai_check_interval = 36
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			has_government = tribal_government
+			has_government = clan_government
+		}
 		OR = {
 			is_independent_ruler = yes
 			AND = {
@@ -136,7 +147,7 @@ convert_whole_realm_to_feudalism_decision = {
 				liege = {
 					NOR = {
 						has_government = feudal_government
-						has_government = clan_government
+						#has_government = clan_government
 					}
 				}
 			}
@@ -144,7 +155,11 @@ convert_whole_realm_to_feudalism_decision = {
 	}
 
 	is_valid = {
-		has_realm_law = tribal_authority_3
+		OR = {
+			has_realm_law = tribal_authority_3
+			has_realm_law = crown_authority_2 #for clan realms
+			has_realm_law = crown_authority_3 #for clan realms
+		}
 		prestige_level >= 2
 		capital_province.county = {
 			development_level >= convert_to_feudalism_development_requirement
