@@ -77,7 +77,7 @@ unite_the_two_shores_decision = {
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				#target = flag:unite_the_two_shores_decision
+				target = flag:unite_the_two_shores_decision
 			}
 		}
 
@@ -148,7 +148,7 @@ unite_the_two_shores_decision = {
 				NOT = { this = root }
 				is_within_diplo_range = { CHARACTER = root }
 			}
-			trigger_event = greece_decisions.0004
+			trigger_event = thrace_decisions.0004
 		}
 	}
 
@@ -178,6 +178,12 @@ found_western_pontic_league_decision = {
 
 		#Only counts and dukes should see this
 		highest_held_title_tier <= tier_duchy
+
+		#Can't have the barbarians seeing this!
+		OR = {
+			has_city_state_government = yes
+			has_coalition_government = yes
+		}
 
 		#Title must not already exist or have de jure territory
 		title:k_euonymos_pontos = { 
@@ -253,8 +259,24 @@ found_western_pontic_league_decision = {
 	}
 
 	effect = {
-		found_western_pontic_league_decision_effects = yes
+		save_scope_as = k_euonymos_pontos_founder
+
 		custom_tooltip = found_western_pontic_league_decision_effects.de_jure.tt
+		custom_tooltip = found_western_pontic_league_decision_effects.coalition.tt
+
+		show_as_tooltip = { found_western_pontic_league_decision_effects = yes } # Actually applied in thrace_decisions.0005 - title, de jure changes etc
+
+		#Event for player
+		trigger_event = thrace_decisions.0005
+
+		#Notify other players
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				is_within_diplo_range = { CHARACTER = root }
+			}
+			trigger_event = thrace_decisions.0006
+		}
 	}
 
 	ai_potential = {
