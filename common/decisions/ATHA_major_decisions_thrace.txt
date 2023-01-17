@@ -1,4 +1,8 @@
-﻿restore_tithanos_decision = {
+﻿##############################
+# Restore Tithanos 		 	 #
+##############################
+
+restore_tithanos_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
 
 	desc = restore_tithanos_decision_desc
@@ -52,6 +56,10 @@
 		}
 	}
 }
+
+##############################
+# Unite the Two Shores 	 	 #
+##############################
 
 unite_the_two_shores_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
@@ -160,6 +168,10 @@ unite_the_two_shores_decision = {
 		base = 100
 	}
 }
+
+################################
+# Found Western Pontic League  #
+################################
 
 found_western_pontic_league_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
@@ -277,6 +289,108 @@ found_western_pontic_league_decision = {
 			}
 			trigger_event = thrace_decisions.0006
 		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = { #Always do it when possible.
+		base = 100
+	}
+}
+
+################################
+# Revive the Odrysian Kingdom  #
+################################
+
+revive_odrysian_kingdom_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+
+	desc = revive_odrysian_kingdom_decision_desc
+	selection_tooltip = revive_odrysian_kingdom_decision_tooltip
+	major = yes
+
+	ai_check_interval = 120
+
+	is_shown = {
+		NOR = {	#Title existence conditions.
+			exists = title:e_thrace.holder	#Well, that'd be redundant.
+			highest_held_title_tier = tier_empire	#Existing emperors likewise should not be giving up their empire.
+		}
+		culture = { has_cultural_pillar = heritage_thracian }
+		OR = {
+			culture = {
+				OR = {
+					this = culture:odrysian
+					any_parent_culture_or_above = { this = culture:odrysian }
+				}
+			}
+			dynasty = dynasty:odrysiandyn001 # If you belong to Teres' dynasty, your culture doesn't matter so much as long as you're still Thracian
+		}
+		OR = {	#Government conditions.
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+
+	is_valid = {
+		# Standard requirements.
+		is_independent_ruler = yes
+		prestige_level >= high_prestige_level
+		
+		# Have control over the Thracian interior
+		has_title = title:k_hebria
+		has_title = title:k_rhodope
+		has_title = title:k_haimos
+
+		# Control at least 50% of e_thrace
+		custom_tooltip = {
+			text = revive_odrysian_kingdom_de_jure_tt
+			title:e_thrace = {
+				any_de_jure_county = {
+					percent > revive_odrysian_kingdom_target_percent_decimal_value
+					holder.top_liege = root
+				}
+			}
+		}
+
+		# No other empires control land in Thrace
+		custom_tooltip = {
+			text = revive_odrysian_kingdom_empires_tt
+			title:e_thrace = {
+				NOT = {
+					any_de_jure_county = {
+						holder.top_liege.primary_title.tier >= tier_empire
+					}
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	cost = { # 50% discount if you have Odrysian culture and belong to the historical ruling dynasty
+		gold = revive_odrysian_kingdom_gold_cost
+		piety = revive_odrysian_kingdom_piety_cost
+	}
+
+	effect = {
+		save_scope_as = odrysian_restorer
+
+		show_as_tooltip = { revive_odrysian_kingdom_decision_effects = yes } # Actually applied in thrace_decisions.0007 - title, de jure changes etc
+
+		custom_tooltip = revive_odrysian_kingdom_decision_effect_warning.tt
+
+		#Event for player
+		trigger_event = thrace_decisions.0007
+
+		#Notification event applied in thrace_decisions.0007 in order for additional scopes to work
+
 	}
 
 	ai_potential = {

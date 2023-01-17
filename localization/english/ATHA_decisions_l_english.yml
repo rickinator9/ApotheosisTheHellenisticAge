@@ -189,3 +189,11 @@
  restore_k_paionia_borders_decision_effects.de_jure.tt:0 "All [duchies|E] in the [GetGeographicalRegion('custom_greater_paeonia').GetName] [region|E] will become [de_jure|E] part of [GetTitleByKey('k_paionia').GetName]"
  create_d_lower_paionia_scripted_effect.tt:0 "#indent_newline:0 [GetTitleByKey('d_lower_paionia').GetName]:\n$EFFECT_LIST_BULLET$Becomes [de_jure|E] liege of [GetTitleByKey('c_pella').GetName]\n$EFFECT_LIST_BULLET$Becomes [de_jure|E] liege of [GetTitleByKey('c_eidomene').GetName]\n$EFFECT_LIST_BULLET$Becomes [de_jure|E] liege of [GetTitleByKey('c_moryllos').GetName]\n$EFFECT_LIST_BULLET$Becomes [de_jure|E] liege of [GetTitleByKey('c_gareskos').GetName]#!"
  restore_k_paionia_borders_decision_confirm:0 "Tell the world of our victory"
+
+ revive_odrysian_kingdom_decision:0 "Revive the Odrysian [GetTitleByKey('e_thrace').GetTierAsNameNoTooltip]"
+ revive_odrysian_kingdom_decision_tooltip:0 "The [GetTitleByKey('e_thrace').GetName] will be formed"
+ revive_odrysian_kingdom_decision_desc:0 "Thanks to a combination of external meddling and internal squabbling, the once-mighty Odrysian Kingdom has shattered into little princedoms. Only a great leader could mend these divisions and restore the pride of our people."
+ revive_odrysian_kingdom_de_jure_tt:0 "You [hold|E] more than #Z [SCOPE.ScriptValue('revive_odrysian_kingdom_target_percent_value')|0]%#! of [counties|E] in [GetTitleByKey('e_thrace').GetName] #weak (currently: #Z [SCOPE.ScriptValue('revive_odrysian_kingdom_value')|0]#! of #Z [SCOPE.ScriptValue('revive_odrysian_kingdom_target_value')|0]#!)#!"
+ revive_odrysian_kingdom_empires_tt:0 "No [counties|E] in [GetTitleByKey('e_thrace').GetName] are held by [rulers|E] of [emperor|E] [rank|E]"
+ revive_odrysian_kingdom_decision_effect_warning.tt:0 "#indent_newline:7 @warning_icon! Other powerful [rulers] with Odrysian [culture|E] may get [unpressed_claims|E] on the [title]#!#!"
+ revive_odrysian_kingdom_decision_confirm:0 "Proclaim the restoration"
