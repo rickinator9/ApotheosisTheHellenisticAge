@@ -173,9 +173,11 @@ ATHA_tomb.0101 = {
 
 		# Add modifier to county indicating that food will be diverted to the tomb.
 		scope:tomb_location = {
-			add_county_modifier = {
-				modifier = sacrificed_food_to_tomb_modifier
-				years = 5
+			county = {
+				add_county_modifier = {
+					modifier = sacrificed_food_to_tomb_modifier
+					years = 5
+				}
 			}
 		}
 
@@ -569,6 +571,7 @@ scripted_trigger ATHA_tomb_0111_valid_courtier = {
 	}
 }
 
+# Character suddenly becomes very attractive!
 ATHA_tomb.0111 = {
 	type = character_event
 	title = ATHA_tomb.0111.t
@@ -596,6 +599,57 @@ ATHA_tomb.0111 = {
 	right_portrait = {
 		character = scope:sex_courtier
 		animation = admiration
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	trigger = {
+		is_adult = yes # This event is inappropriate for children.
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = { # Lustful gods reward their servants with sex.
+			factor = 1.25
+			scope:tomb_occupant = { has_trait = lustful }
+		}
+		modifier = { # Gods may generally bless servants with opportunities to have kids if there are none incoming.
+			factor = 1.1
+			scope:tomb_occupant = {
+				NOR = {
+					has_trait = lustful
+					has_trait = chaste
+				}
+			}
+			any_child = { count = 0 }
+			NOR = {
+				any_spouse = { is_pregnant = yes }
+				any_concubine = { is_pregnant = yes }
+			}
+		}
+		modifier = { # Lustful being a virtue in the religion encourages gods to bless servants with sex.
+			factor = 1.1
+			scope:tomb_occupant = {
+				faith = { trait_is_virtue = lustful }
+			}
+		}
+		modifier = { # Lustful being a sin in the religion discourages gods to bless servants with sex.
+			factor = 0.9
+			scope:tomb_occupant = {
+				faith = { trait_is_sin = lustful }
+			}
+		}
+		modifier = { # Chaste being a virtue in the religion discourages gods to bless servants with sex.
+			factor = 0.9
+			scope:tomb_occupant = {
+				faith = { trait_is_sin = chaste }
+			}
+		}
+		modifier = { # Chaste gods look down upon sexual acts.
+			factor = 0.5
+			scope:tomb_occupant = { has_trait = chaste }
+		}
 	}
 
 	immediate = {
@@ -713,6 +767,96 @@ ATHA_tomb.0111 = {
 			modifier = tomb_blessing_sex_appeal_modifier
 			years = 3
 		}
+	}
+}
+
+# Character notices they are becoming much stronger!
+ATHA_tomb.0112 = {
+	type = character_event
+	title = ATHA_tomb.0112.t
+	desc = ATHA_tomb.0112.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	trigger = {
+		NOR = { # If the character is already strong, any strength gains will be marginal.
+			has_trait = athletic
+			has_trait = strong
+			has_trait = physique_good
+		}
+		age >= 14 # Makes little sense for a child.
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = { # Athletic gods love giving their servants some strength.
+			factor = 1.5
+			scope:tomb_occupant = {
+				OR = {
+					has_trait = athletic
+					has_trait = strong
+					has_trait = physique_good
+				}
+			}
+		}
+		modifier = { # Martial gods love strength!
+			factor = 1.1
+			scope:tomb_occupant = {
+				OR = {
+					has_trait = education_martial
+					has_trait = education_martial_prowess
+				}
+			}
+		}
+		modifier = { # Gods concerned with health like inspiring healthy choices in others.
+			factor = 1.1
+			scope:tomb_occupant = { has_trait = whole_of_body }
+		}
+		modifier = { # Proud and weak gods don't want to help anyone surpass their strength.
+			factor = 0.8
+			scope:tomb_occupant = {
+				has_trait = weak
+				has_trait = arrogant
+			}
+		}
+		modifier = { # Slothful gods don't care about activity and strength.
+			factor = 0.5
+			scope:tomb_occupant = { has_trait = lazy }
+		}
+	}
+
+	immediate = {
+		add_character_modifier = {
+			modifier = tomb_blessing_strength_modifier
+			years = 3
+		}
+	}
+
+	option = {
+		name = ATHA_tomb.0112.a
+
+		random = {
+			chance = 40
+			modifier = {
+				factor = 1.5
+				has_trait = diligent
+			}
+			modifier = {
+				factor = 0.75
+				has_trait = lazy
+			}
+
+			add_trait = athletic
+			add_piety = minor_piety_gain
+		}
+
+		add_prestige = medium_prestige_gain
 	}
 }
 
