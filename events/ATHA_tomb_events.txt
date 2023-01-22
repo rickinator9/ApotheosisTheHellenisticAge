@@ -550,6 +550,28 @@ ATHA_tomb.0101 = {
 		}
 	}
 
+	option = {
+		name = DEBUG_BLESSING
+		trigger = {
+			debug_only = yes
+		}
+
+		trigger_event = {
+			on_action = on_tomb_sacrifice_blessing
+		}
+	}
+
+	option = {
+		name = DEBUG_CURSE
+		trigger = {
+			debug_only = yes
+		}
+
+		trigger_event = {
+			on_action = on_tomb_sacrifice_curse
+		}
+	}
+
 	after = {
 		stress_impact = { zealous = minor_stress_impact_loss }
 	}
@@ -857,6 +879,132 @@ ATHA_tomb.0112 = {
 		}
 
 		add_prestige = medium_prestige_gain
+	}
+}
+
+# Earthquake!
+ATHA_tomb.0201 = {
+	type = character_event
+	title = ATHA_tomb.0201.t
+	desc = ATHA_tomb.0201.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_coward
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	trigger = {
+		NOT = { has_character_flag = had_event_ATHA_tomb_0201 }
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = { # Wrathful gods fill the earth with their anger.
+			factor = 1.5
+			scope:tomb_occupant = {
+				OR = {
+					has_trait = wrathful
+					has_trait = irritable
+				}
+			}
+		}
+		modifier = { # Sadistic gods love collateral damage.
+			factor = 1.5
+			scope:tomb_occupant = { has_trait = sadistic }
+		}
+		modifier = {
+			factor = 1.1
+			scope:tomb_occupant = { has_trait = lifestyle_mystic }
+		}
+		modifier = { # Compassionate gods do are less inclined to such widespread destruction!
+			factor = 0.1
+			scope:tomb_occupant = { has_trait = compassionate }
+		}
+	}
+
+	immediate = {
+		capital_barony = {
+			title_province = {
+				save_scope_as = capital_province
+				destroy_random_building_variable_effect = yes
+			}
+		}
+		add_character_flag = had_event_ATHA_tomb_0201
+	}
+
+	# Distribute recovery funds.
+	option = {
+		name = ATHA_tomb.0201.a
+		ai_chance = {
+			base = 80 # Somewhat lower as people in general don't like spending money.
+
+			modifier = { # Generous people like spending money.
+				factor = 2
+				OR = {
+					has_trait = generous
+					has_trait = profligate
+				}
+			}
+			modifier = { # Compassionate people want to reduce suffering.
+				factor = 1.25
+				has_trait = compassionate
+			}
+			modifier = { # Stewards understand the value of long term benefits.
+				factor = 1.1
+				has_trait = education_stewardship
+			}
+			modifier = { # Loves gold and wishes to avoid stress.
+				factor = 0.5
+				has_trait = greedy
+			}
+		}
+		stress_impact = {
+			generous = medium_stress_impact_loss
+			greedy = medium_stress_impact_gain
+		}
+
+		remove_short_term_gold = major_gold_value
+		add_prestige = medium_prestige_gain
+		capital_county = {
+			add_county_modifier = {
+				modifier = tomb_curse_earthquake_modifier
+				months = 15
+			}
+		}
+	}
+
+	# Don't.
+	option = {
+		name = ATHA_tomb.0201.b
+		ai_chance = {
+			base = 100
+
+			modifier = { # Zealous characters want to appease the gods.
+				factor = 1.5
+				has_trait = zealous
+			}
+			modifier = { # Learning oriented characters are more likely to want to (appear to) appease the gods.
+				factor = 1.1
+				has_trait = education_learning
+			}
+		}
+
+		add_piety = minor_piety_loss
+		capital_county = {
+			add_county_modifier = {
+				modifier = tomb_curse_earthquake_modifier
+				years = 4
+			}			
+		}
+	}
+
+	after = {
+		scope:capital_province = {
+			destroy_random_building_effect = yes
+		}
 	}
 }
 
