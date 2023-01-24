@@ -8,6 +8,8 @@
 	traditions = { 
 		tradition_swords_for_hire
 		tradition_adaptive_skirmishing # the Agrianes were renowned skirmishers
+		tradition_mountaineers # Alexander appears to have extensively relied on his Agrianian troops for storming mountain fortifications
+		tradition_loyal_soldiers # The Agrianes were loyal allies to the Macedonians
 	}
 	name_list = name_list_odrysian #TODO
 
@@ -33,7 +35,9 @@ paeonian = {
 	martial_custom = martial_custom_male_only
 	traditions = { 
 		tradition_ancient_miners # Along with the Thracians around Pangaion, the Paeonian tribes had an early role in minting coinage
-		tradition_headhunting
+		tradition_headhunting # Ariston, the commander of Alexander's Paeonian cavalry, brought the head of Satropates to the king and claimed that in Paeonian tradition this would be rewarded with a gold cup
+		tradition_hard_working # An anecdote in Herodotus attests to Paeonian woman being notably industrious
+		tradition_hit_and_run # The Paeonians contributed prodromoi to Alexander's army
 	}
 	name_list = name_list_odrysian #TODO
 
@@ -55,11 +59,18 @@ pelagonian = {
 
 	ethos = ethos_communal
 	heritage = heritage_paeonian
-	language = language_greek
+	language = language_paeonian
 	martial_custom = martial_custom_male_only
-	traditions = { 
-		tradition_transhumant_shepherds
+	traditions = { # our knowledge of the Pelagones is particularly limited, so their traditions are largely derived from the local geography
+		tradition_transhumant_shepherds 
+		tradition_mountain_homes
 	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # The Pelagones were in close promximity to both Greeks and Illyrians
+		requires_dlc_flag = hybridize_culture
+	}
+
 	name_list = name_list_odrysian #TODO
 
 	coa_gfx = {

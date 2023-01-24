@@ -8,13 +8,14 @@
 bessian = {
 	color = bessian
 
-	ethos = ethos_stoic # TODO
+	ethos = ethos_spiritual
 	heritage = heritage_thracian
 	language = language_thracian
 	martial_custom = martial_custom_male_only
 	traditions = { 
 		tradition_ancient_miners # The Bessi are said by later authors to have developed special skills in exploiting gold and silver lodes (cf. Hirt 2020, 13, at https://livrepository.liverpool.ac.uk/3066254/)
-		tradition_stalwart_defenders # TODO
+		tradition_warrior_monks # Vologaesus, a Bessic priest of Dionysus, led a major revolt against the Romans
+		tradition_stalwart_defenders # The Bessi led two major uprisings against the Romans
 	}
 
 	name_list = name_list_bessian
@@ -92,13 +93,19 @@ crobyzian = {
 edonian = {
 	color = edonian
 
-	ethos = ethos_communal # The fact that these Thracians maintained their own ethnic identity under Greek domination for hundreds of years suggests that they had strong communal ties.
+	ethos = ethos_communal # The fact that tribes such as the Bisaltae and Odomanti could maintain an ethnic identity despite generations of Greek dominanace suggests that they had strong communal ties.
 	heritage = heritage_thracian
 	language = language_thracian
 	martial_custom = martial_custom_male_only
 	traditions = { 
 		tradition_ancient_miners # The tribes of the Strymon had a particularly early role in minting coins among the Thracians, benefiting greatly from the proximity of nearby precious metal deposits.
-		tradition_stalwart_defenders # These Thracians were quite diligent in their attempts to keep Greek settlers out of the area, famously preventing Thasian and Athenian colonies from establishing near the mouth of the Strymon in Classical Antiquity.
+		tradition_stalwart_defenders # These Thracians were quite diligent in their attempts to keep Greek settlers out of the area, famously preventing Thasian and Athenian colonies from establishing near the mouth of the Strymon in Classical Antiquity.		
+		tradition_music_theory # Orpheus was by some accounts a Thracian (from Bisaltia according to Tzetzes), and according to Eratosthenes was killed on Pangaion
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # Diodorus notes that the Bisaltae were bilingual
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_edonian
@@ -120,7 +127,7 @@ getic = {
 
 	ethos = ethos_bellicose # TODO 
 	heritage = heritage_thracian
-	language = language_thracian
+	language = language_getic
 	martial_custom = martial_custom_male_only
 	traditions = { # TODO
 		tradition_forest_fighters #multiple battles described with the Triballi note their use of forests
@@ -236,7 +243,8 @@ rhodopian = {
 	traditions = {
 		tradition_highland_warriors # The Rhodopes are mountainous and hilly all around.
 		tradition_warrior_culture # The Rhodopian peoples were well-regarded in their martial prowess.
-		tradition_music_theory # According to one myth, Orpheus died on the coast of the Rhodopes.
+		tradition_music_theory # According to Philostratus, the people of Rhodope celebrated Rhesos with song (https://topostext.org/work/222#680); Athenaeus notes that two Maedians, Seuthes and Rhomnaces, are credited by some with inventing the one-reeded syrinx (https://topostext.org/work/218#4.82)
+		tradition_sacred_mountains # The famous oracle of Dionysus was possibly located in the Rhododes
 	}
 
 	name_list = name_list_rhodopian
@@ -254,6 +262,10 @@ rhodopian = {
 }
 
 thrausian = {
+	#TODO: Change to Trallian?
+	#https://topostext.org/work/171#Ages.16.1
+	#https://topostext.org/work/487#30.173
+
 	color = thrausian
 
 	ethos = ethos_bellicose # The Kausianoi of P.Lond. Lit. 112, who are described as being easily convinced to go to war due to a favourable disposition to death, may be an error for the Trausi (www.academia.edu/19690408, pp. 240, 252-4)
@@ -261,9 +273,9 @@ thrausian = {
 	language = language_thracian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		tradition_sacred_mountains
+		tradition_hill_dwellers # Most of their land is hills
 		tradition_staunch_traditionalists # The eastern Rhodopes have a higher concentration of megaliths than other parts of Thrace
-		tradition_adaptive_skirmishing
+		tradition_life_is_just_a_joke # The Thrausians were said to mourn birth and celebrate death
 	}
 
 	name_list = name_list_thrausian
