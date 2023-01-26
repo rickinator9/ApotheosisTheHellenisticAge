@@ -882,6 +882,196 @@ ATHA_tomb.0112 = {
 	}
 }
 
+# Several counties in the realm have a bountiful harvest.
+ATHA_tomb.0113 = {
+	type = character_event
+	title = ATHA_tomb.0113.t
+	desc = ATHA_tomb.0113.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	lower_right_portrait = {
+		character = scope:tomb_occupant
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = { # Herbalists and gardeners are more in tune with plant life.
+			factor = 1.5
+			scope:tomb_occupant = {
+				OR = {
+					has_trait = lifestyle_herbalist
+					has_trait = lifestyle_gardener
+				}
+			}
+		}
+		modifier = { # Stewards like developing realms.
+			factor = 1.1
+			scope:tomb_occupant = { has_trait = education_stewardship }
+		}
+		modifier = { # Brings benefits for a great many people.
+			factor = 1.1
+			scope:tomb_occupant = { has_trait = compassionate }
+		}
+		modifier = { # Likes making things grow.
+			factor = 1.1
+			scope:tomb_occupant = { has_trait = diligent }
+		}
+		modifier = { # Growing things is for lowly peasants!
+			factor = 0.9
+			scope:tomb_occupant = { has_trait = arrogant }
+		}
+		modifier = { # Growing things takes time.
+			factor = 0.9
+			scope:tomb_occupant = { has_trait = impatient }
+		}
+	}
+
+	immediate = {
+		random_held_county = {
+			save_scope_as = prosperous_county # Used for localization.
+			add_to_list = prosperous_counties
+		}
+		every_held_county = {
+			limit = {
+				NOT = { is_in_list = prosperous_counties }
+			}
+
+			random = {
+				chance = 35
+				add_to_list = prosperous_counties
+			}
+		}
+	}
+
+	# The people will grow.
+	option = {
+		name = ATHA_tomb.0113.a
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				factor = 1.25
+				has_trait = education_stewardship
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = content
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = lazy
+			}
+		}
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+		}
+
+		every_in_list = {
+			list = prosperous_counties
+			add_county_modifier = {
+				modifier = tomb_blessing_bountiful_harvest_modifier
+				months = 18
+			}
+		}
+
+		add_piety = minor_piety_gain
+	}
+
+	# Export it all to other communities!
+	option = {
+		name = ATHA_tomb.0113.b
+		ai_chance = {
+			base = 100
+
+			modifier = { # Greedy people always want money!
+				factor = 2
+				has_trait = greedy
+			}
+			modifier = { # The ruler wants to get out of debt!
+				factor = 1.5
+				gold < 0
+			}
+			modifier = { # I know much better than any other man what to do with this surplus!
+				factor = 1.1
+				has_trait = arrogant
+			}
+			modifier = { # Can't just steal from the people!
+				factor = 0.8
+				has_trait = just
+			}
+			modifier = { # Can't just steal from the people!
+				factor = 0.5
+				has_trait = compassionate
+				NOT = { has_trait = arrogant }
+			}
+		}
+		stress_impact = {
+			greedy = major_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+		}
+
+		every_in_list = {
+			list = prosperous_counties
+			root = { add_gold = medium_gold_value }
+			add_county_modifier = {
+				modifier = tomb_blessing_bountiful_harvest_seized_modifier
+				years = 5
+			}
+		}
+	}
+
+	# I AM THE HARVEST!
+	option = {
+		name = ATHA_tomb.0113.c
+		trigger = {
+			has_trait = gluttonous
+		}
+		trait = gluttonous
+
+		ai_chance = {
+			base = 300
+
+			modifier = { # Can't just steal from the people!
+				factor = 0.8
+				has_trait = just
+			}
+			modifier = { # Can't just steal from the people!
+				factor = 0.5
+				has_trait = compassionate
+				NOT = { has_trait = arrogant }
+			}
+		}
+		stress_impact = {
+			gluttonous = massive_stress_impact_loss
+		}
+
+		# Obviously gets a lot fatter.
+		change_current_weight = 25
+
+		# Very unusual!
+		add_prestige = major_prestige_gain
+		add_piety = medium_piety_loss
+
+		# Court benefits from the food.
+		add_character_modifier = {
+			modifier = tomb_blessing_bountiful_harvest_seized_court_modifier
+			years = 2
+		}
+
+		every_in_list = {
+			list = prosperous_counties
+			add_county_modifier = {
+				modifier = tomb_blessing_bountiful_harvest_seized_modifier
+				years = 5
+			}
+		}
+	}
+}
+
 # Earthquake!
 ATHA_tomb.0201 = {
 	type = character_event
@@ -1166,13 +1356,13 @@ ATHA_tomb.0501 = {
 				scope:raider = { has_trait = reaver }
 			}
 
-			add_character_flag = {
-				flag = had_event_ATHA_tomb_0501
-				days = 365
-			}
-
 			save_scope_as = raid_army
 			scope:raider = {
+				add_character_flag = {
+					flag = had_event_ATHA_tomb_0501
+					days = 365
+				}
+
 				scope:barony.title_province = {
 					save_scope_as = tomb_location
 				}
@@ -1404,11 +1594,6 @@ ATHA_tomb.0512 = {
 	}
 
 	immediate = {
-		add_character_flag = {
-			flag = had_event_ATHA_tomb_0502
-			days = 365
-		}
-
 		#For loc.
 		scope:tomb_location = {
 			var:tomb_primary_occupant = {
