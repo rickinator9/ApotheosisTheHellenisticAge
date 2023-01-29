@@ -194,7 +194,11 @@
 
     faiths = {
         bendism_faith = { # Bendism
-		    color = { 0.3 0.9 0.4 }
+        	# Covers Bithynia and the Thracian territories along the Aegean coast and upper Strymon
+        	# Worship of the goddess Bendis is particularly prevalent in these regions, and there is evidence of several oracles of Dionysus
+
+
+		    color = bendism_faith
 			icon = bendism
 
 			holy_site = samothrake
@@ -215,8 +219,133 @@
 			doctrine = doctrine_bastardry_legitimization
         }
 
+        odrysian_faith = { # Mezenist, from Thracian 'mezena' which may mean 'horseman'
+        	# Covers the central & eastern parts of Thrace, roughly corresponding to the core territories of the Odrysian kingdom
+        	# Dedications & sanctuaries to Apollo are more common in these areas, and there is greater archeological evidence for human sacrifice here than in other parts of Thrace
+
+		    color = odrysian_faith
+			icon = odrysian
+
+			# TODO
+			holy_site = samothrake
+			holy_site = hieron_chalkedon
+			holy_site = mount_ida
+			holy_site = sardis # Representing Mount Tmolos.
+			holy_site = reskynthion
+
+			# Tenets TODO
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_divine_inhumation
+			doctrine = tenet_astrology # TODO Replace with divination
+
+			#Main Group TODO
+			doctrine = doctrine_no_head
+
+			#Marriage # TODO
+			doctrine = doctrine_bastardry_legitimization
+        }
+
+        pleistorism_faith = { # Pleistorism
+        	# Covers southeastern Thrace, corresponding to the Thynian culture
+        	# The Apsinthioi were said to worship the war god Pleistorus, and they and the Kainoi allegedly practised human sacrifice
+
+		    color = pleistorism_faith
+			icon = pleistorian # TODO
+
+			# TODO
+			holy_site = samothrake
+			holy_site = hieron_chalkedon
+			holy_site = mount_ida
+			holy_site = sardis # Representing Mount Tmolos.
+			holy_site = reskynthion
+
+			# Tenets
+			doctrine = tenet_human_sacrifice # The Apsinthi are attested sacrificing captives to Pleistoros.
+			doctrine = tenet_divine_inhumation
+			doctrine = tenet_mountain_sanctuaries # There are many mountain goddesses in the region, such as Ganea and Reskynthis.
+
+			#Main Group TODO
+			doctrine = doctrine_no_head
+
+			#Marriage # TODO
+			doctrine = doctrine_bastardry_legitimization
+        }
+
+        sabazaic_faith = { # Sabazaic
+        	# Covers western Thrace, including parts of the Nestos and Strymon valleys, and the plain around Serdica
+        	# Sanctuaries and dedications to Asklepios were particularly common here and in adjacent areas, and there may have been an important oracle of Dionysos in the western Rhodopes 
+
+		    color = sabazaic_faith
+			icon = sabazaic
+
+			# TODO
+			holy_site = samothrake
+			holy_site = hieron_chalkedon
+			holy_site = mount_ida
+			holy_site = sardis # Representing Mount Tmolos.
+			holy_site = reskynthion
+
+			# Tenets TODO
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_divine_inhumation
+			doctrine = tenet_astrology # TODO Replace with divination
+
+			#Main Group TODO
+			doctrine = doctrine_no_head
+
+			#Marriage # TODO
+			doctrine = doctrine_bastardry_legitimization
+        }
+        
+        thrausian_faith = { # Thrausism
+        	# Covers parts of south-eastern Thrace where megaliths have been found in large quantities
+        	# Deities corresponding to Hera and Ares seem to have been more prevalent in these areas
+
+		    color = thrausian_faith
+			icon = thrausian
+
+			holy_site = samothrake
+			holy_site = hieron_chalkedon
+			holy_site = mount_ida
+			holy_site = sardis # Representing Mount Tmolos.
+			holy_site = reskynthion
+
+			# Tenets
+			doctrine = tenet_megaliths # the eastern Rhodopes have a higher concentration of megaliths than other parts of Thrace
+			doctrine = tenet_reincarnation # The Thrausians were said to celebrate death, and the Trallians believed that the soul survived death (https://topostext.org/work/487#30.173)
+			doctrine = tenet_sun_worship # The rock sanctuaries in the Rhodopes may be associated with solar worship
+
+			#Main Group
+			doctrine = doctrine_no_head
+
+			#Marriage
+			doctrine = doctrine_bastardry_legitimization
+		}
+        
+        zalmoxian_faith = { # Zalmoxism TODO
+		    color = zalmoxian_faith
+			icon = zalmoxis
+
+			holy_site = samothrake
+			holy_site = hieron_chalkedon
+			holy_site = mount_ida
+			holy_site = sardis # Representing Mount Tmolos.
+			holy_site = reskynthion
+
+			# Tenets
+			doctrine = tenet_divine_inhumation
+			doctrine = tenet_reincarnation
+			doctrine = tenet_sun_worship
+
+			#Main Group
+			doctrine = doctrine_no_head
+
+			#Marriage
+			doctrine = doctrine_bastardry_legitimization
+		}
+
 		tithanism_faith = { #From reconstructed Thracian 'titha' meaning 'light, radiance'
-			color = { 0.86 0.78 0.31 }
+			color = tithanism_faith
 			icon = tithanism
 			religious_head = d_tithanos
 
@@ -347,96 +476,6 @@
 				GoodGodNames = { GOD_PERKE GOD_ZBELTHIOURDOUS }
 				EvilGodNames = { GOD_ZUML }
 			}
-		}
-
-        pleistorism_faith = { # Pleistorism
-		    color = { 0.1 0.5 0.6 }
-			icon = pleistorian # TODO
-
-			# TODO
-			holy_site = samothrake
-			holy_site = hieron_chalkedon
-			holy_site = mount_ida
-			holy_site = sardis # Representing Mount Tmolos.
-			holy_site = reskynthion
-
-			# Tenets
-			doctrine = tenet_human_sacrifice # The Apsinthi are attested sacrificing captives to Pleistoros.
-			doctrine = tenet_divine_inhumation
-			doctrine = tenet_mountain_sanctuaries # There are many mountain goddesses in the region, such as Ganea and Reskynthis.
-
-			#Main Group TODO
-			doctrine = doctrine_no_head
-
-			#Marriage # TODO
-			doctrine = doctrine_bastardry_legitimization
-        }
-
-        sabazaic_faith = { # Sabazaic
-		    color = { 0.7 0.4 0.6 }
-			icon = sabazaic
-
-			# TODO
-			holy_site = samothrake
-			holy_site = hieron_chalkedon
-			holy_site = mount_ida
-			holy_site = sardis # Representing Mount Tmolos.
-			holy_site = reskynthion
-
-			# Tenets TODO
-			doctrine = tenet_ritual_celebrations
-			doctrine = tenet_divine_inhumation
-			doctrine = tenet_astrology # TODO Replace with divination
-
-			#Main Group TODO
-			doctrine = doctrine_no_head
-
-			#Marriage # TODO
-			doctrine = doctrine_bastardry_legitimization
-        }
-        
-        thrausian_faith = { # Thrausism TODO
-		    color = getic
-			icon = thrausian
-
-			holy_site = samothrake
-			holy_site = hieron_chalkedon
-			holy_site = mount_ida
-			holy_site = sardis # Representing Mount Tmolos.
-			holy_site = reskynthion
-
-			# Tenets
-			doctrine = tenet_megaliths # the eastern Rhodopes have a higher concentration of megaliths than other parts of Thrace
-			doctrine = tenet_reincarnation # The Thrausians were said to celebrate death, and the Trallians believed that the soul survived death (https://topostext.org/work/487#30.173)
-			doctrine = tenet_sun_worship # The rock sanctuaries in the Rhodopes may be associated with solar worship
-
-			#Main Group
-			doctrine = doctrine_no_head
-
-			#Marriage
-			doctrine = doctrine_bastardry_legitimization
-		}
-        
-        zalmoxian_faith = { # Zalmoxism TODO
-		    color = getic
-			icon = zalmoxis
-
-			holy_site = samothrake
-			holy_site = hieron_chalkedon
-			holy_site = mount_ida
-			holy_site = sardis # Representing Mount Tmolos.
-			holy_site = reskynthion
-
-			# Tenets
-			doctrine = tenet_divine_inhumation
-			doctrine = tenet_reincarnation
-			doctrine = tenet_sun_worship
-
-			#Main Group
-			doctrine = doctrine_no_head
-
-			#Marriage
-			doctrine = doctrine_bastardry_legitimization
 		}
     }
 }
