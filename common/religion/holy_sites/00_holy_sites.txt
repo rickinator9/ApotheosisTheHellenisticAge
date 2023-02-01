@@ -69,7 +69,7 @@ aigai = { # The Tombs of the Argead kings.
 		monthly_prestige_gain_mult = 0.05
 	}
 }
-dion = {
+dion = { # Major sanctuary to Zeus Olympios
 	county = c_dion
 
 	# The Macedonians held victory feasts and purification rites of the army here
@@ -169,7 +169,8 @@ antissa = { # oracle of Orpheus at the place where his head washed up
 	# Learn poetry and music from the best!
 	character_modifier = {
 		name = holy_site_antissa_effect_name
-		diplomacy_per_piety_level = 1
+		diplomacy = 1
+		learning = 1
 	}
 }
 ioros = { # speculative location of the famous Krestonian oracle of Dionysus, not too far from where the Derveni papyri were found
@@ -179,7 +180,7 @@ ioros = { # speculative location of the famous Krestonian oracle of Dionysus, no
 	# Krestonia was once inhabited by the Thracian Bisaltai, the oracle there was used to predict whether the harvests would be fruitful
 	character_modifier = {
 		name = holy_site_ioros_effect_name
-		domain_tax_same_faith_mult = 0.1
+		domain_tax_same_faith_mult = 0.05
 		different_culture_opinion = 5
 	}
 }
@@ -234,6 +235,17 @@ samos = { # Heraion of Samos
 		name = holy_site_samos_effect_name
 		spouse_opinion = 20
 		negate_fertility_penalty_add = 0.2
+	}
+}
+hieron_chalkedon = { # important Panhellenic sanctuary, converted into a fortified customs point during the Hellenistic period
+	county = c_chalkedon
+	barony = b_hieron_chalkedon
+
+	# The site was considered a common haven for sailors
+	character_modifier = {
+		name = holy_site_hieron_chalkedon_effect_name
+		embarkation_cost_mult = -0.25
+		retreat_losses = -0.1
 	}
 }
 
@@ -347,7 +359,7 @@ sipylos = { # Mount Sipylos
 	# The most famous of the Lydian Orgia of the Meter Theon were held on Mt Siypylos
 	character_modifier = {
 		name = holy_site_sipylos_effect_name
-		fertility = 0.05
+		fertility = 0.1
 	}
 }
 
@@ -412,32 +424,154 @@ mount_latmos = { # there was a sanctuary to Endymion at Heraclea and a myth, pro
 	}
 }
 
-
 ############
 # THRACIAN #
 ############
 
+# Common
+
+pangaion = { # sacred mountain with links to the myths of Orpheus and Rhesus, possibly hosted an oracle of Dionysus
+	county = c_amphipolis
+	barony = b_methone_amphipolis
+
+	# Pangaion is best known for its gold mines
+	character_modifier = {
+		name = holy_site_pangaion_effect_name
+		domain_tax_mult = 0.05
+	}
+}
+
 # Bendism
 
-hieron_chalkedon = {
-	county = c_chalkedon
-	barony = b_hieron_chalkedon
+peiraieus = { # the main cult centre of Bendis inside Greece
+	county = c_peiraieus
 
+	# Piraeus is a cosmopolitan port with a diverse range of cults
 	character_modifier = {
-		name = holy_site_hieron_chalkedon_effect_name
-		embarkation_cost_mult = -0.5
+		name = holy_site_peiraieus_effect_name
+		different_faith_opinion = 5
+		cultural_head_acceptance_gain_mult = 0.1
 	}
 }
 
-reskynthion = {
-	county = c_ainos
+# Mezenism
 
-	# The Great Mother is sometimes identified with healing practices and herbalism. Considering the swampy terrain here, that may be necessary.
+hieron_oros = { # sacred mountain of the great mother goddess Ganea, also the location of an Odrysian treasury
+	county = c_bisanthe
+	barony = b_ganos_bisanthe
+
+	# There are several royal residences and a treasury in the vicinity of the mountain
+	character_modifier = {
+		name = holy_site_hieron_oros_effect_name	
+		stewardship = 1
+		stress_loss_mult = 0.1
+	}
+}
+shiloto = { # important peak sanctuary and royal residence, in Roman times the sanctuary was dedicated to the worship of Apollo Karsenos
+	county = c_anchialos
+	barony = b_karsos_anchialos
+
+	# The sanctuary is at the crossroads between the Thracian tribes and Greek colonies
+	character_modifier = {
+		name = holy_site_shiloto_effect_name
+		diplomacy_per_piety_level = 1
+	}
+}
+starosel = { # major sanctuary in the Hebros valley
+	county = c_drongilon
+	barony = b_amatokon_drongilon
+
+	# Possibly connected with the Odrysian royal dynasty
+	character_modifier = {
+		name = holy_site_starosel_effect_name
+		levy_size = 0.05
+		monthly_county_control_change_factor = 0.1
+	}
+}
+
+# Perperanism
+
+dolno_dryanovo = { # megalithic sanctuary and possible oracle site
+	county = c_zvakamezenida
+	barony = b_tithasabazias_zvakamezenida
+
+	# The area contains several rock formations which, according to folk tradition, provide good fortune to those who squeeze between them 
+	character_modifier = {
+		name = holy_site_dolno_dryanovo_effect_name
+		mountains_min_combat_roll = 2
+		valley_min_combat_roll = 2
+		personal_scheme_power_mult = 0.05
+	}
+}
+Perperakion = { # major Rhodopian sanctuary
+	county = c_hyperperakion
+
+	# Hyperperakion was one of the most important cult centres in the Rhodopes for over a millenium
+	character_modifier = {
+		name = holy_site_hyperperakion_effect_name
+		mountains_development_growth_factor = 0.15
+		mountains_advantage = 5
+	}
+}
+reskynthion = { # the sacred mountain of Rheskynthis & the cave of Zerynthia/Hekate were possibly located here
+	county = c_zervai
+	barony = b_athspindas_zervai
+
+	# Worship of Zerynthia may have emerged as a result of syncretism with Bendis & several Greek goddesses (https://escholarship.org/content/qt55x5d5m3/qt55x5d5m3_noSplash_fd58de896ce63a7ab5ee5259bb2ea984.pdf)
 	character_modifier = {
 		name = holy_site_reskynthion_effect_name
-		health = 0.1
+		different_faith_opinion = 10
 	}
 }
+tatul = { # megalithic sanctuary and tomb
+	county = c_tranahydrenas
+	barony = b_asabria_tranahydrenas
+
+	# The sanctuary appears to have centred around the worship of a deceased hero
+	character_modifier = {
+		name = holy_site_tatul_effect_name
+		martial = 1
+		monthly_prestige_gain_mult = 0.1
+	}
+}
+yaylata = { # site in northwestern Thrace famous for its rock cut tombs and cave dwellings
+	county = c_bizone
+	barony = b_tirizis_bizone
+
+	# Save time and money by using existing caves for your houses and temples! 
+	character_modifier = {
+		name = holy_site_yaylata_effect_name
+		build_speed = -0.1
+		build_gold_cost = -0.05
+	}
+}
+
+# Sabazaism
+
+batkun = { # major Roman-period sanctuary of Asklepios Zymydrenos; Classical and Hellenistic decrees at the site suggest that it had been a prominent Thracian cult centre 
+	county = c_merasamdiza
+
+	# Several decrees and treaties were deposited here, suggesting it was both politically and spiritually significant
+	character_modifier = {
+		name = holy_site_batkun_effect_name
+		diplomacy = 1
+		powerful_vassal_opinion = 5		
+	}
+}
+zlata_panega = { # site of a large Roman-era shrine of Asklepios, bearing local epithets such as Saldoouissēnos, Saldokelēnos and Saldēnos
+	county = c_longinopara
+	barony = b_saldovissos_longinopara
+
+	#The sanctuary attracts a visitors from across Thrace, including magistrates and bureaucrats
+	character_modifier = {
+		name = holy_site_zlata_panega_effect_name
+		negate_diplomacy_penalty_add = 1
+		negate_stewardship_penalty_add = 1
+		negate_health_penalty_add = 0.1
+	}
+}
+
+# Tithanism
 
 betzas = {
 	county = c_betzas
@@ -463,3 +597,66 @@ perkeballon = {
 		knight_effectiveness_mult = 0.2
 	}
 }
+
+# Zalmoxianism
+
+ruse = { # Hellenistic & Roman sanctuary of Apollo and the Thracian Hero 
+	county = c_pyrgos
+
+	#The site is associated with the Thracian rider
+	character_modifier = {
+		name = holy_site_ruse_effect_name
+		monthly_piety_gain_per_knight_mult = 0.01
+		monthly_prestige_gain_per_knight_mult = 0.01
+	}
+}
+
+############
+# PAEONIAN #
+############
+
+# Dyalism
+
+astibos = { # historic Paeonian capital; the king would ritually bathe in the nearby Astibos river 
+	county = c_astibos
+
+	# Controlling both the city and the river grants us greater standing!
+	character_modifier = {
+		name = holy_site_astibos_effect_name
+		courtier_and_guest_opinion = 5
+		monthly_piety_gain_mult = 0.1
+	}
+}
+keilaiskos = { # Sanctuary of Asclepius Keiladeēnos/Keilaiskēnos, close to the hypothetical Agrianian capital at Pernik
+	county = c_elea
+	barony = b_keilaiskos_elea
+
+	# Controlling this region is the first step to restoring the Agrianian kingdom
+	character_modifier = {
+		name = holy_site_keilaiskos_effect_name
+		title_creation_cost_mult = -0.1
+		men_at_arms_maintenance = -0.05
+	}
+}
+#klepa = { # hilltop sanctuary
+#	county = c_stoboi
+#	barony = b_kranon_stoboi	
+#
+#	#TODO
+#	character_modifier = {
+#	}
+#}
+lychnidos = { # Trebenishte royal graves, incentive for the Paeonians to expand west
+	county = c_lychnidos
+
+	# Regional centre with Greek, Illyrian and perhaps other indigenous influences
+	character_modifier = {
+		name = holy_site_lychnidos_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+############
+# ILLYRIAN #
+############
