@@ -627,11 +627,25 @@ window = {
 				spacing = 5
 				ignoreinvisible = yes
 
+	
+				button_standard = {
+					size = { 150 33 }
+					raw_text = "gui_tomb_build_tomb_text"
+
+					datacontext = "[GetScriptedGui( 'gui_tomb_build_tomb' )]"
+					visible = "[And( Not(GetVariableSystem.HasValue('province_tomb_window_open', 'true')), ScriptedGui.IsShown( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End) ) ]"
+					enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End) ]"
+					onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End) ]"
+					tooltip = "[ScriptedGui.BuildTooltip( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End) ]"
+				}
+
 				button_standard = {
 					size = { 150 33 }
 					raw_text = "gui_tomb_view_tombs"
+
+					datacontext = "[GetScriptedGui( 'gui_tomb_exists' )]"
 					onclick = "[GetVariableSystem.Set('province_tomb_window_open', 'true')]"
-					visible = "[Not(GetVariableSystem.HasValue('province_tomb_window_open', 'true'))]"
+					visible = "[And(Not(GetVariableSystem.HasValue('province_tomb_window_open', 'true')), ScriptedGui.IsShown( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).End))]"
 				}
 
 				button_standard = {
