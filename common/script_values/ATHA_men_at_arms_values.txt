@@ -13,9 +13,9 @@
 @slingers_low_maint_cost = 0.2
 @slingers_high_maint_cost = @[slingers_low_maint_cost * high_maint_mult]
 
-@phalanx_recruitment_cost = 100
-@phalanx_low_maint_cost = 0.4
-@phalanx_high_maint_cost = @[phalanx_low_maint_cost * high_maint_mult]
+@medium_infantry_recruitment_cost = 100
+@medium_infantry_low_maint_cost = 0.4
+@medium_infantry_high_maint_cost = @[medium_infantry_low_maint_cost * high_maint_mult]
 
 @heavy_cavalry_recruitment_cost = 200
 @heavy_cavalry_low_maint_cost = 0.7
@@ -26,17 +26,17 @@ slingers_recruitment_cost = @[slingers_recruitment_cost]
 slingers_low_maint_cost = @[slingers_low_maint_cost]
 slingers_high_maint_cost = @[slingers_high_maint_cost]
 
-phalanx_recruitment_cost = @[phalanx_recruitment_cost]
-phalanx_low_maint_cost = @[phalanx_low_maint_cost]
-phalanx_high_maint_cost = @[phalanx_high_maint_cost]
+medium_infantry_recruitment_cost = @[medium_infantry_recruitment_cost]
+medium_infantry_low_maint_cost = @[medium_infantry_low_maint_cost]
+medium_infantry_high_maint_cost = @[medium_infantry_high_maint_cost]
 
 hetairoi_recruitment_cost = @[heavy_cavalry_recruitment_cost * hetairoi_mult]
 hetairoi_low_maint_cost = @[heavy_cavalry_low_maint_cost * hetairoi_mult]
 hetairoi_high_maint_cost = @[heavy_cavalry_high_maint_cost * hetairoi_mult]
 
-spartiatai_hoplitai_recruitment_cost = @[phalanx_recruitment_cost * 1.6]
-spartiatai_hoplitai_low_maint_cost = @[phalanx_low_maint_cost * 1.6]
-spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
+spartiatai_hoplitai_recruitment_cost = @[medium_infantry_recruitment_cost * 1.6]
+spartiatai_hoplitai_low_maint_cost = @[medium_infantry_low_maint_cost * 1.6]
+spartiatai_hoplitai_high_maint_cost = @[medium_infantry_high_maint_cost * 1.6]
 
 ###########
 # LIMITS  #
@@ -1286,7 +1286,7 @@ ATHA_ai_weight_generic_skirmishers = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_rodioi_sphendonetai_trigger = yes
+				can_recruit_maa_rhodioi_sphendonetai_trigger = yes
 				can_recruit_maa_agrianikoi_pelekephoroi_trigger = yes
 				can_recruit_maa_anatolikoi_phyletai_trigger = yes
 				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
@@ -1364,7 +1364,7 @@ ATHA_ai_weight_generic_light_cavalry = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_thessalikoi_prodomoi_trigger = yes
+				can_recruit_maa_thessalikoi_prodromoi_trigger = yes
 				can_recruit_maa_mandonai_trigger = yes
 			}
 		}
