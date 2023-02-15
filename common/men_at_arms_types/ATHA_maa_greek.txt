@@ -144,11 +144,11 @@ rhodioi_sphendonetai = {
 }
 
 #Agrianes#Superior#
-agrianikoi_pelekephoroi = {
+skaplinai = {
     type = skirmishers
 
     can_recruit = {
-        can_recruit_maa_agrianikoi_pelekephoroi_trigger = yes
+        can_recruit_maa_skaplinai_trigger = yes
     }
 
     damage = 15
@@ -163,12 +163,12 @@ agrianikoi_pelekephoroi = {
     }
 
     counters = {
-        heavy_infantry = 0.5
+        heavy_infantry = 1
     }
 
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.35 }
+    high_maintenance_cost = { gold = 1.05 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -198,49 +198,6 @@ makedonikoi_peltastai = {
         heavy_infantry = 0.5
         pikemen = 0.5
     }
-
-    buy_cost = { gold = 95 }
-    low_maintenance_cost = { gold = 0.65 }
-    high_maintenance_cost = { gold = 1.95 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = {
-        value = ATHA_ai_weight_skirmishers
-        add = ATHA_ai_weight_elite
-    }
-    icon = skirmishers
-}
-
-#Illyrian#Elite
-skaplinai = {
-    type = skirmishers
-
-    can_recruit = {
-        can_recruit_maa_skaplinai_trigger = yes
-    }
-
-    damage = 18
-    toughness = 12
-    pursuit = 12
-    screen = 18
-
-    terrain_bonus = {
-        forest = { toughness = 5 }
-        hills = { damage = 5 }
-        plains = { screen = -10 }
-        drylands = { screen = -10 }
-    }
-
-    counters = {
-        heavy_infantry = 1
-    }
-
-    buy_cost = { gold = 95 }
-    low_maintenance_cost = { gold = 0.65 }
-    high_maintenance_cost = { gold = 1.95 }
 
     buy_cost = { gold = 95 }
     low_maintenance_cost = { gold = 0.65 }
@@ -1379,8 +1336,8 @@ angamezenai = {
 
     damage = 5
     toughness = 5
-    pursuit = 30
-    screen = 30
+    pursuit = 20
+    screen = 40
 
     terrain_bonus = {
         plains = { damage = 5 toughness = 5 }
@@ -1420,14 +1377,14 @@ skuda_aspabarata = {
         can_recruit_maa_skuda_aspabarata_trigger = yes
     }
 
-    damage = 15
-    toughness = 5
+    damage = 10
+    toughness = 10
     pursuit = 30
     screen = 30
 
     terrain_bonus = {
         plains = { damage = 5 toughness = 5 }
-        steppe = { damage = 15 toughness = 5 }
+        steppe = { damage = 10 toughness = 10 }
         hills = { pursuit = -10 screen = -10 }
         mountains = { pursuit = -10 screen = -10 }
         wetlands = { pursuit = -10 screen = -10 }
