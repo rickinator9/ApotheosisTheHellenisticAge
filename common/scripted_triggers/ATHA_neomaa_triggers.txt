@@ -2,20 +2,18 @@
 
 can_recruit_elite_maa = {
   OR = {
-    is_independent_ruler = yes
-    highest_held_title_tier >= tier_duchy
+    highest_held_title_tier >= tier_kingdom
+    AND = {
+      is_independent_ruler = yes
+      highest_held_title_tier >= tier_duchy
+    }
   }
   ATHA_maa_elite_count < ATHA_maa_elite_maximum
 }
 
 can_recruit_guard_maa = {
-  OR = {
-    AND = {
-     is_independent_ruler = yes
-     highest_held_title_tier >= tier_duchy
-    }
-    highest_held_title_tier >= tier_kingdom
-  }
+  is_independent_ruler = yes
+  highest_held_title_tier >= tier_kingdom
   ATHA_maa_guard_count < ATHA_maa_guard_maximum
 }
 
@@ -131,11 +129,14 @@ can_recruit_maa_peltenai_trigger = {
 }
 
 ### Superior
-can_recruit_maa_agrianikoi_pelekephoroi_trigger = {
-  can_recruit_agrianian_maa_trigger = yes
-}
 can_recruit_maa_kretikoi_peltastai_trigger = {
   can_recruit_cretan_maa_trigger = yes
+}
+can_recruit_maa_skaplinai_trigger = {
+  OR = {
+    can_recruit_agrianian_maa_trigger = yes
+    can_recruit_dardanian_maa_trigger = yes
+  }
 }
 
 ### Elite
@@ -150,12 +151,6 @@ can_recruit_maa_makedonikoi_peltastai_trigger = {
 can_recruit_maa_rompaianai_trigger = {
   can_recruit_rhodopian_maa_trigger = yes
   can_recruit_elite_maa = yes
-}
-can_recruit_maa_skaplinai_trigger = {
-  OR = {
-    can_recruit_agrianian_maa_trigger = yes
-    can_recruit_dardanian_maa_trigger = yes
-  }
 }
 
 ## Slingers ###################################
@@ -302,6 +297,7 @@ can_recruit_maa_epilektoi_hoplitai_trigger = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
       NOR = { 
+        has_culture_or_parent_culture = { CULTURE = culture:arcadian } # Instead get Eparitoi
         has_culture_or_parent_culture = { CULTURE = culture:cretan } # They get elite archers instead
         has_culture_or_parent_culture = { CULTURE = culture:laconian } # Instead get Homoioi
         has_culture_or_parent_culture = { CULTURE = culture:macedonian } # Instead get Hypaspists
@@ -310,6 +306,7 @@ can_recruit_maa_epilektoi_hoplitai_trigger = {
     any_directly_owned_province = {
       culture = { has_cultural_pillar = heritage_greek }
       NOR = {  
+        has_culture_or_parent_culture = { CULTURE = culture:arcadian }
         has_culture_or_parent_culture = { CULTURE = culture:cretan } 
         has_culture_or_parent_culture = { CULTURE = culture:laconian } 
         has_culture_or_parent_culture = { CULTURE = culture:macedonian } 
