@@ -1,8 +1,8 @@
-﻿# Bathanatti - Broggia
+﻿# Bathanattos - Singidunon
 
 volk00101 = {
 	name = "Bathanattos" # Leader of some survivors of the attack on the Temple of Delphi, considered the founder of the Skordiski
-	dynasty = volkdyn001 # Skordiski
+	dynasty = volkdyn001 # Bathanattos
 	religion = skordism_faith
 	culture = volk
 	dna = volk00101_dna
@@ -19,26 +19,39 @@ volk00101 = {
 	3441.1.1 = { # 313 BC, made up
 		birth = yes
 	}
-	3476.1.1 = { # 278 BC. Successfully leads his people home after the Delphi disaster
+	3477.1.1 = { # 277 BC, approximate (successfully leads his people home after the Delphi disaster)
 		effect = {
 			set_permanent_nickname_effect = { NICKNAME = nick_the_saviour }
 		}
+
+		# Formation of Scordiscian culture
+		culture = skordiskian
 		
    		# Temporary buff to enable him to form the Skoridiski easier
     	add_gold = 300
 		spawn_army = {
 			name = event_troop_default_name
-			levies = 500
+			levies = 2000
+			men_at_arms = {
+				type = nedes_nesamoi
+				stacks = 4
+			}
 			location = province:1038
 			origin = province:1038
+			inheritable = no
 		}
+
+		# Some claims to encourage war against the Triballi
+		add_pressed_claim = title:d_pingia
+		add_pressed_claim = title:d_timakia
+		add_pressed_claim = title:d_margia
 	}
 	3504.1.1 = { # 250 BC, made up
 		death = yes
 	}
 }
 
-# Aigosagis - Panysia
+# Aigosagis - Kamolebaladava
 
 volk00201 = {
 	name = "Lilarkios" # Celtic(?) dynast attested on 3rd century coinage in Thrace
