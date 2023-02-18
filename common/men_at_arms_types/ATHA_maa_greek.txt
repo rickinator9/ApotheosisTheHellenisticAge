@@ -121,8 +121,7 @@ rhodioi_sphendonetai = {
     screen = 10
 
     terrain_bonus = {
-        farmlands = { screen = 10 pursuit = 10 }
-        mountains { screen = 10 pursuit = 10 }
+        farmlands = { screen = 10 pursuit = 10 damage = 4 toughness = 7 }
         plains = { screen = -10 pursuit = -10 }
     }
 
@@ -157,9 +156,9 @@ skaplinai = {
     screen = 20
 
     terrain_bonus = {
-        mountains = { damage = 10 toughness = 5 }
-        plains = { screen = -10 pursuit = -5 }
-        drylands = { screen = -10 pursuit = -5 }
+        mountains = { damage = 15 toughness = 5 }
+        plains = { screen = -10 damage = -5 }
+        drylands = { screen = -10 pursuit = -10 }
     }
 
     counters = {
@@ -325,11 +324,11 @@ promakhoi_kretikoi = {
 
 ##########################################################################################
 
-thureophoroi = {
+peltophoroi = {
     type = medium_infantry
 
     can_recruit = {
-        can_recruit_maa_thureophoroi_trigger = yes
+        can_recruit_maa_peltophoroi_trigger = yes
     }
 
     damage = 5
@@ -347,6 +346,39 @@ thureophoroi = {
     buy_cost = { gold = 50 }
     low_maintenance_cost = { gold = 0.2 }
     high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
+}
+
+#Medium#Infantry#v2#
+thureophoroi = {
+    type = medium_infantry
+
+    can_recruit = {
+        can_recruit_maa_thureophoroi_trigger = yes
+    }
+
+    damage = 10
+    toughness = 10
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+        mountains = { toughness = 5 screen = 10 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -512,7 +544,7 @@ epilektoi_hoplitai = {
     icon = hoplitai_elite
 }
 
-#Arkadian#Superior#
+#Arkadian_league#Elite#
 eparitoi_hoplitai = {
     type = heavy_infantry
 
@@ -521,22 +553,62 @@ eparitoi_hoplitai = {
     }
 
     damage = 10
-    toughness = 20
+    toughness = 30
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 5 toughness = 5 }
         valley = { toughness = 10 }
         plains = { damage = 5 }
         mountains = { toughness = -10 }
         forest = { toughness = -10 }
-        hills = { toughness = -5 }
+        hills = { toughness = 5 }
     }
 
     counters = {
         medium_infantry = 0.5
         light_cavalry = 0.5
+    }
+
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = {
+        value = ATHA_ai_weight_hoplite
+        add = ATHA_ai_weight_elite
+    }
+    icon = hoplitai_elite
+}
+
+#Lakedaemonian#Superior#
+lakonikoi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_lakonikoi_hoplitai_trigger = yes
+    }
+
+    damage = 10
+    toughness = 20
+    pursuit = 0
+    screen = 10
+
+    terrain_bonus = {
+        farmlands = { damage = 5 toughness = 5 }
+        valley = { damage = 5 toughness = 5 }
+        plains = { damage = 5 toughness = 5 }
+        mountains = { damage = -5 toughness = -5 }
+        forest = { damage = -5 toughness = -5 }
+    }
+
+    counters = {
+        medium_infantry = 0.75
+        light_cavalry = 0.75
     }
 
     buy_cost = { gold = 80 }
@@ -552,11 +624,11 @@ eparitoi_hoplitai = {
 }
 
 #Lakedaemonian#Elite#County
-lakonikoi_hoplitai = {
+homoioi_hoplitai = {
     type = heavy_infantry
 
     can_recruit = {
-        can_recruit_maa_lakonikoi_hoplitai_trigger = yes
+        can_recruit_maa_homoioi_hoplitai_trigger = yes
     }
 
     damage = 15
@@ -802,25 +874,24 @@ thorakitai = {
         can_recruit_maa_thorakitai_trigger = yes
     }
 
-    damage = 5
+    damage = 10
     toughness = 15
-    pursuit = 5
-    screen = 5
+    pursuit = 0
+    screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 5 }
+        farmlands = { damage = 10 toughness = 5 }
         mountains = { toughness = -5 }
     }
 
     counters = {
-        medium_infantry = 0.5
-        light_cavalry = 0.5
-        pikemen = 0.5
+        light_cavalry = 0.75
+        medium_infantry = 0.75
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 75 }
+    low_maintenance_cost = { gold = 0.45 }
+    high_maintenance_cost = { gold = 1.35 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -830,7 +901,7 @@ thorakitai = {
     icon = hoplitai
 }
 
-#Ardianei#Elite#
+#Ardianei#Elite#County
 ardiaian_thorakitai = {
     type = heavy_infantry
 
@@ -838,27 +909,27 @@ ardiaian_thorakitai = {
         can_recruit_maa_ardiaian_thorakitai_trigger = yes
     }
 
-    damage = 10
+    damage = 15
     toughness = 20
-    pursuit = 10
-    screen = 20
+    pursuit = 5
+    screen = 25
 
     terrain_bonus = {
-        forest = { damage = 7.5 }
-        mountains = { toughness = 7.5 }
+        forest = { damage = 7.5 pursuit = 10 }
+        hills = { toughness = 7.5 pursuit = 10 }
+        farmlands = { damage = 5 toughness = 5 }
         drylands = { toughness = -5 damage = -5 }
         drylands = { screen = -10 }
     }
 
     counters = {
-        medium_infantry = 0.5
-        light_cavalry = 0.5
-        pikemen = 0.5
+        light_cavalry = 1
+        medium_infantry = 1
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 2.1 }
+    buy_cost = { gold = 105 }
+    low_maintenance_cost = { gold = 0.75 }
+    high_maintenance_cost = { gold = 2.25 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1191,8 +1262,7 @@ tarunai = {
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 5 }
-        hills = { damage = 5 }
+        forest = { toughness = 5 damage = 5 }
         valley = { toughness = 5 }
         farmlands = { toughness = 5 }
         mountains = { toughness = -5 damage = -5 }
@@ -1462,9 +1532,8 @@ nedes_nesamoi = {
     screen = 10
 
     terrain_bonus = {
-        forest = { damage = 5 }
-        hills = { damage = 5 }
-        valley = { damage = 5 }
+        forest = { damage = 5 toughness = 5 }
+        valley = { toughness = 5 }
         farmlands = { damage = 5 }
         mountains = { toughness = -5 damage = -5 }
         drylands = { toughness = -5 damage = -5 }
