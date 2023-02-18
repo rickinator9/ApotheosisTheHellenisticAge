@@ -1,842 +1,501 @@
-﻿###CIVILIZED#NEOMAA###
-
-# Base
-
-can_recruit_guard_maa = {
-  is_independent_ruler = yes
-  ATHA_maa_guard_count < ATHA_maa_guard_maximum
-}
+﻿# Basic Triggers
 
 can_recruit_elite_maa = {
-  is_independent_ruler = yes
+  OR = {
+    highest_held_title_tier >= tier_kingdom
+    AND = {
+      is_independent_ruler = yes
+      highest_held_title_tier >= tier_duchy
+    }
+  }
   ATHA_maa_elite_count < ATHA_maa_elite_maximum
 }
 
-can_recruit_greek_maa_trigger = {
+can_recruit_guard_maa = {
+  is_independent_ruler = yes
+  highest_held_title_tier >= tier_kingdom
+  ATHA_maa_guard_count < ATHA_maa_guard_maximum
+}
+
+can_recruit_culture_heritage_maa_trigger = {
   OR = {
-    culture = { has_cultural_pillar = heritage_greek }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-    }
-    
-    # Exceptions for Mathian Illyrian culture since they were quite Hellenised.
-    has_culture_or_parent_culture = { CULTURE = culture:mathian }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:mathian }
+    culture = { has_cultural_pillar = $HERITAGE$ }
+    any_directly_owned_province = {
+      culture = { has_cultural_pillar = $HERITAGE$ }
     }
   }
 }
+
+can_recruit_culture_maa_trigger = {
+  OR = {
+    has_culture_or_parent_culture = { CULTURE = $CULTURE$ }
+    any_directly_owned_province = {
+        has_culture_or_parent_culture = { CULTURE = $CULTURE$ }
+    }
+  }
+}
+
+### Heritages
 
 can_recruit_anatolian_maa_trigger = {
+  can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_anatolian }
+}
+can_recruit_celtic_maa_trigger = {
+  can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_celtic }
+}
+can_recruit_greek_maa_trigger = {
   OR = {
-    culture = { has_cultural_pillar = heritage_anatolian }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_anatolian }
-    }
+    can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_greek }
+    
+    # Exceptions for Mathian Illyrian culture since they were quite Hellenised.
+    can_recruit_culture_maa_trigger = { CULTURE = culture:mathian }
   }
 }
-
 can_recruit_illyrian_maa_trigger = {
   OR = {
-    culture = { has_cultural_pillar = heritage_illyrian }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_illyrian }
-    }
+    can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_illyrian }
+    can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_liburnian }
+    can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_paeonian }
   }
 }
-
+can_recruit_iranian_maa_trigger = {
+  can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_iranian }
+}
+can_recruit_pannonian_maa_trigger = {
+    can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_pannonian }
+}
 can_recruit_thracian_maa_trigger = {
-  OR = {
-    culture = { has_cultural_pillar = heritage_thracian }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_thracian }
-    }
-  }
+  can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_thracian }
+}
+can_recruit_scythian_maa_trigger = {
+  can_recruit_culture_heritage_maa_trigger = { HERITAGE = heritage_scythian }
 }
 
-can_recruit_celtic_maa_trigger = {
-  OR = {
-    culture = { has_cultural_pillar = heritage_celtic }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_celtic }
-    }
-  }
-}
+# Cultures
 
+can_recruit_agrianian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:agrianian }
+}
+can_recruit_arcadian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:arcadian }
+}
 can_recruit_cretan_maa_trigger = {
-  OR = {
-    has_culture_or_parent_culture = { CULTURE = culture:cretan }
-    any_realm_province = {
-      OR = {
-        has_culture_or_parent_culture = { CULTURE = culture:cretan }
-        geographical_region = ATHA_aor_cretan # Cretans kept being famed archers into medieval times, so even if Cretan culture is completely eradicated they are still recruitable from Crete.
-      }
-    }
-  }
+  can_recruit_culture_maa_trigger = { CULTURE = culture:cretan }
 }
-
-can_recruit_spartan_maa_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:laconian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_spartan
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:laconian }
-      geographical_region = ATHA_aor_spartan
-    }
-  }
+can_recruit_dardanian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:dardanian }
 }
-
+can_recruit_getic_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:getic }
+}
+can_recruit_laconian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:laconian }
+}
 can_recruit_macedonian_maa_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_macedonian
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_macedonian
-    }
-  }
+  can_recruit_culture_maa_trigger = { CULTURE = culture:macedonian }
 }
-
+can_recruit_odrysian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:odrysian }
+}
+can_recruit_rhodopian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:rhodopian }
+}
 can_recruit_thessalian_maa_trigger = {
-  OR = {
-    has_culture_or_parent_culture = { CULTURE = culture:thessalian }
-    AND = { # If you are a Greek controlling a Greek Thessaly, you can still recruit Thessalians even if the culture is dead.
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        culture = { has_cultural_pillar = heritage_greek }
-        geographical_region = ATHA_aor_thessalian
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:thessalian }
-    }
-  }
-}
-
-###civilized#skirmishers### 
-
-can_recruit_maa_euzonoi_trigger = {
-  OR = {
-    can_recruit_greek_maa_trigger = yes
-    can_recruit_anatolian_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_peltenai_trigger = {
-  OR = {
-    can_recruit_illyrian_maa_trigger = yes
-    can_recruit_thracian_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_batoroi_trigger = {
-  OR = {
-    can_recruit_celtic_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_kretikoi_peltastai_trigger = {
-  can_recruit_cretan_maa_trigger = yes
-}
-
-can_recruit_maa_skiritai_trigger = {
-  can_recruit_spartan_maa_trigger = yes
-}
-
-can_recruit_maa_agrianikoi_pelekephoroi_trigger = {
-  OR = {
-    has_culture_or_parent_culture = { CULTURE = culture:agrianian }
-    AND = { # If you are a ruler of a Agrianian-adjacent culture ruling over an Agrianian-adjacent culture in the Agrianian regions, you can recruit their MaA as well.
-      culture = {
-        OR = {
-          has_cultural_pillar = heritage_paeonian
-          has_cultural_pillar = heritage_illyrian
-          has_cultural_pillar = heritage_thracian
-        }
-      }
-      any_realm_province = {
-        culture = {
-          OR = {
-            has_cultural_pillar = heritage_paeonian
-            has_cultural_pillar = heritage_illyrian
-            has_cultural_pillar = heritage_thracian
-          }
-        }
-        geographical_region = ATHA_aor_agrianes
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:agrianian }
-    }
-  }
-}
-
-###civilized#elite#skirmishers###
-can_recruit_maa_hyperaspistai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        geographical_region = ATHA_aor_hyperas
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_hyperas
-    }
-  }
-  can_recruit_elite_maa = yes
-}
-
-can_recruit_maa_makedonikoi_peltastai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        geographical_region = ATHA_aor_peltastai_logades
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_peltastai_logades
-    }
-  }
-  can_recruit_elite_maa = yes
-}
-
-can_recruit_maa_aristoi_rompaianai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_thracian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_aristoi
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_thracian }
-      geographical_region = ATHA_aor_aristoi
-    }
-  }
-  can_recruit_elite_maa = yes
-}
-
-can_recruit_maa_rompaianai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_thracian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_rhodopian
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_thracian }
-      geographical_region = ATHA_aor_rhodopian
-    }
-  }
+  can_recruit_culture_maa_trigger = { CULTURE = culture:thessalian }
 }
 
 ########################
 
-can_recruit_maa_ardiaian_thorakitai_trigger = {
+# MaA-Specific Triggers
+
+## Skirmishers ###################################
+
+### Basic
+can_recruit_maa_euzonoi_trigger = {
   OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:dassian }
-      culture = { has_innovation = innovation_classical_thyreos }
-      any_realm_province = {
-        geographical_region = ATHA_aor_ardinei
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:dassian }
-      culture = { has_innovation = innovation_classical_thyreos }
-      geographical_region = ATHA_aor_ardinei
-    }
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
   }
+}
+can_recruit_maa_peltenai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
+  }
+}
+
+### Superior
+can_recruit_maa_kretikoi_peltastai_trigger = {
+  can_recruit_cretan_maa_trigger = yes
+}
+can_recruit_maa_skaplinai_trigger = {
+  OR = {
+    can_recruit_agrianian_maa_trigger = yes
+    can_recruit_dardanian_maa_trigger = yes
+  }
+}
+
+### Elite
+can_recruit_maa_drapanai_trigger = {
+  can_recruit_getic_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_makedonikoi_peltastai_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_rompaianai_trigger = {
+  can_recruit_rhodopian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 
-can_recruit_maa_epilektoi_thorakitai_trigger = {
+## Slingers ###################################
+
+### Superior
+can_recruit_maa_akarnanioi_sphendonetai_trigger = {
   OR = {
     AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      culture = { has_innovation = innovation_classical_thyreos }
-      any_realm_province = {
-        geographical_region = ATHA_aor_achaean
+      has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+      any_directly_owned_province = {
+        geographical_region = ATHA_aor_akarnanian
       }
     }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-      culture = { has_innovation = innovation_classical_thyreos }
-      geographical_region = ATHA_aor_achaean
+    any_directly_owned_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+      geographical_region = ATHA_aor_akarnanian
     }
   }
-  can_recruit_elite_maa = yes
 }
-
-###civilized#slingers#superior###
-
-can_recruit_maa_rodioi_sphendonetai_trigger = {
+can_recruit_maa_rhodioi_sphendonetai_trigger = {
   OR = {
     AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:dorian }
+      any_directly_owned_province = {
         geographical_region = ATHA_aor_rhodian
       }
     }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
+    any_directly_owned_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:dorian }
       geographical_region = ATHA_aor_rhodian
     }
   }
 }
 
-can_recruit_maa_anatolikoi_phyletai_trigger = {
+## Medium Infantry ###################################
+
+### Basic
+
+can_recruit_maa_thureophoroi_trigger = {
   OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_anatolian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_anatolikoi
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_anatolian }
-      geographical_region = ATHA_aor_anatolikoi
+    culture = { has_innovation = innovation_classical_thyreos }
+    any_directly_owned_province = {
+      culture = { has_innovation = innovation_classical_thyreos }
     }
   }
 }
 
-can_recruit_maa_uazali_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_anatolian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_uazali
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_anatolian }
-      geographical_region = ATHA_aor_uazali
-    }
-  }
-}
-
-can_recruit_maa_mandonai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_illyrian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_mandonai
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_illyrian }
-      geographical_region = ATHA_aor_mandonai
-    }
-  }
-}
+### Superior
 
 can_recruit_maa_galathraikes_trigger = {
   OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_celtic }
-      any_realm_province = {
-        geographical_region = ATHA_aor_stranded_celtic
-      }
+    any_parent_culture_or_above = { 
+      is_hybrid_culture = yes
+      any_parent_culture = { has_cultural_pillar = heritage_celtic }
+      any_parent_culture = { has_cultural_pillar = heritage_thracian }
     }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_celtic }
-      geographical_region = ATHA_aor_stranded_celtic
+    any_directly_owned_province = {
+      any_parent_culture_or_above = { 
+        is_hybrid_culture = yes
+        any_parent_culture = { has_cultural_pillar = heritage_celtic }
+        any_parent_culture = { has_cultural_pillar = heritage_thracian }
+      }
     }
   }
 }
 
-can_recruit_maa_akarnanioi_sphendonetai_trigger = {
+### Elite
+
+can_recruit_maa_hyperaspistai_trigger = {
   OR = {
     AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      any_realm_province = {
-        geographical_region = ATHA_aor_akarnania
+      OR = {
+        has_culture_or_parent_culture = { CULTURE = culture:aeolian }
+        has_culture_or_parent_culture = { CULTURE = culture:ionian }
+      }
+      any_directly_owned_province = {
+        geographical_region = ATHA_aor_ionian
       }
     }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      geographical_region = ATHA_aor_akarnania
-    }
-  }
-}
-
-can_recruit_maa_drapanai_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:getic }
-      any_realm_province = {
-        geographical_region = ATHA_aor_drapanai
+    any_directly_owned_province = {
+      OR = {
+        has_culture_or_parent_culture = { CULTURE = culture:aeolian }
+        has_culture_or_parent_culture = { CULTURE = culture:ionian }
       }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:getic }
-      geographical_region = ATHA_aor_drapanai
-    }
-  }
-}
-
-###civilized#slingers#elite###
-
-can_recruit_maa_skaplinai_trigger = {
-  OR = {
-    culture = { has_cultural_pillar = heritage_paeonian }
-        }
-        geographical_region = ATHA_aor_skaplinai
-      }
+      geographical_region = ATHA_aor_ionian
     }
   }
   can_recruit_elite_maa = yes
 }
 
-########################
+## Armoured Infantry ###################################
 
-###archers###
-
-can_recruit_maa_toxotai_trigger = {
-  OR = {
-    can_recruit_greek_maa_trigger = yes
-    can_recruit_anatolian_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_anganai_trigger = {
-  OR = {
-    can_recruit_illyrian_maa_trigger = yes
-    can_recruit_thracian_maa_trigger = yes
-  }
-}
-
-####archers#superior###
-
-can_recruit_maa_kretikoi_toxotai_trigger = {
-  can_recruit_cretan_maa_trigger = yes
-}
-
-can_recruit_maa_promakhoi_kretikoi_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        geographical_region = ATHA_aor_cretan_chosen
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_cretan_chosen
-    }
-  }
-  can_recruit_elite_maa = yes
-}
-
-##############################
-
-###civilized#heavy_infantry###
-
-can_recruit_maa_tarunai_trigger = {
-  OR = {
-    can_recruit_thracian_maa_trigger = yes
-    can_recruit_illyrian_maa_trigger = yes
-    can_recruit_celtic_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_tarypeltanai_trigger = {
-  OR = {
-    can_recruit_thracian_maa_trigger = yes
-    can_recruit_illyrian_maa_trigger = yes
-    can_recruit_celtic_maa_trigger = yes
-  }
-}
-
-can_recruit_maa_machairophoroi_trigger = {
-  OR = {
-    can_recruit_thracian_maa_trigger = yes
-    can_recruit_illyrian_maa_trigger = yes
-  }
-}
+### Basic
 
 can_recruit_maa_hoplitai_trigger = {
   OR = {
     can_recruit_greek_maa_trigger = yes
     can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
   }
 }
-
-############################################################# 
-
-can_recruit_maa_thureophoroi_trigger = {
+can_recruit_maa_tarunai_trigger = {
   OR = {
-    culture = {
-      OR = {
-        has_cultural_pillar = heritage_greek
-        has_cultural_pillar = heritage_anatolian
-        has_cultural_pillar = heritage_thracian
-        has_cultural_pillar = heritage_illyrian
-      }
-    has_innovation = innovation_classical_thyreos  
-    }
-    any_realm_province = {
-      culture = {
-        OR = {
-          has_cultural_pillar = heritage_greek
-          has_cultural_pillar = heritage_anatolian
-          has_cultural_pillar = heritage_thracian
-          has_cultural_pillar = heritage_illyrian
-        }
-      has_innovation = innovation_classical_thyreos  
-      }
-    }
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
   }
 }
-
 can_recruit_maa_thorakitai_trigger = {
   OR = {
-    culture = {
-      OR = {
-        is_culture_or_parent_culture = { CULTURE = culture:mathian }
-        has_cultural_pillar = heritage_greek
-        has_cultural_pillar = heritage_anatolian
-        has_cultural_pillar = heritage_thracian
-      }
-    has_innovation = innovation_classical_thyreos    
-    }
-    any_realm_province = {
-      culture = {
-        OR = {
-          is_culture_or_parent_culture = { CULTURE = culture:mathian }
-          has_cultural_pillar = heritage_greek
-          has_cultural_pillar = heritage_anatolian
-          has_cultural_pillar = heritage_thracian
-        }
-      has_innovation = innovation_classical_thyreos    
-      }
+    culture = { has_innovation = innovation_hellenistic_chainmail }
+    any_directly_owned_province = {
+      culture = { has_innovation = innovation_hellenistic_chainmail }
     }
   }
 }
 
-###civilized#heavy_infantry#superior###
+### Elite
 
-can_recruit_maa_perioikoi_hoplitai_trigger = {
-  can_recruit_spartan_maa_trigger = yes
-}
-
-can_recruit_maa_galatikoi_Katoikoi_trigger = {
-  culture = { has_cultural_pillar = heritage_greek }
-  any_realm_province = {
-    geographical_region = ATHA_aor_katoikoi_asia
+can_recruit_maa_ardiaian_thorakitai_trigger = {
+  OR = {
+    AND = {
+      has_culture_or_parent_culture = { CULTURE = culture:dassian }
+      any_directly_owned_province = {
+        geographical_region = ATHA_aor_ardiaian
+      }
+    }
+    any_directly_owned_province = {
+      has_culture_or_parent_culture = { CULTURE = culture:dassian }
+      geographical_region = ATHA_aor_ardiaian
+    }
   }
+  culture:dassian = { has_innovation = innovation_hellenistic_chainmail }
+  can_recruit_elite_maa = yes
 }
-
-can_recruit_maa_galathraikes_trigger = {
-  culture = { has_cultural_pillar = heritage_thracian }
-  any_realm_province = {
-    geographical_region = ATHA_aor_triballi
-  }
+can_recruit_maa_eparitoi_hoplitai_trigger = {
+  can_recruit_arcadian_maa_trigger = yes
+  can_recruit_elite_maa = yes
 }
-
-can_recruit_maa_katoikoi_thraikes_trigger = {
-  culture = { has_cultural_pillar = heritage_greek }
-  any_realm_province = {
-    geographical_region = ATHA_aor_katoikoi_macedonian
-  }
-}
-
-###civilized#heavy_infantry#elite###
-
 can_recruit_maa_epilektoi_hoplitai_trigger = {
   OR = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        geographical_region = ATHA_aor_epilektoi
+      NOR = { 
+        has_culture_or_parent_culture = { CULTURE = culture:arcadian } # Instead get Eparitoi
+        has_culture_or_parent_culture = { CULTURE = culture:cretan } # They get elite archers instead
+        has_culture_or_parent_culture = { CULTURE = culture:laconian } # Instead get Homoioi
+        has_culture_or_parent_culture = { CULTURE = culture:macedonian } # Instead get Hypaspists
       }
     }
-    any_realm_province = {
+    any_directly_owned_province = {
       culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_epilektoi
+      NOR = {  
+        has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+        has_culture_or_parent_culture = { CULTURE = culture:cretan } 
+        has_culture_or_parent_culture = { CULTURE = culture:laconian } 
+        has_culture_or_parent_culture = { CULTURE = culture:macedonian } 
+      }
     }
   }
   can_recruit_elite_maa = yes
 }
-
-can_recruit_maa_eparitoi_hoplitai_trigger = {
-  OR = {
-    AND = {
-      culture = { has_cultural_pillar = heritage_greek }
-      any_realm_province = {
-        geographical_region = ATHA_aor_akhaia
-      }
-    }
-    any_realm_province = {
-      culture = { has_cultural_pillar = heritage_greek }
-      geographical_region = ATHA_aor_akhaia
-    }
-  }
+can_recruit_maa_hypaspistai_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
 }
-
-
 can_recruit_maa_lakonikoi_hoplitai_trigger = {
-  can_recruit_spartan_maa_trigger = yes
+  can_recruit_laconian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
-
-###civilized#heavy_infantry#guard###
-
-can_recruit_maa_homoioi_hippeis_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:laconian }
-      any_realm_province = {
-        geographical_region = ATHA_aor_royal_spartan
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:laconian }
-      geographical_region = ATHA_aor_royal_spartan
-    }
-  }
-  can_recruit_guard_maa = yes
-}
-
 can_recruit_maa_nedes_nesamoi_trigger = {
-  OR = {
-    AND = {
-      culture = {
-        has_cultural_pillar = heritage_celtic
-      }
-      any_realm_province = { geographical_region = ATHA_aor_stranded_celtic }
-    }
-    any_realm_province = {
-      culture = {
-        has_cultural_pillar = heritage_celtic
-      }
-      geographical_region = ATHA_aor_stranded_celtic
-    }
-  }
+  can_recruit_celtic_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 
-#######################
+## Pikemen ###################################
 
-###civilized#pikemen###
+### Basic
 
-can_recruit_maa_phalangitai_trigger = {
+can_recruit_maa_tarupeltenai_trigger = {
   OR = {
-    culture = {
-      OR = {
-        is_culture_or_parent_culture = { CULTURE = culture:mathian }
-        has_cultural_pillar = heritage_greek
-        has_cultural_pillar = heritage_anatolian
-      }
-    }
-    any_realm_province = {
-      culture = {
-        OR = {
-          is_culture_or_parent_culture = { CULTURE = culture:mathian }
-          has_cultural_pillar = heritage_greek
-          has_cultural_pillar = heritage_anatolian
-        }
-      }
-    }
-  }
-}
-
-can_recruit_maa_tarypeltenai_trigger = {
-  OR = {
-    can_recruit_illyrian_maa_trigger = yes
     can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
   }
 }
-
-can_recruit_maa_chalkaspides_trigger = {
-  OR = {
-    AND = {
-      culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      }
-      any_realm_province = { geographical_region = ATHA_aor_macedonian }
-    }
-    any_realm_province = {
-      culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      }
-      geographical_region = ATHA_aor_macedonian
-    }
-  }
-}
-
-can_recruit_maa_agema_phalangitai_trigger = {
-  OR = {
-    AND = {
-      culture = {
-        has_cultural_pillar = heritage_greek
-      }
-      any_realm_province = { geographical_region = ATHA_aor_agema_p }
-    }
-    any_realm_province = {
-      culture = {
-        has_cultural_pillar = heritage_greek
-      }
-      geographical_region = ATHA_aor_agema_p
-    }
-  }
-  can_recruit_elite_maa = yes
-}
-
-can_recruit_maa_argyraspides_trigger = {
-  OR = {
-    AND = {
-      culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      }
-      any_realm_province = { geographical_region = ATHA_aor_hellenic_asia }
-    }
-    any_realm_province = {
-      culture = {
-        is_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      }
-      geographical_region = ATHA_aor_macedonian
-    }
-  }
-}
-
-###civilized#pikemen#elite###
-
-#############################
-
-###civilized#light_cavalry###
-
-can_recruit_maa_prodomoi_trigger = {
+can_recruit_maa_phalangitai_trigger = {
   OR = {
     can_recruit_greek_maa_trigger = yes
     can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
   }
 }
 
+### Superior
+
+can_recruit_maa_argyraspides_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+}
+can_recruit_maa_chalkaspides_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+}
+
+### Elite
+
+can_recruit_maa_agema_phalangitai_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+
+## Archers ###################################
+
+### Basic
+
+can_recruit_maa_anganai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
+  }
+}
+can_recruit_maa_toxotai_trigger = {
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
+}
+
+### Superior
+
+can_recruit_maa_kretikoi_toxotai_trigger = {
+  can_recruit_cretan_maa_trigger = yes
+}
+
+### Elite
+
+can_recruit_maa_promakhoi_kretikoi_trigger = {
+  can_recruit_cretan_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+
+## Skirmisher Cavalry ###################################
+
+### Basic
+
+can_recruit_maa_prodromoi_trigger = {
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
+}
 can_recruit_maa_mezenai_trigger = {
   OR = {
-    can_recruit_illyrian_maa_trigger = yes
     can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
   }
 }
 
-can_recruit_maa_thessalikoi_prodomoi_trigger = {
-  can_recruit_thessalian_maa_trigger = yes
+### Superior
+
+can_recruit_maa_mandonai_trigger = {
+    can_recruit_pannonian_maa_trigger = yes
 }
 
-#############################
+## Heavy Cavalry ###################################
 
-###civilized#heavy_cavalry###
+### Basic
 
 can_recruit_maa_hippeis_trigger = {
   OR = {
     can_recruit_greek_maa_trigger = yes
     can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
+}
+can_recruit_maa_moukamezenai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
   }
 }
 
-can_recruit_maa_moukamezenai_trigger = {
-  OR = {
-    can_recruit_illyrian_maa_trigger = yes
-    can_recruit_thracian_maa_trigger = yes
-  }
-}
+### Superior
 
 can_recruit_maa_thessalikoi_hippeis_trigger = {
   can_recruit_thessalian_maa_trigger = yes
 }
 
-can_recruit_maa_molosson_hippeis_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      any_realm_province = {
-        geographical_region = ATHA_aor_molosson
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      geographical_region = ATHA_aor_molosson
-    }
-  }
-}
-
-can_recruit_maa_zibutai_trigger = {
-  OR = {
-    has_culture_or_parent_culture = { CULTURE = culture:odrysian }
-    AND = {
-      culture = { has_cultural_pillar = heritage_thracian }
-      any_realm_province = {
-        culture = { has_cultural_pillar = heritage_thracian }
-        geographical_region = ATHA_aor_odrysian
-      }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:odrysian }
-    }
-  }
-}
-
-###civilized#elite#heavy_cavalry###
-
-can_recruit_maa_hiera_ile_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      any_realm_province = { geographical_region = ATHA_aor_macedonian_royal }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_macedonian_royal
-    }
-  }
-  can_recruit_guard_maa = yes
-}
-
-can_recruit_maa_hypaspistai_trigger = {
-  OR = {
-    AND = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      any_realm_province = { geographical_region = ATHA_aor_macedonian_royal }
-    }
-    any_realm_province = {
-      has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-      geographical_region = ATHA_aor_macedonian_royal
-    }
-  }
-  can_recruit_guard_maa = yes
-}
+### Elite
 
 can_recruit_maa_basilikoi_agema_trigger = {
   OR = {
     AND = {
       has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      any_realm_province = {
-        geographical_region = ATHA_aor_royal_molosson
+      any_directly_owned_province = {
+        geographical_region = ATHA_aor_molossian
       }
     }
-    any_realm_province = {
+    any_directly_owned_province = {
       has_culture_or_parent_culture = { CULTURE = culture:epirote }
-      geographical_region = ATHA_aor_royal_molosson
+      geographical_region = ATHA_aor_molossian
     }
   }
-  can_recruit_guard_maa = yes
+}
+can_recruit_maa_hiera_ile_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_zibutai_trigger = {
+  can_recruit_odrysian_maa_trigger = yes
+  can_recruit_elite_maa = yes
 }
 
-###CIVILIZED#NEOMAA###
+## Horse Archers ###################################
 
-###BARBARIAN#NEOMAA###
+### Basic
 
+can_recruit_maa_angamezenai_trigger = {
+  OR = {
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
+
+    culture = { has_cultural_tradition = tradition_horse_lords }
+    any_directly_owned_province = {
+      culture = { has_cultural_tradition = tradition_horse_lords }
+    }
+  }
+}
+
+### Superior
+
+can_recruit_maa_skuda_aspabarata_trigger = {
+  can_recruit_scythian_maa_trigger = yes
+}

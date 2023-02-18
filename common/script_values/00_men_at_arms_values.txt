@@ -306,34 +306,31 @@ culture_ai_weight_archers = {
     # TODO: Add archers cultures	
 	if = { # Cultures that favours archers
 		limit = {
-            OR = {
-				culture = culture:cretan # Cretans will prefer archers.
-			}
+			culture = culture:cretan # Cretans will prefer archers.
 		}
 		add = 40
 	}
 	if = { # Cultures that dislike archers
 		limit = {
-			OR = {
-				culture = culture:laconian # Spartans hate missile troops.
-			}
+			culture = culture:laconian # Spartans hate missile troops.
 		}
 		add = -60
 	}
 	
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
-			OR = {
-				culture = {
-					OR = {
-						culture_has_archer_maa = yes
-						culture_has_slinger_maa = yes
-					}
-				}
-				is_rhodian = yes # Rhodians should use slingers instead.
+			culture = {
+				culture_has_archer_maa = yes
 			}
 		}
 		add = -100
+	}
+	
+	if = { # Cultures with a preference for Slingers should buy those over Archers
+		limit = {
+			is_rhodian = yes # Rhodians should use slingers instead.
+		}
+		add = -40
 	}
 }
 
@@ -369,6 +366,13 @@ culture_ai_weight_slingers = {
 		}
 		add = -100
 	}
+	
+	if = { # Cultures with a preference for Archers should buy those over Slingers
+		limit = {
+			culture = culture:cretan
+		}
+		add = -40
+	}
 }
 
 culture_ai_weight_medium_infantry = {
@@ -383,9 +387,7 @@ culture_ai_weight_medium_infantry = {
 	}
 	if = { # Cultures that dislike medium infantry
 		limit = {
-			OR = {
-				culture = { has_cultural_pillar = heritage_greek } # Greeks will want to use Phalanx
-			}
+            always = no
 		}
 		add = -60
 	}
@@ -412,9 +414,7 @@ culture_ai_weight_heavy_infantry = {
 	}
 	if = { # Cultures that dislike heavy infantry
 		limit = {
-			OR = {
-				culture = { has_cultural_pillar = heritage_greek } # Greeks will want to use Phalanx
-			}
+            always = no
 		}
 		add = -60
 	}
@@ -443,10 +443,7 @@ culture_ai_weight_pikemen = {
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
 			culture = {
-				OR = {
-					culture_has_pikemen_maa = yes
-					culture_has_phalanx_maa = yes
-				}
+				culture_has_pikemen_maa = yes
 			}
 		}
 		add = -100

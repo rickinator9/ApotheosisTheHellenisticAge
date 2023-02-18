@@ -12,6 +12,20 @@ e_thrace = {
 		
 		capital = c_philippoupolis
 
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:odrysian
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
+		cultural_names = {
+		# ODRYSIAN
+			name_list_odrysian = cn_haimos_odrysian # Odrysia
+		}
+
 		d_odrysia = {
 			color = { 0.52 0.34 0.50 }
 
@@ -2139,6 +2153,25 @@ e_thrace = {
 
 		capital = c_serdika
 
+		ai_primary_priority = {
+			if = {
+				limit = {
+					OR = {
+						culture = culture:agrianian
+						culture = culture:bessian
+					}
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
+		cultural_names = {
+		# AGRIANIAN
+			name_list_agrianian = cn_strymonia_agrianian # Agriania
+		# BESSIAN
+			name_list_bessian = cn_strymonia_bessian # Bessia
+		}
+
 		d_serdike = {
 			color = { 0.5 0.41 0.32 }
 
@@ -3333,7 +3366,7 @@ e_thrace = {
 
 		cultural_names = {
 		# GETIC
-			name_list_getic = cn_mikra_skythia_getic
+			name_list_getic = cn_mikra_skythia_getic # Getia
 		}
 
 		d_piaria = {
@@ -3847,14 +3880,14 @@ e_thrace = {
 
 		cultural_names = {
 		# CELTIC
-			name_list_boian = cn_moesia_celtic
+			name_list_boian = cn_moesia_celtic # Tylis
 			name_list_belgic = cn_moesia_celtic
 			name_list_danuian = cn_moesia_celtic
 			name_list_skordiskian = cn_moesia_celtic
 			name_list_tauriskian = cn_moesia_celtic
 			name_list_volk = cn_moesia_celtic
 		# CROBYZIAN
-			name_list_ionian = cn_moesia_crobyzian
+			name_list_ionian = cn_moesia_crobyzian # Krobyzia
 		}
 
 		d_gelegetike = {
