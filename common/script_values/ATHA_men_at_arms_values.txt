@@ -801,12 +801,8 @@ ATHA_ai_weight_skirmishers = {
 				has_culture_or_parent_culture = { CULTURE = culture:messenian }
 				has_culture_or_parent_culture = { CULTURE = culture:ionian }
 				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
-		}
-		add = ATHA_ai_maa_cultural_weight_like
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:cretan }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
@@ -850,6 +846,7 @@ ATHA_ai_weight_archers = {
 				has_culture_or_parent_culture = { CULTURE = culture:messenian }
 				has_culture_or_parent_culture = { CULTURE = culture:ionian }
 				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
@@ -858,11 +855,6 @@ ATHA_ai_weight_archers = {
 			has_culture_or_parent_culture = { CULTURE = culture:laconian }
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:cretan }
-		}
-		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
 		limit = {
 			culture = {
@@ -957,12 +949,10 @@ ATHA_ai_weight_pikemen = {
 	value = 0
 	if = {
 		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:laconian }
-		}
-		add = ATHA_ai_maa_cultural_weight_dislike
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
 	} else_if = {
@@ -1041,12 +1031,8 @@ ATHA_ai_weight_heavy_infantry = {
 				has_culture_or_parent_culture = { CULTURE = culture:messenian }
 				has_culture_or_parent_culture = { CULTURE = culture:ionian }
 				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
 			}
-		}
-		add = ATHA_ai_maa_cultural_weight_like
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:laconian }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
@@ -1141,28 +1127,23 @@ ATHA_ai_weight_light_cavalry = {
 	value = 300
 	if = {
 		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:laconian }
-		}
-		add = ATHA_ai_maa_cultural_weight_dislike
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
 	} else_if = {
 		limit = {
 			OR = {
-				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-				has_culture_or_parent_culture = { CULTURE = culture:epirote }
-				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }
+				has_culture_or_parent_culture = { CULTURE = culture:odrysian }		
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
 		limit = {
-			OR = {
-				has_culture_or_parent_culture = { CULTURE = culture:odrysian }				
-			}
+			culture = { has_cultural_pillar = heritage_pannonian }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
@@ -1218,22 +1199,17 @@ ATHA_ai_weight_heavy_cavalry = {
 				has_culture_or_parent_culture = { CULTURE = culture:messenian }
 				has_culture_or_parent_culture = { CULTURE = culture:ionian }
 				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
 	} else_if = {
 		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:laconian }
-		}
-		add = ATHA_ai_maa_cultural_weight_dislike
-	} else_if = {
-		limit = {
-			has_culture_or_parent_culture = { CULTURE = culture:cretan }
-		}
-		add = ATHA_ai_maa_cultural_weight_dislike
-	} else_if = {
-		limit = {
 			has_culture_or_parent_culture = { CULTURE = culture:thessalian }
+			has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+			has_culture_or_parent_culture = { CULTURE = culture:epirote }
+			has_culture_or_parent_culture = { CULTURE = culture:odrysian }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
