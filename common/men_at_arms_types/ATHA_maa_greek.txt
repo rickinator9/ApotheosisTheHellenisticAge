@@ -1628,3 +1628,45 @@ drapanai = {
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
+
+#Ptolemy's#Gift#
+elephantes_kataphraktoi = {
+    type = elephant_cavalry
+
+    can_recruit = {
+        can_recruit_maa_elephantes_kataphraktoi_trigger = yes
+    }
+
+    damage = 80
+    toughness = 40
+    pursuit = 0
+    screen = 0
+
+    siege_tier = 1
+	siege_value = 0.1
+
+    terrain_bonus = {
+        plains = { damage = 80 }
+        forest = { toughness = 40 }
+        mountains = { damage = -40 }
+        hills = { toughness = -20 damage = -20 }
+        wetlands = { toughness = -20 damage = -20 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+        medium_infantry = 1
+        heavy_cavalry = 1
+    }
+
+    buy_cost = { gold = 170 }
+    low_maintenance_cost = { gold = 1.4 }
+    high_maintenance_cost = { gold = 4 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 35
+    ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
+    icon = elephant_cavalry
+}
