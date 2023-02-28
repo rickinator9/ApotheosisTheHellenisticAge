@@ -728,8 +728,9 @@ phalangitai = {
     }
 
     counters = {
-        elephant_cavalry = 0.5
         heavy_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 60 }
@@ -767,9 +768,10 @@ chalkaspides = {
     }
 
     counters = {
-        elephant_cavalry = 0.5
         heavy_cavalry = 0.5
         light_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 80 }
@@ -807,8 +809,9 @@ argyraspides = {
     }
 
     counters = {
-        elephant_cavalry = 1
-        heavy_cavalry = 1
+        heavy_cavalry = 0.1
+        elephant_cavalry = 0.5
+        camel_cavalry = 0.5
     }
 
     buy_cost = { gold = 90 }
@@ -846,8 +849,9 @@ agema_phalangitai = {
     }
 
     counters = {
-        elephant_cavalry = 0.5
         heavy_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 100 }
@@ -1024,13 +1028,13 @@ hippeis = {
         can_recruit_maa_hippeis_trigger = yes
     }
 
-    damage = 15
+    damage = 20
     toughness = 15
     pursuit = 10
-    screen = 10
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 20 toughness = 20 }
+        plains = { damage = 30 toughness = 10 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1041,9 +1045,9 @@ hippeis = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 65 }
-    low_maintenance_cost = { gold = 0.35 }
-    high_maintenance_cost = { gold = 1.05 }
+    buy_cost = { gold = 70 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1061,13 +1065,13 @@ thessalikoi_hippeis = {
         can_recruit_maa_thessalikoi_hippeis_trigger = yes
     }
 
-    damage = 30
+    damage = 35
     toughness = 10
     pursuit = 10
-    screen = 10
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 30 toughness = 10 }
+        plains = { damage = 35 pursuit = 10 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1075,7 +1079,7 @@ thessalikoi_hippeis = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 90 }
@@ -1103,12 +1107,12 @@ hiera_ile = {
     }
 
     damage = 30
-    toughness = 20
+    toughness = 25
     pursuit = 10
-    screen = 10
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 20 toughness = 20 }
+        plains = { damage = 25 toughness = 15 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1117,7 +1121,6 @@ hiera_ile = {
 
     counters = {
         archers = 0.5
-        pikemen = 0.5
     }
 
     buy_cost = { gold = 110 }
@@ -1145,8 +1148,8 @@ basilikoi_agema = {
 
     damage = 35
     toughness = 15
-    pursuit = 10
-    screen = 20
+    pursuit = 20
+    screen = 10
 
     terrain_bonus = {
         plains = { damage = 25 toughness = 15 }
@@ -1329,14 +1332,14 @@ moukamezenai = {
         can_recruit_maa_moukamezenai_trigger = yes
     }
 
-    damage = 20
+    damage = 25
     toughness = 10
     pursuit = 10
-    screen = 10
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 10 toughness = 10 }
-        forest = { damage = 10 toughness = 10 }
+        plains = { damage = 15 toughness = 5 }
+        forest = { damage = 5 toughness = 15 }
         mountains = { damage = -10 }
         drylands = { damage = -5 toughness -5 }
         hills = { toughness = -5 damage = -5 }
@@ -1347,9 +1350,9 @@ moukamezenai = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 65 }
-    low_maintenance_cost = { gold = 0.35 }
-    high_maintenance_cost = { gold = 1.05 }
+    buy_cost = { gold = 70 }
+    low_maintenance_cost = { gold = 0.4 }
+    high_maintenance_cost = { gold = 1.2 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1490,12 +1493,12 @@ zibutai = {
 
     damage = 40
     toughness = 10
-    pursuit = 10
-    screen = 10
+    pursuit = 20
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 10 toughness = 10 }
-        forest = { damage = 10 toughness = 10 }
+        plains = { damage = 15 screen = 10 }
+        forest = { pursuit = 10 toughness = 15 }
         mountains = { damage = -10 }
         drylands = { damage = -5 toughness -5 }
         hills = { toughness = -5 damage = -5 }
