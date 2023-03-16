@@ -189,24 +189,27 @@ can_recruit_maa_rhodioi_sphendonetai_trigger = {
 ### Basic
 
 can_recruit_maa_peltophoroi_trigger = {
-  always = yes # temporary to ensure every culture has access to medium infantry at game-start
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
 }
-
-### Superior
-
 can_recruit_maa_galathraikes_trigger = {
   OR = {
-    any_parent_culture_or_above = { 
-      is_hybrid_culture = yes
-      any_parent_culture = { has_cultural_pillar = heritage_celtic }
-      any_parent_culture = { has_cultural_pillar = heritage_thracian }
-    }
+    can_recruit_thracian_maa_trigger = yes
+    can_recruit_celtic_maa_trigger = yes
+    can_recruit_illyrian_maa_trigger = yes
+    can_recruit_pannonian_maa_trigger = yes
+    can_recruit_scythian_maa_trigger = yes
+  }
+}
+
+can_recruit_maa_thureophoroi_trigger = {
+  OR = {
+    culture = { has_innovation = innovation_classical_thyreos }
     any_directly_owned_province = {
-      any_parent_culture_or_above = { 
-        is_hybrid_culture = yes
-        any_parent_culture = { has_cultural_pillar = heritage_celtic }
-        any_parent_culture = { has_cultural_pillar = heritage_thracian }
-      }
+      culture = { has_innovation = innovation_classical_thyreos }
     }
   }
 }
