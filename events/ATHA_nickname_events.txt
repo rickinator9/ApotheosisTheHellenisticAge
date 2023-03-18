@@ -8893,6 +8893,10 @@ ATHA_nickname.0300 = {
 	scope = combat_side
 	hidden = yes
 
+	trigger = {
+		exists = side_commander
+	}
+
 	immediate = {
 		side_commander = { register_battle_win_effect = yes }
 	}
@@ -8902,6 +8906,10 @@ ATHA_nickname.0300 = {
 ATHA_nickname.0301 = {
 	scope = combat_side
 	hidden = yes
+
+	trigger = {
+		exists = side_commander
+	}
 
 	immediate = {
 		side_commander = { register_battle_loss_effect = yes }
@@ -8940,6 +8948,7 @@ ATHA_nickname.0303 = {
 			has_character_flag = nick_the_short_lived_enabled_flag
 			NOT = { has_any_nickname = yes }
 		}
+		exists = scope:title
 		scope:title = {
 			tier >= tier_kingdom
 		}

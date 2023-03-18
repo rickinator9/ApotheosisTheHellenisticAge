@@ -9,6 +9,9 @@ ATHA_vassal_contract.1 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_autonomous_city_state_contract
 			# Either the vassal does not have a city state government at all or he became autonomous, in which case he should be able to change their government.
@@ -62,6 +65,9 @@ ATHA_vassal_contract.2 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_city_state_contract
@@ -90,6 +96,9 @@ ATHA_vassal_contract.3 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution } }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_city_state_contract
@@ -111,6 +120,9 @@ ATHA_vassal_contract.4 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_autonomous_coalition_contract
 			OR = {
@@ -172,6 +184,9 @@ ATHA_vassal_contract.5 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
@@ -204,6 +219,9 @@ ATHA_vassal_contract.6 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions } }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
@@ -224,6 +242,8 @@ ATHA_vassal_contract.7 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_civil_bureaucracy_contract
 			NOT = { has_government = bureaucracy_civil_government }
@@ -243,6 +263,8 @@ ATHA_vassal_contract.8 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_military_bureaucracy_contract
 			NOT = { has_government = bureaucracy_military_government }
@@ -262,6 +284,8 @@ ATHA_vassal_contract.9 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_feudal_bureaucracy_contract
 			NOT = { has_government = feudal_government }
@@ -286,6 +310,7 @@ ATHA_vassal_contract.10 = {
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
 		scope:dependent_will_become_autonomous = yes
 	}
 
@@ -320,6 +345,10 @@ ATHA_vassal_contract.10 = {
 ATHA_vassal_contract.11 = {
 	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -359,6 +388,10 @@ ATHA_vassal_contract.11 = {
 ATHA_vassal_contract.12 = {
 	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -419,6 +452,10 @@ ATHA_vassal_contract.13 = {
 	type = empty
 	hidden = yes
 
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
+
     immediate = {
 		scope:vassal_contract_holder = {
 			if = {
@@ -447,6 +484,10 @@ ATHA_vassal_contract.13 = {
 ATHA_vassal_contract.14 = {
 	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -555,7 +596,8 @@ ATHA_vassal_contract.51 = {
 	hidden = yes
 
 	trigger = {
-		scope:title= { tier > var:highest_tier_before_inheritance }
+		has_variable = highest_tier_before_inheritance
+		scope:title= { tier > root.var:highest_tier_before_inheritance }
 		is_independent_ruler = no
 	}
 

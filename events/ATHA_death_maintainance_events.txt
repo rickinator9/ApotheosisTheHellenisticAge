@@ -10,13 +10,10 @@ ATHA_death_maintainance.0001 = {
 	hidden = yes
 
 	trigger = {
-		trigger_if = {
-			limit = { exists = liege }
-			liege = {
-				cp:councillor_spartan_dual_monarch = {
-					this = root
-				}
-			}
+		exists = liege
+		liege = {
+			exists = cp:councillor_spartan_dual_monarch
+			cp:councillor_spartan_dual_monarch = { this = root }
 		}
 	}
 
@@ -86,6 +83,7 @@ ATHA_death_maintainance.0010 = {
 	hidden = yes
 
 	trigger = {
+		is_landed = yes
 		primary_title = { this = title:d_pythia }
 	}
 
@@ -141,19 +139,19 @@ ATHA_death_maintainance.0030 = {
 	type = character_event
 	hidden = yes
 
+	trigger = {
+		exists = scope:killer
+		scope:killer = {
+			culture = { has_cultural_parameter = unlock_headhunting }
+		}
+	}
+
 	immediate = {
 		save_scope_as = headless_victim
-		if = {
-			limit = {
-				scope:killer = {
-					culture = { has_cultural_parameter = unlock_headhunting }
-				}
-			}
-			scope:killer = {
-				trigger_event = { 
-					id = ATHA_death_maintainance.0031
-					days = 1
-				}
+		scope:killer = {
+			trigger_event = { 
+				id = ATHA_death_maintainance.0031
+				days = 1
 			}
 		}
 	}

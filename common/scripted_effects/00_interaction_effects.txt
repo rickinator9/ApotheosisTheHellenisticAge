@@ -2189,60 +2189,73 @@ offer_vassalization_interaction_effect = {
 	scope:recipient = {
 		if = {
 			limit = {
-                OR = {
-					government_has_flag = has_discrete_tax_contract
-					government_has_flag = has_religious_rights_contract
-                }
+				scope:high_obligations = yes
+				government_has_flag = has_feudal_government_taxes_contract
+				government_has_flag = has_feudal_government_levies_contract
 			}
-			if = {
-				limit = { scope:high_obligations = yes }
-				hidden_effect = {
-					if = {
-						limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
-						vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 3 }
-						vassal_contract_set_obligation_level = { type = feudal_government_levies level = 3 }
-					}	
-				}
-				custom_tooltip = high_obligations_taxes
-				custom_tooltip = high_obligations_levies
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 3 }
+					vassal_contract_set_obligation_level = { type = feudal_government_levies level = 3 }
+				}	
 			}
-			else_if = {
-				limit = { scope:low_obligations = yes }
-				hidden_effect = {
-					if = {
-						limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
-						vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 1 }
-						vassal_contract_set_obligation_level = { type = feudal_government_levies level = 1 }
-					}			
-				}
-				custom_tooltip = low_obligations_taxes
-				custom_tooltip = low_obligations_levies
+			custom_tooltip = high_obligations_taxes
+			custom_tooltip = high_obligations_levies
+		}
+		else_if = {
+			limit = {
+				scope:low_obligations = yes
+				government_has_flag = has_feudal_government_taxes_contract
+				government_has_flag = has_feudal_government_levies_contract
 			}
-			else_if = {
-				limit = { scope:religious_exemption = yes}
-				hidden_effect = {
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 1 }
+					vassal_contract_set_obligation_level = { type = feudal_government_levies level = 1 }
+				}			
+			}
+			custom_tooltip = low_obligations_taxes
+			custom_tooltip = low_obligations_levies
+		}
+		else_if = {
+			limit = {
+				scope:religious_exemption = yes
+				government_has_flag = has_religious_rights_contract
+			}
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
 					if = {
-						limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
+						limit = {
+							government_has_flag = has_feudal_government_taxes_contract
+							government_has_flag = has_feudal_government_levies_contract
+						}
 						vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 2 }
 						vassal_contract_set_obligation_level = { type = feudal_government_levies level = 1 }
-						vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
-					}		
-				}
-				custom_tooltip = normal_obligations_taxes
-				custom_tooltip = low_obligations_levies
-				custom_tooltip = religious_protection_tt
+					}
+					vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
+				}		
 			}
-			else = {
-				hidden_effect = {
-					if = {
-						limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
-						vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 2 }
-						vassal_contract_set_obligation_level = { type = feudal_government_levies level = 2 }
-					}			
-				}
-				custom_tooltip = normal_obligations_taxes
-				custom_tooltip = normal_obligations_levies
-			}		
+			custom_tooltip = normal_obligations_taxes
+			custom_tooltip = low_obligations_levies
+			custom_tooltip = religious_protection_tt
+		}
+		else_if = {
+			limit = {
+				government_has_flag = has_feudal_government_taxes_contract
+				government_has_flag = has_feudal_government_levies_contract
+			}
+			hidden_effect = {
+				if = {
+					limit = { is_independent_ruler = no} # To avoid errors during tooltip generation (prior to the contract being generated)
+					vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 2 }
+					vassal_contract_set_obligation_level = { type = feudal_government_levies level = 2 }
+				}			
+			}
+			custom_tooltip = normal_obligations_taxes
+			custom_tooltip = normal_obligations_levies
 		}
 
 		if = {
@@ -2405,7 +2418,7 @@ offer_fealty_interaction_effect = {
 		if = {
 			limit = {
                 OR = {
-					government_has_flag = has_discrete_tax_contract
+					government_has_flag = has_feudal_government_taxes_contract
 					government_has_flag = has_religious_rights_contract
                 }
 			}
@@ -2679,9 +2692,9 @@ seduce_interaction_stress_effect = {
 				honest = minor_stress_impact_gain
 				just = minor_stress_impact_gain
 			}
-		}
 
-		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
+		}
 	}
 	else = {
 		scope:actor = {		

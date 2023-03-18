@@ -208,7 +208,10 @@ _pvt_save_vassal_contract_setting_for_char = {
 # CONTRACT is the id of the vassal contract category to apply.
 _pvt_apply_vassal_contract_setting = {
 	if = {
-		limit = { has_variable = $CONTRACT$_var }
+		limit = {
+			has_variable = $CONTRACT$_var
+			government_has_flag = has_$CONTRACT$_contract
+		}
 		set_obligation_value_if_changed_effect = { OBLIGATION_TYPE = $CONTRACT$ VALUE = var:$CONTRACT$_var }
 	}
 }
