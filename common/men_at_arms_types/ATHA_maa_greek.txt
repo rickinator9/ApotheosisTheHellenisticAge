@@ -388,42 +388,6 @@ thureophoroi = {
     icon = heavy_infantry
 }
 
-#Superior#Tylis#County
-galathraikes = {
-    type = medium_infantry
-
-    can_recruit = {
-        can_recruit_maa_galathraikes_trigger = yes
-    }
-
-    damage = 14
-    toughness = 14
-    pursuit = 7
-    screen = 7
-
-    terrain_bonus = {
-        forest = { damage = 6 toughness = 6 }
-        toughness { damage = 4 toughness = 4 }
-        drylands = { toughness = -5 damage = -5 }
-    }
-
-    counters = {
-        pikemen = 0.5
-        medium_infantry = 0.5
-    }
-
-    buy_cost = { gold = 72.5 }
-    low_maintenance_cost = { gold = 0.425 }
-    high_maintenance_cost = { gold = 1.275 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_medium_infantry }
-    icon = heavy_infantry
-}
-
 #Pergamon#County#Elite
 hyperaspistai = {
     type = medium_infantry
@@ -1325,6 +1289,39 @@ tarupeltenai = {
     icon = phalangitai
 }
 
+galathraikes = {
+    type = medium_infantry
+
+    can_recruit = {
+        can_recruit_maa_galathraikes_trigger = yes
+    }
+
+    damage = 10
+    toughness = 5
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+        forest = { toughness = 5 }
+        drylands = { pursuit = -5 screen = -5 }
+    }
+
+    counters = {
+        pikemen = 0.5
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
+}
+
 moukamezenai = {
     type = heavy_cavalry
 
@@ -1563,26 +1560,25 @@ nedes_nesamoi = {
 }
 
 rompaianai = {
-    type = skirmishers
+    type = medium_infantry
 
     can_recruit = {
         can_recruit_maa_rompaianai_trigger = yes
     }
 
-    damage = 15
-    toughness = 5
-    pursuit = 5
-    screen = 15
+    damage = 14
+    toughness = 6
+    pursuit = 6
+    screen = 14
 
     terrain_bonus = {
-        forest = { toughness = 10 }
-        plains = { screen = -10 }
+        mountains = { toughness = 4 damage = 1 }
         drylands = { screen = -10 }
     }
 
     counters = {
+        pikemen = 0.5
         heavy_infantry = 0.5
-        skirmishers = 0.5
     }
 
     buy_cost = { gold = 70 }
@@ -1593,12 +1589,12 @@ rompaianai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
 }
 
 drapanai = {
-    type = skirmishers
+    type = medium_infantry
 
     can_recruit = {
         can_recruit_maa_drapanai_trigger = yes
@@ -1606,18 +1602,17 @@ drapanai = {
 
     damage = 15
     toughness = 5
-    pursuit = 15
-    screen = 5
+    pursuit = 20
+    screen = 0
 
     terrain_bonus = {
-        forest = { damage = 10 }
-        plains = { pursuit = -10 }
+        forest = { damage = 5 }
         drylands = { pursuit = -10 }
     }
 
     counters = {
+        pikemen = 0.5
         heavy_infantry = 0.5
-        skirmishers = 0.5
     }
 
     buy_cost = { gold = 70 }
@@ -1628,8 +1623,8 @@ drapanai = {
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
+    ai_quality = { value = ATHA_ai_weight_medium_infantry }
+    icon = heavy_infantry
 }
 
 #Ptolemy's#Gift#
