@@ -147,12 +147,6 @@ can_recruit_maa_peltenai_trigger = {
 can_recruit_maa_kretikoi_peltastai_trigger = {
   can_recruit_cretan_maa_trigger = yes
 }
-can_recruit_maa_skaplinai_trigger = {
-  OR = {
-    can_recruit_agrianian_maa_trigger = yes
-    can_recruit_dardanian_maa_trigger = yes
-  }
-}
 
 ### Elite
 can_recruit_maa_drapanai_trigger = {
@@ -170,6 +164,15 @@ can_recruit_maa_rompaianai_trigger = {
 
 ## Slingers ###################################
 
+### Basic
+can_recruit_maa_sphendonetai_trigger = {
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
+}
+
 ### Superior
 can_recruit_maa_akarnanioi_sphendonetai_trigger = {
   can_recruit_culture_aor_maa_trigger = {
@@ -181,6 +184,12 @@ can_recruit_maa_rhodioi_sphendonetai_trigger = {
   can_recruit_culture_aor_maa_trigger = {
     CULTURE = culture:dorian
     REGION = ATHA_aor_rhodian
+  }
+}
+can_recruit_maa_skaplinai_trigger = {
+  OR = {
+    can_recruit_agrianian_maa_trigger = yes
+    can_recruit_dardanian_maa_trigger = yes
   }
 }
 
@@ -327,6 +336,13 @@ can_recruit_maa_homoioi_hoplitai_trigger = {
 }
 can_recruit_maa_nedes_nesamoi_trigger = {
   can_recruit_celtic_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_cordinau_orca_trigger = {
+  can_recruit_culture_aor_maa_trigger = {
+    CULTURE = culture:skordiskian
+    REGION = ATHA_aor_skordiski
+  }
   can_recruit_elite_maa = yes
 }
 
