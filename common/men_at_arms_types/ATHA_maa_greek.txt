@@ -37,6 +37,42 @@ euzonoi = {
     icon = skirmishers
 }
 
+#anatolian#superior
+anatolikoi_phyletai = {
+    type = skirmishers
+
+    can_recruit = {
+        can_recruit_maa_anatolikoi_phyletai_trigger = yes
+    }
+
+    damage = 10
+    toughness = 5
+    pursuit = 15
+    screen = 15
+
+    terrain_bonus = {
+        hills = { toughness = 15 }
+        drylands = { damage = 5 }
+        plains = { screen = -10 }
+        wetlands = { damage = -5 pursuit = -10 screen = -10 }
+    }
+
+    counters = {
+        heavy_infantry = 0.5
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    icon = skirmishers
+}
+
 #Kretan#County#Superior
 kretikoi_peltastai = {
     type = skirmishers
@@ -113,14 +149,10 @@ rhodioi_sphendonetai = {
 makedonikoi_peltastai = {
     type = skirmishers
 
-    can_recruit = {
-        can_recruit_maa_makedonikoi_peltastai_trigger = yes
-    }
-
-    damage = 10
-    toughness = 20
-    pursuit = 15
-    screen = 15
+    damage = 15
+    toughness = 15
+    pursuit = 10
+    screen = 10
 
     terrain_bonus = {
     }
@@ -130,9 +162,9 @@ makedonikoi_peltastai = {
         pikemen = 0.5
     }
 
-    buy_cost = { gold = 95 }
-    low_maintenance_cost = { gold = 0.65 }
-    high_maintenance_cost = { gold = 1.95 }
+    buy_cost = { gold = 90 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1284,6 +1316,41 @@ anganai = {
     buy_cost = { gold = 55 }
     low_maintenance_cost = { gold = 0.25 }
     high_maintenance_cost = { gold = 0.75 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_archers }
+    icon = toxotai
+}
+
+asanai = {
+    type = slingers
+
+    can_recruit = {
+        can_recruit_maa_asanai_trigger = yes
+    }
+
+    damage = 10
+    toughness = 5
+    pursuit = 0
+    screen = 10
+
+    terrain_bonus = {
+        hills = { toughness = 5 }
+        forest = { damage = 5 }
+        plains = { screen = -10 }
+        drylands = { screen = -10 }
+    }
+
+    counters = {
+        heavy_infantry = 0.5
+    }
+
+    buy_cost = { gold = 50 }
+    low_maintenance_cost = { gold = 0.2 }
+    high_maintenance_cost = { gold = 0.6 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
