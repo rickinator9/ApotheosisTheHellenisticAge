@@ -1,18 +1,18 @@
 ﻿#Events for learning Commander Traits from a character
 
-namespace = ATHA_learn_commander_trait
+namespace = ATHA_learn_mastery_trait
 
 #Choose whether to become light_infantry_master, archers_master, light_cavalry_master, archer_cavalry_master medium_infantry_master
-ATHA_learn_commander_trait.0001 = {
+ATHA_learn_mastery_trait.0001 = {
 	type = character_event
-	title = ATHA_learn_commander_trait.0001.t
-	desc = ATHA_learn_commander_trait.0001.desc
+	title = ATHA_learn_mastery_trait.0001.t
+	desc = ATHA_learn_mastery_trait.0001.desc
 	theme = war
 	left_portrait = root
 	
 	trigger = {
 		NOT = { has_character_flag = being_taught_commander_trait }
-		has_maa_commander_trait = no
+		has_maa_mastery_trait = no
 		number_of_commander_traits < 3
 	}
 
@@ -38,7 +38,7 @@ ATHA_learn_commander_trait.0001 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0001.a
+		name = ATHA_learn_mastery_trait.0001.a
 		trigger = { NOT = { has_trait = light_infantry_master } }
 		add_trait = light_infantry_master
 
@@ -62,7 +62,7 @@ ATHA_learn_commander_trait.0001 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0001.b
+		name = ATHA_learn_mastery_trait.0001.b
 		trigger = { NOT = { has_trait = archers_master } }
 		add_trait = archers_master
 
@@ -86,7 +86,7 @@ ATHA_learn_commander_trait.0001 = {
 	}
 	
 	option = {
-		name = ATHA_learn_commander_trait.0001.c
+		name = ATHA_learn_mastery_trait.0001.c
 		trigger = { NOT = { has_trait = light_cavalry_master } }
 		add_trait = light_cavalry_master
 
@@ -110,7 +110,7 @@ ATHA_learn_commander_trait.0001 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0001.d
+		name = ATHA_learn_mastery_trait.0001.d
 		trigger = { 
 			NOT = { has_trait = archer_cavalry_master }
 			#As a rarer MaA type, we should first check whether the character has any
@@ -142,16 +142,16 @@ ATHA_learn_commander_trait.0001 = {
 }
 
 #Choose whether to become medium_infantry_master, heavy_infantry_master, pikemen_master, heavy_cavalry_master.
-ATHA_learn_commander_trait.0002 = {
+ATHA_learn_mastery_trait.0002 = {
 	type = character_event
-	title = ATHA_learn_commander_trait.0002.t
-	desc = ATHA_learn_commander_trait.0002.desc
+	title = ATHA_learn_mastery_trait.0002.t
+	desc = ATHA_learn_mastery_trait.0002.desc
 	theme = war
 	left_portrait = root
 	
 	trigger = {
 		NOT = { has_character_flag = being_taught_commander_trait }
-		has_maa_commander_trait = no
+		has_maa_mastery_trait = no
 		number_of_commander_traits < 3
 	}
 
@@ -177,7 +177,7 @@ ATHA_learn_commander_trait.0002 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0002.a
+		name = ATHA_learn_mastery_trait.0002.a
 		trigger = { NOT = { has_trait = medium_infantry_master } }
 		add_trait = medium_infantry_master
 
@@ -201,7 +201,7 @@ ATHA_learn_commander_trait.0002 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0002.b
+		name = ATHA_learn_mastery_trait.0002.b
 		trigger = { NOT = { has_trait = heavy_infantry_master } }
 		add_trait = heavy_infantry_master
 
@@ -225,7 +225,7 @@ ATHA_learn_commander_trait.0002 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0002.c
+		name = ATHA_learn_mastery_trait.0002.c
 		trigger = { NOT = { has_trait = pikemen_master } }
 		add_trait = pikemen_master
 
@@ -249,7 +249,7 @@ ATHA_learn_commander_trait.0002 = {
 	}
 
 	option = {
-		name = ATHA_learn_commander_trait.0002.d
+		name = ATHA_learn_mastery_trait.0002.d
 		trigger = { NOT = { has_trait = heavy_cavalry_master } }
 		add_trait = heavy_cavalry_master
 
