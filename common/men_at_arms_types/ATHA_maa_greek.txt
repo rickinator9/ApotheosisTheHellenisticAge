@@ -22,7 +22,7 @@ euzonoi = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 45 }
@@ -58,7 +58,7 @@ anatolikoi_phyletai = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -93,8 +93,8 @@ kretikoi_peltastai = {
     }
 
     counters = {
-        heavy_infantry = 1
-        pikemen = 1
+        heavy_infantry = 0.75
+        pikemen = 0.75
     }
 
     buy_cost = { gold = 70 }
@@ -126,13 +126,12 @@ makedonikoi_peltastai = {
     }
 
     counters = {
-        heavy_infantry = 1
-        pikemen = 0.5
+        heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 90 }
-    low_maintenance_cost = { gold = 0.6 }
-    high_maintenance_cost = { gold = 1.8 }
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.55 }
+    high_maintenance_cost = { gold = 1.65 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -165,8 +164,8 @@ toxotai = {
     }
 
     counters = {
-        skirmishers = 1
-        archer_cavalry = 1
+        skirmishers = 0.5
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 55 }
@@ -200,8 +199,8 @@ kretikoi_toxotai = {
     }
 
     counters = {
-        skirmishers = 1.5
-        archer_cavalry = 1
+        skirmishers = 1
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 80 }
@@ -235,8 +234,8 @@ promakhoi_kretikoi = {
     }
 
     counters = {
-        skirmishers = 1.5
-        archer_cavalry = 1
+        skirmishers = 1
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 100 }
@@ -274,7 +273,7 @@ sphendonetai = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -309,7 +308,7 @@ akarnanioi_sphendonetai = {
     }
 
     counters = {
-        heavy_infantry = 1.5
+        heavy_infantry = 1
         medium_infantry = 0.5
     }
 
@@ -343,7 +342,7 @@ rhodioi_sphendonetai = {
     }
 
     counters = {
-        heavy_infantry = 1.5
+        heavy_infantry = 1
         archer_cavalry = 0.5
         archers = 0.5
     }
@@ -380,13 +379,12 @@ skaplinai = {
     }
 
     counters = {
-        heavy_infantry = 1.5
-        medium_infantry = 0.5
+        heavy_infantry = 1
     }
 
-    buy_cost = { gold = 80 }
-    low_maintenance_cost = { gold = 0.5 }
-    high_maintenance_cost = { gold = 1.5 }
+    buy_cost = { gold = 75 }
+    low_maintenance_cost = { gold = 0.45 }
+    high_maintenance_cost = { gold = 1.35 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -414,7 +412,7 @@ peltophoroi = {
     }
 
     counters = {
-        pikemen = 1
+        pikemen = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -447,7 +445,7 @@ thureophoroi = {
     }
 
     counters = {
-        pikemen = 2
+        pikemen = 1
     }
 
     buy_cost = { gold = 60 }
@@ -483,7 +481,7 @@ hyperaspistai = {
     }
 
     counters = {
-        pikemen = 1.5
+        pikemen = 1
     }
 
     buy_cost = { gold = 90 }
@@ -525,8 +523,8 @@ hoplitai = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -564,8 +562,8 @@ epilektoi_hoplitai = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 100 }
@@ -609,8 +607,8 @@ eparitoi_hoplitai = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 100 }
@@ -650,8 +648,8 @@ lakonikoi_hoplitai = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
         pikemen = 0.5
     }
 
@@ -690,8 +688,8 @@ homoioi_hoplitai = {
     }
 
     counters = {
-        medium_infantry = 1.75
-        light_cavalry = 1.75
+        medium_infantry = 0.75
+        light_cavalry = 0.75
     }
 
     buy_cost = { gold = 100 }
@@ -723,19 +721,20 @@ hypaspistai = {
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 5 toughness = 5 }
+        farmlands = { damage = 5 screen = 10 }
+        valley = { toughness = 5 screen = 10 }
         forest = { toughness = -10 }
+        mountains = { toughness = -10 }
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
-        pikemen = 0.5
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
-    buy_cost = { gold = 105 }
-    low_maintenance_cost = { gold = 0.75 }
-    high_maintenance_cost = { gold = 2.25 }
+    buy_cost = { gold = 100 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -772,9 +771,9 @@ phalangitai = {
     }
 
     counters = {
-        heavy_cavalry = 1
-        elephant_cavalry = 0.5
-        camel_cavalry = 0.5
+        heavy_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 60 }
@@ -812,15 +811,15 @@ chalkaspides = {
     }
 
     counters = {
-        heavy_cavalry = 1
+        heavy_cavalry = 0.25
         light_cavalry = 0.25
-        elephant_cavalry = 0.5
-        camel_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 75 }
+    low_maintenance_cost = { gold = 0.45 }
+    high_maintenance_cost = { gold = 1.35 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -853,9 +852,9 @@ argyraspides = {
     }
 
     counters = {
-        heavy_cavalry = 1.5
-        elephant_cavalry = 0.5
-        camel_cavalry = 0.5
+        heavy_cavalry = 1
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 85 }
@@ -893,9 +892,9 @@ agema_phalangitai = {
     }
 
     counters = {
-        heavy_cavalry = 1
-        elephant_cavalry = 0.5
-        camel_cavalry = 0.5
+        heavy_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
     }
 
     buy_cost = { gold = 100 }
@@ -934,8 +933,8 @@ thorakitai = {
     }
 
     counters = {
-        light_cavalry = 1.75
-        medium_infantry = 1.75
+        light_cavalry = 0.75
+        medium_infantry = 0.75
     }
 
     buy_cost = { gold = 70 }
@@ -972,8 +971,8 @@ ardiaian_thorakitai = {
     }
 
     counters = {
-        light_cavalry = 1.5
-        medium_infantry = 1.5
+        light_cavalry = 1
+        medium_infantry = 1
     }
 
     buy_cost = { gold = 100 }
@@ -1011,8 +1010,8 @@ prodromoi = {
     }
 
     counters = {
-        archers = 1
-        slingers = 1
+        archers = 0.5
+        slingers = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -1050,8 +1049,8 @@ mandonai = {
     }
 
     counters = {
-        archers = 1
-        slingers = 1
+        archers = 0.5
+        slingers = 0.5
     }
 
     buy_cost = { gold = 75 }
@@ -1089,7 +1088,7 @@ hippeis = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 70 }
@@ -1126,7 +1125,7 @@ thessalikoi_hippeis = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 85 }
@@ -1167,7 +1166,7 @@ hiera_ile = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 110 }
@@ -1208,7 +1207,7 @@ basilikoi_agema = {
 
     counters = {
         heavy_infantry = 0.5
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 115 }
@@ -1248,7 +1247,7 @@ peltenai = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 45 }
@@ -1283,8 +1282,8 @@ anganai = {
     }
 
     counters = {
-        skirmishers = 1
-        archer_cavalry = 1
+        skirmishers = 0.5
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 55 }
@@ -1319,7 +1318,7 @@ asanai = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -1355,8 +1354,8 @@ tarunai = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -1391,8 +1390,9 @@ tarupeltenai = {
     }
 
     counters = {
-        elephant_cavalry = 1
-        heavy_cavalry = 1
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
+        heavy_cavalry = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -1423,7 +1423,7 @@ galathraikes = {
     }
 
     counters = {
-        pikemen = 1
+        pikemen = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -1460,7 +1460,7 @@ moukamezenai = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 70 }
@@ -1498,8 +1498,8 @@ mezenai = {
     }
 
     counters = {
-        archers = 1
-        slingers = 1
+        archers = 0.5
+        slingers = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -1539,8 +1539,8 @@ angamezenai = {
 
     counters = {
         medium_infantry = 0.25
-        heavy_infantry = 0.5
-        pikemen = 0.5
+        heavy_infantry = 0.25
+        pikemen = 0.25
         skirmishers = 0.25
     }
 
@@ -1580,8 +1580,8 @@ skuda_aspabarata = {
 
     counters = {
         medium_infantry = 0.5
-        heavy_infantry = 1
-        pikemen = 1
+        heavy_infantry = 0.5
+        pikemen = 0.5
         skirmishers = 0.5
     }
 
@@ -1621,7 +1621,7 @@ zibutai = {
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
     }
 
     buy_cost = { gold = 110 }
@@ -1650,18 +1650,18 @@ cordinau_orca = {
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 10 toughness = 5 }
-        valley = { toughness = 5 damage = 10 }
+        forest = { damage = 11 toughness = 4 }
+        valley = { toughness = 4 damage = 11 }
         mountains = { toughness = -5 damage = -5 }
         drylands = { toughness = -5 damage = -5 }
     }
 
     counters = {
-        medium_infantry = 1.5
-        light_cavalry = 1
+        medium_infantry = 0.75
+        light_cavalry = 0.75
     }
 
-    buy_cost = { gold = 110 }
+    buy_cost = { gold = 100 }
     low_maintenance_cost = { gold = 0.7 }
     high_maintenance_cost = { gold = 2.1 }
     
@@ -1697,8 +1697,8 @@ nedes_nesamoi = {
     }
 
     counters = {
-        medium_infantry = 1
-        light_cavalry = 1
+        medium_infantry = 0.5
+        light_cavalry = 0.5
     }
 
     buy_cost = { gold = 90 }
@@ -1734,7 +1734,7 @@ rompaianai = {
     }
 
     counters = {
-        pikemen = 1
+        pikemen = 0.5
         heavy_infantry = 0.5
     }
 
@@ -1768,7 +1768,7 @@ drapanai = {
     }
 
     counters = {
-        pikemen = 1
+        pikemen = 0.5
         heavy_infantry = 0.5
     }
 
