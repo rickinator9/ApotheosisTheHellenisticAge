@@ -87,8 +87,8 @@ kretikoi_peltastai = {
     screen = 11
 
     terrain_bonus = {
-        hills = { toughness = 10 }
-        mountains { damage = 10 }
+        hills = { toughness = 5 screen = 6 }
+        mountains { damage = 5 screen = 6 }
         plains = { damage = -5 toughness = -5 }
     }
 
@@ -194,7 +194,7 @@ kretikoi_toxotai = {
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 15 damage = 5 }
+        mountains = { toughness = 13 damage = 3 }
         plains = { toughness = -5 damage = -5 }
     }
 
@@ -229,7 +229,7 @@ promakhoi_kretikoi = {
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 15 damage = 5 }
+        mountains = { toughness = 13 damage = 3 }
         plains = { toughness = -5 damage = -5 }
     }
 
@@ -302,19 +302,18 @@ akarnanioi_sphendonetai = {
     screen = 16
 
     terrain_bonus = {
-        hills = { toughness = 15 damage = 5 }
+        hills = { toughness = 10 screen = 12 }
         plains = { screen = -10 }
         drylands = { screen = -10 }
     }
 
     counters = {
         heavy_infantry = 1
-        medium_infantry = 0.5
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.35 }
+    high_maintenance_cost = { gold = 1.05 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -338,7 +337,7 @@ rhodioi_sphendonetai = {
     screen = 10
 
     terrain_bonus = {
-        hills = { toughness = 10 }
+        hills = { toughness = 6 }
     }
 
     counters = {
@@ -441,7 +440,8 @@ thureophoroi = {
     screen = 5
 
     terrain_bonus = {
-        mountains = { toughness = 5 screen = 10 }
+        mountains = { toughness = 3 }
+        hills = { toughness = 3 }
     }
 
     counters = {
@@ -474,8 +474,8 @@ hyperaspistai = {
     screen = 0
 
     terrain_bonus = {
-        drylands = { screen = 20 }
-        plains = { screen = 20 }
+        drylands = { screen = 16 }
+        plains = { screen = 16 }
         forest = { damage = -5 }
         wetlands = { damage = -5 }
     }
@@ -642,7 +642,7 @@ lakonikoi_hoplitai = {
     terrain_bonus = {
         farmlands = { damage = 5 toughness = 5 }
         valley = { damage = 5 toughness = 5 }
-        plains = { damage = 5 toughness = 5 }
+        plains = { screen = 12 }
         mountains = { damage = -5 toughness = -5 }
         forest = { damage = -5 toughness = -5 }
     }
@@ -679,8 +679,8 @@ homoioi_hoplitai = {
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 15 }
-        valley = { toughness = 15 }
+        farmlands = { damage = 13 }
+        valley = { toughness = 13 }
         plains = { damage = 2.5 toughness = 2.5 }
         mountains = { toughness = -10 }
         forest = { toughness = -10 }
@@ -927,9 +927,9 @@ thorakitai = {
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 3 toughness = 2 }
-        valley = { damage = 3 toughness = 2 }
-        mountains = { toughness = -5 }
+        farmlands = { damage = 6 }
+        valley = { damage = 6 }
+        mountains = { toughness = -6 }
     }
 
     counters = {
@@ -937,9 +937,9 @@ thorakitai = {
         medium_infantry = 0.75
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.35 }
+    high_maintenance_cost = { gold = 1.05 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -963,8 +963,8 @@ ardiaian_thorakitai = {
     screen = 20
 
     terrain_bonus = {
-        forest = { damage = 7.5 toughness = 5 }
-        hills = { toughness = 7.5 damage = 5 }
+        forest = { damage = 7.5 toughness = 3 }
+        hills = { toughness = 7.5 damage = 3 }
         farmlands = { damage = 5 toughness = 5 }
         drylands = { toughness = -5 damage = -5 }
         drylands = { screen = -10 }
@@ -1145,20 +1145,16 @@ hiera_ile = {
     type = heavy_cavalry
 
     can_recruit = {
-        always = no
-    }
-
-    can_recruit = {
         can_recruit_maa_hiera_ile_trigger = yes
     }
 
-    damage = 26
-    toughness = 24
+    damage = 30
+    toughness = 26
     pursuit = 10
     screen = 0
 
     terrain_bonus = {
-        plains = { damage = 25 toughness = 15 }
+        plains = { damage = 28 toughness = 18 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1167,6 +1163,7 @@ hiera_ile = {
 
     counters = {
         archers = 0.5
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 110 }
@@ -1198,7 +1195,7 @@ basilikoi_agema = {
     screen = 8
 
     terrain_bonus = {
-        plains = { damage = 25 toughness = 15 }
+        plains = { damage = 25 toughness = 15 screen = 12 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1210,9 +1207,9 @@ basilikoi_agema = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 115 }
-    low_maintenance_cost = { gold = 0.85 }
-    high_maintenance_cost = { gold = 2.55 }
+    buy_cost = { gold = 110 }
+    low_maintenance_cost = { gold = 0.8 }
+    high_maintenance_cost = { gold = 2.4 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1557,7 +1554,7 @@ angamezenai = {
     icon = horse_archers
 }
 
-#Scythian#Superior
+#Scythian#Superior#Tradional
 skuda_aspabarata = {
     type = archer_cavalry
 
@@ -1565,29 +1562,29 @@ skuda_aspabarata = {
         can_recruit_maa_skuda_aspabarata_trigger = yes
     }
 
-    damage = 23
+    damage = 20
     toughness = 6
     pursuit = 24
     screen = 16
 
     terrain_bonus = {
-        plains = { damage = 20 }
-        steppe = { damage = 20 }
+        plains = { damage = 16 toughness = 4 screen = 6 }
+        steppe = { damage = 16 toughness = 4 screen = 6 }
         hills = { pursuit = -10 screen = -10 }
-        mountains = { pursuit = -20 screen = -10 }
-        wetlands = { pursuit = -20 screen = -10 }
+        mountains = { pursuit = -10 screen = -20 }
+        wetlands = { pursuit = -10 screen = -20 }
     }
 
     counters = {
-        medium_infantry = 0.5
-        heavy_infantry = 0.5
-        pikemen = 0.5
-        skirmishers = 0.5
+        medium_infantry = 0.75
+        heavy_infantry = 0.75
+        pikemen = 0.75
+        skirmishers = 0.75
     }
 
-    buy_cost = { gold = 85 }
-    low_maintenance_cost = { gold = 0.55 }
-    high_maintenance_cost = { gold = 1.65 }
+    buy_cost = { gold = 75 }
+    low_maintenance_cost = { gold = 0.45 }
+    high_maintenance_cost = { gold = 1.35 }
     
     
     mercenary_fallback = yes
