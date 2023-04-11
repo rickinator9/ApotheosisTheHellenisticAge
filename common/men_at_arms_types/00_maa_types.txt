@@ -223,27 +223,28 @@ armored_horsemen = {
 # Special
 house_guard = {
 	type = heavy_infantry
-
-	can_recruit = {
-        always = no
-    }
 	
-	damage = 40
-	toughness = 32
+	damage = 19
+	toughness = 19
 	pursuit = 0
-	screen = 24
+	screen = 12
 	
 	counters = {
+		medium_infantry = 2
+        light_cavalry = 2
 		pikemen = 2
-		archers = 2
 	}
-	
-	buy_cost = { gold = 50 }
-	low_maintenance_cost = { gold = 0 }
-	high_maintenance_cost = { gold = 1 }
 	
 	max_sub_regiments = 5
 	
-	stack = 100
-	ai_quality = { value = 100 }
+	buy_cost = { gold = 200 }
+    low_maintenance_cost = { gold = 0.0 }
+    high_maintenance_cost = { gold = 2 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = no
+    
+    stack = 300
+    ai_quality = { value = ATHA_ai_weight_hoplite }
+    icon = hoplitai_guard
 }
