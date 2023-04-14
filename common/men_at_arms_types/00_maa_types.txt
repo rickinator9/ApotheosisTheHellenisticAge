@@ -223,6 +223,12 @@ armored_horsemen = {
 # Special
 house_guard = {
 	type = heavy_infantry
+can_recruit = {
+		exists = dynasty
+		dynasty = {
+			has_dynasty_perk = warfare_legacy_5
+		}
+	}
 	
 	damage = 19
 	toughness = 19
@@ -237,9 +243,9 @@ house_guard = {
 	
 	max_sub_regiments = 5
 	
-	buy_cost = { gold = 200 }
+	buy_cost = { gold = 100 }
     low_maintenance_cost = { gold = 0.0 }
-    high_maintenance_cost = { gold = 2 }
+    high_maintenance_cost = { gold = 1 }
     
     mercenary_fallback = no
     holy_order_fallback = no
