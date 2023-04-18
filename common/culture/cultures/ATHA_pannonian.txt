@@ -9,7 +9,8 @@ delmatian  = { # represents the Central Dalmatian material culture
 	language = language_pannonian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		
+		tradition_ancient_miners # The Delmatae had a notable presence at the gold mines of Alburnus Maior in Dacia
+		tradition_quarrelsome # They appear to have been constantly in conflict with their neighbours
 	}
 
 	name_list = name_list_delmatian
@@ -27,12 +28,14 @@ delmatian  = { # represents the Central Dalmatian material culture
 gemian = { # represents the Dalj material culture
 	color = gemian
 
-	ethos = ethos_bellicose
+	ethos = ethos_stoic
 	heritage = heritage_pannonian
 	language = language_pannonian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		
+		tradition_wetlanders # According to Dzino, the settlements in the part of Pannonia occupied by this culture (i.e. Mursa, Cibalae & Sirmium) were surrounded with swamps, which were used as means of defence as well as isolation (Dzino 2012, 84, available at: https://www.academia.edu/2152692)
+		tradition_stalwart_defenders # The Breuci were one of the chief tribes opposing Roman control over Pannonia
+		tradition_tribe_unity
 	}
 
 	name_list = name_list_gemian
@@ -55,7 +58,10 @@ noarian = { # represents the undefined material culture along the Savos/Noaros r
 	language = language_pannonian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		
+		tradition_metal_craftsmanship # It seems that Donja Dolina and Sanski Most were important places for iron production (Dzino 2012, 84, available at: https://www.academia.edu/2152692)
+		tradition_forest_fighters # Velleius mentions that the Daesitiates had a warlike temper and wonderful knowledge of fighting
+		tradition_hill_dwellers	
+		tradition_tribe_unity	
 	}
 
 	name_list = name_list_noarian
@@ -73,12 +79,13 @@ noarian = { # represents the undefined material culture along the Savos/Noaros r
 pirustian = {
 	color = pirustian
 
-	ethos = ethos_bellicose
+	ethos = ethos_communal
 	heritage = heritage_pannonian
 	language = language_pannonian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		
+		tradition_ancient_miners # The Pirustae had a notable presence at the gold mines of Alburnus Maior in Dacia	
+		tradition_mountain_homes # The regions inhabited by the Pirustae were generally mountainous	
 	}
 
 	name_list = name_list_pirustian
@@ -96,12 +103,16 @@ pirustian = {
 savian = { # represents the Martijanec-Kaptol material culture
 	color = savian
 
-	ethos = ethos_bellicose
+	ethos = ethos_communal
 	heritage = heritage_pannonian
 	language = language_pannonian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # The western Pannonians came under significant La-Tene influence
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_savian
