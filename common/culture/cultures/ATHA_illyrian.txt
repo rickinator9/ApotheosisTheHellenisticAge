@@ -37,8 +37,12 @@ dardanian = { # represents the Brnjica material culture
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_music_theory # Strabo specifically mentions that the Dardanians had some interest in music.
-		tradition_culture_blending # There is some evidence that the Dardanians are a semi-hybrid Illyrian/Thracian culture.
 		tradition_hill_dwellers # The Dardanian realm was basically a basin surrounded by mountains.
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # There is some evidence that the Dardanians are a semi-hybrid Illyrian/Thracian culture.
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_dardanian
@@ -88,7 +92,7 @@ iapod = { # represents the Lika material culture
 	traditions = {
 		tradition_ancient_miners #archaeology suggests that mining was the center of the Iapodian economy
 		tradition_collective_lands #Iapodians did not distinguish leaders in burial, suggesting low class stratification
-		tradition_forest_folk # The Iapydes lived in forested lands and constructed their houses from wood.
+		tradition_staunch_traditionalists #Iapodian burials show evidence of conservatism
 	}
 
 	name_list = name_list_iapod
@@ -106,13 +110,13 @@ iapod = { # represents the Lika material culture
 kanderian = { # represents the Central Bosnian material culture
 	color = kanderian
 
-	ethos = ethos_stoic # Mountains breed hardy men!
+	ethos = ethos_communal
 	heritage = heritage_illyrian
 	language = language_illyrian
 	martial_custom = martial_custom_male_only
 	traditions = {
-		tradition_abundant_hillforts # This culture was characterised by hillforts and big fortifications.
-		tradition_metal_craftsmanship # The archaeological evidence indicates that metallurgical skill was developed here.
+		tradition_abundant_hillforts # there appears to have been an abundance of hill-forts in the Dinaric karst regions
+		tradition_mountain_homes # most of their culture is located in mountains terrain
 	}
 
 	name_list = name_list_kanderian
@@ -130,7 +134,7 @@ kanderian = { # represents the Central Bosnian material culture
 mathian  = { # represents the Mati material culture
 	color = mathian
 
-	ethos = ethos_courtly # These Illyrians developed organized states quite early centred around kings.
+	ethos = ethos_courtly # Southern Illyria yields greater evidence for social stratification
 	heritage = heritage_illyrian
 	language = language_illyrian
 	martial_custom = martial_custom_male_only
@@ -140,6 +144,11 @@ mathian  = { # represents the Mati material culture
 		tradition_mountain_homes # The vast majority of this culture inhabits small mountain valleys and mountain terrain.
 		# TODO: Tomb building tradition
 		tradition_culinary_art # The Abri were known for their mead.
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # The southern Illyrians came under considerable Hellenic influence
+		requires_dlc_flag = hybridize_culture
 	}
 
 	name_list = name_list_mathian
