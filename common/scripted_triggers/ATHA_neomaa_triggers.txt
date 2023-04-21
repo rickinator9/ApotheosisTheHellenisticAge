@@ -2,10 +2,9 @@
 
 can_recruit_elite_maa = {
   OR = {
-    highest_held_title_tier >= tier_kingdom
+    highest_held_title_tier >= tier_duchy
     AND = {
       is_independent_ruler = yes
-      highest_held_title_tier >= tier_duchy
     }
   }
   ATHA_maa_elite_count < ATHA_maa_elite_maximum
@@ -13,7 +12,7 @@ can_recruit_elite_maa = {
 
 can_recruit_guard_maa = {
   is_independent_ruler = yes
-  highest_held_title_tier >= tier_kingdom
+  highest_held_title_tier >= tier_duchy
   ATHA_maa_guard_count < ATHA_maa_guard_maximum
 }
 
@@ -295,16 +294,12 @@ can_recruit_maa_lakonikoi_hoplitai_trigger = {
 
 ### Elite
 
-can_recruit_maa_ardiaian_thorakitai_trigger = {
+can_recruit_maa_ardiaian_thureophoroi_trigger = {
   can_recruit_culture_aor_maa_trigger = {
     CULTURE = culture:dassian
     REGION = ATHA_aor_ardiaian
   }
-  culture:dassian = { has_innovation = innovation_hellenistic_chainmail }
-  can_recruit_elite_maa = yes
-}
-can_recruit_maa_eparitoi_hoplitai_trigger = {
-  can_recruit_arcadian_maa_trigger = yes
+  culture:dassian = { has_innovation = innovation_classical_thyreos }
   can_recruit_elite_maa = yes
 }
 can_recruit_maa_epilektoi_hoplitai_trigger = {
@@ -345,6 +340,10 @@ can_recruit_maa_homoioi_hoplitai_trigger = {
     CULTURE = culture:laconian
     REGION = ATHA_aor_spartan
   }
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_eparitoi_hoplitai_trigger = {
+  can_recruit_arcadian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 can_recruit_maa_nedes_nesamoi_trigger = {
