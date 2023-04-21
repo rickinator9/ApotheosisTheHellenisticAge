@@ -703,6 +703,47 @@ homoioi_hoplitai = {
     icon = spartiatai_elite
 }
 
+homoioi_hippeis = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_homoioi_hippeis_trigger = yes
+    }
+
+    damage = 11
+    toughness = 30
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 12 }
+        valley = { toughness = 14 }
+        plains = { damage = 3 toughness = 3 }
+        mountains = { toughness = -10 }
+        forest = { toughness = -10 }
+        hills = { damage = -3 toughness = -3 }
+    }
+
+    counters = {
+        medium_infantry = 0.75
+        light_cavalry = 0.75
+    }
+
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.9 }
+    high_maintenance_cost = { gold = 2.7 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = {
+        value = ATHA_ai_weight_hoplite
+        add = ATHA_ai_weight_guard
+    }
+    icon = hoplitai_guard
+}
+
 #Makedonikoi#Elite
 hypaspistai = {
     type = heavy_infantry
@@ -712,7 +753,7 @@ hypaspistai = {
     }
 
     damage = 5
-    toughness = 27
+    toughness = 33
     pursuit = 0
     screen = 0
 
@@ -728,9 +769,9 @@ hypaspistai = {
         light_cavalry = 0.5
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 2.1 }
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.9 }
+    high_maintenance_cost = { gold = 2.7 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -740,7 +781,7 @@ hypaspistai = {
         value = ATHA_ai_weight_heavy_infantry
         add = ATHA_ai_weight_elite
     }
-    icon = hoplitai_elite
+    icon = hoplitai_guard
 }
 
 #####################################################################################################
@@ -1595,8 +1636,8 @@ cordinau_orca = {
         can_recruit_maa_cordinau_orca_trigger = yes
     }
 
-    damage = 19
-    toughness = 16
+    damage = 22
+    toughness = 19
     pursuit = 0
     screen = 0
 
@@ -1612,9 +1653,9 @@ cordinau_orca = {
         light_cavalry = 0.75
     }
 
-    buy_cost = { gold = 100 }
-    low_maintenance_cost = { gold = 0.7 }
-    high_maintenance_cost = { gold = 2.1 }
+    buy_cost = { gold = 120 }
+    low_maintenance_cost = { gold = 0.9 }
+    high_maintenance_cost = { gold = 2.7 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1622,9 +1663,9 @@ cordinau_orca = {
     stack = 300
     ai_quality = {
         value = ATHA_ai_weight_heavy_infantry
-        add = ATHA_ai_weight_elite
+        add = ATHA_ai_weight_guard
     }
-    icon = hoplitai_elite
+    icon = hoplitai_guard
 }
 
 #Celtic#Elite#
