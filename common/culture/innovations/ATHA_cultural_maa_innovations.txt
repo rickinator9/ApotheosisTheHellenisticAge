@@ -66,13 +66,31 @@ innovation_companion_cavalry = {
 
 innovation_rhomphaia = {
 	group = culture_group_regional
-	culture_era = culture_era_hellenistic
+	culture_era = culture_era_classical
 	icon = @weapons_and_armor_01
 
 	maa_upgrade = {
 		type = medium_infantry
 		damage = 3
 	}
+
+	maa_upgrade = {
+		type = Skirmishers
+		damage = 3
+	}
+
+	flag = global_maa
+}
+
+innovation_homoioi_citizenry = {
+	group = culture_group_regional
+	culture_era = culture_era_classical
+	icon = @weapons_and_armor_01
+
+	potential = {
+		has_cultural_parameter = unlock_maa_homoioi_hoplitai
+		has_cultural_parameter = unlock_maa_homoioi_hippeis
+    }
 
 	flag = global_maa
 }
