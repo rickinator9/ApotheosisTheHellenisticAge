@@ -109,6 +109,41 @@ kretikoi_peltastai = {
     icon = skirmishers
 }
 
+#Makedonikoi#Elite#
+makedonikoi_peltastai = {
+    type = skirmishers
+
+    can_recruit = {
+        can_recruit_maa_makedonikoi_peltastai_trigger = yes
+    }
+
+    damage = 11
+    toughness = 11
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+    }
+
+    counters = {
+        heavy_infantry = 0.5
+    }
+
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.55 }
+    high_maintenance_cost = { gold = 1.65 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = {
+        value = ATHA_ai_weight_skirmishers
+        add = ATHA_ai_weight_elite
+    }
+    icon = skirmishers
+}
+
 ###########################################################################################
 
 toxotai = {
@@ -790,11 +825,11 @@ phalangitai = {
 }
 
 #Makedonikoi#Superior#
-argyraspides = {
+chalkaspides = {
     type = pikemen
 
     can_recruit = {
-        can_recruit_maa_argyraspides_trigger = yes
+        can_recruit_maa_chalkaspides_trigger = yes
     }
 
     damage = 13

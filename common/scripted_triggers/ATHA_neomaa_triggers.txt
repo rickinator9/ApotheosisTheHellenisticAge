@@ -114,6 +114,9 @@ can_recruit_odrysian_maa_trigger = {
 can_recruit_rhodopian_maa_trigger = {
   can_recruit_culture_maa_trigger = { CULTURE = culture:rhodopian }
 }
+can_recruit_skordiskian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:skordiskian }
+}
 can_recruit_thessalian_maa_trigger = {
   can_recruit_culture_maa_trigger = { CULTURE = culture:thessalian }
 }
@@ -144,10 +147,7 @@ can_recruit_maa_peltenai_trigger = {
 
 ### Superior
 can_recruit_maa_kretikoi_peltastai_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:cretan
-    REGION = ATHA_aor_cretan
-  }
+  can_recruit_cretan_maa_trigger = yes
 }
 
 can_recruit_maa_anatolikoi_phyletai_trigger = {
@@ -155,16 +155,8 @@ can_recruit_maa_anatolikoi_phyletai_trigger = {
 }
 
 ### Elite
-can_recruit_maa_drapanai_trigger = {
-  can_recruit_getic_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
 can_recruit_maa_makedonikoi_peltastai_trigger = {
   can_recruit_macedonian_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
-can_recruit_maa_rompaianai_trigger = {
-  can_recruit_rhodopian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 
@@ -228,6 +220,21 @@ can_recruit_maa_galathraikes_trigger = {
     can_recruit_pannonian_maa_trigger = yes
     can_recruit_scythian_maa_trigger = yes
   }
+#### Original code, commented out for now
+# OR = {
+#    any_parent_culture_or_above = { 
+#      is_hybrid_culture = yes
+#      any_parent_culture = { has_cultural_pillar = heritage_celtic }
+#      any_parent_culture = { has_cultural_pillar = heritage_thracian }
+#    }
+#    any_directly_owned_province = {
+#      any_parent_culture_or_above = { 
+#        is_hybrid_culture = yes
+#        any_parent_culture = { has_cultural_pillar = heritage_celtic }
+#        any_parent_culture = { has_cultural_pillar = heritage_thracian }
+#      }
+#    }
+#  }
 }
 can_recruit_maa_thureophoroi_trigger = {
   OR = {
@@ -240,6 +247,10 @@ can_recruit_maa_thureophoroi_trigger = {
 
 ### Elite
 
+can_recruit_maa_drapanai_trigger = {
+  can_recruit_getic_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
 can_recruit_maa_hyperaspistai_trigger = {
   OR = {
     AND = {
@@ -257,6 +268,10 @@ can_recruit_maa_hyperaspistai_trigger = {
       geographical_region = ATHA_aor_ionian
     }
   }
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_rompaianai_trigger = {
+  can_recruit_rhodopian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 
@@ -292,10 +307,7 @@ can_recruit_maa_thorakitai_trigger = {
 ### Superior
 
 can_recruit_maa_lakonikoi_hoplitai_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:laconian
-    REGION = ATHA_aor_spartan
-  }
+  can_recruit_laconian_maa_trigger = yes
 }
 
 ### Elite
@@ -306,6 +318,10 @@ can_recruit_maa_ardiaian_thureophoroi_trigger = {
     REGION = ATHA_aor_ardiaian
   }
   culture:dassian = { has_innovation = innovation_classical_thyreos }
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_eparitoi_hoplitai_trigger = {
+  can_recruit_arcadian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 can_recruit_maa_epilektoi_hoplitai_trigger = {
@@ -337,16 +353,26 @@ can_recruit_maa_epilektoi_hoplitai_trigger = {
   }
   can_recruit_elite_maa = yes
 }
-can_recruit_maa_hypaspistai_trigger = {
-  can_recruit_macedonian_maa_trigger = yes
-  can_recruit_guard_maa = yes
-}
 can_recruit_maa_homoioi_hoplitai_trigger = {
   can_recruit_culture_aor_maa_trigger = {
     CULTURE = culture:laconian
     REGION = ATHA_aor_spartan
   }
   can_recruit_elite_maa = yes
+}
+can_recruit_maa_nedes_nesamoi_trigger = {
+  can_recruit_celtic_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+
+### Guard
+
+can_recruit_maa_cordinau_orca_trigger = {
+  can_recruit_culture_aor_maa_trigger = {
+    CULTURE = culture:skordiskian
+    REGION = ATHA_aor_orca
+  }
+  can_recruit_guard_maa = yes
 }
 can_recruit_maa_homoioi_hippeis_trigger = {
   can_recruit_culture_aor_maa_trigger = {
@@ -355,19 +381,8 @@ can_recruit_maa_homoioi_hippeis_trigger = {
   }
   can_recruit_guard_maa = yes
 }
-can_recruit_maa_eparitoi_hoplitai_trigger = {
-  can_recruit_arcadian_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
-can_recruit_maa_nedes_nesamoi_trigger = {
-  can_recruit_celtic_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
-can_recruit_maa_cordinau_orca_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:skordiskian
-    REGION = ATHA_aor_orca
-  }
+can_recruit_maa_hypaspistai_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
   can_recruit_guard_maa = yes
 }
 
@@ -394,9 +409,6 @@ can_recruit_maa_phalangitai_trigger = {
 
 ### Superior
 
-can_recruit_maa_argyraspides_trigger = {
-  can_recruit_macedonian_maa_trigger = yes
-}
 can_recruit_maa_chalkaspides_trigger = {
   can_recruit_macedonian_maa_trigger = yes
 }
@@ -432,19 +444,13 @@ can_recruit_maa_toxotai_trigger = {
 ### Superior
 
 can_recruit_maa_kretikoi_toxotai_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:cretan
-    REGION = ATHA_aor_cretan
-  }
+  can_recruit_cretan_maa_trigger = yes
 }
 
 ### Elite
 
 can_recruit_maa_promakhoi_kretikoi_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:cretan
-    REGION = ATHA_aor_cretan
-  }
+  can_recruit_cretan_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 
