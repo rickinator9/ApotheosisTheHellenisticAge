@@ -73,7 +73,7 @@ anatolikoi_phyletai = {
     icon = skirmishers
 }
 
-#Kretan#Regional#Superior
+#Kretan#Superior
 kretikoi_peltastai = {
     type = skirmishers
 
@@ -81,66 +81,29 @@ kretikoi_peltastai = {
         can_recruit_maa_kretikoi_peltastai_trigger = yes
     }
 
-    damage = 9
-    toughness = 9
-    pursuit = 11
-    screen = 11
-
-    terrain_bonus = {
-        hills = { toughness = 6 screen = 4 }
-        mountains { damage = 6 screen = 4 }
-        plains = { damage = -5 toughness = -5 }
-    }
-
-    counters = {
-        heavy_infantry = 0.75
-        pikemen = 0.75
-    }
-
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
-    
-    mercenary_fallback = yes
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
-    icon = skirmishers
-}
-
-#Makedonikoi#Elite#
-makedonikoi_peltastai = {
-    type = skirmishers
-
-    can_recruit = {
-        can_recruit_maa_makedonikoi_peltastai_trigger = yes
-    }
-
-    damage = 11
-    toughness = 11
+    damage = 8
+    toughness = 8
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
+        hills = { toughness = 5 }
+        plains = { screen = -10 }
     }
 
     counters = {
         heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 85 }
-    low_maintenance_cost = { gold = 0.55 }
-    high_maintenance_cost = { gold = 1.65 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.35 }
+    high_maintenance_cost = { gold = 1.05 }
     
-    mercenary_fallback = no
+    mercenary_fallback = yes
     holy_order_fallback = yes
     
     stack = 300
-    ai_quality = {
-        value = ATHA_ai_weight_skirmishers
-        add = ATHA_ai_weight_elite
-    }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
 
@@ -180,7 +143,7 @@ toxotai = {
     icon = toxotai
 }
 
-#Kretan#Superior#Regional
+#Kretan#Superior#
 kretikoi_toxotai = {
     type = archers
 
@@ -188,19 +151,19 @@ kretikoi_toxotai = {
         can_recruit_maa_kretikoi_toxotai_trigger = yes
     }
 
-    damage = 19
+    damage = 16
     toughness = 10
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 13 damage = 3 }
+        mountains = { toughness = 10 }
         plains = { toughness = -5 damage = -5 }
     }
 
     counters = {
-        skirmishers = 0.75
-        archer_cavalry = 0.75
+        skirmishers = 0.5
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 80 }
@@ -215,7 +178,7 @@ kretikoi_toxotai = {
     icon = toxotai
 }
 
-#Kretan#Elite#Regional
+#Kretan#Elite#
 promakhoi_kretikoi = {
     type = archers
 
@@ -223,19 +186,19 @@ promakhoi_kretikoi = {
         can_recruit_maa_promakhoi_kretikoi_trigger = yes
     }
 
-    damage = 22
+    damage = 19
     toughness = 13
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 13 damage = 3 }
+        mountains = { toughness = 10 }
         plains = { toughness = -5 damage = -5 }
     }
 
     counters = {
-        skirmishers = 0.75
-        archer_cavalry = 0.75
+        skirmishers = 0.5
+        archer_cavalry = 0.5
     }
 
     buy_cost = { gold = 100 }
@@ -484,11 +447,46 @@ hyperaspistai = {
         pikemen = 1
     }
 
+    buy_cost = { gold = 85 }
+    low_maintenance_cost = { gold = 0.55 }
+    high_maintenance_cost = { gold = 1.65 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = {
+        value = ATHA_ai_weight_medium_infantry
+        add = ATHA_ai_weight_elite
+    }
+    icon = thureophoroi_elite
+}
+
+#Makedonikoi#Elite
+makedonikoi_peltastai = {
+    type = medium_infantry
+
+    can_recruit = {
+        can_recruit_maa_makedonikoi_peltastai_trigger = yes
+    }
+
+    damage = 12
+    toughness = 15
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+    }
+
+    counters = {
+        pikemen = 0.5
+    }
+
     buy_cost = { gold = 90 }
     low_maintenance_cost = { gold = 0.6 }
     high_maintenance_cost = { gold = 1.8 }
     
-    mercenary_fallback = no
+    mercenary_fallback = yes
     holy_order_fallback = yes
     
     stack = 300
@@ -743,7 +741,7 @@ homoioi_hippeis = {
     icon = hoplitai_guard
 }
 
-#Makedonikoi#Elite
+#Makedonikoi#Guard
 hypaspistai = {
     type = heavy_infantry
 
@@ -847,14 +845,14 @@ chalkaspides = {
     }
 
     counters = {
-        heavy_cavalry = 1
+        heavy_cavalry = 0.5
         elephant_cavalry = 0.25
         camel_cavalry = 0.25
     }
 
-    buy_cost = { gold = 85 }
-    low_maintenance_cost = { gold = 0.55 }
-    high_maintenance_cost = { gold = 1.65 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.5 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -895,6 +893,48 @@ agema_phalangitai = {
     buy_cost = { gold = 100 }
     low_maintenance_cost = { gold = 0.7 }
     high_maintenance_cost = { gold = 2.1 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 300
+    ai_quality = {
+        value = ATHA_ai_weight_pikemen
+        add = ATHA_ai_weight_elite
+    }
+    icon = phalangitai_elite
+}
+
+#guard#Epirote#Regional
+chaonion_agema = {
+    type = pikemen
+
+    can_recruit = {
+        can_recruit_maa_chaonion_agema_trigger = yes
+    }
+
+    damage = 16
+    toughness = 19
+    pursuit = 6
+    screen = 6
+
+    terrain_bonus = {
+        farmlands = { damage = 10 toughness = 10 }
+        plains = { damage = 10 toughness = 10 }
+        mountains = { toughness = -5 damage = -5 }
+        hills = { toughness = -4 damage = -4 }
+        wetlands = { toughness = -5 damage = -5 }
+    }
+
+    counters = {
+        heavy_cavalry = 0.5
+        elephant_cavalry = 0.25
+        camel_cavalry = 0.25
+    }
+
+    buy_cost = { gold = 115 }
+    low_maintenance_cost = { gold = 0.85 }
+    high_maintenance_cost = { gold = 2.55 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1134,7 +1174,7 @@ thessalikoi_hippeis = {
     icon = heavy_cavalry
 }
 
-#Elite#Makedonikoi#Regional
+#Elite#Makedonikoi#
 hiera_ile = {
     type = heavy_cavalry
 
@@ -1175,7 +1215,7 @@ hiera_ile = {
     icon = heavy_cavalry
 }
 
-#Epirote#Elite#Regional
+#Epirote#Guard#Regional
 basilikoi_agema = {
     type = heavy_cavalry
 
@@ -1183,13 +1223,13 @@ basilikoi_agema = {
         can_recruit_maa_basilikoi_agema_trigger = yes
     }
 
-    damage = 32
-    toughness = 15
-    pursuit = 8
-    screen = 8
+    damage = 40
+    toughness = 16
+    pursuit = 16
+    screen = 0
 
     terrain_bonus = {
-        plains = { damage = 25 toughness = 15 screen = 12 }
+        plains = { damage = 26 toughness = 14 screen = 12 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1197,13 +1237,13 @@ basilikoi_agema = {
     }
 
     counters = {
-        heavy_infantry = 0.5
+        heavy_infantry = 1
         archers = 0.5
     }
 
-    buy_cost = { gold = 110 }
-    low_maintenance_cost = { gold = 0.8 }
-    high_maintenance_cost = { gold = 2.4 }
+    buy_cost = { gold = 130 }
+    low_maintenance_cost = { gold = 1 }
+    high_maintenance_cost = { gold = 3 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1211,7 +1251,7 @@ basilikoi_agema = {
     stack = 150
     ai_quality = {
         value = ATHA_ai_weight_heavy_cavalry
-        add = ATHA_ai_weight_elite
+        add = ATHA_ai_weight_guard
     }
     icon = heavy_cavalry
 }
@@ -1627,7 +1667,7 @@ zibutai = {
     icon = heavy_cavalry
 }
 
-#Skordiski#Elite#Regional
+#Skordiski#Guard#
 cordinau_orca = {
     type = heavy_infantry
 
@@ -1635,21 +1675,21 @@ cordinau_orca = {
         can_recruit_maa_cordinau_orca_trigger = yes
     }
 
-    damage = 22
+    damage = 19
     toughness = 19
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 11 toughness = 4 }
-        valley = { toughness = 4 damage = 11 }
+        forest = { toughness = 10 }
+        valley = { damage = 10 }
         mountains = { toughness = -5 damage = -5 }
         drylands = { toughness = -5 damage = -5 }
     }
 
     counters = {
-        medium_infantry = 0.75
-        light_cavalry = 0.75
+        medium_infantry = 0.5
+        heavy_infantry = 0.5
     }
 
     buy_cost = { gold = 120 }
