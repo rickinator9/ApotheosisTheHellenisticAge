@@ -149,31 +149,16 @@ can_recruit_maa_peltenai_trigger = {
 }
 
 ### Superior
-can_recruit_maa_kretikoi_peltastai_trigger = {
-  can_recruit_cretan_maa_trigger = yes
-}
-
 can_recruit_maa_anatolikoi_phyletai_trigger = {
   can_recruit_anatolian_maa_trigger = yes
 }
-
-### Elite
-can_recruit_maa_makedonikoi_peltastai_trigger = {
-  can_recruit_macedonian_maa_trigger = yes
-  can_recruit_elite_maa = yes
+can_recruit_maa_kretikoi_peltastai_trigger = {
+  can_recruit_cretan_maa_trigger = yes
 }
 
 ## Slingers ###################################
 
 ### Basic
-can_recruit_maa_sphendonetai_trigger = {
-  OR = {
-    can_recruit_greek_maa_trigger = yes
-    can_recruit_anatolian_maa_trigger = yes
-    can_recruit_iranian_maa_trigger = yes
-  }
-}
-
 can_recruit_maa_asanai_trigger = {
   OR = {
     can_recruit_thracian_maa_trigger = yes
@@ -181,6 +166,13 @@ can_recruit_maa_asanai_trigger = {
     can_recruit_illyrian_maa_trigger = yes
     can_recruit_pannonian_maa_trigger = yes
     can_recruit_scythian_maa_trigger = yes
+  }
+}
+can_recruit_maa_sphendonetai_trigger = {
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
   }
 }
 
@@ -208,13 +200,6 @@ can_recruit_maa_skaplinai_trigger = {
 
 ### Basic
 
-can_recruit_maa_peltophoroi_trigger = {
-  OR = {
-    can_recruit_greek_maa_trigger = yes
-    can_recruit_anatolian_maa_trigger = yes
-    can_recruit_iranian_maa_trigger = yes
-  }
-}
 can_recruit_maa_galathraikes_trigger = {
   OR = {
     can_recruit_thracian_maa_trigger = yes
@@ -239,6 +224,13 @@ can_recruit_maa_galathraikes_trigger = {
 #    }
 #  }
 }
+can_recruit_maa_peltophoroi_trigger = {
+  OR = {
+    can_recruit_greek_maa_trigger = yes
+    can_recruit_anatolian_maa_trigger = yes
+    can_recruit_iranian_maa_trigger = yes
+  }
+}
 can_recruit_maa_thureophoroi_trigger = {
   OR = {
     culture = { has_innovation = innovation_classical_thyreos }
@@ -248,11 +240,17 @@ can_recruit_maa_thureophoroi_trigger = {
   }
 }
 
-### Elite
+### Superior
 
 can_recruit_maa_drapanai_trigger = {
   can_recruit_getic_maa_trigger = yes
 }
+can_recruit_maa_rompaianai_trigger = {
+  can_recruit_rhodopian_maa_trigger = yes
+}
+
+### Elite
+
 can_recruit_maa_hyperaspistai_trigger = {
   OR = {
     AND = {
@@ -272,8 +270,9 @@ can_recruit_maa_hyperaspistai_trigger = {
   }
   can_recruit_elite_maa = yes
 }
-can_recruit_maa_rompaianai_trigger = {
-  can_recruit_rhodopian_maa_trigger = yes
+can_recruit_maa_makedonikoi_peltastai_trigger = {
+  can_recruit_macedonian_maa_trigger = yes
+  can_recruit_elite_maa = yes
 }
 
 ## Armoured Infantry ###################################
@@ -371,10 +370,7 @@ can_recruit_maa_nedes_nesamoi_trigger = {
 ### Guard
 
 can_recruit_maa_cordinau_orca_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:skordiskian
-    REGION = ATHA_aor_orca
-  }
+  can_recruit_skordiskian_maa_trigger = yes
   can_recruit_guard_maa = yes
 }
 can_recruit_maa_homoioi_hippeis_trigger = {
@@ -424,8 +420,11 @@ can_recruit_maa_agema_phalangitai_trigger = {
 }
 
 can_recruit_maa_chaonion_agema_trigger = {
-  can_recruit_epirote_maa_trigger = yes
-  can_recruit_guard_maa = yes
+  can_recruit_culture_aor_maa_trigger = {
+    CULTURE = culture:epirote
+    REGION = ATHA_aor_chaonian
+  }
+  can_recruit_elite_maa = yes
 }
 
 ## Archers ###################################
@@ -518,19 +517,23 @@ can_recruit_maa_thessalikoi_hippeis_trigger = {
 
 ### Elite
 
+can_recruit_maa_zibutai_trigger = {
+  can_recruit_odrysian_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+
+### Guard
+
 can_recruit_maa_basilikoi_agema_trigger = {
   can_recruit_culture_aor_maa_trigger = {
     CULTURE = culture:epirote
     REGION = ATHA_aor_molossian
   }
+  can_recruit_guard_maa = yes
 }
 can_recruit_maa_hiera_ile_trigger = {
   can_recruit_macedonian_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
-can_recruit_maa_zibutai_trigger = {
-  can_recruit_odrysian_maa_trigger = yes
-  can_recruit_elite_maa = yes
+  can_recruit_guard_maa = yes
 }
 
 ## Horse Archers ###################################
