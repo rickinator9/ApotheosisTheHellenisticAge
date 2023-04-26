@@ -397,14 +397,14 @@ thureophoroi = {
         can_recruit_maa_thureophoroi_trigger = yes
     }
 
-    damage = 8
+    damage = 10
     toughness = 10
     pursuit = 5
     screen = 5
 
     terrain_bonus = {
-        mountains = { toughness = 3 }
-        hills = { toughness = 3 }
+        mountains = { toughness = 2 damage = 2 screen = 2 }
+        hills = { toughness = 2 damage = 2 screen = 2 }
     }
 
     counters = {
@@ -421,45 +421,6 @@ thureophoroi = {
     stack = 300
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi
-}
-
-#Pergamon#Regional#Elite
-hyperaspistai = {
-    type = medium_infantry
-
-    can_recruit = {
-        can_recruit_maa_hyperaspistai_trigger = yes
-    }
-
-    damage = 13
-    toughness = 16
-    pursuit = 12
-    screen = 0
-
-    terrain_bonus = {
-        drylands = { screen = 16 }
-        plains = { screen = 16 }
-        forest = { damage = -5 }
-        wetlands = { damage = -5 }
-    }
-
-    counters = {
-        pikemen = 1
-    }
-
-    buy_cost = { gold = 85 }
-    low_maintenance_cost = { gold = 0.55 }
-    high_maintenance_cost = { gold = 1.65 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = yes
-    
-    stack = 300
-    ai_quality = {
-        value = ATHA_ai_weight_medium_infantry
-        add = ATHA_ai_weight_elite
-    }
-    icon = thureophoroi_elite
 }
 
 #Makedonikoi#Elite
@@ -913,8 +874,8 @@ chaonion_agema = {
         can_recruit_maa_chaonion_agema_trigger = yes
     }
 
-    damage = 16
-    toughness = 19
+    damage = 13
+    toughness = 13
     pursuit = 6
     screen = 6
 
@@ -932,9 +893,9 @@ chaonion_agema = {
         camel_cavalry = 0.25
     }
 
-    buy_cost = { gold = 115 }
-    low_maintenance_cost = { gold = 0.85 }
-    high_maintenance_cost = { gold = 2.55 }
+    buy_cost = { gold = 90 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -956,15 +917,15 @@ thorakitai = {
         can_recruit_maa_thorakitai_trigger = yes
     }
 
-    damage = 10
+    damage = 12
     toughness = 13
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 6 }
-        valley = { damage = 6 }
-        mountains = { toughness = -6 }
+        farmlands = { damage = 5 }
+        valley = { damage = 5 }
+        mountains = { toughness = -5 }
     }
 
     counters = {
@@ -1182,13 +1143,13 @@ hiera_ile = {
         can_recruit_maa_hiera_ile_trigger = yes
     }
 
-    damage = 30
-    toughness = 26
+    damage = 33
+    toughness = 20
     pursuit = 10
     screen = 0
 
     terrain_bonus = {
-        plains = { damage = 28 toughness = 18 }
+        plains = { damage = 30 toughness = 10 }
         mountains = { damage = -10 }
         forest = { damage = -10 }
         hills = { toughness = -5 damage = -5 }
@@ -1197,12 +1158,11 @@ hiera_ile = {
 
     counters = {
         archers = 0.5
-        heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 110 }
-    low_maintenance_cost = { gold = 0.8 }
-    high_maintenance_cost = { gold = 2.4 }
+    buy_cost = { gold = 130 }
+    low_maintenance_cost = { gold = 1 }
+    high_maintenance_cost = { gold = 3 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
@@ -1237,13 +1197,14 @@ basilikoi_agema = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 0.5
+        pikemen = 0.5
         archers = 0.5
     }
 
-    buy_cost = { gold = 130 }
-    low_maintenance_cost = { gold = 1 }
-    high_maintenance_cost = { gold = 3 }
+    buy_cost = { gold = 135 }
+    low_maintenance_cost = { gold = 1.05 }
+    high_maintenance_cost = { gold = 3.15 }
     
     mercenary_fallback = no
     holy_order_fallback = yes
