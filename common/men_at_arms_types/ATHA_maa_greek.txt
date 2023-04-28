@@ -32,7 +32,7 @@ euzonoi = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
@@ -68,7 +68,7 @@ anatolikoi_phyletai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
@@ -102,7 +102,7 @@ kretikoi_peltastai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
@@ -138,7 +138,7 @@ toxotai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -173,7 +173,7 @@ kretikoi_toxotai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -208,7 +208,7 @@ promakhoi_kretikoi = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300    
+    stack = 200    
     ai_quality = {
         value = ATHA_ai_weight_archers
         add = ATHA_ai_weight_elite
@@ -246,7 +246,7 @@ sphendonetai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -281,7 +281,7 @@ akarnanioi_sphendonetai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -316,7 +316,7 @@ rhodioi_sphendonetai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -351,7 +351,7 @@ skaplinai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -384,7 +384,7 @@ peltophoroi = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi
 }
@@ -418,7 +418,7 @@ thureophoroi = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi
 }
@@ -450,7 +450,44 @@ makedonikoi_peltastai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
+    ai_quality = {
+        value = ATHA_ai_weight_medium_infantry
+        add = ATHA_ai_weight_elite
+    }
+    icon = thureophoroi_elite
+}
+
+#Pergamon#Anatolian#Regional
+hyperaspistai = {
+    type = medium_infantry
+
+    can_recruit = {
+        can_recruit_maa_hyperaspistai_trigger = yes
+    }
+
+    damage = 16
+    toughness = 20
+    pursuit = 2
+    screen = 0
+
+    terrain_bonus = {
+        drylands = { damage = 3 }
+        plains = { damage = 3 }
+    }
+
+    counters = {
+        pikemen = 1
+    }
+
+    buy_cost = { gold = 95 }
+    low_maintenance_cost = { gold = 0.65 }
+    high_maintenance_cost = { gold = 1.95 }
+    
+    mercenary_fallback = no
+    holy_order_fallback = yes
+    
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_medium_infantry
         add = ATHA_ai_weight_elite
@@ -493,7 +530,7 @@ hoplitai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = hoplitai
 }
@@ -532,7 +569,7 @@ epilektoi_hoplitai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_hoplite
         add = ATHA_ai_weight_elite
@@ -572,7 +609,7 @@ eparitoi_hoplitai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_hoplite
         add = ATHA_ai_weight_elite
@@ -614,7 +651,7 @@ lakonikoi_hoplitai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = hoplitai_superior
 }
@@ -653,7 +690,7 @@ homoioi_hoplitai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_hoplite
         add = ATHA_ai_weight_elite
@@ -694,7 +731,7 @@ homoioi_hippeis = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_hoplite
         add = ATHA_ai_weight_guard
@@ -734,7 +771,7 @@ hypaspistai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_heavy_infantry
         add = ATHA_ai_weight_elite
@@ -767,8 +804,7 @@ phalangitai = {
 
     counters = {
         heavy_cavalry = 0.5
-        elephant_cavalry = 0.25
-        camel_cavalry = 0.25
+        elephant_cavalry = 0.5
     }
 
     buy_cost = { gold = 60 }
@@ -778,7 +814,7 @@ phalangitai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = phalangitai
 }
@@ -807,8 +843,7 @@ chalkaspides = {
 
     counters = {
         heavy_cavalry = 0.5
-        elephant_cavalry = 0.25
-        camel_cavalry = 0.25
+        elephant_cavalry = 0.5
     }
 
     buy_cost = { gold = 80 }
@@ -818,7 +853,7 @@ chalkaspides = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_pikemen }
     icon = phalangitai_superior
 }
@@ -847,8 +882,7 @@ agema_phalangitai = {
 
     counters = {
         heavy_cavalry = 0.5
-        elephant_cavalry = 0.25
-        camel_cavalry = 0.25
+        elephant_cavalry = 0.5
     }
 
     buy_cost = { gold = 100 }
@@ -858,7 +892,7 @@ agema_phalangitai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_pikemen
         add = ATHA_ai_weight_elite
@@ -889,8 +923,7 @@ chaonion_agema = {
 
     counters = {
         heavy_cavalry = 0.5
-        elephant_cavalry = 0.25
-        camel_cavalry = 0.25
+        elephant_cavalry = 0.5
     }
 
     buy_cost = { gold = 90 }
@@ -900,7 +933,7 @@ chaonion_agema = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_pikemen
         add = ATHA_ai_weight_elite
@@ -940,7 +973,7 @@ thorakitai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = hoplitai
 }
@@ -977,7 +1010,7 @@ ardiaian_thureophoroi = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_heavy_infantry }
     icon = hoplitai_elite
 }
@@ -1016,7 +1049,7 @@ prodromoi = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -1055,7 +1088,7 @@ mandonai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -1093,7 +1126,7 @@ hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1130,7 +1163,7 @@ thessalikoi_hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1167,7 +1200,7 @@ hiera_ile = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = {
         value = ATHA_ai_weight_heavy_cavalry
         add = ATHA_ai_weight_elite
@@ -1209,7 +1242,7 @@ basilikoi_agema = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = {
         value = ATHA_ai_weight_heavy_cavalry
         add = ATHA_ai_weight_guard
@@ -1249,7 +1282,7 @@ peltenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = skirmishers
 }
@@ -1285,7 +1318,7 @@ anganai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -1320,7 +1353,7 @@ asanai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_archers }
     icon = toxotai
 }
@@ -1357,7 +1390,7 @@ tarunai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = hoplitai
 }
@@ -1394,7 +1427,7 @@ tarupeltenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_hoplite }
     icon = phalangitai
 }
@@ -1425,7 +1458,7 @@ galathraikes = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi
 }
@@ -1462,7 +1495,7 @@ moukamezenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1502,7 +1535,7 @@ mezenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -1544,7 +1577,7 @@ angamezenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = horse_archers
 }
@@ -1585,7 +1618,7 @@ skuda_aspabarata = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = horse_archers
 }
@@ -1623,7 +1656,7 @@ zibutai = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 150
+    stack = 100
     ai_quality = { value = ATHA_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1660,7 +1693,7 @@ cordinau_orca = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_heavy_infantry
         add = ATHA_ai_weight_guard
@@ -1700,7 +1733,7 @@ nedes_nesamoi = {
     mercenary_fallback = no
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = {
         value = ATHA_ai_weight_heavy_infantry
         add = ATHA_ai_weight_elite
@@ -1737,7 +1770,7 @@ rompaianai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi_superior
 }
@@ -1771,7 +1804,7 @@ drapanai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 300
+    stack = 200
     ai_quality = { value = ATHA_ai_weight_medium_infantry }
     icon = thureophoroi_superior
 }
@@ -1784,7 +1817,7 @@ elephantes_kataphraktoi = {
         always = no
     }
 
-    damage = 100
+    damage = 120
     toughness = 60
     pursuit = 0
     screen = 0
