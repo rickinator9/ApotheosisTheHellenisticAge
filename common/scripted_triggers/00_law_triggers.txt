@@ -77,7 +77,7 @@ realm_law_use_crown_authority = {
 }
 
 realm_law_use_tribal_authority = {
-	has_government = tribal_government
+	government_has_flag = government_is_tribal
 }
 
 can_have_confederate_partition_succession_law_trigger = {
@@ -99,7 +99,7 @@ should_start_confederate_partition_succession_law_trigger = {
 				has_innovation = innovation_hellenistic_land_survey
 			}
 		}
-		has_government = tribal_government
+		government_has_flag = government_is_tribal
 	}
 }
 
@@ -122,7 +122,7 @@ can_have_partition_succession_law_trigger = {
 	}
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		NOT = { has_government = tribal_government }
+		NOT = { government_has_flag = government_is_tribal }
 	}
 
 	NOT = { _has_specific_locked_government = yes }
@@ -137,7 +137,7 @@ should_start_partition_succession_law_trigger = {
 		historical_succession_access_single_heir_dynasty_house_trigger = yes
 	}
 	OR = {
-		has_government = clan_government
+		government_has_flag = government_is_clan
 		culture = {
 			has_innovation = innovation_classical_public_honours
 			NOT = { has_innovation = innovation_hellenistic_land_survey }
@@ -216,8 +216,8 @@ can_have_single_heir_succession_law_trigger = {
 			custom_description = {
 				text = succession_laws_must_have_organised_government_tooltip
 				NOR = {
-					has_government = tribal_government
-					has_government = clan_government
+					government_has_flag = government_is_tribal
+					government_has_flag = government_is_clan
 				}
 			}
 		}
@@ -255,8 +255,8 @@ can_have_single_heir_youngest_succession_law_trigger = {
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
 		NOR = {
-			has_government = tribal_government
-			has_government = clan_government
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
 		}
 	}
 
@@ -290,8 +290,8 @@ can_have_single_heir_dynasty_house_trigger = {
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
 		NOR = {
-			has_government = tribal_government
-			has_government = clan_government
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
 		}
 	}
 
@@ -305,7 +305,7 @@ should_start_single_heir_dynasty_house_trigger = {
 can_have_bishop_theocratic_succession_law_trigger = {
 	OR = {
 		is_theocratic_lessee = yes
-		has_government = theocracy_government
+		government_has_flag = government_is_theocracy
 	}
 }
 
@@ -320,15 +320,15 @@ can_title_have_law_general_trigger = {
 }
 
 can_have_holy_order_succession_law_trigger = {
-	has_government = holy_order_government
+	government_has_flag = government_is_holy_order
 }
 
 can_have_mercenary_succession_law_trigger = {
-	has_government = mercenary_government
+	government_has_flag = government_is_mercenary
 }
 
 can_have_city_succession_law_trigger = {
-	has_government = republic_government
+	government_has_flag = government_is_republic
 }
 
 title_can_reduce_partition_law_trigger = {

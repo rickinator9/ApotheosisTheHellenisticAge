@@ -174,6 +174,9 @@
 		}
 	}
 	
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_feudal
+	
 	flag = has_feudal_government_taxes_contract
 	flag = has_feudal_government_levies_contract
 	flag = has_vassal_role_contract
@@ -204,6 +207,9 @@ republic_government = {
 	}
 
 	vassal_contract = { republic_government_obligations }
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_republic
 	color = hsv { 0.00 1.00 0.98 }
 }
 
@@ -225,6 +231,9 @@ theocracy_government = {
 	}
 
 	vassal_contract = { theocracy_government_obligations }
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_theocracy
 	color = hsv { 0.00 0.00 0.78 }
 }
 
@@ -404,9 +413,12 @@ clan_government = {
 			}
 		}
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_clan
+	flag = government_is_tribal
 	
 	flag = government_can_raid_rule
-	flag = is_tribal_government
 	
 	flag = has_clan_government_obligations_contract
 	flag = has_coinage_rights_contract
@@ -593,13 +605,16 @@ tribal_government = {
 		feudal_government_vassal_opinion = -20
 		clan_government_vassal_opinion = -20
 		republic_government_vassal_opinion = -20
+		
+		character_travel_safety = 10
 	
 		ai_war_chance = 0.25
 		monthly_prestige = 0.2
 	}
 	
 	flag = government_can_raid_rule
-	flag = is_tribal_government
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_tribal
 	color = hsv { 0.07 0.85 0.26 }
 }
 
@@ -617,7 +632,9 @@ mercenary_government = {
 	}
 
 	flag = can_not_be_vassal_or_liege
-	color = hsv { 0.00 0.00 0.66 }
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_mercenary
+	color = hsv{ 0.00 0.00 0.66 }
 }
 
 # Holy order will always get this
@@ -636,5 +653,7 @@ holy_order_government = {
 	flag = can_not_be_vassal_or_liege
 
 	valid_holdings = { castle_holding city_holding }
-	color = hsv { 0.00 0.00 0.66 }
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_holy_order
+	color = hsv{ 0.00 0.00 0.66 }
 }

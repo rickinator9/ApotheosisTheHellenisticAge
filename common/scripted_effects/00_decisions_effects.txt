@@ -177,7 +177,7 @@ convert_whole_realm_to_feudalism_effect = {
 		limit = {
 			is_independent_ruler = no
 			OR = {
-				liege = { has_government = clan_government }
+				liege = { government_has_flag = government_is_clan }
 			}
 		}
 		change_government_form = { GOVERNMENT = clan_government }
@@ -187,7 +187,7 @@ convert_whole_realm_to_feudalism_effect = {
 		limit = {
 			is_independent_ruler = no
 			OR = {
-				liege = { has_government = feudal_government }
+				liege = { government_has_flag = government_is_feudal }
 			}
 		}
 		change_government_form = { GOVERNMENT = feudal_government }
@@ -200,7 +200,7 @@ convert_whole_realm_to_feudalism_effect = {
 	if = {
 		limit = {
 			is_independent_ruler = no
-			liege = { has_government = clan_government }
+			liege = { government_has_flag = government_is_clan }
 		}
 		custom_tooltip = clan_liege_vassals_will_convert
 	}
@@ -208,7 +208,7 @@ convert_whole_realm_to_feudalism_effect = {
 	if = {
 		limit = {
 			is_independent_ruler = no
-			liege = { has_government = feudal_government }
+			liege = { government_has_flag = government_is_feudal }
 		}
 		custom_tooltip = feudal_liege_vassals_will_convert
 	}
@@ -248,10 +248,10 @@ convert_whole_realm_to_feudalism_effect = {
 		#Liege has taken clan, so become clan.
 		if = {
 			limit = {
-				has_government = clan_government
+				government_has_flag = government_is_clan
 			}
 			every_vassal_or_below = {
-				limit = { has_government = tribal_government }
+				limit = { government_has_flag = government_is_tribal }
 				change_government_form = { GOVERNMENT = clan_government }
 				#Nuke tribal authorities.
 				if = {
@@ -281,7 +281,7 @@ convert_whole_realm_to_feudalism_effect = {
 		#Liege is not clan, become feudal.
 		else = {
 			every_vassal_or_below = {
-				limit = { has_government = tribal_government }
+				limit = { government_has_flag = government_is_tribal }
 				change_government_form = { GOVERNMENT = feudal_government }
 				#Nuke tribal authorities.
 				if = {
@@ -735,7 +735,6 @@ learn_language_linguist_effect = {
 		if = {
 			limit = {
 				can_employ_court_position_type = court_tutor_court_position
-				NOT = { employs_court_position = court_tutor_court_position }
 			}
 			appoint_court_position = {
 				recipient = $LINGUIST$
@@ -744,7 +743,7 @@ learn_language_linguist_effect = {
 		}
 		else_if = {
 			limit = {
-				can_employ_court_position_type = court_tutor_court_position
+				exists = court_position:court_tutor_court_position
 			}
 			court_position:court_tutor_court_position = {
 				add_opinion = {

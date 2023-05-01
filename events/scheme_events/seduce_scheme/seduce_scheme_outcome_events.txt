@@ -62,7 +62,7 @@ seduce_outcome.0001 = { #by Mathilda Bjarnehed
 			end_scheme = yes
 		}
 	}
-}	
+}
 
 #Rolls success and discovery, and triggers on_actions (or sends "player's choice" event)
 seduce_outcome.0002 = {
@@ -139,7 +139,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 			desc = seduce_outcome.0003.failure.desc
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -163,15 +163,15 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 			custom_tooltip = seduce_outcome.0003.a.tt
 		}
 
-		#As owner's intent might be seen as incestuous/sodomy, apply a secret that player can reveal if they want to 
+		#As owner's intent might be seen as incestuous/sodomy, apply a secret that player can reveal if they want to
 		hidden_effect = {
 			scope:owner = {
 				#Sodomy
 				give_homosexual_secret_or_nothing_with_target_effect = { CHARACTER = scope:target }
 
 				#Incest
-				give_incest_secret_or_nothing_with_target_effect = { CHARACTER = scope:target } 
-				
+				give_incest_secret_or_nothing_with_target_effect = { CHARACTER = scope:target }
+
 				#Adultery/fornication isn't a secret, but is applied as traits when the secrets are revealed
 			}
 		}
@@ -182,7 +182,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 				value = yes
 			}
 		}
-		
+
 		scope:owner = {
 			trigger_event = { #Owner gets any success event, and then target will be notified of their choice
 				on_action = seduce_success
@@ -198,7 +198,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 					relation_with_character_is_sodomy_trigger = { CHARACTER = scope:owner }
 					AND = {
 						NOT = { is_consort_of = scope:owner }
-						OR = {				
+						OR = {
 							trait_is_shunned_in_faith_trigger = { TRAIT = adulterer FAITH = scope:my_faith GENDER_CHARACTER = root } #Fornicator is handled by same rules
 							trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = scope:my_faith GENDER_CHARACTER = root } #Fornicator is handled by same rules
 						}
@@ -252,7 +252,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 					relation_with_character_is_sodomy_trigger = { CHARACTER = scope:owner }
 					AND = {
 						NOT = { is_consort_of = scope:owner }
-						OR = {				
+						OR = {
 							trait_is_shunned_in_faith_trigger = { TRAIT = adulterer FAITH = scope:my_faith GENDER_CHARACTER = root } #Fornicator is handled by same rules
 							trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = scope:my_faith GENDER_CHARACTER = root } #Fornicator is handled by same rules
 						}
@@ -274,7 +274,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 			}
 		}
 	}
-	
+
 	#Failure: let down easy
 	option = {
 		name = seduce_outcome.0003.c
@@ -323,7 +323,7 @@ seduce_outcome.0003 = { #by Mathilda Bjarnehed & Petter Vilberg
 				OWNER = scope:owner
 			}
 		}
-		
+
 		seduction_block_character_effect = { CHARACTER = scope:owner }
 
 		reverse_add_opinion = {
@@ -386,7 +386,7 @@ seduce_outcome.0004 = {
 	type = character_event
 	title = seduce_outcome.0004.t
 	desc = seduce_outcome.0004.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	#No scheme, no widget
@@ -402,7 +402,7 @@ seduce_outcome.0005 = {
 	type = character_event
 	title = seduce_outcome.0005.t
 	desc = seduce_outcome.0005.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	#No scheme, no widget
@@ -443,15 +443,15 @@ seduce_outcome.2000 = {
 	type = character_event
 	title = seduce_outcome.2000.t
 	desc = seduce_outcome.2000.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
-	
+
+
 	trigger = {
 		always = no
 	}
@@ -464,9 +464,9 @@ seduce_outcome.2000 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2000.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
-		
+
 		ai_chance = {
 			base = 100
 		}
@@ -505,17 +505,17 @@ seduce_outcome.2010 = {
 	type = character_event
 	title = seduce_outcome.2010.t
 	desc = seduce_outcome.2010.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = bedchamber
+		reference = bedchamber
 	}
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		has_trait = drunkard
 		scope:target = { has_trait = drunkard }
@@ -528,15 +528,15 @@ seduce_outcome.2010 = {
 	immediate = {
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
 		owner_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
-		
+
 	}
 
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2010.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -576,10 +576,10 @@ seduce_outcome.2020 = {
 	type = character_event
 	title = seduce_outcome.2020.t
 	desc = seduce_outcome.2020.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = scope:target
 	widget = {
@@ -595,7 +595,7 @@ seduce_outcome.2020 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2020.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -645,7 +645,7 @@ seduce_outcome.2030 = {
 		}
 		desc = seduce_outcome.2030.b.desc
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -657,7 +657,7 @@ seduce_outcome.2030 = {
 		has_trait = gluttonous
 		scope:target = { has_trait = gluttonous }
 	}
-	
+
 	weight_multiplier = {
 		base = 50
 	}
@@ -670,7 +670,7 @@ seduce_outcome.2030 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2030.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -711,10 +711,10 @@ seduce_outcome.2040 = {
 	type = character_event
 	title = seduce_outcome.2040.t
 	desc = seduce_outcome.2040.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = scope:target
 	widget = {
@@ -726,15 +726,15 @@ seduce_outcome.2040 = {
 		get_quirk_character_effect = yes
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
 		owner_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
-		
+
 	}
 
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2040.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -774,7 +774,7 @@ seduce_outcome.2050 = {
 	type = character_event
 	title = seduce_outcome.2050.t
 	desc = seduce_outcome.2050.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -795,7 +795,7 @@ seduce_outcome.2050 = {
 			scope:target = { is_married = yes }
 		}
 	}
-	
+
 	weight_multiplier = {
 		base = 100
 	}
@@ -808,7 +808,7 @@ seduce_outcome.2050 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2050.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -849,7 +849,7 @@ seduce_outcome.2301 = {
 	type = character_event
 	title = seduce_outcome.2301.t
 	desc = seduce_outcome.2301.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -878,7 +878,7 @@ seduce_outcome.2301 = {
 		}
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
 		owner_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
@@ -886,7 +886,7 @@ seduce_outcome.2301 = {
 		name = seduce_outcome.2301.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
 		flavor = seduce_outcome.2301.a.tt
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -938,14 +938,14 @@ seduce_outcome.2302 = {
 		}
 		desc = seduce_outcome.2302.desc_end
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		seduction_target_is_close_trigger = no
 		exists = scope:target.location.barony
@@ -969,14 +969,14 @@ seduce_outcome.2302 = {
 		}
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success): yes
 		owner_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2302.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -1018,7 +1018,7 @@ seduce_outcome.2303 = {
 	type = character_event
 	title = seduce_outcome.2303.t
 	desc = seduce_outcome.2303.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -1053,7 +1053,7 @@ seduce_outcome.2303 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2303.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -1095,10 +1095,10 @@ seduce_outcome.2304 = {
 	type = character_event
 	title = seduce_outcome.2304.t
 	desc = seduce_outcome.2304.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = terrain
+		reference = terrain
 	}
 	left_portrait = scope:target
 	widget = {
@@ -1123,17 +1123,17 @@ seduce_outcome.2304 = {
 	}
 
 	immediate = {
-		select_local_harmless_animal_effect = yes
+		select_local_animal_effect = { TYPE = harmless } # Save scope to limit possible animals: any/big/small/dangerous/harmless/prowling
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):yes
 		owner_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2304.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -1178,7 +1178,7 @@ seduce_outcome.2305 = {
 		desc = seduce_outcome.2305.desc_opening
 		desc = seduce_outcome.2305.desc_ending
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -1230,7 +1230,7 @@ seduce_outcome.2305 = {
 				}
 			}
 		}
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -1272,7 +1272,7 @@ seduce_outcome.2306 = {
 	type = character_event
 	title = seduce_outcome.2306.t
 	desc = seduce_outcome.2306.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -1305,9 +1305,9 @@ seduce_outcome.2306 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2306.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
-		
+
 		ai_chance = {
 			base = 100
 		}
@@ -1347,14 +1347,14 @@ seduce_outcome.2307 = {
 	type = character_event
 	title = seduce_outcome.2307.t
 	desc = seduce_outcome.2307.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		OR = {
 			has_relation_rival = scope:target
@@ -1383,9 +1383,9 @@ seduce_outcome.2307 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2307.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
-		
+
 		ai_chance = {
 			base = 100
 		}
@@ -1435,14 +1435,14 @@ seduce_outcome.2308 = {
 			desc = seduce_outcome.2308.desc_not_illigal
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		is_close_or_extended_family_of = scope:target
 	}
@@ -1461,9 +1461,9 @@ seduce_outcome.2308 = {
 	option = { #Go for both consummation and relationship
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
 		name = seduce_outcome.2308.a
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
-		
+
 		ai_chance = {
 			base = 100
 		}
@@ -1506,9 +1506,9 @@ seduce_outcome.2309 = {
 		desc = seduce_outcome.2309.desc_opening
 		desc = seduce_outcome.2309.desc_ending
 	}
-	
+
 	theme = seduce_scheme
-	override_background = { event_background = bedchamber }
+	override_background = { reference = bedchamber }
 	left_portrait = {
 		character = scope:target
 		animation = flirtation_left
@@ -1559,7 +1559,7 @@ seduce_outcome.2309 = {
 	option = { #Go for both consummation and relationship
 		name = seduce_outcome.2309.a
 		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
+
 		owner_seduce_outcome_become_lovers_option_effects = yes
 
 		ai_chance = {
@@ -1610,10 +1610,10 @@ seduce_outcome.2900 = { #by Mathilda Bjarnehed
 		}
 		desc = seduce_outcome.2900.end.desc
 	}
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = terrain
+		reference = terrain
 	}
 	left_portrait = scope:target
 	right_portrait = scope:target_liege
@@ -1638,7 +1638,7 @@ seduce_outcome.2900 = { #by Mathilda Bjarnehed
 
 	option = {
 		name = seduce_outcome.2900.a
-		
+
 		show_as_tooltip = {
 			seduce_outcome_success_discovered_effect = yes #This is actually applied in target_liege's event seduce_outcome.3901
 		}
@@ -1660,7 +1660,7 @@ seduce_outcome.3000 = {
 	type = character_event
 	title = seduce_outcome.2000.t
 	desc = seduce_outcome.3000.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -1721,7 +1721,7 @@ seduce_outcome.3010 = {
 	type = character_event
 	title = seduce_outcome.2010.t
 	desc = seduce_outcome.3010.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -1733,7 +1733,7 @@ seduce_outcome.3010 = {
 			}
 		}
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
-		target_seduce_outcome_sex_effect = yes 
+		target_seduce_outcome_sex_effect = yes
 
 		if = {
 			limit = {
@@ -1752,7 +1752,7 @@ seduce_outcome.3010 = {
 				save_scope_as = seduction_location
 			}
 		}
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
@@ -1770,7 +1770,7 @@ seduce_outcome.3010 = {
 	option = { #We're just here for the fun time!
 		name = seduce_outcome.2010.b
 		trigger = { scope:owner = { NOT = { has_character_flag = consummation_and_relationship } } }
-		
+
 		scope:scheme = {
 			end_scheme = yes
 		}
@@ -1789,10 +1789,10 @@ seduce_outcome.3020 = {
 	type = character_event
 	title = seduce_outcome.2020.t
 	desc = seduce_outcome.3020.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = scope:owner
 
@@ -1867,7 +1867,7 @@ seduce_outcome.3030 = {
 		}
 		desc = seduce_outcome.3030.b.desc
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -1927,17 +1927,17 @@ seduce_outcome.3040 = {
 	type = character_event
 	title = seduce_outcome.2040.t
 	desc = seduce_outcome.3040.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = scope:owner
 
 	immediate = {
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
-		target_seduce_outcome_sex_effect = yes 
-		
+		target_seduce_outcome_sex_effect = yes
+
 		if = {
 			limit = {
 				exists = root.location
@@ -1948,7 +1948,7 @@ seduce_outcome.3040 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -1992,7 +1992,7 @@ seduce_outcome.3050 = {
 	type = character_event
 	title = seduce_outcome.2050.t
 	desc = seduce_outcome.3050.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2010,7 +2010,7 @@ seduce_outcome.3050 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2052,7 +2052,7 @@ seduce_outcome.3301 = {
 	type = character_event
 	title = seduce_outcome.3301.t
 	desc = seduce_outcome.3301.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2076,14 +2076,14 @@ seduce_outcome.3301 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
 				save_scope_as = seduction_location
 			}
 		}
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
@@ -2102,7 +2102,7 @@ seduce_outcome.3301 = {
 	option = { #We're just here for the fun time!
 		name = seduce_outcome.3301.b
 		trigger = { scope:owner = { NOT = { has_character_flag = consummation_and_relationship } } }
-		
+
 		scope:scheme = {
 			end_scheme = yes
 		}
@@ -2136,7 +2136,7 @@ seduce_outcome.3302 = {
 		}
 		desc = seduce_outcome.3302.desc_end
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2173,23 +2173,25 @@ seduce_outcome.3302 = {
 		}
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
 		target_seduce_outcome_sex_effect = yes
-		
+
 		play_music_cue = "mx_cue_seduction"
 	}
 
 	option = { #We went for both consummation and relationship
 		name = seduce_outcome.3302.a
 		trigger = { scope:owner = { has_character_flag = consummation_and_relationship } }
-	
+
 		set_relation_lover_through_seduction_effect = {
 			CHARACTER = scope:owner
+			REASON = lover_seduction_distance
+			LOCATION = scope:foreign_court
 		}
 	}
 
 	option = { #We're just here for the fun time!
 		name = seduce_outcome.2302.b
 		trigger = { scope:owner = { NOT = { has_character_flag = consummation_and_relationship } } }
-		
+
 		scope:scheme = {
 			end_scheme = yes
 		}
@@ -2208,7 +2210,7 @@ seduce_outcome.3303 = {
 	type = character_event
 	title = seduce_outcome.2303.t
 	desc = seduce_outcome.3303.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2229,7 +2231,7 @@ seduce_outcome.3303 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2271,14 +2273,24 @@ seduce_outcome.3304 = {
 	type = character_event
 	title = seduce_outcome.2304.t
 	desc = seduce_outcome.3304.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = terrain
+		reference = terrain
 	}
 	left_portrait = scope:owner
 
 	immediate = {
+		if = {
+			limit = { exists = var:animal_type }
+			set_variable = {
+				name = animal_type_old
+				value = var:animal_type
+			}
+			remove_variable = animal_type
+		}
+		select_local_animal_effect = { TYPE = harmless } # Save scope to limit possible animals: any/big/small/dangerous/harmless/prowling
+
 		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
 		target_seduce_outcome_sex_effect = yes
 
@@ -2292,7 +2304,7 @@ seduce_outcome.3304 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2324,6 +2336,16 @@ seduce_outcome.3304 = {
 			limit = { scope:owner = { has_character_flag = consummation_and_relationship } }
 			scope:owner = { remove_character_flag = consummation_and_relationship }
 		}
+		remove_variable = animal_type
+
+		if = {
+			limit = { has_variable = animal_type_old }
+			set_variable = {
+				name = animal_type
+				value = var:animal_type_old
+			}
+			remove_variable = animal_type_old
+		}
 	}
 }
 
@@ -2332,7 +2354,7 @@ seduce_outcome.3305 = {
 	type = character_event
 	title = seduce_outcome.2305.t
 	desc = seduce_outcome.3305.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2353,7 +2375,7 @@ seduce_outcome.3305 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2394,7 +2416,7 @@ seduce_outcome.3306 = {
 	type = character_event
 	title = seduce_outcome.3306.t
 	desc = seduce_outcome.3306.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2418,7 +2440,7 @@ seduce_outcome.3306 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2461,7 +2483,7 @@ seduce_outcome.3307 = {
 	type = character_event
 	title = seduce_outcome.3307.t
 	desc = seduce_outcome.3307.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2538,7 +2560,7 @@ seduce_outcome.3308 = {
 			desc = seduce_outcome.3308.desc_not_illigal
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -2559,7 +2581,7 @@ seduce_outcome.3308 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2616,7 +2638,7 @@ seduce_outcome.3309 = {
 		desc = seduce_outcome.3309.desc_opening
 		desc = seduce_outcome.3309.desc
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = {
 		character = scope:owner
@@ -2637,7 +2659,7 @@ seduce_outcome.3309 = {
 			limit = {
 				exists = scope:owner.location
 			}
-			scope:owner.location = { save_scope_as seduction_location }
+			scope:owner.location = { save_scope_as = seduction_location }
 		}
 		else = {
 			random_province = {
@@ -2737,7 +2759,7 @@ seduce_outcome.3309 = {
 #	type = character_event
 #	title = seduce_outcome.3900.t
 #	desc = seduce_outcome.3900.desc
-#	
+#
 #	theme = seduce_scheme
 #	left_portrait = scope:owner
 #	right_portrait = scope:target_liege
@@ -2762,10 +2784,10 @@ seduce_outcome.3901 = { #by Mathilda Bjarnehed
 	type = character_event
 	title = seduce_outcome.3901.t
 	desc = seduce_outcome.3901.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = scope:owner
 	right_portrait = scope:target
@@ -2777,7 +2799,7 @@ seduce_outcome.3901 = { #by Mathilda Bjarnehed
 
 	option = {
 		name = seduce_outcome.3900.a
-		
+
 		scope:target = { seduce_outcome_success_discovered_effect = yes }
 	}
 }
@@ -2801,14 +2823,14 @@ seduce_outcome.4001 = {
 			desc = seduce_outcome.4001.regular.desc
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		OR = {
 			NOT = { exists = scope:scheme_discovered }
@@ -2876,14 +2898,14 @@ seduce_outcome.4002 = {
 	type = character_event
 	title = seduce_outcome.4001.t
 	desc = seduce_outcome.4002.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		OR = {
 			reverse_opinion = { #Dislikes you
@@ -2982,7 +3004,7 @@ seduce_outcome.4003 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		OR = {
 			#Regular conditions
@@ -3128,14 +3150,14 @@ seduce_outcome.4004 = {
 		}
 		desc = seduce_outcome.4004.end.desc
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:target = {
 			OR = {
@@ -3168,12 +3190,12 @@ seduce_outcome.4004 = {
 				value >= high_positive_opinion
 			}
 			add = 1
-		}	
+		}
 	}
 
 	option = {
 		name = seduce_outcome.4004.a
-		
+
 		scope:target = { seduction_cooldown_for_character_effect = { CHARACTER = scope:owner } }
 
 		hidden_effect = {
@@ -3200,10 +3222,10 @@ seduce_outcome.4005 = {
 	type = character_event
 	title = seduce_outcome.2900.t
 	desc = seduce_outcome.4005.desc
-	
+
 	theme = seduce_scheme
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = scope:target
 	right_portrait = scope:target_liege
@@ -3253,25 +3275,25 @@ seduce_outcome.4100 = {
 		desc = seduce_outcome.4100.desc
 		first_valid = {
 			triggered_desc = {
-				trigger = { 
-					scope:target = { 
-						is_married = yes 
+				trigger = {
+					scope:target = {
+						is_married = yes
 						any_consort = { NOT = { this = scope:owner } }
-					} 
+					}
 				}
 				desc = seduce_outcome.4100.desc_married
 			}
 			desc = seduce_outcome.4100.desc_fallback
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:target = {
 			is_ai = yes
@@ -3343,13 +3365,13 @@ seduce_outcome.4900 = {
 	desc = seduce_outcome.4900.desc
 	theme = seduce_scheme
 	override_background = {
-		event_background = corridor_night
+		reference = corridor_night
 	}
 	left_portrait = scope:owner
 	right_portrait = scope:target
 
 	immediate = { save_scope_as = target_liege }
-	
+
 	option = {
 		name = {
 			trigger = {
@@ -3370,7 +3392,7 @@ seduce_outcome.4900 = {
 			text = seduce_outcome.4900.a.courtier
 		}
 
-			
+
 		scope:owner = {
 			seduce_outcome_publicised_attempted_crimes_or_nothing_effect = {
 				TARGET = scope:target
@@ -3430,7 +3452,7 @@ seduce_outcome.8101 = {
 			desc = seduce_outcome.8101.desc_neutral
 		}
 	}
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:owner
 
@@ -3468,8 +3490,8 @@ seduce_outcome.8101 = {
 					save_scope_value_as = {
 						name = incest_outcome
 						value = flag:accept
-					}					
-				}	
+					}
+				}
 				if = {
 					limit = { NOT = { exists = scope:incest_outcome } }
 					save_scope_value_as = {
@@ -3551,7 +3573,7 @@ seduce_outcome.8101 = {
 			    is_ai = no
 			}
 		}
-		
+
 		reverse_add_opinion = {
 			target = scope:owner
 			modifier = refusal_opinion
@@ -3563,7 +3585,7 @@ seduce_outcome.8101 = {
 		scope:owner = {
 			trigger_event = seduce_outcome.8102
 		}
-		
+
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -3639,7 +3661,7 @@ seduce_outcome.8102 = {
 	type = character_event
 	title = seduce_outcome.8102.t
 	desc = seduce_outcome.8102.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {
@@ -3668,7 +3690,7 @@ seduce_outcome.8102 = {
 				end_scheme = yes
 			}
 		}
-		
+
 		reverse_add_opinion = {
 			target = scope:target
 			modifier = respect_opinion
@@ -3683,7 +3705,7 @@ seduce_outcome.8103 = {
 	type = character_event
 	title = seduce_outcome.8103.t
 	desc = seduce_outcome.8103.desc
-	
+
 	theme = seduce_scheme
 	left_portrait = scope:target
 	widget = {

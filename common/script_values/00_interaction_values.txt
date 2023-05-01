@@ -18,6 +18,11 @@
 	}
 }
 
+golden_obligation_value_check_current_situation = {
+	add = gold
+	max = golden_obligation_value
+}
+
 ransom_cost_value = {
 	value = ransom_cost
 	# Some cultures are better at ransoming than others.
@@ -47,6 +52,27 @@ ransom_cost_value = {
 		}
 		add = 90
 	}
+}
+
+current_situation_gold_ransom = {
+	if = {
+		limit = {
+			NOT = {
+				exists = liege
+			}
+		}
+		add = gold
+	}
+	else_if = {
+		limit = {
+			is_ruler = no
+		}
+		add = liege.gold
+	}
+	else = {
+		add = gold
+	}
+	max = ransom_cost_value
 }
 
 half_ransom_cost_value = {
@@ -383,6 +409,12 @@ vassal_claim_liege_title_interaction_highlight_value = {
 	}
 }
 
+script_current_military_strength = {
+	value = {
+		add = current_military_strength
+	}
+}
+
 one_and_a_half_times_current_military_strength = {
 	value = {
 		add = current_military_strength
@@ -394,5 +426,26 @@ twice_current_military_strength = {
 	value = {
 		add = current_military_strength
 		multiply = 2
+	}
+}
+
+eighty_percent_of_current_military_strength = {
+	value = {
+		add = current_military_strength
+		multiply = 0.8
+	}
+}
+
+fifty_percent_of_current_military_strength = {
+	value = {
+		add = current_military_strength
+		multiply = 0.5
+	}
+}
+
+eighty_percent_of_max_military_strength = {
+	value = {
+		add = max_military_strength
+		multiply = 0.8
 	}
 }

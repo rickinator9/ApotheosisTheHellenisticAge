@@ -35,7 +35,7 @@ vassal.1001 = {
 	
 	theme = faith
 	override_background = {
-		event_background = farmland
+		reference = farmland
 	}
 	left_portrait = scope:religious_liege
 	
@@ -329,7 +329,7 @@ vassal.1101 = {
 	trigger = {
 		is_landed = yes
 		is_in_civil_war = no
-		has_government = feudal_government
+		government_has_flag = government_is_feudal
 		NOR = {
 			exists = var:promised_to_build_temple
 			has_character_flag = had_vassal_1101_event
@@ -614,7 +614,7 @@ vassal.2001 = {
 	
 	theme = learning
 	override_background = {
-		event_background = throne_room
+		reference = throne_room
 	}
 	left_portrait = scope:vassal_proposing_education
 	right_portrait = scope:child_to_educate
@@ -761,11 +761,7 @@ vassal.2101 = {
 			any_vassal = {
 				count >= 1
 				is_ai = yes
-				OR = {
-					has_trait = reveler_1
-					has_trait = reveler_2
-					has_trait = reveler_3
-				}
+				has_trait = lifestyle_reveler
 			}
 		}
 	}
@@ -790,16 +786,8 @@ vassal.2101 = {
 					has_trait = gregarious
 				}
 				modifier = {
-					add = 20
-					has_trait = reveler_1
-				}
-				modifier = {
 					add = 40
-					has_trait = reveler_2
-				}
-				modifier = {
-					add = 60
-					has_trait = reveler_3
+					has_trait = lifestyle_reveler
 				}
 			}
 			save_scope_as = party_vassal
@@ -814,9 +802,7 @@ vassal.2101 = {
 		name = {
 			trigger = {
 				NOR = {
-					has_trait = reveler_1
-					has_trait = reveler_2
-					has_trait = reveler_3
+					has_trait = lifestyle_reveler
 					has_trait = drunkard
 				}
 			}
@@ -825,9 +811,7 @@ vassal.2101 = {
 		name = {
 			trigger = {
 				OR = {
-					has_trait = reveler_1
-					has_trait = reveler_2
-					has_trait = reveler_3
+					has_trait = lifestyle_reveler
 					has_trait = drunkard
 				}
 			}
@@ -906,9 +890,7 @@ vassal.2101 = {
 			}
 		}
 		stress_impact = {
-			reveler_1 = minor_stress_impact_gain
-			reveler_2 = minor_stress_impact_gain
-			reveler_3 = minor_stress_impact_gain
+			lifestyle_reveler = minor_stress_impact_gain
 			drunkard = minor_stress_impact_gain
 		}
 		ai_chance = {
@@ -947,13 +929,7 @@ vassal.2110 = {
 		remove_variable = was_promised_a_feast
 		if = {
 			limit = {
-				scope:party_vassal = {
-					OR = {
-						has_trait = reveler_1
-						has_trait = reveler_2
-						has_trait = reveler_3
-					}
-				}
+				scope:party_vassal = { has_trait = lifestyle_reveler }
 			}
 			reverse_add_opinion = {
 				modifier = kept_promise
@@ -984,13 +960,7 @@ vassal.2120 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = {
-					OR = {
-						has_trait = reveler_1
-						has_trait = reveler_2
-						has_trait = reveler_3
-					}
-				}
+				trigger = { has_trait = lifestyle_reveler }
 				desc = vassal.2120.desc_party
 			}
 			desc = vassal.2120.desc_regular
@@ -1000,7 +970,7 @@ vassal.2120 = {
 	
 	theme = unfriendly
 	override_background = {
-		event_background = throne_room
+		reference = throne_room
 	}
 	left_portrait = {
 		character = scope:party_vassal
@@ -1639,7 +1609,7 @@ vassal.2301 = {
 	}
 	
 	theme = vassal
-	override_background = { event_background = council_chamber }
+	override_background = { reference = council_chamber }
 	left_portrait = scope:skilled_vassal
 	
 	trigger = {
@@ -1910,9 +1880,9 @@ scripted_trigger vassal_2401_potential_vassal_trigger = {
 	domain_size > 1 #Must not become landless.	
 	vassal_contract_obligation_level_can_be_increased = feudal_government_taxes
 	NOR = {
-		has_government = theocracy_government
-		has_government = republic_government
-		has_government = holy_order_government
+		government_has_flag = government_is_theocracy
+		government_has_flag = government_is_republic
+		government_has_flag = government_is_holy_order
 	}
 	OR = {
 		monthly_character_income < 0
@@ -2074,7 +2044,7 @@ vassal.2401 = {
 ##############################################
 
 scripted_trigger vassal_2451_potential_vassal_trigger = {
-	has_government = feudal_government
+	government_has_flag = government_is_feudal
 	is_ai = yes
 	is_adult = yes
 	is_imprisoned = no
@@ -2959,7 +2929,7 @@ vassal.2702 = {
 	
 	theme = vassal
 	override_background = {
-		event_background = courtyard
+		reference = courtyard
 	}
 	left_portrait = {
 		character = scope:teacher
@@ -3332,9 +3302,9 @@ scripted_trigger vassal_2901_claim_vassal_trigger = {
 	is_available_ai_adult = yes
 	highest_held_title_tier > 1 #No Barons
 	NOR = {
-		has_government = theocracy_government
-		has_government = republic_government
-		has_government = holy_order_government
+		government_has_flag = government_is_theocracy
+		government_has_flag = government_is_republic
+		government_has_flag = government_is_holy_order
 	}
 	any_claim = {
 		pressed = no
@@ -3588,7 +3558,7 @@ vassal.2911 = {
 	
 	theme = unfriendly
 	override_background = {
-		event_background = throne_room
+		reference = throne_room
 	}
 	left_portrait = {
 		character = scope:claim_vassal

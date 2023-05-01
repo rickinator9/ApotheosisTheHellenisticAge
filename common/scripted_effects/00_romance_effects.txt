@@ -140,7 +140,7 @@ lover_activity_set_variable_effect = {
 				}
 				modifier = {
 					OR = {
-						has_trait = reveler_1
+						has_trait = lifestyle_reveler
 						has_trait = drunkard
 					}
 					factor = 10
@@ -169,7 +169,7 @@ lover_activity_set_variable_effect = {
 					}
 				}
 				modifier = {
-					has_trait = hunter_1
+					has_trait = lifestyle_hunter
 					factor = 5
 				}
 				set_variable = {
@@ -362,6 +362,17 @@ had_sex_with_effect = {
 	save_temporary_scope_as = had_sex_root_character
 	$CHARACTER$ = { save_scope_as = had_sex_with_effect_partner }
 
+	#Error logging
+	if = {
+		limit = {
+			OR = {
+				scope:had_sex_root_character = { is_adult = no }
+				scope:had_sex_with_effect_partner = { is_adult = no }
+			}
+		}
+		error_log = "Trying to run had_sex_with_effect but one or more partners is a child"
+	}
+
 	if = {
 		limit = { this = root }
 		custom_tooltip = had_sex_with_effect.first_person.tt
@@ -383,7 +394,29 @@ had_sex_with_effect = {
 
 
 	#Stress
-	$CHARACTER$ = {
+	if = {
+		limit = { # For use with events that add/remove more stress than these values, to avoid ugly tooltips
+			NOT = {
+				has_character_flag = no_sex_stress_loss
+			}
+		}
+		$CHARACTER$ = {
+			if = {
+				limit = { this = root }
+				stress_impact = {
+					lustful = minor_stress_impact_loss
+					rakish = minor_stress_impact_loss
+				}
+			}
+			else = {
+				hidden_effect = {
+					stress_impact = {
+						lustful = minor_stress_impact_loss
+						rakish = minor_stress_impact_loss
+					}
+				}
+			}
+		}
 		if = {
 			limit = { this = root }
 			stress_impact = {
@@ -400,21 +433,6 @@ had_sex_with_effect = {
 			}
 		}
 	}
-	if = {
-		limit = { this = root }
-		stress_impact = {
-			lustful = minor_stress_impact_loss
-			rakish = minor_stress_impact_loss
-		}
-	}
-	else = {
-		hidden_effect = {
-			stress_impact = {
-				lustful = minor_stress_impact_loss
-				rakish = minor_stress_impact_loss
-			}
-		}
-	}	
 	
 
 	#Pregnancy & story cycles
@@ -630,6 +648,14 @@ had_sex_with_unknown_effect = {
 	save_temporary_scope_value_as = {
 		name = gender
 		value = flag:$GENDER$
+	}
+
+	#Error logging
+	if = {
+		limit = {
+			is_adult = no
+		}
+		error_log = "Trying to run had_sex_with_unknown_effect on a child"
 	}
 
 	#Stress release

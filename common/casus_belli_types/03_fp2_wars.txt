@@ -45,7 +45,7 @@ fp2_border_raid = {
 	valid_to_start = {
 		exists = scope:target
 		NOT = {
-			scope:target.title_province = { has_province_modifier = recently_looted_modifier } # TODO_CD_FP2 (JP) change to border raid modifier?
+			scope:target.title_province = { has_province_modifier = recently_looted_modifier }
 		}
 	}
 
@@ -112,12 +112,15 @@ fp2_border_raid = {
 	}
 
 	on_victory = {
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+		
 		every_in_list = {
 			list = target_titles
 			save_scope_as = raid_county
 			# Set raided province modifier
 			title_province = {
-				add_province_modifier = { # TODO_CD_FP2 (JP) change to border raid modifier?
+				add_province_modifier = {
 					modifier = recently_looted_modifier
 					years = 5
 				}
@@ -306,6 +309,8 @@ fp2_border_raid = {
 	}
 
 	on_defeat = {
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -542,6 +547,9 @@ fp2_expel_interloper = {
 	}
 
 	on_victory = {
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_med_effect = yes }
+		
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = title_change
@@ -644,6 +652,9 @@ fp2_expel_interloper = {
 	}
 
 	on_white_peace = {
+		#EP2 accolade glory gain for doing ok against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
 		# Prestige loss for the attacker
 		scope:attacker = {
 			add_prestige = {
@@ -694,6 +705,8 @@ fp2_expel_interloper = {
 	}
 
 	on_defeat = {
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -752,4 +765,7 @@ fp2_expel_interloper = {
 	use_de_jure_wargoal_only = yes
 
 	attacker_wargoal_percentage = 0.8
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 }

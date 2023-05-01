@@ -699,7 +699,7 @@ intrigue_temptation.3010 = { #by Mathilda Bjarnehed
 	
 	theme = intrigue_temptation_focus
 	override_background = {
-		event_background = tavern
+		reference = tavern
 	}
 	left_portrait = {
 		character = scope:bar_servant
@@ -749,7 +749,8 @@ intrigue_temptation.3010 = { #by Mathilda Bjarnehed
 				}
 				random_relation = {
 					type = friend
-					limit = { 
+					limit = {
+						is_adult = yes
 						lifestyle_friend_trigger = { CHARACTER = root FOCUS = intrigue_temptation_focus } 
 						trigger_if = {
 							limit = { is_spouse_or_romantic_partner_of_root = yes }

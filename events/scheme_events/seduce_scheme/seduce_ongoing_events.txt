@@ -4534,7 +4534,7 @@ seduce_ongoing.7202 = {
 		desc = seduce_ongoing.7202.desc
 		triggered_desc = {
 		    trigger = {
-				exists = var:local_animal
+				exists = var:animal_type
 		    }
 		    desc = seduce_ongoing.7202.desc_animal
 		}
@@ -4550,14 +4550,14 @@ seduce_ongoing.7202 = {
 			limit = {
 				exists = location
 			}
-			select_local_animal_effect = yes
+			select_local_animal_effect = { TYPE = prowling } # Save scope to limit possible animals: any/big/small/dangerous/harmless/prowling
 		}
 	}
 
 	option = {
 		name = seduce_ongoing.7102.a
 		seduce_ongoing_add_scheme_modifier_effect = { MILESTONE = 1 OUTCOME = failure }
-		remove_variable = local_animal
+		remove_variable = animal_type
 	}
 }
 
@@ -5506,10 +5506,7 @@ seduce_ongoing.1602 = {
 				}
 				modifier = {
 					add = 20
-					has_trait_rank = {
-						trait = lifestyle_physician
-						rank >= 1
-					}
+					has_trait = lifestyle_physician
 				}
 				modifier = {
 					add = 30
@@ -7202,6 +7199,9 @@ seduce_ongoing.4013 = {
 
 	trigger = {
 		exists = scope:scheme
+		scope:owner = {
+			is_alive = yes
+		}
 	}
 	
 	immediate = {
@@ -7940,6 +7940,7 @@ seduce_ongoing.4108 = {
 
 	trigger = {
 		exists = scope:scheme
+		scope:target = { is_alive = yes }
 	}
 	
 	option = { #I am charmed
@@ -8151,7 +8152,7 @@ seduce_ongoing.5001 = {
 	}
 	theme = seduce_scheme
 	override_background = {
-		event_background = garden
+		reference = garden
 	}
 	widget = {
 		gui = "event_window_widget_scheme"
@@ -8565,7 +8566,7 @@ seduce_ongoing.5003 = {
 	left_portrait = scope:owner
 	theme = seduce_scheme
 	override_background = {
-		event_background = garden
+		reference = garden
 	}
 
 	trigger = {
@@ -8613,7 +8614,7 @@ seduce_ongoing.5004 = {
 	left_portrait = scope:owner
 	theme = unfriendly
 	override_background = {
-		event_background = garden
+		reference = garden
 	}
 
 	trigger = {
@@ -8661,7 +8662,7 @@ seduce_ongoing.5005 = {
 	left_portrait = scope:target
 	theme = seduce_scheme
 	override_background = {
-		event_background = garden
+		reference = garden
 	}
 	widget = {
 		gui = "event_window_widget_scheme"
@@ -8724,7 +8725,7 @@ seduce_ongoing.5006 = {
 	}
 	theme = unfriendly
 	override_background = {
-		event_background = garden
+		reference = garden
 	}
 	widget = {
 		gui = "event_window_widget_scheme"

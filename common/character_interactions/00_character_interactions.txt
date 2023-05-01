@@ -2,10 +2,10 @@
 
 offer_vassalization_interaction = {
 	category = interaction_category_vassal
-
+	icon = icon_vassal
 
 	desc = offer_vassalization_interaction_desc
-	
+
 	ai_targets = {
 		ai_recipients = neighboring_rulers
 	}
@@ -66,7 +66,7 @@ offer_vassalization_interaction = {
 		#OPINION SCALES
 		#Dread
 		#Compare Opinion modifier.
-		
+
 		# PERKS
 		modifier = { # Perk boost
 			desc = offer_vassalization_true_ruler_perk_tt
@@ -84,7 +84,7 @@ offer_vassalization_interaction = {
 			}
 			add = 20
 		}
-		
+
 		modifier = { # Cultural Acceptance
 			add = offer_vassalage_acceptance_value
 			desc = cultural_acceptance_interaction_reason
@@ -135,7 +135,7 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { #Different faith, pluralism.
 			desc = offer_vassalization_interaction_aibehavior_differentfaith_tt
 			trigger = {
@@ -175,7 +175,7 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { #Different faith, both have pluralism.
 			desc = offer_vassalization_interaction_aibehavior_differentfaith_tt
 			trigger = {
@@ -224,8 +224,8 @@ offer_vassalization_interaction = {
 					limit = {
 						scope:recipient = {
 							OR = {
-								has_government = republic_government
-								has_government = theocracy_government
+								government_has_flag = government_is_republic
+								government_has_flag = government_is_theocracy
 							}
 						}
 					}
@@ -270,10 +270,10 @@ offer_vassalization_interaction = {
 			desc = interaction_tribal_vs_nontribal
 			trigger = {
 				scope:recipient = {
-					has_government = tribal_government
+					government_has_flag = government_is_tribal
 				}
 				scope:actor = {
-					NOT = { has_government = tribal_government }
+					NOT = { government_has_flag = government_is_tribal }
 				}
 			}
 			add = -20
@@ -282,10 +282,10 @@ offer_vassalization_interaction = {
 			desc = interaction_tribal_vs_nontribal
 			trigger = {
 				scope:actor = {
-					has_government = tribal_government
+					government_has_flag = government_is_tribal
 				}
 				scope:recipient = {
-					NOT = { has_government = tribal_government }
+					NOT = { government_has_flag = government_is_tribal }
 				}
 			}
 			add = -20
@@ -427,7 +427,9 @@ offer_vassalization_interaction = {
 		modifier = {
 			desc = offer_vassalization_interaction_aibehavior_vassal_opinion_tt
 			trigger = {
+				scope:actor = {
 				number_of_powerful_vassals >= 1
+				}
 			}
 
 	  	  	add = {
@@ -527,7 +529,7 @@ offer_vassalization_interaction = {
 			}
 			add = 5
 		}
-		
+
 		modifier = { # Same language
 			add = 5
 			desc = speaks_same_language_interaction_reason
@@ -537,7 +539,7 @@ offer_vassalization_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { # Iberian Struggle, less likely for outsiders to vassalize inside
 			add = -35
 			desc = iberian_struggle_reason_reason
@@ -690,10 +692,10 @@ offer_vassalization_interaction = {
 		opinion_modifier = { #Compare Opinion modifier - Clans care more about opinion
 			trigger = {
 				scope:actor = {
-					has_government = clan_government
+					government_has_flag = government_is_clan
 				}
 				scope:recipient = {
-					has_government = clan_government
+					government_has_flag = government_is_clan
 				}
 			}
 			who = scope:recipient
@@ -704,10 +706,10 @@ offer_vassalization_interaction = {
 			trigger = {
 				OR = {
 					scope:actor = {
-						NOT = { has_government = clan_government }
+						NOT = { government_has_flag = government_is_clan }
 					}
 					scope:recipient = {
-						NOT = { has_government = clan_government }
+						NOT = { government_has_flag = government_is_clan }
 					}
 				}
 			}
@@ -715,7 +717,7 @@ offer_vassalization_interaction = {
 			opinion_target = scope:actor
 			multiplier = 0.35
 		}
-		
+
 		# DIPLOMATIC COURT GRANDEUR BONUS
 		modifier = {
 			trigger = {
@@ -772,6 +774,8 @@ offer_vassalization_interaction = {
 			scope:dependent = yes
 			desc = CONTRACT_DEPENDENT_REASON_THIRD
 		}
+
+		#ALL these modifiers are also used in impress_intent_vassalization_acceptance_value, keep them synced
 	}
 
 	# Low starting obligations
@@ -786,11 +790,11 @@ offer_vassalization_interaction = {
 			}
 		}
 		flag = low_obligations
-		localization = low_obligations	
+		localization = low_obligations
 	}
 
 	# Medium starting obligations
-	send_option = {										
+	send_option = {
 		is_shown = {
 			scope:recipient = {
 				government_has_flag = has_feudal_government_taxes_contract
@@ -893,7 +897,7 @@ offer_vassalization_interaction = {
 			trigger_event = char_interaction.0002
 		}
 	}
-	
+
 	ai_potential = {
 		is_adult = yes
 		is_independent_ruler = yes
@@ -947,7 +951,7 @@ offer_vassalization_interaction = {
 
 offer_fealty_interaction = {
 	category = interaction_category_vassal
-
+	icon = icon_liege
 
 	desc = offer_fealty_interaction_desc
 
@@ -984,7 +988,7 @@ offer_fealty_interaction = {
 
 	greeting = positive
 	notification_text = OFFER_FEALTY_INTERACTION_NOTIFICATION
-	
+
 	ai_min_reply_days = 5
 	ai_max_reply_days = 10
 
@@ -1126,7 +1130,7 @@ offer_fealty_interaction = {
 			}
 			add = 10
 		}
-		
+
 		modifier = { # Cultural Acceptance
 			add = -5
 			desc = cultural_acceptance_interaction_reason
@@ -1139,7 +1143,7 @@ offer_fealty_interaction = {
 				}
 			}
 		}
-		
+
 		modifier = { # Same language
 			add = 5
 			desc = speaks_same_language_interaction_reason
@@ -1246,11 +1250,11 @@ offer_fealty_interaction = {
 			}
 		}
 		flag = low_obligations
-		localization = low_obligations	
+		localization = low_obligations
 	}
 
 	# Medium starting obligations
-	send_option = {										
+	send_option = {
 		is_shown = {
 			scope:actor = {
 				government_has_flag = has_feudal_government_taxes_contract
@@ -1260,9 +1264,9 @@ offer_fealty_interaction = {
                 }
 			}
 		}
-		flag = normal_obligations						
-		localization = normal_obligations				
-		starts_enabled = { always = yes	}				
+		flag = normal_obligations
+		localization = normal_obligations
+		starts_enabled = { always = yes	}
 
 	}
 
@@ -1277,8 +1281,8 @@ offer_fealty_interaction = {
                 }
 			}
 		}
-		flag = high_obligations	
-		localization = high_obligations	
+		flag = high_obligations
+		localization = high_obligations
 	}
 
 	# Medium-high starting obligations + religious protection
@@ -1353,6 +1357,7 @@ force_vote_in_succession_election_interaction = {
 	category = interaction_category_uncategorized
 	hidden = yes
 	special_interaction = force_vote_in_succession_election
+	icon = scroll_scales
 
 	greeting = positive
 	notification_text = FORCE_VOTE_INTERACTION_NOTIFICATION
@@ -1381,7 +1386,7 @@ force_vote_in_succession_election_interaction = {
 			send_interface_message = {
 				type = event_generic_neutral
 				title = force_vote_in_succession_election_interaction
-				
+
 				right_icon = scope:recipient
 
 				show_as_tooltip = {
@@ -1401,6 +1406,7 @@ force_vote_in_succession_election_interaction = {
 set_primary_spouse_interaction = {
 	category = interaction_category_diplomacy
 	desc = set_primary_spouse_interaction_desc
+	icon = icon_marriage
 
 	auto_accept = yes
 
@@ -1451,7 +1457,7 @@ set_primary_spouse_interaction = {
 		}
 		scope:actor = {
 			set_primary_spouse = scope:recipient
-			hidden_effect = {	
+			hidden_effect = {
 				send_interface_toast = {
 					title = set_primary_spouse_interaction_toast
 					left_icon = scope:actor
@@ -1462,7 +1468,7 @@ set_primary_spouse_interaction = {
 			}
 		}
 		scope:recipient = {
-			hidden_effect = {	
+			hidden_effect = {
 				send_interface_toast = {
 					title = set_primary_spouse_interaction_toast
 					left_icon = scope:actor
@@ -1490,7 +1496,7 @@ set_primary_spouse_interaction = {
 			}
 		}
 	}
-	
+
 	ai_targets = {
 		ai_recipients = spouses
 	}
@@ -1498,13 +1504,13 @@ set_primary_spouse_interaction = {
 		adult = yes
 	}
 	ai_frequency = 72
-	
+
 	ai_potential = {
 		any_spouse = {
 			count >= 2
 		}
 	}
-	
+
 	ai_will_do = {
 		base = 100
 
@@ -1531,9 +1537,10 @@ grant_independence_interaction = {
 	force_notification = yes
 	greeting = positive
 	notification_text = GRANT_INDEPENDENCE_INTERACTION_NOTIFICATION
+	icon = independence
 
 	desc = grant_independence_interaction_desc
-	
+
 	is_shown = {
 		scope:recipient = {
 			is_vassal_of = scope:actor
@@ -1563,13 +1570,17 @@ grant_independence_interaction = {
 		custom_description = {
 			text = is_de_jure_vassal_check
 			object = scope:recipient
-			NOT = { #Can not be used against de jure vassals
+			NOT = { #Cannot be used against de jure vassals
 				scope:recipient.primary_title = {
 					any_this_title_or_de_jure_above = {
 						holder = scope:actor
 					}
 				}
 			}
+		}
+		custom_tooltip = {
+			text = can_only_remove_diarch_by_elevating_them.tt
+			NOT = { scope:recipient ?= scope:actor.diarch }
 		}
 	}
 
@@ -1806,15 +1817,16 @@ grant_independence_interaction = {
 
 expose_secret_interaction = {
 	interface_priority = 120
-	common_interaction = yes
+	common_interaction = no
 	category = interaction_category_hostile
-	interface = blackmail	
-	
+	interface = blackmail
+	icon = secret
+
 	desc = expose_secret_interaction_desc
 
 	is_shown = {
 		scope:recipient = {
-			any_known_secret = {
+			any_secret = {
 				is_known_by = scope:actor
 			}
 			NOT = { this = scope:actor }
@@ -1823,12 +1835,12 @@ expose_secret_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
-		scope:recipient = { is_busy_in_events_localised = yes } 
+		scope:recipient = { is_busy_in_events_localised = yes }
 	}
-	
+
 	on_accept = {
-		
-		scope:actor = {	
+
+		scope:actor = {
 			if = {
 				limit = {
 					exists = scope:target
@@ -1836,7 +1848,7 @@ expose_secret_interaction = {
 				scope:target = {
 					expose_secret = scope:actor
 				}
-			}	
+			}
 			else =
 			{
 				every_known_secret = {
@@ -1845,8 +1857,8 @@ expose_secret_interaction = {
 					}
 					expose_secret = scope:actor
 				}
-			}	
-			
+			}
+
 			stress_impact = {
 				honest = medium_stress_impact_loss
 				just = medium_stress_impact_loss

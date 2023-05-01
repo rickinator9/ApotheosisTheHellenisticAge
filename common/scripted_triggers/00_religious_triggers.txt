@@ -96,6 +96,25 @@ can_be_combatant_based_on_gender_trigger = {
 		text = "can_be_combatant_based_on_gender"
 		object = this
 		subject = $ARMY_OWNER$
+		# Priests only fight if faith has war priests
+		trigger_if = {
+			limit = {
+				OR = {
+					has_trait = devoted
+					is_clergy = yes
+				}
+			}
+			OR = {
+				faith = { has_doctrine_parameter = clergy_can_fight }
+				culture = { has_cultural_parameter = culture_clergy_can_fight }
+				AND = {
+					$ARMY_OWNER$.culture = {
+						has_cultural_parameter = high_prowess_ignores_knight_restrictions
+					}
+					prowess >= 10
+				}
+			}
+		}
 		OR = {
 			trigger_if = { # Has the Royal Court and thus can modify pillars
 				limit = {
@@ -133,6 +152,22 @@ can_be_combatant_based_on_gender_trigger = {
 				}
 				# No need to gender diversify this: if they're a right-gender shieldperson of the culture, then they've already got permission to fight from the previous AND conditions.
 				has_trait = shieldmaiden
+			}
+			# Event-based special exceptions
+			has_character_modifier = ignores_gender_army_rules
+			AND = {
+				$ARMY_OWNER$ = { culture = { has_cultural_parameter = high_prowess_ignores_knight_restrictions } }
+				NOT = { $ARMY_OWNER$ = { culture = { has_cultural_parameter = minimum_prowess_for_knights } } }
+				prowess >= 10
+			}
+			AND = {
+				$ARMY_OWNER$ = {
+					culture = {
+						has_cultural_parameter = high_prowess_ignores_knight_restrictions
+						has_cultural_parameter = minimum_prowess_for_knights
+					}
+				}
+				prowess >= 12
 			}
 		}
 	}
@@ -650,24 +685,18 @@ is_valid_heresy = {
 }
 
 is_valid_heresiarch = {
-	is_adult = yes
+	faith = root
+	OR = {
+		highest_held_title_tier = tier_duchy
+		highest_held_title_tier = tier_county
+	}
 	is_imprisoned = no
-	is_incapable = no
+	is_capable_adult_ai = yes
 	is_landed = yes
 	exists = capital_county
 	NOT = { has_trait = heresiarch }
 	no_heretical_hof_faith_trigger = yes
-	recently_converted_faith_trigger = no
-	OR = { 
-		AND = {
-			faith = root
-			OR = {
-				highest_held_title_tier = tier_duchy
-				highest_held_title_tier = tier_county
-			}
-		}
-		is_ai = no
-	}
+	recently_converted_faith_trigger = no # As amusing as it may be, rulers shouldn't 'flip-flop' between Faiths, so we need to enforce a cooldown on heresy conversions.
 }
 
 no_heretical_hof_faith_trigger = { #Head of Faith shouldn't convert.
@@ -711,7 +740,9 @@ faiths_are_in_muhakkima_islam_group = {
 
 refusing_conversion_is_crime_trigger = {
 	faith = {
-		always = no
+		OR = {
+			religion_tag = zoroastrianism_religion
+		}
 		NOT = {
 			faith_hostility_level = {
 				target = $CHARACTER$.faith
@@ -755,25 +786,17 @@ barony_is_valid_for_holy_order_lease_trigger = {
 barony_is_valid_for_holy_order_lease_cancellation_trigger = {
 	is_under_holy_order_lease = yes
 	has_revokable_lease = yes
-	title_province = { save_temporary_scope_as = location }
-	lessee_title.holder = {
-		save_temporary_scope_as = title_holder
-		any_religion_global = {
-			any_faith = {
-				any_faith_holy_order = {
-					leader = {
-						this = scope:title_holder
-						location = scope:location
-						save_temporary_scope_as = holy_order_grand_master
-					}
-				}
-			}
+	lessee = {
+		NOT = {
+			has_strong_hook = prev.holder
 		}
 	}
 }
 
 religion_has_angels_trigger = {
-	always = no
+	OR = {
+		religion = religion:zoroastrianism_religion
+	}
 }
 
 is_heretic_trigger = {
@@ -838,6 +861,10 @@ valid_demand_conversion_conditions_trigger = {
 				vassal_contract_has_flag = religiously_protected
 			}
 		}
+	}
+	custom_tooltip = {
+		text = cannot_take_overt_hostile_actions_against_diarch.tt
+		NOT = { scope:recipient ?= scope:actor.diarch }
 	}
 }
 
@@ -1182,7 +1209,7 @@ is_theological_character_trigger = {
 		has_trait = order_member
 		AND = {
 			is_landed = yes
-			has_government = theocracy_government
+			government_has_flag = government_is_theocracy
 		}
 
 	}	
@@ -1207,23 +1234,6 @@ has_tolerant_faith_or_culture_trigger = {
 	OR = {
 		faith = { has_doctrine = doctrine_pluralism_pluralistic }
 		culture = { has_cultural_parameter = less_likely_to_force_conversion }
-	}
-}
-
-believes_in_pilgrimage_trigger = {
-	# TODO
-	# NOR = {
-	#	# These Faiths historically shunned going on pilgrimages, saying they were a waste of time & money.
-	#	faith = faith:waldensian
-	#	faith = faith:paulician
-	#	faith = faith:lollard
-	#	faith = faith:qarmatian
-	#}
-	# Also we must have an actual holy site we can visit.
-	faith = {	
-		any_holy_site = {
-			exists = this
-		}
 	}
 }
 

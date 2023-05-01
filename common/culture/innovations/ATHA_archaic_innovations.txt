@@ -48,10 +48,11 @@ innovation_archaic_ephebic_oath = {
 	culture_era = culture_era_archaic
 	icon = @leadership_1
 
-	modifier = {
+	character_modifier = {
 		men_at_arms_cap = 1
 		men_at_arms_limit = 2
 		men_at_arms_maintenance = -0.05
+		active_accolades = 1
 	}
 
 	flag = global_regular
@@ -101,6 +102,8 @@ innovation_archaic_saddle = {
 
 	# unlock_maa = light_horsemen
 
+	custom = eligible_accolade_lancer_attribute
+
 	flag = global_regular
 	flag = tribal_era_regular
 }
@@ -111,6 +114,8 @@ innovation_archaic_blacksmithing = {
 	icon = @weapons_and_armor_01
 
 	# unlock_maa = armored_footmen
+
+	custom = eligible_accolade_vanguard_attribute
 
 	flag = global_regular
 	flag = tribal_era_regular
@@ -137,8 +142,11 @@ innovation_archaic_popular_assemblies = {
 
 	unlock_law = crown_authority_1
 
-	modifier = {
+	character_modifier = {
 		county_opinion_add = 5
+	}
+	county_modifier = {
+		building_slot_add = 1
 	}
 	
 	flag = global_regular
@@ -167,7 +175,7 @@ innovation_archaic_measurement = {
 	culture_era = culture_era_archaic
 	icon = @wealth
 
-	modifier = {
+	character_modifier = {
 		development_growth_factor = 0.1
 	}
 	
@@ -194,7 +202,7 @@ innovation_archaic_cartography = {
 	custom = unlocks_naval_raiding
 	custom = unlocks_sailable_major_rivers
 
-	modifier = {
+	character_modifier = {
 		diplomatic_range_mult = 0.25
 	}
 
@@ -208,6 +216,10 @@ innovation_archaic_estate_planning = {
 	icon = @nobility_02
 
 	unlock_law = confederate_partition_succession_law
+	
+	character_modifier = {
+		domain_limit = 1
+	}
 	
 	flag = global_regular
 	flag = tribal_era_regular

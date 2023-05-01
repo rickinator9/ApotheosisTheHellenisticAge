@@ -13,7 +13,7 @@
 # by Linnéa Thimrén and Petter Vilberg
 #######################
 # Can pay gold for scheme progress
- intrigue_scheme_ongoing.1001 = {
+intrigue_scheme_ongoing.1001 = {
 	type = character_event
 	title = {
 		first_valid = {
@@ -1243,7 +1243,8 @@ scripted_trigger intrigue_scheme_ongoing_2002_agent_trigger = {
 }
 
 intrigue_scheme_ongoing.2002 = {
-	type = character_event
+	type = character_event 
+	title = intrigue_scheme_ongoing.2002.t
 	desc = intrigue_scheme_ongoing.2002.desc
 	theme = generic_intrigue_scheme
 	left_portrait = scope:target
@@ -1779,7 +1780,7 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 	}
 	theme = generic_intrigue_scheme
 	override_background = {
-		event_background = terrain_scope
+		reference = terrain_scope
 	}
 	left_portrait = scope:hunter
 	right_portrait = scope:target
@@ -1880,8 +1881,10 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 					}
 					save_scope_as = hunter
 					if = {
-						limit = { NOT = { has_trait = lifestyle_hunter } }
-						add_trait = hunter_1
+						limit = {
+							NOT = { has_trait = lifestyle_hunter }
+						}
+						add_trait = lifestyle_hunter
 					}
 				}
 
@@ -2114,9 +2117,7 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 	option = {
 		name = intrigue_scheme_ongoing.3003.b
 		trigger = { has_trait = lifestyle_hunter }
-		trait = hunter_1
-		trait = hunter_2
-		trait = hunter_3
+		trait = lifestyle_hunter
 
 		scope:scheme = {
 			add_scheme_modifier = {
@@ -2158,7 +2159,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 	desc = intrigue_scheme_ongoing.3004.desc
 	theme = generic_intrigue_scheme
 	override_background = {
-		event_background = tavern
+		reference = tavern
 	}
 	left_portrait = {
 		character = scope:hunter
@@ -3178,7 +3179,7 @@ intrigue_scheme_ongoing.5003 = {
 	}
 	theme = skull
 	override_background = {
-		event_background = throne_room
+		reference = throne_room
 	}
 	left_portrait = scope:target
 
@@ -3204,7 +3205,7 @@ intrigue_scheme_ongoing.5004 = {
 	}
 	theme = recovery
 	override_background = {
-		event_background = throne_room
+		reference = throne_room
 	}
 	left_portrait = scope:target
 
