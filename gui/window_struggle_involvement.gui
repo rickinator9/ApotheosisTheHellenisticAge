@@ -116,7 +116,7 @@ window = {
 				text_single = {
 					parentanchor = vcenter|right
 					position = { -12 -2 }
-					text = "[GetDataModelSize(Struggle.GetInvolvedFaiths))]"
+					text = "[GetDataModelSize(StruggleInvolvementWindow.GetInvolvedFaiths)]"
 					default_format = "#low"
 				}
 			}
@@ -130,7 +130,7 @@ window = {
 				text_single = {
 					parentanchor = vcenter|right
 					position = { -12 -2 }
-					text = "[GetDataModelSize(Struggle.GetInvolvedCultures))]"
+					text = "[GetDataModelSize(StruggleInvolvementWindow.GetInvolvedCultures)]"
 					default_format = "#low"
 				}
 			}
@@ -330,7 +330,7 @@ window = {
 				{
 					vbox = {
 						layoutpolicy_horizontal = expanding
-						datamodel = [Struggle.GetInvolvedCultures]
+						datamodel = [StruggleInvolvementWindow.GetInvolvedCultures]
 						spacing = 3
 
 						item = {
@@ -385,7 +385,7 @@ window = {
 			visible = [StruggleInvolvementWindow.IsShowingFaiths]
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
-			
+
 			hbox = {
 				datacontext = "[GetPlayer.GetFaith]"
 				layoutpolicy_horizontal = expanding
@@ -415,7 +415,7 @@ window = {
 				{
 					vbox = {
 						layoutpolicy_horizontal = expanding
-						datamodel = [Struggle.GetInvolvedFaiths]
+						datamodel = [StruggleInvolvementWindow.GetInvolvedFaiths]
 						spacing = 12
 						margin_left = 0
 

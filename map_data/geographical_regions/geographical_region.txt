@@ -58,6 +58,36 @@
 # world_burma
 # > custom_arakan_mountains
 
+# sea_atlantic_ocean
+# > sea_north_atlantic
+# >> sea_baltic_sea
+# >> sea_north_sea
+# >> sea_english_channel
+# >> sea_irish_sea
+# >> sea_bay_of_biscay
+# >> sea_macaronesia
+# >> sea_mediterranean_sea
+# >>> sea_western_mediterranean_sea
+# >>> sea_ionian_sea
+# >>> sea_adriatic_sea
+# >>> sea_aegean_sea
+# >>> sea_black_sea
+# > sea_south_atlantic
+# >> sea_gulf_of_guinea
+
+# sea_indian_ocean
+# > sea_bay_of_somalia
+# > sea_red_sea
+# > sea_gulf_of_aden
+# > sea_persian_gulf
+# > sea_arabian_sea
+# > sea_bay_of_bengal
+
+# sea_inland_steppe_seas
+# > sea_caspian_sea
+# > sea_aral_sea
+
+
  
 world_europe_west_britannia = {
 }
@@ -147,6 +177,7 @@ world_middle_east_arabia = {
 world_middle_east_persia = { 
 	# Persia, minus duchies which already exist in world_middle_east
 }
+
 world_india_deccan = {
 }
 world_india_bengal = {
@@ -202,7 +233,7 @@ world_europe = {
 }
 world_middle_east = {
 	regions = {
-		world_middle_east_arabia world_middle_east_jerusalem
+		world_middle_east_arabia world_middle_east_jerusalem world_middle_east_persia
 	}
 }
 world_india = {
@@ -312,11 +343,70 @@ material_woods_ebony = {
 	}
 }
 
-# Regional - France, England, Wales, Ireland
-material_wood_yew = {
+# Regional
+material_woods_yew = {
 	
 	regions = {
 		world_europe_south_east
+	}
+}
+
+# EP2 Bow Woods
+material_woods_bamboo = {
+	regions = {
+		world_burma
+		world_india
+		world_tibet
+	}
+}
+
+material_woods_cherry = {
+	regions = {
+		world_burma
+		world_india
+		world_tibet
+	}
+}
+
+material_woods_dogwood = {
+	regions = {
+		world_europe
+		world_asia_minor
+		world_steppe_west
+	}
+}
+
+material_woods_hazel = {
+	regions = {
+		world_europe
+		world_asia_minor
+		world_steppe_west
+	}
+}
+
+material_woods_hickory = {
+	regions = {
+		world_burma
+		world_steppe_east
+		world_tibet
+	}
+}
+
+material_woods_palm = {
+	regions = {
+		world_africa_north
+		world_asia_minor
+		world_middle_east
+	}
+}
+
+material_woods_mulberry = {
+	regions = {
+		world_africa_north
+		world_asia_minor
+		world_europe_south
+		world_india
+		world_middle_east
 	}
 }
 
@@ -373,9 +463,7 @@ material_metal_wootz = {
 
 material_metal_damascus = {
 	regions = {
-		world_middle_east_jerusalem
-		world_middle_east_arabia
-		world_middle_east_persia
+		world_middle_east
 		world_asia_minor
 		world_africa_north_east
 	}
@@ -392,9 +480,7 @@ material_metal_bulat = {
 
 material_hsb_camel_bone = {
 	regions = {
-		world_middle_east_jerusalem
-		world_middle_east_arabia
-		world_middle_east_persia
+		world_middle_east
 		world_africa_north
 		world_africa_west
 		world_africa_east
@@ -453,13 +539,11 @@ material_hsb_ivory_imported = {
 		world_europe_west
 		world_europe_south
 		world_asia_minor
-		world_middle_east_jerusalem
-		world_middle_east_persia
+		world_middle_east
 		world_steppe_west
 		world_steppe_east
 		world_steppe_tarim
 		world_africa_north
-		world_middle_east_arabia
 		world_tibet
 	}
 }
@@ -510,7 +594,6 @@ material_hsb_seashell = {
 		world_europe_west_francia
 		world_burma
 		world_middle_east
-		world_middle_east_persia
 		world_india
 		world_asia_minor
 		
@@ -734,7 +817,7 @@ graphical_mena = {
 	graphical = yes
 	color = { 255 255 0 }
 	regions = {
-		world_africa world_middle_east world_middle_east_persia
+		world_africa world_middle_east
 	}
 }
 
@@ -776,7 +859,13 @@ world_innovation_elephants = {
 world_innovation_camels = {
 	generate_modifiers = yes
 	regions = {
-		world_middle_east world_africa_east world_africa_sahara world_middle_east_persia world_africa_north
+		world_middle_east world_africa_east world_africa_sahara world_africa_north
+	}
+}
+
+world_horse_buildings_in_hills_and_mountains = {
+	regions = {
+		world_africa_north world_africa_sahara world_steppe_east world_steppe_tarim world_middle_east_persia world_middle_east_arabia world_europe_west_iberia
 	}
 }
 
@@ -1337,4 +1426,209 @@ dlc_ep1_arthurian_heartlands_region = {
 ### END RC Regions
 
 divergence_island_regions = {
+}
+
+### SEAZONES ###
+
+sea_atlantic_ocean = {
+	regions = {
+		sea_north_atlantic
+		sea_south_atlantic
+	}
+}
+sea_north_atlantic = {
+	regions = {
+		sea_baltic_sea
+		sea_north_sea
+		sea_white_sea
+		sea_english_channel
+		sea_irish_sea
+		sea_bay_of_biscay
+		sea_macaronesia
+		sea_mediterranean_sea
+	}
+}
+sea_baltic_sea = {
+}
+sea_north_sea = {
+}
+sea_white_sea = {
+}
+sea_english_channel = {
+}
+sea_irish_sea = {
+}
+sea_bay_of_biscay = {
+}
+sea_macaronesia = {
+}
+sea_mediterranean_sea = {
+	regions = {
+		sea_western_mediterranean_sea
+		sea_ionian_sea
+		sea_adriatic_sea
+		sea_aegean_sea
+		sea_black_sea
+	}
+}
+sea_western_mediterranean_sea = {
+}
+sea_ionian_sea = {
+}
+sea_adriatic_sea = {
+}
+sea_aegean_sea = {
+}
+sea_black_sea = {
+}
+sea_south_atlantic = {
+}
+sea_gulf_of_guinea = {
+}
+
+sea_indian_ocean = {
+	regions = {
+		sea_bay_of_somalia
+		sea_red_sea
+		sea_gulf_of_aden
+		sea_persian_gulf
+		sea_arabian_sea
+		sea_bay_of_bengal
+	}
+}
+sea_bay_of_somalia = {
+}
+sea_red_sea = {
+}
+sea_gulf_of_aden = {
+}
+sea_persian_gulf = {
+}
+sea_arabian_sea = {
+}
+sea_bay_of_bengal = {
+}
+sea_inland_steppe_seas = {
+}
+sea_caspian_sea = {
+}
+sea_aral_sea = {
+}
+### Hunts
+
+# Deer Spread
+hunt_animal_deer_region = {
+	regions = {
+		# Europe
+		world_europe
+		# Africa
+		world_africa_north_west
+		# Asia
+		world_middle_east_jerusalem world_middle_east_persia world_asia_minor world_steppe_east world_steppe_west world_india world_burma
+	}
+}
+
+# Antelope Spread
+hunt_animal_antelope_region = {
+	regions = {
+		# Africa
+		world_africa
+		# Asia
+		world_middle_east world_steppe world_tibet world_india
+	}
+}
+
+# Gazelle Spread
+hunt_animal_gazelle_region = {
+	regions = {
+		# Africa
+		world_africa
+		# Asia
+		world_middle_east
+	}
+}
+
+
+# Boar Spread
+hunt_animal_boar_region = {
+	regions = {
+		# Europe
+		world_europe_west world_europe_east world_europe_south
+		# Africa
+		world_africa_north_west
+		# Asia
+		world_asia_minor world_steppe_west world_steppe_east world_middle_east_jerusalem world_middle_east_persia world_india world_burma
+	}
+}
+ 
+# Bear Spread
+hunt_animal_bear_region = {
+	regions = {
+		# Europe
+		world_europe_north world_europe_east world_europe_west_iberia world_europe_west_germania world_europe_west_francia world_europe_south
+		# Africa
+		world_africa_north_west
+		# Asia
+		world_asia_minor world_steppe world_tibet
+	}
+}
+
+# Big Cat Spread
+hunt_animal_big_cat_region = {
+	regions = {
+		# Africa
+		world_africa # Leopard/Lion
+		# Asia
+		world_middle_east # Leopard/Lion
+		world_india world_burma # Leopard/Lion/Tiger
+		world_steppe_east world_tibet # Snow Leopard
+	}
+}
+
+# Bison Spread
+hunt_animal_bison_region = {
+	regions = {
+		# Africa
+		world_africa_west
+		# Asia
+		world_steppe
+		# Europe
+		world_europe_west_francia
+		world_europe_west_germania
+		world_europe_east
+	}	
+}
+
+# Aurochs Spread
+hunt_animal_aurochs_region = {
+	regions = {
+		# Africa
+		world_africa_north
+		# Asia
+		world_india
+		world_middle_east
+		world_steppe
+		# Europe
+		world_europe_west
+		world_europe_east
+		world_europe_south
+	}
+}
+
+hunt_animal_reindeer_region = {
+
+	regions = {
+		ghw_region_siberia
+		ghw_region_mongolia
+	}
+}
+
+hunt_animal_elk_region = {
+	regions = {
+		world_steppe
+	}
+}
+
+# Chiefly the Celtic Rim.
+board_game_fidchell_region = {
 }
