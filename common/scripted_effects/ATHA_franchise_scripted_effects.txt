@@ -8,19 +8,19 @@ assign_initial_franchise_value = {
 		}
 
 		if = {
-			limit = { has_government = city_state_democratic_government }
+			limit = { government_has_flag = government_is_democratic_city_state }
 			set_city_state_franchise = { AMOUNT_ARG = franchise_democratic_initial_value }
 		} else_if = {
-			limit = { has_government = city_state_oligarchic_government }
+			limit = { government_has_flag = government_is_oligarchic_city_state }
 			set_city_state_franchise = { AMOUNT_ARG = franchise_oligarchic_initial_value }
 		} else_if = {
-			limit = { has_government = city_state_tyrannical_government }
+			limit = { government_has_flag = government_is_tyrannical_city_state }
 			set_city_state_franchise = { AMOUNT_ARG = franchise_tyrannical_initial_value }
 		} else_if = {
 			limit = {
 				OR = {
-					has_government = city_state_aristocratic_government
-					has_government = city_state_spartan_government
+					government_has_flag = government_is_aristocratic_city_state
+					government_has_flag = city_state_spartan_government
 				}
 			}
 			set_city_state_franchise = { AMOUNT_ARG = franchise_aristocratic_initial_value }

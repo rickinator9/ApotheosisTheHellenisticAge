@@ -99,7 +99,7 @@ tradition_chosen_companions = { # Macedonian Unique Tradition, replaces Prolific
 		if = {
 			limit = {
 				scope:character = {
-					NOT = { has_government = feudal_government }
+					NOT = { government_has_flag = government_is_feudal }
 				}
 			}
 			multiply = 0
@@ -127,9 +127,9 @@ tradition_agoge = { # Laconian Unique Tradition, replaces Only the Strong, unloc
 	can_pick = {
 		scope:character = {
 			OR = { 
-				has_government = city_state_spartan_government
+				government_has_flag = city_state_spartan_government
 				AND = { 
-					has_government = hegemonic_league_government
+					government_has_flag = government_is_hegemonic_league
 					OR = {
 						dynasty = dynasty:spartandyn001
 						dynasty = dynasty:spartandyn002

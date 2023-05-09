@@ -246,7 +246,7 @@ ATHA_vassal_contract.7 = {
 
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_civil_bureaucracy_contract
-			NOT = { has_government = bureaucracy_civil_government }
+			NOT = { government_has_flag = government_is_civil_bureaucracy }
 		}
 	}
 
@@ -267,7 +267,7 @@ ATHA_vassal_contract.8 = {
 
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_military_bureaucracy_contract
-			NOT = { has_government = bureaucracy_military_government }
+			NOT = { government_has_flag = government_is_military_bureaucracy }
 		}
 	}
 
@@ -288,7 +288,7 @@ ATHA_vassal_contract.9 = {
 
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_feudal_bureaucracy_contract
-			NOT = { has_government = feudal_government }
+			NOT = { government_has_flag = government_is_feudal }
 		}
 	}
 
@@ -355,28 +355,28 @@ ATHA_vassal_contract.11 = {
 			if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_democratic_franchise
-					NOT = { has_government = city_state_democratic_government }
+					NOT = { government_has_flag = government_is_democratic_city_state }
 				}
 				change_government_form_to_democracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_oligarchic_franchise
-					NOT = { has_government = city_state_oligarchic_government }
+					NOT = { government_has_flag = government_is_oligarchic_city_state }
 				}
 				change_government_form_to_oligarchy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_aristocratic_franchise
-					NOT = { has_government = city_state_aristocratic_government }
+					NOT = { government_has_flag = government_is_aristocratic_city_state }
 				}
 				change_government_form_to_aristocracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_tyrannic_franchise
-					NOT = { has_government = city_state_tyrannical_government }
+					NOT = { government_has_flag = government_is_tyrannical_city_state }
 				}
 				change_government_form_to_tyranny = yes
 			}

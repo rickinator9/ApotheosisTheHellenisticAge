@@ -4286,7 +4286,7 @@ character_view_bg = {
 		reference = "character_view/greek_temple.dds"
 
 		trigger = {
-			has_government = theocracy_government
+			government_has_flag = government_is_theocracy
 		}
 	}
 
@@ -4294,7 +4294,7 @@ character_view_bg = {
 		reference = "environment_cw_mediterranean_main"
 
 		trigger = {
-			has_government = theocracy_government
+			government_has_flag = government_is_theocracy
 			is_character_window_main_character = yes
 		}
 	}
@@ -4307,13 +4307,13 @@ character_view_bg = {
 				AND = {
 					exists = primary_spouse
 					primary_spouse = {
-						has_government = theocracy_government
+						government_has_flag = government_is_theocracy
 					}
 				}
 				AND = {
 					exists = betrothed
 					betrothed = {
-						has_government = theocracy_government
+						government_has_flag = government_is_theocracy
 					}
 				}
 			}
@@ -5123,31 +5123,31 @@ character_location_exterior = {
 
 	texture = {
 		reference = "government_types/tribal_government.dds"
-		trigger = { has_government = tribal_government }
+		trigger = { government_has_flag = government_is_tribal }
 	}
 	texture = {
 		reference = "government_types/clan_government.dds"
-		trigger = { has_government = clan_government }
+		trigger = { government_has_flag = government_is_clan }
 	}
 	texture = {
 		reference = "government_types/city_state_tyrannical_government.dds"
-		trigger = { has_government = city_state_tyrannical_government }
+		trigger = { government_has_flag = government_is_tyrannical_city_state }
 	}	
 	texture = {
 		reference = "government_types/city_state_aristocratic_government.dds"
-		trigger = { has_government = city_state_aristocratic_government }
+		trigger = { government_has_flag = government_is_aristocratic_city_state }
 	}
 	texture = {
 		reference = "government_types/city_state_oligarchic_government.dds"
-		trigger = { has_government = city_state_oligarchic_government }
+		trigger = { government_has_flag = government_is_oligarchic_city_state }
 	}
 	texture = {
 		reference = "government_types/city_state_democratic_government.dds"
-		trigger = { has_government = city_state_democratic_government }
+		trigger = { government_has_flag = government_is_democratic_city_state }
 	}
 	texture = {
 		reference = "government_types/city_state_spartan_government.dds"
-		trigger = { has_government = city_state_spartan_government }
+		trigger = { government_has_flag = city_state_spartan_government }
 	}
 	texture = {
 		reference = "event_scenes/ATHA_pythia.dds"
@@ -5155,19 +5155,19 @@ character_location_exterior = {
 	}
 	texture = {
 		reference = "government_types/bureaucracy_military_government.dds"
-		trigger = { has_government = bureaucracy_military_government }
+		trigger = { government_has_flag = government_is_military_bureaucracy }
 	}
 	texture = {
 		reference = "government_types/bureaucracy_civil_government.dds"
-		trigger = { has_government = bureaucracy_civil_government }
+		trigger = { government_has_flag = government_is_civil_bureaucracy }
 	}
 	texture = {
 		reference = "government_types/theocracy_government.dds"
-		trigger = { has_government = theocracy_government }
+		trigger = { government_has_flag = government_is_theocracy }
 	}
 	texture = {
 		reference = "event_scenes/ATHA_farms.dds"
-		trigger = { has_government = republic_government }
+		trigger = { government_has_flag = government_is_republic }
 	}
 
 	texture = {

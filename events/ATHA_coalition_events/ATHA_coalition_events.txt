@@ -137,7 +137,7 @@ coalition.0002 = {
 				add = 250 
 				OR = {
 					government_has_flag = is_city_state_government
-					has_government = tribal_government
+					government_has_flag = government_is_tribal
 				}	
 			}
 			# Bureaucrats are less likely to strike out on their own
@@ -349,7 +349,7 @@ coalition.0004 = {
 			if = {
 				limit = { 
 					government_has_flag = is_federal_government
-					NOT = { has_government = amphictyony_government } 
+					NOT = { government_has_flag = government_is_amphictyony } 
 				}
 				change_government_form = { GOVERNMENT = federal_alliance_government }
 			}
@@ -363,7 +363,7 @@ coalition.0004 = {
 			if = {
 				limit = { 
 					government_has_flag = is_federal_government
-					NOT = { has_government = amphictyony_government } 
+					NOT = { government_has_flag = government_is_amphictyony } 
 				}
 				change_government_form = { GOVERNMENT = federal_sympolity_government }
 			}

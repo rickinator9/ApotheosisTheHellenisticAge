@@ -9,11 +9,11 @@ can_build_tribal = {
 # Does the ruler have a government where they rule by themselves?
 has_autocratic_government = {
 	OR = {
-		has_government = feudal_government
-		has_government = clan_government
-		has_government = tribal_government
-		has_government = city_state_tyrannical_government
-		has_government = city_state_spartan_government
+		government_has_flag = government_is_feudal
+		government_has_flag = government_is_clan
+		government_has_flag = government_is_tribal
+		government_has_flag = government_is_tyrannical_city_state
+		government_has_flag = city_state_spartan_government
 		AND = {
 			has_hegemonic_government = yes
 			OR = {
@@ -63,42 +63,42 @@ has_federal_government = {
 
 can_create_dependent_vassals = {
 	NOR = {
-		has_government = federal_alliance_government
-		has_government = amphictyony_government
-		has_government = tribal_government
+		government_has_flag = government_is_federal_alliance
+		government_has_flag = government_is_amphictyony
+		government_has_flag = government_is_tribal
 	}	
 }
 
 can_create_bureaucratic_vassals = {
 	NOR = {
-		has_government = federal_alliance_government
-		has_government = federal_sympolity_government
-		has_government = amphictyony_government
-		has_government = tribal_government
-		has_government = clan_government
+		government_has_flag = government_is_federal_alliance
+		government_has_flag = government_is_federal_sympolity
+		government_has_flag = government_is_amphictyony
+		government_has_flag = government_is_tribal
+		government_has_flag = government_is_clan
 	}
 }
 
 can_enforce_ritual_coronations = {
 	NOR = {
 		government_has_flag = is_federal_government
-		has_government = city_state_democratic_government
-		has_government = city_state_oligarchic_government
+		government_has_flag = government_is_democratic_city_state
+		government_has_flag = government_is_oligarchic_city_state
 	}	
 }
 
 can_enforce_obligations = {
 	NOR = {
-		has_government = federal_alliance_government
-		has_government = amphictyony_government
+		government_has_flag = government_is_federal_alliance
+		government_has_flag = government_is_amphictyony
 	}	
 }
 
 can_grant_gift_estates = {
 	NOR = {
 		government_has_flag = is_coalition_government
-		has_government = city_state_democratic_government
-		has_government = city_state_oligarchic_government
+		government_has_flag = government_is_democratic_city_state
+		government_has_flag = government_is_oligarchic_city_state
 	}	
 }
 
@@ -107,16 +107,16 @@ can_grant_gift_estates = {
 should_start_with_dependent_role = {
 	liege = { 
 		OR = {
-			has_government = hegemonic_league_government
-			has_government = feudal_government
+			government_has_flag = government_is_hegemonic_league
+			government_has_flag = government_is_feudal
 		}
 	}
 }
 
 should_start_with_colony_rights = {
 	OR = {
-		has_government = bureaucracy_military_government
-		has_government = feudal_government
+		government_has_flag = government_is_military_bureaucracy
+		government_has_flag = government_is_feudal
 	}
 	any_realm_province = {
 		has_holding_type = colony_holding
@@ -351,84 +351,84 @@ vassal_contract_compatibility_trigger = {
 has_same_government_form_as = {
 	OR = {
 		AND = {
-			has_government = feudal_government
-			$CHAR$ = { has_government = feudal_government }
+			government_has_flag = government_is_feudal
+			$CHAR$ = { government_has_flag = government_is_feudal }
 		}
 		AND = {
-			has_government = republic_government
-			$CHAR$ = { has_government = republic_government }
+			government_has_flag = government_is_republic
+			$CHAR$ = { government_has_flag = government_is_republic }
 		}
 		AND = {
-			has_government = theocracy_government
-			$CHAR$ = { has_government = theocracy_government }
+			government_has_flag = government_is_theocracy
+			$CHAR$ = { government_has_flag = government_is_theocracy }
 		}
 		AND = {
-			has_government = tribal_government
-			$CHAR$ = { has_government = tribal_government }
+			government_has_flag = government_is_tribal
+			$CHAR$ = { government_has_flag = government_is_tribal }
 		}
 		AND = {
-			has_government = mercenary_government
-			$CHAR$ = { has_government = mercenary_government }
+			government_has_flag = government_is_mercenary
+			$CHAR$ = { government_has_flag = government_is_mercenary }
 		}
 		AND = {
-			has_government = holy_order_government
-			$CHAR$ = { has_government = holy_order_government }
+			government_has_flag = government_is_holy_order
+			$CHAR$ = { government_has_flag = government_is_holy_order }
 		}
 		AND = {
-			has_government = bureaucracy_military_government
-			$CHAR$ = { has_government = bureaucracy_military_government }
+			government_has_flag = government_is_military_bureaucracy
+			$CHAR$ = { government_has_flag = government_is_military_bureaucracy }
 		}
 		AND = {
-			has_government = bureaucracy_civil_government
-			$CHAR$ = { has_government = bureaucracy_civil_government }
+			government_has_flag = government_is_civil_bureaucracy
+			$CHAR$ = { government_has_flag = government_is_civil_bureaucracy }
 		}
 		AND = {
-			has_government = city_state_democratic_government
-			$CHAR$ = { has_government = city_state_democratic_government }
+			government_has_flag = government_is_democratic_city_state
+			$CHAR$ = { government_has_flag = government_is_democratic_city_state }
 		}
 		AND = {
-			has_government = city_state_tyrannical_government
-			$CHAR$ = { has_government = city_state_tyrannical_government }
+			government_has_flag = government_is_tyrannical_city_state
+			$CHAR$ = { government_has_flag = government_is_tyrannical_city_state }
 		}
 		AND = {
-			has_government = city_state_oligarchic_government
-			$CHAR$ = { has_government = city_state_oligarchic_government }
+			government_has_flag = government_is_oligarchic_city_state
+			$CHAR$ = { government_has_flag = government_is_oligarchic_city_state }
 		}
 		AND = {
-			has_government = city_state_aristocratic_government
-			$CHAR$ = { has_government = city_state_aristocratic_government }
+			government_has_flag = government_is_aristocratic_city_state
+			$CHAR$ = { government_has_flag = government_is_aristocratic_city_state }
 		}
 		AND = {
-			has_government = city_state_spartan_government
-			$CHAR$ = { has_government = city_state_spartan_government }
+			government_has_flag = city_state_spartan_government
+			$CHAR$ = { government_has_flag = city_state_spartan_government }
 		}
 		AND = {
-			has_government = federal_alliance_government
-			$CHAR$ = { has_government = federal_alliance_government }
+			government_has_flag = government_is_federal_alliance
+			$CHAR$ = { government_has_flag = government_is_federal_alliance }
 		}
 		AND = {
-			has_government = federal_sympolity_government
-			$CHAR$ = { has_government = federal_sympolity_government }
+			government_has_flag = government_is_federal_sympolity
+			$CHAR$ = { government_has_flag = government_is_federal_sympolity }
 		}
 		AND = {
-			has_government = federal_league_government
-			$CHAR$ = { has_government = federal_league_government }
+			government_has_flag = government_is_federal_league
+			$CHAR$ = { government_has_flag = government_is_federal_league }
 		}
 		AND = {
-			has_government = amphictyony_government
-			$CHAR$ = { has_government = amphictyony_government }
+			government_has_flag = government_is_amphictyony
+			$CHAR$ = { government_has_flag = government_is_amphictyony }
 		}
 		AND = {
-			has_government = hegemonic_alliance_government
-			$CHAR$ = { has_government = hegemonic_alliance_government }
+			government_has_flag = government_is_hegemonic_alliance
+			$CHAR$ = { government_has_flag = government_is_hegemonic_alliance }
 		}
 		AND = {
-			has_government = hegemonic_sympolity_government
-			$CHAR$ = { has_government = hegemonic_sympolity_government }
+			government_has_flag = government_is_hegemonic_sympolity
+			$CHAR$ = { government_has_flag = government_is_hegemonic_sympolity }
 		}
 		AND = {
-			has_government = hegemonic_league_government
-			$CHAR$ = { has_government = hegemonic_league_government }
+			government_has_flag = government_is_hegemonic_league
+			$CHAR$ = { government_has_flag = government_is_hegemonic_league }
 		}
 	}
 }

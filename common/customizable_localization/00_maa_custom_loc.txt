@@ -17,9 +17,9 @@ GetRegionalInfantryMAA = {
 		trigger = {
 			culture = { has_cultural_parameter = unlock_maa_spartiatai_hoplitai }
 			OR = { 
-				has_government = city_state_spartan_government
+				government_has_flag = city_state_spartan_government
 				AND = { 
-					has_government = hegemonic_league_government
+					government_has_flag = government_is_hegemonic_league
 					OR = {
 						dynasty = dynasty:spartandyn001
 						dynasty = dynasty:spartandyn002
@@ -117,7 +117,7 @@ GetRandomEmployedMAA = {
 				value > 0
 			}
 		}
-		localization_key = phalangites_lowercase
+		localization_key = medium_infantry_lowercase
 	}
 	text = {
 		trigger = {

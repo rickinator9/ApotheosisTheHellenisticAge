@@ -1,6 +1,6 @@
 ﻿implement_franchise_tyranny = {
 	if = {
-		limit = { NOT = { has_government = city_state_tyrannical_government } }
+		limit = { NOT = { government_has_flag = government_is_tyrannical_city_state } }
 		change_government_form_to_tyranny = yes
 		every_held_county = {
 			change_county_control = medium_county_control_gain
@@ -58,7 +58,7 @@
 }
 implement_franchise_tyranny_populist = {
 	if = {
-		limit = { NOT = { has_government = city_state_tyrannical_government } }
+		limit = { NOT = { government_has_flag = government_is_tyrannical_city_state } }
 		change_government_form_to_tyranny = yes
 	}
 	every_held_county = {
@@ -116,7 +116,7 @@ implement_franchise_tyranny_populist = {
 }
 implement_franchise_aristocracy = {
 	if = {
-		limit = { NOT = { has_government = city_state_aristocratic_government } }
+		limit = { NOT = { government_has_flag = government_is_aristocratic_city_state } }
 		change_government_form_to_aristocracy = yes
 		every_held_county = {
 			change_county_control = minor_county_control_gain
@@ -174,7 +174,7 @@ implement_franchise_aristocracy = {
 }
 implement_franchise_oligarchy = {
 	if = {
-		limit = { NOT = { has_government = city_state_oligarchic_government } }
+		limit = { NOT = { government_has_flag = government_is_oligarchic_city_state } }
 		change_government_form_to_oligarchy = yes
 		every_held_county = {
 			change_county_control = minor_county_control_loss
@@ -218,7 +218,7 @@ implement_franchise_oligarchy = {
 }
 implement_franchise_democracy = {
 	if = {
-		limit = { NOT = { has_government = city_state_democratic_government } }
+		limit = { NOT = { government_has_flag = government_is_democratic_city_state } }
 		change_government_form_to_democracy = yes
 		every_held_county = {
 			change_county_control = medium_county_control_loss
@@ -302,102 +302,102 @@ change_government_form_to_characters = {
 		# Do nothing.
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = feudal_government }
+			$CHAR$ = { government_has_flag = government_is_feudal }
 		}
 		change_government_form = { GOVERNMENT = feudal_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = republic_government }
+			$CHAR$ = { government_has_flag = government_is_republic }
 		}
 		change_government_form = { GOVERNMENT = republic_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = theocracy_government }
+			$CHAR$ = { government_has_flag = government_is_theocracy }
 		}
 		change_government_form = { GOVERNMENT = theocracy_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = tribal_government }
+			$CHAR$ = { government_has_flag = government_is_tribal }
 		}
 		change_government_form = { GOVERNMENT = tribal_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = mercenary_government }
+			$CHAR$ = { government_has_flag = government_is_mercenary }
 		}
 		change_government_form = { GOVERNMENT = mercenary_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = holy_order_government }
+			$CHAR$ = { government_has_flag = government_is_holy_order }
 		}
 		change_government_form = { GOVERNMENT = holy_order_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = bureaucracy_military_government }
+			$CHAR$ = { government_has_flag = government_is_military_bureaucracy }
 		}
 		change_government_form = { GOVERNMENT = bureaucracy_military_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = bureaucracy_civil_government }
+			$CHAR$ = { government_has_flag = government_is_civil_bureaucracy }
 		}
 		change_government_form = { GOVERNMENT = bureaucracy_civil_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = city_state_democratic_government }
+			$CHAR$ = { government_has_flag = government_is_democratic_city_state }
 		}
 		change_government_form_to_democracy = yes
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = city_state_tyrannical_government }
+			$CHAR$ = { government_has_flag = government_is_tyrannical_city_state }
 		}
 		change_government_form_to_tyranny = yes
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = city_state_oligarchic_government }
+			$CHAR$ = { government_has_flag = government_is_oligarchic_city_state }
 		}
 		change_government_form_to_oligarchy = yes
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = city_state_aristocratic_government }
+			$CHAR$ = { government_has_flag = government_is_aristocratic_city_state }
 		}
 		change_government_form_to_aristocracy = yes
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = city_state_spartan_government }
+			$CHAR$ = { government_has_flag = city_state_spartan_government }
 		}
 		change_government_form = { GOVERNMENT = city_state_spartan_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = federal_alliance_government }
+			$CHAR$ = { government_has_flag = government_is_federal_alliance }
 		}
 		change_government_form = { GOVERNMENT = federal_alliance_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = federal_sympolity_government }
+			$CHAR$ = { government_has_flag = government_is_federal_sympolity }
 		}
 		change_government_form = { GOVERNMENT = federal_sympolity_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = federal_league_government }
+			$CHAR$ = { government_has_flag = government_is_federal_league }
 		}
 		change_government_form = { GOVERNMENT = federal_league_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = amphictyony_government }
+			$CHAR$ = { government_has_flag = government_is_amphictyony }
 		}
 		change_government_form = { GOVERNMENT = amphictyony_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = hegemonic_alliance_government }
+			$CHAR$ = { government_has_flag = government_is_hegemonic_alliance }
 		}
 		change_government_form = { GOVERNMENT = hegemonic_alliance_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = hegemonic_sympolity_government }
+			$CHAR$ = { government_has_flag = government_is_hegemonic_sympolity }
 		}
 		change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
 	} else_if = {
 		limit = {
-			$CHAR$ = { has_government = hegemonic_league_government }
+			$CHAR$ = { government_has_flag = government_is_hegemonic_league }
 		}
 		change_government_form = { GOVERNMENT = hegemonic_league_government }
 	}

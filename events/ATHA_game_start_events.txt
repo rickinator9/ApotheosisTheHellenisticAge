@@ -35,7 +35,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_democratic_government
+					government_has_flag = government_is_democratic_city_state
 				}
 
 				primary_title = { add_title_law = democratic_succession_law }
@@ -43,7 +43,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_oligarchic_government
+					government_has_flag = government_is_oligarchic_city_state
 				}
 
 				primary_title = { add_title_law = oligarchic_succession_law }
@@ -51,7 +51,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_aristocratic_government
+					government_has_flag = government_is_aristocratic_city_state
 				}
 
 				primary_title = { add_title_law = aristocratic_succession_law }
@@ -137,7 +137,7 @@ ATHA_game_start.3 = {
 			}
 			else_if = {
 				limit = {
-					has_government = bureaucracy_civil_government
+					government_has_flag = government_is_civil_bureaucracy
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
@@ -146,7 +146,7 @@ ATHA_game_start.3 = {
 			}
 			else_if = {
 				limit = {
-					has_government = bureaucracy_military_government
+					government_has_flag = government_is_military_bureaucracy
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
@@ -155,7 +155,7 @@ ATHA_game_start.3 = {
 			}
 			else_if = {
 				limit = {
-					has_government = feudal_government
+					government_has_flag = government_is_feudal
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role

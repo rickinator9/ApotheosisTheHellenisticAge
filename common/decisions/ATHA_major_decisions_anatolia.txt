@@ -25,8 +25,8 @@ form_k_bithynia_decision = { # aka: Consolidate the Kingdom of Bithynia
 		}
 		highest_held_title_tier <= tier_duchy
 		OR = {
-			has_government = feudal_government
-			has_government = clan_government
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
 		}
 		#Must not already exist or have de jure territory
 		title:k_bithynia = { 
@@ -641,9 +641,9 @@ ionian_revolt_decision = { # aka: The Ionian Revolt
 		top_liege = {
 			highest_held_title_tier >= tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
-				has_government = tribal_government
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
+				government_has_flag = government_is_tribal
 			}
 		}
 	}

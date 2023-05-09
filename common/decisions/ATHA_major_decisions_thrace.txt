@@ -90,7 +90,7 @@ unite_the_two_shores_decision = {
 		}
 
 		#Can't be tribal
-		NOT = { has_government = tribal_government }
+		NOT = { government_has_flag = government_is_tribal }
 	}
 
 	is_valid = {
@@ -329,8 +329,8 @@ revive_odrysian_kingdom_decision = {
 			dynasty = dynasty:odrysiandyn001 # If you belong to Teres' dynasty, your culture doesn't matter so much as long as you're still Thracian
 		}
 		OR = {	#Government conditions.
-			has_government = feudal_government
-			has_government = clan_government
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
 		}
 	}
 

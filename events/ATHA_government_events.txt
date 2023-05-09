@@ -32,7 +32,7 @@ scripted_trigger has_aristocratic_culture_trigger = {
 scripted_trigger independent_can_create_city_state_trigger = {
 	NOT = {	highest_held_title_tier > tier_duchy }
 	is_independent_ruler = yes	
-	has_government = feudal_government
+	government_has_flag = government_is_feudal
 	has_city_capital_trigger = yes
 }
 
@@ -62,7 +62,7 @@ ATHA_government.0001 = {
 
 	trigger = {
 		government_has_flag = is_bureaucracy_government
-		NOT = { has_government = feudal_government }
+		NOT = { government_has_flag = government_is_feudal }
 		is_independent_ruler = yes	
 	}
 	immediate = {
@@ -129,7 +129,7 @@ ATHA_government.00011 = {
 
 		NOT = {	highest_held_title_tier > tier_county }
 		is_independent_ruler = yes	
-		has_government = feudal_government
+		government_has_flag = government_is_feudal
 		has_city_capital_trigger = yes
 	}
 
@@ -166,7 +166,7 @@ ATHA_government.0002 = {
 	trigger = { 
 		NOT = {	highest_held_title_tier > tier_county }
 		is_independent_ruler = yes	
-		has_government = feudal_government
+		government_has_flag = government_is_feudal
 		has_city_capital_trigger = yes
 
 		scope:title = {
@@ -1122,7 +1122,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = federal_alliance_government } }
+				limit = { NOT = { government_has_flag = government_is_federal_alliance } }
 				change_government_form = { GOVERNMENT = federal_alliance_government }
 			}
 			if = {
@@ -1160,7 +1160,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = hegemonic_alliance_government } }
+				limit = { NOT = { government_has_flag = government_is_hegemonic_alliance } }
 				change_government_form = { GOVERNMENT = hegemonic_alliance_government }
 			}
 			if = {
@@ -1210,7 +1210,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = federal_sympolity_government } }
+				limit = { NOT = { government_has_flag = government_is_federal_sympolity } }
 				change_government_form = { GOVERNMENT = federal_sympolity_government }
 			}
 			if = {
@@ -1248,7 +1248,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = hegemonic_sympolity_government } }
+				limit = { NOT = { government_has_flag = government_is_hegemonic_sympolity } }
 				change_government_form = { GOVERNMENT = hegemonic_sympolity_government }
 			}
 			if = {
@@ -1295,7 +1295,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = federal_league_government } }
+				limit = { NOT = { government_has_flag = government_is_federal_league } }
 				change_government_form = { GOVERNMENT = federal_league_government }
 			}
 			if = {
@@ -1333,7 +1333,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = hegemonic_league_government } }
+				limit = { NOT = { government_has_flag = government_is_hegemonic_league } }
 				change_government_form = { GOVERNMENT = hegemonic_league_government }
 			}
 			if = {
@@ -1359,7 +1359,7 @@ ATHA_government.0008 = {
 
 		scope:dependent_coalition_vassal = {
 			if = {
-				limit = { NOT = { has_government = amphictyony_government } }
+				limit = { NOT = { government_has_flag = government_is_amphictyony } }
 				change_government_form = { GOVERNMENT = amphictyony_government }
 			}
 			if = {
@@ -1500,11 +1500,11 @@ ATHA_government.0009 = {
 			trigger = {
 				NOT = { root = scope:new_tyrant }
 				OR = {
-					has_government = feudal_government
-					has_government = clan_government
-					has_government = tribal_government
-					has_government = city_state_tyrannical_government
-					has_government = city_state_spartan_government
+					government_has_flag = government_is_feudal
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_tribal
+					government_has_flag = government_is_tyrannical_city_state
+					government_has_flag = city_state_spartan_government
 				}
 			}
 			text = ATHA_government.0009.a_dynastic
@@ -1513,11 +1513,11 @@ ATHA_government.0009 = {
 			trigger = {
 				NOR = {
 					root = scope:new_tyrant
-					has_government = feudal_government
-					has_government = clan_government
-					has_government = tribal_government
-					has_government = city_state_tyrannical_government
-					has_government = city_state_spartan_government
+					government_has_flag = government_is_feudal
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_tribal
+					government_has_flag = government_is_tyrannical_city_state
+					government_has_flag = city_state_spartan_government
 				}
 			}
 			text = ATHA_government.0009.a_liberal
@@ -1656,8 +1656,8 @@ ATHA_government.0201 = {
 		scope:highest_tier_title.tier > tier_barony
 		scope:granter = {
 			OR = {
-				has_government = tribal_government
-				has_government = clan_government
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_clan
 			}
 		}
 	}
@@ -1809,7 +1809,7 @@ ATHA_government.0204 = {
 		scope:highest_tier_title.tier > tier_barony
 		scope:granter = {
 			OR = {
-				has_government = feudal_government
+				government_has_flag = government_is_feudal
 				government_has_flag = is_bureaucracy_government
 			}
 		}
@@ -1871,13 +1871,13 @@ ATHA_government.0301 = {
 
 	immediate = {
 		if = {
-			limit = { has_government = city_state_democratic_government }
+			limit = { government_has_flag = government_is_democratic_city_state }
 			primary_title = { add_title_law = democratic_succession_law }
 		} else_if = {
-			limit = { has_government = city_state_oligarchic_government }
+			limit = { government_has_flag = government_is_oligarchic_city_state }
 			primary_title = { add_title_law = oligarchic_succession_law }
 		} else_if = {
-			limit = { has_government = city_state_aristocratic_government }
+			limit = { government_has_flag = government_is_aristocratic_city_state }
 			primary_title = { add_title_law = aristocratic_succession_law }
 		}
 	}

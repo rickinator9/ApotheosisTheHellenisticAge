@@ -136,7 +136,7 @@ vassal_role = {
 					limit = {
 						scope:vassal = {
 							government_has_flag = is_bureaucracy_government
-							has_government = feudal_government
+							government_has_flag = government_is_feudal
 						}
 					}
 					add = @ai_standard_liege_desire
@@ -173,7 +173,7 @@ vassal_role = {
 					limit = {
 						scope:vassal = {
 							government_has_flag = is_bureaucracy_government
-							has_government = feudal_government
+							government_has_flag = government_is_feudal
 						}
 					}
 					add = @ai_standard_liege_desire
@@ -253,10 +253,10 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_democratic_government
+							government_has_flag = government_is_democratic_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_democratic_government }
+							NOT = { government_has_flag = government_is_democratic_city_state }
 						}
 					}
 					add = @ai_desire_always
@@ -295,12 +295,12 @@ imposed_franchise = {
 					limit = {
 						scope:liege = {
 							OR = { 
-								has_government = city_state_oligarchic_government
-								has_government = city_state_spartan_government
+								government_has_flag = government_is_oligarchic_city_state
+								government_has_flag = city_state_spartan_government
 							}
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_oligarchic_government }
+							NOT = { government_has_flag = government_is_oligarchic_city_state }
 						}
 					}
 					add = @ai_desire_always
@@ -339,10 +339,10 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_aristocratic_government
+							government_has_flag = government_is_aristocratic_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_aristocratic_government }
+							NOT = { government_has_flag = government_is_aristocratic_city_state }
 						}
 					}
 					add = @ai_desire_always
@@ -377,10 +377,10 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_tyrannical_government
+							government_has_flag = government_is_tyrannical_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_tyrannical_government }
+							NOT = { government_has_flag = government_is_tyrannical_city_state }
 						}
 					}
 					add = @ai_desire_always

@@ -14,9 +14,9 @@ form_k_lakedaimon_decision = { # aka: Restore the Spartan Hegemony
 	is_shown = {
 		has_culture = culture:laconian
 		OR = { 
-			has_government = city_state_spartan_government
+			government_has_flag = city_state_spartan_government
 			AND = { 
-				has_government = hegemonic_league_government
+				government_has_flag = government_is_hegemonic_league
 				OR = {
 					dynasty = dynasty:spartandyn001
 					dynasty = dynasty:spartandyn002
@@ -246,7 +246,7 @@ form_e_athenai_decision = { # aka: Reform the Athenian Empire
 		#Must have city-state or hegemonic league government (so no federal leagues)
 		OR = {
 			has_city_state_government = yes
-			has_government = hegemonic_league_government
+			government_has_flag = government_is_hegemonic_league
 		}
 
 		#Has to control a region equating, more or less, to the Athenian empire at its height
@@ -368,7 +368,7 @@ form_k_insular_phoros_decision = { # aka: Reform the Insular Phoros
 		title:e_athenai.holder = {
 			OR = {
 				has_city_state_government = yes
-				has_government = hegemonic_league_government
+				government_has_flag = government_is_hegemonic_league
 			}
 		}
 
@@ -477,7 +477,7 @@ form_k_ionian_phoros_decision = { # aka: Reform the Ionian Phoros
 		title:e_athenai.holder = {
 			OR = {
 				has_city_state_government = yes
-				has_government = hegemonic_league_government
+				government_has_flag = government_is_hegemonic_league
 			}
 		}
 
@@ -586,7 +586,7 @@ form_k_thracian_phoros_decision = { # aka: Reform the Thrakian Phoros
 		title:e_athenai.holder = {
 			OR = {
 				has_city_state_government = yes
-				has_government = hegemonic_league_government
+				government_has_flag = government_is_hegemonic_league
 			}
 		}
 
@@ -695,7 +695,7 @@ form_k_hellespontine_phoros_decision = { # aka: Reform the Hellespontine Phoros
 		title:e_athenai.holder = {
 			OR = {
 				has_city_state_government = yes
-				has_government = hegemonic_league_government
+				government_has_flag = government_is_hegemonic_league
 			}
 		}
 
@@ -1038,8 +1038,8 @@ revive_spartan_faith_decision = { # aka: Honour the Laws of Lykourgos
 
 		#Must have Rhetra or Hegemonic League government
 		OR = { 
-			has_government = hegemonic_league_government
-			has_government = city_state_spartan_government
+			government_has_flag = government_is_hegemonic_league
+			government_has_flag = city_state_spartan_government
 		}
 
 		#Should be centralised
