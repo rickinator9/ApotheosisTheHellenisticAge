@@ -206,7 +206,7 @@ can_have_single_heir_succession_law_trigger = {
 	OR = {
 		# This should be accessible for city states, since county title can not have elective.
 		is_city_state_elective_type = yes
-		government_has_flag = city_state_spartan_government
+		government_has_flag = government_is_spartan_city_state
 
 		AND = {
 			culture = {
@@ -228,7 +228,7 @@ should_start_single_heir_succession_law_trigger = {
 	NOT = { _has_ai_government = yes }
 	OR = {
 		historical_succession_access_single_heir_succession_law_trigger = yes
-		government_has_flag = city_state_spartan_government
+		government_has_flag = government_is_spartan_city_state
 		is_city_state_elective_type = yes
 		culture = { has_innovation = innovation_imperial_latifundia }
 	}
@@ -356,7 +356,7 @@ title_can_reduce_partition_law_trigger = {
 
 _has_specific_locked_government = {
 	OR = {
-		government_has_flag = city_state_spartan_government
+		government_has_flag = government_is_spartan_city_state
 		is_city_state_elective_type = yes
 		_has_ai_government = yes
 	}
