@@ -2123,20 +2123,16 @@ RegionalArtilleryType = {
 	type = character
 
 	text = {
-		trigger = { culture = { has_innovation = innovation_bombard } }
-		localization_key = regional_artillery_bombard
+		trigger = { culture = { has_innovation = innovation_hellenistic_ballista } }
+		localization_key = regional_artillery_ballista
 	}
 	text = {
-		trigger = { culture = { has_innovation = innovation_trebuchet } }
-		localization_key = regional_artillery_trebuchet
-	}
-	text = {
-		trigger = { culture = { has_innovation = innovation_mangonel } }
-		localization_key = regional_artillery_mangonel
+		trigger = { culture = { has_innovation = innovation_classical_siege_towers } }
+		localization_key = regional_artillery_siege_tower
 	}
 	text = {
 		trigger = { always = yes }
-		localization_key = regional_artillery_onager
+		localization_key = regional_artillery_battering_ram
 	}
 }
 
@@ -2152,24 +2148,23 @@ RegionalShipType = {
 	random_valid = yes
 
 	text = {
-		trigger = { culture = { has_cultural_pillar = heritage_north_germanic } }
-		localization_key = regional_ship_knarr
+		trigger = { culture = { has_cultural_pillar = heritage_liburnian } }
+		localization_key = regional_ship_liburna
 	}
 	text = {
-		trigger = { artifact_use_northern_unit_visuals_trigger = yes }
-		localization_key = regional_ship_longship
+		trigger = { culture = { has_cultural_pillar = heritage_illyrian } }
+		localization_key = regional_ship_lembus
 	}
 	text = {
-		trigger = { culture = { has_building_gfx = mediterranean_building_gfx } }
-		localization_key = regional_ship_galley
-	}
-	text = {
-		trigger = { culture = { has_cultural_pillar = heritage_byzantine } }
-		localization_key = regional_ship_dromon
-	}
-	text = {
-		trigger = { culture = { has_unit_gfx = western_unit_gfx } }
-		localization_key = regional_ship_cog
+		trigger = {
+			culture = {
+				OR = {
+					has_building_gfx = mediterranean_building_gfx
+					has_building_gfx = western_building_gfx
+				}
+			}
+		}
+		localization_key = regional_ship_trireme
 	}
 	text = {
 		trigger = { always = yes }

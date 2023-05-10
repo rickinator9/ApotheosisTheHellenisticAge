@@ -197,37 +197,71 @@ culture_is_not_historical_hybrid_trigger = {
 
 # Cultural MAA triggers - Used in various places for triggers, AI weights, etc.
 culture_has_skirmisher_maa = {
+	OR = {
+		has_cultural_pillar = heritage_anatolian # Anatolikoi Phyletai
+		this = culture:cretan # Kretikoi Peltastai
+		this = culture:macedonian # Makedonikoi Peltastai
+	}
 }
 
 culture_has_archer_maa = {
+	OR = {
+		this = culture:cretan # Kretikoi Toxotai, Promakhoi Kretikoi
+	}
 }
 
 culture_has_slinger_maa = {
+	OR = {
+		this = culture:dorian_northwest # Akarnanioi Sphendonetai
+		this = culture:dorian # Rhodioi Sphendonetai
+		this = culture:agrianian # Skaplinai
+		this = culture:dassian # Ardiaian Thureophoroi
+	}
 }
 
 culture_has_medium_infantry_maa = {
+	OR = {
+		this = culture:aeolian # Hyperaspistai
+		this = culture:ionian # Hyperaspistai
+	}
 }
 
 culture_has_heavy_infantry_maa = {
 	OR = {
-		has_cultural_parameter = unlock_maa_spartiatai_hoplitai
-		has_cultural_parameter = unlock_maa_hoplitai
+		has_cultural_pillar = heritage_greek # Epilektoi Hoplitai
+		this = culture:arcadian # Eparitoi Hoplitai
+		this = culture:laconian # Lakonikoi Hoplitai, Homoioi Hoplitai, Homoioi Hippeis
+		this = culture:macedonian # Hypaspistai
+		this = culture:scordiscian # Cordinau Orca
+		has_cultural_pillar = heritage_celtic # Nedes Nesamoi
 	}
 }
 
 culture_has_pikemen_maa = {
-	has_innovation = innovation_sarissa
+	OR = {
+		this = culture:macedonian # Chalkaspides, Agema Phalangitai
+	}
 }
 
 culture_has_light_cavalry_maa = {
+	OR = {
+		this = culture:pannonian # Mandonai
+	}
 }
 
 culture_has_heavy_cavalry_maa = {
-	has_innovation = innovation_companion_cavalry
+	OR = {
+		this = culture:thessalian # Thessalikoi Hippeis
+		this = culture:macedonian # Hiera Ile
+		this = culture:epirote # Basilikoi Agema
+		this = culture:odrysian # Zibutai
+	}
 }
 
 culture_has_archer_cavalry_maa = {
-	has_cultural_parameter = unlock_maa_horse_archers
+	OR = {
+		this = culture:scythian
+	}
 }
 
 # Language trigger - Makes languages available when you diverge your culture
