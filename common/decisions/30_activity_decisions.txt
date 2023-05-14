@@ -658,18 +658,12 @@ petition_liege_decision = {
 				value = flag:development
 			}
 		}
-		stress_impact = {
-			shy = medium_stress_impact_gain
-			arrogant = medium_stress_impact_gain
-		}
-		hidden_effect = {
-			# Spawn the Petition Liege activity
-			liege.capital_province = {
-				spawn_activity = {
-					type = activity_petition_liege
-					owner = root
-				}
-			}
+		start_travel_plan = {
+			destination = liege.capital_province
+			on_start_on_action = petition_liege_start
+			on_travel_planner_cancel_on_action = petition_liege_travel_planner_exit 
+			on_arrival_event = petition_liege.9000
+			on_arrival_destinations = all_but_last
 		}
 	}
 	

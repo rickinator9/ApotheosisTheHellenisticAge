@@ -2589,6 +2589,8 @@ hunt.1001 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_bold CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Careful chase
@@ -2988,6 +2990,8 @@ hunt.1003 = {
 				ai_greed = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Give shot
@@ -3165,6 +3169,8 @@ hunt.1003 = {
 				ai_greed = -1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Murder attempt
@@ -4438,6 +4444,8 @@ hunt.1011 = {
 					forgiving = minor_stress_impact_gain
 					calm = medium_stress_impact_gain
 				}
+
+				change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
 			}
 		}
 		ai_chance = {
@@ -4477,6 +4485,10 @@ hunt.1011 = {
 						modifier = kindness_opinion
 						opinion = 30
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 				}
 			}
 			stress_impact = {
@@ -4526,6 +4538,10 @@ hunt.1011 = {
 						sadistic = medium_stress_impact_loss
 						compassionate = medium_stress_impact_gain
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -4747,6 +4763,10 @@ hunt.1012 = {
 				ai_compassion = -0.25
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_medium_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Restrain yourself
@@ -4788,6 +4808,10 @@ hunt.1012 = {
 				ai_vengefulness = -0.25
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -4834,6 +4858,8 @@ hunt.1013 = {
 		stress_impact = {
 			base = medium_stress_impact_loss
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	option = {
@@ -4926,6 +4952,8 @@ hunt.1014 = {
 			}
 		}
 		hunt_murder_confession_opinion_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #It was them!!
@@ -5049,6 +5077,8 @@ hunt.1015 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Threaten
@@ -5087,6 +5117,10 @@ hunt.1015 = {
 				}
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Finish them!!
@@ -5135,6 +5169,10 @@ hunt.1015 = {
 				}
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Talk yourself out of it
@@ -5181,6 +5219,10 @@ hunt.1015 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #You have a Hook on them?
@@ -5203,6 +5245,9 @@ hunt.1015 = {
 		ai_chance = {
 			base = 100
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -5371,6 +5416,8 @@ hunt.1021 = {
 				opinion_target = primary_spouse
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #I have animals to hunt!
@@ -5428,6 +5475,7 @@ hunt.1021 = {
 						lustful = medium_stress_impact_gain
 						diligent = minor_stress_impact_loss
 					}
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 				}
 			}
 		}
@@ -5455,6 +5503,10 @@ hunt.1021 = {
 					remove_short_term_gold = activity_minor_gold_value
 					add_courtier = scope:beautiful_peasant
 					set_relation_friend = { reason = friend_invited_to_court target = scope:beautiful_peasant }
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -11338,6 +11390,9 @@ hunt.4001 = {
 				ai_compassion = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_decrease }
 	}
 	
 	option = { #Take it down!
@@ -11372,6 +11427,8 @@ hunt.4001 = {
 				ai_greed = -1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hawk CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Let it go
@@ -11565,6 +11622,7 @@ hunt.4002 = {
 						arrogant = minor_stress_impact_loss
 						impatient = minor_stress_impact_loss
 					}
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 				}
 			}
 		}
@@ -11604,6 +11662,7 @@ hunt.4002 = {
 						diligent = minor_stress_impact_gain
 						paranoid = minor_stress_impact_loss
 					}
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 				}
 			}
 		}
@@ -11712,6 +11771,9 @@ hunt.4003 = {
 						arbitrary = minor_stress_impact_loss
 						vengeful = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -11753,6 +11815,9 @@ hunt.4003 = {
 						forgiving = minor_stress_impact_loss
 						ambitious = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -11821,6 +11886,9 @@ hunt.4003 = {
 						ambitious = minor_stress_impact_loss
 						arbitrary = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -12110,6 +12178,8 @@ hunt.4004 = {
 		hunt_intent_outcome_tooltip_effect = yes
 		# Save scopes for trophy recipient
 		hunt_trophy_recipient_scope_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { # Take Artifact
@@ -12273,6 +12343,7 @@ hunt.4004 = {
 				factor = 0
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 	}
 	
 	option = { #Make a beautiful coat
@@ -12374,6 +12445,8 @@ hunt.4004 = {
 			}
 		}
 		add_dread = medium_dread_gain
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
 	}
 }
 
@@ -12505,6 +12578,8 @@ hunt.4005 = {
 			}
 		}
 		hunt_activity_success_change_effect = { CHANGE = increase_major }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 	}
 
 	option = { #Sell it off
@@ -12576,6 +12651,7 @@ hunt.4005 = {
 				ai_greed = -0.5
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 	}
 	
 	option = { #Send it to your religious head
@@ -12660,6 +12736,7 @@ hunt.4005 = {
 				multiplier = -0.5
 			}
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 	}
 	
 	option = { #Let's eat it here and now!
@@ -12738,6 +12815,8 @@ hunt.4006 = {
 						compassionate = medium_stress_impact_gain
 						vengeful = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 				}
 			}
 		}
@@ -12813,6 +12892,10 @@ hunt.4006 = {
 						sadistic = medium_stress_impact_loss
 						vengeful = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -12884,6 +12967,11 @@ hunt.4006 = {
 						base = medium_stress_impact_loss
 						compassionate = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_major_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_devourer CHANGE = nickname_weight_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -12925,6 +13013,10 @@ hunt.4006 = {
 						generous = medium_stress_impact_loss
 						improvident = major_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_major_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -13193,6 +13285,8 @@ hunt.4007 = {
 					craven = medium_stress_impact_gain
 				}
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 		}
 		ai_chance = {
 			base = 25
@@ -13282,6 +13376,8 @@ hunt.4007 = {
 				ai_energy = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Befriend the animal
@@ -13351,6 +13447,8 @@ hunt.4007 = {
 				ai_compassion = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_medium_decrease }
 	}
 
 	option = { #Bodyguard
@@ -13381,6 +13479,8 @@ hunt.4007 = {
 				ai_energy = -0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_medium_decrease }
 	}
 
 	option = { #Scare the animal
@@ -13447,6 +13547,8 @@ hunt.4007 = {
 				ai_energy = 1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_medium_decrease }
 	}
 
 	after = {
@@ -14262,6 +14364,8 @@ hunt.4008 = {
 									}
 								}
 							}
+
+							change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 						}
 						40 = {
 							desc = hunt.4008.a.failure
@@ -14298,6 +14402,8 @@ hunt.4008 = {
 									}
 								}
 							}
+
+							change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_medium_decrease }
 						}
 					}
 					stress_impact = {
@@ -14307,6 +14413,9 @@ hunt.4008 = {
 						honest = medium_stress_impact_gain
 						just = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_medium_decrease }
 				}
 			}
 		}
@@ -14386,6 +14495,9 @@ hunt.4008 = {
 						just = medium_stress_impact_gain
 						paranoid = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -14435,6 +14547,10 @@ hunt.4008 = {
 						just = minor_stress_impact_loss
 						arrogant = minor_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -14483,6 +14599,10 @@ hunt.4008 = {
 						vengeful = minor_stress_impact_loss
 						sadistic = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_medium_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -16071,6 +16191,8 @@ hunt.4011 = {
 						rakish = medium_stress_impact_loss
 						chaste = medium_stress_impact_gain
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -16308,6 +16430,8 @@ hunt.4012 = {
 						arrogant = medium_stress_impact_gain
 						lifestyle_hunter = medium_stress_impact_gain
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_decrease }
 				}
 			}
 		}
@@ -16453,6 +16577,8 @@ hunt.4013 = {
 						stubborn = minor_stress_impact_loss
 						content = minor_stress_impact_gain
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -16898,6 +17024,10 @@ hunt.4014 = { # Guest accident
 							}
 						}
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}		
@@ -16963,6 +17093,10 @@ hunt.4014 = { # Guest accident
 						sadistic = medium_stress_impact_gain
 						impatient = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -17061,6 +17195,11 @@ hunt.4014 = { # Guest accident
 					stress_impact = {
 						compassionate = minor_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -17829,6 +17968,8 @@ hunt.4015 = {
 						honest = minor_stress_impact_gain
 						contrite = minor_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_increase }
 				}
 			}
 		}
@@ -17868,6 +18009,10 @@ hunt.4015 = {
 						just = minor_stress_impact_loss
 						contrite = minor_stress_impact_loss
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_just CHANGE = nickname_weight_small_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -18211,6 +18356,9 @@ hunt.4016 = {
 					stress_impact = {
 						honest = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -18280,6 +18428,8 @@ hunt.4016 = {
 									}
 								}
 							}
+
+							change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 						}
 						10 = {
 							desc = hunt.4016.b.failure
@@ -18294,12 +18444,16 @@ hunt.4016 = {
 									}
 								}
 							}
+
+							change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_large_decrease }
 						}
 					}
 
 					stress_impact = {
 						honest = medium_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 				}
 			}
 		}
@@ -18342,6 +18496,8 @@ hunt.4016 = {
 						arrogant = minor_stress_impact_gain
 						deceitful = minor_stress_impact_gain
 					}
+
+					change_city_state_corruption = { AMOUNT_ARG = corruption_miniscule_decrease }
 				}
 			}
 		}
@@ -18503,6 +18659,8 @@ hunt.4017 = {
 				ai_greed = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_large_increase }
 	}
 
 	option = { #Group kill
@@ -18778,6 +18936,8 @@ hunt.4019 = {
 					hunt_dharmic_pacificism_effect = yes
 					# Stress
 					hunt_humble_hunter_stress_effect = yes
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_hunter CHANGE = nickname_weight_small_increase }
 				}
 			}
 		}
@@ -21348,6 +21508,8 @@ hunt.7001 = {
 						years = 15
 						desc = hunt_guide_local_madman_modifier_custom_desc
 					}
+
+					change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 				}
 				hunt_activity_success_change_effect = { CHANGE = decrease_minor }
 			}
@@ -21394,6 +21556,8 @@ hunt.7001 = {
 								}
 								hunt_activity_success_change_effect = { CHANGE = increase_medium }
 							}
+
+							change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 						}
 						10 = {
 							desc = hunt.7001.b_failure
@@ -21419,6 +21583,8 @@ hunt.7001 = {
 				ai_compassion = 0.5
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Here's something to hunt!
@@ -21466,6 +21632,10 @@ hunt.7001 = {
 				ai_vengefulness = 0.5
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 
 	option = { #Out of my way peasant

@@ -2450,6 +2450,8 @@ pilgrimage.2002 = {
 		ai_chance = {
 			base = 500
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	# Are they truly all that bad?
 	option = { 
@@ -2475,6 +2477,8 @@ pilgrimage.2002 = {
 			stress_impact = {
 				zealous = major_stress_impact_gain
 			}
+
+			change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		}
 		stress_impact = {
 			craven = medium_stress_impact_gain
@@ -2834,6 +2838,8 @@ pilgrimage.2004 = {
 				factor = 0
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
 	}
 	# I must do this in solitude
 	option = { 
@@ -2854,6 +2860,8 @@ pilgrimage.2004 = {
 				factor = 0.1
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -2957,6 +2965,10 @@ pilgrimage.2005 = {
 				ai_compassion = 0.5
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 	# What an insult! String them up!
 	option = { 
@@ -2982,6 +2994,10 @@ pilgrimage.2005 = {
 				ai_vengefulness = 1
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
 	}
 	# Find other people to travel with
 	option = { 
@@ -5695,6 +5711,7 @@ pilgrimage.2501 = {
 			days = 3
 		}
 		trigger_event = pilgrimage.2502
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
 	#Go away
 	option = {
@@ -5713,6 +5730,10 @@ pilgrimage.2501 = {
 			}
 		}
 		add_dread = minor_dread_gain
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_flayer CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_medium_decrease }
 	}
 }
 
@@ -5771,6 +5792,10 @@ pilgrimage.2502 = {
 				}
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_increase }
 	}
 	# Option B (Special): Refuse, losing Generous and gaining Callous
 	option = {
@@ -5797,6 +5822,10 @@ pilgrimage.2502 = {
 				}
 			}
 		}
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
+		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
 	}
 	# Option C: Refuse the beggar's second request, normal effects.
 	option = {
@@ -5820,6 +5849,9 @@ pilgrimage.2502 = {
 				}
 			}
 		}
+
+		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_increase }
+		change_nickname_weight_effect = { NICKNAME = nick_the_benefactor CHANGE = nickname_weight_small_decrease }
 	}
 }
 
@@ -5984,6 +6016,7 @@ pilgrimage.2504 = {
 			}
 			add_trait_force_tooltip = compassionate
 		}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
 	#Hook/courtier option
 	option = {
@@ -6001,6 +6034,7 @@ pilgrimage.2504 = {
  			type = loyalty_hook
 			target = scope:beggar
  	 	}
+		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_increase }
 	}
 	#Dismiss them
 	option = {
@@ -6391,6 +6425,8 @@ pilgrimage.3001 = {
 			}
 		}
 		give_pilgrim_xp_effect = yes
+
+		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
 	#No
 	option = {
