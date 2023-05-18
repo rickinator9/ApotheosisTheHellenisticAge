@@ -19,6 +19,13 @@ on_title_granted_to_unlanded = {
 #	root, scope:holder = the character who gained the title.
 #	scope:transfer_type = the transfer that occurred that caused the character to gain the title.
 on_first_title_gained = {
+	on_actions = { ATHA_on_first_title_gained }
+}
+
+# A character gains a title while before they were unlanded.
+#	root, scope:holder = the character who gained the title.
+#	scope:transfer_type = the transfer that occurred that caused the character to gain the title.
+ATHA_on_first_title_gained = {
 	effect = {
 		scope:holder = {
 			add_character_flag = {

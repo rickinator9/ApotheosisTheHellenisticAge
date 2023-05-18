@@ -1027,6 +1027,17 @@ can_perform_the_hajj_trigger = {
 	always = no
 }
 
+shared_faith_or_hof_trigger = {
+	OR = {
+		$ACTOR$.faith = $RECIPIENT$.faith
+		AND = {
+			exists = $ACTOR$.faith.religious_head
+			exists = $RECIPIENT$.faith.religious_head
+			$ACTOR$.faith.religious_head = $RECIPIENT$.faith.religious_head
+		}
+	}
+}
+
 
 ###RELIGIOUS INTERACTIONS###
 #Triggers that applies to both Monastery or Holy Order requirements

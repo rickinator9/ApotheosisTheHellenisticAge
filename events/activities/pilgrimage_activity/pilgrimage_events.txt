@@ -522,7 +522,7 @@ pilgrimage.1100 = {
 					desc = pilgrimage.1100.t.greek
 				}
 				triggered_desc = {
-					trigger = { religion = religion:christianity_religion }
+					trigger = { always = no }
 					desc = pilgrimage.1100.t.christian
 				}
 				triggered_desc = {
@@ -890,37 +890,13 @@ pilgrimage.1110 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					exists = scope:shared_holy_site
-					scope:shared_holy_site = title:b_makka
-					scope:shared_holy_site = root.involved_activity.activity_location.barony
-					scope:shared_holy_site.county_controller.faith = scope:heathen_raider.faith
-				}
-				desc = pilgrimage.1110.shared_target_heathen_hajj
-			}
-			triggered_desc = {
-				trigger = {
-					exists = scope:shared_holy_site
-					scope:shared_holy_site = title:b_makka
-					scope:shared_holy_site = root.involved_activity.activity_location.barony
-					scope:shared_holy_site.county_controller.faith = root.faith
-				}
-				desc = pilgrimage.1110.shared_target_controlled_hajj
-			}
-			triggered_desc = {
-				trigger = {
-					exists = scope:shared_holy_site
-					scope:shared_holy_site = title:b_jerusalem
-					scope:shared_holy_site = root.involved_activity.activity_location.barony
-					scope:shared_holy_site.county_controller.faith = scope:heathen_raider.faith
+					always = no
 				}
 				desc = pilgrimage.1110.shared_target_heathen_jerusalem
 			}
 			triggered_desc = {
 				trigger = {
-					exists = scope:shared_holy_site
-					scope:shared_holy_site = title:b_jerusalem
-					scope:shared_holy_site = root.involved_activity.activity_location.barony
-					scope:shared_holy_site.county_controller.faith = root.faith
+					always = no
 				}
 				desc = pilgrimage.1110.shared_target_controlled_jerusalem
 			}
@@ -4432,8 +4408,7 @@ pilgrimage.2021 = {
 		name = pilgrimage.2021.b
 		trigger = {
 			OR = {
-				religion = religion:christianity_religion
-				religion = religion:judaism_religion
+				always = no
 			}
 			OR = {
 				has_trait = flagellant
@@ -6092,8 +6067,7 @@ pilgrimage.2511 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					religion = religion:christianity_religion
-					faith = { trait_is_sin = vengeful }
+					always = no
 				}
 				desc = pilgrimage.2511.desc.vengeful.christian
 			}
@@ -6353,8 +6327,7 @@ pilgrimage.3001 = {
 	}
 	cooldown = { years = 15 }
 	trigger = {
-		religion = religion:christianity_religion
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	immediate = {
 		play_music_cue = "mx_cue_general_crusade_event_2"
@@ -6477,167 +6450,25 @@ pilgrimage.3002 = {
 	}
 	cooldown = { years = 30 }
 	trigger = {
-		religion = religion:christianity_religion
-		faith = {
-			NOR = {
-				has_doctrine = tenet_natural_primitivism
-				has_doctrine = special_doctrine_naked_priests
-			}
-		}
-		NOT = { 
-			any_courtier = { has_character_flag = convinced_naked_preacher }
-		}
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	immediate = {
-		create_character = {
-			age = 40
-			gender_female_chance = 50
-			location = root.location
-			faith = faith:adamites
-			culture = root.culture
-			trait = zealous
-			random_traits_list = {
-				count = 2
-				calm = {}
-				brave = {}
-				gregarious = {}
-				ambitious = {}
-				stubborn = {}
-				arrogant = {}
-			}
-			trait = lifestyle_mystic
-			save_scope_as = naked_preacher
-		}
-		scope:naked_preacher = { add_character_flag = is_naked }
 	}
 	#Convert to Adamitism
 	option = {
 		name = pilgrimage.3002.a
-		trigger = {
-			# Should not show up for the AI with strict regional heresies enabled
-			OR = {
-				NOT = { has_game_rule = strict_regional_heresy }
-				is_ai = no
-			}
-		}
-		worldly_type_option_effect = yes
-		add_piety = massive_piety_loss
-		set_character_faith = faith:adamites
-		add_to_entourage_court_and_activity_effect = { 
-			CHAR_TO_ADD = scope:naked_preacher
-			NEW_COURT_OWNER = root 
-		}
-		ai_chance = {
-			base = 1
-			modifier = {
-				add = 9
-				has_trait = cynical
-				has_trait = trusting
-			}
-			modifier = {
-				add = {
-					value = ai_rationality
-					multiply = -1
-					max = 0
-				}
-			}
-			modifier = {
-				add = {
-					value = ai_zeal
-					multiply = -1
-					min = 0
-				}
-			}
-			modifier = {
-				add = 100
-				OR = {
-					ai_rationality <= -100
-					has_trait = lunatic
-					has_trait = possessed
-				}
-			}
-			modifier = {
-				factor = 0
-				any_independent_ruler = {
-					faith = faith:adamites
-				}
-			}
-		}
-		debug_log = "Character converting to Adamitism"
 	}
 	#Heretic!
 	option = {
 		name = pilgrimage.3002.b
-		pious_type_option_effect = yes
-		add_piety = medium_piety_gain
-		ai_chance = { base = 100 }
 	}
 	#Convert 'em!
 	option = {
 		name = pilgrimage.3002.c
-		pious_type_option_effect = yes
-		add_prestige = medium_prestige_loss
-		duel = {
-			skill = learning
-			value = average_skill_rating
-			50 = {
-				desc = pilgrimage.3002.c.success
-				compare_modifier = {
-					value = scope:duel_value
-					multiplier = 3
-					min = -49
-				}
-				scope:naked_preacher = { add_character_flag = convinced_naked_preacher }
-				custom_tooltip = pilgrimage.3002.c.success.tt
-				#Convinced Adamite
-				trigger_event = pilgrimage.3003
-			}
-			50 = {
-				desc = pilgrimage.3002.c.failure
-				compare_modifier = {
-					value = scope:duel_value
-					multiplier = -3
-					min = -49
-				}
-				send_interface_toast = {
-					title = pilgrimage.3002.c.failure
-					left_icon = root
-					add_learning_lifestyle_xp = medium_lifestyle_xp
-				}				
-			}
-		}
-		ai_chance = {
-			base = 100
-		}
 	}
 	#Nah
 	option = {
 		name = pilgrimage.3002.d
-		worldly_type_option_effect = yes
-		add_prestige = minor_prestige_gain
-		ai_chance = {
-			base = 100
-		}
-	}
-	after = {
-		scope:naked_preacher = {
-			if = {
-				limit = {
-					NOT = { has_character_flag = convinced_naked_preacher }
-				}
-				if = {
-					limit = {
-						root = { is_ai = yes }
-					}
-					silent_disappearance_effect = yes
-				}
-			}
-			if = {
-				limit = { is_courtier_of = root }
-				remove_character_flag = is_naked
-			}
-		}
 	}
 }
 
@@ -6703,8 +6534,7 @@ pilgrimage.3004 = {
 	}
 	cooldown = { years = 15 }
 	trigger = {
-		religion = religion:christianity_religion
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	immediate = {
 		random_dummy_gender_clergy_effect = yes
@@ -6784,8 +6614,7 @@ pilgrimage.3102 = {
 	}
 	cooldown = { years = 2 }
 	trigger = {
-		religion = religion:islam_religion
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	# See distant places
 	option = { 
@@ -6896,8 +6725,7 @@ pilgrimage.3201 = {
 	}
 	cooldown = { years = 2 }
 	trigger = {
-		religion = religion:hinduism_religion
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	#Yep yep
 	option = {
@@ -6942,15 +6770,15 @@ pilgrimage.3202 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { religion = religion:hinduism_religion }
+				trigger = { always = no }
 				desc = pilgrimage.3202.desc.hinduism
 			}
 			triggered_desc = {
-				trigger = { religion = religion:buddhism_religion }
+				trigger = { always = no }
 				desc = pilgrimage.3202.desc.buddhism
 			}
 			triggered_desc = {
-				trigger = { religion = religion:jainism_religion }
+				trigger = { always = no }
 				desc = pilgrimage.3202.desc.jainism
 			}
 			triggered_desc = {
@@ -6968,9 +6796,6 @@ pilgrimage.3202 = {
 	cooldown = { years = 2 }
 	trigger = {
 		OR = {
-			religion = religion:hinduism_religion
-			religion = religion:buddhism_religion
-			religion = religion:jainism_religion
 			faith = { has_doctrine = tenet_sanctity_of_nature }
 		}
 		location = {
@@ -7062,8 +6887,7 @@ pilgrimage.3301 = {
 	}
 	cooldown = { years = 5 }
 	trigger = {
-		religion = religion:buddhism_religion
-		is_location_valid_for_travel_event_on_land = yes
+		always = no
 	}
 	immediate = {
 		random_dummy_gender_clergy_effect = yes
@@ -7149,10 +6973,6 @@ pilgrimage.3301 = {
 scripted_trigger pilgrimage_6001_friend_trigger = {
 	is_available_ai_adult = yes
 	faith = root.faith
-	trigger_if = {
-		limit = { faith.religion = religion:islam_religion }
-		has_trait = drunkard
-	}
 }
 #Sneaking off to a tavern with your pal
 # by Chad Uhl
@@ -7173,10 +6993,6 @@ pilgrimage.6001 = {
 	trigger = {
 		has_bp1_dlc_trigger = yes
 		current_travel_plan = { next_destination_progress > 0.5 }
-		trigger_if = {
-			limit = { faith.religion = religion:islam_religion }
-			has_trait = drunkard
-		}
 		any_relation = {
 			type = friend
 			pilgrimage_6001_friend_trigger = yes
@@ -8016,15 +7832,6 @@ pilgrimage.3101 = {
 			}
 		}
 	}
-	after = {
-		#The Hajj rituals usually play out in 3 days, but we'll utilize the full 3 months for remaining at the Pilgrimage destination
-		#They also happen in a decided order
-		trigger_event = {
-			#Pray at the Place of Abraham
-			id = hajj.3010
-			days = 20
-		}
-	}
 }
 
 ################################
@@ -8302,11 +8109,7 @@ pilgrimage.4020 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -8464,7 +8267,7 @@ pilgrimage.5001 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_roma }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8492,11 +8295,7 @@ pilgrimage.5011 = {
 		desc = pilgrimage.5011.desc.beginning
 		first_valid = {
 			triggered_desc = {
-				trigger = { religion = religion:islam_religion }
-				desc = pilgrimage.5011.desc.muslim
-			}
-			triggered_desc = {
-				trigger = { religion = religion:judaism_religion }
+				trigger = { always = no }
 				desc = pilgrimage.5011.desc.jewish
 			}
 			desc = pilgrimage.5011.desc.christian
@@ -8512,7 +8311,7 @@ pilgrimage.5011 = {
 		}
 		animation = ecstasy
 	}
-	trigger = { scope:activity.activity_location.county = title:c_jerusalem }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8580,7 +8379,7 @@ pilgrimage.5031 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_alexandria }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8615,7 +8414,7 @@ pilgrimage.5101 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_sinai }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8650,7 +8449,7 @@ pilgrimage.5201 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_medina }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8685,7 +8484,7 @@ pilgrimage.5301 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_varanasi }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8719,7 +8518,7 @@ pilgrimage.5311 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_ayodhya }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8753,7 +8552,7 @@ pilgrimage.5321 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_mathura }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8787,7 +8586,7 @@ pilgrimage.5331 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_sthanisvara }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8821,7 +8620,7 @@ pilgrimage.5341 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_kanchipuram }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8855,7 +8654,7 @@ pilgrimage.5351 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_ujjayini }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8889,7 +8688,7 @@ pilgrimage.5361 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_dvaraka }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8924,7 +8723,7 @@ pilgrimage.5401 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_gaya }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8958,7 +8757,7 @@ pilgrimage.5411 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_kusinagara }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -8994,7 +8793,7 @@ pilgrimage.5421 = {
 	}
 	trigger = {
 		#Sarnath is literally a mile from Varanasi
-		scope:activity.activity_location.county = title:c_varanasi
+		always = no
 	}
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
@@ -9030,7 +8829,7 @@ pilgrimage.5501 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_radha }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -9065,7 +8864,7 @@ pilgrimage.5601 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_baduspan }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -9100,7 +8899,7 @@ pilgrimage.5901 = {
 		}
 		animation = happiness
 	}
-	trigger = { scope:activity.activity_location.county = title:c_brunswick }
+	trigger = { always = no }
 	immediate = {
 		play_music_cue = "pilgrimage_arrival_destination_cue"
 	}
@@ -9353,12 +9152,7 @@ pilgrimage.6510 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -10928,12 +10722,7 @@ pilgrimage.6750 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -11076,12 +10865,7 @@ pilgrimage.6760 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -11096,8 +10880,7 @@ pilgrimage.6760 = {
 	cooldown = { years = 2 }
 	
 	trigger = {
-		faith.religion = religion:christianity_religion
-		location.county.holder.cp:councillor_court_chaplain.faith.religion ?= religion:christianity_religion
+		always = no
 	}
 	
 	immediate = {
@@ -11335,25 +11118,19 @@ pilgrimage.6770 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					religion = religion:christianity_religion
+					always = no
 				}
 				desc = pilgrimage.6770.desc.christian
 			}
 			triggered_desc = {
 				trigger = {
-					religion = religion:islam_religion
-				}
-				desc = pilgrimage.6770.desc.islam
-			}
-			triggered_desc = {
-				trigger = {
-					religion = religion:buddhism_religion
+					always = no
 				}
 				desc = pilgrimage.6770.desc.buddhist
 			}
 			triggered_desc = {
 				trigger = {
-					religion = religion:judaism_religion
+					always = no
 				}
 				desc = pilgrimage.6770.desc.judaism
 			}
@@ -11404,19 +11181,15 @@ pilgrimage.6770 = {
 		}
 		hidden_effect_new_object = {
 			if = {
-				limit = { religion = religion:christianity_religion }
+				limit = { always = no }
 				create_artifact_pedestal_reliquary_christian_effect = { OWNER = scope:relic_merchant }
 			}
 			else_if = {
-				limit = { religion = religion:islam_religion }
-				create_artifact_pedestal_reliquary_islam_effect = { OWNER = scope:relic_merchant }
-			}
-			else_if = {
-				limit = { religion = religion:buddhism_religion }
+				limit = { always = no }
 				create_artifact_pedestal_reliquary_buddhism_effect = { OWNER = scope:relic_merchant }
 			}
 			else_if = {
-				limit = { religion = religion:judaism_religion }
+				limit = { always = no }
 				create_artifact_pedestal_reliquary_judaism_effect = { OWNER = scope:relic_merchant }
 			}
 			else = {
@@ -12118,12 +11891,7 @@ pilgrimage.6800 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -12426,12 +12194,7 @@ pilgrimage.6810 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -12454,14 +12217,7 @@ pilgrimage.6810 = {
 	}
 	cooldown = { years = 1 }
 	trigger = {
-		faith = { religion_tag = christianity_religion } #this is basically a Christian thing
-		exists = faith.religious_head #you have a religious head
-		faith.religious_head = {
-			NOT = { this = root } #and it's not you
-			is_available_ai_adult = yes
-		}
-		exists = location.county.holder.cp:councillor_court_chaplain #there's also someone around to be handing out these
-		location.county.holder.cp:councillor_court_chaplain.faith = faith.religious_head.faith #and they're the same faith (and, by extension, yours)
+		always = no
 	}
 	immediate = {
 		faith.religious_head = { save_scope_as = religious_head_scope }
@@ -12871,7 +12627,7 @@ pilgrimage.6830 = {
 	cooldown = { years = 1 }
 	trigger = {
 		has_activity_intent = reflection_intent
-		NOT = { religion = religion:tengrism_religion }
+		NOT = { always = no }
 	}
 	immediate = {
 		if = {
@@ -13059,12 +12815,7 @@ pilgrimage.6840 = {
 	theme = pilgrimage_destination
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-				religion = religion:tengrism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}
@@ -13837,11 +13588,7 @@ pilgrimage.9010 = {
 	theme = travel_pilgrimage_return
 	override_background = {
 		trigger = {
-			NOR = {
-				religion = religion:hinduism_religion
-				religion = religion:jainism_religion
-				religion = religion:buddhism_religion
-			}
+			always = yes
 		}
 		reference = temple
 	}

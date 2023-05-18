@@ -261,80 +261,7 @@
 		#Is it a unique holy site?
 		triggered_desc = {
 			trigger = {
-				OR = {
-					#Taken from the Pilgrimage arrival on_action event triggers
-					#Judaism
-					AND = {
-						scope:host = { religion = religion:christianity_religion }
-						OR = {
-							county = title:c_roma # Rome
-							county = title:c_jerusalem # Jerusalem
-							county = title:c_byzantion # Constantinople
-							county = title:c_alexandria # Alexandria
-						}
-					}
-					#Christianity
-					AND = {
-						scope:host = { religion = religion:judaism_religion }
-						OR = {
-							county = title:c_sinai # Mt. Sinai
-							county = title:c_jerusalem # Jerusalem
-						}
-					}
-					#Islam
-					AND = {
-						scope:host = { religion = religion:islam_religion }
-						OR = {
-							county = title:c_mecca # Mecca
-							county = title:c_medina # Medina
-							county = title:c_sinai # Mt. Sinai
-							county = title:c_jerusalem # Jerusalem
-						}
-					}
-					#Hinduism
-					AND = {
-						scope:host = { religion = religion:hinduism_religion }
-						OR = {
-							county = title:c_varanasi # Varanasi
-							county = title:c_ayodhya # Ayodhya
-							county = title:c_mathura # Mathura
-							county = title:c_sthanisvara # Haridwar
-							county = title:c_kanchipuram # Kanchipuram
-							county = title:c_ujjayini # Ujjayini
-							county = title:c_dvaraka # Dwarka
-						}
-					}
-					#Buddhism
-					AND = {
-						scope:host = { religion = religion:buddhism_religion }
-						OR = {
-							county = title:c_gaya # Bodh Gaya
-							county = title:c_kusinagara # Kusinagara
-							county = title:c_varanasi # Sarnath
-						}
-					}
-					#Jainism
-					AND = {
-						scope:host = { religion = religion:jainism_religion }
-						OR = {
-							county = title:c_radha # Shikharj
-						}
-					}
-					#Zoroastrian
-					AND = {
-						scope:host = { religion = religion:zoroastrianism_religion }
-						OR = {
-							county = title:c_baduspan # Ushi-darena
-						}
-					}
-					#Norse
-					AND = {
-						scope:host = { religion = religion:germanic_religion }
-						OR = {
-							county = title:c_brunswick # Paderborn
-						}
-					}
-				}
+				always = no # TODO
 			}
 			desc = activity_pilgrimage_province_unique_desc
 		}
@@ -2061,7 +1988,7 @@
 	#Unique holy sites
 	background = {
 		trigger = {
-			activity_location.county = title:c_mecca
+			always = no
 		}
 		texture = "gfx/interface/illustrations/event_scenes/ep2_holysite_mecca.dds"
 		environment = "environment_mecca"
@@ -2069,7 +1996,7 @@
 	}
 	background = {
 		trigger = {
-			activity_location.county = title:c_jerusalem
+			always = no
 		}
 		texture = "gfx/interface/illustrations/event_scenes/ep2_holysite_jerusalem.dds"
 		environment = "environment_jerusalem"
@@ -2141,7 +2068,7 @@
 		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"
 	}
 	background = {
-		trigger = { scope:host.religion = religion:tengrism_religion }
+		trigger = { always = no }
 		texture = "gfx/interface/illustrations/event_scenes/forest.dds"
 		environment = "environment_event_forest"
 		ambience = "event:/SFX/Events/Backgrounds/deciduous_forest_day"

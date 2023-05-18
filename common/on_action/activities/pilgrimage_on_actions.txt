@@ -31,6 +31,19 @@ pilgrimage_journey_events = {
 	}
 }
 
+# On-action managing possible Hajj journey events
+hajj_journey_events = {
+	trigger = {
+		always = no
+	}
+
+	random_on_action = {
+		10 = pilgrimage_generic_travel_events
+		5 = pilgrimage_temptation_travel_events
+		7 = pilgrimage_intent_travel_events
+	}
+}
+
 pilgrimage_generic_travel_events = {
 	random_events = {
 		chance_of_no_event = {
@@ -157,6 +170,19 @@ burial_arrival_events = {
 	trigger = { has_variable = pilgrimage_death_bury_there }
 	random_events = {
 		100 = pilgrimage.4020
+	}
+}
+
+pagan_arrival_events = {
+	trigger = {
+		faith = {
+			has_doctrine = tenet_sanctity_of_nature
+		}
+	}
+
+	random_events = {
+		100 = pilgrimage.5921 # Sacred Grove
+		100 = pilgrimage.4002 # Meet the Mystic again
 	}
 }
 

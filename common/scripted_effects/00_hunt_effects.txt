@@ -70,7 +70,7 @@ select_local_animal_effect = {
 				1 = { # Aurochs
 					trigger = {
 						scope:animal_location = { hunt_animal_aurochs_trigger = yes }
-						# NOT = { religion = religion:hinduism_religion }
+						NOT = { always = no }
 						NOT = { exists = scope:small_local_game }
 						NOT = { exists = scope:dangerous_local_game }
 						NOT = { exists = scope:prowling_local_game }
@@ -353,7 +353,7 @@ hunt_activity_standard_game_effect = {
 		1 = { # Aurochs
 			trigger = {
 				$PROVINCE$ = { hunt_animal_aurochs_trigger = yes }
-				NOT = { $HUNTER$.religion = religion:hinduism_religion }
+				NOT = { always = no }
 				NOT = { exists = scope:small_local_game }
 			}
 			set_variable = { name = animal_type value = flag:aurochs }

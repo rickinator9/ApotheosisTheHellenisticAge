@@ -12415,8 +12415,7 @@ hunt.4004 = {
 				scope:activity.var:animal_type = flag:boar
 				faith = {
 					OR = {
-						religion = religion:islam_religion
-						religion = religion:judaism_religion
+						always = no
 					}
 				}
 			}
@@ -13189,7 +13188,7 @@ hunt.4007 = {
 							5 = { # Aurochs
 								trigger = {
 									scope:activity.activity_location = { hunt_animal_aurochs_trigger = yes }
-									NOT = { scope:host.religion = religion:hinduism_religion }
+									NOT = { always = no }
 								}
 								set_variable = { name = animal_type value = flag:aurochs }
 							}

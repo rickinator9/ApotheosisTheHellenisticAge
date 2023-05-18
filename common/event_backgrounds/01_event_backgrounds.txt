@@ -1759,10 +1759,6 @@ market = {
 				OR = {
 					geographical_region = graphical_mena
 					geographical_region = graphical_india
-					AND = {
-			 			geographical_region = world_europe_west_iberia
-			 			faith ?= { religion = religion:islam_religion }
-			 		}
 				}
 			}
 		}
@@ -1806,10 +1802,6 @@ market_scope = {
 				OR = {
 					geographical_region = graphical_mena
 					geographical_region = graphical_india
-					AND = {
-			 			geographical_region = world_europe_west_iberia
-			 			root = { faith = { religion = religion:islam_religion } }
-			 		}
 				}
 			}
 		}
@@ -1850,10 +1842,6 @@ market_activity = {
 				OR = {
 					geographical_region = graphical_mena
 					geographical_region = graphical_india
-					AND = {
-			 			geographical_region = world_europe_west_iberia
-			 			scope:activity.activity_host.religion ?= religion:islam_religion
-			 		}
 				}
 			}
 		}
@@ -2820,10 +2808,6 @@ ep2_tournament = {
 			location = {
 				OR = {
 					geographical_region = graphical_mena
-					AND = {
-			 			geographical_region = world_europe_west_iberia
-			 			root = { faith = { religion = religion:islam_religion } }
-			 		}
 				}
 			}
 		}
@@ -2992,10 +2976,6 @@ tournament_contest = {
 					activity_location = {
 						OR = {
 							geographical_region = graphical_mena
-							AND = {
-					 			geographical_region = world_europe_west_iberia
-					 			scope:activity.activity_host.religion = religion:islam_religion
-					 		}
 						}
 					}
 				}
@@ -3120,7 +3100,6 @@ holy_site_generic = {
 					scope:activity.activity_location.culture = { has_graphical_steppe_culture_group_trigger = yes }
 				}
 				location.culture ?= { has_graphical_steppe_culture_group_trigger = yes }
-				religion = religion:tengrism_religion
 			}
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_tribal.dds"
@@ -3154,7 +3133,7 @@ holy_site_generic = {
 holy_site_unique = {
 	background = { #Jerusalem
 		trigger = {
-			scope:activity.activity_location.county = title:c_jerusalem
+			always = no
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_jerusalem.dds"
 		environment = "environment_jerusalem"
@@ -3163,7 +3142,7 @@ holy_site_unique = {
 
 	background = { #Mecca
 		trigger = {
-			scope:activity.activity_location.county = title:c_mecca
+			always = no
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_mecca.dds"
 		environment = "environment_mecca"

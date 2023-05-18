@@ -1,43 +1,63 @@
-﻿portrait_ATHA_spartan_clothing_trigger = {
-	OR = {
-		culture = culture:laconian
-		culture = {
-			any_parent_culture_or_above = {
-				this = culture:laconian
-			}
-		}
-	}
-	OR = {
-		government_has_flag = government_is_spartan_city_state
-		any_liege_or_above = { government_has_flag = government_is_spartan_city_state }
+﻿portrait_spartan_clothing_trigger = {
+	scope:culture = {
+		portrait_spartan_clothing_contents_trigger = yes
 	}
 }
 
-portrait_ATHA_hellenistic_greek_clothing_trigger = {
+portrait_spartan_clothing_spouse_trigger = {
+	culture = {
+		portrait_spartan_clothing_contents_trigger = yes
+	}
+}
+
+portrait_spartan_clothing_contents_trigger = {
 	OR = {
-		culture = culture:macedonian
-		culture = culture:epirote
-		culture = {
-			any_parent_culture_or_above = {
-				OR = {
-					this = culture:macedonian
-					this = culture:epirote
-				}
-			}
+		this = culture:laconian
+		any_parent_culture_or_above = {
+			this = culture:laconian
 		}
 	}
 }
 
-portrait_ATHA_classical_greek_clothing_trigger = {
+portrait_hellenistic_greek_clothing_trigger = {
+	scope:culture = {
+		portrait_hellenistic_greek_clothing_contents_trigger = yes
+	}
+}
+
+portrait_hellenistic_greek_clothing_spouse_trigger = {
+	culture = {
+		portrait_hellenistic_greek_clothing_contents_trigger = yes
+	}
+}
+
+portrait_hellenistic_greek_clothing_contents_trigger = {
+	OR = {
+		this = culture:macedonian
+		this = culture:epirote
+		any_parent_culture_or_above = {
+			OR = {
+				this = culture:macedonian
+				this = culture:epirote
+			}
+		}
+	}
+}
+
+portrait_classical_greek_clothing_trigger = {
+	scope:culture = { has_cultural_pillar = heritage_greek }
+	NOR = {
+		portrait_spartan_clothing_trigger = yes
+		portrait_hellenistic_greek_clothing_trigger = yes
+	}
+}
+
+portrait_classical_greek_clothing_spouse_trigger = {
 	culture = { has_cultural_pillar = heritage_greek }
 	NOR = {
-		portrait_ATHA_spartan_clothing_trigger = yes
-		portrait_ATHA_hellenistic_greek_clothing_trigger = yes
+		portrait_spartan_clothing_trigger = yes
+		portrait_hellenistic_greek_clothing_trigger = yes
 	}
-}
-
-portrait_ATHA_greek_clothing_trigger = {
-	culture = { has_cultural_pillar = heritage_greek }
 }
 
 portrait_greek_clothing_trigger = {
@@ -56,13 +76,37 @@ portrait_greek_clothing_contents_trigger = {
 	has_clothing_gfx = greek_clothing_gfx
 }
 
-portrait_ATHA_thracian_clothing_trigger = {
-	culture = { has_cultural_pillar = heritage_thracian }
+portrait_thracian_clothing_trigger = {
+	scope:culture = {
+		portrait_thracian_clothing_contents_trigger = yes
+	}
 }
 
-portrait_ATHA_anatolian_clothing_trigger = {
+portrait_thracian_clothing_spouse_trigger = {
+	culture = {
+		portrait_thracian_clothing_contents_trigger = yes
+	}
+}
+
+portrait_thracian_clothing_contents_trigger = {
+	has_cultural_pillar = heritage_thracian
+}
+
+portrait_anatolian_clothing_trigger = {
+	scope:culture = {
+		portrait_anatolian_clothing_contents_trigger = yes
+	}
+}
+
+portrait_anatolian_clothing_spouse_trigger = {
+	culture = {
+		portrait_anatolian_clothing_contents_trigger = yes
+	}
+}
+
+portrait_anatolian_clothing_contents_trigger = {
 	OR = {
-		culture = { has_cultural_pillar = heritage_anatolian }
-		culture = { has_cultural_pillar = heritage_iranian }
+		has_cultural_pillar = heritage_anatolian
+		has_cultural_pillar = heritage_iranian
 	}
 }

@@ -117,7 +117,7 @@ macedonian00102 = {
 	trait = impatient
 	trait = arrogant
 	trait = beauty_good_1
-	trait = reveler_2
+	trait = lifestyle_reveler
 	father = macedonian00101 # Antigonos
 	#mother = ... # Stratonike
 	3418.1.1 = { # approximate
@@ -139,6 +139,17 @@ macedonian00102 = {
 	#3434.1.1 = { # 320 BC, approximate
 	#	add_spouse = ... # Phila
 	#}
+	3436.1.1 = { # Adulthood
+		add_trait_xp = { # 318 BC
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
 	#3440.1.1 = { # 314 BC, approximate
 	#	effect = {
 	#		set_relation_rival = character:... # Demetrius and Lysimachus seem to have constantly traded insults
@@ -234,7 +245,7 @@ macedonian00104 = {
 	trait = compassionate
 	trait = generous
 	trait = humble
-	trait = reveler_1
+	trait = lifestyle_reveler
 	trait = shrewd
 	father = macedonian00102 # Demetrios
 	#mother = ... # Phila
@@ -561,7 +572,7 @@ macedonian00116 = {
 	trait = deceitful
 	trait = ambitious
 	trait = vengeful
-	trait = reveler_1
+	trait = lifestyle_reveler
 	trait = schemer
 	father = macedonian00112 # Demetrios
 	#mother = ... # Chryseis
@@ -1005,10 +1016,21 @@ macedonian00402 = {
 	trait = ambitious
 	trait = honest
 	trait = physique_good_1
-	trait = blademaster_2
+	trait = lifestyle_blademaster
 	father = macedonian00401 # Balakros
 	3430.1.1 = { # made up
 		birth = yes # 324 BC
+	}
+	3448.1.1 = { # Adulthood, 306 BC
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3495.1.1 = { # made up
 		death = yes # 259 BC
@@ -2982,7 +3004,7 @@ macedonian03118 = {
 	trait = arrogant # adopted Persian luxuries, probably seeking to emulate Alexander
 	trait = ambitious # sought to establish himself as King of Macedonia
 	trait = strong # was fond of wrestling and hunting
-	trait = hunter_1
+	trait = lifestyle_hunter
 	father = macedonian03115 # Anteas
 	3398.1.1 = {
 		birth = yes # 356 BC
@@ -3680,10 +3702,16 @@ macedonian03503 = {
 	religion = macedonian_faith
 	culture = macedonian
 	trait = education_learning_3
-	trait = mystic_3 # is said to have predicted the deaths of Hephaestion, Alexander, Perdiccas and Antigonus
+	trait = lifestyle_mystic # is said to have predicted the deaths of Hephaestion, Alexander, Perdiccas and Antigonus
 	father = macedonian03501 # Hipponax
 	3385.1.1 = { # made up
 		birth = yes # 369 BC
+	}
+	3403.1.1 = { # Adulthood, 351 BC
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = 80
+		}
 	}
 	3457.1.1 = { # made up
 		death = yes # 297 BC
@@ -4751,14 +4779,25 @@ macedonian03940 = {
 	trait = overseer # his army reforms transformed warfare in the Greek world and beyond
 	trait = administrator # credited with extensive administrative reforms
 	trait = strategist # obviously
-	trait = hunter_1 # a fresco at Tomb II in Vergina appears to depict him on a hunt
-	trait = reveler_2 # partying really ran in the family
+	trait = lifestyle_hunter # a fresco at Tomb II in Vergina appears to depict him on a hunt
+	trait = lifestyle_reveler # partying really ran in the family
 	trait = drunkard # as did alcoholism
 	trait = intellect_good_3 # some would argue he was even more of a genius than Alexander
 	father = macedonian03936 # Amyntas
 	mother = macedonian03109 # Eurydika
 	3372.1.1 = { # approximate
 		birth = yes # 382 BC
+	}
+	3390.1.1 = { # Adulthood
+		add_trait_xp = { # 364 BC
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3395.1.1 = { # winter/spring 360/359 BC, approximate
 		add_spouse = mathian00203 # Audata
@@ -4991,14 +5030,34 @@ macedonian03948 = {
 	trait = overseer # re-organised military & civil governance structures after conquering Persia
 	trait = gallant # sought to emulate the Homeric heroes
 	trait = architect # founded -a lot- of cities
-	trait = blademaster_2 # adept at single combat
-	trait = reveler_2 # and adept at getting absolutely hammered
+	trait = lifestyle_blademaster # adept at single combat
+	trait = lifestyle_reveler # and adept at getting absolutely hammered
 	trait = drunkard # ...perhaps too adept
 	trait = intellect_good_3 # not your typical intellectual, but displayed ingenuinity in his strategies
 	father = macedonian03940 # Philippos
 	mother = epirote00208 # Olympias
 	3398.7.20 = { # 20 July 356 BC
 		birth = yes
+	}
+	3416.1.1 = { # Adulthood, 338 BC
+		add_trait_xp = {
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3421.1 = { # 333 BC, approximate
 		effect = {

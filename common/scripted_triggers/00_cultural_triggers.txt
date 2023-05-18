@@ -19,11 +19,12 @@ drinks_alcohol_trigger = {
 
 faith_forbids_alcohol_trigger = {
 	OR = {
-		religion = religion:islam_religion # Prohibited by khamr, a prohibition against intoxicants
-		religion = religion:jainism_religion # Prohibited along with the consumption of any fermented food
+		# religion = religion:jainism_religion # Prohibited along with the consumption of any fermented food
+		always = no
 		AND = {
 			has_trait = zealous
-			religion = religion:buddhism_religion # Discouraged as it disrupts progress along the eightfold path
+			always = no
+			# religion = religion:buddhism_religion # Discouraged as it disrupts progress along the eightfold path
 		}
 	}
 }
