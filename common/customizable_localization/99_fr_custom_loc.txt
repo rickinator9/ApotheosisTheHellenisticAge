@@ -124,10 +124,6 @@
 # FR_GetRandomWonContest_Le pour GetRandomWonContest
 
 # FR_FaithGenderedAdj - GetFaith.GetAdjective\GetFaith.GetAdherentName (scope: character)
-# FR_LocalAnimal_e - "e" du féminin pour LocalAnimal
-# FR_LocalAnimal_d - de\d’ pour LocalAnimal (Sans espace après)
-# FR_LocalAnimal_he - "he" du féminin pour LocalAnimal (blanc/blanche)
-# FR_LocalAnimal_le - devant LocalAnimal (Sans espace après)
 # FR_Scheme_FullAction - GetActionName - SCHEME_FULL_ACTION_NAME
 # FR_CatStory_e
 # FR_CatStory_le
@@ -188,8 +184,6 @@
 
 ##################################################################
 ##################################################################
-
-# log_loc_errors = no # peut être ajouté pour masquer les erreurs
 
 FR_gender_template = { # all basic gendered character custom commands are based on it
 	type = character
@@ -809,6 +803,12 @@ FR_get_region_root_vegetable_Un = {
 	suffix = _FR_Un
 }
 
+FR_GetRandomRegionalWildDaytimeBird_Plural = { 
+	log_loc_errors = no
+	parent = GetRandomRegionalWildDaytimeBird
+	suffix = _FR_Plural
+}
+
 #############################################
 #############################################
 FR_FaithGenderedAdj = { 
@@ -827,76 +827,6 @@ FR_FaithGenderedAdj = {
 	}
 	text = {
 		localization_key = CustomLoc_FR_FaithGenderedAdj_male
-		fallback = yes
-	}
-}
-
-FR_LocalAnimal_e = {
-	type = character
-	log_loc_errors = no
-
-	text = {
-		localization_key = CustomLoc_FR_female_E
-		trigger = {
-			var:animal_type = flag:unicorn
-		}
-	}
-	text = {
-		localization_key = CustomLoc_FR_empty
-		fallback = yes
-	}
-}
-
-FR_LocalAnimal_d = {
-	type = character
-	log_loc_errors = no
-
-	text = {
-		localization_key = CustomLoc_FR_d
-		trigger = {
-			var:animal_type = flag:bear
-		}
-	}
-	text = {
-		localization_key = CustomLoc_FR_de
-		fallback = yes
-	}
-}
-
-FR_LocalAnimal_he = {
-	type = character
-	log_loc_errors = no
-
-	text = {
-		localization_key = CustomLoc_FR_female_He
-		trigger = {
-			var:animal_type = flag:unicorn
-		}
-	}
-	text = {
-		localization_key = CustomLoc_FR_empty
-		fallback = yes
-	}
-}
-
-FR_LocalAnimal_le = {
-	type = character
-	log_loc_errors = no
-
-	text = {
-		localization_key = CustomLoc_FR_l
-		trigger = {
-			var:animal_type = flag:bear
-		}
-	}
-	text = {
-		localization_key = CustomLoc_FR_la
-		trigger = {
-			var:animal_type = flag:unicorn
-		}
-	}
-	text = {
-		localization_key = CustomLoc_FR_le
 		fallback = yes
 	}
 }
@@ -987,7 +917,7 @@ FR_le_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			government_has_flag = government_is_feudal
+			has_government = feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -999,12 +929,12 @@ FR_le_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1017,8 +947,8 @@ FR_le_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1029,8 +959,8 @@ FR_le_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1062,16 +992,16 @@ FR_le_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
-									government_has_flag = government_is_tribal
+									has_government = feudal_government
+									has_government = clan_government
+									has_government = tribal_government
 								}
 								OR = {
 									culture = { has_cultural_pillar = heritage_mongolic }
 									culture = { has_cultural_pillar = heritage_turkic }
 								}
 							}
-							government_has_flag = government_is_tribal # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
+							has_government = tribal_government # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
 						}
 					}
 				}
@@ -1079,9 +1009,9 @@ FR_le_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_turkish (Atabeg), duke_feudal_female_turkish (Atabegum)
@@ -1091,8 +1021,8 @@ FR_le_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
+									has_government = feudal_government
+									has_government = clan_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1100,8 +1030,8 @@ FR_le_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1112,8 +1042,8 @@ FR_le_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = {
@@ -1127,9 +1057,9 @@ FR_le_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
-								government_has_flag = government_is_tribal
+								has_government = feudal_government
+								has_government = clan_government
+								has_government = tribal_government
 							}
 						}
 					}
@@ -1139,9 +1069,9 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_arabic_group (Émir), duke_feudal_female_arabic_group (Émiresse)
@@ -1154,8 +1084,8 @@ FR_le_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 						}
 					}
@@ -1164,8 +1094,8 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1175,7 +1105,7 @@ FR_le_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							government_has_flag = government_is_clan
+							has_government = clan_government
 						}
 					}
 					OR = {
@@ -1183,7 +1113,7 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_clan
+						has_government = clan_government
 					}
 				}
 				# AND = {
@@ -1191,7 +1121,7 @@ FR_le_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			government_has_flag = government_is_feudal
+				# 			has_government = feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -1199,8 +1129,8 @@ FR_le_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				government_has_flag = government_is_feudal
-				# 				government_has_flag = government_is_tribal
+				# 				has_government = feudal_government
+				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
 				# 			culture = { has_name_list = name_list_anglo_saxon }
@@ -1210,14 +1140,14 @@ FR_le_Char = {
 				# }
 				AND = { # baron_theocracy_male_zoroastrianism_religion (Ervad), baron_theocracy_female_zoroastrianism_religion (Ervad)
 					highest_held_title_tier = tier_barony
-					government_has_flag = government_is_theocracy
+					has_government = theocracy_government
 					religion = religion:zoroastrianism_religion
 				}
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}
@@ -1337,7 +1267,7 @@ FR_du_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			government_has_flag = government_is_feudal
+			has_government = feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -1349,12 +1279,12 @@ FR_du_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1367,8 +1297,8 @@ FR_du_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1379,8 +1309,8 @@ FR_du_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1412,16 +1342,16 @@ FR_du_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
-									government_has_flag = government_is_tribal
+									has_government = feudal_government
+									has_government = clan_government
+									has_government = tribal_government
 								}
 								OR = {
 									culture = { has_cultural_pillar = heritage_mongolic }
 									culture = { has_cultural_pillar = heritage_turkic }
 								}
 							}
-							government_has_flag = government_is_tribal # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
+							has_government = tribal_government # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
 						}
 					}
 				}
@@ -1429,9 +1359,9 @@ FR_du_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_turkish (Atabeg), duke_feudal_female_turkish (Atabegum)
@@ -1441,8 +1371,8 @@ FR_du_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
+									has_government = feudal_government
+									has_government = clan_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1450,8 +1380,8 @@ FR_du_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1462,8 +1392,8 @@ FR_du_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = {
@@ -1477,9 +1407,9 @@ FR_du_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
-								government_has_flag = government_is_tribal
+								has_government = feudal_government
+								has_government = clan_government
+								has_government = tribal_government
 							}
 						}
 					}
@@ -1489,9 +1419,9 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_arabic_group (Émir), duke_feudal_female_arabic_group (Émiresse)
@@ -1504,8 +1434,8 @@ FR_du_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 						}
 					}
@@ -1514,8 +1444,8 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1525,7 +1455,7 @@ FR_du_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							government_has_flag = government_is_clan
+							has_government = clan_government
 						}
 					}
 					OR = {
@@ -1533,7 +1463,7 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_clan
+						has_government = clan_government
 					}
 				}
 				# AND = {
@@ -1541,7 +1471,7 @@ FR_du_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			government_has_flag = government_is_feudal
+				# 			has_government = feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -1549,8 +1479,8 @@ FR_du_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				government_has_flag = government_is_feudal
-				# 				government_has_flag = government_is_tribal
+				# 				has_government = feudal_government
+				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
 				# 			culture = { has_name_list = name_list_anglo_saxon }
@@ -1560,14 +1490,14 @@ FR_du_Char = {
 				# }
 				AND = { # baron_theocracy_male_zoroastrianism_religion (Ervad), baron_theocracy_female_zoroastrianism_religion (Ervad)
 					highest_held_title_tier = tier_barony
-					government_has_flag = government_is_theocracy
+					has_government = theocracy_government
 					religion = religion:zoroastrianism_religion
 				}
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}
@@ -1687,7 +1617,7 @@ FR_au_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			government_has_flag = government_is_feudal
+			has_government = feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -1699,12 +1629,12 @@ FR_au_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					government_has_flag = government_is_feudal
+					has_government = feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1717,8 +1647,8 @@ FR_au_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1729,8 +1659,8 @@ FR_au_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				government_has_flag = government_is_feudal
-				government_has_flag = government_is_clan
+				has_government = feudal_government
+				has_government = clan_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1762,16 +1692,16 @@ FR_au_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
-									government_has_flag = government_is_tribal
+									has_government = feudal_government
+									has_government = clan_government
+									has_government = tribal_government
 								}
 								OR = {
 									culture = { has_cultural_pillar = heritage_mongolic }
 									culture = { has_cultural_pillar = heritage_turkic }
 								}
 							}
-							government_has_flag = government_is_tribal # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
+							has_government = tribal_government # emperor_tribal_male (Grand roi), emperor_tribal_female (Grande reine)
 						}
 					}
 				}
@@ -1779,9 +1709,9 @@ FR_au_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_turkish (Atabeg), duke_feudal_female_turkish (Atabegum)
@@ -1791,8 +1721,8 @@ FR_au_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									government_has_flag = government_is_feudal
-									government_has_flag = government_is_clan
+									has_government = feudal_government
+									has_government = clan_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1800,8 +1730,8 @@ FR_au_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1812,8 +1742,8 @@ FR_au_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = {
@@ -1827,9 +1757,9 @@ FR_au_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
-								government_has_flag = government_is_tribal
+								has_government = feudal_government
+								has_government = clan_government
+								has_government = tribal_government
 							}
 						}
 					}
@@ -1839,9 +1769,9 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
-						government_has_flag = government_is_tribal
+						has_government = feudal_government
+						has_government = clan_government
+						has_government = tribal_government
 					}
 				}
 				AND = { # duke_feudal_male_arabic_group (Émir), duke_feudal_female_arabic_group (Émiresse)
@@ -1854,8 +1784,8 @@ FR_au_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								government_has_flag = government_is_feudal
-								government_has_flag = government_is_clan
+								has_government = feudal_government
+								has_government = clan_government
 							}
 						}
 					}
@@ -1864,8 +1794,8 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1875,7 +1805,7 @@ FR_au_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							government_has_flag = government_is_clan
+							has_government = clan_government
 						}
 					}
 					OR = {
@@ -1883,7 +1813,7 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						government_has_flag = government_is_clan
+						has_government = clan_government
 					}
 				}
 				# AND = {
@@ -1891,7 +1821,7 @@ FR_au_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			government_has_flag = government_is_feudal
+				# 			has_government = feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -1899,8 +1829,8 @@ FR_au_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				government_has_flag = government_is_feudal
-				# 				government_has_flag = government_is_tribal
+				# 				has_government = feudal_government
+				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
 				# 			culture = { has_name_list = name_list_anglo_saxon }
@@ -1910,14 +1840,14 @@ FR_au_Char = {
 				# }
 				AND = { # baron_theocracy_male_zoroastrianism_religion (Ervad), baron_theocracy_female_zoroastrianism_religion (Ervad)
 					highest_held_title_tier = tier_barony
-					government_has_flag = government_is_theocracy
+					has_government = theocracy_government
 					religion = religion:zoroastrianism_religion
 				}
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						government_has_flag = government_is_feudal
-						government_has_flag = government_is_clan
+						has_government = feudal_government
+						has_government = clan_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}
@@ -2336,7 +2266,6 @@ FR_Artifact_OnA = {
 				artifact_type = armor_mail
 				artifact_type = armor_plate
 				artifact_type = brooch
-				artifact_type = brooch_pedestal
 				artifact_type = panacea
 				artifact_type = philosophers_stone
 				artifact_type = sculpture
@@ -2369,7 +2298,6 @@ FR_Le_ArtifactType = {
 				artifact_type = animal_hide_big
 				artifact_type = axe
 				artifact_type = brooch
-				artifact_type = brooch_pedestal
 				artifact_type = ring
 				artifact_type = spear
 				artifact_type = dagger
@@ -2427,7 +2355,6 @@ FR_E_ArtifactType = {
 				artifact_type = armor_scale
 				artifact_type = axe
 				artifact_type = brooch
-				artifact_type = brooch_pedestal
 				artifact_type = dagger
 				artifact_type = goblet
 				artifact_type = jug
@@ -2452,7 +2379,7 @@ FR_Le_ActivityType = {
 	type = activity
 	log_loc_errors = no
 	text = {
-		trigger = { has_activity_type = activity_feast } # Grand rite
+		trigger = { has_activity_type = activity_feast } # Festin
 		localization_key = CustomLoc_FR_le
 	}
 	text = {
@@ -2460,32 +2387,32 @@ FR_Le_ActivityType = {
 		localization_key = CustomLoc_FR_la
 	}
 	text = {
-		trigger = { has_activity_type = activity_hunt } # Festin
-		localization_key = CustomLoc_FR_le
+		trigger = { has_activity_type = activity_hunt } # Chasse
+		localization_key = CustomLoc_FR_la
 	}
 	text = {
-		trigger = { has_activity_type = activity_pilgrimage } # Chasse
-		localization_key = CustomLoc_FR_la
+		trigger = { has_activity_type = activity_pilgrimage } # Pèlerinage
+		localization_key = CustomLoc_FR_le
 	}
 	text = {
 		trigger = { has_activity_type = activity_playdate } # Rencontre des pairs
 		localization_key = CustomLoc_FR_la
 	}
 	text = {
-		trigger = { has_activity_type = activity_tour } # Pèlerinage
-		localization_key = CustomLoc_FR_le
-	}
-	text = {
-		trigger = { has_activity_type = activity_tournament } # Grand mariage
-		localization_key = CustomLoc_FR_le
-	}
-	text = {
-		trigger = { has_activity_type = activity_wedding } # Grand tournoi
-		localization_key = CustomLoc_FR_le
-	}
-	text = {
-		trigger = { has_activity_type = activity_witch_ritual } # Grande visite
+		trigger = { has_activity_type = activity_tour } # Grande tournée
 		localization_key = CustomLoc_FR_la
+	}
+	text = {
+		trigger = { has_activity_type = activity_tournament } # Grand tournoi
+		localization_key = CustomLoc_FR_le
+	}
+	text = {
+		trigger = { has_activity_type = activity_wedding } # Grand mariage
+		localization_key = CustomLoc_FR_le
+	}
+	text = {
+		trigger = { has_activity_type = activity_witch_ritual } # Grand rite
+		localization_key = CustomLoc_FR_le
 	}
 	text = {
 		localization_key = CustomLoc_FR_le
@@ -2497,7 +2424,7 @@ FR_On_ActivityType = {
 	type = activity
 	log_loc_errors = no
 	text = {
-		trigger = { has_activity_type = activity_feast } # Grand rite
+		trigger = { has_activity_type = activity_feast } # Festin
 		localization_key = CustomLoc_FR_on
 	}
 	text = {
@@ -2505,32 +2432,32 @@ FR_On_ActivityType = {
 		localization_key = CustomLoc_FR_a
 	}
 	text = {
-		trigger = { has_activity_type = activity_hunt } # Festin
-		localization_key = CustomLoc_FR_on
+		trigger = { has_activity_type = activity_hunt } # Chasse
+		localization_key = CustomLoc_FR_a
 	}
 	text = {
-		trigger = { has_activity_type = activity_pilgrimage } # Chasse
-		localization_key = CustomLoc_FR_a
+		trigger = { has_activity_type = activity_pilgrimage } # Pèlerinage
+		localization_key = CustomLoc_FR_on
 	}
 	text = {
 		trigger = { has_activity_type = activity_playdate } # Rencontre des pairs
 		localization_key = CustomLoc_FR_a
 	}
 	text = {
-		trigger = { has_activity_type = activity_tour } # Pèlerinage
-		localization_key = CustomLoc_FR_on
-	}
-	text = {
-		trigger = { has_activity_type = activity_tournament } # Grand mariage
-		localization_key = CustomLoc_FR_on
-	}
-	text = {
-		trigger = { has_activity_type = activity_wedding } # Grand tournoi
-		localization_key = CustomLoc_FR_on
-	}
-	text = {
-		trigger = { has_activity_type = activity_witch_ritual } # Grande visite
+		trigger = { has_activity_type = activity_tour } # Grande tournée
 		localization_key = CustomLoc_FR_a
+	}
+	text = {
+		trigger = { has_activity_type = activity_tournament } # Grand tournoi
+		localization_key = CustomLoc_FR_on
+	}
+	text = {
+		trigger = { has_activity_type = activity_wedding } # Grand mariage
+		localization_key = CustomLoc_FR_on
+	}
+	text = {
+		trigger = { has_activity_type = activity_witch_ritual } # Grand rite
+		localization_key = CustomLoc_FR_on
 	}
 	text = {
 		localization_key = CustomLoc_FR_on
@@ -2542,7 +2469,7 @@ FR_E_ActivityType = {
 	type = activity
 	log_loc_errors = no
 	text = {
-		trigger = { has_activity_type = activity_feast } # Grand rite
+		trigger = { has_activity_type = activity_feast } # Festin
 		localization_key = CustomLoc_FR_empty
 	}
 	text = {
@@ -2550,32 +2477,32 @@ FR_E_ActivityType = {
 		localization_key = CustomLoc_FR_female_E
 	}
 	text = {
-		trigger = { has_activity_type = activity_hunt } # Festin
-		localization_key = CustomLoc_FR_empty
+		trigger = { has_activity_type = activity_hunt } # Chasse
+		localization_key = CustomLoc_FR_female_E
 	}
 	text = {
-		trigger = { has_activity_type = activity_pilgrimage } # Chasse
-		localization_key = CustomLoc_FR_female_E
+		trigger = { has_activity_type = activity_pilgrimage } # Pèlerinage
+		localization_key = CustomLoc_FR_empty
 	}
 	text = {
 		trigger = { has_activity_type = activity_playdate } # Rencontre des pairs
 		localization_key = CustomLoc_FR_female_E
 	}
 	text = {
-		trigger = { has_activity_type = activity_tour } # Pèlerinage
-		localization_key = CustomLoc_FR_empty
-	}
-	text = {
-		trigger = { has_activity_type = activity_tournament } # Grand mariage
-		localization_key = CustomLoc_FR_empty
-	}
-	text = {
-		trigger = { has_activity_type = activity_wedding } # Grand tournoi
-		localization_key = CustomLoc_FR_empty
-	}
-	text = {
-		trigger = { has_activity_type = activity_witch_ritual } # Grande visite
+		trigger = { has_activity_type = activity_tour } # Grande tournée
 		localization_key = CustomLoc_FR_female_E
+	}
+	text = {
+		trigger = { has_activity_type = activity_tournament } # Grand tournoi
+		localization_key = CustomLoc_FR_empty
+	}
+	text = {
+		trigger = { has_activity_type = activity_wedding } # Grand mariage
+		localization_key = CustomLoc_FR_empty
+	}
+	text = {
+		trigger = { has_activity_type = activity_witch_ritual } # Grand rite
+		localization_key = CustomLoc_FR_empty
 	}
 	text = {
 		localization_key = CustomLoc_FR_empty

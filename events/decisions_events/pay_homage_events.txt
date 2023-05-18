@@ -1239,9 +1239,11 @@ pay_homage.0601 = {
 		}
 		triggered_desc = {
 			trigger = {
-				scope:homage_liege = { is_alive = no }
 				exists = liege
-				NOT = { liege = root }
+				NOR = {
+					liege = root
+					liege = scope:homage_liege
+				}
 			}
 			desc = pay_homage.0601.desc.new_liege
 		}

@@ -3812,17 +3812,22 @@ hunt.1004 = {
 	}
 
 	after = {
-		scope:activity = {
-			remove_variable = participant_to_use
-			every_attending_character = {
-				limit = {
-					is_ai = no
-					NOT = { this = scope:host }
-				}
-				trigger_event = hunt.1004
+		if = {
+			limit = {
+				this = scope:host
 			}
+			scope:activity = {
+				remove_variable = participant_to_use
+				every_attending_character = {
+					limit = {
+						is_ai = no
+						NOT = { this = scope:host }
+					}
+					trigger_event = hunt.1004
+				}
+			}
+			remove_character_flag = dangerous_road
 		}
-		remove_character_flag = dangerous_road
 	}
 }
 
@@ -5987,7 +5992,12 @@ hunt.1030 = {
 		if = {
 			limit = { this = scope:host }
 			scope:activity = {
-				every_attending_character = { trigger_event = hunt.1030 }
+				every_attending_character = {
+					limit = {
+						NOT = { this = scope:host }
+					}
+					trigger_event = hunt.1030
+				}
 			}
 		}
 	}
@@ -6336,13 +6346,18 @@ hunt.1033 = {
 	}
 
 	after = {
-		scope:activity = {
-			every_attending_character = {
-				limit = {
-					is_ai = no
-					NOT = { this = scope:host }
+		if = {
+			limit = {
+				this = scope:host
+			}
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						is_ai = no
+						NOT = { this = scope:host }
+					}
+					trigger_event = hunt.1033
 				}
-				trigger_event = hunt.1033
 			}
 		}
 	}
@@ -6520,7 +6535,12 @@ hunt.1040 = {
 		if = {
 			limit = { this = scope:host }
 			scope:activity = {
-				every_attending_character = { trigger_event = hunt.1040 }
+				every_attending_character = {
+					limit = {
+						NOT = { this = scope:host }
+					}
+					trigger_event = hunt.1040
+				}
 			}
 		}
 	}
@@ -6532,6 +6552,7 @@ hunt.1043 = {
 	title = hunt.1040.t
 	desc = hunt.1043.desc
 	theme = hunt_activity
+	cooldown = { weeks = 1 }
 	left_portrait = {
 		character = scope:host
 		triggered_animation = {
@@ -6683,13 +6704,18 @@ hunt.1043 = {
 	}
 
 	after = {
-		scope:activity = {
-			every_attending_character = {
-				limit = {
-					is_ai = no
-					NOT = { this = scope:host }
+		if = {
+			limit = {
+				this = scope:host
+			}
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						is_ai = no
+						NOT = { this = scope:host }
+					}
+					trigger_event = hunt.1043
 				}
-				trigger_event = hunt.1043
 			}
 		}
 	}

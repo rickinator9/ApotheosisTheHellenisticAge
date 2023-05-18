@@ -1,7 +1,7 @@
 ﻿marriage_interaction_on_accept_effect = {
 	#Use hook
 	if = {
-		limit = { always = scope:marriage_hook }
+		limit = { always = scope:hook }
 		scope:actor = {
 			use_hook = scope:recipient
 		}
@@ -186,17 +186,6 @@
 						}
 					}
 				}
-				else = {
-					every_vassal = {
-						limit = {
-							has_vassal_stance = courtly
-						}
-						add_opinion = {
-							target = scope:secondary_actor
-							modifier = non_prestigious_wedding_opinion
-						}
-					}
-				}
 			}
 		}
 		scope:secondary_recipient = {
@@ -217,17 +206,6 @@
 						add_opinion = {
 							target = scope:secondary_recipient
 							modifier = prestigious_wedding_opinion
-						}
-					}
-				}
-				else = {
-					every_vassal = {
-						limit = {
-							has_vassal_stance = courtly
-						}
-						add_opinion = {
-							target = scope:secondary_recipient
-							modifier = non_prestigious_wedding_opinion
 						}
 					}
 				}
