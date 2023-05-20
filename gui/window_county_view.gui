@@ -1761,8 +1761,8 @@ window = {
 										size = { 280 100 }
 
 										icon = {
-											texture = "gfx/interface/illustrations/holding_types/city_greek.dds" # gfx\interface\illustrations\holding_types\city_greek.dds
-											size = { 100% 90% }
+											texture = "gfx/interface/illustrations/tomb_types/tumuli_grass.dds" # gfx\interface\illustrations\tomb_types\tumuli_grass.dds
+											size = { 98% 98% }
 										}
 
 										# widget = {
@@ -1824,7 +1824,7 @@ window = {
 												size = { 100% 100% }
 											}
 						
-											button_memories = {
+											button_tumulus = {
 												size = { 25 25 }
 												parentanchor = center
 											}
@@ -1955,7 +1955,7 @@ window = {
 												size = { 100% 100% }
 											}
 						
-											button_memories = {
+											button_sacrifice = {
 												size = { 20 20 }
 												parentanchor = center
 												onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).AddScope( 'sacrifice_target', HoldingView.GetProvince.MakeScope.Var('tomb_primary_occupant').GetCharacter.MakeScope ).End ) ]"

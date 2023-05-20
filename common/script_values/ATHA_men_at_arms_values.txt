@@ -65,10 +65,11 @@ ATHA_maa_guard_maximum = {
 
 ATHA_maa_guard_count = {
 	value = 0
-	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_cordinau_orca_count
 	add = ATHA_maa_homoioi_hippeis_count
-	add = ATHA_maa_hiera_ile_count
+	add = ATHA_maa_hypaspistai_count
 	add = ATHA_maa_basilikoi_agema_count
+	add = ATHA_maa_hiera_ile_count
 }
 
 ATHA_maa_elite_remaining = {
@@ -94,15 +95,72 @@ ATHA_maa_elite_maximum = {
 
 ATHA_maa_elite_count = {
 	value = 0
-	add = ATHA_maa_makedonikoi_peltastai_count
-	add = ATHA_maa_skaplinai_count
-	add = ATHA_maa_aristoi_rompaianai_count
-	add = ATHA_maa_ardiaian_thorakitai_count
-	add = ATHA_maa_epilektoi_hoplitai_count
 	add = ATHA_maa_hyperaspistai_count
+	add = ATHA_maa_makedonikoi_peltastai_count
+	add = ATHA_maa_ardiaian_thorakitai_count
+	add = ATHA_maa_eparitoi_count
+	add = ATHA_maa_epilektoi_hoplitai_count
 	add = ATHA_maa_homoioi_hoplitai_count
-	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_nedes_nesamoi_count
 	add = ATHA_maa_agema_phalangitai_count
+	add = ATHA_maa_chaonion_agema_count
+	add = ATHA_maa_promakhoi_kretikoi_count
+	add = ATHA_maa_zibutai_count
+}
+
+
+ATHA_maa_hyperaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
 }
 
 ATHA_maa_makedonikoi_peltastai_count = {
@@ -159,12 +217,12 @@ ATHA_maa_makedonikoi_peltastai_count = {
 	}
 }
 
-ATHA_maa_skaplinai_count = {
+ATHA_maa_ardiaian_thorakitai_count = {
 	value = 0
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = skaplinai
+				type = ardiaian_thorakitai
 				value = 1
 			}
 		}
@@ -174,7 +232,7 @@ ATHA_maa_skaplinai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = skaplinai
+				type = ardiaian_thorakitai
 				value = 2
 			}
 		}
@@ -184,7 +242,7 @@ ATHA_maa_skaplinai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = skaplinai
+				type = ardiaian_thorakitai
 				value = 3
 			}
 		}
@@ -194,7 +252,7 @@ ATHA_maa_skaplinai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = skaplinai
+				type = ardiaian_thorakitai
 				value = 4
 			}
 		}
@@ -204,7 +262,7 @@ ATHA_maa_skaplinai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = skaplinai
+				type = ardiaian_thorakitai
 				value = 5
 			}
 		}
@@ -213,112 +271,58 @@ ATHA_maa_skaplinai_count = {
 	}
 }
 
-ATHA_maa_aristoi_rompaianai_count = {
+ATHA_maa_eparitoi_count = {
 	value = 0
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = aristoi_rompaianai
-	# 			value = 1
-	# 		}
-	# 	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi
+				value = 1
+			}
+		}
 
-	# 	add = 1
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = aristoi_rompaianai
-	# 			value = 2
-	# 		}
-	# 	}
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi
+				value = 2
+			}
+		}
 
-	# 	add = 2
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = aristoi_rompaianai
-	# 			value = 3
-	# 		}
-	# 	}
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi
+				value = 3
+			}
+		}
 
-	# 	add = 3
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = aristoi_rompaianai
-	# 			value = 4
-	# 		}
-	# 	}
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi
+				value = 4
+			}
+		}
 
-	# 	add = 4
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = aristoi_rompaianai
-	# 			value = 5
-	# 		}
-	# 	}
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi
+				value = 5
+			}
+		}
 
-	# 	add = 5
-	# }
-}
-
-ATHA_maa_ardiaian_thorakitai_count = {
-	value = 0
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = ardiaian_thorakitai
-	# 			value = 1
-	# 		}
-	# 	}
-
-	# 	add = 1
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = ardiaian_thorakitai
-	# 			value = 2
-	# 		}
-	# 	}
-
-	# 	add = 2
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = ardiaian_thorakitai
-	# 			value = 3
-	# 		}
-	# 	}
-
-	# 	add = 3
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = ardiaian_thorakitai
-	# 			value = 4
-	# 		}
-	# 	}
-
-	# 	add = 4
-	# }
-	# if = {
-	# 	limit = {
-	# 		number_maa_regiments_of_type = {
-	# 			type = ardiaian_thorakitai
-	# 			value = 5
-	# 		}
-	# 	}
-
-	# 	add = 5
-	# }
+		add = 5
+	}
 }
 
 ATHA_maa_epilektoi_hoplitai_count = {
@@ -367,60 +371,6 @@ ATHA_maa_epilektoi_hoplitai_count = {
 		limit = {
 			number_maa_regiments_of_type = {
 				type = epilektoi_hoplitai
-				value = 5
-			}
-		}
-
-		add = 5
-	}
-}
-
-ATHA_maa_hyperaspistai_count = {
-	value = 0
-	if = {
-		limit = {
-			number_maa_regiments_of_type = {
-				type = hyperaspistai
-				value = 1
-			}
-		}
-
-		add = 1
-	}
-	if = {
-		limit = {
-			number_maa_regiments_of_type = {
-				type = hyperaspistai
-				value = 2
-			}
-		}
-
-		add = 2
-	}
-	if = {
-		limit = {
-			number_maa_regiments_of_type = {
-				type = hyperaspistai
-				value = 3
-			}
-		}
-
-		add = 3
-	}
-	if = {
-		limit = {
-			number_maa_regiments_of_type = {
-				type = hyperaspistai
-				value = 4
-			}
-		}
-
-		add = 4
-	}
-	if = {
-		limit = {
-			number_maa_regiments_of_type = {
-				type = hyperaspistai
 				value = 5
 			}
 		}
@@ -483,12 +433,12 @@ ATHA_maa_homoioi_hoplitai_count = {
 	}
 }
 
-ATHA_maa_hypaspistai_count = {
+ATHA_maa_nedes_nesamoi_count = {
 	value = 0
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hypaspistai
+				type = nedes_nesamoi
 				value = 1
 			}
 		}
@@ -498,7 +448,7 @@ ATHA_maa_hypaspistai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hypaspistai
+				type = nedes_nesamoi
 				value = 2
 			}
 		}
@@ -508,7 +458,7 @@ ATHA_maa_hypaspistai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hypaspistai
+				type = nedes_nesamoi
 				value = 3
 			}
 		}
@@ -518,7 +468,7 @@ ATHA_maa_hypaspistai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hypaspistai
+				type = nedes_nesamoi
 				value = 4
 			}
 		}
@@ -528,7 +478,61 @@ ATHA_maa_hypaspistai_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hypaspistai
+				type = nedes_nesamoi
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_cordinau_orca_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
 				value = 5
 			}
 		}
@@ -591,6 +595,60 @@ ATHA_maa_homoioi_hippeis_count = {
 	}
 }
 
+ATHA_maa_hypaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
 ATHA_maa_agema_phalangitai_count = {
 	value = 0
 	if = {
@@ -645,12 +703,12 @@ ATHA_maa_agema_phalangitai_count = {
 	}
 }
 
-ATHA_maa_hiera_ile_count = {
+ATHA_maa_chaonion_agema_count = {
 	value = 0
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hiera_ile
+				type = chaonion_agema
 				value = 1
 			}
 		}
@@ -660,7 +718,7 @@ ATHA_maa_hiera_ile_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hiera_ile
+				type = chaonion_agema
 				value = 2
 			}
 		}
@@ -670,7 +728,7 @@ ATHA_maa_hiera_ile_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hiera_ile
+				type = chaonion_agema
 				value = 3
 			}
 		}
@@ -680,7 +738,7 @@ ATHA_maa_hiera_ile_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hiera_ile
+				type = chaonion_agema
 				value = 4
 			}
 		}
@@ -690,7 +748,115 @@ ATHA_maa_hiera_ile_count = {
 	if = {
 		limit = {
 			number_maa_regiments_of_type = {
-				type = hiera_ile
+				type = chaonion_agema
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_promakhoi_kretikoi_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_zibutai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
 				value = 5
 			}
 		}
@@ -745,6 +911,60 @@ ATHA_maa_basilikoi_agema_count = {
 		limit = {
 			number_maa_regiments_of_type = {
 				type = basilikoi_agema
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hiera_ile_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
 				value = 5
 			}
 		}
@@ -1262,15 +1482,62 @@ ATHA_ai_weight_generic_skirmishers = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_rhodioi_sphendonetai_trigger = yes
-				# can_recruit_maa_agrianikoi_pelekephoroi_trigger = yes TODO
 				can_recruit_maa_anatolikoi_phyletai_trigger = yes
-				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
 				can_recruit_maa_kretikoi_peltastai_trigger = yes
-				# can_recruit_maa_skiritai_trigger = yes TODO
-				# can_recruit_maa_uazali_trigger = yes TODO
-				can_recruit_maa_makedonikoi_peltastai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+ATHA_ai_weight_generic_slingers = {
+	value = ATHA_ai_weight_skirmishers
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
+				can_recruit_maa_rhodioi_sphendonetai_trigger = yes
 				can_recruit_maa_skaplinai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_medium_infantry = {
+	value = ATHA_ai_weight_medium_infantry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_drapanai_trigger = yes
+				can_recruit_maa_rompaianai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_hoplite = {
+	value = ATHA_ai_weight_hoplite
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_lakonikoi_hoplitai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_pikemen = {
+	value = ATHA_ai_weight_pikemen
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_chalkaspides_trigger = yes
 			}
 		}
 
@@ -1289,58 +1556,11 @@ ATHA_ai_weight_generic_archers = {
 	}
 }
 
-ATHA_ai_weight_generic_medium_infantry = {
-	value = ATHA_ai_weight_medium_infantry
-	if = {
-		limit = {
-			OR = {
-				can_recruit_maa_drapanai_trigger = yes
-				# can_recruit_maa_aristoi_rompaianai_trigger = yes TODO
-				# can_recruit_maa_ardiaian_thorakitai_trigger = yes TODO
-			}
-		}
-
-		add = ATHA_ai_weight_malus_cultural_maa
-	}
-}
-
-ATHA_ai_weight_generic_pikemen = {
-	value = ATHA_ai_weight_pikemen
-	if = {
-		limit = {
-			OR = {
-				can_recruit_maa_chalkaspides_trigger = yes
-				# can_recruit_maa_argyraspides_trigger = yes TODO
-				can_recruit_maa_agema_phalangitai_trigger = yes
-			}
-		}
-
-		add = ATHA_ai_weight_malus_cultural_maa
-	}
-}
-
-ATHA_ai_weight_generic_hoplite = {
-	value = ATHA_ai_weight_hoplite
-	if = {
-		limit = {
-			OR = {
-				can_recruit_maa_eparitoi_hoplitai_trigger = yes
-				can_recruit_maa_epilektoi_hoplitai_trigger = yes
-				can_recruit_maa_homoioi_hoplitai_trigger = yes
-				can_recruit_maa_homoioi_hippeis_trigger = yes
-			}
-		}
-
-		add = ATHA_ai_weight_malus_cultural_maa
-	}
-}
-
 ATHA_ai_weight_generic_light_cavalry = {
 	value = ATHA_ai_weight_light_cavalry
 	if = {
 		limit = {
 			OR = {
-				# can_recruit_maa_thessalikoi_prodromoi_trigger = yes TODO
 				can_recruit_maa_mandonai_trigger = yes
 			}
 		}
@@ -1354,18 +1574,10 @@ ATHA_ai_weight_generic_heavy_cavalry = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_zibutai_trigger = yes
 				can_recruit_maa_thessalikoi_hippeis_trigger = yes
-				can_recruit_maa_hiera_ile_trigger = yes
-				can_recruit_maa_basilikoi_agema_trigger = yes
 			}
 		}
 
 		add = ATHA_ai_weight_malus_cultural_maa
 	}
-}
-
-ATHA_ai_weight_skiritai = {
-	value = ATHA_ai_weight_skirmishers
-	add = 120
 }

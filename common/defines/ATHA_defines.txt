@@ -27,8 +27,23 @@ NCulture = {
 }
 
 NArmy = {
-	REGIMENT_MONTHLY_REINFORCE_SPEED = 0.05	# Monthly reinforcement percentage of unraised chunks [0-1]
-	REGIMENT_MONTHLY_MAA_REINFORCE_SPEED = 0.05 # Monthly reinforcement percentage of unraised MAA chunks [0-1]
-        FULL_SUPPLY = 150 # Fully supplied units' supply value
-    HOLDING_MIN_GARRISON_COUNT = 150				# The minimal amount of garrisons a holding should have if it should have garrisons
+	REGIMENT_DEFAULT_STACK_SIZE = 100
+	REGIMENT_MONTHLY_REINFORCE_SPEED = 0.03	# Monthly reinforcement percentage of unraised chunks [0-1]
+	REGIMENT_MONTHLY_MAA_REINFORCE_SPEED = 0.1 # Monthly reinforcement percentage of unraised MAA chunks [0-1]
+        FULL_SUPPLY = 100 # Fully supplied units' supply value
+    HOLDING_MIN_GARRISON_COUNT = 25				# The minimal amount of garrisons a holding should have if it should have garrisons
+}
+
+NCombat = {
+	LEVY_TOUGHNESS = 5							# How much toughness does each levy soldier have
+	LEVY_ATTACK = 5								# How much attack does each levy soldier have
+	KNIGHT_DAMAGE_PER_PROWESS = 25					# How much "Damage" stat does a knight get per prowess?
+	KNIGHT_TOUGHNESS_PER_PROWESS = 10				# How much "Toughness" stat does a knight get per prowess?
+}
+
+NMercenary = {
+	LEVIES = { 300 600 900 }				# The base numbers of levies for levels of mercenary bands
+	MAA_REGIMENTS = { 1 2 3 }				# The number of MAA regiments for levels of mercenary bands
+	NUM_KNIGHTS = { 2 3 4 }					# The number of knights for levels of mercenary bands
+	MAA_REGIMENT_SIZES = { 3 3 3 }	# The base sizes of MAA regiments for levels of mercenary bands, in number of sub-regiments
 }
