@@ -1699,26 +1699,6 @@ ep2_locale_events.1014 = {
 
 		remove_short_term_gold = minor_gold_value
 
-		if = {
-			limit = { 
-				is_landed = yes 
-				is_ai = yes
-			}
-			hidden_effect = {
-				random = {
-					chance = 50
-					give_nickname = nick_monarch_of_dice
-				}
-			}
-		}
-
-		if = {
-			limit = { 
-				is_landed = yes 
-			}
-			give_nickname = nick_monarch_of_dice
-		}
-
 		scope:activity = {
 			every_attending_character = {
 				limit = { 
@@ -1934,12 +1914,6 @@ ep2_locale_events.1050 = {
 
 		activity_is_valid_tournament_contestant = yes
 
-		NOT = { #Muslims shouldn't be gambling if they're zealous
-			AND = {
-				faith = { religion_tag = islam_religion }
-				has_trait = zealous
-			}
-		}
 		NOT = { #You could conceivably be accused of cowardice
 			has_trait = brave
 		}

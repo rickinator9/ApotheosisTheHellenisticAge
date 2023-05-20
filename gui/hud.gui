@@ -559,6 +559,7 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_court.dds"
 
 						onclick = "[ToggleGameViewData( 'court_window', GetPlayer.GetID )]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "court_window"
 						tooltip = "COURT_BUTTON"
 						down = "[IsGameViewOpen( 'court_window' )]"
@@ -573,10 +574,10 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_intrigue.dds"
 
 						onclick = "[ToggleGameViewData('intrigue_window', GetPlayer.GetID)]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "intrigue_window"
 						tooltip = "INTRIGUE_BUTTON"
 						down = "[IsGameViewOpen('intrigue_window')]"
-						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 					}
 				}
 
@@ -588,10 +589,10 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_factions.dds"
 
 						onclick = "[ToggleGameView('factions_window')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "factions_window"
 						tooltip = "FACTION_BUTTON"
 						down = "[IsGameViewOpen('factions_window')]"
-						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 					}
 				}
 			}
@@ -620,10 +621,10 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_decisions.dds"
 
 						onclick = "[ToggleGameView('decisions')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "decision_window"
 						tooltip = "DECISIONS_BUTTON"
 						down = "[IsGameViewOpen('decisions')]"
-						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 					}
 				}
 
@@ -635,10 +636,10 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_activities.dds"
 
 						onclick = "[ToggleGameView('activity_list_window')]"
+						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						shortcut = "activity_list_window"
 						tooltip = "ACTIVITY_LIST_BUTTON"
 						down = "[IsGameViewOpen('activity_list_window')]"
-						onclick = "[GetScriptedGui('custom_gui_tab_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 					}
 				}
 				

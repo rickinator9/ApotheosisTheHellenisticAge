@@ -264,24 +264,6 @@ tour_travel.1001 = {
 					multiplier = 1
 				}
 				add_prestige = minor_prestige_gain
-				if = {
-					limit = {
-						OR = {
-							has_any_nickname = no
-							has_bad_nickname = yes
-						}
-					}
-					hidden_effect = {
-						random_list = {
-							80 = {
-
-							}
-							20 = {
-								give_nickname = nick_the_nameless
-							}
-						}
-					}
-				}
 			}
 			10 = {
 				compare_modifier = {
@@ -2027,7 +2009,6 @@ scripted_trigger tour_travel_3130_valid_location = {
 		has_building_or_higher = regimental_grounds_01
 		has_building_or_higher = caravanserai_01
 		has_building_or_higher = watermills_01
-		has_building_or_higher = windmills_01
 	}
 }
 
@@ -2055,7 +2036,6 @@ tour_travel.3130 = {
 						OR = {
 							has_building_or_higher = caravanserai_01
 							has_building_or_higher = watermills_01
-							has_building_or_higher = windmills_01
 						}
 					}
 				}

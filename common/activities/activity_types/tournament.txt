@@ -594,21 +594,6 @@
 				desc = activity_tournament_province_stables_01_desc
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					has_building_or_higher = generic_university
-					has_building_or_higher = al_azhar_university
-					has_building_or_higher = sankore_university
-					has_building_or_higher = siena_university
-					has_building_or_higher = nalanda_university
-				}
-			}
-			add = {
-				value = 1
-				desc = activity_tournament_province_generic_university_desc
-			}
-		}
 	}
 
 	###################
@@ -710,18 +695,6 @@
 		triggered_desc = {
 			trigger = { has_building_or_higher = hall_of_heroes_01 }
 			desc = activity_tournament_province_hall_of_heroes_01_desc
-		}
-		triggered_desc = {
-			trigger = {
-				OR = {
-					has_building_or_higher = generic_university
-					has_building_or_higher = al_azhar_university
-					has_building_or_higher = sankore_university
-					has_building_or_higher = siena_university
-					has_building_or_higher = nalanda_university
-				}
-			}
-			desc = activity_tournament_province_generic_university_desc
 		}
 		triggered_desc = {
 			trigger = {
@@ -990,13 +963,13 @@
 				# Try to account for the average number of planned contest based on era
 				if = {
 					limit = {
-						root.culture = { has_cultural_era_or_later = culture_era_late_medieval }
+						root.culture = { has_cultural_era_or_later = culture_era_imperial }
 					}
 					multiply = 3 # average number to be hosted in the late era
 				}
 				else_if = {
 					limit = {
-						root.culture = { has_cultural_era_or_later = culture_era_high_medieval }
+						root.culture = { has_cultural_era_or_later = culture_era_classical }
 					}
 					multiply = 2 # average number to be hosted in the high era
 				}
@@ -2134,32 +2107,6 @@
 						if = { #building reducing the cost
 							limit = {
 								scope:province ?= {
-									OR = {
-										has_building_or_higher = generic_university
-										has_building_or_higher = al_azhar_university
-										has_building_or_higher = sankore_university
-										has_building_or_higher = siena_university
-										has_building_or_higher = nalanda_university
-									}
-								}
-							}
-							add = {
-								value = 0
-								add = {
-									value = tournament_contest_cheap_cost
-									add = {
-										value = tournament_contest_cheap_cost
-										multiply = activity_cost_scale_by_era
-										subtract = tournament_contest_cheap_cost
-									}
-								}
-								multiply = tournament_contest_cost_discount_value
-								desc = tournament_recital_contest_cost_discount_desc
-							}
-						}
-						if = { #building reducing the cost
-							limit = {
-								scope:province ?= {
 									has_building_or_higher = warrior_lodges_01
 								}
 							}
@@ -2228,8 +2175,7 @@
 				}
 				scope:province.culture = { #Ensure the honses are properly shod and such
 					AND = {
-						has_innovation = innovation_horseshoes
-						has_innovation = innovation_arched_saddle
+						has_innovation = innovation_archaic_saddle
 					}
 				}
 			}
@@ -2358,20 +2304,20 @@
 				}
 				if = {
 					limit = {
-						culture = { has_cultural_era_or_later = culture_era_high_medieval }
+						culture = { has_cultural_era_or_later = culture_era_imperial }
 					}
 					add = {
 						value = 50
-						desc = culture_era_high_medieval
+						desc = culture_era_imperial
 					}
 				}
 				if = {
 					limit = {
-						culture = { has_cultural_era_or_later = culture_era_late_medieval }
+						culture = { has_cultural_era_or_later = culture_era_classical }
 					}
 					add = {
 						value = 50
-						desc = culture_era_late_medieval
+						desc = culture_era_classical
 					}
 				}
 				if = {
@@ -2694,29 +2640,20 @@
 				}
 				if = {
 					limit = {
-						culture = { has_cultural_era_or_later = culture_era_early_medieval }
+						culture = { has_cultural_era_or_later = culture_era_classical }
 					}
 					add = {
 						value = 25
-						desc = culture_era_early_medieval
+						desc = culture_era_classical
 					}
 				}
 				if = {
 					limit = {
-						culture = { has_cultural_era_or_later = culture_era_high_medieval }
+						culture = { has_cultural_era_or_later = culture_era_imperial }
 					}
 					add = {
 						value = 25
-						desc = culture_era_high_medieval
-					}
-				}
-				if = {
-					limit = {
-						culture = { has_cultural_era_or_later = culture_era_late_medieval }
-					}
-					add = {
-						value = 25
-						desc = culture_era_late_medieval
+						desc = culture_era_imperial
 					}
 				}
 			}
@@ -2890,32 +2827,6 @@
 							multiply = activity_cost_scale_by_era
 							subtract = tournament_contest_base_cost
 							desc = activity_cost_scale_by_era_desc
-						}
-						if = { #building reducing the cost
-							limit = {
-								scope:province ?= {
-									OR = {
-										has_building_or_higher = generic_university
-										has_building_or_higher = al_azhar_university
-										has_building_or_higher = sankore_university
-										has_building_or_higher = siena_university
-										has_building_or_higher = nalanda_university
-									}
-								}
-							}
-							add = {
-								value = 0
-								add = {
-									value = tournament_contest_base_cost
-									add = {
-										value = tournament_contest_base_cost
-										multiply = activity_cost_scale_by_era
-										subtract = tournament_contest_base_cost
-									}
-								}
-								multiply = tournament_contest_cost_discount_value
-								desc = tournament_board_games_contest_cost_discount_desc
-							}
 						}
 						if = { #building reducing the cost
 							limit = {

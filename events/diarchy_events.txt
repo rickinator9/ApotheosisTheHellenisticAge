@@ -3348,7 +3348,7 @@ diarchy.1701 = {
 				# And filter for technology.
 				trigger_if = {
 					limit = { has_realm_law = crown_authority_1 }
-					culture = { has_innovation = innovation_royal_prerogative }
+					culture = { has_innovation = innovation_classical_constitution }
 				}
 			}
 			# Make sure we've got at least a couple of vassals to check this through.
@@ -4599,16 +4599,14 @@ diarchy.1731 = {
 	# All-Thing cultures meet at the stones.
 	override_background = {
 		trigger = {
-			culture = { has_innovation = innovation_all_things }
+			always = no
 		}
 		reference = council_chamber
 	}
 	# Everyone else in the town square.
 	override_background = {
 		trigger = {
-			NOT = {
-				culture = { has_innovation = innovation_all_things }
-			}
+			always = yes
 		}
 		reference = market_scope
 	}
@@ -7873,46 +7871,13 @@ scripted_effect diarch_9000_generic_nickname_after_effect = {
 					# Generic nicknames.
 					## Usurper
 					### We weight this up so that you've got a 1:3-ish chance of being the Usurper for usurping.
-					250 = { give_nickname = nick_the_usurper }
+					250 = { set_permanent_nickname_effect = { NICKNAME = nick_the_hawk } }
 					## Betrayer
-					100 = { give_nickname = nick_the_betrayer }
+					100 = { set_permanent_nickname_effect = { NICKNAME = nick_the_autocrat } }
 					## Traitor
-					100 = { give_nickname = nick_the_traitor }
+					100 = { set_permanent_nickname_effect = { NICKNAME = nick_the_cruel } }
 					## Oathbreaker
-					100 = { give_nickname = nick_the_oathbreaker }
-					# Diplo-specific nicknames.
-					## Ruthless
-					100 = {
-						trigger = { scope:coup_diplomacy = yes }
-						give_nickname = nick_the_ruthless
-					}
-					## Silver-Tongue
-					100 = {
-						trigger = { scope:coup_diplomacy = yes }
-						give_nickname = nick_the_silver_tongue
-					}
-					# Intrigue-specific nicknames.
-					## Selfish
-					100 = {
-						trigger = { scope:coup_intrigue = yes }
-						give_nickname = nick_the_selfish
-					}
-					## Brute
-					100 = {
-						trigger = { scope:coup_intrigue = yes }
-						give_nickname = nick_the_brute
-					}
-					# Prowess-specific nicknames.
-					## Black
-					100 = {
-						trigger = { scope:coup_prowess = yes }
-						give_nickname = nick_the_black
-					}
-					## Oppressor
-					100 = {
-						trigger = { scope:coup_prowess = yes }
-						give_nickname = nick_the_oppressor
-					}
+					100 = { set_permanent_nickname_effect = { NICKNAME = nick_the_bold } }
 				}
 			}
 		}

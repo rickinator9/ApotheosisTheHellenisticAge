@@ -1919,10 +1919,7 @@ tournament_events.1000 = { # Select wager
 ##################################################
 
 scripted_trigger tournament_pas_darmes_era_trigger = {
-	scope:host = {
-		NOT = { government_has_flag = government_is_tribal }
-	}
-	culture = { has_cultural_era_or_later = culture_era_early_medieval }
+	always = no # Not a thing during the Hellenistic period.
 }
 
 scripted_trigger tournament_pas_darmes_instigator_trigger = {
@@ -6627,7 +6624,7 @@ tournament_events.1270 = {
 						send_interface_toast = {
 							title = tournament_events.1270.nickname_toast
 							left_icon = scope:congragulate_winner
-							scope:congratulate_winner = { give_nickname = nick_the_champion }
+							scope:congratulate_winner = { set_permanent_nickname_effect = { NICKNAME = nick_the_victorious } }
 						}
 					}
 				}
@@ -6837,7 +6834,7 @@ tournament_events.1280 = {
 			has_character_flag = tournament_host_disaster_cooldown
 		}
 		NOT = { government_has_flag = government_is_tribal }
-		culture = { has_cultural_era_or_later = culture_era_high_medieval }
+		culture = { has_cultural_era_or_later = culture_era_hellenistic }
 	}
 
 	weight_multiplier = {

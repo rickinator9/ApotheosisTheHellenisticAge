@@ -28,7 +28,7 @@ tradition_ceremonial_generosity = {
 			if = {
 				limit = {
 					NOT = {
-						any_in_list = { list = traits this = flag:ethos_courtly }
+						culture_pillar:ethos_courtly = { is_in_list = traits }
 					}
 				}
 				add = {
@@ -97,11 +97,11 @@ tradition_ceremonial_generosity = {
 		if = {
 			limit = {
 				OR = {
-					any_in_list = { list = traits this = flag:tradition_esteemed_hospitality }
-					any_in_list = { list = traits this = flag:tradition_welcoming }
-					any_in_list = { list = traits this = flag:tradition_charitable }
-					any_in_list = { list = traits this = flag:tradition_ruling_caste }
-					any_in_list = { list = traits this = flag:tradition_festivities }
+					culture_tradition:tradition_esteemed_hospitality = { is_in_list = traits }
+					culture_tradition:tradition_welcoming = { is_in_list = traits }
+					culture_tradition:tradition_charitable = { is_in_list = traits }
+					culture_tradition:tradition_ruling_caste = { is_in_list = traits }
+					culture_tradition:tradition_festivities = { is_in_list = traits }
 				}
 			}
 			multiply = 0.1
@@ -127,7 +127,7 @@ tradition_headhunting = {
 			limit = {
 				OR = {
 					NOT = { exists = scope:replacing }
-					NOT = { scope:replacing = flag:tradition_battlefield_looters }
+					NOT = { scope:replacing =  culture_tradition:tradition_city_keepers }
 				}
 			}
 			NOT = { has_cultural_tradition = tradition_battlefield_looters } #To prevent stacking after hybridization
@@ -153,8 +153,8 @@ tradition_headhunting = {
 			if = {
 				limit = {
 					NOR = {
-						any_in_list = { list = traits this = flag:ethos_bellicose }
-						any_in_list = { list = traits this = flag:ethos_bureaucratic }
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
 					}
 				}
 				add = {

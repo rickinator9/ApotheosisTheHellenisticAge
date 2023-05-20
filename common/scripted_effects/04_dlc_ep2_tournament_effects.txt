@@ -3512,11 +3512,11 @@ tournament_contest_generate_prize_effect = {
 				}
 				# Creep over time
 				if = {
-					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_high_medieval } }
+					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_hellenistic } }
 					multiply = 1.25
 				}
 				else_if = {
-					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_late_medieval } }
+					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_imperial } }
 					multiply = 1.5
 				}
 				min = 25
@@ -3541,11 +3541,11 @@ tournament_contest_generate_prize_effect = {
 				}
 				# Creep over time
 				if = {
-					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_high_medieval } }
+					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_hellenistic } }
 					multiply = 1.25
 				}
 				else_if = {
-					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_late_medieval } }
+					limit = { activity_host.culture = { has_cultural_era_or_later = culture_era_imperial } }
 					multiply = 1.5
 				}
 				min = 25
@@ -3613,7 +3613,7 @@ tournament_contest_generate_prize_effect = {
 	 	}
 	 	5 = { # Necklace
 	 		trigger = {
-	 			scope:host.culture = { has_cultural_era_or_later = culture_era_early_medieval }
+	 			scope:host.culture = { has_cultural_era_or_later = culture_era_classical }
 	 		}
 		 	if = {
 		 		limit = {
@@ -3659,7 +3659,7 @@ tournament_contest_generate_prize_effect = {
 	 	5 = { # Goblet
 		 	trigger = {
 		 		scope:$CONTEST$_winner = { has_royal_court = yes }
-		 		scope:host.culture = { has_cultural_era_or_later = culture_era_early_medieval }
+		 		scope:host.culture = { has_cultural_era_or_later = culture_era_classical }
 		 	}
 			create_artifact_goblet_effect = {
 				OWNER = scope:host
@@ -3673,7 +3673,7 @@ tournament_contest_generate_prize_effect = {
 	 	5 = { # Bowl
 		 	trigger = {
 		 		scope:$CONTEST$_winner = { has_royal_court = yes }
-		 		scope:host.culture = { has_cultural_era_or_later = culture_era_early_medieval }
+		 		scope:host.culture = { has_cultural_era_or_later = culture_era_classical }
 		 	}
 			create_artifact_bowl_effect = {
 				OWNER = scope:host
@@ -3687,7 +3687,7 @@ tournament_contest_generate_prize_effect = {
 	 	5 = { # Urn
 		 	trigger = {
 		 		scope:$CONTEST$_winner = { has_royal_court = yes }
-		 		scope:host.culture = { has_cultural_era_or_later = culture_era_early_medieval }
+		 		scope:host.culture = { has_cultural_era_or_later = culture_era_classical }
 		 	}
 			create_artifact_urn_effect = {
 				OWNER = scope:host
@@ -3702,7 +3702,7 @@ tournament_contest_generate_prize_effect = {
 		 	trigger = {
 		 		scope:contest_type = flag:joust
 		 		scope:$CONTEST$_winner = { has_royal_court = yes }	
-		 		scope:host.culture = { has_cultural_era_or_later = culture_era_high_medieval }
+		 		scope:host.culture = { has_cultural_era_or_later = culture_era_hellenistic }
 		 	}
 			hidden_effect_new_object = {
 				# Get artifact quality, wealth, materials, and decorations
@@ -3748,7 +3748,7 @@ tournament_contest_generate_prize_effect = {
 		 		}
 		 		scope:host = {
 		 			drinks_alcohol_trigger = yes
-		 			culture = { has_cultural_era_or_later = culture_era_high_medieval }
+		 			culture = { has_cultural_era_or_later = culture_era_hellenistic }
 		 		}
 		 	}
 			hidden_effect_new_object = {
@@ -3789,7 +3789,7 @@ tournament_contest_generate_prize_effect = {
 	 	}
 	 	5 = { # Scepter
 	 		trigger = {
-	 			scope:host.culture = { has_cultural_era_or_later = culture_era_high_medieval }
+	 			scope:host.culture = { has_cultural_era_or_later = culture_era_hellenistic }
 	 		}
 	 		if = {
 	 			limit = {

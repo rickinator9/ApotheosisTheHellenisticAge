@@ -14,30 +14,6 @@ GetRegionalInfantryMAA = {
 	random_valid = yes
 	
 	text = {
-		trigger = {
-			culture = { has_cultural_parameter = unlock_maa_spartiatai_hoplitai }
-			OR = { 
-				government_has_flag = government_is_spartan_city_state
-				AND = { 
-					government_has_flag = government_is_hegemonic_league
-					OR = {
-						dynasty = dynasty:spartandyn001
-						dynasty = dynasty:spartandyn002
-					}
-				}
-			}
-		}
-		localization_key = spartiatai_hoplitai
-	}
-	text = {
-		trigger = { culture = { has_innovation = innovation_sarissa } }
-		localization_key = pezhetairoi
-	}
-	text = {
-		trigger = { culture = { has_cultural_parameter = unlock_maa_hoplitai } }
-		localization_key = hoplitai
-	}
-	text = {
 		trigger = { always = no }
 		fallback = yes
 		localization_key = infantry
@@ -48,10 +24,6 @@ GetRegionalCavalryMAA = {
 	type = character
 	random_valid = yes
 	
-	text = {
-		trigger = { culture = { has_innovation = innovation_companion_cavalry } }
-		localization_key = hetairoi
-	}
 	text = {
 		trigger = { always = no }
 		fallback = yes

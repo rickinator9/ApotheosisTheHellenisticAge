@@ -20,8 +20,14 @@ is_culture_or_parent_culture = {
 is_spartan = {
 	has_culture = culture:laconian
 	OR = {
-		capital_county = { THIS = title:c_sparta }
-		any_liege_or_above = { capital_county = { THIS = title:c_sparta } }
+		AND = {
+			exists = capital_county
+			capital_county = { THIS = title:c_sparta }
+		}
+		AND = {
+			exists = liege
+			any_liege_or_above = { capital_county = { THIS = title:c_sparta } }
+		}
 	}
 }
 

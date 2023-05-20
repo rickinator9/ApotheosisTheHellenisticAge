@@ -1138,25 +1138,6 @@ portrait_war_nobles_helmet_trigger = {
 		AND = {
 			always = no
 			portrait_wear_armor_trigger = yes
-			OR = {
-				any_character_war = {
-					OR = {
-						using_cb = undirected_great_holy_war
-						using_cb = directed_great_holy_war
-					}
-					is_attacker = prev
-				}
-				any_liege_or_above = {
-					faith = prev.faith
-					any_character_war = {
-						OR = {
-							using_cb = undirected_great_holy_war
-							using_cb = directed_great_holy_war
-						}
-						is_attacker = prev
-					}
-				}
-			}
 		}
 	}	
 }
@@ -1200,25 +1181,6 @@ portrait_western_crusades_trigger = {
 	    AND = {
 			always = no
 	        portrait_wear_armor_trigger = yes
-	        OR = {
-	            any_character_war = {
-	                OR = {
-	                    using_cb = undirected_great_holy_war
-	                    using_cb = directed_great_holy_war
-	                }
-	                is_attacker = prev
-	            }
-	            any_liege_or_above = {
-	                faith = prev.faith
-	                any_character_war = {
-	                    OR = {
-	                        using_cb = undirected_great_holy_war
-	                        using_cb = directed_great_holy_war
-	                    }
-	                    is_attacker = prev
-	                }
-	            }
-	        }
 	    }
 	}
 }

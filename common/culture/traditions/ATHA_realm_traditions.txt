@@ -87,9 +87,9 @@ tradition_abundant_hillforts = {
 		}
 		custom_tooltip = {
 			text = cannot_have_tradition_city_keepers
-			NOR = { 
-				any_in_list = { list = traits this = flag:tradition_city_keepers }
-				any_in_list = { list = traits this = flag:tradition_castle_keepers }
+			NOR = {
+				culture_tradition:tradition_city_keepers = { is_in_list = traits }
+				culture_tradition:tradition_castle_keepers = { is_in_list = traits }
 			}
 		}
 	}
@@ -117,9 +117,9 @@ tradition_abundant_hillforts = {
 			if = {
 				limit = {
 					NOR = {
-						any_in_list = { list = traits this = flag:ethos_bellicose }
-						any_in_list = { list = traits this = flag:ethos_stoic }
-						any_in_list = { list = traits this = flag:ethos_bureaucratic }
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
 					}
 				}
 				add = {
@@ -214,9 +214,9 @@ tradition_transhumant_shepherds = {
 			if = {
 				limit = {
 					NOR = {
-						any_in_list = { list = traits this = flag:ethos_bellicose }
-						any_in_list = { list = traits this = flag:ethos_stoic }
-						any_in_list = { list = traits this = flag:ethos_communal }
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
 					}
 				}
 				add = {

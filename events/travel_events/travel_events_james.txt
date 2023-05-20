@@ -680,38 +680,10 @@ travel_events.4002 = {
 
 # You encounter vikings at sea
 scripted_trigger is_near_vikings_trigger = {
-	NOT = {
-		culture = { has_innovation = innovation_longboats }
-	}
-	location = {
-		any_neighboring_province = {
-			exists = county #Not at sea, not an impassable
-			county = {
-				any_county = {
-					holder = { in_diplomatic_range = root }
-					is_coastal_county = yes
-					any_county_province = { is_coastal = yes }
-					culture = { has_innovation = innovation_longboats }
-					faith = { has_doctrine_parameter = faith_can_raid }
-				}
-			}
-		}
-	}
+	always = no
 }
 scripted_trigger is_near_berber_pirates_trigger = {
-	NOT = {
-		culture = { has_cultural_pillar = heritage_berber }
-	}
-	location = {
-		any_neighboring_province = {
-			exists = county #Not at sea, not an impassable
-			county = {
-				holder = { in_diplomatic_range = root }
-				is_coastal_county = yes
-				culture = { has_cultural_pillar = heritage_berber }
-			}
-		}
-	}
+	always = no
 }
 
 travel_events.4003 = { 
@@ -734,6 +706,8 @@ travel_events.4003 = {
 			}
 			desc = travel_events.4003.desc.regular_pirate
 		}
+
+		# TODO: Add Illyrian pirates or other piratical cultures
 	}
 	theme = travel_danger
 	left_portrait = {
@@ -756,7 +730,7 @@ travel_events.4003 = {
 				county = {
 					holder = { in_diplomatic_range = root }
 					any_county_province = { is_coastal = yes }
-					culture = { has_innovation = innovation_longboats }
+					always = no
 					faith = { has_doctrine_parameter = faith_can_raid }
 				}
 			}
@@ -787,35 +761,6 @@ travel_events.4003 = {
 	}
 	immediate = {
 		if = {
-			limit = {
-				is_near_vikings_trigger = yes
-			}
-			location = {
-				random_neighboring_province = {
-					limit = {
-						exists = county #Not at sea, not an impassable
-						county = {
-							holder = { in_diplomatic_range = root }
-							any_county_province = { is_coastal = yes }
-							culture = { has_innovation = innovation_longboats }
-							faith = { has_doctrine_parameter = faith_can_raid }
-						}
-					}
-					county = {
-						save_scope_as = pirate_county_scope
-					}
-				}
-			}
-			create_character = {
-				template = fp1_ms_warrior_character
-				location = root.location
-				culture = scope:pirate_county_scope.culture
-				faith = scope:pirate_county_scope.faith
-				#Set up the scope
-				save_scope_as = viking_scope
-			}
-		}
-		else_if = {
 			limit = {
 				is_near_berber_pirates_trigger = yes
 			}
@@ -876,30 +821,6 @@ travel_events.4003 = {
 						type = won_duel
 						participants = {
 							duel_loser = scope:viking_scope
-						}
-					}
-					if = {
-						limit = {
-							OR = {
-								has_any_nickname = no
-								has_bad_nickname = yes
-							}
-						}
-						random_list = {
-							5 = {
-								if= {
-									limit = {
-										scope:viking_scope.culture = {
-											has_innovation = innovation_longboats
-										}
-									}
-									give_nickname = nick_northmen_slayer
-								}
-								else = {
-									give_nickname = nick_pirate_slayer
-								}
-							}
-							95 = {}
 						}
 					}
 				}
@@ -2319,8 +2240,6 @@ travel_events.4012 = {
 					}
 					set_culture = root.culture #For consistency we will set the culture even if it already speaks the same language.
 				}
-				# Give them a cool nickname
-				give_nickname = nick_son_of_dangerous_animal
 			}
 		}
 	}
@@ -4563,22 +4482,6 @@ travel_events.4025 = {
 	option = {
 		name = travel_events.4025.a
 		add_trait = holy_warrior
-		if = {
-			limit = {
-				always = no
-				OR = {
-					has_any_nickname = no
-					has_bad_nickname = yes
-				}
-			}
-			if = {
-				limit = { is_male = yes }
-				give_nickname = nick_prester_john
-			}
-			else = {
-				give_nickname = nick_prester_joan
-			}
-		}
 		every_neighboring_and_across_water_top_liege_realm = {
 			custom = travel_events.4025.different_religion_neighbors_and_vassals
 			limit = {
@@ -4978,7 +4881,7 @@ travel_events.4029 = {
 		}
 		hidden_effect = {
 			scope:brainless_character = {
-				give_nickname = nick_the_thoughtless
+				set_permanent_nickname_effect = { NICKNAME = nick_the_slave }
 				random_list = {
 					50 = {
 						set_to_lowborn = yes
@@ -5284,7 +5187,7 @@ travel_events.4031 = {
 			scope:heartless_knight_scope = {
 				if = {
 					limit = { root = { is_ai = no } }
-					give_nickname = nick_the_heartless
+					set_permanent_nickname_effect = { NICKNAME = nick_the_cruel }
 				}
 				add_character_flag = single_combat_duel_armor
 			}
@@ -5491,7 +5394,6 @@ travel_events.4032 = {
 				save_scope_as = cowardly_knight_scope
 			}
 			scope:cowardly_knight_scope ?= {
-				give_nickname = nick_the_craven
 				change_trait_rank = {
 					trait = wounded
 					rank = 1
