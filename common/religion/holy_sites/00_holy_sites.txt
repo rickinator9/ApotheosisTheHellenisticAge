@@ -660,3 +660,117 @@ lychnidos = { # Trebenishte royal graves, incentive for the Paeonians to expand 
 ############
 # ILLYRIAN #
 ############
+
+# Vidasian
+# https://www.academia.edu/3393757/Interpretatio_Romana_of_the_forest_deities_in_the_Central_Balkan_area
+
+opacic = { # A primitive (and possibly early) relief of Silvanus and Diana
+	county = c_salvion
+
+	# Displays Silvanus and Diana as a couple.
+	character_modifier = {
+		name = holy_site_opacic_effect_name
+		men_at_arms_maintenance = -0.05
+		fertility = 0.1
+	}
+}
+
+topusko = { # The only mention of Vidasus and Thana
+	county = c_komvorion
+
+	character_modifier = { # TODO
+		name = holy_site_topusko_effect_name
+	}
+}
+
+varazdinske = { # The site of three altars to Silvanus
+	county = c_iasion
+
+	# These deities are forest deities and should give benefits in forests.
+	character_modifier = {
+		name = holy_site_varazdinske_effect_name
+		forest_advantage = 5
+		forest_levy_size = 0.1
+	}
+}
+
+osijek = { # The site of an inscription to Silvanus
+	county = c_mursa
+
+	# Hunting often occurs in forests.
+	# Makes hunts reward 25% extra prestige.
+	character_modifier = {
+		name = holy_site_osijek_effect_name
+		lifestyle_hunter_xp_gain_mult = 0.3
+	}
+}
+
+viminicium = { # The site of an inscription to Silvanus
+	county = c_viminikion
+
+	character_modifier = { # TODO
+		name = holy_site_viminicium_effect_name
+	}
+}
+
+##########
+# CELTIC #
+##########
+
+# Skordic
+
+singidunum = { # Capital of the Scordisci
+	county = c_singidunon
+
+	# The Scordisci formed an integrated society from Celts, Thracians and Illyrians.
+	character_modifier = {
+		name = holy_site_singidunum_effect_name
+		cultural_head_acceptance_gain_mult = 0.1
+		minority_vassal_opinion = 5
+	}
+}
+
+tylis = { # The Celtic kingdom in Thrace
+	county = c_tylis
+
+	# Tylis extorted neighbouring states for their money.
+	character_modifier = {
+		name = holy_site_tylis_effect_name
+		max_loot_mult = 0.1
+		raid_speed = 0.25
+	}
+}
+
+serdika = { # The votive relief that is used as the faith icon was found here.
+	county = c_serdika
+
+	# The long travels of the Celts has taught them how to travel safely and efficiently.
+	character_modifier = {
+		name = holy_site_serdika_effect_name
+		character_travel_safety_mult = 0.05
+		character_travel_speed_mult = 0.05
+	}
+}
+
+scardus = { # The mountain that has the same name as the god.
+	county = c_petrizon
+
+	# 'Conquering' the mountain teaches the Celts how to live there and breeds respect.
+	character_modifier = {
+		name = holy_site_scardus_effect_name
+		mountains_development_growth_factor = 0.2
+		county_opinion_add = 5
+	}
+}
+
+dolni_galavanak = { # The only stone circle in Bulgaria. The Celts could have found this familiar to their home region where they were used by druids.
+	county = c_hyperperakion
+	barony = b_asambyzas_hyperperakion
+
+	# General 'pious' modifier.
+	character_modifier = {
+		name = holy_site_dolni_galavanak_effect_name
+		learning_per_piety_level = 1
+		monthly_piety_gain_mult = 0.1
+	}
+}
