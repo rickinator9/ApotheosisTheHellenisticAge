@@ -736,8 +736,11 @@ opacic = { # A primitive (and possibly early) relief of Silvanus and Diana
 topusko = { # The only mention of Vidasus and Thana
 	county = c_komvorion
 
-	character_modifier = { # TODO
+	# Hunting and living in forests ultimately requires a lot of strength.
+	character_modifier = {
 		name = holy_site_topusko_effect_name
+		forest_travel_danger = -10
+		prowess_per_prestige_level = 1
 	}
 }
 
@@ -766,8 +769,10 @@ osijek = { # The site of an inscription to Silvanus
 viminicium = { # The site of an inscription to Silvanus
 	county = c_viminikion
 
-	character_modifier = { # TODO
+	# This region saw a lot of fortification.
+	character_modifier = {
 		name = holy_site_viminicium_effect_name
+		additional_fort_level = 1
 	}
 }
 
