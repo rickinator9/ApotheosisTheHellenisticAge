@@ -706,6 +706,7 @@ phlanona = { #Extensive cult of Sentona during Roman Times - Local Goddess of Tr
 
 	character_modifier = {
 		name = holy_site_phlanona_effect_name
+		travel_danger = -5 #TODO
 		embarkation_cost_mult = -0.10
 		supply_duration = 0.10
 	}
@@ -724,12 +725,12 @@ polai = { #Greatest Istrian City during roman times, sophisticated local heritag
 
 nauportos = { #Aemona-Nauportus-Fuzine Gods
 	county = c_nauportos
-	#barony = b_nauportos_nauportos #Because it can be moved to Aemona?
+	#barony = b_nauportos_nauportos #Because it can be moved to Aemona later when romans arrive?
 
 	character_modifier = {
 		name = holy_site_nauportos_effect_name
-		#also could be embarkation_cost_mult = -0.10 as reference to its Hellenising Myth
-		build_gold_cost = -0.05 #City grew and it became a significant Roman port with a large surrounding area under its jurisdiction.
+		naval_movement_speed_mult = 0.1 #Both Arquornia and Laburus were deities of water traffic,
+		coastal_sea_travel_danger = -5 #TODO
 	}
 }
 
@@ -739,8 +740,22 @@ ainona = { #https://www.spottinghistory.com/view/10085/roman-temple-of-nin/, Imp
 
 	character_modifier = {
 		name = holy_site_ainona_effect_name
-		build_gold_cost = -0.05
-		monthly_piety_gain_mult = 0.05
+		faith_creation_piety_cost_mult = -0.1 #Place of multiple cults, Roman, Illyrian and Greek
+		monthly_piety_from_buildings_mult = 0.1 #Biggest temple in Dalmatia built by the Vespasian
+	}
+}
+
+# Bindenic Faith
+# Comments are made along the way.
+
+treveson = { #Privilice: Shrine to Bindo, the most famous that survived.
+	county = c_treveson
+	barony = b_treveson_treveson
+
+	character_modifier = {
+		name = holy_site_treveson_effect_name
+		negate_health_penalty_add = 0.2 # "mostly connected to the cult of water healing, in which the god Bindu is clearly manifested."
+		monthly_piety_gain_mult = 0.1 #
 	}
 }
 
