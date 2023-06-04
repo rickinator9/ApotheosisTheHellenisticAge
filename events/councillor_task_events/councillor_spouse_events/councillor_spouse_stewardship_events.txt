@@ -410,10 +410,17 @@ councillor_spouse_stewardship.1006 = {
 					opinion = 10
 				}
 				hidden_effect = {
-					add_opinion = {
-						target = scope:councillor
-						modifier = respect_opinion
-						opinion = 10
+					if = {
+						limit = {
+							NOT = {
+								this = scope:councillor
+							}
+						}
+						add_opinion = {
+							target = scope:councillor
+							modifier = respect_opinion
+							opinion = 10
+						}
 					}
 				}
 			}
@@ -988,6 +995,9 @@ councillor_spouse_stewardship.2001 = {
 		}
 		every_courtier = {
 			custom = councillor_spouse_stewardship_1006_every_courtier
+			limit = {
+				NOT = { this = scope:councillor }
+			}
 			add_opinion = {
 				target = root
 				modifier = friendliness_opinion

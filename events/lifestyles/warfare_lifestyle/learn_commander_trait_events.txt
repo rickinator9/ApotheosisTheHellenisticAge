@@ -490,7 +490,7 @@ learn_commander_trait.0009 = {
 		modifier = {
 			add = 1
 			capital_province = {
-				terrain = jungle
+				terrain = taiga
 			}
 		}
 		modifier = {
@@ -501,7 +501,7 @@ learn_commander_trait.0009 = {
 			factor = 1.5
 			any_directly_owned_province = {
 				count > 3
-				terrain = jungle
+				terrain = taiga
 			}
 		}
 		modifier = {
@@ -538,6 +538,7 @@ learn_commander_trait.1000 = {
 		#Check for a suitable teacher
 		OR = {
 			any_vassal = {
+				is_available_adult = yes
 				opinion = {
 					target = root
 					value > 10
@@ -548,6 +549,7 @@ learn_commander_trait.1000 = {
 				}
 			}
 			any_courtier = {
+				is_available_adult = yes
 				opinion = {
 					target = root
 					value > 10
@@ -580,6 +582,7 @@ learn_commander_trait.1000 = {
 		#Find an AI Vassal or Commander who has a CT you don't
 		random_vassal = {
 			limit = {
+				is_available_adult = yes
 				opinion = {
 					target = root
 					value > 10
@@ -603,6 +606,7 @@ learn_commander_trait.1000 = {
 			}
 			random_courtier = {
 				limit = {
+					is_available_adult = yes
 					opinion = {
 						target = root
 						value > 10

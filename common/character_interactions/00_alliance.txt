@@ -1634,10 +1634,7 @@ negotiate_alliance_interaction = {
 		modifier = {
 			add = -25
 			scope:recipient = {
-				exists = house
-				house.house_head = {
-					house_feud_target_house_trigger = { HOUSE = scope:actor.house }
-				}
+				existing_feud_against_target_trigger = { TARGET = scope:actor }
 			}
 			desc = MARRY_FAMILY_FEUD_REASON
 		}
@@ -2424,10 +2421,7 @@ perk_alliance_interaction = {
 		modifier = {
 			add = -25
 			scope:recipient = {
-				exists = house
-				house.house_head = {
-					house_feud_target_house_trigger = { HOUSE = scope:actor.house }
-				}
+				existing_feud_against_target_trigger = { TARGET = scope:actor }
 			}
 			desc = MARRY_FAMILY_FEUD_REASON
 		}

@@ -1583,7 +1583,7 @@ death_management.1006 = {
 		name = death_management.1000.c
 		trigger = {
 			NOT = {
-				house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+				existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			}
 		}
 	}
@@ -1591,7 +1591,7 @@ death_management.1006 = {
 	option = { # Continue
 		name = death_management.1006.d
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			NOT = {
 				any_owned_story = {
 					story_type = story_cycle_house_feud
@@ -1612,7 +1612,7 @@ death_management.1006 = {
 	option = { # End
 		name = death_management.1006.e
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			NOT = {
 				any_owned_story = {
 					story_type = story_cycle_house_feud
@@ -1638,7 +1638,7 @@ death_management.1006 = {
 	option = { # Wipe end
 		name = death_management.1006.f
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			any_owned_story = {
 				story_type = story_cycle_house_feud
 				house_feud_wiped_out_trigger = yes
@@ -1852,6 +1852,10 @@ death_management.1010 = {
 		}
 	}
 	theme = death
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
 
 	immediate = {
 		play_music_cue = mx_cue_death
@@ -4697,7 +4701,7 @@ death_management.3006 = {
 		name = death_management.3006.a
 		trigger = {
 			NOT = {
-				house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+				existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			}
 		}
 	}
@@ -4705,7 +4709,7 @@ death_management.3006 = {
 	option = { # Continue
 		name = death_management.3006.b
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			NOT = {
 				any_owned_story = {
 					story_type = story_cycle_house_feud
@@ -4726,7 +4730,7 @@ death_management.3006 = {
 	option = { # End
 		name = death_management.3006.c
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			NOT = {
 				any_owned_story = {
 					story_type = story_cycle_house_feud
@@ -4748,7 +4752,7 @@ death_management.3006 = {
 	option = { # Wipe end
 		name = death_management.3006.d
 		trigger = {
-			house_feud_target_house_trigger = { HOUSE = scope:dead_character.house }
+			existing_feud_against_target_trigger = { TARGET = scope:dead_character }
 			any_owned_story = {
 				story_type = story_cycle_house_feud
 				house_feud_wiped_out_trigger = yes

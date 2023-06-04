@@ -311,7 +311,7 @@ culture_ai_weight_skirmishers = {
 				culture_has_skirmisher_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -338,7 +338,7 @@ culture_ai_weight_archers = {
 				culture_has_archer_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 	
 	if = { # Cultures with a preference for Slingers should buy those over Archers
@@ -379,7 +379,7 @@ culture_ai_weight_slingers = {
 				}
 			}
 		}
-		add = -100
+		add = -500
 	}
 	
 	if = { # Cultures with a preference for Archers should buy those over Slingers
@@ -461,7 +461,7 @@ culture_ai_weight_pikemen = {
 				culture_has_pikemen_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -498,14 +498,14 @@ culture_ai_weight_light_cavalry = {
 				culture_has_light_cavalry_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 	
 	if = { # Cultures with a preference for Camel Riders should buy those over normal light cavalry
 		limit = {
 			always = no
 		}
-		add = -80
+		add = -200
 	}
 }
 
@@ -546,7 +546,7 @@ culture_ai_weight_heavy_cavalry = {
 				culture_has_heavy_cavalry_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -584,5 +584,83 @@ culture_ai_weight_vigmen = {
 			any_sub_realm_county = { is_coastal_county = yes }
 		}
 		add = 20
+	}
+}
+
+counter_synergy_ai_weight_archers = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = heavy_infantry
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = archers
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_pikemen = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = archers
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = pikemen
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_heavy_infantry = {
+	value = 60
+	if = {
+		limit = {
+			OR = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_cavalry
+					value >= 3
+				}
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value >= 3
+				}
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = heavy_infantry
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_light_cavalry = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = skirmishers
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value >= 1
+				}
+			}
+		}
 	}
 }

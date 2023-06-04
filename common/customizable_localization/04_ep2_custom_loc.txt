@@ -124,7 +124,7 @@ GetInviteToActivityFlavor = {
 		trigger = {
 			involved_activity = {
 				has_activity_type = activity_hunt
-				#has_activity_option = { category = special_type option = hunt_type_legendary }
+				has_activity_option = { category = special_type option = hunt_type_legendary }
 			}
 		}
 		localization_key = hunt_invite_flavor_legendary
@@ -187,6 +187,60 @@ GetInviteToActivityFlavor = {
 	}
 }
 
+GetTournamentPrizeFlavor = {
+	type = character
+
+	text = {
+		trigger = {
+			involved_activity = {
+				has_activity_type = activity_tournament
+				has_activity_option = { category = tournament_option_prizes option = tournament_prizes_bad }
+			}
+		}
+		localization_key = tournament_invite_flavor_bad_prizes
+	}
+
+	text = {
+		trigger = {
+			involved_activity = {
+				has_activity_type = activity_tournament
+				has_activity_option = { category = tournament_option_prizes option = tournament_prizes_normal }
+			}
+		}
+		localization_key = tournament_invite_flavor_normal_prizes
+	}
+
+	text = {
+		trigger = {
+			involved_activity = {
+				has_activity_type = activity_tournament
+				has_activity_option = { category = tournament_option_prizes option = tournament_prizes_good }
+			}
+		}
+		localization_key = tournament_invite_flavor_good_prizes
+	}
+
+	text = {
+		trigger = {
+			involved_activity = {
+				has_activity_type = activity_tournament
+				has_activity_option = { category = tournament_option_prizes option = tournament_prizes_very_good }
+			}
+		}
+		localization_key = tournament_invite_flavor_very_good_prizes
+	}
+
+	text = {
+		trigger = {
+			involved_activity = {
+				has_activity_type = activity_tournament
+				has_activity_option = { category = tournament_option_prizes option = tournament_prizes_splendid }
+			}
+		}
+		localization_key = tournament_invite_flavor_splendid_prizes
+	}
+}
+
 GetTournamentFavor = {
 	type = character
 
@@ -199,6 +253,7 @@ GetTournamentFavor = {
 	}
 
 	text = {
+		trigger = { always = yes }
 		localization_key = tournament_favor_scarf
 	}
 }

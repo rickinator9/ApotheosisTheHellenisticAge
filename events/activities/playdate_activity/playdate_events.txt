@@ -487,6 +487,7 @@ playdate.2001 = {
 	lower_right_portrait = scope:portrait_4
 
 	trigger = {
+		exists = scope:activity
 		this = scope:activity.activity_host
 	}
 
@@ -741,7 +742,7 @@ playdate.3001 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_default_participant_trigger = yes
 				NOR = {
@@ -881,16 +882,29 @@ scripted_trigger playdate_3002_secret_trigger = {
 	NOT = {
 		any_secret_knower = { this = root }
 	}
+	save_temporary_scope_as = secret_temp
 	secret_owner = { save_temporary_scope_as = owner_check }
 	scope:activity = {
 		any_attending_character = {
 			NOT = { this = scope:owner_check }
 		}
 	}
+	scope:activity = { #Is there a possible bystander character?
+		any_attending_character = {
+			NOT = { this = root }
+			playdate_default_participant_trigger = yes
+			NOT = {
+				any_secret = {
+					this = scope:secret_temp
+				}
+			}
+		}
+	}
 }
 
 scripted_trigger playdate_3002_close_participant_trigger = {
 	playdate_default_participant_trigger = yes
+	NOT = { this = root }
 	NOT = { any_secret = { this = scope:secret } }
 }
 
@@ -905,21 +919,22 @@ playdate.3002 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
-			any_attending_character = {
-				playdate_default_participant_trigger = yes
-			}
+		scope:activity ?= {
 			OR = {
-				activity_location.county.holder = {
-					any_courtier_or_guest = {
+				AND = {
+					activity_location.county.holder = {
+						any_courtier_or_guest = {
+							NOT = { this = root }
+							any_secret = {
+								playdate_3002_secret_trigger = yes
+							}
+						}
+					}
+					any_attending_character = {
+						NOT = { this = root }
 						any_secret = {
 							playdate_3002_secret_trigger = yes
 						}
-					}
-				}
-				any_attending_character = {
-					any_secret = {
-						playdate_3002_secret_trigger = yes
 					}
 				}
 			}
@@ -931,13 +946,6 @@ playdate.3002 = {
 		modifier = { #More likely to trigger if you have a crush/friend there to distract you
 			add = 0.5
 			scope:activity = {
-				any_attending_character = {
-					playdate_default_participant_trigger = yes
-					OR = {
-						root = { has_relation_crush = prev }
-						has_relation_friend = root
-					}
-				}
 				OR = {
 					activity_location.county.holder = {
 						any_courtier_or_guest = {
@@ -952,6 +960,13 @@ playdate.3002 = {
 						}
 					}
 				}
+				any_attending_character = {
+					playdate_default_participant_trigger = yes
+					OR = {
+						root = { has_relation_crush = prev }
+						has_relation_friend = root
+					}
+				}
 			}
 		}
 	}
@@ -962,6 +977,9 @@ playdate.3002 = {
 			if = {
 				limit = { #Does a participant have a secret?
 					any_attending_character = {
+						NOT = {
+							this = root
+						}
 						any_secret = {
 							playdate_3002_secret_trigger = yes
 						}
@@ -986,6 +1004,7 @@ playdate.3002 = {
 				activity_location.county.holder = {
 					random_courtier_or_guest = {
 						limit = {
+							NOT = { this = root }
 							any_secret = {
 								playdate_3002_secret_trigger = yes
 							}
@@ -1123,7 +1142,7 @@ playdate.3003 = {
 		any_owned_story = {
 			story_type = story_cycle_pet_cat
 		}
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_3003_guest_trigger = yes
 			}
@@ -1324,7 +1343,7 @@ playdate.3004 = {
 		any_owned_story = {
 			story_type = story_cycle_pet_dog
 		}
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_3003_guest_trigger = yes
 			}
@@ -1504,7 +1523,7 @@ playdate.3005 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_default_participant_trigger = yes
 				save_temporary_scope_as = guest_check
@@ -1768,7 +1787,7 @@ playdate.3006 = {
 			has_trait_introverted_trigger = yes
 			has_focus = education_learning
 		}
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_3006_fellow_nerd_trigger = yes
 			}
@@ -1876,7 +1895,7 @@ playdate.3007 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_default_participant_trigger = yes
 			}
@@ -2036,7 +2055,7 @@ playdate.3008 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			root.location = {
 				NOR = {
 					terrain = desert
@@ -2386,7 +2405,7 @@ playdate.3009 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_default_participant_trigger = yes
 			}
@@ -2635,12 +2654,14 @@ playdate.3010 = {
 	override_background = {
 		reference = market
 	}
-	left_portrait = scope:participant
+	left_portrait = root
+	center_portrait = scope:participant
+	right_portrait = scope:merchant
 
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_default_participant_trigger = yes
 			}
@@ -2661,6 +2682,12 @@ playdate.3010 = {
 	}
 
 	immediate = {
+		create_character = {
+			template = merchant_template
+			dynasty = none
+			location = scope:activity.activity_location
+			save_scope_as = merchant
+		}
 		scope:activity = {
 			random_attending_character = {
 				limit = {
@@ -2676,6 +2703,29 @@ playdate.3010 = {
 					playdate_close_age_scripted_modifier = yes
 				}
 				save_scope_as = participant
+			}
+		}
+		hidden_effect = {
+			scope:merchant = {
+				create_artifact = {
+					name = playdate_minor_trinket_modifier
+					description = playdate_minor_trinket_modifier_desc
+					template = child_toy_template
+					type = miscellaneous
+					visuals = small_box
+					modifier = artifact_monthly_prestige_1_modifier
+					modifier = artifact_child_opinion_2_modifier
+					save_scope_as = newly_created_artifact
+				}
+				hidden_effect_new_object = {
+					scope:newly_created_artifact = {
+						flag_as_trash_artifact = yes
+						set_variable = {
+							name = playdate_trinket
+							value = yes
+						}
+					}
+				}
 			}
 		}
 	}
@@ -2764,25 +2814,11 @@ playdate.3010 = {
 				years = 10
 			}
 		}
-		save_scope_as = owner
-		scope:owner = {
-			create_artifact = {
-				name = playdate_minor_trinket_modifier
-				description = playdate_minor_trinket_modifier_desc
-				template = child_toy_template
-				type = miscellaneous
-				visuals = small_box
-				modifier = artifact_monthly_prestige_1_modifier
-				modifier = artifact_child_opinion_2_modifier
-				save_scope_as = newly_created_artifact
-			}
-			
-			scope:newly_created_artifact = {
-				flag_as_trash_artifact = yes
-				set_variable = {
-					name = playdate_trinket
-					value = yes
-				}
+		scope:newly_created_artifact = {
+			set_owner = root
+			add_artifact_history = {
+				type = given
+				recipient = root
 			}
 		}
 		stress_impact = {
@@ -2833,6 +2869,19 @@ playdate.3010 = {
 			base = 100
 		}
 	}
+
+	after = {
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:newly_created_artifact = {
+						artifact_owner = scope:merchant
+					}
+				}
+				destroy_artifact = scope:newly_created_artifact
+			}
+		}
+	}
 }
 
 
@@ -2875,7 +2924,7 @@ playdate.3011 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_3011_friendly_participant_trigger = yes
 			}
@@ -3128,8 +3177,8 @@ playdate.3012 = {
 	cooldown = { months = 3 }
 	
 	trigger = {
-		scope:activity = {
-			any_attending_character = {
+		scope:activity ?= {
+			any_attending_character ?= {
 				playdate_default_participant_trigger = yes
 			}
 		}
@@ -3284,7 +3333,7 @@ playdate.3013 = {
 	
 	trigger = {
 		OR = {
-			scope:activity = {
+			scope:activity ?= {
 				any_attending_character = {
 					playdate_default_participant_trigger = yes
 					is_witch_trigger = yes
@@ -3554,7 +3603,7 @@ playdate.3014 = {
 	
 	trigger = {
 		exists = cp:councillor_court_chaplain
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_3014_participant_trigger = yes
 			}
@@ -3779,7 +3828,7 @@ playdate.4001 = {
 	cooldown = { years = 2 }
 	
 	trigger = {
-		scope:activity = {
+		scope:activity ?= {
 			any_attending_character = {
 				playdate_4001_paticipant_trigger = yes
 				root = { NOT = { knows_language_of_culture = prev.culture } }

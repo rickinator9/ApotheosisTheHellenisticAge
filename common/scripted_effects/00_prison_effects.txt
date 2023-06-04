@@ -1,5 +1,47 @@
 ﻿# the effect used in all ransom interactions
 ransom_interaction_effect = {
+	# For mass actions where an option is not selected manually
+	if = {
+		limit = {
+			NOR = {
+				always = scope:extortionate_current_gold
+				always = scope:extortionate_gold
+				always = scope:gold
+				always = scope:current_gold
+				always = scope:favor
+			}
+		}
+		save_scope_value_as = {
+			name = ransom_saved_gold_value
+			value = scope:payer.current_gold_value
+		}
+		if = {
+			limit = {
+				scope:imprisoner.dynasty ?= { has_dynasty_perk = fp1_pillage_legacy_3 }
+				scope:payer.gold >= scope:prisoner.increased_ransom_cost_value
+			}
+			save_scope_value_as = { name = extortionate_current_gold value = yes }
+		}
+		else_if = {
+			limit = {
+				scope:imprisoner.dynasty ?= { has_dynasty_perk = fp1_pillage_legacy_3 }
+				scope:payer.gold < scope:prisoner.increased_ransom_cost_value
+				scope:payer.gold >= 1
+			}
+			save_scope_value_as = { name = extortionate_gold value = yes }
+		}
+		else_if = {
+			limit = { scope:payer.gold >= scope:prisoner.ransom_cost_value }
+			save_scope_value_as = { name = gold value = yes }
+		}
+		else_if = {
+			limit = {
+				scope:payer.gold < scope:prisoner.ransom_cost_value
+				scope:payer.gold >= 1
+			}
+			save_scope_value_as = { name = current_gold value = yes }
+		}
+	}
 	scope:prisoner = {
 		add_character_flag = { #To make sure you don't get spammed about the release
 			flag = block_for_prison_release_notification
@@ -85,81 +127,58 @@ ransom_interaction_effect = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			always = scope:extortionate_gold
-		}
-		scope:payer = {
-			pay_short_term_gold = {
-				gold = scope:prisoner.increased_ransom_cost_value
-				target = scope:imprisoner
+	scope:payer = {
+		switch = {
+			trigger = always
+			# Perk: increased ransom + bonus prestige
+			scope:extortionate_gold = {
+				pay_short_term_gold = {
+					gold = scope:prisoner.increased_ransom_cost_value
+					target = scope:imprisoner
+				}
+				scope:imprisoner = { add_prestige = scope:prisoner.increased_ransom_cost_value }
 			}
-		}
-		scope:imprisoner = {
-			add_prestige = scope:prisoner.increased_ransom_cost_value
-		}
-	}
-	if = {
-		limit = {
-			always = scope:extortionate_current_gold
-		}
-		scope:payer = {
-			pay_short_term_gold = {
-				gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
-				target = scope:imprisoner
+			# Perk: whatever they can pay + bonus prestige
+			scope:extortionate_current_gold = {
+				pay_short_term_gold = {
+					gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
+					target = scope:imprisoner
+				}
+				scope:imprisoner = { add_prestige = scope:ransom_saved_gold_value }
 			}
-		}
-		scope:imprisoner = {
-			add_prestige = scope:ransom_saved_gold_value
-		}
-	}
-	if = {
-		limit = {
-			always = scope:gold
-		}
-		scope:payer = {
-			pay_short_term_gold = {
-				gold = scope:prisoner.ransom_cost_value
-				target = scope:imprisoner
-			}
-		}
-	}
-	if = {
-		limit = {
-			always = scope:current_gold
-		}
-		scope:payer = {
-			pay_short_term_gold = {
-				gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
-				target = scope:imprisoner
-			}
-		}
-	}
-	if = {
-		limit = {
-			always = scope:favor
-		}
-		if = {
-			limit = {
-				scope:payer = scope:prisoner
-			}
-			scope:payer = {
-				add_opinion = {
-					modifier = demanded_hook
+			# Full ransom
+			scope:gold = {
+				pay_short_term_gold = {
+					gold = scope:prisoner.ransom_cost_value
 					target = scope:imprisoner
 				}
 			}
-		}
-		scope:imprisoner = {
-			add_hook = {
-				target = scope:payer
-				type = favor_hook
+			# Whatever they can pay
+			scope:current_gold = {
+				pay_short_term_gold = {
+					gold = scope:ransom_saved_gold_value # Calculated earlier in the ransom interaction.
+					target = scope:imprisoner
+				}
+			}
+			# Favor hook
+			scope:favor = {
+				if = {
+					limit = { scope:payer = scope:prisoner }
+					add_opinion = {
+						modifier = demanded_hook
+						target = scope:imprisoner
+					}
+				}
+				scope:imprisoner = {
+					add_hook = {
+						target = scope:payer
+						type = favor_hook
+					}
+				}
 			}
 		}
 	}
-	scope:prisoner = {
-		release_from_prison = yes
-	}
+	scope:prisoner = { release_from_prison = yes }
 }
 
 #Used for all executions
@@ -573,8 +592,11 @@ execute_prisoner_effect = {
 			every_in_list = {
 				list = guest_list
 				custom = all_your_guests
+                limit = {
+                    NOT = { this = scope:executioner }
+                }
 				add_opinion = {
-					target = prev
+					target = scope:executioner
 					modifier = executed_guest_modifier
 				}
 			}
@@ -587,7 +609,7 @@ execute_prisoner_effect = {
 				}
 				scope:victim.liege = {
 					add_opinion = {
-						target = prev
+						target = scope:executioner
 						modifier = executed_my_countryman_modifier
 					}
 				}
@@ -758,6 +780,9 @@ execute_opinion_effect = {
 			}
 			every_in_list = {
 				list = victim_close_relations_list
+				limit = {
+					NOT = { this = $EXECUTIONER$ }
+				}
 				custom = all_friends_and_lovers
 				add_opinion = {
 					target = $EXECUTIONER$
@@ -1301,7 +1326,10 @@ rightfully_imprison_character_effect = {
 			# No tooltip if we do this.
 		}
 		else_if = {
-			limit = { exists = scope:recipient }
+			limit = {
+				exists = scope:recipient
+				has_imprisonment_reason = scope:new_target
+			}
 			custom_tooltip = IS_ALLOWED_TO_IMPRISON_DESC
 		}
 		else = { custom_tooltip = IS_ALLOWED_TO_IMPRISON_NO_RECIPIENT_DESC }
@@ -1426,7 +1454,7 @@ prison_pet_death_effect = {
 		limit = {
 			var:prison_pet_variable = flag:spoon
 		}
-		remove_character_modifier = prison_pet_stone_modifier
+		remove_character_modifier = prison_pet_spoon_modifier
 	}
 	else_if = {
 		limit = {
@@ -1644,10 +1672,11 @@ imprison_remove_ward_guardian_effect = {
 	$PRISONER$ = { save_temporary_scope_as = imprisonment_target }
 	$IMPRISONER$ = { save_temporary_scope_as = imprisoner }
 
-	scope:imprisoner = {
+	scope:imprisoner ?= {
 		#Check for relations
 		if = {
 			limit = {
+				exists = scope:imprisonment_target
 				any_courtier = {
 					has_relation_guardian = scope:imprisonment_target
 					has_relation_ward = scope:imprisonment_target

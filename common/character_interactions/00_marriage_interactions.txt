@@ -695,44 +695,83 @@ arrange_marriage_interaction = {
 					}
 				}
 			}
-			custom_tooltip = {
-				text = grand_wedding_only_dominant_side
-				trigger_if = {
-					limit = {
-						scope:secondary_actor ?= {
-							is_female = yes
+			trigger_if = {
+				limit = {
+					exists = scope:secondary_actor
+				}
+				custom_tooltip = {
+					text = grand_wedding_only_dominant_side
+					trigger_if = {
+						limit = {
+							scope:secondary_actor ?= {
+								is_female = yes
+							}
+						}
+						OR = {
+							scope:secondary_actor ?= { matrilinear_betrothal = yes }
+							scope:matrilineal = yes
 						}
 					}
-					OR = {
-						scope:secondary_actor ?= { matrilinear_betrothal = yes }
-						scope:matrilineal = yes
+					trigger_else = {
+						NOR = {
+							scope:secondary_actor ?= { matrilinear_betrothal = yes }
+							scope:matrilineal = yes
+						}
 					}
 				}
-				trigger_else = {
-					NOR = {
-						scope:secondary_actor ?= { matrilinear_betrothal = yes }
-						scope:matrilineal = yes
+				custom_tooltip = {
+					text = grand_wedding_only_family
+					scope:secondary_actor ?= {
+						is_close_or_extended_family_of = scope:actor
 					}
 				}
-			}
-			custom_tooltip = {
-				text = grand_wedding_only_family
-				scope:secondary_actor ?= {
-					is_close_or_extended_family_of = scope:actor
+				# Cannot promise grand weddings with regents due to regency and travel limitations
+				custom_tooltip = {
+					text = grand_wedding_secondary_regent
+					NOT = {
+						scope:secondary_actor.liege = {
+							diarch = scope:secondary_actor
+							has_active_diarchy = yes
+						}
+					}
 				}
 			}
 			# Safety check because players shouldn't be spouse_2
-			custom_tooltip = {
-				text = grand_wedding_mp_ai
-				trigger_if = {
-					limit = {
-						OR = {
-							scope:actor = { is_ai = no }
-							scope:secondary_actor ?= { is_ai = no }
+			trigger_if = {
+				limit = {
+					has_multiple_players = yes
+				}
+				custom_tooltip = {
+					text = grand_wedding_mp_ai
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:actor = { is_ai = no }
+								scope:secondary_actor ?= { is_ai = no }
+							}
+						}
+						scope:secondary_recipient ?= {
+							is_ai = yes
 						}
 					}
-					scope:secondary_recipient ?= {
-						is_ai = yes
+				}
+			}
+			trigger_if = {
+				limit = {
+					exists = scope:secondary_recipient.liege
+					scope:secondary_recipient.liege = {
+						diarch = scope:secondary_recipient
+						has_active_diarchy = yes
+					}
+				}
+				# Cannot promise grand weddings with regents due to regency and travel limitations
+				custom_tooltip = {
+					text = grand_wedding_secondary_regent
+					NOT = {
+						scope:secondary_recipient.liege = {
+							diarch = scope:secondary_recipient
+							has_active_diarchy = yes
+						}
 					}
 				}
 			}
@@ -1340,7 +1379,7 @@ marry_off_interaction = {
 		localization = "MATRILINEAL_OFFER"
 		starts_enabled = {
 			scope:actor = {
-				OR= {
+				OR = {
 					faith = {
 						has_doctrine = doctrine_gender_female_dominated
 					}
@@ -4370,12 +4409,17 @@ divorce_character_dynast_request_interaction = {
 				target = scope:actor
 			}
 		}
-		scope:recipient = {
-			trigger_event = marriage_interaction.0030
+		if = {
+			limit = {
+				NOT = { scope:recipient = scope:actor }
+			}
+			scope:recipient = {
+				trigger_event = marriage_interaction.0030
 
-			add_opinion = {
-				modifier = forced_divorce_opinion
-				target = scope:actor
+				add_opinion = {
+					modifier = forced_divorce_opinion
+					target = scope:actor
+				}
 			}
 		}
 	}

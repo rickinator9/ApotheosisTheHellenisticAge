@@ -104,7 +104,7 @@ intrigue_scheme_ongoing.1001 = {
 			duel = {
 				skill = intrigue
 				value = 10
-				20 = {		
+				20 = {
 					desc = intrigue_scheme_ongoing.1008.a.success
 					compare_modifier = {
 						value = scope:duel_value
@@ -123,7 +123,7 @@ intrigue_scheme_ongoing.1001 = {
 						}
 					}
 				}
-				10 = {		
+				10 = {
 					desc = intrigue_scheme_ongoing.1008.a.failure
 					compare_modifier = {
 						value = scope:duel_value
@@ -326,7 +326,7 @@ intrigue_scheme_ongoing.1002 = {
 									expose_scheme_agent = scope:agent_in_question
 								}
 							}
-							else = {		
+							else = {
 								scope:scheme = {
 									expose_scheme_agent = scope:agent_in_question
 								}
@@ -435,7 +435,7 @@ intrigue_scheme_ongoing.1004 = {
 				value = yes
 				days = 3650
 			}
-		}	
+		}
 	}
 
 	# Let them blabber on
@@ -445,7 +445,7 @@ intrigue_scheme_ongoing.1004 = {
 			duel = {
 				skill = intrigue
 				value = 10
-				20 = {		
+				20 = {
 					desc = intrigue_scheme_ongoing.1004.a.success
 					compare_modifier = {
 						value = scope:duel_value
@@ -464,7 +464,7 @@ intrigue_scheme_ongoing.1004 = {
 						}
 					}
 				}
-				10 = {		
+				10 = {
 					desc = intrigue_scheme_ongoing.1004.a.failure
 					compare_modifier = {
 						value = scope:duel_value
@@ -485,7 +485,7 @@ intrigue_scheme_ongoing.1004 = {
 									expose_scheme = yes
 								}
 							}
-							else = {						
+							else = {
 								scope:scheme = {
 									expose_scheme_agent = scope:agent_in_question
 								}
@@ -591,7 +591,7 @@ intrigue_scheme_ongoing.1006 = {
 			duel = {
 				skill = intrigue
 				target = scope:target
-				20 = {		
+				20 = {
 					desc = intrigue_scheme_ongoing.1006.a.success
 					compare_modifier = {
 						value = scope:duel_value
@@ -613,7 +613,7 @@ intrigue_scheme_ongoing.1006 = {
 						}
 					}
 				}
-				10 = {		
+				10 = {
 					desc = intrigue_scheme_ongoing.1006.a.failure
 					compare_modifier = {
 						value = scope:duel_value
@@ -634,7 +634,7 @@ intrigue_scheme_ongoing.1006 = {
 									expose_scheme = yes
 								}
 							}
-							else = {						
+							else = {
 								scope:scheme = {
 									expose_scheme_agent = scope:agent_in_question
 								}
@@ -717,7 +717,7 @@ intrigue_scheme_ongoing.1007 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:scheme = {
 			any_scheme_agent = {
@@ -795,7 +795,7 @@ intrigue_scheme_ongoing.1007 = {
 		}
 	}
 
-	
+
 	option = { #Focus on them
 		name = intrigue_scheme_ongoing.1007.b
 		reverse_add_opinion = {
@@ -844,7 +844,7 @@ intrigue_scheme_ongoing.1008 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		NOT = { scope:scheme.scheme_target.court_owner = root }
 		NOT = { has_character_flag = had_intrigue_scheme_ongoing_1008_event }
@@ -931,7 +931,7 @@ intrigue_scheme_ongoing.1008 = {
 			duel = {
 				skill = intrigue
 				value = 10
-				15 = {		
+				15 = {
 					desc = intrigue_scheme_ongoing.1008.a.success
 					compare_modifier = {
 						value = scope:duel_value
@@ -948,7 +948,7 @@ intrigue_scheme_ongoing.1008 = {
 						}
 					}
 				}
-				15 = {		
+				15 = {
 					desc = intrigue_scheme_ongoing.1008.a.failure
 					compare_modifier = {
 						value = scope:duel_value
@@ -969,7 +969,7 @@ intrigue_scheme_ongoing.1008 = {
 									expose_scheme = yes
 								}
 							}
-							else = {						
+							else = {
 								scope:scheme = {
 									expose_scheme_agent = scope:agent
 								}
@@ -988,7 +988,7 @@ intrigue_scheme_ongoing.1008 = {
 			forbid_from_scheme = scope:scheme
 		}
 	}
-	
+
 	#Have your spymaster intervene
 	option = {
 		name = intrigue_scheme_ongoing.1008.c
@@ -1046,7 +1046,7 @@ intrigue_scheme_ongoing.1009 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:scheme = {
 			scheme_progress < 8
@@ -1195,7 +1195,7 @@ intrigue_scheme_ongoing.2001 = {
 							target = prev
 							value >= 10
 						}
-					}	
+					}
 				}
 				save_scope_as = agent_in_question
 				add_character_flag = {
@@ -1243,7 +1243,7 @@ scripted_trigger intrigue_scheme_ongoing_2002_agent_trigger = {
 }
 
 intrigue_scheme_ongoing.2002 = {
-	type = character_event 
+	type = character_event
 	title = intrigue_scheme_ongoing.2002.t
 	desc = intrigue_scheme_ongoing.2002.desc
 	theme = generic_intrigue_scheme
@@ -1310,7 +1310,7 @@ intrigue_scheme_ongoing.2002 = {
 			}
 		}
 		scope:scheme = {
-			add_scheme_modifier = {	
+			add_scheme_modifier = {
 				type = scheme_drunkard_murder_target_modifier
 			}
 		}
@@ -1406,7 +1406,7 @@ intrigue_scheme_ongoing.2003 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		exists = scope:target.court_owner
 		scope:target.court_owner = {
@@ -1542,7 +1542,7 @@ intrigue_scheme_ongoing.3001 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		has_trait = just
 		NOT = { has_character_flag = had_intrigue_scheme_ongoing_1003_event }
@@ -1623,7 +1623,7 @@ intrigue_scheme_ongoing.3002 = {
 		character = root
 		animation = worry
 	}
-	
+
 	trigger = {
 		NOT = { has_character_flag = had_intrigue_scheme_ongoing_3002_event }
 		OR = {
@@ -1686,7 +1686,7 @@ intrigue_scheme_ongoing.3002 = {
 			honest = minor_stress_impact_gain
 		}
 	}
-	
+
 	#End it
 	option = {
 		name = intrigue_scheme_ongoing.3002.c
@@ -1697,7 +1697,7 @@ intrigue_scheme_ongoing.3002 = {
 			stubborn = medium_stress_impact_gain
 		}
 	}
-	
+
 	#If I tell them, it's fine
 	option = {
 		name = intrigue_scheme_ongoing.3002.d
@@ -1913,7 +1913,7 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 				scope:hunter = { has_court_position = master_of_hunt_court_position }
 			}
 		}
-		
+
 		pay_short_term_gold = {
 			target = scope:hunter
 			gold = minor_gold_value
@@ -1943,13 +1943,13 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 					}
 					hidden_effect = {
 						if = {
-							limit = { 	
+							limit = {
 								can_set_relation_potential_friend_trigger = { CHARACTER = scope:hunter }
 								scope:hunter.prowess >= decent_skill_rating
 							}
 							set_relation_potential_friend = scope:hunter
 						}
-					}	
+					}
 				}
 				40 = { # Hunter tells tales
 					desc = intrigue_scheme_ongoing.3003.a.failure
@@ -2067,7 +2067,7 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 	}
 
 	# Do it yourself
-	option = {	
+	option = {
 		trigger = { NOT = { has_trait = lifestyle_hunter } }
 		name = intrigue_scheme_ongoing.3003.b
 
@@ -2137,11 +2137,11 @@ intrigue_scheme_ongoing.3003 = { #by Mathilda Bjarnehed
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
-	
+
 	# Ignore
 	option = {
 		name = intrigue_scheme_ongoing.3003.c
-		
+
 		stress_impact = {
 			diligent = minor_stress_impact_gain
 		}
@@ -2165,7 +2165,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 		character = scope:hunter
 		animation = personality_irrational
 	}
-	
+
 	immediate = {
 		add_character_modifier = {
 			modifier = more_vigilant_recistance_modifier
@@ -2187,7 +2187,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 	# Thanks for telling me
 	option = {
 		name = intrigue_scheme_ongoing.3004.a
-	
+
 		stress_impact = {
 			sadistic = minor_stress_impact_gain
 			wrathful = medium_stress_impact_gain
@@ -2212,7 +2212,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 			forgiving = major_stress_impact_gain
 			trusting = minor_stress_impact_gain
 			calm = minor_stress_impact_gain
-		}	
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_cruel CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_good CHANGE = nickname_weight_small_decrease }
@@ -2254,7 +2254,7 @@ intrigue_scheme_ongoing.3004 = { #by Mathilda Bjarnehed
 	}
 }
 
-	
+
 ########################
 # Messenger pigeon by Mathilda Bjarnehed
 ##########################
@@ -2305,7 +2305,7 @@ intrigue_scheme_ongoing.3005 = { #by Mathilda Bjarnehed
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:scheme = {
 			NOT = { has_variable = had_intrigue_scheme_ongoing_3005_event }
@@ -2328,7 +2328,7 @@ intrigue_scheme_ongoing.3005 = { #by Mathilda Bjarnehed
 
 	immediate = {
 		scope:scheme = {
-			set_variable = {	
+			set_variable = {
 				name = had_intrigue_scheme_ongoing_3005_event
 				value = yes
 			}
@@ -2461,7 +2461,7 @@ intrigue_scheme_ongoing.3005 = { #by Mathilda Bjarnehed
 
 		change_city_state_corruption = { AMOUNT_ARG = corruption_minor_decrease }
 	}
-	
+
 	# Bad idea
 	option = {
 		name = intrigue_scheme_ongoing.3005.d
@@ -2484,7 +2484,7 @@ intrigue_scheme_ongoing.3010 = {
 
 	trigger = {
 		scope:scheme = {
-			NOT = { 
+			NOT = {
 				has_variable = had_intrigue_scheme_ongoing_3010_event
 			}
 		}
@@ -2498,7 +2498,7 @@ intrigue_scheme_ongoing.3010 = {
 
 	immediate = {
 		scope:scheme = {
-			set_variable = {	
+			set_variable = {
 				name = had_intrigue_scheme_ongoing_3010_event
 				value = yes
 			}
@@ -2516,7 +2516,7 @@ intrigue_scheme_ongoing.3010 = {
 		}
 		stress_impact = {
 			lazy = medium_stress_gain
-		}	
+		}
 
 		ai_chance = {
 			base = 50
@@ -2537,7 +2537,7 @@ intrigue_scheme_ongoing.3010 = {
 		}
 	}
 
-	
+
 }
 
 ###############################
@@ -2556,7 +2556,7 @@ intrigue_scheme_ongoing.3011 = { #By Daniel Moore
 
 	trigger = {
 		scope:scheme = {
-			NOT = { 
+			NOT = {
 				has_variable = had_intrigue_scheme_ongoing_3011_event
 			}
 
@@ -2569,7 +2569,7 @@ intrigue_scheme_ongoing.3011 = { #By Daniel Moore
 
 	immediate = {
 		scope:scheme = {
-			set_variable = {	
+			set_variable = {
 				name = had_intrigue_scheme_ongoing_3011_event
 				value = yes
 			}
@@ -2629,7 +2629,7 @@ intrigue_scheme_ongoing.3011 = { #By Daniel Moore
 			add_opinion = {
 				modifier = opinion_scheme_code_rejected
 				target = root
-			}	
+			}
 		}
 
 		ai_chance = {
@@ -3245,6 +3245,10 @@ intrigue_scheme_ongoing.5005 = {
 			NOT = { has_variable = had_poisonous_gold_event }
 		}
 		exists = cp:councillor_spymaster
+		cp:councillor_spymaster = {
+			save_temporary_scope_as = court_spymaster
+		}
+		NOT = { scope:court_spymaster = scope:target }
 		scope:target = {
 			is_physically_able_adult = yes
 		}
@@ -3353,7 +3357,7 @@ intrigue_scheme_ongoing.5006 = {
 
 	immediate = {
 		show_as_tooltip = {
-			scope:actor = {
+			scope:owner = {
 				pay_short_term_gold = {
 					target = scope:target
 					gold = root.minor_gold_value
@@ -3542,7 +3546,7 @@ intrigue_scheme_ongoing.5010 = {
 		trigger = {
 			exists = scope:sick
 		}
-		add_trait = ill
+		contract_disease_effect = { DISEASE = ill TREATMENT_EVENT = yes }
 	}
 }
 
@@ -4066,7 +4070,7 @@ intrigue_scheme_ongoing.5017 = {
 						}
 					}
 				}
-				
+
 			}
 		}
 		ai_chance = {
@@ -4431,7 +4435,7 @@ intrigue_scheme_ongoing.5021 = {
 			base = 0.75
 			ai_value_modifier = {
 				ai_honor = 0.75
-			}	
+			}
 		}
 	}
 
@@ -4717,7 +4721,7 @@ intrigue_scheme_ongoing.5024 = {
 			greedy = medium_stress_impact_gain
 		}
 		ai_chance = {
-			base = 100	
+			base = 100
 		}
 		change_city_state_corruption = { AMOUNT_ARG = corruption_medium_decrease }
 	}
@@ -4861,7 +4865,7 @@ intrigue_scheme_ongoing.5026 = {
 		duel = {
 			skill = diplomacy
 			target = scope:court_chaplain
-			20 = {		
+			20 = {
 				desc = intrigue_scheme_ongoing.5026.a.success
 				compare_modifier = {
 					value = scope:duel_value
@@ -4895,7 +4899,7 @@ intrigue_scheme_ongoing.5026 = {
 					}
 				}
 			}
-			10 = {		
+			10 = {
 				desc = intrigue_scheme_ongoing.5026.a.failure
 				compare_modifier = {
 					value = scope:duel_value
@@ -4977,7 +4981,7 @@ intrigue_scheme_ongoing.5026 = {
 			zealous = minor_stress_impact_gain
 		}
 		ai_chance = {
-			base = 100	
+			base = 100
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_illustrious CHANGE = nickname_weight_small_increase }
@@ -5000,7 +5004,7 @@ intrigue_scheme_ongoing.5026 = {
 		duel = {
 			skill = learning
 			target = scope:court_chaplain
-			20 = {		
+			20 = {
 				desc = intrigue_scheme_ongoing.5026.a.success
 				compare_modifier = {
 					value = scope:duel_value
@@ -5044,7 +5048,7 @@ intrigue_scheme_ongoing.5026 = {
 					change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 				}
 			}
-			10 = {		
+			10 = {
 				desc = intrigue_scheme_ongoing.5026.a.failure
 				compare_modifier = {
 					value = scope:duel_value
@@ -5102,7 +5106,7 @@ intrigue_scheme_ongoing.5026 = {
 			modifier = {
 				add = -25
 				scope:court_chaplain.learning > root.learning
-			}	
+			}
 		}
 	}
 
@@ -5135,7 +5139,7 @@ intrigue_scheme_ongoing.5026 = {
 			zealous = medium_stress_impact_gain
 		}
 		ai_chance = {
-			base = 100	
+			base = 100
 		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }

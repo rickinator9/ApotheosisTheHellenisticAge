@@ -1580,6 +1580,7 @@ scripted_trigger witch_3014_can_have_sex_trigger = {
 		has_sexuality = asexual
 		has_trait = celibate
 	}
+	might_cheat_on_every_partner_trigger = yes
 }
 
 scripted_trigger witch_3014_sex_partner_trigger = {
@@ -1588,6 +1589,7 @@ scripted_trigger witch_3014_sex_partner_trigger = {
 	is_ai = yes
 	save_temporary_scope_as = seduction_target
 	matching_gender_and_sexuality_trigger = { CHARACTER_1 = scope:seduction_target CHARACTER_2 = root }
+	might_cheat_on_every_partner_trigger = yes
 }
 
 scripted_trigger witch_3014_loved_sex_partner_trigger = {
@@ -2090,10 +2092,7 @@ witch.3014 = { #by Mathilda Bjarnehed
 			exists = scope:sex_partner
 			NOT = { has_relation_soulmate = scope:sex_partner }
 			is_attracted_to_gender_of = scope:sex_partner
-			OR = {
-				is_ai = no
-				might_cheat_on_every_partner_trigger = yes
-			}
+			might_cheat_on_every_partner_trigger = yes
 		}
 		name = witch.3014.c
 		custom_tooltip = witch.3014.c.tt

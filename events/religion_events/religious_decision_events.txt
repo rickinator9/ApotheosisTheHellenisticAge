@@ -19,7 +19,7 @@ religious_decision.0001 = {
 		character = scope:realm_priest
 		animation = personality_zealous
 	}
-	
+
 	trigger = {
 		NOT = { has_character_flag = flag_sought_aid_of_spirits }
 	}
@@ -64,7 +64,7 @@ religious_decision.0001 = {
 				ai_zeal = 10
 				ai_greed = -10
 			}
-		}		
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_increase }
@@ -90,11 +90,11 @@ religious_decision.0001 = {
 		}
 		ai_chance = {
 			base = 100
-		}		
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_increase }
 	}
-	
+
 	option = {
 		name = religious_decision.0001.c
 		custom_tooltip = religious_decision.0001.c.tt
@@ -124,7 +124,7 @@ religious_decision.0001 = {
 				add = 980
 				has_trait = arrogant
 			}
-		}		
+		}
 
 		change_nickname_weight_effect = { NICKNAME = nick_the_pious CHANGE = nickname_weight_small_decrease }
 		change_nickname_weight_effect = { NICKNAME = nick_the_wealthy CHANGE = nickname_weight_small_decrease }
@@ -341,7 +341,7 @@ religious_decision.0002 = {
 									value = flag:tree_spirit
 								}
 							}
-						}					
+						}
 					}
 				}
 			}
@@ -580,7 +580,7 @@ religious_decision.0002 = {
 
 # If the player exits the travel planning UI, this event fires reseting the decision cooldown and removing variables
 religious_decision.0200 = {
-	hidden = yes 
+	hidden = yes
 	immediate = {
 		remove_decision_cooldown = meditate_in_seclusion_decision
 		remove_variable = meditation_location
@@ -592,9 +592,9 @@ scripted_trigger religious_decision_0201_can_meditate_in_terrain_trigger = {
 	religious_decision_0201_has_two_meditation_options_trigger = no
 	any_sub_realm_barony = {
 		NOT = { this = root.capital_barony }
-		title_province = {				
+		title_province = {
 			terrain = $TERRAIN$
-		}		
+		}
 	}
 }
 
@@ -619,7 +619,7 @@ scripted_effect save_meditation_option_effect = {
 	random_sub_realm_barony = {
 		limit = {
 			NOT = { this = root.capital_barony }
-			title_province = {				
+			title_province = {
 				terrain = $TERRAIN$
 			}
 		}
@@ -678,7 +678,7 @@ religious_decision.0201 = {
 				religious_decision_0201_has_two_meditation_options_trigger = no
 				any_sub_realm_barony = {
 					NOT = { this = root.capital_barony }
-					title_province = {				
+					title_province = {
 						OR = {
 							terrain = mountains
 							terrain = desert_mountains
@@ -709,24 +709,24 @@ religious_decision.0201 = {
 				religious_decision_0201_has_two_meditation_options_trigger = no
 				any_sub_realm_barony = {
 					NOT = { this = root.capital_barony }
-					title_province = {				
+					title_province = {
 						OR = {
 							terrain = forest
 							terrain = taiga
 						}
-					}				
+					}
 				}
 			}
 			add_character_flag = meditation_option_forest
 			random_sub_realm_barony = {
 				limit = {
 					NOT = { this = root.capital_barony }
-					title_province = {				
+					title_province = {
 						OR = {
 							terrain = forest
 							terrain = taiga
 						}
-					}	
+					}
 				}
 				title_province = { save_scope_as = forest_location }
 			}
@@ -754,7 +754,7 @@ religious_decision.0201 = {
 		if = {
 			limit = { religious_decision_0201_can_meditate_in_terrain_trigger = {TERRAIN = wetlands}}
 			save_meditation_option_effect = { TERRAIN = wetlands }
-		}	
+		}
 	}
 
 	# Option 1: Meditate at home. Lowest risk, lowest reward.
@@ -763,12 +763,12 @@ religious_decision.0201 = {
 		set_variable = {
 			name = meditation_location
 			value = scope:capital_location
-		}		
+		}
 		add_character_flag = meditation_character_flag
 		add_character_modifier = {
 			modifier = meditating_in_seclusion_modifier
 			days = meditation_duration
-		}	
+		}
 		custom_tooltip = religious_decision.0201.difficulty.easy
 		trigger_event = {
 			id = religious_decision.0211
@@ -901,11 +901,11 @@ scripted_effect improve_meditation_skill = {
 	custom_tooltip = religious_decision.0211.experience
 }
 
-religious_decision.0210 = { 
-	hidden = yes 
+religious_decision.0210 = {
+	hidden = yes
 	immediate = {
 		send_interface_toast = {
-			title = religious_decision.0210.toast 
+			title = religious_decision.0210.toast
 			left_icon = root
 			current_travel_plan = {
 				delay_travel_plan = { days = meditation_duration }
@@ -1083,7 +1083,7 @@ religious_decision.0211 = {
 					60 = {
 						modifier = {
 							add = 40
-							scope:meditation_location = {						
+							scope:meditation_location = {
 								OR = {
 									terrain = mountains
 									terrain = desert_mountains
@@ -1125,7 +1125,7 @@ religious_decision.0211 = {
 						trigger = {
 							scope:at_home = no
 							# Must have a negative trait to replace.
-							OR = {				
+							OR = {
 								has_trait = greedy
 								has_trait = lustful
 								has_trait = gluttonous
@@ -1140,13 +1140,13 @@ religious_decision.0211 = {
 						# Greater chance when meditating in one of these terrains.
 						modifier = {
 							add = 75
-							scope:meditation_location = {						
+							scope:meditation_location = {
 								terrain = steppe
 							}
 						}
 						modifier = {
 							add = 150
-							scope:meditation_location = {						
+							scope:meditation_location = {
 								OR = {
 									terrain = mountains
 									terrain = desert_mountains
@@ -1174,10 +1174,10 @@ religious_decision.0211 = {
 							scope:at_home = no
 							# Only in hot regions.
 							scope:meditation_location = {
-								OR = {							
+								OR = {
 									terrain = desert
 									terrain = drylands
-								}							
+								}
 							}
 						}
 						modifier = {
@@ -1354,7 +1354,7 @@ religious_decision.0211 = {
 				}
 			}
 			text = religious_decision.0211.a.success
-		}	
+		}
 		name = {
 			trigger = {
 				OR = {
@@ -1416,7 +1416,7 @@ religious_decision.0211 = {
 				1 = {
 					trigger = {	has_trait = sadistic }
 					remove_trait = sadistic
-					add_trait_force_tooltip = callous
+					add_trait_force_tooltip = compassionate
 				}
 				1 = {
 					trigger = {	has_trait = impatient }
@@ -1490,7 +1490,7 @@ religious_decision.0291 = {
 	hidden = yes
 	immediate = {
 		send_interface_toast = {
-			title = religious_decision.0291.toast 
+			title = religious_decision.0291.toast
 			left_icon = root
 			current_travel_plan ?= {
 				if = {
@@ -1512,7 +1512,7 @@ religious_decision.0291 = {
 
 religious_decision.0301 = {
 	hidden = yes
-	
+
 	# Faiths with Sky Burial need to have this character saved as a variable on their successor.
 	trigger = {
 		exists = player_heir
@@ -1628,7 +1628,7 @@ religious_decision.0302 = {
 
 religious_decision.0311 = {
 	hidden = yes
-	
+
 	# Faiths that can raise a runestone need to have this character saved as a variable on their successor.
 	trigger = {
 		exists = player_heir
@@ -1654,7 +1654,7 @@ religious_decision.0311 = {
 #New holder of the county with a runestone
 religious_decision.0312 = {
 	hidden = yes
-	
+
 	trigger = {
 		scope:title = {
 			exists = var:ancestor_to_bury

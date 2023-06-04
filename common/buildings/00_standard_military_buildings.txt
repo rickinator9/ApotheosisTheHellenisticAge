@@ -353,7 +353,7 @@ workshops_01 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_1
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_1
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_1
 		stationed_maa_siege_value_add = 0.05
 	}
 	character_modifier = {
@@ -406,7 +406,7 @@ workshops_02 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_2
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_2
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_2
 		stationed_maa_siege_value_add = 0.1
 	}
 	character_modifier = {
@@ -451,7 +451,7 @@ workshops_03 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_3
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_3
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_3
 		stationed_archers_damage_mult = high_maa_damage_tier_1
 		stationed_slingers_damage_mult = high_maa_damage_tier_1
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_1
@@ -495,7 +495,7 @@ workshops_04 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_4
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_4
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_4
 		stationed_archers_damage_mult = high_maa_damage_tier_2
 		stationed_slingers_damage_mult = high_maa_damage_tier_2
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_2
@@ -539,7 +539,7 @@ workshops_05 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_5
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_5
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_5
 		stationed_archers_damage_mult = high_maa_damage_tier_3
 		stationed_slingers_damage_mult = high_maa_damage_tier_3
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_3
@@ -584,7 +584,7 @@ workshops_06 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_6
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_6
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_6
 		stationed_archers_damage_mult = high_maa_damage_tier_4
 		stationed_slingers_damage_mult = high_maa_damage_tier_4
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_4
@@ -629,7 +629,7 @@ workshops_07 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_7
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_7
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_7
 		stationed_archers_damage_mult = high_maa_damage_tier_5
 		stationed_slingers_damage_mult = high_maa_damage_tier_5
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_5
@@ -674,7 +674,7 @@ workshops_08 = {
 	
 	province_modifier = {
 		monthly_income = normal_building_tax_tier_8
-		stationed_siege_weapon_siege_value_mult = high_maa_siege_value_tier_8
+		stationed_siege_weapon_siege_value_mult = normal_maa_siege_value_tier_8
 		stationed_archers_damage_mult = high_maa_damage_tier_6
 		stationed_slingers_damage_mult = high_maa_damage_tier_6
 		stationed_skirmishers_damage_mult = high_maa_damage_tier_6
@@ -762,6 +762,18 @@ horse_pastures_01 = {
 		modifier = {
 			add = -9
 			has_building_or_higher = city_01
+		}
+		modifier = {
+			add = -9
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
 		}
 	}
 }
@@ -1492,6 +1504,18 @@ warrior_lodges_01 = {
 			add = -10
 			has_building_or_higher = city_01
 		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
+		}
 	}
 }
 
@@ -1937,6 +1961,18 @@ military_camps_01 = {
 				}
 			}
 		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
+		}
 	}
 }
 
@@ -2352,6 +2388,18 @@ regimental_grounds_01 = {
 		modifier = {
 			add = -99
 			has_building_or_higher = city_01
+		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
 		}
 	}
 }
@@ -2808,6 +2856,18 @@ outposts_01 = {
 		modifier = { # It now has a small economic component; build it last
 			add = -3
 			has_building_or_higher = city_01
+		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
 		}
 	}
 }
@@ -3300,6 +3360,13 @@ barracks_01 = {
 			add = -9
 			has_building_or_higher = city_01
 		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				has_government = theocracy_government
+				highest_held_title_tier <= tier_barony
+			}
+		}
 	}
 }
 
@@ -3687,6 +3754,18 @@ camel_farms_01 = {
 		modifier = { # It now has a small economic component; build it last
 			add = -3
 			has_building_or_higher = city_01
+		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
 		}
 	}
 }
@@ -4143,6 +4222,18 @@ stables_01 = {
 				}
 			}
 		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
+				}
+			}
+		}
 	}
 }
 
@@ -4574,6 +4665,18 @@ smiths_01 = {
 				exists = barony.lessee
 				scope:holder = {
 					highest_held_title_tier <= tier_barony
+				}
+			}
+		}
+		modifier = {
+			add = -10
+			scope:holder = {
+				OR = {
+					AND = {
+						government_has_flag = government_is_theocracy
+						highest_held_title_tier <= tier_barony
+					}
+					is_theocratic_lessee = yes
 				}
 			}
 		}

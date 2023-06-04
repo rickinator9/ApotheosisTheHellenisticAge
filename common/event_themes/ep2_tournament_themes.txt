@@ -97,10 +97,116 @@ tournament_grounds = {
 }
 
 tournament_contest = {
-	icon = {
+	### ICON
+	icon = { # Martial
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					OR = {
+						scope:contest_complete = flag:melee
+						scope:contest_complete = flag:duel
+						scope:contest_complete = flag:wrestling
+						scope:contest_complete = flag:joust
+						scope:contest_complete = flag:horse_race
+						scope:contest_complete = flag:archery
+					}
+				}
+				trigger_else = {
+					OR = {
+						has_current_phase = tournament_phase_melee
+						has_current_phase = tournament_phase_duel
+						has_current_phase = tournament_phase_wrestling
+						has_current_phase = tournament_phase_joust
+						has_current_phase = tournament_phase_horse_race
+						has_current_phase = tournament_phase_archery
+					}
+				}
+			}
+		}
 		reference = "gfx/interface/icons/event_types/type_martial.dds"
 	}
-	sound = {
+	icon = { # Diplomacy
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					scope:contest_complete = flag:recital
+				}
+				trigger_else = { has_current_phase = tournament_phase_recital }
+			}
+		}
+		reference = "gfx/interface/icons/event_types/type_diplomacy.dds"
+	}
+	icon = { # Learning
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					scope:contest_complete = flag:board_game
+				}
+				trigger_else = { has_current_phase = tournament_phase_board_game }
+			}
+		}
+		reference = "gfx/interface/icons/event_types/type_chivalry.dds"
+	}
+	icon = { # Fallback
+		reference = "gfx/interface/icons/event_types/type_martial.dds"
+	}
+	### SOUND
+	sound = { # Martial
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					OR = {
+						scope:contest_complete = flag:melee
+						scope:contest_complete = flag:duel
+						scope:contest_complete = flag:wrestling
+						scope:contest_complete = flag:joust
+						scope:contest_complete = flag:horse_race
+						scope:contest_complete = flag:archery
+					}
+				}
+				trigger_else = {
+					OR = {
+						has_current_phase = tournament_phase_melee
+						has_current_phase = tournament_phase_duel
+						has_current_phase = tournament_phase_wrestling
+						has_current_phase = tournament_phase_joust
+						has_current_phase = tournament_phase_horse_race
+						has_current_phase = tournament_phase_archery
+					}
+				}
+			}
+		}
+		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_martial"
+	}
+	sound = { # Diplomacy
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					scope:contest_complete = flag:recital
+				}
+				trigger_else = { has_current_phase = tournament_phase_recital }
+			}
+		}
+		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_diplomacy"
+	}
+	sound = { # Learning
+		trigger = {
+			scope:activity ?= {
+				trigger_if = {
+					limit = { exists = scope:contest_complete }
+					scope:contest_complete = flag:board_game
+				}
+				trigger_else = { has_current_phase = tournament_phase_board_game }
+			}
+		}
+		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_learning"
+	}
+	sound = { # Fallback
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_activity"
 	}
 	background = {

@@ -725,7 +725,7 @@ short_adventure_var = 2
 ######################
 
 standard_petition_liege_cooldown_time = 1825
-petition_liege_refusal_tyranny_value = 1
+petition_liege_refusal_tyranny_value = 2
 
 ### Council
 
@@ -1175,6 +1175,77 @@ activity_tour_high_stop_value = 8
 activity_tour_low_stop_value = 5
 activity_tour_minimum_stop_value = 3
 
+tour_level_5_prestige_reward = {
+	value = 1200
+	if = {
+		limit = {
+			involved_activity = {
+				has_activity_option = {
+					category = special_type
+					option = tour_type_taxation
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+tour_level_4_prestige_reward = {
+	value = 1000
+	if = {
+		limit = {
+			involved_activity = {
+				has_activity_option = {
+					category = special_type
+					option = tour_type_taxation
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+tour_level_3_prestige_reward = {
+	value = 800
+	if = {
+		limit = {
+			involved_activity = {
+				has_activity_option = {
+					category = special_type
+					option = tour_type_taxation
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+tour_level_2_prestige_reward = {
+	value = 600
+	if = {
+		limit = {
+			involved_activity = {
+				has_activity_option = {
+					category = special_type
+					option = tour_type_taxation
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+tour_level_1_prestige_reward = {
+	value = 200
+	if = {
+		limit = {
+			involved_activity = {
+				has_activity_option = {
+					category = special_type
+					option = tour_type_taxation
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+
 achievement_imperial_march_achievement_powerful_vassal_tally_value = {
 	value = 0
 	scope:host = {
@@ -1228,13 +1299,13 @@ activity_cost_scale_by_era = {
 				limit = {
 					has_cultural_era_or_later = culture_era_imperial
 				}
-				add = 1.5
+				add = 3
 			}
 			else_if = {
 				limit = {
 					has_cultural_era_or_later = culture_era_hellenistic
 				}
-				add = 1.25
+				add = 1.5
 			}
 			else_if = {
 				limit = {
@@ -1255,5 +1326,53 @@ activity_cost_scale_by_tier = {
 		value = root.primary_title.tier
 		subtract = 1
 		min = 1
+	}
+}
+
+gruesome_festival_option_small = {
+	value = 15
+	add = {
+		value = 15
+		multiply = activity_cost_scale_by_era
+		subtract = 15
+		desc = activity_cost_scale_by_era_desc 
+	}
+	add = {
+		value = 15
+		multiply = activity_cost_scale_by_tier
+		subtract = 15
+		desc = activity_cost_scale_by_tier_desc 
+	}
+}
+
+gruesome_festival_option_medium = {
+	value = 40
+	add = {
+		value = 40
+		multiply = activity_cost_scale_by_era
+		subtract = 40
+		desc = activity_cost_scale_by_era_desc 
+	}
+	add = {
+		value = 40
+		multiply = activity_cost_scale_by_tier
+		subtract = 40
+		desc = activity_cost_scale_by_tier_desc 
+	}
+}
+
+gruesome_festival_option_large = {
+	value = 120
+	add = {
+		value = 120
+		multiply = activity_cost_scale_by_era
+		subtract = 120
+		desc = activity_cost_scale_by_era_desc 
+	}
+	add = {
+		value = 120
+		multiply = activity_cost_scale_by_tier
+		subtract = 120
+		desc = activity_cost_scale_by_tier_desc 
 	}
 }

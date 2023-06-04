@@ -29,7 +29,9 @@ scripted_trigger has_multiple_consorts_trigger = {
 
 scripted_effect tour_grounds_events_6000_sex_effect = {
 	if = {
-		#limit = { sex_opposite_of = scope:stop_host_scope }
+		limit = { sex_opposite_of = scope:stop_host_scope }
+		# Set up the error blocker for cheating sex, because the vassal couple might be monogamous but are consenting to the experiment here.
+		save_scope_as = ignore_cheating_error_check
 		had_sex_with_effect = {
 			CHARACTER = scope:stop_host_scope
 			PREGNANCY_CHANCE = seduce_pregnancy_chance
@@ -37,6 +39,9 @@ scripted_effect tour_grounds_events_6000_sex_effect = {
 	}
 	if = {
 		limit = { sex_opposite_of = scope:orgy_consort_1 }
+		# Set up the error blocker for cheating sex, because the vassal couple might be monogamous but are consenting to the experiment here.
+		## Aaaand we set it up again because it gets cleaned up in the effect.
+		save_scope_as = ignore_cheating_error_check
 		had_sex_with_effect = {
 			CHARACTER = scope:orgy_consort_1
 			PREGNANCY_CHANCE = seduce_pregnancy_chance
@@ -48,6 +53,9 @@ scripted_effect tour_grounds_events_6000_sex_effect = {
 		}
 		if = {
 			limit = { sex_opposite_of = scope:orgy_consort_2 }
+			# Set up the error blocker for cheating sex, because the vassal couple might be monogamous but are consenting to the experiment here.
+			## Aaaand we set it up again because it gets cleaned up in the effect x2.
+			save_scope_as = ignore_cheating_error_check
 			had_sex_with_effect = {
 				CHARACTER = scope:orgy_consort_2
 				PREGNANCY_CHANCE = seduce_pregnancy_chance
@@ -60,6 +68,9 @@ scripted_effect tour_grounds_events_6000_sex_effect = {
 		}
 		if = {
 			limit = { sex_opposite_of = scope:orgy_consort_3 }
+			# Set up the error blocker for cheating sex, because the vassal couple might be monogamous but are consenting to the experiment here.
+			## Aaaand we set it up again because it gets cleaned up in the effect x2.
+			save_scope_as = ignore_cheating_error_check
 			had_sex_with_effect = {
 				CHARACTER = scope:orgy_consort_3
 				PREGNANCY_CHANCE = seduce_pregnancy_chance
@@ -253,6 +264,7 @@ tour_grounds_events.6000 = {
 				}
 			}
 		}
+		trigger = { might_cheat_on_every_partner_trigger = yes }
 		scope:activity = {
 			add_activity_log_entry = {
 				key = tourgy_log

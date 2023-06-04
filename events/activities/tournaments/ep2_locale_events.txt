@@ -3873,7 +3873,7 @@ ep2_locale_events.2011 = {
 		position = lower_right_portrait
 	}
 	theme = friendly  
-	override_background = { reference = army_camp } # TODO_CD_EP2
+	override_background = { reference = armory }
 
 	trigger = { exists = scope:befriend_approach }
 
@@ -4494,7 +4494,7 @@ ep2_locale_events.2501 = {
 	lower_center_portrait = {
 		character = scope:tournament_tailor
 	}
-	cooldown = { years = 1 }
+	cooldown = { years = 50 }
 
 	trigger = {
 		is_ai = no
@@ -5288,7 +5288,10 @@ ep2_locale_events.3001 = {
 			has_trait = lustful
 		}
 
-		had_sex_with_effect = { CHARACTER = scope:lover PREGNANCY_CHANCE = pregnancy_chance }
+		had_sex_with_effect = {
+			CHARACTER = scope:lover
+			PREGNANCY_CHANCE = pregnancy_chance
+		}
 
         stress_impact = {
 			chaste = medium_stress_impact_gain
@@ -5423,6 +5426,7 @@ scripted_trigger willing_lecherous_knight_trigger = {
 	NOR = {
 		has_trait = chaste
 		has_trait = celibate
+		this = root
 	}
 	might_cheat_on_every_partner_trigger = yes
 	OR = {
@@ -5634,6 +5638,7 @@ ep2_locale_events.3002 = {
 			NOT = {
 				has_trait = celibate
 			}
+			might_cheat_on_every_partner_trigger = yes
 		}
 
 		if = { #You're a man and your faith says no to male adultery
@@ -5960,6 +5965,9 @@ ep2_locale_events.3500 = {
 		scope:activity = {
 			every_attending_character = {
 				custom = custom.every_attending_character
+				limit = {
+					NOT = { this = root }
+				}
 				add_opinion = {
 					target = root
 					modifier = tournament_banished_farrier_opinion
@@ -7304,11 +7312,24 @@ ep2_locale_events.4501 = {
 		flavor = ep2_locale_events.4501.a.tt
 
 		scope:spying_spouse = {
-			had_sex_with_effect = { CHARACTER = scope:tournament_weaponsmith PREGNANCY_CHANCE = pregnancy_chance }
+			had_sex_with_effect = {
+				CHARACTER = scope:tournament_weaponsmith
+				PREGNANCY_CHANCE = pregnancy_chance
+			}
 		}
 
-		had_sex_with_effect = { CHARACTER = scope:tournament_weaponsmith PREGNANCY_CHANCE = pregnancy_chance }
-		had_sex_with_effect = { CHARACTER = scope:spying_spouse PREGNANCY_CHANCE = pregnancy_chance }
+		# Consensual threesome despite the monogamy, so we ignore cheating errors here.
+		save_scope_as = ignore_cheating_error_check
+		had_sex_with_effect = {
+			CHARACTER = scope:tournament_weaponsmith
+			PREGNANCY_CHANCE = pregnancy_chance
+		}
+		# We fire this twice because the sex effect auto-clears it.
+		save_scope_as = ignore_cheating_error_check
+		had_sex_with_effect = {
+			CHARACTER = scope:spying_spouse
+			PREGNANCY_CHANCE = pregnancy_chance
+		}
 
 		stress_impact = {
 			seducer = miniscule_stress_impact_loss

@@ -2108,6 +2108,7 @@ scripted_trigger stewardship_wealth_7000_enforcer_trigger = {
 
 scripted_trigger stewardship_wealth_7000_victim_trigger = {
 	highest_held_title_tier <= tier_duchy
+	exists = capital_county
 	NOT = { is_at_war_with = root }
 	opinion = {
 		target = root
@@ -2435,7 +2436,7 @@ stewardship_wealth.7000 = {
 			capital_county = {
 				add_county_modifier = {
 					modifier = stewardship_stolen_taxes_modifier
-						years = 2
+					years = 2
 				}
 			}
 		}
@@ -2449,7 +2450,7 @@ stewardship_wealth.7000 = {
 		}
 		# mirror event for target
 		scope:victim = {
-				trigger_event = { id = stewardship_wealth.7001 days = 1 } 
+			trigger_event = { id = stewardship_wealth.7001 days = 1 } 
 		}
 		add_character_flag = {
 			flag = unleashed_knights

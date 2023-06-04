@@ -1375,10 +1375,6 @@ hunt.8072 = {
 				save_scope_as = murder_target
 			}
 		}
-	}
-
-	option = { # Oopsie
-		name = hunt.8072.a
 		scope:activity = {
 			add_activity_log_entry = {
 				key = hunt_shoot_murder_key
@@ -1412,19 +1408,11 @@ hunt.8072 = {
 					}
 				}
 			}
-			set_variable = {
-				name = hunt_invalidated
-				value = flag:death
-			}
-			set_variable = {
-				name = hunt_invalidated_flavor
-				value = scope:murder_target
-			}
-			set_variable = {
-				name = hunt_invalidated_culprit
-				value = root
-			}
 		}
+	}
+
+	option = { # Oopsie
+		name = hunt.8072.a
 	}
 }
 
@@ -2497,9 +2485,10 @@ hunt.8540 = {
 			OR = {
 				has_activity_intent = woo_attendee_intent
 				has_activity_intent = befriend_attendee_intent
-				intent_target.location ?= root.location
 			}
+			intent_target.location ?= root.location
 		}
+		custom_tooltip = available_because_intent_tt
 		scope:activity = {
 			add_activity_log_entry = {
 				key = hunt_omen_intent_log
@@ -3311,18 +3300,16 @@ hunt.8570 = {
 								left_icon = root
 								right_icon = scope:stampede_victim
 								scope:stampede_victim = {
+									save_scope_as = murder_target
 									death = { death_reason = death_stampede }
-									scope:stampede_victim = {
-										death = { death_reason = death_stampede }
-										every_close_or_extended_family_member = {
-											limit = {
-												NOT = { this = root }
-											}
-											custom = hunter_accident_victim_family_tt
-											add_opinion = {
-												modifier = left_family_for_dead_opinion
-												target = root
-											}
+									every_close_or_extended_family_member = {
+										limit = {
+											NOT = { this = root }
+										}
+										custom = hunter_accident_victim_family_tt
+										add_opinion = {
+											modifier = left_family_for_dead_opinion
+											target = root
 										}
 									}
 								}
@@ -3384,6 +3371,7 @@ hunt.8570 = {
 								left_icon = root
 								right_icon = scope:stampede_victim
 								scope:stampede_victim = {
+									save_scope_as = murder_target
 									death = { death_reason = death_stampede }
 									every_close_or_extended_family_member = {
 										limit = {

@@ -209,7 +209,12 @@ fabricate_hook_discovery_effect = {
 					left_icon = scope:owner
 					title = hostile_scheme_discovery.3002.t
 
-					fabricate_hook_block_scheme_owner_from_further_schemes_effect = yes
+					if = {
+						limit = {
+							NOT = { scope:owner = scope:target.court_owner}
+						}
+						fabricate_hook_block_scheme_owner_from_further_schemes_effect = yes
+					}
 				}
 			}
 		}

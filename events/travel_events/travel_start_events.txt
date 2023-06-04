@@ -1862,6 +1862,258 @@ travel_start_event.1050 = {
 	}
 }
 
+travel_start_event.1051 = {
+	type = character_event
+	title = travel_start_event.1051.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					any_in_list = {
+						variable = playdate_guests
+						count >= 4
+					}
+				}
+				desc = travel_start_event.1051.many
+			}
+			triggered_desc = {
+				trigger = {
+					any_in_list = {
+						variable = playdate_guests
+						count = 3
+					}
+				}
+				desc = travel_start_event.1051.three
+			}
+			triggered_desc = {
+				trigger = {
+					any_in_list = {
+						variable = playdate_guests
+						count = 2
+					}
+				}
+				desc = travel_start_event.1051.two
+			}
+			desc = travel_start_event.1051.one
+		}
+		desc = travel_start_event.1051.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					any_in_list = {
+						variable = playdate_guests
+						count > 1
+					}
+				}
+				desc = travel_start_event.1051.multiple
+			}
+			desc = travel_start_event.1051.single
+		}
+	}
+	theme = travel
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		#We dislike the host
+		triggered_animation = {
+			trigger = {
+				OR = {
+					has_character_flag = we_dislike_host
+					scope:child = { has_any_debilitating_illness = yes }
+				}
+			}
+			animation = dismissal
+		}
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:child_1
+		#Sick - sick animation
+		triggered_animation = {
+			trigger = {
+				scope:child_1 = { has_any_debilitating_illness = yes }
+			}
+			animation = sick
+		}
+		#We dislike the host
+		triggered_animation = {
+			trigger = { has_character_flag = we_dislike_host }
+			animation = disapproval
+		}
+		animation = admiration
+	}
+	lower_left_portrait = scope:child_2
+	lower_center_portrait = scope:child_3
+	#Show our host
+	lower_right_portrait = {
+		trigger = { exists = scope:host }
+		character = scope:host
+	}
+	cooldown = { days = 1 }
+
+	immediate = {
+		play_music_cue = mx_cue_travel_start
+		# Save children scopes
+		while = {
+			limit = {
+				NAND = {
+					exists = scope:child_1
+					exists = scope:child_2
+					exists = scope:child_3
+				}
+				any_in_list = {
+					variable = playdate_guests
+					NOR = {
+						scope:child_1 ?= this
+						scope:child_2 ?= this
+						scope:child_3 ?= this
+					}
+				}
+			}
+			random_in_list = {
+				variable = playdate_guests
+				limit = {
+					NOR = {
+						scope:child_1 ?= this
+						scope:child_2 ?= this
+						scope:child_3 ?= this
+					}
+				}
+				weight = {
+					base = 1
+					modifier = {
+						factor = {
+							value = age
+							multiply = 2
+						}
+					}
+					is_of_major_interest_to_weight_up_modifier = { CHARACTER = root }
+					is_of_minor_interest_to_weight_up_modifier = { CHARACTER = root }
+				}
+				if = {
+					limit = {
+						NOT = { exists = scope:child_1 }
+					}
+					save_scope_as = child_1
+					involved_activity.activity_host = { save_scope_as = host }
+				}
+				else_if = {
+					limit = {
+						NOT = { exists = scope:child_2 }
+					}
+					save_scope_as = child_2
+				}
+				else = { save_scope_as = child_3 }
+			}
+		}
+		#Check if we dislike the host
+		if = {
+			limit = {
+				exists = scope:host
+				OR = {
+					has_relation_rival = scope:host
+					opinion = {
+						target = scope:host
+						value < 10
+					}
+				}
+			}
+			add_character_flag = we_dislike_host
+		}
+	}
+
+	# Ok!
+	option = { 
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							OR = {
+								scope:child_1 = { has_any_debilitating_illness = yes }
+								has_character_flag = we_dislike_host
+								has_trait = paranoid
+							}
+						}
+						desc = travel_start_event.1051.a_cynical
+					}
+					triggered_desc = {
+						trigger = {
+							any_in_list = {
+								variable = playdate_guests
+								count >= 2
+							}
+						}
+						desc = travel_start_event.1051.a.multiple
+					}
+					desc = travel_start_event.1051.a
+				}
+			}
+		}
+		every_in_list = {
+			variable = playdate_guests
+			custom_tooltip = playdate_depart_tt
+		}
+		stress_impact = {
+			paranoid = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+	}
+
+	# Hell to the no!
+	option = { 
+		name = travel_start_event.1051.b
+		every_in_list = {
+			variable = playdate_guests
+			custom = playdate_blocked_tt
+			hidden_effect = {
+				current_travel_plan = { cancel_travel_plan = yes }
+			}
+			add_opinion = {
+				modifier = annoyed_opinion
+				target = root
+				opinion = -10
+			}
+		}
+		scope:host = {
+			if = {
+				limit = { is_ai = no }
+				if = {
+					limit = { exists = scope:child_2 }
+					send_interface_message = {
+						type = event_generic_bad_text
+						title = playdate_forbidden_title
+						left_icon = scope:carer
+						right_icon = scope:child_1
+						desc = playdate_forbidden_tt
+					}
+				}
+				else = {
+					send_interface_message = {
+						type = event_generic_bad_text
+						title = playdate_forbidden_title
+						left_icon = scope:carer
+						right_icon = scope:child_1
+						desc = playdate_forbidden_single_tt
+					}
+				}
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+			gregarious = minor_stress_impact_gain
+		}
+	}
+
+	after = {
+		if = {
+			limit = { has_character_flag = we_dislike_host }
+			remove_character_flag = we_dislike_host
+		}
+		clear_variable_list = playdate_guests
+	}
+}
+
 scripted_trigger travel_event_1060_valid_local_pilgrim_trigger = {
 	# Let's only take sensible chars.
 	is_available = yes

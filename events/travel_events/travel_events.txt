@@ -282,6 +282,7 @@ travel_events.1000 = {
 		character = scope:shoeless_peasant
 		animation = pain
 		hide_info = yes
+		remove_default_outfit = no
 		outfit_tags = { beggar_rags }
 	}
 	cooldown = { years = 10 }
@@ -298,16 +299,12 @@ travel_events.1000 = {
 			random_list = {
 				80 = {
 					create_character = {
-						template = generic_peasant_character
-						location = root.location   
+						gender_female_chance = 0.5
+						random_traits = yes
+						location = root.location
+						faith = root.location.faith
+						culture = root.location.culture
 						save_scope_as = shoeless_peasant
-					}
-					scope:shoeless_peasant.house ?= {
-						save_scope_as = shoeless_peasant_dynasty
-					}
-					scope:shoeless_peasant = {
-						set_to_lowborn = yes
-						add_character_flag = peasant_outfit
 					}
 				}
 				20 = {
@@ -316,7 +313,10 @@ travel_events.1000 = {
 						location.province_owner = {
 							# The province owner is present and not you
 							is_available_ai_adult = yes
-							NOT = { this = root }
+							NOT = {
+								this = root
+								is_lowborn = yes
+							}
 							# Their faith does not venerate wealth
 							NOT = { faith = { trait_is_virtue = greedy } }
 							OR = {
@@ -350,6 +350,10 @@ travel_events.1000 = {
 					}
 					location.province_owner = { save_scope_as = shoeless_peasant }
 				}
+			}
+			scope:shoeless_peasant ?= {
+				add_character_flag = has_scripted_appearance
+				add_character_flag = no_headgear
 			}
 		}
 	}
@@ -416,7 +420,7 @@ travel_events.1000 = {
 					}
 					75 = {
 						scope:shoeless_peasant = {
-							add_character_flag = should_be_disappeared
+							silent_disappearance_effect = yes
 						}
 					}
 				}
@@ -435,21 +439,14 @@ travel_events.1000 = {
 			}
 		}
 	}
-
 	after = {
 		hidden_effect = {
 			if = {
-				limit = { exists = scope:shoeless_peasant_dynasty scope:shoeless_peasant = { is_lowborn = yes } }
+				limit = { scope:shoeless_peasant ?= { is_alive = yes } }
 				scope:shoeless_peasant = {
-					set_house = scope:shoeless_peasant_dynasty
+					remove_character_flag = no_headgear
+					remove_character_flag = has_scripted_appearance
 				}
-			}
-			if = {
-				limit = {
-					scope:shoeless_peasant = { has_character_flag = should_be_disappeared }
-					is_ai = yes
-				}
-				scope:shoeless_peasant = { silent_disappearance_effect = yes }
 			}
 		}
 	}
@@ -524,7 +521,7 @@ travel_events.1001 = {
 		trigger = {
 			scope:shoeless_peasant = { is_landed = no }
 		}
-		recruit_courtier = scope:shoeless_peasant
+		add_courtier = scope:shoeless_peasant
 		root.current_travel_plan = {
 			add_companion = scope:shoeless_peasant
 		}
@@ -572,15 +569,13 @@ travel_events.1001 = {
 	}
 
 	after = {
-		hidden_effect = {
-			if = {
-				limit = {
-					is_ai = yes
-					scope:shoeless_peasant = { is_landed = no }
-					scope:shoeless_peasant = { is_courtier = no }
-				}
-				scope:shoeless_peasant = { silent_disappearance_effect = yes }
+		if = {
+			limit = {
+				is_ai = yes
+				scope:shoeless_peasant = { is_landed = no }
+				scope:shoeless_peasant = { is_courtier = no }
 			}
+			scope:shoeless_peasant = { silent_disappearance_effect = yes }
 		}
 	}
 }
@@ -630,15 +625,13 @@ travel_events.1002 = {
 	}
 
 	after = {
-		hidden_effect = {
-			if = {
-				limit = {
-					is_ai = yes
-					scope:shoeless_peasant = { is_landed = no }
-					scope:shoeless_peasant = { is_courtier = no }
-				}
-				scope:shoeless_peasant = { silent_disappearance_effect = yes }
+		if = {
+			limit = {
+				is_ai = yes
+				scope:shoeless_peasant = { is_landed = no }
+				scope:shoeless_peasant = { is_courtier = no }
 			}
+			scope:shoeless_peasant = { silent_disappearance_effect = yes }
 		}
 	}
 }
@@ -954,22 +947,24 @@ travel_events.1005 = { #Storm washes artifact overboard
 				}
 				#To do make more restrictive
 				10 = {
+					trigger = {
+						scope:background_terrain_scope = {
+							any_neighboring_province = {
+								is_sea_province = no
+								exists = county.holder
+							}
+						}
+					}
 					scope:background_terrain_scope = {
 						random_neighboring_province = {
 							limit = { 
 								is_sea_province = no
+								exists = county.holder
 							}
-							county.holder = { 
-								save_scope_as = new_owner
-							}
+							county.holder = { save_scope_as = new_owner }
 						}
 					}
-				
-					
-
-					scope:overboard_artifact = {
-						set_owner = scope:new_owner
-					}
+					scope:overboard_artifact = { set_owner = scope:new_owner }
 				}
 			}
 		}
@@ -1093,10 +1088,26 @@ travel_events.1010 = {
 				template_character = root
 				random_traits = yes
 				age = { 18 50 }
-				diplomacy = medium_skill_rating
-				learning = medium_skill_rating
-				martial = medium_skill_rating
-				stewardship = medium_skill_rating
+				martial = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				stewardship = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				diplomacy = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				intrigue = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				learning = {
+					min_template_low_skill
+					max_template_average_skill
+				}
 				save_scope_as = good_travel_leader_option
 			}
 			scope:good_travel_leader_option = {
@@ -1132,10 +1143,26 @@ travel_events.1010 = {
 				template_character = root
 				random_traits = yes
 				age = { 18 50 }
-				diplomacy = high_skill_rating
-				learning = high_skill_rating
-				martial = high_skill_rating
-				stewardship = high_skill_rating
+				martial = {
+					min_template_average_skill
+					max_template_decent_skill
+				}
+				stewardship = {
+					min_template_average_skill
+					max_template_decent_skill
+				}
+				diplomacy = {
+					min_template_average_skill
+					max_template_decent_skill
+				}
+				intrigue = {
+					min_template_average_skill
+					max_template_decent_skill
+				}
+				learning = {
+					min_template_average_skill
+					max_template_decent_skill
+				}
 				save_scope_as = great_travel_leader_option
 			}
 			scope:great_travel_leader_option = {
@@ -1147,6 +1174,7 @@ travel_events.1010 = {
 	#Great option
 	option = {
 		name = travel_events.1010.a
+		custom_tooltip = travel_events.1010.a.aptitude
 		pay_short_term_gold = {
 			target = scope:great_travel_leader_option
 			gold = high_skill_court_physician_cost
@@ -1187,6 +1215,7 @@ travel_events.1010 = {
 	#Good option
 	option = {
 		name = travel_events.1010.b
+		custom_tooltip = travel_events.1010.b.aptitude
 		pay_short_term_gold = {
 			target = scope:good_travel_leader_option
 			gold = low_skill_court_physician_cost
@@ -1281,16 +1310,10 @@ travel_events.1020 = {
 
 	trigger = {
 		is_travelling = yes
-		NOT = {
-			exists = current_travel_plan.travel_leader
-		}
-		NOT = {
-			employs_court_position = travel_leader_court_position
-		}
 		OR = {
 			current_travel_plan = {
 				any_entourage_character = {
-					count = 2
+					count >= 2
 					can_be_employed_as = travel_leader_court_position
 				}
 			}
@@ -1303,14 +1326,18 @@ travel_events.1020 = {
 			limit = {
 				current_travel_plan ?= {
 					any_entourage_character = {
-						count = 2
+						count >= 2
 						can_be_employed_as = travel_leader_court_position
+
 					}
 				}
 			}
 			current_travel_plan ?= {
 				ordered_entourage_character = {
-					limit = { can_be_employed_as = travel_leader_court_position }
+					limit = {
+						can_be_employed_as = travel_leader_court_position
+						NOT = { has_court_position = travel_leader_court_position }
+					}
 					order_by = stewardship 
 					save_scope_as = temp_caravan_master_option_1
 				}
@@ -1319,6 +1346,7 @@ travel_events.1020 = {
 					limit = {
 						NOT = { this = scope:temp_caravan_master_option_1 }
 						can_be_employed_as = travel_leader_court_position
+						NOT = { has_court_position = travel_leader_court_position }
 					}
 					save_scope_as = temp_caravan_master_option_2
 				}
@@ -1330,12 +1358,16 @@ travel_events.1020 = {
 				current_travel_plan ?= {
 					any_entourage_character = {
 						can_be_employed_as = travel_leader_court_position
+						NOT = { has_court_position = travel_leader_court_position }
 					}
 				}
 			}
 			current_travel_plan ?= {
 				ordered_entourage_character = {
-					limit = { can_be_employed_as = travel_leader_court_position }
+					limit = {
+						can_be_employed_as = travel_leader_court_position
+						NOT = { has_court_position = travel_leader_court_position }
+					}
 					order_by = stewardship 
 					save_scope_as = temp_caravan_master_option_1
 				}
@@ -1346,6 +1378,7 @@ travel_events.1020 = {
 					any_pool_character = {
 						province = root.location
 						# Cloned from Caravan Master triggers out of necessity
+						can_be_employed_as = travel_leader_court_position
 						is_clergy = no
 						is_imprisoned = no
 						NOT = { is_spouse_of = root }
@@ -1357,6 +1390,7 @@ travel_events.1020 = {
 						# Cloned from Caravan Master triggers out of necessity
 						is_clergy = no
 						is_imprisoned = no
+						can_be_employed_as = travel_leader_court_position
 						NOT = { is_spouse_of = root }
 					}
 					save_scope_as = temp_caravan_master_option_2
@@ -1374,10 +1408,26 @@ travel_events.1020 = {
 					culture = root.location.culture
 					faith = root.location.faith
 					age = { 18 50 }
-					diplomacy = medium_skill_rating
-					learning = medium_skill_rating
-					martial = medium_skill_rating
-					stewardship = medium_skill_rating
+					martial = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					stewardship = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					diplomacy = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					intrigue = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					learning = {
+						min_template_low_skill
+						max_template_average_skill
+					}
 					save_scope_as = temp_caravan_master_option_2
 				}
 				scope:temp_caravan_master_option_2 = {
@@ -1392,10 +1442,26 @@ travel_events.1020 = {
 					template_character = root
 					random_traits = yes
 					age = { 18 50 }
-					diplomacy = medium_skill_rating
-					learning = medium_skill_rating
-					martial = medium_skill_rating
-					stewardship = medium_skill_rating
+					martial = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					stewardship = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					diplomacy = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					intrigue = {
+						min_template_low_skill
+						max_template_average_skill
+					}
+					learning = {
+						min_template_low_skill
+						max_template_average_skill
+					}
 					save_scope_as = temp_caravan_master_option_2
 				}
 				scope:temp_caravan_master_option_2 = {
@@ -1408,7 +1474,8 @@ travel_events.1020 = {
 			limit = {
 				any_pool_character = {
 					province = root.location 
-					count = 2
+					count >= 2
+					can_be_employed_as = travel_leader_court_position
 				}
 			}
 			random_pool_character = {
@@ -1440,10 +1507,26 @@ travel_events.1020 = {
 				template_character = root
 				random_traits = yes
 				age = { 18 50 }
-				diplomacy = medium_skill_rating
-				learning = medium_skill_rating
-				martial = medium_skill_rating
-				stewardship = medium_skill_rating
+				martial = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				stewardship = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				diplomacy = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				intrigue = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				learning = {
+					min_template_low_skill
+					max_template_average_skill
+				}
 				save_scope_as = temp_caravan_master_option_2
 			}
 			scope:temp_caravan_master_option_2 = {
@@ -1458,10 +1541,26 @@ travel_events.1020 = {
 				template_character = root
 				random_traits = yes
 				age = { 18 50 }
-				diplomacy = medium_skill_rating
-				learning = medium_skill_rating
-				martial = medium_skill_rating
-				stewardship = medium_skill_rating
+				martial = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				stewardship = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				diplomacy = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				intrigue = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				learning = {
+					min_template_low_skill
+					max_template_average_skill
+				}
 				save_scope_as = temp_caravan_master_option_1
 			}
 			scope:temp_caravan_master_option_1 = {
@@ -1474,10 +1573,26 @@ travel_events.1020 = {
 				template_character = root
 				random_traits = yes
 				age = { 18 50 }
-				diplomacy = medium_skill_rating
-				learning = medium_skill_rating
-				martial = medium_skill_rating
-				stewardship = medium_skill_rating
+				martial = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				stewardship = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				diplomacy = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				intrigue = {
+					min_template_low_skill
+					max_template_average_skill
+				}
+				learning = {
+					min_template_low_skill
+					max_template_average_skill
+				}
 				save_scope_as = temp_caravan_master_option_2
 			}
 			scope:temp_caravan_master_option_2 = {
@@ -1504,9 +1619,22 @@ travel_events.1020 = {
 				add_companion = scope:temp_caravan_master_option_1
 			}
 		}
-		appoint_court_position = {
-			recipient = scope:temp_caravan_master_option_1
-			court_position = travel_leader_court_position
+		if = {
+			limit = {
+				NOT = { scope:temp_caravan_master_option_1 = { is_courtier_of = root } }
+			}
+			add_courtier = scope:temp_caravan_master_option_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					employs_court_position = travel_leader_court_position
+				}
+			}
+			appoint_court_position = {
+				recipient = scope:temp_caravan_master_option_1
+				court_position = travel_leader_court_position
+			}
 		}
 		current_travel_plan = {
 			hidden_effect = {
@@ -1528,9 +1656,22 @@ travel_events.1020 = {
 				add_companion = scope:temp_caravan_master_option_2
 			}
 		}
-		appoint_court_position = {
-			recipient = scope:temp_caravan_master_option_2
-			court_position = travel_leader_court_position
+		if = {
+			limit = {
+				NOT = { scope:temp_caravan_master_option_2 = { is_courtier_of = root } }
+			}
+			add_courtier = scope:temp_caravan_master_option_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					employs_court_position = travel_leader_court_position
+				}
+			}
+			appoint_court_position = {
+				recipient = scope:temp_caravan_master_option_2
+				court_position = travel_leader_court_position
+			}
 		}
 		current_travel_plan = {
 			hidden_effect = {
@@ -1625,7 +1766,8 @@ travel_events.2200 = {
 			limit = {
 				any_pool_character = {
 					province = root.location
-					is_available_adult = yes 
+					is_available_adult = yes
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = this }
 					prowess >= 10
 				}
 			}
@@ -1633,6 +1775,7 @@ travel_events.2200 = {
 				province = root.location
 				limit = {
 					is_available_adult = yes
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = this }
 					prowess >= 10
 				}
 				save_scope_as = local_knight
@@ -1720,7 +1863,7 @@ travel_events.2200 = {
 				}
 				send_interface_toast = {
 					add_prestige = minor_prestige_gain
-					recruit_courtier = scope:local_knight
+					add_courtier = scope:local_knight
 					root.current_travel_plan = {
 						add_companion = scope:local_knight
 					}
@@ -1794,7 +1937,7 @@ travel_events.2200 = {
 					}
 					#TODO_CD_EP2 KL - if your champion wins, they should get a relevant accolade progression. to be done after accolades are mostly finished
 					root = { 
-						recruit_courtier = scope:local_knight
+						add_courtier = scope:local_knight
 						current_travel_plan = {
 							add_companion = scope:local_knight
 						}
