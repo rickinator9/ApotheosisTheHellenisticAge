@@ -117,6 +117,11 @@
 					CULTURE_INPUT = western 
 				}
 			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes   
+                portrait_era1_trigger = yes
+            }
 		}
 	}
 
@@ -132,12 +137,12 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 90
 				portrait_war_nobles_helmet_trigger = {
 					CULTURE_INPUT = western 
 				}
 				has_ep2_dlc_trigger = yes
-				portrait_era1_trigger = yes
+				portrait_era1_armor_trigger = yes
 			}
 		}
 	}
@@ -154,12 +159,12 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 90
 				portrait_war_nobles_helmet_trigger = {
 					CULTURE_INPUT = western 
 				}
 				has_ep2_dlc_trigger = yes
-				portrait_era2_trigger = yes
+				portrait_era2_armor_trigger = yes
 			}
 		}
 	}
@@ -176,7 +181,7 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 90
 				portrait_war_nobles_helmet_trigger = {
 					CULTURE_INPUT = western 
 				}
@@ -184,7 +189,7 @@
                     CULTURE_INPUT = western
                 }
 				has_ep2_dlc_trigger = yes
-				portrait_era3_trigger = yes
+				portrait_era3_trigger = yes # not using the armor trigger here because that was changed to be less historically accurate
 			}
 		}
 	}
@@ -201,7 +206,7 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 90
 				portrait_war_nobles_helmet_trigger = {
 					CULTURE_INPUT = western 
 				}
@@ -209,7 +214,7 @@
                     CULTURE_INPUT = western
                 }
 				has_ep2_dlc_trigger = yes
-				portrait_era3_trigger = yes
+				portrait_era3_trigger = yes # not using the armor trigger here because that was changed to be less historically accurate
 			}
 		}
 	}
@@ -226,7 +231,7 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 100
+				add = 90
 				portrait_war_nobles_helmet_trigger = {
 					CULTURE_INPUT = western 
 				}
@@ -234,7 +239,7 @@
                     CULTURE_INPUT = dde_hre
                 }
 				has_ep2_dlc_trigger = yes
-				portrait_era3_trigger = yes
+				portrait_era3_trigger = yes # not using the armor trigger here because that was changed to be less historically accurate
 			}
 		}
 	}
@@ -256,7 +261,7 @@
 					CULTURE_INPUT = western 
 				}
 				has_ep2_dlc_trigger = yes
-				portrait_era4_trigger = yes
+				portrait_era4_armor_trigger = yes
 			}
 		}
 	}
@@ -767,11 +772,10 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 60 # slightly higher
+				add = 90 # slightly higher
                 portrait_war_nobles_helmet_trigger = {
                     CULTURE_INPUT = fp2_iberian_muslim
                 }
-                portrait_war_nobles_fancy_helmet_trigger = yes
                 OR = {
                     portrait_commoner_armor_trigger = { 
                         CULTURE_INPUT = fp2_iberian_muslim
@@ -797,7 +801,7 @@
 		weight = {
 			base = 0
 			modifier = {
-				add = 60 # slightly higher
+				add = 90 # slightly higher
 				portrait_war_nobles_fancy_helmet_trigger = yes
                 portrait_war_nobles_helmet_trigger = {
                     CULTURE_INPUT = fp2_iberian_muslim
@@ -822,7 +826,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 60 # larger than the western war headgear
+                add = 90 # larger than the western war headgear
                 portrait_war_nobles_helmet_trigger = {
                     CULTURE_INPUT = fp2_iberian_christian
                 }
@@ -838,8 +842,7 @@
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOR = { 
-                	portrait_era2_trigger = yes 
+                NOT = { 
                 	portrait_era3_trigger = yes
                 } 
             }
@@ -859,7 +862,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 60 # larger than the western war headgear
+                add = 90 # larger than the western war headgear
                 portrait_war_nobles_helmet_trigger = {
                     CULTURE_INPUT = fp2_iberian_christian
                 }
@@ -870,8 +873,7 @@
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOR = { 
-                	portrait_era2_trigger = yes 
+                NOT = { 
                 	portrait_era3_trigger = yes
                 } 
             }

@@ -98,7 +98,7 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
             accessory = {
                 mode = add
                 gene = clothes
-                template = no_clothes
+                template = western_bedchamber
                 range = { 0 1 } # For the randomness to work correctly
             }
         }   
@@ -130,7 +130,7 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOT = { portrait_era3_trigger = yes } 
+                NOT = { portrait_era2_trigger = yes } 
             }
         }
     }
@@ -156,7 +156,7 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOT = { portrait_era3_trigger = yes } 
+                NOT = { portrait_era2_trigger = yes } 
             }
         }
     }
@@ -182,7 +182,7 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOT = { portrait_era3_trigger = yes } 
+                NOT = { portrait_era2_trigger = yes } 
             }
         }
     }
@@ -208,7 +208,11 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
                 portrait_commoner_clothing_trigger = {
                     CULTURE_INPUT = western
                 }
-            }       
+            }  
+            modifier = {
+                factor = 0       
+                has_ep2_dlc_trigger = yes   
+            }     
         }
     }
 
@@ -217,7 +221,7 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
             accessory = {
                 mode = add
                 gene = clothes
-                template = ep2_western_era1_low_nobility_clothes
+                template = ep2_western_era1_commoner_clothes
                 range = { 0 1 } # For the randomness to work correctly
             }
         }   
@@ -961,8 +965,12 @@ clothes_base = { # The lowest priority group of clothes with triggers based on r
                     CULTURE_INPUT = fp2_iberian_christian
                 }
             }
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes   
+                portrait_era1_trigger = yes
+            }
         }
-
     }
 
     fp2_iberian_muslim_commoners = {

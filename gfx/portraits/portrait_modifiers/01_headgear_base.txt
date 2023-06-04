@@ -9,12 +9,18 @@ headgear_base = {
 
 ## SP2 ## 
 	
-	sp2_western_imperial = {
+	sp2_western_imperial_era1 = {
 		dna_modifiers = {
 			accessory = {
 				mode = add
 				gene = headgear
 				template = sp2_western_imperial
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era1_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -23,16 +29,14 @@ headgear_base = {
 			modifier = {
 				add = 90
 				has_dlc_feature = elegance_of_the_empire
-				portrait_imperial_trigger = {
-					CULTURE_INPUT = western
-				}	
-			}
-			modifier = {
-				add = 90
-				has_dlc_feature = elegance_of_the_empire
-				portrait_imperial_trigger = {
-					CULTURE_INPUT = northern
-				}	
+				OR = {
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = western
+					}
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = northern
+					}						
+				}
 			}
 			modifier = {
 				add = 90
@@ -43,14 +47,7 @@ headgear_base = {
 					}	
 					portrait_imperial_trigger = {
 						CULTURE_INPUT = western
-					}					
-				}
-				is_female = yes
-			}
-			modifier = {
-				add = 90
-				has_dlc_feature = elegance_of_the_empire
-				OR = {
+					}	
 					portrait_royalty_trigger = {
 						CULTURE_INPUT = northern
 					}	
@@ -60,13 +57,71 @@ headgear_base = {
 				}
 				is_female = yes
 			}
-			#modifier = {
-			#	factor = 0
-			#	has_ep2_dlc_trigger = yes
-			#	NOT = {
-			#		portrait_era2_trigger = yes 
-			#	}
-			#}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes 
+                NOT = {
+                	portrait_era1_trigger = yes 
+                }  
+            }
+		}
+	}
+
+	sp2_western_imperial_era2 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = sp2_western_imperial
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 90
+				has_dlc_feature = elegance_of_the_empire
+				OR = {
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = western
+					}
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = northern
+					}						
+				}
+			}
+			modifier = {
+				add = 90
+				has_dlc_feature = elegance_of_the_empire
+				OR = {
+					portrait_royalty_trigger = {
+						CULTURE_INPUT = western
+					}	
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = western
+					}	
+					portrait_royalty_trigger = {
+						CULTURE_INPUT = northern
+					}	
+					portrait_imperial_trigger = {
+						CULTURE_INPUT = northern
+					}					
+				}
+				is_female = yes
+			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes 
+                NOT = {
+                	portrait_era2_trigger = yes 
+                }  
+            }
 		}
 	}
 
@@ -76,6 +131,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = sp2_western_high_nobility
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -120,6 +181,14 @@ headgear_base = {
                     CULTURE_INPUT = dde_hre # CULTURE_INPUT gets added into the trigger referenced in 00_clothing_triggers.txt so it's important the input is a correct match to an existing culture trigger
                 }
 			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes   
+                NOR = { 
+                	portrait_era3_trigger = yes 
+                	portrait_era4_trigger = yes 
+                } 
+            }
 		}
 	}
 
@@ -160,6 +229,12 @@ headgear_base = {
 				template = dde_hre_high_nobility
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era3_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -186,6 +261,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = dde_hre_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era3_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -215,6 +296,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = dde_hre_imperial
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -323,7 +410,7 @@ headgear_base = {
             accessory = {
                 mode = add
                 gene = headgear
-                template = western_common
+                template = ep2_western_era3_common
                 range = { 0 1 } # For the randomness to work correctly
             }
         }   
@@ -424,7 +511,7 @@ headgear_base = {
 		            CULTURE_INPUT = western
 		        }
 		        has_ep2_dlc_trigger = yes 
-		        portrait_era1_trigger = yes 
+		        portrait_era2_trigger = yes 
 		    }
 			modifier = {
 				add = 50
@@ -442,7 +529,7 @@ headgear_base = {
 			accessory = {
 				mode = add
 				gene = headgear
-				template = western_nobility
+				template = ep2_western_era3_nobility
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -454,7 +541,7 @@ headgear_base = {
 		            CULTURE_INPUT = western
 		        }
 		        has_ep2_dlc_trigger = yes 
-		        portrait_era1_trigger = yes 
+		        portrait_era3_trigger = yes 
 		    }
 			modifier = {
 				add = 50
@@ -478,6 +565,12 @@ headgear_base = {
 				template = western_high_nobility
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = western_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -496,7 +589,13 @@ headgear_base = {
 			accessory = {
 				mode = add
 				gene = headgear
-				template = ep2_western_era1_nobility
+				template = ep2_western_era1_high_nobility
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era1_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -521,6 +620,12 @@ headgear_base = {
 				template = western_high_nobility
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -541,6 +646,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = western_high_nobility
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era3_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -568,6 +679,12 @@ headgear_base = {
 				template = western_royalty
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = western_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -589,6 +706,12 @@ headgear_base = {
 				template = ep1_western_royalty
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = western_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -604,6 +727,52 @@ headgear_base = {
 					has_ep1_dlc_trigger = yes
 				}
 			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes 
+                NOT = {
+                	portrait_era2_trigger = yes  
+                }  
+            }
+		}
+	}
+
+	ep1_western_royalty_era1 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = ep1_western_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era1_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+				portrait_royalty_trigger = {
+					CULTURE_INPUT = western 
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					has_ep1_dlc_trigger = yes
+				}
+			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes 
+                NOT = {
+                	portrait_era1_trigger = yes
+                }  
+            }
 		}
 	}
 
@@ -613,6 +782,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = ep2_western_era1_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era1_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -637,6 +812,12 @@ headgear_base = {
 				template = western_royalty
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -656,7 +837,13 @@ headgear_base = {
 			accessory = {
 				mode = add
 				gene = headgear
-				template = western_royalty
+				template = western_era3_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era3_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -676,101 +863,18 @@ headgear_base = {
 		}
 	}
 
-	# Commented as it can create desync in multiplayer game
-	#reward_western_royalty = {
-	#	dna_modifiers = {
-	#		accessory = {
-	#			mode = add
-	#			gene = headgear
-	#			template = ep1_western_royalty
-	#			range = { 0 1 } # For the randomness to work correctly
-	#		}
-	#	}
-	#	weight = {
-	#		base = 0
-	#		modifier = {
-	#			add = 50
-	#			exists = this
-	#			portrait_can_use_noble_headgear_trigger = yes
-	#			OR = {
-	#				AND = {
-	#					OR = {
-	#						highest_held_title_tier = tier_kingdom
-	#						AND = { is_ruler = yes government_has_flag = government_is_theocracy }
-	#						AND = {
-	#							highest_held_title_tier = tier_empire
-	#							portrait_northern_clothing_trigger = yes
-	#							portrait_fp1_norse_clothing_trigger = no
-	#						}
-	#					}
-	#					NOT = { AND = { is_ruler = yes government_has_flag = government_is_mercenary  } } # Blocked for mercenaries
-	#					NOT = { government_has_flag = government_is_republic }
-	#					OR = {
-	#						portrait_western_clothing_trigger = yes
-	#						AND = {
-	#							portrait_northern_clothing_trigger = yes
-	#							portrait_fp1_norse_clothing_trigger = no
-	#						}
-	#						AND = {
-	#							portrait_fp1_norse_clothing_trigger = yes
-	#							NOR = {
-	#								government_has_flag = government_is_tribal
-	#								religion = religion:germanic_religion
-	#							}
-	#						}
-	#					}
-	#				}
-	#				AND = {
-	#					exists = primary_spouse
-	#					OR = {
-	#						is_ruler = no
-	#						highest_held_title_tier = tier_barony
-	#					}
-	#					primary_spouse = {
-	#						OR = {
-	#							highest_held_title_tier = tier_kingdom
-	#							AND = { is_ruler = yes government_has_flag = government_is_theocracy }
-	#							AND = {
-	#								highest_held_title_tier = tier_empire
-	#								portrait_northern_clothing_spouse_trigger = yes
-	#								portrait_fp1_norse_clothing_spouse_trigger = no
-	#							}
-	#						}
-	#						NOT = { AND = { is_ruler = yes government_has_flag = government_is_mercenary  } } # Blocked for mercenaries
-	#						NOT = { government_has_flag = government_is_republic }
-	#						OR = {
-	#							portrait_western_clothing_spouse_trigger = yes
-	#							AND = {
-	#								portrait_northern_clothing_spouse_trigger = yes
-	#								portrait_fp1_norse_clothing_spouse_trigger = no
-	#							}
-	#							AND = {
-	#								portrait_fp1_norse_clothing_spouse_trigger = yes
-	#								NOR = {
-	#									government_has_flag = government_is_tribal
-	#									religion = religion:germanic_religion
-	#								}
-	#							}
-	#						}
-	#					}
-	#				}
-	#			}
-	#		}
-	#		modifier = {
-	#			factor = 0
-	#			NOT = {
-	#				has_reward_item = newsletter_crown
-	#			}
-	#		}
-	#	}
-	#}
-
 	ep1_italian_royalty = { # The Iron Crown of Lombardy
 		dna_modifiers = {
 			accessory = {
 				mode = add
 				gene = headgear
 				template = ep1_italian_royalty
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = western_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -785,6 +889,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = western_imperial
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = western_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -815,6 +925,12 @@ headgear_base = {
 				template = ep2_western_era1_imperial
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era1_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -843,6 +959,12 @@ headgear_base = {
 				mode = add
 				gene = headgear
 				template = western_imperial
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era2_veils
 				range = { 0 1 } # For the randomness to work correctly
 			}
 		}
@@ -881,6 +1003,12 @@ headgear_base = {
 				template = western_imperial
 				range = { 0 1 } # For the randomness to work correctly
 			}
+			accessory = { # Can be combined with veils
+				mode = add
+				gene = additive_headgear
+				template = ep2_western_era3_veils
+				range = { 0 1 } # For the randomness to work correctly
+			}
 		}
 		weight = {
 			base = 0
@@ -903,6 +1031,29 @@ headgear_base = {
                 OR = {
                 	portrait_era4_trigger = yes
                 }  
+			}
+		}
+	}
+
+	#RTT headgear
+	monarchs_journey_late_unlock = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = monarchs_journey_unleashed
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+
+		weight = {
+			base = 0
+			modifier = {
+				add = 30
+				portrait_era4_trigger = yes
+                portrait_low_nobles_trigger = {
+                    CULTURE_INPUT = western
+                }
 			}
 		}
 	}
@@ -1742,26 +1893,6 @@ headgear_base = {
 			}
 		}
 	}
-	
-	fp1_norse_war_common = {
-		dna_modifiers = {
-			accessory = {
-				mode = add
-				gene = headgear
-				template = fp1_war_common
-				range = { 0 1 } # For the randomness to work correctly
-			}
-		}	
-		weight = {
-			base = 0
-			modifier = {
-				add = 51 # Slightly higher
-                portrait_royalty_trigger = {
-                    CULTURE_INPUT = fp2_iberian_muslim
-                }  
-			}
-		}
-	}
 
 	fp2_iberian_christian_commoners = {
 		dna_modifiers = {
@@ -1787,6 +1918,11 @@ headgear_base = {
                     CULTURE_INPUT = fp2_iberian_christian 
                 }
 			}
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
+                has_ep2_dlc_trigger = yes   
+                portrait_era1_trigger = yes
+            }
 		}
 	}
 
@@ -1879,36 +2015,17 @@ headgear_base = {
 		}
 		weight = {
 			base = 0
-		}
-	}
-
-	catholic_head = {
-		outfit_tags = { rank_headgear }
-		usage = game
-		dna_modifiers = {
-			morph = {
-				mode = add
-				
-				gene = gene_bs_ear_outward
-				template = ear_outward_neg
-				value = 1.0
-			}
-			accessory = {
-				mode = add
-				
-				gene = headgear
-				template = catholic_head
-				range = { 0 1 }
-			}
-		}
-		weight = {
-			base = 0
 			modifier = {
-				add = 140
-				exists = this
-				any_equipped_character_artifact = {
-					has_variable = pope_hat
-				}
+				add = 80
+                portrait_commoner_headgear_fallback_trigger = {
+                    CULTURE_INPUT = fp1_norse
+                }
+			}
+			modifier = {
+				add = 41 # Slightly higher
+                portrait_commoner_clothing_trigger = {  
+                    CULTURE_INPUT = fp1_norse 
+                }
 			}
 		}
 	}

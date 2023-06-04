@@ -145,50 +145,6 @@
         }
     }
 
-    western_sickness = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = clothes
-                template = western_sickness
-                range = { 0 1 } # For the randomness to work correctly
-            }
-        }   
-        weight = {
-            base = 0
-            modifier = {
-                add = 110
-                portrait_sickness_trigger = yes
-                OR = {
-                    portrait_byzantine_clothing_trigger = yes
-                    portrait_northern_clothing_trigger = yes
-                    portrait_western_clothing_trigger = yes
-                }
-            }
-        }
-    }
-    
-    # ATHA ADDITIONS
-
-    greek_sickness = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = clothes
-                template = western_sickness
-                range = { 0 1 } # For the randomness to work correctly
-            }
-        }	
-        weight = {
-            base = 0
-            modifier = {
-                add = 110
-                portrait_sickness_trigger = yes
-                portrait_greek_clothing_trigger = yes
-            }
-        }
-    }
-
     western_stealth = {
         dna_modifiers = {
             accessory = {
@@ -257,30 +213,6 @@
             modifier = {
                 add = 110
                 portrait_prisoner_trigger = yes
-                OR = {
-                    portrait_mena_clothing_trigger = yes
-                    portrait_indian_clothing_trigger = yes
-                    portrait_steppe_clothing_trigger = yes
-                    portrait_african_clothing_trigger = yes
-                }
-            }
-        }
-    }
-
-    mena_sickness = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = clothes
-                template = mena_sickness
-                range = { 0 1 } # For the randomness to work correctly
-            }
-        }   
-        weight = {
-            base = 0
-            modifier = {
-                add = 110
-                portrait_sickness_trigger = yes
                 OR = {
                     portrait_mena_clothing_trigger = yes
                     portrait_indian_clothing_trigger = yes

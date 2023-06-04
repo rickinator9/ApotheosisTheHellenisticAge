@@ -44,7 +44,7 @@
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOT = { portrait_era3_trigger = yes } 
+                NOT = { portrait_era3_armor_trigger = yes } 
             }
         }
     }
@@ -76,7 +76,7 @@
             modifier = {
                 factor = 0       # Should NOT show up if EP2 is active and we're not in the right era
                 has_ep2_dlc_trigger = yes   
-                NOT = { portrait_era3_trigger = yes } 
+                NOT = { portrait_era3_armor_trigger = yes } 
             }
         }
     }
@@ -138,24 +138,14 @@
             base = 0
             modifier = {
                 add = 50
-                OR = {
-                    portrait_commoner_armor_trigger = { 
-                        CULTURE_INPUT = western
-                    }
-                    portrait_low_nobles_armor_trigger = { 
-                        CULTURE_INPUT = western
-                    }
+                portrait_high_nobles_armor_trigger = { 
+                    CULTURE_INPUT = western
                 }
             }
             modifier = {
                 add = 21        # So priests who are actively serving in a raised army as a commander or knight wear armor instead of priest robes
-                OR = {
-                    portrait_commoner_armor_in_army_trigger = { 
-                        CULTURE_INPUT = western
-                    }
-                    portrait_low_nobles_armor_in_army_trigger = { 
-                        CULTURE_INPUT = western
-                    }
+                portrait_high_nobles_armor_in_army_trigger = { 
+                    CULTURE_INPUT = western
                 }
             }
             modifier = {
@@ -467,6 +457,11 @@
                 #     RELIGION = christianity_religion
                 # }
                 always = no
+            }
+            modifier = {
+                factor = 0       # Should NOT show up if EP2 is active and we're in the early era
+                has_ep2_dlc_trigger = yes   
+                portrait_era1_trigger = yes
             }
         }
     }

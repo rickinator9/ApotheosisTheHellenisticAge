@@ -3,7 +3,7 @@
 #	duchies = { }, takes duchy title names declared in landed_titles.txt
 #	counties = { }, takes county title names declared in landed_titles.txt
 #	provinces = { }, takes province id numbers declared in /history/provinces
-#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region. 
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region.
 #		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
 
 # Regions provide the following modifiers:
@@ -88,7 +88,7 @@
 # > sea_aral_sea
 
 
- 
+
 world_europe_west_britannia = {
 }
 world_europe_west_germania = {
@@ -174,7 +174,7 @@ world_middle_east_jerusalem = {
 }
 world_middle_east_arabia = {
 }
-world_middle_east_persia = { 
+world_middle_east_persia = {
 	# Persia, minus duchies which already exist in world_middle_east
 }
 
@@ -345,7 +345,7 @@ material_woods_ebony = {
 
 # Regional
 material_woods_yew = {
-	
+
 	regions = {
 		world_europe_south_east
 	}
@@ -448,7 +448,7 @@ material_cloth_linen = {
 material_cloth_cotton = {
 	regions = {
 		world_africa_north_east
-		world_africa_east		
+		world_africa_east
 	}
 }
 
@@ -610,7 +610,7 @@ material_hsb_seashell = {
 ###########################################################################
 
 
-world_persian_empire = { 
+world_persian_empire = {
 	regions = {
 		world_persia
 		world_khorasan
@@ -705,11 +705,11 @@ custom_eastern_roman_empire = {
 }
 custom_outremer = {
 }
-custom_sicily = { 
+custom_sicily = {
 }
-custom_hungary = { 
+custom_hungary = {
 }
-custom_carpathia = { 
+custom_carpathia = {
 }
 custom_europe_western_germany = {
 }
@@ -720,7 +720,7 @@ custom_ganges_plain = {
 }
 
 custom_bactria = {
-} 
+}
 
 custom_west_francia_minus_mediterranean = {
 }
@@ -916,7 +916,7 @@ special_mongol_empire_conquest_region_prio_1 = {
 special_mongol_empire_conquest_region_prio_2 = {
 }
 
-# Central Steppes + Caucasus + Moldavia
+# Central Steppes + Moldavia
 special_mongol_empire_conquest_region_prio_3 = {
 }
 
@@ -924,7 +924,7 @@ special_mongol_empire_conquest_region_prio_3 = {
 special_mongol_empire_conquest_region_prio_4 = {
 }
 
-# Russia + Anatolia
+# Russia + Anatolia + Caucasus
 special_mongol_empire_conquest_region_prio_5 = {
 }
 
@@ -939,13 +939,31 @@ special_mongol_empire_conquest_all_regions = {
 special_mongol_empire_ilkhanate_region = {
 }
 
+ilkhanate_de_jure_region = {
+}
+
 special_mongol_empire_chagatai_region = {
+}
+
+chagatai_de_jure_region = {
 }
 
 special_mongol_empire_golden_horde_region = {
 }
 
+golden_horde_de_jure_region = {
+}
+
 special_mongol_empire_black_horde_region = {
+	regions = {
+		world_india	world_burma
+	}
+}
+
+black_horde_de_jure_region = {
+	regions = {
+		world_india_rajastan
+	}
 }
 
 special_mongol_empire_white_horde_region = {
@@ -954,9 +972,18 @@ special_mongol_empire_white_horde_region = {
 	}
 }
 
+white_horde_de_jure_region = {
+}
+
 special_mongol_empire_aarlud_khanate_region = {
 	regions = {
 		world_europe_west_britannia
+		world_europe_north
+	}
+}
+
+aarlud_khanate_de_jure_region = {
+	regions = {
 		world_europe_north
 	}
 }
@@ -969,10 +996,19 @@ special_mongol_empire_togskol_khanate_region = {
 	}
 }
 
+togskol_khanatede_jure_region = {
+	regions = {
+		world_europe_south_italy
+	}
+}
+
 special_mongol_empire_baruun_khanate_region = {
 	regions = {
 		world_africa
 	}
+}
+
+baruun_khanate_de_jure_region = {
 }
 ### END Mongol Conquest regions
 
@@ -1221,6 +1257,9 @@ ghw_region_north_eastern_india = {
 
 ### END GHW Regions
 
+islamic_heartlands = { # Set up so that Apostolic survives a bit longer
+}
+
 #####################
 # FP1 Regions
 #####################
@@ -1296,7 +1335,7 @@ dlc_fp1_achievement_vladimirs_second_choice = {
 # FP2 Regions
 #####################
 
-dlc_fp2_old_vasconia = {	
+dlc_fp2_old_vasconia = {
 }
 
 dlc_fp2_old_vasconia_pushed = {
@@ -1590,7 +1629,7 @@ hunt_animal_boar_region = {
 		world_asia_minor world_steppe_west world_steppe_east world_middle_east_jerusalem world_middle_east_persia world_india world_burma
 	}
 }
- 
+
 # Bear Spread
 hunt_animal_bear_region = {
 	regions = {
@@ -1626,7 +1665,7 @@ hunt_animal_bison_region = {
 		world_europe_west_francia
 		world_europe_west_germania
 		world_europe_east
-	}	
+	}
 }
 
 # Aurochs Spread
