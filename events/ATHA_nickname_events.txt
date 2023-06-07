@@ -8883,7 +8883,7 @@ ATHA_nickname.0302 = {
 	hidden = yes
 
 	trigger = {
-		side_primary_participant = {
+		side_commander ?= {
 			can_get_nickname_trigger = yes
 			can_get_nick_the_eagle = yes
 		}
@@ -8894,7 +8894,7 @@ ATHA_nickname.0302 = {
 	immediate = {
 		combat.location = { save_scope_as = combat_location }
 
-		side_primary_participant = {
+		side_commander = {
 			trigger_event = { id = ATHA_nickname.0103 }
 		}
 	}
