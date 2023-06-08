@@ -38,15 +38,6 @@ window = {
 			blockoverride "header_text"
 			{
 				text_single = {
-					visible = "[Character.GetGovernment.IsType('feudal_government')]"
-					parentanchor = top|hcenter
-					text = "FEUDAL_CONTRACT"
-					using = Font_Type_Flavor
-					using = Font_Size_Big
-				}
-
-				text_single = {
-					visible = "[Not(Character.GetGovernment.IsType('feudal_government'))]"
 					parentanchor = top|hcenter
 					text = "VASSAL_CONTRACT"
 					using = Font_Type_Flavor
@@ -67,19 +58,6 @@ window = {
 			margin_top = -5
 
 			background = {
-				visible = "[Character.GetGovernment.IsType('feudal_government')]"
-				texture = "gfx/interface/illustrations/event_scenes/study.dds"
-				alpha = 0.7
-				fittype = end
-
-				modify_texture = {
-					texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
-					blend_mode = alphamultiply
-					mirror = vertical
-				}
-			}
-			background = {
-				visible = "[Not(Character.GetGovernment.IsType('feudal_government'))]"
 				texture = "gfx/interface/illustrations/event_scenes/fp2_relaxing_room.dds"
 				alpha = 0.7
 				fittype = end
@@ -97,7 +75,6 @@ window = {
 				layoutpolicy_vertical = expanding
 				spacing = 10
 
-				# Vbox for Feudal Contract
 				vbox = {
 					name = "paper_contract"
 					layoutpolicy_horizontal = expanding
@@ -366,207 +343,6 @@ window = {
 							using = Font_Type_Flavor
 							using = Font_Size_Medium
 				            using = Text_Light_Background_Overrides
-						}
-
-						coa_character_sigil = {
-							datacontext = "[VassalContract.GetVassal]"
-
-							blockoverride "size"
-							{
-								size = { 80 80 }
-							}
-							blockoverride "sigil_size"
-							{
-								size = { 56 56 }
-							}
-						}
-
-						expand = {}
-
-						text_single = {
-							name = "vassal_signature"
-							max_width = 430
-							align = left
-							layoutpolicy_horizontal = expanding
-							default_format = "#light_background"
-
-							text = "CONTRACT_VASSAL_SIGNATURE"
-							using = Font_Type_Flavor
-							using = Font_Size_Medium
-							using = Text_Light_Background_Overrides
-						}
-					}
-				}
-
-				# Vbox for other government contract
-				vbox = {
-					name = "lambda_vassal_paper_contract"
-					visible = "[Not(Character.GetGovernment.IsType('feudal_government'))]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					using = Background_Letter
-					margin = { 20 20 }
-					spacing = 5
-
-					vbox =  {
-						layoutpolicy_vertical = expanding
-
-						vbox = {
-							name = "lambda_vassal_minor_list_levels_radio_buttons"
-							datamodel = "[ModifyVassalContractInteractionWindow.AccessObligationLevelRadioButtons]"
-							visible = "[And(Not(Character.GetPrimaryTitle.IsBarony),Not( Character.GetPrimaryTitle.IsCounty))]"
-
-							background = {
-								using = Background_Area_With_Header
-								alpha = 0.75
-								margin_left = 20
-								margin_right = 20
-								margin_bottom = 0
-								margin_top = 2
-							}
-
-							item = {
-								vbox = {
-									datacontext = "[ObligationLevelRadioButtons.GetContainerData]"
-									visible = "[ObligationContainerData.ShouldShow( ModifyVassalContractInteractionWindow.GetContractPreview )]"
-
-									text_single = {
-										text = "[ObligationContainerData.GetName]"
-										using = Font_Size_Medium
-										default_format = "#light_background"
-									}
-
-									hbox = {
-										datamodel = "[ObligationLevelRadioButtons.Access]"
-										spacing = 20
-										margin = { 10 12 }
-										item = {
-											hbox = {
-
-												button_radio_label = {
-													onclick = "[ModifyVassalContractInteractionWindowObligationLevelOption.Select]"
-													enabled = "[ModifyVassalContractInteractionWindowObligationLevelOption.IsEnabled]"
-													visible = "[ModifyVassalContractInteractionWindowObligationLevelOption.IsVisible]"
-
-													blockoverride "radio"
-													{
-													    frame = "[BoolTo1And2( ModifyVassalContractInteractionWindowObligationLevelOption.IsSelected )]"
-													}
-													blockoverride "text"
-													{
-													    text = "[ModifyVassalContractInteractionWindowObligationLevelOption.GetName]"
-													    default_format = "#light_background"
-													}
-
-													tooltip = "[ModifyVassalContractInteractionWindowObligationLevelOption.GetTooltip]"
-												}
-
-												expand = {}
-											}
-										}
-									}
-								}
-							}
-						}
-
-						dynamicgridbox = {
-							name = "non_feudal_minor_list_levels_checkboxes"
-							flipdirection = yes
-							datamodel_wrap = 3
-							datamodel = "[ModifyVassalContractInteractionWindow.AccessObligationLevelCheckboxes]"
-
-							item = {
-								widget = {
-									datacontext = "[ObligationLevelCheckbox.GetContainerData]"
-									visible = "[ObligationContainerData.ShouldShow( ModifyVassalContractInteractionWindow.GetContractPreview )]"
-
-									background = {
-										using = Background_Area_With_Header
-										alpha = 0.75
-									}
-
-									size = { 200 65 }
-
-									vbox = {
-										margin_left = 10
-										spacing = 2
-
-										text_single = {
-											layoutpolicy_horizontal = expanding
-											minimumsize = { 0 33 }
-											text = "[ObligationContainerData.GetName]"
-											using = Font_Size_Medium
-											default_format = "#light_background"
-										}
-
-										hbox = {
-											datacontext = "[ObligationLevelCheckbox.GetLevel( '(int32)1' )]" # First one is always no effect/disabled option
-											layoutpolicy_horizontal = expanding
-											alwaystransparent = no
-											spacing = 5
-
-
-											button_checkbox_label = {
-												# Order dependent, first select the unselected level then set it as the new selected one
-												onclick = "[ObligationLevelCheckbox.AccessLevel( ObligationLevelCheckbox.GetUnselectedLevelIndex ).Select]"
-												onclick = "[ObligationLevelCheckbox.ToggleSelection]"
-
-												blockoverride "checkbox"
-												{
-													checked = "[ModifyVassalContractInteractionWindowObligationLevelOption.IsSelected]"
-													enabled = "[ModifyVassalContractInteractionWindowObligationLevelOption.IsEnabled]"
-												}
-
-												blockoverride "text"
-												{
-													text = "[ModifyVassalContractInteractionWindowObligationLevelOption.GetName]"
-													default_format = "#light_background"
-												}
-											}
-
-											tooltip = "[ModifyVassalContractInteractionWindowObligationLevelOption.GetTooltip]"
-
-											expand = {}
-										}
-
-										expand = {}
-									}
-								}
-							}
-						}
-					}
-
-					hbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 5
-
-
-						coa_character_sigil = {
-							datacontext = "[VassalContract.GetLiege]"
-
-							blockoverride "size"
-							{
-								size = { 80 80 }
-							}
-							blockoverride "sigil_size"
-							{
-								size = { 56 56 }
-							}
-						}
-
-						expand = {}
-
-						text_single = {
-							name = "liege_signature"
-							max_width = 430
-							align = left
-							layoutpolicy_horizontal = expanding
-							default_format = "#light_background"
-
-							text = "CONTRACT_LIEGE_SIGNATURE"
-							using = Font_Type_Flavor
-							using = Font_Size_Medium
-							using = Text_Light_Background_Overrides
 						}
 
 						coa_character_sigil = {
