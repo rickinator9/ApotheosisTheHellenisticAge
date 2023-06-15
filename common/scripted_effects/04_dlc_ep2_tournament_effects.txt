@@ -22,6 +22,7 @@ activity_tournament_change_contestant_score_effect = {
 					this = scope:score_changee
 				}
 			}
+			scope:score_changee = { activity_is_competing_trigger = yes }
 		}
 		if = {
 			limit = { exists = var:progress_to_victory }
@@ -6215,6 +6216,17 @@ disburse_xp_and_liege_prestige_effect = {
 					add = minor_prestige_value
 				}
 			}
+			else_if = {
+				limit = { exists = scope:melee_winner }
+				if = {
+					limit = { root.court_position:champion_court_position ?= scope:melee_winner }
+					add = minor_prestige_value
+				}
+				else_if = {
+					limit = { scope:melee_winner = { is_knight_of = root } }
+					add = miniscule_prestige_value
+				}
+			}
 		}
 	}
 }
@@ -7345,9 +7357,14 @@ tournament_add_as_spectator_effect = {
 
 tournament_choose_jockey_effect = {
 	save_scope_as = chosen_jockey
-	hidden_effect = { add_to_activity = scope:activity }
-	scope:activity = {
-		add_to_guest_subset = { name = spectator target = scope:chosen_jockey }
+	if = {
+		limit = {
+			NOT = { is_participant_in_activity = scope:activity }
+		}
+		hidden_effect = { add_to_activity = scope:activity }
+		scope:activity = {
+			add_to_guest_subset = { name = spectator target = scope:chosen_jockey }
+		}
 	}
 	every_in_list = {
 		list = potential_jockeys
@@ -7743,6 +7760,14 @@ tournament_disburse_contest_prize_tooltip_effect = {
 		show_as_tooltip = {
 			scope:horse_race_prize = {
 				set_owner = { target = scope:horse_race_winner }
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:melee_prize }
+		show_as_tooltip = {
+			scope:melee_prize = {
+				set_owner = { target = scope:melee_winner }
 			}
 		}
 	}
@@ -8803,7 +8828,14 @@ versus_force_concession_effect = {
 
 little_william_marshal_achievement_contest_end_effect = {
 	if = {
-		limit = { exists = global_var:started_little_william_marshal_achievement }
+		limit = {
+			exists = global_var:started_little_william_marshal_achievement
+			scope:activity = {
+				any_attending_character = {
+					is_ai = no
+				}
+			}
+		}
 		# Increment overall contest tally.
 		change_global_variable = {
 			name = started_little_william_marshal_achievement
