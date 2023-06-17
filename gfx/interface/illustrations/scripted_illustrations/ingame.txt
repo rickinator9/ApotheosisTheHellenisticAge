@@ -127,6 +127,293 @@ character_view_bg = {
 	# ACTIVITIES
 	
 	####
+	# tournament, eastern
+	####
+	texture = {
+		reference = "event_scenes/ep2_tournament_mena.dds"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_location = { geographical_region = graphical_india }
+		}
+	}
+
+	environment = {
+		reference = "environment_mecca"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_location = { geographical_region = graphical_india }
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_mecca"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = { geographical_region = graphical_india }
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = { geographical_region = graphical_india }
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = { geographical_region = graphical_india }
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	####
+	# tournament, mena
+	####
+	texture = {
+		reference = "event_scenes/ep2_tournament_mena.dds"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_location = {
+				OR = {
+					geographical_region = graphical_mena
+				}
+			}
+		}
+	}
+
+	environment = {
+		reference = "environment_event_bp1_desert"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_location = {
+				OR = {
+					geographical_region = graphical_mena
+				}
+			}
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_event_bp1_desert"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = {
+							OR = {
+								geographical_region = graphical_mena
+							}
+						}
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = {
+							OR = {
+								geographical_region = graphical_mena
+							}
+						}
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_location = {
+							OR = {
+								geographical_region = graphical_mena
+							}
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	####
+	# tournament, tribal
+	####
+	texture = {
+		reference = "event_scenes/ep2_tournament_tribal.dds"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_host = {
+				OR = {
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_tribal
+				}
+				capital_province = {
+					NOT = { geographical_region = graphical_mena }
+				}
+			}
+		}
+	}
+
+	environment = {
+		reference = "environment_village_festival"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			involved_activity.activity_host = {
+				OR = {
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_tribal
+				}
+				capital_province = {
+					NOT = { geographical_region = graphical_mena }
+				}
+			}
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_village_festival"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_host = {
+							OR = {
+								government_has_flag = government_is_clan
+								government_has_flag = government_is_tribal
+							}
+							capital_province = {
+								NOT = { geographical_region = graphical_mena }
+							}
+						}
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_host = {
+							OR = {
+								government_has_flag = government_is_clan
+								government_has_flag = government_is_tribal
+							}
+							capital_province = {
+								NOT = { geographical_region = graphical_mena }
+							}
+						}
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+						involved_activity.activity_host = {
+							OR = {
+								government_has_flag = government_is_clan
+								government_has_flag = government_is_tribal
+							}
+							capital_province = {
+								NOT = { geographical_region = graphical_mena }
+							}
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	####
+	# tournament, western
+	####
+	texture = {
+		reference = "event_scenes/ep2_tournament_western.dds"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+		}
+	}
+
+	environment = {
+		reference = "environment_village_festival"
+
+		trigger = {
+			involved_activity ?= { has_activity_type = activity_tournament }
+			location ?= involved_activity.activity_location
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_village_festival"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						involved_activity ?= { has_activity_type = activity_tournament }
+						location ?= involved_activity.activity_location
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	####
 	# feast, norse
 	####
 	texture = {
@@ -513,75 +800,7 @@ character_view_bg = {
 			is_character_window_main_character = no
 		}
 	}
-	
-	####
-	# hunt, falconry
-	####
-	texture = {
-		reference = "event_scenes/ep2_hunt_falconry_mews.dds"
 
-		trigger = {
-			involved_activity ?= {
-				has_activity_type = activity_hunt
-				has_activity_option = { category = special_type option = hunt_type_falconry }
-			}
-			location ?= involved_activity.activity_location
-		}
-	}
-
-	environment = {
-		reference = "environment_hunt_falconry_mews"
-
-		trigger = {
-			involved_activity ?= {
-				has_activity_type = activity_hunt
-				has_activity_option = { category = special_type option = hunt_type_falconry }
-			}
-			location ?= involved_activity.activity_location
-			is_character_window_main_character = yes
-		}
-	}
-
-	environment = {
-		reference = "environment_hunt_falconry_mews"
-
-		trigger = {
-			OR = {
-				AND = {
-					exists = primary_spouse
-					primary_spouse = {
-						involved_activity ?= {
-							has_activity_type = activity_hunt
-							has_activity_option = { category = special_type option = hunt_type_falconry }
-						}
-						location ?= involved_activity.activity_location
-					}
-				}
-				AND = {
-					exists = betrothed
-					betrothed = {
-						involved_activity ?= {
-							has_activity_type = activity_hunt
-							has_activity_option = { category = special_type option = hunt_type_falconry }
-						}
-						location ?= involved_activity.activity_location
-					}
-				}
-				AND = {
-					liege.diarch ?= this
-					liege ?= {
-						involved_activity ?= {
-							has_activity_type = activity_hunt
-							has_activity_option = { category = special_type option = hunt_type_falconry }
-						}
-						location ?= involved_activity.activity_location
-					}
-				}
-			}
-			is_character_window_main_character = no
-		}
-	}
-	
 	####
 	# hunt
 	####
@@ -678,6 +897,60 @@ character_view_bg = {
 				}
 			}
 			is_character_window_main_character = no
+		}
+	}
+
+	####
+	# pilgrimage, jerusalem
+	####
+	texture = {
+		reference = "event_scenes/ep2_holysite_jerusalem.dds"
+
+		trigger = {
+			always = no
+		}
+	}
+
+	environment = {
+		reference = "environment_jerusalem"
+
+		trigger = {
+			always = no
+		}
+	}
+
+	environment = {
+		reference = "environment_jerusalem"
+
+		trigger = {
+			always = no
+		}
+	}
+	
+	####
+	# pilgrimage, Mecca
+	####
+	texture = {
+		reference = "event_scenes/ep2_holysite_mecca.dds"
+
+		trigger = {
+			always = no
+		}
+	}
+
+	environment = {
+		reference = "environment_mecca"
+
+		trigger = {
+			always = no
+		}
+	}
+
+	environment = {
+		reference = "environment_mecca"
+
+		trigger = {
+			always = no
 		}
 	}
 	
@@ -3932,6 +4205,312 @@ character_view_bg = {
 	}
 	
 	##########################################
+	
+	# 'Feudal'/High-tier Norse, or non-Tribals in Scandinavia
+	texture = { # FP1 Norse
+		reference = "character_view/fp1_throneroom_nontribal.dds"
+
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			OR = {
+				AND = {
+					is_ruler = no
+					OR = {
+						AND = {
+							exists = liege
+							liege = {
+								OR = {
+									NOT = {
+										government_has_flag = government_is_tribal
+									}
+									primary_title.tier >= tier_kingdom
+								}
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+						AND = {
+							exists = host
+							host = {
+								OR = {
+									NOT = {
+										government_has_flag = government_is_tribal
+									}
+									primary_title.tier >= tier_kingdom
+								}
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					is_ruler = yes
+					OR = {
+						NOT = {
+							government_has_flag = government_is_tribal
+						}
+						primary_title.tier >= tier_kingdom
+					}
+					OR = {
+							always = no
+						has_graphical_scandinavia_region_trigger = yes
+					}
+				}
+			}
+		}
+	}
+
+	environment = {
+		reference = "environment_fp1_cw_nontribal_main"
+
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			OR = {
+				AND = {
+					is_ruler = no
+					OR = {
+						AND = {
+							exists = liege
+							liege = {
+								OR = {
+									NOT = {
+										government_has_flag = government_is_tribal
+									}
+									primary_title.tier >= tier_kingdom
+								}
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+						AND = {
+							exists = host
+							host = {
+								OR = {
+									NOT = {
+										government_has_flag = government_is_tribal
+									}
+									primary_title.tier >= tier_kingdom
+								}
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					is_ruler = yes
+					OR = {
+						NOT = {
+							government_has_flag = government_is_tribal
+						}
+						primary_title.tier >= tier_kingdom
+					}
+					OR = {
+							always = no
+						has_graphical_scandinavia_region_trigger = yes
+					}
+				}
+			}
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_fp1_cw_nontribal_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						has_fp1_dlc_trigger = yes
+						OR = {
+							NOT = {
+								government_has_flag = government_is_tribal
+							}
+							primary_title.tier >= tier_kingdom
+						}
+						OR = {
+							always = no
+							has_graphical_scandinavia_region_trigger = yes
+						}
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						has_fp1_dlc_trigger = yes
+						OR = {
+							NOT = {
+								government_has_flag = government_is_tribal
+							}
+							primary_title.tier >= tier_kingdom
+						}
+						OR = {
+							always = no
+							has_graphical_scandinavia_region_trigger = yes
+						}
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						has_fp1_dlc_trigger = yes
+						OR = {
+							NOT = {
+								government_has_flag = government_is_tribal
+							}
+							primary_title.tier >= tier_kingdom
+						}
+						OR = {
+							always = no
+							has_graphical_scandinavia_region_trigger = yes
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+	
+	##########################################
+	
+	# Tribal Norse
+	texture = { # FP1 Norse
+		reference = "character_view/fp1_throneroom_tribal.dds"
+
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			OR = {
+				AND = {
+					is_ruler = no
+					OR = {
+						AND = {
+							exists = liege
+							liege = {
+								government_has_flag = government_is_tribal
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+						AND = {
+							exists = host
+							host = {
+								government_has_flag = government_is_tribal
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					is_ruler = yes
+					government_has_flag = government_is_tribal
+					OR = {
+							always = no
+					}
+				}
+			}
+		}
+	}
+
+	environment = {
+		reference = "environment_fp1_cw_tribal_main"
+
+		trigger = {
+			has_fp1_dlc_trigger = yes
+			OR = {
+				AND = {
+					is_ruler = no
+					OR = {
+						AND = {
+							exists = liege
+							liege = {
+								government_has_flag = government_is_tribal
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+						AND = {
+							exists = host
+							host = {
+								government_has_flag = government_is_tribal
+								OR = {
+							always = no
+									has_graphical_scandinavia_region_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					is_ruler = yes
+					government_has_flag = government_is_tribal
+					OR = {
+							always = no
+					}
+				}
+			}
+			is_character_window_main_character = yes
+		}
+	}
+
+	environment = {
+		reference = "environment_fp1_cw_tribal_spouse"
+
+		trigger = {
+			OR = {
+				AND = {
+					exists = primary_spouse
+					primary_spouse = {
+						government_has_flag = government_is_tribal
+						has_fp1_dlc_trigger = yes
+						OR = {
+							always = no
+						}
+					}
+				}
+				AND = {
+					exists = betrothed
+					betrothed = {
+						government_has_flag = government_is_tribal
+						has_fp1_dlc_trigger = yes
+						OR = {
+							always = no
+						}
+					}
+				}
+				AND = {
+					liege.diarch ?= this
+					liege ?= {
+						government_has_flag = government_is_tribal
+						has_fp1_dlc_trigger = yes
+						OR = {
+							always = no
+						}
+					}
+				}
+			}
+			is_character_window_main_character = no
+		}
+	}
+
+	##########################################
 
 	# Tribal King & Emperor
 	texture = {
@@ -4003,7 +4582,7 @@ character_view_bg = {
 	}
 	
 	##########################################
-	
+
 	# Tribal
 	texture = {
 		reference = "character_view/greek_tribal.dds"
@@ -4209,7 +4788,7 @@ character_view_bg = {
 
 	##########################################
 
-	# Mediterranean, empire rank
+	# Mediterranean, high rank
 	texture = {
 		reference = "character_view/greek_palace.dds"
 

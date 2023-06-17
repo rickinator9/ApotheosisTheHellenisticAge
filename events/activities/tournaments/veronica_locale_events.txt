@@ -108,12 +108,7 @@ ep2_locale_events.4530 = {
 	option = {
 		name = ep2_locale_events.4530.a
 		trigger = {
-			scope:activity = {
-				any_guest_subset_current_phase = { #you're participating
-					name = contestant
-					this = root					
-				}
-			}
+			activity_is_competing_trigger = yes
 		}
 		random = {
 			chance = 50
@@ -166,14 +161,7 @@ ep2_locale_events.4530 = {
 			paranoid = major_stress_impact_gain
 		}
 		if = {
-			limit = {
-				scope:activity = {
-					any_guest_subset_current_phase = { #you're participating
-						name = contestant
-						this = root					
-					}
-				}
-			}
+			limit = { activity_is_competing_trigger = yes }
 			random = {
 				chance = 50
 				activity_tournament_change_contestant_score_effect = { SCORE = increase_medium }
@@ -494,11 +482,8 @@ ep2_locale_events.5500 = {
 						has_current_phase = tournament_phase_recital
 						has_current_phase = tournament_phase_board_game
 					}
-					any_guest_subset_current_phase = { #you're participating
-						name = contestant
-						this = root					
-					}
 				}
+				activity_is_competing_trigger = yes
 			}
 			activity_tournament_change_contestant_score_effect = { SCORE = increase_major }
 		}
@@ -832,7 +817,10 @@ ep2_locale_events.5000 = {
 	# no way
 	option = {
 		name = ep2_locale_events.5000.c
-		activity_tournament_change_contestant_score_effect = { SCORE = increase_minor }
+		if = {
+			limit = { activity_is_competing_trigger = yes }
+			activity_tournament_change_contestant_score_effect = { SCORE = increase_minor }
+		}
 		education_point_acquisition_effect = yes
 		scope:my_child = {
 			add_opinion = {
@@ -914,12 +902,9 @@ ep2_locale_events.5010 = {
 	}
 
 	trigger = {
+		activity_is_competing_trigger = yes
 		scope:activity = { 
 			has_active_locale = tournament_locale_tournament_grounds
-			any_guest_subset_current_phase = { #you're participating
-				name = contestant
-				this = root					
-			}
 		}
 	}
 	
@@ -1281,7 +1266,7 @@ ep2_locale_events.5510 = {
 					title = ep2_locale_events.5510.a.success
 					left_icon = root
 					right_icon = scope:village_thug
-					recruit_courtier = scope:village_thug
+					add_courtier = scope:village_thug
 					scope:village_thug = {
 						hidden_effect = {
 							if = {
@@ -1330,14 +1315,7 @@ ep2_locale_events.5510 = {
 	option = {
 		name = ep2_locale_events.5510.b
 		if = {
-			limit = {
-				scope:activity = {
-					any_guest_subset_current_phase = { #you're participating
-						name = contestant
-						this = root
-					}
-				}
-			}
+			limit = { activity_is_competing_trigger = yes }
 			activity_tournament_change_contestant_score_effect = { SCORE = increase_medium }
 		}
 		else_if = {
@@ -1591,12 +1569,7 @@ ep2_locale_events.5520 = {
 		name = ep2_locale_events.5520.b
 		if = {
 			limit = {
-				scope:activity = {
-					any_guest_subset_current_phase = { #you're participating
-						name = contestant
-						this = root
-					}
-				}
+				activity_is_competing_trigger = yes
 				activity_tournament_mind_contest_trigger = yes
 			}
 			activity_tournament_change_contestant_score_effect = { SCORE = increase_medium }
@@ -2019,7 +1992,10 @@ ep2_locale_events.5030 = {
 	# I don't wanna offend their liege
 	option = {
 		name = ep2_locale_events.5030.e
-		activity_tournament_change_contestant_score_effect = { SCORE = increase_minor }
+		if = {
+			limit = { activity_is_competing_trigger = yes }
+			activity_tournament_change_contestant_score_effect = { SCORE = increase_minor }
+		}
 		scope:councillor_employer = {
 			add_opinion = {
 				target = root
@@ -2226,6 +2202,7 @@ ep2_locale_events.5530 = {
 		trigger = {
 			activity_tournament_prowess_contest_trigger = yes
 			has_focus_or_focus_trait_trigger = { FOCUS = martial_chivalry_focus } #includes gallant
+			activity_is_competing_trigger = yes
 		}
 		activity_tournament_change_contestant_score_effect = { SCORE = increase_major }
 		stress_impact = {
@@ -2254,6 +2231,7 @@ ep2_locale_events.5530 = {
 			scope:activity = {
 				has_current_phase = tournament_phase_recital
 			}
+			activity_is_competing_trigger = yes
 		}
 		activity_tournament_change_contestant_score_effect = { SCORE = increase_medium }
 		stress_impact = {
@@ -2288,6 +2266,7 @@ ep2_locale_events.5530 = {
 					has_current_phase = tournament_phase_recital
 				}
 			}
+			activity_is_competing_trigger = yes
 		}
 		activity_tournament_change_contestant_score_effect = { SCORE = increase_minor }
 		stress_impact = {
@@ -2307,6 +2286,7 @@ ep2_locale_events.5530 = {
 # by Veronica Pazos
 
 scripted_trigger ep2_locale_events_1060_valid_target = {
+	NOT = { this = root }
 	is_physically_able_ai_adult = yes 
 	has_any_good_relationship_with_root_trigger = no #they're not already your friend
 }
@@ -2497,6 +2477,7 @@ ep2_locale_events.1070 = {
 	# Brag about it
 	option = {
 		name = ep2_locale_events.1070.b
+		trigger = { activity_is_competing_trigger = yes }
 		activity_tournament_change_contestant_score_effect = { SCORE = increase_medium }
 		stress_impact = {
 			humble = medium_stress_impact_gain
@@ -2522,6 +2503,7 @@ ep2_locale_events.1070 = {
 		trigger = {
 			has_activity_intent = reduce_stress_intent
 		}
+		custom_tooltip = available_because_intent_tt
 		stress_impact = {
 			base = major_stress_impact_loss
 		}
@@ -2577,16 +2559,13 @@ ep2_locale_events.3020 = {
 	}
 
 	trigger = {
+		activity_is_competing_trigger = yes
 		scope:activity = { 
 			has_active_locale = tournament_locale_visitor_camp
 			any_guest_subset_current_phase = { #there's someone else participating that's not you
 				name = contestant
 				exists = var:progress_to_victory
 				NOT = { this = root }
-			}
-			any_guest_subset_current_phase = { #and you _are_ competing
-				name = contestant
-				this = root
 			}
 		}
 	}
@@ -2923,6 +2902,11 @@ ep2_locale_events.2560 = {
 			skills = { prowess intrigue }
 			target = scope:tailor
 			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
 				desc = ep2_locale_events.2560.c.success
 				send_interface_toast = {
 					title = ep2_locale_events.2560.c.success
@@ -2938,6 +2922,11 @@ ep2_locale_events.2560 = {
 				}
 			}
 			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
 				desc = ep2_locale_events.2560.c.failure
 				send_interface_toast = {
 					title = ep2_locale_events.2560.c.failure
@@ -2977,6 +2966,7 @@ ep2_locale_events.2560 = {
 		custom_tooltip = available_because_intent_tt
 		trigger = {
 			has_activity_intent = win_contest_intent
+			activity_is_competing_trigger = yes
 		}
 		pay_short_term_gold = {
 			target = scope:tailor
