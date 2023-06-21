@@ -3296,28 +3296,35 @@
 		}
 	}
 	
-#	tenet_sacred_streams = { #TODO
-#		icon = core_sacred_streams
-#
-#		piety_cost = {
-#			value = faith_tenet_cost_high
-#
-#			if = {
-#				limit = { has_doctrine = tenet_sacred_streams }
-#				multiply = faith_unchanged_doctrine_cost_mult
-#			}
-#		}
-#
-#		is_shown = {
-#			always = yes
-#		}
-#		
-#		character_modifier = {
-#			travel_danger = -5
-#			valley_advantage = 1
-#			negate_health_penalty_add = 0.2
-#		}
-#	}
+	tenet_sacred_streams = { #Localise as river veneration for some #TODO
+		icon = core_sacred_streams
+
+		piety_cost = {
+			value = faith_tenet_cost_high
+
+			if = {
+				limit = { has_doctrine = tenet_sacred_streams }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			always = yes
+		}
+
+		parameters = {
+		trade_ports_give_control_growth = yes
+		trade_ports_give_levies = yes
+		can_travel_along_rivers = yes
+		trade_ports_enabled_for_tribals = yes
+		}
+		
+		character_modifier = {
+			travel_danger = -5
+			valley_advantage = 1
+			negate_health_penalty_add = 0.2
+		}
+	}
 
 	#############################
 	# Empty Template Tenet 		#
