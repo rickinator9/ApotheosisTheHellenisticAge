@@ -13,7 +13,13 @@
 	}
 
 	effect = {
-		build_tomb_in_province_effect = { BUILDER = scope:player }
+		show_as_tooltip = {
+			build_tomb_in_province_effect = { BUILDER = scope:player }
+		}
+		hidden_effect = {
+			save_scope_as = tomb_location
+			scope:player = { trigger_event = ATHA_tomb.0001 } # Confirm the building of the tomb.
+		}
 	}
 }
 
@@ -28,6 +34,24 @@ gui_tomb_looted = {
 	scope = province
 	is_shown = {
 		province_has_looted_tomb_trigger = yes
+	}
+}
+
+gui_tomb_restore_tomb = {
+	scope = province
+	saved_scopes = {
+		player
+	}
+
+	is_shown = {
+		always = no
+	}
+
+	is_valid = {
+		always = no
+	}
+
+	effect = {
 	}
 }
 

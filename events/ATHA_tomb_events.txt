@@ -9,6 +9,31 @@
 # TOMB CONSTRUCTION   #
 #######################
 
+# Confirm tomb location. Only ever happens to players.
+ATHA_tomb.0001 = {
+	type = character_event
+	title = ATHA_tomb.0001.title
+	desc = ATHA_tomb.0001.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	# Yes
+	option = {
+		name = ATHA_tomb.0001.a
+		scope:tomb_location = {
+			build_tomb_in_province_effect = { BUILDER = root }
+		}
+	}
+
+	# No
+	option = {
+		name = ATHA_tomb.0001.b
+	}
+}
+
 ##################################
 # THRACIAN TOMB SACRIFICE EVENTS #
 ##################################

@@ -1818,6 +1818,9 @@ window = {
 											size = { 35 35 }
 											tooltip = "gui_tomb_restore_tomb_text"
 											using = tooltip_es
+
+											datacontext = "[GetScriptedGui( 'gui_tomb_restore_tomb' ) ]"
+											visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End )]"
 						
 											icon = {
 												texture = "gfx/interface/buttons/button_lifestyles_base.dds"
