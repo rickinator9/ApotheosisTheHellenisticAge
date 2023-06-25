@@ -256,6 +256,21 @@ guanch_vaulter_recruitment_cost = @[skirmisher_recruitment_cost * 1.2]
 guanch_vaulter_low_maint_cost = @[skirmisher_low_maint_cost * 1.2]
 guanch_vaulter_high_maint_cost = @[skirmisher_high_maint_cost * 1.2]
 
+###Accolade MaA
+
+accolade_skirmisher_recruitment_cost = @[skirmisher_recruitment_cost * 2]
+accolade_bowmen_recruitment_cost = @[archers_recruitment_cost * 2]
+accolade_crossbowmen_recruitment_cost = @[archers_recruitment_cost * 1.6 * 2]
+accolade_pikemen_recruitment_cost = @[pikemen_recruitment_cost * 2]
+accolade_heavy_infantry_recruitment_cost = @[heavy_infantry_recruitment_cost * 2]
+accolade_light_cavalry_recruitment_cost = @[light_cavalry_recruitment_cost * 2]
+accolade_heavy_cavalry_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2]
+accolade_camel_rider_recruitment_cost = @[light_cavalry_recruitment_cost * 2]
+accolade_siege_weapons_recruitment_cost = @[siege_weapons_recruitment_cost * 2]
+accolade_war_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 4]
+accolade_horse_archers_recruitment_cost = @[skirmisher_recruitment_cost * 3 * 2]
+
+
 
 ##############
 # AI Weights #
@@ -296,7 +311,7 @@ culture_ai_weight_skirmishers = {
 				culture_has_skirmisher_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -306,34 +321,31 @@ culture_ai_weight_archers = {
     # TODO: Add archers cultures	
 	if = { # Cultures that favours archers
 		limit = {
-            OR = {
-				culture = culture:cretan # Cretans will prefer archers.
-			}
+			culture = culture:cretan # Cretans will prefer archers.
 		}
 		add = 40
 	}
 	if = { # Cultures that dislike archers
 		limit = {
-			OR = {
-				culture = culture:laconian # Spartans hate missile troops.
-			}
+			culture = culture:laconian # Spartans hate missile troops.
 		}
 		add = -60
 	}
 	
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
-			OR = {
-				culture = {
-					OR = {
-						culture_has_archer_maa = yes
-						culture_has_slinger_maa = yes
-					}
-				}
-				is_rhodian = yes # Rhodians should use slingers instead.
+			culture = {
+				culture_has_archer_maa = yes
 			}
 		}
-		add = -100
+		add = -500
+	}
+	
+	if = { # Cultures with a preference for Slingers should buy those over Archers
+		limit = {
+			is_rhodian = yes # Rhodians should use slingers instead.
+		}
+		add = -40
 	}
 }
 
@@ -367,7 +379,41 @@ culture_ai_weight_slingers = {
 				}
 			}
 		}
-		add = -100
+		add = -500
+	}
+	
+	if = { # Cultures with a preference for Archers should buy those over Slingers
+		limit = {
+			culture = culture:cretan
+		}
+		add = -40
+	}
+}
+
+culture_ai_weight_medium_infantry = {
+	value = 0
+	
+    # TODO: Add medium infantry cultures	
+	if = { # Cultures that favours medium infantry
+		limit = {
+            always = no
+		}
+		add = 40
+	}
+	if = { # Cultures that dislike medium infantry
+		limit = {
+            always = no
+		}
+		add = -60
+	}
+	
+	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
+		limit = {
+			culture = {
+				culture_has_medium_infantry_maa = yes
+			}
+		}
+		add = -500
 	}
 }
 
@@ -383,9 +429,7 @@ culture_ai_weight_heavy_infantry = {
 	}
 	if = { # Cultures that dislike heavy infantry
 		limit = {
-			OR = {
-				culture = { has_cultural_pillar = heritage_greek } # Greeks will want to use Phalanx
-			}
+            always = no
 		}
 		add = -60
 	}
@@ -414,13 +458,10 @@ culture_ai_weight_pikemen = {
 	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
 		limit = {
 			culture = {
-				OR = {
-					culture_has_pikemen_maa = yes
-					culture_has_phalanx_maa = yes
-				}
+				culture_has_pikemen_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -457,14 +498,14 @@ culture_ai_weight_light_cavalry = {
 				culture_has_light_cavalry_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 	
 	if = { # Cultures with a preference for Camel Riders should buy those over normal light cavalry
 		limit = {
 			always = no
 		}
-		add = -80
+		add = -200
 	}
 }
 
@@ -505,7 +546,7 @@ culture_ai_weight_heavy_cavalry = {
 				culture_has_heavy_cavalry_maa = yes
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -543,5 +584,83 @@ culture_ai_weight_vigmen = {
 			any_sub_realm_county = { is_coastal_county = yes }
 		}
 		add = 20
+	}
+}
+
+counter_synergy_ai_weight_archers = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = heavy_infantry
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = archers
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_pikemen = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = archers
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = pikemen
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_heavy_infantry = {
+	value = 60
+	if = {
+		limit = {
+			OR = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_cavalry
+					value >= 3
+				}
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value >= 3
+				}
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = heavy_infantry
+					value >= 1
+				}
+			}
+		}
+	}
+}
+
+counter_synergy_ai_weight_light_cavalry = {
+	value = 60
+	if = {
+		limit = {
+			number_maa_regiments_of_base_type = {
+				type = skirmishers
+				value >= 3
+			}
+			NOT = { #no need to add more if i.e. regional or inherited maa of that type already exists
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value >= 1
+				}
+			}
+		}
 	}
 }

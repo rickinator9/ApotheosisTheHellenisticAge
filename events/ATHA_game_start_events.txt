@@ -2,7 +2,7 @@
 
 # Assign spartan dual monarch correctly.
 ATHA_game_start.1 = {
-	type = empty
+	scope = none
 	hidden = yes
 
     immediate = {
@@ -19,7 +19,7 @@ ATHA_game_start.1 = {
 
 # Assign city state values.
 ATHA_game_start.2 = {
-	type = empty
+	scope = none
 	hidden = yes
 
 	immediate = {
@@ -35,7 +35,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_democratic_government
+					government_has_flag = government_is_democratic_city_state
 				}
 
 				primary_title = { add_title_law = democratic_succession_law }
@@ -43,7 +43,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_oligarchic_government
+					government_has_flag = government_is_oligarchic_city_state
 				}
 
 				primary_title = { add_title_law = oligarchic_succession_law }
@@ -51,7 +51,7 @@ ATHA_game_start.2 = {
 			if = {
 				limit = { 
 					highest_held_title_tier >= tier_duchy
-					has_government = city_state_aristocratic_government
+					government_has_flag = government_is_aristocratic_city_state
 				}
 
 				primary_title = { add_title_law = aristocratic_succession_law }
@@ -62,7 +62,7 @@ ATHA_game_start.2 = {
 
 # Assign starting vassal contracts
 ATHA_game_start.3 = {
-	type = empty
+	scope = none
 	hidden = yes
 
 	immediate = {
@@ -78,19 +78,19 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_city_state_autonomous
+					level = obligation_level_vassal_role_city_state_autonomous
 				}
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
-					level = coinage_rights_granted
+					level = obligation_level_coinage_rights_granted
 				}
 				vassal_contract_set_obligation_level = {
 					type = religious_rights
-					level = religious_rights_protected
+					level = obligation_level_religious_rights_protected
 				}
 				vassal_contract_set_obligation_level = {
 					type = title_revocation_rights
-					level = title_revocation_rights_protected
+					level = obligation_level_title_revocation_rights_protected
 				}
 			}
 			else_if = {
@@ -100,7 +100,7 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_city_state_dependent
+					level = obligation_level_vassal_role_city_state_dependent
 				}
 			}
 			else_if = {
@@ -110,19 +110,19 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_coalition_autonomous
+					level = obligation_level_vassal_role_coalition_autonomous
 				}
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
-					level = coinage_rights_granted
+					level = obligation_level_coinage_rights_granted
 				}
 				vassal_contract_set_obligation_level = {
 					type = religious_rights
-					level = religious_rights_protected
+					level = obligation_level_religious_rights_protected
 				}
 				vassal_contract_set_obligation_level = {
 					type = title_revocation_rights
-					level = title_revocation_rights_protected
+					level = obligation_level_title_revocation_rights_protected
 				}
 			}
 			else_if = {
@@ -132,34 +132,34 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_coalition_dependent
+					level = obligation_level_vassal_role_coalition_dependent
 				}
 			}
 			else_if = {
 				limit = {
-					has_government = bureaucracy_civil_government
+					government_has_flag = government_is_civil_bureaucracy
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_civil
+					level = obligation_level_vassal_role_bureaucracy_civil
 				}
 			}
 			else_if = {
 				limit = {
-					has_government = bureaucracy_military_government
+					government_has_flag = government_is_military_bureaucracy
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_military
+					level = obligation_level_vassal_role_bureaucracy_military
 				}
 			}
 			else_if = {
 				limit = {
-					has_government = feudal_government
+					government_has_flag = government_is_feudal
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_feudal
+					level = obligation_level_vassal_role_bureaucracy_feudal
 				}
 			}
 			if = {
@@ -171,7 +171,7 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = colony_rights
-					level = colony_rights_granted
+					level = obligation_level_colony_rights_granted
 				}
 			}
 			if = {
@@ -180,7 +180,7 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
-					level = coinage_rights_granted
+					level = obligation_level_coinage_rights_granted
 				}
 			}
 			if = {
@@ -189,7 +189,7 @@ ATHA_game_start.3 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = gift_estate_rights
-					level = gift_estate_rights_granted
+					level = obligation_level_gift_estate_rights_granted
 				}
 				save_temporary_scope_as = gift_estate_vassal
 				liege = {
@@ -205,7 +205,7 @@ ATHA_game_start.3 = {
 
 # Add/subtract building slots from certain holding types
 ATHA_game_start.4 = {
-	type = empty
+	scope = none
 	hidden = yes
 
 	immediate = {
@@ -213,12 +213,12 @@ ATHA_game_start.4 = {
 			if = {
 				limit = { has_holding_type = fort_holding }
 
-				add_building_slot = -1
+				add_province_modifier = removed_building_slot
 			}
 			else_if = {
 				limit = { has_holding_type = castle_holding }
 
-				add_building_slot = 1
+				add_province_modifier = extra_building_slot
 			}
 		}
 	}
@@ -226,7 +226,7 @@ ATHA_game_start.4 = {
 
 # Distribute modifiers for corruption level
 ATHA_game_start.5 = {
-	type = empty
+	scope = none
 	hidden = yes
 
 	immediate = {
@@ -240,7 +240,7 @@ ATHA_game_start.5 = {
 
 # Set centralisation laws for governments
 ATHA_game_start.6 = {
-	type = empty
+	scope = none
 	hidden = yes
 
 	immediate = {
@@ -332,7 +332,7 @@ ATHA_game_start.10 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_feudal
+					level = obligation_level_vassal_role_bureaucracy_feudal
 				}
 			}			
 		}
@@ -505,19 +505,19 @@ ATHA_game_start.11 = {
 
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_city_state_autonomous
+					level = obligation_level_vassal_role_city_state_autonomous
 				}
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
-					level = coinage_rights_granted
+					level = obligation_level_coinage_rights_granted
 				}
 				vassal_contract_set_obligation_level = {
 					type = religious_rights
-					level = religious_rights_protected
+					level = obligation_level_religious_rights_protected
 				}
 				vassal_contract_set_obligation_level = {
 					type = title_revocation_rights
-					level = title_revocation_rights_protected
+					level = obligation_level_title_revocation_rights_protected
 				}
 			} else_if = {
 				limit = {
@@ -526,7 +526,7 @@ ATHA_game_start.11 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_city_state_dependent
+					level = obligation_level_vassal_role_city_state_dependent
 				}
 			}
 			
@@ -537,7 +537,7 @@ ATHA_game_start.11 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = colony_rights
-					level = colony_rights_granted
+					level = obligation_level_colony_rights_granted
 				}
 			}
 		}
@@ -567,7 +567,7 @@ ATHA_game_start.12 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_military
+					level = obligation_level_vassal_role_bureaucracy_military
 				}
 			}		
 		}
@@ -595,7 +595,7 @@ ATHA_game_start.12 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = vassal_role
-					level = vassal_role_bureaucracy_civil
+					level = obligation_level_vassal_role_bureaucracy_civil
 				}
 			}		
 		}
@@ -662,19 +662,19 @@ ATHA_game_start.13 = {
 			}
 			vassal_contract_set_obligation_level = {
 				type = vassal_role
-				level = vassal_role_coalition_autonomous
+				level = obligation_level_vassal_role_coalition_autonomous
 			}
 			vassal_contract_set_obligation_level = {
 				type = coinage_rights
-				level = coinage_rights_granted
+				level = obligation_level_coinage_rights_granted
 			}
 			vassal_contract_set_obligation_level = {
 				type = religious_rights
-				level = religious_rights_protected
+				level = obligation_level_religious_rights_protected
 			}
 			vassal_contract_set_obligation_level = {
 				type = title_revocation_rights
-				level = title_revocation_rights_protected
+				level = obligation_level_title_revocation_rights_protected
 			}
 		} else_if = {
 			limit = {
@@ -684,7 +684,7 @@ ATHA_game_start.13 = {
 			}
 			vassal_contract_set_obligation_level = {
 				type = vassal_role
-				level = vassal_role_coalition_dependent
+				level = obligation_level_vassal_role_coalition_dependent
 			}
 		}
 	}
@@ -790,7 +790,7 @@ ATHA_game_start.15 = {
 
 # Assign dynasty modifiers
 ATHA_game_start.16 = {
-	type = empty
+	scope = none
 	hidden = yes
 
     immediate = {
@@ -842,13 +842,26 @@ ATHA_game_start.16 = {
 
 # Assign lifestyle perks
 ATHA_game_start.17 = {
-	type = empty
+	scope = none
 	hidden = yes
 
     immediate = {
     	if = {
     		limit = { current_date = 3479.9.1 } # 1 September 275 BC
 
+	    	character:crobyzian00101 = { # Isanthes
+	    		reset_all_perks_effect = yes
+
+			    add_perk = golden_obligations_perk
+			    add_perk = heregeld_perk
+			    add_perk = detailed_ledgers_perk
+			    add_perk = war_profiteer_perk
+			    add_perk = fearful_troops_perk
+			    add_perk = it_is_my_domain_perk
+			    add_perk = golden_aplomb_perk
+			    add_perk = at_any_cost_perk
+			    add_perk = avaricious_perk
+	    	}
 	    	character:dorian00202 = { # Sostratos of Knidos
 	    		reset_all_perks_effect = yes
 
@@ -1064,5 +1077,47 @@ ATHA_game_start.17 = {
 			    add_perk = scholarly_circles_perk
 	    	}
     	}
+	}
+}
+
+# Assign splendour levels to dead dynasties (so the Argeads don't show up in title histories as an obscure dynasty)
+ATHA_game_start.18 = {
+	scope = none
+	hidden = yes
+
+    immediate = {
+    	if = {
+    		limit = { current_date = 3479.9.1 } # 1 September 275 BC
+	        dynasty:macedoniandyn039 = {
+	        	add_dynasty_prestige_level = 3
+	        }
+    	}
+    }
+}
+
+# Assign tombs to places that historically had them.
+ATHA_game_start.19 = {
+	scope = none
+	hidden = yes
+
+	immediate = {
+		province:276 = { # Aigai, Argead tomb.
+			# Following this study: https://www.pnas.org/doi/10.1073/pnas.1510906112
+		# Tomb I
+			add_historical_tomb_with_date_effect = { OCCUPANT = character:macedonian03940 DATE = 3418 } # Philip II
+			# TODO Cleopatra
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03950 } # Daughter of Philip II
+		# Tomb II
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03947 } # Philip Arrhidaios
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03945 } # Adea Eurydike
+		# Tomb III
+			add_secondary_occupant_to_tomb_effect = { OCCUPANT = character:macedonian03953 } # Alexander IV
+
+			deposit_gold_in_tomb_effect = { GOLD = 150 } # Grave goods.
+		}
+		province:1744 = { # Seuthopolis, tomb of Seuthes III
+			add_historical_tomb_with_date_effect = { OCCUPANT = character:odrysian00157 DATE = 3459 } # Seuthes III
+			deposit_gold_in_tomb_effect = { GOLD = 100 } # Grave goods.
+		}
 	}
 }

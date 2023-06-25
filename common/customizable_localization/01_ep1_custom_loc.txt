@@ -410,8 +410,8 @@ InspirationArtisanType = {
 		trigger = {
 			var:artifact_artisan_type = flag:artisan_type_cabinet
 			NOR = {
-				artifact_should_use_gfx_type_trigger = { TYPE = indian_building }
-				artifact_should_use_gfx_type_trigger = { TYPE = mena_building }
+				artifact_use_indian_building_visuals_trigger = yes
+				artifact_use_mena_building_visuals_trigger = yes
 			}
 		}
 		localization_key = inspiration_artisan_type_cabinet
@@ -420,7 +420,7 @@ InspirationArtisanType = {
 	text = { #
 		trigger = {
 			var:artifact_artisan_type = flag:artisan_type_cabinet
-			artifact_should_use_gfx_type_trigger = { TYPE = indian_building }
+			artifact_use_indian_building_visuals_trigger = yes
 		}
 		localization_key = inspiration_artisan_type_diwan
 	}
@@ -428,7 +428,7 @@ InspirationArtisanType = {
 	text = { #
 		trigger = {
 			var:artifact_artisan_type = flag:artisan_type_cabinet
-			artifact_should_use_gfx_type_trigger = { TYPE = mena_building }
+			artifact_use_mena_building_visuals_trigger = yes
 		}
 		localization_key = inspiration_artisan_type_table
 	}
@@ -442,9 +442,16 @@ InspirationArtisanType = {
 
 	text = { #
 		trigger = {
-			var:artifact_artisan_type = flag:artisan_type_armillary_sphere
+			var:artifact_artisan_type = flag:artisan_type_scientific_apparatus
 		}
-		localization_key = inspiration_artisan_type_armillary_sphere
+		localization_key = inspiration_artisan_type_scientific_apparatus
+	}
+
+	text = { #
+		trigger = {
+			var:artifact_artisan_type = flag:artisan_type_urn
+		}
+		localization_key = inspiration_artisan_type_urn
 	}
 }
 
@@ -1111,23 +1118,11 @@ GetScholarType = {
 		localization_key = trait_theologian
 	}
 	text = {
-		trigger = {
-			OR = {
-				has_trait = mystic_1
-				has_trait = mystic_2
-				has_trait = mystic_3
-			}
-		}
+		trigger = { has_trait = lifestyle_mystic }
 		localization_key = trait_mystic_2
 	}
 	text = {
-		trigger = {
-			OR = {
-				has_trait = physician_1
-				has_trait = physician_2
-				has_trait = physician_3
-			}
-		}
+		trigger = { has_trait = lifestyle_physician }
 		localization_key = trait_physician_2
 	}
 	text = {
@@ -1606,6 +1601,13 @@ GetInspirationMaterialType = {
 	}
 	text = { 
 		trigger = {
+			inspiration = { has_inspiration_type = artisan_inspiration }
+			var:artifact_artisan_type = flag:artisan_type_urn
+		}
+		localization_key = inspiration_type_material_clay
+	}
+	text = { 
+		trigger = {
 			inspiration = { has_inspiration_type = alchemy_inspiration }
 		}
 		localization_key = inspiration_type_material_ingredients
@@ -1644,6 +1646,16 @@ InspirationArtisanBaseType = {
 		trigger = { var:artifact_artisan_type = flag:artisan_type_throne }
 		localization_key = inspiration_artisan_base_type_throne
 	}
+
+	text = {
+		trigger = { var:artifact_artisan_type = flag:artisan_type_scientific_apparatus }
+		localization_key = inspiration_artisan_base_type_scientific_apparatus
+	}
+
+	text = {
+		trigger = { var:artifact_artisan_type = flag:artisan_type_urn }
+		localization_key = inspiration_artisan_base_type_urn
+	}
 }
 
 InspirationSmithBaseType = {
@@ -1676,33 +1688,48 @@ InspirationArtisanToolType = {
 
 	text = {
 		trigger = {
-			NOT = { var:artifact_artisan_type = flag:artisan_type_sculpture }
+			NOR = {
+				var:artifact_artisan_type = flag:artisan_type_sculpture
+				var:artifact_artisan_type = flag:artisan_type_urn
+			}
 		}
 		localization_key = inspiration_type_tool_plane
 	}
 
 	text = {
 		trigger = {
-			NOT = { var:artifact_artisan_type = flag:artisan_type_sculpture }
+			NOR = {
+				var:artifact_artisan_type = flag:artisan_type_sculpture
+				var:artifact_artisan_type = flag:artisan_type_urn
+			}
 		}
 		localization_key = inspiration_type_tool_saw
 	}
 
 	text = {
 		trigger = {
-			NOT = { var:artifact_artisan_type = flag:artisan_type_sculpture }
+			NOR = {
+				var:artifact_artisan_type = flag:artisan_type_sculpture
+				var:artifact_artisan_type = flag:artisan_type_urn
+			}
 		}
 		localization_key = inspiration_type_tool_awl
 	}
 
 	text = {
-		trigger = { always = yes }
+		trigger = { var:artifact_artisan_type = flag:artisan_type_sculpture }
 		localization_key = inspiration_type_tool_chisel
 	}
 
 	text = {
-		trigger = { always = yes }
+		trigger = { var:artifact_artisan_type = flag:artisan_type_sculpture }
 		localization_key = inspiration_type_tool_hammer
+	}
+
+	text = {
+		trigger = { always = no }
+		fallback = yes
+		localization_key = inspiration_type_tool_fallback
 	}
 }
 
@@ -1710,13 +1737,21 @@ InspirationArtisanJobType = {
 	type = character
 
 	text = {
-		trigger = { var:artifact_artisan_type = flag:artisan_type_sculpture }				
+		trigger = { var:artifact_artisan_type = flag:artisan_type_sculpture }
 		localization_key = inspiration_artisan_job_type_sculptor
 	}
 
 	text = {
+		trigger = { var:artifact_artisan_type = flag:artisan_type_urn }
+		localization_key = inspiration_artisan_job_type_potter
+	}
+
+	text = {
 		trigger = {
-			NOT = { var:artifact_artisan_type = flag:artisan_type_sculpture }
+			NOR = {
+				var:artifact_artisan_type = flag:artisan_type_sculpture
+				var:artifact_artisan_type = flag:artisan_type_urn
+			}
 		}				
 		localization_key = inspiration_artisan_job_type_carpenter
 	}
@@ -1845,8 +1880,20 @@ GetTargetCourtPosition = {
 		localization_key = court_position_emissary
 	}
 	text = {
+		trigger = { var:target_court_position = flag:chief_qadi }
+		localization_key = court_position_qadi
+	}
+	text = {
 		trigger = { var:target_court_position = flag:garuda }
 		localization_key = court_position_garuda
+	}
+	text = {
+		trigger = { var:target_court_position = flag:keeper_of_swans }
+		localization_key = court_position_keeper_of_swans
+	}
+	text = {
+		trigger = { var:target_court_position = flag:travel_leader }
+		localization_key = court_position_travel_leader
 	}
 }
 
@@ -1926,7 +1973,19 @@ GetTargetCourtPositionDesc = {
 		localization_key = court_position_desc_emissary
 	}
 	text = {
+		trigger = { var:target_court_position = flag:chief_qadi }
+		localization_key = court_position_desc_qadi
+	}
+	text = {
 		trigger = { var:target_court_position = flag:garuda }
 		localization_key = court_position_desc_garuda
+	}
+	text = {
+		trigger = { var:target_court_position = flag:keeper_of_swans }
+		localization_key = court_position_desc_keeper_of_swans
+	}
+	text = {
+		trigger = { var:target_court_position = flag:travel_leader }
+		localization_key = court_position_desc_travel_leader
 	}
 }

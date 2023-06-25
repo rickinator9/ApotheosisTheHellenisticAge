@@ -10,6 +10,7 @@ macedonianlowborn1 = {
 	3364.1.1 = { # made up
 		birth = yes # 390 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3380.1.1 = { # 374 BC, made up
 	#	add_spouse = macedonian00201 # Alexandros
 	#}
@@ -28,6 +29,7 @@ macedonianlowborn2 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3479.1.1 = { # 275 BC, made up
 	#	add_spouse = macedonian00205 # Alexandros
 	#}
@@ -76,8 +78,8 @@ macedonian00101 = {
 	#}
 	3433.1.1 = { # 321 BC
 		effect = {
-			set_relation_best_friend = {
-				target = character:macedonian00102 # was extremely close to Demetrius 
+			set_relation_best_friend = { # was extremely close to his son Demetrius
+				target = character:macedonian00102 # Demetrios
 				reason = best_friend_historical
 			}
 		}
@@ -98,6 +100,7 @@ macedonian00101 = {
 macedonian00102 = {
 	name = "Demetrios" # Demetrius I Poliorcetes
 	dynasty = macedoniandyn001 # Antigonides
+	dna = macedonian00102_dna
 	religion = macedonian_faith
 	culture = macedonian
 	sexuality = bisexual
@@ -114,16 +117,39 @@ macedonian00102 = {
 	trait = impatient
 	trait = arrogant
 	trait = beauty_good_1
-	trait = reveler_2
+	trait = lifestyle_reveler
 	father = macedonian00101 # Antigonos
 	#mother = ... # Stratonike
-	3418.1.1 = {
-		birth = yes # 336 BC
+	3418.1.1 = { # approximate
+		birth = yes # January/February 336 BC
 	}
-	# 321 BC, Demetrius was very close to his mother and father; meaning a best friend relationship.
+	## Redundant code - preserved for documentation purposes
+	#3433.1.1 = { # 321 BC
+	#	effect = {
+	#		set_relation_best_friend = { # was extremely close to his father
+	#			target = character:macedonian00101 # Antigonos
+	#			reason = best_friend_historical
+	#		}
+	#		set_relation_friend = { # was also close to his mother
+	#			target = character:... # Stratonike
+	#			reason = friend_historical
+	#		}
+	#	}
+	#}
 	#3434.1.1 = { # 320 BC, approximate
 	#	add_spouse = ... # Phila
 	#}
+	3436.1.1 = { # Adulthood
+		add_trait_xp = { # 318 BC
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
 	#3440.1.1 = { # 314 BC, approximate
 	#	effect = {
 	#		set_relation_rival = character:... # Demetrius and Lysimachus seem to have constantly traded insults
@@ -180,7 +206,7 @@ macedonian00102 = {
 		trait = drunkard
 		trait = comfort_eater # he really lets himself go in Seleucid captivity
 	}
-	3471.1.1 = { # 283 BC
+	3472.2.1 = { # February/March 282 BC, approximate
 		death = { 
 			death_reason = death_dungeon_passive # died whilst being held captive by Seleucus
 		}
@@ -219,7 +245,7 @@ macedonian00104 = {
 	trait = compassionate
 	trait = generous
 	trait = humble
-	trait = reveler_1
+	trait = lifestyle_reveler
 	trait = shrewd
 	father = macedonian00102 # Demetrios
 	#mother = ... # Phila
@@ -229,15 +255,23 @@ macedonian00104 = {
 		}
 		birth = yes # 319 BC
 	}
-	# 304 BC, approximate, becomes friends with the philosopher Menedemos
+	## Redundant code - preserved for documentation purposes
+	#3450.1.1 = { # 304 BC, approximate
+	#	effect = {
+	#		set_relation_friend = { # was good friends with the philosopher Menedemos
+	#			target = character:euboean00102 # Menedemos
+	#			reason = friend_historical
+	#		}
+	#	}
+	#}
 	3474.1.1 = { # 280 BC
-		effect = {
+		effect = { # loyally supported by his half-brother Craterus throughout
 			set_relation_friend = {
-				target = character:macedonian00204 # loyally supported by his half-brother Craterus throughout
+				target = character:macedonian00204 # Krateros
 				reason = friend_loyal_support
 			}
 			add_hook = {
-				target = character:macedonian00204
+				target = character:macedonian00204 # Krateros
 				type = loyalty_hook
 			}
 		}
@@ -294,7 +328,15 @@ macedonian00106 = {
 	#3505.1.1 = { # 249 BC
 	#	add_spouse = ... # Berenike
 	#}
-	# 248 BC, begins an affair with his mother-in-law Apame
+	## Redundant code - preserved for documentation purposes
+	#3506.1.1 = { # 248 BC
+	#	effect = {
+	#		set_relation_lover = { # begins an affair with his mother-in-law Apame
+	#			target = character:macedonian02908 # Apame
+	#			reason = lover_historical_demetrius_the_fair
+	#		}
+	#	}
+	#}
 	3507.1.1 = { # 247 BC
 		death = { 
 			death_reason = death_murder_known # supposedly murdered on the orders of Berenice
@@ -352,6 +394,7 @@ macedonian00109 = {
 	3437.1.1 = { # approximate
 		birth = yes # 317 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3456.1.1 = { # 298 BC, approximate
 	#	add_spouse = macedonian02902 # Seleukos
 	#}
@@ -382,6 +425,7 @@ macedonian00110 = {
 macedonian00111 = {
 	name = "Alkyoneus"
 	dynasty = macedoniandyn001 # Antigonides
+	dna = macedonian00111_dna
 	religion = macedonian_faith
 	culture = macedonian
 	diplomacy = 4
@@ -425,10 +469,10 @@ macedonian00112 = {
 		add_spouse = epirote00228 # Phthia
 		remove_spouse = macedonian02911 # Stratonike
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian02911 # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+			set_relation_rival = { # Stratonike apparently leaves him in disgust when he attempts to enter a polygamous marriage with Phthia
+				target = character:macedonian02911 # Stratonike
 				reason = rival_polygamous_marriage
-				involved_character = character:epirote00228
+				involved_character = character:epirote00228 # Phthia
 			}
 		}
 	}
@@ -470,7 +514,7 @@ macedonian00113 = {
 		}
 		# it's not clear when Antigonus earned his nickname, though Plutarch seems to imply it was around the same time he became King
 	}
-	3533.1.1 = { # 221 BC
+	3533.10.1 = { # October 221 BC
 		death = { 
 			death_reason = death_accident # according to Polybius, he burst a blood vessel from shouting mid-battle
 		}
@@ -528,7 +572,7 @@ macedonian00116 = {
 	trait = deceitful
 	trait = ambitious
 	trait = vengeful
-	trait = reveler_1
+	trait = lifestyle_reveler
 	trait = schemer
 	father = macedonian00112 # Demetrios
 	#mother = ... # Chryseis
@@ -566,7 +610,7 @@ macedonian00116 = {
 		trait = depressed_1
 		trait = contrite
 	}
-	3575.11.1 = { # November 279 BC, approximate
+	3575.11.1 = { # November 179 BC, approximate
 		death = { 
 			death_reason = death_depressed # murdering his son took a huge toll on his health
 		}
@@ -583,7 +627,15 @@ macedonian00117 = {
 	3540.1.1 = { # made up
 		birth = yes # 214 BC
 	}
-	# 180 BC, becomes rival with Perseus over Demetrius' murder
+	## Redundant code - preserved for documentation purposes
+	#3574.1.1 = { # 180 BC
+	#	effect = {
+	#		set_relation_rival = { # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+	#			target = character:macedonian00118 # Perseus
+	#			reason = rival_murderer
+	#		}
+	#	}
+	#}
 	3575.12.1 = { # December 179 BC, approximate
 		death = { 
 			death_reason = death_execution # put to death by Perseus following his seizure of the throne
@@ -607,13 +659,21 @@ macedonian00118 = {
 	3542.1.1 = {
 		birth = yes # 212 BC
 	}
-	# 182 BC, a rivalry develops between Perseus and Demetrius
+	## Redundant code - preserved for documentation purposes
+	#3572.1.1 = { # 182 BC
+	#	effect = {
+	#		set_relation_rival = { # a rivalry develops between Perseus and Demetrius
+	#			target = character:macedonian00119 # Demetrios
+	#			reason = rival_heir_wants_throne
+	#		}
+	#	}
+	#}
 	3574.1.1 = { # 180 BC
 		trait = murderer
 		trait = kinslayer_3 # although he didn't order the murder of Demetrius, he was more or less the mastermind of the whole affair
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian00117 # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+			set_relation_rival = { # the tensions between Perseus and Antigonus were probably significantly worsened with Demetrius' murder
+				target = character:macedonian00117 # Antigonos
 				reason = rival_murderer
 			}
 		}
@@ -647,8 +707,8 @@ macedonian00119 = {
 	}
 	3572.1.1 = { # 182 BC
 		effect = {
-			set_relation_rival = {
-				target = character:macedonian00118 # a rivalry develops between Perseus and Demetrius
+			set_relation_rival = { # a rivalry develops between Perseus and Demetrius
+				target = character:macedonian00118 # Perseus
 				reason = rival_heir_wants_throne
 			}
 		}
@@ -689,7 +749,7 @@ macedonian00121 = {
 	3551.1.1 = { # made up
 		birth = yes # 203 BC
 	}
-	#3569.1.1 = { # 185 BC, made up
+	#3569.1.1 = { # 185 BC, speculative (possibly arranged in the context of Philip V's Propontis campaign cf. Polyb. 22.18.12; T. Liv. 39.35.4)
 	#	add_spouse = ... # Teres
 	#}
 	3615.1.1 = { # made up
@@ -744,7 +804,7 @@ macedonian00124 = {
 	}
 }
 macedonian00125 = {
-	name = "Stratonike" # daughter of a king Demetrius who dedicated a statue to a Arsinoe
+	name = "Stratonike" # daughter of a king Demetrius who dedicated a statue to a queen Arsinoe
 	female = yes
 	dynasty = macedoniandyn001 # Antigonides
 	religion = macedonian_faith
@@ -849,6 +909,7 @@ macedonian00204 = {
 	name = "Krateros" # historian and governor of Corinth
 	# dynasty = macedoniandyn002 # ex Orestidos
 	dynasty_house = house_kraterides # Kraterides
+	dna = macedonian00204_dna
 	religion = macedonian_faith
 	culture = macedonian
 	diplomacy = 8
@@ -868,7 +929,13 @@ macedonian00204 = {
 	3433.1.1 = {
 		birth = yes # 321 BC
 	}
-	# 280 BC, becomes friend with Antigonos Gonatas and loyally supported him.
+	## Redundant code - preserved for documentation purposes
+	#3474.1.1 = { # 280 BC
+	#	set_relation_friend = { # loyally supported his half-brother Antigonus
+	#		target = character:macedonian00104 # Antigonos
+	#		reason = friend_loyal_support
+	#	}
+	#}
 	3501.1.1 = { # speculative
 		death = yes # 253 BC
 	}
@@ -949,10 +1016,21 @@ macedonian00402 = {
 	trait = ambitious
 	trait = honest
 	trait = physique_good_1
-	trait = blademaster_2
+	trait = lifestyle_blademaster
 	father = macedonian00401 # Balakros
 	3430.1.1 = { # made up
 		birth = yes # 324 BC
+	}
+	3448.1.1 = { # Adulthood, 306 BC
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3495.1.1 = { # made up
 		death = yes # 259 BC
@@ -2107,7 +2185,7 @@ macedonian02401 = {
 			create_alliance = {
 				target = character:macedonian02902 # Seleukos
 				allied_through_owner = root
-				allied_through_target = character:macedonian02906
+				allied_through_target = character:macedonian02906 # Laodike
 			}
 		}
 	}
@@ -2116,14 +2194,18 @@ macedonian02401 = {
 			create_alliance = {
 				target = character:macedonian02904 # Antiochos I
 				allied_through_owner = root
-				allied_through_target = character:macedonian02906
+				allied_through_target = character:macedonian02906 # Laodike
 			}
 		}
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
 			add_character_flag = has_gift_estate_rights # granted estates in Asia Minor
-			# Becomes friends with Antiochus. The extensive grants he received from Antiochus I suggests they may have had a close personal relationship
+			## Redundant code - preserved for documentation purposes
+			#set_relation_friend = { # the extensive grants he received from Antiochus I suggests they may have had a close personal relationship
+			#	target = character:macedonian02904 # Antiochos
+			#	reason = friend_historical_antiochos_i_achaios
+			#}
 		}	
 	}
 	3490.1.1 = { # made up
@@ -2154,6 +2236,7 @@ macedonian02402 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3478.1.1 = { # 276 BC, approximate
 	#	add_spouse = macedonian01707 # Attalos
 	#}
@@ -2409,8 +2492,8 @@ macedonian02904 = {
 	}
 	3479.1.1 = { # 279 BC, approximate
 		effect = {
-			set_relation_friend = {
-				target = character:macedonian02401 # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+			set_relation_friend = { # the extensive grants he made to Achaeus may suggest they had a close personal relationship
+				target = character:macedonian02401 # Achaios
 				reason = friend_historical_antiochos_i_achaios
 			}
 		}	
@@ -2424,22 +2507,14 @@ macedonian02904 = {
     	add_gold = 1000
 		spawn_army = {
 			name = event_troop_default_name
-			levies = 4000
+			levies = 2000
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			location = province:714
 			origin = province:714
@@ -2478,6 +2553,7 @@ macedonian02906 = {
 	3435.1.1 = { # Made up
 		birth = yes # 319 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3462.1.1 = { # 292 BC, made up
 	#	add_spouse = macedonian02401 # Achaios
 	#}
@@ -2496,6 +2572,7 @@ macedonian02907 = {
 	3459.1.1 = { # Made up, but had to have happened between 298 and 293 BC.
 		birth = yes # 295 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3478.1.1 = { # 276 BC, approximate
 	#	add_spouse = macedonian00104 # Antigonos
 	#}
@@ -2520,9 +2597,9 @@ macedonian02908 = {
 	# TODO: Marries Magas of Cyrene in 275 BC.
 	3506.1.1 = { # 248 BC
 		effect = {
-			set_relation_lover = {
-				target = character:macedonian00106
-				reason = lover_historical_demetrius_the_fair # begins an affair with her son-in-law Demetrius the Fair
+			set_relation_lover = { # begins an affair with her son-in-law Demetrius the Fair
+				target = character:macedonian00106 # Demetrios
+				reason = lover_historical_demetrius_the_fair
 			}
 		}
 	}
@@ -2686,6 +2763,7 @@ macedonian03105 = {
 	3320.1.1 = { # made up
 		birth = yes # 434 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3337.1.1 = { # 417 BC, made up
 	#	add_spouse = macedonian03103 # Sirrhas
 	#}
@@ -2766,6 +2844,7 @@ macedonian03109 = {
 	3342.1.1 = { # approximate
 		birth = yes # 412 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3362.1.1 = { # 392 BC, approximate
 	#	add_spouse = macedonian03936 # Amyntas
 	#}
@@ -2925,7 +3004,7 @@ macedonian03118 = {
 	trait = arrogant # adopted Persian luxuries, probably seeking to emulate Alexander
 	trait = ambitious # sought to establish himself as King of Macedonia
 	trait = strong # was fond of wrestling and hunting
-	trait = hunter_1
+	trait = lifestyle_hunter
 	father = macedonian03115 # Anteas
 	3398.1.1 = {
 		birth = yes # 356 BC
@@ -2963,6 +3042,7 @@ macedonian031w01 = {
 	3314.1.1 = { # made up
 		birth = yes # 440 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3331.1.1 = { # 423 BC, speculative (possibly part of the peace deal between Perdiccas II and the Lyncestians)
 	#	add_spouse = macedonian03917 # Perdikkas
 	#}
@@ -3255,6 +3335,7 @@ macedonian03211 = {
 	3442.1.1 = { # Made up.
 		birth = yes # 312 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3455.1.1 = { # 299 BC, approximate
 	#	effect = {
 	#		create_betrothal = character:macedonian00102 # Engaged to Demetrius I, possibly too young to be married immediately
@@ -3292,6 +3373,7 @@ macedonian03212 = {
 macedonian03213 = {
 	name = "Arsinoe" # Daughter of Ptolemy I by Berenike. Married Lysimachus, Ptolemy Keraunos and Ptolemy II.
 	dynasty = macedoniandyn032 # Ptolemaion
+	dna = macedonian03213_dna
 	religion = macedonian_faith
 	culture = macedonian
 	female = yes
@@ -3307,6 +3389,7 @@ macedonian03213 = {
 	}
 	# Marries Lysimachus in 299 BC.
 
+	## Redundant code - preserved for documentation purposes
 	#3474.1.1 = { # 280 BC
 	#	add_spouse = macedonian03207 # Ptolemaios
 	#}
@@ -3314,6 +3397,7 @@ macedonian03213 = {
 	#	remove_spouse = macedonian03207 # divorces Ceraunus a month later and flees after he kills her sons
 	#}
 	3481.1.1 = { # Marries Ptolemy II in 273 BC and becomes part of the Ptolemaic ruler cult.
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03215 # Ptolemaios
 		religion = alexandrian_faith
 		effect = {
@@ -3380,22 +3464,14 @@ macedonian03215 = {
     	add_gold = 1000
 		spawn_army = {
 			name = event_troop_default_name
-			levies = 4000
+			levies = 2000
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			location = province:578
 			origin = province:578
@@ -3467,6 +3543,7 @@ macedonian03217 = {
 		birth = yes # 279 BC
 	}
 	3502.6.1 = { # summer 252 BC, marries Antiochus II. She was well known for her downry.
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian02910 # Antiochos
 		effect = {
 			set_permanent_nickname_effect = { NICKNAME = nick_the_dowry_bearer }
@@ -3537,6 +3614,7 @@ macedonian03220 = {
 	3455.1.1 = { # She was old enough to marry Pyrrhus in 280 BC, so probably born before 295 BC.
 		birth = yes # 299 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3474.1.1 = { # 280 BC
 	#	add_spouse = epirote00215 # Pyrrhos
 	#}
@@ -3624,10 +3702,16 @@ macedonian03503 = {
 	religion = macedonian_faith
 	culture = macedonian
 	trait = education_learning_3
-	trait = mystic_3 # is said to have predicted the deaths of Hephaestion, Alexander, Perdiccas and Antigonus
+	trait = lifestyle_mystic # is said to have predicted the deaths of Hephaestion, Alexander, Perdiccas and Antigonus
 	father = macedonian03501 # Hipponax
 	3385.1.1 = { # made up
 		birth = yes # 369 BC
+	}
+	3403.1.1 = { # Adulthood, 351 BC
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = 80
+		}
 	}
 	3457.1.1 = { # made up
 		death = yes # 297 BC
@@ -4091,6 +4175,9 @@ macedonian03911 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	trait = education_diplomacy_2 # unsuccessfully tried to offer Anthemous to Hippias (Hdt. 5.94.1) 
+	trait = craven # accepted the demands of the Persian envoys and kept quiet when they began mistreating the women at the feast
+	trait = trusting # trusted his son to deal with the Persian envoys
 	father = macedonian03910 # Alketas
 	3190.1.1 = { # made up
 		birth = yes # 564 BC
@@ -4105,11 +4192,28 @@ macedonian03912 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	diplomacy = 8
+	martial = 6
+	stewardship = 8
+	intrigue = 7
+	learning = 6
+	prowess = 7
+	trait = education_diplomacy_3 # skilled diplomat and a smooth talker
+	trait = ambitious # sought to enlarge the Macedonian kingdom and enhance his own image
+	trait = deceitful # gave assistance to the Greeks while simulteously acting as a loyal subject of the Persians
+	trait = just # intervened to defend the women being mistreated by the Persian envoys, even when his father advised him not to
+	trait = arrogant # dedicated gold statues of himself at Delphi & Olympia
+	trait = shrewd # his achievements show a considerable amount of cunning
+	trait = diplomat # managed to win the trust both of the Persians and his fellow Greeks, despite often working against them
+	trait = avaricious # attained significant wealth and became the first Macedonian king to mint coinage
+	trait = schemer # Pindar describes him as "bold-scheming"
+	trait = athletic # competed in the Olympic foot-race and pentathlon (Just. 7.2.14)
 	father = macedonian03911 # Amyntas
 	3229.1.1 = { # approximate
 		birth = yes # 525 BC
 	}
 	3302.1.1 = { # 452 BC, approximate
+		give_nickname = nick_philhellene # probably only received the byname "Philhellene" in the Hellenistic period (Sprawski 2013, available at www.academia.edu/5911382)
 		death = {
 			death_reason = death_battle # Curt. 6. 11. 26 implies that he died violently though it is unclear whether this was through assassination or war
 		}
@@ -4160,7 +4264,7 @@ macedonian03915 = {
 	3269.1.1 = { # made up
 		birth = yes # 485 BC
 	}
-	3341.1.1 = {
+	3341.1.1 = { # 413 BC
 		death = {
 			death_reason = death_murder_known # murdered on the orders of Archelaus
 			killer = macedonian03927 # Archelaos
@@ -4173,6 +4277,7 @@ macedonian03916 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	trait = content # according to Syncellus (p. 500) he lived throughout as a private person
 	father = macedonian03912 # Alexandros
 	3272.1.1 = { # made up
 		birth = yes # 482 BC
@@ -4187,6 +4292,16 @@ macedonian03917 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	diplomacy = 8
+	martial = 4
+	stewardship = 6
+	intrigue = 7
+	learning = 3
+	prowess = 4
+	trait = education_diplomacy_2 # much of his reign was spent using diplomacy to preserve his independence, not always successfully
+	trait = stubborn # stubbornly quarrelled with Brasidas during their campaign against the Lynkestians
+	trait = vengeful # seems to have been focused on getting rid of Brasidas after their falling out
+	trait = deceitful # broke multiple treaties, with Hermippus writing in Phormophoroi that he could "fill his ships with lies as well as timber"
 	father = macedonian03912 # Alexandros
 	3276.1.1 = { # made up
 		birth = yes # 478 BC
@@ -4223,8 +4338,9 @@ macedonian03919 = {
 	3297.1.1 = { # made up
 		birth = yes # 457 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3325.1.1 = { # 429 BC 
-	#	add_spouse = ... # Seuthes 
+	#	add_spouse = odrysian00106 # Seuthes 
 	#}
 	3354.1.1 = { # made up
 		death = yes # 400 BC
@@ -4234,7 +4350,7 @@ macedonian03919 = {
 # Family of Philippos
 
 macedonian03920 = {
-	name = "Amyntas" # supported by Sitalces as a pretender to the Macedonian throne ca. 429 BC	
+	name = "Amyntas" # supported by Sitalkes as a pretender to the Macedonian throne ca. 429 BC	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
@@ -4352,6 +4468,21 @@ macedonian03927 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	sexuality = bisexual
+	diplomacy = 6
+	martial = 5
+	stewardship = 8
+	intrigue = 9
+	learning = 7
+	prowess = 3
+	trait = education_stewardship_3
+	trait = callous # had no issue with murdering potential rivals (including his own half-brother)
+	trait = diligent # pursued a number of initiatives, including moving the capital to Pella & re-organising the Olympia at Dion
+	trait = generous # was a generous patron of poets and artists (including Zeuxis, Agathon and Euripides)
+	trait = arbitrary # Plato considers him to have been manifestly unjust (Grg. 470 d–471 d)
+	trait = overseer # implemented significant military reforms
+	trait = architect # improved the road system
+	trait = panhellenic_victor # achieved victories in the chariot races at the Olympia and Pythia ca. 425-400 BC 
 	father = macedonian03917 # Perdikkas
 	#mother = ... # Simiche
 	3301.1.1 = { # made up
@@ -4359,6 +4490,7 @@ macedonian03927 = {
 	}
 	# probably at least two wives before Cleopatra - highly unlikely Amyntas would have married a full sister
 	3341.1.1 = { # 413 BC, approximate 
+		trait = murderer # had several of his rival claimants murdered
 		add_spouse = macedonian031w01 # Kleopatra 
 	}
 	3355.1.1 = { # 399 BC (archon-year 400/399 BC)
@@ -4374,10 +4506,15 @@ macedonian03928 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	trait = ambitious
+	trait = callous
 	father = macedonian03917 # Perdikkas
 	#mother = ... # Simiche
 	3305.1.1 = { # made up
 		birth = yes # 449 BC
+	}
+	3358.1.1 = { # 396 BC (archon-year 397/6 BC)
+		trait = murderer # had his ward Orestes murdered
 	}
 	3360.9.1 = { # 394 BC, approximate (archon-year 394/3BC, presumably not long after the summer of 394 BC)
 		trait = ill
@@ -4431,6 +4568,7 @@ macedonian03931 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	trait = callous # mocked Derdas for his youth
 	father = macedonian03927 # Archelaos
 	3337.1.1 = { # made up
 		give_nickname = nick_the_small
@@ -4457,6 +4595,7 @@ macedonian03932 = {
 	3337.1.1 = { # made up
 		birth = yes # 417 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3354.1.1 = { # 400 BC, approximate
 	#	add_spouse = macedonian03931 # Amyntas 
 	#}
@@ -4525,11 +4664,22 @@ macedonian03936 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	diplomacy = 7
+	martial = 6
+	stewardship = 5
+	intrigue = 6
+	learning = 3
+	prowess = 3
+	trait = education_martial_2 # Justin claims that he was endowed with all the accomplishments of a great general, though in reality his military record seems somewhat spotty
+	trait = stubborn # showed remarkable resilience in the face of multiple invasions 
+	trait = brave # often had to deal with unfavourable odds 
+	trait = deceitful # murdered his predecessor Pausanias in a ruse
 	father = macedonian03935 # Arrhidaios
 	3320.1.1 = { # made up
 		birth = yes # 434 BC
 	}
 	3361.1.1 = { # 393 BC, made up
+		trait = murderer # murders Pausanias
 		add_spouse = macedonian039w01 # Gygaia 
 	}
 	3362.1.1 = { # 392 BC, approximate
@@ -4551,6 +4701,9 @@ macedonian03937 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	trait = education_martial_2 # had some success militarily, especially in Thessaly, but occupying Larissa and Krannon seems to have backfired for him 
+	trait = deceitful # went back on his word and occupied Larissa and Krannon with garrisons 
+	trait = ambitious # attempted to gain influence in Thessaly, albeit unsuccessfully
 	father = macedonian03936 # Amyntas
 	mother = macedonian03109 # Eurydika
 	3363.1.1 = { # made up
@@ -4603,15 +4756,54 @@ macedonian03940 = {
 	name = "Philippos" # king Philip II	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
+	dna = macedonian03940_dna
 	religion = macedonian_faith
 	culture = macedonian
+	sexuality = bisexual
+	diplomacy = 13
+	martial = 11
+	stewardship = 11
+	intrigue = 3
+	learning = 7
+	prowess = 7
+	trait = education_martial_4 # was a military mastermind
+	trait = ambitious # his soaring ambitions paved the way for Alexander the Great's own adventures
+	trait = brave # always in the thick of the fighting, often wounded as a result
+	trait = deceitful # had no issue with breaking alliances - Lane Fox notes that Philip's alliances were often the "prelude to an attack" (Lane Fox 2011, 356)
+	trait = callous # had no qualms with destroying cities and massacring/enslaving the inhabitants if they opposed him
+	trait = aggressive_attacker # a key element of his battle strategy was maximising enemy casualties
+	trait = logistician # implemented significant logistical reforms, improving the speed and supply of his army
+	trait = organizer
+	trait = scarred # received a number of wounds, and was happy to show them off in portraiture
+	trait = diplomat # was an incredibly effective diplomat and speaker
+	trait = overseer # his army reforms transformed warfare in the Greek world and beyond
+	trait = administrator # credited with extensive administrative reforms
+	trait = strategist # obviously
+	trait = lifestyle_hunter # a fresco at Tomb II in Vergina appears to depict him on a hunt
+	trait = lifestyle_reveler # partying really ran in the family
+	trait = drunkard # as did alcoholism
+	trait = intellect_good_3 # some would argue he was even more of a genius than Alexander
 	father = macedonian03936 # Amyntas
 	mother = macedonian03109 # Eurydika
 	3372.1.1 = { # approximate
 		birth = yes # 382 BC
 	}
-	#3395.1.1 = { # winter/spring 360/359 BC, approximate
-	#	add_spouse = ... # Audata
+	3390.1.1 = { # Adulthood
+		add_trait_xp = { # 364 BC
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
+	3395.1.1 = { # winter/spring 360/359 BC, approximate
+		add_spouse = mathian00203 # Audata
+	}
+	#3395.6.1 = { # summer 359 BC, approximate
+	#	add_spouse = .... # Phila
 	#}
 	3396.12.1 = { # autumn/winter 358 BC, approximate
 		add_spouse = thessalian002a04 # Philinna
@@ -4619,16 +4811,23 @@ macedonian03940 = {
 	3397.9.1 = { # autumn 357 BC, approximate
 		add_spouse = epirote00208 # Olympias 
 	}
-	#3402.6.1 = { # early summer 352 BC, approximate
-	#	add_spouse = ... # Nikasipolis
-	#}
-	#3413.1.1 = { # 341 BC, approximate
-	#	add_spouse = ... # Meda
-	#}
+	3398.1.1 = { # July 356 BC (the month of Alexander the Great's birth)
+		trait = panhellenic_victor # victory in the horse race at Olympia
+	}
+	3400.1.1 = { # 354 BC
+		trait = one_eyed # lost his right eye during the siege of Methone
+	}
+	3402.6.1 = { # early summer 352 BC, approximate
+		add_spouse = thessalian01612 # Nikasipolis
+	}
+	3413.1.1 = { # 341 BC, approximate
+		add_spouse = getic00102 # Meda
+	}
 	#3417.3.1 = { # spring 337 BC, approximate
 	#	add_spouse = ... # Kleopatra
 	#}
 	3418.10.1 = { # October 336
+		trait = hero # his cult is attested at multiple places, including Thasos and Thessalonike
 		death = { 
 			death_reason = death_murder_known # murdered by Pausanias at the wedding of Cleopatra and Alexander of Epirus
 			#killer = ... # Pausanias
@@ -4697,7 +4896,7 @@ macedonian03943 = {
 # Line of Perdikkas III
 
 macedonian03944 = {
-	name = "Amyntas" # Amyntas IV, unlikely he actually ever served as king	
+	name = "Amyntas" # Amyntas IV, unlikely he actually ever reigned as king	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
@@ -4731,6 +4930,7 @@ macedonian03945 = {
 	3433.1.1 = { # 321 BC
 		name = "Eurydike" # adopts the name Eurydike on her marriage with Arrhidaeus
 		give_nickname = nick_hadea
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03945 # Arrhidaios
 	}
 	3437.10.1 = { # October 317 BC
@@ -4748,13 +4948,14 @@ macedonian03946 = {
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
-	culture = macedonian
+	culture = dardanian
 	father = macedonian03940 # Philippos
-	#mother = ... # Audata
+	mother = mathian00203 # Audata
 	3396.1.1 = { # approximate
 		birth = yes # 358 BC
 	}
 	3416.1.1 = { # 338 BC, made up (more likely occurred in 337 BC while Alexander was in exile, but we want Adea-Eurydice to be at least 16 when she marries Philip Arrhidaeus in 321 BC)
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03944 # Amyntas
 	}
 	3432.1.1 = { # 322 BC, approximate
@@ -4770,6 +4971,20 @@ macedonian03947 = {
 	dynasty_house = house_argeadas
 	religion = macedonian_faith
 	culture = macedonian
+	diplomacy = 5
+	martial = 3
+	stewardship = 5
+	intrigue = 8
+	learning = 4
+	prowess = 6
+	trait = education_diplomacy_1 # attempted to reconcile the conflicting parts of the army
+	trait = trusting # was readily manipulated by those around him
+	trait = compassionate # was ready to give up the crown in order to avoid causing bloodshed (Curt. 10.8.19)
+	trait = craven # Curtius states that Arrhidaeus only claimed an action as his own when events made it acceptable (Curt. 10.9.19)
+	trait = irritable # attempted to attack Hegemon with his spear, seemingly to defend Polysperchon's honour (Plut. Phoc. 33.11-12)
+	trait = intellect_bad_2 # generally described as slow-witted or feeble-minded in the literary sources
+	trait = physique_bad_1 # Plutarch's account seems to suggest he was also physically handicapped (Plut. Alex. 77.5)
+	trait = possessed_1 # the Heidelberg epitome claims that he had epilepsy
 	father = macedonian03940 # Philippos
 	mother = thessalian002a04 # Philinna
 	3398.1.1 = { # approximate
@@ -4790,12 +5005,13 @@ macedonian03947 = {
 	}
 }
 macedonian03948 = {
-	name = "Alexandros" # the one and only king Alexander (III) the Great	
+	name = "Alexandros" # king Alexander III, aka Alexander the Great	
 	# dynasty = macedoniandyn039
 	dynasty_house = house_argeadas
 	dna = macedonian03948_dna
 	religion = alexandrian_faith
 	culture = macedonian
+	sexuality = bisexual # Alexander and Hephaestion were just bffs, right?
 	diplomacy = 12
 	martial = 14
 	stewardship = 7
@@ -4808,19 +5024,40 @@ macedonian03948 = {
 	trait = paranoid # brutally supressed suspected plots
 	trait = arrogant # had a literal god complex
 	trait = reckless # was no stranger to risk
-	trait = organizer # implemented logistical reforms
+	trait = organizer # implemented logistical reforms which gave his army greater mobility
 	trait = flexible_leader # was able secure victory from unfavourable positions
-	trait = strategist
+	trait = strategist # goes without saying
 	trait = overseer # re-organised military & civil governance structures after conquering Persia
 	trait = gallant # sought to emulate the Homeric heroes
-	trait = blademaster_2 # adept at single combat
-	trait = reveler_2 # and adept at getting absolutely hammered
+	trait = architect # founded -a lot- of cities
+	trait = lifestyle_blademaster # adept at single combat
+	trait = lifestyle_reveler # and adept at getting absolutely hammered
 	trait = drunkard # ...perhaps too adept
 	trait = intellect_good_3 # not your typical intellectual, but displayed ingenuinity in his strategies
 	father = macedonian03940 # Philippos
 	mother = epirote00208 # Olympias
-	3398.1.1 = { # 20 July 356 BC
+	3398.7.20 = { # 20 July 356 BC
 		birth = yes
+	}
+	3416.1.1 = { # Adulthood, 338 BC
+		add_trait_xp = {
+			trait = lifestyle_reveler
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3421.1 = { # 333 BC, approximate
 		effect = {
@@ -4835,8 +5072,6 @@ macedonian03948 = {
 	#}
 	#3430.3.1 = { # March 324 BC, Susa weddings
 	#	add_spouse = ... # Stateira
-	#}
-	#3430.3.1 = { # March 324 BC, Susa weddings
 	#	add_spouse = ... # Parysatis
 	#}
 	3431.5.30 = { # 30 May 323 BC, approximate
@@ -4862,6 +5097,7 @@ macedonian03949 = {
 	3400.1.1 = { # approximate (probably born in the period 355-353 BC)
 		birth = yes # 354 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3418.10.1 = { # October 336 BC
 	#	add_spouse = epirote00207 # Alexandros
 	#}
@@ -4899,7 +5135,7 @@ macedonian03951 = {
 	religion = macedonian_faith
 	culture = macedonian
 	father = macedonian03940 # Philippos
-	#mother = ... # Nikasipolis
+	mother = thessalian01612 # Nikasipolis
 	3410.1.1 = { # approximate
 		birth = yes # 344 BC
 	}
@@ -4972,9 +5208,9 @@ macedonian03954 = {
 	#mother = ... # Rhoxane
 	3428.9.1 = { # autumn 326 BC, approximate (at the Acesines River)
 		birth = yes # 344 BC
-		trait = sickly
 	}
 	3428.9.2 = { # autumn 326 BC, approximate
+		trait = sickly
 		death = { 
 			death_reason = death_sickly # died stillborn or within a few days of his birth
 		}
@@ -5024,6 +5260,7 @@ macedonian039v03 = {
 	3368.1.1 = { # made up
 		birth = yes # 386 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3387.1.1 = { # 367 BC, approximate
 	#	add_spouse = macedonian03201 # Lagos
 	#}
@@ -5045,6 +5282,7 @@ macedonian039w01 = {
 	3345.1.1 = { # made up
 		birth = yes # 409 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3362.1.1 = { # 392 BC, speculative (if Gygaia is indeed an Argead, then her marriage to Amyntas could have occurred shortly after he usurped the throne)
 	#	add_spouse = macedonian03936 # Amyntas
 	#}
@@ -5125,5 +5363,172 @@ macedonian04401 = {
 	}
 	3516.1.1 = { # made up
 		death = yes # 238 BC
+	}
+}
+
+# Bourdapenos - Bourdapa
+
+macedonian04501 = {
+	name = "Demetrios"
+	dynasty = macedoniandyn045 # Bourdapenos
+	religion = macedonian_faith
+	culture = macedonian
+	3428.1.1 = { # made up
+		birth = yes # 326 BC
+	}
+	3491.1.1 = { # made up
+		death = yes # 263 BC
+	}
+}
+macedonian04502 = {
+	name = "Kleinos" # reconstructed name; attested in a Hellenistic dedication at Bourdapa
+	dynasty = macedoniandyn045 # Bourdapenos
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04501 # Demetrios
+	3457.1.1 = { # made up
+		birth = yes # 297 BC
+	}
+	3524.1.1 = { # made up
+		death = yes # 230 BC
+	}
+}
+
+# Makedon - Maroneia
+
+macedonian04601 = {
+	name = "Korrhagos"
+	dynasty = macedoniandyn046 # Makedon
+	religion = macedonian_faith
+	culture = macedonian
+	3384.1.1 = { # made up
+		birth = yes # 370 BC
+	}
+	3436.1.1 = { # made up
+		death = yes # 318 BC
+	}
+}
+macedonian04602 = {
+	name = "Adaios" # dedicated the altar court at Samothrace at the end of the 4th century BC
+	dynasty = macedoniandyn046 # Makedon
+	religion = cabeiric_faith
+	culture = macedonian
+	father = macedonian04601 # Korrhagos
+	3416.1.1 = { # made up
+		birth = yes # 338 BC
+	}
+	3480.1.1 = { # made up
+		death = yes # 274 BC
+	}
+}
+macedonian04603 = {
+	name = "Adaios" # dynast and strategos of Antiochus II who minted coins at Maroneia from ca. 260 BC
+	dynasty = macedoniandyn046 # Makedon
+	religion = cabeiric_faith
+	culture = macedonian
+	father = macedonian04602 # Adaios, speculative
+	3452.1.1 = { # made up
+		birth = yes # 302 BC
+	}
+	3509.1.1 = { # 245 BC, approximate (ca. 246/5 BC according to Paunov)
+		death = { 
+			death_reason = death_execution # captured for the second time by Ptolemy III and put to death
+			killer = macedonian03216 # Ptolemaios
+		}
+	}
+}
+
+# Beroiaios - Beroia
+
+macedonian04701 = {
+	name = "Harpalos" # epistates of Beroia in 248 BC
+	dynasty = macedoniandyn047 # Beroiaios
+	religion = macedonian_faith
+	culture = macedonian
+	3459.1.1 = { # made up
+		birth = yes # 295 BC
+	}
+	3525.1.1 = { # made up
+		death = yes # 229 BC
+	}
+}
+macedonian04702 = {
+	name = "Polemaios" # name first in the catalogue of Beroian officers in 223 BC
+	dynasty = macedoniandyn047 # Beroiaios
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04701 # Harpalos
+	3487.1.1 = { # made up
+		birth = yes # 267 BC
+	}
+	3544.1.1 = { # made up
+		death = yes # 210 BC
+	}
+}
+macedonian04703 = {
+	name = "Harpalos" # hieromnemon of Perseus at Delphi in 178 BC and ambassador to Rome in 172 BC
+	dynasty = macedoniandyn047 # Beroiaios
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04702 # Polemaios
+	3521.1.1 = { # made up
+		birth = yes # 233 BC
+	}
+	3584.1.1 = { # made up
+		death = yes # 170 BC (Kuzmin suggests that he probably died before 167 BC, explaining how the family avoided internment in Italy after Pydna)
+	}
+}
+macedonian04704 = {
+	name = "Python" # father of a Harpalos known from a sarcophagus inscription at Beroia ca. 150-100 BC
+	dynasty = macedoniandyn047 # Beroiaios
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04703 # Harpalos, speculative
+	3552.1.1 = { # made up
+		birth = yes # 202 BC
+	}
+	3596.1.1 = { # made up
+		death = yes # 158 BC
+	}
+}
+macedonian04705 = {
+	name = "Harpalos" # honoured at Beroia towards the end of the 2nd century BC
+	dynasty = macedoniandyn047 # Beroiaios
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04704 # Python, speculative
+	3585.1.1 = { # made up
+		birth = yes # 169 BC
+	}
+	3653.1.1 = { # made up
+		death = yes # 101 BC
+	}
+}
+
+# Megareus - Megara
+
+macedonian04801 = {
+	name = "Eurydikos"
+	dynasty = macedoniandyn048 # Megareus
+	religion = macedonian_faith
+	culture = macedonian
+	3446.1.1 = { # made up
+		birth = yes # 308 BC
+	}
+	3498.1.1 = { # made up
+		death = yes # 256 BC
+	}
+}
+macedonian04802 = {
+	name = "Philippos" # attested on a Hellenistic pithos stamp found in the Korçë district
+	dynasty = macedoniandyn048 # Megareus
+	religion = macedonian_faith
+	culture = macedonian
+	father = macedonian04801 # Eurydikos
+	3473.1.1 = { # made up
+		birth = yes # 281 BC
+	}
+	3530.1.1 = { # made up
+		death = yes # 224 BC
 	}
 }

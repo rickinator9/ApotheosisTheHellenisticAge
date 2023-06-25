@@ -48,6 +48,7 @@ tradition_former_slaves = {
 	
 	parameters = {
 		landing_same_culture_lowborns_gives_renown = yes # Represents the creation of a new elite in the gap left by their former masters
+		cheaper_guest_recruitment = yes # Representing the flock of exiles and immigrants joining the community
 	}
 	character_modifier = {
 		opinion_of_liege = -10 # People of this culture want to remain free, and any liege lording over them is an obstacle for them
@@ -57,8 +58,220 @@ tradition_former_slaves = {
 	county_modifier = {
 		development_growth_factor = 0.2 # The locals now have the freedom and resources to develop their lands, and are inviting exiles and immigrants to join them
 		county_opinion_add = 10 # The people of this culture are happy and grateful for their freedom
+		monthly_county_control_change_add = -0.2 # The locals are less keen on centralised authority
 	}
 	
 	cost = { prestige = 9999 }
 	ai_will_do = { value = 0 }
+}
+
+tradition_abundant_hillforts = {
+	category = realm
+
+	layers = {
+		0 = martial
+		1 = western
+		4 = city.dds
+	}
+	
+	can_pick = {
+		custom_tooltip = {
+			scope:character = {
+				OR = {
+					government_has_flag = government_is_feudal
+					government_has_flag = government_is_clan
+					government_has_flag = government_is_tribal
+				}
+			}
+			text = must_be_feudal_or_clan_or_tribal
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_city_keepers
+			NOR = {
+				culture_tradition:tradition_city_keepers = { is_in_list = traits }
+				culture_tradition:tradition_castle_keepers = { is_in_list = traits }
+			}
+		}
+	}
+	
+	parameters = {
+		fort_fortifications_increase = yes
+		fort_grant_prestige = yes
+		architect_trait_prestige = yes
+		ai_more_likely_to_fort = yes
+		ai_more_likely_to_fortify = yes
+	}
+	character_modifier = {
+		fort_holding_holding_build_speed = 0.1
+		fort_holding_holding_build_gold_cost = 0.2
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			# Ethos requirements.
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_stoic_or_bureaucratic_desc
+				}
+			}
+			# Requires mustering grounds innovation.
+			if = {
+				limit = {
+					NOT = { has_innovation = innovation_classical_mustering_grounds }
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = lacks_classical_mustering_grounds_innovation_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = { 
+		value = 100 
+		if = {
+			limit = {
+				NOT = { has_innovation = innovation_classical_mustering_grounds }
+			}
+			multiply = 0
+		}
+		if = {
+			limit = {
+				scope:character = { ai_boldness >= 0 }
+			}
+			multiply = 0.25
+		}
+	}
+}
+
+tradition_transhumant_shepherds = {
+	category = realm
+
+	layers = {
+		0 = steward
+		1 = western
+		4 = mountain.dds
+	}
+	
+	is_shown = {
+		NOT = {
+			has_cultural_tradition = tradition_pastoralists
+		}
+	}
+	can_pick = {
+		custom_tooltip = {
+			text = culture_in_hills_or_mountains_terrain_desc
+			any_culture_county = {
+				percent >= 0.4
+				any_county_province = {
+					OR = {
+						terrain = hills
+						terrain = valley
+						terrain = mountains
+						terrain = desert_mountains
+					}
+				}
+			}
+		}
+	}
+	
+	parameters = {
+		pastures_shepherd_building_bonuses = yes # cheaper slingers and extra defender advantage
+		hunting_traits_more_common = yes # accustomed to hunting predators
+	}
+	county_modifier = {
+		monthly_county_control_change_add = -0.2 # more difficult to control a migratory population
+	}
+	character_modifier = {
+		prowess = 1 # extra prowess from defending their flocks from predators
+		slingers_damage_mult = 0.05 # the sling was historically the weapon of shepherds
+		slingers_screen_mult = 0.1
+		character_travel_speed_mult = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_stoic_or_communal_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_culture_county = {
+							percent >= 0.6
+							any_county_province = {
+								OR = {
+									terrain = hills
+									terrain = valley
+									terrain = mountains
+									terrain = desert_mountains
+								}
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_in_hills_or_mountains_terrain_percentage_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				NOT = {
+					scope:character = {
+						any_sub_realm_county = {
+							percent >= 0.6
+							culture = scope:character.culture
+							any_county_province = {
+								OR = {
+									terrain = hills
+									terrain = valley
+									terrain = mountains
+									terrain = desert_mountains
+								}
+							}
+						}
+					}
+				}
+			}
+			multiply = 0
+		}
+	}
 }

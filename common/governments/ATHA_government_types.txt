@@ -178,10 +178,19 @@ bureaucracy_military_government = { # Military Command
 	  domain_limit = -2
 	}
 	
-	flag = has_discrete_tax_contract
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_military_bureaucracy
+	
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_colony_rights_contract
+	flag = has_gift_estate_rights_contract
 
 	flag = is_bureaucracy_government
 	
@@ -364,11 +373,19 @@ bureaucracy_civil_government = { # Civil Bureaucracy
 	character_modifier = {
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_civil_bureaucracy
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_gift_estate_rights_contract
 
 	flag = is_bureaucracy_government
 	
@@ -387,7 +404,7 @@ city_state_democratic_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -561,11 +578,23 @@ city_state_democratic_government = {
 	  county_opinion_add = 10
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_democratic_city_state
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_imposed_franchise_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_city_state_government
 
@@ -581,7 +610,7 @@ city_state_tyrannical_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -755,11 +784,23 @@ city_state_tyrannical_government = {
 	  dread_baseline_add = 10
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_tyrannical_city_state
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_imposed_franchise_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_city_state_government
 
@@ -774,7 +815,7 @@ city_state_oligarchic_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -948,11 +989,23 @@ city_state_oligarchic_government = {
 	  monthly_income_mult = 0.1
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_oligarchic_city_state
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_imposed_franchise_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_city_state_government
 
@@ -967,7 +1020,7 @@ city_state_aristocratic_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -1141,11 +1194,23 @@ city_state_aristocratic_government = {
 	  monthly_prestige_gain_mult = 0.1
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_aristocratic_city_state
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_imposed_franchise_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_city_state_government
 
@@ -1161,7 +1226,7 @@ city_state_spartan_government = { # Rhetra
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	#vassal_contract = {
 	#	feudal_government_taxes
@@ -1333,14 +1398,11 @@ city_state_spartan_government = { # Rhetra
 	}
 
 	character_modifier = {
-	  prowess = 5
 	  domain_limit = -2
 	}
-	
-	flag = has_discrete_tax_contract
-	# flag = has_coinage_rights_contract
-	flag = has_religious_rights_contract
-	flag = has_title_revocation_rights_contract
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_spartan_city_state
 
 	flag = is_city_state_government
 
@@ -1357,7 +1419,7 @@ federal_alliance_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -1531,11 +1593,24 @@ federal_alliance_government = {
 	character_modifier = {
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_federal_alliance
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
+	flag = has_ritual_coronations_rights_contracts
 
 	flag = is_coalition_government
 	flag = is_federal_government
@@ -1552,7 +1627,7 @@ federal_sympolity_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -1726,11 +1801,24 @@ federal_sympolity_government = {
 	character_modifier = {
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_federal_sympolity
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_federal_government
@@ -1747,7 +1835,7 @@ federal_league_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -1921,11 +2009,24 @@ federal_league_government = {
 	character_modifier = {
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_federal_league
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_federal_government
@@ -1943,7 +2044,7 @@ amphictyony_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -2117,11 +2218,24 @@ amphictyony_government = {
 	character_modifier = {
 	  domain_limit = -2
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_amphictyony
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_federal_government
@@ -2142,7 +2256,7 @@ hegemonic_alliance_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -2316,11 +2430,24 @@ hegemonic_alliance_government = {
 	character_modifier = {
 	  domain_limit = -1
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_hegemonic_alliance
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_hegemonic_government
@@ -2338,7 +2465,7 @@ hegemonic_sympolity_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -2512,11 +2639,24 @@ hegemonic_sympolity_government = {
 	character_modifier = {
 	  domain_limit = -1
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_hegemonic_sympolity
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_hegemonic_government
@@ -2534,7 +2674,7 @@ hegemonic_league_government = {
 	valid_holdings = { city_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
-	regiments_prestige_as_gold = yes
+	regiments_prestige_as_gold = no
 
 	vassal_contract = {
 		feudal_government_taxes
@@ -2708,11 +2848,24 @@ hegemonic_league_government = {
 	character_modifier = {
 	  domain_limit = -1
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_hegemonic_league
 	
-	flag = has_discrete_tax_contract
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
+	flag = has_enforced_centralisation_contract
+	flag = has_enforced_federalism_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_garrison_rights_contract
+	flag = has_ritual_coronations_rights_contracts
+	flag = has_atha_fortification_rights_contracts
+	flag = has_gift_estate_rights_contract
 
 	flag = is_coalition_government
 	flag = is_hegemonic_government

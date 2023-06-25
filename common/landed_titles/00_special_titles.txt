@@ -39,6 +39,16 @@ d_pythia = {
 	destroy_if_invalid_heir = yes
 }
 
+d_tithanos = {
+	color = { 255 255 255 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	always_follows_primary_heir = yes
+	destroy_if_invalid_heir = yes
+	can_be_named_after_dynasty = no
+}
+
 ### Created by decision
 
 e_athenai = {
@@ -107,7 +117,6 @@ e_athenai = {
 	}
 	#k_pontic_phoros = {
 	#	color = { 6 248 251 }
-	#	color2 = { 0 0 0 }
 	#	
 	#	capital = c_herakleia_pontica
 	#
@@ -117,7 +126,6 @@ e_athenai = {
 	#}
 	#k_italian_phoros = {
 	#	color = { 6 248 251 }
-	#	color2 = { 0 0 0 }
 	#	
 	#	ai_primary_priority = {
 	#		add = @always_primary_score
@@ -209,6 +217,43 @@ k_peloponnesos = {
 	# ARCADO-CYPRIOT
 		name_list_arcadian = cn_peloponnesos_doric
 	}
+	
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+}
+k_liburnia = {
+	color = { 122 46 58 }
+
+	capital = c_skardon
+	
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+}
+d_lower_paionia = {
+	color = { 142 46 28 }
+
+	capital = c_pella
+}
+d_makedonis = {
+	color = { 118 80 178 }
+
+	capital = c_aigai
+}
+e_propontis = {
+	color =  hsv{ 0.9 0.9 0.3 } # vanilla e_byzantium is hsv{ 0.9 1 0.3 }
+
+	capital = c_byzantion
+	
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+}
+k_euonymos_pontos = { # the Western Pontic League, also called a Pentapolis/Hexapolis
+	color = { 46 26 46 }
+
+	capital = c_istros
 	
 	ai_primary_priority = {
 		add = @always_primary_score

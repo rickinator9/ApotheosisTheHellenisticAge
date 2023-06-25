@@ -95,7 +95,7 @@ widget = {
 			texture = "gfx/interface/frontend/portrait_main_menu_shadow.dds"
 			scale = 0.35
 		}
-		
+
 		icon = {
 			name = "shadow_right"
 			visible = "[And( FrontEndMainView.ShowHeirCharacter, GreaterThan_int32( FrontEndMainView.GetHeirCharacterAge, '(int32)1' ) )]"
@@ -127,7 +127,7 @@ widget = {
 			size = { 1920 1400 }
 			alwaystransparent = yes
 
-			portrait_texture = "[FrontEndMainView.GetSecondaryCharacterTexture('camera_main_menu_secondary', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes'))]"
+			portrait_texture = "[FrontEndMainView.GetSecondaryCharacterTexture('camera_main_menu_secondary', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes')]"
 			mask = "gfx/portraits/portrait_mask_solid.dds"
 
 			blockoverride "grayscale" {}
@@ -148,7 +148,7 @@ widget = {
 			size = { 1920 1400 }
 			alwaystransparent = yes
 
-			portrait_texture = "[FrontEndMainView.GetSecondaryCharacterTexture('camera_main_menu_secondary_sitting_child', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes'))]"
+			portrait_texture = "[FrontEndMainView.GetSecondaryCharacterTexture('camera_main_menu_secondary_sitting_child', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes')]"
 			mask = "gfx/portraits/portrait_mask_solid.dds"
 
 			blockoverride "grayscale" {}
@@ -190,7 +190,7 @@ widget = {
 			size = { 1920 1400 }
 			alwaystransparent = yes
 
-			portrait_texture = "[FrontEndMainView.GetMainCharacterTexture('camera_main_menu_main', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes'))]"
+			portrait_texture = "[FrontEndMainView.GetMainCharacterTexture('camera_main_menu_main', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes')]"
 			mask = "gfx/portraits/portrait_mask_solid.dds"
 
 			blockoverride "grayscale" {}
@@ -211,7 +211,7 @@ widget = {
 			size = { 1920 1400 }
 			alwaystransparent = yes
 
-			portrait_texture = "[FrontEndMainView.GetMainCharacterTexture('camera_main_menu_main_sitting_child', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes'))]"
+			portrait_texture = "[FrontEndMainView.GetMainCharacterTexture('camera_main_menu_main_sitting_child', PdxGetWidgetScreenSize(PdxGuiWidget.Self), '(bool)yes')]"
 			mask = "gfx/portraits/portrait_mask_solid.dds"
 
 			blockoverride "grayscale" {}
@@ -706,14 +706,16 @@ widget = {
 										tooltip = "[SaveGameItem.GetMissingDLCInfo]"
 									}
 
+									# Because of game rules
 									achievements_disabled_icon = {
 										visible = "[SaveGameItem.HasAchievementBlockingGameRules]"
 										tooltip = "[SaveGameItem.GetAchievementBlockingGameRulesInfo]"
 									}
 
+									# because of other reasons (tag switching, console, multiplayer, modified checksum)
 									achievements_disabled_icon = {
-										visible = "[And( SaveGameItem.CanGetAchievements, Not( IsGameChecksumOk ) )]"
-										tooltip = "GAME_CHECKSUM_CHANGED_FROM_SAVE_FILE"
+										visible = "[And( Not(SaveGameItem.HasAchievementBlockingGameRules), Not(SaveGameItem.CanGetAchievements) )]"
+										tooltip = "ACHIEVEMENTS_DISABLED_SAVEGAME"
 									}
 
 									expand = {

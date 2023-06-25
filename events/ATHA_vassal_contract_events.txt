@@ -5,10 +5,12 @@
 
 # Adjust government type when a city state becomes autonomous.
 ATHA_vassal_contract.1 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_autonomous_city_state_contract
 			# Either the vassal does not have a city state government at all or he became autonomous, in which case he should be able to change their government.
@@ -33,24 +35,24 @@ ATHA_vassal_contract.1 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = imposed_franchise
-					level = imposed_franchise_none
+					level = obligation_level_imposed_franchise_none
 				}
 			}
 			vassal_contract_set_obligation_level = {
 				type = coinage_rights
-				level = coinage_rights_granted
+				level = obligation_level_coinage_rights_granted
 			}
 			vassal_contract_set_obligation_level = {
 				type = religious_rights
-				level = religious_rights_protected
+				level = obligation_level_religious_rights_protected
 			}
 			vassal_contract_set_obligation_level = {
 				type = title_revocation_rights
-				level = title_revocation_rights_protected
+				level = obligation_level_title_revocation_rights_protected
 			}
 			vassal_contract_set_obligation_level = {
 				type = garrison_rights
-				level = garrison_rights_none
+				level = obligation_level_garrison_rights_none
 			}
 		}
     }
@@ -58,10 +60,12 @@ ATHA_vassal_contract.1 = {
 
 # Adjust a vassal to a dependent city state where the liege can choose which type they become.
 ATHA_vassal_contract.2 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_city_state_contract
@@ -86,10 +90,12 @@ ATHA_vassal_contract.2 = {
 
 # Adjust a vassal to a dependent city state where they can choose when the liege does not have the right innovation and they did not previously have a city-state government form.
 ATHA_vassal_contract.3 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_constitution } }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_city_state_contract
@@ -107,10 +113,12 @@ ATHA_vassal_contract.3 = {
 
 # Adjust a vassal to an autonomous coalition government when their contract changes.
 ATHA_vassal_contract.4 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_autonomous_coalition_contract
 			OR = {
@@ -135,7 +143,7 @@ ATHA_vassal_contract.4 = {
 
 				vassal_contract_set_obligation_level = {
 					type = enforced_centralisation
-					level = enforced_centralisation_none
+					level = obligation_level_enforced_centralisation_none
 				}
 			}
 			if = {
@@ -143,24 +151,24 @@ ATHA_vassal_contract.4 = {
 
 				vassal_contract_set_obligation_level = {
 					type = enforced_federalism
-					level = enforced_federalism_none
+					level = obligation_level_enforced_federalism_none
 				}
 			}
 			vassal_contract_set_obligation_level = {
 				type = coinage_rights
-				level = coinage_rights_granted
+				level = obligation_level_coinage_rights_granted
 			}
 			vassal_contract_set_obligation_level = {
 				type = religious_rights
-				level = religious_rights_protected
+				level = obligation_level_religious_rights_protected
 			}
 			vassal_contract_set_obligation_level = {
 				type = title_revocation_rights
-				level = title_revocation_rights_protected
+				level = obligation_level_title_revocation_rights_protected
 			}
 			vassal_contract_set_obligation_level = {
 				type = garrison_rights
-				level = garrison_rights_none
+				level = obligation_level_garrison_rights_none
 			}
 		}
     }
@@ -168,10 +176,12 @@ ATHA_vassal_contract.4 = {
 
 # Adjust a vassal to a dependent coalition where the liege can choose which type they become.
 ATHA_vassal_contract.5 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
@@ -200,10 +210,12 @@ ATHA_vassal_contract.5 = {
 
 # Adjust a vassal to a dependent coalition where they can choose when the liege does not have the right innovation and they did not previously have a coalition government form.
 ATHA_vassal_contract.6 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_liege
+		exists = scope:vassal_contract_holder
+
 		NOT = { scope:vassal_contract_liege.culture = { has_innovation = innovation_classical_diplomatic_missions } }
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_dependent_coalition_contract
@@ -220,13 +232,14 @@ ATHA_vassal_contract.6 = {
 
 # Adjust a vassal to a civil bureaucracy government when their contract changes.
 ATHA_vassal_contract.7 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_civil_bureaucracy_contract
-			NOT = { has_government = bureaucracy_civil_government }
+			NOT = { government_has_flag = government_is_civil_bureaucracy }
 		}
 	}
 
@@ -239,13 +252,14 @@ ATHA_vassal_contract.7 = {
 
 # Adjust a vassal to a military bureaucracy government when their contract changes.
 ATHA_vassal_contract.8 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_military_bureaucracy_contract
-			NOT = { has_government = bureaucracy_military_government }
+			NOT = { government_has_flag = government_is_military_bureaucracy }
 		}
 	}
 
@@ -258,13 +272,14 @@ ATHA_vassal_contract.8 = {
 
 # Adjust a vassal to a dynastic government when their contract changes.
 ATHA_vassal_contract.9 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
+
 		scope:vassal_contract_holder = {
 			vassal_contract_has_flag = has_feudal_bureaucracy_contract
-			NOT = { has_government = feudal_government }
+			NOT = { government_has_flag = government_is_feudal }
 		}
 	}
 
@@ -282,10 +297,10 @@ ATHA_vassal_contract.9 = {
 
 # Adjust autonomy contracts when gaining autonomy.
 ATHA_vassal_contract.10 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
+		exists = scope:vassal_contract_holder
 		scope:dependent_will_become_autonomous = yes
 	}
 
@@ -297,19 +312,19 @@ ATHA_vassal_contract.10 = {
 				}
 				vassal_contract_set_obligation_level = {
 					type = coinage_rights
-					level = coinage_rights_granted
+					level = obligation_level_coinage_rights_granted
 				}
 				vassal_contract_set_obligation_level = {
 					type = religious_rights
-					level = religious_rights_protected
+					level = obligation_level_religious_rights_protected
 				}
 				vassal_contract_set_obligation_level = {
 					type = title_revocation_rights
-					level = title_revocation_rights_protected
+					level = obligation_level_title_revocation_rights_protected
 				}
 				vassal_contract_set_obligation_level = {
 					type = garrison_rights
-					level = garrison_rights_none
+					level = obligation_level_garrison_rights_none
 				}
 			}
 		}
@@ -318,36 +333,39 @@ ATHA_vassal_contract.10 = {
 
 # Adjust governments after changing enforced franchise.
 ATHA_vassal_contract.11 = {
-	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
 			if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_democratic_franchise
-					NOT = { has_government = city_state_democratic_government }
+					NOT = { government_has_flag = government_is_democratic_city_state }
 				}
 				change_government_form_to_democracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_oligarchic_franchise
-					NOT = { has_government = city_state_oligarchic_government }
+					NOT = { government_has_flag = government_is_oligarchic_city_state }
 				}
 				change_government_form_to_oligarchy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_aristocratic_franchise
-					NOT = { has_government = city_state_aristocratic_government }
+					NOT = { government_has_flag = government_is_aristocratic_city_state }
 				}
 				change_government_form_to_aristocracy = yes
 			}
 			else_if = {
 				limit = {
 					vassal_contract_has_flag = has_imposed_tyrannic_franchise
-					NOT = { has_government = city_state_tyrannical_government }
+					NOT = { government_has_flag = government_is_tyrannical_city_state }
 				}
 				change_government_form_to_tyranny = yes
 			}
@@ -357,8 +375,11 @@ ATHA_vassal_contract.11 = {
 
 # Adjust governments after changing enforced federalism.
 ATHA_vassal_contract.12 = {
-	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -416,8 +437,11 @@ ATHA_vassal_contract.12 = {
 
 # Adjust governments after changing enforced centralisation.
 ATHA_vassal_contract.13 = {
-	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -445,8 +469,11 @@ ATHA_vassal_contract.13 = {
 
 # Adjust hooks after changing enforced contracts.
 ATHA_vassal_contract.14 = {
-	type = empty
 	hidden = yes
+
+	trigger = {
+		exists = scope:vassal_contract_holder
+	}
 
     immediate = {
 		scope:vassal_contract_holder = {
@@ -528,7 +555,6 @@ ATHA_vassal_contract.14 = {
 
 # Save the contract settings on death.
 ATHA_vassal_contract.50 = {
-	type = empty
 	hidden = yes
 
 	# Only trigger this for landed, vassal rulers that can have contracts.
@@ -551,11 +577,11 @@ ATHA_vassal_contract.50 = {
 
 # Apply the contract settings to people who inherited titles.
 ATHA_vassal_contract.51 = {
-	type = empty
 	hidden = yes
 
 	trigger = {
-		scope:title= { tier > var:highest_tier_before_inheritance }
+		has_variable = highest_tier_before_inheritance
+		scope:title= { tier > root.var:highest_tier_before_inheritance }
 		is_independent_ruler = no
 	}
 
@@ -569,7 +595,6 @@ ATHA_vassal_contract.51 = {
 
 # Save the contract settings when gaining titles.
 ATHA_vassal_contract.52 = {
-	type = empty
 	hidden = yes
 
 	trigger = {

@@ -2,8 +2,33 @@
 # complete cadet & dynasty name lists
 # set name inheritance chances
 # replace/update Bithynian name-list with Thracian names
-# update Strymonian name-list to be more comprehensive & accurate
+# update Edonian name-list to be more comprehensive & accurate
 # add CoA templates
+
+bessian = {
+	color = bessian
+
+	ethos = ethos_spiritual
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_ancient_miners # The Bessi are said by later authors to have developed special skills in exploiting gold and silver lodes (cf. Hirt 2020, 13, at https://livrepository.liverpool.ac.uk/3066254/)
+		tradition_warrior_monks # Vologaesus, a Bessic priest of Dionysus, led a major revolt against the Romans
+		tradition_stalwart_defenders # The Bessi led two major uprisings against the Romans
+	}
+
+	name_list = name_list_bessian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { northern_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
 
 bithynian = {
 	color = bithynian
@@ -24,13 +49,91 @@ bithynian = {
 
 	name_list = name_list_bithynian
 
-	coa_gfx = {
-		thracian_group_coa_gfx
-		greek_group_coa_gfx # TEMP
-	}
+	coa_gfx = {	thracian_group_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
 	clothing_gfx = { northern_clothing_gfx }
 	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+crobyzian = {
+	color = crobyzian
+
+	ethos = ethos_spiritual 
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = { # TODO
+		tradition_hill_dwellers # could be replaced with a 'troglodyte' tradition
+		tradition_monastic_communities # rock monasteries and churches are particularly widespread in the Shumen and Ruse areas, and it doesn't seem like a huge stretch to say that this could stem from pre-Christian practices
+		tradition_forest_fighters
+	}
+
+	name_list = name_list_crobyzian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+edonian = {
+	color = edonian
+
+	ethos = ethos_communal # The fact that tribes such as the Bisaltae and Odomanti could maintain an ethnic identity despite generations of Greek dominanace suggests that they had strong communal ties.
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_ancient_miners # The tribes of the Strymon had a particularly early role in minting coins among the Thracians, benefiting greatly from the proximity of nearby precious metal deposits.
+		tradition_stalwart_defenders # These Thracians were quite diligent in their attempts to keep Greek settlers out of the area, famously preventing Thasian and Athenian colonies from establishing near the mouth of the Strymon in Classical Antiquity.		
+		tradition_music_theory # Orpheus was by some accounts a Thracian (from Bisaltia according to Tzetzes), and according to Eratosthenes was killed on Pangaion
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # Diodorus notes that the Bisaltae were bilingual
+		requires_dlc_flag = hybridize_culture
+	}
+
+	name_list = name_list_edonian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { northern_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+getic = {
+	color = getic
+
+	ethos = ethos_spiritual
+	heritage = heritage_thracian
+	language = language_getic
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_spartan # the anecdote of Dromichaetes' capture of Lysimachus paints the Getae as wealthy yet simple
+		tradition_equitable # Herodotus describes the Getae as the most just and noble of the Thracians
+		tradition_horse_lords # The Getae seem to have fielded large numbers of horse archers
+		tradition_sacred_mountains # mountains were viewed as sacred by the Getae
+	}
+
+	name_list = name_list_getic
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
 	
 	ethnicities = {
 		10 = mediterranean_byzantine
@@ -66,27 +169,156 @@ mariandynian = {
 	}	
 }
 
-strymonian = {
-	color = strymonian
+moesian = {
+	color = moesian
 
-	ethos = ethos_communal # The fact that these Thracians maintained their own ethnic identity under Greek domination for hundreds of years suggests that they had strong communal ties.
+	ethos = ethos_spiritual # Described by Poseidonius as "god-fearing" (Strab. 7. 3. 3)
+	heritage = heritage_thracian
+	language = language_getic
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_stand_and_fight # Had a reputation for indomitability (Strab. 7. 3. 3)
+		tradition_vegetarianism # According to Poseidonius, the Moesi abstained from eating any living thing (Strab. 7. 3. 3)
+		tradition_pacifism # Poseidonius describes them as having a peaceable life (Strab. 7. 3. 3)
+	}
+
+	name_list = name_list_moesian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+odrysian = {
+	color = odrysian
+
+	ethos = ethos_courtly
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_ceremonial_generosity
+		tradition_festivities # Feasts were very important in the court of Seuthes II.
+		tradition_ruling_caste # The Odrysian ruling structure was quite rigid. They also often ruled realms not of their own culture (such as in eastern Thrace).
+		tradition_hit_and_run # The Odrysians fielded about 1/3 of their army in (light) cavalry.
+	}
+
+	name_list = name_list_odrysian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { northern_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+rhodopian = {
+	color = rhodopian
+
+	ethos = ethos_stoic # These Thracians were some of the last to be independent from Roman rule or clientship.
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_highland_warriors # The Rhodopes are mountainous and hilly all around.
+		tradition_warrior_culture # The Rhodopian peoples were well-regarded in their martial prowess.
+		tradition_music_theory # According to Philostratus, the people of Rhodope celebrated Rhesos with song (https://topostext.org/work/222#680); Athenaeus notes that two Maedians, Seuthes and Rhomnaces, are credited by some with inventing the one-reeded syrinx (https://topostext.org/work/218#4.82)
+		tradition_sacred_mountains # The famous oracle of Dionysus was possibly located in the Rhododes
+	}
+
+	name_list = name_list_rhodopian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { northern_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+thynian = {
+	color = thynian
+
+	ethos = ethos_bellicose # Xenophon notes that the Thynians were said to be the most warlike of all men, especially at night (Xen. An. 7.2.22)
 	heritage = heritage_thracian
 	language = language_thracian
 	martial_custom = martial_custom_male_only
 	traditions = { 
-		tradition_ancient_miners # The tribes of the Strymon had a particularly early role in minting coins among the Thracians, benefiting greatly from the proximity of nearby precious metal deposits.
-		tradition_stalwart_defenders # These Thracians were quite diligent in their attempts to keep Greek settlers out of the area, famously preventing Thasian and Athenian colonies from establishing near the mouth of the Strymon in Classical Antiquity.
+		tradition_battlefield_looters # According to Xenophon, the Odrysian king Teres was attacked by the Thynians and had his baggage train stolen (Xen. An. 7.2.22)
+		tradition_hit_and_run # The tribes in this region appeared to rely extensively on ambushes and hit-and-run tactics judging by the accounts in Xenophon and Livy
+		tradition_ceremonial_generosity # Many of the artifacts in the Rogozen treasure were gifts from towns in this region
 	}
 
-	name_list = name_list_strymonian
+	name_list = name_list_thynian
 
-	coa_gfx = {
-		thracian_group_coa_gfx
-		greek_group_coa_gfx # TEMP
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
 	}
+}
+
+trallian = { # Hypothetical culture in the eastern Rhodopes covering the Thrausoi, Kebrenioi and Trallians. Note that none of these tribes have been decisively located.
+	#https://topostext.org/work/171#Ages.16.1
+	#https://topostext.org/work/487#30.173
+
+	color = trallian
+
+	ethos = ethos_bellicose # The Kausianoi of P.Lond. Lit. 112, who are described as being easily convinced to go to war due to a favourable disposition to death, may be an error for the Trausi (www.academia.edu/19690408, pp. 240, 252-4)
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_hill_dwellers # Most of their land is hills
+		tradition_staunch_traditionalists # The eastern Rhodopes have a higher concentration of megaliths than other parts of Thrace
+		tradition_zealous_people # The Kebrenioi are portrayed as a god-fearing people in Polyaenus 22. 1
+		tradition_swords_for_hire # The Trallians are attested as mercenaries in both literary and epigraphic sources
+	}
+
+	name_list = name_list_trallian
+
+	coa_gfx = {	thracian_group_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
 	clothing_gfx = { northern_clothing_gfx }
 	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+triballian = {
+	color = triballian
+
+	ethos = ethos_bellicose
+	heritage = heritage_thracian
+	language = language_thracian
+	martial_custom = martial_custom_male_only
+	traditions = { 
+		tradition_forest_fighters #multiple battles described with the Triballi note their use of forests
+		tradition_ruling_caste #the Triballi had, as far as we can tell, a rigid noble system with the king being a semi-divine figure
+		tradition_sacred_mountains #mountains were viewed as sacred by the Triballi
+	}
+
+	name_list = name_list_triballian
+
+	coa_gfx = {	thracian_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
 	
 	ethnicities = {
 		10 = mediterranean_byzantine

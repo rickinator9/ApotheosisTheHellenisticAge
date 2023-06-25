@@ -1,4 +1,5 @@
 ﻿county_conquest_cb = {
+	icon = county_conquest_cb
 	group = conquest
 
 	combine_into_one = yes
@@ -94,19 +95,19 @@
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -118,31 +119,31 @@
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -162,19 +163,19 @@
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -186,31 +187,31 @@
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -236,6 +237,10 @@
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = change
@@ -357,6 +362,9 @@
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
 		# Prestige loss for the attacker
 		scope:attacker = {
 			pay_short_term_gold_reparations_effect = {
@@ -413,9 +421,13 @@
 	use_de_jure_wargoal_only = yes
 
 	attacker_wargoal_percentage = 0.8
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 }
 
 duchy_conquest_cb = {
+	icon = duchy_conquest_cb
 	group = conquest
 
 	combine_into_one = yes
@@ -525,19 +537,19 @@ duchy_conquest_cb = {
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -549,31 +561,31 @@ duchy_conquest_cb = {
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -593,7 +605,7 @@ duchy_conquest_cb = {
 				limit = {
 					scope:attacker.house = {
 						OR = {
-							has_house_modifier = fp2_struggle_hostility_house_culture_modifier 
+							has_house_modifier = fp2_struggle_hostility_house_culture_modifier
 							has_house_modifier = fp2_struggle_hostility_house_combined_modifier
 						}
 					}
@@ -632,19 +644,19 @@ duchy_conquest_cb = {
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -656,31 +668,31 @@ duchy_conquest_cb = {
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -706,6 +718,10 @@ duchy_conquest_cb = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_med_effect = yes }
+
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = change
@@ -729,7 +745,7 @@ duchy_conquest_cb = {
 				change = scope:change
 			}
 		}
-		
+
 		every_in_list = {
 			list = titles_taken
 			change_title_holder = {
@@ -838,6 +854,10 @@ duchy_conquest_cb = {
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 		# Prestige loss for the attacker
+
+		#EP2 accolade glory gain for doing pretty good against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
 		scope:attacker = {
 			add_prestige = {
 				value = minor_prestige_value
@@ -883,6 +903,9 @@ duchy_conquest_cb = {
 
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -940,9 +963,13 @@ duchy_conquest_cb = {
 	use_de_jure_wargoal_only = yes
 
 	attacker_wargoal_percentage = 0.8
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 }
 
 ducal_conquest_cb = {
+	icon = county_conquest_cb
 	group = conquest
 
 	combine_into_one = yes
@@ -1010,7 +1037,7 @@ ducal_conquest_cb = {
 	}
 
 	on_invalidated_desc = msg_county_conquest_war_invalidated_message
-	
+
 	on_invalidated = {
 	}
 
@@ -1022,19 +1049,19 @@ ducal_conquest_cb = {
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -1046,31 +1073,31 @@ ducal_conquest_cb = {
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -1097,19 +1124,19 @@ ducal_conquest_cb = {
 			### ATHA CB cost modifiers for governments.
 			# Tribals keep their very low modifier.
 			if = {
-				limit = { scope:attacker = { has_government = tribal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tribal } }
 				multiply = { value = cb_gov_cost_low desc = CB_TRIBAL_COST }
 			}
 
 			# Spartans, Tyrants, Alliances, Leagues, Hegemonies, Sympolities and Military Bureaucracy get a small increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_spartan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_spartan_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SPARTAN_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_tyrannical_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_tyrannical_city_state } }
 				multiply = { value = cb_gov_cost_medium desc = CB_TYRANNICAL_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = amphictyony_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_amphictyony } }
 				multiply = { value = cb_gov_cost_medium desc = CB_AMPHICTYONY_COST }
 			} else_if = {
 				limit = { scope:attacker = { government_has_flag = is_alliance_government } }
@@ -1121,31 +1148,31 @@ ducal_conquest_cb = {
 				limit = { scope:attacker = { government_has_flag = is_sympolity_government } }
 				multiply = { value = cb_gov_cost_medium desc = CB_SYMPOLITY_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_military_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_military_bureaucracy } }
 				multiply = { value = cb_gov_cost_medium desc = CB_MILITARY_BUREAUCRACY_COST }
 			}
 
 			# City States and Civil Bureaucrats get a huge increase to cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = city_state_democratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_democratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_DEMOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_oligarchic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_oligarchic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_OLIGARCHIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = city_state_aristocratic_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_aristocratic_city_state } }
 				multiply = { value = cb_gov_cost_high desc = CB_ARISTOCRATIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = bureaucracy_civil_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_civil_bureaucracy } }
 				multiply = { value = cb_gov_cost_high desc = CB_CIVIL_BUREAUCRACY_COST }
 			}
 
 			# Clan and Dynastic (Feudal) pay the regular cost.
 			else_if = {
-				limit = { scope:attacker = { has_government = feudal_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_feudal } }
 				multiply = { value = cb_gov_cost_regular desc = CB_DYNASTIC_COST }
 			} else_if = {
-				limit = { scope:attacker = { has_government = clan_government } }
+				limit = { scope:attacker = { government_has_flag = government_is_clan } }
 				multiply = { value = cb_gov_cost_regular desc = CB_CLAN_COST }
 			}
 		}
@@ -1171,6 +1198,10 @@ ducal_conquest_cb = {
 
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = change
@@ -1354,6 +1385,9 @@ ducal_conquest_cb = {
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
 		# Prestige loss for the attacker
 		scope:attacker = {
 			pay_short_term_gold_reparations_effect = {
@@ -1410,6 +1444,9 @@ ducal_conquest_cb = {
 	use_de_jure_wargoal_only = yes
 
 	attacker_wargoal_percentage = 0.8
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 
 	max_ai_diplo_distance_to_title = 1500
 }

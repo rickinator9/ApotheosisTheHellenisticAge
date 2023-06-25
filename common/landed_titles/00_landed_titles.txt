@@ -155,6 +155,8 @@ e_hellas = {
 			c_limnai = {
 				color = { 229 83 54 }
 
+				# capital = b_kardamyle_limnai
+
 				b_kardamyle_limnai = {
 					color = { 229 83 54 }
 
@@ -1281,7 +1283,7 @@ e_hellas = {
 
 					province = 837
 				}		
-				b_aphidna_marathon = {
+				b_aphidna_athenai = {
 					color = { 80 162 213 }
 
 					province = 838
@@ -1290,14 +1292,14 @@ e_hellas = {
 			c_peiraieus = {
 				color = { 19 103 187 }
 
-				# capital = b_peiraieus_athenai
+				# capital = b_peiraieus_peiraieus
 
-				b_peiraieus_athenai = {
+				b_peiraieus_peiraieus = {
 					color = { 19 103 187 }
 
 					province = 90
 				}
-				b_salamis_athenai = {
+				b_salamis_peiraieus = {
 					color = { 19 103 187 }
 
 					province = 89
@@ -1785,6 +1787,8 @@ e_hellas = {
 			c_lysimacheia_aitolia = {
 				color = { 255 251 58 }
 
+				# capital = b_lysimacheia_lysimacheia_aitolia
+
 				b_lysimacheia_lysimacheia_aitolia = {
 					color = { 255 251 58 }
 
@@ -1798,6 +1802,8 @@ e_hellas = {
 			}
 			c_eurytania = {
 				color = { 48 165 86 }
+
+				# capital = b_eurytania_eurytania
 
 				b_eurytania_eurytania = {
 					color = { 48 165 86 }
@@ -1834,6 +1840,8 @@ e_hellas = {
 			c_aperantia = {
 				color = { 234 255 48 }
 
+				# capital = b_aperantia_aperantia
+
 				b_aperantia_aperantia = {
 					color = { 234 255 48 }
 
@@ -1853,6 +1861,8 @@ e_hellas = {
 
 			c_anaktorion = {
 				color = { 255 210 183 }
+
+				# capital = b_anaktorion_anaktorion
 
 				b_anaktorion_anaktorion = {
 					color = { 255 210 183 }
@@ -1888,6 +1898,8 @@ e_hellas = {
 			}
 			c_oiniadai = {
 				color = { 231 255 183 }
+
+				# capital = b_oiniadai_oiniadai
 
 				b_oiniadai_oiniadai = {
 					color = { 231 255 183 }
@@ -2305,6 +2317,15 @@ e_hellas = {
 
 		capital = c_demetrias
 
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:thessalian
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
 		cultural_names = {
 		# THESSALIAN
 			name_list_thessalian = cn_thessalia_thessalian
@@ -2379,25 +2400,25 @@ e_hellas = {
 					province = 170
 				}
 			}
-			c_meliboia = {
+			c_homolion = {
 				color = { 140 84 47 }
 
-				# capital = b_meliboia_meliboia
+				# capital = b_homolion_homolion
 
-				b_meliboia_meliboia = {
+				b_homolion_homolion = {
+					color = { 140 84 47 }
+
+					province = 206
+				}
+				b_meliboia_homolion = {
 					color = { 140 84 47 }
 
 					province = 171
 				}
-				b_sykyrion_meliboia = {
+				b_sykyrion_homolion = {
 					color = { 140 84 47 }
 
 					province = 172
-				}
-				b_homolion_meliboia = {
-					color = { 201 138 85 }
-
-					province = 206
 				}
 			}
 			c_sporades = {
@@ -2999,6 +3020,15 @@ e_hellas = {
 
 		capital = c_ambrakia
 
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:epirote
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
 		cultural_names = {
 		# DORIC
 			name_list_achaean = cn_epeiros_doric
@@ -3042,6 +3072,8 @@ e_hellas = {
 			}
 			c_amphilochia = {
 				color = { 167 235 165 }
+
+				# capital = b_argos_amphilochia
 
 				b_argos_amphilochia = {
 					color = { 167 235 165 }
@@ -3101,6 +3133,8 @@ e_hellas = {
 			c_chalkis_athamania = {
 				color = { 248 255 153 }
 
+				# capital = b_chalkis_chalkis_athamania
+
 				b_chalkis_chalkis_athamania = {
 					color = { 248 255 153 }
 
@@ -3114,6 +3148,8 @@ e_hellas = {
 			}
 			c_tetraphylia = {
 				color = { 175 255 200 }
+
+				# capital = b_tetraphylia_tetraphylia
 
 				b_tetraphylia_tetraphylia = {
 					color = { 175 255 200 }
@@ -3196,6 +3232,8 @@ e_hellas = {
 			}
 			c_gitana = {
 				color = { 145 121 59 }
+
+				# capital = b_gitana_gitana
 				
 				b_gitana_gitana = {
 					color = { 100 144 53 }
@@ -3283,6 +3321,8 @@ e_hellas = {
 			}
 			c_phanota = {
 				color = { 72 161 139 }
+
+				# capital = b_phanota_phanota
 
 				cultural_names = {
 				# DORIC
@@ -3493,6 +3533,8 @@ e_hellas = {
 			c_trampya = {
 				color = { 202 196 255 }
 
+				# capital = b_trampya_trampya
+
 				b_trampya_trampya = {
 					color = { 202 196 255 }
 
@@ -3529,6 +3571,8 @@ e_hellas = {
 			c_keletron = {
 				color = { 78 88 150 }
 
+				# capital = b_keletron_keletron
+
 				b_keletron_keletron = {
 					color = { 78 88 150 }
 
@@ -3543,6 +3587,8 @@ e_hellas = {
 			c_ethnestai = {
 				color = { 179 145 255 }
 
+				# capital = b_ethnestai_ethnestai
+
 				b_ethnestai_ethnestai = {
 					color = { 179 145 255 }
 
@@ -3552,6 +3598,20 @@ e_hellas = {
 					color = { 179 145 255 }
 
 					province = 310
+				}
+			}
+			c_pelion = {
+				color = { 85 145 33 }
+
+				b_pelion_pelion = {
+					color = { 85 145 33 }
+
+					province = 313
+				}
+				b_psarades_pelion = {
+					color = { 85 145 33 }
+
+					province = 314
 				}
 			}
 		}
@@ -3604,6 +3664,8 @@ e_hellas = {
 			c_aigai = {
 				color = { 246 111 174 }
 
+				# capital = b_aigai_aigai
+
 				b_aigai_aigai = {
 					color = { 246 111 174 }
 
@@ -3617,6 +3679,8 @@ e_hellas = {
 			}
 			c_berroia = {
 				color = { 232 107 255 }
+
+				# capital = b_berroia_berroia
 
 				b_berroia_berroia = {
 					color = { 232 107 255 }
@@ -3657,6 +3721,8 @@ e_hellas = {
 			}
 			c_almopia = {
 				color = { 208 146 218 }
+
+				# capital = b_europos_almopia
 
 				b_europos_almopia = {
 					color = { 208 146 218 }
@@ -3850,7 +3916,7 @@ e_hellas = {
 				}			
 			}
 			c_bokeria = {
-				color = { 224 120 191 }
+				color = { 244 180 191 }
 
 				# capital = b_bokeria_bokeria
 
@@ -3872,6 +3938,8 @@ e_hellas = {
 			}
 			c_euia = {
 				color = { 201 33 59 }
+
+				# capital = b_euia_euia
 
 				b_euia_euia = {
 					color = { 201 33 59 }
@@ -3905,6 +3973,11 @@ e_hellas = {
 
 					province = 322
 				}
+				b_skirtiana_herakleia_lynkestis = {
+					color = { 140 118 86 }
+
+					province = 2129
+				}
 			}
 			c_melitonous = {
 				color = { 187 85 156 }
@@ -3934,49 +4007,6 @@ e_hellas = {
 					# ARCADO-CYPRIOT
 						name_list_arcadian = cn_artemision_doric
 					}	
-				}
-			}
-		}
-		d_pelagonia = {
-			color = { 239 183 240 }
-
-			capital = c_stymbara
-
-			c_stymbara = {
-				color = { 239 183 240 }
-
-				# capital = b_stymbara_stymbara
-
-				b_stymbara_stymbara = {
-					color = { 239 183 240 }
-
-					province = 326
-				}
-				b_pelagonia_stymbara = {
-					color = { 239 183 240 }
-
-					province = 325
-				}
-				b_kolobaise_stymbara = {
-					color = { 239 183 240 }
-
-					province = 327
-				}
-			}
-			c_dostoneoi = {
-				color = { 152 67 78 }
-
-				# capital = b_dostoneoi_dostoneoi
-
-				b_dostoneoi_dostoneoi = {
-					color = { 152 67 78 }
-
-					province = 323
-				}
-				b_pluinna_dostoneoi = {
-					color = { 152 67 78 }
-
-					province = 324
 				}
 			}
 		}
@@ -4064,6 +4094,8 @@ e_hellas = {
 			}
 			c_gareskos = {
 				color = { 249 70 70 }
+
+				# capital = b_gareskos_gareskos
 
 				b_gareskos_gareskos = {
 					color = { 249 70 70 }
@@ -4272,6 +4304,8 @@ e_hellas = {
 			c_olynthos = {
 				color = { 17 56 136 }
 
+				# capital = b_sermylia_olynthos
+
 				b_sermylia_olynthos = {
 					color = { 17 56 136 }
 
@@ -4391,6 +4425,8 @@ e_hellas = {
 			}
 			c_ossa = {
 				color = { 119 74 90 }
+
+				# capital = b_ossa_ossa
 
 				b_ossa_ossa = {
 					color = { 119 74 90 }
@@ -4766,409 +4802,6 @@ e_hellas = {
 
 					province = 417
 				}
-			}
-		}
-	}
-	k_propontis = {
-		color = { 96 179 87 }
-		
-		capital = c_byzantion
-
-		d_briantike = {
-			color = { 196 109 187 }
-
-			capital = c_thasos
-
-			c_thasos = {
-				color = { 196 109 187 }
-
-				# capital = b_thasos_thasos
-
-				b_thasos_thasos = {
-					color = { 196 109 187 }
-
-					province = 453
-				}
-				b_alyke_thasos = {
-					color = { 196 109 187 }
-
-					province = 452
-				}
-				b_pistyros_thasos = {
-					color = { 196 109 187 }
-
-					province = 454
-				}
-			}
-			c_abdera = {
-				color = { 216 199 217 }
-
-				# capital = b_abdera_abdera
-
-				b_abdera_abdera = {
-					color = { 216 199 217 }
-
-					province = 455
-				}
-				b_topeiros_abdera = {
-					color = { 216 199 217 }
-
-					province = 456
-				}
-				b_bergepolis_abdera = {
-					color = { 216 199 217 }
-
-					province = 457
-				}
-			}
-			c_dikaia = {
-				color = { 225 225 167 }
-
-				# capital = b_dikaia_dikaia
-
-				b_dikaia_dikaia = {
-					color = { 225 225 167 }
-
-					province = 458
-				}
-				b_stryme_dikaia = {
-					color = { 225 225 167 }
-
-					province = 459
-				}
-				b_linos_dikaia = {
-					color = { 225 225 167 }
-
-					province = 460
-				}
-			}
-			c_maroneia = {
-				color = { 105 185 107 }
-
-				# capital = b_maroneia_maroneia
-
-				b_maroneia_maroneia = {
-					color = { 105 185 107 }
-
-					province = 461
-				}
-				b_komotene_maroneia = {
-					color = { 105 185 107 }
-
-					province = 462
-				}
-				b_arriana_maroneia = {
-					color = { 105 185 107 }
-
-					province = 463
-				}
-			}
-			c_samothrake = {
-				color = { 45 125 7 }
-
-				# capital = b_samothrake_samothrake
-
-				cultural_names = {
-				# IONIC
-					name_list_ionian = cn_samothrake_ionic
-				}
-
-				b_samothrake_samothrake = {
-					color = { 45 125 7 }
-
-					cultural_names = {
-					# IONIC
-						name_list_ionian = cn_samothrake_ionic
-					}
-
-					province = 464
-				}
-				b_zone_samothrake = {
-					color = { 45 125 7 }
-
-					province = 465
-				}
-				b_sale_samothrake = {
-					color = { 45 125 7 }
-
-					province = 466
-				}
-			}
-			c_lemnos = {
-				color = { 175 125 57 }
-
-				# capital = b_myrina_lemnos
-
-				cultural_names = {
-				# DORIC
-					name_list_achaean = cn_lemnos_doric
-					name_list_dorian = cn_lemnos_doric
-					name_list_dorian_northwest = cn_lemnos_doric
-					name_list_laconian = cn_lemnos_doric
-					name_list_epirote = cn_lemnos_doric
-				# AEOLIC
-					name_list_aeolian = cn_lemnos_doric
-					name_list_boeotian = cn_lemnos_doric
-					name_list_thessalian = cn_lemnos_doric
-				# ARCADO-CYPRIOT
-					name_list_arcadian = cn_lemnos_doric
-				}
-
-				b_myrina_lemnos = {
-					color = { 175 125 57 }
-
-					province = 505
-				}
-				b_hephaistia_lemnos = {
-					color = { 175 125 57 }
-
-					province = 506
-					
-					cultural_names = {
-					# DORIC
-						name_list_achaean = cn_hephaistia_doric
-						name_list_dorian = cn_hephaistia_doric
-						name_list_dorian_northwest = cn_hephaistia_doric
-						name_list_laconian = cn_hephaistia_doric
-						name_list_epirote = cn_hephaistia_doric
-					# AEOLIC
-						name_list_aeolian = cn_hephaistia_aeolic
-						name_list_boeotian = cn_hephaistia_aeolic
-						name_list_thessalian = cn_hephaistia_aeolic
-					# ARCADO-CYPRIOT
-						name_list_arcadian = cn_hephaistia_doric
-					}
-				}
-				b_imbros_lemnos = {
-					color = { 175 125 57 }
-
-					province = 507
-				}
-			}
-		}
-		d_apsinthis = {
-			color = { 86 165 108 }
-
-			capital = c_chersonesos_thrace
-
-			c_chersonesos_thrace = {
-				color = { 86 165 108 }
-
-				# capital = b_lysimachia_chersonesos_thrace
-
-				b_lysimachia_chersonesos_thrace = {
-					color = { 86 165 108 }
-
-					province = 470
-				}
-				b_sestos_chersonesos_thrace = {
-					color = { 86 165 108 }
-
-					province = 471
-				}
-				b_alopekonnesos_chersonesos_thrace = {
-					color = { 86 165 108 }
-
-					province = 472
-				}
-				b_elaious_chersonesos_thrace = {
-					color = { 86 165 108 }
-
-					province = 473
-				}
-			}
-			c_ainos = {
-				color = { 6 205 108 }
-
-				# capital = b_ainos_ainos
-
-				b_ainos_ainos = {
-					color = { 6 205 108 }
-
-					province = 467
-				}
-				b_kolla_ainos = {
-					color = { 6 205 108 }
-
-					province = 468
-				}
-				b_deris_ainos = {
-					color = { 6 205 108 }
-
-					province = 469
-				}
-			}
-			c_bisanthe = {
-				color = { 86 155 167 }
-
-				# capital = b_bisanthe_bisanthe
-
-				b_bisanthe_bisanthe = {
-					color = { 86 155 167 }
-
-					province = 476
-				}
-				b_kobrys_bisanthe = {
-					color = { 86 155 167 }
-
-					province = 474
-				}
-				b_neapolis_herakleia_bisanthe = {
-					color = { 86 155 167 }
-
-					province = 475
-				}
-			}
-		}
-		d_astike = {
-			color = { 86 95 167 }
-
-			capital = c_byzantion
-
-			c_byzantion = {
-				color = { 86 95 167 }
-
-				# capital = b_byzantion_byzantion
-
-				b_byzantion_byzantion = {
-					color = { 86 95 167 }
-
-					province = 485
-				}
-				b_athyras_byzantion = {
-					color = { 86 95 167 }
-
-					province = 483
-				}
-				b_melantias_byzantion = {
-					color = { 86 95 167 }
-
-					province = 484
-				}
-				b_timaia_byzantion = {
-					color = { 86 95 167 }
-
-					province = 486
-				}
-				b_delkos_byzantion = {
-					color = { 86 95 167 }
-
-					province = 487
-				}
-			}
-			c_perinthos = {
-				color = { 6 135 67 }
-
-				# capital = b_perinthos_perinthos
-
-				b_perinthos_perinthos = {
-					color = { 6 135 67 }
-
-					province = 478
-				}
-				b_heraion_perinthos = {
-					color = { 6 135 67 }
-
-					province = 477
-				}
-				b_daunion_teichos_perinthos = {
-					color = { 6 135 67 }
-
-					province = 479
-				}
-			}
-			c_selymbria = {
-				color = { 86 165 255 }
-
-				# capital = b_selymbria_selymbria
-
-				cultural_names = {
-				# DORIC
-					name_list_achaean = cn_selymbria_doric
-					name_list_dorian = cn_selymbria_doric
-					name_list_dorian_northwest = cn_selymbria_doric
-					name_list_laconian = cn_selymbria_doric
-					name_list_epirote = cn_selymbria_doric
-				# AEOLIC
-					name_list_aeolian = cn_selymbria_doric
-					name_list_boeotian = cn_selymbria_doric
-					name_list_thessalian = cn_selymbria_doric
-				# ARCADO-CYPRIOT
-					name_list_arcadian = cn_selymbria_doric
-				}
-
-				b_selymbria_selymbria = {
-					color = { 86 165 255 }
-
-					province = 480
-
-					cultural_names = {
-					# DORIC
-						name_list_achaean = cn_selymbria_doric
-						name_list_dorian = cn_selymbria_doric
-						name_list_dorian_northwest = cn_selymbria_doric
-						name_list_laconian = cn_selymbria_doric
-						name_list_epirote = cn_selymbria_doric
-					# AEOLIC
-						name_list_aeolian = cn_selymbria_doric
-						name_list_boeotian = cn_selymbria_doric
-						name_list_thessalian = cn_selymbria_doric
-					# ARCADO-CYPRIOT
-						name_list_arcadian = cn_selymbria_doric
-					}
-				}
-				b_kallon_selymbria = {
-					color = { 86 165 255 }
-
-					province = 481
-				}
-				b_statuas_selymbria = {
-					color = { 86 165 255 }
-
-					province = 482
-				}
-			}
-		}
-	}
-}
-k_illyria = { # TEMP
-	color = { 0 0 0 }
-
-	can_create = { always = no }
-
-	d_illyria = { # TEMP
-		color = { 0 0 0 }
-
-		c_pelion = {
-			color = { 15 107 173 }
-
-			# capital = b_pelion_keletron
-
-			b_pelion_pelion = {
-				color = { 15 107 173 }
-
-				province = 313
-			}
-			b_psarades_pelion = {
-				color = { 15 107 173 }
-
-				province = 314
-			}
-		}
-		c_chrysondyon = {
-			color = { 103 123 14 }
-
-			# capital = b_chrysondyon_chrysondyon
-
-			b_chrysondyon_chrysondyon = {
-				color = { 103 123 14 }
-
-				province = 267
-			}
-			b_gerous_chrysondyon = {
-				color = { 103 123 14 }
-
-				province = 268
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿invasion_war = {
+	icon = invasion
 	group = invasion
 
 	combine_into_one = yes
@@ -7,13 +8,21 @@
 
 	allowed_for_character = {
 		OR = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 			faith = {
 				has_doctrine_parameter = invasion_cb_enabled
 			}
+			AND = {
+				has_character_flag = k_paionia_restorer_is_warlike
+				scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+			}
 		}
-		NOT = {
-			has_character_flag = used_lifetime_invasion
+		OR = {
+			NOT = { has_character_flag = used_lifetime_invasion }
+			AND = {
+				has_character_flag = k_paionia_restorer_is_warlike
+				scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+			}
 		}
 	}
 
@@ -110,7 +119,15 @@
 	on_declaration = {
 		on_declared_war = yes
 		scope:attacker = {
-			add_character_flag = used_lifetime_invasion
+			if = {
+				limit = {
+					NAND = {
+						has_character_flag = k_paionia_restorer_is_warlike
+						scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+					}
+				}
+				add_character_flag = used_lifetime_invasion
+			}
 		}
 
 		scope:attacker = {
@@ -122,18 +139,43 @@
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:attacker = { is_local_player = yes } }
-				desc = invasion_war_victory_desc_attacker
+				desc = clan_invasion_war_victory_desc_attacker
 			}
-			desc = invasion_war_victory_desc
+			desc = clan_invasion_war_victory_desc
 		}
-		triggered_desc = {
-			trigger = { scope:attacker = { is_local_player = yes } }
-			desc = invasion_war_warning_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+				desc = invasion_war_k_paionia_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+				}
+				desc = invasion_war_k_paionia_warning_desc
+			}
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_warning_desc
+			}
 		}
 	}
 	
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_high_effect = yes }
+
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = change
@@ -185,6 +227,10 @@
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
+		#EP2 accolade glory gain for doing ok against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
 		modify_allies_of_participants_fame_values = {
 			WINNER = scope:attacker # Not important as the scales are identical
@@ -228,6 +274,9 @@
 	
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_high_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -289,9 +338,13 @@
 	use_de_jure_wargoal_only = yes
 	
 	attacker_wargoal_percentage = 0.8
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 }
 
 clan_invasion_war = {
+	icon = invasion
 	group = invasion
 
 	combine_into_one = yes
@@ -299,9 +352,15 @@ clan_invasion_war = {
 	mutually_exclusive_titles = { always = yes }
 
 	allowed_for_character = {
-		has_government = clan_government
+		government_has_flag = government_is_clan
 		NOR = {
-			has_character_flag = used_lifetime_invasion
+			AND = {
+				has_character_flag = used_lifetime_invasion
+				NAND = {
+					has_character_flag = k_paionia_restorer_is_warlike
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+			}
 			faith = { has_doctrine_parameter = invasion_cb_enabled }
 		}
 	}
@@ -392,7 +451,15 @@ clan_invasion_war = {
 	on_declaration = {
 		on_declared_war = yes
 		scope:attacker = {
-			add_character_flag = used_lifetime_invasion
+			if = {
+				limit = {
+					NAND = {
+						has_character_flag = k_paionia_restorer_is_warlike
+						scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+					}
+				}
+				add_character_flag = used_lifetime_invasion
+			}
 		}
 
 		scope:attacker = {
@@ -408,14 +475,39 @@ clan_invasion_war = {
 			}
 			desc = clan_invasion_war_victory_desc
 		}
-		triggered_desc = {
-			trigger = { scope:attacker = { is_local_player = yes } }
-			desc = invasion_war_warning_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+					scope:defender = { k_paeonia_invasion_candidate_trigger = yes }
+				}
+				desc = invasion_war_k_paionia_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					scope:attacker = { 
+						is_local_player = yes 
+						has_character_flag = k_paionia_restorer_is_warlike
+					} 
+				}
+				desc = invasion_war_k_paionia_warning_desc
+			}
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_warning_desc
+			}
 		}
 	}
 	
 	on_victory = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_high_effect = yes }
+
 		create_title_and_vassal_change = {
 			type = conquest
 			save_scope_as = change
@@ -517,6 +609,10 @@ clan_invasion_war = {
 	on_white_peace = {
 		scope:attacker = { show_pow_release_message_effect = yes }
 
+		#EP2 accolade glory gain for doing ok against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_low_effect = yes }
+		scope:defender = { accolade_defender_war_end_glory_gain_med_effect = yes }
+
 		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
 		modify_allies_of_participants_fame_values = {
 			WINNER = scope:attacker # Not important as the scales are identical
@@ -560,6 +656,9 @@ clan_invasion_war = {
 	
 	on_defeat = {
 		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 accolade glory gain for winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_high_effect = yes }
 
 		# Prestige loss for the attacker
 		scope:attacker = {
@@ -621,6 +720,8 @@ clan_invasion_war = {
 	use_de_jure_wargoal_only = yes
 	
 	attacker_wargoal_percentage = 0.8
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
 	
 	max_ai_diplo_distance_to_title = 500
 }

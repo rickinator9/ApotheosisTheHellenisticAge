@@ -10,6 +10,7 @@ epirotelowborn1 = {
 	3369.1.1 = { # made up
 		birth = yes # 385 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3386.1.1 = { # 368 BC, made up
 	#	add_spouse = epirote00206 # Arybbas
 	#}
@@ -26,6 +27,7 @@ epirotelowborn2 = {
 	3260.1.1 = { # made up
 		birth = yes # 494 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3280.1.1 = { # 474 BC, made up
 	#	add_spouse = epirote00201 # Admatos
 	#}
@@ -132,6 +134,7 @@ epirote00107 = {
 	3535.1.1 = { # made up
 		birth = yes # 219 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3553.1.1 = { # 201 BC, made up
 	#	add_spouse = epirote00105 # Machatas
 	#}
@@ -257,6 +260,7 @@ epirote00208 = {
 	name = "Olympias" # mother of Alexander the Great
 	female = yes
 	dynasty = epirotedyn002 # Aiakidas
+	dna = epirote00208_dna
 	religion = epirote_faith
 	culture = epirote
 	diplomacy = 5
@@ -270,6 +274,7 @@ epirote00208 = {
 	trait = vengeful
 	trait = callous
 	trait = zealous
+	trait = lifestyle_herbalist # Plutarch associates her with pharmaka on several occasions (Plut. Alex. 2.6, 77.7)
 	father = epirote00205 # Neoptolemos
 	3379.1.1 = {
 		name = Polyxena # her birth name
@@ -277,6 +282,7 @@ epirote00208 = {
 	}
 	3397.1.1 = { # 357 BC
 		name = Myrtale # adopted on her marriage
+		## Redundant code - preserved for documentation purposes
 		#add_spouse = macedonian03940 # Philippos
 	}
 	3398.7.20 = { # 20 July 356 BC
@@ -311,6 +317,7 @@ epirote00209 = {
 	3373.1.1 = { # made up
 		birth = yes # 381 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3390.1.1 = { # 364 BC, made up
 	#	add_spouse = epirote00206 # Arybbas
 	#}
@@ -466,12 +473,12 @@ epirote00215 = {
 	3459.1.1 = { # 295 BC, approximate
 		trait = kinslayer_1 # has Neoptolemus murdered - supposedly he had been planning to poison Pyrrhus but wasn't very discreet about it 
 	}
-	#3461.1.1 = { # 293 BC
-	#	add_spouse = ... # daughter of Audoleon
-	#}
-	#3462.1.1 = { # 292 BC
-	#	add_spouse = ... # Birkenna
-	#}
+	3461.1.1 = { # 293 BC
+		add_spouse = paeonian00106 # daughter of Audoleon
+	}
+	3462.1.1 = { # 292 BC
+		add_spouse = mathian00206 # Birkenna
+	}
 	#3463.1.1 = { # 291 BC
 	#	remove_spouse = ... # Lanassa leaves Pyrrhus for Demetrius
 	#}
@@ -492,22 +499,14 @@ epirote00215 = {
 		add_prestige = 2000
 		spawn_army = {
 			name = event_troop_default_name
-			levies = 4000
+			levies = 2000
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
-			}
-			men_at_arms = {
-				type = pezhetairoi
-				stacks = 8
+				type = phalangitai
+				stacks = 4
 			}
 			location = province:714
 			origin = province:714
@@ -531,6 +530,7 @@ epirote00216 = {
 	3434.1.1 = { # approximate
 		birth = yes # 320 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3437.1.1 = { # 317 BC, approximate
 	#	effect = {
 	#		create_betrothal = character:macedonian03953 # Alexandros
@@ -541,6 +541,7 @@ epirote00216 = {
 	#		break_betrothal = character:macedonian03953 # Alexandros
 	#	}
 	#}
+	## Redundant code - preserved for documentation purposes
 	#3451.1.1 = { # 303 BC
 	#	add_spouse = macedonian00102 # Demetrios
 	#}
@@ -626,6 +627,7 @@ epirote00222 = {
 	name = "Olympias"
 	female = yes
 	dynasty = epirotedyn002 # Aiakidas
+	dna = epirote00222_dna
 	religion = epirote_faith
 	culture = epirote
 	diplomacy = 7
@@ -639,10 +641,11 @@ epirote00222 = {
 	trait = brave
 	trait = paranoid
 	father = epirote00215 # Pyrrhos
-	#mother = ... # d. Audoleon, speculative
+	mother = paeonian00106 # d. Audoleon, speculative
 	3463.1.1 = {
 		birth = yes # 291 BC, speculative
 	}
+	## Redundant code - preserved for documentation purposes
 	#3483.1.1 = { # 271 BC, made up
 	#	add_spouse = epirote00224 # Alexandros
 	#}
@@ -656,6 +659,7 @@ epirote00222 = {
 epirote00223 = {
 	name = "Ptolemaios"
 	dynasty = epirotedyn002 # Aiakidas
+	dna = epirote00223_dna
 	religion = epirote_faith
 	culture = epirote
 	diplomacy = 7
@@ -725,7 +729,7 @@ epirote00225 = {
 	trait = content
 	trait = just
 	father = epirote00215 # Pyrrhos
-	#mother = ... # Birkenna
+	mother = mathian00206 # Birkenna
 	3463.1.1 = {
 		birth = yes # 291 BC
 	}
@@ -775,6 +779,7 @@ epirote00228 = {
 	3493.1.1 = { # speculative
 		birth = yes # 264 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3517.1.1 = { # 237 BC, speculative
 	#	add_spouse = macedonian00112 # Demetrios
 	#}
@@ -794,8 +799,9 @@ epirote00229 = {
 	3407.1.1 = { # made up
 		birth = yes # 347 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3428.1.1 = { # 326 BC, made up
-	#	add_spouse = ... # Glaukias
+	#	add_spouse = mathian00101 # Glaukias
 	#}
 	3477.1.1 = { # made up
 		death = yes # 277 BC
@@ -1230,31 +1236,31 @@ epirote00502 = {
 	}
 }
 
-# Chaon - Chaonia
+# Amantieus - Amantia
 
 epirote00601 = {
-	name = "Euthymidas"
-	dynasty = epirotedyn006 # Chaon
+	name = "Damokles" # reconstructed name
+	dynasty = epirotedyn006 # Amantieus
 	religion = epirote_faith
 	culture = epirote
-	3419.1.1 = { # made up
-		birth = yes # 335 BC
+	3449.1.1 = { # made up
+		birth = yes # 305 BC
 	}
-	3466.1.1 = { # made up
-		death = yes # 288 BC
+	3496.1.1 = { # made up
+		death = yes # 258 BC
 	}
 }
 epirote00602 = {
-	name = "Antanor" # awarded proxeny and promanteia by Delphi ca. 325-275
-	dynasty = epirotedyn006 # Chaon
-	religion = pythian_faith
+	name = "Alexandros" # peripolarchos attested at Matohasanaj in the second half of the 3rd century BC
+	dynasty = epirotedyn006 # Amantieus
+	religion = epirote_faith
 	culture = epirote
-	father = epirote00601 # Euthymidas
-	3453.1.1 = { # made up
-		birth = yes # 301 BC
+	father = epirote00601 # Damokles
+	3478.1.1 = { # made up
+		birth = yes # 276 BC
 	}
-	3504.1.1 = { # made up
-		death = yes # 250 BC
+	3542.1.1 = { # made up
+		death = yes # 212 BC
 	}
 }
 
@@ -1430,7 +1436,7 @@ epirote01204 = {
 	dynasty = epirotedyn012 # Athaman
 	religion = pythian_faith
 	culture = epirote
-	father = epirote01203 # Amynandros
+	father = epirote01203 # Amynandros, speculative
 	3483.1.1 = { # made up
 		birth = yes # 271 BC
 	}
@@ -1443,7 +1449,7 @@ epirote01205 = {
 	dynasty = epirotedyn012 # Athaman
 	religion = pythian_faith
 	culture = epirote
-	father = epirote01203 # Amynandros
+	father = epirote01203 # Amynandros, speculative
 	3490.1.1 = { # made up
 		birth = yes # 264 BC
 	}
@@ -1456,7 +1462,7 @@ epirote01206 = {
 	dynasty = epirotedyn012 # Athaman
 	religion = pythian_faith
 	culture = epirote
-	father = epirote01203 # Amynandros
+	father = epirote01203 # Amynandros, speculative
 	3492.1.1 = { # made up
 		birth = yes # 262 BC
 	}
@@ -1465,17 +1471,18 @@ epirote01206 = {
 	}
 }
 epirote01207 = {
-	name = "Eurydika" # wife of the Illyrian king Scerdilaidas
+	name = "Eurydika" # mother of the Illyrian king Genthios
 	female = yes
 	dynasty = epirotedyn012
 	religion = pythian_faith
 	culture = epirote
-	father = epirote01204 # Amynas
+	father = epirote01204 # Amynas, speculative (Polybius notes that Amynas and Scerdilaidas were related by marriage, perhaps through Pleuratos and Eurydike)
 	3512.1.1 = { # made up
 		birth = yes # 242 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3530.6.1 = { # 224 BC, made up
-	#	add_spouse = ... # Pleuratos
+	#	add_spouse = dassian00202 # Pleuratos
 	#}
 	3562.1.1 = { # made up
 		death = yes # 192 BC
@@ -1513,7 +1520,7 @@ epirote01209 = {
 	trait = fickle
 	trait = military_engineer
 	trait = shrewd
-	father = epirote01206 # Machaos
+	father = epirote01206 # Machaos, speculative
 	3520.1.1 = { # made up
 		birth = yes # 234 BC
 	}
@@ -1732,10 +1739,40 @@ epirote02102 = {
 	3461.1.1 = { # made up
 		birth = yes # 293 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3477.1.1 = { # 277 BC, made up
 	#	add_spouse = epirote02002 # Theudotos
 	#}
 	3488.1.1 = { # made up
 		death = yes # 266 BC
+	}
+}
+
+# Speculative Illyrian Wife
+
+epirote02111 = {
+	name = "Eurydike"
+	religion = epirote_faith
+	culture = epirote
+	3541.1.1 = { # made up
+		birth = yes # 213 BC
+	}
+	3577.1.1 = { # made up
+		death = yes # 177 BC
+	}
+}
+
+# Dexaros - Antipatreia
+
+epirote02201 = {
+	name = "Isagoras" # Fictional
+	religion = epirote_faith
+	culture = epirote
+
+	3462.1.1 = { # made up
+		birth = yes # 292 BC
+	}
+	3503.1.1 = { # made up
+		death = yes # 251 BC
 	}
 }

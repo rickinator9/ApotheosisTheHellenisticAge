@@ -581,6 +581,16 @@ task_promote_culture = {
 			desc = task_promote_culture_effect_desc
 			triggered_desc = {
 				trigger = {
+					scope:councillor_liege = {
+						any_vassal = {
+							has_vassal_stance = minority
+						}
+					}
+				}
+				desc = minority_disapproves_conversion_tooltip
+			}
+			triggered_desc = {
+				trigger = {
 					trigger_if = {
 						limit = { exists = scope:county }
 						scope:county = {
@@ -1602,46 +1612,6 @@ task_convince_dejure = {
 				desc = ERUDITION_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
-		
-		# ATHA modifiers
-		if = {
-			limit = {
-				scope:councillor_liege = { has_character_modifier = nickname_political_poems_modifier }
-			}
-			add = {
-				value = scope:councillor.steward_culture_conversion_nickname_political_poems_modifier_bonus
-				desc = NICKNAME_POLITICAL_POEMS_BONUS_VALUE
-			}
-		}
-
-		# ATHA colony holding
-		if = {
-			limit = {
-				exists = scope:county
-				scope:county = {
-					title_province = {
-						has_holding_type = colony_holding
-					}
-				}
-			}
-			multiply = {
-				value = klerouchy_culture_conversion_factor
-				desc = KLEROUCHY_HOLDING_CULTURE_CONVERSION_FACTOR_DESC
-			}
-		}
-
-		# ATHA colony rights contract
-		if = {
-			limit = {
-				scope:councillor_liege = {
-					vassal_contract_has_flag = city_state_encouraged_culture_flipping
-				}
-			}
-			multiply = {
-				value = klerouchy_culture_conversion_factor
-				desc = KLEROUCHY_CONTRACT_CULTURE_CONVERSION_FACTOR_DESC
-			}
-		}
 	}
 
 	#Unlocked at Court Grandeur level 6
@@ -1685,7 +1655,7 @@ task_convince_dejure = {
 							AND = {
 								liege = scope:councillor_liege
 								is_ruler = yes
-								has_government = feudal_government 
+								government_has_flag = government_is_feudal 
 								is_independent_ruler = no
 								vassal_contract_has_flag = culture_protected
 							}
@@ -1693,7 +1663,7 @@ task_convince_dejure = {
 								exists = liege
 								liege = scope:councillor_liege
 								is_ruler = yes
-								has_government = feudal_government 
+								government_has_flag = government_is_feudal 
 								is_independent_ruler = no
 								vassal_contract_has_flag = culture_protected
 							}

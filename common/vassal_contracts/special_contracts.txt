@@ -1,6 +1,5 @@
 ﻿@ai_standard_liege_desire = 2
 @ai_standard_vassal_desire = 1
-
 # Everything below this line is 'Fine Print'
 
 religious_rights = {
@@ -10,7 +9,7 @@ religious_rights = {
 		religious_rights_none = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
 
@@ -19,9 +18,9 @@ religious_rights = {
 		religious_rights_protected = {
 			parent = religious_rights_none
 			position = { 1 0 }
-			
+
 			vassal_opinion = 5
-			
+
 			liege_modifier = {
 				piety_level_impact_mult = -0.05
 			}
@@ -32,7 +31,7 @@ religious_rights = {
 				realm_priest_opinion = 10
 				religious_vassal_opinion = 10
 			}
-			
+
 			flag = religiously_protected
 			flag = category_religious_rights
 			
@@ -95,7 +94,7 @@ coinage_rights = {
 		coinage_rights_none = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
 
@@ -109,7 +108,7 @@ coinage_rights = {
 			}
 			parent = coinage_rights_none
 			position = { 1 0 }
-			
+
 			liege_modifier = {
 				development_growth_factor = -0.02
 			}
@@ -117,7 +116,7 @@ coinage_rights = {
 				character_capital_county_monthly_development_growth_add = 0.3
 				monthly_prestige_gain_mult = 0.05
 			}
-			
+
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
 
@@ -137,7 +136,7 @@ succession_rights = {
 		succession_rights_default = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
 
@@ -149,13 +148,14 @@ succession_rights = {
 					can_have_confederate_partition_succession_law_trigger = yes
 				}
 			}
+			score = -1
 			parent = succession_rights_default
 			position = { 1 0 }
-			
+
 			vassal_opinion = -5
-			
+
 			flag = locked_to_partition
-			
+
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
 
@@ -170,7 +170,7 @@ war_declaration_rights = {
 		war_declaration_rights_default = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
 
@@ -179,11 +179,11 @@ war_declaration_rights = {
 		war_declaration_rights_allowed = {
 			parent = war_declaration_rights_default
 			position = { 1 0 }
-			
+
 			vassal_opinion = 5
-			
+
 			flag = vassal_contract_war_override
-			
+
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
 
@@ -198,7 +198,7 @@ council_rights = {
 		council_rights_none = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
 
@@ -207,15 +207,15 @@ council_rights = {
 		council_rights_guaranteed = {
 			parent = council_rights_none
 			position = { 1 0 }
-			
+
 			vassal_opinion = 5
-			
+
 			flag = can_demand_council_seat
-			
+
 			liege_modifier = {
 				powerful_vassal_opinion = -2
 			}
-			
+
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
 
@@ -230,7 +230,7 @@ title_revocation_rights = {
 		title_revocation_rights_default = {
 			default = yes
 			position = { 0 0 }
-			
+
 			ai_liege_desire = 1
 			ai_vassal_desire = 0
 
@@ -239,11 +239,11 @@ title_revocation_rights = {
 		title_revocation_rights_protected = {
 			parent = title_revocation_rights_default
 			position = { 1 0 }
-			
+
 			vassal_opinion = 5
-			
+
 			flag = vassal_contract_cannot_revoke_titles
-			
+
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
 

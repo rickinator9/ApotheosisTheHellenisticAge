@@ -1,0 +1,274 @@
+﻿#Events for learning Commander Traits from a character
+
+namespace = ATHA_learn_mastery_trait
+
+#Choose whether to become light_infantry_master, archers_master, light_cavalry_master, archer_cavalry_master medium_infantry_master
+ATHA_learn_mastery_trait.0001 = {
+	type = character_event
+	title = ATHA_learn_mastery_trait.0001.t
+	desc = ATHA_learn_mastery_trait.0001.desc
+	theme = war
+	left_portrait = root
+	
+	trigger = {
+		NOT = { has_character_flag = being_taught_commander_trait }
+		has_maa_mastery_trait = no
+		number_of_commander_traits < 3
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			factor = martial
+			multiplier = 0.1
+			max = 2
+		}
+		modifier = {
+			add = 1
+			culture = { has_cultural_parameter = commanders_likelier_to_gain_commander_traits }
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 0
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 1
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0001.a
+		trigger = { NOT = { has_trait = light_infantry_master } }
+		add_trait = light_infantry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = skirmishers
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = skirmishers
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0001.b
+		trigger = { NOT = { has_trait = archers_master } }
+		add_trait = archers_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = archers
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = archers
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+	
+	option = {
+		name = ATHA_learn_mastery_trait.0001.c
+		trigger = { NOT = { has_trait = light_cavalry_master } }
+		add_trait = light_cavalry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = light_cavalry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0001.d
+		trigger = { 
+			NOT = { has_trait = archer_cavalry_master }
+			#As a rarer MaA type, we should first check whether the character has any
+			number_maa_regiments_of_base_type = {
+				type = archer_cavalry
+				value > 0
+			}
+		}
+		add_trait = archer_cavalry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = archer_cavalry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = archer_cavalry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+#Choose whether to become medium_infantry_master, heavy_infantry_master, pikemen_master, heavy_cavalry_master.
+ATHA_learn_mastery_trait.0002 = {
+	type = character_event
+	title = ATHA_learn_mastery_trait.0002.t
+	desc = ATHA_learn_mastery_trait.0002.desc
+	theme = war
+	left_portrait = root
+	
+	trigger = {
+		NOT = { has_character_flag = being_taught_commander_trait }
+		has_maa_mastery_trait = no
+		number_of_commander_traits < 3
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			factor = martial
+			multiplier = 0.1
+			max = 2
+		}
+		modifier = {
+			add = 1
+			culture = { has_cultural_parameter = commanders_likelier_to_gain_commander_traits }
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 0
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 1
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0002.a
+		trigger = { NOT = { has_trait = medium_infantry_master } }
+		add_trait = medium_infantry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = medium_infantry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = medium_infantry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0002.b
+		trigger = { NOT = { has_trait = heavy_infantry_master } }
+		add_trait = heavy_infantry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_infantry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_infantry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0002.c
+		trigger = { NOT = { has_trait = pikemen_master } }
+		add_trait = pikemen_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = pikemen
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = pikemen
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0002.d
+		trigger = { NOT = { has_trait = heavy_cavalry_master } }
+		add_trait = heavy_cavalry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_cavalry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = heavy_cavalry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+}

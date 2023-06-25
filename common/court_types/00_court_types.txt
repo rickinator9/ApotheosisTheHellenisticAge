@@ -8,7 +8,7 @@ court_diplomatic = {
 	
 	is_shown = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_courtly }
@@ -19,7 +19,7 @@ court_diplomatic = {
 	
 	is_valid = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_courtly }
@@ -114,7 +114,7 @@ court_warlike = {
 
 	is_shown = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_bellicose }
@@ -125,7 +125,7 @@ court_warlike = {
 	
 	is_valid = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_bellicose }
@@ -223,7 +223,7 @@ court_administrative = {
 	
 	is_shown = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_communal }
@@ -235,7 +235,7 @@ court_administrative = {
 	
 	is_valid = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_communal }
@@ -254,7 +254,7 @@ court_administrative = {
 	level_perk = {
 		court_grandeur = 1
 		owner_modifier = {
-			build_gold_cost = -0.1
+			build_gold_cost = -0.05
 			build_speed = -0.1
 		}
 	}
@@ -322,7 +322,7 @@ court_intrigue = {
 	
 	is_shown = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_bellicose }
@@ -332,7 +332,7 @@ court_intrigue = {
 	
 	is_valid = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_bellicose }
@@ -419,7 +419,7 @@ court_scholarly = {
 	
 	is_shown = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_courtly }
@@ -429,7 +429,7 @@ court_scholarly = {
 	
 	is_valid = {
 		NOT = {
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 		}
 		OR = {
 			culture = { has_cultural_pillar = ethos_courtly }
@@ -521,11 +521,17 @@ court_tribal = {
 	background = "gfx/interface/icons/culture_pillars/ethos_stoic.dds"
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			government_has_flag = government_is_tribal
+			government_has_flag = government_is_clan
+		}
 	}
 	
 	is_valid = {
-		has_government = tribal_government
+		OR = {
+			government_has_flag = government_is_tribal
+			government_has_flag = government_is_clan
+		}
 	}
 	
 	cost = {
@@ -592,6 +598,17 @@ court_tribal = {
 					}
 				}
 				add = martial
+				
+				#if = {
+				#	limit = {
+				#		OR = {
+				#			culture = { has_cultural_pillar = heritage_turkic }
+				#			culture = { has_cultural_pillar = heritage_mongolic }
+				#		}
+				#	}
+				#	add = 25
+				#}
+
 				if = {
 					limit = {
 						has_trait = wrathful
@@ -619,7 +636,7 @@ court_tribal = {
 				if = {
 					limit = {
 						NOT = {
-							has_government = tribal_government
+							government_has_flag = government_is_tribal
 						}
 					}
 					add = -5000

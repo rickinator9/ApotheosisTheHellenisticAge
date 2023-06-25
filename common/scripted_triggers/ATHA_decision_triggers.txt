@@ -27,12 +27,12 @@ ionian_revolt_proximity_1_trigger = {
 	OR = {
 		has_city_state_government = yes
 		has_coalition_government = yes
-		has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+		government_has_flag = government_is_feudal # dynastic rulers have enough autonomy to decide how to use their money & manpower
 	}
 	OR = {
 		is_independent_ruler = yes 
 		vassal_contract_has_flag = has_autonomous_contract
-		has_government = feudal_government # has to be reiterated so dynastic vassals are counted
+		government_has_flag = government_is_feudal # has to be reiterated so dynastic vassals are counted
 	}
 	culture = { has_cultural_pillar = heritage_greek }	
 	OR = {
@@ -117,7 +117,7 @@ ionian_revolt_proximity_2_trigger = {
 			OR = {
 				has_city_state_government = yes
 				has_coalition_government = yes
-				has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+				government_has_flag = government_is_feudal # dynastic rulers have enough autonomy to decide how to use their money & manpower
 			}
 			OR = {
 				any_realm_county = { 
@@ -218,7 +218,7 @@ ionian_revolt_should_support_trigger = {
 	OR = {
 		has_city_state_government = yes
 		has_coalition_government = yes
-		has_government = feudal_government # dynastic rulers have enough autonomy to decide how to use their money & manpower
+		government_has_flag = government_is_feudal # dynastic rulers have enough autonomy to decide how to use their money & manpower
 	}	
 }
 
@@ -234,4 +234,9 @@ ionian_revolt_should_not_support_trigger = {
 			ionian_revolt_should_support_trigger = no
 		}
 	}	
+}
+
+k_paeonia_invasion_candidate_trigger = {
+	culture = culture:macedonian
+	highest_held_title_tier >= tier_kingdom
 }

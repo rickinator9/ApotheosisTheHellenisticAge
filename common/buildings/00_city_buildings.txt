@@ -4,9 +4,10 @@
 @holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
 @holding_illustration_norse = "gfx/interface/illustrations/holding_types/fp1_city_norse.dds"
 @holding_illustration_iberian = "gfx/interface/illustrations/holding_types/fp2_city_iberian.dds"
-@holding_illustration_grass = "gfx/interface/illustrations/holding_types/tribe_grass.dds"
 
-@holding_illustration_greek = "gfx/interface/illustrations/event_scenes/farms.dds"
+#ATHA
+@holding_illustration_grass = "gfx/interface/illustrations/holding_types/tribe_grass.dds"
+@holding_illustration_greek = "gfx/interface/illustrations/holding_types/village_greek.dds"
 
 city_01 = {
 	construction_time = slow_construction_time
@@ -23,9 +24,19 @@ city_01 = {
 		graphical_cultures = { mediterranean_building_gfx }	
 	}
 
+	### Tribal ###
+	asset = {
+		type = pdxmesh
+		names = {
+			building_western_tribal_01_a_mesh
+		}
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { norse_building_gfx }	
+	}
+
 
 	can_construct_potential = {
-		building_requirement_tribal = no
 		barony_cannot_construct_holding = no
 	}
 	
@@ -36,7 +47,8 @@ city_01 = {
 	}
 	
 	can_construct_showing_failures_only = {
-		building_requirement_tribal_holding_in_county = no
+		building_requirement_tribal = no
+		building_requirement_tribal_holding_in_county = yes
 	}
 	cost_gold = main_building_tier_1_cost
 	
@@ -45,6 +57,7 @@ city_01 = {
 	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_1
 	province_modifier = {
 		monthly_income = good_building_tax_tier_2
+		travel_danger = -10
 	}
 
 	province_culture_modifier = {
@@ -95,10 +108,32 @@ city_01 = {
 	next_building = city_02
 
 	type_icon = "icon_building_guild_halls.dds"
-
+	
 	on_complete = {
 		county.holder = {
 			change_nickname_weight_effect = { NICKNAME = nick_the_builder CHANGE = nickname_weight_small_increase }
+		}
+		county.holder = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_vassal_stance = parochial
+					}
+					save_temporary_scope_as = holder_scope
+				}
+				custom_tooltip = parochial_vassal_approves_holding_construction
+				hidden_effect = {
+					every_vassal = {
+						limit = {
+							has_vassal_stance = parochial
+						}
+						add_opinion = {
+							target = prev
+							modifier = parochial_approves_holding_construction_opinion
+						}
+					}
+				}
+			}
 		}
 	}
 	
@@ -113,7 +148,7 @@ city_01 = {
 		modifier = {
 			factor = 0
 			scope:holder = {
-				has_government = theocracy_government
+				government_has_flag = government_is_theocracy
 			}
 		}
 		modifier = {
@@ -148,6 +183,17 @@ city_02 = {
 		graphical_cultures = { mediterranean_building_gfx }		
 	}
 
+	### Tribal ###
+	asset = {
+		type = pdxmesh
+		names = {
+			building_western_tribal_01_a_mesh
+		}
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { norse_building_gfx }	
+	}	
+
 
 	can_construct_potential = {
 		building_requirement_tribal = no
@@ -164,6 +210,7 @@ city_02 = {
 	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
 	province_modifier = {
 		monthly_income = good_building_tax_tier_4
+		travel_danger = -12
 	}
 
 	province_culture_modifier = {
@@ -212,6 +259,31 @@ city_02 = {
 	
 	flag = city
 	next_building = city_03
+	
+	on_complete = {
+		barony.holder = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_vassal_stance = parochial
+					}
+					save_temporary_scope_as = holder_scope
+				}
+				custom_tooltip = parochial_vassal_approves_holding_upgrade
+				hidden_effect = {
+					every_vassal = {
+						limit = {
+							has_vassal_stance = parochial
+						}
+						add_opinion = {
+							target = prev
+							modifier = parochial_approves_holding_upgrade_opinion
+						}
+					}
+				}
+			}
+		}
+	}
 	ai_value = {
 		base = 6
 		modifier = {
@@ -221,6 +293,14 @@ city_02 = {
 		modifier = {
 			factor = 2
 			scope:holder.capital_province = this
+		}
+		modifier = {
+			factor = 0.2
+			free_building_slots >= 1
+		}
+		modifier = {
+			factor = 0.3
+			years_from_game_start <= 0.01
 		}
 	}
 }
@@ -240,6 +320,17 @@ city_03 = {
 		graphical_cultures = { mediterranean_building_gfx }		
 	}
 
+	### Tribal ###
+	asset = {
+		type = pdxmesh
+		names = {
+			building_western_tribal_01_a_mesh
+		}
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { norse_building_gfx }	
+	}
+
 
 	can_construct_potential = {
 		building_requirement_tribal = no
@@ -257,6 +348,7 @@ city_03 = {
 	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_3
 	province_modifier = {
 		monthly_income = good_building_tax_tier_6
+		travel_danger = -14
 	}
 
 	province_culture_modifier = {
@@ -305,6 +397,31 @@ city_03 = {
 	}
 	
 	flag = city
+	
+	on_complete = {
+		barony.holder = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_vassal_stance = parochial
+					}
+					save_temporary_scope_as = holder_scope
+				}
+				custom_tooltip = parochial_vassal_approves_holding_upgrade
+				hidden_effect = {
+					every_vassal = {
+						limit = {
+							has_vassal_stance = parochial
+						}
+						add_opinion = {
+							target = prev
+							modifier = parochial_approves_holding_upgrade_opinion
+						}
+					}
+				}
+			}
+		}
+	}
 	ai_value = {
 		base = 5
 		modifier = {
@@ -332,6 +449,17 @@ city_04 = {
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 0 } }
 		graphical_cultures = { mediterranean_building_gfx }		
 	}
+
+	### Tribal ###
+	asset = {
+		type = pdxmesh
+		names = {
+			building_western_tribal_01_a_mesh
+		}
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { norse_building_gfx }	
+	}
 	
 	
 	can_construct_potential = {
@@ -349,6 +477,7 @@ city_04 = {
 	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_4
 	province_modifier = {
 		monthly_income = good_building_tax_tier_8
+		travel_danger = -16
 	}
 
 	province_culture_modifier = {
@@ -396,6 +525,31 @@ city_04 = {
 	}
 	
 	flag = city
+	
+	on_complete = {
+		barony.holder = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_vassal_stance = parochial
+					}
+					save_temporary_scope_as = holder_scope
+				}
+				custom_tooltip = parochial_vassal_approves_holding_upgrade
+				hidden_effect = {
+					every_vassal = {
+						limit = {
+							has_vassal_stance = parochial
+						}
+						add_opinion = {
+							target = prev
+							modifier = parochial_approves_holding_upgrade_opinion
+						}
+					}
+				}
+			}
+		}
+	}
 	ai_value = {
 		base = 4
 		modifier = {
@@ -448,7 +602,7 @@ guild_halls_01 = {
 		modifier = {
 			add = 500
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -486,7 +640,7 @@ guild_halls_02 = {
 		modifier = {
 			add = 9
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -496,15 +650,27 @@ guild_halls_03 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_02
-		culture = {
-			OR = {
-				has_innovation = innovation_classical_winch_and_pulley
-				AND = {
-					has_innovation = innovation_archaic_two_field_rotation
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_classical_winch_and_pulley
+			}
+			has_building_or_higher = city_02
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_archaic_two_field_rotation
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_01
 		}
 	}
 
@@ -527,7 +693,7 @@ guild_halls_03 = {
 		modifier = {
 			add = 8
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -537,15 +703,28 @@ guild_halls_04 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_02
-		culture = {
-			OR = {
-				has_innovation = innovation_classical_winch_and_pulley
-				AND = {
-					has_innovation = innovation_archaic_two_field_rotation
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_classical_winch_and_pulley
+			}
+			has_building_or_higher = city_02
+
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_archaic_two_field_rotation
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_01
 		}
 	}
 
@@ -568,7 +747,7 @@ guild_halls_04 = {
 		modifier = {
 			add = 7
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -578,15 +757,27 @@ guild_halls_05 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_03
-		culture = {
-			OR = {
-				has_innovation = innovation_hellenistic_compound_pulley
-				AND = {
-					has_innovation = innovation_classical_winch_and_pulley
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_hellenistic_compound_pulley
+			}
+			has_building_or_higher = city_03
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_classical_winch_and_pulley
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_02
 		}
 	}
 
@@ -609,7 +800,7 @@ guild_halls_05 = {
 		modifier = {
 			add = 6
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -619,15 +810,27 @@ guild_halls_06 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_03
-		culture = {
-			OR = {
-				has_innovation = innovation_hellenistic_compound_pulley
-				AND = {
-					has_innovation = innovation_classical_winch_and_pulley
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_hellenistic_compound_pulley
+			}
+			has_building_or_higher = city_03
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_classical_winch_and_pulley
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_02
 		}
 	}
 
@@ -650,7 +853,7 @@ guild_halls_06 = {
 		modifier = {
 			add = 5
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -660,15 +863,27 @@ guild_halls_07 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_04
-		culture = {
-			OR = {
-				has_innovation = innovation_imperial_threadwheel_crane
-				AND = {
-					has_innovation = innovation_hellenistic_compound_pulley
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_imperial_threadwheel_crane
+			}
+			has_building_or_higher = city_04
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_hellenistic_compound_pulley
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_03
 		}
 	}
 
@@ -691,7 +906,7 @@ guild_halls_07 = {
 		modifier = {
 			add = 4
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}
@@ -701,15 +916,27 @@ guild_halls_08 = {
 	construction_time = standard_construction_time
 
 	can_construct = {
-		has_building_or_higher = city_04
-		culture = {
-			OR = {
-				has_innovation = innovation_imperial_threadwheel_crane
-				AND = {
-					has_innovation = innovation_hellenistic_compound_pulley
-					has_cultural_parameter = next_level_guild_halls
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_guild_halls
+					}
 				}
 			}
+			culture = {
+				has_innovation = innovation_imperial_threadwheel_crane
+			}
+			has_building_or_higher = city_04
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_hellenistic_compound_pulley
+			}
+			culture = {
+				has_cultural_parameter = next_level_guild_halls
+			}
+			has_building_or_higher = city_03
 		}
 	}
 
@@ -731,7 +958,7 @@ guild_halls_08 = {
 		modifier = {
 			add = 3
 			scope:holder = {
-				has_government = republic_government
+				government_has_flag = government_is_republic
 			}
 		}
 	}

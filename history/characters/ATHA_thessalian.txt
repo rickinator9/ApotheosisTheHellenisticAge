@@ -10,6 +10,7 @@ thessalianlowborn1 = {
 	3061.1.1 = { # made up
 		birth = yes # 693 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3077.1.1 = { # 677 BC, made up
 	#	add_spouse = thessalian00202 # Simos
 	#}
@@ -61,6 +62,7 @@ thessalian00102 = {
 	3414.1.1 = { # made up
 		birth = yes # 340 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3430.1.1 = { # 324 BC, made up
 	#	add_spouse = epirote00213 # Aiakidas
 	#}
@@ -157,8 +159,8 @@ thessalian00108 = {
 	}
 	3347.1.1 = { # 407 BC, made up
 		effect = {
-			set_relation_lover = {
-				target = character:thessalian002c08 # enters a relationship with Aristippus, who makes him a commander
+			set_relation_lover = { # enters a relationship with Aristippus, who makes him a commander
+				target = character:thessalian002c08 # Aristippos
 				reason = lover_history
 			}
 		}
@@ -248,13 +250,19 @@ thessalian00204 = {
 	trait = intellect_good_2
 	trait = overseer
 	trait = administrator
-	trait = mystic_3
+	trait = lifestyle_mystic
 	trait = hero
 	father = thessalian00202 # Simos
 	mother = thessalianlowborn1 # Archedika
 	3078.1.1 = { # made up
 		birth = yes # 676 BC
 		give_nickname = nick_ho_pyrrhos
+	}
+	3096.1.1 = { # Adulthood, 658 BC
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = 80
+		}
 	}
 	3154.1.1 = { # made up
 		death = yes # 600 BC
@@ -624,6 +632,7 @@ thessalian002a04 = {
 	3371.1.1 = { # made up
 		birth = yes # 383 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3396.12.1 = { # autumn/winter 358 BC, approximate
 	#	add_spouse = macedonian03940 # Philippos
 	#}
@@ -656,7 +665,7 @@ thessalian002a06 = {
 	trait = gregarious
 	trait = fickle
 	trait = deceitful
-	trait = reveler_1
+	trait = lifestyle_reveler
 	father = thessalian002a03 # Oxythemis
 	3387.1.1 = { # made up
 		birth = yes # 367 BC
@@ -986,7 +995,15 @@ thessalian002c08 = {
 	3303.1.1 = { # made up
 		birth = yes # 451 BC
 	}
-	# 407 BC, made up, enters a relationship with Menon, whom he makes a commander
+	## Redundant code - preserved for documentation purposes
+	#3347.1.1 = { # 407 BC, made up
+	#	effect = {
+	#		set_relation_lover = { # enters a relationship with Menon, whom he makes a commander
+	#			target = character:thessalian00108 # Menon
+	#			reason = lover_history
+	#		}
+	#	}
+	#}
 	3356.1.1 = { # made up
 		death = yes # 398 BC
 	}
@@ -1078,6 +1095,7 @@ thessalian002c14 = {
 	3473.1.1 = { # made up
 		birth = yes # 281 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3490.1.1 = { # 264 BC, made up
 	#	add_spouse = macedonian00106 # Demetrios
 	#}
@@ -1407,31 +1425,31 @@ thessalian00502 = {
 	}
 }
 
-# Meliboieus - Meliboia
+# Homolieus - Homolion
 
 thessalian00601 = {
-	name = "Thersitas"
-	dynasty = thessaliandyn006 # Meliboieus
+	name = "Antiphilos"
+	dynasty = thessaliandyn006 # Homolieus
 	religion = pythian_faith
 	culture = thessalian
-	3410.1.1 = { # made up
-		birth = yes # 344 BC
+	3440.1.1 = { # made up
+		birth = yes # 314 BC
 	}
-	3454.1.1 = { # made up
-		death = yes # 300 BC
+	3484.1.1 = { # made up
+		death = yes # 270 BC
 	}
 }
 thessalian00602 = {
-	name = "Theukles" # received proxeny from Iasos at the turn of the 3rd century BC
-	dynasty = thessaliandyn006 # Meliboieus
+	name = "Andronikos" # epistates at Homolion ca. 242 BC
+	dynasty = thessaliandyn006 # Homolieus
 	religion = pythian_faith
 	culture = thessalian
 	father = thessalian00601 # Thersitas
-	3438.1.1 = { # made up
-		birth = yes # 316 BC
+	3468.1.1 = { # made up
+		birth = yes # 286 BC
 	}
-	3496.1.1 = { # made up
-		death = yes # 258 BC
+	3526.1.1 = { # made up
+		death = yes # 228 BC
 	}
 }
 
@@ -1679,6 +1697,7 @@ thessalian01302 = {
 	3463.1.1 = { # made up
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3479.1.1 = { # 275 BC, made up
 	#	add_spouse = thessalianlowborn2 # Polykleitos
 	#}
@@ -1753,5 +1772,468 @@ thessalian01503 = {
 	}
 	3502.1.1 = { # made up
 		death = yes # 252 BC
+	}
+}
+
+# Pheraios - Pherai
+
+thessalian01601 = {
+	name = "Lykophroun" # Lykophron of Pherai; tyrant ca. 404-395 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016z01 # Polyalkes
+	3292.1.1 = { # made up
+		birth = yes # 462 BC
+	}
+	3363.1.1 = { # made up
+		death = yes # 391 BC
+	}
+}
+thessalian01602 = {
+	name = "Polyalkes" # possibly Jason's predecessor as tyrant of Pherai
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016z02 # Teisiphonos
+	mother = thessalian016w01 # Kytheria
+	3332.1.1 = { # made up
+		birth = yes # 422 BC
+	}
+	3372.1.1 = { # made up (but probably died in the late 380s BC)
+		death = yes # 382 BC
+	}
+}
+thessalian01603 = {
+	name = "Iasoun" # Jason of Pherai; tyrant ca. 379-370 BC & tagos of Thessaly ca. 373-370 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    diplomacy = 14
+    martial = 11
+    stewardship = 10
+    intrigue = 8
+    learning = 6
+    prowess = 6
+    trait = education_diplomacy_4 # relied on persuasion rather than compulsion in order to win over cities
+    trait = greedy # repeatedly sought money from his relatives
+    trait = ambitious # is said to have had ambitions of uniting the Greeks and campaigning against Persia
+    trait = diligent
+    trait = deceitful # resorted to trickery on multiple occasions to steal or extort money from his relatives
+    trait = intellect_good_2
+    trait = diplomat
+    trait = overseer
+    trait = avaricious
+	father = thessalian016z02 # Teisiphonos
+	mother = thessalian016w01 # Kytheria
+	3335.1.1 = { # made up
+		birth = yes # 419 BC
+	}
+	3384.1.1 = { # 370 BC
+        death = { 
+            death_reason = death_assassination # assassinated by a group of young men, perhaps encouraged by Polydorus
+        }
+	}
+}
+thessalian01604 = {
+	name = "Meirionas" # Merion, brother of Jason who lived in Pagasai
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016z02 # Teisiphonos
+	mother = thessalian016w01 # Kytheria
+	3337.1.1 = { # made up
+		birth = yes # 417 BC
+	}
+	3382.1.1 = { # made up
+		death = yes # 372 BC
+	}
+}
+thessalian01605 = {
+	name = "Polydouros" # Polydorus, tyrant of Pherai ca. 370 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016z02 # Teisiphonos
+	mother = thessalian016w01 # Kytheria
+	3339.1.1 = { # made up
+		birth = yes # 415 BC
+	}
+	3384.6.1 = { # early summer 370 BC, approximate
+        death = { 
+            death_reason = death_plotting # died suddenly in his sleep, allegedly murdered by Polyphron (Xen. Hell. 6.4.33)
+            killer = thessalian01606 # Polyphroun
+        }
+	}
+}
+thessalian01606 = {
+	name = "Polyphroun" # Polyphron, tyrant of Pherai ca. 370-369 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	trait = callous # accused of murdering his own brother in order to take sole power
+	trait = arbitrary # According to Xenophon he "made the tageia like a tyranny" (Xen. Hell. 6. 4. 34)
+	father = thessalian016z02 # Teisiphonos
+	mother = thessalian016w01 # Kytheria
+	3342.1.1 = { # made up
+		birth = yes # 412 BC
+	}
+	3385.6.1 = { # early summmer 369 BC, approximate
+        death = { 
+            death_reason = death_murder_known # slain or poisoned by Alexander after serving as tagus for a year
+            killer = thessalian01613 # Alexandros
+        }
+	}
+}
+thessalian01607 = {
+	name = "Teisiphonos" # Tisiphonus, tyrant of Pherai ca. 357-354 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    # trait = adopted # by Jason (thessalian01603)
+	father = thessalian01602 # Polyalkes
+	3368.1.1 = { # made up (but note that Plutarch calls him a neaniskos (i.e. between 22 and 28) at the time of Alexander's death in 358/7 BC (Pelop. 35.5–6))
+		birth = yes # 386 BC
+	}
+	3400.1.1 = { # approximate
+		death = yes # 354 BC
+	}
+}
+thessalian01608 = {
+	name = "Lykophroun" # jointly tyrant of Pherai ca. 354-352 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    # trait = adopted # by Jason (thessalian01603)
+	father = thessalian01602 # Polyalkes
+	3369.1.1 = { # made up (but note that Plutarch calls him a neaniskos (i.e. between 22 and 28) at the time of Alexander's death in 358/7 BC (Pelop. 35.5–6))
+		birth = yes # 385 BC
+	}
+	3426.1.1 = { # made up (but sometime after 352 BC)
+		death = yes # 328 BC
+	}
+}
+thessalian01609 = {
+	name = "Peitholaos" # jointly tyrant of Pherai ca. 354-352 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    # trait = adopted # by Jason (thessalian01603)
+	father = thessalian01602 # Polyalkes
+	3372.1.1 = { # made up (but note that Plutarch calls him a neaniskos (i.e. between 22 and 28) at the time of Alexander's death in 358/7 BC (Pelop. 35.5–6))
+		birth = yes # 382 BC
+	}
+	3418.1.1 = { # made up (but sometime after 352 BC)
+		death = yes # 336 BC
+	}
+}
+thessalian01610 = {
+	name = "Theiba" # in some traditions, Thebe exercised the real power while Tisiphon was tyrant
+	female = yes
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    diplomacy = 8
+    martial = 8
+    stewardship = 7
+    intrigue = 8
+    learning = 5
+    prowess = 3
+    trait = education_intrigue_2 # if we are to trust Plutarch and Konon, her plot to kill Alexander was fairly well thought out, had no issue with using blackmail to secure her brothers' support
+    trait = vengeful # may have arranged the murder of Alexander in retaliation for his seeking another wife
+    trait = compassionate # took pity on Pelopidas while he was imprisoned by her husband (Plut. Pelop. 28. 4)
+    trait = wrathful # described as being in a rage while pressing her brothers to kill Alexander (Plut. Pelop. 35. 6)
+    trait = brave # led her brothers in murdering Alexander
+    trait = infertile # Alexander tried to marry Jason's widow due to the lack of children he was having with Thebe
+	father = thessalian01603 # Iasoun
+	3373.1.1 = { # made up
+		birth = yes # 381 BC
+	}
+    ## Redundant code - preserved for documentation purposes
+    #3389.1.1 = { # 365 BC, made up
+    #   add_spouse = thessalian01613 # Alexandros
+    #}
+	3434.1.1 = { # made up
+		death = yes # 320 BC
+	}
+}
+thessalian01611 = {
+	name = "Porthaon"
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01603 # Iasoun, speculative (Only attested in Polyaenus 6.1.6, leading some scholars to consider him instead a son of Merion)
+	3379.1.1 = { # made up
+		birth = yes # 375 BC
+	}
+	3432.1.1 = { # made up
+		death = yes # 322 BC
+	}
+}
+thessalian01612 = {
+	name = "Nikasipolis" # Nikesipolis, wife of Philip II and mother of Thessalonike
+	female = yes
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01604 # Meirionas, speculative
+	3371.1.1 = { # made up
+		birth = yes # 383 BC
+	}
+    ## Redundant code - preserved for documentation purposes
+    #3402.6.1 = { # early summer 352 BC, approximate
+    #   add_spouse = macedonian03940 # Philippos
+    #}
+	3410.1.21 = { # 344 BC, approximate
+        death = { 
+            death_reason = death_childbirth # died on the twentieth day after giving birth to Thessalonike
+        }
+	}
+}
+thessalian01613 = {
+	name = "Alexandros" # tyrant of Pherai ca. 369-357 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    sexuality = bisexual # allegedly kept Peitholaus as a catamite, and had a male lover whom he later executed
+    diplomacy = 5
+    martial = 7
+    stewardship = 9
+    intrigue = 7
+    learning = 7
+    prowess = 4
+    trait = education_martial_3 # Isokrates considered him a potential leader in a campaign against Persia, highlighting his military capabilities
+    trait = brave # known for his bold actions (e.g. his attack on Tenos and raid on the Piraeus), and a Hellenistic epigram refers to his great courage
+    trait = arbitrary # executed a former lover and imprisoned Pelopidas without just cause
+    trait = deceitful # Alexander's treatment of Pelopidas became paradigmatic of faithless dealings
+    trait = zealous # Theopompus attests to his piety towards the cult of Dionysus Pelagios
+    trait = reaver # in the latter part of his rule he embarked on several successful raiding expeditions
+    trait = architect # may have refounded Pagasai and organised the construction of its city walls
+    trait = avaricious # struck coinage of exceedingly good workmanship under his own name
+    trait = rakish # according to Plutarch he was denounced for his licentiousness (Plut. Pelop. 26. 2)
+    trait = intellect_good_1
+	father = thessalian01605 # Polydouros, speculative
+	3358.1.1 = { # made up
+		birth = yes # 396 BC
+	}
+    3389.1.1 = { # 365 BC, made up
+       add_spouse = thessalian01610 # Alexandros
+    }
+    3397.1.1 = { # 357 BC, approximate
+		trait = hero # appears to have received a hero cult in Pagasae and later Demetrias
+        death = { 
+            death_reason = death_murder_known # murdered by Jason's sons at the instigation of Thebe
+            killer = thessalian01610 # Theiba
+        }
+    }
+}
+
+# Pheraios - Dubious Inclusion
+
+thessalian016w01 = {
+	name = "Kytheria" # made up name; Jason of Pherai's wealthy mother
+	female = yes
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+    trait = trusting # repeatedly falls for Jason's extortionate tricks 
+    trait = forgiving
+	father = thessalian01601 # Lykophroun, speculative
+	3314.1.1 = { # made up
+		birth = yes # 440 BC
+	}
+    ## Redundant code - preserved for documentation purposes
+    #3390.6.1 = { # 423 BC, made up
+    #   add_spouse = thessalian016z02 # Teisiphonos
+    #}
+	3388.1.1 = { # made up
+		death = yes # 366 BC
+	}
+}
+thessalian016w02 = {
+	name = "Polydouros" # gymnasiarch at Pherai ca. 306 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01607 # Teisiphonos, speculative
+	3397.1.1 = { # made up
+		birth = yes # 357 BC
+	}
+	3456.1.1 = { # made up
+		death = yes # 298 BC
+	}
+}
+thessalian016w03 = {
+	name = "Iasoun" # gymnasiarch at Pherai ca. 304 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01608 # Lykophroun, speculative
+	3400.1.1 = { # made up
+		birth = yes # 354 BC
+	}
+	3448.1.1 = { # made up
+		death = yes # 306 BC
+	}
+}
+thessalian016w04 = {
+	name = "Philiskos"
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01608 # Lykophroun, speculative
+	3404.1.1 = { # made up
+		birth = yes # 350 BC
+	}
+	3459.1.1 = { # made up
+		death = yes # 295 BC
+	}
+}
+thessalian016w05 = {
+	name = "Lykophroun" # attested in an early Hellenistic epitaph which may be Orphic in nature
+	dynasty = thessaliandyn016 # Pheraios
+	religion = orphism_faith
+	culture = thessalian
+	father = thessalian016w04 # Philiskos
+	3430.1.1 = { # made up
+		birth = yes # 324 BC
+	}
+	3490.1.1 = { # made up
+		death = yes # 264 BC
+	}
+}
+thessalian016w06 = {
+	name = "Alexandros"
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w05 # Lykophroun, speculative
+	3459.1.1 = { # made up
+		birth = yes # 295 BC
+	}
+	3515.1.1 = { # made up
+		death = yes # 239 BC
+	}
+}
+thessalian016w07 = {
+	name = "Iasoun" # gymnasiarch at Pherai ca. 222 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w06 # Alexandros
+	3486.1.1 = { # made up
+		birth = yes # 268 BC
+	}
+	3547.1.1 = { # made up
+		death = yes # 207 BC
+	}
+}
+thessalian016w08 = {
+	name = "Alexandros" # gymnasiarch at Pherai ca. 191 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w07 # Iasoun, speculative
+	3517.1.1 = { # made up
+		birth = yes # 237 BC
+	}
+	3581.1.1 = { # made up
+		death = yes # 173 BC
+	}
+}
+thessalian016w09 = {
+	name = "Peithelaos"
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w06 # Alexandros, speculative
+	3492.1.1 = { # made up
+		birth = yes # 262 BC
+	}
+	3554.1.1 = { # made up
+		death = yes # 200 BC
+	}
+}
+thessalian016w10 = {
+	name = "Iasoun" # gymnasiarch at Pherai ca. 191 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w09 # Peithelaos
+	3523.1.1 = { # made up
+		birth = yes # 231 BC
+	}
+	3573.1.1 = { # made up
+		death = yes # 181 BC
+	}
+}
+thessalian016w11 = {
+	name = "Peitholaos" # tagos at Krannon in the first half of the 2nd century BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w10 # Iasoun, speculative
+	3547.1.1 = { # made up
+		birth = yes # 207 BC
+	}
+	3594.1.1 = { # made up
+		death = yes # 160 BC
+	}
+}
+thessalian016w12 = {
+	name = "Philippidas"
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian01604 # Meirionas, speculative
+	3375.1.1 = { # made up
+		birth = yes # 379 BC
+	}
+	3440.1.1 = { # made up
+		death = yes # 314 BC
+	}
+}
+thessalian016w13 = {
+	name = "Meirionas" # gymnasiarch at Pherai ca. 299 BC
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016w12 # Philippidas
+	3407.1.1 = { # made up
+		birth = yes # 347 BC
+	}
+	3462.1.1 = { # made up
+		death = yes # 292 BC
+	}
+}
+
+# Pheraios - Fictional
+
+thessalian016z01 = {
+	name = "Polyalkes" # fictional father of Lykophron
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	3263.1.1 = { # made up
+		birth = yes # 491 BC
+	}
+	3313.1.1 = { # made up
+		death = yes # 441 BC
+	}
+}
+thessalian016z02 = {
+	name = "Teisiphonos" # fictional father of Jason
+	dynasty = thessaliandyn016 # Pheraios
+	religion = pythian_faith
+	culture = thessalian
+	father = thessalian016z01 # Polyalkes
+	3298.1.1 = { # made up
+		birth = yes # 456 BC
+	}
+    3390.6.1 = { # 423 BC, made up
+       add_spouse = thessalian016w01 # Kytheria
+    }
+	3355.1.1 = { # made up
+		death = yes # 399 BC
 	}
 }

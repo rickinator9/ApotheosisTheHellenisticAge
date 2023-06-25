@@ -1,4 +1,6 @@
-﻿###########
+﻿
+
+###########
 ## Generic Holy Site Buildings
 ###########
 
@@ -53,7 +55,7 @@ holy_site_cathedral_01 = {
 	county_modifier = {
 		tax_mult = 0.2
 		development_growth_factor = 0.2
-		development_growth = 0.1
+		development_growth = 0.15
 	}
 	
 	province_modifier = {
@@ -69,6 +71,8 @@ holy_site_cathedral_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 holy_site_mosque_01 = {
@@ -116,7 +120,7 @@ holy_site_mosque_01 = {
 	county_modifier = {
 		tax_mult = 0.2
 		development_growth_factor = 0.2
-		development_growth = 0.1
+		development_growth = 0.15
 	}
 	
 	province_modifier = {
@@ -132,6 +136,8 @@ holy_site_mosque_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 holy_site_pagan_grand_temple_01 = {
@@ -186,7 +192,7 @@ holy_site_pagan_grand_temple_01 = {
 		tax_mult = 0.1
 		levy_size = 0.1
 		development_growth_factor = 0.2
-		development_growth = 0.1
+		development_growth = 0.15
 	}
 	
 	levy = 500
@@ -203,6 +209,8 @@ holy_site_pagan_grand_temple_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 holy_site_indian_grand_temple_01 = {
@@ -256,7 +264,7 @@ holy_site_indian_grand_temple_01 = {
 	county_modifier = {
 		tax_mult = 0.2
 		development_growth_factor = 0.2
-		development_growth = 0.1
+		development_growth = 0.15
 	}
 	
 	province_modifier = {
@@ -272,6 +280,8 @@ holy_site_indian_grand_temple_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 holy_site_other_grand_temple_01 = {
@@ -324,7 +334,7 @@ holy_site_other_grand_temple_01 = {
 	county_modifier = {
 		tax_mult = 0.2
 		development_growth_factor = 0.2
-		development_growth = 0.1
+		development_growth = 0.15
 	}
 	
 	province_modifier = {
@@ -340,7 +350,12 @@ holy_site_other_grand_temple_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
+
+
+# NOTE: the custom loc key GetSpecialBuildingNameFromProvince in 00_building_custom_localization.txt pulls from this database. If a new special building is added here, please update the custom loc key!
 
 ##########
 # Mahabodhi Temple
@@ -379,7 +394,7 @@ holy_site_mahabodhi_temple_01 = {
 	county_modifier = {
 		tax_mult = 0.2
 		development_growth_factor = 0.3
-		development_growth = 0.2
+		development_growth = 0.3
 	}
 	
 	province_modifier = {
@@ -395,6 +410,9 @@ holy_site_mahabodhi_temple_01 = {
 	}
 	
 	type = special
+
+
+
 }
 
 ##########
@@ -423,7 +441,7 @@ the_pyramids_01 = {
 		short_reign_duration_mult = -0.2
 	}
 	county_modifier = {
-		development_growth = 0.1
+		development_growth = 0.2
 	}
 	
 	ai_value = {
@@ -435,6 +453,8 @@ the_pyramids_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_wonder
 }
 
 ##########
@@ -473,6 +493,8 @@ stonehenge_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 ##########
@@ -498,7 +520,7 @@ petra_01 = {
 	county_modifier = {
 		tax_mult = 0.1
 		supply_limit_mult = 0.25
-		development_growth = 0.1
+		development_growth = 0.2
 		development_growth_factor = 0.15
 	}
 	
@@ -515,6 +537,8 @@ petra_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_stewardship
 }
 
 ##########
@@ -577,7 +601,7 @@ temple_in_jerusalem_01 = {
 	county_modifier = {
 		tax_mult = 0.3
 		development_growth_factor = 0.3
-		development_growth = 0.2
+		development_growth = 0.3
 	}
 	
 	province_modifier = {
@@ -593,6 +617,8 @@ temple_in_jerusalem_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_religious
 }
 
 ##########
@@ -600,6 +626,12 @@ temple_in_jerusalem_01 = {
 ##########
 
 hall_of_heroes_01 = {
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = tours_and_tournaments }
+			desc = tournament_activity_cost_max_discount_effect_desc
+		}
+	}
 
 	type_icon = "icon_building_hall_of_heroes.dds"
 	
@@ -625,10 +657,17 @@ hall_of_heroes_01 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_martial
 }
 
 hall_of_heroes_02 = {
-
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = tours_and_tournaments }
+			desc = tournament_activity_cost_max_discount_effect_desc
+		}
+	}
 	type_icon = "icon_building_hall_of_heroes.dds"
 	
 	levy = 265
@@ -654,10 +693,17 @@ hall_of_heroes_02 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_martial
 }
 
 hall_of_heroes_03 = {
-
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = tours_and_tournaments }
+			desc = tournament_activity_cost_max_discount_effect_desc
+		}
+	}
 	type_icon = "icon_building_hall_of_heroes.dds"
 	
 	levy = 375
@@ -683,10 +729,17 @@ hall_of_heroes_03 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_martial
 }
 
 hall_of_heroes_04 = {
-
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = tours_and_tournaments }
+			desc = tournament_activity_cost_max_discount_effect_desc
+		}
+	}
 	type_icon = "icon_building_hall_of_heroes.dds"
 	
 	levy = 500
@@ -712,10 +765,17 @@ hall_of_heroes_04 = {
 	}
 	
 	type = special
+
+	flag = travel_point_of_interest_martial
 }
 
 hall_of_heroes_05 = {
-
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = tours_and_tournaments }
+			desc = tournament_activity_cost_max_discount_effect_desc
+		}
+	}
 	type_icon = "icon_building_hall_of_heroes.dds"
 	
 	levy = 700
@@ -739,44 +799,8 @@ hall_of_heroes_05 = {
 	}
 	
 	type = special
-}
 
-##########
-# Universities
-##########
-
-generic_university = {
-	construction_time = very_slow_construction_time
-
-	type_icon = "icon_building_university.dds"
-	
-	can_construct_potential = {
-		building_requirement_tribal = no
-		building_university_requirement = yes
-	}
-	
-	can_construct = {
-	}
-	
-	show_disabled = yes
-	
-	cost_gold = 1000
-
-	county_holder_character_modifier = {
-		learning_per_prestige_level = 1
-		monthly_lifestyle_xp_gain_mult = 0.05
-		monthly_dynasty_prestige = 0.25
-	}
-	
-	county_modifier = {
-		development_growth_factor = 0.1
-	}
-	
-	ai_value = {
-		base = 100
-	}
-	
-	type = special
+	flag = travel_point_of_interest_martial
 }
 
 ########
@@ -813,5 +837,7 @@ special_greenhouse_01 = {
 		}
 	}
 	
-	#type = special
+	type = special
+
+	flag = travel_point_of_interest_learning
 }

@@ -13,9 +13,9 @@
 @slingers_low_maint_cost = 0.2
 @slingers_high_maint_cost = @[slingers_low_maint_cost * high_maint_mult]
 
-@phalanx_recruitment_cost = 100
-@phalanx_low_maint_cost = 0.4
-@phalanx_high_maint_cost = @[phalanx_low_maint_cost * high_maint_mult]
+@medium_infantry_recruitment_cost = 100
+@medium_infantry_low_maint_cost = 0.4
+@medium_infantry_high_maint_cost = @[medium_infantry_low_maint_cost * high_maint_mult]
 
 @heavy_cavalry_recruitment_cost = 200
 @heavy_cavalry_low_maint_cost = 0.7
@@ -26,14 +26,1558 @@ slingers_recruitment_cost = @[slingers_recruitment_cost]
 slingers_low_maint_cost = @[slingers_low_maint_cost]
 slingers_high_maint_cost = @[slingers_high_maint_cost]
 
-phalanx_recruitment_cost = @[phalanx_recruitment_cost]
-phalanx_low_maint_cost = @[phalanx_low_maint_cost]
-phalanx_high_maint_cost = @[phalanx_high_maint_cost]
+medium_infantry_recruitment_cost = @[medium_infantry_recruitment_cost]
+medium_infantry_low_maint_cost = @[medium_infantry_low_maint_cost]
+medium_infantry_high_maint_cost = @[medium_infantry_high_maint_cost]
 
 hetairoi_recruitment_cost = @[heavy_cavalry_recruitment_cost * hetairoi_mult]
 hetairoi_low_maint_cost = @[heavy_cavalry_low_maint_cost * hetairoi_mult]
 hetairoi_high_maint_cost = @[heavy_cavalry_high_maint_cost * hetairoi_mult]
 
-spartiatai_hoplitai_recruitment_cost = @[phalanx_recruitment_cost * 1.6]
-spartiatai_hoplitai_low_maint_cost = @[phalanx_low_maint_cost * 1.6]
-spartiatai_hoplitai_high_maint_cost = @[phalanx_high_maint_cost * 1.6]
+spartiatai_hoplitai_recruitment_cost = @[medium_infantry_recruitment_cost * 1.6]
+spartiatai_hoplitai_low_maint_cost = @[medium_infantry_low_maint_cost * 1.6]
+spartiatai_hoplitai_high_maint_cost = @[medium_infantry_high_maint_cost * 1.6]
+
+###########
+# LIMITS  #
+###########
+
+ATHA_maa_guard_remaining = {
+	value = ATHA_maa_guard_maximum
+	subtract = ATHA_maa_guard_count
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		subtract = 1
+	}
+}
+
+ATHA_maa_guard_maximum = {
+	value = 1
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		add = 1
+	}
+}
+
+ATHA_maa_guard_count = {
+	value = 0
+	add = ATHA_maa_cordinau_orca_count
+	add = ATHA_maa_homoioi_hippeis_count
+	add = ATHA_maa_hypaspistai_count
+	add = ATHA_maa_basilikoi_agema_count
+	add = ATHA_maa_hiera_ile_count
+}
+
+ATHA_maa_elite_remaining = {
+	value = ATHA_maa_elite_maximum
+	subtract = ATHA_maa_elite_count
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		subtract = 1
+	}
+}
+
+ATHA_maa_elite_maximum = {
+	value = 1
+	if = {
+		limit = {
+			is_ai = yes # The AI will not recruit further subunits if the can_recruit is not valid, so give them one above their usual limit.
+		}
+		add = 1
+	}
+}
+
+ATHA_maa_elite_count = {
+	value = 0
+	add = ATHA_maa_hyperaspistai_count
+	add = ATHA_maa_makedonikoi_peltastai_count
+	add = ATHA_maa_ardiaian_thureophoroi_count
+	add = ATHA_maa_eparitoi_hoplitai_count
+	add = ATHA_maa_epilektoi_hoplitai_count
+	add = ATHA_maa_homoioi_hoplitai_count
+	add = ATHA_maa_nedes_nesamoi_count
+	add = ATHA_maa_agema_phalangitai_count
+	add = ATHA_maa_chaonion_agema_count
+	add = ATHA_maa_promakhoi_kretikoi_count
+	add = ATHA_maa_zibutai_count
+}
+
+
+ATHA_maa_hyperaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hyperaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_makedonikoi_peltastai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = makedonikoi_peltastai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_ardiaian_thureophoroi_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thureophoroi
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thureophoroi
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thureophoroi
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thureophoroi
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = ardiaian_thureophoroi
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_eparitoi_hoplitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi_hoplitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi_hoplitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi_hoplitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi_hoplitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = eparitoi_hoplitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_epilektoi_hoplitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = epilektoi_hoplitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_homoioi_hoplitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hoplitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_nedes_nesamoi_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = nedes_nesamoi
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = nedes_nesamoi
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = nedes_nesamoi
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = nedes_nesamoi
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = nedes_nesamoi
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_cordinau_orca_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = cordinau_orca
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_homoioi_hippeis_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = homoioi_hippeis
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hypaspistai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hypaspistai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_agema_phalangitai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = agema_phalangitai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_chaonion_agema_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = chaonion_agema
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = chaonion_agema
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = chaonion_agema
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = chaonion_agema
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = chaonion_agema
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_promakhoi_kretikoi_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = promakhoi_kretikoi
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_zibutai_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = zibutai
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_basilikoi_agema_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = basilikoi_agema
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+ATHA_maa_hiera_ile_count = {
+	value = 0
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 1
+			}
+		}
+
+		add = 1
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 2
+			}
+		}
+
+		add = 2
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 3
+			}
+		}
+
+		add = 3
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 4
+			}
+		}
+
+		add = 4
+	}
+	if = {
+		limit = {
+			number_maa_regiments_of_type = {
+				type = hiera_ile
+				value = 5
+			}
+		}
+
+		add = 5
+	}
+}
+
+###########
+# WEIGHTS #
+###########
+
+ATHA_ai_maa_cultural_weight_like = 240
+ATHA_ai_maa_cultural_weight_dislike = -240
+ATHA_ai_maa_terrain_weight_like = 120
+ATHA_ai_maa_terrain_weight_dislike = -120
+
+ATHA_ai_weight_already_has_type = 1000
+
+ATHA_ai_weight_obsolescence = -120
+ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
+ATHA_ai_weight_elite_bonus = 240
+ATHA_ai_weight_guard_bonus = 300
+
+ATHA_ai_weight_guard = {
+	value = -80
+	if = {
+		limit = {
+			ATHA_maa_guard_remaining > 0
+		}
+		add = ATHA_ai_weight_guard_bonus
+	}
+}
+
+ATHA_ai_weight_elite = {
+	value = -80
+	if = {
+		limit = {
+			ATHA_maa_elite_remaining > 0
+		}
+		add = ATHA_ai_weight_elite_bonus
+	}
+}
+
+ATHA_ai_weight_skirmishers = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = wetlands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_archers = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:laconian }
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+						terrain = floodplains
+						terrain = drylands
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = hills
+						terrain = mountains
+						terrain = desert_mountains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_medium_infantry = {
+	value = 0
+	if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_mountains
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountains
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	}
+}
+
+ATHA_ai_weight_pikemen = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = hills
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_heavy_infantry = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_anatolian
+					has_cultural_pillar = heritage_thracian
+					has_cultural_pillar = heritage_paeonian
+					has_cultural_pillar = heritage_illyrian
+				}
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = mountains
+						terrain = desert
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = steppe
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_hoplite = {
+	value = ATHA_ai_weight_heavy_infantry
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_sarissa }
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_classical_thyreos}
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
+	if = {
+		limit = {
+			culture = { has_innovation = innovation_hellenistic_chainmail }
+		}
+
+		add = ATHA_ai_weight_obsolescence
+	}
+}
+
+ATHA_ai_weight_light_cavalry = {
+	value = 300
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }
+				has_culture_or_parent_culture = { CULTURE = culture:odrysian }		
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	} else_if = {
+		limit = {
+			culture = { has_cultural_pillar = heritage_pannonian }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = mountains
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = steppe
+						terrain = floodplains
+						terrain = drylands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+ATHA_ai_weight_heavy_cavalry = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				has_culture_or_parent_culture = { CULTURE = culture:athenian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian }
+				has_culture_or_parent_culture = { CULTURE = culture:arcadian }
+				has_culture_or_parent_culture = { CULTURE = culture:achaean }
+				has_culture_or_parent_culture = { CULTURE = culture:messenian }
+				has_culture_or_parent_culture = { CULTURE = culture:ionian }
+				has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
+				has_culture_or_parent_culture = { CULTURE = culture:laconian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
+			}
+		}
+		add = ATHA_ai_maa_cultural_weight_dislike
+	} else_if = {
+		limit = {
+			has_culture_or_parent_culture = { CULTURE = culture:thessalian }
+			has_culture_or_parent_culture = { CULTURE = culture:macedonian }
+			has_culture_or_parent_culture = { CULTURE = culture:epirote }
+			has_culture_or_parent_culture = { CULTURE = culture:odrysian }
+		}
+		add = ATHA_ai_maa_cultural_weight_like
+	}
+
+	if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = valley
+						terrain = forest_hills
+						terrain = forest_mountains
+						terrain = forest_valley
+						terrain = hills
+						terrain = mountains
+						terrain = desert_mountains
+						terrain = jungle
+						terrain = forest
+						terrain = taiga
+						terrain = wetlands
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_dislike
+	} else_if = {
+		limit = {
+			capital_county = {
+				title_province = {
+					OR = {
+						terrain = plains
+						terrain = farmlands
+						terrain = oasis
+						terrain = steppe
+						terrain = floodplains
+					}
+				}
+			}
+		}
+
+		add = ATHA_ai_maa_terrain_weight_like
+	}
+}
+
+# SPECIFIC MAA
+
+ATHA_ai_weight_generic_skirmishers = {
+	value = ATHA_ai_weight_skirmishers
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_anatolikoi_phyletai_trigger = yes
+				can_recruit_maa_kretikoi_peltastai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+ATHA_ai_weight_generic_slingers = {
+	value = ATHA_ai_weight_skirmishers
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
+				can_recruit_maa_rhodioi_sphendonetai_trigger = yes
+				can_recruit_maa_skaplinai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_medium_infantry = {
+	value = ATHA_ai_weight_medium_infantry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_drapanai_trigger = yes
+				can_recruit_maa_rompaianai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_hoplite = {
+	value = ATHA_ai_weight_hoplite
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_lakonikoi_hoplitai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_pikemen = {
+	value = ATHA_ai_weight_pikemen
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_chalkaspides_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_archers = {
+	value = ATHA_ai_weight_archers
+	if = {
+		limit = {
+			can_recruit_maa_kretikoi_toxotai_trigger = yes
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_light_cavalry = {
+	value = ATHA_ai_weight_light_cavalry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_mandonai_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}
+
+ATHA_ai_weight_generic_heavy_cavalry = {
+	value = ATHA_ai_weight_heavy_cavalry
+	if = {
+		limit = {
+			OR = {
+				can_recruit_maa_thessalikoi_hippeis_trigger = yes
+			}
+		}
+
+		add = ATHA_ai_weight_malus_cultural_maa
+	}
+}

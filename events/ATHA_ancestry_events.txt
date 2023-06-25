@@ -1529,7 +1529,7 @@ ancestry.0008 = {
         duel = {
             skill = prowess
             value = average_skill_rating
-            5000 = { # You make it out with the equipment
+            50 = { # You make it out with the equipment
                 desc = ancestry.0008.a_success
                 compare_modifier = {
                     value = scope:duel_value
@@ -1812,14 +1812,13 @@ ancestry.0009 = {
                 trigger = { var:ancestry_0006_outcome = flag:success_stealth }
                 desc = ancestry.0009.desc.ending_success_stealth
             }
+            triggered_desc = { # Examine hero's equipment once you've fought your way out 
+                trigger = { var:ancestry_0006_outcome = flag:success_fight }
+                desc = ancestry.0009.desc.ending_success_fight
+            }
             triggered_desc = { # Examine hero's equipment once you've lost your pursuers 
-                trigger = { 
-                    OR = {
-                        var:ancestry_0006_outcome = flag:success_fight
-                        var:ancestry_0006_outcome = flag:success_run
-                    }
-                }
-                desc = ancestry.0009.desc.ending_success_escape
+                trigger = { var:ancestry_0006_outcome = flag:success_run }
+                desc = ancestry.0009.desc.ending_success_run
             }
             triggered_desc = { # You get to the shrine, but there's nothing there! 
                 trigger = { 

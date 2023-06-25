@@ -10,6 +10,7 @@ spartanlowborn1 = {
 	3056.1.1 = { # made up
 		birth = yes # 698 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3074.1.1 = { # 680 BC, made up
 	#	add_spouse = spartan00117 # Anaxandros
 	#}
@@ -28,6 +29,7 @@ spartanlowborn2 = {
 	3224.1.1 = { # made up
 		birth = yes # 530 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3242.1.1 = { # 512 BC, made up
 	#	add_spouse = spartan00126 # Kleombrotos
 	#}
@@ -47,6 +49,7 @@ spartanlowborn3 = {
 	3460.1.1 = { # made up
 		birth = yes # 294 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3479.1.1 = { # 275 BC, made up
 	#	add_spouse = spartan00146 # Leonidas
 	#}
@@ -65,6 +68,7 @@ spartanlowborn4 = {
 	2838.1.1 = { # made up
 		birth = yes # 916 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#2855.1.1 = { # 899 BC, made up
 	#	add_spouse = spartan00205 # Eunomos
 	#}
@@ -85,6 +89,7 @@ spartanlowborn5 = {
 		#remove_trait = beauty_bad_3
 		trait = beauty_good_3 # Herodotus recounts a story about her appearance being changed by a mysterious woman at the shrine of Helen
 	}
+	## Redundant code - preserved for documentation purposes
 	#3212.1.1 = { # 542 BC, made up
 	#	add_spouse = ... # Agetos
 	#}
@@ -104,6 +109,7 @@ spartanlowborn6 = {
 	3312.1.1 = { # made up
 		birth = yes # 442 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3329.1.1 = { # 425 BC, made up
 	#	add_spouse = spartan00230 # Agis
 	#}
@@ -429,8 +435,8 @@ spartan00122 = {
 	3200.1.1 = { # 554 BC, made up
 		add_spouse = spartan00128 # Euonyma
 		effect = {
-			set_relation_lover = {
-				target = character:spartan00128 # refused to divorce his first wife because of his love for her
+			set_relation_lover = { # refused to divorce his first wife because of his love for her
+				target = character:spartan00128 # Euonyma
 				reason = lover_historical_anaxandridas
 			}
 		}
@@ -471,7 +477,15 @@ spartan00124 = {
 	3214.1.1 = { # approximate
 		birth = yes # 540 BC
 	}
-	# 520 BC, approximate, unsuccessfully challenges his half-brother Kleomenes for the throne. They become rivals as a result.
+	## Redundant code - preserved for documentation purposes
+	#3234.1.1 = { # 520 BC, approximate
+	#	effect = {
+	#		set_relation_rival = { # unsuccessfully challenges his half-brother Kleomenes for the throne
+	#			target = character:spartan00127
+	#			reason = rival_claimed_throne_failed
+	#		}
+	#	}
+	#}
 	3244.1.1 = { # 510 BC
 		death = { 
 			death_reason = death_battle # died in battle against the Carthaginians and Segestaeans
@@ -534,7 +548,7 @@ spartan00127 = {
 	trait = sadistic
 	trait = temperate
 	trait = intellect_good_2
-	trait = lunatic_1
+	trait = lunatic_1 # Forrest (1980) and Devereux (1995) have argued that he suffered from paranoid schizophrenia
 	father = spartan00122 # Anaxandridas
 	#mother = ... # Gorgo
 	3213.1.1 = { # approximate
@@ -542,16 +556,16 @@ spartan00127 = {
 	}
 	3234.1.1 = { # 520 BC, approximate
 		effect = {
-			set_relation_rival = {
-				target = character:spartan00124 # is challenged by his half-brother Dorieus for the throne
+			set_relation_rival = { # is challenged by his half-brother Dorieus for the throne
+				target = character:spartan00124 # Dorieus
 				reason = rival_claimed_throne_failed
 			}
 		}
 	}
 	5249.1.1 = { # 507 BC
 		effect = {
-			set_relation_rival = {
-				target = character:spartan002b01 # he and Demaratus constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+			set_relation_rival = { # he and Demaratus constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+				target = character:spartan002b01 # Damaratos
 				reason = rival_constant_interference
 			}
 		}
@@ -572,7 +586,16 @@ spartan00128 = {
 	3183.1.1 = { # made up
 		birth = yes # 571 BC
 	}
-	# 554 BC, made up, marries Anaxandridas and becomes his lover.
+	## Redundant code - preserved for documentation purposes
+	#3200.1.1 = { # 554 BC, made up
+	#	add_spouse = spartan00122 # Anaxandridas
+	#	effect = {
+	#		set_relation_lover = { # Anaxandridas refused to divorce her despite being under pressure from the ephors
+	#			target = character:spartan00122 # Anaxandridas
+	#			reason = lover_historical_anaxandridas
+	#		}
+	#	}
+	#}
 	3252.1.1 = { # made up
 		death = yes # 502 BC
 	}
@@ -653,6 +676,7 @@ spartan00133 = {
 	3246.1.1 = { # made up
 		birth = yes # 508 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3264.1.1 = { # 490 BC, made up
 	#	add_spouse = spartan00125 # Leonidas
 	#}
@@ -829,17 +853,22 @@ spartan00143 = {
 		add_spouse = spartan002a04 # Chilonis
 	}
 	3479.1.1 = { # 275 BC, approximate
-		effect = {
-			# Becomes rivals with Chilonis.
+		effect = { # learns that Acrotatus has seduced his wife
+			## Redundant code - preserved for documentation purposes
+			#set_relation_rival = {
+			#	target = character:spartan002a04 # Chilonis
+			#	reason = rival_cuckold
+			#	involved_character = character:spartan00152 # Akrotatos
+			#}
 			set_relation_rival = {
-				target = character:spartan00152 # learns that Acrotatus has seduced his wife
+				target = character:spartan00152 # Akrotatos
 				reason = rival_seduced_spouse
-				involved_character = character:spartan002a04
+				involved_character = character:spartan002a04 # Chilonis
 			}
 			set_relation_rival = {
 				target = character:spartan00147 # Areus
 				reason = rival_encouraged_spouse_seduction
-				involved_character = character:spartan00152
+				involved_character = character:spartan00152 # Akrotatos
 			}
 		}
 		add_pressed_claim = title:d_lakedaimon # Cleonymus leaves Sparta and swears vengeance
@@ -891,6 +920,7 @@ spartan00145 = {
 spartan00146 = {
 	name = "Leonidas" # king Leonidas II
 	dynasty = spartandyn001 # Agiadas
+	dna = spartan00146_dna
 	religion = pythian_faith
 	culture = laconian
 	diplomacy = 6
@@ -938,7 +968,16 @@ spartan00147 = {
 	3440.1.1 = { # speculative
 		birth = yes # 314 BC
 	}
-	# 275 BC, approximate, becomes rivals with Cleonymus.
+	## Redundant code - preserved for documentation purposes
+	#3479.1.1 = { # 275 BC, approximate
+	#	effect = {
+	#		set_relation_rival = { # rivalry with Cleonymus
+	#			target = character:spartan00143 # Kleonymos
+	#			reason = rival_encouraged_spouse_seduction
+	#			involved_character = character:spartan00152 # Akrotatos
+	#		}
+	#	}
+	#}
 	3489.1.1 = { # 265 BC
 		death = { 
 			death_reason = death_battle # died in battle against Antigonus Gonatas
@@ -1022,8 +1061,9 @@ spartan00151 = {
 	3488.1.1 = { # made up
 		birth = yes # 266 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3506.1.1 = { # 248 BC, made up
-	#	add_spouse = spartan00152 # Kleombrotos
+	#	add_spouse = spartan00153 # Kleombrotos
 	#}
 	3543.1.1 = { # made up
 		death = yes # 211 BC
@@ -1032,6 +1072,7 @@ spartan00151 = {
 spartan00152 = {
 	name = "Akrotatos" # king Acrotatus
 	dynasty = spartandyn001 # Agiadas
+	dna = spartan00152_dna
 	religion = pythian_faith
 	culture = laconian
 	sexuality = heterosexual
@@ -1053,14 +1094,23 @@ spartan00152 = {
 	}
 	3478.1.1 = { # 276 BC, approximate
 		effect = {
-			set_relation_lover = {
-				target = character:spartan002a04 # begins an affair with Chilonis
+			set_relation_lover = { # begins an affair with Chilonis
+				target = character:spartan002a04 # Chilonis
 				reason = lover_web_of_intrigue
-				involved_character = character:spartan00152 # Cleonymus
+				involved_character = character:spartan00143 # Kleonymos
 			}
 		}
 	}
-	# 275 BC, approximate, becomes rivals with Cleonymus
+	## Redundant code - preserved for documentation purposes
+	#3479.1.1 = { # 275 BC, approximate
+	#	effect = {
+	#		set_relation_rival = { # Cleonymus learns of the affair
+	#			target = character:spartan00143 # Kleonymos
+	#			reason = rival_seduced_spouse
+	#			involved_character = character:spartan002a04 # Chilonis
+	#		}
+	#	}
+	#}
 	3483.1.1 = { # 271 BC, approximate
 		add_spouse = spartan002a04 # Chilonis
 	}
@@ -1406,8 +1456,8 @@ spartan00214 = {
 	2997.1.1 = { # made up
 		birth = yes # 757 BC
 	}
-	3055.1.1 = { # made up
-		death = yes # 699 BC
+	3031.1.1 = { # made up (but died before his father according to Paus. 4.15.3)
+		death = yes # 723 BC
 	}
 }
 spartan00215 = {
@@ -1581,8 +1631,8 @@ spartan00226 = {
 	}
 	3239.1.1 = { # 515 BC, made up
 		effect = {
-			set_relation_rival = {
-				target = character:spartan002b01 # Demaratus steals and marries the woman Latychidas was betrothed to
+			set_relation_rival = { # Demaratus steals and marries the woman Leotychidas was betrothed to
+				target = character:spartan002b01 # Damaratos
 				reason = rival_historical_demaratus_leotychidas
 			}
 		}
@@ -1625,6 +1675,7 @@ spartan00228 = {
 	3263.1.1 = { # made up
 		birth = yes # 491 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3280.1.1 = { # 474 BC, made up
 	#	add_spouse = spartan00229 # Archidamos
 	#}
@@ -1876,18 +1927,20 @@ spartan00239 = {
 	dynasty = spartandyn002 # Eurypontidas
 	religion = pythian_faith
 	culture = laconian
-	trait = education_martial_1
+	trait = education_diplomacy_1 # tried convincing the Greeks to break off their agreements with Antigonus and Craterus, but was unsuccessful (Plut. Mor. 219a–b)
 	trait = craven
-	trait = shy
+	trait = cynical
 	trait = content
-	trait = reclusive
-	trait = intellect_bad_1
+	trait = physique_bad_1
 	father = spartan00236 # Eudamidas
 	3413.1.1 = { # made up
 		birth = yes # 341 BC
 	}
-	3475.1.1 = { # made up
-		death = yes # 279 BC
+	3460.1.1 = { # 294 BC, approximate
+		trait = reclusive # became politically irrelevant after his humiliating defeat to Demetrius Poliorcetes
+	}
+	3478.1.1 = { # made up
+		death = yes # 276 BC
 	}
 }
 spartan00240 = {
@@ -1909,6 +1962,7 @@ spartan00240 = {
 spartan00241 = {
 	name = "Eudamidas" # king Eudamidas II
 	dynasty = spartandyn002 # Eurypontidas
+	dna = spartan00241_dna
 	religion = pythian_faith
 	culture = laconian
 	diplomacy = 4
@@ -1956,6 +2010,7 @@ spartan00242 = {
 	3437.1.1 = { # approximate
 		birth = yes # 317 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3454.1.1 = { # 300 BC, made up
 	#	add_spouse = spartan00240 # Eudamidas
 	#}
@@ -2032,6 +2087,7 @@ spartan00245 = {
 	3463.1.1 = { # approximate
 		birth = yes # 291 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3479.1.1 = { # 275 BC, made up
 	#	add_spouse = spartan00241 # Eudamidas
 	#}
@@ -2162,6 +2218,7 @@ spartan00252 = {
 	3501.1.1 = { # made up
 		birth = yes # 253 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3517.1.1 = { # 237 BC, made up
 	#	add_spouse = spartan00244 # Archidamos
 	#}
@@ -2225,6 +2282,7 @@ spartan002a04 = {
 	female = yes
 	# dynasty = spartandyn002 # Eurypontidas
 	dynasty_house = house_latychidas # Latychidas
+	dna = spartan002a04_dna
 	religion = pythian_faith
 	culture = laconian
 	sexuality = heterosexual
@@ -2244,16 +2302,23 @@ spartan002a04 = {
 	3459.1.1 = { # made up
 		birth = yes # 295 BC
 	}
-	3478.1.1 = { # 276 BC, approximate
-		#add_spouse = spartan00143 # Kleonymos
-		# Becomes lovers with Acrotatus.
-	}
+	## Redundant code - preserved for documentation purposes
+	#3478.1.1 = { # 276 BC, approximate
+	#	add_spouse = spartan00143 # Kleonymos
+	#	effect = {
+	#		set_relation_lover = { # begins an affair with Acrotatus
+	#			target = character:spartan00152 # Acrotatus
+	#			reason = lover_web_of_intrigue
+	#			involved_character = character:spartan00143 # Kleonymos
+	#		}
+	#	}
+	#}
 	3479.1.1 = { # 275 BC, approximate
 		effect = {
-			set_relation_rival = {
-				target = character:spartan00143 # Cleonymus
+			set_relation_rival = { # Cleonymus learns about the affair
+				target = character:spartan00143 # Kleonymos
 				reason = rival_cuckold
-				involved_character = character:spartan00152
+				involved_character = character:spartan00152 # Akrotatos
 			}
 			add_opinion = {
 				target = character:spartan00143 # according to Plutarch, Chilonis was prepared to die before falling into Cleonymus' hands
@@ -2290,11 +2355,25 @@ spartan002b01 = {
 	3219.1.1 = { # made up
 		birth = yes # 535 BC
 	}
-	3239.1.1 = { # 515 BC, made up
-		#add_spouse = ... # Perkalon
-		# Becomes rivals with Leotychidas.
-	}
-	# 507 BC, rivals Cleomenes, he and Cleomenes constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens
+	#3239.1.1 = { # 515 BC, made up
+	#	add_spouse = ... # Perkalon
+	#	## Redundant code - preserved for documentation purposes
+	#	effect = {
+	#		set_relation_rival = { # Demaratus steals and marries the woman Leotychidas was betrothed to
+	#			target = character:spartan00226 # Latychidas
+	#			reason = rival_historical_demaratus_leotychidas
+	#		}
+	#	}
+	#}
+	## Redundant code - preserved for documentation purposes
+	#5249.1.1 = { # 507 BC
+	#	effect = {
+	#		set_relation_rival = { # he and Cleomenes constantly work against eachother, perhaps triggered by Demaratus' dissension at Athens  
+	#			target = character:spartan00127 # Kleomenes
+	#			reason = rival_constant_interference
+	#		}
+	#	}
+	#}
 	#3239.1.1 = { # 491 BC
 	#	employer = ... # flees to the court of Xerxes
 	#}
@@ -2563,6 +2642,7 @@ spartan002b17 = {
 	3540.1.1 = { # made up
 		birth = yes # 214 BC
 	}
+	## Redundant code - preserved for documentation purposes
 	#3557.1.1 = { # 197 BC, made up
 	#	add_spouse = argive00110 # Pythagoras
 	#}

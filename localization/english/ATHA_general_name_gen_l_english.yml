@@ -1,0 +1,26 @@
+﻿l_english:
+ UIName_unlanded_celtic_nickname: "[ROOT.Char.Custom('UiNameCheck')|V] [ROOT.Char.GetNickname]"
+ UIName_unlanded_celtic: "[ROOT.Char.Custom('UiNameCheck')|V]"
+ UIName_landed_celtic_nickname: "[ROOT.Char.GetTitleAsNameNoTooltip|V] [ROOT.Char.Custom('UiNameCheck')|V] '[ROOT.Char.GetNickname|V]' of [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip]"
+ UIName_landed_celtic: "[ROOT.Char.GetTitleAsNameNoTooltip|V] [ROOT.Char.Custom('UiNameCheck')|V] of [ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip]"
+
+ UIName_fallback: "[ROOT.Char.GetUINameNotMeNoTooltip]"
+
+ ATHA_name_with_patronymic:0 "[ROOT.Char.Custom('NameCheck')] [ROOT.Char.Custom('PatCheck')]"
+ ATHA_first_name_only:0 "[ROOT.Char.Custom('NameCheck')]"
+
+ ATHA_supported_name: "[Localize(Concatenate(ROOT.Char.GetFirstNameNoTooltip, ROOT.Char.Custom('CharCult')))]"
+ ATHA_unsupported_name: "[Localize(Concatenate('ATHAFirstNamePre', ROOT.Char.Custom('CharCult')))][ROOT.Char.GetFirstNameNoTooltip][Localize(Concatenate('ATHAFirstNameSuf', ROOT.Char.Custom('CharCult')))]"
+
+ ATHAFirstNamePre_celtic: "" #these are for names that aren't supported for grammar transformation by the set culture. You set up stuff like arabic 'ibn - or norse -sson
+ ATHAFirstNameSuf_celtic: ""
+
+ ATHA_supported_pat: "[Localize(Concatenate(Concatenate(Concatenate(ROOT.Char.GetFather.GetFirstNameNoTooltip, ROOT.Char.Custom('CharCult')), '_pat'), ROOT.Char.Custom('CharGender')))]"
+ ATHA_unsupported_pat: "[Localize(Concatenate(Concatenate('ATHAPatPre', ROOT.Char.Custom('CharCult')), ROOT.Char.Custom('CharGender')))][ROOT.Char.GetFather.GetFirstNameNoTooltip][Localize(Concatenate(Concatenate('ATHAPatSuf', ROOT.Char.Custom('CharCult')), ROOT.Char.Custom('CharGender')))]"
+
+ ATHAPatPre_celtic_male: "" #these are for names that aren't supported for grammar transformation by the set culture. You set up stuff like arabic 'ibn - or norse -sson
+ ATHAPatPre_celtic_female: ""
+ ATHAPatSuf_celtic_male: ""
+ ATHAPatSuf_celtic_female: ""
+
+ gui_blank: "" #no space for no patronym

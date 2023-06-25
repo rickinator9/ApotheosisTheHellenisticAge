@@ -32,6 +32,7 @@ vassal_role = {
 					add = @ai_desire_always
 				}
 			}
+			score = 1
 
 			flag = category_vassal_role
 		}
@@ -56,6 +57,7 @@ vassal_role = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_vassal_role
 		}
@@ -82,6 +84,7 @@ vassal_role = {
 					add = @ai_desire_always
 				}
 			}
+			score = 1
 
 			flag = category_vassal_role
 		}
@@ -106,6 +109,7 @@ vassal_role = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_vassal_role
 		}
@@ -132,13 +136,14 @@ vassal_role = {
 					limit = {
 						scope:vassal = {
 							government_has_flag = is_bureaucracy_government
-							has_government = feudal_government
+							government_has_flag = government_is_feudal
 						}
 					}
 					add = @ai_standard_liege_desire
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_vassal_role
 		}
@@ -168,13 +173,14 @@ vassal_role = {
 					limit = {
 						scope:vassal = {
 							government_has_flag = is_bureaucracy_government
-							has_government = feudal_government
+							government_has_flag = government_is_feudal
 						}
 					}
 					add = @ai_standard_liege_desire
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_vassal_role
 		}
@@ -212,6 +218,7 @@ vassal_role = {
 				}
 			}
 			flag = category_vassal_role
+			score = 0
 		}
 	}
 }
@@ -226,6 +233,7 @@ imposed_franchise = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 1
 		}
 		imposed_franchise_democratic = {
 			is_valid = {
@@ -245,16 +253,17 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_democratic_government
+							government_has_flag = government_is_democratic_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_democratic_government }
+							NOT = { government_has_flag = government_is_democratic_city_state }
 						}
 					}
 					add = @ai_desire_always
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_imposed_franchise
 		}
@@ -286,18 +295,19 @@ imposed_franchise = {
 					limit = {
 						scope:liege = {
 							OR = { 
-								has_government = city_state_oligarchic_government
-								has_government = city_state_spartan_government
+								government_has_flag = government_is_oligarchic_city_state
+								government_has_flag = government_is_spartan_city_state
 							}
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_oligarchic_government }
+							NOT = { government_has_flag = government_is_oligarchic_city_state }
 						}
 					}
 					add = @ai_desire_always
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_imposed_franchise
 		}
@@ -329,16 +339,17 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_aristocratic_government
+							government_has_flag = government_is_aristocratic_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_aristocratic_government }
+							NOT = { government_has_flag = government_is_aristocratic_city_state }
 						}
 					}
 					add = @ai_desire_always
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_imposed_franchise
 		}
@@ -366,16 +377,17 @@ imposed_franchise = {
 				if = {
 					limit = {
 						scope:liege = {
-							has_government = city_state_tyrannical_government
+							government_has_flag = government_is_tyrannical_city_state
 						}
 						scope:vassal = {
-							NOT = { has_government = city_state_tyrannical_government }
+							NOT = { government_has_flag = government_is_tyrannical_city_state }
 						}
 					}
 					add = @ai_desire_always
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = vassal_contract_gives_strong_hook
 			flag = has_imposed_franchise
@@ -395,6 +407,7 @@ enforced_centralisation = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 2
 		}
 		enforced_centralisation_low = {
 			is_valid = {
@@ -422,6 +435,7 @@ enforced_centralisation = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 1
 
 			flag = category_enforced_centralisation
 		}
@@ -456,6 +470,7 @@ enforced_centralisation = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_enforced_centralisation
 		}
@@ -492,6 +507,7 @@ enforced_centralisation = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = -1
 
 			flag = category_enforced_centralisation
 		}
@@ -508,6 +524,7 @@ enforced_federalism = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 1
 		}
 		enforced_federalism_federal = {
 			is_valid = {
@@ -535,6 +552,7 @@ enforced_federalism = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_enforced_federalism
 		}
@@ -571,6 +589,7 @@ enforced_federalism = {
 				}
 			}
 			ai_vassal_desire = 0
+			score = 0
 
 			flag = category_enforced_federalism
 		}
@@ -589,6 +608,7 @@ colony_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+			score = -1
 
 			flag = category_colony_rights
 		}
@@ -615,6 +635,7 @@ colony_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 0
 
 			flag = category_colony_rights
 		}	
@@ -637,6 +658,7 @@ gift_estate_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+			score = -1
 
 			flag = category_gift_estate_rights
 		}
@@ -664,6 +686,7 @@ gift_estate_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 0
 
 			flag = category_gift_estate_rights
 		}	
@@ -715,6 +738,7 @@ garrison_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 0
 
 			flag = category_garrison_rights
 		}
@@ -753,6 +777,7 @@ garrison_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+			score = -2
 
 			flag = category_garrison_rights
 		}
@@ -776,6 +801,7 @@ ritual_coronations_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 0
 
 			flag = category_ritual_coronations_rights
 		}
@@ -802,6 +828,7 @@ ritual_coronations_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+			score = -1
 
 			flag = category_ritual_coronations_rights
 		}	
@@ -824,6 +851,7 @@ atha_fortification_rights = {
 			
 			ai_liege_desire = 0
 			ai_vassal_desire = @ai_standard_vassal_desire
+			score = 0
 
 			flag = category_fortification_rights
 		}
@@ -847,6 +875,7 @@ atha_fortification_rights = {
 			
 			ai_liege_desire = @ai_standard_liege_desire
 			ai_vassal_desire = 0
+			score = -1
 
 			flag = category_fortification_rights
 		}

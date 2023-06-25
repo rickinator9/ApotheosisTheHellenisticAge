@@ -22,7 +22,7 @@ ATHA_intrigue_scheming_special.1001 = {
 		animation = sick
 	}
 	theme = intrigue_skulduggery_focus
-	override_background = { event_background = feast }
+	override_background = { reference = feast }
 
 	trigger = {
 		has_focus = intrigue_skulduggery_focus
@@ -445,10 +445,8 @@ ATHA_intrigue_scheming_special.1005 = {
 				4 = { #Success at a cost
 					if = {
 						limit = {
-							scope:ROOT = {
-								NOT = {
-									has_trait = ill
-								}
+							NOT = {
+								has_trait = ill
 							}
 						}
 						send_interface_message = {

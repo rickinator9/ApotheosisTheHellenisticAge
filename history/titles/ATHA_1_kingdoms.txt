@@ -113,6 +113,24 @@ k_peloponnesos = { # title history represents the senior Spartan kings (accounti
 
 ### Thessalia
 k_thessalia = {
+	3381.1.1 = { # 373 BC, approximate
+		holder = thessalian01603 # Iasoun (Jason is elected tagus of the Thessalians)
+		government = hegemonic_league_government
+	}
+	3384.1.1 = { # 370 BC
+		holder = thessalian01605 # Polydouros (Polydorus rules as tagus jointly with Polyphron)
+	}
+	3384.6.1 = { # early summer 370 BC, approximate
+		holder = thessalian01606 # Polyphroun (Polyphron becomes sole tagus after Polydorus dies suddenly)
+		government = city_state_tyrannical_government # Polyphron "made the tageia like a tyranny" (Xen. Hell. 6. 4. 34)
+	}
+	3385.6.1 = { # early summer 369 BC, approximate
+		holder = thessalian01613 # Alexandros (a year later, Alexander murders Polyphron and takes over as tagus)
+	}
+	3390.1.1 = { # 364 BC
+		holder = 0 # Alexander is defeated by the Thebans and loses control over the rest of Thessaly
+	}
+
 	3479.1.1 = { # 275 BC
 		holder = macedonian00104 # Antigonos Gonatas
 		government = feudal_government
@@ -367,5 +385,173 @@ k_karia = {
 		liege = e_egypt
 		holder = macedonian03215 # Ptolemaios II
 		government = feudal_government
+	}
+}
+
+### Haimos
+k_haimos = {
+	3429.1.1 = { # 325 BC
+		holder = odrysian00157 # Seuthes III (Seuthes rebels against Macedonian rule following the death of Zopyrion)
+		government = clan_government
+	}
+	3459.1.1 = { # 295 BC, made up
+		holder = odrysian00159 # Hebryzelmis (speculative)
+	}
+}
+
+### Tribalia
+k_triballia = {
+	3369.1.1 = { # 385 BC, speculative
+		holder = triballian00101 # Khales
+		government = clan_government
+	}
+	3382.1.1 = { # 372 BC, made up
+		holder = triballian00102 # Skaris
+	}
+	3392.1.1 = { # 362 BC, made up
+		holder = triballian00103 # Rigozis
+	}
+	3408.1.1 = { # 346 BC, made up
+		holder = triballian00104 # Piruros
+	}
+	3413.1.1 = { # 341 BC, Philip's Campaign
+		liege = e_makedonia 
+	}
+	3415.1.1 = { # 339 BC, speculative
+		holder = triballian00105 # Syrmos
+	}
+	3419.1.1 = { # 335 BC, speculative
+		holder = triballian00106 # Sporis
+	}
+	3445.1.1 = { # 309 BC, Murder of Alexander IV, end of the Macedonian Empire
+		liege = 0
+	}
+	3469.1.1 = { # 285 BC, made up
+		holder = triballian00107 # Bendikos
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+		}
+	}
+}
+
+### Moesia
+k_moesia = {
+	# Kingdom of Tylis
+	3477.1.1 = { # 277 BC, approximate
+		holder = danuian00201 # Komontorios of Tylis
+		government = clan_government
+	}
+}
+
+### Mikra Skythia
+k_mikra_skythia = {
+	# Getic Kingdom
+	3394.1.1 = { # 360 BC, made up
+		holder = getic00101 # Kothelas
+		government = clan_government
+	}
+	3433.1.1 = { # 321 BC, made up
+		holder = getic00103 # Rholes (fictional)
+	}
+	3450.1.1 = { # 304 BC, made up
+		holder = getic00104 # Dromichaites
+	}
+	3476.1.1 = { # 278 BC, speculative
+		holder = getic00105 # Dromichaites (speculative)
+	}
+}
+
+### Illyris
+k_illyris = {
+	3354.1.1 = { # 400 BC, made up
+		holder = mathian00201 # Bardylis I
+		government = clan_government
+	}
+	3396.1.1 = { # 358 BC, made up
+		holder = mathian00202 # Grabos
+	}
+	3398.1.1 = { # 356 BC, speculative
+		holder = 0 # Parmenio defeats Grabos in a campaign
+	}
+	3419.1.1 = { # 335 BC, made up
+		holder = mathian00101 # Glaukias
+	}
+	3455.1.1 = { # 299 BC, made up
+		holder = mathian00102 # Monounios
+	}
+	3484.1.1 = { # 270 BC, made up
+		holder = mathian00104 # Mytilos
+	}
+}
+
+### Dardania
+k_dardania = {
+	3394.1.1 = { # 360 BC, made up
+		holder = dardanian00101 # Pleuratos (speculative)
+		government = clan_government
+	}
+	3416.1.1 = { # 338 BC, made up
+		holder = dardanian00102 # Pleurias (speculative)
+	}
+	3439.1.1 = { # 315 BC, made up
+		holder = dardanian00103 # Monounios (fictional)
+	}
+	3473.1.1 = { # 281 BC, made up
+		holder = dardanian00104 # Pleurias (fictional)
+	}
+	3504.1.1 = { # 250 BC, made up
+		holder = dardanian00105 # Longaros
+	}
+	3548.1.1 = { # 206 BC, approximate
+		holder = dardanian00106 # Baton
+	}
+	3578.1.1 = { # 176 BC, approximate
+		holder = dardanian00107 # Monounios
+	}
+}
+
+### Paionia
+k_paionia = {
+	3344.1.1 = { # 410 BC, made up
+		holder = paeonian00110 # Teutaos (speculative)
+		government = clan_government
+	}
+	3376.1.1 = { # 378 BC, made up
+		holder = paeonian00101 # Agis
+	}
+	3395.6.1 = { # early summer 359 BC, approximate
+		holder = paeonian00102 # Lykpeios
+	}
+	3408.4.23 = { # 346 BC (End of the Third Sacred War - Peace of Philocrates)
+		liege = e_makedonia # This is the entry where we give Philip II the empire title. He would probably have subjugated Paeonia long before this.
+	}
+	3417.1.1 = { # 337 BC, made up (but probably ca. 340-335 BC)
+		holder = paeonian00103 # Patraos
+	}
+	3428.1.1 = { # 326 BC
+		liege = 0 # Paeonia likely became independent at some point between Gaugamela and Alexander's death (https://www.academia.edu/1502593)
+	}
+	3439.1.1 = { # 315 BC, approximate
+		holder = paeonian00105 # Audoleon
+	}
+	3470.1.1 = { # 284 BC
+		holder = paeonian00107 # Ariston
+	}
+	3470.1.2 = { # 284 BC, approximate
+		holder = 0 # Ariston is immediately deposed by Lysimachus
+	}
+	3476.1.1 = { # 278 BC, approximate
+		holder = paeonian00108 # Leon
+	}
+	3503.1.1 = { # 251 BC, made up
+		holder = paeonian00109 # Dropion
 	}
 }

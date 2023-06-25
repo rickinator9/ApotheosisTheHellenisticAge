@@ -48,7 +48,7 @@ innovation_hellenistic_military_settlers = {
 	culture_era = culture_era_hellenistic
 	icon = @maa_02
 
-	modifier = {
+	character_modifier = {
 		men_at_arms_cap = 1
 		men_at_arms_limit = 4
 		levy_reinforcement_rate = 0.15
@@ -68,6 +68,13 @@ innovation_hellenistic_ephebic_college = {
 
 	custom = unlock_high_medieval_military_buildings
 	custom = students_of_knighthood
+	custom = more_glory_hounds
+
+	character_modifier = {
+		active_accolades = 1
+		glory_hound_opinion = 5
+		accolade_glory_gain_mult = 0.1
+	}
 
 	flag = global_regular
 	flag = high_medieval_era_regular
@@ -80,7 +87,7 @@ innovation_hellenistic_castramentation = {
 
 	custom = unlock_high_medieval_fortification_buildings
 
-	modifier = {
+	character_modifier = {
 		defender_advantage = 5
 	}
 
@@ -112,6 +119,10 @@ innovation_hellenistic_chainmail = {
 		type = heavy_cavalry
 		toughness = 3
 	}
+	maa_upgrade = {
+		type = pikemen
+		toughness = 3
+	}
 
 	custom = unlock_thorakitai_maa
 
@@ -124,7 +135,7 @@ innovation_hellenistic_baggage_train = {
 	culture_era = culture_era_hellenistic
 	icon = @leadership_alexander
 
-	modifier = {
+	character_modifier = {
 		movement_speed = 0.1
 		supply_duration	= 0.25
 	}
@@ -143,9 +154,10 @@ innovation_hellenistic_aulic_titulature = {
 
 	unlock_law = crown_authority_3
 
-	modifier = {
+	character_modifier = {
 		short_reign_duration_mult = -0.1
 	}
+	custom = more_courtly
 
 	flag = global_regular
 	flag = high_medieval_era_regular
@@ -157,6 +169,7 @@ innovation_hellenistic_compound_pulley = {
 	icon = @civil_construction_2
 
 	custom = unlock_high_medieval_economic_buildings
+	unlock_building = caravanserai_01
 
 	flag = global_regular
 	flag = high_medieval_era_regular
@@ -167,7 +180,7 @@ innovation_hellenistic_private_banking = {
 	culture_era = culture_era_hellenistic
 	icon = @wealth
 
-	modifier = {
+	character_modifier = {
 		development_growth_factor = 0.1
 	}
 
@@ -191,11 +204,12 @@ innovation_hellenistic_postal_system = {
 	culture_era = culture_era_hellenistic
 	icon = @companion
 
-	modifier = {
+	character_modifier = {
 		diplomatic_range_mult = 0.25
 		direct_vassal_opinion = 5
 		fellow_vassal_opinion = 5
 	}
+	custom = more_parochial
 
 	flag = global_regular
 	flag = high_medieval_era_regular
@@ -211,9 +225,12 @@ innovation_hellenistic_land_survey = {
 
 	custom = unlock_gift_estate_contract
 
-	modifier = {
+	character_modifier = {
 		domain_tax_mult = 0.05
 		title_creation_cost_mult = -0.2
+	}
+	county_modifier = {
+		building_slot_add = 1
 	}
 
 	flag = global_regular
@@ -238,8 +255,10 @@ innovation_hellenistic_astrolabe = {
 	culture_era = culture_era_hellenistic
 	icon = @misc_inventions
 
-	modifier = {
+	character_modifier = {
 		naval_movement_speed_mult = 0.25
+		character_travel_speed_mult = 0.25
+		sea_travel_danger = low_sea_danger_reduction
 	}
 
 	flag = global_regular

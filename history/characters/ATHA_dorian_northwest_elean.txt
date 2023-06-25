@@ -100,7 +100,7 @@ elean00201 = {
 	name = "Harmodios" # a Greek historian who wrote a treatise on Phigalian laws & customs
 	dynasty = eleandyn002 # Lepreatas
 	religion = pythian_faith
-	culture = dorian_northwest
+	culture = arcadian
 	trait = education_learning_3
 	trait = temperate
 	trait = just
@@ -143,10 +143,21 @@ elean00302 = {
 	trait = zealous
 	trait = generous
 	trait = brave
-	trait = mystic_2
+	trait = lifestyle_mystic
 	father = elean00303 # Aineas
 	3457.1.1 = { # made up
 		birth = yes # 297 BC
+	}
+	3475.1.1 = { # Adulthood, 279 BC
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = {
+				integer_range = {
+					min = medium_lifestyle_random_xp_low
+					max = medium_lifestyle_random_xp_high
+				}
+			}
+		}
 	}
 	3517.1.1 = { # made up
 		death = yes # 237 BC
@@ -157,7 +168,7 @@ elean00303 = {
 	dynasty = eleandyn003 # Iamidas
 	religion = pythian_faith
 	culture = dorian_northwest
-	trait = mystic_1
+	trait = lifestyle_mystic
 	father = elean00304 # Satyros, speculative
 	3423.1.1 = { # made up
 		birth = yes # 331 BC
@@ -171,7 +182,7 @@ elean00304 = {
 	dynasty = eleandyn003 # Iamidas
 	religion = pythian_faith
 	culture = dorian_northwest
-	trait = mystic_1
+	trait = lifestyle_mystic
 	trait = physique_good_3
 	trait = athletic
 	trait = panhellenic_victor
@@ -188,7 +199,7 @@ elean00305 = {
 	dynasty = eleandyn003 # Iamidas
 	religion = pythian_faith
 	culture = dorian_northwest
-	trait = mystic_1
+	trait = lifestyle_mystic
 	3356.1.1 = { # made up
 		birth = yes # 398 BC
 	}

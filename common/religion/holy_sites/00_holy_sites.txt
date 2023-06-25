@@ -29,8 +29,8 @@ olympia = {
 	# Training for sporting competitions makes us tougher!
 	character_modifier = {
 		name = holy_site_olympia_effect_name
-		phalanx_damage_mult = 0.1
-		phalanx_toughness_mult = 0.1
+		heavy_infantry_damage_mult = 0.1
+		heavy_infantry_toughness_mult = 0.1
 	}
 }
 
@@ -43,7 +43,8 @@ asklepieion = {
 	# The Asklepieion attracted pilgrims looking to cure various afflictions
 	character_modifier = {
 		name = holy_site_asklepieion_effect_name
-		negate_health_penalty_add = 0.1
+		negate_health_penalty_add = 0.2
+		health = 0.1
 	}
 }
 didyma = {
@@ -69,7 +70,7 @@ aigai = { # The Tombs of the Argead kings.
 		monthly_prestige_gain_mult = 0.05
 	}
 }
-dion = {
+dion = { # Major sanctuary to Zeus Olympios
 	county = c_dion
 
 	# The Macedonians held victory feasts and purification rites of the army here
@@ -169,7 +170,8 @@ antissa = { # oracle of Orpheus at the place where his head washed up
 	# Learn poetry and music from the best!
 	character_modifier = {
 		name = holy_site_antissa_effect_name
-		diplomacy_per_piety_level = 1
+		diplomacy = 1
+		learning = 1
 	}
 }
 ioros = { # speculative location of the famous Krestonian oracle of Dionysus, not too far from where the Derveni papyri were found
@@ -179,7 +181,7 @@ ioros = { # speculative location of the famous Krestonian oracle of Dionysus, no
 	# Krestonia was once inhabited by the Thracian Bisaltai, the oracle there was used to predict whether the harvests would be fruitful
 	character_modifier = {
 		name = holy_site_ioros_effect_name
-		domain_tax_same_faith_mult = 0.1
+		domain_tax_same_faith_mult = 0.05
 		different_culture_opinion = 5
 	}
 }
@@ -234,6 +236,17 @@ samos = { # Heraion of Samos
 		name = holy_site_samos_effect_name
 		spouse_opinion = 20
 		negate_fertility_penalty_add = 0.2
+	}
+}
+hieron_chalkedon = { # important Panhellenic sanctuary, converted into a fortified customs point during the Hellenistic period
+	county = c_chalkedon
+	barony = b_hieron_chalkedon
+
+	# The site was considered a common haven for sailors
+	character_modifier = {
+		name = holy_site_hieron_chalkedon_effect_name
+		embarkation_cost_mult = -0.25
+		retreat_losses = -0.1
 	}
 }
 
@@ -347,7 +360,7 @@ sipylos = { # Mount Sipylos
 	# The most famous of the Lydian Orgia of the Meter Theon were held on Mt Siypylos
 	character_modifier = {
 		name = holy_site_sipylos_effect_name
-		fertility = 0.05
+		fertility = 0.1
 	}
 }
 
@@ -378,7 +391,7 @@ mount_dindymon = {
 # Mariandynian
 
 herakleia_pontike = { # location of a Metroon (i.e. a sanctuary to the Great Mother)
-	county = c_herakleia_pontica
+	county = c_herakleia_pontike
 
 	# We will liberate our brethren by defeating the Heracleans once and for all!
 	character_modifier = {
@@ -412,29 +425,468 @@ mount_latmos = { # there was a sanctuary to Endymion at Heraclea and a myth, pro
 	}
 }
 
-
 ############
 # THRACIAN #
 ############
 
-# Bendism
+# Common
 
-hieron_chalkedon = {
-	county = c_chalkedon
-	barony = b_zeus_ourios_chalkedon
+pangaion = { # sacred mountain with links to the myths of Orpheus and Rhesus, possibly hosted an oracle of Dionysus
+	county = c_amphipolis
+	barony = b_methone_amphipolis
 
+	# Pangaion is best known for its gold mines
 	character_modifier = {
-		name = holy_site_hieron_chalkedon_effect_name
-		embarkation_cost_mult = -0.5
+		name = holy_site_pangaion_effect_name
+		domain_tax_mult = 0.05
 	}
 }
 
-reskynthion = {
-	county = c_ainos
+# Bendism
 
-	# The Great Mother is sometimes identified with healing practices and herbalism. Considering the swampy terrain here, that may be necessary.
+peiraieus = { # the main cult centre of Bendis inside Greece
+	county = c_peiraieus
+
+	# Piraeus is a cosmopolitan port with a diverse range of cults
+	character_modifier = {
+		name = holy_site_peiraieus_effect_name
+		different_faith_opinion = 5
+		cultural_head_acceptance_gain_mult = 0.1
+	}
+}
+
+# Mezenism
+
+hieron_oros = { # sacred mountain of the great mother goddess Ganea, also the location of an Odrysian treasury
+	county = c_bisanthe
+	barony = b_ganos_bisanthe
+
+	# There are several royal residences and a treasury in the vicinity of the mountain
+	character_modifier = {
+		name = holy_site_hieron_oros_effect_name	
+		stewardship = 1
+		stress_loss_mult = 0.1
+	}
+}
+shiloto = { # important peak sanctuary and royal residence, in Roman times the sanctuary was dedicated to the worship of Apollo Karsenos
+	county = c_anchialos
+	barony = b_karsos_anchialos
+
+	# The sanctuary is at the crossroads between the Thracian tribes and Greek colonies
+	character_modifier = {
+		name = holy_site_shiloto_effect_name
+		diplomacy_per_piety_level = 1
+	}
+}
+starosel = { # major sanctuary in the Hebros valley
+	county = c_drongilon
+	barony = b_amatokon_drongilon
+
+	# Possibly connected with the Odrysian royal dynasty
+	character_modifier = {
+		name = holy_site_starosel_effect_name
+		levy_size = 0.05
+		monthly_county_control_change_factor = 0.1
+	}
+}
+
+# Perperanism
+
+dolno_dryanovo = { # megalithic sanctuary and possible oracle site
+	county = c_zvakamezenida
+	barony = b_tithasabazias_zvakamezenida
+
+	# The area contains several rock formations which, according to folk tradition, provide good fortune to those who squeeze between them 
+	character_modifier = {
+		name = holy_site_dolno_dryanovo_effect_name
+		mountains_min_combat_roll = 2
+		valley_min_combat_roll = 2
+		personal_scheme_power_mult = 0.05
+	}
+}
+hyperperakion = { # major Rhodopian sanctuary
+	county = c_hyperperakion
+
+	# Hyperperakion was one of the most important cult centres in the Rhodopes for over a millenium
+	character_modifier = {
+		name = holy_site_hyperperakion_effect_name
+		mountains_development_growth_factor = 0.15
+		mountains_advantage = 5
+	}
+}
+reskynthion = { # the sacred mountain of Rheskynthis & the cave of Zerynthia/Hekate were possibly located here
+	county = c_zervai
+	barony = b_athspindas_zervai
+
+	# Worship of Zerynthia may have emerged as a result of syncretism with Bendis & several Greek goddesses (https://escholarship.org/content/qt55x5d5m3/qt55x5d5m3_noSplash_fd58de896ce63a7ab5ee5259bb2ea984.pdf)
 	character_modifier = {
 		name = holy_site_reskynthion_effect_name
-		health = 0.1
+		different_faith_opinion = 10
+	}
+}
+tatul = { # megalithic sanctuary and tomb
+	county = c_tranahydrenas
+	barony = b_asabria_tranahydrenas
+
+	# The sanctuary appears to have centred around the worship of a deceased hero
+	character_modifier = {
+		name = holy_site_tatul_effect_name
+		martial = 1
+		monthly_prestige_gain_mult = 0.1
+	}
+}
+yaylata = { # site in northwestern Thrace famous for its rock cut tombs and cave dwellings
+	county = c_bizone
+	barony = b_tirizis_bizone
+
+	# Save time and money by using existing caves for your houses and temples! 
+	character_modifier = {
+		name = holy_site_yaylata_effect_name
+		build_speed = -0.1
+		build_gold_cost = -0.05
+	}
+}
+
+# Sabazaism
+
+batkun = { # major Roman-period sanctuary of Asklepios Zymydrenos; Classical and Hellenistic decrees at the site suggest that it had been a prominent Thracian cult centre 
+	county = c_merasamdiza
+
+	# Several decrees and treaties were deposited here, suggesting it was both politically and spiritually significant
+	character_modifier = {
+		name = holy_site_batkun_effect_name
+		diplomacy = 1
+		powerful_vassal_opinion = 5		
+	}
+}
+zlata_panega = { # site of a large Roman-era shrine of Asklepios, bearing local epithets such as Saldoouissēnos, Saldokelēnos and Saldēnos
+	county = c_longinopara
+	barony = b_saldovissos_longinopara
+
+	#The sanctuary attracts a visitors from across Thrace, including magistrates and bureaucrats
+	character_modifier = {
+		name = holy_site_zlata_panega_effect_name
+		negate_diplomacy_penalty_add = 1
+		negate_stewardship_penalty_add = 1
+		negate_health_penalty_add = 0.1
+	}
+}
+
+# Tithanism
+
+betzas = {
+	county = c_betzas
+	barony = b_betzas_betzas
+
+	# This ritual site contains at least 200 known ritual pits and was used from the Bronze Age into the Imperial period
+	character_modifier = {
+		name = holy_site_betzas_effect_name
+		monthly_piety_gain_mult = 0.05
+		different_culture_opinion = 5
+	}
+}
+
+perkeballon = {
+	county = c_perkeballon
+	barony = b_perkeballon_perkeballon
+
+	# This is the only known rock sanctuary in Triballian territory
+	character_modifier = {
+		name = holy_site_perkeballon_effect_name
+		light_cavalry_pursuit_mult = 0.1
+		light_cavalry_toughness_mult = 0.1
+		knight_effectiveness_mult = 0.2
+	}
+}
+
+# Zalmoxianism
+
+ruse = { # Hellenistic & Roman sanctuary of Apollo and the Thracian Hero 
+	county = c_pyrgos
+
+	#The site is associated with the Thracian rider
+	character_modifier = {
+		name = holy_site_ruse_effect_name
+		monthly_piety_gain_per_knight_mult = 0.01
+		monthly_prestige_gain_per_knight_mult = 0.01
+	}
+}
+
+############
+# PAEONIAN #
+############
+
+# Dyalism
+
+astibos = { # historic Paeonian capital; the king would ritually bathe in the nearby Astibos river 
+	county = c_astibos
+
+	# Controlling both the city and the river grants us greater standing!
+	character_modifier = {
+		name = holy_site_astibos_effect_name
+		courtier_and_guest_opinion = 5
+		monthly_piety_gain_mult = 0.1
+	}
+}
+keilaiskos = { # Sanctuary of Asclepius Keiladeēnos/Keilaiskēnos, close to the hypothetical Agrianian capital at Pernik
+	county = c_elea
+	barony = b_keilaiskos_elea
+
+	# Controlling this region is the first step to restoring the Agrianian kingdom
+	character_modifier = {
+		name = holy_site_keilaiskos_effect_name
+		title_creation_cost_mult = -0.1
+		men_at_arms_maintenance = -0.05
+	}
+}
+#klepa = { # hilltop sanctuary
+#	county = c_stoboi
+#	barony = b_kranon_stoboi	
+#
+#	#TODO
+#	character_modifier = {
+#	}
+#}
+lychnidos = { # Trebenishte royal graves, incentive for the Paeonians to expand west
+	county = c_lychnidos
+
+	# Regional centre with Greek, Illyrian and perhaps other indigenous influences
+	character_modifier = {
+		name = holy_site_lychnidos_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+############
+# ILLYRIAN #
+############
+
+# Boluaric
+# Comments are made along the way.
+
+rhizon = { # Important ethnic site for all of the Illyrians, Ancient Cyclopean City Walls. Important site of a war god.
+	county = c_rhizon
+	barony = b_rhizon_rhizon
+
+	character_modifier = {
+		name = holy_site_rhizon_effect_name
+		defender_advantage = 1
+		monthly_county_control_change_factor = 0.1
+	}
+}
+
+lissos = { # Place where Kadmos is supposed to have died and turned into a serpent, Teuta Line Promise (yikes)
+	county = c_lissos
+	barony = b_lissos_lissos
+
+	character_modifier = {
+		name = holy_site_lissos_effect_name
+		monthly_piety_gain_mult = 0.05
+		diplomatic_range_mult = 0.1
+	}
+}
+
+salona = { # God of wine + it was helenistic emporium, later place of importance for Liber, who seems to have ties to a native deity.
+	county = c_salona
+	barony = b_salona_salona
+
+	character_modifier = {
+		name = holy_site_salona_effect_name
+		development_growth_factor = 0.10
+		cultural_head_fascination_mult = 0.05
+	}
+}
+
+# Liburnian & Histrian, Sentonic Faiths
+# Comments are made along the way.
+
+phlanona = { #Extensive cult of Sentona during Roman Times - Local Goddess of Travellers, also other local cults of Ica etc. around it (Albona)
+	county = c_phlanona
+	#barony = b_phlanona_phlanona #Simmilar case as with Ainona, here Albona could potentially also serve as a holysite.
+
+	character_modifier = {
+		name = holy_site_phlanona_effect_name
+		travel_danger = -5 #TODO
+		embarkation_cost_mult = -0.05
+		supply_duration = 0.10
+	}
+}
+
+#polai = { #Greatest Istrian City during roman times, sophisticated local heritage and religion + Hellenising myth about deriving from Colchidans.
+#	county = c_polai
+#	barona = b_polai_polai
+#
+#	character_modifier = {
+#		name = holy_site_polai_effect_name
+#		diplomatic_range_mult = 0.1 #Hellenising myth about deriving from Colchidans, instead of Lissos as a Holysite
+#		build_gold_cost = -0.05 #City grew and it became a significant Roman port with a large surrounding area under its jurisdiction.
+#	}
+#}
+
+#nauporton = { #Aemona-Nauportus-Fuzine Gods
+#	county = c_nauporton # TODO: Fix once that place is in the mod!
+#	barony = b_nauporton_nauporton #Because it can be moved to Aemona later when romans arrive?
+#
+#	character_modifier = {
+#		name = holy_site_nauporton_effect_name
+#		naval_movement_speed_mult = 0.1 #Both Arquornia and Laburus were deities of water traffic
+#		coastal_sea_travel_danger = -5 #TODO
+#	}
+#}
+
+ainona = { #https://www.spottinghistory.com/view/10085/roman-temple-of-nin/, Important place of worship of Illyrian Minor Goddesses
+	county = c_ainona
+	barony = b_ainona_ainona
+
+	character_modifier = {
+		name = holy_site_ainona_effect_name
+		monthly_piety_gain_mult = 0.05 #Place of multiple cults, Roman, Illyrian and Greek
+		monthly_piety_from_buildings_mult = 0.1 #Biggest temple in Dalmatia built by the Vespasian
+	}
+}
+
+#poetovio = { #Multiple mentions, not only of MITHRAISM but earlier Illyric cults. It was important city (Today Ptuj) which produced many statues.
+#	# TODO: Poetovio is just barely off the map. Change once it is in.
+#	county = c_poetovio #https://en.wikipedia.org/wiki/Aquae_Iasae
+#	barony = b_poetovio_poetovio #https://en.wikipedia.org/wiki/Illyrian_religion#Liburnia_and_Istria - Illyrian Mithraism
+#
+#	character_modifier = {
+#		name = holy_site_poetovio_effect_name
+#		faith_creation_piety_cost_mult = -0.1 #Mithraism
+#		development_growth_factor = 0.10 #The city had influenced those around it, not only through religious sculpture but also economy. No Salona.
+#	}
+#}
+
+# Bindenic Faith
+# Comments are made along the way.
+
+treveson = { #Privilice: Shrine to Bindo, the most famous that survived.
+	county = c_treveson
+	barony = b_treveson_treveson
+
+	character_modifier = {
+		name = holy_site_treveson_effect_name
+		negate_health_penalty_add = 0.2 #"Mostly connected to the cult of water healing, in which the god Bindu is clearly manifested."
+		monthly_piety_gain_mult = 0.05 #Seemingly important holysite, main for Iapodes.
+	}
+}
+
+# Vidasian
+# https://www.academia.edu/3393757/Interpretatio_Romana_of_the_forest_deities_in_the_Central_Balkan_area
+
+opacic = { # A primitive (and possibly early) relief of Silvanus and Diana
+	county = c_salvion
+
+	# Displays Silvanus and Diana as a couple.
+	character_modifier = {
+		name = holy_site_opacic_effect_name
+		men_at_arms_maintenance = -0.05
+		fertility = 0.1
+	}
+}
+
+topusko = { # The only mention of Vidasus and Thana
+	county = c_komvorion
+
+	# Hunting and living in forests ultimately requires a lot of strength.
+	character_modifier = {
+		name = holy_site_topusko_effect_name
+		forest_travel_danger = -10
+		prowess_per_prestige_level = 1
+	}
+}
+
+varazdinske = { # The site of three altars to Silvanus
+	county = c_iasion
+
+	# These deities are forest deities and should give benefits in forests.
+	character_modifier = {
+		name = holy_site_varazdinske_effect_name
+		forest_advantage = 5
+		forest_levy_size = 0.1
+	}
+}
+
+osijek = { # The site of an inscription to Silvanus
+	county = c_mursa
+
+	# Hunting often occurs in forests.
+	# Makes hunts reward 25% extra prestige.
+	character_modifier = {
+		name = holy_site_osijek_effect_name
+		lifestyle_hunter_xp_gain_mult = 0.3
+	}
+}
+
+viminicium = { # The site of an inscription to Silvanus
+	county = c_viminikion
+
+	# This region saw a lot of fortification.
+	character_modifier = {
+		name = holy_site_viminicium_effect_name
+		additional_fort_level = 1
+	}
+}
+
+##########
+# CELTIC #
+##########
+
+# Skordic
+
+singidunum = { # Capital of the Scordisci
+	county = c_singidunon
+
+	# The Scordisci formed an integrated society from Celts, Thracians and Illyrians.
+	character_modifier = {
+		name = holy_site_singidunum_effect_name
+		cultural_head_acceptance_gain_mult = 0.1
+		minority_vassal_opinion = 5
+	}
+}
+
+tylis = { # The Celtic kingdom in Thrace
+	county = c_tylis
+
+	# Tylis extorted neighbouring states for their money.
+	character_modifier = {
+		name = holy_site_tylis_effect_name
+		max_loot_mult = 0.1
+		raid_speed = 0.25
+	}
+}
+
+serdika = { # The votive relief that is used as the faith icon was found here.
+	county = c_serdika
+
+	# The long travels of the Celts has taught them how to travel safely and efficiently.
+	character_modifier = {
+		name = holy_site_serdika_effect_name
+		character_travel_safety_mult = 0.05
+		character_travel_speed_mult = 0.05
+	}
+}
+
+scardus = { # The mountain that has the same name as the god.
+	county = c_petrizon
+
+	# 'Conquering' the mountain teaches the Celts how to live there and breeds respect.
+	character_modifier = {
+		name = holy_site_scardus_effect_name
+		mountains_development_growth_factor = 0.2
+		county_opinion_add = 5
+	}
+}
+
+dolni_galavanak = { # The only stone circle in Bulgaria. The Celts could have found this familiar to their home region where they were used by druids.
+	county = c_hyperperakion
+	barony = b_asambyzas_hyperperakion
+
+	# General 'pious' modifier.
+	character_modifier = {
+		name = holy_site_dolni_galavanak_effect_name
+		learning_per_piety_level = 1
+		monthly_piety_gain_mult = 0.1
 	}
 }

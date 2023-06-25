@@ -72,7 +72,7 @@ witch.1002 = { #by Mathilda Bjarnehed
 	desc = witch.1002.desc
 	theme = witchcraft
 	override_background = {
-		event_background = study
+		reference = study
 	}
 	left_portrait = scope:child
 
@@ -271,7 +271,7 @@ witch.1003 = { #by Mathilda Bjarnehed
 	desc = witch.1003.desc
 	theme = witchcraft
 	override_background = {
-		event_background = study
+		reference = study
 	}
 	left_portrait = {
 		character = scope:guardian
@@ -328,7 +328,7 @@ witch.2001 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = scope:target
 	
@@ -402,7 +402,7 @@ witch.2002 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:left_portrait
@@ -445,7 +445,7 @@ witch.2002 = { #by Mathilda Bjarnehed
 		if = {
 			limit = {
 				faith = {
-					NOT = { has_doctrine = doctrine_witchcraft_accepted }
+					NOT = { has_doctrine_parameter = witchcraft_accepted }
 				}
 			}
 			add_piety = medium_piety_loss
@@ -551,7 +551,7 @@ witch.2003 = { #by Mathilda Bjarnehed
 	desc = witch.2003.desc
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:target
@@ -732,7 +732,7 @@ witch.2010 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:target
@@ -834,7 +834,7 @@ witch.2004 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:target
@@ -884,7 +884,7 @@ witch.2005 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:target
@@ -963,7 +963,7 @@ witch.2006 = { #by Linnéa Thimrén
 	desc = witch.2006.desc
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:target
@@ -1023,7 +1023,7 @@ witch.2007 = { #by Linnéa Thimrén
 	desc = witch.2007.desc
 	theme = witchcraft
 	override_background = {
-		event_background = sitting_room
+		reference = sitting_room
 	}
 	left_portrait = {
 		character = scope:owner
@@ -1116,9 +1116,10 @@ witch.3001 = {
 	opening = witch.3001.t
 	desc = witch.3001.desc
 	sender = scope:host
+	orphan = yes # deprecated by new activity system
 
 	immediate = {
-		scope:activity.activity_owner = { save_scope_as = host }
+		scope:activity.activity_host = { save_scope_as = host }
 		debug_log = invitation_received
 	}
 
@@ -1127,9 +1128,7 @@ witch.3001 = {
 		name = witch.3001.a
 
 		play_music_cue = "mx_cue_sacredrite"
-		scope:activity = {
-			accept_invitation_for_character = prev
-		}
+		accept_activity_invite = scope:activity
 		reverse_add_opinion = {
 			target = scope:host
 			modifier = pleased_opinion
@@ -1147,9 +1146,7 @@ witch.3001 = {
 	option = {
 		name = witch.3001.b
 
-		scope:activity = {
-			decline_invitation_for_character = prev
-		}
+		decline_activity_invite = scope:activity
 		reverse_add_opinion = {
 			target = scope:host
 			modifier = disappointed_opinion
@@ -1170,10 +1167,13 @@ witch.3001 = {
 
 #No guests came
 witch.3002 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3002.t
 	desc = witch.3002.desc
 	theme = witchcraft
+	override_background = {
+		reference = bp1_bonfire
+	}
 	left_portrait = {
 		character = scope:target
 		animation = sadness
@@ -1183,7 +1183,7 @@ witch.3002 = { #by Mathilda Bjarnehed
 		name = witch.3002.a
 		
 		scope:activity = {
-			complete_activity = yes
+			set_variable = activity_invalidated
 		}
 	}
 }
@@ -1191,6 +1191,7 @@ witch.3002 = { #by Mathilda Bjarnehed
 
 #Uninvited guest
 scripted_trigger witch_3003_potential_guest_trigger = {
+	is_adult = yes
 	NOR = {
 		has_RelationToMe_relation = { CHARACTER = root }
 		any_secret = {
@@ -1205,33 +1206,45 @@ scripted_trigger witch_3003_potential_guest_trigger = {
 
 
 witch.3003 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3003.t
 	desc = witch.3003.desc
 	theme = witchcraft
 	override_background = {
-		event_background = courtyard
+		reference = corridor_night
 	}
 	left_portrait = scope:inviter
 	right_portrait = scope:new_guest
 	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				NOT = { this = root }
+				is_adult = yes
+			}
+		}
+	}
+
 	immediate = {
 		hidden_effect = {
 			capital_province = { save_scope_as = capital }
 
 			#Find inviter
 			scope:activity = {
-				random_participant = {
+				random_attending_character = {
 					limit = {
+						NOR = {
+							is_courtier_of = root
+							this = root
+						}
 						is_ai = yes
-						NOT = { is_courtier_of = root }
+						is_adult = yes
 					}
 					alternative_limit = {
 					 	is_ai = yes
+					 	is_adult = yes
 					}
-					alternative_limit = {
-						always = yes
-					}
+					alternative_limit = { is_adult = yes }
 					save_scope_as = inviter
 				}
 			}
@@ -1263,9 +1276,14 @@ witch.3003 = { #by Mathilda Bjarnehed
 			}
 
 			if = {
-				limit = { NOT = { exists = scope:new_guest } }
+				limit = {
+					NOT = { exists = scope:new_guest }
+				}
 				create_witch_effect = { WHO = root }
-				scope:created_witch = { save_scope_as = new_guest }
+				scope:created_witch = {
+					save_scope_as = new_guest
+					visit_court_of = root
+				}
 			}
 			
 			#Discover secret
@@ -1289,9 +1307,8 @@ witch.3003 = { #by Mathilda Bjarnehed
 	option = {
 		name = witch.3003.a
 		
-		scope:activity = {
-			hidden_effect = { invite_character_to_activity = scope:new_guest }
-			accept_invitation_for_character = scope:new_guest
+		scope:new_guest = {
+			add_to_activity = scope:activity
 		}
 		reverse_add_opinion = {
 			target = scope:new_guest
@@ -1309,9 +1326,8 @@ witch.3003 = { #by Mathilda Bjarnehed
 	option = {
 		name = witch.3003.b
 		
-		scope:activity = {
-			hidden_effect = { invite_character_to_activity = scope:new_guest }
-			accept_invitation_for_character = scope:new_guest
+		scope:new_guest = {
+			add_to_activity = scope:activity
 		}
 		reverse_add_opinion = {
 			target = scope:new_guest
@@ -1347,7 +1363,7 @@ witch.3003 = { #by Mathilda Bjarnehed
 
 scripted_effect grand_rite_good_outcome = {
 	scope:activity = {
-		every_participant = {
+		every_attending_character = {
 			limit = { NOT = { this = root } }
 			custom = every_grand_rite_participant
 			add_opinion = {
@@ -1361,7 +1377,7 @@ scripted_effect grand_rite_good_outcome = {
 
 scripted_effect grand_rite_poor_outcome = {
 	scope:activity = {
-		every_participant = {
+		every_attending_character = {
 			limit = { NOT = { this = root } }
 			custom = every_grand_rite_participant
 			add_opinion = {
@@ -1375,17 +1391,18 @@ scripted_effect grand_rite_poor_outcome = {
 }
 
 witch.3010 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3010.t
 	desc = witch.3010.desc
 	theme = witchcraft
 	override_background = {
-		event_background = bp1_bonfire
+		reference = bp1_bonfire
 	}
 	left_portrait = root
 
 	immediate = {
 		save_scope_as = host
+		capital_province = { save_scope_as = background_wilderness_scope } 
 	}
 
 	#Read old scroll
@@ -1547,7 +1564,7 @@ witch.3010 = { #by Mathilda Bjarnehed
 
 	after = {
 		scope:activity = {
-			every_participant = {
+			every_attending_character = {
 				trigger_event = {
 					id = witch.3014
 				}
@@ -1563,6 +1580,7 @@ scripted_trigger witch_3014_can_have_sex_trigger = {
 		has_sexuality = asexual
 		has_trait = celibate
 	}
+	might_cheat_on_every_partner_trigger = yes
 }
 
 scripted_trigger witch_3014_sex_partner_trigger = {
@@ -1571,6 +1589,7 @@ scripted_trigger witch_3014_sex_partner_trigger = {
 	is_ai = yes
 	save_temporary_scope_as = seduction_target
 	matching_gender_and_sexuality_trigger = { CHARACTER_1 = scope:seduction_target CHARACTER_2 = root }
+	might_cheat_on_every_partner_trigger = yes
 }
 
 scripted_trigger witch_3014_loved_sex_partner_trigger = {
@@ -1603,7 +1622,7 @@ scripted_effect witch_3017_soulmate_sex_effect = {
 
 
 witch.3014 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3010.t
 	desc = {
 		#host
@@ -1679,7 +1698,7 @@ witch.3014 = { #by Mathilda Bjarnehed
 	}	
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = scope:left_portrait
 	right_portrait = scope:right_portrait
@@ -1693,10 +1712,10 @@ witch.3014 = { #by Mathilda Bjarnehed
 		#Tell everyone secret about everyone else
 		hidden_effect = {
 			scope:activity = {
-				every_participant = {
+				every_attending_character = {
 					save_temporary_scope_as = learning_secret
 					scope:activity = {
-						every_participant = {
+						every_attending_character = {
 							random_secret = {
 								limit = {
 									secret_type = secret_witch
@@ -1737,7 +1756,7 @@ witch.3014 = { #by Mathilda Bjarnehed
 			if = {
 				limit = { root = scope:host }
 				scope:activity = {
-					random_participant = {
+					random_attending_character = {
 						limit = { has_character_flag = grand_rite_new_guest }
 						save_scope_as = new_guest
 					}
@@ -1745,7 +1764,7 @@ witch.3014 = { #by Mathilda Bjarnehed
 			}
 
 			#Herbalism
-			random_participant = {
+			random_attending_character = {
 				limit = {
 					has_trait = lifestyle_herbalist
 					NOR = {
@@ -1760,7 +1779,7 @@ witch.3014 = { #by Mathilda Bjarnehed
 			}
 
 			#Teacher (experience )
-			random_participant = {
+			random_attending_character = {
 				limit = {
 					NOR = {
 						trigger_if = {
@@ -1836,8 +1855,8 @@ witch.3014 = { #by Mathilda Bjarnehed
 				}
 				#If you have a soulmate here, only sleep with them (not available if they can't sleep with you for some reason)
 				if = {
-					limit = { any_participant = { has_relation_soulmate = root } }
-					random_participant = {
+					limit = { any_attending_character = { has_relation_soulmate = root } }
+					random_attending_character = {
 						limit = {
 							witch_3014_loved_sex_partner_trigger = yes
 							has_relation_soulmate = root
@@ -1850,12 +1869,12 @@ witch.3014 = { #by Mathilda Bjarnehed
 						#Just someone regular
 						1 = {
 							trigger = {
-								any_participant = {
+								any_attending_character = {
 									witch_3014_regular_sex_partner_trigger = yes
 									accepts_incest_with_trigger = { CHARACTER = root } #Skip this one if there's only non-accepting incest options available
 								}
 							}
-							random_participant = {
+							random_attending_character = {
 								limit = {
 									witch_3014_regular_sex_partner_trigger = yes
 									save_temporary_scope_as = sex_partner_check #Saved for weight modifier
@@ -1888,11 +1907,11 @@ witch.3014 = { #by Mathilda Bjarnehed
 						}
 						1 = {
 							trigger = {
-								any_participant = {
+								any_attending_character = {
 									witch_3014_loved_sex_partner_trigger = yes
 								}
 							}
-							random_participant = {
+							random_attending_character = {
 								limit = {
 									witch_3014_loved_sex_partner_trigger = yes
 								}
@@ -2072,6 +2091,8 @@ witch.3014 = { #by Mathilda Bjarnehed
 		trigger = {
 			exists = scope:sex_partner
 			NOT = { has_relation_soulmate = scope:sex_partner }
+			is_attracted_to_gender_of = scope:sex_partner
+			might_cheat_on_every_partner_trigger = yes
 		}
 		name = witch.3014.c
 		custom_tooltip = witch.3014.c.tt
@@ -2211,13 +2232,16 @@ witch.3014 = { #by Mathilda Bjarnehed
 
 #Sleep with someone (regular)
 witch.3015 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3015.t
 	desc = {
 		desc = witch.3015.start.desc
 		first_valid = {
 			triggered_desc = {
-				trigger = { scope:sex_partner = scope:new_guest }
+				trigger = {
+					exists = scope:new_guest
+					scope:sex_partner = scope:new_guest
+				}
 				desc = witch.3015.new_guest.desc
 			}
 			desc = witch.3015.regular.desc
@@ -2226,7 +2250,7 @@ witch.3015 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = {
 		character = scope:sex_partner
@@ -2260,7 +2284,7 @@ witch.3015 = { #by Mathilda Bjarnehed
 
 #Sleep with someone (spouse/lover -> soulmate)
 witch.3016 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3016.t
 	desc = {
 		desc = witch.3015.start.desc
@@ -2268,7 +2292,7 @@ witch.3016 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = {
 		character = scope:sex_partner
@@ -2299,7 +2323,7 @@ witch.3016 = { #by Mathilda Bjarnehed
 
 #Sleep with someone (soulmate)
 witch.3017 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3016.t
 	desc = {
 		desc = witch.3015.start.desc
@@ -2307,7 +2331,7 @@ witch.3017 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = {
 		character = scope:sex_partner
@@ -2338,7 +2362,7 @@ witch.3017 = { #by Mathilda Bjarnehed
 
 #End for host
 witch.3098 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3098.t
 	desc = {
 		desc = witch.3098.start.desc
@@ -2346,11 +2370,9 @@ witch.3098 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = root
-
-	trigger = { exists = scope:activity }
 
 	immediate = {
 		capital_province = { save_scope_as = background_wilderness_scope }
@@ -2358,20 +2380,12 @@ witch.3098 = { #by Mathilda Bjarnehed
 	
 	option = {
 		name = witch.3098.a
-
-		scope:activity = {
-			every_participant = {
-				limit = { NOT = { this = root } }
-				trigger_event = witch.3099
-			}
-			complete_activity = yes
-		}
 	}
 }
 
 #End for guest
 witch.3099 = { #by Mathilda Bjarnehed
-	type = character_event
+	type = activity_event
 	title = witch.3098.t
 	desc = {
 		desc = witch.3099.start.desc
@@ -2379,7 +2393,7 @@ witch.3099 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness_scope
+		reference = bp1_bonfire
 	}
 	left_portrait = root
 	
@@ -2453,7 +2467,9 @@ scripted_effect witch_4001_corruption_success_effect = {
 
 scripted_trigger witch_4001_desc_valid_sin_trigger = {
 	faith = { trait_is_sin = $TRAIT$ }
-	NOT = { scope:annoying_clergy = { has_trait = $TRAIT$ } }
+	NOT = {
+		scope:annoying_clergy = { has_trait = $TRAIT$ }
+	}
 }
 
 scripted_trigger witch_4001_desc_prefered_sin_trigger = {
@@ -3362,7 +3378,7 @@ witch.4010 = { #by Mathilda Bjarnehed
 	desc = witch.4010.desc
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness
+		reference = wilderness
 	}
 	left_portrait = root
 	
@@ -3515,7 +3531,7 @@ witch.4020 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = wilderness
+		reference = wilderness
 	}
 	left_portrait = scope:prayer_witch_1
 	right_portrait = scope:prayer_witch_2
@@ -3783,7 +3799,7 @@ witch.4030 = { #by Mathilda Bjarnehed
 	}
 	theme = witchcraft
 	override_background = {
-		event_background = study
+		reference = study
 	}
 	left_portrait = scope:left_portrait
 	right_portrait = scope:right_portrait

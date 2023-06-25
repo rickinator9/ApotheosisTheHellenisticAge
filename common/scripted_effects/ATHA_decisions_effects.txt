@@ -178,10 +178,12 @@ form_k_thracian_phoros_decision_effects = {
 
 	# De jure shifts
 	hidden_effect = {
-		title:d_briantike = { set_de_jure_liege_title = title:k_thracian_phoros }
-		title:d_parastrymonia = { set_de_jure_liege_title = title:k_thracian_phoros }
-		title:d_chalkidike = { set_de_jure_liege_title = title:k_thracian_phoros }
 		title:d_amphaxitis = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_chalkidike = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_parastrymonia = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_sapaike = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_priantike = { set_de_jure_liege_title = title:k_thracian_phoros }
+		title:d_korpilike = { set_de_jure_liege_title = title:k_thracian_phoros }
 	}
 }
 form_k_hellespontine_phoros_decision_effects = {
@@ -208,13 +210,14 @@ form_k_hellespontine_phoros_decision_effects = {
 
 	# De jure shifts
 	hidden_effect = {
-		title:d_troas = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-		title:d_mysia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-		title:d_astike = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-		title:d_apsinthis = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-		title:d_zeleia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
-		title:d_askania = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_chersonesos = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_kainike = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_propontis = { set_de_jure_liege_title = title:k_hellespontine_phoros }
 		title:d_bithynia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_askania = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_mysia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_zeleia = { set_de_jure_liege_title = title:k_hellespontine_phoros }
+		title:d_troas = { set_de_jure_liege_title = title:k_hellespontine_phoros }
 	}
 }
 
@@ -497,13 +500,8 @@ form_k_bithynia_decision_effects = {
 	}
 	resolve_title_and_vassal_change = scope:change
 
-	# Government changes.
-	if = {
-		limit = { has_government = clan_government }
-		change_government_form = { GOVERNMENT = feudal_government }
-	}
 	every_vassal = {
-		limit = { has_government = tribal_government }
+		limit = { government_has_flag = government_is_tribal }
 		custom = every_tribal_vassal
 		change_government_form = { GOVERNMENT = clan_government }
 		hidden_effect = {
@@ -533,53 +531,44 @@ form_k_bithynia_decision_effects = {
 		}
 	}
 
-	# De jure shifts.
-	title:d_bithynia = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_mariandynia = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_askania = { set_de_jure_liege_title = title:k_bithynia }
-	title:d_sangarios = { set_de_jure_liege_title = title:k_bithynia }
-
+	# De jure shifts
 	hidden_effect = {
-		title:k_bithynia = { set_de_jure_liege_title = title:e_asia }
-	}
+		title:d_bithynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_thynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_herakleotis = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_mariandynia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_sangaritis = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_rhebantia = { set_de_jure_liege_title = title:k_bithynia }
+		title:d_askania = { set_de_jure_liege_title = title:k_bithynia }
 
-	# Innovations
-	if = {
-		limit = {
-			culture = {
-				NOT = {
-					has_innovation = innovation_classical_monetary_standards
-				}
-			}
-		}
-		culture = {
-			add_innovation = innovation_classical_monetary_standards
-		}
-	}
-	if = {
-		limit = {
-			culture = {
-				NOT = {
-					has_innovation = innovation_classical_bureaucracy
-				}
-			}
-		}
-		culture = {
-			add_innovation = innovation_classical_bureaucracy
-		}
+		title:k_bithynia = { set_de_jure_liege_title = title:e_asia }
 	}
 }
 
 found_bithynian_capital_scripted_effect = {
 	scope:new_bithynian_capital = {
-		#Boost local development pretty heavily, tiering according to how much development the capital already has.
+		#If not already well-developed, boost local development a few levels and adopt founder's culture
 		if = {
-			limit = { development_level >= 20 }
-			change_development_level = 4
+			limit = { development_level < 12 }
+			change_development_level = {
+				value = 12
+				subtract = scope:new_bithynian_capital.development_level
+			}
+			if = {
+				limit = { NOT = { culture = ROOT.culture } }
+				set_county_culture = ROOT.culture
+			}
 		}
 		else_if = {
-			limit = { development_level < 20 }
-			change_development_level = 8
+			limit = { development_level < 16 }
+			change_development_level = {
+				value = 16
+				subtract = scope:new_bithynian_capital.development_level
+			}
+			if = {
+				limit = { NOT = { culture = ROOT.culture } }
+				set_county_culture = ROOT.culture
+			}
 		}
 		#If control is less than full, boost it to full.
 		if = {
@@ -590,13 +579,6 @@ found_bithynian_capital_scripted_effect = {
 		add_county_modifier = {
 			modifier = bithynian_capital_modifier
 			years = 20
-		}
-		#If this county doesn't have the founder's culture, make it so
-		if = {
-			limit = { 
-				NOT = { culture = ROOT.culture }
-			}
-			set_county_culture = ROOT.culture
 		}
 		#If this county isn't the de jure capital of k_bithynia, make it so.
 		if = {
@@ -804,9 +786,8 @@ form_k_troas_decision_effects = {
 		title:d_troas = { set_de_jure_liege_title = title:k_troas }
 		title:d_mysia = { set_de_jure_liege_title = title:k_troas }
 		title:d_askania = { set_de_jure_liege_title = title:k_troas }
+		title:d_bithynia = { set_de_jure_liege_title = title:k_troas }
 		title:c_zeleia = { set_de_jure_liege_title = title:d_mysia }
-		title:c_astakos = { set_de_jure_liege_title = title:d_askania }
-		title:c_chalkedon = { set_de_jure_liege_title = title:d_askania }
 	}
 
 	#Bring Troas over to e_hellas
@@ -1220,4 +1201,481 @@ liberate_culture_decision_effects = {
 
 	# You get a fancy nickname
 	set_permanent_nickname_effect = { NICKNAME = nick_the_liberator }
+}
+
+form_k_liburnia_decision_effects = {
+	# Create kingdom title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_liburnia = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	hidden_effect = {
+		title:k_liburnia = { set_de_jure_liege_title = title:e_illyria }
+		set_primary_title_to = title:k_liburnia
+	}
+
+	add_prestige = major_prestige_gain
+}
+
+restore_k_paionia_borders_decision_effects = {
+	# Get some renown as a reward
+	dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
+
+	# Add some prestige
+	add_prestige = major_prestige_gain
+	
+	# De jure shifts
+	custom_tooltip = restore_k_paionia_borders_decision_effects.de_jure.tt
+	hidden_effect = {
+		title:d_amphaxitis = { set_de_jure_liege_title = title:k_paionia }
+		title:d_parastrymonia = { set_de_jure_liege_title = title:k_paionia }
+		title:d_chalkidike = { set_de_jure_liege_title = title:k_paionia }
+		title:d_maidike = { set_de_jure_liege_title = title:k_paionia }
+	}
+	title:c_eidomene = { set_de_jure_liege_title = title:d_amphaxitis }
+}
+
+create_d_lower_paionia_scripted_effect = {
+	# Usurp Pella if not held personally
+	if = { 
+		limit = {
+			NOT = { title:c_pella.holder = { this = root } }
+		}
+		create_title_and_vassal_change = {
+			type = returned
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:c_pella = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+
+	# Create Lower Paionia duchy
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:d_lower_paionia = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# Transfer vassals if possible
+	hidden_effect = {
+		every_vassal_or_below = {
+			limit = {
+				highest_held_title_tier = tier_county
+				OR = {
+					has_title = title:c_eidomene
+					has_title = title:c_moryllos
+					has_title = title:c_gareskos
+				}
+			}
+			create_title_and_vassal_change = {
+				type = revoked
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:change
+			}
+
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	# De jure shifts
+	custom_tooltip = {
+		text = illyria_decisions.0003.a_lower_paionia.tt
+
+		title:c_pella = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_eidomene = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_moryllos = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:c_gareskos = { set_de_jure_liege_title = title:d_lower_paionia }
+		title:d_lower_paionia = { set_de_jure_liege_title = title:k_paionia }
+	}
+
+	hidden_effect = {
+		# Amphaxitis becomes known as Mygdonia
+		title:d_amphaxitis = { set_title_name = d_mygdonia }
+
+		# Bottiaia replaced with Makedonis
+		title:d_bottiaia = {
+			every_claimant = {
+				remove_claim = title:d_bottiaia
+				add_unpressed_claim = title:d_makedonis
+			}
+			if = {
+				limit = { exists = this.holder }
+				holder = {
+					create_title_and_vassal_change = {
+						type = created
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					title:d_makedonis = {
+						change_title_holder = {
+							holder = prev
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+			}
+		}
+		title:d_makedonis = {
+			copy_title_history = title:d_bottiaia
+			set_coa = d_bottiaia
+		}
+		destroy_title = title:d_bottiaia
+		title:c_aigai = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_berroia = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_edessa = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_almopia = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_pydna = { set_de_jure_liege_title = title:d_makedonis }
+		title:c_dion = { set_de_jure_liege_title = title:d_makedonis }
+		title:d_makedonis = { set_de_jure_liege_title = title:k_makedonia }
+
+		# Aigai becomes capital of Macedonia
+		title:k_makedonia = { set_capital_county = title:c_aigai }
+	}
+}
+
+paionia_vassal_innovations_effect = {
+	#Add all appropriate cultures in the realm in a list
+	every_realm_province = {
+		limit = {
+			#Limit to Greek provinces if taking the Philhellene pathway
+			trigger_if = {
+				limit = {
+					scope:k_paionia_restorer = { 
+						OR = { 
+							has_character_flag = k_paionia_restorer_philhellene_failure 
+							has_character_flag = k_paionia_restorer_philhellene_success
+						}
+					}
+				}
+				culture = { has_cultural_pillar = heritage_greek }
+			}
+			save_temporary_scope_as = vassal
+			NOR = {
+				culture = { this = scope:k_paionia_restorer.culture }
+				culture = { is_in_list = vassal_cultures }
+			}
+		}
+		culture = {
+			add_to_list = vassal_cultures
+		}
+	}
+	#Add innovations from random cultures
+	culture = {
+		while = {
+			count = illyria_decisions_0003_e_innovation_count
+			random_in_list = {
+				limit = { scope:k_paionia_restorer.culture = { can_get_innovation_from = prev } }
+				list = vassal_cultures
+				scope:k_paionia_restorer.culture = { get_random_innovation_from = prev }
+			}
+		}
+	}
+}
+
+paeonia_culture_acceptance_effect = {
+	every_realm_province = {
+		limit = {
+			#Limit to Greek cultures if taking the Philhellene pathway
+			trigger_if = {
+				limit = {
+					scope:k_paionia_restorer = { 
+						OR = { 
+							has_character_flag = k_paionia_restorer_philhellene_failure 
+							has_character_flag = k_paionia_restorer_philhellene_success
+						}
+					}
+				}
+				culture = { has_cultural_pillar = heritage_greek }
+			}
+			NOR = {
+				culture = { this = scope:k_paionia_restorer.culture }
+				culture = { is_in_list = vassal_cultures }
+			}
+		}
+		culture = { add_to_list = vassal_cultures }
+	}
+	every_vassal_or_below = {
+		limit = {
+			#Limit to Greek cultures if taking the Philhellene pathway
+			trigger_if = {
+				limit = {
+					scope:k_paionia_restorer = { 
+						OR = { 
+							has_character_flag = k_paionia_restorer_philhellene_failure 
+							has_character_flag = k_paionia_restorer_philhellene_success
+						}
+					}
+				}
+				culture = { has_cultural_pillar = heritage_greek }
+			}
+			NOR = {
+				culture = { this = scope:k_paionia_restorer.culture }
+				culture = { is_in_list = vassal_cultures }
+			}
+		}
+		culture = { add_to_list = vassal_cultures }
+	}
+	every_in_list = {
+		list = vassal_cultures
+		save_scope_as = vassal_culture
+		change_cultural_acceptance = {
+			target = scope:k_paionia_restorer.culture
+			value = $VALUE$
+			desc = cultural_acceptance_gain_foreign_appreciation
+		}
+	}
+}
+
+illyria_decisions.0003.a_acceptance_effect = {
+	#Add all appropriate cultures in the realm in a list
+	every_realm_province = {
+		limit = {
+			geographical_region = custom_greater_paeonia
+			NOR = {
+				culture = { this = scope:k_paionia_restorer.culture }
+				culture = { has_cultural_pillar = heritage_paeonian }
+				culture = { is_in_list = vassal_cultures }
+			}
+		}
+		culture = {
+			add_to_list = vassal_cultures
+		}
+	}
+	every_in_list = {
+		list = vassal_cultures
+		save_scope_as = vassal_culture
+		change_cultural_acceptance = {
+			target = scope:k_paionia_restorer.culture
+			value = -5
+			desc = cultural_acceptance_loss_resettlement
+		}
+	}
+}
+
+#Cleaner looking effect for the decision menu
+unite_the_two_shores_decision_effects_tooltip = {
+	#If not already an empire, gain a special empire title
+	if = {
+		limit = { 
+			primary_title = { tier <= tier_kingdom }
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:e_propontis = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+	# Otherwise, Byzantion becomes de jure capital of your current empire title
+	else = {
+		scope:old_primary_title = { set_capital_county = title:c_byzantion }
+	}
+
+	#Kingdoms with a de jure capital in the region are drifted into the empire
+	every_kingdom = {
+		limit = {
+			OR = {
+				is_titular = no
+				is_title_created = yes
+			}
+			NOT = {
+				root.primary_title = { is_de_jure_liege_or_above_target = prev }
+			}
+			title_capital_county.title_province = { geographical_region = custom_propontis }
+		}
+		if = {
+			limit = { 
+				root = { highest_held_title_tier <= tier_kingdom }
+			}
+			set_de_jure_liege_title = title:e_propontis
+		}
+		else = { set_de_jure_liege_title = root.primary_title }
+	}
+
+	#Byzantion gets a special permanent modifier
+	title:c_byzantion = { add_county_modifier = the_city_modifier }
+
+	#Also gets a bonus building slot (TODO: make this a special building slot for the Prosphorion/Great Walls?)
+	title:c_byzantion.title_province = { add_province_modifier = extra_building_slot }
+}
+
+unite_the_two_shores_decision_effects = {
+	#If not already an empire, gain a special empire title
+	if = {
+		limit = { 
+			primary_title = { tier <= tier_kingdom }
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:e_propontis = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+	#Otherwise, Byzantion becomes de jure capital of your current empire title
+	else = {
+		primary_title = { set_capital_county = title:c_byzantion }
+	}
+
+	#Kingdoms with a de jure capital in the region are drifted into the empire
+	#Using a tooltip here to hide all the unformed decision titles that are also affected
+	show_as_tooltip = {
+		every_kingdom = {
+			limit = {
+				OR = {
+					is_titular = no
+					is_title_created = yes
+				}
+				NOT = {
+					root.primary_title = { is_de_jure_liege_or_above_target = prev }
+				}
+				title_capital_county.title_province = { geographical_region = custom_propontis }
+			}
+			set_de_jure_liege_title = root.primary_title
+		}
+	}
+	hidden_effect = {
+		every_kingdom = {
+			limit = {
+				title_capital_county.title_province = { geographical_region = custom_propontis }
+			}
+			set_de_jure_liege_title = root.primary_title
+		}
+	}
+
+	#Byzantion gets a special permanent modifier
+	title:c_byzantion = { add_county_modifier = the_city_modifier }
+
+	#Also gets a bonus building slot (TODO: make this a special building slot for the Prosphorion/Great Walls?)
+	title:c_byzantion.title_province = { add_province_modifier = extra_building_slot }
+}
+
+found_western_pontic_league_decision_effects = {
+	#Create kingdom title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_euonymos_pontos = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	hidden_effect = {
+		#De jure shifts
+		every_sub_realm_county = {
+			limit = {
+				#Has to be in the Western Pontic region
+				title_province = { geographical_region = custom_euonymos_pontos }
+
+				#Only calculate for duchy capitals
+				this = duchy.title_capital_county
+
+				#Has to completely control the duchy
+				root = { completely_controls = prev.duchy }
+			}
+			duchy = { set_de_jure_liege_title = title:k_euonymos_pontos }
+		}
+
+		#Make your realm capital the de jure kingdom capital
+		if = {
+			limit = {
+				NOT = { capital_county = title:k_euonymos_pontos.title_capital_county }
+			}
+			title:k_euonymos_pontos = { set_capital_county = root.capital_county }
+		}
+	}
+
+	#Gain the next level of centralisation 
+	#TODO: once we update coalition mechanics this should form a new coalition instead
+	if = {
+		limit = {
+			has_realm_law = crown_authority_0
+		}
+		add_realm_law_skip_effects = crown_authority_1
+	}
+	else_if = {
+		limit = {
+			has_realm_law = crown_authority_1
+		}
+		add_realm_law_skip_effects = crown_authority_2
+	}
+	else_if = {
+		limit = {
+			has_realm_law = crown_authority_2
+		}
+		add_realm_law_skip_effects = crown_authority_3
+	} 
+}
+
+revive_odrysian_kingdom_decision_effects = {
+	add_prestige = major_prestige_gain
+	
+	# Create empire title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:e_thrace = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+}
+
+revive_odrysian_kingdom_claimant_effect = {
+	add_unpressed_claim = title:e_thrace
+	
+	reverse_add_opinion = { # even if you don't pursue this claim, the Odrysian king doesn't trust you
+		modifier = distrustful
+		target = scope:odrysian_restorer
+	}
+
+	add_character_flag = odrysian_pretender
 }

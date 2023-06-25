@@ -25,12 +25,16 @@
 		add = 0 # can get relatively easily by warring OPMs
 	}
 	if = {
-		limit = { has_title = title:d_apsinthis }
-		add = 0 # can get relatively easily by warring OPMs
+		limit = { has_title = title:d_chersonesos }
+		add = 0 # already have a foothold in in the region, only have to contest with smaller realms
 	}
 	if = {
-		limit = { has_title = title:d_briantike }
-		add = 0 # can get relatively easily by warring OPMs
+		limit = { has_title = title:d_priantike }
+		add = 0 # only have to contest with smaller realms
+	}
+	if = {
+		limit = { has_title = title:d_sapaike }
+		add = 0 # only have to contest with smaller realms
 	}
 	if = {
 		limit = { has_title = title:d_parastrymonia }
@@ -342,3 +346,92 @@ ionian_revolt_defender_strength = {
 }
 
 ionian_revolt_cooldown_value = 30
+
+illyria_decisions_0003_d_loot = {
+	every_in_list = {
+		list = sacked_counties
+		add = development_level
+	}
+	multiply = 2
+}
+
+illyria_decisions_0003_e_innovation_count = {
+	value = 3
+	if = {
+		limit = {
+			scope:k_paionia_restorer = { has_character_flag = k_paionia_restorer_philhellene_success }
+		}
+		add = 2
+	}
+}
+
+odrysian_kingdom_target_percent_value = {
+	value = {
+		title:e_thrace = {
+			every_de_jure_county = { add = 1 }
+		}
+		multiply = 0.5
+	}
+}
+
+### Revive Odrysian kingdom values ###
+
+# Cost calculation
+revive_odrysian_kingdom_discount = {
+	value = 1
+	if = {
+		limit = { 
+			dynasty = dynasty:odrysiandyn001 
+			culture = {
+				OR = {
+					this = culture:odrysian
+					any_parent_culture_or_above = { this = culture:odrysian }
+				}
+			}
+		}
+		multiply = 0.5
+	}
+}
+revive_odrysian_kingdom_gold_cost = {
+	value = 1000
+	multiply = revive_odrysian_kingdom_discount
+}
+revive_odrysian_kingdom_piety_cost = {
+	value = 800
+	multiply = revive_odrysian_kingdom_discount
+}
+
+# Target percentage owned counties in e_thrace
+revive_odrysian_kingdom_target_percent_value = 50
+
+revive_odrysian_kingdom_target_percent_decimal_value = {
+	value = revive_odrysian_kingdom_target_percent_value
+	divide = 100		
+}
+
+# Total number of counties in e_thrace
+revive_odrysian_kingdom_total_value = {
+	value = 0
+	title:e_thrace = {
+		every_de_jure_county = { add = 1 }
+	}
+}
+
+# Number of currently owned counties in e_thrace
+revive_odrysian_kingdom_value = {
+	value = 0
+	title:e_thrace = {
+		every_de_jure_county = {
+			limit = { holder.top_liege = root }
+			add = 1
+		}
+	}
+}
+
+# Target number owned counties in e_thrace
+revive_odrysian_kingdom_target_value = {
+	value = revive_odrysian_kingdom_total_value
+	multiply = revive_odrysian_kingdom_target_percent_decimal_value
+	add = 1
+	floor = yes
+}

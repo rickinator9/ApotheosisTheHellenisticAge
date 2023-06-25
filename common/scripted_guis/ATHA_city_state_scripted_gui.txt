@@ -56,14 +56,14 @@ city_state_gui_is_aristocratic_or_spartan = {
 
 	is_shown = {
 		OR = {
-			has_government = city_state_aristocratic_government
-			has_government = city_state_spartan_government
+			government_has_flag = government_is_aristocratic_city_state
+			government_has_flag = government_is_spartan_city_state
 			AND = {
 				is_city_state_bureaucracy = yes
 				liege = {
 					OR = {
-						has_government = city_state_aristocratic_government
-						has_government = city_state_spartan_government
+						government_has_flag = government_is_aristocratic_city_state
+						government_has_flag = government_is_spartan_city_state
 					}
 				}
 			}
@@ -76,10 +76,10 @@ city_state_gui_is_democratic = {
 
 	is_shown = {
 		OR = {
-			has_government = city_state_democratic_government
+			government_has_flag = government_is_democratic_city_state
 			AND = {
 				is_city_state_bureaucracy = yes
-				liege = { has_government = city_state_democratic_government }
+				liege = { government_has_flag = government_is_democratic_city_state }
 			}
 		}
 	}
@@ -90,10 +90,10 @@ city_state_gui_is_oligarchic = {
 
 	is_shown = {
 		OR = {
-			has_government = city_state_oligarchic_government
+			government_has_flag = government_is_oligarchic_city_state
 			AND = {
 				is_city_state_bureaucracy = yes
-				liege = { has_government = city_state_oligarchic_government }
+				liege = { government_has_flag = government_is_oligarchic_city_state }
 			}
 		}
 	}
@@ -104,10 +104,10 @@ city_state_gui_is_tyrannical = {
 
 	is_shown = {
 		OR = {
-			has_government = city_state_tyrannical_government
+			government_has_flag = government_is_tyrannical_city_state
 			AND = {
 				is_city_state_bureaucracy = yes
-				liege = { has_government = city_state_tyrannical_government }
+				liege = { government_has_flag = government_is_tyrannical_city_state }
 			}
 		}
 	}

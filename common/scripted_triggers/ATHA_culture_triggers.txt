@@ -1,8 +1,33 @@
-﻿is_spartan = {
+﻿# Checks if this scope's culture is equal to the specified culture or if any of its parents is equal to the specified culture.
+# Should be called from a scope that has the 'culture' scope, such as Character or Province.
+# CULTURE is used as the culture to check against. Include the culture: prefix if passing in a literal.
+has_culture_or_parent_culture = {
+	culture = {
+		is_culture_or_parent_culture = { CULTURE = $CULTURE$ }
+	}
+}
+
+# Checks if this culture is equal to the specified culture or if any of its parents is equal to the specified culture.
+# Should be called from 'culture' scope.
+# CULTURE is used as the culture to check against. Include the culture: prefix if passing in a literal.
+is_culture_or_parent_culture = {
+	OR = {
+		this = $CULTURE$
+		any_parent_culture_or_above = { this = $CULTURE$ }
+	}
+}
+
+is_spartan = {
 	has_culture = culture:laconian
 	OR = {
-		capital_county = { THIS = title:c_sparta }
-		any_liege_or_above = { capital_county = { THIS = title:c_sparta } }
+		AND = {
+			exists = capital_county
+			capital_county = { THIS = title:c_sparta }
+		}
+		AND = {
+			exists = liege
+			any_liege_or_above = { capital_county = { THIS = title:c_sparta } }
+		}
 	}
 }
 

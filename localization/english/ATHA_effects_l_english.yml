@@ -13,11 +13,18 @@
  VASSAL_CONTRACT_IMPOSED_FRANCHISE_INVALIDATED:0 "@warning_icon! #X The current $imposed_franchise$ [contract|E] will be invalidated#!"
  VASSAL_CONTRACT_ENFORCED_CENTRALISATION_INVALIDATED:0 "@warning_icon! #X The current $enforced_centralisation$ [contract|E] will be invalidated#!"
  VASSAL_CONTRACT_ENFORCED_FEDERALISM_INVALIDATED:0 "@warning_icon! #X The current $enforced_federalism$ [contract|E] will be invalidated#!"
- GAIN_CULTURE_TRADITION:0 "Gains the [CULTURE_TRADITION.GetName] [culture_tradition|E]"
- GAINED_CULTURE_TRADITION:0 "Gained the [CULTURE_TRADITION.GetName] [culture_tradition|E]"
+ GAIN_CULTURE_TRADITION:0 "Gains the [CULTURE_TRADITION.GetName] [tradition|E]"
+ GAINED_CULTURE_TRADITION:0 "Gained the [CULTURE_TRADITION.GetName] [tradition|E]"
+ GAIN_CULTURE_TRADITION_THIRD:0 "The [CULTURE.GetName] culture gains the [CULTURE_TRADITION.GetName] [tradition|E]"
+ GAINED_CULTURE_TRADITION_THIRD:0 "The [CULTURE.GetName] culture gained the [CULTURE_TRADITION.GetName] [tradition|E]" 
  LOSE_CULTURE_TRADITION:0 "Loses the [CULTURE_TRADITION.GetName] [culture_tradition|E]"
  LOST_CULTURE_TRADITION:0 "Lost the [CULTURE_TRADITION.GetName] [culture_tradition|E]"
 
+ ADOPT_CULTURE_PILLAR:0 "Gains the [CULTURE_PILLAR.GetName] [culture_pillar|E]"
+ ADOPTED_CULTURE_PILLAR:0 "Gained the [CULTURE_PILLAR.GetName] [pillar|E]"
+
+ ADOPT_CULTURE_HERITAGE:0 "Gains the [CULTURE_PILLAR.GetName] [heritage|E]"
+ ADOPTED_CULTURE_HERITAGE:0 "Gained the [CULTURE_PILLAR.GetName] [heritage|E]"
 
  greece_decisions_0003_a_effect_global:0 "#indent_newline:3 Every [vassal] with a [city_state|L] [government|E]:\n#indent_newline:3 $EFFECT_LIST_BULLET$[feudal_contract|E] gains [GetVassalContractType( 'vassal_role' ).GetObligationName( 'vassal_role_city_state_dependent' )] #weak ([GetVassalContractType( 'vassal_role' ).GetName] #weak [obligation])#!#!\n$EFFECT_LIST_BULLET$Increases their [taxes|E] to you\n$EFFECT_LIST_BULLET$Reduces their [levies|E] to you\n$EFFECT_LIST_BULLET$Loses #N 20#! [opinion|E] of you #weak (+1.20/year) (Angry)#!#!\n#indent_newline:3 Every [vassal] with a [coalition|L] [government|E]:\n#indent_newline:3 $EFFECT_LIST_BULLET$[feudal_contract|E] gains [GetVassalContractType( 'vassal_role' ).GetObligationName( 'vassal_role_coalition_dependent' )] #weak ([GetVassalContractType( 'vassal_role' ).GetName] #weak [obligation])#!#!\n$EFFECT_LIST_BULLET$Increases their [taxes|E] to you\n$EFFECT_LIST_BULLET$Reduces their [levies|E] to you\n$EFFECT_LIST_BULLET$Loses #N 20#! [opinion|E] of you #weak (+1.20/year) (Angry)#!#!"
  greece_decisions_0003_b_effect_global:0 "#indent_newline:3 Every [vassal] with a [city_state|L] [government|E]:\n#indent_newline:3 $EFFECT_LIST_BULLET$[feudal_contract|E] gains [GetVassalContractType( 'vassal_role' ).GetObligationName( 'vassal_role_city_state_autonomous' )] #weak ([GetVassalContractType( 'vassal_role' ).GetName] #weak [obligation])#!#!#!\n#indent_newline:3 Every [vassal] with a [coalition|L] [government|E]:\n#indent_newline:3 $EFFECT_LIST_BULLET$[feudal_contract|E] gains [GetVassalContractType( 'vassal_role' ).GetObligationName( 'vassal_role_coalition_autonomous' )] #weak ([GetVassalContractType( 'vassal_role' ).GetName] #weak [obligation])#!#!#!"
@@ -27,3 +34,34 @@
  ancestry_strong_evidence_effect_global:0 "[claim_strength|E] increases by #P +3#!"
  ancestry_contradictory_evidence_effect_global:0 "[claim_strength|E] decreases by #N -2#!"
  ancestry_discovery_risk_effect_global:0 "[claim_risk|E] increases by #N +1#!"
+
+ set_court_type_diplomatic_first:0 "You adopt the [GetCourtType('court_diplomatic').GetName] as your [court_type|E]"
+ set_court_type_warlike_first:0 "You adopt the [GetCourtType('court_warlike').GetName] as your [court_type|E]"
+ set_court_type_administrative_first:0 "You adopt the [GetCourtType('court_administrative').GetName] as your [court_type|E]"
+ set_court_type_intrigue_first:0 "You adopt the [GetCourtType('court_intrigue').GetName] as your [court_type|E]"
+ set_court_type_scholarly_first:0 "You adopt the [GetCourtType('court_scholarly').GetName] as your [court_type|E]"
+ set_court_type_tribal_first:0 "You adopt the [GetCourtType('court_tribal').GetName] as your [court_type|E]"
+
+ SET_COURT_LANGUAGE_FIRST:0 "You adopt [CULTURE_PILLAR.GetName] as your [court_language|E]"
+ SET_COURT_LANGUAGE_FIRST_PAST:0 "You adopted [CULTURE_PILLAR.GetName] as your [court_language|E]""
+ SET_COURT_LANGUAGE_GLOBAL:0 "Adopts [CULTURE_PILLAR.GetName] as [CHARACTER.GetHerHis] [court_language|E]""
+ SET_COURT_LANGUAGE_GLOBAL_PAST:0 "Adopted [CULTURE_PILLAR.GetName] as [CHARACTER.GetHerHis] [court_language|E]""
+
+ CHANGE_DEVELOPMENT_LEVEL_GLOBAL:0 "The [development|E] level will change by $VALUE|=0+$"
+ CHANGE_DEVELOPMENT_LEVEL_GLOBAL_PAST:0 "The [development|E] level changed by $VALUE|=0+$"
+
+ START_CEREMONIAL_GIFT_RECEIVER_GLOBAL:0 "Will be obliged to reciprocate with a gift of #bold greater #! value."
+ START_CEREMONIAL_GIFT_RECEIVER_FIRST:0 "You will be obliged to reciprocate with a gift of #bold greater #! value."
+ START_CEREMONIAL_GIFT_RECEIVER_THIRD:0 "[CHARACTER.GetShortUIName] will be obliged to reciprocate with a gift of #bold greater #! value."
+
+ CONTRIBUTES_TO_CEREMONIAL_GIFT_OBLIGATION_GLOBAL:0 "Contributes to the obligation to reciprocate the ceremonial gift."
+
+ END_CEREMONIAL_GIFT_OBLIGATION_GLOBAL:0 "Will end the obligation to reciprocate with a greater gift than the received ceremonial gift."
+ END_CEREMONIAL_GIFT_OBLIGATION_FIRST:0 "You will end your obligation to reciprocate with a greater gift than the received ceremonial gift."
+ END_CEREMONIAL_GIFT_OBLIGATION_THIRD:0 "[CHARACTER.GetShortUIName] will end [CHARACTER.GetHerHis] obligation to reciprocate with a greater gift than the received ceremonial gift."
+ LOOT_TOMB_EFFECT_THEY:0 "The tomb in [PROVINCE.GetName] is looted."
+ LOOT_TOMB_EFFECT_THEY_PAST:0 "The tomb in [PROVINCE.GetName] has been looted."
+ LOOT_TOMB_WITH_DIVINE_INHUMATION_EFFECT:0 "Because your [faith|E] has [GetFaithDoctrine('tenet_divine_inhumation').GetBaseName]:"
+ LOOT_TOMB_OF_RELATIVES_EFFECT:0 "Because the tomb is occupied by a relative:"
+
+ all_held_counties_practicing_divine_inhumation:0 "All held [counties|E] practicing [GetFaithDoctrine('tenet_divine_inhumation').GetBaseName]"

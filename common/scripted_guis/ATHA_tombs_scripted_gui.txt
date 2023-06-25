@@ -1,0 +1,76 @@
+﻿gui_tomb_build_tomb = {
+	scope = province
+	saved_scopes = {
+		player
+	}
+
+	is_shown = {
+		build_tomb_potential = { BUILDER = scope:player }
+	}
+
+	is_valid = {
+		build_tomb_allow = { BUILDER = scope:player }
+	}
+
+	effect = {
+		show_as_tooltip = {
+			build_tomb_in_province_effect = { BUILDER = scope:player }
+		}
+		hidden_effect = {
+			save_scope_as = tomb_location
+			scope:player = { trigger_event = ATHA_tomb.0001 } # Confirm the building of the tomb.
+		}
+	}
+}
+
+gui_tomb_exists = {
+	scope = province
+	is_shown = {
+		province_has_tomb_trigger = yes
+	}
+}
+
+gui_tomb_looted = {
+	scope = province
+	is_shown = {
+		province_has_looted_tomb_trigger = yes
+	}
+}
+
+gui_tomb_restore_tomb = {
+	scope = province
+	saved_scopes = {
+		player
+	}
+
+	is_shown = {
+		always = no
+	}
+
+	is_valid = {
+		always = no
+	}
+
+	effect = {
+	}
+}
+
+gui_tomb_sacrifice_to_occupant = {
+	scope = province
+	saved_scopes = {
+		player
+		sacrifice_target
+	}
+
+	is_shown = {
+		sacrifice_to_tomb_occupant_potential = { SACRIFICER = scope:player }
+	}
+
+	is_valid = {
+		sacrifice_to_tomb_occupant_allow = { SACRIFICER = scope:player }
+	}
+
+	effect = {
+		sacrifice_to_tomb_occupant_effect = { SACRIFICER = scope:player OCCUPANT = scope:sacrifice_target }
+	}
+}

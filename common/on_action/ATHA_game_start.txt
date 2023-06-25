@@ -10,6 +10,24 @@ ATHA_on_game_start = {
         ATHA_game_start.6 # Set centralisation laws for governments 
         ATHA_game_start.16 # Assign dynasty modifiers 
         ATHA_game_start.17 # Assign lifestyle perks
+        ATHA_game_start.18 # Assign splendour levels to dead dynasties
+        ATHA_game_start.19 # Assign historical tombs
+    }
+
+    effect = {
+        every_living_character = {
+            limit = {
+				culture = {
+                    has_cultural_pillar = language_celtic
+                }
+                is_male = yes
+			}
+            save_scope_as = celtic_father
+			add_to_global_variable_list = {
+				name = celtic_name_support
+				target = scope:celtic_father
+			}
+        }
     }
 }
 

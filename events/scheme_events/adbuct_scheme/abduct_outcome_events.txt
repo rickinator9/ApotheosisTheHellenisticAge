@@ -9,7 +9,7 @@ namespace = abduct_outcome
 ##################################
 
 abduct_outcome.0001 = {
-	
+
 	hidden = yes
 
 	immediate = {
@@ -53,6 +53,12 @@ abduct_outcome.1001 = {
 		character = scope:target
 		animation = personality_coward
 	}
+
+	override_background = {
+		trigger = { scope:target = { is_travelling = yes } }
+		reference = terrain
+	}
+
 	widget = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
@@ -67,35 +73,19 @@ abduct_outcome.1001 = {
 			name = abduct_method
 			value = flag:seized_roadside
 		}
+		
+		scope:target.capital_province = { save_scope_as = departure }
+
+		# Save arrival location
 		if = {
-			limit = {
-				exists = scope:target.location.county.holder.capital_county
-			}
-			scope:target.location.county.holder.capital_county = {
-				save_scope_as = departure
-			}
-			scope:target.location.county.holder.top_liege = {
-				random_sub_realm_county = {
-					limit = {
-						NOR = {
-							this = scope:departure
-							holder = scope:owner
-						}
-						scope:departure = {
-							squared_distance = {
-								target = prev
-								value < 100000
-							}
-						}
-					}
-					save_scope_as = arrival
+			limit = { scope:target = { is_travelling = yes } }
+			scope:target = {
+				current_travel_plan = {
+					next_destination_province = { save_scope_as = arrival }
 				}
 			}
 		}
 		else = {
-			scope:owner.capital_county = {
-				save_scope_as = departure
-			}
 			scope:owner.top_liege = {
 				random_sub_realm_county = {
 					limit = {
@@ -163,12 +153,14 @@ abduct_outcome.1002 = {
 		container = "custom_widgets_container"
 	}
 
+	override_background = {
+		trigger = { scope:target = { is_travelling = yes } }
+		reference = terrain
+	}
+
 	trigger = {
 		scope:target = {
-			OR = {
-				is_ruler = no
-				highest_held_title_tier <= tier_duchy
-			}
+			is_travelling = yes
 		}
 	}
 
@@ -182,6 +174,14 @@ abduct_outcome.1002 = {
 			value = flag:on_the_way
 		}
 		abduct_outcome_roll_setup_effect = yes
+
+		# Save travel information for loc 
+		scope:target = {
+			capital_province = { save_scope_as = departure }
+			current_travel_plan = {
+				next_destination_province = { save_scope_as = arrival }
+			}
+		}
 	}
 
 	option = {
@@ -233,6 +233,7 @@ abduct_outcome.1003 = {
 		}
 		scope:target = {
 			is_pool_character = no
+			is_travelling = no 
 		}
 	}
 
@@ -298,7 +299,7 @@ abduct_outcome.2001 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:abduct_method = flag:seized_roadside
 	}
@@ -346,7 +347,7 @@ abduct_outcome.2002 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:abduct_method = flag:on_the_way
 	}
@@ -378,7 +379,7 @@ abduct_outcome.2003 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:abduct_method = flag:unwelcome_guests
 	}
@@ -422,7 +423,7 @@ abduct_outcome.4001 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:abduct_method = flag:seized_roadside
 	}
@@ -448,7 +449,7 @@ abduct_outcome.4001 = {
 		name = abduct_outcome.4001.b
 		play_music_cue = "mx_cue_stress"
 		custom_tooltip = restart_scheme_tt
-		
+
 		scope:scheme = {
 			add_scheme_progress = -10
 		}
@@ -488,7 +489,7 @@ abduct_outcome.4002 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
 		scope:abduct_method = flag:on_the_way
 	}
@@ -554,9 +555,9 @@ abduct_outcome.4003 = {
 		gui = "event_window_widget_scheme"
 		container = "custom_widgets_container"
 	}
-	
+
 	trigger = {
-		scope:abduct_method = flag:on_the_way
+		scope:abduct_method = flag:unwelcome_guests
 	}
 
 	immediate = {

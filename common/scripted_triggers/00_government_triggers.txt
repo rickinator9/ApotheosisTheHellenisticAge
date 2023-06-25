@@ -1,23 +1,23 @@
 ﻿
 should_apply_tribal_development_penalty_trigger = {
-	has_government = tribal_government
+	government_has_flag = government_is_tribal
 	NOR = {
 		any_liege_or_above = {
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
 			}
 		}
 		any_vassal_or_below = {
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
 			}
 		}
 		any_neighboring_top_liege_realm_owner = {
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
 			}
 			tier_difference = {
 				target = prev
@@ -28,12 +28,5 @@ should_apply_tribal_development_penalty_trigger = {
 }
 
 faith_qualifies_for_west_african_pagan_feudalisation_trigger = {
-	faith = {
-		# Unreformed West African Pagans are our targets.
-		always = no
-		custom_tooltip = {
-			text = faith_qualifies_for_west_african_pagan_feudalisation_trigger.tt
-			has_doctrine_parameter = unreformed
-		}
-	}
+	always = no
 }

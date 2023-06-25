@@ -165,6 +165,24 @@
 			}
 		}
 	}
+	# Political Circumstances
+	## Disloyal regents vote for themselves.
+	modifier = {
+		add = 50
+		desc = tooltip_feudal_elector_vote_myself_diarch
+		this = scope:candidate
+		is_diarch_of_target = scope:holder
+		# Loyal diarchs won't try to usurp the throne.
+		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
+	}
+	## Loyal regents vote for their liege's candidate.
+	modifier = {
+		add = 50
+		desc = tooltip_feudal_elector_vote_liege_candidate_diarch
+		is_diarch_of_target = scope:holder
+		scope:candidate = scope:holder_candidate
+		diarch_loyalty >= diarch_loyalty_visibly_loyal_threshold
+	}
 }
 
 holder_voting_pattern_elective_modifier = {
@@ -406,7 +424,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_fellow_culture
 		NOT = { this = scope:candidate }
 		root.culture = scope:candidate.culture
-		add = 10
+		add = {
+			add = 10
+		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_stranger
@@ -414,14 +434,18 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		NOT = { root.culture = scope:candidate.culture }
 		culture = { has_same_culture_heritage = scope:candidate.culture }
 		NOT = { is_close_family_of = scope:candidate }
-		add = -15
+		add = {
+			subtract = 15
+		}
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_foreigner
 		scope:holder.culture = root.culture #Only a concern if Elector and current ruler share culture.
 		NOT = { culture = { has_same_culture_heritage = scope:candidate.culture } }
 		NOT = { is_close_family_of = scope:candidate }
-		add = -30
+		add = {
+			subtract = 30
+		}
 	}
 	modifier = { #Candidate is a foreigner's pet
 		desc = tooltip_feudal_elector_vote_strangers_pet
@@ -432,7 +456,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 			this.culture = scope:holder.culture
 		}
 		NOT = { is_close_family_of = scope:candidate }
-		add = -10
+		add = {
+			subtract = 10
+		}
 	}
 	modifier = { #Candidate is a foreigner's pet
 		desc = tooltip_feudal_elector_vote_foreigners_pet
@@ -442,7 +468,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 			this.culture = scope:holder.culture
 		}
 		NOT = { is_close_family_of = scope:candidate }
-		add = -15
+		add = {
+			subtract = 15
+		}
 	}
 	modifier = { #If candidate is elected, he will rule from a capital outside this de jure.
 		desc = tooltip_feudal_elector_vote_political_concerns
@@ -508,7 +536,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 				value = faith_fully_accepted_level
 			}
 		}
-		add = -25
+		add = {
+			subtract = 25
+		}
 	}
 	modifier = { #Astray (Catholic vs Orthodox)
 		desc = tooltip_feudal_elector_vote_astray
@@ -519,7 +549,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 				value = faith_astray_level
 			}
 		}
-		add = -50
+		add = {
+			subtract = 50
+		}
 	}
 	modifier = { #Heretic (Catholic vs Cathar)
 		desc = tooltip_feudal_elector_vote_heretic
@@ -589,13 +621,13 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		add = -15
 		desc = tooltip_feudal_elector_vote_uncivilized
 		NOR = {
-			has_government = clan_government
-			has_government = tribal_government
+			government_has_flag = government_is_clan
+			government_has_flag = government_is_tribal
 		}
 		scope:candidate = {
 			OR = {
-				has_government = clan_government
-				has_government = tribal_government
+				government_has_flag = government_is_clan
+				government_has_flag = government_is_tribal
 			}
 		}
 	}
@@ -603,13 +635,13 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		add = -15
 		desc = tooltip_feudal_elector_vote_settled
 		OR = {
-			has_government = clan_government
-			has_government = tribal_government
+			government_has_flag = government_is_clan
+			government_has_flag = government_is_tribal
 		}
 		scope:candidate = {
 			NOR = {
-				has_government = clan_government
-				has_government = tribal_government
+				government_has_flag = government_is_clan
+				government_has_flag = government_is_tribal
 			}
 		}
 	}
@@ -677,7 +709,9 @@ elector_voting_pattern_circumstances_elective_modifier = {
 				has_martial_lifestyle_trait_trigger = yes
 			}
 		}
-		add = 15
+		add = {
+			add = 15
+		}
 	}
 	modifier = { # Diplomatic society prefers stewards and diplomats
 		add = 15
@@ -737,6 +771,21 @@ elector_voting_pattern_circumstances_elective_modifier = {
 		NOT = { this = scope:candidate }
 		scope:candidate = { has_weak_claim_on = scope:title }
 		NOT = { scope:title = { has_title_law = democratic_succession_law } } # Democrats don't care about claims.
+	}
+	# Political Circumstances
+	modifier = {
+		add = {
+			if = {
+				limit = {
+					scope:holder = { has_diarchy_parameter = diarchy_type_is_temporary_regency }
+				}
+				add = 20
+			}
+			else = { add = 40 }
+		}
+		desc = tooltip_feudal_elector_vote_regent_already_governs
+		NOT = { this = scope:candidate }
+		scope:candidate = { is_diarch_of_target = scope:holder }
 	}
 }
 
@@ -1180,7 +1229,7 @@ elector_voting_pattern_traits_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_deviant
 		NOT = {
 			this = scope:candidate	#Do not judge yourself.
-			faith = { has_doctrine = doctrine_deviancy_accepted }
+			faith = { has_doctrine_parameter = deviancy_accepted }
 		}
 		OR = {
 			NOT = { has_trait = deviant }
@@ -1191,13 +1240,13 @@ elector_voting_pattern_traits_elective_modifier = {
 			subtract = 15
 			if = {
 				limit = {
-					faith = { has_doctrine = doctrine_deviancy_shunned }
+					faith = { has_doctrine_parameter = deviancy_shunned }
 				}
 				subtract = 10
 			}
 			if = {
 				limit = {
-					faith = { has_doctrine = doctrine_deviancy_crime }
+					faith = { has_doctrine_parameter = deviancy_illegal }
 				}
 				subtract = 15
 			}
@@ -1451,7 +1500,9 @@ elector_voting_pattern_traits_elective_modifier = {
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = incapable }
-		add = -50
+		add = {
+			subtract = 50
+		}
 	}
 	modifier = {
 		add = -15
@@ -1470,8 +1521,15 @@ elector_voting_pattern_traits_elective_modifier = {
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured
 		this_is_martial_society_trigger = no
+		NOT = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
 		scope:candidate = { has_trait = disfigured }
 		add = -15
+	}
+	modifier = {
+		desc = tooltip_feudal_elector_vote_disfigured_byzantine
+		culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
+		scope:candidate = { has_trait = disfigured }
+		add = -100
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured_warrior
@@ -1479,6 +1537,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = disfigured }
 		add = {
 			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 45
+			}
 		}
 	}
 	modifier = {
@@ -1491,7 +1553,16 @@ elector_voting_pattern_traits_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_maimed_warrior
 		this_is_martial_society_trigger = yes
 		scope:candidate = { has_trait = maimed }
-		add = -15
+		add = {
+			subtract = 15
+		}
+	}
+	modifier = {
+		desc = tooltip_feudal_elector_vote_born_in_the_purple
+		NOT = { this = scope:candidate } #Do not judge yourself.
+		culture = { has_cultural_parameter = children_can_be_born_in_the_purple }
+		scope:candidate = { has_trait = born_in_the_purple }
+		add = 50
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_genius_diplomat
@@ -1727,6 +1798,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = clubfooted }
 		add = {
 			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 10
+			}
 		}
 	}
 	modifier = {
@@ -1736,6 +1811,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 20
+			}
 			if = { # Dwarves are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1749,6 +1828,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 30
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Dwarves are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1762,6 +1845,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = {has_trait = hunchbacked }
 		add = {
 			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Hunchbacks are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1775,6 +1862,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = hunchbacked }
 		add = {
 			subtract = 30
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 30
+			}
 			if = { # Hunchbacks are probably not too popular with democracy either.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 2
@@ -1796,6 +1887,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		}
 		add = {
 			subtract = 15
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 60
+			}
 		}
 	}
 	modifier = {
@@ -1804,6 +1899,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = lisping }
 		add = {
 			subtract = 5
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 10
+			}
 			if = { # Lisping is pretty damn annoying during speeches.
 				limit = { scope:title = { has_title_law = democratic_succession_law } }
 				multiply = 4
@@ -1936,6 +2035,10 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = blind }
 		add = {
 			subtract = 10
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 140
+			}
 		}
 	}
 	modifier = { #Shunned for being blind
@@ -1945,12 +2048,19 @@ elector_voting_pattern_traits_elective_modifier = {
 		scope:candidate = { has_trait = blind }
 		add = {
 			subtract = 20
+			if = {
+				limit = { culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance } }
+				subtract = 130
+			}
 		}
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = no
+		NOR = {
+			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
+		}
 		scope:candidate = {has_trait = eunuch }
 		add = -25
 	}
@@ -1958,12 +2068,18 @@ elector_voting_pattern_traits_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_eunuch_negative_warrior
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = yes
+		NOR = {
+			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
+		}
 		scope:candidate = {has_trait = eunuch }
 		add = -50
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative_byzantine
 		NOT = { this = scope:candidate } #Do not judge yourself.
+		OR = {
+			culture = { has_cultural_parameter = physical_disfigurement_blocks_inheritance }
+		}
 		scope:candidate = { has_trait = eunuch }
 		add = -150
 	}

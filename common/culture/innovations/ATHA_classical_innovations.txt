@@ -48,13 +48,15 @@ innovation_classical_picked_troops = {
 	culture_era = culture_era_classical
 	icon = @leadership_alexander
 
-	modifier = {
+	custom = more_glory_hounds
+	
+	character_modifier = {
 		men_at_arms_cap = 1
 		men_at_arms_limit = 3
 		knight_effectiveness_mult = 0.2
 	}
 
-	unlock_maa = armored_horsemen
+	# unlock_maa = armored_horsemen
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -67,7 +69,7 @@ innovation_classical_mustering_grounds = {
 
 	custom = unlock_early_medieval_military_buildings
 
-	modifier = {
+	character_modifier = {
 		levy_reinforcement_rate = 0.15
 	}
 
@@ -83,7 +85,7 @@ innovation_classical_garrisons = {
 	custom = unlock_early_medieval_fortification_buildings
 	custom = unlock_military_command_contract
 
-	modifier = {
+	character_modifier = {
 		levy_size = 0.05
 	}
 
@@ -98,6 +100,8 @@ innovation_classical_siege_towers = {
 
 	unlock_maa = siege_tower
 
+	custom = eligible_accolade_besieger_attribute
+
 	flag = global_regular
 	flag = early_medieval_era_regular
 }
@@ -109,6 +113,14 @@ innovation_classical_thyreos = {
 
 	maa_upgrade = {
 		type = skirmishers
+		toughness = 3
+	}
+	maa_upgrade = {
+		type = slingers
+		toughness = 3
+	}
+	maa_upgrade = {
+		type = medium_infantry
 		toughness = 3
 	}
 	maa_upgrade = {
@@ -131,6 +143,10 @@ innovation_classical_trilobate_arrowheads = {
 		type = archers
 		damage = 3
 	}
+	maa_upgrade = {
+		type = archer_cavalry
+		damage = 3
+	}
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -146,6 +162,7 @@ innovation_classical_historical_method = {
 
 	unlock_casus_belli = individual_duchy_de_jure_cb
 	custom = cb_discount_prestige_10
+	custom = more_zealot
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -158,8 +175,9 @@ innovation_classical_constitution = {
 
 	unlock_law = crown_authority_2
 
-	custom = reduce_desired_franchise_shift
+	#custom = reduce_desired_franchise_shift
 	custom = unlock_imposed_franchise_contract
+	custom = more_courtly
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -172,7 +190,7 @@ innovation_classical_winch_and_pulley = {
 
 	custom = unlock_early_medieval_economic_buildings
 
-	modifier = {
+	character_modifier = {
 		build_speed = -0.1
 	}
 
@@ -187,7 +205,7 @@ innovation_classical_monetary_standards = {
 	
 	custom = unlock_coinage_rights_contract
 
-	modifier = {
+	character_modifier = {
 		development_growth_factor = 0.1
 	}
 
@@ -201,6 +219,10 @@ innovation_classical_hippodamian_plan = {
 	icon = @civil_construction_2
 
 	custom = reduce_develop_county_penalty_02
+	
+	county_modifier = {
+		building_slot_add = 1
+	}
 
 	flag = global_regular
 	flag = early_medieval_era_regular
@@ -215,7 +237,7 @@ innovation_classical_diplomatic_missions = {
 	custom = unlock_enforced_centralisation_contract
 	custom = unlock_enforced_federalism_contract
 
-	modifier = {
+	character_modifier = {
 		diplomatic_range_mult = 0.25
 		independent_ruler_opinion = 5
 	}
@@ -229,11 +251,12 @@ innovation_classical_public_honours = {
 	culture_era = culture_era_classical
 	icon = @diadem
 	
-	custom = unlock_commission_statue_decision
+	# custom = unlock_commission_statue_decision TODO
 	custom = unlock_ritual_coronations_contract
+	custom = more_parochial
 
 	unlock_law = partition_succession_law
-	modifier = {
+	character_modifier = {
 		monthly_prestige_gain_mult = 0.05
 	}
 
@@ -249,7 +272,7 @@ innovation_classical_bureaucracy = {
 	custom = unlock_civil_bureaucracy_contract
 	custom = unlock_feudal_contract
 
-	modifier = {
+	character_modifier = {
 		direct_vassal_opinion = 5
 		vassal_tax_contribution_mult = 0.1
 	}

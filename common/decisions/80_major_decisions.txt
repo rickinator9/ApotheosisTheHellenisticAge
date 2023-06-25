@@ -16,7 +16,7 @@
 	#ai_check_interval = 36
 	#	
 	#is_shown = {
-		#has_government = tribal_government
+		#government_has_flag = government_is_tribal
 	#}
 	#	
 	#is_valid = {
@@ -47,7 +47,7 @@
 		#base = 100
 		#modifier = { #Go for the more lenient decision if this is the case
 			#add = -100
-			#liege = { has_government = feudal_government }
+			#liege = { government_has_flag = government_is_feudal }
 		#}
 	#}
 #}
@@ -56,6 +56,7 @@
 # Convert Realm to Feudalism/Clan through Liege
 # by Linnéa Thimrén
 ##################################################
+# ATHA edit: made available to clan governments as well
 
 # A more lenient decision to convert if your liege is feudal
 convert_to_feudalism_liege_converted_decision = {
@@ -66,11 +67,14 @@ convert_to_feudalism_liege_converted_decision = {
 	ai_check_interval = 36
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			government_has_flag = government_is_tribal
+			government_has_flag = government_is_clan
+		}
 		liege = {
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				government_has_flag = government_is_feudal
+				#government_has_flag = government_is_clan
 			}
 		}
 	}
@@ -80,6 +84,9 @@ convert_to_feudalism_liege_converted_decision = {
 			has_realm_law = tribal_authority_1
 			has_realm_law = tribal_authority_2
 			has_realm_law = tribal_authority_3
+			has_realm_law = crown_authority_1 #for clan realms
+			has_realm_law = crown_authority_2 #for clan realms
+			has_realm_law = crown_authority_3 #for clan realms
 		}
 		custom_description = {
 			text = recent_conversion_to_tribalism
@@ -118,6 +125,7 @@ convert_to_feudalism_liege_converted_decision = {
 # Convert Realm to Feudalism/Clan
 # by Linnéa Thimrén
 ##################################################
+# ATHA edit: made available to clan governments as well
 
 # A decision to feudalize the entire realm (wow!)
 convert_whole_realm_to_feudalism_decision = {
@@ -128,15 +136,18 @@ convert_whole_realm_to_feudalism_decision = {
 	ai_check_interval = 36
 
 	is_shown = {
-		has_government = tribal_government
+		OR = {
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
+		}
 		OR = {
 			is_independent_ruler = yes
 			AND = {
 				is_independent_ruler = no
 				liege = {
 					NOR = {
-						has_government = feudal_government
-						has_government = clan_government
+						government_has_flag = government_is_feudal
+						#government_has_flag = government_is_clan
 					}
 				}
 			}
@@ -144,7 +155,11 @@ convert_whole_realm_to_feudalism_decision = {
 	}
 
 	is_valid = {
-		has_realm_law = tribal_authority_3
+		OR = {
+			has_realm_law = tribal_authority_3
+			has_realm_law = crown_authority_2 #for clan realms
+			has_realm_law = crown_authority_3 #for clan realms
+		}
 		prestige_level >= 2
 		capital_province.county = {
 			development_level >= convert_to_feudalism_development_requirement
@@ -223,8 +238,8 @@ convert_to_tribalism_decision = {
 			}
 		}
 		NOR = {
-			has_government = tribal_government
-			has_government = clan_government
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
 		}
 	}
 
@@ -798,11 +813,11 @@ tribal_challenge_ruler_decision = {
 	cooldown = { days = 3650 }
 
 	is_shown = {
-		has_government = tribal_government
+		government_has_flag = government_is_tribal
 		exists = liege
 		liege = {
 			NOT = { this = root }
-			has_government = tribal_government
+			government_has_flag = government_is_tribal
 			exists = primary_title
 			primary_title = {
 				save_temporary_scope_as = title_check
@@ -810,6 +825,7 @@ tribal_challenge_ruler_decision = {
 		}
 		has_claim_on = scope:title_check
 		can_start_single_combat_trigger = yes
+		is_imprisoned = no
 	}
 
 	is_valid_showing_failures_only = {
@@ -1293,6 +1309,27 @@ escape_from_prison_decision = {
 					show_chance = no
 					desc = escape_from_prison_decision_success.tt
 					release_from_prison = yes
+					scope:imprisoner = {
+						if = {
+							limit = {
+								OR = {
+									has_revoke_title_reason = root
+									has_banish_reason = root
+									has_execute_reason = root
+								}
+							}
+							add_opinion = {
+								target = root
+								modifier = escaped_from_prison_crime
+							}
+						}
+						else = {
+							add_opinion = {
+								target = root
+								modifier = escaped_from_prison_opinion
+							}
+						}
+					}
 				}
 				50 = {
 					show_chance = no

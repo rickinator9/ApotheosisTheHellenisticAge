@@ -6,7 +6,7 @@
 
 	fallback = 2
 
-    valid_holdings = { castle_holding city_holding colony_holding }
+    valid_holdings = { castle_holding city_holding colony_holding church_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract = {
@@ -174,10 +174,19 @@
 		}
 	}
 	
-	flag = has_discrete_tax_contract
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_feudal
+	
+	flag = has_feudal_government_taxes_contract
+	flag = has_feudal_government_levies_contract
+	flag = has_vassal_role_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_colony_rights_contract
+	flag = has_gift_estate_rights_contract
 
 	flag = is_bureaucracy_government
 	
@@ -198,6 +207,9 @@ republic_government = {
 	}
 
 	vassal_contract = { republic_government_obligations }
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_republic
 	color = hsv { 0.00 1.00 0.98 }
 }
 
@@ -219,6 +231,9 @@ theocracy_government = {
 	}
 
 	vassal_contract = { theocracy_government_obligations }
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_theocracy
 	color = hsv { 0.00 0.00 0.78 }
 }
 
@@ -234,7 +249,7 @@ clan_government = {
 	fallback = 3
 	
 	primary_holding = tribal_holding
-	valid_holdings = { castle_holding }
+	valid_holdings = { castle_holding church_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract = {
@@ -398,13 +413,20 @@ clan_government = {
 			}
 		}
 	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_clan
 	
 	flag = government_can_raid_rule
-	flag = is_tribal_government
 	
+	flag = has_clan_government_obligations_contract
 	flag = has_coinage_rights_contract
 	flag = has_religious_rights_contract
 	flag = has_title_revocation_rights_contract
+	flag = has_war_declaration_rights_contract
+	flag = has_council_rights_contract
+	flag = has_gift_estate_rights_contract
+
 	color = hsv { 0.07 0.65 0.76 }
 }
 
@@ -416,7 +438,7 @@ tribal_government = {
 	royal_court = yes
 
 	primary_holding = tribal_holding
-	valid_holdings = { castle_holding }
+	valid_holdings = { castle_holding church_holding }
 
 	prestige_opinion_override = { -10 0 3 5 10 20 }
 	always_use_patronym = yes	
@@ -582,13 +604,16 @@ tribal_government = {
 		feudal_government_vassal_opinion = -20
 		clan_government_vassal_opinion = -20
 		republic_government_vassal_opinion = -20
+		
+		character_travel_safety = 10
 	
 		ai_war_chance = 0.25
 		monthly_prestige = 0.2
 	}
 	
 	flag = government_can_raid_rule
-	flag = is_tribal_government
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_tribal
 	color = hsv { 0.07 0.85 0.26 }
 }
 
@@ -606,7 +631,9 @@ mercenary_government = {
 	}
 
 	flag = can_not_be_vassal_or_liege
-	color = hsv { 0.00 0.00 0.66 }
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_mercenary
+	color = hsv{ 0.00 0.00 0.66 }
 }
 
 # Holy order will always get this
@@ -622,8 +649,10 @@ holy_order_government = {
 		perform_religious_reformation = no
 	}
 
-	flag = can_not_be_vassal_or_liege
-
 	valid_holdings = { castle_holding city_holding }
-	color = hsv { 0.00 0.00 0.66 }
+
+	flag = can_not_be_vassal_or_liege
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flag = government_is_holy_order
+	color = hsv{ 0.00 0.00 0.66 }
 }
