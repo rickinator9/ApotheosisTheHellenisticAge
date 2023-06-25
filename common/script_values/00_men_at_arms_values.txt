@@ -252,6 +252,10 @@ war_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2]
 war_elephant_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.2]
 war_elephant_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.4]
 
+guanch_vaulter_recruitment_cost = @[skirmisher_recruitment_cost * 1.2]
+guanch_vaulter_low_maint_cost = @[skirmisher_low_maint_cost * 1.2]
+guanch_vaulter_high_maint_cost = @[skirmisher_high_maint_cost * 1.2]
+
 
 ##############
 # AI Weights #
@@ -271,10 +275,8 @@ culture_ai_weight_skirmishers = {
 	}
 	if = { # Cultures that favours skirmishers
 		limit = {
-			culture = {
-				OR = {
-					culture = { has_cultural_pillar = heritage_greek } # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
-				}
+			OR = {
+				culture = { has_cultural_pillar = heritage_greek } # Javelinmen were very popular among the greeks at this time (whom would evolve into the Thureophoroi)
 			}
 		}
 		add = 20

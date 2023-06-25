@@ -191,7 +191,8 @@ faith_holy_order_land_acquisition_pulse = {
 faith_heresy_events_pulse = {
 	trigger = {
 		fervor <= 40
-		NOT = {
+		NOR = {
+			has_doctrine_parameter = unreformed
 			has_variable = current_heresy
 		}
 	}
@@ -219,7 +220,8 @@ faith_heresy_events_pulse = {
 
 faith_fervor_events_pulse = {
 	trigger = {
-		NOT = {
+		NOR = {
+			has_doctrine_parameter = unreformed
 			has_variable = recent_fervor_event
 		}
 	}
@@ -231,7 +233,6 @@ faith_fervor_events_pulse = {
 	}
 }
 
-
 pagan_conversion_pulse = {
 	trigger = { #Is the character ready to convert?
 		always = no
@@ -240,7 +241,6 @@ pagan_conversion_pulse = {
 	events = {
 	}
 }
-
 
 # Code on-action: when a great holy war no longer has a valid target, and there was no one left in the target kingdom to replace them. The target scopes will still point to the last target at this point
 # If a new target is not picked in script, the GHW will be invalidated

@@ -59,6 +59,7 @@ tribe_01 = {
 
 	ai_value = {
 		base = 1
+		ai_tier_1_building_modifier = yes
 	}
 }
 
@@ -148,6 +149,18 @@ tribe_03 = {
 		fort_level = 3
 	}
 
+	province_terrain_modifier = {
+		parameter = tribal_holding_fort_level_in_jungle_bonus
+		terrain = jungle
+		additional_fort_level = tribal_holding_fort_level_in_jungle_bonus_value
+	}
+
+	province_terrain_modifier = {
+		parameter = coastal_holdings_give_defensive_bonus
+		is_coastal = yes
+		defender_holding_advantage = 5
+	}
+
 	flag = tribe
 	
 	next_building = tribe_04
@@ -192,6 +205,18 @@ tribe_04 = {
 	}
 
 	flag = tribe
+
+	province_terrain_modifier = {
+		parameter = tribal_holding_fort_level_in_jungle_bonus
+		terrain = jungle
+		additional_fort_level = tribal_holding_fort_level_in_jungle_bonus_value
+	}
+
+	province_terrain_modifier = {
+		parameter = coastal_holdings_give_defensive_bonus
+		is_coastal = yes
+		defender_holding_advantage = 8
+	}
 	
 	ai_value = {
 		base = 1
@@ -226,6 +251,7 @@ longhouses_01 = {
 
 	ai_value = {
 		base = 1
+		ai_tier_1_building_modifier = yes
 	}
 }
 
@@ -297,6 +323,7 @@ war_camps_01 = {
 	
 	ai_value = {
 		base = 1
+		ai_tier_1_building_modifier = yes
 	}
 }
 
@@ -373,6 +400,7 @@ palisades_01 = {
 	
 	ai_value = {
 		base = 1
+		ai_tier_1_building_modifier = yes
 	}
 }
 
@@ -439,6 +467,7 @@ market_villages_01 = {
 	
 	ai_value = {
 		base = 1
+		ai_tier_1_building_modifier = yes
 	}
 }
 

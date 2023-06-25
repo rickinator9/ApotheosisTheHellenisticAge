@@ -162,6 +162,21 @@ sum_of_all_skills_value = {
 	add = learning
 }
 
+sum_of_all_skills_and_prowess_value = {
+	value = sum_of_all_skills_value
+	add = prowess
+}
+
+average_of_all_skills = {
+	value = sum_of_all_skills_value
+	divide = 5
+}
+
+average_of_all_skills_and_prowess = {
+	value = sum_of_all_skills_value
+	divide = 6
+}
+
 sum_of_all_skills_threshold_terrible = {
 	value = low_skill_rating
 	multiply = 5
@@ -1103,7 +1118,17 @@ gift_artifact_opinion = {
 			limit = { rarity = famed }
 			add = 50
 		}
-		else = { add = 75 }
+		else = { add = 100 }
+		if = { # AI Greed
+			limit = { scope:recipient.ai_greed > 0 }
+			multiply = { # Up to *2
+				value = 1
+				add = {
+					value = scope:recipient.ai_greed
+					divide = 100
+				}
+			}
+		}
 		if = {
 			limit = { artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY }
 			divide = 3 # 1/3 for damaged artifacts
@@ -1414,6 +1439,7 @@ count_obligation_improvements_for_vassal = {
 			add = 1
 		}
 	}
+
 	# Any non-default fine print contract takes subtracts one
 	# special_contract intentionally has no effect
 	if = {

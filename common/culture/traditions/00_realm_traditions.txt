@@ -335,6 +335,7 @@ tradition_hereditary_hierarchy = {
 	
 	parameters = {
 		poorly_educated_leaders_distrusted = yes
+		loyal_trait_more_valued = yes
 	}
 	character_modifier = {
 		castle_holding_holding_build_gold_cost = -0.15
@@ -580,6 +581,7 @@ tradition_tribe_unity = {
 		cultural_house_personal_scheme_success_chance = yes
 		landing_house_members_give_prestige = yes
 		penalty_for_revoking_titles_from_house_members = yes
+		loyal_trait_more_valued = yes
 	}
 	character_modifier = {
 		dynasty_house_opinion = 10
@@ -790,6 +792,7 @@ tradition_female_only_inheritance = {
 	
 	can_pick = {
 		custom_tooltip = {
+			NOT = { has_cultural_tradition = tradition_nubian_warrior_queens }
 			OR = {
 				has_cultural_pillar = heritage_senegambian
 				has_cultural_pillar = heritage_akan
@@ -905,6 +908,7 @@ tradition_equal_inheritance = {
 	}
 
 	can_pick = {
+		NOT = { has_cultural_tradition = tradition_nubian_warrior_queens }
 	}
 	
 	parameters = {
@@ -1835,6 +1839,7 @@ tradition_parochialism = {
 	}
 
 	is_shown = { #Replaced by tradition_republican_legacy
+		NOT = { has_cultural_tradition = tradition_republican_legacy }
 		NOR ={
 			this = culture:roman
 			any_parent_culture_or_above = {
@@ -1849,6 +1854,7 @@ tradition_parochialism = {
 				this = culture:roman
 			}
 		}
+		NOT = { has_cultural_tradition = tradition_republican_legacy }
 	}
 	
 	parameters = {
@@ -2325,6 +2331,7 @@ tradition_mountain_homes = {
 	
 	is_shown = {
 		NOR = { #This is replaced by Himalayan Settlers, Mountaineer Ruralism and Mountain Herding. 
+			has_cultural_tradition = tradition_himalayan_settlers
 			has_cultural_tradition = tradition_mountaineer_ruralism
 			has_cultural_pillar = heritage_arabic
 			has_cultural_pillar = heritage_berber
@@ -2909,7 +2916,12 @@ tradition_castle_keepers = {
 		}
 		custom_tooltip = {
 			text = cannot_have_tradition_city_keepers
-			NOT = { any_in_list = { list = traits this = flag:tradition_city_keepers } }
+			NOT = {
+				any_in_list = {
+					list = traits
+					this = flag:tradition_castle_keepers
+				}
+			}
 		}
 	}
 	
@@ -2993,7 +3005,12 @@ tradition_city_keepers = {
 		}
 		custom_tooltip = {
 			text = cannot_have_tradition_castle_keepers
-			NOT = { any_in_list = { list = traits this = flag:tradition_castle_keepers } }
+			NOT = {
+				any_in_list = {
+					list = traits
+					this = flag:tradition_castle_keepers
+				}
+			}
 		}
 	}
 	

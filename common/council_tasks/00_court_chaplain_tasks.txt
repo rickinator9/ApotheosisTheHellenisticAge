@@ -297,6 +297,28 @@ task_conversion = {
 			}
 		}
 		
+		# Faster conversion for FP2 Hostility ending, if county is in Iberia and faith was involved
+		if = {
+			limit = {
+				exists = scope:councillor.liege.house
+				scope:councillor.liege.house = {
+					OR = {
+						has_house_modifier = fp2_struggle_hostility_house_faith_modifier
+						has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+					}
+				}
+				any_in_global_list = {
+					variable = fp2_struggle_ending_faith_list
+					this = scope:county.faith
+				}
+				scope:county.title_province = { geographical_region = world_europe_west_iberia }
+			}
+			multiply = {
+				value = fp2_struggle_hostility_conversion_value
+				desc = fp2_struggle_hostility_faith_conversion_task_desc
+			}
+		}
+		
 		# Conversion speed game rules
 		if = {
 			limit = {
@@ -378,13 +400,13 @@ task_conversion = {
 					scope:councillor_liege = {
 						is_ai = yes
 						faith = {
-							has_doctrine = unreformed_faith_doctrine
+							has_doctrine_parameter = unreformed
 						}
 					}
 				}
 				OR = {
 					scope:councillor_liege = { ai_zeal >= 50 }
-					scope:county.faith = { has_doctrine = unreformed_faith_doctrine }
+					scope:county.faith = { has_doctrine_parameter = unreformed }
 					scope:county = { # Always convert holy sites
 						any_county_province = {
 							barony = {
@@ -824,10 +846,7 @@ task_fabricate_claim = {
 							this = scope:county.holder.liege
 						}
 					}
-					scope:county.holder.max_military_strength > {
-						value = scope:councillor_liege.max_military_strength
-						multiply = 1.2
-					}
+					scope:county.holder.max_military_strength > scope:councillor_liege.council_task_fabricate_claim_relative_strength
 				}
 				subtract = 10000
 			}
@@ -854,10 +873,7 @@ task_fabricate_claim = {
 							this = scope:county.holder.liege.liege
 						}
 					}
-					scope:county.holder.liege.max_military_strength > {
-						value = scope:councillor_liege.max_military_strength
-						multiply = 1.2
-					}
+					scope:county.holder.liege.max_military_strength > scope:councillor_liege.council_task_fabricate_claim_relative_strength
 				}
 				subtract = 10000
 			}
@@ -884,10 +900,7 @@ task_fabricate_claim = {
 							this = scope:county.holder.liege.liege.liege
 						}
 					}
-					scope:county.holder.liege.liege.max_military_strength > {
-						value = scope:councillor_liege.max_military_strength
-						multiply = 1.2
-					}
+					scope:county.holder.liege.liege.max_military_strength > scope:councillor_liege.council_task_fabricate_claim_relative_strength
 				}
 				subtract = 10000
 			}
@@ -914,10 +927,7 @@ task_fabricate_claim = {
 							this = scope:county.holder.liege.liege.liege.liege
 						}
 					}
-					scope:county.holder.liege.liege.liege.max_military_strength > {
-						value = scope:councillor_liege.max_military_strength
-						multiply = 1.2
-					}
+					scope:county.holder.liege.liege.liege.max_military_strength > scope:councillor_liege.council_task_fabricate_claim_relative_strength
 				}
 				subtract = 10000
 			}
@@ -938,10 +948,7 @@ task_fabricate_claim = {
 		}
 		else_if = {
 			limit = {
-				scope:county.holder.top_liege.max_military_strength > {
-					value = scope:councillor_liege.max_military_strength
-					multiply = 1.2
-				}
+				scope:county.holder.top_liege.max_military_strength > scope:councillor_liege.council_task_fabricate_claim_relative_strength
 			}
 			subtract = 10000
 		}

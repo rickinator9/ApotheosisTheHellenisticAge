@@ -3716,14 +3716,21 @@ scripted_effect set_worsened_relation_feast_default_1020_effect = {
 		limit = {
 			can_set_relation_rival_trigger = { CHARACTER = scope:feast_host }
 		}
-		set_relation_rival = scope:feast_host
+		set_relation_rival = {
+			target = scope:feast_host
+			reason = rival_artifact_defaced
+		}
 	}
 	else_if = {
 		limit = {
 			has_relation_rival = scope:feast_host
 			can_set_relation_nemesis_trigger = { CHARACTER = scope:feast_host }
 		}
-		set_relation_nemesis = scope:feast_host
+		set_relation_nemesis = {
+			reason = nemesis_artifact_defaced
+			copy_reason = rival
+			target = scope:feast_host
+		}
 	}
 }
 
@@ -4403,7 +4410,8 @@ feast_default.2002 = {
 				limit = { scope:crush_1 = scope:letterAuthor }
 				progress_towards_lover_effect = {
 					CHARACTER = scope:crush_1
-					OPINION = no
+					REASON = lover_feast_crush
+					OPINION = 0
 				}
 			}
 		}
@@ -4426,7 +4434,8 @@ feast_default.2002 = {
 				limit = { scope:crush_2 = scope:letterAuthor }
 				progress_towards_lover_effect = {
 					CHARACTER = scope:crush_2
-					OPINION = no
+					REASON = lover_feast_crush
+					OPINION = 0
 				}
 			}
 		}
@@ -4449,7 +4458,8 @@ feast_default.2002 = {
 				limit = { scope:crush_3 = scope:letterAuthor }
 				progress_towards_lover_effect = {
 					CHARACTER = scope:crush_3
-					OPINION = no
+					REASON = lover_feast_crush
+					OPINION = 0
 				}
 			}
 		}
@@ -4616,10 +4626,13 @@ feast_default.2003 = {
 			target = scope:other_guest
 			modifier = feast_had_good_time_together_opinion
 		}
+		scope:activity.activity_province = { save_scope_as = relationship_reason_province }
 		progress_towards_friend_effect = {
+			REASON = friend_had_a_great_feast_together
 			CHARACTER = scope:other_guest
-			OPINION = no
+			OPINION = 0
 		}
+		clear_saved_scope = relationship_reason_province
 		hidden_effect = {
 			add_opinion = {
 				target = scope:other_guest
@@ -5154,7 +5167,7 @@ feast_default.2007 = {
 						limit = {
 							can_set_relation_lover_trigger = { CHARACTER = scope:lover_guest_1 }
 						}
-						set_relation_lover = scope:lover_guest_1
+						set_relation_lover = { reason = lover_feast_tumble target = scope:lover_guest_1 involved_character = root province = scope:activity.activity_province }
 					}
 				}
 				random_secret = {
@@ -5422,19 +5435,20 @@ feast_default.2008 = {
 					has_relation_potential_friend = scope:homosexual_character
 					can_set_relation_friend_trigger = { CHARACTER = scope:homosexual_character }
 				}
-				set_relation_friend = scope:homosexual_character
+				set_relation_friend = { reason = friend_feast_bonding target = scope:homosexual_character }
 			}
 			else_if = {
 				limit = {
 					has_relation_potential_lover = scope:homosexual_character
 					can_set_relation_lover_trigger = { CHARACTER = scope:homosexual_character }
 				}
-				set_relation_lover = scope:homosexual_character
+				set_relation_lover = { reason = lover_feast_homosexual target = scope:homosexual_character province = scope:activity.activity_province }
 			}
 			else = {
 				progress_towards_friend_effect = {
+					REASON = friend_also_homosexual
 					CHARACTER = scope:homosexual_character
-					OPINION = no
+					OPINION = 0
 				}
 			}
 		}
@@ -6093,7 +6107,8 @@ feast_default.2013 = {
 				}
 				progress_towards_rival_effect = {
 					CHARACTER = scope:bootlicker
-					OPINION = no
+					REASON = rival_bootlicker_antagonised
+					OPINION = 0
 				}
 			}
 		}
@@ -6170,7 +6185,8 @@ feast_default.2013 = {
 				}
 				progress_towards_rival_effect = {
 					CHARACTER = scope:bootlicker
-					OPINION = no
+					REASON = rival_bootlicker_antagonised
+					OPINION = 0
 				}
 			}
 		}
@@ -6217,7 +6233,8 @@ feast_default.2013 = {
 				}
 				progress_towards_rival_effect = {
 					CHARACTER = scope:bootlicker
-					OPINION = yes
+					REASON = rival_bootlicker_foiled
+					OPINION = default_rival_opinion
 				}
 			}
 		}
@@ -7296,7 +7313,8 @@ feast_default.3006 = {
 		name = feast_default.3006.a
 		progress_towards_lover_effect = {
 			CHARACTER = scope:partner
-			OPINION = no
+			REASON = lover_feast_boink
+			OPINION = 0
 		}
 		if = {
 			limit = {
@@ -8771,8 +8789,9 @@ feast_default.6003 = {
 			modifier = feast_sided_with_me_in_my_fight_opinion
 		}
 		progress_towards_friend_effect = {
+			REASON = friend_took_side_in_fight
 			CHARACTER = scope:fighter_1
-			OPINION = no
+			OPINION = 0
 		}
 		reverse_add_opinion = {
 			target = scope:fighter_2
@@ -8780,7 +8799,8 @@ feast_default.6003 = {
 		}
 		progress_towards_rival_effect = {
 			CHARACTER = scope:fighter_2
-			OPINION = no
+			REASON = rival_other_fighter_side
+			OPINION = 0
 		}
 		ai_chance = {
 			base = 100
@@ -8802,8 +8822,9 @@ feast_default.6003 = {
 			modifier = feast_sided_with_me_in_my_fight_opinion
 		}
 		progress_towards_friend_effect = {
+			REASON = friend_took_side_in_fight
 			CHARACTER = scope:fighter_2
-			OPINION = no
+			OPINION = 0
 		}
 		reverse_add_opinion = {
 			target = scope:fighter_1
@@ -8811,7 +8832,8 @@ feast_default.6003 = {
 		}
 		progress_towards_rival_effect = {
 			CHARACTER = scope:fighter_1
-			OPINION = no
+			REASON = rival_other_fighter_side
+			OPINION = 0
 		}
 		ai_chance = {
 			base = 100
@@ -9000,7 +9022,8 @@ feast_default.6101 = {
 		}
 		progress_towards_rival_effect = {
 			CHARACTER = scope:troubled_guest
-			OPINION = no
+			REASON = rival_mercilessly_pushed
+			OPINION = 0
 		}
 		scope:activity = {
 			every_participant = {
@@ -9051,8 +9074,9 @@ feast_default.6101 = {
 			opinion = 20
 		}
 		progress_towards_friend_effect = {
+			REASON = friend_saved_troubled_guest
 			CHARACTER = scope:troubled_guest
-			OPINION = no
+			OPINION = 0
 		}
 		add_hook = {
 			target = scope:troubled_guest
@@ -9183,6 +9207,7 @@ feast_default.6111 = {
 	option = { #Let's talk about you instead
 		name = feast_default.6111.b
 		progress_towards_friend_effect = {
+			REASON = friend_showed_personal_interest
 			CHARACTER = scope:guest_to_talk_to
 			OPINION = 20
 		}
@@ -9444,7 +9469,8 @@ feast_default.6121 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = scope:hated_guest
-				OPINION = no
+				REASON = rival_served_food
+				OPINION = 0
 			}
 		}
 		else = {
@@ -9722,7 +9748,7 @@ feast_default.6251 = {
 			limit = {
 				has_relation_potential_friend = scope:guest
 			}
-			set_relation_friend = scope:guest
+			set_relation_friend = { reason = friend_feast_subject_of_interest target = scope:guest involved_character = scope:activity.activity_owner province = scope:activity.activity_province }
 		}
 		stress_impact = {
 			gregarious = minor_stress_impact_loss
@@ -9762,7 +9788,8 @@ feast_default.6251 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = scope:guest
-				OPINION = no
+				REASON = rival_rude_response
+				OPINION = 0
 			}
 		}
 		stress_impact = {
@@ -9816,7 +9843,8 @@ feast_default.6251 = {
 		}
 		progress_towards_lover_effect = {
 			CHARACTER = scope:guest
-			OPINION = no
+			REASON = lover_feast_conversation
+			OPINION = 0
 		}
 		stress_impact = {
 			celibate = major_stress_impact_gain
@@ -10099,6 +10127,7 @@ feast_default.6261 = {
 			}
 		}
 		progress_towards_friend_effect = {
+			REASON = friend_fellow_cannibal
 			CHARACTER = scope:cannibal_guest
 			OPINION = 20
 		}
@@ -10134,14 +10163,21 @@ scripted_effect set_worsened_relation_feast_default_6301_effect = {
 		limit = {
 			can_set_relation_rival_trigger = { CHARACTER = scope:feast_artifact_culprit }
 		}
-		set_relation_rival = scope:feast_artifact_culprit
+		set_relation_rival = {
+			target = scope:feast_artifact_culprit
+			reason = rival_artifact_destroyer
+		}
 	}
 	else_if = {
 		limit = {
 			has_relation_rival = scope:feast_artifact_culprit
 			can_set_relation_nemesis_trigger = { CHARACTER = scope:feast_artifact_culprit }
 		}
-		set_relation_nemesis = scope:feast_artifact_culprit
+		set_relation_nemesis = {
+			reason = nemesis_artifact_destroyer
+			copy_reason = rival
+			target = scope:feast_artifact_culprit
+		}
 	}
 }
 
@@ -10230,7 +10266,6 @@ feast_default.6301 = {
 					}
 					#If the suspect is innocent but paranoid they may be acting strange
 					has_trait = paranoid
-
 				}
 			}
   			animation = paranoia
@@ -10461,24 +10496,32 @@ feast_default.6301 = {
 					scope:feast_artifact_culprit = { has_character_flag = damaged_artifact_during_feast_default.6301 }
 					factor = 0
 				}
-				#Opinion loss
-				reverse_add_opinion = { 
-					target = scope:feast_artifact_culprit
-					modifier = falsely_accused
-					opinion = -30
+				send_interface_toast = {
+					title = feast_default.6301.b.tt_innocent
+					right_icon = scope:feast_artifact_culprit
+					#Opinion loss
+					reverse_add_opinion = { 
+						target = scope:feast_artifact_culprit
+						modifier = falsely_accused
+						opinion = -30
+					}
+					#Closer to forming rivalry/nemesis
+					set_worsened_relation_feast_default_6301_effect = yes
 				}
-				#Closer to forming rivalry/nemesis
-				set_worsened_relation_feast_default_6301_effect = yes
 			}
 			#If they're guilty
 			50 = {
 				desc = feast_default.6301.b.tt_guilty
 				show_chance = no
-				#Opinion loss
-				reverse_add_opinion = { 
-					target = scope:feast_artifact_culprit
-					modifier = shamed_me_opinion
-					opinion = -20
+				send_interface_toast = {
+					title = feast_default.6301.b.tt_guilty
+					right_icon = scope:feast_artifact_culprit
+					#Opinion loss
+					reverse_add_opinion = { 
+						target = scope:feast_artifact_culprit
+						modifier = shamed_me_opinion
+						opinion = -20
+					}
 				}
 			}	
 		}
@@ -10663,7 +10706,7 @@ feast_default.6302 = {
 					limit = { 
 						can_set_relation_lover_trigger = { CHARACTER = scope:feast_artifact_culprit }
 					}
-					set_relation_lover = scope:feast_artifact_culprit
+					set_random_lover_reason = { TARGET = scope:feast_artifact_culprit }
 					add_secret = { 
 						target = scope:feast_artifact_culprit
 						type = secret_lover 
@@ -11012,7 +11055,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = root
-				OPINION = no
+				REASON = rival_fighter_pay_up
+				OPINION = 0
 			}
 		}
 		scope:feast_default_6351_fighter_2 = {
@@ -11021,8 +11065,9 @@ feast_default.6351 = {
 				modifier = feast_sided_with_me_in_my_fight_opinion
 			}
 			progress_towards_friend_effect = {
+				REASON = friend_took_side_in_fight
 				CHARACTER = root
-				OPINION = no
+				OPINION = 0
 			}
 		}
 		stress_impact = {
@@ -11070,8 +11115,9 @@ feast_default.6351 = {
 				modifier = feast_sided_with_me_in_my_fight_opinion
 			}
 			progress_towards_friend_effect = {
+				REASON = friend_took_side_in_fight
 				CHARACTER = root
-				OPINION = no
+				OPINION = 0
 			}
 		}
 		scope:feast_default_6351_fighter_2 = {
@@ -11083,7 +11129,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = root
-				OPINION = no
+				REASON = rival_fighter_pay_up
+				OPINION = 0
 			}
 		}
 		#Zealous no like
@@ -11140,7 +11187,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = root
-				OPINION = no
+				REASON = rival_fighter_pay_up
+				OPINION = 0
 			}
 		}
 		scope:feast_default_6351_fighter_2 = {
@@ -11153,7 +11201,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = root
-				OPINION = no
+				REASON = rival_fighter_pay_up
+				OPINION = 0
 			}
 		}
 		#Zealous no like
@@ -11189,8 +11238,9 @@ feast_default.6351 = {
 				opinion = 20
 			}
 			progress_towards_friend_effect = {
+				REASON = friend_ignored_feast_fight
 				CHARACTER = root
-				OPINION = no
+				OPINION = 0
 			}
 		}
 		scope:feast_default_6351_fighter_2 = {
@@ -11200,8 +11250,9 @@ feast_default.6351 = {
 				opinion = 20
 			}
 			progress_towards_friend_effect = {
+				REASON = friend_ignored_feast_fight
 				CHARACTER = root
-				OPINION = no
+				OPINION = 0
 			}
 		}
 		#Some piety
@@ -11262,7 +11313,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = scope:feast_default_6351_fighter_2
-				OPINION = no
+				REASON = rival_fighter_rivalry
+				OPINION = 0
 			}
 		}
 		scope:feast_default_6351_fighter_2 = {
@@ -11273,7 +11325,8 @@ feast_default.6351 = {
 			}
 			progress_towards_rival_effect = {
 				CHARACTER = scope:feast_default_6351_fighter_1
-				OPINION = no
+				REASON = rival_fighter_rivalry
+				OPINION = 0
 			}
 		}
 		#Subjects are less afraid of us
@@ -11337,8 +11390,9 @@ scripted_effect feast_default_6501_additional_person_opinion_effect = {
 			40 = {
 				show_chance = no
 				progress_towards_friend_effect = {
+					REASON = friend_shared_lewd_humor
 					CHARACTER = scope:fellow_pervert
-					OPINION = no
+					OPINION = 0
 				}
 			}
 			60 = {
@@ -11353,7 +11407,8 @@ scripted_effect feast_default_6501_additional_person_opinion_effect = {
 				}
 				progress_towards_rival_effect = {
 					CHARACTER = scope:fellow_pervert
-					OPINION = no
+					REASON = rival_misunderstood_lewd_humor
+					OPINION = 0
 				}
 			}
 		}
@@ -11396,6 +11451,12 @@ feast_default.6501 = {
 			has_trait = deviant
 			has_trait_extroverted_trigger = yes
 		}
+		scope:activity = {
+			any_participant = {
+				count > 0
+				feast_default_participant_trigger = yes
+			}
+		}
 	}
 
 	weight_multiplier = {
@@ -11416,7 +11477,6 @@ feast_default.6501 = {
 			random_participant = {
 				limit = {
 					feast_default_participant_trigger = yes
-					is_ai = yes
 				}
 				weight = {
 					base = 1
@@ -11479,8 +11539,9 @@ feast_default.6501 = {
 						left_icon = scope:innocent_guest
 
 						progress_towards_friend_effect = {
+							REASON = friend_shared_lewd_humor
 							CHARACTER = scope:innocent_guest
-							OPINION = no
+							OPINION = 0
 						}
 						feast_default_6501_additional_person_opinion_effect = yes
 					}
@@ -11501,7 +11562,8 @@ feast_default.6501 = {
 
 						progress_towards_rival_effect = {
 							CHARACTER = scope:innocent_guest
-							OPINION = no
+							REASON = rival_didnt_get_lewd_humor
+							OPINION = 0
 						}
 						feast_default_6501_additional_person_opinion_effect = yes
 					}

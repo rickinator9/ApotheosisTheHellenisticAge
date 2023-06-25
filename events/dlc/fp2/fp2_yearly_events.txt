@@ -11,6 +11,10 @@
 ## 1008	- 1008	Consuming the Cheese by Daniel Moore
 ## 2020	- 2020	Açò es or, xata! by Hugo Cortell
 ## 2025	- 2025	Suffering From Success by Hugo Cortell
+## 3000 - 3000	Neighboring Muslims are growing rice by Alexander Oltner
+## 3001	- 3001	You commission your epitaph by Veronica Pazos
+## 3002	- 3002	Oh my god they were roommates by Veronica Pazos
+## 3003	- 3003	Best friend throws a terrible party by Veronica Pazos
 ## 4001	- 4001	You fancy a little siesta by Nick Meredith
 ## 4002	- 4002	County is increasingly religiously intertwined by Nick Meredith
 ## 4003	- 4003	The road to Santiago is under threat from bandits by Nick Meredith
@@ -140,9 +144,8 @@ fp2_yearly.1002 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
-		any_courtier = {
-			is_available_healthy_ai_adult = yes
-		}
+		is_adult = yes
+		any_courtier = { is_available_healthy_ai_adult = yes }
 
 		NOT = {
 			has_character_flag = fp2_yearly.1002 
@@ -151,7 +154,6 @@ fp2_yearly.1002 = {
 
 	immediate = {
 		add_character_flag = fp2_yearly.1002
-
 
 		random_courtier = {
 			limit = {
@@ -165,10 +167,7 @@ fp2_yearly.1002 = {
 			}
 
 			save_scope_as = deviant_courtier
-		
 		}
-	
-		
 
 
 		if = {
@@ -184,12 +183,8 @@ fp2_yearly.1002 = {
 					give_deviant_secret_or_trait_effect = yes
 					save_scope_as = deviant_courtier
 				}
-			}
-			
+			}	
 		}
-
-
-
 
 		scope:deviant_courtier = {
 			
@@ -202,11 +197,8 @@ fp2_yearly.1002 = {
 				flag = temporarily_blinded
 				days = 1
 			}
-
 		}
-	
 	}
-
 	
 
 	option = { 
@@ -286,7 +278,7 @@ fp2_yearly.1008 = {
 	theme = realm
 	left_portrait = {
 		character = root
-		animation = ecstacy
+		animation = ecstasy
 
 	}
 

@@ -44,17 +44,6 @@ befriend_ongoing.0901 = {
 		}
 	}
 
-	immediate = {
-		if = {
-			limit = {
-				exists = scope:scheme
-			}
-			scope:scheme = {
-				end_scheme = yes
-			}
-		}
-	}
-
 	option = {
 		name = befriend_ongoing.0901.a
 		random = {
@@ -5537,6 +5526,7 @@ befriend_ongoing.6015 = {
 					opinion = 10
 				}
 			}
+			
 			trigger_event = befriend_ongoing.6016
 		}
 		scope:scheme = {
@@ -5671,7 +5661,7 @@ befriend_ongoing.6016 = {
 		name = befriend_ongoing.6016.a
 		add_stress = medium_stress_loss
 		add_opinion = {
-			target = scope:target
+			target = scope:owner
 			modifier = pleased_opinion
 			opinion = 10
 		}

@@ -38,6 +38,10 @@ embrace_english_culture_effect = {
 
 form_portugal_decision_effects = {
 }
+
+
+declare_canarias_decision_effects = {
+}
 	
 
 
@@ -665,37 +669,58 @@ found_cadet_house_decision_effect = {
 		}
 		if = {
 			limit = {
+				any_child = {
+					has_trait = bastard
+					is_lowborn = no
+					dynasty = scope:new_head.dynasty
+					NOT =  { house = scope:new_house }
+				}
+			}
+			every_child = {
+				limit = {
+					has_trait = bastard
+					is_lowborn = no
+					dynasty = scope:new_head.dynasty
+					NOT =  { house = scope:new_house }
+				}
+				set_house = scope:new_house
+			}
+		}
+		if = {
+			limit = {
 				any_artifact = {
-                	trigger_if = {
-                    	limit = { exists = var:banner_dynasty }
-                    	var:banner_dynasty = root.dynasty
-                    }
-                    trigger_else = { always = no }
+					trigger_if = {
+						limit = { exists = var:banner_dynasty }
+						var:banner_dynasty = root.dynasty
+					}
+					trigger_else = { always = no }
                     artifact_owner = {
-                    	NOT = { this = root }
-           				in_diplomatic_range = root
-                    }
-                    NOT = {
-                    	any_artifact_house_claimant = {
-                    		this = scope:new_house
-                    	}
-                	}
-                }
+						NOT = { this = root }
+						in_diplomatic_range = root
+					}
+					NOT = {
+						any_artifact_house_claimant = {
+							this = scope:new_house
+						}
+					}
+				}
 			}
 			random_artifact = {
 				limit = {
 					exists = var:banner_dynasty
-                    var:banner_dynasty = root.dynasty
-                    artifact_owner = { in_diplomatic_range = root }
-                    NOT = {
-                    	any_artifact_house_claimant = {
-                    		this = scope:new_house
-                    	}
-                	}
+					var:banner_dynasty = root.dynasty
+					artifact_owner = { in_diplomatic_range = root }
+					NOT = {
+						any_artifact_house_claimant = {
+							this = scope:new_house
+						}
+					}
 				}
 				save_scope_as = new_branch_dynasty_banner
 			}
-			scope:new_house = { add_house_artifact_claim = scope:new_branch_dynasty_banner }
+			scope:new_house = {
+				add_house_artifact_claim = scope:new_branch_dynasty_banner
+			}
 		}
 	}
 }

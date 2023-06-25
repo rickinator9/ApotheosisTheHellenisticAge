@@ -1656,6 +1656,50 @@ educate_child_interaction_effect = {
 	guardian_add_opinion_effect = { GUARDIAN = scope:guardian WARD_LIEGE = scope:ward_liege WARD = scope:ward }
 }
 
+educate_child_event_effect = {
+	scope:ward = {
+		#Set relation and move character
+		set_relation_guardian = scope:guardian
+
+		if = {
+			limit = {
+				scope:guardian = { is_landed = yes }
+				scope:ward = { is_landed = no }
+				NOT = {
+					scope:guardian = scope:ward.host
+				}
+			}
+			visit_court_of = scope:guardian
+		}
+		else_if = {
+			limit = {
+				scope:guardian = { is_landed = no }
+				scope:ward = { is_landed = yes }
+				NOT = {
+					scope:ward = scope:guardian.host
+				}
+			}
+			scope:guardian = {
+				visit_court_of = scope:ward
+			}
+		}
+		else_if = {
+			limit = {
+				scope:guardian = { is_landed = no }
+				scope:ward = { is_landed = no }
+				exists = scope:guardian.host
+				NOT = {
+					scope:guardian.host = scope:ward.host
+				}
+			}
+			visit_court_of = scope:guardian.host
+		}
+	}
+
+	#Opinions
+	guardian_add_opinion_effect = { GUARDIAN = scope:guardian WARD_LIEGE = scope:ward_liege WARD = scope:ward }
+}
+
 offer_ward_interaction_effect = {
 	scope:ward = {
 		#Set relation and move character
@@ -1916,6 +1960,8 @@ offer_guardianship_interaction = {
 			limit = {
 				scope:guardian = { is_landed = no }
 				scope:ward = { is_landed = no }
+				exists = scope:guardian.host
+				exists = scope:ward.host
 				NOT = {
 					scope:guardian.host = scope:ward.host
 				}
@@ -2130,6 +2176,11 @@ offer_vassalization_interaction_effect = {
 		change_liege = {
 			liege = scope:actor
 			change = scope:change
+		}
+		add_opinion = {
+			modifier = became_vassal
+			target = scope:actor
+			opinion = 10
 		}
 	}
 	resolve_title_and_vassal_change = scope:change
@@ -2429,7 +2480,6 @@ offer_fealty_interaction_effect = {
 				scope:autonomous = yes
 				government_has_flag = has_religious_rights_contract
 			}
-
 			hidden_effect = {
 				if = {
 					limit = { is_independent_ruler = no } # To avoid errors during tooltip generation (prior to the contract being generated)
@@ -2935,7 +2985,10 @@ revoke_title_interaction_effect = {
 
 	scope:actor = {
 		if = {
-			limit = { scope:hook = yes }
+			limit = {
+				scope:hook = yes
+				scope:recipient = { is_alive = yes }
+			}
 			use_hook = scope:recipient
 		}
 	}
@@ -2966,12 +3019,16 @@ revoke_title_interaction_effect = {
 				}
 				remove_relation_potential_rival = scope:actor
 			}
-			set_relation_rival = scope:actor
+			set_relation_rival = {
+				target = scope:actor
+				reason = rival_revoked_title_reversed
+			}
 		}
 		else = {
 			progress_towards_rival_effect = {
 				CHARACTER = scope:actor
-				OPINION = no
+				REASON = rival_revoked_title_progress
+				OPINION = 0
 			}
 		}
 	}
@@ -3448,7 +3505,7 @@ title_revocation_stress_effect = {
 	}
 	else = {
 		stress_impact = {
-			generous = medium_stress_impact_gain
+			generous = minor_stress_impact_gain
 			forgiving = minor_stress_impact_gain
 		}
 	}
@@ -3457,7 +3514,7 @@ title_revocation_stress_effect = {
 revoke_holy_order_lease_effect = {
 	if = {
 		limit = {
-			$CHARACTER$.faith = {
+			$TARGET$.faith = {
 				any_faith_holy_order = {
 					num_leased_titles = 1
 					title = $BARONY$.lessee_title
@@ -3465,51 +3522,6 @@ revoke_holy_order_lease_effect = {
 			}
 		}
 		custom_tooltip = destroy_holy_order_warning
-	}
-
-	$CHARACTER$= {
-		send_interface_message = {
-			type = event_generic_neutral
-			title = revoke_leased_title_interaction_notification
-			right_icon = $TARGET$
-			$BARONY$ = {
-				revoke_lease = yes
-			}
-			# Zealous costs stress if same-faith.
-			if = {
-				limit = { $CHARACTER$.faith = $TARGET$.faith }
-				stress_impact = {
-					zealous = massive_stress_impact_gain
-					generous = medium_stress_impact_gain
-				}
-			}
-			else_if = {
-				# Bit less but still some if you view the other faith as astray.
-				limit = {
-					$CHARACTER$.faith = {
-						faith_hostility_level = {
-							target = $TARGET$.faith
-							value <= faith_astray_level
-						}
-					}
-				}
-				stress_impact = {
-					zealous = major_stress_impact_gain
-					generous = medium_stress_impact_gain
-				}
-			}
-			else = {
-				# Otherwise, only generous is stressed.
-				stress_impact = {
-					generous = medium_stress_impact_gain
-				}
-			}
-
-			add_piety = {
-				value = 0
-				subtract = cancel_holy_order_piety_cost
-			}
-		}
 	}
 
 	$TARGET$ = {
@@ -3563,5 +3575,96 @@ revoke_holy_order_lease_effect = {
 				}
 			}
 		}
+	}
+
+	$CHARACTER$ = {
+		send_interface_message = {
+			type = holy_order_cancled_message
+			title = revoke_leased_title_interaction_notification
+			right_icon = $TARGET$
+
+			# Zealous costs stress if same-faith.
+			if = {
+				limit = { $CHARACTER$.faith = $TARGET$.faith }
+				stress_impact = {
+					zealous = massive_stress_impact_gain
+					generous = medium_stress_impact_gain
+					order_member = minor_stress_impact_gain
+				}
+
+				add_piety = {
+					value = 0
+					subtract = cancel_holy_order_piety_cost
+				}
+			}
+			else_if = {
+				# Bit less but still some if you view the other faith as astray.
+				limit = {
+					$CHARACTER$.faith = {
+						faith_hostility_level = {
+							target = $TARGET$.faith
+							value <= faith_astray_level
+						}
+					}
+				}
+				stress_impact = {
+					zealous = major_stress_impact_gain
+					generous = medium_stress_impact_gain
+				}
+
+				add_piety = {
+					value = -100
+				}
+			}
+			else = {
+
+				if = {
+					limit = { exists =  $CHARACTER$.faith.religious_head  }
+					$CHARACTER$.faith.religious_head = {
+						add_opinion = {
+							modifier = pleased_opinion
+							target = $CHARACTER$
+							opinion = 20
+						}
+					}
+				}
+
+				add_piety = {
+					value = 250
+				}
+
+				$TARGET$.faith = {
+					# Fervor impact: big as it's rare
+					change_fervor = {
+						value = 10
+						desc = fervor_gain_holy_order_expelled_by_force
+					}
+				}
+
+				# If the county has the same faith than the HO, locals are unhappy
+				$BARONY$ = {
+					if = {
+						limit = { title_province.county.faith = $TARGET$.faith }
+						title_province.county = {
+							add_county_modifier = {
+								modifier = lost_holy_order_modifier
+								years = 10
+							}
+						}
+					}
+				}
+			}
+
+			$BARONY$ = {
+				revoke_lease = yes
+			}
+		}
+	}
+}
+
+revoke_holy_order_duel_victor_apply_effects_effect = {
+	scope:sc_victor = { 
+		add_stress = major_stress_loss
+		add_prestige = major_prestige_gain
 	}
 }
