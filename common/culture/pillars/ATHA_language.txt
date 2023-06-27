@@ -283,3 +283,21 @@ language_scythian = {
 
 	color = scythian
 }
+
+language_sporo_budinian = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_sporo_budinian
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_sporo_budinian }
+			multiply = 10
+		}
+	}
+
+	color = sporic
+}
