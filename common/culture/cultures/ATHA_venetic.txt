@@ -1,0 +1,89 @@
+venetic = {
+	color = venetic
+
+	ethos = ethos_egalitarian 
+	heritage = heritage_venetic
+	language = language_venetic
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_practiced_pirates
+		tradition_abundant_hillforts
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # Histri are at the crossroads between the Venetian, Illyrian, Italic and Liburnian people.
+		requires_dlc_flag = hybridize_culture
+	}
+
+	name_list = name_list_venetic
+
+	coa_gfx = { thracian_group_coa_gfx greek_group_coa_gfx } # TODO
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+cataric = {
+	color = cataric
+
+	ethos = ethos_egalitarian 
+	heritage = heritage_venetic
+	language = language_venetic
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_religion_blending # Poetovio + Sentonism, these people have seen many rites and rituals.
+	}
+	
+	dlc_tradition = {
+		trait = tradition_staunch_traditionalists # They nevertheless retained seperate venetic identity.
+		requires_dlc_flag = hybridize_culture
+		fallback = tradition_spartan
+	}
+
+	name_list = name_list_histrian
+
+	coa_gfx = { thracian_group_coa_gfx greek_group_coa_gfx } # TODO
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
+
+histrian = {
+	color = histrian
+	created = 3477.1.1 # 277 BC, appproximate (when Bathanattos returns to the Broggos area)
+	parents = { venetian liburnian } # To prevent them from mixing together.
+
+	ethos = ethos_egalitarian 
+	heritage = heritage_venetic
+	language = language_venetic
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_tradition_maritime_mercantilism # Since they inhabited the Istrian peninsula, these people had more intensive trade and cultural contacts with the Mediterranean world, particularly central and southern Italy.
+		tradition_practiced_pirates # The Romans described the Histri as a fierce tribe of pirates,
+		tradition_abundant_hillforts # https://en.wikipedia.org/wiki/Castellieri_culture
+	}
+
+	dlc_tradition = { # A fallback tradition with everything but the hybridising could be useful here
+		trait = tradition_culture_blending # Histri are at the crossroads between the Venetian, Illyrian, Italic and Liburnian people.
+		requires_dlc_flag = hybridize_culture
+	}
+
+	name_list = name_list_histrian
+
+	coa_gfx = { thracian_group_coa_gfx greek_group_coa_gfx } # TODO
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		10 = mediterranean_byzantine
+	}
+}
