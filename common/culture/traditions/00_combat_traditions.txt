@@ -1193,8 +1193,7 @@ tradition_malleable_invaders = {
 	is_shown = {
 		has_dlc_feature = hybridize_culture
 	}
-	can_pick = {
-		culture_in_non_sedentary_geographical_region_trigger = yes
+	can_pick = { #culture_in_non_sedentary_geographical_region_trigger = yes
 		culture_not_pacifistic_trigger = yes
 	}
 	
@@ -1223,6 +1222,7 @@ tradition_malleable_invaders = {
 					NOR = {
 						culture_pillar:ethos_bellicose = { is_in_list = traits }
 						culture_pillar:ethos_egalitarian = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
 						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
 					}
 				}
@@ -1234,13 +1234,12 @@ tradition_malleable_invaders = {
 			if = {
 				limit = {
 					NOR = {
-						culture_pillar:heritage_turkic = { is_in_list = traits }
-						culture_pillar:heritage_mongolic = { is_in_list = traits }
+						culture_pillar:heritage_celtic = { is_in_list = traits }
 					}
 				}
 				add = {
 					value = tradition_unfulfilled_criteria_penalty
-					desc = turkic_or_mongolic_desc
+					desc = unavailable_malleable_invaders_desc
 				}
 			}
 			
