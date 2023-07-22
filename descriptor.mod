@@ -19,7 +19,6 @@ tags={
 picture="thumbnail.png"
 remote_file_id="2618149514"
 
-replace_path = "common/achievements"
 replace_path = "common/culture/aesthetics_bundles"
 replace_path = "common/culture/creation_names"
 replace_path = "common/culture/cultures"

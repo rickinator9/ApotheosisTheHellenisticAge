@@ -1,0 +1,15 @@
+﻿fp1_07_achievement = {
+	possible = { 
+		exists = global_var:started_saga_in_stone_achievement
+		has_fp1_dlc_trigger = yes
+	}
+	happened = {
+		custom_description = {
+			text = saga_in_stone_achievement_trigger
+			dynasty = {
+				exists = var:saga_in_stone_achievement_tally
+				var:saga_in_stone_achievement_tally >= 100
+			}
+		}
+	}
+}
