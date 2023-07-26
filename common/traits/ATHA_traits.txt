@@ -478,7 +478,6 @@ heavy_infantry_master = {
 	
 	category = lifestyle
 	
-	heavy_infantry_damage_add = 3
 	heavy_infantry_toughness_add = 3
 
 	ruler_designer_cost = 25
@@ -501,7 +500,6 @@ archers_master = {
 	category = lifestyle
 	
 	archers_damage_add = 3
-	archers_toughness_add = 3
 
 	ruler_designer_cost = 25
 
@@ -523,7 +521,6 @@ heavy_cavalry_master = {
 	category = lifestyle
 	
 	heavy_cavalry_damage_add = 3
-	heavy_cavalry_toughness_add = 3
 
 	ruler_designer_cost = 25
 
@@ -545,7 +542,6 @@ light_infantry_master = {
 	category = lifestyle
 	
 	skirmishers_damage_add = 3
-	skirmishers_toughness_add = 3
 
 	ruler_designer_cost = 25
 
@@ -567,7 +563,6 @@ light_cavalry_master = {
 	category = lifestyle
 	
 	light_cavalry_damage_add = 3
-	light_cavalry_toughness_add = 3
 
 	ruler_designer_cost = 25
 
@@ -589,7 +584,6 @@ archer_cavalry_master = {
 	category = lifestyle
 	
 	archer_cavalry_damage_add = 3
-	archer_cavalry_toughness_add = 3
 
 	ruler_designer_cost = 25
 
@@ -615,7 +609,6 @@ medium_infantry_master = {
 	
 	category = lifestyle
 	
-	medium_infantry_damage_add = 3
 	medium_infantry_toughness_add = 3
 
 	ruler_designer_cost = 25
@@ -637,7 +630,6 @@ pikemen_master = {
 	
 	category = lifestyle
 	
-	pikemen_damage_add = 3
 	pikemen_toughness_add = 3
 
 	ruler_designer_cost = 25
@@ -651,6 +643,48 @@ pikemen_master = {
 				desc = trait_pikemen_master_desc
 			}
 			desc = trait_pikemen_master_character_desc
+		}
+	}
+}
+
+slingers_master = {
+	
+	category = lifestyle
+	
+	slingers_damage_add = 3
+
+	ruler_designer_cost = 25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_slingers_master_desc
+			}
+			desc = trait_slingers_character_desc
+		}
+	}
+}
+
+elephant_master = {
+	
+	category = lifestyle
+	
+	elephant_cavalry_toughness_add = 3
+
+	ruler_designer_cost = 25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_elephant_master_desc
+			}
+			desc = trait_elephant_character_desc
 		}
 	}
 }

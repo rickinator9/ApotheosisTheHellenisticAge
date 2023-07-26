@@ -2,7 +2,7 @@
 
 namespace = ATHA_learn_mastery_trait
 
-#Choose whether to become light_infantry_master, archers_master, light_cavalry_master, archer_cavalry_master medium_infantry_master
+#Choose whether to become light_infantry_master, archers_master, light_cavalry_master, archer_cavalry_master slingers_master
 ATHA_learn_mastery_trait.0001 = {
 	type = character_event
 	title = ATHA_learn_mastery_trait.0001.t
@@ -139,6 +139,30 @@ ATHA_learn_mastery_trait.0001 = {
 			}
 		}
 	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0001.e
+		trigger = { NOT = { has_trait = slinger_master } }
+		add_trait = slingers_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = slingers
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = slingers
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
 }
 
 #Choose whether to become medium_infantry_master, heavy_infantry_master, pikemen_master, heavy_cavalry_master.
@@ -265,6 +289,30 @@ ATHA_learn_mastery_trait.0002 = {
 			modifier = {
 				number_maa_regiments_of_base_type = {
 					type = heavy_cavalry
+					value > 1
+				}
+				factor = 2
+			}
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0002.e
+		trigger = { NOT = { has_trait = elephant_cavalry_master } }
+		add_trait = elephant_cavalry_master
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = elephant_cavalry
+					value < 1
+				}
+				factor = 0
+			}
+			modifier = {
+				number_maa_regiments_of_base_type = {
+					type = elephant_cavalry
 					value > 1
 				}
 				factor = 2
