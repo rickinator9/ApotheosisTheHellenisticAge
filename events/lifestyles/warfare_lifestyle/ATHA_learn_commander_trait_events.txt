@@ -165,7 +165,7 @@ ATHA_learn_mastery_trait.0001 = {
 	}
 }
 
-#Choose whether to become medium_infantry_master, heavy_infantry_master, pikemen_master, heavy_cavalry_master.
+#Choose whether to become medium_infantry_master, heavy_infantry_master, pikemen_master, heavy_cavalry_master, elephant_master.
 ATHA_learn_mastery_trait.0002 = {
 	type = character_event
 	title = ATHA_learn_mastery_trait.0002.t
@@ -298,11 +298,11 @@ ATHA_learn_mastery_trait.0002 = {
 
 	option = {
 		name = ATHA_learn_mastery_trait.0002.e
-		trigger = { NOT = { has_trait = elephant_cavalry_master } }
-		add_trait = elephant_cavalry_master
+		trigger = { NOT = { has_trait = elephant_master } }
+		add_trait = elephant_master
 
 		ai_chance = {
-			base = 100
+			base = 25
 			modifier = {
 				number_maa_regiments_of_base_type = {
 					type = elephant_cavalry
@@ -317,6 +317,92 @@ ATHA_learn_mastery_trait.0002 = {
 				}
 				factor = 2
 			}
+		}
+	}
+}
+
+#Choose whether to become epilektoi_master, tactical_master, garrison_master, militia_master, oars_master
+ATHA_learn_mastery_trait.0003 = {
+	type = character_event
+	title = ATHA_learn_mastery_trait.0003.t
+	desc = ATHA_learn_mastery_trait.0003.desc
+	theme = war
+	left_portrait = root
+	
+	trigger = {
+		NOT = { has_character_flag = being_taught_commander_trait }
+		has_maa_mastery_trait = no
+		number_of_commander_traits < 3
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			factor = martial
+			multiplier = 0.1
+			max = 2
+		}
+		modifier = {
+			add = 1
+			culture = { has_cultural_parameter = commanders_likelier_to_gain_commander_traits }
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 0
+		}
+		modifier = {
+			factor = 0.3
+			number_of_commander_traits > 1
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0003.a
+		trigger = { NOT = { has_trait = epilektoi_master } }
+		add_trait = epilektoi_master
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0003.b
+		trigger = { NOT = { has_trait = tactical_master } }
+		add_trait = tactical_master
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = {
+		name = ATHA_learn_mastery_trait.0003.c
+		trigger = { NOT = { has_trait = garrison_master } }
+		add_trait = garrison_master
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0003.d
+		trigger = { NOT = { has_trait = militia_master } }
+		add_trait = militia_master
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = ATHA_learn_mastery_trait.0003.e
+		trigger = { NOT = { has_trait = oars_master } }
+		add_trait = oars_master
+
+		ai_chance = {
+			base = 50
 		}
 	}
 }
