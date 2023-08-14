@@ -11,8 +11,8 @@ euzonoi = {
         can_recruit_maa_euzonoi_trigger = yes
     }
 
-    damage = 6
-    toughness = 6
+    damage = 5
+    toughness = 5
     pursuit = 10
     screen = 10
 
@@ -45,10 +45,10 @@ anatolikoi_phyletai = {
         can_recruit_maa_anatolikoi_phyletai_trigger = yes
     }
 
-    damage = 12
+    damage = 10
     toughness = 3
-    pursuit = 12
-    screen = 14
+    pursuit = 10
+    screen = 16
 
     terrain_bonus = {
         hills = { toughness = 9 }
@@ -81,8 +81,8 @@ kretikoi_peltastai = {
         can_recruit_maa_kretikoi_peltastai_trigger = yes
     }
 
-    damage = 9
-    toughness = 9
+    damage = 8
+    toughness = 8
     pursuit = 10
     screen = 10
 
@@ -116,7 +116,7 @@ toxotai = {
         can_recruit_maa_toxotai_trigger = yes
     }
 
-    damage = 12
+    damage = 10
     toughness = 5
     pursuit = 0
     screen = 10
@@ -152,13 +152,13 @@ kretikoi_toxotai = {
     }
 
     damage = 16
-    toughness = 12
+    toughness = 10
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 6 }
-        plains = { toughness = -3 damage = -3 }
+        mountains = { toughness = 3 }
+        plains = { toughness = -3 }
     }
 
     counters = {
@@ -187,13 +187,13 @@ promakhoi_kretikoi = {
     }
 
     damage = 20
-    toughness = 14
+    toughness = 12
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        mountains = { toughness = 6 }
-        plains = { toughness = -3 damage = -3 }
+        mountains = { toughness = 3 }
+        plains = { toughness = -3 }
     }
 
     counters = {
@@ -225,10 +225,10 @@ sphendonetai = {
         can_recruit_maa_sphendonetai_trigger = yes
     }
 
-    damage = 9
+    damage = 7
     toughness = 3
-    pursuit = 8
-    screen = 12
+    pursuit = 5
+    screen = 15
 
     terrain_bonus = {
         hills = { toughness = 3 }
@@ -257,7 +257,7 @@ akarnanioi_sphendonetai = {
     type = slingers
 
     can_recruit = {
-        can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
+        always = no
     }
 
     damage = 12
@@ -280,7 +280,7 @@ akarnanioi_sphendonetai = {
     low_maintenance_cost = { gold = 0.35 }
     high_maintenance_cost = { gold = 1.05 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 100
@@ -296,13 +296,14 @@ rhodioi_sphendonetai = {
         can_recruit_maa_rhodioi_sphendonetai_trigger = yes
     }
 
-    damage = 16
-    toughness = 9
-    pursuit = 2
-    screen = 10
+    damage = 13
+    toughness = 6
+    pursuit = 5
+    screen = 15
 
     terrain_bonus = {
-        hills = { toughness = 6 }
+        hills = { toughness = 3 damage = 3 }
+        plais = { screen = -6 }
     }
 
     counters = {
@@ -332,13 +333,14 @@ skaplinai = {
         can_recruit_maa_skaplinai_trigger = yes
     }
 
-    damage = 16
-    toughness = 6
+    damage = 15
+    toughness = 5
     pursuit = 6
     screen = 6
 
     terrain_bonus = {
-        mountains = { damage = 3 toughness = 3 screen = 12 }
+        mountains = { damage = 5 toughness = 5 }
+        hills = { damage = 1 toughness = 1 }
         plains = { pursuit = -3 screen = -3 toughness = -3 }
         drylands = { damage = -3 pursuit = -3 screen = -3 }
     }
@@ -369,8 +371,8 @@ peltophoroi = {
         can_recruit_maa_peltophoroi_trigger = yes
     }
 
-    damage = 8
-    toughness = 10
+    damage = 6
+    toughness = 9
     pursuit = 5
     screen = 5
 
@@ -401,14 +403,14 @@ thureophoroi = {
         can_recruit_maa_thureophoroi_trigger = yes
     }
 
-    damage = 10
-    toughness = 10
+    damage = 9
+    toughness = 9
     pursuit = 5
     screen = 5
 
     terrain_bonus = {
-        mountains = { damage = 2 screen = 2 }
-        hills = { toughness = 2 screen = 2 }
+        mountains = { damage = 1 screen = 2 pursuit = 2 }
+        hills = { toughness = 1 screen = 2 pursuit = 2 }
     }
 
     counters = {
@@ -435,8 +437,8 @@ makedonikoi_peltastai = {
         can_recruit_maa_makedonikoi_peltastai_trigger = yes
     }
 
-    damage = 13
-    toughness = 16
+    damage = 12
+    toughness = 15
     pursuit = 5
     screen = 5
 
@@ -470,14 +472,15 @@ hyperaspistai = {
         can_recruit_maa_hyperaspistai_trigger = yes
     }
 
-    damage = 16
+    damage = 14
     toughness = 20
     pursuit = 3
     screen = 3
 
     terrain_bonus = {
-        drylands = { damage = 3 }
-        plains = { damage = 3 }
+        drylands = { hills = 2 }
+        plains = { pursuit = 4 screen = 4 }
+        forest = { damage = -3 }
     }
 
     counters = {
@@ -508,17 +511,17 @@ hoplitai = {
         can_recruit_maa_hoplitai_trigger = yes
     }
 
-    damage = 6
-    toughness = 16
+    damage = 5
+    toughness = 15
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 3 toughness = 3 }
-        valley = { toughness = 6 }
+        farmlands = { damage = 3 }
+        valley = { toughness = 3 }
         plains = { damage = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
         hills = { toughness = -3 }
     }
 
@@ -547,17 +550,17 @@ epilektoi_hoplitai = {
         can_recruit_maa_epilektoi_hoplitai_trigger = yes
     }
 
-    damage = 9
-    toughness = 25
+    damage = 8
+    toughness = 24
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 3 toughness = 3 }
-        valley = { toughness = 6 }
+        farmlands = { damage = 3 }
+        valley = { toughness = 3 }
         plains = { damage = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
         hills = { toughness = -3 }
     }
 
@@ -589,16 +592,18 @@ eparitoi_hoplitai = {
         can_recruit_maa_eparitoi_hoplitai_trigger = yes
     }
 
-    damage = 10
-    toughness = 25
+    damage = 9
+    toughness = 23
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        valley = { toughness = 3 damage = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
-        hills = { toughness = 3 damage = 3 }
+        hills = { toughness = 3 }
+        valley = { toughness = 3 }
+        plains = { damage = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
     }
 
     counters = {
@@ -621,7 +626,7 @@ eparitoi_hoplitai = {
     icon = hoplitai_elite
 }
 
-#Lakedaemonian#Superior#Regional
+#Lakedaemonian#Superior#
 lakonikoi_hoplitai = {
     type = heavy_infantry
 
@@ -629,18 +634,18 @@ lakonikoi_hoplitai = {
         can_recruit_maa_lakonikoi_hoplitai_trigger = yes
     }
 
-    damage = 9
-    toughness = 19
+    damage = 8
+    toughness = 18
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 6 }
-        valley = { toughness = 6 }
-        plains = { damage = 3 toughness = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
-        hills = { damage = -3 toughness = -3 }
+        farmlands = { damage = 3 }
+        valley = { toughness = 3 }
+        plains = { damage = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
     }
 
     counters = {
@@ -668,18 +673,18 @@ homoioi_hoplitai = {
         can_recruit_maa_homoioi_hoplitai_trigger = yes
     }
 
-    damage = 12
-    toughness = 25
+    damage = 9
+    toughness = 26
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 9 }
-        valley = { toughness = 9 }
-        plains = { damage = 3 toughness = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
-        hills = { damage = -3 toughness = -3 }
+        farmlands = { damage = 3 toughness = 3 }
+        valley = { toughness = 3 }
+        plains = { damage = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
     }
 
     counters = {
@@ -709,18 +714,18 @@ homoioi_hippeis = {
         can_recruit_maa_homoioi_hippeis_trigger = yes
     }
 
-    damage = 15
-    toughness = 28
+    damage = 12
+    toughness = 29
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 9 }
-        valley = { toughness = 9 }
-        plains = { damage = 3 toughness = 3 }
-        mountains = { toughness = -6 }
-        forest = { toughness = -6 }
-        hills = { damage = -3 toughness = -3 }
+        farmlands = { damage = 3 toughness = 3 }
+        valley = { toughness = 3 }
+        plains = { damage = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
     }
 
     counters = {
@@ -752,15 +757,17 @@ hypaspistai = {
     }
 
     damage = 6
-    toughness = 34
+    toughness = 32
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { damage = 6 }
-        valley = { toughness = 6 }
-        forest = { toughness = -6 }
-        mountains = { toughness = -6 }
+        farmlands = { damage = 3 }
+        valley = { toughness = 3 }
+        plains = { damage = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
     }
 
     counters = {
@@ -792,7 +799,7 @@ phalangitai = {
         can_recruit_maa_phalangitai_trigger = yes
     }
 
-    damage = 12
+    damage = 10
     toughness = 10
     pursuit = 0
     screen = 0
@@ -831,7 +838,7 @@ chalkaspides = {
         can_recruit_maa_chalkaspides_trigger = yes
     }
 
-    damage = 16
+    damage = 14
     toughness = 12
     pursuit = 0
     screen = 0
@@ -871,7 +878,7 @@ agema_phalangitai = {
     }
 
     damage = 18
-    toughness = 16
+    toughness = 14
     pursuit = 0
     screen = 0
 
@@ -912,13 +919,13 @@ chaonion_agema = {
         can_recruit_maa_chaonion_agema_trigger = yes
     }
 
-    damage = 15
-    toughness = 13
+    damage = 16
+    toughness = 9
     pursuit = 6
     screen = 6
 
     terrain_bonus = {
-        farmlands = { damage = 6 toughness = 6 }
+        farmlands = { damage = 6 toughness = 3 }
         plains = { damage = 6 toughness = 6 }
         hills = { toughness = -3 damage = -3 }
         mountains = { toughness = -3 damage = -3 }
@@ -955,13 +962,13 @@ thorakitai = {
         can_recruit_maa_thorakitai_trigger = yes
     }
 
-    damage = 12
+    damage = 10
     toughness = 13
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { toughness = 3 }
+        farmlands = { damage = 3 }
         valley = { toughness = 3 }
     }
 
@@ -987,11 +994,11 @@ ardiaian_thureophoroi = {
     type = medium_infantry
 
     can_recruit = {
-        can_recruit_maa_ardiaian_thureophoroi_trigger = yes
+        always = no
     }
 
-    damage = 14
-    toughness = 14
+    damage = 13
+    toughness = 13
     pursuit = 6
     screen = 20
 
@@ -1028,17 +1035,17 @@ prodromoi = {
         can_recruit_maa_prodromoi_trigger = yes
     }
 
-    damage = 12
-    toughness = 12
+    damage = 10
+    toughness = 10
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        plains = { damage = 6 screen = 6 }
-        steppe = { damage = 6 screen = 6 }
-        mountains = { pursuit = -6 screen = -6 }
-        hills = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -6 screen = -6 }
+        plains = { damage = 3 screen = 3 }
+        steppe = { damage = 3 screen = 3 }
+        mountains = { pursuit = -3 screen = -3 }
+        hills = { pursuit = -3 screen = -3 }
+        wetlands = { pursuit = -3 screen = -3 }
     }
 
     counters = {
@@ -1066,18 +1073,18 @@ mandonai = {
         can_recruit_maa_mandonai_trigger = yes
     }
 
-    damage = 15
+    damage = 13
     toughness = 12
     pursuit = 23
     screen = 23
 
     terrain_bonus = {
-        plains = { damage = 9 screen = 6 }
-        steppe = { damage = 9 screen = 6 }
-        mountains = { pursuit = -6 screen = -6 }
-        hills = { pursuit = -6 screen = -6 }
-        drylands = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -6 screen = -6 }
+        plains = { damage = 6 }
+        steppe = { damage = 6 }
+        mountains = { pursuit = -3 screen = -3 }
+        hills = { pursuit = -3 screen = -3 }
+        drylands = { pursuit = -3 screen = -3 }
+        wetlands = { pursuit = -3 screen = -3 }
     }
 
     counters = {
@@ -1106,15 +1113,15 @@ hippeis = {
         can_recruit_maa_hippeis_trigger = yes
     }
 
-    damage = 24
-    toughness = 14
+    damage = 22
+    toughness = 12
     pursuit = 12
     screen = 0
 
     terrain_bonus = {
-        plains = { damage = 18 toughness = 6 }
+        plains = { damage = 22 }
         mountains = { damage = -6 }
-        forest = { damage = -6 }
+        forest = { damage = -2 }
         hills = { toughness = -3 damage = -3 }
         wetlands = { toughness = -3 damage = -3 }
     }
@@ -1143,8 +1150,8 @@ thessalikoi_hippeis = {
         can_recruit_maa_thessalikoi_hippeis_trigger = yes
     }
 
-    damage = 30
-    toughness = 10
+    damage = 24
+    toughness = 14
     pursuit = 20
     screen = 0
 
@@ -1180,7 +1187,7 @@ hiera_ile = {
         can_recruit_maa_hiera_ile_trigger = yes
     }
 
-    damage = 36
+    damage = 32
     toughness = 20
     pursuit = 12
     screen = 0
@@ -1220,15 +1227,15 @@ basilikoi_agema = {
         can_recruit_maa_basilikoi_agema_trigger = yes
     }
 
-    damage = 40
-    toughness = 20
+    damage = 34
+    toughness = 22
     pursuit = 10
     screen = 6
 
     terrain_bonus = {
-        plains = { damage = 21 toughness = 9 }
+        plains = { damage = 24 }
         mountains = { damage = -6 }
-        forest = { damage = -6 }
+        forest = { damage = -3 }
         hills = { toughness = -3 damage = -3 }
         wetlands = { toughness = -3 damage = -3 }
     }
@@ -1263,7 +1270,7 @@ peltenai = {
         can_recruit_maa_peltenai_trigger = yes
     }
 
-    damage = 8
+    damage = 6
     toughness = 4
     pursuit = 8
     screen = 12
@@ -1298,16 +1305,16 @@ anganai = {
         can_recruit_maa_anganai_trigger = yes
     }
 
-    damage = 14
+    damage = 12
     toughness = 3
-    pursuit = 0
-    screen = 10
+    pursuit = 5
+    screen = 5
 
     terrain_bonus = {
         mountains = { toughness = 3 }
-        forest = { damage = 3 }
-        plains = { screen = -6 }
-        drylands = { screen = -6 }
+        forest = { toughness = 3 }
+        plains = { screen = -3 pursuit = -3 }
+        drylands = { screen = -3 pursuit = -3 }
     }
 
     counters = {
@@ -1334,14 +1341,14 @@ asanai = {
         can_recruit_maa_asanai_trigger = yes
     }
 
-    damage = 9
+    damage = 7
     toughness = 3
-    pursuit = 8
-    screen = 12
+    pursuit = 6
+    screen = 14
 
     terrain_bonus = {
         hills = { toughness = 3 }
-        forest = { damage = 3 }
+        forest = { toughness = 3 }
         plains = { screen = -6 }
         drylands = { screen = -6 }
     }
@@ -1371,15 +1378,15 @@ tarunai = {
     }
 
     damage = 10
-    toughness = 12
+    toughness = 10
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
         forest = { toughness = 3 }
-        valley = { toughness = 3 damage = 3 }
+        valley = { damage = 3 }
         farmlands = { toughness = 3 }
-        mountains = { toughness = -3 damage = -3 }
+        mountains = { toughness = -3 }
         drylands = { toughness = -3 damage = -3 }
     }
 
@@ -1407,8 +1414,8 @@ tarupeltenai = {
         can_recruit_maa_tarupeltenai_trigger = yes
     }
 
-    damage = 16
-    toughness = 6
+    damage = 15
+    toughness = 5
     pursuit = 0
     screen = 0
 
@@ -1444,10 +1451,10 @@ galathraikes = {
         can_recruit_maa_galathraikes_trigger = yes
     }
 
-    damage = 8
+    damage = 6
     toughness = 9
-    pursuit = 6
-    screen = 4
+    pursuit = 4
+    screen = 6
 
     terrain_bonus = {
     }
@@ -1475,17 +1482,17 @@ moukamezenai = {
         can_recruit_maa_moukamezenai_trigger = yes
     }
 
-    damage = 28
+    damage = 24
     toughness = 10
     pursuit = 12
     screen = 0
 
     terrain_bonus = {
-        plains = { damage = 9 toughness = 3 }
-        forest = { damage = 3 toughness = 9 }
-        mountains = { damage = -6 }
+        plains = { damage = 8 }
+        forest = { toughness = 10 }
+        mountains = { damage = -3 }
         drylands = { damage = -3 toughness -3 }
-        hills = { toughness = -3 damage = -3 }
+        hills = { damage = -3 }
         wetlands = { toughness = -3 damage = -3 }
     }
 
@@ -1512,19 +1519,19 @@ mezenai = {
         can_recruit_maa_mezenai_trigger = yes
     }
 
-    damage = 14
-    toughness = 10
-    pursuit = 20
-    screen = 20
+    damage = 12
+    toughness = 8
+    pursuit = 22
+    screen = 18
 
     terrain_bonus = {
-        plains = { damage = 6 screen = 6 }
-        steppe = { damage = 6 screen = 6 }
-        forest = { toughness = 6 }
+        plains = { damage = 6 }
+        steppe = { damage = 6 }
+        forest = { toughness = 3 }
         mountains = { pursuit = -6 screen = -6 }
-        hills = { pursuit = -6 screen = -6 }
-        drylands = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -6 screen = -6 }
+        hills = { pursuit = -3 screen = -3 }
+        drylands = { pursuit = -3 screen = -3 }
+        wetlands = { pursuit = -3 screen = -3 }
     }
 
     counters = {
@@ -1552,19 +1559,18 @@ angamezenai = {
         can_recruit_maa_angamezenai_trigger = yes
     }
 
-    damage = 18
-    toughness = 6
+    damage = 15
+    toughness = 5
     pursuit = 10
     screen = 30
 
     terrain_bonus = {
-        plains = { damage = 9 toughness = 3 }
-        forest = { damage = 3 toughness = 3 }
-        steppe = { damage = 9 toughness = 3 }
-        hills = { pursuit = -6 screen = -6 }
-        mountains = { pursuit = -6 screen = -12 }
-        wetlands = { pursuit = -6 screen = -12 }
-        drylands = { pursuit = -6 screen = -6 }
+        plains = { damage = 9 }
+        steppe = { damage = 9 }
+        hills = { pursuit = -3 screen = -3 }
+        mountains = { pursuit = -6 screen = -6 }
+        wetlands = { pursuit = -6 screen = -6 }
+        drylands = { pursuit = -3 screen = -3 }
     }
 
     counters = {
@@ -1595,17 +1601,18 @@ skuda_aspabarata = {
         can_recruit_maa_skuda_aspabarata_trigger = yes
     }
 
-    damage = 24
+    damage = 20
     toughness = 6
-    pursuit = 24
-    screen = 16
+    pursuit = 10
+    screen = 36
 
     terrain_bonus = {
-        plains = { damage = 9 toughness = 6 }
-        steppe = { damage = 9 toughness = 6 }
-        hills = { pursuit = -6 screen = -6 }
-        mountains = { pursuit = -6 screen = -12 }
-        wetlands = { pursuit = -6 screen = -12 }
+        plains = { damage = 9 }
+        steppe = { damage = 12 }
+        hills = { pursuit = -3 screen = -3 }
+        mountains = { pursuit = -6 screen = -6 }
+        wetlands = { pursuit = -6 screen = -6 }
+        drylands = { pursuit = -3 screen = -3 }
     }
 
     counters = {
@@ -1615,9 +1622,9 @@ skuda_aspabarata = {
         skirmishers = 0.75
     }
 
-    buy_cost = { gold = 75 }
-    low_maintenance_cost = { gold = 0.45 }
-    high_maintenance_cost = { gold = 1.35 }
+    buy_cost = { gold = 90 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.8 }
     
     
     mercenary_fallback = yes
@@ -1636,8 +1643,8 @@ zibutai = {
         can_recruit_maa_zibutai_trigger = yes
     }
 
-    damage = 35
-    toughness = 15
+    damage = 30
+    toughness = 16
     pursuit = 12
     screen = 0
 
@@ -1674,18 +1681,18 @@ cordinau_orca = {
         can_recruit_maa_cordinau_orca_trigger = yes
     }
 
-    damage = 20
-    toughness = 20
+    damage = 19
+    toughness = 19
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        forest = { toughness = 3 damage = 3 }
+        forest = { toughness = 6 }
         hills = { toughness = 3 }
-        valley = { damage = 3 toughness = 3 }
+        valley = { damage = 3 }
         farmlands = { damage = 3 }
-        mountains = { toughness = -3 damage = -3 }
-        drylands = { toughness = -3 damage = -3 }
+        mountains = { toughness = -3 }
+        drylands = { toughness = -3 }
     }
 
     counters = {
@@ -1717,8 +1724,8 @@ nedes_nesamoi = {
         can_recruit_maa_nedes_nesamoi_trigger = yes
     }
 
-    damage = 14
-    toughness = 14
+    damage = 13
+    toughness = 13
     pursuit = 6
     screen = 6
 
@@ -1753,7 +1760,7 @@ rompaianai = {
     type = medium_infantry
 
     can_recruit = {
-        can_recruit_maa_rompaianai_trigger = yes
+        always = no
     }
 
     damage = 14
@@ -1775,7 +1782,7 @@ rompaianai = {
     low_maintenance_cost = { gold = 0.4 }
     high_maintenance_cost = { gold = 1.2 }
     
-    mercenary_fallback = yes
+    mercenary_fallback = no
     holy_order_fallback = yes
     
     stack = 100
@@ -1790,9 +1797,9 @@ drapanai = {
         can_recruit_maa_drapanai_trigger = yes
     }
 
-    damage = 17
-    toughness = 3
-    pursuit = 16
+    damage = 16
+    toughness = 4
+    pursuit = 14
     screen = 0
 
     terrain_bonus = {
@@ -1824,7 +1831,7 @@ elephantes_kataphraktoi = {
     }
 
     damage = 60
-    toughness = 26
+    toughness = 20
     pursuit = 0
     screen = 0
 
@@ -1832,8 +1839,8 @@ elephantes_kataphraktoi = {
         plains = { damage = 18 }
         farmlands = { damage = 18 }
         mountains = { damage = -6 toughness = -6 }
-        wetlands = { damage = -6 toughness = -6 }
-        hills = { damage = -6 toughness = -6 }
+        wetlands = { damage = -3 toughness = -3 }
+        hills = { damage = -3 toughness = -3 }
     }
 
     counters = {
