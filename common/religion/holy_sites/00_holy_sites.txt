@@ -74,8 +74,8 @@ dion = { # Major sanctuary to Zeus Olympios
 	# The Macedonians held victory feasts and purification rites of the army here
 	character_modifier = {
 		name = holy_site_dion_effect_name
-		martial_per_piety_level = 1
-		knight_effectiveness_mult = 0.2
+		martial = 1
+		knight_effectiveness_mult = 0.1
 	}
 }
 samothrake = { # The cult center at Samothrake.
@@ -107,7 +107,7 @@ idaion_antron = {
 	# The Idaean Cave was the centre of a local amphictyony, helping facilitate the strengthening of ties between city-states
 	character_modifier = {
 		name = holy_site_idaion_antron_effect_name
-		sway_scheme_power_mult = 0.2
+		sway_scheme_power_mult = 0.1
 		diplomacy = 1
 	}
 }
@@ -117,7 +117,7 @@ aigina = {
 	# Britomartis fled from Crete to Aigina, where she was worshipped as Aphaea and associated with fishermen and sailors
 	character_modifier = {
 		name = holy_site_aigina_effect_name
-		embarkation_cost_mult = -0.25
+		embarkation_cost_mult = -0.1
 		retreat_losses = -0.1
 	}
 }
@@ -190,7 +190,7 @@ leibethra = { # commonly held location of Orpheus' tomb
 	# Leibethra was also associated with the Muses, who were patrons of the arts and learning
 	character_modifier = {
 		name = holy_site_leibethra_effect_name
-		monthly_lifestyle_xp_gain_mult = 0.15
+		monthly_lifestyle_xp_gain_mult = 0.1
 		courtier_and_guest_opinion = 5
 	}
 }
@@ -203,8 +203,8 @@ lemnos = { # supposed location of Hephaestus' forge
 	# If we can convince people our armour is crafted by Hephaestus himself...
 	character_modifier = {
 		name = holy_site_lemnos_effect_name
-		knight_effectiveness_mult = 0.2
-		prowess_per_piety_level = 1
+		knight_effectiveness_mult = 0.1
+		prowess = 1
 	}
 }
 thebai = { # location of a sanctuary to the Cabeiri
@@ -232,7 +232,7 @@ samos = { # Heraion of Samos
 	# Hera was closely associated with marriage and fertility
 	character_modifier = {
 		name = holy_site_samos_effect_name
-		spouse_opinion = 20
+		spouse_opinion = 10
 		negate_fertility_penalty_add = 0.2
 	}
 }
@@ -243,7 +243,7 @@ hieron_chalkedon = { # important Panhellenic sanctuary, converted into a fortifi
 	# The site was considered a common haven for sailors
 	character_modifier = {
 		name = holy_site_hieron_chalkedon_effect_name
-		embarkation_cost_mult = -0.25
+		embarkation_cost_mult = -0.2
 		retreat_losses = -0.1
 	}
 }
@@ -265,7 +265,7 @@ thermopylai = {
 	character_modifier = {
 		name = holy_site_thermopylai_effect_name
 		defender_advantage = 5
-		monthly_prestige_gain_per_knight_mult = 0.02
+		heavy_infantry_toughness_mult = 0.2
 	}
 }
 limnai = { # sanctuary of Artemis Limnatis
@@ -292,7 +292,7 @@ hierapolis = { # location of a famous Ploutonion
 	# the Ploutonion was known for its poisonous vapours, which only the Galli could pass through unscathed
 	character_modifier = {
 		name = holy_site_hierapolis_effect_name
-		intrigue_per_piety_level = 1
+		intrigue = 1
 	}
 }
 
@@ -371,8 +371,7 @@ mount_ida = {
 	# The Idaean dactyls were considered the inventors of metalworking
 	character_modifier = {
 		name = holy_site_mount_ida_effect_name
-		prowess = 1
-		heavy_infantry_toughness_mult = 0.1
+		knight_effectiveness_mult = 0.2
 	}
 }
 mount_dindymon = {
@@ -381,7 +380,7 @@ mount_dindymon = {
 	# The cult of Meter Dindymene was alleged to have been founded by the Argonauts
 	character_modifier = {
 		name = holy_site_mount_dindymon_effect_name
-		supply_duration = 0.25
+		supply_duration = 0.1
 		prowess = 1
 	}
 }
@@ -395,7 +394,7 @@ herakleia_pontike = { # location of a Metroon (i.e. a sanctuary to the Great Mot
 	character_modifier = {
 		name = holy_site_mount_ida_effect_name
 		clergy_opinion = 10
-		monthly_prestige_gain_mult = 0.2
+		monthly_prestige_gain_mult = 0.1
 	}
 }
 
@@ -473,7 +472,7 @@ shiloto = { # important peak sanctuary and royal residence, in Roman times the s
 	# The sanctuary is at the crossroads between the Thracian tribes and Greek colonies
 	character_modifier = {
 		name = holy_site_shiloto_effect_name
-		diplomacy_per_piety_level = 1
+		diplomacy = 1
 	}
 }
 starosel = { # major sanctuary in the Hebros valley
@@ -508,7 +507,7 @@ hyperperakion = { # major Rhodopian sanctuary
 	# Hyperperakion was one of the most important cult centres in the Rhodopes for over a millenium
 	character_modifier = {
 		name = holy_site_hyperperakion_effect_name
-		mountains_development_growth_factor = 0.15
+		mountains_development_growth_factor = 0.1
 		mountains_advantage = 5
 	}
 }
@@ -592,7 +591,7 @@ perkeballon = {
 	character_modifier = {
 		name = holy_site_perkeballon_effect_name
 		light_cavalry_pursuit_mult = 0.1
-		light_cavalry_toughness_mult = 0.1
+		light_cavalry_screen_mult = 0.1
 		knight_effectiveness_mult = 0.2
 	}
 }
@@ -791,7 +790,7 @@ topusko = { # The only mention of Vidasus and Thana
 	character_modifier = {
 		name = holy_site_topusko_effect_name
 		forest_travel_danger = -10
-		prowess_per_prestige_level = 1
+		forest_development_growth_factor = 0.1
 	}
 }
 
@@ -810,10 +809,10 @@ osijek = { # The site of an inscription to Silvanus
 	county = c_mursa
 
 	# Hunting often occurs in forests.
-	# Makes hunts reward 25% extra prestige.
+	# Makes hunts reward 20% extra prestige.
 	character_modifier = {
 		name = holy_site_osijek_effect_name
-		lifestyle_hunter_xp_gain_mult = 0.3
+		lifestyle_hunter_xp_gain_mult = 0.2
 	}
 }
 
@@ -851,7 +850,7 @@ tylis = { # The Celtic kingdom in Thrace
 	character_modifier = {
 		name = holy_site_tylis_effect_name
 		max_loot_mult = 0.1
-		raid_speed = 0.25
+		raid_speed = 0.2
 	}
 }
 
@@ -884,7 +883,7 @@ dolni_galavanak = { # The only stone circle in Bulgaria. The Celts could have fo
 	# General 'pious' modifier.
 	character_modifier = {
 		name = holy_site_dolni_galavanak_effect_name
-		learning_per_piety_level = 1
+		learning = 1
 		monthly_piety_gain_mult = 0.1
 	}
 }
