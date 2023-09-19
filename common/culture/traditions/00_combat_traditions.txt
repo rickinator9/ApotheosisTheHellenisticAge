@@ -1717,17 +1717,18 @@ tradition_hit_and_run = {
 
 	# Iberian: Concurso Tactics
 	character_modifier = {
-		slingers_screen_mult = 0.1
+		skirmishers_toughness_mult = 0.05
 		skirmishers_screen_mult = 0.1
+		archers_toughness_mult = 0.05
 		archers_screen_mult = 0.1
+		light_cavalry_toughness_mult = 0.05
 		light_cavalry_screen_mult = 0.1
 		siege_weapon_siege_value_mult = -0.2
 		retreat_losses = -0.1
 		hard_casualty_modifier = -0.1
-		advantage = -2
-		heavy_infantry_max_size_add = -2
-		heavy_cavalry_max_size_add = -2
-		pikemen_max_size_add = -2
+		heavy_infantry_damage_mult = -0.1
+		heavy_cavalry_damage_mult = -0.1
+		pikemen_damage_mult = -0.1
 	}
 	
 	cost = {
@@ -1812,7 +1813,7 @@ tradition_stand_and_fight = {
 		heavy_cavalry_maintenance_mult = 0.1
 		pikemen_toughness_mult = 0.1
 		pikemen_maintenance_mult = 0.2
-		hard_casualty_modifier = 0.1
+		retreat_losses = 0.1
 		defender_advantage = 2
 	}
 	
@@ -2152,90 +2153,6 @@ tradition_longbow_competitions = {
 	}
 }
 
-tradition_come_and_take_them = {
-	category = combat
-
-	is_shown = {
-		NOR = { #Replaced by Mobile Guards
-			has_cultural_pillar = heritage_israelite
-			has_cultural_tradition = tradition_mobile_guards
-		}
-	}
-
-	layers = {
-		0 = martial
-		1 = indian
-		4 = battle.dds
-	}
-	
-	character_modifier = {
-		heavy_infantry_toughness_mult = 0.15
-		heavy_infantry_maintenance_mult = 0.25
-		pikemen_toughness_mult = 0.15
-		pikemen_maintenance_mult = 0.25
-		retreat_losses = 0.1
-		defender_advantage = 2
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-						culture_pillar:ethos_spiritual = { is_in_list = traits }
-						culture_pillar:ethos_stoic = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bellicose_spiritual_or_stoic_desc
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						scope:character = {	
-							number_maa_soldiers_of_base_type = {
-								type = heavy_infantry
-								value >= 500
-							}	
-							number_maa_soldiers_of_base_type = {
-								type = pikemen
-								value >= 500
-							}
-						}
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = culture_head_heavy_inf_and_pikemen_desc
-				}
-			}
-			
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
-		value = 100
-		if = {
-			limit = {
-				NOR = {
-					culture_has_heavy_infantry_maa = yes
-					culture_has_pikemen_maa = yes
-				}
-			}
-			multiply = 0.25
-		}
-	}
-}
-
 tradition_hammer_and_anvil = {
 	category = combat
 
@@ -2250,8 +2167,9 @@ tradition_hammer_and_anvil = {
 	}
 
 	character_modifier = {
-		pikemen_damage_mult = 0.15
-		heavy_cavalry_damage_mult = 0.15
+		pikemen_damage_mult = 0.1
+		heavy_infantry_damage_mult = 0.1
+		heavy_cavalry_damage_mult = 0.1
 		mountains_advantage = -6
 		desert_mountains_advantage = -6
 		wetlands_advantage = -3
@@ -2358,12 +2276,15 @@ tradition_expert_guerillas = {
 	}
 	
 	character_modifier = {
-		skirmishers_toughness_mult = 0.1
-		archers_toughness_mult = 0.1
-		slingers_toughness_mult = 0.1
-		light_cavalry_toughness_mult = 0.1
+		skirmishers_toughness_mult = 0.05
+		skirmishers_screen_mult = 0.1
+		archers_toughness_mult = 0.05
+		archers_screen_mult = 0.1
+		light_cavalry_toughness_mult = 0.05
+		light_cavalry_screen_mult = 0.1
 		siege_weapon_siege_value_mult = -0.2
-		defender_advantage = 2
+		retreat_losses = -0.1
+		hard_casualty_modifier = -0.1
 		heavy_infantry_damage_mult = -0.1
 		heavy_cavalry_damage_mult = -0.1
 		pikemen_damage_mult = -0.1
@@ -2466,13 +2387,11 @@ tradition_expert_skirmishers = {
 	character_modifier = {
 		skirmishers_damage_mult = 0.1
 		archers_damage_mult = 0.1
-		slingers_damage_mult = 0.1
 		light_cavalry_damage_mult = 0.1
-		enemy_terrain_advantage = -0.1
-		siege_weapon_siege_value_mult = -0.1
-		heavy_infantry_toughness_mult = -0.1
-		heavy_cavalry_toughness_mult = -0.1
-		pikemen_toughness_mult = -0.1
+		enemy_terrain_advantage = -0.25
+		heavy_infantry_max_size_add = -2
+		heavy_cavalry_max_size_add = -2
+		pikemen_max_size_add = -2
 	}
 	
 	cost = {
@@ -2560,47 +2479,30 @@ tradition_expert_skirmishers = {
 	}
 }
 
-tradition_expert_screeners = {
+tradition_discipline_masters = {
 	category = combat
+
+	is_shown = {
+		NOR = { #Replaced by Mobile Guards
+			has_cultural_pillar = heritage_israelite
+			has_cultural_tradition = tradition_mobile_guards
+		}
+	}
 
 	layers = {
 		0 = martial
-		1 = mediterranean
-		4 = soldiers4.dds
+		1 = indian
+		4 = battle.dds
 	}
 	
-	is_shown = {
-		NOR = { #Replaced by Konni Raids (tradition_hussar)
-			has_cultural_pillar = heritage_south_slavic
-			has_cultural_pillar = heritage_magyar
-			has_cultural_pillar = heritage_west_slavic
-		}
-	}
-	can_pick = {
-		trigger_if = {
-			limit = {
-				OR = {
-					NOT = { exists = scope:replacing }
-					NOT = { scope:replacing = culture_tradition:tradition_hussar }
-				}	
-			}
-			NOT = { has_cultural_tradition = tradition_hussar } #To prevent stacking after hybridization
-		}
-	}
-
-	# Iberian: Concurso Tactics
 	character_modifier = {
-		slingers_screen_mult = 0.1
-		skirmishers_screen_mult = 0.1
-		archers_screen_mult = 0.1
-		light_cavalry_screen_mult = 0.1
-		siege_weapon_siege_value_mult = -0.2
-		retreat_losses = -0.1
-		hard_casualty_modifier = -0.1
-		advantage = -2
-		heavy_infantry_max_size_add = -2
-		heavy_cavalry_max_size_add = -2
-		pikemen_max_size_add = -2
+		heavy_infantry_toughness_mult = 0.1
+		heavy_infantry_maintenance_mult = 0.2
+		heavy_cavalry_toughness_mult = 0.1
+		heavy_cavalry_maintenance_mult = 0.1
+		pikemen_toughness_mult = 0.1
+		pikemen_maintenance_mult = 0.2
+		retreat_losses = 0.1
 	}
 	
 	cost = {
@@ -2614,13 +2516,13 @@ tradition_expert_screeners = {
 				limit = {
 					NOR = {
 						culture_pillar:ethos_bellicose = { is_in_list = traits }
-						culture_pillar:ethos_egalitarian = { is_in_list = traits }
 						culture_pillar:ethos_spiritual = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
 					}
 				}
 				add = {
 					value = tradition_incompatible_ethos_penalty
-					desc = not_bellicose_egalitarian_or_spiritual_desc
+					desc = not_bellicose_spiritual_or_stoic_desc
 				}
 			}
 			if = {
@@ -2628,11 +2530,11 @@ tradition_expert_screeners = {
 					NOT = {
 						scope:character = {	
 							number_maa_soldiers_of_base_type = {
-								type = skirmishers
+								type = heavy_infantry
 								value >= 500
 							}	
 							number_maa_soldiers_of_base_type = {
-								type = light_cavalry
+								type = pikemen
 								value >= 500
 							}
 						}
@@ -2640,7 +2542,7 @@ tradition_expert_screeners = {
 				}
 				add = {
 					value = tradition_unfulfilled_criteria_penalty
-					desc = culture_head_skirmishers_and_light_cav_desc
+					desc = culture_head_heavy_inf_and_pikemen_desc
 				}
 			}
 			
@@ -2653,8 +2555,9 @@ tradition_expert_screeners = {
 		if = {
 			limit = {
 				NOR = {
-					culture_has_skirmisher_maa = yes
-					culture_has_light_cavalry_maa = yes
+					culture_has_heavy_infantry_maa = yes
+					culture_has_heavy_cavalry_maa = yes
+					culture_has_pikemen_maa = yes
 				}
 			}
 			multiply = 0.25

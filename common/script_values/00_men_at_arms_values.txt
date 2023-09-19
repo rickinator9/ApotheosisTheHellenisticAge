@@ -340,54 +340,6 @@ culture_ai_weight_archers = {
 		}
 		add = -500
 	}
-	
-	if = { # Cultures with a preference for Slingers should buy those over Archers
-		limit = {
-			is_rhodian = yes # Rhodians should use slingers instead.
-		}
-		add = -40
-	}
-}
-
-culture_ai_weight_slingers = {
-	value = 0
-	
-    # TODO: Add slingers cultures	
-	if = { # Cultures that favours slingers
-		limit = {
-            OR = {
-				is_rhodian = yes # Rhodians will prefer slingers.
-			}
-		}
-		add = 40
-	}
-	if = { # Cultures that dislike slingers
-		limit = {
-			OR = {
-				culture = culture:laconian # Spartans hate missile troops.
-			}
-		}
-		add = -60
-	}
-	
-	if = { # Cultures with a special MaA of that type should avoid the base version of the unit
-		limit = {
-			culture = {
-				OR = {
-					culture_has_archer_maa = yes
-					culture_has_slinger_maa = yes
-				}
-			}
-		}
-		add = -500
-	}
-	
-	if = { # Cultures with a preference for Archers should buy those over Slingers
-		limit = {
-			culture = culture:cretan
-		}
-		add = -40
-	}
 }
 
 culture_ai_weight_medium_infantry = {

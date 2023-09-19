@@ -22,13 +22,6 @@
 @heavy_cavalry_high_maint_cost = @[heavy_cavalry_low_maint_cost * high_maint_mult]
 
 ### Base MAA
-slingers_recruitment_cost = @[slingers_recruitment_cost]
-slingers_low_maint_cost = @[slingers_low_maint_cost]
-slingers_high_maint_cost = @[slingers_high_maint_cost]
-
-medium_infantry_recruitment_cost = @[medium_infantry_recruitment_cost]
-medium_infantry_low_maint_cost = @[medium_infantry_low_maint_cost]
-medium_infantry_high_maint_cost = @[medium_infantry_high_maint_cost]
 
 hetairoi_recruitment_cost = @[heavy_cavalry_recruitment_cost * hetairoi_mult]
 hetairoi_low_maint_cost = @[heavy_cavalry_low_maint_cost * hetairoi_mult]
@@ -1374,22 +1367,8 @@ ATHA_ai_weight_generic_skirmishers = {
 	if = {
 		limit = {
 			OR = {
-				can_recruit_maa_anatolikoi_phyletai_trigger = yes
-				can_recruit_maa_kretikoi_peltastai_trigger = yes
-			}
-		}
-
-		add = ATHA_ai_weight_malus_cultural_maa
-	}
-}
-ATHA_ai_weight_generic_slingers = {
-	value = ATHA_ai_weight_skirmishers
-	if = {
-		limit = {
-			OR = {
-				can_recruit_maa_akarnanioi_sphendonetai_trigger = yes
-				can_recruit_maa_rhodioi_sphendonetai_trigger = yes
 				can_recruit_maa_skaplinai_trigger = yes
+				can_recruit_maa_kretikoi_peltastai_trigger = yes
 			}
 		}
 
