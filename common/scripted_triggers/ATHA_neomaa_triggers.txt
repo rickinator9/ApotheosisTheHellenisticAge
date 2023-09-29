@@ -123,6 +123,12 @@ can_recruit_skordiskian_maa_trigger = {
 can_recruit_thessalian_maa_trigger = {
   can_recruit_culture_maa_trigger = { CULTURE = culture:thessalian }
 }
+can_recruit_siceliote_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:siceliote }
+}
+can_recruit_dassian_maa_trigger = {
+  can_recruit_culture_maa_trigger = { CULTURE = culture:dassian }
+}
 
 ########################
 
@@ -233,9 +239,9 @@ can_recruit_maa_peltophoroi_trigger = {
 }
 can_recruit_maa_thureophoroi_trigger = {
   OR = {
-    culture = { has_innovation = innovation_classical_thyreos }
+    culture = { has_innovation = innovation_thureos }
     any_directly_owned_province = {
-      culture = { has_innovation = innovation_classical_thyreos }
+      culture = { has_innovation = innovation_thureos }
     }
   }
 }
@@ -244,9 +250,6 @@ can_recruit_maa_thureophoroi_trigger = {
 
 can_recruit_maa_drapanai_trigger = {
   can_recruit_getic_maa_trigger = yes
-}
-can_recruit_maa_rompaianai_trigger = {
-  can_recruit_thracian_maa_trigger = yes
 }
 
 ### Elite
@@ -309,15 +312,14 @@ can_recruit_maa_thorakitai_trigger = {
 can_recruit_maa_lakonikoi_hoplitai_trigger = {
   can_recruit_laconian_maa_trigger = yes
 }
+can_recruit_maa_sikeliotai_hoplitai_trigger = {
+  can_recruit_siceliote_maa_trigger = yes
+}
 
 ### Elite
 
 can_recruit_maa_ardiaian_thureophoroi_trigger = {
-  can_recruit_culture_aor_maa_trigger = {
-    CULTURE = culture:dassian
-    REGION = ATHA_aor_ardiaian
-  }
-  culture:dassian = { has_innovation = innovation_classical_thyreos }
+  can_recruit_dassian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 can_recruit_maa_eparitoi_hoplitai_trigger = {
@@ -362,6 +364,10 @@ can_recruit_maa_homoioi_hoplitai_trigger = {
 }
 can_recruit_maa_nedes_nesamoi_trigger = {
   can_recruit_celtic_maa_trigger = yes
+  can_recruit_elite_maa = yes
+}
+can_recruit_maa_rompaianai_trigger = {
+  can_recruit_thracian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
 

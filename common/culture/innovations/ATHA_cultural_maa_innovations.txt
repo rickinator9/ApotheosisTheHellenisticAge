@@ -38,52 +38,17 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
-innovation_sarissa = {
-	group = culture_group_regional
-	culture_era = culture_era_classical
-	icon = @weapons_and_armor_01
-
-	maa_upgrade = {
-		type = pikemen
-		damage = 3
-	}
-
-	flag = global_maa
-}
-
-innovation_companion_cavalry = {
-	group = culture_group_regional
-	culture_era = culture_era_classical
-	icon = @companion
-	
-	custom = more_glory_hounds
-
-	maa_upgrade = {
-		type = heavy_cavalry
-		damage = 3
-	}
-
-	flag = global_maa
-}
-
-innovation_rhomphaia = {
+innovation_thureos = {
 	group = culture_group_regional
 	culture_era = culture_era_classical
 	icon = @weapons_and_armor_01
 
 	potential = {
-		has_cultural_pillar = heritage_thracian
-	}
-
-	maa_upgrade = {
-		type = heavy_infantry
-		damage = 3
-	}
-
-	maa_upgrade = {
-		type = skirmishers
-		damage = 3
-	}
+    OR = {
+        has_cultural_parameter = unlock_maa_thureophoroi
+		has_cultural_pillar = heritage_greek
+    }
+ }
 
 	flag = global_maa
 }
