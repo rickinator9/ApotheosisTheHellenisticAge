@@ -5,14 +5,16 @@
 @cultural_maa_extra_ai_score = 80 # Equivalent to having 8 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
 
 #MAA progression value:
+#
 #Superior:+6 Elite:+12 Guard:+24, Regional: (county, tradition or title locked) offers either free +3 stat bonus or 0.5 counter value
 #Innovation MAA:+5
 #(each +3 distributed among damage or toughness = 10 gold, 0.1 low, 0.3 high)
 #(each +6 distributed among screen or pursuit  = 5 gold, 0.05 low, 0.15 high) 1 damage or toughness point = 2 screen or pursuit
 #(each 0.5 counter = 5 gold, 0.05 low, 0.15 high)
 #(innovation MAA +5 distributed among damage or toughness = 10 gold, 0.1 low, 0.3 high)
-
+#
 #NEOMAA BASE STATS / S=skirmishers, MI=medium_infantry(AI weight), A=archers... etc
+#
 #S -  MI(HI) -  A -  HI -  P -  LC -  HC -  EC = MAA type
 #5    5         10   10    10   10    15    40 = damage
 #5    10        5    10    10   10    15    40 = toughness
@@ -23,6 +25,9 @@
 #40   45        50   50    50   50    60    105 = price
 #0.1  0.15      0.2  0.2   0.2  0.2   0.3   0.75 = unraised upkeep
 #0.3  0.45      0.6  0.6   0.6  0.6   0.9   2.25 = raised upkeep
+#100  100       100  100   100  50    50    25 = stack size
+#
+#Levies stats were changed have both 5 damage and toughness in defines.txt and knights 10
 
 
 sphendonetai = {
@@ -659,8 +664,8 @@ hypaspistai = {
         can_recruit_maa_hypaspistai_trigger = yes
     }
 
-    damage = 8
-    toughness = 30
+    damage = 10
+    toughness = 28
     pursuit = 0
     screen = 0
 
@@ -686,8 +691,8 @@ hypaspistai = {
     
     stack = 100
     ai_quality = {
-        value = ATHA_ai_weight_heavy_infantry
-        add = ATHA_ai_weight_elite
+        value = ATHA_ai_weight_light_cavalry
+        add = ATHA_ai_weight_guard
     }
     icon = hoplitai_guard
 }
