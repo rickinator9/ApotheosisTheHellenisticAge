@@ -4443,77 +4443,77 @@ ep2_locale_events.2501 = {
 		}
 	}
 
-	# # SOLD!
-	# option = {
-	# 	name = ep2_locale_events.2501.a
+	# SOLD!
+	option = {
+		name = ep2_locale_events.2501.a
 
-	# 	custom_tooltip = ep2_locale_events.2501.a.tt
+		custom_tooltip = ep2_locale_events.2501.a.tt
 		
-	# 	if = {
-	# 		limit = { activity_is_competing_trigger = yes }
-	# 		activity_tournament_change_contestant_score_effect = { SCORE = decrease_miniscule }
-	# 	}
+		if = {
+			limit = { activity_is_competing_trigger = yes }
+			activity_tournament_change_contestant_score_effect = { SCORE = decrease_miniscule }
+		}
 
-	# 	add_character_flag = {
-	# 		flag = pope_larper_flag
-	# 		months = 5
-	# 	}
+		add_character_flag = {
+			flag = pope_larper_flag
+			months = 5
+		}
 
-	# 	every_knight = {
-	# 		add_character_flag = {
-	# 			flag = cardinal_larper_flag
-	# 			months = 5
-	# 		}
-	# 	}
+		every_knight = {
+			add_character_flag = {
+				flag = cardinal_larper_flag
+				months = 5
+			}
+		}
 
-	# 	create_artifact = {	
-	# 		name = fake_papal_tiara_name
-	# 		description = fake_papal_tiara_description
-	# 		type = helmet
-	# 		visuals = pope_tiara
-	# 		modifier = artifact_fake_papal_tiara_modifier
-	# 		save_scope_as = newly_created_artifact
-	# 	}
+		create_artifact = {	
+			name = fake_papal_tiara_name
+			description = fake_papal_tiara_description
+			type = helmet
+			visuals = pope_tiara
+			modifier = artifact_fake_papal_tiara_modifier
+			save_scope_as = newly_created_artifact
+		}
 
-	# 	scope:newly_created_artifact = {
-	# 		equip_artifact_to_owner = yes
-	# 	}
+		scope:newly_created_artifact = {
+			equip_artifact_to_owner = yes
+		}
 
-	# 	remove_short_term_gold = medium_gold_value
+		remove_short_term_gold = medium_gold_value
 
-	# 	add_piety = minor_piety_loss
+		add_piety = minor_piety_loss
 
-	# 	reverse_add_opinion = {
-	# 		modifier = impious_opinion
-	# 		target = scope:realm_priest
-	# 		opinion = -50
-	# 	}
+		reverse_add_opinion = {
+			modifier = impious_opinion
+			target = scope:realm_priest
+			opinion = -50
+		}
 
-	# 	reverse_add_opinion = {
-	# 		modifier = pleased_opinion
-	# 		target = scope:random_knight
-	# 		opinion = 10
-	# 	}
+		reverse_add_opinion = {
+			modifier = pleased_opinion
+			target = scope:random_knight
+			opinion = 10
+		}
 
-	# 	stress_impact = {
-	# 		zealous = major_stress_impact_gain
-	# 		greedy = medium_stress_impact_gain
-	# 		gregarious = miniscule_stress_impact_loss
-	# 		cynical = miniscule_stress_impact_loss
-	# 	}
+		stress_impact = {
+			zealous = major_stress_impact_gain
+			greedy = medium_stress_impact_gain
+			gregarious = miniscule_stress_impact_loss
+			cynical = miniscule_stress_impact_loss
+		}
 
-	# 	ai_chance = {
-	# 		base = 100
-	# 		modifier = {
-	# 			factor = 0
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
 
-	# 			OR = {
-	# 				has_trait = greedy
-	# 				has_trait = zealous
-	# 			}
-	# 		}
-	# 	}
-	# }
+				OR = {
+					has_trait = greedy
+					has_trait = zealous
+				}
+			}
+		}
+	}
 
 	# Blasphemy!
 	option = {
@@ -6646,8 +6646,10 @@ ep2_locale_events.4050 = {
 			OR = {
 				has_trait = education_stewardship_3
 				has_trait = education_stewardship_4
+				has_trait = education_stewardship_5
 				has_trait = education_diplomacy_3
 				has_trait = education_diplomacy_4
+				has_trait = education_diplomacy_5
 			}
 		}
 
@@ -8969,6 +8971,7 @@ ep2_locale_events.4521 = {
 		stress_impact = {
 			ambitious = medium_stress_impact_gain
 			greedy = medium_stress_impact_gain
+			eccentric = medium_stress_impact_gain
 			generous = miniscule_stress_impact_loss
 			content = miniscule_stress_impact_loss
 		}
