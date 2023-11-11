@@ -1,0 +1,76 @@
+doctrine_ritual_character = {
+	group = "main_group"
+	is_available_on_create = {
+		always = no #religion_tag = olympian_religion
+	}
+	# Serves as rigi
+	popular_ritual_character_doctrine = { # Default
+		piety_cost = {
+			if = {
+				limit = { has_doctrine = temple_authority_rabbinic_doctrine }
+				value = 0
+			}
+			else_if = {
+				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
+				value = faith_tenet_cost_mid
+			}
+			else = {
+				value = faith_tenet_cost_low
+			}
+		}
+		character_modifier = {
+			clergy_opinion = 5
+			church_holding_build_gold_cost = -0.1
+		}
+		parameters = {
+			hostility_override_temple_authority_rabbinic_doctrine = 1
+			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		}
+	}
+	public_ritual_character_doctrine = { # Default
+		piety_cost = {
+			if = {
+				limit = { has_doctrine = temple_authority_rabbinic_doctrine }
+				value = 0
+			}
+			else_if = {
+				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
+				value = faith_tenet_cost_mid
+			}
+			else = {
+				value = faith_tenet_cost_low
+			}
+		}
+		character_modifier = {
+			clergy_opinion = 5
+			church_holding_build_gold_cost = -0.1
+		}
+		parameters = {
+			hostility_override_temple_authority_rabbinic_doctrine = 1
+			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		}
+	}
+	mysteries_ritual_character_doctrine = {
+		piety_cost = {
+			if = {
+				limit = { has_doctrine = mysteries_ritual_character_doctrine }
+				value = 0
+			}
+			else_if = {
+				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
+				value = faith_tenet_cost_mid
+			}
+			else = {
+				value = faith_tenet_cost_low
+			}
+		}
+		character_modifier = {
+			clergy_opinion = 5
+			church_holding_build_gold_cost = -0.1
+		}
+		parameters = {
+			hostility_override_temple_authority_rabbinic_doctrine = 1
+			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		}
+	}
+}
