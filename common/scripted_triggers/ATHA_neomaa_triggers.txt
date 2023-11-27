@@ -322,16 +322,11 @@ can_recruit_maa_ardiaian_thureophoroi_trigger = {
   can_recruit_dassian_maa_trigger = yes
   can_recruit_elite_maa = yes
 }
-can_recruit_maa_eparitoi_hoplitai_trigger = {
-  can_recruit_arcadian_maa_trigger = yes
-  can_recruit_elite_maa = yes
-}
 can_recruit_maa_epilektoi_hoplitai_trigger = {
   OR = {
     AND = {
       culture = { has_cultural_pillar = heritage_greek }
-      NOR = { 
-        has_culture_or_parent_culture = { CULTURE = culture:arcadian } # Instead get Eparitoi
+      NOR = {
         has_culture_or_parent_culture = { CULTURE = culture:cretan } # They get elite archers instead
         AND = {
           has_culture_or_parent_culture = { CULTURE = culture:laconian } # Instead get Homoioi

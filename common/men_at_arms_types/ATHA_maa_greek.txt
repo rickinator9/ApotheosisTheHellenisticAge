@@ -118,7 +118,7 @@ toxotai = {
     }
 
     counters = {
-        archer_cavalry = 0.5
+        skirmishers = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -129,7 +129,7 @@ toxotai = {
     holy_order_fallback = yes
     
     stack = 100
-    ai_quality = { value = ATHA_ai_weight_archers }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = toxotai
 }
 
@@ -239,7 +239,7 @@ skaplinai = {
     holy_order_fallback = yes
     
     stack = 100
-    ai_quality = { value = ATHA_ai_weight_skirmishers }
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = skirmishers
 }
 
@@ -341,44 +341,6 @@ epilektoi_hoplitai = {
         mountains = { toughness = -3 }
         forest = { toughness = -3 }
         hills = { toughness = -3 }
-    }
-
-    counters = {
-        light_cavalry = 0.5
-    }
-
-    buy_cost = { gold = 75 }
-    low_maintenance_cost = { gold = 0.45 }
-    high_maintenance_cost = { gold = 1.35 }
-    
-    mercenary_fallback = no
-    holy_order_fallback = yes
-    
-    stack = 100
-    ai_quality = {
-        value = ATHA_ai_weight_hoplite
-    }
-    icon = hoplitai_elite
-}
-
-#Arkadian_league#Elite#
-eparitoi_hoplitai = {
-    type = heavy_infantry
-
-    can_recruit = {
-        can_recruit_maa_eparitoi_hoplitai_trigger = yes
-    }
-
-    damage = 9
-    toughness = 23
-    pursuit = 0
-    screen = 0
-
-    terrain_bonus = {
-        hills = { toughness = 3 }
-        valley = { toughness = 3 }
-        mountains = { toughness = -3 }
-        forest = { toughness = -3 }
     }
 
     counters = {
@@ -588,7 +550,7 @@ hypaspistai = {
     
     stack = 100
     ai_quality = {
-        value = ATHA_ai_weight_hoplite
+        value = ATHA_ai_weight_pikemen
     }
     icon = hoplitai_guard
 }
@@ -1034,7 +996,7 @@ anganai = {
     }
 
     counters = {
-        archer_cavalry = 0.5
+        skirmishers = 0.5
     }
 
     buy_cost = { gold = 50 }
@@ -1045,7 +1007,7 @@ anganai = {
     holy_order_fallback = yes
     
     stack = 100
-    ai_quality = { value = ATHA_ai_weight_archers }
+    ai_quality = { value = ATHA_ai_weight_skirmishers }
     icon = toxotai
 }
 
@@ -1528,6 +1490,6 @@ thureophoroi = {
     holy_order_fallback = yes
     
     stack = 100
-    ai_quality = { value = ATHA_ai_weight_hoplite }
+    ai_quality = { value = ATHA_ai_weight_light_cavalry }
     icon = thureophoroi
 }
