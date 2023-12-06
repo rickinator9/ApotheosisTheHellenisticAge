@@ -1,53 +1,48 @@
 doctrine_ritual_character = {
 	group = "main_group"
 	is_available_on_create = {
-		always = no #religion_tag = olympian_religion
+	religion_tag = olympian_religion
 	}
-	# Serves as rigi
-	popular_ritual_character_doctrine = { # Default
+	popular_ritual_character_doctrine = {
 		piety_cost = {
 			if = {
-				limit = { has_doctrine = temple_authority_rabbinic_doctrine }
+				limit = { has_doctrine = popular_ritual_character_doctrine }
 				value = 0
 			}
 			else_if = {
-				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
+				limit = { has_doctrine = public_ritual_character_doctrine }
 				value = faith_tenet_cost_mid
 			}
 			else = {
-				value = faith_tenet_cost_low
+				value = faith_tenet_cost_mid
 			}
 		}
 		character_modifier = {
-			clergy_opinion = 5
-			church_holding_build_gold_cost = -0.1
+			county_opinion_add = 5
 		}
-		parameters = {
-			hostility_override_temple_authority_rabbinic_doctrine = 1
-			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		parameters = { # Considers other Popular Faiths to be Hostile.
+			hostility_override_popular_ritual_character_doctrine = 2
 		}
 	}
 	public_ritual_character_doctrine = { # Default
 		piety_cost = {
 			if = {
-				limit = { has_doctrine = temple_authority_rabbinic_doctrine }
+				limit = { has_doctrine = public_ritual_character_doctrine }
 				value = 0
 			}
 			else_if = {
-				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
+				limit = { has_doctrine = popular_ritual_character_doctrine }
 				value = faith_tenet_cost_mid
 			}
 			else = {
-				value = faith_tenet_cost_low
+				value = faith_tenet_cost_mid
 			}
 		}
 		character_modifier = {
-			clergy_opinion = 5
-			church_holding_build_gold_cost = -0.1
+			monthly_county_control_change_factor = 0.05
 		}
-		parameters = {
-			hostility_override_temple_authority_rabbinic_doctrine = 1
-			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		parameters = { # Considers Mysteries to be Rightous.
+			hostility_override_mysteries_ritual_character_doctrine = 0
 		}
 	}
 	mysteries_ritual_character_doctrine = {
@@ -57,20 +52,18 @@ doctrine_ritual_character = {
 				value = 0
 			}
 			else_if = {
-				limit = { has_doctrine = temple_authority_samaritan_torah_doctrine }
-				value = faith_tenet_cost_mid
+				limit = { has_doctrine = public_ritual_character_doctrine }
+				value = faith_tenet_cost_low
 			}
 			else = {
-				value = faith_tenet_cost_low
+				value = faith_tenet_cost_high
 			}
 		}
 		character_modifier = {
-			clergy_opinion = 5
-			church_holding_build_gold_cost = -0.1
+			personal_scheme_power_mult = 0.05
 		}
-		parameters = {
-			hostility_override_temple_authority_rabbinic_doctrine = 1
-			hostility_override_temple_authority_samaritan_torah_doctrine = 3
+		parameters = { # Considers Public Faiths to be Rightous.
+			hostility_override_public_ritual_character_doctrine = 0
 		}
 	}
 }
