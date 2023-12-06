@@ -20,7 +20,6 @@ delphi = {
 	character_modifier = {
 		name = holy_site_delphi_effect_name
 		learning = 1
-		county_opinion_add = 10
 		monthly_piety_gain_mult = 0.05
 	}
 }
@@ -295,14 +294,14 @@ korinthos = {
 		dread_baseline_add = 5
 	}
 }
-kythera = {
+kythera = { # cultural_head_fascination_mult = 0.05
 	county = c_kythera
 	barony = b_kythera_kythera
 
 	character_modifier = {
 		name = holy_site_kythera_effect_name
 		martial = 1
-		
+		opinion_of_female_rulers = 10
 	}
 }
 
@@ -325,8 +324,8 @@ eleusis = {
  
 	character_modifier = {
 		name = holy_site_eleusis_effect_name
-		clergy_opinion = 5
-		personal_scheme_power_mult = 0.1
+		county_opinion_add = 10
+		owned_personal_scheme_success_chance_add = 5
 	}
 }
 
@@ -336,16 +335,15 @@ athenai = {
  
 	character_modifier = {
 		name = holy_site_athenai_effect_name
-		clergy_opinion = 5
-		personal_scheme_power_mult = 0.1
+		learning_per_piety_level = 1 # overall intelectual and spiritual character of the Polis, self-explanatory
 	}
 }
 
 # Other
 
-argos = {
+heraion = {
 	county = c_argos
-	barony = b_argos_argos
+	barony = b_heraion_argos
  
 	character_modifier = {
 		name = holy_site_argos_effect_name
@@ -756,6 +754,17 @@ rhizon = { # Important ethnic site for all of the Illyrians, Ancient Cyclopean C
 		name = holy_site_rhizon_effect_name
 		defender_advantage = 1
 		monthly_county_control_change_factor = 0.05
+	}
+}
+
+daorson = { # Ancient Cyclopean City Walls - Simmilarly to Rhizon.
+	county = c_daorson
+	barony = b_daorson_daorson
+
+	character_modifier = {
+		name = holy_site_daorson_effect_name
+		development_growth_factor = 0.05
+		cultural_head_fascination_mult = 0.05
 	}
 }
 
