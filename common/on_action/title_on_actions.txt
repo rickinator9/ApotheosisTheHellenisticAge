@@ -167,6 +167,61 @@ on_title_gain = {
 				}
 			}
 		}
+		
+		# Memories
+		# Ascended to the throne
+		if = {
+			limit = {
+				OR = {
+					is_ruler = no
+					highest_held_title_tier <= scope:title.tier
+				}
+			}
+			
+			root = {
+				create_character_memory = {
+					type = ascended_throne_memory
+				}
+				
+				scope:new_memory = {
+					save_scope_as = ascended_throne_memory
+					set_variable = childhood_memory
+					set_variable = {
+						name = landed_title
+						value = scope:title
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				scope:transfer_type = flag:created
+				is_alive = yes
+			}
+			every_vassal = {
+				limit = {
+					has_vassal_stance = courtly
+				}
+				if = {
+					limit = {
+						scope:title.tier = tier_duchy
+					}
+					add_opinion = {
+						target = root
+						modifier = courtly_title_creation_opinion
+						opinion = 10
+					}
+				}
+				else = {
+					add_opinion = {
+						target = root
+						modifier = courtly_title_creation_opinion
+						opinion = 30
+					}
+				}
+			}
+		}
 
 		trigger_event = {
 			id = coalition.00011 # Alternate ping event for coalition.0002 (Succession)
@@ -429,6 +484,20 @@ on_rank_down = { # Will not fire during history execution or for dying character
 		update_embassies_effect = yes
 		every_ally = {
 			update_embassies_effect = yes
+		}
+		# Inform hostage havers
+		if = {
+			limit = {
+				any_home_court_hostage = { count >= 1 }
+			}
+			save_scope_as = home_court
+			every_home_court_hostage = {
+				save_scope_as = hostage
+				warden = {
+					save_scope_as = warden
+					trigger_event = { id = bp2_hostage_system.0410 days = 5 }
+				}
+			}
 		}
 
 		save_scope_as = old_holder

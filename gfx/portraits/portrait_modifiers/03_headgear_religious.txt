@@ -18,10 +18,6 @@
 		outfit_tags = { priest_outfit bishop_outfit }
 		weight = {
 			base = 0
-			modifier = {
-				add = 130
-				always = no
-			}
 		}
 	}
 
@@ -89,9 +85,14 @@
 		dna_modifiers = {
 			accessory = {
 				mode = add
-
 				gene = headgear
 				template = catholic_high
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
 				range = { 0 1 }
 			}
 		}
@@ -266,6 +267,7 @@
 				add = 100
 				portrait_has_trait_trigger = { TRAIT = devoted }
 				portrait_religious_buddhist_trigger = yes
+				NOT = { has_character_flag = has_scripted_appearance }
 			}
 		}
 	}
@@ -292,6 +294,7 @@
 				add = 110
 				portrait_religious_high_no_poverty_trigger = yes
 				portrait_religious_buddhist_trigger = yes
+				NOT = { has_character_flag = has_scripted_appearance }
 			}
 		}
 	}

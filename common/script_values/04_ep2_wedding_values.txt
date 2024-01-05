@@ -1124,7 +1124,8 @@ marriage_recieve_proposal_cooldown = {
 	value = 0
 	if = {
 		limit = {
-			is_ai = no
+			is_ai = yes
+			scope:recipient ?= { is_ai = no }
 		}
 		add = 0.5
 	}

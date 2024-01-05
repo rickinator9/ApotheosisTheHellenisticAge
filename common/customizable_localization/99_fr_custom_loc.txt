@@ -44,8 +44,6 @@
 # FR_AuxAles (vassaux\vassales, égaux\égales ; Pluriel ; Sans espace avant)
 # FR_Es (assis\assises ; Pluriel ; Sans espace avant)
 # FR_SEs (amis\amies ; Pluriel ; Sans espace avant)
-# FR_EuxElles (eux\elles ; Pluriel)
-# FR_IlsElles (ils\elles ; Pluriel)
 # FR_STes (tous\toutes ; Pluriel ; Sans espace avant)
 # FR_XSes (pieux\pieuses ; Pluriel ; Sans espace avant)
 # FR_AinIne (copain\copine ; Sans espace avant)
@@ -60,7 +58,9 @@
 # FR_CeluiCelle
 # FR_IlElle
 # FR_LuiElle
-
+# FR_LequelLaquelle
+# FR_EuxElles (eux\elles ; Pluriel)
+# FR_IlsElles (ils\elles ; Pluriel)
 # FR_EluiElle (e lui\’elle ; Sans espace avant)
 # FR_SilSielle (s’il\si elle)
 # FR_SilsSielles (s’ils\si elles ; Pluriel)
@@ -80,9 +80,9 @@
 # FR_GarconFille (Pluriel)
 # FR_ServiteurServante (Pluriel)
 
-###########################################
-# II. REMPLACEMENT DE COMMANDES ANGLAISES #
-###########################################
+#################################
+# II. REMPLACEMENT DE COMMANDES #
+#################################
 # FR_RelationToMe_OnA - mon\ma + RelationToMe
 # FR_RelationToMe_Le - le\la + RelationToMe
 # FR_RelationToMeShort_OnA - mon\ma + RelationToMeShort
@@ -125,13 +125,9 @@
 
 # FR_FaithGenderedAdj - GetFaith.GetAdjective\GetFaith.GetAdherentName (scope: character)
 # FR_Scheme_FullAction - GetActionName - SCHEME_FULL_ACTION_NAME
-# FR_CatStory_e
-# FR_CatStory_le
-# FR_DogStory_e
-# FR_DogStory_le
 
 ##################################
-# III. ARTICLES DEVANT COMMANDES #
+# III. COMMANDES SUPPLEMENTAIRES #
 ##################################
 # - Char:    commande de base
 # - Char_L:  affiche "le/la" pour "sans terre"
@@ -163,7 +159,7 @@
 # FR_du_Char
 # FR_au_Char
 
-# FR_only_de_HouseOfWorshipPlural devant HouseOfWorshipPlural (Sans espace après)
+# FR_De_HouseOfWorshipPlural devant HouseOfWorshipPlural (Sans espace après)
 # FR_GetInspirationOwnerType_OnA devant GetInspirationOwnerType (Sans espace avant ; Sans espace après)
 # FR_GetInspirationTypeRoom_Le devant GetInspirationTypeRoom (Sans espace après)
 # FR_GetInspirationTypeRoom_Du devant GetInspirationTypeRoom (Sans espace après)
@@ -175,12 +171,94 @@
 # FR_GetInspirationTypeObject_Le devant GetInspirationTypeObject (Sans espace apres)
 # FR_InspirationSmithBaseType_OnA devant InspirationSmithBaseType (Sans espace avant ; Sans espace apres)
 # FR_InspirationSmithBaseType_Le devant InspirationSmithBaseType (Sans espace apres)
+# FR_Le_GetVersusRound devant GetVersusRound
+
 # FR_Artifact_OnA devant une commande d'artefact (Avec espace apres)
 # FR_Le_ArtifactType devant le type d'artefact (Sans espace apres)
 # FR_E_ArtifactType pour le type d'artefact
-# FR_Le_ActivityType devant le type d'activité (Sans espace apres)
-# FR_On_ActivityType devant le type d'activité (Sans espace apres)
-# FR_E_ActivityType pour le type d'activité
+
+# FR_ActivityShort_template
+# FR_Le_ActivityShort devant l'activité GetShortName (Sans espace apres)
+# FR_Au_ActivityShort devant l'activité GetShortName (Sans espace apres)
+# FR_Du_ActivityShort devant l'activité GetShortName (Sans espace apres)
+# FR_E_Activity devant l'activité GetName ou GetShortName (Sans espace apres)
+# FR_ActivityFull_template
+# FR_Le_ActivityFull devant l'activité GetName (Sans espace apres)
+# FR_Au_ActivityFull devant l'activité GetName (Sans espace apres)
+# FR_Du_ActivityFull devant l'activité GetName (Sans espace apres)
+
+# FR_ActivityPhase_template
+# FR_Le_ActivityPhase
+# FR_Du_ActivityPhase
+# FR_Au_ActivityPhase
+# FR_E_ActivityPhase
+
+# FR_Le_ArtifactAnimalType
+# FR_Du_ArtifactAnimalType
+# FR_Au_ArtifactAnimalType
+# FR_De_ArtifactAnimalType
+# FR_E_ArtifactAnimalType
+# FR_Le_GetAnimalType
+# FR_Du_GetAnimalType
+# FR_Au_GetAnimalType
+# FR_De_GetAnimalType devant GetAnimalType ou GetAnimalPlural
+# FR_E_GetAnimalType pour GetAnimalType ou GetAnimalPlural
+# FR_Le_GetAnimalTypeCaptive
+# FR_Du_GetAnimalTypeCaptive
+# FR_Au_GetAnimalTypeCaptive
+# FR_De_GetAnimalTypeCaptive
+# FR_E_GetAnimalTypeCaptive
+# FR_Le_GetAnimalTypeGamebird
+# FR_Du_GetAnimalTypeGamebird
+# FR_Au_GetAnimalTypeGamebird
+# FR_De_GetAnimalTypeGamebird
+# FR_E_GetAnimalTypeGamebird
+# FR_Le_GetAnimalTypeKill
+# FR_Du_GetAnimalTypeKill
+# FR_Au_GetAnimalTypeKill
+# FR_De_GetAnimalTypeKill
+# FR_E_GetAnimalTypeKill
+# FR_Le_GetAnimalTypeMismanaged
+# FR_Du_GetAnimalTypeMismanaged
+# FR_Au_GetAnimalTypeMismanaged
+# FR_De_GetAnimalTypeMismanaged
+# FR_E_GetAnimalTypeMismanaged
+# FR_Le_GetAnimalTypeTame
+# FR_Du_GetAnimalTypeTame
+# FR_Au_GetAnimalTypeTame
+# FR_De_GetAnimalTypeTame
+# FR_E_GetAnimalTypeTame
+# FR_Le_GetAnimalTypeWaterfowl
+# FR_Du_GetAnimalTypeWaterfowl
+# FR_Au_GetAnimalTypeWaterfowl
+# FR_De_GetAnimalTypeWaterfowl
+# FR_E_GetAnimalTypeWaterfowl
+# FR_Le_GetRaptorType
+# FR_Du_GetRaptorType
+# FR_Au_GetRaptorType
+# FR_De_GetRaptorType
+# FR_E_GetRaptorType
+# FR_Le_GetRegionalDeerType
+# FR_Du_GetRegionalDeerType
+# FR_Au_GetRegionalDeerType
+# FR_De_GetRegionalDeerType
+# FR_E_GetRegionalDeerType
+# FR_Le_GetRegionalEagleType
+# FR_Du_GetRegionalEagleType
+# FR_Au_GetRegionalEagleType
+# FR_De_GetRegionalEagleType
+# FR_E_GetRegionalEagleType
+# FR_Le_GetRegionalWolfType
+# FR_Du_GetRegionalWolfType
+# FR_Au_GetRegionalWolfType
+# FR_De_GetRegionalWolfType
+# FR_E_GetRegionalWolfType
+# FR_Le_RegionalFerociousAnimal
+# FR_Du_RegionalFerociousAnimal
+# FR_Au_RegionalFerociousAnimal
+# FR_De_RegionalFerociousAnimal
+# FR_E_RegionalFerociousAnimal
+# FR_E_GetRandomRegionalSmallGame
 
 ##################################################################
 ##################################################################
@@ -770,6 +848,18 @@ FR_au_BG_GameType = {
 FR_de_BG_GameType = { 
 	log_loc_errors = no
 	parent = BG_GameType
+	suffix = _FR_De
+}
+
+FR_au_BG_GameType_Generic = { 
+	log_loc_errors = no
+	parent = BG_GameType_Generic
+	suffix = _FR_Au
+}
+
+FR_de_BG_GameType_Generic = { 
+	log_loc_errors = no
+	parent = BG_GameType_Generic
 	suffix = _FR_De
 }
 
@@ -1561,6 +1651,13 @@ FR_Scheme_FullAction = {
 	text = {
 		trigger = {
 			scheme_target = { is_local_player = yes }
+			scheme_type = overthrow_regent
+		}
+		localization_key = CustomLoc_FR_Scheme_FullAction_overthrow_regent_you
+	}
+	text = {
+		trigger = {
+			scheme_target = { is_local_player = yes }
 			scheme_type = seduce
 		}
 		localization_key = CustomLoc_FR_Scheme_FullAction_seduce_you
@@ -1632,6 +1729,12 @@ FR_Scheme_FullAction = {
 			scheme_type = murder
 		}
 		localization_key = CustomLoc_FR_Scheme_FullAction_murder
+	}
+	text = {
+		trigger = {
+			scheme_type = overthrow_regent
+		}
+		localization_key = CustomLoc_FR_Scheme_FullAction_overthrow_regent
 	}
 	text = {
 		trigger = {

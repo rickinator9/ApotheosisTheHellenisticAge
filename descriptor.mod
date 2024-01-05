@@ -1,6 +1,6 @@
 name="Apotheosis: The Hellenistic Age"
-version="1.4.1"
-supported_version="1.9.2"
+version="1.5.0"
+supported_version="1.9.2.1"
 path="mod/ApotheosisTheHellenisticAge"
 tags={
     "Bookmarks"
@@ -19,7 +19,6 @@ tags={
 picture="thumbnail.png"
 remote_file_id="2618149514"
 
-replace_path = "common/achievements"
 replace_path = "common/culture/aesthetics_bundles"
 replace_path = "common/culture/creation_names"
 replace_path = "common/culture/cultures"
