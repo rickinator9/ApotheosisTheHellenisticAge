@@ -524,7 +524,7 @@ kick_from_court_interaction = {
 			}
 		}
 	}
-	
+
 	auto_accept = yes
 }
 
@@ -756,7 +756,7 @@ invite_to_court_interaction = {
  		modifier = {
  			exists = liege
  			is_child_of = liege
- 			add = -100
+ 			add = -160
  			desc = AI_THEIR_CHILD
  		}
 
@@ -992,6 +992,24 @@ invite_to_court_interaction = {
 				amenity_level = { type = court_lodging_standards value >=  medium_amenity_level }
 			}
  		}
+		
+ 		modifier = {
+ 			add = {
+				value = scope:actor.house.house_unity_value
+				multiply = 0.5
+			}
+ 			desc = AI_HOUSE_UNITY
+			scope:actor = { government_has_flag = government_is_clan }
+			exists = house
+			exists = scope:actor.house
+			house = scope:actor.house
+			house = {
+				OR = {
+					has_house_unity_stage = harmonious
+					has_house_unity_stage = friendly
+				}
+			}
+ 		}
 
 		# ATHA - more willingness to move to very grand courts of an illustrious ruler.
 		modifier = {
@@ -1011,7 +1029,6 @@ invite_to_court_interaction = {
 			scope:actor = { has_character_modifier = nick_the_hospitable_modifier }
 		}
 	}
-
 
 	auto_accept = {
 		custom_description = {

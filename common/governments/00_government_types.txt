@@ -239,26 +239,30 @@ theocracy_government = {
 
 # Changed from vanilla to act as a 'high tribal' government that can access tribal and castle holdings
 clan_government = {
-	create_cadet_branches = yes
-	rulers_should_have_dynasty = yes
-	dynasty_named_realms = yes
-	always_use_patronym = yes
-	regiments_prestige_as_gold = yes
-	royal_court = yes
+	primary_holding = tribal_holding
 	
 	fallback = 3
-	
-	primary_holding = tribal_holding
+
+	create_cadet_branches = yes
+	rulers_should_have_dynasty = yes
+	royal_court = yes
+
 	valid_holdings = { castle_holding church_holding }
 	#required_county_holdings = { castle_holding city_holding church_holding }
+	always_use_patronym = yes
+	dynasty_named_realms = yes
+	regiments_prestige_as_gold = yes
+
+	house_unity = clan_house_unity
+	tax_slot_type = clan_tax_slot
 
 	vassal_contract = {
-		clan_government_obligations
+		clan_tax_collector_obligations
 		coinage_rights
 		religious_rights
-		title_revocation_rights
 		war_declaration_rights
 		council_rights
+		title_revocation_rights
 		gift_estate_rights
 	}
 	
@@ -416,6 +420,7 @@ clan_government = {
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	flag = government_is_clan
+	flag = may_appoint_viziers
 	
 	flag = government_can_raid_rule
 	
@@ -435,9 +440,9 @@ tribal_government = {
 	affected_by_development = no
 	regiments_prestige_as_gold = yes
 	supply_limit_mult_for_others = -0.5
+	primary_holding = tribal_holding
 	royal_court = yes
 
-	primary_holding = tribal_holding
 	valid_holdings = { castle_holding church_holding }
 
 	prestige_opinion_override = { -10 0 3 5 10 20 }

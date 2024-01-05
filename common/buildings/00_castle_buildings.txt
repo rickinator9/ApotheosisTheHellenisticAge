@@ -4,13 +4,13 @@
 @holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/castle_mediterranean.dds"
 @holding_illustration_norse = "gfx/interface/illustrations/holding_types/fp1_castle_norse.dds"
 @holding_illustration_iberian= "gfx/interface/illustrations/holding_types/fp2_castle_iberian.dds"
+@holding_illustration_iranian = "gfx/interface/illustrations/holding_types/fp3_castle_iranian.dds"
 
 #ATHA
 @holding_illustration_greek = "gfx/interface/illustrations/holding_types/city_greek.dds"
 
 castle_01 = {
 	construction_time = slow_construction_time
-	
 
 	### MEDITERRANEAN ###
 	asset = {
@@ -33,9 +33,18 @@ castle_01 = {
 		requires_dlc_flag = the_northern_lords
 		illustration = @holding_illustration_norse
 		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_city_tier_01" }
-		graphical_cultures = { norse_building_gfx }			
+		graphical_cultures = { norse_building_gfx }
 	}
 
+	### FP3 Iranian ###
+	asset = {
+		type = pdxmesh
+		name = "fp3_building_persian_castle_01_a_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @holding_illustration_iranian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 0 } }
+		graphical_cultures = { iranian_building_gfx }
+	}
 	can_construct_potential = {
 		barony_cannot_construct_holding = no
 	}
@@ -103,6 +112,8 @@ castle_01 = {
 
 	flag = castle
 
+	type_icon = "icon_building_ramparts.dds"
+
 	on_complete = {
 		hidden_effect = { add_province_modifier = extra_building_slot }
 		county.holder = {
@@ -158,7 +169,7 @@ castle_01 = {
 
 castle_02 = {
 	construction_time = slow_construction_time
-	
+
 
 	### MEDITERRANEAN ###
 	asset = {
@@ -171,16 +182,23 @@ castle_02 = {
 	### FP1 Norse ###
 	asset = {
 		type = pdxmesh
-		names = {
-			"fp1_building_norse_city_02_a_mesh"
-		}
+		name = "fp1_building_norse_city_02_a_mesh"
 		requires_dlc_flag = the_northern_lords
 		illustration = @holding_illustration_norse
 		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_city_tier_02" }
-		graphical_cultures = { norse_building_gfx }			
+		graphical_cultures = { norse_building_gfx }
 	}
-	
-	
+
+	### FP3 Iranian ###
+	asset = {
+		type = pdxmesh
+		name = "fp3_building_persian_castle_02_a_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @holding_illustration_iranian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 1 } }
+		graphical_cultures = { iranian_building_gfx }
+	}
+
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
@@ -301,7 +319,7 @@ castle_02 = {
 
 castle_03 = {
 	construction_time = slow_construction_time
-	
+
 
 	### MEDITERRANEAN ###
 	asset = {
@@ -314,16 +332,23 @@ castle_03 = {
 	### FP1 Norse ###
 	asset = {
 		type = pdxmesh
-		names = {
-			"fp1_building_norse_city_02_a_mesh"
-		}
+		name = "fp1_building_norse_city_02_a_mesh"
 		requires_dlc_flag = the_northern_lords
 		illustration = @holding_illustration_norse
 		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_city_tier_02" }
-		graphical_cultures = { norse_building_gfx }			
-	}	
-	
-	
+		graphical_cultures = { norse_building_gfx }
+	}
+
+	### FP3 Iranian ###
+	asset = {
+		type = pdxmesh
+		name = "fp3_building_persian_castle_03_a_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @holding_illustration_iranian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { iranian_building_gfx }
+	}
+
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
@@ -448,16 +473,23 @@ castle_04 = {
 	### FP1 Norse ###
 	asset = {
 		type = pdxmesh
-		names = {
-			"fp1_building_norse_city_02_a_mesh"
-		}
+		name = "fp1_building_norse_city_02_a_mesh"
 		requires_dlc_flag = the_northern_lords
 		illustration = @holding_illustration_norse
 		soundeffect = { soundeffect = "event:/DLC/FP1/SFX/Ambience/Urban/norse_city_tier_02" }
-		graphical_cultures = { norse_building_gfx }			
+		graphical_cultures = { norse_building_gfx }
 	}
-	
-	
+
+	### FP3 Iranian ###
+	asset = {
+		type = pdxmesh
+		name = "fp3_building_persian_castle_04_a_01_mesh"
+		requires_dlc_flag = legacy_of_persia
+		illustration = @holding_illustration_iranian
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/mena_castle" soundparameter = { "Tier" = 3 } }
+		graphical_cultures = { iranian_building_gfx }
+	}
+
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
@@ -517,8 +549,6 @@ castle_04 = {
 	}
 
 	flag = castle
-
-	type_icon = "icon_building_ramparts.dds"
 
 	on_complete = {
 		barony.holder = {
