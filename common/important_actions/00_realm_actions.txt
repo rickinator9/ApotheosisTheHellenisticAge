@@ -153,14 +153,7 @@ action_empty_council_position = {
 		if = {
 			limit = {
 				highest_held_title_tier > tier_barony
-				NAND = {
-					exists = cp:councillor_chancellor
-					exists = cp:councillor_marshal
-					exists = cp:councillor_steward
-					exists = cp:councillor_court_chaplain
-					exists = cp:councillor_spymaster
-				}
-				# has_free_council_slot = yes The Spartan Councillor is considered a free council slot even for non-Spartan states. TODO: Fix once the Spartan boi is a diarch.
+				has_free_council_slot = yes
 			}
 			try_create_important_action = {
 				important_action_type = action_empty_council_position

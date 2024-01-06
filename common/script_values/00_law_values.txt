@@ -163,30 +163,6 @@ increase_crown_authority_prestige_cost = {
 		}
 	}
 
-	# Apply All-Things cooldown breaker multiplier.
-	if = {
-		limit = {
-			has_variable = crown_authority_cooldown
-			always = no
-			# culture = { has_innovation = innovation_all_things }
-		}
-		# If the tally exists, multiply by that.
-		if = {
-			limit = { has_variable = authority_cooldown_break_tally }
-			multiply = {
-				desc = "breaking_authority_cooldown"
-				value = var:authority_cooldown_break_tally
-			}
-		}
-		# Otherwise, multiply by the stock tally base.
-		else = {
-			multiply = {
-				desc = "breaking_authority_cooldown"
-				value = authority_cooldown_breaker_value
-			}
-		}
-	}
-
 	# Character Modifier Bonuses
 	if = {
 		limit = { has_character_modifier = yearly_benevolent_forgiveness_modifier }
@@ -298,30 +274,6 @@ increase_tribal_authority_prestige_cost = {
 		}
 	}
 
-	# Apply All-Things cooldown breaker multiplier.
-	if = {
-		limit = {
-			has_variable = tribal_authority_cooldown
-			always = no
-			# culture = { has_innovation = innovation_all_things }
-		 }
-		# If the tally exists, multiply by that.
-		if = {
-			limit = { has_variable = authority_cooldown_break_tally }
-			multiply = {
-				desc = "breaking_authority_cooldown"
-				value = var:authority_cooldown_break_tally
-			}
-		}
-		# Otherwise, multiply by the stock tally base.
-		else = {
-			multiply = {
-				desc = "breaking_authority_cooldown"
-				value = authority_cooldown_breaker_value
-			}
-		}
-	}
-
 	# Character Modifier Bonuses
 	if = {
 		limit = { has_character_modifier = yearly_benevolent_forgiveness_modifier }
@@ -360,6 +312,17 @@ change_succession_law_prestige_cost = {
 		desc = "BASE_VALUE"
 		value = change_succession_law_prestige_base
 		format = "BASE_VALUE_FORMAT"
+	}
+	#Clans pay more
+	if = {
+		limit = {
+			government_has_flag = government_is_clan
+		}
+		add = {
+			desc = "clan_government_cost_tooltip"
+			value = change_succession_law_prestige_base
+			multiply = 4
+		}
 	}
 	#Calculate the Legalism modifier if relevant
 	if = {

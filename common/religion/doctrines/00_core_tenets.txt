@@ -78,6 +78,10 @@
 		character_modifier = {
 			monthly_learning_lifestyle_xp_gain_mult = 0.2
 		}
+
+		traits = {
+			virtues = { scholar }
+		}
 	}
 
 	tenet_armed_pilgrimages = {
@@ -394,6 +398,17 @@
 
 	tenet_divine_marriage = {
 		icon = core_tenet_divine_marriage
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						religion_tag = zoroastrianism_religion
+					}
+					desc = tenet_divine_marriage_xwedodah 
+				}
+				desc = tenet_divine_marriage_name
+			}
+		}
 		piety_cost = {
 			if = {
 				limit = {
@@ -428,6 +443,10 @@
 		parameters = {
 			divine_marriage_opinion = 10
 			divine_marriage_piety_gain_active = yes
+		}
+
+		traits = {
+			virtues = { pure_blooded = 2 }
 		}
 	}
 
@@ -888,6 +907,10 @@
 		icon = core_tenet_rite
 
 		is_shown = {
+			# Filter out religions that use a branch system.
+			NOR = {
+				religion = religion:zoroastrianism_religion
+			}
 			# We also only want people with existing spiritual HoFs.
 			exists = religious_head
 			has_doctrine_parameter = spiritual_head_of_faith
@@ -1151,7 +1174,7 @@
 
 		traits = {
 			virtues = {
-				lifestyle_mystic
+				lifestyle_mystic = { weight = 1 }
 			}
 		}
 
@@ -1312,6 +1335,30 @@
 			reincarnation_resistance_to_conversion = yes
 			reincarnation_events_active = yes
 		}
+
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						religion_tag = zoroastrianism_religion
+					}
+					desc = tenet_reincarnation_zoroastrian_name
+				}
+				desc = tenet_reincarnation_name
+			}
+		}
+
+		desc = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						religion_tag = zoroastrianism_religion
+					}
+					desc = tenet_reincarnation_zoroastrian_desc
+				}
+				desc = tenet_reincarnation_desc
+			}
+		}
 	}
 
 	tenet_religious_legal_pronouncements = {
@@ -1439,12 +1486,12 @@
 			}
 		}
 
-		# is_shown = {
-		# 	NOT = { religion_tag = christianity_religion }
-		# }
-
 		parameters = {
 			sanctioned_false_conversion = yes
+		}
+
+		character_modifier = {
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.1 #FP3 addition to make this tenet more attractive
 		}
 	}
 
@@ -1539,29 +1586,29 @@
 			meditation_mechanics_active = yes
 		}
 
-		name = {
-			first_valid = {
-				triggered_desc = {
-					trigger = {
-						religion_tag = zoroastrianism_religion
-					}
-					desc = tenet_zurvanism_name
-				}
-				desc = tenet_asceticism_name
-			}
-		}
+		#name = { #FP3 - Removed and saved for posterity. Zurvanism would fit a future hypotetical "Fatalism" tenet, but Asceticism isn't a good fit, per beta input. Ola's note. 
+		#	first_valid = {
+		#		triggered_desc = {
+		#			trigger = {
+		#				religion_tag = zoroastrianism_religion
+		#			}
+		#			desc = tenet_zurvanism_name
+		#		}
+		#		desc = tenet_asceticism_name
+		#	}
+		#}
 
-		desc = {
-			first_valid = {
-				triggered_desc = {
-					trigger = {
-						religion_tag = zoroastrianism_religion
-					}
-					desc = tenet_zurvanism_desc
-				}
-				desc = tenet_asceticism_desc
-			}
-		}
+		#desc = {
+		#	first_valid = {
+		#		triggered_desc = {
+		#			trigger = {
+		#				religion_tag = zoroastrianism_religion
+		#			}
+		#			desc = tenet_zurvanism_desc
+		#		}
+		#		desc = tenet_asceticism_desc
+		#	}
+		#}
 
 		traits = {
 			virtues = {
@@ -1823,6 +1870,33 @@
 
 	tenet_astrology = {
 		icon = core_tenet_astrology
+		name = { #FP3
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						OR = { 
+							religion_tag = zoroastrianism_religion
+						}
+					}
+					desc = tenet_divination_name
+				}
+				desc = tenet_astrology_name
+			}
+		}
+
+		desc = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						OR = {
+							religion_tag = zoroastrianism_religion
+						}
+					}
+					desc = tenet_divination_desc
+				}
+				desc = tenet_astrology_desc
+			}
+		}
 
 		piety_cost = {
 			if = {
@@ -2038,7 +2112,12 @@
 		}
 
 		traits = {
-			virtues = { lifestyle_mystic = 5 }
+			virtues = { 
+				lifestyle_mystic = { 
+					scale = 5 
+					weight = 2 
+				} 
+			}
 		}
 	}
 
@@ -2195,6 +2274,7 @@
 
 		parameters = {
 			sky_burials_active = yes
+			can_build_towers_of_silence_active = yes
 		}
 
 		character_modifier = {
@@ -2216,8 +2296,9 @@
 		}
 
 		is_shown = {
-			always = no
-			# religion_tag = zunism_religion
+			OR = {
+				has_doctrine = tenet_sun_worship #If you already have it
+			}
 		}
 
 		parameters = {
@@ -2716,9 +2797,7 @@
 	tenet_exaltation_of_pain = {
 		icon = core_tenet_human_sacrifice
 
-		is_shown = {
-			always = no
-		}
+		is_shown = {}
 
 		piety_cost = {
 			if = {
@@ -3158,63 +3237,20 @@
 	}
 
 	#############################
-	# ATHA Tenets 				#
+	# FP3 Tenets 		#        
 	#############################
 
-	tenet_mountain_sanctuaries = {
-		icon = core_tenet_sky_burials
+	tenet_fp3_fedayeen = {
+		icon = core_tenet_assassin
 
-		piety_cost = {
-			value = faith_tenet_cost_low
-
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = tenet_mountain_sanctuaries }
-				multiply = faith_unchanged_doctrine_cost_mult
+		name = {
+			first_valid = {
+				desc = tenet_fp3_sacred_murder_name
 			}
 		}
 
-		is_shown = {
-		}
+		is_shown = { }
 
-		parameters = {
-			mountain_sanctuary_holdings_active = yes
-		}
-
-		character_modifier = {
-			mountains_attrition_mult = -0.25
-			mountains_advantage = 5
-			valley_advantage = 5
-		}
-	}
-
-	tenet_ritual_castration = {
-		icon = core_tenet_inner_journey
-		# potentially update this later
-		piety_cost = {
-			if = {
-				limit = {
-					religion_tag = phrygian_religion
-				}
-				value = faith_tenet_cost_low
-				# low cost for Anatolian faiths
-			}
-			else = {
-				value = faith_tenet_cost_high
-				# high cost for non-Anatolian faiths
-			}
-
-			if = {
-				limit = {
-					has_doctrine = tenet_ritual_castration
-				}
-				multiply = faith_unchanged_doctrine_cost_mult
-				# Multiplier for keeping same tenet
-			}
-		}
-		is_shown = {
-			always = yes
-		}
 		can_pick = {
 			custom_description = {
 				text = incompatible_tenet_pacifism_trigger
@@ -3225,104 +3261,112 @@
 				NOT = { doctrine:tenet_dharmic_pacifism = { is_in_list = selected_doctrines } }
 			}
 			custom_description = {
-				text = incompatible_tenet_carnal_exaltation_trigger
-				NOT = { doctrine:tenet_carnal_exaltation = { is_in_list = selected_doctrines } }
+				text = fedayeen_required_doctrines_trigger
+				OR = {
+					doctrine:tenet_warmonger = { is_in_list = selected_doctrines }
+					doctrine:tenet_unrelenting_faith = { is_in_list = selected_doctrines }
+					doctrine:tenet_consolamentum = { is_in_list = selected_doctrines }
+					doctrine:tenet_armed_pilgrimages = { is_in_list = selected_doctrines }
+					doctrine:tenet_struggle_submission = { is_in_list = selected_doctrines } 
+					doctrine:tenet_pursuit_of_power = { is_in_list = selected_doctrines }
+				}
 			}
 		}
-		parameters = {
-			can_induct_into_priesthood  = yes
-			priests_are_eunuchs = yes
-		}
-		traits = {
-			virtues = { eunuch }
-		}
-	}
-
-	tenet_great_rhetra = {
-		icon = core_tenet_literalism
 
 		piety_cost = {
-			value = faith_tenet_cost_low
+			if = {
+				limit = {
+					AND = {
+						OR = {
+							has_doctrine = muhammad_succession_shia_doctrine
+							has_doctrine = muhammad_succession_muhakkima_doctrine
+						}
+						OR = {
+							has_doctrine = tenet_warmonger
+							has_doctrine = tenet_unrelenting_faith
+							has_doctrine = tenet_consolamentum
+						}
+					}
+
+				}
+				value = faith_tenet_cost_low
+			}
+			else = {
+				value = faith_tenet_cost_massive
+			}
 
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine = tenet_great_rhetra }
+				limit = { has_doctrine = tenet_fp3_fedayeen }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
 
-		is_shown = {
-			always = no
-		}
-
 		parameters = {
+			master_assassin_court_position_unlocked = yes 
+			death_is_glory = yes
+			sanctioned_assassinations = yes 
 		}
 
 		character_modifier = {
-			monthly_martial_lifestyle_xp_gain_mult = 0.2
+			controlled_province_advantage = 5
+			monthly_piety_gain_per_dread_add = 0.01
+			prowess = 2
 		}
 
 		traits = {
-			virtues = {
-				temperate
-				stubborn
-			}
-			sins = { 
-				greedy
-				gluttonous
-			}
+			virtues = { vengeful = 1 }
+			sins = { craven = 1 }
 		}
 	}
 
-	tenet_divine_inhumation = {
-		icon = core_tenet_adorcism
-
-		piety_cost = {
-			value = faith_tenet_cost_high
-
-			if = {
-				limit = { has_doctrine = tenet_divine_inhumation }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
+	tenet_communal_possessions = {
+		icon = core_tenet_communism
+		is_shown = {}
+		can_pick = {
+			always = yes
 		}
 
-		is_shown = {
-			always = yes
+		piety_cost = {
+			if = {
+				limit = {
+					OR = {
+						has_doctrine = tenet_mendicant_preachers
+						has_doctrine = tenet_gnosticism 
+						religion_tag = christianity_religion 
+						religion_tag = zoroastrianism_religion
+					}
+				}
+				value = faith_tenet_cost_mid
+			}
+			else = {
+				value = faith_tenet_cost_high 
+			}
+
+			#Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_communal_possessions }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
 		}
 
 		parameters = {
-			can_build_tomb = yes
-			can_sacrifice_at_tomb = yes
-			# will_slay_spouse_upon_death_of_ruler = yes TODO
-		}
-	}
-	
-	tenet_sacred_springs = { #River Veneration for non-europeans, possibly Babtism for Judaeo-Christian?
-		icon = core_tenet_sacred_springs
-
-		piety_cost = {
-			value = faith_tenet_cost_high
-
-			if = {
-				limit = { has_doctrine = tenet_sacred_springs }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
+			piety_from_gifts_active = yes
+			piety_from_marrying_lowborn_active = yes
 		}
 
-		is_shown = {
-			always = yes
-		}
-
-		parameters = { #TODO Babtism like mechanics
-			
-		}
-		
 		character_modifier = {
-			travel_danger = -5
-			valley_advantage = 1
-			negate_health_penalty_add = 0.2
+			monthly_county_control_change_factor = -0.2
+			build_gold_cost = -0.1
+			county_opinion_add = 10 
+		}
+
+		traits = {
+			virtues = { peasant_leader = 2 } #because communism! 
+			sins = { arrogant }
 		}
 	}
+}
 
 	#############################
 	# Empty Template Tenet 		#
@@ -3367,5 +3411,3 @@
 	#		sins = { craven = 2}
 	#	}
 	#}
-}
-

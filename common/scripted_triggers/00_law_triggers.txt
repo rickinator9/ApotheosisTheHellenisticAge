@@ -136,12 +136,10 @@ should_start_partition_succession_law_trigger = {
 		historical_succession_access_single_heir_succession_law_youngest_trigger = yes
 		historical_succession_access_single_heir_dynasty_house_trigger = yes
 	}
-	OR = {
-		government_has_flag = government_is_clan
-		culture = {
-			has_innovation = innovation_classical_public_honours
-			NOT = { has_innovation = innovation_hellenistic_land_survey }
-		}
+	NOT = { government_has_flag = government_is_clan }
+	culture = {
+		has_innovation = innovation_classical_public_honours
+		NOT = { has_innovation = innovation_hellenistic_land_survey }
 	}
 }
 

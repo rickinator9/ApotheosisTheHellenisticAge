@@ -29,12 +29,9 @@ on_title_destroyed = {
 	events = {
 	}
 
-	# remove existing claims
 	effect = {
 		scope:landed_title = {
-			every_claimant = {
-				remove_claim = prev
-			}
+			every_claimant = { remove_claim = prev } # remove existing claims
 		}
 	}
 }
@@ -316,17 +313,14 @@ on_title_lost = {
 			}
 			destroy_title = title:k_fashion
 		}
+
 		#To remove concubines if a character becomes unlanded
 		if = {
 			limit = {
 				is_landed = no
 				any_concubine = { count >= 1 }
 			}
-			every_concubine = {
-				root = {
-					remove_concubine = prev
-				}
-			}
+			every_concubine = { root = { remove_concubine = prev } }
 		}
 
 		#Apply loss of stress to the Rivals
@@ -362,6 +356,26 @@ on_title_lost = {
 						base = medium_stress_loss
 						vengeful = medium_stress_loss
 					}
+				}
+			}
+		}
+
+		# Struggle catalyst
+		if = {
+			limit = {
+				any_character_struggle = {
+					involvement = involved
+					phase_has_catalyst = catalyst_revoke_title
+				}
+				OR = {
+					scope:transfer_type = flag:revoked
+					scope:transfer_type = flag:lease_revoked
+				}
+			}
+			every_character_struggle = {
+				activate_struggle_catalyst = {
+					catalyst = catalyst_revoke_title
+					character = scope:new_holder
 				}
 			}
 		}
@@ -510,39 +524,6 @@ on_rank_down = { # Will not fire during history execution or for dying character
 # scope:vassal = vassal being gained
 # scope:old_liege = the previous liege of the vassal. Might be the null character (vassal used to be a non-ruler or independent), so make sure to use "exists" checks where relevant
 on_vassal_gained = {
-	effect = {
-		# Struggle Catalyst
-		if = {
-			limit = {
-				# Verify if vassal used to be independent
-				NOT = { exists = scope:old_liege }
-				root = {
-					any_character_struggle = {
-						involvement = involved
-						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
-							CATALYST = catalyst_vassalize_independent_ruler
-							CHAR = scope:vassal
-						}
-					}
-				}
-			}
-			root = {
-				every_character_struggle = {
-					involvement = involved
-					limit = {
-						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
-							CATALYST = catalyst_vassalize_independent_ruler
-							CHAR = scope:vassal
-						}
-					}
-					activate_struggle_catalyst = {
-						catalyst = catalyst_vassalize_independent_ruler
-						character = root
-					}
-				}
-			}
-		}
-	}
 	events = {
 		realm_maintenance.1000 # Notify vassals of new liege
 	}
@@ -558,6 +539,153 @@ on_baron_found_or_created_for_title = {
 		add_opinion = {
 			target = scope:liege
 			modifier = received_title_barony
+		}
+	}
+}
+
+# Called when realm capital changes. It can be manual move, loss in conquest, move after inheritance,
+# move when granted a better title, becoming landed for the first time
+# root: New realm capital barony
+# scope:old_capital - previous capital barony. Can be empty, can be owned by someone else
+on_realm_capital_change = {
+	effect = {
+		holder = {
+			# Do we need to refresh their vizier's modifiers?
+			if = {
+				limit = { has_diarchy_parameter = diarchy_is_vizierate }
+				diarch = {
+					# What we're doing here is regenerating loc on the diarchs that might refer to a specific place which they no longer have access to.
+					## This is gonna get real gross, folks, so my apologies.
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t1_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_treasure_modifier
+							desc = vizier_extravagance_t1_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t1_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_activities_modifier
+							desc = vizier_extravagance_t1_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_property_modifier }
+						remove_character_modifier = vizier_extravagance_t1_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_property_modifier
+							desc = vizier_extravagance_t1_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t1_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_charity_modifier
+							desc = vizier_extravagance_t1_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t2_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_treasure_modifier
+							desc = vizier_extravagance_t2_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t2_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_activities_modifier
+							desc = vizier_extravagance_t2_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_property_modifier }
+						remove_character_modifier = vizier_extravagance_t2_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_property_modifier
+							desc = vizier_extravagance_t2_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t2_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_charity_modifier
+							desc = vizier_extravagance_t2_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t3_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_treasure_modifier
+							desc = vizier_extravagance_t3_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t3_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_activities_modifier
+							desc = vizier_extravagance_t3_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_property_modifier }
+						remove_character_modifier = vizier_extravagance_t3_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_property_modifier
+							desc = vizier_extravagance_t3_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t3_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_charity_modifier
+							desc = vizier_extravagance_t3_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t4_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_treasure_modifier
+							desc = vizier_extravagance_t4_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t4_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_activities_modifier
+							desc = vizier_extravagance_t4_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_property_modifier }
+						remove_character_modifier = vizier_extravagance_t4_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_property_modifier
+							desc = vizier_extravagance_t4_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t4_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_charity_modifier
+							desc = vizier_extravagance_t4_charity_modifier_custom_desc.on_action
+						}
+					}
+				}
+			}
 		}
 	}
 }

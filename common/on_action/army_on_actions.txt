@@ -95,6 +95,20 @@ on_siege_completion = {
 		# ATHA Additions
 		ATHA_tomb.0511
 	}
+	effect = {
+		save_scope_as = occupant
+		scope:barony = {
+			if = {
+				limit = { title_province = holder.capital_province }
+				holder = {
+					random = {
+						chance = 50
+						trigger_event = fp3_decision.0002 #FP3 Event to possibly lose your royal fire
+					}
+				}
+			}
+		}
+	}
 }
 
 # Called when a siege loots a holding
@@ -165,6 +179,9 @@ on_raid_action_start = {
 			}
 		}
 	}
+	random_events = {
+		100 = fp1_yearly.0692	# FP1 - setup event for one of your knights converting to a reformed faith.
+	}
 }
 
 # Called when a raid action finishes
@@ -214,6 +231,41 @@ on_raid_action_completion = {
 				}
 			}
 		}
+
+		## Struggles
+		if = {
+			limit = {
+				scope:raider = {
+					any_character_struggle = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_raided_involved
+							CHAR = scope:county.holder
+						}
+					}
+				}
+				scope:county.holder = { # Theoretical edge case where X is from one struggle, Y from another one and they trigger catalysts. But unlikely to be an issue.
+					any_character_struggle = {
+						involvement = involved
+						phase_has_catalyst = catalyst_raided_involved
+					}
+				}
+			}
+			scope:raider = {
+				every_character_struggle = {
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_raided_involved
+							CHAR = scope:county.holder
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_raided_involved
+						character = scope:raider
+					}
+					log_debug_variable_for_persian_struggle_effect = { VAR = concession_catalyst_raided_involved }
+				}
+			}
+		}
 	}
 }
 
@@ -245,6 +297,13 @@ on_raid_loot_delivered = {
 	events = {
 		raiding.0011 # Loot delivered notification.
 	}
+	random_events = {
+		chance_to_happen = 25
+		200 = 0
+
+		100 = fp1_yearly.0622	# FP1 - setup event for a child demanding some of your loot.
+		100 = fp1_yearly.0632	# FP1 - setup event for noticing a cynical knight refuse to sacrifice.
+	}
 }
 
 # Called when a raid army is defeated in battle and gets its loot (if any) stolen
@@ -257,4 +316,3 @@ on_defeat_raid_army = {
 		raiding.0012 # Defending army take raider loot notifications.
 	}
 }
-
