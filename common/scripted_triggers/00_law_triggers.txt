@@ -68,6 +68,11 @@ has_partition_succession_realm_law_trigger = {
 		has_realm_law = confederate_partition_succession_law
 		has_realm_law = partition_succession_law
 		has_realm_law = high_partition_succession_law
+		has_realm_law = clan_antagonistic_partition_succession_law
+		has_realm_law = clan_competitive_partition_succession_law
+		has_realm_law = clan_impassive_partition_succession_law
+		has_realm_law = clan_friendly_partition_succession_law
+		has_realm_law = clan_harmonious_partition_succession_law
 	}
 }
 
@@ -114,6 +119,7 @@ can_keep_partition_succession_law_trigger = {
 			should_start_partition_succession_law_trigger = yes
 		}
 	}
+	NOT = { government_has_flag = government_is_clan }
 }
 
 can_have_partition_succession_law_trigger = {
@@ -154,6 +160,7 @@ can_keep_high_partition_succession_law_trigger = {
 			should_start_high_partition_succession_law_trigger = yes
 		}
 	}
+	NOT = { government_has_flag = government_is_clan}
 }
 
 can_have_high_partition_succession_law_trigger = {
@@ -161,7 +168,7 @@ can_have_high_partition_succession_law_trigger = {
 	# Non-tribals only
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
-		NOR = {
+		OR = {
 			government_has_flag = government_is_tribal
 			government_has_flag = government_is_clan
 		}
@@ -253,7 +260,7 @@ can_have_single_heir_youngest_succession_law_trigger = {
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
 		NOR = {
-			government_has_flag = government_is_feudal
+			government_has_flag = government_is_tribal
 			government_has_flag = government_is_clan
 		}
 	}
@@ -288,7 +295,7 @@ can_have_single_heir_dynasty_house_trigger = {
 	custom_description = {
 		text = succession_laws_must_have_organised_government_tooltip
 		NOR = {
-			government_has_flag = government_is_feudal
+			government_has_flag = government_is_tribal
 			government_has_flag = government_is_clan
 		}
 	}
