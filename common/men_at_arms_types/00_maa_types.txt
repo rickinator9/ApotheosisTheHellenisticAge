@@ -10,19 +10,16 @@ light_footmen = {
         always = no
     }
 	
-	damage = 1
-	toughness = 1
-	pursuit = 1
-	screen = 1
+	damage = 6
+	toughness = 6
+	pursuit = 10
+	screen = 10
 	
 	terrain_bonus = {
-		forest = { damage = 4 toughness = 6 }
-		taiga = { damage = 4 toughness = 6 }
-		jungle = { damage = 4 toughness = 6 }
 	}
 
 	counters = {
-		heavy_infantry = 1
+		heavy_infantry = 0.5
 	}
 
 	buy_cost = { gold = skirmisher_recruitment_cost }
@@ -44,19 +41,16 @@ bowmen = {
         always = no
     }
 	
-	damage = 2
-	toughness = 1
+	damage = 11
+	toughness = 6
 	pursuit = 0
-	screen = 0
+	screen = 10
 
 	terrain_bonus = {
-		hills = { damage = 10 toughness = 4 }
-		forest = { toughness = 4 screen = 4 }
-		taiga = { toughness = 4 screen = 4 }
 	}
 
 	counters = {
-		skirmishers = 1
+		skirmishers = 0.5
 	}
 
 	buy_cost = { gold = bowmen_recruitment_cost }
@@ -77,26 +71,20 @@ light_horsemen = {
         always = no
     }
 	
-	damage = 2
-	toughness = 1
-	pursuit = 3
-	screen = 3
+	damage = 12
+	toughness = 12
+	pursuit = 20
+	screen = 20
 	
 	terrain_bonus = {
-		plains = { damage = 15 }
-		drylands = { damage = 15 }
-		hills = { damage = -5 }
-		mountains = { damage = -10 pursuit = -20 }
-		desert_mountains = { damage = -15 pursuit = -20 }
-		wetlands = { damage = -15 toughness = -10 pursuit = -30 screen = -30 }
 	}
 	
 	counters = {
-		archers = 1
+		archers = 0.5
+		skirmishers = 0.5
 	}
 
 	winter_bonus = {
-		harsh_winter = { damage = -5 toughness = -2 }
 	}
 
 	buy_cost = { gold = light_cavalry_recruitment_cost }
@@ -118,22 +106,16 @@ pikemen_unit = {
         always = no
     }
 	
-	damage = 2
-	toughness = 2
+	damage = 11
+	toughness = 11
 	pursuit = 0
 	screen = 0
 	
 	terrain_bonus = {
-		mountains = { toughness = 12 }
-		desert_mountains = { toughness = 12 }
-		hills = { toughness = 8 }
 	}
 
 	counters = {
-		light_cavalry = 1
-		heavy_cavalry = 1
-		camel_cavalry = 1
-		elephant_cavalry = 1
+		heavy_cavalry = 0.5
 	}
 
 	buy_cost = { gold = pikemen_recruitment_cost }
@@ -158,13 +140,13 @@ armored_footmen = {
         always = no
     }
 	
-	damage = 3
-	toughness = 2
+	damage = 11
+	toughness = 11
 	pursuit = 0
 	screen = 0
 	
 	counters = {
-		pikemen = 1
+		light_cavalry = 0.5
 	}
 	
 	buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -187,27 +169,20 @@ armored_horsemen = {
         always = no
     }
 	
-	damage = 10
-	toughness = 3
+	damage = 20
+	toughness = 14
 	pursuit = 20
 	screen = 0
 	
 	terrain_bonus = {
-		plains = { damage = 30 }
-		drylands = { damage = 30 }
-		hills = { damage = -20 }
-		mountains = { damage = -75 }
-		desert_mountains = { damage = -75 }
-		wetlands = { damage = -75 toughness = -10 pursuit = -10 }
 	}
 
 	counters = {
-		archers = 1
+		archers = 0.5
+		skirmishers = 0.5
 	}
 
 	winter_bonus = {
-		normal_winter = { damage = -10 toughness = -5 }
-		harsh_winter = { damage = -20 toughness = -10 }
 	}
 
 	buy_cost = { gold = heavy_cavalry_recruitment_cost }
