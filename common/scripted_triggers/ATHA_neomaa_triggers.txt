@@ -193,15 +193,14 @@ can_recruit_maa_rhodioi_sphendonetai_trigger = {
   can_recruit_culture_aor_maa_trigger = {
     CULTURE = culture:dorian
     REGION = ATHA_aor_rhodian
-    can_recruit_elite_maa = yes
   }
 }
 can_recruit_maa_skaplinai_trigger = {
   OR = {
     can_recruit_agrianian_maa_trigger = yes
     can_recruit_dardanian_maa_trigger = yes
-    can_recruit_elite_maa = yes
   }
+  can_recruit_elite_maa = yes
 }
 
 ## Medium Infantry ###################################
@@ -521,13 +520,12 @@ can_recruit_maa_zibutai_trigger = {
 
 ### Guard
 
-can_recruit_maa_basilikoi_agema_trigger = {
-  can_recruit_epirote_maa_trigger = yes
-  can_recruit_guard_maa = yes
-}
 can_recruit_maa_hiera_ile_trigger = {
-  can_recruit_macedonian_maa_trigger = yes
-  can_recruit_elite_maa = yes
+  OR = {
+    can_recruit_macedonian_maa_trigger = yes
+    can_recruit_epirote_maa_trigger = yes
+  }
+  can_recruit_guard_maa = yes
 }
 
 ## Horse Archers ###################################
