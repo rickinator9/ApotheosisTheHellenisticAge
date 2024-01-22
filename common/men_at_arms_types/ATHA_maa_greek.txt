@@ -71,7 +71,7 @@ rhodioi_sphendonetai = {
         can_recruit_maa_rhodioi_sphendonetai_trigger = yes
     }
 
-    damage = 10
+    damage = 13
     toughness = 7
     pursuit = 0
     screen = 10
@@ -87,9 +87,9 @@ rhodioi_sphendonetai = {
         archers = 0.5
     }
 
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -106,8 +106,8 @@ kretikoi_peltastai = {
         can_recruit_maa_kretikoi_peltastai_trigger = yes
     }
 
-    damage = 7
-    toughness = 10
+    damage = 8
+    toughness = 12
     pursuit = 5
     screen = 5
 
@@ -121,9 +121,9 @@ kretikoi_peltastai = {
         pikemen = 0.5
     }
 
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -176,8 +176,8 @@ kretikoi_toxotai = {
         can_recruit_maa_kretikoi_toxotai_trigger = yes
     }
 
-    damage = 14
-    toughness = 8
+    damage = 16
+    toughness = 9
     pursuit = 0
     screen = 0
 
@@ -191,9 +191,9 @@ kretikoi_toxotai = {
         archer_cavalry = 0.5
     }
 
-    buy_cost = { gold = 60 }
-    low_maintenance_cost = { gold = 0.3 }
-    high_maintenance_cost = { gold = 0.9 }
+    buy_cost = { gold = 65 }
+    low_maintenance_cost = { gold = 0.35 }
+    high_maintenance_cost = { gold = 1.05 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -211,8 +211,8 @@ promakhoi_kretikoi = {
         can_recruit_maa_promakhoi_kretikoi_trigger = yes
     }
 
-    damage = 22
-    toughness = 12
+    damage = 24
+    toughness = 14
     pursuit = 0
     screen = 0
 
@@ -250,8 +250,8 @@ skaplinai = {
         can_recruit_maa_skaplinai_trigger = yes
     }
 
-    damage = 9
-    toughness = 9
+    damage = 11
+    toughness = 11
     pursuit = 10
     screen = 10
 
@@ -328,7 +328,7 @@ epilektoi_hoplitai = {
     }
 
     damage = 9
-    toughness = 19
+    toughness = 23
     pursuit = 0
     screen = 0
 
@@ -359,6 +359,43 @@ epilektoi_hoplitai = {
     icon = hoplitai_elite
 }
 
+lakonikoi_hoplitai = {
+    type = heavy_infantry
+
+    can_recruit = {
+        can_recruit_maa_lakonikoi_hoplitai_trigger = yes
+    }
+
+    damage = 6
+    toughness = 19
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        farmlands = { damage = 3 }
+        valley = { toughness = 3 }
+        plains = { toughness = 3 }
+        mountains = { toughness = -3 }
+        forest = { toughness = -3 }
+        hills = { toughness = -3 }
+    }
+
+    counters = {
+        light_cavalry = 0.5
+    }
+
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
+    
+    mercenary_fallback = yes
+    holy_order_fallback = yes
+    
+    stack = 100
+    ai_quality = { value = ATHA_ai_weight_hoplite }
+    icon = hoplitai_superior
+}
+
 #Lakedaemonian#Elite#Regional
 homoioi_hoplitai = {
     type = heavy_infantry
@@ -368,12 +405,12 @@ homoioi_hoplitai = {
     }
 
     damage = 9
-    toughness = 22
+    toughness = 26
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { toughness = 3 }
+        farmlands = { damage = 3 }
         valley = { toughness = 3 }
         plains = { toughness = 3 }
         mountains = { toughness = -3 }
@@ -406,13 +443,13 @@ homoioi_hippeis = {
         can_recruit_maa_homoioi_hippeis_trigger = yes
     }
 
-    damage = 10
-    toughness = 30
+    damage = 12
+    toughness = 33
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        farmlands = { toughness = 3 }
+        farmlands = { damage = 3 }
         valley = { toughness = 3 }
         plains = { toughness = 3 }
         mountains = { toughness = -3 }
@@ -525,8 +562,8 @@ agema_phalangitai = {
         can_recruit_maa_agema_phalangitai_trigger = yes
     }
 
-    damage = 14
-    toughness = 14
+    damage = 16
+    toughness = 16
     pursuit = 0
     screen = 0
 
@@ -567,8 +604,8 @@ ardiaian_thureophoroi = {
         can_recruit_maa_ardiaian_thureophoroi_trigger = yes
     }
 
-    damage = 10
-    toughness = 14
+    damage = 12
+    toughness = 16
     pursuit = 0
     screen = 10
 
@@ -638,8 +675,8 @@ mandonai = {
         can_recruit_maa_mandonai_trigger = yes
     }
 
-    damage = 15
-    toughness = 15
+    damage = 17
+    toughness = 17
     pursuit = 20
     screen = 20
 
@@ -714,7 +751,7 @@ thessalikoi_hippeis = {
     }
 
     damage = 24
-    toughness = 10
+    toughness = 13
     pursuit = 14
     screen = 6
 
@@ -731,9 +768,9 @@ thessalikoi_hippeis = {
         skirmishers = 0.5
     }
 
-    buy_cost = { gold = 70 }
-    low_maintenance_cost = { gold = 0.4 }
-    high_maintenance_cost = { gold = 1.2 }
+    buy_cost = { gold = 75 }
+    low_maintenance_cost = { gold = 0.45 }
+    high_maintenance_cost = { gold = 1.35 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -751,17 +788,17 @@ hiera_ile = {
         can_recruit_maa_hiera_ile_trigger = yes
     }
 
-    damage = 26
-    toughness = 20
+    damage = 30
+    toughness = 24
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 26 }
+        plains = { damage = 30 }
         mountains = { damage = -8 }
         forest = { damage = -6 }
-        hills = { toughness = -3 damage = -3 }
-        wetlands = { toughness = -3 damage = -3 }
+        hills = { toughness = -4 damage = -4 }
+        wetlands = { toughness = -4 damage = -4 }
     }
 
     counters = {
@@ -1050,8 +1087,8 @@ zibutai = {
         can_recruit_maa_zibutai_trigger = yes
     }
 
-    damage = 23
-    toughness = 16
+    damage = 25
+    toughness = 20
     pursuit = 20
     screen = 0
 
@@ -1088,8 +1125,8 @@ cordinau_orca = {
         can_recruit_maa_cordinau_orca_trigger = yes
     }
 
-    damage = 15
-    toughness = 15
+    damage = 19
+    toughness = 19
     pursuit = 5
     screen = 5
 
@@ -1128,8 +1165,8 @@ nedes_nesamoi = {
         can_recruit_maa_nedes_nesamoi_trigger = yes
     }
 
-    damage = 12
-    toughness = 12
+    damage = 14
+    toughness = 14
     pursuit = 5
     screen = 5
 
@@ -1166,7 +1203,7 @@ drapanai = {
         can_recruit_maa_drapanai_trigger = yes
     }
 
-    damage = 12
+    damage = 15
     toughness = 5
     pursuit = 10
     screen = 0
@@ -1179,9 +1216,9 @@ drapanai = {
         heavy_infantry = 0.5
     }
 
-    buy_cost = { gold = 55 }
-    low_maintenance_cost = { gold = 0.25 }
-    high_maintenance_cost = { gold = 0.75 }
+    buy_cost = { gold = 60 }
+    low_maintenance_cost = { gold = 0.3 }
+    high_maintenance_cost = { gold = 0.9 }
     
     mercenary_fallback = yes
     holy_order_fallback = yes
@@ -1233,8 +1270,8 @@ rompaianai = {
         can_recruit_maa_rompaianai_trigger = yes
     }
 
-    damage = 16
-    toughness = 8
+    damage = 19
+    toughness = 9
     pursuit = 10
     screen = 0
 
