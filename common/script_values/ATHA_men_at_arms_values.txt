@@ -923,20 +923,6 @@ ATHA_ai_weight_skirmishers = {
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = wetlands
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
-	}
 }
 
 ATHA_ai_weight_archers = {
@@ -973,46 +959,6 @@ ATHA_ai_weight_archers = {
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = forest_hills
-						terrain = forest_mountains
-						terrain = forest_valley
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = jungle
-						terrain = forest
-						terrain = taiga
-						terrain = wetlands
-						terrain = floodplains
-						terrain = drylands
-						terrain = steppe
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = hills
-						terrain = mountains
-						terrain = desert_mountains
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
-	}
 }
 
 ATHA_ai_weight_medium_infantry = {
@@ -1030,24 +976,6 @@ ATHA_ai_weight_medium_infantry = {
 		}
 		add = ATHA_ai_maa_cultural_weight_like
 	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = forest_mountains
-						terrain = mountains
-						terrain = desert
-						terrain = desert_mountains
-						terrain = steppe
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	}
 }
 
 ATHA_ai_weight_pikemen = {
@@ -1055,7 +983,6 @@ ATHA_ai_weight_pikemen = {
 	if = {
 		limit = {
 			OR = {
-				has_culture_or_parent_culture = { CULTURE = culture:laconian }
 				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
 		}
@@ -1065,6 +992,7 @@ ATHA_ai_weight_pikemen = {
 			OR = {
 				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
 				has_culture_or_parent_culture = { CULTURE = culture:epirote }
+				has_culture_or_parent_culture = { CULTURE = culture:thessalian }
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
@@ -1080,47 +1008,6 @@ ATHA_ai_weight_pikemen = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
-	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = forest_hills
-						terrain = forest_mountains
-						terrain = forest_valley
-						terrain = hills
-						terrain = mountains
-						terrain = desert
-						terrain = desert_mountains
-						terrain = jungle
-						terrain = forest
-						terrain = taiga
-						terrain = wetlands
-						terrain = steppe
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = valley
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = floodplains
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -1143,10 +1030,7 @@ ATHA_ai_weight_heavy_infantry = {
 		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
 		limit = {
-			OR = {
-				has_culture_or_parent_culture = { CULTURE = culture:macedonian }
-				has_culture_or_parent_culture = { CULTURE = culture:epirote }
-				has_culture_or_parent_culture = { CULTURE = culture:thessalian }				
+			OR = {				
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
@@ -1162,45 +1046,6 @@ ATHA_ai_weight_heavy_infantry = {
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
-	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = forest_hills
-						terrain = forest_mountains
-						terrain = forest_valley
-						terrain = mountains
-						terrain = desert
-						terrain = desert_mountains
-						terrain = jungle
-						terrain = forest
-						terrain = taiga
-						terrain = steppe
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = valley
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = floodplains
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -1235,7 +1080,6 @@ ATHA_ai_weight_light_cavalry = {
 		limit = {
 			OR = {
 				has_culture_or_parent_culture = { CULTURE = culture:laconian }
-				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
@@ -1252,44 +1096,6 @@ ATHA_ai_weight_light_cavalry = {
 			culture = { has_cultural_pillar = heritage_pannonian }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
-	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = forest_hills
-						terrain = forest_mountains
-						terrain = forest_valley
-						terrain = mountains
-						terrain = desert_mountains
-						terrain = jungle
-						terrain = forest
-						terrain = taiga
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = steppe
-						terrain = floodplains
-						terrain = drylands
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
@@ -1318,46 +1124,6 @@ ATHA_ai_weight_heavy_cavalry = {
 			has_culture_or_parent_culture = { CULTURE = culture:odrysian }
 		}
 		add = ATHA_ai_maa_cultural_weight_like
-	}
-
-	if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = valley
-						terrain = forest_hills
-						terrain = forest_mountains
-						terrain = forest_valley
-						terrain = hills
-						terrain = mountains
-						terrain = desert_mountains
-						terrain = jungle
-						terrain = forest
-						terrain = taiga
-						terrain = wetlands
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_dislike
-	} else_if = {
-		limit = {
-			capital_county = {
-				title_province = {
-					OR = {
-						terrain = plains
-						terrain = farmlands
-						terrain = oasis
-						terrain = steppe
-						terrain = floodplains
-					}
-				}
-			}
-		}
-
-		add = ATHA_ai_maa_terrain_weight_like
 	}
 }
 
