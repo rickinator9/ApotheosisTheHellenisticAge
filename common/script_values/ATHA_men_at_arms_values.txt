@@ -1030,7 +1030,8 @@ ATHA_ai_weight_heavy_infantry = {
 		add = ATHA_ai_maa_cultural_weight_like
 	} else_if = {
 		limit = {
-			OR = {				
+			OR = {
+					has_culture_or_parent_culture = { CULTURE = culture:cretan }			
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_dislike
@@ -1086,8 +1087,8 @@ ATHA_ai_weight_light_cavalry = {
 	} else_if = {
 		limit = {
 			OR = {
-				has_culture_or_parent_culture = { CULTURE = culture:thessalian }
-				has_culture_or_parent_culture = { CULTURE = culture:odrysian }		
+				has_culture_or_parent_culture = { CULTURE = culture:odrysian }
+				has_culture_or_parent_culture = { CULTURE = culture:cretan }
 			}
 		}
 		add = ATHA_ai_maa_cultural_weight_like
