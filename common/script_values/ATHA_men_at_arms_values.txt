@@ -49,18 +49,6 @@
 # WEIGHTS #
 ###########
 
-ATHA_ai_maa_cultural_weight_like = 240
-ATHA_ai_maa_cultural_weight_dislike = -240
-ATHA_ai_maa_terrain_weight_like = 120
-ATHA_ai_maa_terrain_weight_dislike = -120
-
-ATHA_ai_weight_already_has_type = 1000
-
-ATHA_ai_weight_obsolescence = -120
-ATHA_ai_weight_malus_cultural_maa = -10000 # The AI will never recruit this MAA if there is a better cultural equivalent.
-ATHA_ai_weight_elite_bonus = 240
-ATHA_ai_weight_guard_bonus = 300
-
 # SPECIFIC MAA
 
 culture_ai_weight_skirmishers = {
@@ -69,9 +57,9 @@ culture_ai_weight_skirmishers = {
 	if = { # Cultures that favours skirmishers
 		limit = {
 				OR = {
-					has_culture_or_parent_culture = { CULTURE = culture:dorian_northwest }
-					has_culture_or_parent_culture = { CULTURE = culture:cretan }
 					has_culture_or_parent_culture = { CULTURE = culture:agrianian }
+					has_culture_or_parent_culture = { CULTURE = culture:cretan }
+					has_culture_or_parent_culture = { CULTURE = culture:carian }
 			}	
 		}
 		add = 60
@@ -81,7 +69,7 @@ culture_ai_weight_skirmishers = {
 culture_ai_weight_archers = {
 	value = 20
 	
-	if = { # Cultures that favours skirmishers
+	if = { # Cultures that favours archers
 		limit = {
 				OR = {
 					has_culture_or_parent_culture = { CULTURE = culture:cretan }
@@ -93,20 +81,14 @@ culture_ai_weight_archers = {
 
 culture_ai_weight_heavy_infantry = {
 	value = 0
-	
-	if = { # Cultures that favours heavy infantry
-		limit = {
-				OR = {
-				}
-		}
-		add = 20
-	}
+
 	if = { # Cultures that favours heavy infantry
 		limit = {
 			OR = {
 				has_culture_or_parent_culture = { CULTURE = culture:dorian }
 				has_culture_or_parent_culture = { CULTURE = culture:laconian }
 				has_culture_or_parent_culture = { CULTURE = culture:boeotian }
+				has_culture_or_parent_culture = { CULTURE = culture:skordiskian }
 			}
 		}
 		add = 20
@@ -128,19 +110,19 @@ culture_ai_weight_pikemen = {
 }
 
 culture_ai_weight_light_cavalry = {
-	value = 100
+	value = 10
 	
 	if = { # Cultures that favours light cavalry
 		limit = {
 			OR = {
 			}
 		}
-		add = 120
+		add = 30
 	}
 }
 
 culture_ai_weight_heavy_cavalry = {
-	value = 80
+	value = -10
 	
 	if = { # Cultures that favours heavy cavalry
 		limit = {
@@ -148,7 +130,7 @@ culture_ai_weight_heavy_cavalry = {
 				has_culture_or_parent_culture = { CULTURE = culture:thessalian }
 			}
 		}
-		add = 100
+		add = 10
 	}
 }
 

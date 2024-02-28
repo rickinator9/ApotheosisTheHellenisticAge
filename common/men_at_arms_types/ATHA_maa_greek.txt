@@ -667,17 +667,18 @@ prodromoi = {
         can_recruit_maa_prodromoi_trigger = yes
     }
 
-    damage = 10
-    toughness = 14
+    damage = 5
+    toughness = 7
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        plains = { damage = 3 screen = 5 pursuit = 5 }
-        steppe = { damage = 3 screen = 5 pursuit = 5 }
-        mountains = { pursuit = -6 screen = -6 }
-        hills = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -8 screen = -8 }
+        plains = { damage = 10 }
+        drylands = { damage = 10 }
+        farmlands = { damage = 10 }
+        mountains = { pursuit = -10 screen = -10 }
+        forest = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -691,7 +692,7 @@ prodromoi = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -704,17 +705,18 @@ mandonai = {
         can_recruit_maa_mandonai_trigger = yes
     }
 
-    damage = 17
-    toughness = 17
+    damage = 11
+    toughness = 11
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        plains = { damage = 15 }
-        mountains = { pursuit = -3 screen = -3 }
-        hills = { pursuit = -3 screen = -3 }
-        drylands = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -3 screen = -3 }
+        plains = { damage = 10 }
+        farmlands = { damage = 10 }
+        forest = { screen = 20 }
+        mountains = { pursuit = -10 screen = -10 }
+        drylands = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -728,7 +730,7 @@ mandonai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -742,17 +744,18 @@ hippeis = {
         can_recruit_maa_hippeis_trigger = yes
     }
 
-    damage = 15
-    toughness = 19
+    damage = 10
+    toughness = 12
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 15 }
-        mountains = { damage = -3 toughness = -3 }
-        forest = { damage = -3 }
-        hills = { damage = -3 }
-        wetlands = { damage = -3 }
+        plains = { damage = 10 }
+        drylands = { damage = 10 }
+        farmlands = { damage = 10 }
+        mountains = { pursuit = -10 screen = -10 }
+        forest = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -766,7 +769,7 @@ hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -779,17 +782,18 @@ thessalikoi_hippeis = {
         can_recruit_maa_thessalikoi_hippeis_trigger = yes
     }
 
-    damage = 25
-    toughness = 12
+    damage = 15
+    toughness = 10
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 15 }
-        mountains = { damage = -6 }
-        forest = { damage = -3 }
-        hills = { damage = -3 }
-        wetlands = { damage = -3 }
+        plains = { damage = 10 }
+        drylands = { damage = 10 }
+        farmlands = { damage = 10 }
+        mountains = { pursuit = -10 screen = -10 }
+        forest = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -804,7 +808,7 @@ thessalikoi_hippeis = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -817,17 +821,18 @@ hiera_ile = {
         can_recruit_maa_hiera_ile_trigger = yes
     }
 
-    damage = 30
-    toughness = 24
+    damage = 20
+    toughness = 22
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 30 }
-        mountains = { damage = -8 }
-        forest = { damage = -6 }
-        hills = { toughness = -4 damage = -4 }
-        wetlands = { toughness = -4 damage = -4 }
+        plains = { damage = 10 }
+        drylands = { damage = 10 }
+        farmlands = { damage = 10 }
+        mountains = { pursuit = -10 screen = -10 }
+        forest = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -838,13 +843,11 @@ hiera_ile = {
     low_maintenance_cost = { gold = 0.8 }
     high_maintenance_cost = { gold = 2.4 }
     
-    mercenary_fallback = no
+    mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
-    ai_quality = {
-        value = culture_ai_weight_heavy_cavalry
-    }
+    stack = 100
+    ai_quality = { value = culture_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
 
@@ -998,17 +1001,18 @@ moukamezenai = {
         can_recruit_maa_moukamezenai_trigger = yes
     }
 
-    damage = 19
-    toughness = 15
+    damage = 12
+    toughness = 10
     pursuit = 10
     screen = 10
 
     terrain_bonus = {
-        plains = { damage = 12 }
-        mountains = { damage = -4 }
-        drylands = { damage = -3 }
-        hills = { damage = -3 }
-        wetlands = { damage = -3 }
+        plains = { damage = 10 }
+        farmlands = { damage = 10 }
+        forest = { screen = 10 }
+        mountains = { pursuit = -10 screen = -10 }
+        drylands = { pursuit = -5 screen = -5 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -1022,7 +1026,7 @@ moukamezenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1034,19 +1038,18 @@ mezenai = {
         can_recruit_maa_mezenai_trigger = yes
     }
 
-    damage = 14
-    toughness = 10
+    damage = 7
+    toughness = 5
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        plains = { damage = 6 }
-        steppe = { damage = 6 }
-        forest = { toughness = 3 }
-        mountains = { pursuit = -6 screen = -6 }
-        hills = { pursuit = -3 screen = -3 }
-        drylands = { pursuit = -3 screen = -3 }
-        wetlands = { pursuit = -3 screen = -3 }
+        plains = { damage = 10 }
+        farmlands = { damage = 10 }
+        forest = { screen = 20 }
+        mountains = { pursuit = -10 screen = -10 }
+        drylands = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
     }
 
     counters = {
@@ -1061,7 +1064,7 @@ mezenai = {
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_light_cavalry }
     icon = light_cavalry
 }
@@ -1073,36 +1076,35 @@ angamezenai = {
         can_recruit_maa_angamezenai_trigger = yes
     }
 
-    damage = 16
-    toughness = 10
-    pursuit = 16
+    damage = 15
+    toughness = 5
+    pursuit = 20
     screen = 30
 
     terrain_bonus = {
-        plains = { damage = 9 }
-        steppe = { damage = 9 }
-        hills = { pursuit = -3 screen = -3 }
-        mountains = { pursuit = -6 screen = -6 }
-        wetlands = { pursuit = -6 screen = -6 }
-        drylands = { pursuit = -3 screen = -3 }
+        plains = { damage = 15 }
+        steppe = { damage = 15 }
+        mountains = { pursuit = -10 screen = -10 }
+        hills = { pursuit = -10 screen = -10 }
+        wetlands = { pursuit = -10 screen = -10 }
     }
 
     counters = {
-        heavy_infantry = 0.5
-        pikemen = 0.5
-        skirmishers = 0.5
-        heavy_cavalry = 0.5
+        heavy_infantry 0.25
+        pikemen = 0.25
+        heavy_cavalry = 0.25
+        light_cavalry = 0.25
     }
 
-    buy_cost = { gold = 65 }
-    low_maintenance_cost = { gold = 0.35 }
-    high_maintenance_cost = { gold = 1.05 }
+    buy_cost = { gold = 80 }
+    low_maintenance_cost = { gold = 0.5 }
+    high_maintenance_cost = { gold = 1.5 }
     
     
     mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_light_cavalry }
     icon = horse_archers
 }
@@ -1115,18 +1117,18 @@ zibutai = {
         can_recruit_maa_zibutai_trigger = yes
     }
 
-    damage = 25
-    toughness = 20
+    damage = 20
+    toughness = 12
     pursuit = 20
     screen = 0
 
     terrain_bonus = {
-        plains = { damage = 9 pursuit = 6 }
-        forest = { pursuit = 6 toughness = 9 }
-        mountains = { damage = -6 }
-        drylands = { damage = -3 toughness -3 }
-        hills = { toughness = -3 damage = -3 }
-        wetlands = { toughness = -3 damage = -3 }
+        plains = { damage = 20 }
+        farmlands = { damage = 20 }
+        forest = { pursuit = -20 }
+        mountains = { pursuit = -20 }
+        drylands = { pursuit = -20 }
+        hills = { pursuit = -20 }
     }
 
     counters = {
@@ -1137,10 +1139,10 @@ zibutai = {
     low_maintenance_cost = { gold = 0.6 }
     high_maintenance_cost = { gold = 1.8 }
     
-    mercenary_fallback = no
+    mercenary_fallback = yes
     holy_order_fallback = yes
     
-    stack = 50
+    stack = 100
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
     icon = heavy_cavalry
 }
@@ -1343,10 +1345,9 @@ rompaianai = {
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 3 }
-        valley = { damage = 3 }
-        mountains = { toughness = -3 }
-        drylands = { toughness = -3 }
+        forest = { pursuit = 20 }
+        mountains = { pursuit = -10 }
+        drylands = { pursuit = -10 }
     }
 
     counters = {
