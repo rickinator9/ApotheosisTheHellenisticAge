@@ -1,0 +1,106 @@
+﻿base_modifier = { # Modified by the Phasian
+}
+
+baron_modifier = { # Community
+	domain_limit = 1
+	# Barons don't get to have knights
+}
+
+count_modifier = { # City-State
+	domain_limit = 1
+	levy_size = 0.1
+    garrison_size = 0.1
+	knight_limit = 5
+	vassal_limit = 5
+	active_accolades = 1
+	tax_slot_add = 1
+	mercenary_hire_cost_mult = -0.1
+	enemy_scheme_secrecy_add = -5
+	ai_war_chance = 0.0
+	men_at_arms_maintenance = -0.05
+}
+
+duke_modifier = { # Local-Power
+	domain_limit = 2
+	knight_limit = 6
+	vassal_limit = 20
+	active_accolades = 1
+	tax_slot_add = 1
+	enemy_scheme_secrecy_add = -10
+	mercenary_hire_cost_mult = 0.1
+	ai_war_chance = 0.1
+	men_at_arms_maintenance = 0.05
+}
+
+king_modifier = { # Regional-Power
+	domain_limit = 3
+	knight_limit = 7
+	vassal_limit = 40
+	active_accolades = 1
+	tax_slot_add = 2
+	mercenary_hire_cost_mult = 0.2
+	enemy_scheme_secrecy_add = -20
+	ai_war_chance = 0.2
+	men_at_arms_maintenance = 0.1
+}
+
+emperor_modifier = { # Major-Power
+	domain_limit = 4
+	knight_limit = 8
+	vassal_limit = 60
+	ai_amenity_target_baseline = 0.4
+	active_accolades = 1
+	tax_slot_add = 2
+	mercenary_hire_cost_mult = 0.4
+	enemy_scheme_secrecy_add = -30
+	ai_war_chance = 0.3
+	men_at_arms_maintenance = 0.2
+}
+
+#####
+
+easy_difficulty = {
+	health = 0.5
+	negate_health_penalty_add = 0.5
+	tyranny_gain_mult = -0.25
+	fertility = 0.1
+	stress_gain_mult = -0.25
+	short_reign_duration_mult = -0.25
+	enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_malus_value
+}
+
+very_easy_difficulty = {
+	health = 1
+	negate_health_penalty_add = 1
+	tyranny_gain_mult = -0.75
+	fertility = 0.2
+	stress_gain_mult = -0.5
+	short_reign_duration_mult = -0.5
+	vassal_opinion = 25
+	liege_opinion = 50
+	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
+}
+
+#####
+
+ai_weak_conqueror_modifier = {
+	icon = bird_positive
+	ai_war_chance = -100
+	ai_amenity_spending = -0.25
+	ai_amenity_target_baseline = -0.4
+}
+
+ai_extreme_conqueror_modifier = {
+	icon = flame_positive
+	health = 1
+	epidemic_resistance = 25
+	enemy_hostile_scheme_phase_duration_add = 50
+	enemy_hostile_scheme_success_chance_max_add = -30
+	enemy_hostile_scheme_success_chance_growth_add = -5
+	army_siege_value_mult = 0.5
+	siege_phase_time = -0.25
+	advantage = 10
+	maa_siege_value_add = 0.5
+	monthly_county_control_growth_add = 2.5
+	movement_speed = 0.25
+}
